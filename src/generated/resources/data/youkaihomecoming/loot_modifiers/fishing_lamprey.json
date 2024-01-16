@@ -1,0 +1,14 @@
+{
+  "type": "youkaihomecoming:replace_item",
+  "chance": 1,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:gameplay/fishing/fish"
+    }
+  ],
+  "result": {
+    "Count": 1,
+    "id": "youkaihomecoming:raw_lamprey"
+  }
+}

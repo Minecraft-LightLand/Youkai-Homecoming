@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaihomecoming:raw_lamprey"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "youkaihomecoming:raw_lamprey_fillet"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

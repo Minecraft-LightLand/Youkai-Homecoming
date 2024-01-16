@@ -16,7 +16,23 @@ public class YHModConfig {
 
 	public static class Common {
 
+		public final ForgeConfigSpec.IntValue youkaifyingTime;
+		public final ForgeConfigSpec.IntValue youkaifyingThreshold;
+		public final ForgeConfigSpec.IntValue youkaifiedDuration;
+		public final ForgeConfigSpec.IntValue youkaifiedProlongation;
+		public final ForgeConfigSpec.DoubleValue youkaifiedBoost;
+
 		Common(ForgeConfigSpec.Builder builder) {
+			youkaifyingTime = builder.comment("Time for flesh food to add Youkaifying effect")
+					.defineInRange("youkaifyingTime", 1200, 0, 1000000);
+			youkaifyingThreshold = builder.comment("Threshold for Youkaifying effect to turn into Youkaified effect")
+					.defineInRange("youkaifyingThreshold", 6000, 0, 1000000);
+			youkaifiedDuration = builder.comment("Youkaified duration once reached")
+					.defineInRange("youkaifiedDuration", 24000, 0, 1000000);
+			youkaifiedProlongation = builder.comment("Time for flesh food to add Youkaified effect")
+					.defineInRange("youkaifiedProlongation", 6000, 0, 1000000);
+			youkaifiedBoost = builder.comment("Time for flesh food to add Youkaified effect")
+					.defineInRange("youkaifiedBoost", 2d, 0, 10d);
 		}
 
 	}

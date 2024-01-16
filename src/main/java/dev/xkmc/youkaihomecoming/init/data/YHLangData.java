@@ -10,6 +10,12 @@ import javax.annotation.Nullable;
 import java.util.Locale;
 
 public enum YHLangData {
+	CHANCE_EFFECT("tooltip.chance", "%1$s with %2$s%% chance", 2, ChatFormatting.GRAY),
+	FLESH_NAME_HUMAN("flesh_human", "Weird Meat", 0, null),
+	FLESH_NAME_YOUKAI("flesh_youkai", "Flesh", 0, null),
+	FLESH_TASTE_HUMAN("taste_human", "Unappealing smell...", 0, ChatFormatting.GRAY),
+	FLESH_TASTE_HALF_YOUKAI("taste_half_youkai", "Strange flavor...", 0, ChatFormatting.GRAY),
+	FLESH_TASTE_YOUKAI("taste_youkai", "Delicious!", 0, ChatFormatting.GRAY),
 	;
 
 	private final String key, def;

@@ -1,0 +1,22 @@
+{
+  "itemGroup.youkaihomecoming.youkai_homecoming": "妖怪们的归家",
+  "effect.youkaihomecoming.youkaified": "妖怪化",
+  "effect.youkaihomecoming.youkaified.description": "现在你是妖怪了",
+  "effect.youkaihomecoming.youkaifying": "半妖怪化",
+  "effect.youkaihomecoming.youkaifying.description": "你在向妖怪转化中",
+  "entity.youkaihomecoming.lamprey": "八目鳗",
+  "item.youkaihomecoming.cooked_flesh": "烤%1$s",
+  "item.youkaihomecoming.flesh": "%1$s",
+  "item.youkaihomecoming.lamprey_bucket": "八目鳗桶",
+  "item.youkaihomecoming.lamprey_spawn_egg": "八目鳗生成蛋",
+  "item.youkaihomecoming.raw_lamprey": "生八目鳗",
+  "item.youkaihomecoming.raw_lamprey_fillet": "生八目鳗片",
+  "item.youkaihomecoming.roasted_lamprey": "烤八目鳗",
+  "item.youkaihomecoming.roasted_lamprey_fillet": "烤八目鳗片",
+  "youkaihomecoming.flesh_human": "怪肉",
+  "youkaihomecoming.flesh_youkai": "人肉",
+  "youkaihomecoming.tooltip.chance": " %2$s%%概率获得%1$s",
+  "youkaihomecoming.taste_half_youkai": "Strange flavor...",
+  "youkaihomecoming.taste_human": "Unappealing smell...",
+  "youkaihomecoming.taste_youkai": "Delicious!"
+}

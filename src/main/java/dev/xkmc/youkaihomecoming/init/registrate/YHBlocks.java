@@ -1,6 +1,6 @@
 package dev.xkmc.youkaihomecoming.init.registrate;
 
-public class FDBlocks {
+public class YHBlocks {
 
 	static {
 

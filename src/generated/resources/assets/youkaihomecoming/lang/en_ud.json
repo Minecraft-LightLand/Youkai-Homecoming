@@ -1,3 +1,22 @@
 {
-  "itemGroup.youkaihomecoming.youkai_homecoming": "buıɯoɔǝɯoH ıɐʞnoʎ"
+  "effect.youkaihomecoming.youkaified": "pǝıɟıɐʞnoʎ",
+  "effect.youkaihomecoming.youkaified.description": "ʍou ıɐʞnoʎ ɐ ǝɹɐ noʎ",
+  "effect.youkaihomecoming.youkaifying": "buıʎɟıɐʞnoʎ",
+  "effect.youkaihomecoming.youkaifying.description": "ıɐʞnoʎ ɐ buıɯoɔǝq ǝɹɐ noʎ",
+  "entity.youkaihomecoming.lamprey": "ʎǝɹdɯɐꞀ",
+  "item.youkaihomecoming.cooked_flesh": "%1$s pǝʞooƆ",
+  "item.youkaihomecoming.flesh": "%1$s",
+  "item.youkaihomecoming.lamprey_bucket": "ʇǝʞɔnᗺ ʎǝɹdɯɐꞀ",
+  "item.youkaihomecoming.lamprey_spawn_egg": "bbƎ uʍɐdS ʎǝɹdɯɐꞀ",
+  "item.youkaihomecoming.raw_lamprey": "ʎǝɹdɯɐꞀ ʍɐᴚ",
+  "item.youkaihomecoming.raw_lamprey_fillet": "ʇǝןןıℲ ʎǝɹdɯɐꞀ ʍɐᴚ",
+  "item.youkaihomecoming.roasted_lamprey": "ʎǝɹdɯɐꞀ pǝʇsɐoᴚ",
+  "item.youkaihomecoming.roasted_lamprey_fillet": "ʇǝןןıℲ ʎǝɹdɯɐꞀ pǝʇsɐoᴚ",
+  "itemGroup.youkaihomecoming.youkai_homecoming": "buıɯoɔǝɯoH s,ıɐʞnoʎ",
+  "youkaihomecoming.flesh_human": "ʇɐǝW pɹıǝM",
+  "youkaihomecoming.flesh_youkai": "ɥsǝןℲ",
+  "youkaihomecoming.taste_half_youkai": "˙˙˙ɹoʌɐןɟ ǝbuɐɹʇS",
+  "youkaihomecoming.taste_human": "˙˙˙ןןǝɯs buıןɐǝddɐu∩",
+  "youkaihomecoming.taste_youkai": "¡snoıɔıןǝᗡ",
+  "youkaihomecoming.tooltip.chance": "ǝɔuɐɥɔ %2$s%% ɥʇıʍ %1$s"
 }
