@@ -6,6 +6,7 @@ import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.food.YHFood;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
@@ -28,6 +29,7 @@ public class YHItems {
 	}
 
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
+	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
 
@@ -38,6 +40,10 @@ public class YHItems {
 				.register();
 
 		YHCrops.register();
+
+		SOY_SAUCE_BOTTLE = YoukaiHomecoming.REGISTRATE
+				.item("soy_sauce_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))
+				.register();
 
 		YHFood.register();
 

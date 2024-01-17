@@ -1,6 +1,7 @@
 package dev.xkmc.youkaihomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
@@ -13,19 +14,33 @@ import java.util.Locale;
 public enum YHFood {
 	RAW_LAMPREY(FoodType.MEAT, 2, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
-			ItemTags.FISHES
+			ItemTags.FISHES, YHTagGen.RAW_EEL
 	),
 	ROASTED_LAMPREY(FoodType.MEAT, 10, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1)
 	),
 	RAW_LAMPREY_FILLET(FoodType.MEAT_SLICE, 1, 0.3f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f)
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
+			YHTagGen.RAW_EEL
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1)
 	),
 	FLESH(FoodType.FLESH, 2, 0.3f),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.6f),
+
+	// simple
+
+	BUTTER(FoodType.SIMPLE, 3, 0.3f),
+	TOFU(FoodType.SIMPLE, 4, 0.5f),
+	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
+	MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
+	SAKURA_MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
+	ONIGILI(FoodType.SIMPLE, 6, 0.6f),
+	SENBEI(FoodType.SIMPLE, 4, 0.6f),
+	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f),
+
+	// bowl
 
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 	BLAZING_RED_CURRY(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
@@ -45,7 +60,7 @@ public enum YHFood {
 	)),
 	MISO_SOUP(FoodType.BOWL, 8, 0.5f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
 	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)),
-	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.8f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
+	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.6f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
 	SHIRAYUKI(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),

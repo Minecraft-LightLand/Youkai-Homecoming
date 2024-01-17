@@ -3,13 +3,16 @@ package dev.xkmc.youkaihomecoming.init.data;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.food.YHFood;
+import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -23,9 +26,15 @@ public class YHRecipeGen {
 	public static void genRecipes(RegistrateRecipeProvider pvd) {
 		foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET);
 		food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
+		food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 		cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
 
 		{
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SOY_SAUCE_BOTTLE.get(), 1, 200, 0.1f)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.build(pvd, YHItems.SOY_SAUCE_BOTTLE.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.APAKI.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(ForgeTags.RAW_PORK)
@@ -41,12 +50,11 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.RAW_CHICKEN)
 					.build(pvd, YHFood.BLAZING_RED_CURRY.item.getId());
 
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GRILLED_EEL_OVER_RICE.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(ForgeTags.GRAIN_RICE)
-					//TODO soy sauce x1
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
 					.build(pvd, YHFood.GRILLED_EEL_OVER_RICE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HIGAN_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
@@ -63,7 +71,7 @@ public class YHRecipeGen {
 					.build(pvd, YHFood.LONGEVITY_NOODLES.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					// TODO tofu
+					.addIngredient(YHFood.TOFU.item.get())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.DRIED_KELP)
 					.addIngredient(Items.BROWN_MUSHROOM)
@@ -87,7 +95,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.PUFFERFISH)
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(Items.KELP)
-					// TODO tofu
+					.addIngredient(YHFood.TOFU.item.get())
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.SHIRAYUKI.item.getId());
 
@@ -96,6 +104,44 @@ public class YHRecipeGen {
 					.addIngredient(Items.CARROT)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUTTER.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.build(pvd, YHFood.BUTTER.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TOFU.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.build(pvd, YHFood.TOFU.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(Items.KELP)
+					.build(pvd, YHFood.ONIGILI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHCrops.REDBEAN.getSeed())
+					.addIngredient(YHFood.BUTTER.item)
+					.build(pvd, YHFood.SEKIBANKIYAKI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MOCHI.item.get(), 2, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHCrops.REDBEAN.getSeed())
+					.build(pvd, YHFood.MOCHI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAKURA_MOCHI.item.get(), 2, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHCrops.REDBEAN.getSeed())
+					.addIngredient(Items.CHERRY_LEAVES)
+					.build(pvd, YHFood.SAKURA_MOCHI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SENBEI.item.get(), 3, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHFood.BUTTER.item)
+					.addIngredient(Items.KELP)
+					.build(pvd, YHFood.SENBEI.item.getId());
 
 		}
 	}

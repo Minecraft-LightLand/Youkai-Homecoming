@@ -1,6 +1,8 @@
 
 package dev.xkmc.youkaihomecoming.content.block;
 
+import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
+import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
@@ -29,6 +31,11 @@ public class YHCropBlock extends CropBlock {
 	public YHCropBlock(Properties prop, Supplier<Item> seed) {
 		super(prop);
 		this.seed = seed;
+	}
+
+	@Override
+	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+		return super.mayPlaceOn(pState, pLevel, pPos) || seed.get() == YHCrops.REDBEAN.getSeed() && pState.is(YHTagGen.FARMLAND_REDBEAN);
 	}
 
 	protected ItemLike getBaseSeedId() {
