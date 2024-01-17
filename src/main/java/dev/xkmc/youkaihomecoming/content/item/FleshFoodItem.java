@@ -6,6 +6,7 @@ import dev.xkmc.youkaihomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -99,13 +100,18 @@ public class FleshFoodItem extends YHFoodItem {
 							dur, 0, true, false, true));
 				} else {
 					consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFYING.get(),
-							dur, 0, true, false, false));
+							dur, 0, false, false, false));
 				}
 			}
 		} else {
-			int dur = YHModConfig.COMMON.youkaifyingTime.get();
-			consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFYING.get(),
-					dur, 0, true, false, false));
+			if (consumer.getRandom().nextDouble() < YHModConfig.COMMON.youkaifyingChance.get()) {
+				int dur = YHModConfig.COMMON.youkaifyingTime.get();
+				consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFYING.get(),
+						dur, 0, false, false, false));
+				dur = YHModConfig.COMMON.youkaifyingConfusionTime.get();
+				consumer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
+						dur, 0, false, false, true));
+			}
 		}
 		return ans;
 	}

@@ -32,7 +32,7 @@ public class YoukaiHomecoming {
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("youkai_homecoming", "Youkai's Homecoming",
-					e -> e.icon(YHFood.RAW_LAMPREY.item::asStack));
+					e -> e.icon(YHItems.SUWAKO_HAT::asStack));
 
 	public YoukaiHomecoming() {
 		YHItems.register();

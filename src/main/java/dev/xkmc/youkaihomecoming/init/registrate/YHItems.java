@@ -1,12 +1,15 @@
 package dev.xkmc.youkaihomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.youkaihomecoming.content.item.SuwakoHatItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.food.YHFood;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.Tags;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -23,11 +26,18 @@ public class YHItems {
 				.collect(Collectors.joining(" "));
 	}
 
+	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
 
 	static {
+		SUWAKO_HAT = YoukaiHomecoming.REGISTRATE
+				.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
+				.tag(Tags.Items.ARMORS_HELMETS)
+				.register();
+
 		YHFood.register();
+
 		LAMPREY_BUCKET = YoukaiHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(
 						YHEntities.LAMPREY, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,

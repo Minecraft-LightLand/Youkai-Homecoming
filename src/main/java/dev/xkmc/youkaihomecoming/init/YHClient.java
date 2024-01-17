@@ -1,5 +1,6 @@
 package dev.xkmc.youkaihomecoming.init;
 
+import dev.xkmc.youkaihomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaihomecoming.content.entity.LampreyModel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -21,6 +22,7 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
+		event.registerLayerDefinition(SuwakoHatModel.LAYER_LOCATION, SuwakoHatModel::createBodyLayer);
 	}
 
 }

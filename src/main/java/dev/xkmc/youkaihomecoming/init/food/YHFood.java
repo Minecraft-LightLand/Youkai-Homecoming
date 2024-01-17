@@ -23,8 +23,8 @@ public enum YHFood {
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1)
 	),
-	FLESH(FoodType.FLESH, 3, 0.3f),
-	COOKED_FLESH(FoodType.FLESH, 8, 0.8f);
+	FLESH(FoodType.FLESH, 2, 0.3f),
+	COOKED_FLESH(FoodType.FLESH, 5, 0.6f);
 
 
 	public final ItemEntry<Item> item;
