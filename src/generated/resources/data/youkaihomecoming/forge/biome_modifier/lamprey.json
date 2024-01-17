@@ -1,6 +1,6 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#youkaihomecoming:lamprey",
+  "biomes": "#youkaihomecoming:lamprey_spawns",
   "spawners": {
     "type": "youkaihomecoming:lamprey",
     "maxCount": 5,

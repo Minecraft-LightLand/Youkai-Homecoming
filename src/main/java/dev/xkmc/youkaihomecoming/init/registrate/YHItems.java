@@ -3,6 +3,7 @@ package dev.xkmc.youkaihomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaihomecoming.content.item.SuwakoHatItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.food.YHFood;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Items;
@@ -35,6 +36,8 @@ public class YHItems {
 				.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
 				.tag(Tags.Items.ARMORS_HELMETS)
 				.register();
+
+		YHCrops.register();
 
 		YHFood.register();
 

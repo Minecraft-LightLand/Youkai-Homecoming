@@ -50,8 +50,8 @@ public enum YHCrops {
 
 	private final BlockEntry<YHCropBlock> PLANT;
 	private final BlockEntry<BushBlock> WILD;
-	private final ItemEntry<ItemNameBlockItem> seed;
-	private final ItemEntry<? extends Item> fruits;
+	public final ItemEntry<ItemNameBlockItem> seed;
+	public final ItemEntry<? extends Item> fruits;
 
 	public final ResourceKey<ConfiguredFeature<?, ?>> configKey;
 	public final ResourceKey<PlacedFeature> placementKey;
@@ -71,7 +71,7 @@ public enum YHCrops {
 		WILD = YoukaiHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)))
 				.blockstate(this::buildWildModel)
 				.loot(this::buildWildLoot)
-				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
 				.tag(ModTags.WILD_CROPS)
 				.register();
 
@@ -89,7 +89,7 @@ public enum YHCrops {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
 			String tex = getName() + "_stage" + age;
-			return ConfiguredModel.builder().modelFile(pvd.models().cross(tex, pvd.modLoc("block/" + tex)).renderType("cutout")).build();
+			return ConfiguredModel.builder().modelFile(pvd.models().crop(tex, pvd.modLoc("block/" + tex)).renderType("cutout")).build();
 		});
 	}
 

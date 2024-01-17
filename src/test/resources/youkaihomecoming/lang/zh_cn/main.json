@@ -16,7 +16,16 @@
 	"raw_lamprey_fillet": "生八目鳗片",
 	"roasted_lamprey": "烤八目鳗",
 	"roasted_lamprey_fillet": "烤八目鳗片",
-	"suwako_hat": "诹访子的帽子"
+	"suwako_hat": "诹访子的帽子",
+	"pods": "豆荚",
+	"redbean": "红豆",
+	"soybean": "黄豆"
+  },
+  "block.youkaihomecoming": {
+	"redbean": "红豆",
+	"soybean": "黄豆",
+	"wild_redbean": "野生红豆",
+	"wild_soybean": "野生黄豆"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",

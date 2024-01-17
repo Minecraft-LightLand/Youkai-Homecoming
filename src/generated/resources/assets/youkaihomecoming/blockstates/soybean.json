@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "youkaihomecoming:block/soybean_stage0"
+    },
+    "age=1": {
+      "model": "youkaihomecoming:block/soybean_stage1"
+    },
+    "age=2": {
+      "model": "youkaihomecoming:block/soybean_stage2"
+    },
+    "age=3": {
+      "model": "youkaihomecoming:block/soybean_stage3"
+    },
+    "age=4": {
+      "model": "youkaihomecoming:block/soybean_stage4"
+    },
+    "age=5": {
+      "model": "youkaihomecoming:block/soybean_stage5"
+    },
+    "age=6": {
+      "model": "youkaihomecoming:block/soybean_stage6"
+    },
+    "age=7": {
+      "model": "youkaihomecoming:block/soybean_stage7"
+    }
+  }
+}
