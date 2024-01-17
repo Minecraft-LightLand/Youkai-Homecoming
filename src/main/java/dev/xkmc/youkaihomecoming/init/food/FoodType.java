@@ -22,6 +22,7 @@ public enum FoodType {
 	MEAT_SLICE(YHFoodItem::new, true, true),
 	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true),
 	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false),
+	BOTTLE(p -> new YHFoodItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false),
 	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false),
 	FLESH(FleshFoodItem::new, true, false, YHTagGen.FLESH_FOOD);
 

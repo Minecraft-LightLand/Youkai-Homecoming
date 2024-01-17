@@ -1,29 +1,5 @@
-- Add 3 types of fruits, and respective effects and products
-- Add more tree shapes
-- Add Berry tags
-TODO 2 fruits
+0.0.2
+- Plates, Sticks, Flesh, Models, Feasts
 
-1.0.3 / 0.5.3
-- Create compat for jam and jello
-- Use tags for wheat dough recipe
-- Permanent leaves won't change state
-- Diet compat
-- Cuisine Delight Compat
-- Add apple crate
-- Add Mangosteen Cake Block
-- Add BoP and Terralith compat
-
-1.0.2 / 0.5.2
-- Double Pineapple spawn rate
-- (1.19.2 only) Fix pineapple spawning in water
-- rename jelly to jam
-- Add jello
-- Add chorus jam/jello
-- Add cauldron jam and jello recipe
-- Add jello block and jam block
-
-1.0.1 / 0.5.1
-- Add 2 types of fruits, and respective effects and products.
-- Add fruit crates
-- Add Recipe compat with Botany pots and Botany trees
-- Add tag compat with Fruit Trees
+0.0.1
+- Meat, Bowls, Crops, Snacks

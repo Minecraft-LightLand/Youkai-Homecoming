@@ -9,6 +9,8 @@ import dev.xkmc.youkaihomecoming.init.food.YHFood;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -16,6 +18,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
+import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
@@ -30,16 +33,105 @@ public class YHRecipeGen {
 		cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
 
 		{
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.MILK_POPSICLE.item, 1)::unlockedBy, Items.ICE)
+					.pattern(" MM").pattern("SIM").pattern("TS ")
+					.define('M', ForgeTags.MILK_BOTTLE)
+					.define('S', Items.SUGAR)
+					.define('I', Items.ICE)
+					.define('T', Items.STICK)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.BIG_POPSICLE.item, 1)::unlockedBy, Items.ICE)
+					.pattern(" II").pattern("SII").pattern("TS ")
+					.define('S', Items.SUGAR)
+					.define('I', Items.ICE)
+					.define('T', Items.STICK)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.ASSORTED_DANGO.item, 1)::unlockedBy, YHFood.MOCHI.item.get())
+					.requires(YHFood.MOCHI.item).requires(YHFood.MOCHI.item).requires(YHFood.SAKURA_MOCHI.item)
+					.requires(Items.LIME_DYE).requires(Items.STICK)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.KINAKO_DANGO.item, 1)::unlockedBy, YHFood.MOCHI.item.get())
+					.requires(YHTagGen.DANGO).requires(YHTagGen.DANGO).requires(YHTagGen.DANGO)
+					.requires(YHCrops.SOYBEAN.getSeed()).requires(Items.STICK)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.SHAVED_ICE_OVER_RICE.item, 1)::unlockedBy, Items.ICE)
+					.requires(ForgeTags.GRAIN_RICE).requires(Items.ICE).requires(YHCrops.REDBEAN.getSeed())
+					.requires(ModItems.COD_ROLL.get())
+					.save(pvd);
+		}
+
+		{
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SOY_SAUCE_BOTTLE.get(), 1, 200, 0.1f)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.build(pvd, YHItems.SOY_SAUCE_BOTTLE.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.YAKUMO_INARI.item.get(), 3, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(Items.CARROT)
+					.addIngredient(YHFood.OILY_BEAN_CURD.item.get())
+					.addIngredient(YHFood.OILY_BEAN_CURD.item.get())
+					.addIngredient(YHFood.OILY_BEAN_CURD.item.get())
+					.build(pvd, YHFood.YAKUMO_INARI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.KOISHI_MOUSSE.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHFood.TOFU.item.get())
+					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(Items.HONEY_BOTTLE)
+					.addIngredient(YHFood.BUTTER.item.get())
+					.build(pvd, YHFood.KOISHI_MOUSSE.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.DOUGH)
+					.addIngredient(ModTags.CABBAGE_ROLL_INGREDIENTS)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.build(pvd, YHFood.BUN.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OYAKI.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.DOUGH)
+					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.build(pvd, YHFood.OYAKI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUTU_CONGEE.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(Items.BAMBOO)
+					.build(pvd, YHFood.TUTU_CONGEE.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CANDY_APPLE.item.get(), 1, 200, 0.1f, Items.STICK)
+					.addIngredient(Items.APPLE)
+					.addIngredient(Items.SUGAR)
+					.addIngredient(Items.SUGAR)
+					.addIngredient(Items.SUGAR)
+					.build(pvd, YHFood.CANDY_APPLE.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MITARASHI_DANGO.item.get(), 1, 200, 0.1f, Items.STICK)
+					.addIngredient(YHTagGen.DANGO)
+					.addIngredient(YHTagGen.DANGO)
+					.addIngredient(YHTagGen.DANGO)
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(Items.SUGAR)
+					.build(pvd, YHFood.MITARASHI_DANGO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.APAKI.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(Items.PINK_PETALS)
 					.build(pvd, YHFood.APAKI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.AVGOLEMONO.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(Items.GLOW_BERRIES)
+					.addIngredient(Items.GLOW_BERRIES)
+					.build(pvd, YHFood.AVGOLEMONO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLAZING_RED_CURRY.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.GRAIN_RICE)

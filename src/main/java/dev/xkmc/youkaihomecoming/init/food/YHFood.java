@@ -30,7 +30,6 @@ public enum YHFood {
 	COOKED_FLESH(FoodType.FLESH, 5, 0.6f),
 
 	// simple
-
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
 	TOFU(FoodType.SIMPLE, 4, 0.5f),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
@@ -39,10 +38,29 @@ public enum YHFood {
 	ONIGILI(FoodType.SIMPLE, 6, 0.6f),
 	SENBEI(FoodType.SIMPLE, 4, 0.6f),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f),
+	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f),
+	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f),//TODO effect
+	BUN(FoodType.SIMPLE, 8, 0.6f),
+	OYAKI(FoodType.SIMPLE, 6, 0.6f),
+	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f),
+
+	// stick
+
+	CANDY_APPLE(FoodType.STICK, 4, 0.3f),
+	MILK_POPSICLE(FoodType.STICK, 4, 0.3f),
+	BIG_POPSICLE(FoodType.STICK, 2, 0.1f),
+	KINAKO_DANGO(FoodType.STICK, 12, 0.6f),
+	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
+	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f),
+
+	// bottle
+	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
 
 	// bowl
-
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+	AVGOLEMONO(FoodType.BOWL, 8, 0.6f, List.of(
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
+			new EffectEntry(() -> MobEffects.GLOWING, 3600, 0, 1))),
 	BLAZING_RED_CURRY(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.FIRE_RESISTANCE, 3600, 0, 1)
@@ -53,13 +71,15 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
 	)),
 	HIGAN_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-
 	LONGEVITY_NOODLES(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
 	)),
 	MISO_SOUP(FoodType.BOWL, 8, 0.5f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
-	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)),
+	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
+			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
+	)),
 	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.6f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
 	SHIRAYUKI(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "youkaihomecoming:dango"
+    },
+    {
+      "tag": "youkaihomecoming:dango"
+    },
+    {
+      "tag": "youkaihomecoming:dango"
+    },
+    {
+      "item": "youkaihomecoming:soybean"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "item": "youkaihomecoming:kinako_dango"
+  }
+}
