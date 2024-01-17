@@ -5,7 +5,7 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaihomecoming.init.data.*;
-import dev.xkmc.youkaihomecoming.init.food.YHFood;
+import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
@@ -44,6 +44,7 @@ public class YoukaiHomecoming {
 
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(YHTagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
 	}
@@ -51,6 +52,8 @@ public class YoukaiHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			YHCrops.SOYBEAN.registerComposter();
+			YHCrops.REDBEAN.registerComposter();
 		});
 	}
 

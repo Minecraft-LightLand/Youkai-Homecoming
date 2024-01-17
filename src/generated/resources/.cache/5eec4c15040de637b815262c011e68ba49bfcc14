@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-16T21:35:51.760476	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-01-16T22:10:43.979119	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 975c1d2adc9b28d94fc61e2932dfcce3e8cf5469 assets/youkaihomecoming/lang/en_ud.json
 66fa3b3fa7d67830c2d4b10d4323a34e83769832 assets/youkaihomecoming/lang/en_us.json
 0ec8eeb901b1a84aaf64e355ef0714e33f78ff04 assets/youkaihomecoming/models/item/cooked_flesh.json
@@ -11,6 +11,7 @@ d0b30546295c7cf1feda04d17384521572351360 assets/youkaihomecoming/models/item/roa
 f4508cb205c28a9724e198e952d0a9040f1fdf92 assets/youkaihomecoming/models/item/roasted_lamprey_fillet.json
 826431c49c617154cb1677fc9a724044443fc0ae assets/youkaihomecoming/models/item/suwako_hat.json
 8c3c953c91806e1cd3ac44d058ccfc270cf2925c data/forge/tags/items/armors/helmets.json
+60da13f7e904337fb19e9271f031f2846de4c60e data/jeed/tags/mob_effect/hidden.json
 383c9e29c185c0dddf6697a104e5c96baa13ce89 data/minecraft/tags/items/fishes.json
 b3768e133169db7a79e8c0f5c9614ff2ad15acf1 data/youkaihomecoming/advancements/recipes/food/cooked_flesh_from_flesh_campfire.json
 02afc8da048b85ee7751dcec6710fb171b42b100 data/youkaihomecoming/advancements/recipes/food/cooked_flesh_from_flesh_smelting.json
