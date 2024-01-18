@@ -11,6 +11,7 @@ import java.util.Locale;
 
 public enum YHLangData {
 	CHANCE_EFFECT("tooltip.chance", "%1$s with %2$s%% chance", 2, ChatFormatting.GRAY),
+	PLACE("tooltip.place", "Can be placed on ground", 0, ChatFormatting.GRAY),
 	FLESH_NAME_HUMAN("flesh_human", "Weird Meat", 0, null),
 	FLESH_NAME_YOUKAI("flesh_youkai", "Flesh", 0, null),
 	FLESH_TASTE_HUMAN("taste_human", "Unappealing smell...", 0, ChatFormatting.GRAY),

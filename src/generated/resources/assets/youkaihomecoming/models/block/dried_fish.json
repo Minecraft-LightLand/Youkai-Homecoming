@@ -1,0 +1,10 @@
+{
+  "parent": "youkaihomecoming:block/saucer_dried_fish",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaihomecoming:block/dried_fish",
+    "extra": "youkaihomecoming:block/dried_fish_extra",
+    "particle": "youkaihomecoming:block/dried_fish",
+    "sake": "youkaihomecoming:block/saucer_sake"
+  }
+}

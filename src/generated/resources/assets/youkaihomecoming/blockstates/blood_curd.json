@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaihomecoming:block/blood_curd",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaihomecoming:block/blood_curd"
+    },
+    "facing=south": {
+      "model": "youkaihomecoming:block/blood_curd",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaihomecoming:block/blood_curd",
+      "y": 270
+    }
+  }
+}

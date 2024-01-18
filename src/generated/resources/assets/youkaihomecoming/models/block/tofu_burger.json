@@ -1,0 +1,10 @@
+{
+  "parent": "youkaihomecoming:block/saucer_tofu_burger",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaihomecoming:block/tofu_burger",
+    "extra": "youkaihomecoming:block/tofu_burger_extra",
+    "particle": "youkaihomecoming:block/tofu_burger",
+    "sake": "youkaihomecoming:block/saucer_sake"
+  }
+}

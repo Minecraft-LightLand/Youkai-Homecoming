@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaihomecoming:block/stinky_tofu",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaihomecoming:block/stinky_tofu"
+    },
+    "facing=south": {
+      "model": "youkaihomecoming:block/stinky_tofu",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaihomecoming:block/stinky_tofu",
+      "y": 270
+    }
+  }
+}

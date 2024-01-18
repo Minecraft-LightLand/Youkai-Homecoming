@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaihomecoming:block/dried_fish",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaihomecoming:block/dried_fish"
+    },
+    "facing=south": {
+      "model": "youkaihomecoming:block/dried_fish",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaihomecoming:block/dried_fish",
+      "y": 270
+    }
+  }
+}

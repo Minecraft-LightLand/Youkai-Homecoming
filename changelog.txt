@@ -1,5 +1,8 @@
+0.0.3
+- Flesh, Feast, Compat
+
 0.0.2
-- Plates, Sticks, Flesh, Models, Feasts
+- Plates, Sticks, Models
 
 0.0.1
 - Meat, Bowls, Crops, Snacks

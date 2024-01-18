@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaihomecoming:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "tag": "forge:raw_pork"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "youkaihomecoming:raw_eel"
+    },
+    {
+      "item": "youkaihomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaihomecoming:imitation_bear_paw"
+  }
+}

@@ -1,6 +1,15 @@
 {
+  "block.youkaihomecoming.bamboo_mizuyokan": "uɐʞoʎnzıW ooqɯɐᗺ",
+  "block.youkaihomecoming.blood_curd": "pɹnƆ pooןᗺ",
+  "block.youkaihomecoming.dried_fish": "ɥsıℲ pǝıɹᗡ",
+  "block.youkaihomecoming.imitation_bear_paw": "ʍɐԀ ɹɐǝᗺ uoıʇɐʇıɯI",
+  "block.youkaihomecoming.pastitsio": "oısʇıʇsɐԀ",
   "block.youkaihomecoming.redbean": "uɐǝqpǝᴚ",
+  "block.youkaihomecoming.sauce_grilled_fish": "ɥsıℲ pǝןןıɹ⅁ ǝɔnɐS",
+  "block.youkaihomecoming.saucer": "ɹǝɔnɐS",
   "block.youkaihomecoming.soybean": "uɐǝqʎoS",
+  "block.youkaihomecoming.stinky_tofu": "nɟo⟘ ʎʞuıʇS",
+  "block.youkaihomecoming.tofu_burger": "ɹǝbɹnᗺ nɟo⟘",
   "block.youkaihomecoming.wild_redbean": "uɐǝqpǝᴚ pןıM",
   "block.youkaihomecoming.wild_soybean": "uɐǝqʎoS pןıM",
   "effect.youkaihomecoming.youkaified": "pǝıɟıɐʞnoʎ",
@@ -13,9 +22,11 @@
   "item.youkaihomecoming.avgolemono": "ouoɯǝןobʌⱯ",
   "item.youkaihomecoming.big_popsicle": "ǝןɔısdoԀ bıᗺ",
   "item.youkaihomecoming.blazing_red_curry": "ʎɹɹnƆ pǝᴚ buızɐןᗺ",
+  "item.youkaihomecoming.blood_bottle": "ǝןʇʇoᗺ pooןᗺ",
   "item.youkaihomecoming.bun": "unᗺ",
   "item.youkaihomecoming.butter": "ɹǝʇʇnᗺ",
   "item.youkaihomecoming.candy_apple": "ǝןddⱯ ʎpuɐƆ",
+  "item.youkaihomecoming.clay_saucer": "ɹǝɔnɐS ʎɐןƆ",
   "item.youkaihomecoming.cooked_flesh": "%1$s pǝʞooƆ",
   "item.youkaihomecoming.flesh": "%1$s",
   "item.youkaihomecoming.grilled_eel_over_rice": "ǝɔıᴚ ɹǝʌO ןǝƎ pǝןןıɹ⅁",
@@ -58,5 +69,6 @@
   "youkaihomecoming.taste_half_youkai": "˙˙˙ɹoʌɐןɟ ǝbuɐɹʇS",
   "youkaihomecoming.taste_human": "˙˙˙ןןǝɯs buıןɐǝddɐu∩",
   "youkaihomecoming.taste_youkai": "¡snoıɔıןǝᗡ",
-  "youkaihomecoming.tooltip.chance": "ǝɔuɐɥɔ %2$s%% ɥʇıʍ %1$s"
+  "youkaihomecoming.tooltip.chance": "ǝɔuɐɥɔ %2$s%% ɥʇıʍ %1$s",
+  "youkaihomecoming.tooltip.place": "punoɹb uo pǝɔɐןd ǝq uɐƆ"
 }

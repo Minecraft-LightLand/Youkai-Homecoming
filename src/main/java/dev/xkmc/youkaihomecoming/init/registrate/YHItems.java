@@ -1,15 +1,20 @@
 package dev.xkmc.youkaihomecoming.init.registrate;
 
+import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.youkaihomecoming.content.block.EmptySaucerBlock;
 import dev.xkmc.youkaihomecoming.content.item.SuwakoHatItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
+import dev.xkmc.youkaihomecoming.init.food.YHDish;
 import dev.xkmc.youkaihomecoming.init.food.YHFood;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +34,10 @@ public class YHItems {
 	}
 
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
-	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE;
+	public static final ItemEntry<Item> BLOOD_BOTTLE, SOY_SAUCE_BOTTLE, CLAY_SAUCER;
+
+	public static final BlockEntry<EmptySaucerBlock> SAUCER;
+
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
 
@@ -45,7 +53,22 @@ public class YHItems {
 				.item("soy_sauce_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))
 				.register();
 
+		BLOOD_BOTTLE = YoukaiHomecoming.REGISTRATE
+				.item("blood_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))
+				.register();
+
 		YHFood.register();
+
+		CLAY_SAUCER = YoukaiHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
+
+		SAUCER = YoukaiHomecoming.REGISTRATE.block("saucer", p -> new EmptySaucerBlock(
+						BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL)))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+						state -> state.getValue(EmptySaucerBlock.TYPE).build(pvd)))
+				.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.register();
+
+		YHDish.register();
 
 		LAMPREY_BUCKET = YoukaiHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(

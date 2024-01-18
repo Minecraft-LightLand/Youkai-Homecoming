@@ -1,25 +1,22 @@
 {
   "type": "farmersdelight:cooking",
   "container": {
-    "item": "minecraft:bowl"
+    "item": "youkaihomecoming:saucer"
   },
   "cookingtime": 200,
   "experience": 0.1,
   "ingredients": [
     {
-      "tag": "forge:pasta"
+      "item": "youkaihomecoming:tofu"
     },
     {
-      "tag": "forge:vegetables"
+      "item": "youkaihomecoming:tofu"
     },
     {
       "item": "minecraft:brown_mushroom"
-    },
-    {
-      "tag": "forge:raw_pork"
     }
   ],
   "result": {
-    "item": "youkaihomecoming:longevity_noodles"
+    "item": "youkaihomecoming:stinky_tofu"
   }
 }

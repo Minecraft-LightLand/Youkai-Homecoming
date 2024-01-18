@@ -1,6 +1,15 @@
 {
+  "block.youkaihomecoming.bamboo_mizuyokan": "Bamboo Mizuyokan",
+  "block.youkaihomecoming.blood_curd": "Blood Curd",
+  "block.youkaihomecoming.dried_fish": "Dried Fish",
+  "block.youkaihomecoming.imitation_bear_paw": "Imitation Bear Paw",
+  "block.youkaihomecoming.pastitsio": "Pastitsio",
   "block.youkaihomecoming.redbean": "Redbean",
+  "block.youkaihomecoming.sauce_grilled_fish": "Sauce Grilled Fish",
+  "block.youkaihomecoming.saucer": "Saucer",
   "block.youkaihomecoming.soybean": "Soybean",
+  "block.youkaihomecoming.stinky_tofu": "Stinky Tofu",
+  "block.youkaihomecoming.tofu_burger": "Tofu Burger",
   "block.youkaihomecoming.wild_redbean": "Wild Redbean",
   "block.youkaihomecoming.wild_soybean": "Wild Soybean",
   "effect.youkaihomecoming.youkaified": "Youkaified",
@@ -13,9 +22,11 @@
   "item.youkaihomecoming.avgolemono": "Avgolemono",
   "item.youkaihomecoming.big_popsicle": "Big Popsicle",
   "item.youkaihomecoming.blazing_red_curry": "Blazing Red Curry",
+  "item.youkaihomecoming.blood_bottle": "Blood Bottle",
   "item.youkaihomecoming.bun": "Bun",
   "item.youkaihomecoming.butter": "Butter",
   "item.youkaihomecoming.candy_apple": "Candy Apple",
+  "item.youkaihomecoming.clay_saucer": "Clay Saucer",
   "item.youkaihomecoming.cooked_flesh": "Cooked %1$s",
   "item.youkaihomecoming.flesh": "%1$s",
   "item.youkaihomecoming.grilled_eel_over_rice": "Grilled Eel Over Rice",
@@ -58,5 +69,6 @@
   "youkaihomecoming.taste_half_youkai": "Strange flavor...",
   "youkaihomecoming.taste_human": "Unappealing smell...",
   "youkaihomecoming.taste_youkai": "Delicious!",
-  "youkaihomecoming.tooltip.chance": "%1$s with %2$s%% chance"
+  "youkaihomecoming.tooltip.chance": "%1$s with %2$s%% chance",
+  "youkaihomecoming.tooltip.place": "Can be placed on ground"
 }
