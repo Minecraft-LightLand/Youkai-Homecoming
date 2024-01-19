@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/template_cake_with_candle",
+  "textures": {
+    "bottom": "youkaihomecoming:block/red_velvet_cake_bottom",
+    "candle": "minecraft:block/cyan_candle_lit",
+    "particle": "youkaihomecoming:block/red_velvet_cake_side",
+    "side": "youkaihomecoming:block/red_velvet_cake_side",
+    "top": "youkaihomecoming:block/red_velvet_cake_top"
+  }
+}

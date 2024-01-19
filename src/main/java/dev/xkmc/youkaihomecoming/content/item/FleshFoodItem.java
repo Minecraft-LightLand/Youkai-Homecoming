@@ -12,16 +12,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class FleshFoodItem extends YHFoodItem {
-	public FleshFoodItem(Properties props, UseAnim anim) {
-		super(props, anim);
-	}
 
 	public FleshFoodItem(Properties props) {
 		super(props);
@@ -79,10 +75,7 @@ public class FleshFoodItem extends YHFoodItem {
 		return Component.translatable(this.getDescriptionId(pStack), name);
 	}
 
-	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
-		ItemStack ans = super.finishUsingItem(stack, worldIn, consumer);
-		if (!(consumer instanceof Player)) return ans;
+	public void consume(Player consumer) {
 		if (consumer.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			var eff = consumer.getEffect(YHEffects.YOUKAIFIED.get());
 			if (eff != null) {
@@ -114,6 +107,13 @@ public class FleshFoodItem extends YHFoodItem {
 						dur, 0, false, false, true));
 			}
 		}
+	}
+
+	@Override
+	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
+		ItemStack ans = super.finishUsingItem(stack, worldIn, consumer);
+		if (!(consumer instanceof Player player)) return ans;
+		consume(player);
 		return ans;
 	}
 }

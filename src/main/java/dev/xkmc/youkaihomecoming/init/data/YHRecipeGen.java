@@ -4,6 +4,7 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.youkaihomecoming.init.food.CakeEntry;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.food.YHDish;
 import dev.xkmc.youkaihomecoming.init.food.YHFood;
@@ -34,6 +35,9 @@ public class YHRecipeGen {
 		cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
 		pvd.stonecutting(DataIngredient.items(Items.CLAY), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 		pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
+		pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
+		pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
+
 
 		// food craft
 		{
@@ -70,7 +74,7 @@ public class YHRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.FLESH_ROLL.item, 2)::unlockedBy, YHFood.FLESH.item.get())
 					.pattern("FF").pattern("KR")
 					.define('F', YHTagGen.RAW_FLESH)
-					.define('K', Items.KELP)
+					.define('K', Items.DRIED_KELP)
 					.define('R', ModItems.COOKED_RICE.get())
 					.save(pvd);
 
@@ -83,6 +87,17 @@ public class YHRecipeGen {
 					.define('3', ForgeTags.VEGETABLES_ONION)
 					.define('4', ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.RED_VELVET.block, 1)::unlockedBy, YHFood.FLESH.item.get())
+					.pattern("ABA").pattern("CDC").pattern("EEE")
+					.define('A', Items.SUGAR)
+					.define('B', Items.MILK_BUCKET)
+					.define('C', YHItems.BLOOD_BOTTLE)
+					.define('D', YHFood.FLESH.item)
+					.define('E', Items.WHEAT)
+					.save(pvd);
+
+			cake(pvd, YHItems.RED_VELVET);
 		}
 
 		// food cooking
@@ -186,23 +201,6 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.RAW_FLESH)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.FLESH_DUMPLINGS.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_STEW.item.get(), 1, 200, 0.1f)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
-					.build(pvd, YHFood.FLESH_STEW.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.FLESH_FEAST.get(), 1, 200, 0.1f)
-					.addIngredient(YHItems.RAW_FLESH_FEAST)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHItems.BLOOD_BOTTLE)
-					.addIngredient(YHItems.BLOOD_BOTTLE)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
-					.build(pvd, YHItems.FLESH_FEAST.getId());
 		}
 
 		// food cooking bowl
@@ -282,6 +280,23 @@ public class YHRecipeGen {
 					.addIngredient(Items.CARROT)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_STEW.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHTagGen.RAW_EEL)
+					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.build(pvd, YHFood.FLESH_STEW.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.FLESH_FEAST.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(YHItems.RAW_FLESH_FEAST)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.build(pvd, YHItems.FLESH_FEAST.getId());
 		}
 
 		// food cooking saucer
@@ -353,6 +368,16 @@ public class YHRecipeGen {
 		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(in),
 						Ingredient.of(ForgeTags.TOOLS_KNIVES), out, count, 1)
 				.build(pvd, in.getId().withSuffix("_cutting"));
+	}
+
+	private static void cake(RegistrateRecipeProvider pvd, CakeEntry cake) {
+		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(cake.block.get()),
+						Ingredient.of(ForgeTags.TOOLS_KNIVES), cake.item.get(), 7)
+				.build(pvd, cake.item.getId());
+
+		unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.FOOD, cake.block.get(), 1)::unlockedBy, cake.item.get())
+				.requires(cake.item.get(), 7)
+				.save(pvd, cake.block.getId().withSuffix("_assemble"));
 	}
 
 	private static void foodCut(RegistrateRecipeProvider pvd,

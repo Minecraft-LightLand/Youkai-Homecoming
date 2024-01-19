@@ -157,6 +157,21 @@ public enum YHCrops {
 				RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	}
 
+	public BlockEntry<Block> createBag() {
+		return YoukaiHomecoming.REGISTRATE
+				.block(getName() + "_bag", p -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
+				.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cube(
+						ctx.getName(),
+						pvd.modLoc("block/" + ctx.getName() + "_bottom"),
+						pvd.modLoc("block/" + ctx.getName() + "_top"),
+						pvd.modLoc("block/" + ctx.getName() + "_side"),
+						pvd.modLoc("block/" + ctx.getName() + "_side"),
+						pvd.modLoc("block/" + ctx.getName() + "_side_tied"),
+						pvd.modLoc("block/" + ctx.getName() + "_side_tied")
+				).texture("particle", pvd.modLoc("block/" + ctx.getName() + "_top"))))
+				.simpleItem().register();
+	}
+
 	public String getName() {
 		return name().toLowerCase(Locale.ROOT);
 	}

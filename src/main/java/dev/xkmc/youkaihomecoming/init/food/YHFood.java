@@ -50,9 +50,9 @@ public enum YHFood {
 	CANDY_APPLE(FoodType.STICK, 4, 0.3f),
 	MILK_POPSICLE(FoodType.STICK, 4, 0.3f),
 	BIG_POPSICLE(FoodType.STICK, 2, 0.1f),
-	KINAKO_DANGO(FoodType.STICK, 12, 0.6f),
+	KINAKO_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)),
 	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
-	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f),
+	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
 
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),

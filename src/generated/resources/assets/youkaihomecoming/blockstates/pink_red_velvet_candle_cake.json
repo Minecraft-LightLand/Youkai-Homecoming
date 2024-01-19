@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "youkaihomecoming:block/pink_red_velvet_candle_cake"
+    },
+    "lit=true": {
+      "model": "youkaihomecoming:block/pink_red_velvet_candle_cake_lit"
+    }
+  }
+}

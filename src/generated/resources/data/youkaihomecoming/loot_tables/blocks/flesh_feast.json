@@ -3,15 +3,47 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "block": "youkaihomecoming:flesh_feast",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "servings": "4"
+              }
+            }
+          ],
+          "name": "youkaihomecoming:flesh_feast"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "block": "youkaihomecoming:flesh_feast",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "servings": "4"
+            }
+          }
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaihomecoming:flesh_feast"
+          "name": "minecraft:bowl"
         }
       ],
       "rolls": 1.0

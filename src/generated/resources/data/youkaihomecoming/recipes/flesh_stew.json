@@ -1,5 +1,8 @@
 {
   "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
   "cookingtime": 200,
   "experience": 0.1,
   "ingredients": [
@@ -10,10 +13,10 @@
       "tag": "youkaihomecoming:raw_flesh"
     },
     {
-      "tag": "youkaihomecoming:raw_flesh"
+      "tag": "youkaihomecoming:raw_eel"
     },
     {
-      "tag": "youkaihomecoming:raw_flesh"
+      "tag": "forge:vegetables"
     },
     {
       "tag": "forge:vegetables"

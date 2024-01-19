@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaihomecoming:red_velvet_cake"
+    }
+  ],
+  "result": [
+    {
+      "count": 7,
+      "item": "youkaihomecoming:red_velvet_cake_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

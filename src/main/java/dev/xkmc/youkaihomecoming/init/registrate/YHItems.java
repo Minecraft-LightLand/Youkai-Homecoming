@@ -8,17 +8,24 @@ import dev.xkmc.youkaihomecoming.content.item.FleshBlockItem;
 import dev.xkmc.youkaihomecoming.content.item.FleshSimpleItem;
 import dev.xkmc.youkaihomecoming.content.item.SuwakoHatItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
-import dev.xkmc.youkaihomecoming.init.food.YHCrops;
-import dev.xkmc.youkaihomecoming.init.food.YHDish;
-import dev.xkmc.youkaihomecoming.init.food.YHFood;
+import dev.xkmc.youkaihomecoming.init.food.*;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.common.Tags;
 import org.apache.commons.lang3.StringUtils;
 import vectorwing.farmersdelight.common.block.FeastBlock;
@@ -38,9 +45,11 @@ public class YHItems {
 	}
 
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
+	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG;
 	public static final ItemEntry<Item> BLOOD_BOTTLE, SOY_SAUCE_BOTTLE, CLAY_SAUCER;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
+	public static final CakeEntry RED_VELVET;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
@@ -52,6 +61,9 @@ public class YHItems {
 				.register();
 
 		YHCrops.register();
+
+		SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
+		REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 
 		SOY_SAUCE_BOTTLE = YoukaiHomecoming.REGISTRATE
 				.item("soy_sauce_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))
@@ -74,7 +86,16 @@ public class YHItems {
 						FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
 				.lang("%1$s Feast")
 				.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()
+						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(block.asItem())
+								.when(ExplosionCondition.survivesExplosion())
+								.when(getServe(block))))
+						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BOWL))
+								.when(ExplosionCondition.survivesExplosion())
+								.when(InvertedLootItemCondition.invert(getServe(block))))))
 				.register();
+
+		RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f);
 
 		CLAY_SAUCER = YoukaiHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
 
@@ -94,6 +115,13 @@ public class YHItems {
 				.defaultLang()
 				.register();
 	}
+
+	private static <T extends FeastBlock> LootItemBlockStatePropertyCondition.Builder getServe(T block) {
+		return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).
+				setProperties(StatePropertiesPredicate.Builder.properties()
+						.hasProperty(block.getServingsProperty(), block.getMaxServings()));
+	}
+
 
 	public static void register() {
 	}
