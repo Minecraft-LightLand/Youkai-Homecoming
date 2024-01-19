@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "youkaihomecoming:raw_flesh"
+    },
+    {
+      "tag": "youkaihomecoming:raw_flesh"
+    },
+    {
+      "tag": "youkaihomecoming:raw_flesh"
+    },
+    {
+      "tag": "youkaihomecoming:raw_flesh"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "item": "youkaihomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaihomecoming:flesh_stew"
+  }
+}

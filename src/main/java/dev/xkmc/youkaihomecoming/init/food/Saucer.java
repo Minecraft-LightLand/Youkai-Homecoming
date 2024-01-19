@@ -29,7 +29,7 @@ public enum Saucer implements StringRepresentable {
 
 	public BlockModelBuilder build(RegistrateBlockstateProvider pvd) {
 		var builder = pvd.models().getBuilder("block/" + getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + getName() + "_base")));
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/" + getName())));
 		builder.texture(base, "block/saucer_" + base);
 		builder.texture("particle", "block/saucer_" + base);
 		for (var e : tex) {

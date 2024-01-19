@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_tofu_burger",
+  "parent": "youkaihomecoming:custom/saucer_tofu_burger",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/tofu_burger",

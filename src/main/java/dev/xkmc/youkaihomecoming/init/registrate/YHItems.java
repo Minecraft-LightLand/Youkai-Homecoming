@@ -3,6 +3,9 @@ package dev.xkmc.youkaihomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaihomecoming.content.block.EmptySaucerBlock;
+import dev.xkmc.youkaihomecoming.content.block.FleshFeastBlock;
+import dev.xkmc.youkaihomecoming.content.item.FleshBlockItem;
+import dev.xkmc.youkaihomecoming.content.item.FleshSimpleItem;
 import dev.xkmc.youkaihomecoming.content.item.SuwakoHatItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
@@ -18,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 import org.apache.commons.lang3.StringUtils;
+import vectorwing.farmersdelight.common.block.FeastBlock;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -35,9 +39,9 @@ public class YHItems {
 
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final ItemEntry<Item> BLOOD_BOTTLE, SOY_SAUCE_BOTTLE, CLAY_SAUCER;
-
+	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
+	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
-
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
 
@@ -58,6 +62,19 @@ public class YHItems {
 				.register();
 
 		YHFood.register();
+
+		RAW_FLESH_FEAST = YoukaiHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
+				.lang("Raw %1$s Feast")
+				.register();
+
+		FLESH_FEAST = YoukaiHomecoming.REGISTRATE
+				.block("flesh_feast", p -> new FleshFeastBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL),
+						YHFood.BOWL_OF_FLESH_FEAST.item))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
+						FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
+				.lang("%1$s Feast")
+				.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.register();
 
 		CLAY_SAUCER = YoukaiHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
 

@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_sauce_grilled_fish",
+  "parent": "youkaihomecoming:custom/saucer_sauce_grilled_fish",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/sauce_grilled_fish",

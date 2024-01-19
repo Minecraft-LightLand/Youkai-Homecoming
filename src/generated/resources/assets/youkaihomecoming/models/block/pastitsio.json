@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_pastitsio",
+  "parent": "youkaihomecoming:custom/saucer_pastitsio",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/pastitsio",

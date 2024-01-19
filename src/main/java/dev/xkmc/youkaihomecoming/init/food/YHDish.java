@@ -71,7 +71,7 @@ public enum YHDish {
 	private BlockModelBuilder build(RegistrateBlockstateProvider pvd) {
 		String name = getName();
 		var builder = pvd.models().getBuilder("block/" + name)
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/saucer_" + name)));
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/saucer_" + name)));
 		builder.texture("base", "block/" + name);
 		builder.texture("particle", "block/" + name);
 		if (base.extra) {

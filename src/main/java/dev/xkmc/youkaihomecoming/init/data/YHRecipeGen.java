@@ -66,6 +66,23 @@ public class YHRecipeGen {
 					.requires(ForgeTags.GRAIN_RICE).requires(Items.ICE).requires(YHCrops.REDBEAN.getSeed())
 					.requires(ModItems.COD_ROLL.get())
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.FLESH_ROLL.item, 2)::unlockedBy, YHFood.FLESH.item.get())
+					.pattern("FF").pattern("KR")
+					.define('F', YHTagGen.RAW_FLESH)
+					.define('K', Items.KELP)
+					.define('R', ModItems.COOKED_RICE.get())
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.RAW_FLESH_FEAST, 1)::unlockedBy, YHFood.FLESH.item.get())
+					.pattern("FFF").pattern("1F2").pattern("3S4")
+					.define('F', YHTagGen.RAW_FLESH)
+					.define('S', Items.SKELETON_SKULL)
+					.define('1', Items.CARROT)
+					.define('2', Items.BROWN_MUSHROOM)
+					.define('3', ForgeTags.VEGETABLES_ONION)
+					.define('4', ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.save(pvd);
 		}
 
 		// food cooking
@@ -163,6 +180,29 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.MITARASHI_DANGO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_DUMPLINGS.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.DOUGH)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(ForgeTags.VEGETABLES)
+					.build(pvd, YHFood.FLESH_DUMPLINGS.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_STEW.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.build(pvd, YHFood.FLESH_STEW.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.FLESH_FEAST.get(), 1, 200, 0.1f)
+					.addIngredient(YHItems.RAW_FLESH_FEAST)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.build(pvd, YHItems.FLESH_FEAST.getId());
 		}
 
 		// food cooking bowl

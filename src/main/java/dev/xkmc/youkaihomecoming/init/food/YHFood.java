@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import vectorwing.farmersdelight.common.registry.ModEffects;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.List;
 import java.util.Locale;
@@ -21,13 +22,13 @@ public enum YHFood {
 	),
 	RAW_LAMPREY_FILLET(FoodType.MEAT_SLICE, 1, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
-			YHTagGen.RAW_EEL
+			YHTagGen.RAW_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1)
 	),
-	FLESH(FoodType.FLESH, 2, 0.3f),
-	COOKED_FLESH(FoodType.FLESH, 5, 0.6f),
+	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH),
+	COOKED_FLESH(FoodType.FLESH, 5, 0.8f),
 
 	// simple
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
@@ -88,7 +89,21 @@ public enum YHFood {
 	)),
 	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 
-
+	// flesh
+	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
+	)),
+	FLESH_ROLL(FoodType.FLESH, 3, 0.8f,
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	)),
+	BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	)),
 	;
 
 

@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_stinky_tofu",
+  "parent": "youkaihomecoming:custom/saucer_stinky_tofu",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/stinky_tofu",

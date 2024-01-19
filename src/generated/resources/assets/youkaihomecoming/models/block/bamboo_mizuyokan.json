@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_bamboo_mizuyokan",
+  "parent": "youkaihomecoming:custom/saucer_bamboo_mizuyokan",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/bamboo_mizuyokan",

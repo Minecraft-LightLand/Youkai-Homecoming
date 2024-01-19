@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "tag": "youkaihomecoming:raw_flesh"
+    },
+    "K": {
+      "item": "minecraft:kelp"
+    },
+    "R": {
+      "item": "farmersdelight:cooked_rice"
+    }
+  },
+  "pattern": [
+    "FF",
+    "KR"
+  ],
+  "result": {
+    "count": 2,
+    "item": "youkaihomecoming:flesh_roll"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "youkaihomecoming:custom/flesh_feast_stage3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "brain": "youkaihomecoming:block/flesh_brain_3",
+    "particle": "youkaihomecoming:block/tray_top",
+    "skeleton": "youkaihomecoming:block/flesh_skeleton_2",
+    "tray_bottom": "youkaihomecoming:block/tray_bottom",
+    "tray_top": "youkaihomecoming:block/tray_top"
+  }
+}

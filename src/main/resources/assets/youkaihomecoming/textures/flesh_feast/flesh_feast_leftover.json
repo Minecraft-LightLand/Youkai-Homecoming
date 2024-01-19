@@ -1,0 +1,12 @@
+{
+  "parent": "youkaishomecoming:custom/flesh_feast_leftover",
+  "textures": {
+    "all": "youkaishomecoming:block/tray_top",
+    "particle": "youkaishomecoming:block/tray_top",
+    "0": "youkaishomecoming:block/tray_top",
+    "1": "youkaishomecoming:block/tray_bottom",
+    "6": "youkaishomecoming:block/skeleton_2",
+    "7": "youkaishomecoming:block/flesh_brain_leftover"
+  },
+  "render_type": "solid"
+}

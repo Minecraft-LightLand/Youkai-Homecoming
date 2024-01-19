@@ -1,0 +1,13 @@
+{
+  "parent": "youkaishomecoming:custom/flesh_feast_stage2",
+  "textures": {
+    "all": "youkaishomecoming:block/tray_bottom",
+    "particle": "youkaishomecoming:block/tray_bottom",
+    "0": "youkaishomecoming:block/tray_top",
+    "1": "youkaishomecoming:block/tray_bottom",
+    "4": "youkaishomecoming:block/details",
+    "6": "youkaishomecoming:block/skeleton_2",
+    "7": "youkaishomecoming:block/flesh_brain_2"
+  },
+  "render_type": "solid"
+}

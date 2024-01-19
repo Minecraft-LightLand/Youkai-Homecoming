@@ -31,6 +31,7 @@ public class YHTagGen {
 							e.getExistingFileHelper()));
 
 	public static final TagKey<Item> RAW_EEL = item("raw_eel");
+	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> DANGO = item("dango");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");

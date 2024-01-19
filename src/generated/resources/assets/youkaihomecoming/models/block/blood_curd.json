@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_blood_curd",
+  "parent": "youkaihomecoming:custom/saucer_blood_curd",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/blood_curd",

@@ -53,7 +53,12 @@
 	"tutu_congee": "筒粥",
 	"avgolemono": "鸡蛋柠檬汤",
 	"big_popsicle": "大冰棍儿",
-	"shaved_ice_over_rice": "儿童刨冰盖饭"
+	"shaved_ice_over_rice": "儿童刨冰盖饭",
+	"bowl_of_flesh_feast": "盘装%1$s宴",
+	"flesh_dumplings": "%1$s水饺",
+	"flesh_roll": "%1$s寿司",
+	"flesh_stew": "%1$s煲",
+	"raw_flesh_feast": "生%1$s宴"
   },
   "block.youkaihomecoming": {
 	"redbean": "红豆",
@@ -68,7 +73,8 @@
 	"blood_curd": "毛血旺",
 	"dried_fish": "小鱼干",
 	"imitation_bear_paw": "赛熊掌",
-	"tofu_burger": "豆腐汉堡"
+	"tofu_burger": "豆腐汉堡",
+	"flesh_feast": "%1$s宴"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",

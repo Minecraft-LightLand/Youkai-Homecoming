@@ -31,15 +31,14 @@ public class FleshFoodItem extends YHFoodItem {
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
 		FoodProperties old = super.getFoodProperties(stack, entity);
 		if (old == null) return null;
-		if (entity == null) return old;
 		int factor = 1;
-		if (entity.hasEffect(YHEffects.YOUKAIFIED.get())) {
-			factor = 3;
-		} else if (entity.hasEffect(YHEffects.YOUKAIFYING.get())) {
-			factor = 2;
+		if (entity != null) {
+			if (entity.hasEffect(YHEffects.YOUKAIFIED.get())) {
+				factor = 3;
+			} else if (entity.hasEffect(YHEffects.YOUKAIFYING.get())) {
+				factor = 2;
+			}
 		}
-		if (factor == 1) return old;
-
 		var builder = new FoodProperties.Builder();
 		builder.nutrition(old.getNutrition() * factor);
 		builder.saturationMod(old.getSaturationModifier());
@@ -47,7 +46,9 @@ public class FleshFoodItem extends YHFoodItem {
 		if (old.isFastFood()) builder.fast();
 		if (old.isMeat()) builder.meat();
 		for (var ent : old.getEffects()) {
-			builder.effect(ent::getFirst, ent.getSecond());
+			if (!ent.getFirst().getEffect().isBeneficial() || factor > 1) {
+				builder.effect(ent::getFirst, ent.getSecond());
+			}
 		}
 		return builder.build();
 	}

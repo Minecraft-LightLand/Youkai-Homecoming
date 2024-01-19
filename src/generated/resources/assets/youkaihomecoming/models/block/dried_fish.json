@@ -1,5 +1,5 @@
 {
-  "parent": "youkaihomecoming:block/saucer_dried_fish",
+  "parent": "youkaihomecoming:custom/saucer_dried_fish",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaihomecoming:block/dried_fish",
