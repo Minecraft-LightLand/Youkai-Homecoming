@@ -1,5 +1,8 @@
+0.0.4
+- Coffee, Compat
+
 0.0.3
-- Flesh, Feast, Compat
+- Flesh, Feast
 
 0.0.2
 - Plates, Sticks, Models
