@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "item": "minecraft:clay"
+    "item": "minecraft:clay_ball"
   },
   "result": "youkaihomecoming:clay_saucer"
 }

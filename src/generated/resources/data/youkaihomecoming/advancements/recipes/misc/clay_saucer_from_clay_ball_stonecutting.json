@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_clay": {
+    "has_clay_ball": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:clay"
+              "minecraft:clay_ball"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaihomecoming:clay_saucer_from_clay_stonecutting"
+        "recipe": "youkaihomecoming:clay_saucer_from_clay_ball_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_clay",
+      "has_clay_ball",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaihomecoming:clay_saucer_from_clay_stonecutting"
+      "youkaihomecoming:clay_saucer_from_clay_ball_stonecutting"
     ]
   },
   "sends_telemetry_event": false

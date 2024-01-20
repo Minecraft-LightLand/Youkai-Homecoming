@@ -58,7 +58,8 @@
 	"flesh_dumplings": "%1$s水饺",
 	"flesh_roll": "%1$s寿司",
 	"flesh_stew": "%1$s煲",
-	"raw_flesh_feast": "生%1$s宴"
+	"raw_flesh_feast": "生%1$s宴",
+	"red_velvet_cake_slice": "红丝绒蛋糕切片"
   },
   "block.youkaihomecoming": {
 	"redbean": "红豆",
@@ -74,7 +75,10 @@
 	"dried_fish": "小鱼干",
 	"imitation_bear_paw": "赛熊掌",
 	"tofu_burger": "豆腐汉堡",
-	"flesh_feast": "%1$s宴"
+	"flesh_feast": "%1$s宴",
+	"red_velvet_cake": "红丝绒蛋糕",
+	"redbean_bag": "袋装红豆",
+	"soybean_bag": "袋装黄豆"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",
@@ -84,5 +88,37 @@
 	"taste_youkai": "美味极了!",
 	"tooltip.chance": " %2$s%%概率获得%1$s",
 	"tooltip.place": "可被放置于地上"
+  },
+  "-cartesian": {
+	"candles": {
+	  "path": "block.youkaihomecoming",
+	  "list": [
+		{
+		  "": "",
+		  "black": "黑色",
+		  "blue": "蓝色",
+		  "brown": "棕色",
+		  "cyan": "青色",
+		  "gray": "灰色",
+		  "green": "绿色",
+		  "light_blue": "淡蓝色",
+		  "light_gray": "淡灰色",
+		  "lime": "黄绿色",
+		  "magenta": "品红色",
+		  "orange": "橙色",
+		  "pink": "粉红色",
+		  "purple": "紫色",
+		  "red": "红色",
+		  "white": "白色",
+		  "yellow": "黄色"
+		},
+		{
+		  "red_velvet": "红丝绒"
+		},
+		{
+		  "candle_cake": "蜡烛蛋糕"
+		}
+	  ]
+	}
   }
 }

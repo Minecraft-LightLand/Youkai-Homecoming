@@ -33,7 +33,7 @@ public class YHRecipeGen {
 		food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
 		food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 		cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
-		pvd.stonecutting(DataIngredient.items(Items.CLAY), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
+		pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 		pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 		pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 		pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);

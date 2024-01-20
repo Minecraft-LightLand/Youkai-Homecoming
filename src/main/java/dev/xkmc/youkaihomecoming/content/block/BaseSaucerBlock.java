@@ -20,7 +20,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 public class BaseSaucerBlock extends Block {
 
 	public BaseSaucerBlock(Properties pProperties) {
-		super(pProperties.instabreak().noCollission().noOcclusion().pushReaction(PushReaction.DESTROY));
+		super(pProperties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY));
 	}
 
 	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

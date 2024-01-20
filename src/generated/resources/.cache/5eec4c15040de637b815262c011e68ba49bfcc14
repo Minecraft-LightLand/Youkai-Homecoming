@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-19T16:19:48.967132	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-01-19T17:55:51.069721	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 48b4f40388adc7b1a25a83a668ee6e42b84d4a7b assets/youkaihomecoming/blockstates/bamboo_mizuyokan.json
 470f18f809d3684e57707283d51608002e0f0423 assets/youkaihomecoming/blockstates/black_red_velvet_candle_cake.json
 b9f8fa7248e6adb55a212cb63acb20f3df5b5b12 assets/youkaihomecoming/blockstates/blood_curd.json
@@ -208,7 +208,7 @@ b4eb4bda6e5466b55497e27c7135707b2fd6e547 data/youkaihomecoming/advancements/reci
 5770f6666718f5037cdc557e565b706391cfd305 data/youkaihomecoming/advancements/recipes/food/roasted_lamprey_from_raw_lamprey_smelting.json
 6ee0e0ccfe75c5c55574917b6a0d9b40c6f3cc10 data/youkaihomecoming/advancements/recipes/food/roasted_lamprey_from_raw_lamprey_smoking.json
 33c94eeae23a494de7ef5d1159640783c9b861d0 data/youkaihomecoming/advancements/recipes/food/shaved_ice_over_rice.json
-710e60aa4de25aa7d1a4291f327f3b068dd7e6d7 data/youkaihomecoming/advancements/recipes/misc/clay_saucer_from_clay_stonecutting.json
+d577ced8d2b50fd7cb008053c8065a694b9c3ee0 data/youkaihomecoming/advancements/recipes/misc/clay_saucer_from_clay_ball_stonecutting.json
 862c41176322665cff538d9fa0239bc80bfb107b data/youkaihomecoming/advancements/recipes/misc/redbean_bag.json
 35c2d5a5cb8b63d9ec7ea9304105670329069991 data/youkaihomecoming/advancements/recipes/misc/redbean_from_redbean_bag.json
 f5e9b271465c98c0854a1e2f3b1ad4455a758455 data/youkaihomecoming/advancements/recipes/misc/saucer_from_clay_saucer_smelting.json
@@ -259,7 +259,7 @@ df6d0f3f174feb4fe1b66250bc739ca070df93cf data/youkaihomecoming/recipes/blood_cur
 955abd09954803c37855bf410729bf2dbc5c5039 data/youkaihomecoming/recipes/bun.json
 3a57ee748fdd19501b90bcbf5c50da2c34bdf1d9 data/youkaihomecoming/recipes/butter.json
 66b3ceab5a447bf0787bd1450a5b4d0909ceae03 data/youkaihomecoming/recipes/candy_apple.json
-508b00e3979f96ebf6fdac65c6949baf74f0e156 data/youkaihomecoming/recipes/clay_saucer_from_clay_stonecutting.json
+f90b9580dcc67e090e3d73d17554be9630084518 data/youkaihomecoming/recipes/clay_saucer_from_clay_ball_stonecutting.json
 11a6ddd43bca42567ae7622d8ee622c0ac912693 data/youkaihomecoming/recipes/cooked_flesh_from_flesh_campfire.json
 40df109cb5ad6bf5b3e5c9329e6e1d8f8dbacfd8 data/youkaihomecoming/recipes/cooked_flesh_from_flesh_smelting.json
 a7775fd99ab4f68a52ec65da9d5cf34e7e44e864 data/youkaihomecoming/recipes/cooked_flesh_from_flesh_smoking.json
