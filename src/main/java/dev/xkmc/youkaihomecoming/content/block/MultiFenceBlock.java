@@ -10,6 +10,8 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -57,8 +60,22 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			};
 		}
 
+		public int type() {
+			return switch (this) {
+				case OPEN, CONNECT -> 0;
+				case UP -> 1;
+				case FLAT -> 2;
+				case CW, CCW -> 3;
+			};
+		}
+
 		public int collide() {
-			return this == OPEN || this == CONNECT ? 0 : 1;
+			return switch (this) {
+				case OPEN, CONNECT -> 0;
+				case FLAT, UP -> 1;
+				case CW -> 2;
+				case CCW -> 3;
+			};
 		}
 
 	}
@@ -80,27 +97,33 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		int total = 0;
 		for (int i = 0; i < 4; i++) {
 			var dir = Direction.from2DDataValue(i);
-			if (of(state, dir).collide() == 1) {
-				total |= 1 << i;
-			}
+			total |= of(state, dir).collide() << (i * 2);
+
 		}
 		return total;
 	}
 
 	static {
-		SHAPES = new VoxelShape[16];
+		SHAPES = new VoxelShape[256];
 		var box = new VoxelBuilder(0, 0, 0, 16, 16, 2);
-		VoxelShape[] parts = new VoxelShape[4];
+		var left = new VoxelBuilder(0, 8, 0, 8, 16, 2);
+		var right = new VoxelBuilder(8, 8, 0, 16, 16, 2);
+		VoxelShape[][] parts = new VoxelShape[4][4];
 		for (int i = 0; i < 4; i++) {
 			Direction dir = Direction.from2DDataValue(i);
-			parts[i] = box.rotateFromNorth(dir);
+			parts[i][0] = Shapes.empty();
+			var rbox = box.rotateFromNorth(dir);
+			var ls = left.rotateFromNorth(dir);
+			var rs = right.rotateFromNorth(dir);
+			parts[i][1] = rbox;
+			parts[i][2] = Shapes.join(rbox, rs, BooleanOp.ONLY_FIRST);
+			parts[i][3] = Shapes.join(rbox, ls, BooleanOp.ONLY_FIRST);
 		}
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 256; i++) {
 			List<VoxelShape> list = new ArrayList<>();
 			for (int j = 0; j < 4; j++) {
-				if ((i & (1 << j)) != 0) {
-					list.add(parts[j]);
-				}
+				int index = i >> j * 2 & 3;
+				list.add(parts[j][index]);
 			}
 			SHAPES[i] = Shapes.or(Shapes.empty(), list.toArray(VoxelShape[]::new));
 		}
@@ -137,7 +160,9 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		if (canBeReplaced(state, new BlockPlaceContext(player, hand, player.getItemInHand(hand), hit)))
+		ItemStack stack = player.getItemInHand(hand);
+		if (stack.is(Items.DEBUG_STICK)) return InteractionResult.PASS;
+		if (canBeReplaced(state, new BlockPlaceContext(player, hand, stack, hit)))
 			return InteractionResult.PASS;
 		if (!level.isClientSide()) {
 			while (level.getBlockState(pos.above()).is(this)) pos = pos.above();
@@ -160,7 +185,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		int count = 0;
 		for (int i = 0; i < 4; i++) {
 			Direction dir = Direction.from2DDataValue(i);
-			if (of(state, dir).collide() == 0) {
+			if (of(state, dir).type() == 0) {
 				continue;
 			}
 			count++;
@@ -198,14 +223,14 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 					req = dir.getOpposite();
 				}
 				State st = of(state, req);
-				return st.collide() == 0;
+				return st.type() == 0;
 			}
 			return false;
 		}
 		var rel = hit.subtract(Vec3.atCenterOf(pos));
 		var dx = Direction.getNearest(rel.x, 0, rel.z);
 		if (dx.getAxis().isVertical()) dx = Direction.NORTH;
-		return of(state, dx).collide() == 0;
+		return of(state, dx).type() == 0;
 	}
 
 	@Nullable
@@ -231,7 +256,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 						req = dir.getOpposite();
 					}
 					State st = of(state, req);
-					if (st.collide() == 0) {
+					if (st.type() == 0) {
 						return with(state, req, State.FLAT);
 					}
 				}
@@ -268,9 +293,42 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			for (int i = 0; i < 4; i++) {
 				Direction d = Direction.from2DDataValue(i);
 				State old = of(state, d);
-				if (old.collide() == 0) continue;
-				boolean up = valid && of(neighborState, d).collide() > 0;
-				ans = with(ans, d, up ? State.UP : State.FLAT);
+				if (old.type() == 0) continue;
+				boolean up = valid && of(neighborState, d).type() > 0;
+				if (old == State.UP) old = State.FLAT;
+				ans = with(ans, d, up ? State.UP : old);
+			}
+			return ans;
+		}
+		if (dire.getAxis().isHorizontal()) {
+			BlockState ans = state;
+			var left = dire.getClockWise();
+			var right = dire.getCounterClockWise();
+			boolean flag = neighborState.is(this);
+			if (of(state, dire).type() == 0) {
+				if (flag) {
+					if (of(state, left).type() > 1) {
+						flag = of(neighborState, left).type() > 1;
+					}
+					if (of(state, right).type() > 1) {
+						flag &= of(neighborState, right).type() > 1;
+					}
+				}
+				ans = with(ans, dire, flag ? State.CONNECT : State.OPEN);
+			}
+			if (neighborState.is(this)) {
+				if (of(state, left).type() > 1 && of(neighborState, left).type() > 0) {
+					BlockPos rev = pos.relative(dire.getOpposite()).below();
+					BlockState low = level.getBlockState(rev);
+					if (low.is(this) && of(low, left).type() > 1)
+						ans = with(ans, left, State.CW);
+				}
+				if (of(state, right).type() > 1 && of(neighborState, right).type() > 0) {
+					BlockPos rev = pos.relative(dire.getOpposite()).below();
+					BlockState low = level.getBlockState(rev);
+					if (low.is(this) && of(low, right).type() > 1)
+						ans = with(ans, right, State.CCW);
+				}
 			}
 			return ans;
 		}
@@ -315,7 +373,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 
 	private static class FlatModelSet {
 
-		private static ModelFile[][][] BASE = null;
+		private static ModelFile[][][] FLAT = null, DIAG = null;
 
 		private static void genRow(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u) {
 			builder.element()
@@ -324,6 +382,23 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 					.face(Direction.SOUTH).uvs(u + w, 0, u, h).texture("#all").end()
 					.face(Direction.UP).uvs(u + w, t, u, 0).texture("#all").end()
 					.face(Direction.DOWN).uvs(u + w, h - t, u, h).texture("#all").end();
+		}
+
+		private static void genDiagonal(ModelBuilder<?> builder, float x, float y, float z, float w, float h, float t, float u, Rotate r, Side s) {
+			int angle = r == Rotate.CW ? -45 : 45;
+			int px = r == Rotate.CW ? 0 : 16;
+			var elem = builder.element()
+					.from(x, y, z).to(x + w, y + h, z + t)
+					.rotation().angle(angle).axis(Direction.Axis.Z).origin(px, 0, 0).end()
+					.face(Direction.NORTH).uvs(u, 0, u + w, h).texture("#all").end()
+					.face(Direction.SOUTH).uvs(u + w, 0, u, h).texture("#all").end()
+					.face(Direction.UP).uvs(u + w, t, u, 0).texture("#all").end()
+					.face(Direction.DOWN).uvs(u + w, h - t, u, h).texture("#all").end();
+			if (s == Side.LEFT) {
+				elem.face(Direction.WEST).uvs(u + w - t, 0, u + w, h).texture("#all").end();
+			} else {
+				elem.face(Direction.EAST).uvs(u, 0, u + t, h).texture("#all").end();
+			}
 		}
 
 		private static void genExt(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u, Side s) {
@@ -340,18 +415,18 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			}
 		}
 
-		private static void genColumn(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int v) {
+		private static void genColumn(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u, int v) {
 			builder.element()
 					.from(x, y, z).to(x + w, y + h, z + t)
-					.face(Direction.NORTH).uvs(16 - h, v + w, 16, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
-					.face(Direction.EAST).uvs(16 - h, v + t, 16, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
-					.face(Direction.SOUTH).uvs(16 - h, v, 16, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
-					.face(Direction.WEST).uvs(16 - h, v + w, 16, v + w - t).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
-					.face(Direction.UP).uvs(16 - h, v, 16 - h + t, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.NORTH).uvs(16 - h - u, v + w, 16 - u, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.EAST).uvs(16 - h - u, v + t, 16 - u, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.SOUTH).uvs(16 - h - u, v, 16 - u, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.WEST).uvs(16 - h - u, v + w, 16 - u, v + w - t).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.UP).uvs(16 - h - u, v, 16 - h - u + t, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
 					.face(Direction.DOWN).uvs(16 - t, v, 16, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end();
 		}
 
-		private static ModelFile genCube(RegistrateBlockstateProvider pvd, Face f, Side s, Type t) {
+		private static ModelFile genFlat(RegistrateBlockstateProvider pvd, Face f, Side s, Type t) {
 			String name = (f.name() + "_" + s.name() + "_" + t.name()).toLowerCase(Locale.ROOT);
 			var builder = pvd.models().withExistingParent("custom/handrail_" + name, "block/block");
 			int off = t == Type.CORNER ? 1 : 0;
@@ -368,29 +443,49 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 				genExt(builder, x, y, z, e, h, 1, u, s);
 			}
 			x = s == Side.RIGHT ? 11 : 3;
-			genColumn(builder, x, 0, 1 - z, 2, 16, 1, 3);
+			genColumn(builder, x, 0, 1 - z, 2, 16, 1, 0, 3);
 			builder.texture("particle", "#all");
 			return builder;
 		}
 
-		private static ModelFile genPost(RegistrateBlockstateProvider pvd, Face f) {
+		private static ModelFile genDiag(RegistrateBlockstateProvider pvd, Face f, Side s, Rotate r) {
+			String name = (f.name() + "_" + s.name() + "_" + r.name()).toLowerCase(Locale.ROOT);
+			var builder = pvd.models().withExistingParent("custom/handrail_" + name, "block/block");
+			int z = f == Face.INNER ? 1 : 0;
+			float x = (s == Side.RIGHT ? 12.5f : 0) + (r == Rotate.CW ? -11.25f : 2.25f);
+			float u = s == Side.RIGHT ? 0 : 3.5f;
+			float y = 8.25f;
+			genDiagonal(builder, x, y, z, 12.5f, 3, 1, u, r, s);
+			int x0 = s == Side.RIGHT ? 11 : 3;
+			int h = (s == Side.RIGHT) == (r == Rotate.CW) ? 2 : 10;
+			genColumn(builder, x0, 0, 1 - z, 2, h, 1, 0, 3);
+			if (h < 8) {
+				genColumn(builder, x0, h - 10, 1 - z, 2, 10 - h, 1, 10 - h, 3);
+			}
+			return builder;
+		}
+
+		private static void genPost(RegistrateBlockstateProvider pvd, Face f) {
 			String name = "post_" + f.name().toLowerCase(Locale.ROOT);
 			var builder = pvd.models().withExistingParent("custom/handrail_" + name, "block/block");
 			int z = f == Face.INNER ? 1 : 0;
-			genColumn(builder, 3, 0, 1 - z, 2, 16, 1, 3);
-			genColumn(builder, 11, 0, 1 - z, 2, 16, 1, 3);
+			genColumn(builder, 3, 0, 1 - z, 2, 16, 1, 0, 3);
+			genColumn(builder, 11, 0, 1 - z, 2, 16, 1, 0, 3);
 			builder.texture("particle", "#all");
-			return builder;
 		}
 
 		private static void init(RegistrateBlockstateProvider pvd) {
-			if (BASE != null) return;
-			BASE = new ModelFile[2][2][3];
+			if (FLAT != null) return;
+			FLAT = new ModelFile[2][2][3];
+			DIAG = new ModelFile[2][2][2];
 			for (Face f : Face.values()) {
 				for (Side s : Side.values()) {
 					for (Type t : Type.values()) {
 						if (f == Face.OUTER && t == Type.CORNER) continue;
-						BASE[f.ordinal()][s.ordinal()][t.ordinal()] = genCube(pvd, f, s, t);
+						FLAT[f.ordinal()][s.ordinal()][t.ordinal()] = genFlat(pvd, f, s, t);
+					}
+					for (Rotate r : Rotate.values()) {
+						DIAG[f.ordinal()][s.ordinal()][r.ordinal()] = genDiag(pvd, f, s, r);
 					}
 				}
 			}
@@ -399,46 +494,58 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 
 		}
 
-		private enum Face {
-			INNER, OUTER;
-		}
+		private enum Face {INNER, OUTER}
 
-		private enum Side {
-			LEFT, RIGHT
-		}
+		private enum Side {LEFT, RIGHT}
 
-		private enum Type {
-			CORNER, CONNECT, EXTEND
-		}
-		
+		private enum Type {CORNER, CONNECT, EXTEND}
+
+		private enum Rotate {CW, CCW}
+
+
 		private final DataGenContext<Block, MultiFenceBlock> ctx;
 		private final RegistrateBlockstateProvider pvd;
-		private final ModelFile[][][] modelSet;
+		private final ModelFile[][][] flat, diag;
 
 		private FlatModelSet(DataGenContext<Block, MultiFenceBlock> ctx, RegistrateBlockstateProvider pvd) {
 			this.ctx = ctx;
 			this.pvd = pvd;
 			init(pvd);
-			modelSet = new ModelFile[2][2][3];
+			flat = new ModelFile[2][2][3];
+			diag = new ModelFile[2][2][2];
 			for (Face f : Face.values()) {
 				for (Side s : Side.values()) {
 					for (Type t : Type.values()) {
 						if (f == Face.OUTER && t == Type.CORNER) continue;
-						modelSet[f.ordinal()][s.ordinal()][t.ordinal()] = genModel(f, s, t);
+						flat[f.ordinal()][s.ordinal()][t.ordinal()] = genFlatModel(f, s, t);
+					}
+					for (Rotate r : Rotate.values()) {
+						diag[f.ordinal()][s.ordinal()][r.ordinal()] = genDiagModel(f, s, r);
 					}
 				}
 			}
 		}
 
-		private ModelFile genModel(Face f, Side s, Type t) {
+		private ModelFile genFlatModel(Face f, Side s, Type t) {
 			String name = (f.name() + "_" + s.name() + "_" + t.name()).toLowerCase(Locale.ROOT);
 			return pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
-					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/handrail_" + name)))
+					.parent(FLAT[f.ordinal()][s.ordinal()][t.ordinal()])
+					.texture("all", pvd.modLoc("block/" + ctx.getName()));
+		}
+
+		private ModelFile genDiagModel(Face f, Side s, Rotate r) {
+			String name = (f.name() + "_" + s.name() + "_" + r.name()).toLowerCase(Locale.ROOT);
+			return pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
+					.parent(DIAG[f.ordinal()][s.ordinal()][r.ordinal()])
 					.texture("all", pvd.modLoc("block/" + ctx.getName()));
 		}
 
 		private ModelFile getModel(Face f, Side s, Type t) {
-			return modelSet[f.ordinal()][s.ordinal()][t.ordinal()];
+			return flat[f.ordinal()][s.ordinal()][t.ordinal()];
+		}
+
+		private ModelFile getModel(Face f, Side s, Rotate r) {
+			return diag[f.ordinal()][s.ordinal()][r.ordinal()];
 		}
 
 		private void buildInnerSide(MultiPartBlockStateBuilder builder, int rot,
@@ -475,8 +582,23 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			builder.part().modelFile(getModel(Face.OUTER, side, Type.EXTEND)).rotationY(rot).addModel()
 					.condition(INVERTED, false)
 					.condition(self, State.FLAT)
-					.condition(adj, State.OPEN)
+					.condition(adj, State.OPEN, State.UP, State.CW, State.CCW)
 					.end();
+		}
+
+		private void buildDiag(MultiPartBlockStateBuilder builder, int rot, EnumProperty<State> self,
+							   Face face, Side side) {
+
+			builder.part().modelFile(getModel(face, side, Rotate.CW)).rotationY(rot).addModel()
+					.condition(INVERTED, face == Face.INNER)
+					.condition(self, State.CW)
+					.end();
+
+			builder.part().modelFile(getModel(face, side, Rotate.CCW)).rotationY(rot).addModel()
+					.condition(INVERTED, face == Face.INNER)
+					.condition(self, State.CCW)
+					.end();
+
 		}
 
 		private void buildPost(MultiPartBlockStateBuilder builder, int rot, EnumProperty<State> self, Face face) {
@@ -498,6 +620,10 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			buildOuterSide(builder, rot, self, Side.RIGHT, right);
 			buildPost(builder, rot, self, Face.INNER);
 			buildPost(builder, rot, self, Face.OUTER);
+			buildDiag(builder, rot, self, Face.INNER, Side.LEFT);
+			buildDiag(builder, rot, self, Face.INNER, Side.RIGHT);
+			buildDiag(builder, rot, self, Face.OUTER, Side.LEFT);
+			buildDiag(builder, rot, self, Face.OUTER, Side.RIGHT);
 		}
 
 	}

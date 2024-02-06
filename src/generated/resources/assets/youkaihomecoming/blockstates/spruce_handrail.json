@@ -83,7 +83,7 @@
         "y": 180
       },
       "when": {
-        "east": "open",
+        "east": "open|up|cw|ccw",
         "inverted": "false",
         "south": "flat"
       }
@@ -107,7 +107,7 @@
       "when": {
         "inverted": "false",
         "south": "flat",
-        "west": "open"
+        "west": "open|up|cw|ccw"
       }
     },
     {
@@ -128,6 +128,86 @@
       "when": {
         "inverted": "false",
         "south": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "ccw"
       }
     },
     {
@@ -214,7 +294,7 @@
       },
       "when": {
         "inverted": "false",
-        "south": "open",
+        "south": "open|up|cw|ccw",
         "west": "flat"
       }
     },
@@ -236,7 +316,7 @@
       },
       "when": {
         "inverted": "false",
-        "north": "open",
+        "north": "open|up|cw|ccw",
         "west": "flat"
       }
     },
@@ -258,6 +338,86 @@
       "when": {
         "inverted": "false",
         "west": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "ccw"
       }
     },
     {
@@ -337,7 +497,7 @@
       "when": {
         "inverted": "false",
         "north": "flat",
-        "west": "open"
+        "west": "open|up|cw|ccw"
       }
     },
     {
@@ -355,7 +515,7 @@
         "model": "youkaihomecoming:block/spruce_handrail_outer_right_extend"
       },
       "when": {
-        "east": "open",
+        "east": "open|up|cw|ccw",
         "inverted": "false",
         "north": "flat"
       }
@@ -376,6 +536,78 @@
       "when": {
         "inverted": "false",
         "north": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_cw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_ccw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_cw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_ccw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_cw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_ccw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_cw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_ccw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "ccw"
       }
     },
     {
@@ -463,7 +695,7 @@
       "when": {
         "east": "flat",
         "inverted": "false",
-        "north": "open"
+        "north": "open|up|cw|ccw"
       }
     },
     {
@@ -485,7 +717,7 @@
       "when": {
         "east": "flat",
         "inverted": "false",
-        "south": "open"
+        "south": "open|up|cw|ccw"
       }
     },
     {
@@ -505,6 +737,86 @@
       },
       "when": {
         "east": "up",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
         "inverted": "false"
       }
     }
