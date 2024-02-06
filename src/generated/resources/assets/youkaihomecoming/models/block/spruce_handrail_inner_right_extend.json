@@ -1,6 +1,6 @@
 {
   "parent": "youkaihomecoming:custom/handrail_inner_right_extend",
   "textures": {
-    "all": "youkaihomecoming:block/wooden_fence"
+    "all": "youkaihomecoming:block/spruce_handrail"
   }
 }

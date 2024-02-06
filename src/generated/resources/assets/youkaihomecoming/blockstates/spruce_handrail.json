@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_corner",
         "y": 180
       },
       "when": {
@@ -13,7 +13,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_connect",
         "y": 180
       },
       "when": {
@@ -24,18 +24,18 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_extend",
         "y": 180
       },
       "when": {
-        "east": "open",
+        "east": "open|up|cw|ccw",
         "inverted": "true",
         "south": "flat"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_corner",
         "y": 180
       },
       "when": {
@@ -46,7 +46,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_connect",
         "y": 180
       },
       "when": {
@@ -57,18 +57,18 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_extend",
         "y": 180
       },
       "when": {
         "inverted": "true",
         "south": "flat",
-        "west": "open"
+        "west": "open|up|cw|ccw"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_connect",
         "y": 180
       },
       "when": {
@@ -79,7 +79,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_extend",
         "y": 180
       },
       "when": {
@@ -90,7 +90,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_connect",
         "y": 180
       },
       "when": {
@@ -101,7 +101,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_extend",
         "y": 180
       },
       "when": {
@@ -112,7 +112,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_corner",
         "y": 270
       },
       "when": {
@@ -123,7 +123,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_connect",
         "y": 270
       },
       "when": {
@@ -134,18 +134,18 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_extend",
         "y": 270
       },
       "when": {
         "inverted": "true",
-        "south": "open",
+        "south": "open|up|cw|ccw",
         "west": "flat"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_corner",
         "y": 270
       },
       "when": {
@@ -156,7 +156,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_connect",
         "y": 270
       },
       "when": {
@@ -167,18 +167,18 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_extend",
         "y": 270
       },
       "when": {
         "inverted": "true",
-        "north": "open",
+        "north": "open|up|cw|ccw",
         "west": "flat"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_connect",
         "y": 270
       },
       "when": {
@@ -189,7 +189,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_extend",
         "y": 270
       },
       "when": {
@@ -200,7 +200,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_connect",
         "y": 270
       },
       "when": {
@@ -211,7 +211,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_extend",
         "y": 270
       },
       "when": {
@@ -222,7 +222,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner"
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_corner"
       },
       "when": {
         "inverted": "true",
@@ -232,7 +232,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect"
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_connect"
       },
       "when": {
         "inverted": "true",
@@ -242,17 +242,17 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend"
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_extend"
       },
       "when": {
         "inverted": "true",
         "north": "flat",
-        "west": "open"
+        "west": "open|up|cw|ccw"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner"
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_corner"
       },
       "when": {
         "east": "flat",
@@ -262,7 +262,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect"
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_connect"
       },
       "when": {
         "east": "connect",
@@ -272,17 +272,17 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend"
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_extend"
       },
       "when": {
-        "east": "open",
+        "east": "open|up|cw|ccw",
         "inverted": "true",
         "north": "flat"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect"
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_connect"
       },
       "when": {
         "inverted": "false",
@@ -292,7 +292,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend"
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_extend"
       },
       "when": {
         "inverted": "false",
@@ -302,7 +302,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect"
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_connect"
       },
       "when": {
         "east": "connect|flat",
@@ -312,7 +312,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend"
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_extend"
       },
       "when": {
         "east": "open",
@@ -322,7 +322,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_corner",
         "y": 90
       },
       "when": {
@@ -333,7 +333,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_connect",
         "y": 90
       },
       "when": {
@@ -344,18 +344,18 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_left_extend",
         "y": 90
       },
       "when": {
         "east": "flat",
         "inverted": "true",
-        "north": "open"
+        "north": "open|up|cw|ccw"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_corner",
         "y": 90
       },
       "when": {
@@ -366,7 +366,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_connect",
         "y": 90
       },
       "when": {
@@ -377,18 +377,18 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_inner_right_extend",
         "y": 90
       },
       "when": {
         "east": "flat",
         "inverted": "true",
-        "south": "open"
+        "south": "open|up|cw|ccw"
       }
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_connect",
         "y": 90
       },
       "when": {
@@ -399,7 +399,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_left_extend",
         "y": 90
       },
       "when": {
@@ -410,7 +410,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_connect",
         "y": 90
       },
       "when": {
@@ -421,7 +421,7 @@
     },
     {
       "apply": {
-        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend",
+        "model": "youkaihomecoming:block/spruce_handrail_outer_right_extend",
         "y": 90
       },
       "when": {

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaihomecoming:wooden_fence"
+          "name": "youkaihomecoming:spruce_handrail"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaihomecoming:blocks/wooden_fence"
+  "random_sequence": "youkaihomecoming:blocks/spruce_handrail"
 }
