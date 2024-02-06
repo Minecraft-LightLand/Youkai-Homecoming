@@ -1,0 +1,6 @@
+{
+  "parent": "youkaihomecoming:custom/fence_outer_left_extend",
+  "textures": {
+    "fence": "youkaihomecoming:block/wooden_fence"
+  }
+}

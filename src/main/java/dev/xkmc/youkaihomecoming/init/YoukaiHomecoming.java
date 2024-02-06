@@ -7,6 +7,7 @@ import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaihomecoming.init.data.*;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.loot.YHGLMProvider;
+import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
@@ -35,6 +36,7 @@ public class YoukaiHomecoming {
 
 	public YoukaiHomecoming() {
 		YHItems.register();
+		YHBlocks.register();
 		YHEffects.register();
 		YHEntities.register();
 		YHGLMProvider.register();

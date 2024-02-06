@@ -1,0 +1,434 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner",
+        "y": 180
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect",
+        "y": 180
+      },
+      "when": {
+        "east": "connect",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend",
+        "y": 180
+      },
+      "when": {
+        "east": "open",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect",
+        "y": 180
+      },
+      "when": {
+        "east": "connect|flat",
+        "inverted": "false",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend",
+        "y": 180
+      },
+      "when": {
+        "east": "open",
+        "inverted": "false",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "flat",
+        "west": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "flat",
+        "west": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "south": "connect",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "south": "open",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "north": "connect",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "north": "open",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "south": "connect|flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "south": "open",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "north": "connect|flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "north": "open",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner"
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect"
+      },
+      "when": {
+        "east": "connect",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend"
+      },
+      "when": {
+        "east": "open",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "flat",
+        "west": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "flat",
+        "west": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect"
+      },
+      "when": {
+        "east": "connect|flat",
+        "inverted": "false",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend"
+      },
+      "when": {
+        "east": "open",
+        "inverted": "false",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_corner",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_left_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_corner",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_inner_right_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "north": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_left_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "north": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "south": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/wooden_fence_outer_right_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "south": "open"
+      }
+    }
+  ]
+}
