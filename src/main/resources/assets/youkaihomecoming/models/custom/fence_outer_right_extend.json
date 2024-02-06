@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "#fence",
-		"particle": "#fence"
+		"1": "fence",
+		"particle": "fence"
 	},
 	"elements": [
 		{
@@ -51,12 +51,12 @@
 			"from": [11, 0, 1],
 			"to": [13, 14, 2],
 			"faces": {
-				"north": {"uv": [2, 4, 16, 2], "rotation": 90, "texture": "#1"},
-				"east": {"uv": [2, 4, 16, 2], "rotation": 90, "texture": "#1"},
-				"south": {"uv": [2, 4, 16, 2], "rotation": 90, "texture": "#1"},
-				"west": {"uv": [2, 4, 16, 2], "rotation": 90, "texture": "#1"},
-				"up": {"uv": [2, 4, 16, 2], "rotation": 90, "texture": "#1"},
-				"down": {"uv": [2, 4, 16, 2], "rotation": 90, "texture": "#1"}
+				"north": {"uv": [2, 5, 16, 3], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [2, 4, 16, 3], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [2, 3, 16, 5], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [2, 5, 16, 4], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [2, 3, 3, 5], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [15, 3, 16, 5], "rotation": 90, "texture": "#1"}
 			}
 		}
 	]

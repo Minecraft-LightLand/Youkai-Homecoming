@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import org.jetbrains.annotations.Nullable;
@@ -47,6 +48,54 @@ public class MultiFenceBlock extends Block {
 
 	private static class FlatModelSet {
 
+		private static ModelFile[][][] BASE = null;
+
+		private static void genRow(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u) {
+			builder.element()
+					.from(x, y, z).to(x + w, y + h, z + t)
+					.face(Direction.NORTH).uvs(u, 0, u + w, h).texture("#all").end()
+					.face(Direction.SOUTH).uvs(u + w, 0, u, h).texture("#all").end()
+					.face(Direction.UP).uvs(u + w, t, u, 0).texture("#all").end()
+					.face(Direction.DOWN).uvs(u + w, h - t, u, h).texture("#all").end();
+		}
+
+		private static void genColumn(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int v) {
+			builder.element()
+					.from(x, y, z).to(x + w, y + h, z + t)
+					.face(Direction.NORTH).uvs(16 - h, v + w, 16, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.EAST).uvs(16 - h, v + t, 16, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.SOUTH).uvs(16 - h, v, 16, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.WEST).uvs(16 - h, v + w, 16, v + w - t).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.UP).uvs(16 - h, v, 16 - h + t, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
+					.face(Direction.DOWN).uvs(16 - t, v, 16, v + w).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end();
+		}
+
+		private static ModelFile genCube(RegistrateBlockstateProvider pvd, Face f, Side s, Type t) {
+			String name = (f.name() + "_" + s.name() + "_" + t.name()).toLowerCase(Locale.ROOT);
+			var builder = pvd.models().withExistingParent("custom/handrail_" + name, "block/block");
+			int off = t == Type.CORNER ? 1 : 0;
+			int z = f == Face.INNER ? 1 : 0;
+			int x = s == Side.RIGHT ? 8 : off;
+			genRow(builder, x, 6, z, 8 - off, 2, 1, off);
+			genRow(builder, x, 12, z, 8 - off, 2, 1, off);
+			x = s == Side.RIGHT ? 11 : 3;
+			genColumn(builder, x, 0, 1 - z, 2, 14, 1, 3);
+			return builder;
+		}
+
+		private static void init(RegistrateBlockstateProvider pvd) {
+			if (BASE != null) return;
+			BASE = new ModelFile[2][2][3];
+			for (Face f : Face.values()) {
+				for (Side s : Side.values()) {
+					for (Type t : Type.values()) {
+						if (f == Face.OUTER && t == Type.CORNER) continue;
+						BASE[f.ordinal()][s.ordinal()][t.ordinal()] = genCube(pvd, f, s, t);
+					}
+				}
+			}
+		}
+
 		private enum Face {
 			INNER, OUTER;
 		}
@@ -67,6 +116,7 @@ public class MultiFenceBlock extends Block {
 		private FlatModelSet(DataGenContext<Block, MultiFenceBlock> ctx, RegistrateBlockstateProvider pvd) {
 			this.ctx = ctx;
 			this.pvd = pvd;
+			init(pvd);
 			modelSet = new ModelFile[2][2][3];
 			for (Face f : Face.values()) {
 				for (Side s : Side.values()) {
@@ -80,11 +130,9 @@ public class MultiFenceBlock extends Block {
 
 		private ModelFile genModel(Face f, Side s, Type t) {
 			String name = (f.name() + "_" + s.name() + "_" + t.name()).toLowerCase(Locale.ROOT);
-			var builder = pvd.models().withExistingParent("block/" + ctx.getName() + "_" + name, "block/block")
+			return pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/handrail_" + name)))
 					.texture("all", pvd.modLoc("block/" + ctx.getName()));
-			int x = 0;
-			int z = 0;
-			return builder;
 		}
 
 		private ModelFile getModel(Face f, Side s, Type t) {

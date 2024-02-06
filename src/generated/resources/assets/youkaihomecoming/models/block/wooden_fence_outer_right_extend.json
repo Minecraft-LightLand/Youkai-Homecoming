@@ -1,6 +1,6 @@
 {
-  "parent": "youkaihomecoming:custom/fence_outer_right_extend",
+  "parent": "youkaihomecoming:custom/handrail_outer_right_extend",
   "textures": {
-    "fence": "youkaihomecoming:block/wooden_fence"
+    "all": "youkaihomecoming:block/wooden_fence"
   }
 }
