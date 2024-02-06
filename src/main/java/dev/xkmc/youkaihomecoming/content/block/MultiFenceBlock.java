@@ -375,7 +375,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 
 		private static ModelFile[][][] FLAT = null, DIAG = null;
 
-		private static void genRow(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u) {
+		private static void genRow(ModelBuilder<?> builder, float x, float y, float z, float w, float h, float t, float u) {
 			builder.element()
 					.from(x, y, z).to(x + w, y + h, z + t)
 					.face(Direction.NORTH).uvs(u, 0, u + w, h).texture("#all").end()
@@ -401,7 +401,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			}
 		}
 
-		private static void genExt(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u, Side s) {
+		private static void genExt(ModelBuilder<?> builder, float x, float y, float z, float w, float h, float t, float u, Side s) {
 			var elem = builder.element()
 					.from(x, y, z).to(x + w, y + h, z + t)
 					.face(Direction.NORTH).uvs(u, 0, u + w, h).texture("#all").end()
@@ -415,7 +415,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			}
 		}
 
-		private static void genColumn(ModelBuilder<?> builder, int x, int y, int z, int w, int h, int t, int u, int v) {
+		private static void genColumn(ModelBuilder<?> builder, float x, float y, float z, float w, float h, float t, float u, float v) {
 			builder.element()
 					.from(x, y, z).to(x + w, y + h, z + t)
 					.face(Direction.NORTH).uvs(16 - h - u, v + w, 16 - u, v).rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).texture("#all").end()
@@ -433,7 +433,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			int z = f == Face.INNER ? 1 : 0;
 			int x = s == Side.RIGHT ? 8 : off;
 			int u = s == Side.RIGHT ? off : 8;
-			int y = 13;
+			float y = 13 - 0.01f;
 			int h = 3;
 			genRow(builder, x, y, z, 8 - off, h, 1, u);
 			if (t == Type.EXTEND) {
@@ -455,12 +455,12 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			float x = (s == Side.RIGHT ? 12.5f : 0) + (r == Rotate.CW ? -11.25f : 2.25f);
 			float u = s == Side.RIGHT ? 0 : 3.5f;
 			float y = 8.25f;
-			genDiagonal(builder, x, y, z, 12.5f, 3, 1, u, r, s);
+			genDiagonal(builder, x + 0.01f, y, z + 0.01f, 12.5f, 3, 1, u, r, s);
 			int x0 = s == Side.RIGHT ? 11 : 3;
 			int h = (s == Side.RIGHT) == (r == Rotate.CW) ? 2 : 10;
-			genColumn(builder, x0, 0, 1 - z, 2, h, 1, 0, 3);
+			genColumn(builder, x0 + 0.01f, 0, 1 - z + 0.01f, 2, h, 1, 0, 3);
 			if (h < 8) {
-				genColumn(builder, x0, h - 10, 1 - z, 2, 10 - h, 1, 10 - h, 3);
+				genColumn(builder, x0 + 0.01f, h - 10, 1 - z + 0.01f, 2, 10 - h, 1, 10 - h, 3);
 			}
 			return builder;
 		}
