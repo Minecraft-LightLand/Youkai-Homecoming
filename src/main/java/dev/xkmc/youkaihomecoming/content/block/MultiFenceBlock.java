@@ -14,10 +14,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -143,6 +140,8 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		if (canBeReplaced(state, new BlockPlaceContext(player, hand, player.getItemInHand(hand), hit)))
 			return InteractionResult.PASS;
 		if (!level.isClientSide()) {
+			while (level.getBlockState(pos.above()).is(this)) pos = pos.above();
+			state = level.getBlockState(pos);
 			level.setBlockAndUpdate(pos, state.setValue(INVERTED, !state.getValue(INVERTED)));
 		}
 		return InteractionResult.CONSUME;
@@ -253,11 +252,29 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		return with(state, dx, State.FLAT);
 	}
 
-	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
-		if (pState.getValue(WATERLOGGED)) {
-			pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+	public BlockState updateShape(BlockState state, Direction dire, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+		if (state.getValue(WATERLOGGED)) {
+			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
-		return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
+		if (dire == Direction.DOWN && !state.canSurvive(level, pos)) {
+			return Blocks.AIR.defaultBlockState();
+		}
+		if (dire == Direction.UP) {
+			var ans = state;
+			boolean valid = neighborState.is(this);
+			if (valid) {
+				ans = ans.setValue(INVERTED, neighborState.getValue(INVERTED));
+			}
+			for (int i = 0; i < 4; i++) {
+				Direction d = Direction.from2DDataValue(i);
+				State old = of(state, d);
+				if (old.collide() == 0) continue;
+				boolean up = valid && of(neighborState, d).collide() > 0;
+				ans = with(ans, d, up ? State.UP : State.FLAT);
+			}
+			return ans;
+		}
+		return super.updateShape(state, dire, neighborState, level, pos, neighborPos);
 	}
 
 	public FluidState getFluidState(BlockState pState) {
@@ -356,6 +373,16 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			return builder;
 		}
 
+		private static ModelFile genPost(RegistrateBlockstateProvider pvd, Face f) {
+			String name = "post_" + f.name().toLowerCase(Locale.ROOT);
+			var builder = pvd.models().withExistingParent("custom/handrail_" + name, "block/block");
+			int z = f == Face.INNER ? 1 : 0;
+			genColumn(builder, 3, 0, 1 - z, 2, 16, 1, 3);
+			genColumn(builder, 11, 0, 1 - z, 2, 16, 1, 3);
+			builder.texture("particle", "#all");
+			return builder;
+		}
+
 		private static void init(RegistrateBlockstateProvider pvd) {
 			if (BASE != null) return;
 			BASE = new ModelFile[2][2][3];
@@ -367,6 +394,9 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 					}
 				}
 			}
+			genPost(pvd, Face.INNER);
+			genPost(pvd, Face.OUTER);
+
 		}
 
 		private enum Face {
@@ -380,8 +410,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		private enum Type {
 			CORNER, CONNECT, EXTEND
 		}
-
-
+		
 		private final DataGenContext<Block, MultiFenceBlock> ctx;
 		private final RegistrateBlockstateProvider pvd;
 		private final ModelFile[][][] modelSet;
@@ -450,13 +479,25 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 					.end();
 		}
 
+		private void buildPost(MultiPartBlockStateBuilder builder, int rot, EnumProperty<State> self, Face face) {
+			String name = "post_" + face.name().toLowerCase(Locale.ROOT);
+			builder.part().modelFile(pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
+							.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/handrail_" + name)))
+							.texture("all", pvd.modLoc("block/" + ctx.getName()))
+					).rotationY(rot).addModel()
+					.condition(INVERTED, face == Face.INNER)
+					.condition(self, State.UP)
+					.end();
+		}
+
 		private void buildFace(MultiPartBlockStateBuilder builder, int rot,
 							   EnumProperty<State> self, EnumProperty<State> left, EnumProperty<State> right) {
-
 			buildInnerSide(builder, rot, self, Side.LEFT, left);
 			buildInnerSide(builder, rot, self, Side.RIGHT, right);
 			buildOuterSide(builder, rot, self, Side.LEFT, left);
 			buildOuterSide(builder, rot, self, Side.RIGHT, right);
+			buildPost(builder, rot, self, Face.INNER);
+			buildPost(builder, rot, self, Face.OUTER);
 		}
 
 	}

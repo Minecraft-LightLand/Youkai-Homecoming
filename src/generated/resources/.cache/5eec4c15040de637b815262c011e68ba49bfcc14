@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-06T16:29:06.762493	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-02-06T17:24:50.737701	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 48b4f40388adc7b1a25a83a668ee6e42b84d4a7b assets/youkaihomecoming/blockstates/bamboo_mizuyokan.json
 470f18f809d3684e57707283d51608002e0f0423 assets/youkaihomecoming/blockstates/black_red_velvet_candle_cake.json
 b9f8fa7248e6adb55a212cb63acb20f3df5b5b12 assets/youkaihomecoming/blockstates/blood_curd.json
@@ -27,7 +27,7 @@ dedffdb8b68efea77222e9c6797c801fa4515353 assets/youkaihomecoming/blockstates/red
 2ba55ea8a0b6640758435e49434953b4a1ab0d80 assets/youkaihomecoming/blockstates/saucer.json
 be02e195bf8b3d42a2cd5428ffddf4d001859472 assets/youkaihomecoming/blockstates/soybean.json
 0464e42eac1933fbe18c70f336a30da1f5954f20 assets/youkaihomecoming/blockstates/soybean_bag.json
-9bc6bb28e0d5f17a6083780788a362405ecf42e6 assets/youkaihomecoming/blockstates/spruce_handrail.json
+1ec96925ac77a1d7aa621c5cfcfdd1bdd460da62 assets/youkaihomecoming/blockstates/spruce_handrail.json
 691affceb2cad22406b65ef5d1f37880c48dcf86 assets/youkaihomecoming/blockstates/stinky_tofu.json
 bc57942fde05635ffbac947532d37057c1c75c2d assets/youkaihomecoming/blockstates/tofu_burger.json
 c25d1a29abafed54f4ca2736e178c26998fb29c9 assets/youkaihomecoming/blockstates/white_red_velvet_candle_cake.json
@@ -116,6 +116,8 @@ e7324a075595572c8fd8b69a886ff37362b900de assets/youkaihomecoming/models/block/sp
 b063d152ad7e6ddaa25f4a90c6633d702abc6dfd assets/youkaihomecoming/models/block/spruce_handrail_outer_left_extend.json
 21cef838263cdf8fc67d3d4d1ca0f825c7d888c4 assets/youkaihomecoming/models/block/spruce_handrail_outer_right_connect.json
 d12d4f856a0fb19bd87cc514d0f93748c7119b05 assets/youkaihomecoming/models/block/spruce_handrail_outer_right_extend.json
+5a259c611b78c3a432e7c96f69d6e17e0e562006 assets/youkaihomecoming/models/block/spruce_handrail_post_inner.json
+a13acd82e0894797f54babed211329daf679a40a assets/youkaihomecoming/models/block/spruce_handrail_post_outer.json
 c2e7c926ea834429770e49742c393c7939e74fc7 assets/youkaihomecoming/models/block/stinky_tofu.json
 ae5d44eb4207256cfb2da8c492d9777565352a32 assets/youkaihomecoming/models/block/tofu_burger.json
 dcda5414d6c1405c738ea40a8909aede3fa3b3db assets/youkaihomecoming/models/block/white_red_velvet_candle_cake.json
@@ -134,6 +136,8 @@ abb46e60fc47e7403e919daf2390299c332cb9b5 assets/youkaihomecoming/models/custom/h
 080e4ff6d14a64bf6442b909339b7352e44f71fb assets/youkaihomecoming/models/custom/handrail_outer_left_extend.json
 872ec86a4ac2759e689c35444a25685ed1c58b8c assets/youkaihomecoming/models/custom/handrail_outer_right_connect.json
 f7f03bc84ff5e9fecdbe276cf2c9d89b610b1910 assets/youkaihomecoming/models/custom/handrail_outer_right_extend.json
+1d601353c341b8e3738e51042a9534b6d4f8df5e assets/youkaihomecoming/models/custom/handrail_post_inner.json
+c97bb525e2e6d40224e7e5cd1d628db8643b88e1 assets/youkaihomecoming/models/custom/handrail_post_outer.json
 0c82f40b5beb75594f523bb6db285e010c10878f assets/youkaihomecoming/models/item/apaki.json
 2af5f8ffa217bc8b61ad361bab0b07d352af1f2a assets/youkaihomecoming/models/item/assorted_dango.json
 1b2a2755de45be900424e7da8204b19f23a196cb assets/youkaihomecoming/models/item/avgolemono.json

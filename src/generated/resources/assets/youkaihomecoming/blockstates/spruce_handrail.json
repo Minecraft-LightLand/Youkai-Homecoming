@@ -112,6 +112,26 @@
     },
     {
       "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_inner",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_outer",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "up"
+      }
+    },
+    {
+      "apply": {
         "model": "youkaihomecoming:block/spruce_handrail_inner_left_corner",
         "y": 270
       },
@@ -222,6 +242,26 @@
     },
     {
       "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_inner",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_outer",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "up"
+      }
+    },
+    {
+      "apply": {
         "model": "youkaihomecoming:block/spruce_handrail_inner_left_corner"
       },
       "when": {
@@ -318,6 +358,24 @@
         "east": "open",
         "inverted": "false",
         "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_inner"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_outer"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "up"
       }
     },
     {
@@ -428,6 +486,26 @@
         "east": "flat",
         "inverted": "false",
         "south": "open"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_inner",
+        "y": 90
+      },
+      "when": {
+        "east": "up",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaihomecoming:block/spruce_handrail_post_outer",
+        "y": 90
+      },
+      "when": {
+        "east": "up",
+        "inverted": "false"
       }
     }
   ]
