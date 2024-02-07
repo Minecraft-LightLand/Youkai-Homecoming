@@ -60,7 +60,7 @@ public abstract class DoubleCropBlock extends CropBlock {
 				pState = lower;
 			} else return;
 		}
-		int i = this.getAge(pState) + 1;//this.getBonemealAgeIncrease(pLevel);
+		int i = this.getAge(pState) + this.getBonemealAgeIncrease(pLevel);
 		int j = this.getMaxAge();
 		if (i > j) {
 			i = j;
