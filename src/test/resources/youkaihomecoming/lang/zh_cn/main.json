@@ -59,7 +59,10 @@
 	"flesh_roll": "%1$s寿司",
 	"flesh_stew": "%1$s煲",
 	"raw_flesh_feast": "生%1$s宴",
-	"red_velvet_cake_slice": "红丝绒蛋糕切片"
+	"red_velvet_cake_slice": "红丝绒蛋糕切片",
+	"coffee_bean": "咖啡豆",
+	"coffee_berries": "咖啡果",
+	"green_coffee_bean": "生咖啡豆"
   },
   "block.youkaihomecoming": {
 	"redbean": "红豆",
@@ -78,7 +81,11 @@
 	"flesh_feast": "%1$s宴",
 	"red_velvet_cake": "红丝绒蛋糕",
 	"redbean_bag": "袋装红豆",
-	"soybean_bag": "袋装黄豆"
+	"soybean_bag": "袋装黄豆",
+	"coffea": "咖啡树",
+	"coffee_bean_bag": "袋装咖啡豆",
+	"spruce_handrail": "云杉扶手",
+	"wild_coffea": "野生咖啡树"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",

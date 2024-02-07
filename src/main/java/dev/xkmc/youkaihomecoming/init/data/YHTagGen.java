@@ -35,6 +35,7 @@ public class YHTagGen {
 	public static final TagKey<Item> DANGO = item("dango");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
+	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
 			new ResourceLocation(Jeed.MOD_ID, "hidden"));
