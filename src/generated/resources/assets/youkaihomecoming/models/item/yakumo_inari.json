@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/yakumo_inari"
+    "layer0": "youkaihomecoming:item/food/yakumo_inari"
   }
 }

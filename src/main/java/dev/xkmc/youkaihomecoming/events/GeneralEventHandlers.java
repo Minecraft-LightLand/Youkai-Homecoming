@@ -2,9 +2,13 @@ package dev.xkmc.youkaihomecoming.events;
 
 import dev.xkmc.youkaihomecoming.content.block.LeftClickBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -23,6 +27,17 @@ public class GeneralEventHandlers {
 				event.setCancellationResult(InteractionResult.CONSUME);
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public static void onSleep(PlayerSleepInBedEvent event) {
+		if (event.getEntity().hasEffect(YHEffects.CAFFEINATED.get())) {
+			event.setResult(Player.BedSleepingProblem.OTHER_PROBLEM);
+		}
+	}
+
+	public static boolean preventPhantomSpawn(ServerPlayer player) {
+		return player.hasEffect(YHEffects.CAFFEINATED.get());
 	}
 
 }

@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaihomecoming:coffee_bean"
+    }
+  ],
+  "result": [
+    {
+      "item": "youkaihomecoming:coffee_powder"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/shovels"
+  }
+}

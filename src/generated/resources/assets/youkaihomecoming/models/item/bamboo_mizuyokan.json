@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/bamboo_mizuyokan"
+    "layer0": "youkaihomecoming:item/saucer/bamboo_mizuyokan"
   }
 }

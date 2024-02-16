@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/dried_fish"
+    "layer0": "youkaihomecoming:item/saucer/dried_fish"
   }
 }

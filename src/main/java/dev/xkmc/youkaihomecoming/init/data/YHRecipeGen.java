@@ -42,6 +42,16 @@ public class YHRecipeGen {
 		pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
 		pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
 
+		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
+						Ingredient.of(ForgeTags.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
+				.addResult(ModItems.SALMON_SLICE.get(), 2)
+				.addResult(Items.BONE_MEAL)
+				.addResultWithChance(YHFood.ROE.item.get(), 0.5f, 1)
+				.build(pvd, YHFood.ROE.item.getId());
+
+		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.COFFEE_BEAN),
+						Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
+				.build(pvd, YHItems.COFFEE_POWDER.getId());
 
 		// food craft
 		{
@@ -61,8 +71,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.ASSORTED_DANGO.item, 1)::unlockedBy, YHFood.MOCHI.item.get())
-					.requires(YHFood.MOCHI.item).requires(YHFood.MOCHI.item).requires(YHFood.SAKURA_MOCHI.item)
-					.requires(Items.LIME_DYE).requires(Items.STICK)
+					.requires(YHFood.MOCHI.item).requires(YHFood.COFFEE_MOCHI.item).requires(YHFood.SAKURA_MOCHI.item).requires(Items.STICK)//TODO
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.KINAKO_DANGO.item, 1)::unlockedBy, YHFood.MOCHI.item.get())
@@ -99,6 +108,10 @@ public class YHRecipeGen {
 					.define('C', YHItems.BLOOD_BOTTLE)
 					.define('D', YHFood.FLESH.item)
 					.define('E', Items.WHEAT)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.TOBIKO_GUNKAN.item, 2)::unlockedBy, YHFood.ROE.item.get())
+					.requires(YHFood.ROE.item).requires(ModItems.COOKED_RICE.get()).requires(Items.DRIED_KELP)
 					.save(pvd);
 
 			cake(pvd, YHItems.RED_VELVET);
@@ -143,6 +156,11 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(Items.CHERRY_LEAVES)
 					.build(pvd, YHFood.SAKURA_MOCHI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.COFFEE_MOCHI.item.get(), 2, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHItems.COFFEE_BEAN)
+					.build(pvd, YHFood.COFFEE_MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SENBEI.item.get(), 3, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
@@ -301,6 +319,19 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.BLOOD_BOTTLE)
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
 					.build(pvd, YHItems.FLESH_FEAST.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.build(pvd, YHItems.CREAM.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUSCAN_SALMON.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
+					.addIngredient(ForgeTags.VEGETABLES_TOMATO)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(YHItems.CREAM.get())
+					.build(pvd, YHFood.TUSCAN_SALMON.item.getId());
 		}
 
 		// food cooking saucer

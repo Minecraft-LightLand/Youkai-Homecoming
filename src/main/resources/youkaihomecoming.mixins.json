@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "youkaihomecoming.refmap.json",
   "mixins": [
+	"PhantomSpawnerMixin"
   ],
   "client": [
   ],

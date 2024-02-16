@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/blazing_red_curry"
+    "layer0": "youkaihomecoming:item/food/blazing_red_curry"
   }
 }

@@ -2,6 +2,7 @@ package dev.xkmc.youkaihomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
+import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
@@ -31,19 +32,24 @@ public enum YHFood {
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f),
 
 	// simple
+	ROE(FoodType.MEAT, 1, 0.6f),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
 	TOFU(FoodType.SIMPLE, 4, 0.5f),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
 	MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
+	COFFEE_MOCHI(FoodType.SIMPLE, 4, 0.6f, List.of(
+			new EffectEntry(YHEffects.CAFFEINATED::get, 1200, 0, 1)
+	), YHTagGen.DANGO),
 	SAKURA_MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
 	ONIGILI(FoodType.SIMPLE, 6, 0.6f),
 	SENBEI(FoodType.SIMPLE, 4, 0.6f),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f),
-	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f),//TODO effect
+	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f, new EffectEntry(YHEffects.UNCONSCIOUS::get, 2400, 0, 1)),
 	BUN(FoodType.SIMPLE, 8, 0.6f),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f),
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f),
+	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
 
 	// stick
 
@@ -88,6 +94,10 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
 	)),
 	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	TUSCAN_SALMON(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
+	)),
 
 	// flesh
 	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(
@@ -112,7 +122,7 @@ public enum YHFood {
 	@SafeVarargs
 	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build(name, nutrition, sat, tags, effs);
+		item = type.build("food/", name, nutrition, sat, tags, effs);
 	}
 
 	@SafeVarargs

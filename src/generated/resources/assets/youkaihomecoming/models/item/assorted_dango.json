@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/assorted_dango"
+    "layer0": "youkaihomecoming:item/food/assorted_dango"
   }
 }

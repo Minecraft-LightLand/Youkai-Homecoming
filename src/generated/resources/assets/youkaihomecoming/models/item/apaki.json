@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/apaki"
+    "layer0": "youkaihomecoming:item/food/apaki"
   }
 }

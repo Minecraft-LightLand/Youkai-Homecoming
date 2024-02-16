@@ -23,6 +23,7 @@ public enum FoodType {
 	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true),
 	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false),
 	BOTTLE(p -> new YHFoodItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false),
+	BOTTLE_FAST(p -> new YHFoodItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true),
 	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false),
 	FLESH(FleshFoodItem::new, true, false, YHTagGen.FLESH_FOOD),
 	BOWL_FLESH(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, YHTagGen.FLESH_FOOD),
@@ -49,11 +50,12 @@ public enum FoodType {
 	}
 
 
-	public ItemEntry<Item> build(String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+	public ItemEntry<Item> build(String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		if (meat) food.meat();
 		if (fast) food.fast();
+		if (this == BOTTLE || this == BOTTLE_FAST) food.alwaysEat();
 		for (var e : this.effs) {
 			food.effect(e::getEffect, e.chance());
 		}
@@ -62,6 +64,7 @@ public enum FoodType {
 		}
 		return YoukaiHomecoming.REGISTRATE
 				.item(name, p -> factory.apply(p.food(food.build())))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + folder + ctx.getName())))
 				.tag(getTags(this.tags, tags))
 				.lang(Item::getDescriptionId, makeLang(name))
 				.register();

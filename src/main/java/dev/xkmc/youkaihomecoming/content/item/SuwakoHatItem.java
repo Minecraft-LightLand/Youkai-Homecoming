@@ -1,19 +1,24 @@
 
 package dev.xkmc.youkaihomecoming.content.item;
 
+import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.youkaihomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
@@ -78,4 +83,9 @@ public class SuwakoHatItem extends ArmorItem {
 		return YoukaiHomecoming.MODID + ":textures/models/suwako_hat.png";
 	}
 
+	@Override
+	public void onArmorTick(ItemStack stack, Level level, Player player) {
+		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.NATIVE.get(), 40, 0,
+				true, true), EffectUtil.AddReason.SELF, player);
+	}
 }

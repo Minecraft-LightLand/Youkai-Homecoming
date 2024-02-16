@@ -39,7 +39,7 @@ public class CakeEntry {
 		this.base = base;
 		var props = BlockBehaviour.Properties.of().mapColor(color).forceSolidOn().strength(0.5F)
 				.sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY);
-		item = type.build(base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
+		item = type.build("food/", base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
 		block = YoukaiHomecoming.REGISTRATE.block(base + "_cake", p -> new YHCakeBlock(item::get, props))
 				.blockstate(this::genCakeModels).loot((pvd, block) -> pvd.dropOther(block, item.get()))
 				.item().model((ctx, pvd) -> pvd.generated(ctx)).build().register();

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/oily_bean_curd"
+    "layer0": "youkaihomecoming:item/food/oily_bean_curd"
   }
 }

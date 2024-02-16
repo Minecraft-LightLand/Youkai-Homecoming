@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.registry.ModEffects;
@@ -60,7 +59,8 @@ public enum YHDish {
 		block = YoukaiHomecoming.REGISTRATE
 				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd)))
-				.item((block, p) -> new FoodSaucerItem(block, p.food(food))).model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.item((block, p) -> new FoodSaucerItem(block, p.food(food)))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()
 				.register();
 	}
 

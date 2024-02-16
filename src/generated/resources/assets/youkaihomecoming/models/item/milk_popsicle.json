@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/milk_popsicle"
+    "layer0": "youkaihomecoming:item/food/milk_popsicle"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/koishi_mousse"
+    "layer0": "youkaihomecoming:item/food/koishi_mousse"
   }
 }
