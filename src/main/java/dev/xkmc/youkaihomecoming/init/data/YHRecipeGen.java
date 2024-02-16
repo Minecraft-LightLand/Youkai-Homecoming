@@ -46,6 +46,7 @@ public class YHRecipeGen {
 			pvd.storage(YHTea.OOLONG.leaves, RecipeCategory.MISC, YHItems.OOLONG_TEA_BAG);
 			pvd.storage(YHTea.WHITE.leaves, RecipeCategory.MISC, YHItems.WHITE_TEA_BAG);
 
+			pvd.smoking(DataIngredient.items(YHCrops.TEA.getFruits()), RecipeCategory.MISC, YHTea.GREEN.leaves, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
 			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.WHITE.leaves, 0.1f, 200);
 

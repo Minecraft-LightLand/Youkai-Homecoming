@@ -89,7 +89,9 @@
 	"black_tea_leaves": "红茶叶",
 	"green_tea_leaves": "绿茶叶",
 	"oolong_tea_leaves": "乌龙茶叶",
-	"white_tea_leaves": "白茶叶"
+	"white_tea_leaves": "白茶叶",
+	"tea_leaves": "生茶叶",
+	"tea_seeds": "茶籽"
   },
   "block.youkaihomecoming": {
 	"redbean": "红豆",
@@ -116,7 +118,9 @@
 	"black_tea_bag": "袋装红茶",
 	"green_tea_bag": "袋装绿茶",
 	"oolong_tea_bag": "袋装乌龙茶",
-	"white_tea_bag": "袋装白茶"
+	"white_tea_bag": "袋装白茶",
+	"tea": "茶树",
+	"wild_tea": "野生茶树"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",

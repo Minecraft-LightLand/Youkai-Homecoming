@@ -3,6 +3,7 @@ package dev.xkmc.youkaihomecoming.init.food;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaihomecoming.content.block.CoffeaCropBlock;
+import dev.xkmc.youkaihomecoming.content.block.TeaCropBlock;
 import dev.xkmc.youkaihomecoming.content.block.WildCoffeaBlock;
 import dev.xkmc.youkaihomecoming.content.block.YHCropBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
@@ -36,7 +37,8 @@ import java.util.function.BiFunction;
 public enum YHCrops {
 	SOYBEAN(PlantType.CROP, null, "pods"),
 	REDBEAN(PlantType.CROP, null, null),
-	COFFEA(PlantType.COFFEA, "green_coffee_bean", "coffee_berries");
+	COFFEA(PlantType.COFFEA, "green_coffee_bean", "coffee_berries"),
+	TEA(PlantType.TEA, "tea_seeds", "tea_leaves");
 
 	private final BlockEntry<? extends CropBlock> PLANT;
 	private final BlockEntry<? extends BushBlock> WILD;
@@ -156,6 +158,18 @@ public enum YHCrops {
 						.blockstate((ctx, pvd) -> WildCoffeaBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> WildCoffeaBlock.buildWildLoot(ctx, pvd, crop))
 						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name + "_top"))).build()
+						.tag(ModTags.WILD_CROPS)
+						.register()
+		),
+		TEA((name, crop) -> YoukaiHomecoming.REGISTRATE.block(name, p ->
+						new TeaCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
+				.blockstate((ctx, pvd) -> TeaCropBlock.buildPlantModel(ctx, pvd, name))
+				.loot((pvd, block) -> TeaCropBlock.buildPlantLoot(pvd, block, crop))
+				.register(),
+				(name, crop) -> YoukaiHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)))
+						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
+						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),
