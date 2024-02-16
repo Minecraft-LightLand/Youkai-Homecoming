@@ -4,10 +4,7 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
-import dev.xkmc.youkaihomecoming.init.food.CakeEntry;
-import dev.xkmc.youkaihomecoming.init.food.YHCrops;
-import dev.xkmc.youkaihomecoming.init.food.YHDish;
-import dev.xkmc.youkaihomecoming.init.food.YHFood;
+import dev.xkmc.youkaihomecoming.init.food.*;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -32,26 +29,41 @@ public class YHRecipeGen {
 		foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET);
 		food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
 		food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
-		cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
-		cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 1);
 		pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 		pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
-		pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
-		pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
-		pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
-		pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
-		pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
 
-		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
-						Ingredient.of(ForgeTags.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
-				.addResult(ModItems.SALMON_SLICE.get(), 2)
-				.addResult(Items.BONE_MEAL)
-				.addResultWithChance(YHFood.ROE.item.get(), 0.5f, 1)
-				.build(pvd, YHFood.ROE.item.getId());
+		// plants
+		{
+			cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
+			cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 1);
+			pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
+			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
+			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
+			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
+			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
+			pvd.storage(YHTea.BLACK.leaves, RecipeCategory.MISC, YHItems.BLACK_TEA_BAG);
+			pvd.storage(YHTea.GREEN.leaves, RecipeCategory.MISC, YHItems.GREEN_TEA_BAG);
+			pvd.storage(YHTea.OOLONG.leaves, RecipeCategory.MISC, YHItems.OOLONG_TEA_BAG);
+			pvd.storage(YHTea.WHITE.leaves, RecipeCategory.MISC, YHItems.WHITE_TEA_BAG);
 
-		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.COFFEE_BEAN),
-						Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
-				.build(pvd, YHItems.COFFEE_POWDER.getId());
+			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
+			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.WHITE.leaves, 0.1f, 200);
+
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
+							Ingredient.of(ForgeTags.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
+					.addResult(ModItems.SALMON_SLICE.get(), 2)
+					.addResult(Items.BONE_MEAL)
+					.addResultWithChance(YHFood.ROE.item.get(), 0.5f, 1)
+					.build(pvd, YHFood.ROE.item.getId());
+
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.COFFEE_BEAN),
+							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
+					.build(pvd, YHItems.COFFEE_POWDER.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHTea.OOLONG.leaves.get(), 1, 200, 0.1f)
+					.addIngredient(YHTea.GREEN.leaves)
+					.build(pvd, YHTea.OOLONG.leaves.getId());
+		}
 
 		// food craft
 		{

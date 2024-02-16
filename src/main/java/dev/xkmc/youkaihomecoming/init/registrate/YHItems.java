@@ -45,7 +45,8 @@ public class YHItems {
 	}
 
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
-	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG;
+	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
+			BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 	public static final ItemEntry<Item> BLOOD_BOTTLE, SOY_SAUCE_BOTTLE, CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
@@ -64,9 +65,14 @@ public class YHItems {
 		YHCrops.register();
 		COFFEE_BEAN = YoukaiHomecoming.REGISTRATE.item("coffee_bean", Item::new).register();
 		COFFEE_POWDER = YoukaiHomecoming.REGISTRATE.item("coffee_powder", Item::new).register();
+		YHTea.register();
 		SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 		REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 		COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");
+		BLACK_TEA_BAG = YHTea.BLACK.createBags();
+		GREEN_TEA_BAG = YHTea.GREEN.createBags();
+		OOLONG_TEA_BAG = YHTea.OOLONG.createBags();
+		WHITE_TEA_BAG = YHTea.WHITE.createBags();
 
 		SOY_SAUCE_BOTTLE = YoukaiHomecoming.REGISTRATE
 				.item("soy_sauce_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))

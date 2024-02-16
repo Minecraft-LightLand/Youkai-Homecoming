@@ -85,7 +85,11 @@
 	"latte": "拿铁",
 	"macchiato": "玛琪雅朵",
 	"mocha": "摩卡",
-	"ristretto": "芮斯崔朵"
+	"ristretto": "芮斯崔朵",
+	"black_tea_leaves": "红茶叶",
+	"green_tea_leaves": "绿茶叶",
+	"oolong_tea_leaves": "乌龙茶叶",
+	"white_tea_leaves": "白茶叶"
   },
   "block.youkaihomecoming": {
 	"redbean": "红豆",
@@ -108,7 +112,11 @@
 	"coffea": "咖啡树",
 	"coffee_bean_bag": "袋装咖啡豆",
 	"spruce_handrail": "云杉扶手",
-	"wild_coffea": "野生咖啡树"
+	"wild_coffea": "野生咖啡树",
+	"black_tea_bag": "袋装红茶",
+	"green_tea_bag": "袋装绿茶",
+	"oolong_tea_bag": "袋装乌龙茶",
+	"white_tea_bag": "袋装白茶"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",
