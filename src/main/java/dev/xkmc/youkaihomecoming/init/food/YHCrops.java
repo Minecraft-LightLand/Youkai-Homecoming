@@ -7,6 +7,7 @@ import dev.xkmc.youkaihomecoming.content.block.TeaCropBlock;
 import dev.xkmc.youkaihomecoming.content.block.WildCoffeaBlock;
 import dev.xkmc.youkaihomecoming.content.block.YHCropBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -59,12 +60,9 @@ public enum YHCrops {
 		PLANT = type.plant(name, this);
 		WILD = type.wild(name, this);
 
-		seed = YoukaiHomecoming.REGISTRATE
-				.item(seedName, p -> new ItemNameBlockItem(getPlant(), p))
-				.register();
+		seed = YHItems.crop(seedName, p -> new ItemNameBlockItem(getPlant(), p));
 
-		fruits = fruit == null ? seed : YoukaiHomecoming.REGISTRATE.item(fruit, Item::new)
-				.register();
+		fruits = fruit == null ? seed : YHItems.crop(fruit, Item::new);
 
 	}
 

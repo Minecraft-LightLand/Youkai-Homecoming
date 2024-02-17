@@ -1,0 +1,6 @@
+{
+  "parent": "youkaihomecoming:custom/handrail_outer_right_extend",
+  "textures": {
+    "all": "youkaihomecoming:block/bamboo_handrail"
+  }
+}

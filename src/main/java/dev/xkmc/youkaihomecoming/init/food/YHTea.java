@@ -3,6 +3,7 @@ package dev.xkmc.youkaihomecoming.init.food;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -15,7 +16,7 @@ public enum YHTea {
 
 	YHTea() {
 		String name = name().toLowerCase(Locale.ROOT) + "_tea";
-		leaves = YoukaiHomecoming.REGISTRATE.item(name + "_leaves", Item::new).register();
+		leaves = YHItems.crop(name + "_leaves", Item::new);
 	}
 
 	public BlockEntry<Block> createBags() {

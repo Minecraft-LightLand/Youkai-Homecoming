@@ -1,0 +1,6 @@
+{
+  "parent": "youkaihomecoming:custom/handrail_post_outer",
+  "textures": {
+    "all": "youkaihomecoming:block/oak_handrail"
+  }
+}

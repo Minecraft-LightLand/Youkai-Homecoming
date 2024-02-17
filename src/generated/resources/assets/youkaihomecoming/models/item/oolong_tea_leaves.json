@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaihomecoming:item/oolong_tea_leaves"
+    "layer0": "youkaihomecoming:item/crops/oolong_tea_leaves"
   }
 }

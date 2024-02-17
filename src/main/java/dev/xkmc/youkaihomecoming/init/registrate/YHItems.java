@@ -2,6 +2,7 @@ package dev.xkmc.youkaihomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.youkaihomecoming.content.block.EmptySaucerBlock;
 import dev.xkmc.youkaihomecoming.content.block.FleshFeastBlock;
 import dev.xkmc.youkaihomecoming.content.item.FleshBlockItem;
@@ -63,10 +64,10 @@ public class YHItems {
 				.register();
 
 		YHCrops.register();
-		COFFEE_BEAN = YoukaiHomecoming.REGISTRATE.item("coffee_beans", Item::new).register();
-		COFFEE_POWDER = YoukaiHomecoming.REGISTRATE.item("coffee_powder", Item::new).register();
+		COFFEE_BEAN = crop("coffee_beans", Item::new);
+		COFFEE_POWDER = crop("coffee_powder", Item::new);
 		YHTea.register();
-		MATCHA = YoukaiHomecoming.REGISTRATE.item("matcha", Item::new).register();
+		MATCHA = crop("matcha", Item::new);
 		SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 		REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 		COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");
@@ -129,6 +130,12 @@ public class YHItems {
 						YHEntities.LAMPREY, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
+				.register();
+	}
+
+	public static <T extends Item> ItemEntry<T> crop(String id, NonNullFunction<Item.Properties, T> factory) {
+		return YoukaiHomecoming.REGISTRATE.item(id, factory)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
 				.register();
 	}
 

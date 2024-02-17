@@ -1,0 +1,6 @@
+{
+  "parent": "youkaihomecoming:custom/handrail_inner_right_corner",
+  "textures": {
+    "all": "youkaihomecoming:block/mangrove_handrail"
+  }
+}

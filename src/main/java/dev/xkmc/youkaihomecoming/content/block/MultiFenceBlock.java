@@ -165,7 +165,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		if (canBeReplaced(state, new BlockPlaceContext(player, hand, stack, hit)))
 			return InteractionResult.PASS;
 		if (!level.isClientSide()) {
-			while (level.getBlockState(pos.above()).is(this)) pos = pos.above();
+			while (level.getBlockState(pos.above()).getBlock() instanceof MultiFenceBlock) pos = pos.above();
 			state = level.getBlockState(pos);
 			level.setBlockAndUpdate(pos, state.setValue(INVERTED, !state.getValue(INVERTED)));
 		}
@@ -241,7 +241,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		var hit = ctx.getClickLocation();
 		BlockState state;
 		BlockState old = ctx.getLevel().getBlockState(pos);
-		if (old.is(this)) {
+		if (old.getBlock() instanceof MultiFenceBlock) {
 			state = old;
 			if (dir.getAxis().isHorizontal()) {
 				if (new AABB(pos).contains(hit)) {
@@ -286,7 +286,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 		}
 		if (dire == Direction.UP) {
 			var ans = state;
-			boolean valid = neighborState.is(this);
+			boolean valid = neighborState.getBlock() instanceof MultiFenceBlock;
 			if (valid) {
 				ans = ans.setValue(INVERTED, neighborState.getValue(INVERTED));
 			}
@@ -304,7 +304,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			BlockState ans = state;
 			var left = dire.getClockWise();
 			var right = dire.getCounterClockWise();
-			boolean flag = neighborState.is(this);
+			boolean flag = neighborState.getBlock() instanceof MultiFenceBlock;
 			if (of(state, dire).type() == 0) {
 				if (flag) {
 					if (of(state, left).type() > 1) {
@@ -316,17 +316,17 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 				}
 				ans = with(ans, dire, flag ? State.CONNECT : State.OPEN);
 			}
-			if (neighborState.is(this)) {
+			if (neighborState.getBlock() instanceof MultiFenceBlock) {
 				if (of(state, left).type() > 1 && of(neighborState, left).type() > 0) {
 					BlockPos rev = pos.relative(dire.getOpposite()).below();
 					BlockState low = level.getBlockState(rev);
-					if (low.is(this) && of(low, left).type() > 1)
+					if (low.getBlock() instanceof MultiFenceBlock && of(low, left).type() > 1)
 						ans = with(ans, left, State.CW);
 				}
 				if (of(state, right).type() > 1 && of(neighborState, right).type() > 0) {
 					BlockPos rev = pos.relative(dire.getOpposite()).below();
 					BlockState low = level.getBlockState(rev);
-					if (low.is(this) && of(low, right).type() > 1)
+					if (low.getBlock() instanceof MultiFenceBlock && of(low, right).type() > 1)
 						ans = with(ans, right, State.CCW);
 				}
 			}
