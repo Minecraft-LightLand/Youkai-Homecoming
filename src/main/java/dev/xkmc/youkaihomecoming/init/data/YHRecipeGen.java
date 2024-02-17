@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaihomecoming.init.food.*;
+import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -31,6 +32,9 @@ public class YHRecipeGen {
 		food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 		pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 		pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
+		for (var e : YHBlocks.WoodType.values()) {
+			pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
+		}
 
 		// plants
 		{

@@ -1,0 +1,6 @@
+{
+  "parent": "youkaihomecoming:custom/handrail_inner_left_connect",
+  "textures": {
+    "all": "youkaihomecoming:block/spruce_handrail"
+  }
+}
