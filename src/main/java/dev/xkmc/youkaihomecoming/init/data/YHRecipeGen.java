@@ -61,6 +61,10 @@ public class YHRecipeGen {
 							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
 					.build(pvd, YHItems.COFFEE_POWDER.getId());
 
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHTea.GREEN.leaves),
+							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.MATCHA, 1)
+					.build(pvd, YHItems.MATCHA.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHTea.OOLONG.leaves.get(), 1, 200, 0.1f)
 					.addIngredient(YHTea.GREEN.leaves)
 					.build(pvd, YHTea.OOLONG.leaves.getId());
@@ -84,7 +88,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.ASSORTED_DANGO.item, 1)::unlockedBy, YHFood.MOCHI.item.get())
-					.requires(YHFood.MOCHI.item).requires(YHFood.COFFEE_MOCHI.item).requires(YHFood.SAKURA_MOCHI.item).requires(Items.STICK)//TODO
+					.requires(YHFood.MOCHI.item).requires(YHFood.MATCHA_MOCHI.item).requires(YHFood.SAKURA_MOCHI.item).requires(Items.STICK)
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.KINAKO_DANGO.item, 1)::unlockedBy, YHFood.MOCHI.item.get())
@@ -172,8 +176,13 @@ public class YHRecipeGen {
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.COFFEE_MOCHI.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
-					.addIngredient(YHItems.COFFEE_BEAN)
+					.addIngredient(YHItems.COFFEE_POWDER)
 					.build(pvd, YHFood.COFFEE_MOCHI.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MATCHA_MOCHI.item.get(), 2, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHItems.MATCHA)
+					.build(pvd, YHFood.MATCHA_MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SENBEI.item.get(), 3, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)

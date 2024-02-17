@@ -2,7 +2,6 @@ package dev.xkmc.youkaihomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaihomecoming.content.effect.CaffeinatedEffect;
 import dev.xkmc.youkaihomecoming.content.effect.EmptyEffect;
 import dev.xkmc.youkaihomecoming.content.effect.YoukaifiedEffect;
@@ -10,8 +9,6 @@ import dev.xkmc.youkaihomecoming.content.effect.YoukaifyingEffect;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class YHEffects {
 
@@ -27,13 +24,17 @@ public class YHEffects {
 			() -> new CaffeinatedEffect(MobEffectCategory.NEUTRAL, -10667225),
 			"Prevents phantom spawn, prevents sleep, prevents youkaization, and boost attack damage");
 
+	public static final RegistryEntry<EmptyEffect> TEA = genEffect("tea_polyphenols",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5727850),
+			"Prevents nausea, and boost attack speed");
+
 	public static final RegistryEntry<EmptyEffect> NATIVE = genEffect("native_god_bless",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5727850),
 			"TODO");//TODO
 
 	public static final RegistryEntry<EmptyEffect> UNCONSCIOUS = genEffect("unconscious",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),
-			"TODO");//TODO
+			"You won't be targeted by mobs. Terminates when you attack.");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaiHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();

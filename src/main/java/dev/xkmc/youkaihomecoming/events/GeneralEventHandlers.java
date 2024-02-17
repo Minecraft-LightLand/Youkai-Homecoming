@@ -5,8 +5,10 @@ import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,6 +35,15 @@ public class GeneralEventHandlers {
 	public static void onSleep(PlayerSleepInBedEvent event) {
 		if (event.getEntity().hasEffect(YHEffects.CAFFEINATED.get())) {
 			event.setResult(Player.BedSleepingProblem.OTHER_PROBLEM);
+		}
+	}
+
+	@SubscribeEvent
+	public static void onAttack(LivingAttackEvent event) {
+		if (event.getSource().getEntity() instanceof LivingEntity le) {
+			if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
+				le.removeEffect(YHEffects.UNCONSCIOUS.get());
+			}
 		}
 	}
 

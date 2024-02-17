@@ -40,6 +40,9 @@ public enum YHFood {
 	COFFEE_MOCHI(FoodType.SIMPLE, 4, 0.6f, List.of(
 			new EffectEntry(YHEffects.CAFFEINATED::get, 1200, 0, 1)
 	), YHTagGen.DANGO),
+	MATCHA_MOCHI(FoodType.SIMPLE, 4, 0.6f, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1)
+	), YHTagGen.DANGO),
 	SAKURA_MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
 	ONIGILI(FoodType.SIMPLE, 6, 0.6f),
 	SENBEI(FoodType.SIMPLE, 4, 0.6f),
@@ -62,6 +65,10 @@ public enum YHFood {
 
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
+	BLACK_TEA(FoodType.BOTTLE, 0, 0, new EffectEntry(YHEffects.TEA::get, 2400, 0, 1)),//TODO recipe
+	GREEN_TEA(FoodType.BOTTLE, 0, 0, new EffectEntry(YHEffects.TEA::get, 2400, 0, 1)),//TODO recipe
+	OOLONG_TEA(FoodType.BOTTLE, 0, 0, new EffectEntry(YHEffects.TEA::get, 2400, 0, 1)),//TODO recipe
+	WHITE_TEA(FoodType.BOTTLE, 0, 0, new EffectEntry(YHEffects.TEA::get, 2400, 0, 1)),//TODO recipe
 
 	// bowl
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
