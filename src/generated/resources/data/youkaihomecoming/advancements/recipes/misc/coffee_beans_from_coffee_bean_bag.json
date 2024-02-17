@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_green_coffee_bean": {
+    "has_coffee_bean_bag": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaihomecoming:green_coffee_bean"
+              "youkaihomecoming:coffee_bean_bag"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaihomecoming:coffee_bean_from_green_coffee_bean_smoking"
+        "recipe": "youkaihomecoming:coffee_beans_from_coffee_bean_bag"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_green_coffee_bean",
+      "has_coffee_bean_bag",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaihomecoming:coffee_bean_from_green_coffee_bean_smoking"
+      "youkaihomecoming:coffee_beans_from_coffee_bean_bag"
     ]
   },
   "sends_telemetry_event": false

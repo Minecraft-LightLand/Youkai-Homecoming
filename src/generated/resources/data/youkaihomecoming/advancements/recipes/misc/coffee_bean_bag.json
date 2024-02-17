@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_coffee_bean": {
+    "has_coffee_beans": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaihomecoming:coffee_bean"
+              "youkaihomecoming:coffee_beans"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_coffee_bean",
+      "has_coffee_beans",
       "has_the_recipe"
     ]
   ],

@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 
 public class YHItems {
 
-	private static final Set<String> SMALL_WORDS = Set.of("of", "the", "with");
+	private static final Set<String> SMALL_WORDS = Set.of("of", "the", "with", "in");
 
 	public static String toEnglishName(String internalName) {
 		return Arrays.stream(internalName.split("_"))
@@ -63,7 +63,7 @@ public class YHItems {
 				.register();
 
 		YHCrops.register();
-		COFFEE_BEAN = YoukaiHomecoming.REGISTRATE.item("coffee_bean", Item::new).register();
+		COFFEE_BEAN = YoukaiHomecoming.REGISTRATE.item("coffee_beans", Item::new).register();
 		COFFEE_POWDER = YoukaiHomecoming.REGISTRATE.item("coffee_powder", Item::new).register();
 		YHTea.register();
 		MATCHA = YoukaiHomecoming.REGISTRATE.item("matcha", Item::new).register();
@@ -85,6 +85,7 @@ public class YHItems {
 
 		CREAM = YoukaiHomecoming.REGISTRATE
 				.item("bowl_of_cream", p -> new Item(p.craftRemainder(Items.BOWL)))
+				.lang("Bowl of Cream")
 				.register();
 
 		YHFood.register();
@@ -136,7 +137,6 @@ public class YHItems {
 				setProperties(StatePropertiesPredicate.Builder.properties()
 						.hasProperty(block.getServingsProperty(), block.getMaxServings()));
 	}
-
 
 	public static void register() {
 	}

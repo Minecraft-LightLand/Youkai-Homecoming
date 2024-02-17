@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaihomecoming:coffee_bean_from_green_coffee_bean_smelting"
+        "recipe": "youkaihomecoming:coffee_beans_from_green_coffee_bean_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaihomecoming:coffee_bean_from_green_coffee_bean_smelting"
+      "youkaihomecoming:coffee_beans_from_green_coffee_bean_smelting"
     ]
   },
   "sends_telemetry_event": false

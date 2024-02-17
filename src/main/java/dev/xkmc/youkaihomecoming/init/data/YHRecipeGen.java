@@ -240,10 +240,10 @@ public class YHRecipeGen {
 					.addIngredient(Items.BAMBOO)
 					.build(pvd, YHFood.TUTU_CONGEE.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.STEAMED_EGG_BAMBOO.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.STEAMED_EGG_IN_BAMBOO.item.get(), 1, 200, 0.1f)
 					.addIngredient(ForgeTags.EGGS)
 					.addIngredient(Items.BAMBOO)
-					.build(pvd, YHFood.STEAMED_EGG_BAMBOO.item.getId());
+					.build(pvd, YHFood.STEAMED_EGG_IN_BAMBOO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CANDY_APPLE.item.get(), 1, 200, 0.1f, Items.STICK)
 					.addIngredient(Items.APPLE)

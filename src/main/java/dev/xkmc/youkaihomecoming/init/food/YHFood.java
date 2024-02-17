@@ -56,7 +56,7 @@ public enum YHFood {
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f),
 	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f),
-	STEAMED_EGG_BAMBOO(FoodType.MEAT, 6, 0.6f),
+	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f),
 
 	// stick
 
