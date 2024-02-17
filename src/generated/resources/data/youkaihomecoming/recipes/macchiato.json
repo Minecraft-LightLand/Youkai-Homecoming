@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaihomecoming:coffee_powder"
+    },
+    {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    },
+    {
+      "item": "youkaihomecoming:bowl_of_cream"
+    }
+  ],
+  "result": {
+    "item": "youkaihomecoming:macchiato"
+  }
+}

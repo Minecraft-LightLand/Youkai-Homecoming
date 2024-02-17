@@ -18,6 +18,8 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> LAMPREY = asTag("lamprey_spawns");
 	public static final TagKey<Biome> SOYBEAN = asTag("soybean_spawns");
 	public static final TagKey<Biome> REDBEAN = asTag("redbean_spawns");
+	public static final TagKey<Biome> COFFEA = asTag("coffea_spawns");
+	public static final TagKey<Biome> TEA = asTag("tea_spawns");
 
 	public YHBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, YoukaiHomecoming.MODID, helper);
@@ -30,6 +32,8 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 				Biomes.DEEP_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN);
 		tag(SOYBEAN).add(Biomes.JUNGLE, Biomes.DARK_FOREST, Biomes.SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
+		tag(COFFEA).add(Biomes.PLAINS);//TODO
+		tag(TEA).add(Biomes.PLAINS);//TODO
 	}
 
 	public static TagKey<Biome> asTag(String name) {

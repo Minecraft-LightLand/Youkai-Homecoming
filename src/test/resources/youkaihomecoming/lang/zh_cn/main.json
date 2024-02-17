@@ -77,9 +77,6 @@
 	"tobiko_gunkan": "鱼籽军舰",
 	"tuscan_salmon": "蔬菜奶油三文鱼",
 	"bowl_of_cream": "碗装奶油",
-	"cup_of_cream": "杯装奶泡",
-	"cup_of_milk": "杯装奶",
-	"cup_of_water": "杯装水",
 	"affogato": "阿芙佳朵",
 	"americano": "美式",
 	"cappuccino": "卡布奇诺",
@@ -100,7 +97,11 @@
 	"oolong_tea": "乌龙茶",
 	"white_tea": "白茶",
 	"matcha": "抹茶",
-	"matcha_mochi": "抹茶麻薯"
+	"matcha_mochi": "抹茶麻薯",
+	"pork_rice_ball": "猪肉饭团",
+	"steamed_egg_bamboo": "竹筒蒸蛋",
+	"tsukimi_dango": "月见团子",
+	"yashouma_dango": "印花团子"
   },
   "block.youkaihomecoming": {
 	"redbean": "红豆",

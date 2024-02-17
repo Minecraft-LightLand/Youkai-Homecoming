@@ -32,10 +32,14 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 			.add(Registries.CONFIGURED_FEATURE, ctx -> {
 				YHCrops.SOYBEAN.registerConfigs(ctx);
 				YHCrops.REDBEAN.registerConfigs(ctx);
+				YHCrops.COFFEA.registerConfigs(ctx);
+				YHCrops.TEA.registerConfigs(ctx);
 			})
 			.add(Registries.PLACED_FEATURE, ctx -> {
 				YHCrops.SOYBEAN.registerPlacements(ctx);
 				YHCrops.REDBEAN.registerPlacements(ctx);
+				YHCrops.COFFEA.registerPlacements(ctx);
+				YHCrops.TEA.registerPlacements(ctx);
 			})
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers);
 
@@ -49,6 +53,8 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				)));
 		registerTreeBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerTreeBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
+		registerTreeBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
+		registerTreeBiome(ctx, YHCrops.TEA, biomes.getOrThrow(YHBiomeTagsProvider.TEA), features);
 	}
 
 

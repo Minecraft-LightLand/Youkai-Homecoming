@@ -11,10 +11,6 @@ import java.util.List;
 import java.util.Locale;
 
 public enum YHCoffee {
-	CUP_OF_WATER(0, 0, 0),
-	CUP_OF_MILK(0, 0, 0),
-	CUP_OF_CREAM(0, 0, 0),
-
 	ESPRESSO(2, 0, 0),
 	AMERICANO(1, 0, 0),
 	RISTRETTO(3, 0, 0),

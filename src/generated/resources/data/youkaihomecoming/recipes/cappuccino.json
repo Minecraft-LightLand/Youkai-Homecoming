@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaihomecoming:coffee_powder"
+    },
+    {
+      "tag": "forge:milk/milk_bottle"
+    },
+    {
+      "item": "youkaihomecoming:bowl_of_cream"
+    }
+  ],
+  "result": {
+    "item": "youkaihomecoming:cappuccino"
+  }
+}

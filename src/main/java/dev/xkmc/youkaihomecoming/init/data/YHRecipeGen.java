@@ -168,6 +168,17 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.build(pvd, YHFood.MOCHI.item.getId());
 
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TSUKIMI_DANGO.item.get(), 2, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.build(pvd, YHFood.TSUKIMI_DANGO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.YASHOUMA_DANGO.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(Items.PINK_DYE)
+					.addIngredient(Items.GREEN_DYE)
+					.build(pvd, YHFood.YASHOUMA_DANGO.item.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAKURA_MOCHI.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(YHCrops.REDBEAN.getSeed())
@@ -219,10 +230,20 @@ public class YHRecipeGen {
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.build(pvd, YHFood.OYAKI.item.getId());
 
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.PORK_RICE_BALL.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(ForgeTags.RAW_PORK)
+					.build(pvd, YHFood.PORK_RICE_BALL.item.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUTU_CONGEE.item.get(), 1, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(Items.BAMBOO)
 					.build(pvd, YHFood.TUTU_CONGEE.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.STEAMED_EGG_BAMBOO.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(Items.BAMBOO)
+					.build(pvd, YHFood.STEAMED_EGG_BAMBOO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CANDY_APPLE.item.get(), 1, 200, 0.1f, Items.STICK)
 					.addIngredient(Items.APPLE)
@@ -245,6 +266,7 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.RAW_FLESH)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.FLESH_DUMPLINGS.item.getId());
+
 		}
 
 		// food cooking bowl
@@ -413,6 +435,84 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.BLOOD_BOTTLE)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHDish.BLOOD_CURD.block.getId());
+
+		}
+
+		// drinks
+		{
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHTea.BLACK.leaves)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHFood.BLACK_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_TEA.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHTea.GREEN.leaves)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHFood.GREEN_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OOLONG_TEA.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHTea.OOLONG.leaves)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHFood.OOLONG_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WHITE_TEA.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHTea.WHITE.leaves)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHFood.WHITE_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHCoffee.ESPRESSO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.RISTRETTO.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHCoffee.RISTRETTO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.AMERICANO.item.get(), 2, 200, 0.1f)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.build(pvd, YHCoffee.AMERICANO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.LATTE.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.build(pvd, YHCoffee.LATTE.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.MOCHA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(Items.COCOA_BEANS)
+					.build(pvd, YHCoffee.MOCHA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.CAPPUCCINO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(YHItems.CREAM)
+					.build(pvd, YHCoffee.CAPPUCCINO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.MACCHIATO.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.addIngredient(YHItems.CREAM)
+					.build(pvd, YHCoffee.MACCHIATO.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.CON_PANNA.item.get(), 1, 200, 0.1f)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(new PotionIngredient(Potions.WATER))
+					.addIngredient(YHItems.CREAM)
+					.build(pvd, YHCoffee.CON_PANNA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.AFFOGATO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.addIngredient(YHItems.COFFEE_POWDER)
+					.addIngredient(Items.ICE)
+					.addIngredient(YHItems.CREAM)
+					.build(pvd, YHCoffee.AFFOGATO.item.getId());
 
 		}
 	}
