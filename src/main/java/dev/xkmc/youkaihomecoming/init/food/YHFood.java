@@ -28,8 +28,8 @@ public enum YHFood {
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1)
 	),
-	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH),
-	COOKED_FLESH(FoodType.FLESH, 5, 0.8f),
+	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD),
+	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD),
 
 	// simple
 	ROE(FoodType.MEAT, 1, 0.6f),
@@ -116,15 +116,16 @@ public enum YHFood {
 			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
 	)),
 	FLESH_ROLL(FoodType.FLESH, 3, 0.8f,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)
+			, YHTagGen.APPARENT_FLESH_FOOD),
 	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	)),
+	), YHTagGen.APPARENT_FLESH_FOOD),
 	BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	)),
+	), YHTagGen.APPARENT_FLESH_FOOD),
 	;
 
 

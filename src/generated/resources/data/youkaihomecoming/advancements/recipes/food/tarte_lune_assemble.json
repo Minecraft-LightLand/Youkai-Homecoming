@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tarte_lune_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaihomecoming:tarte_lune_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaihomecoming:tarte_lune_assemble"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_tarte_lune_slice",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaihomecoming:tarte_lune_assemble"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -159,5 +159,7 @@
   "block.youkaihomecoming.red_red_velvet_candle_cake": "红色红丝绒蜡烛蛋糕",
   "block.youkaihomecoming.white_red_velvet_candle_cake": "白色红丝绒蜡烛蛋糕",
   "block.youkaihomecoming.yellow_red_velvet_candle_cake": "黄色红丝绒蜡烛蛋糕",
-  "effect.youkaihomecoming.native_god_bless.description": "TODO"
+  "effect.youkaihomecoming.native_god_bless.description": "TODO",
+  "block.youkaihomecoming.tarte_lune": "Tarte Lune",
+  "item.youkaihomecoming.tarte_lune_slice": "Tarte Lune Slice"
 }

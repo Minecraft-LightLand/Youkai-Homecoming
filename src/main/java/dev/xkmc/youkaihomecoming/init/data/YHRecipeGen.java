@@ -136,6 +136,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			cake(pvd, YHItems.RED_VELVET);
+			cake(pvd, YHItems.TARTE_LUNE);
 		}
 
 		// food cooking
@@ -533,7 +534,7 @@ public class YHRecipeGen {
 
 	private static void cake(RegistrateRecipeProvider pvd, CakeEntry cake) {
 		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(cake.block.get()),
-						Ingredient.of(ForgeTags.TOOLS_KNIVES), cake.item.get(), 7)
+						Ingredient.of(ForgeTags.TOOLS_KNIVES), cake.item.get(), cake.isCake ? 7 : 4)
 				.build(pvd, cake.item.getId());
 
 		unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.FOOD, cake.block.get(), 1)::unlockedBy, cake.item.get())

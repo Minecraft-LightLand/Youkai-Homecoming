@@ -2,10 +2,7 @@ package dev.xkmc.youkaihomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.youkaihomecoming.content.effect.CaffeinatedEffect;
-import dev.xkmc.youkaihomecoming.content.effect.EmptyEffect;
-import dev.xkmc.youkaihomecoming.content.effect.YoukaifiedEffect;
-import dev.xkmc.youkaihomecoming.content.effect.YoukaifyingEffect;
+import dev.xkmc.youkaihomecoming.content.effect.*;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -28,9 +25,9 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5727850),
 			"Prevents nausea, and boost attack speed");
 
-	public static final RegistryEntry<EmptyEffect> NATIVE = genEffect("native_god_bless",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5727850),
-			"TODO");//TODO
+	public static final RegistryEntry<NativeGodBlessEffect> NATIVE = genEffect("native_god_bless",
+			() -> new NativeGodBlessEffect(MobEffectCategory.BENEFICIAL, -5727850),
+			"Increase movement speed and reach");
 
 	public static final RegistryEntry<EmptyEffect> UNCONSCIOUS = genEffect("unconscious",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),

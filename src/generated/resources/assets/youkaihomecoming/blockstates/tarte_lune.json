@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "youkaihomecoming:block/tarte_lune"
+    },
+    "bites=1": {
+      "model": "youkaihomecoming:block/tarte_lune_slice1"
+    },
+    "bites=2": {
+      "model": "youkaihomecoming:block/tarte_lune_slice2"
+    },
+    "bites=3": {
+      "model": "youkaihomecoming:block/tarte_lune_slice3"
+    }
+  }
+}

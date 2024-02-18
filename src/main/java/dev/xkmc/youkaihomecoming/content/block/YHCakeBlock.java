@@ -20,7 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
@@ -33,7 +32,7 @@ import java.util.function.Supplier;
 public class YHCakeBlock extends CakeBlock {
 	private final Supplier<Item> food;
 
-	public YHCakeBlock(Supplier<Item> food, BlockBehaviour.Properties properties) {
+	public YHCakeBlock(Supplier<Item> food, Properties properties) {
 		super(properties);
 		this.food = food;
 	}

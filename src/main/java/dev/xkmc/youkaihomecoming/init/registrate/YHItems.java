@@ -52,7 +52,7 @@ public class YHItems {
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
-	public static final CakeEntry RED_VELVET;
+	public static final CakeEntry RED_VELVET, TARTE_LUNE;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
@@ -111,7 +111,8 @@ public class YHItems {
 								.when(InvertedLootItemCondition.invert(getServe(block))))))
 				.register();
 
-		RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f);
+		RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f, true);
+		TARTE_LUNE = new CakeEntry("tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 2, 0.5f, false);
 
 		CLAY_SAUCER = YoukaiHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
 

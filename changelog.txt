@@ -1,14 +1,5 @@
-0.0.5
-- Coffee
-
-0.0.4
-- Cake, bag of beans
-
-0.0.3
-- Flesh, Feast
-
-0.0.2
-- Plates, Sticks, Models
-
-0.0.1
-- Meat, Bowls, Crops, Snacks
+TODO coffee and tea effects improvement
+TODO ways to get flesh
+TODO moka and kettle pot
+TODO ways to obtain hat
+TODO

@@ -3,16 +3,23 @@ package dev.xkmc.youkaihomecoming.content.item;
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaihomecoming.init.data.YHLangData;
 import dev.xkmc.youkaihomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.village.ReputationEventType;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -105,6 +112,13 @@ public class FleshFoodItem extends YHFoodItem {
 				dur = YHModConfig.COMMON.youkaifyingConfusionTime.get();
 				consumer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
 						dur, 0, false, false, true));
+			}
+		}
+		if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD) && consumer instanceof ServerPlayer sp) {
+			AABB aabb = sp.getBoundingBox().inflate(20);
+			for (var e : sp.serverLevel().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(sp))) {
+				sp.serverLevel().broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
+				sp.serverLevel().onReputationEvent(ReputationEventType.VILLAGER_KILLED, sp, e);
 			}
 		}
 	}
