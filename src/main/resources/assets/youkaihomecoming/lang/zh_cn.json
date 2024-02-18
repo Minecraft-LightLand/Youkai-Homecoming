@@ -10,6 +10,7 @@
   "effect.youkaihomecoming.tea_polyphenols": "茶多酚",
   "effect.youkaihomecoming.tea_polyphenols.description": "防止反胃，提高攻击速度",
   "effect.youkaihomecoming.native_god_bless": "土著神的祝福",
+  "effect.youkaihomecoming.native_god_bless.description": "提升触及距离和移动速度",
   "effect.youkaihomecoming.unconscious": "无意识",
   "effect.youkaihomecoming.unconscious.description": "你不会成为攻击目标。进行攻击后效果消失",
   "item.youkaihomecoming.cooked_flesh": "烤%1$s",
@@ -97,7 +98,8 @@
   "item.youkaihomecoming.pork_rice_ball": "猪肉饭团",
   "item.youkaihomecoming.steamed_egg_in_bamboo": "竹筒蒸蛋",
   "item.youkaihomecoming.tsukimi_dango": "月见团子",
-  "item.youkaihomecoming.yashouma_dango": "印花团子",
+  "item.youkaihomecoming.yashouma_dango": "信州瘦马",
+  "item.youkaihomecoming.tarte_lune_slice": "月亮派切片",
   "block.youkaihomecoming.redbean": "红豆",
   "block.youkaihomecoming.soybean": "黄豆",
   "block.youkaihomecoming.wild_redbean": "野生红豆",
@@ -135,6 +137,7 @@
   "block.youkaihomecoming.bamboo_handrail": "竹扶手",
   "block.youkaihomecoming.crimson_handrail": "绯红木扶手",
   "block.youkaihomecoming.warped_handrail": "诡异木扶手",
+  "block.youkaihomecoming.tarte_lune": "月亮派",
   "youkaihomecoming.flesh_human": "怪肉",
   "youkaihomecoming.flesh_youkai": "人肉",
   "youkaihomecoming.taste_half_youkai": "奇怪的味道...",
@@ -158,8 +161,5 @@
   "block.youkaihomecoming.purple_red_velvet_candle_cake": "紫色红丝绒蜡烛蛋糕",
   "block.youkaihomecoming.red_red_velvet_candle_cake": "红色红丝绒蜡烛蛋糕",
   "block.youkaihomecoming.white_red_velvet_candle_cake": "白色红丝绒蜡烛蛋糕",
-  "block.youkaihomecoming.yellow_red_velvet_candle_cake": "黄色红丝绒蜡烛蛋糕",
-  "effect.youkaihomecoming.native_god_bless.description": "TODO",
-  "block.youkaihomecoming.tarte_lune": "Tarte Lune",
-  "item.youkaihomecoming.tarte_lune_slice": "Tarte Lune Slice"
+  "block.youkaihomecoming.yellow_red_velvet_candle_cake": "黄色红丝绒蜡烛蛋糕"
 }

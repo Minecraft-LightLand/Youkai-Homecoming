@@ -7,10 +7,14 @@ import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.sensing.GolemSensor;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
@@ -116,7 +120,17 @@ public class FleshFoodItem extends YHFoodItem {
 		}
 		if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD) && consumer instanceof ServerPlayer sp) {
 			AABB aabb = sp.getBoundingBox().inflate(20);
-			for (var e : sp.serverLevel().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(sp))) {
+			var list = sp.serverLevel().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(sp));
+			if (!list.isEmpty()) {
+				var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sp.serverLevel(), sp.blockPosition(),
+						10, 8, 6, SpawnUtil.Strategy.LEGACY_IRON_GOLEM);
+				if (opt.isPresent()) {
+					list.forEach(GolemSensor::golemDetected);
+					opt.get().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, MobEffectInstance.INFINITE_DURATION, 4));
+					opt.get().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, MobEffectInstance.INFINITE_DURATION, 2));
+				}
+			}
+			for (var e : list) {
 				sp.serverLevel().broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
 				sp.serverLevel().onReputationEvent(ReputationEventType.VILLAGER_KILLED, sp, e);
 			}

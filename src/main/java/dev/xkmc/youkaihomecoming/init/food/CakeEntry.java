@@ -76,18 +76,17 @@ public class CakeEntry {
 	}
 
 	private void genPieModels(DataGenContext<Block, YHPieBlock> ctx, RegistrateBlockstateProvider pvd) {
-		pvd.getVariantBuilder(ctx.get()).forAllStatesExcept(state -> {
+		pvd.horizontalBlock(ctx.get(), state -> {
 			int stage = state.getValue(PieBlock.BITES);
 			String suffix = stage == 0 ? "" : "_slice" + stage;
-			return ConfiguredModel.builder().modelFile(
-					pvd.models().getBuilder(ctx.getName() + suffix)
-							.parent(new ModelFile.UncheckedModelFile("farmersdelight:block/pie" + suffix))
-							.texture("particle", pvd.modLoc("block/" + ctx.getName() + "_top"))
-							.texture("top", pvd.modLoc("block/" + ctx.getName() + "_top"))
-							.texture("inner", pvd.modLoc("block/" + ctx.getName() + "_inner"))
-							.texture("side", pvd.modLoc("block/pie_side"))
-							.texture("bottom", pvd.modLoc("block/pie_bottom"))).build();
-		}, PieBlock.FACING);
+			return pvd.models().getBuilder(ctx.getName() + suffix)
+					.parent(new ModelFile.UncheckedModelFile("farmersdelight:block/pie" + suffix))
+					.texture("particle", pvd.modLoc("block/" + ctx.getName() + "_top"))
+					.texture("top", pvd.modLoc("block/" + ctx.getName() + "_top"))
+					.texture("inner", pvd.modLoc("block/" + ctx.getName() + "_inner"))
+					.texture("side", pvd.modLoc("block/pie_side"))
+					.texture("bottom", pvd.modLoc("block/pie_bottom"));
+		});
 	}
 
 	private void genCandleModels(DataGenContext<Block, YHCandleCakeBlock> ctx, RegistrateBlockstateProvider pvd, String candle) {
