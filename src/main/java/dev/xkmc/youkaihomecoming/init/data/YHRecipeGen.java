@@ -536,10 +536,16 @@ public class YHRecipeGen {
 		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(cake.block.get()),
 						Ingredient.of(ForgeTags.TOOLS_KNIVES), cake.item.get(), cake.isCake ? 7 : 4)
 				.build(pvd, cake.item.getId());
-
-		unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.FOOD, cake.block.get(), 1)::unlockedBy, cake.item.get())
-				.requires(cake.item.get(), 7)
-				.save(pvd, cake.block.getId().withSuffix("_assemble"));
+		if (cake.isCake) {
+			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.FOOD, cake.block.get(), 1)::unlockedBy, cake.item.get())
+					.requires(cake.item.get(), 7)
+					.save(pvd, cake.block.getId().withSuffix("_assemble"));
+		} else {
+			unlock(pvd, new ShapedRecipeBuilder(RecipeCategory.FOOD, cake.block.get(), 1)::unlockedBy, cake.item.get())
+					.pattern("AA").pattern("AA")
+					.define('A', cake.item.get())
+					.save(pvd, cake.block.getId().withSuffix("_assemble"));
+		}
 	}
 
 	private static void foodCut(RegistrateRecipeProvider pvd,

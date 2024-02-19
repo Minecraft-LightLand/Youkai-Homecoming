@@ -1,30 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "ingredients": [
-    {
-      "item": "youkaihomecoming:tarte_lune_slice"
-    },
-    {
-      "item": "youkaihomecoming:tarte_lune_slice"
-    },
-    {
-      "item": "youkaihomecoming:tarte_lune_slice"
-    },
-    {
-      "item": "youkaihomecoming:tarte_lune_slice"
-    },
-    {
-      "item": "youkaihomecoming:tarte_lune_slice"
-    },
-    {
-      "item": "youkaihomecoming:tarte_lune_slice"
-    },
-    {
+  "key": {
+    "A": {
       "item": "youkaihomecoming:tarte_lune_slice"
     }
+  },
+  "pattern": [
+    "AA",
+    "AA"
   ],
   "result": {
     "item": "youkaihomecoming:tarte_lune"
-  }
+  },
+  "show_notification": true
 }

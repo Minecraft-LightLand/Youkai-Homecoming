@@ -125,9 +125,10 @@ public class FleshFoodItem extends YHFoodItem {
 				var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sp.serverLevel(), sp.blockPosition(),
 						10, 8, 6, SpawnUtil.Strategy.LEGACY_IRON_GOLEM);
 				if (opt.isPresent()) {
+					int time = 3 * 60 * 20;
 					list.forEach(GolemSensor::golemDetected);
-					opt.get().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, MobEffectInstance.INFINITE_DURATION, 4));
-					opt.get().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, MobEffectInstance.INFINITE_DURATION, 2));
+					opt.get().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, time, 4));
+					opt.get().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, time, 2));
 				}
 			}
 			for (var e : list) {

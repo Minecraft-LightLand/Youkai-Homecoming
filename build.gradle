@@ -131,9 +131,9 @@ dependencies {
         jarJar.ranged(it, "[1.2.1,)")
     }
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2library:l2library:2.4.22-slim")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2library:l2library:2.4.23-slim")) {
         transitive = false
-        jarJar.ranged(it, "[2.4.22,)")
+        jarJar.ranged(it, "[2.4.23,)")
     }
 
 
