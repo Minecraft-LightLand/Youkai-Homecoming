@@ -95,7 +95,7 @@ public enum YHCrops {
 						PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
 										BlockStateProvider.simple(getWildPlant())),
 								BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.noFluid(),
-										BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.SAND)))));
+										BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.GRASS_BLOCK)))));
 	}
 
 	public void registerPlacements(BootstapContext<PlacedFeature> ctx) {

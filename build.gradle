@@ -154,7 +154,6 @@ dependencies {
     implementation fg.deobf("curse.maven:botany-trees-411357:4719845")
     implementation fg.deobf("curse.maven:botany-pots-353928:4793076")
     implementation fg.deobf("curse.maven:serene-seasons-291874:4761603")
-    runtimeOnly fg.deobf("zip.local.youkaishomecoming:youkaishomecoming:1.20.1-1.2.5")
 
     //runtimeOnly fg.deobf("curse.maven:rubidium-574856:4573226")
 
