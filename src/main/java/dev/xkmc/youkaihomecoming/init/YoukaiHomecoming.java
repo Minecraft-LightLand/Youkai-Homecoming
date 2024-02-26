@@ -7,6 +7,7 @@ import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaihomecoming.init.data.*;
 import dev.xkmc.youkaihomecoming.init.food.YHCrops;
 import dev.xkmc.youkaihomecoming.init.loot.YHGLMProvider;
+import dev.xkmc.youkaihomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEntities;
@@ -47,6 +48,7 @@ public class YoukaiHomecoming {
 		REGISTRATE.addDataGenerator(YHTagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
 	}
 
 	@SubscribeEvent

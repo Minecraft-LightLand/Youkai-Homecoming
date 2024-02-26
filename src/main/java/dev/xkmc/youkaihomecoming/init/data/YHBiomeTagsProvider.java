@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
@@ -20,6 +21,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> REDBEAN = asTag("redbean_spawns");
 	public static final TagKey<Biome> COFFEA = asTag("coffea_spawns");
 	public static final TagKey<Biome> TEA = asTag("tea_spawns");
+	public static final TagKey<Biome> HAS_NEST = asTag("has_structure/youkai_nest");
 
 	public YHBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, YoukaiHomecoming.MODID, helper);
@@ -34,6 +36,8 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).add(Biomes.PLAINS);//TODO
 		tag(TEA).add(Biomes.PLAINS);//TODO
+
+		tag(HAS_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
 	}
 
 	public static TagKey<Biome> asTag(String name) {

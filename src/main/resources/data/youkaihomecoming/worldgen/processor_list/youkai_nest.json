@@ -1,0 +1,43 @@
+[
+  {
+	"processor_type": "minecraft:rule",
+	"rules": [
+	  {
+		"input_predicate": {
+		  "predicate_type": "minecraft:block_match",
+		  "block": "minecraft:chest"
+		},
+		"location_predicate": {
+		  "predicate_type": "minecraft:always_true"
+		},
+		"output_state": {
+		  "Name": "minecraft:chest"
+		},
+		"block_entity_modifier": {
+		  "type": "minecraft:append_loot",
+		  "loot_table": "youkaihomecoming:chests/youkai_nest/chest"
+		}
+	  },
+	  {
+		"input_predicate": {
+		  "predicate_type": "minecraft:block_match",
+		  "block": "minecraft:barrel"
+		},
+		"location_predicate": {
+		  "predicate_type": "minecraft:always_true"
+		},
+		"output_state": {
+		  "Name": "minecraft:barrel"
+		},
+		"block_entity_modifier": {
+		  "type": "minecraft:append_loot",
+		  "loot_table": "youkaihomecoming:chests/youkai_nest/barrel"
+		}
+	  }
+	]
+  },
+  {
+	"processor_type": "minecraft:protected_blocks",
+	"value": "#minecraft:features_cannot_replace"
+  }
+]

@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-19T08:56:40.035985	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-02-26T13:52:08.679894	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 b15382dc527e8a0219a5d1d7ca1ddf0c7e4fe98d assets/youkaihomecoming/blockstates/acacia_handrail.json
 6da01f53a7a067e8ecdc17b5bb5550ece28fc5be assets/youkaihomecoming/blockstates/bamboo_handrail.json
 48b4f40388adc7b1a25a83a668ee6e42b84d4a7b assets/youkaihomecoming/blockstates/bamboo_mizuyokan.json
@@ -662,6 +662,8 @@ e66d3a3881d69bc02bcab5bb1c231cf0580653b9 data/youkaihomecoming/loot_tables/block
 58ddf003a52f61757dfa5fef314dd1c28d723dfd data/youkaihomecoming/loot_tables/blocks/wild_soybean.json
 073e101fa864731886299c0e5901fe28e9d70e22 data/youkaihomecoming/loot_tables/blocks/wild_tea.json
 69bd6f0e335702a012ca9734644571e599fe11f8 data/youkaihomecoming/loot_tables/blocks/yellow_red_velvet_candle_cake.json
+5d0050b57b5a853a33118f354733d69efc799972 data/youkaihomecoming/loot_tables/chests/youkai_nest/barrel.json
+d10509d41432acb1b78f6c9e556c98b7086c6dff data/youkaihomecoming/loot_tables/chests/youkai_nest/chest.json
 ac934069d4c1b1ebe6bf67a43c8acf399ad1b5cc data/youkaihomecoming/loot_tables/entities/lamprey.json
 9e6406083f42fa155d18ebe8788bea681f1f617c data/youkaihomecoming/recipes/acacia_handrail_from_acacia_planks_stonecutting.json
 a4f43e3c2c0440457f93c2ee82f96558ec849866 data/youkaihomecoming/recipes/affogato.json
