@@ -2,17 +2,21 @@ package dev.xkmc.youkaihomecoming.events;
 
 import dev.xkmc.youkaihomecoming.content.block.LeftClickBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 @Mod.EventBusSubscriber(modid = YoukaiHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeneralEventHandlers {
@@ -43,6 +47,23 @@ public class GeneralEventHandlers {
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
 				le.removeEffect(YHEffects.UNCONSCIOUS.get());
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void collectBlood(LivingDeathEvent event) {
+		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
+		if (event.getSource().getDirectEntity() instanceof LivingEntity le) {
+			if (!le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES)) return;
+			if (!le.getOffhandItem().is(Items.GLASS_BOTTLE)) return;
+			if (le.hasEffect(YHEffects.YOUKAIFIED.get()) || le.hasEffect(YHEffects.YOUKAIFYING.get())) {
+				le.getOffhandItem().shrink(1);
+				if (le instanceof Player player) {
+					player.getInventory().add(YHItems.BLOOD_BOTTLE.asStack());
+				} else {
+					le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack());
+				}
 			}
 		}
 	}
