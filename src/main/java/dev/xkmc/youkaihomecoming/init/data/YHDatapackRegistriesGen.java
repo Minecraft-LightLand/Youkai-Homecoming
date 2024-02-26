@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -61,14 +62,10 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers)
 
 			.add(Registries.PROCESSOR_LIST, ctx -> {
+				var noRep = new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE);
 				ctx.register(ResourceKey.create(Registries.PROCESSOR_LIST, NEST), new StructureProcessorList(List.of(
-						new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-						new RuleProcessor(List.of(
-								new ProcessorRule(new BlockMatchTest(Blocks.CHEST), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
-										Blocks.CHEST.defaultBlockState(), new AppendLoot(YHLootGen.NEST_CHEST)),
-								new ProcessorRule(new BlockMatchTest(Blocks.BARREL), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
-										Blocks.BARREL.defaultBlockState(), new AppendLoot(YHLootGen.NEST_BARREL))
-						))
+						noRep, new RuleProcessor(List.of(injectData(Blocks.CHEST, YHLootGen.NEST_CHEST),
+								injectData(Blocks.BARREL, YHLootGen.NEST_BARREL)))
 				)));
 			})
 			.add(Registries.TEMPLATE_POOL, ctx -> {
@@ -126,6 +123,11 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	@NotNull
 	public String getName() {
 		return "Youkai's Homecoming Data";
+	}
+
+	private static ProcessorRule injectData(Block block, ResourceLocation table) {
+		return new ProcessorRule(new BlockMatchTest(block), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
+				block.defaultBlockState(), new AppendLoot(table));
 	}
 
 	private static class SinglePiece extends SinglePoolElement {

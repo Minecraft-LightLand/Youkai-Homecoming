@@ -9,6 +9,23 @@
           "functions": [
             {
               "add": false,
+              "count": 16.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:bone"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 1.0,
               "function": "minecraft:set_count"
             }
@@ -25,17 +42,6 @@
             }
           ],
           "name": "minecraft:rotten_flesh"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 8.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:bone"
         },
         {
           "type": "minecraft:item",
@@ -184,7 +190,7 @@
           "weight": 50
         }
       ],
-      "rolls": 5.0
+      "rolls": 3.0
     },
     {
       "bonus_rolls": 0.0,
@@ -238,7 +244,7 @@
           "weight": 20
         }
       ],
-      "rolls": 2.0
+      "rolls": 1.0
     }
   ],
   "random_sequence": "youkaihomecoming:chests/youkai_nest/barrel"

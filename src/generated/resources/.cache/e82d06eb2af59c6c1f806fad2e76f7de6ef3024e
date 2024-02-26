@@ -1,5 +1,6 @@
-// 1.20.1	2024-02-16T19:28:27.052798	Tags for minecraft:worldgen/biome mod id youkaihomecoming
+// 1.20.1	2024-02-26T15:04:16.329504	Tags for minecraft:worldgen/biome mod id youkaihomecoming
 9082ad4c47ae19598c42bfebbd6774bc24f1c848 data/youkaihomecoming/tags/worldgen/biome/coffea_spawns.json
+225e21410327ce0281c1cf01daebadaa6b9c56ce data/youkaihomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
 6bb189b4d089245f10ed57568f46257be67f98b2 data/youkaihomecoming/tags/worldgen/biome/lamprey_spawns.json
 835c35de6c87a4e2d9653dceb5578a32f082873f data/youkaihomecoming/tags/worldgen/biome/redbean_spawns.json
 e32aca61ae28f8eac0810d5b86f0fee1aec56d94 data/youkaihomecoming/tags/worldgen/biome/soybean_spawns.json

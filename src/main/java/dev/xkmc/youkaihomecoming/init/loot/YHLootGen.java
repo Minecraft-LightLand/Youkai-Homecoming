@@ -16,15 +16,16 @@ public class YHLootGen {
 	public static final ResourceLocation NEST_BARREL = new ResourceLocation(YoukaiHomecoming.MODID, "chests/youkai_nest/barrel");
 
 	public static void genLoot(RegistrateLootTableProvider pvd) {
+		var bone = LootTableTemplate.getPool(1, 0)
+				.add(LootTableTemplate.getItem(Items.BONE, 16));
 		var misc = LootTableTemplate.getPool(5, 1)
 				.add(LootTableTemplate.getItem(Items.BOWL, 1))
 				.add(LootTableTemplate.getItem(Items.ROTTEN_FLESH, 8))
-				.add(LootTableTemplate.getItem(Items.BONE, 8))
 				.add(LootTableTemplate.getItem(Items.BAMBOO, 8))
 				.add(LootTableTemplate.getItem(Items.POTATO, 8))
 				.add(LootTableTemplate.getItem(Items.CARROT, 8))
 				.add(LootTableTemplate.getItem(Items.COAL, 8));
-		var dango = LootTableTemplate.getPool(5, 1)
+		var dango = LootTableTemplate.getPool(3, 1)
 				.add(LootTableTemplate.getItem(YHFood.MOCHI.item.get(), 8).setWeight(100))
 				.add(LootTableTemplate.getItem(YHFood.SAKURA_MOCHI.item.get(), 4).setWeight(100))
 				.add(LootTableTemplate.getItem(YHFood.MATCHA_MOCHI.item.get(), 4).setWeight(100))
@@ -33,26 +34,26 @@ public class YHLootGen {
 				.add(LootTableTemplate.getItem(YHFood.ASSORTED_DANGO.item.get(), 1).setWeight(50))
 				.add(LootTableTemplate.getItem(YHFood.MITARASHI_DANGO.item.get(), 1).setWeight(50))
 				.add(LootTableTemplate.getItem(YHFood.YASHOUMA_DANGO.item.get(), 1).setWeight(50));
-		var rice = LootTableTemplate.getPool(5, 1)
-				.add(LootTableTemplate.getItem(YHFood.ONIGILI.item.get(), 4))
-				.add(LootTableTemplate.getItem(YHFood.SENBEI.item.get(), 4))
-				.add(LootTableTemplate.getItem(YHFood.SEKIBANKIYAKI.item.get(), 4))
-				.add(LootTableTemplate.getItem(YHFood.YAKUMO_INARI.item.get(), 4))
-				.add(LootTableTemplate.getItem(YHFood.BUN.item.get(), 2))
-				.add(LootTableTemplate.getItem(YHFood.OYAKI.item.get(), 4))
-				.add(LootTableTemplate.getItem(YHFood.PORK_RICE_BALL.item.get(), 2));
-		var flesh = LootTableTemplate.getPool(2, 1)
+		var rice = LootTableTemplate.getPool(2, 1)
+				.add(LootTableTemplate.getItem(YHFood.ONIGILI.item.get(), 2))
+				.add(LootTableTemplate.getItem(YHFood.SENBEI.item.get(), 2))
+				.add(LootTableTemplate.getItem(YHFood.SEKIBANKIYAKI.item.get(), 2))
+				.add(LootTableTemplate.getItem(YHFood.YAKUMO_INARI.item.get(), 2))
+				.add(LootTableTemplate.getItem(YHFood.BUN.item.get(), 1))
+				.add(LootTableTemplate.getItem(YHFood.OYAKI.item.get(), 2))
+				.add(LootTableTemplate.getItem(YHFood.PORK_RICE_BALL.item.get(), 1));
+		var flesh = LootTableTemplate.getPool(1, 1)
 				.add(LootTableTemplate.getItem(YHFood.FLESH.item.get(), 4).setWeight(100))
 				.add(LootTableTemplate.getItem(YHFood.COOKED_FLESH.item.get(), 2).setWeight(50))
 				.add(LootTableTemplate.getItem(YHFood.FLESH_ROLL.item.get(), 2).setWeight(20))
 				.add(LootTableTemplate.getItem(YHFood.FLESH_STEW.item.get(), 1).setWeight(20));
 
 		pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(NEST_CHEST, LootTable.lootTable()
-				.withPool(misc).withPool(rice).withPool(flesh)
+				.withPool(bone).withPool(misc).withPool(rice).withPool(flesh)
 		));
 
 		pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(NEST_BARREL, LootTable.lootTable()
-				.withPool(misc).withPool(dango).withPool(flesh)
+				.withPool(bone).withPool(misc).withPool(dango).withPool(flesh)
 		));
 
 	}
