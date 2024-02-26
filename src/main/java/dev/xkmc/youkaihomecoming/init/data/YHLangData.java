@@ -17,6 +17,11 @@ public enum YHLangData {
 	FLESH_TASTE_HUMAN("taste_human", "Unappealing smell...", 0, ChatFormatting.GRAY),
 	FLESH_TASTE_HALF_YOUKAI("taste_half_youkai", "Strange flavor...", 0, ChatFormatting.GRAY),
 	FLESH_TASTE_YOUKAI("taste_youkai", "Delicious!", 0, ChatFormatting.GRAY),
+	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
+	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
+	USAGE("usage", "Effect: ", 0, ChatFormatting.GRAY),
+	OBTAIN_FLESH("obtain_flesh", "Kill human mobs with knife while in %s or %s effect", 2, ChatFormatting.GRAY),
+	OBTAIN_BLOOD("obtain_blood", "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect", 2, ChatFormatting.GRAY),
 	;
 
 	private final String key, def;

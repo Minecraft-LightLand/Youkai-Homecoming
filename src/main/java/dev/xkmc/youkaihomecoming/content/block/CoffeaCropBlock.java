@@ -101,7 +101,7 @@ public class CoffeaCropBlock extends DoubleCropBlock {
 
 	@Override
 	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-		return super.mayPlaceOn(pState, pLevel, pPos) || pState.is(YHTagGen.FARMLAND_COFFEA);
+		return pState.is(YHTagGen.FARMLAND_COFFEA);
 	}
 
 	protected ItemLike getBaseSeedId() {

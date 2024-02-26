@@ -1,0 +1,38 @@
+{
+  "parent": "youkaihomecoming:main/first_time",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaihomecoming:blood_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaihomecoming.advancements.main.bloody.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaihomecoming:blood_bottle"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaihomecoming.advancements.main.bloody.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

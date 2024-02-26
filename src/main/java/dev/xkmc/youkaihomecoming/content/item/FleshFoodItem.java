@@ -4,6 +4,7 @@ import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaihomecoming.init.data.YHLangData;
 import dev.xkmc.youkaihomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
+import dev.xkmc.youkaihomecoming.init.food.YHFood;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -65,12 +66,26 @@ public class FleshFoodItem extends YHFoodItem {
 		super.appendHoverText(stack, level, list, flag);
 		Player player = Proxy.getPlayer();
 		if (player == null) return;
+		boolean obtain = false;
 		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			list.add(YHLangData.FLESH_TASTE_YOUKAI.get());
+			obtain = true;
 		} else if (player.hasEffect(YHEffects.YOUKAIFYING.get())) {
 			list.add(YHLangData.FLESH_TASTE_HALF_YOUKAI.get());
+			obtain = true;
 		} else {
 			list.add(YHLangData.FLESH_TASTE_HUMAN.get());
+		}
+		if (this == YHFood.FLESH.item.get()) {
+			Component obt;
+			if (obtain) {
+				var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
+				var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
+				obt = YHLangData.OBTAIN_FLESH.get(fying, fied);
+			} else {
+				obt = YHLangData.UNKNOWN.get();
+			}
+			list.add(YHLangData.OBTAIN.get().append(obt));
 		}
 	}
 

@@ -1,0 +1,74 @@
+{
+  "block.youkaihomecoming": {
+	"redbean": "红豆",
+	"soybean": "黄豆",
+	"wild_redbean": "野生红豆",
+	"wild_soybean": "野生黄豆",
+	"saucer": "碟子",
+	"pastitsio": "地中海千层面",
+	"stinky_tofu": "臭豆腐",
+	"sauce_grilled_fish": "酱烧鱼",
+	"bamboo_mizuyokan": "竹筒水羊羹",
+	"blood_curd": "毛血旺",
+	"dried_fish": "小鱼干",
+	"imitation_bear_paw": "赛熊掌",
+	"tofu_burger": "豆腐汉堡",
+	"flesh_feast": "%1$s宴",
+	"red_velvet_cake": "红丝绒蛋糕",
+	"redbean_bag": "袋装红豆",
+	"soybean_bag": "袋装黄豆",
+	"coffea": "咖啡树",
+	"coffee_bean_bag": "袋装咖啡豆",
+	"wild_coffea": "野生咖啡树",
+	"black_tea_bag": "袋装红茶",
+	"green_tea_bag": "袋装绿茶",
+	"oolong_tea_bag": "袋装乌龙茶",
+	"white_tea_bag": "袋装白茶",
+	"tea": "茶树",
+	"wild_tea": "野生茶树",
+	"oak_handrail": "橡木扶手",
+	"spruce_handrail": "云杉扶手",
+	"birch_handrail": "白桦扶手",
+	"jungle_handrail": "丛林扶手",
+	"acacia_handrail": "金合欢扶手",
+	"dark_oak_handrail": "深色橡木扶手",
+	"cherry_handrail": "樱花扶手",
+	"mangrove_handrail": "红树扶手",
+	"bamboo_handrail": "竹扶手",
+	"crimson_handrail": "绯红木扶手",
+	"warped_handrail": "诡异木扶手",
+	"tarte_lune": "月亮派"
+  },
+  "-cartesian": {
+	"candles": {
+	  "path": "block.youkaihomecoming",
+	  "list": [
+		{
+		  "": "",
+		  "black": "黑色",
+		  "blue": "蓝色",
+		  "brown": "棕色",
+		  "cyan": "青色",
+		  "gray": "灰色",
+		  "green": "绿色",
+		  "light_blue": "淡蓝色",
+		  "light_gray": "淡灰色",
+		  "lime": "黄绿色",
+		  "magenta": "品红色",
+		  "orange": "橙色",
+		  "pink": "粉红色",
+		  "purple": "紫色",
+		  "red": "红色",
+		  "white": "白色",
+		  "yellow": "黄色"
+		},
+		{
+		  "red_velvet": "红丝绒"
+		},
+		{
+		  "candle_cake": "蜡烛蛋糕"
+		}
+	  ]
+	}
+  }
+}

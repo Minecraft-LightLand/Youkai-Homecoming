@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.youkaihomecoming.content.block.EmptySaucerBlock;
 import dev.xkmc.youkaihomecoming.content.block.FleshFeastBlock;
+import dev.xkmc.youkaihomecoming.content.item.BloodBottleItem;
 import dev.xkmc.youkaihomecoming.content.item.FleshBlockItem;
 import dev.xkmc.youkaihomecoming.content.item.FleshSimpleItem;
 import dev.xkmc.youkaihomecoming.content.item.SuwakoHatItem;
@@ -48,7 +49,8 @@ public class YHItems {
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
-	public static final ItemEntry<Item> BLOOD_BOTTLE, SOY_SAUCE_BOTTLE, CLAY_SAUCER,
+	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
+	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
@@ -81,7 +83,7 @@ public class YHItems {
 				.register();
 
 		BLOOD_BOTTLE = YoukaiHomecoming.REGISTRATE
-				.item("blood_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))
+				.item("blood_bottle", p -> new BloodBottleItem(p.craftRemainder(Items.GLASS_BOTTLE)))
 				.register();
 
 		CREAM = YoukaiHomecoming.REGISTRATE
@@ -107,6 +109,9 @@ public class YHItems {
 								.when(ExplosionCondition.survivesExplosion())
 								.when(getServe(block))))
 						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BOWL))
+								.when(ExplosionCondition.survivesExplosion())
+								.when(InvertedLootItemCondition.invert(getServe(block))))
+						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.SKELETON_SKULL))
 								.when(ExplosionCondition.survivesExplosion())
 								.when(InvertedLootItemCondition.invert(getServe(block))))))
 				.register();

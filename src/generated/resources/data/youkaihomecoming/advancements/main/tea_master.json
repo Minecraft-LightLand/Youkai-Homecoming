@@ -1,0 +1,75 @@
+{
+  "parent": "youkaihomecoming:main/tea",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaihomecoming:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "1": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaihomecoming:oolong_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "2": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaihomecoming:green_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "3": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaihomecoming:black_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaihomecoming.advancements.main.tea_master.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "youkaihomecoming:oolong_tea"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaihomecoming.advancements.main.tea_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ],
+    [
+      "2"
+    ],
+    [
+      "3"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

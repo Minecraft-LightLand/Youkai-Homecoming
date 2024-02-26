@@ -51,7 +51,7 @@ public class YHCropBlock extends CropBlock {
 
 	@Override
 	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-		return super.mayPlaceOn(pState, pLevel, pPos) || seed.get() == YHCrops.REDBEAN.getSeed() && pState.is(YHTagGen.FARMLAND_REDBEAN);
+		return seed.get() == YHCrops.REDBEAN.getSeed() ? pState.is(YHTagGen.FARMLAND_REDBEAN) : super.mayPlaceOn(pState, pLevel, pPos);
 	}
 
 	protected ItemLike getBaseSeedId() {

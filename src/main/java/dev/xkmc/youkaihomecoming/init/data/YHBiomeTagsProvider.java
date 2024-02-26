@@ -34,9 +34,8 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 				Biomes.DEEP_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN);
 		tag(SOYBEAN).add(Biomes.JUNGLE, Biomes.DARK_FOREST, Biomes.SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
-		tag(COFFEA).add(Biomes.PLAINS);//TODO
-		tag(TEA).add(Biomes.PLAINS);//TODO
-
+		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
+		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE);
 		tag(HAS_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
 	}
 

@@ -1,0 +1,38 @@
+{
+  "parent": "youkaihomecoming:main/sweet",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaihomecoming:sweet_ormosia_mochi_mixed_boiled"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaihomecoming.advancements.main.hmm.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaihomecoming:sweet_ormosia_mochi_mixed_boiled"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaihomecoming.advancements.main.hmm.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

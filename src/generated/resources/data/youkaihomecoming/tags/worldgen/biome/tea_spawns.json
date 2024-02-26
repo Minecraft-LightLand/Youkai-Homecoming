@@ -1,5 +1,8 @@
 {
   "values": [
-    "minecraft:plains"
+    "minecraft:flower_forest",
+    "minecraft:meadow",
+    "minecraft:cherry_grove",
+    "minecraft:grove"
   ]
 }

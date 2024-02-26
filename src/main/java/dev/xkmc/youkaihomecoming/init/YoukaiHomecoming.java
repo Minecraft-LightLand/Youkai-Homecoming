@@ -50,6 +50,7 @@ public class YoukaiHomecoming {
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
+		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, YHAdvGen::genAdv);
 	}
 
 	@SubscribeEvent
