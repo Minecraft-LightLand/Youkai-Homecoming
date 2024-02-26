@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -82,7 +83,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				var pool = ctx.lookup(Registries.TEMPLATE_POOL).getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, NEST));
 				ctx.register(ResourceKey.create(Registries.STRUCTURE, NEST), new JigsawStructure(
 						new Structure.StructureSettings(biome, Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN),
-						pool, 1, ConstantHeight.ZERO, false, Heightmap.Types.WORLD_SURFACE_WG)
+						pool, 1, ConstantHeight.of(VerticalAnchor.absolute(-1)), false, Heightmap.Types.WORLD_SURFACE_WG)
 				);
 			})
 			.add(Registries.STRUCTURE_SET, ctx -> {

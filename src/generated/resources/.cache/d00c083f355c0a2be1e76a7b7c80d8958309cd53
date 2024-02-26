@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-26T15:04:16.32856	Youkai's Homecoming Data
+// 1.20.1	2024-02-26T16:52:42.208902	Youkai's Homecoming Data
 a3c718e08dc61c6d8506a5f56e1836b33230e2ae data/youkaihomecoming/forge/biome_modifier/coffea.json
 e767d81a472011c6266048e7d37de1c5d70bd983 data/youkaihomecoming/forge/biome_modifier/lamprey.json
 f3d6ce35dc2c4b5a761f89a0bfdce43b49b24a35 data/youkaihomecoming/forge/biome_modifier/redbean.json
@@ -13,5 +13,5 @@ e4a8774ff25975152e6916f3866d4723aacbd8bf data/youkaihomecoming/worldgen/configur
 728f986db611b5be7f2e69616e0affb0e2694905 data/youkaihomecoming/worldgen/placed_feature/soybean.json
 fee9e03611ed2fc8407b2f082fc90da9d6c1fcd3 data/youkaihomecoming/worldgen/placed_feature/tea.json
 d9a616d9ba2ec273ea9798c2fe16a2da40c6cd27 data/youkaihomecoming/worldgen/processor_list/youkai_nest.json
-1e181a4333d7dfd4eff832b9d7ca9a95117ba413 data/youkaihomecoming/worldgen/structure/youkai_nest.json
+14c59ebd8f835e996056c7180e6b629fc8bf6c91 data/youkaihomecoming/worldgen/structure/youkai_nest.json
 c8301294c92472e5cad24dcb133649be87d0759e data/youkaihomecoming/worldgen/template_pool/youkai_nest.json

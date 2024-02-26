@@ -1,3 +1,5 @@
-// 1.20.1	2024-02-26T15:04:16.329867	Global Loot Modifiers : youkaihomecoming
-5d72f3bfaac6f20c975c11fa5f0936b1024fa1a4 data/forge/loot_modifiers/global_loot_modifiers.json
+// 1.20.1	2024-02-26T16:52:42.209539	Global Loot Modifiers : youkaihomecoming
+fa1e2226a416e30d08a9402714e73a603500efaf data/forge/loot_modifiers/global_loot_modifiers.json
 57611683c349b6661b8649668550220d2aaaf238 data/youkaihomecoming/loot_modifiers/fishing_lamprey.json
+f2457f89499ee0aaf00b155af643f57047074665 data/youkaihomecoming/loot_modifiers/scavenging_flesh.json
+1fda50b8a104220a0514f769ceaa69fb6c5cb989 data/youkaihomecoming/loot_modifiers/scavenging_flesh_cooked.json

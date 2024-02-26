@@ -10,9 +10,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -37,12 +39,18 @@ public class YHTagGen {
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
+	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
 			new ResourceLocation(Jeed.MOD_ID, "hidden"));
 
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
 		pvd.addTag(HIDDEN).add(YHEffects.YOUKAIFYING.get());
+	}
+
+	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
+		pvd.addTag(FLESH_SOURCE).add(EntityType.EVOKER, EntityType.PILLAGER, EntityType.VINDICATOR, EntityType.ILLUSIONER, EntityType.WITCH,
+				EntityType.VILLAGER, EntityType.WANDERING_TRADER, EntityType.PLAYER);
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
@@ -58,6 +66,10 @@ public class YHTagGen {
 
 	public static TagKey<Block> block(String id) {
 		return BlockTags.create(new ResourceLocation(YoukaiHomecoming.MODID, id));
+	}
+
+	public static TagKey<EntityType<?>> entity(String id) {
+		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(YoukaiHomecoming.MODID, id));
 	}
 
 }

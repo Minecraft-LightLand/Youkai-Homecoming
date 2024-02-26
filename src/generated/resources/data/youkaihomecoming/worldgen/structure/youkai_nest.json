@@ -6,7 +6,7 @@
   "size": 1,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": 0
+    "absolute": -1
   },
   "start_pool": "youkaihomecoming:youkai_nest",
   "step": "surface_structures",

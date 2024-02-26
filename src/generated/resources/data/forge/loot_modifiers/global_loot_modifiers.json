@@ -1,6 +1,8 @@
 {
   "entries": [
-    "youkaihomecoming:fishing_lamprey"
+    "youkaihomecoming:scavenging_flesh_cooked",
+    "youkaihomecoming:fishing_lamprey",
+    "youkaihomecoming:scavenging_flesh"
   ],
   "replace": false
 }
