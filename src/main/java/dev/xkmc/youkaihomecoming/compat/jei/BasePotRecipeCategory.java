@@ -72,18 +72,18 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 			for (int column = 0; column < 2; ++column) {
 				int inputIndex = row * 2 + column;
 				if (inputIndex < recipeIngredients.size()) {
-					builder.addSlot(RecipeIngredientRole.INPUT, column * borderSlotSize + 1, row * borderSlotSize + 1)
+					builder.addSlot(RecipeIngredientRole.INPUT, column * borderSlotSize + 6, row * borderSlotSize + 2)
 							.addItemStacks(Arrays.asList(recipeIngredients.get(inputIndex).getItems()));
 				}
 			}
 		}
 
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 95, 10).addItemStack(resultStack);
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 92, 11).addItemStack(resultStack);
 		if (!containerStack.isEmpty()) {
-			builder.addSlot(RecipeIngredientRole.CATALYST, 63, 39).addItemStack(containerStack);
+			builder.addSlot(RecipeIngredientRole.CATALYST, 60, 38).addItemStack(containerStack);
 		}
 
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 95, 39).addItemStack(resultStack);
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 92, 38).addItemStack(resultStack);
 	}
 
 	public void draw(T recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {

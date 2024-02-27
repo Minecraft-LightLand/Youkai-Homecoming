@@ -42,8 +42,8 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 		this.canInteractWithCallable = ContainerLevelAccess.create(be.getLevel(), be.getBlockPos());
 		int startX = 8;
 		int startY = 18;
-		int inputStartX = 30;
-		int inputStartY = 17;
+		int inputStartX = 35;
+		int inputStartY = 18;
 		int borderSlotSize = 18;
 
 		int startPlayerInvY;
@@ -56,13 +56,13 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 			}
 		}
 
-		this.addSlot(new CookingPotMealSlot(this.inventory, BasePotBlockEntity.MEAL_DISPLAY_SLOT, 124, 26));
-		this.addSlot(new SlotItemHandler(this.inventory, BasePotBlockEntity.CONTAINER_SLOT, 92, 55) {
+		this.addSlot(new CookingPotMealSlot(this.inventory, BasePotBlockEntity.MEAL_DISPLAY_SLOT, 121, 27));
+		this.addSlot(new SlotItemHandler(this.inventory, BasePotBlockEntity.CONTAINER_SLOT, 89, 54) {
 			public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
 				return Pair.of(InventoryMenu.BLOCK_ATLAS, vectorwing.farmersdelight.common.block.entity.container.CookingPotMenu.EMPTY_CONTAINER_SLOT_BOWL);
 			}
 		});
-		this.addSlot(new BasePotResultSlot(inv.player, be, this.inventory, BasePotBlockEntity.OUTPUT_SLOT, 124, 55));
+		this.addSlot(new BasePotResultSlot(inv.player, be, this.inventory, BasePotBlockEntity.OUTPUT_SLOT, 121, 54));
 		startPlayerInvY = startY * 4 + 12;
 
 		for (int row = 0; row < 3; ++row) {
