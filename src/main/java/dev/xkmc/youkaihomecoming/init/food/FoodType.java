@@ -3,6 +3,7 @@ package dev.xkmc.youkaihomecoming.init.food;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaihomecoming.content.item.FleshFoodItem;
 import dev.xkmc.youkaihomecoming.content.item.YHFoodItem;
+import dev.xkmc.youkaihomecoming.content.item.YHDrinkItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
@@ -22,8 +23,8 @@ public enum FoodType {
 	MEAT_SLICE(YHFoodItem::new, true, true),
 	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true),
 	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false),
-	BOTTLE(p -> new YHFoodItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false),
-	BOTTLE_FAST(p -> new YHFoodItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true),
+	BOTTLE(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false),
+	BOTTLE_FAST(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true),
 	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false),
 	FLESH(FleshFoodItem::new, true, false, YHTagGen.FLESH_FOOD),
 	BOWL_FLESH(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, YHTagGen.FLESH_FOOD),

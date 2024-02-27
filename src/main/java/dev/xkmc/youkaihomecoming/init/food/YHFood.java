@@ -70,21 +70,24 @@ public enum YHFood {
 
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
-	BLACK_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 2400, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
-	)),
 	GREEN_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 2400, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
-	)),
-	OOLONG_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 2400, 0, 1),
+			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
 	)),
 	WHITE_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 2400, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.REFRESHING::get, 1200, 0, 1)
+	)),
+	BLACK_TEA(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.THICK::get, 600, 0, 1)
+	)),
+	OOLONG_TEA(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
 	)),
 
 	// bowl

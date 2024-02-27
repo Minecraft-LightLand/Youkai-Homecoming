@@ -21,13 +21,25 @@ public class YHEffects {
 			() -> new CaffeinatedEffect(MobEffectCategory.NEUTRAL, -10667225),
 			"Boost attack damage");
 
-	public static final RegistryEntry<EmptyEffect> TEA = genEffect("tea_polyphenols",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5727850),
-			"Boost attack speed");
+	public static final RegistryEntry<TeaEffect> TEA = genEffect("tea_polyphenols",
+			() -> new TeaEffect(MobEffectCategory.BENEFICIAL, -5727850),
+			"Boost attack speed, heal every 3 seconds");
 
 	public static final RegistryEntry<EmptyEffect> SOBER = genEffect("sober",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
-			"Prevents phantom spawn, nausea, youkaization, and sleep");
+			"Prevents phantom spawn, nausea, youkaization, and sleep. You can't have another sobering drink while having this effect."); //TODO
+
+	public static final RegistryEntry<EmptyEffect> REFRESHING = genEffect("refreshing",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
+			"Immune to fire, puts down fire"); //TODO
+
+	public static final RegistryEntry<EmptyEffect> THICK = genEffect("thick",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
+			"Immune to wither, reduces damage by 1"); //TODO
+
+	public static final RegistryEntry<EmptyEffect> SMOOTHING = genEffect("smoothing",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
+			"Immune to poison, improves health regeneration"); //TODO
 
 	public static final RegistryEntry<NativeGodBlessEffect> NATIVE = genEffect("native_god_bless",
 			() -> new NativeGodBlessEffect(MobEffectCategory.BENEFICIAL, -5727850),
