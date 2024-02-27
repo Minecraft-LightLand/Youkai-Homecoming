@@ -1,9 +1,9 @@
 package dev.xkmc.youkaihomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.youkaihomecoming.content.item.FleshFoodItem;
-import dev.xkmc.youkaihomecoming.content.item.YHFoodItem;
-import dev.xkmc.youkaihomecoming.content.item.YHDrinkItem;
+import dev.xkmc.youkaihomecoming.content.item.food.FleshFoodItem;
+import dev.xkmc.youkaihomecoming.content.item.food.YHFoodItem;
+import dev.xkmc.youkaihomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;

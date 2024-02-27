@@ -2,8 +2,8 @@ package dev.xkmc.youkaihomecoming.init.food;
 
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import dev.xkmc.youkaihomecoming.content.block.FoodSaucerBlock;
-import dev.xkmc.youkaihomecoming.content.item.FoodSaucerItem;
+import dev.xkmc.youkaihomecoming.content.block.food.FoodSaucerBlock;
+import dev.xkmc.youkaihomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;

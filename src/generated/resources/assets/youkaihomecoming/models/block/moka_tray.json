@@ -1,0 +1,8 @@
+{
+  "parent": "youkaihomecoming:custom/moka_tray",
+  "textures": {
+    "maker": "youkaihomecoming:block/moka_maker",
+    "tray_side": "youkaihomecoming:block/cooking_pot_tray_side",
+    "tray_top": "youkaihomecoming:block/cooking_pot_tray_top"
+  }
+}

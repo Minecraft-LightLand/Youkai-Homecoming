@@ -1,6 +1,6 @@
 package dev.xkmc.youkaihomecoming.events;
 
-import dev.xkmc.youkaihomecoming.content.block.LeftClickBlock;
+import dev.xkmc.youkaihomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;

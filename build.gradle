@@ -140,7 +140,7 @@ dependencies {
     implementation fg.deobf("dev.xkmc.cuisinedelight:cuisinedelight:1.1.12-slim")
     runtimeOnly fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.3-slim")
 
-    implementation fg.deobf("curse.maven:farmers-delight-398521:4638874")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")

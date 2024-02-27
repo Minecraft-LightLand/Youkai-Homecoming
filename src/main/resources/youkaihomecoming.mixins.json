@@ -6,6 +6,8 @@
   "refmap": "youkaihomecoming.refmap.json",
   "mixins": [
 	"AddItemModifierAccessor",
+	"CookingPotRecipeAccessor",
+	"CopyMealFunctionMixin",
 	"LivingEntityMixin",
 	"PhantomSpawnerMixin"
   ],

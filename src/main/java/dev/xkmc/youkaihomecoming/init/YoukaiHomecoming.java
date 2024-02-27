@@ -14,6 +14,7 @@ import dev.xkmc.youkaihomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -34,6 +35,9 @@ public class YoukaiHomecoming {
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("youkai_homecoming", "Youkai's Homecoming",
 					e -> e.icon(YHItems.SUWAKO_HAT::asStack));
+
+	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
+	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaiHomecoming() {
 		YHItems.register();
@@ -58,6 +62,8 @@ public class YoukaiHomecoming {
 		event.enqueueWork(() -> {
 			YHCrops.SOYBEAN.registerComposter();
 			YHCrops.REDBEAN.registerComposter();
+			YHCrops.COFFEA.registerComposter();
+			YHCrops.TEA.registerComposter();
 		});
 	}
 

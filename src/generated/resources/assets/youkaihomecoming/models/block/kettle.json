@@ -1,0 +1,6 @@
+{
+  "parent": "youkaihomecoming:custom/kettle",
+  "textures": {
+    "kettle": "youkaihomecoming:block/kettle"
+  }
+}

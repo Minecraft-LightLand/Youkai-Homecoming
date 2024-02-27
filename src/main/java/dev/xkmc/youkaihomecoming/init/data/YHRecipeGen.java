@@ -4,10 +4,12 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.youkaihomecoming.content.pot.BasePotFinishedRecipe;
 import dev.xkmc.youkaihomecoming.init.food.*;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -23,6 +25,7 @@ import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public class YHRecipeGen {
 
@@ -446,78 +449,82 @@ public class YHRecipeGen {
 		// drinks
 		{
 
+			var tea = tea(pvd);
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHTea.BLACK.leaves)
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHFood.BLACK_TEA.item.getId());
+					.build(tea, YHFood.BLACK_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_TEA.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHTea.GREEN.leaves)
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHFood.GREEN_TEA.item.getId());
+					.build(tea, YHFood.GREEN_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OOLONG_TEA.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHTea.OOLONG.leaves)
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHFood.OOLONG_TEA.item.getId());
+					.build(tea, YHFood.OOLONG_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WHITE_TEA.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHTea.WHITE.leaves)
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHFood.WHITE_TEA.item.getId());
+					.build(tea, YHFood.WHITE_TEA.item.getId());
+
+			var coffee = coffee(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHCoffee.ESPRESSO.item.getId());
+					.build(coffee, YHCoffee.ESPRESSO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.RISTRETTO.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHCoffee.RISTRETTO.item.getId());
+					.build(coffee, YHCoffee.RISTRETTO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.AMERICANO.item.get(), 2, 200, 0.1f)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.addIngredient(new PotionIngredient(Potions.WATER))
-					.build(pvd, YHCoffee.AMERICANO.item.getId());
+					.build(coffee, YHCoffee.AMERICANO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.LATTE.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(ForgeTags.MILK_BOTTLE)
-					.build(pvd, YHCoffee.LATTE.item.getId());
+					.build(coffee, YHCoffee.LATTE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.MOCHA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(ForgeTags.MILK_BOTTLE)
 					.addIngredient(Items.COCOA_BEANS)
-					.build(pvd, YHCoffee.MOCHA.item.getId());
+					.build(coffee, YHCoffee.MOCHA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.CAPPUCCINO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(ForgeTags.MILK_BOTTLE)
 					.addIngredient(YHItems.CREAM)
-					.build(pvd, YHCoffee.CAPPUCCINO.item.getId());
+					.build(coffee, YHCoffee.CAPPUCCINO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.MACCHIATO.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.addIngredient(YHItems.CREAM)
-					.build(pvd, YHCoffee.MACCHIATO.item.getId());
+					.build(coffee, YHCoffee.MACCHIATO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.CON_PANNA.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.addIngredient(YHItems.CREAM)
-					.build(pvd, YHCoffee.CON_PANNA.item.getId());
+					.build(coffee, YHCoffee.CON_PANNA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.AFFOGATO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(Items.ICE)
 					.addIngredient(YHItems.CREAM)
-					.build(pvd, YHCoffee.AFFOGATO.item.getId());
+					.build(coffee, YHCoffee.AFFOGATO.item.getId());
 
 		}
 	}
@@ -546,6 +553,14 @@ public class YHRecipeGen {
 					.define('A', cake.item.get())
 					.save(pvd, cake.block.getId().withSuffix("_assemble"));
 		}
+	}
+
+	private static Consumer<FinishedRecipe> tea(RegistrateRecipeProvider pvd) {
+		return e -> pvd.accept(new BasePotFinishedRecipe(YHBlocks.KETTLE_RS.get(), e));
+	}
+
+	private static Consumer<FinishedRecipe> coffee(RegistrateRecipeProvider pvd) {
+		return e -> pvd.accept(new BasePotFinishedRecipe(YHBlocks.MOKA_RS.get(), e));
 	}
 
 	private static void foodCut(RegistrateRecipeProvider pvd,

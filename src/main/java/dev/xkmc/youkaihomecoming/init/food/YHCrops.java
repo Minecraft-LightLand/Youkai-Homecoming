@@ -2,10 +2,10 @@ package dev.xkmc.youkaihomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.youkaihomecoming.content.block.CoffeaCropBlock;
-import dev.xkmc.youkaihomecoming.content.block.TeaCropBlock;
-import dev.xkmc.youkaihomecoming.content.block.WildCoffeaBlock;
-import dev.xkmc.youkaihomecoming.content.block.YHCropBlock;
+import dev.xkmc.youkaihomecoming.content.block.plant.CoffeaCropBlock;
+import dev.xkmc.youkaihomecoming.content.block.plant.TeaCropBlock;
+import dev.xkmc.youkaihomecoming.content.block.plant.WildCoffeaBlock;
+import dev.xkmc.youkaihomecoming.content.block.plant.YHCropBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;

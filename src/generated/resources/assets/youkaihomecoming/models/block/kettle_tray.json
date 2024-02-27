@@ -1,0 +1,8 @@
+{
+  "parent": "youkaihomecoming:custom/kettle_tray",
+  "textures": {
+    "kettle": "youkaihomecoming:block/kettle",
+    "tray_side": "youkaihomecoming:block/cooking_pot_tray_side",
+    "tray_top": "youkaihomecoming:block/cooking_pot_tray_top"
+  }
+}
