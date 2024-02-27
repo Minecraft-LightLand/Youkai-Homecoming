@@ -20,6 +20,10 @@ public enum YHLangData {
 	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
 	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
 	USAGE("usage", "Effect: ", 0, ChatFormatting.GRAY),
+
+	JEI_MOKA("jei.moka","Coffee Brewing",0,null),
+	JEI_KETTLE("jei.kettle","Tea Brewing",0,null),
+
 	OBTAIN_FLESH("obtain_flesh", "Kill human mobs with knife while in %s or %s effect", 2, ChatFormatting.GRAY),
 	OBTAIN_BLOOD("obtain_blood", "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect", 2, ChatFormatting.GRAY),
 	;

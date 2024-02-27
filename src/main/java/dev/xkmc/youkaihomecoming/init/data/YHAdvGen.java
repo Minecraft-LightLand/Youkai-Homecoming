@@ -74,7 +74,7 @@ public class YHAdvGen {
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
 										YHFood.WHITE_TEA, YHFood.OOLONG_TEA, YHFood.GREEN_TEA, YHFood.BLACK_TEA
 								).map(e -> ConsumeItemTrigger.TriggerInstance.usedItem(e.item.get()))
-								.forEach(c::add)), "Tea Master", "Drink 4 kinds of tea")
+								.forEach(c::add)), "Tea Master", "Drink all kinds of tea in original flavor")
 				.type(FrameType.GOAL, true, true, false);
 		root.create("mousse", YHFood.KOISHI_MOUSSE.item.asStack(),
 						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(

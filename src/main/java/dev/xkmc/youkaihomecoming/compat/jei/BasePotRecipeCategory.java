@@ -31,7 +31,6 @@ import java.util.List;
 public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements IRecipeCategory<T> {
 	protected final IDrawable timeIcon;
 	protected final IDrawable expIcon;
-	private final Component title = TextUtils.getTranslation("jei.cooking");
 	private final IDrawable background;
 	private final IDrawable icon;
 
@@ -44,10 +43,6 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 	}
 
 	public abstract RecipeType<T> getRecipeType();
-
-	public Component getTitle() {
-		return this.title;
-	}
 
 	public IDrawable getBackground() {
 		return this.background;

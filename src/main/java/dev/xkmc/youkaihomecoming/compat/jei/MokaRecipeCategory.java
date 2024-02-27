@@ -2,6 +2,7 @@ package dev.xkmc.youkaihomecoming.compat.jei;
 
 import dev.xkmc.youkaihomecoming.content.pot.moka.MokaRecipe;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.data.YHLangData;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -9,6 +10,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class MokaRecipeCategory extends BasePotRecipeCategory<MokaRecipe> {
@@ -27,6 +29,11 @@ public class MokaRecipeCategory extends BasePotRecipeCategory<MokaRecipe> {
 	@Override
 	public RecipeType<MokaRecipe> getRecipeType() {
 		return YHJeiPlugin.MOKA;
+	}
+
+	@Override
+	public Component getTitle() {
+		return YHLangData.JEI_MOKA.get();
 	}
 
 	public void draw(MokaRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {

@@ -35,6 +35,8 @@
 	"unknown": "???",
 	"usage": "效果: ",
 	"obtain_flesh": "在%s或%s状态下持小刀击杀人类生物",
-	"obtain_blood": "在%s或%s状态下持小刀，副手持玻璃瓶击杀人类生物"
+	"obtain_blood": "在%s或%s状态下持小刀，副手持玻璃瓶击杀人类生物",
+	"youkaihomecoming.jei.kettle": "泡茶",
+	"youkaihomecoming.jei.moka": "泡咖啡"
   }
 }

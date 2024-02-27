@@ -441,7 +441,7 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity implements Me
 	}
 
 	public Component getName() {
-		return this.customName != null ? this.customName : TextUtils.getTranslation("container.cooking_pot");
+		return this.customName != null ? this.customName : getBlockState().getBlock().getName();
 	}
 
 	public Component getDisplayName() {

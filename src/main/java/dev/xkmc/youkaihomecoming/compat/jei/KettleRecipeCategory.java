@@ -2,6 +2,7 @@ package dev.xkmc.youkaihomecoming.compat.jei;
 
 import dev.xkmc.youkaihomecoming.content.pot.kettle.KettleRecipe;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.data.YHLangData;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -9,6 +10,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class KettleRecipeCategory extends BasePotRecipeCategory<KettleRecipe> {
@@ -27,6 +29,11 @@ public class KettleRecipeCategory extends BasePotRecipeCategory<KettleRecipe> {
 	@Override
 	public RecipeType<KettleRecipe> getRecipeType() {
 		return YHJeiPlugin.KETTLE;
+	}
+
+	@Override
+	public Component getTitle() {
+		return YHLangData.JEI_KETTLE.get();
 	}
 
 	public void draw(KettleRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
