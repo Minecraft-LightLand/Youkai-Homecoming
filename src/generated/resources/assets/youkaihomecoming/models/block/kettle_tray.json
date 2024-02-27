@@ -1,5 +1,6 @@
 {
   "parent": "youkaihomecoming:custom/kettle_tray",
+  "render_type": "minecraft:cutout",
   "textures": {
     "kettle": "youkaihomecoming:block/kettle",
     "tray_side": "youkaihomecoming:block/cooking_pot_tray_side",

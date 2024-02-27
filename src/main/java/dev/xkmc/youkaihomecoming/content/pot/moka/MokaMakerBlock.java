@@ -55,12 +55,14 @@ public class MokaMakerBlock extends BasePotBlock {
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_pot")))
 				.texture("maker", pvd.modLoc("block/moka_maker"))
 				.texture("cup", pvd.modLoc("block/moka_cup"))
-				.texture("foamer", pvd.modLoc("block/moka_foamer"));
+				.texture("foamer", pvd.modLoc("block/moka_foamer"))
+				.renderType("cutout");
 		var tray = pvd.models().getBuilder("block/moka_tray")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_tray")))
-				.texture("maker", pvd.modLoc("block/moka_maker"))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_pot_tray")))
+				.texture("maker", pvd.modLoc("block/moka_pot"))
 				.texture("tray_side", pvd.modLoc("block/cooking_pot_tray_side"))
-				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"));
+				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"))
+				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), state -> switch (state.getValue(SUPPORT)) {
 			case NONE, HANDLE -> kit;
 			case TRAY -> tray;

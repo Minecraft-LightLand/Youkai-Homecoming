@@ -13,6 +13,7 @@
       "tag": "forge:milk/milk_bottle"
     }
   ],
+  "recipe_book_tab": "drinks",
   "result": {
     "item": "youkaihomecoming:latte"
   }

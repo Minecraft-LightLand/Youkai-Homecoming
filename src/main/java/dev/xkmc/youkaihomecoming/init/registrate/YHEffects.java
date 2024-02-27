@@ -26,20 +26,20 @@ public class YHEffects {
 			"Boost attack speed, heal every 3 seconds");
 
 	public static final RegistryEntry<EmptyEffect> SOBER = genEffect("sober",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
-			"Prevents phantom spawn, nausea, youkaization, and sleep. You can't have another sobering drink while having this effect."); //TODO
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x21c189),
+			"Prevents phantom spawn, nausea, youkaization, and sleep. You can't have another sobering drink while having this effect.");
 
 	public static final RegistryEntry<EmptyEffect> REFRESHING = genEffect("refreshing",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
-			"Immune to fire, puts down fire"); //TODO
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xd0c3a5),
+			"Immune to fire, puts down fire");
 
 	public static final RegistryEntry<EmptyEffect> THICK = genEffect("thick",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
-			"Immune to wither, reduces damage by 1"); //TODO
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x534b40),
+			"Immune to wither, reduces damage by 1");
 
 	public static final RegistryEntry<EmptyEffect> SMOOTHING = genEffect("smoothing",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
-			"Immune to poison, improves health regeneration"); //TODO
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x949537),
+			"Immune to poison, improves health regeneration");
 
 	public static final RegistryEntry<NativeGodBlessEffect> NATIVE = genEffect("native_god_bless",
 			() -> new NativeGodBlessEffect(MobEffectCategory.BENEFICIAL, -5727850),

@@ -6,6 +6,7 @@ import dev.xkmc.youkaihomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
+import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionResult;
@@ -13,12 +14,15 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = YoukaiHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeneralEventHandlers {

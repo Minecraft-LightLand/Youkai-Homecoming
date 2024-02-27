@@ -53,17 +53,20 @@ public class KettleBlock extends BasePotBlock {
 	public static void buildModel(DataGenContext<Block, KettleBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var kettle = pvd.models().getBuilder("block/kettle")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle")))
-				.texture("kettle", pvd.modLoc("block/kettle"));
+				.texture("kettle", pvd.modLoc("block/kettle"))
+				.renderType("cutout");
 		var handle = pvd.models().getBuilder("block/kettle_handle")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle_handle")))
 				.texture("kettle", pvd.modLoc("block/kettle"))
 				.texture("handle", pvd.modLoc("block/cooking_pot_handle"))
-				.texture("chain", pvd.modLoc("block/chain"));
+				.texture("chain", pvd.modLoc("block/chain"))
+				.renderType("cutout");
 		var tray = pvd.models().getBuilder("block/kettle_tray")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle_tray")))
 				.texture("kettle", pvd.modLoc("block/kettle"))
 				.texture("tray_side", pvd.modLoc("block/cooking_pot_tray_side"))
-				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"));
+				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"))
+				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), state -> switch (state.getValue(SUPPORT)) {
 			case NONE -> kettle;
 			case HANDLE -> handle;

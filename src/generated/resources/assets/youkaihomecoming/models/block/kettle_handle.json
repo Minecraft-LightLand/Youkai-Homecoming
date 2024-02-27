@@ -1,5 +1,6 @@
 {
   "parent": "youkaihomecoming:custom/kettle_handle",
+  "render_type": "minecraft:cutout",
   "textures": {
     "chain": "youkaihomecoming:block/chain",
     "handle": "youkaihomecoming:block/cooking_pot_handle",

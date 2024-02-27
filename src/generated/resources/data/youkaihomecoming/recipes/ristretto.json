@@ -14,6 +14,7 @@
       "potion": "minecraft:water"
     }
   ],
+  "recipe_book_tab": "drinks",
   "result": {
     "item": "youkaihomecoming:ristretto"
   }

@@ -15,6 +15,7 @@
       "potion": "minecraft:water"
     }
   ],
+  "recipe_book_tab": "drinks",
   "result": {
     "count": 2,
     "item": "youkaihomecoming:americano"

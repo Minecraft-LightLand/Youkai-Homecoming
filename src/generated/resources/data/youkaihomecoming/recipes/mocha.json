@@ -16,6 +16,7 @@
       "item": "minecraft:cocoa_beans"
     }
   ],
+  "recipe_book_tab": "drinks",
   "result": {
     "item": "youkaihomecoming:mocha"
   }
