@@ -9,9 +9,9 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class SoberEffect extends MobEffect {
+public class SoberEffect extends EmptyEffect {
 
-	protected SoberEffect(MobEffectCategory pCategory, int pColor) {
+	public SoberEffect(MobEffectCategory pCategory, int pColor) {
 		super(pCategory, pColor);
 	}
 
@@ -28,11 +28,6 @@ public class SoberEffect extends MobEffect {
 	@Override
 	public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
 		return true;
-	}
-
-	@Override
-	public List<ItemStack> getCurativeItems() {
-		return List.of();
 	}
 
 }

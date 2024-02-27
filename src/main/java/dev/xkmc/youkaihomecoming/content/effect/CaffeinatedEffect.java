@@ -11,18 +11,13 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class CaffeinatedEffect extends MobEffect {
+public class CaffeinatedEffect extends EmptyEffect {
 
 	public CaffeinatedEffect(MobEffectCategory category, int color) {
 		super(category, color);
 		addAttributeModifier(Attributes.ATTACK_DAMAGE,
 				MathHelper.getUUIDFromString("caffeinated").toString(), 0.1f,
 				AttributeModifier.Operation.MULTIPLY_BASE);
-	}
-
-	@Override
-	public List<ItemStack> getCurativeItems() {
-		return List.of();
 	}
 
 }

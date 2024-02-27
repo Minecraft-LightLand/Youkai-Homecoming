@@ -29,10 +29,8 @@ import java.util.Collections;
 import java.util.List;
 
 public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements IRecipeCategory<T> {
-	protected final IDrawable heatIndicator;
 	protected final IDrawable timeIcon;
 	protected final IDrawable expIcon;
-	protected final IDrawableAnimated arrow;
 	private final Component title = TextUtils.getTranslation("jei.cooking");
 	private final IDrawable background;
 	private final IDrawable icon;
@@ -41,11 +39,8 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 		ResourceLocation backgroundImage = new ResourceLocation(YoukaiHomecoming.MODID, "textures/gui/" + path + ".png");
 		this.background = helper.createDrawable(backgroundImage, 29, 16, 116, 56);
 		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);
-		this.heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 17, 15);
 		this.timeIcon = helper.createDrawable(backgroundImage, 176, 32, 8, 11);
 		this.expIcon = helper.createDrawable(backgroundImage, 176, 43, 9, 9);
-		this.arrow = helper.drawableBuilder(backgroundImage, 176, 15, 24, 17)
-				.buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
 	}
 
 	public abstract RecipeType<T> getRecipeType();
@@ -87,13 +82,6 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 	}
 
 	public void draw(T recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-		this.arrow.draw(guiGraphics, 60, 9);
-		this.heatIndicator.draw(guiGraphics, 18, 39);
-		this.timeIcon.draw(guiGraphics, 64, 2);
-		if (recipe.getExperience() > 0.0F) {
-			this.expIcon.draw(guiGraphics, 63, 21);
-		}
-
 	}
 
 	public List<Component> getTooltipStrings(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
@@ -115,4 +103,5 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 			return Collections.emptyList();
 		}
 	}
+
 }

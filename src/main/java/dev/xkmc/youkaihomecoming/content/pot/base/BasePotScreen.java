@@ -25,14 +25,16 @@ import java.util.List;
 
 public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractContainerScreen<T> implements RecipeUpdateListener {
 	private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
-	private static final Rectangle HEAT_ICON = new Rectangle(47, 55, 17, 15);
-	private static final Rectangle PROGRESS_ARROW = new Rectangle(89, 25, 0, 17);
 	private final CookingPotRecipeBookComponent book = new CookingPotRecipeBookComponent();
 	private boolean widthTooNarrow;
 
 	public BasePotScreen(T screenContainer, Inventory inv, Component titleIn) {
 		super(screenContainer, inv, titleIn);
 	}
+
+	public abstract Rectangle getHeatIcon();
+
+	public abstract Rectangle getProgressArrow();
 
 	public abstract ResourceLocation getBackgroundTexture();
 
@@ -81,7 +83,7 @@ public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractConta
 	}
 
 	private void renderHeatIndicatorTooltip(GuiGraphics gui, int mouseX, int mouseY) {
-		if (isHovering(HEAT_ICON.x, HEAT_ICON.y, HEAT_ICON.width, HEAT_ICON.height, mouseX, mouseY)) {
+		if (isHovering(getHeatIcon().x, getHeatIcon().y, getHeatIcon().width, getHeatIcon().height, mouseX, mouseY)) {
 			String key = "container.cooking_pot." + (menu.isHeated() ? "heated" : "not_heated");
 			gui.renderTooltip(font, TextUtils.getTranslation(key, menu), mouseX, mouseY);
 		}
@@ -115,11 +117,11 @@ public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractConta
 		if (minecraft != null) {
 			gui.blit(getBackgroundTexture(), leftPos, topPos, 0, 0, imageWidth, imageHeight);
 			if (menu.isHeated()) {
-				gui.blit(getBackgroundTexture(), leftPos + HEAT_ICON.x, topPos + HEAT_ICON.y, 176, 0, HEAT_ICON.width, HEAT_ICON.height);
+				gui.blit(getBackgroundTexture(), leftPos + getHeatIcon().x, topPos + getHeatIcon().y, 176, 0, getHeatIcon().width, getHeatIcon().height);
 			}
 
-			int l = menu.getCookProgressionScaled();
-			gui.blit(getBackgroundTexture(), leftPos + PROGRESS_ARROW.x, topPos + PROGRESS_ARROW.y, 176, 15, l + 1, PROGRESS_ARROW.height);
+			int l = (int) (menu.getCookProgressionScaled() * getProgressArrow().width);
+			gui.blit(getBackgroundTexture(), leftPos + getProgressArrow().x, topPos + getProgressArrow().y, 176, getHeatIcon().height, l + 1, getProgressArrow().height);
 		}
 	}
 

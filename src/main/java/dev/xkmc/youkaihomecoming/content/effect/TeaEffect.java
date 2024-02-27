@@ -12,18 +12,13 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class TeaEffect extends MobEffect {
+public class TeaEffect extends EmptyEffect {
 
 	public TeaEffect(MobEffectCategory category, int color) {
 		super(category, color);
 		addAttributeModifier(Attributes.ATTACK_SPEED,
 				MathHelper.getUUIDFromString("tea").toString(), 0.05f,
 				AttributeModifier.Operation.MULTIPLY_BASE);
-	}
-
-	@Override
-	public List<ItemStack> getCurativeItems() {
-		return List.of();
 	}
 
 }

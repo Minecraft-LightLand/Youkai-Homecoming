@@ -8,7 +8,7 @@ import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 @Mixin(CookingPotRecipe.class)
 public interface CookingPotRecipeAccessor {
 
-	@Accessor
+	@Accessor(remap = false)
 	ItemStack getOutput();
 
 }

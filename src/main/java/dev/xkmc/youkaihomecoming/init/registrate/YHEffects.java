@@ -25,8 +25,8 @@ public class YHEffects {
 			() -> new TeaEffect(MobEffectCategory.BENEFICIAL, -5727850),
 			"Boost attack speed, heal every 3 seconds");
 
-	public static final RegistryEntry<EmptyEffect> SOBER = genEffect("sober",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x21c189),
+	public static final RegistryEntry<SoberEffect> SOBER = genEffect("sober",
+			() -> new SoberEffect(MobEffectCategory.NEUTRAL, 0x21c189),
 			"Prevents phantom spawn, nausea, youkaization, and sleep. You can't have another sobering drink while having this effect.");
 
 	public static final RegistryEntry<EmptyEffect> REFRESHING = genEffect("refreshing",
