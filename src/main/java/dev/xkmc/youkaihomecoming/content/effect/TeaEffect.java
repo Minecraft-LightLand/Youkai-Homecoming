@@ -17,7 +17,7 @@ public class TeaEffect extends MobEffect {
 	public TeaEffect(MobEffectCategory category, int color) {
 		super(category, color);
 		addAttributeModifier(Attributes.ATTACK_SPEED,
-				MathHelper.getUUIDFromString("tea").toString(), 0.1f,
+				MathHelper.getUUIDFromString("tea").toString(), 0.05f,
 				AttributeModifier.Operation.MULTIPLY_BASE);
 	}
 

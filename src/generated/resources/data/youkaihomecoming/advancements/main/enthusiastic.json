@@ -475,7 +475,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaihomecoming:black_tea"
+            "youkaihomecoming:green_tea"
           ]
         }
       },
@@ -485,7 +485,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaihomecoming:green_tea"
+            "youkaihomecoming:white_tea"
           ]
         }
       },
@@ -495,7 +495,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaihomecoming:oolong_tea"
+            "youkaihomecoming:black_tea"
           ]
         }
       },
@@ -505,7 +505,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaihomecoming:white_tea"
+            "youkaihomecoming:oolong_tea"
           ]
         }
       },

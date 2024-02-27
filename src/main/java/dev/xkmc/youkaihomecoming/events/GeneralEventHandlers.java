@@ -2,16 +2,18 @@ package dev.xkmc.youkaihomecoming.events;
 
 import dev.xkmc.youkaihomecoming.content.block.LeftClickBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import dev.xkmc.youkaihomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaihomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -47,6 +49,62 @@ public class GeneralEventHandlers {
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
 				le.removeEffect(YHEffects.UNCONSCIOUS.get());
+			}
+		}
+		if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
+			if (event.getEntity().hasEffect(YHEffects.REFRESHING.get())) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onDamage(LivingDamageEvent event) {
+		if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) ||
+				event.getSource().is(DamageTypeTags.BYPASSES_RESISTANCE) ||
+				event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+			return;
+		if (event.getEntity().hasEffect(YHEffects.THICK.get())) {
+			event.setAmount(Math.max(0, event.getAmount() - 1));
+		}
+	}
+
+	@SubscribeEvent
+	public static void onHeal(LivingHealEvent event) {
+		if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
+			event.setAmount((float) (event.getAmount() * YHModConfig.COMMON.smoothingHealingFactor.get()));
+		}
+	}
+
+	@SubscribeEvent
+	public static void onTick(LivingEvent.LivingTickEvent event) {
+		var e = event.getEntity();
+		if (e.hasEffect(YHEffects.THICK.get()) && e.hasEffect(MobEffects.WITHER)) {
+			e.removeEffect(MobEffects.WITHER);
+		}
+		if (e.hasEffect(YHEffects.SMOOTHING.get()) && e.hasEffect(MobEffects.POISON)) {
+			e.removeEffect(MobEffects.POISON);
+		}
+		if (e.hasEffect(YHEffects.REFRESHING.get()) && e.isOnFire()) {
+			e.clearFire();
+		}
+		var tea = e.getEffect(YHEffects.TEA.get());
+		if (tea != null) {
+			if (e.tickCount % YHModConfig.COMMON.teaHealingPeriod.get() == 0)
+				e.heal(1 << tea.getAmplifier());
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEffectTest(MobEffectEvent.Applicable event) {
+		if (event.getEffectInstance().getEffect() == MobEffects.WITHER) {
+			if (event.getEntity().hasEffect(YHEffects.THICK.get())) {
+				event.setCanceled(true);
+			}
+		}
+		if (event.getEffectInstance().getEffect() == MobEffects.POISON) {
+			if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
+				event.setCanceled(true);
 			}
 		}
 	}

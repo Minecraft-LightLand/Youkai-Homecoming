@@ -9,13 +9,19 @@
 	"caffeinated": "咖啡因",
 	"caffeinated.description": "提高攻击伤害",
 	"tea_polyphenols": "茶多酚",
-	"tea_polyphenols.description": "提高攻击速度",
+	"tea_polyphenols.description": "提高攻击速度，每3秒回血",
 	"sober": "清醒",
-	"sober.description": "阻止幻翼生成，阻止睡觉，阻止妖怪化，防止反胃",
+	"sober.description": "阻止幻翼生成，阻止睡觉，阻止妖怪化，防止反胃。清醒状态下无法再喝清醒饮品",
 	"native_god_bless": "土著神的祝福",
 	"native_god_bless.description": "提升触及距离和移动速度",
 	"unconscious": "无意识",
-	"unconscious.description": "你不会成为攻击目标。进行攻击后效果消失"
+	"unconscious.description": "你不会成为攻击目标。进行攻击后效果消失",
+	"refreshing": "清爽",
+	"refreshing.description": "免疫火焰伤害，熄灭身上火焰",
+	"smoothing": "抚慰",
+	"smoothing.description": "免疫中毒，提升回血效率",
+	"thick": "醇厚",
+	"thick.description": "免疫凋零，减少1点收到的伤害"
   },
   "youkaihomecoming": {
 	"flesh_human": "怪肉",
