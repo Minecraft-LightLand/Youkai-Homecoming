@@ -166,7 +166,7 @@ public enum YHCrops {
 				.register(),
 				(name, crop) -> YoukaiHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
-						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
+						.loot((ctx, pvd) -> TeaCropBlock.buildWildLoot(ctx, pvd, crop))
 						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()

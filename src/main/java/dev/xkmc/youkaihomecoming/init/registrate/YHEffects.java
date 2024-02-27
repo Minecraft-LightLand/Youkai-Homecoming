@@ -19,11 +19,15 @@ public class YHEffects {
 
 	public static final RegistryEntry<CaffeinatedEffect> CAFFEINATED = genEffect("caffeinated",
 			() -> new CaffeinatedEffect(MobEffectCategory.NEUTRAL, -10667225),
-			"Prevents phantom spawn, prevents sleep, prevents youkaization, and boost attack damage");
+			"Boost attack damage");
 
 	public static final RegistryEntry<EmptyEffect> TEA = genEffect("tea_polyphenols",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5727850),
-			"Prevents nausea, and boost attack speed");
+			"Boost attack speed");
+
+	public static final RegistryEntry<EmptyEffect> SOBER = genEffect("sober",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF),
+			"Prevents phantom spawn, nausea, youkaization, and sleep");
 
 	public static final RegistryEntry<NativeGodBlessEffect> NATIVE = genEffect("native_god_bless",
 			() -> new NativeGodBlessEffect(MobEffectCategory.BENEFICIAL, -5727850),

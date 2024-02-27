@@ -21,19 +21,6 @@ public class CaffeinatedEffect extends MobEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity e, int pAmplifier) {
-		if (e.hasEffect(YHEffects.YOUKAIFYING.get()))
-			e.removeEffect(YHEffects.YOUKAIFYING.get());
-		if (e.hasEffect(YHEffects.YOUKAIFIED.get()))
-			e.removeEffect(YHEffects.YOUKAIFIED.get());
-	}
-
-	@Override
-	public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
-		return true;
-	}
-
-	@Override
 	public List<ItemStack> getCurativeItems() {
 		return List.of();
 	}

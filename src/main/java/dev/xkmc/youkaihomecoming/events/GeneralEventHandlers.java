@@ -37,7 +37,7 @@ public class GeneralEventHandlers {
 
 	@SubscribeEvent
 	public static void onSleep(PlayerSleepInBedEvent event) {
-		if (event.getEntity().hasEffect(YHEffects.CAFFEINATED.get())) {
+		if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
 			event.setResult(Player.BedSleepingProblem.OTHER_PROBLEM);
 		}
 	}
@@ -69,7 +69,7 @@ public class GeneralEventHandlers {
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {
-		return player.hasEffect(YHEffects.CAFFEINATED.get());
+		return player.hasEffect(YHEffects.SOBER.get());
 	}
 
 }
