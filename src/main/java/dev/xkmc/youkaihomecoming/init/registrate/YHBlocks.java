@@ -1,6 +1,8 @@
 package dev.xkmc.youkaihomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.xkmc.youkaihomecoming.content.block.KettleBlock;
+import dev.xkmc.youkaihomecoming.content.block.MokaMakerBlock;
 import dev.xkmc.youkaihomecoming.content.block.MultiFenceBlock;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.world.item.Items;
@@ -34,14 +36,27 @@ public class YHBlocks {
 		}
 	}
 
+	public static final BlockEntry<MokaMakerBlock> MOKA;
+	public static final BlockEntry<KettleBlock> KETTLE;
+
 	static {
+		MOKA = YoukaiHomecoming.REGISTRATE.block("moka_maker", p -> new MokaMakerBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)))
+				.blockstate(MokaMakerBlock::buildModel)
+				.simpleItem()
+				.register();
+
+		KETTLE = YoukaiHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)))
+				.blockstate(KettleBlock::buildModel)
+				.simpleItem()
+				.register();
+
 		for (var e : WoodType.values()) {
 			String name = e.name().toLowerCase(Locale.ROOT);
 			e.fence = YoukaiHomecoming.REGISTRATE.block(name + "_handrail",
 							p -> new MultiFenceBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE).noOcclusion()))
 					.blockstate(MultiFenceBlock::genModel)
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/handrail/" + ctx.getName()))).build()
-					.defaultLoot()//TODO
+					.defaultLoot()
 					.register();
 		}
 
