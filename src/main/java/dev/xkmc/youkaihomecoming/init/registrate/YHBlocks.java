@@ -6,7 +6,11 @@ import com.tterrag.registrate.util.entry.MenuEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.youkaihomecoming.content.block.furniture.MultiFenceBlock;
-import dev.xkmc.youkaihomecoming.content.pot.*;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlock;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotItem;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotSerializer;
+import dev.xkmc.youkaihomecoming.content.pot.kettle.*;
+import dev.xkmc.youkaihomecoming.content.pot.moka.*;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -14,13 +18,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.ForgeRegistries;
-import vectorwing.farmersdelight.common.loot.function.CopyMealFunction;
 
 import java.util.Locale;
 

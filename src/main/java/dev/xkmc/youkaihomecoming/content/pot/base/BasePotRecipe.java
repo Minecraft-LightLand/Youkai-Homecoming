@@ -1,4 +1,4 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;

@@ -1,5 +1,7 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.kettle;
 
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlockEntity;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotRecipe;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;

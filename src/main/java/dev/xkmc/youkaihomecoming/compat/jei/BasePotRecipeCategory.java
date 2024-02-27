@@ -1,6 +1,6 @@
 package dev.xkmc.youkaihomecoming.compat.jei;
 
-import dev.xkmc.youkaihomecoming.content.pot.BasePotRecipe;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotRecipe;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;

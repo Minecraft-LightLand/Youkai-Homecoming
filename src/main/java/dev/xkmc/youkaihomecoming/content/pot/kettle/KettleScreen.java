@@ -1,5 +1,6 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.kettle;
 
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotScreen;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

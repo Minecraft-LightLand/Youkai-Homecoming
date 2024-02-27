@@ -1,7 +1,6 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import com.mojang.datafixers.util.Pair;
-import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;

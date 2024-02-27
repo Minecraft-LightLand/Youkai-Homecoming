@@ -1,6 +1,6 @@
 package dev.xkmc.youkaihomecoming.mixin;
 
-import dev.xkmc.youkaihomecoming.content.pot.BasePotBlockEntity;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;

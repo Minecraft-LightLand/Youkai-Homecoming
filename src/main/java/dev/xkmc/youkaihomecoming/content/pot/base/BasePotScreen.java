@@ -1,4 +1,4 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;

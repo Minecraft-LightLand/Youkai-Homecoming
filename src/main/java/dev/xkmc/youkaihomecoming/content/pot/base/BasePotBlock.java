@@ -1,4 +1,4 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import net.minecraft.ChatFormatting;

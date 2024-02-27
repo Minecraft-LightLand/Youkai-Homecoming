@@ -1,7 +1,9 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.kettle;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlock;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -19,13 +21,12 @@ import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
 
 import javax.annotation.Nullable;
 
-@SuppressWarnings("deprecation")
-public class MokaMakerBlock extends BasePotBlock {
+public class KettleBlock extends BasePotBlock {
 
 	protected static final VoxelShape SHAPE = box(2.0, 0.0, 2.0, 14.0, 10.0, 14.0);
 	protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
 
-	public MokaMakerBlock(Properties prop) {
+	public KettleBlock(Properties prop) {
 		super(prop);
 	}
 
@@ -39,28 +40,33 @@ public class MokaMakerBlock extends BasePotBlock {
 
 	@Nullable
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return YHBlocks.MOKA_BE.get().create(pos, state);
+		return YHBlocks.KETTLE_BE.get().create(pos, state);
 	}
 
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
-		return level.isClientSide ? createTickerHelper(blockEntity, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::animationTick) :
-				createTickerHelper(blockEntity, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::cookingTick);
+		return level.isClientSide ? createTickerHelper(blockEntity, YHBlocks.KETTLE_BE.get(), BasePotBlockEntity::animationTick) :
+				createTickerHelper(blockEntity, YHBlocks.KETTLE_BE.get(), BasePotBlockEntity::cookingTick);
 	}
 
-	public static void buildModel(DataGenContext<Block, MokaMakerBlock> ctx, RegistrateBlockstateProvider pvd) {
-		var kit = pvd.models().getBuilder("block/moka_pot")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_pot")))
-				.texture("maker", pvd.modLoc("block/moka_maker"))
-				.texture("cup", pvd.modLoc("block/moka_cup"))
-				.texture("foamer", pvd.modLoc("block/moka_foamer"));
-		var tray = pvd.models().getBuilder("block/moka_tray")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_tray")))
-				.texture("maker", pvd.modLoc("block/moka_maker"))
+
+	public static void buildModel(DataGenContext<Block, KettleBlock> ctx, RegistrateBlockstateProvider pvd) {
+		var kettle = pvd.models().getBuilder("block/kettle")
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle")))
+				.texture("kettle", pvd.modLoc("block/kettle"));
+		var handle = pvd.models().getBuilder("block/kettle_handle")
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle_handle")))
+				.texture("kettle", pvd.modLoc("block/kettle"))
+				.texture("handle", pvd.modLoc("block/cooking_pot_handle"))
+				.texture("chain", pvd.modLoc("block/chain"));
+		var tray = pvd.models().getBuilder("block/kettle_tray")
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle_tray")))
+				.texture("kettle", pvd.modLoc("block/kettle"))
 				.texture("tray_side", pvd.modLoc("block/cooking_pot_tray_side"))
 				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"));
 		pvd.horizontalBlock(ctx.get(), state -> switch (state.getValue(SUPPORT)) {
-			case NONE, HANDLE -> kit;
+			case NONE -> kettle;
+			case HANDLE -> handle;
 			case TRAY -> tray;
 		});
 	}

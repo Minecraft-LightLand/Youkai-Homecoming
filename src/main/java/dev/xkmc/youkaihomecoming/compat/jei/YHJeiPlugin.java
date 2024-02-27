@@ -1,6 +1,11 @@
 package dev.xkmc.youkaihomecoming.compat.jei;
 
-import dev.xkmc.youkaihomecoming.content.pot.*;
+import dev.xkmc.youkaihomecoming.content.pot.kettle.KettleMenu;
+import dev.xkmc.youkaihomecoming.content.pot.kettle.KettleRecipe;
+import dev.xkmc.youkaihomecoming.content.pot.kettle.KettleScreen;
+import dev.xkmc.youkaihomecoming.content.pot.moka.MokaMenu;
+import dev.xkmc.youkaihomecoming.content.pot.moka.MokaRecipe;
+import dev.xkmc.youkaihomecoming.content.pot.moka.MokaScreen;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import mezz.jei.api.IModPlugin;

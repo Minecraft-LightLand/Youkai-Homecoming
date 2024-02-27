@@ -1,4 +1,4 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -6,7 +6,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 @ParametersAreNonnullByDefault
 public class BasePotResultSlot extends SlotItemHandler {

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaihomecoming.content.pot;
+package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import java.util.Optional;
 import net.minecraft.nbt.CompoundTag;
@@ -9,7 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import vectorwing.farmersdelight.client.gui.CookingPotTooltip;
-import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 public class BasePotItem extends BlockItem {
 

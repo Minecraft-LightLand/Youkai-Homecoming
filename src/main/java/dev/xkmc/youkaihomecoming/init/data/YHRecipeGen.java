@@ -4,7 +4,7 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
-import dev.xkmc.youkaihomecoming.content.pot.BasePotFinishedRecipe;
+import dev.xkmc.youkaihomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaihomecoming.init.food.*;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
