@@ -133,7 +133,7 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 				return LazyOptional.empty();
 			return LazyOptional.of(() -> handler).cast();
 		}
-		return super.getCapability(cap);
+		return super.getCapability(cap, dire);
 	}
 
 }
