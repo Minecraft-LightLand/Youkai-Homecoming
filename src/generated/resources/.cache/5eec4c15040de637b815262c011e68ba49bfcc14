@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-28T08:28:08.781394	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-02-28T11:06:34.526946	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 b15382dc527e8a0219a5d1d7ca1ddf0c7e4fe98d assets/youkaihomecoming/blockstates/acacia_handrail.json
 6da01f53a7a067e8ecdc17b5bb5550ece28fc5be assets/youkaihomecoming/blockstates/bamboo_handrail.json
 48b4f40388adc7b1a25a83a668ee6e42b84d4a7b assets/youkaihomecoming/blockstates/bamboo_mizuyokan.json
@@ -581,6 +581,12 @@ ce361abca69497aece48005341cc08b51f462d9b data/youkaihomecoming/advancements/main
 e09cbe909335eb9551a180b7925a96ea7dd2951e data/youkaihomecoming/advancements/main/tea.json
 00c01a7e50acae581e9e845ceaa3b88a92951d79 data/youkaihomecoming/advancements/main/tea_master.json
 2e450ea58b9970267f14dbc61ee3733128f04ff5 data/youkaihomecoming/advancements/main/welcome_to_youkais_homecoming.json
+c3d936496077156b8c2ee4acf81e126dce296ce8 data/youkaihomecoming/advancements/recipes/affogato.json
+0f5ffef17a32b4c82e5c66a37167dbf01479e075 data/youkaihomecoming/advancements/recipes/americano.json
+803daaa5cc6927232e4bf30c15b938c4bc8536ff data/youkaihomecoming/advancements/recipes/black_tea.json
+4a1f8f270f8d590d16ffa735d3d8e35bf672b4d1 data/youkaihomecoming/advancements/recipes/cappuccino.json
+69bd58294adbc9ed6a75b3eb3c7facd69b7d3622 data/youkaihomecoming/advancements/recipes/con_panna.json
+1de48469778415c8a542d5ffa513fd3989d91a20 data/youkaihomecoming/advancements/recipes/espresso.json
 3f33fc1d92d0c137f7efe59c142bcd018d339660 data/youkaihomecoming/advancements/recipes/food/assorted_dango.json
 5072d519a3838baad15c74778c0fc886fde6fb24 data/youkaihomecoming/advancements/recipes/food/big_popsicle.json
 b3768e133169db7a79e8c0f5c9614ff2ad15acf1 data/youkaihomecoming/advancements/recipes/food/cooked_flesh_from_flesh_campfire.json
@@ -604,6 +610,9 @@ b4eb4bda6e5466b55497e27c7135707b2fd6e547 data/youkaihomecoming/advancements/reci
 33c94eeae23a494de7ef5d1159640783c9b861d0 data/youkaihomecoming/advancements/recipes/food/shaved_ice_over_rice.json
 53b571d0ac239f5458495ae27f5e439eb7f79ff1 data/youkaihomecoming/advancements/recipes/food/tarte_lune_assemble.json
 2327f0c450eb07c75ab5eabc73b5bbfef9b5f59d data/youkaihomecoming/advancements/recipes/food/tobiko_gunkan.json
+0e3f8d0e92bdcb65821c4f49487acefb0f4bfb77 data/youkaihomecoming/advancements/recipes/green_tea.json
+686ec9a3f04d4f08a8ed444b0ef5240e969fab6f data/youkaihomecoming/advancements/recipes/latte.json
+af4ac8ecc7d5b7d56928b7ebd535736c8df5aa29 data/youkaihomecoming/advancements/recipes/macchiato.json
 b322b5e6c739134acb9aac27ea98745e77db1417 data/youkaihomecoming/advancements/recipes/misc/acacia_handrail_from_acacia_planks_stonecutting.json
 7d07b7c6ce77cb3b371b225bf0978f20a3f9c2ec data/youkaihomecoming/advancements/recipes/misc/bamboo_handrail_from_bamboo_planks_stonecutting.json
 2c418aee48e3bd4ef5af54f60d3bc5de22b89fbb data/youkaihomecoming/advancements/recipes/misc/birch_handrail_from_birch_planks_stonecutting.json
@@ -636,6 +645,10 @@ d2948b4ae08e779fe61205458c248328ff9421ce data/youkaihomecoming/advancements/reci
 f5b84ee3a129a2af341180de838a4ba1cd02184b data/youkaihomecoming/advancements/recipes/misc/white_tea_bag.json
 36336cbd65d66286024317aff26299429bd7a6b0 data/youkaihomecoming/advancements/recipes/misc/white_tea_leaves_from_green_tea_leaves_campfire.json
 d6d7d9277c96629b5bb33eaaffe329c5292d35d5 data/youkaihomecoming/advancements/recipes/misc/white_tea_leaves_from_white_tea_bag.json
+4f3dab8fdf8b8fc2e5edf86223aad7366ed275f4 data/youkaihomecoming/advancements/recipes/mocha.json
+669b5f5b354cb8821836d67c3106f00cbbb12388 data/youkaihomecoming/advancements/recipes/oolong_tea.json
+a118daca43e0a7047df7638d48e93c5e6b85f33c data/youkaihomecoming/advancements/recipes/ristretto.json
+484e7d70729bd6d37e9af0166c2325104dc87a3a data/youkaihomecoming/advancements/recipes/white_tea.json
 1a247c9ec2305fc8c90840243e17c32630b21361 data/youkaihomecoming/loot_tables/blocks/acacia_handrail.json
 a87c7bd3d81abeaa09d24f980a4f55758786b948 data/youkaihomecoming/loot_tables/blocks/bamboo_handrail.json
 29d3aa923bf3338de8d2ff108fad1cd135673d6f data/youkaihomecoming/loot_tables/blocks/bamboo_mizuyokan.json

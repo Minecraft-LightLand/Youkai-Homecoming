@@ -18,6 +18,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -61,16 +62,18 @@ public class YHBlocks {
 
 	static {
 
-		MOKA = YoukaiHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)))
-				.blockstate(MokaMakerBlock::buildModel).item(BasePotItem::new).build()
+		MOKA = YoukaiHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(
+						BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
+				.blockstate(MokaMakerBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
 				.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 		MOKA_BE = YoukaiHomecoming.REGISTRATE.blockEntity("moka_pot", MokaMakerBlockEntity::new).validBlock(MOKA).register();
 		MOKA_RT = YoukaiHomecoming.REGISTRATE.recipe("moka_pot");
 		MOKA_RS = reg("moka_pot", () -> new BasePotSerializer<>(MokaRecipe::new));
 		MOKA_MT = YoukaiHomecoming.REGISTRATE.menu("moka_pot", MokaMenu::new, () -> MokaScreen::new).register();
 
-		KETTLE = YoukaiHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)))
-				.blockstate(KettleBlock::buildModel).item(BasePotItem::new).build()
+		KETTLE = YoukaiHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(
+						BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
+				.blockstate(KettleBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
 				.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 		KETTLE_BE = YoukaiHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
 		KETTLE_RT = YoukaiHomecoming.REGISTRATE.recipe("kettle");

@@ -144,23 +144,6 @@ public abstract class BasePotBlock extends BaseEntityBlock {
 
 	}
 
-	@OnlyIn(Dist.CLIENT)
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flagIn) {
-		super.appendHoverText(stack, level, tooltip, flagIn);
-		MutableComponent text;
-		ItemStack mealStack = BasePotBlockEntity.getMealFromItem(stack);
-		if (!mealStack.isEmpty()) {
-			text = mealStack.getCount() == 1 ? TextUtils.getTranslation("tooltip.cooking_pot.single_serving") :
-					TextUtils.getTranslation("tooltip.cooking_pot.many_servings", mealStack.getCount());
-			tooltip.add(text.withStyle(ChatFormatting.GRAY));
-			MutableComponent textMealName = mealStack.getHoverName().copy();
-			tooltip.add(textMealName.withStyle(mealStack.getRarity().color));
-		} else {
-			text = TextUtils.getTranslation("tooltip.cooking_pot.empty");
-			tooltip.add(text.withStyle(ChatFormatting.GRAY));
-		}
-	}
-
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
 		builder.add(FACING, SUPPORT, WATERLOGGED);

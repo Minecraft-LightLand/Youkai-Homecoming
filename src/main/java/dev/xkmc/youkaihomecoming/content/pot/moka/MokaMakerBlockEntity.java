@@ -19,7 +19,7 @@ public class MokaMakerBlockEntity extends BasePotBlockEntity {
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
-		return new MokaMenu(YHBlocks.MOKA_MT.get(), id, player, this, cookingPotData);
+		return new MokaMenu(YHBlocks.MOKA_MT.get(), id, player, this, this);
 	}
 
 	@Override

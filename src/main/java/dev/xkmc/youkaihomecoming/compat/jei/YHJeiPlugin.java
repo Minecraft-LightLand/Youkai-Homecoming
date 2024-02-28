@@ -50,12 +50,12 @@ public class YHJeiPlugin implements IModPlugin {
 
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 		registration.addRecipeClickArea(MokaScreen.class, 89, 25, 24, 17, MOKA);
-		registration.addRecipeClickArea(KettleScreen.class, 89, 25, 24, 17, MOKA);
+		registration.addRecipeClickArea(KettleScreen.class, 89, 25, 24, 17, KETTLE);
 	}
 
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-		registration.addRecipeTransferHandler(MokaMenu.class, YHBlocks.MOKA_MT.get(), MOKA, 0, 6, 9, 36);
-		registration.addRecipeTransferHandler(KettleMenu.class, YHBlocks.KETTLE_MT.get(), KETTLE, 0, 6, 9, 36);
+		registration.addRecipeTransferHandler(MokaMenu.class, YHBlocks.MOKA_MT.get(), MOKA, 0, 4, 7, 36);
+		registration.addRecipeTransferHandler(KettleMenu.class, YHBlocks.KETTLE_MT.get(), KETTLE, 0, 4, 7, 36);
 	}
 
 

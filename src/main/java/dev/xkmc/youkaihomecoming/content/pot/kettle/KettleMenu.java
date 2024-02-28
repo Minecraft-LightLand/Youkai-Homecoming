@@ -32,4 +32,8 @@ public class KettleMenu extends BasePotMenu {
 		return YoukaiHomecoming.KETTLE;
 	}
 
+	public int getWater() {
+		return cookingPotData.get(2);
+	}
+
 }
