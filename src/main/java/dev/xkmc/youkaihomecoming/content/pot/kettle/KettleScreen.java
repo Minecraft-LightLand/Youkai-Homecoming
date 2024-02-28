@@ -42,7 +42,7 @@ public class KettleScreen extends BasePotScreen<KettleMenu> {
 			gui.blit(getBackgroundTexture(),
 					leftPos + WATER_LINE.x,
 					topPos + WATER_LINE.y,
-					176,
+					176 + (WATER_LINE.width - l),
 					getHeatIcon().height + getProgressArrow().height,
 					l + 1,
 					WATER_LINE.height

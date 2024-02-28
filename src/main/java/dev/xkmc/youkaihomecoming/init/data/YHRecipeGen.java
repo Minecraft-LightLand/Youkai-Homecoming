@@ -9,15 +9,16 @@ import dev.xkmc.youkaihomecoming.init.food.*;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.ItemLike;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -27,6 +28,7 @@ import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class YHRecipeGen {
 
@@ -57,7 +59,8 @@ public class YHRecipeGen {
 			pvd.storage(YHTea.OOLONG.leaves, RecipeCategory.MISC, YHItems.OOLONG_TEA_BAG);
 			pvd.storage(YHTea.WHITE.leaves, RecipeCategory.MISC, YHItems.WHITE_TEA_BAG);
 
-			pvd.smoking(DataIngredient.items(YHCrops.TEA.getFruits()), RecipeCategory.MISC, YHTea.GREEN.leaves, 0.1f, 200);
+			drying(pvd, DataIngredient.items(Items.WHEAT), ModItems.STRAW);
+			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
 			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
 			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.WHITE.leaves, 0.1f, 200);
 
@@ -76,9 +79,7 @@ public class YHRecipeGen {
 							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.MATCHA, 1)
 					.build(pvd, YHItems.MATCHA.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHTea.OOLONG.leaves.get(), 1, 200, 0.1f)
-					.addIngredient(YHTea.GREEN.leaves)
-					.build(pvd, YHTea.OOLONG.leaves.getId());
+			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.OOLONG.leaves);
 		}
 
 		// food craft
@@ -579,6 +580,17 @@ public class YHRecipeGen {
 					.define('A', cake.item.get())
 					.save(pvd, cake.block.getId().withSuffix("_assemble"));
 		}
+	}
+
+	private static void drying(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out) {
+		cooking(pvd, in, RecipeCategory.MISC, out, 0, 200, "drying", YHBlocks.RACK_RS.get());
+
+	}
+
+	public static <T extends ItemLike> void cooking(RegistrateRecipeProvider pvd, DataIngredient source, RecipeCategory category, Supplier<? extends T> result, float experience, int cookingTime, String typeName, RecipeSerializer<? extends AbstractCookingRecipe> serializer) {
+		new SimpleCookingRecipeBuilder(category, CookingBookCategory.MISC, result.get(), source, experience, cookingTime, serializer)
+				.unlockedBy("has_" + pvd.safeName(source), source.getCritereon(pvd))
+				.save(pvd, pvd.safeId(result.get()) + "_from_" + pvd.safeName(source) + "_" + typeName);
 	}
 
 	private static Consumer<FinishedRecipe> tea(RegistrateRecipeProvider pvd) {

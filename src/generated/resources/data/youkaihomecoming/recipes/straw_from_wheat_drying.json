@@ -1,0 +1,10 @@
+{
+  "type": "youkaihomecoming:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result": "farmersdelight:straw"
+}

@@ -12,13 +12,17 @@ import dev.xkmc.youkaihomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaihomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaihomecoming.content.pot.kettle.*;
 import dev.xkmc.youkaihomecoming.content.pot.moka.*;
+import dev.xkmc.youkaihomecoming.content.pot.rack.DryingRackBlock;
+import dev.xkmc.youkaihomecoming.content.pot.rack.DryingRackBlockEntity;
+import dev.xkmc.youkaihomecoming.content.pot.rack.DryingRackRecipe;
+import dev.xkmc.youkaihomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleCookingSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -63,6 +67,11 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeSerializer<KettleRecipe>> KETTLE_RS;
 	public static final MenuEntry<KettleMenu> KETTLE_MT;
 
+	public static final BlockEntry<DryingRackBlock> RACK;
+	public static final BlockEntityEntry<DryingRackBlockEntity> RACK_BE;
+	public static final RegistryEntry<RecipeType<DryingRackRecipe>> RACK_RT;
+	public static final RegistryEntry<RecipeSerializer<DryingRackRecipe>> RACK_RS;
+
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 
 	static {
@@ -85,6 +94,15 @@ public class YHBlocks {
 			KETTLE_RT = YoukaiHomecoming.REGISTRATE.recipe("kettle");
 			KETTLE_RS = reg("kettle", () -> new BasePotSerializer<>(KettleRecipe::new));
 			KETTLE_MT = YoukaiHomecoming.REGISTRATE.menu("kettle", KettleMenu::new, () -> KettleScreen::new).register();
+
+			RACK = YoukaiHomecoming.REGISTRATE.block("drying_rack", p -> new DryingRackBlock(
+							BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS)))
+					.blockstate(DryingRackBlock::buildModel)
+					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
+			RACK_BE = YoukaiHomecoming.REGISTRATE.blockEntity("drying_rack", DryingRackBlockEntity::new)
+					.validBlock(RACK).renderer(() -> DryingRackRenderer::new).register();
+			RACK_RT = YoukaiHomecoming.REGISTRATE.recipe("drying_rack");
+			RACK_RS = reg("drying_rack", () -> new SimpleCookingSerializer<>(DryingRackRecipe::new, 100));
 		}
 
 		MOKA_KIT = YoukaiHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(

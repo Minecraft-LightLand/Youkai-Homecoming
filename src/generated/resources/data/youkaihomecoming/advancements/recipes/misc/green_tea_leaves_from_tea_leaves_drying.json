@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaihomecoming:green_tea_leaves_from_tea_leaves_smoking"
+        "recipe": "youkaihomecoming:green_tea_leaves_from_tea_leaves_drying"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaihomecoming:green_tea_leaves_from_tea_leaves_smoking"
+      "youkaihomecoming:green_tea_leaves_from_tea_leaves_drying"
     ]
   },
   "sends_telemetry_event": false
