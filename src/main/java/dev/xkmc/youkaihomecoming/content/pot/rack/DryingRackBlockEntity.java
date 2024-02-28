@@ -2,6 +2,7 @@ package dev.xkmc.youkaihomecoming.content.pot.rack;
 
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
@@ -15,7 +16,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 
 import javax.annotation.Nullable;
@@ -34,7 +39,9 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 		super(type, pos, state);
 	}
 
-	public static void cookTick(Level pLevel, BlockPos pPos, BlockState pState, DryingRackBlockEntity be) {
+	public static void cookTick(Level level, BlockPos pos, BlockState state, DryingRackBlockEntity be) {
+		if (!level.canSeeSky(pos)) return;
+		if (!level.isDay()) return;
 		be.cookTick();
 	}
 
@@ -117,6 +124,14 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 
 	public ItemStackHandler getInventory() {
 		return items;
+	}
+
+	@Override
+	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction dire) {
+		if (cap == ForgeCapabilities.ITEM_HANDLER) {
+			return LazyOptional.of(() -> items).cast();
+		}
+		return super.getCapability(cap);
 	}
 
 }

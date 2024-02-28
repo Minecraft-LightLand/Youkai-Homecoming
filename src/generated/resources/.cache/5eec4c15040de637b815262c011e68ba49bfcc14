@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-28T15:32:32.687942	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-02-28T16:03:40.247202	Registrate Provider for youkaihomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 b15382dc527e8a0219a5d1d7ca1ddf0c7e4fe98d assets/youkaihomecoming/blockstates/acacia_handrail.json
 6da01f53a7a067e8ecdc17b5bb5550ece28fc5be assets/youkaihomecoming/blockstates/bamboo_handrail.json
 48b4f40388adc7b1a25a83a668ee6e42b84d4a7b assets/youkaihomecoming/blockstates/bamboo_mizuyokan.json
@@ -58,8 +58,8 @@ dfbda8351abb258a94497ed1275cbca6d94898d5 assets/youkaihomecoming/blockstates/whi
 8e847b9e57a7d0e177e332aaf77d12f0c0ae3641 assets/youkaihomecoming/blockstates/wild_soybean.json
 591a91b7ef7f31bdbb91c14624d2063f4a09edc7 assets/youkaihomecoming/blockstates/wild_tea.json
 59bb082dcdbf923f0bb7dd238353f382712cec93 assets/youkaihomecoming/blockstates/yellow_red_velvet_candle_cake.json
-d28fb6b0b537482657e535a2a8af8d00b85323a5 assets/youkaihomecoming/lang/en_ud.json
-b12e232f3a2c257a6e0b62bca12b2a3d3ed84afb assets/youkaihomecoming/lang/en_us.json
+efad168e6161a0ac88b593e9640443d4e9ad2e67 assets/youkaihomecoming/lang/en_ud.json
+561e4784431f16a0b7946fa8af45c815e786bdbf assets/youkaihomecoming/lang/en_us.json
 f058fec75480e603cc14730cd19e5fc3537f934b assets/youkaihomecoming/models/block/acacia_handrail_inner_left_ccw.json
 aca4735f18dd86201d33aafa4610aeecc1d8b62a assets/youkaihomecoming/models/block/acacia_handrail_inner_left_connect.json
 54f2cd1fc78cc5f80d17f4abcd96371a38b1d20c assets/youkaihomecoming/models/block/acacia_handrail_inner_left_corner.json
@@ -633,6 +633,7 @@ db06f61e62711d0146c69bcd99d482f81d365351 data/youkaihomecoming/advancements/reci
 b2a84189de26b810a34608c87ee25a0152567061 data/youkaihomecoming/advancements/recipes/misc/coffee_beans_from_green_coffee_bean_smoking.json
 cb84f49cce60b8e3d282a60b64d752692576ea56 data/youkaihomecoming/advancements/recipes/misc/crimson_handrail_from_crimson_planks_stonecutting.json
 6589dc50d5b99045b2ea62147e481bcde3b16a40 data/youkaihomecoming/advancements/recipes/misc/dark_oak_handrail_from_dark_oak_planks_stonecutting.json
+fd0bf6002ccba1cfb8495bb140b943bffcc2a4ae data/youkaihomecoming/advancements/recipes/misc/drying_rack_from_bamboo_block_stonecutting.json
 f278dbbb12aa47a71b17e2cd181e8854a412ddac data/youkaihomecoming/advancements/recipes/misc/green_tea_bag.json
 48272bbdee585791d53740960b4333f7676db5e6 data/youkaihomecoming/advancements/recipes/misc/green_tea_leaves_from_green_tea_bag.json
 77f21ffa7ae9d598eb3eb8995aac54061da78acd data/youkaihomecoming/advancements/recipes/misc/green_tea_leaves_from_tea_leaves_drying.json
@@ -759,6 +760,7 @@ a7775fd99ab4f68a52ec65da9d5cf34e7e44e864 data/youkaihomecoming/recipes/cooked_fl
 9fd33d9f223001cfc89d3019f48f06f5adb969f4 data/youkaihomecoming/recipes/crimson_handrail_from_crimson_planks_stonecutting.json
 cfd915e982ec4ed7cc6151dd0f6c90bd1c008c6d data/youkaihomecoming/recipes/dark_oak_handrail_from_dark_oak_planks_stonecutting.json
 a518d7add20121c14fd60c378e2a0dff9baac3da data/youkaihomecoming/recipes/dried_fish.json
+b6ac9591c034f49f9c0ffb058caa582eb68dba77 data/youkaihomecoming/recipes/drying_rack_from_bamboo_block_stonecutting.json
 4c2f9c5754286494b6dd5a38e844ee717a5b31e1 data/youkaihomecoming/recipes/espresso.json
 0c315271dc77b8f40c407c32ab8e29fc08fdb1af data/youkaihomecoming/recipes/flesh_dumplings.json
 1ca23f2fd181b1c9fba692de81a11b995dc95f35 data/youkaihomecoming/recipes/flesh_feast.json

@@ -24,6 +24,7 @@ public enum YHLangData {
 
 	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
+	JEI_RACK("jei.rack", "Drying", 0, null),
 
 	OBTAIN_FLESH("obtain_flesh", "Kill human mobs with knife while in %s or %s effect", 2, ChatFormatting.GRAY),
 	OBTAIN_BLOOD("obtain_blood", "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect", 2, ChatFormatting.GRAY),
@@ -53,6 +54,10 @@ public enum YHLangData {
 			return ans.withStyle(format);
 		}
 		return ans;
+	}
+
+	public String key(){
+		return key;
 	}
 
 	public static void genLang(RegistrateLangProvider pvd) {

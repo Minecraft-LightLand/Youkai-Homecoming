@@ -32,7 +32,7 @@ public class DryingRackRenderer implements BlockEntityRenderer<DryingRackBlockEn
 			ItemStack stack = list.get(j);
 			if (!stack.isEmpty()) {
 				pose.pushPose();
-				pose.translate(0.5F, 0.44921875F, 0.5F);
+				pose.translate(0.5F, 0.125F, 0.5F);
 				Direction rot = Direction.from2DDataValue((j + dir.get2DDataValue()) % 4);
 				float f = -rot.toYRot();
 				pose.mulPose(Axis.YP.rotationDegrees(f));

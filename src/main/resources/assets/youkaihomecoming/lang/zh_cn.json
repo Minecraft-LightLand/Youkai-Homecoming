@@ -164,6 +164,7 @@
   "block.youkaihomecoming.kettle": "茶壶",
   "block.youkaihomecoming.moka_pot": "摩卡壶",
   "block.youkaihomecoming.moka_kit": "摩卡壶套件",
+  "block.youkaihomecoming.drying_rack": "晒干架",
   "block.youkaihomecoming.red_velvet_candle_cake": "红丝绒蜡烛蛋糕",
   "block.youkaihomecoming.black_red_velvet_candle_cake": "黑色红丝绒蜡烛蛋糕",
   "block.youkaihomecoming.blue_red_velvet_candle_cake": "蓝色红丝绒蜡烛蛋糕",
@@ -216,5 +217,6 @@
   "advancements.youkaihomecoming.advancements.main.tea_master.description": "品尝所有原味茶",
   "advancements.youkaihomecoming.advancements.main.tea_master.title": "小罐茶，大师作",
   "advancements.youkaihomecoming.advancements.main.first_time.description": "获得半妖怪化状态",
-  "advancements.youkaihomecoming.advancements.main.first_time.title": "小心灵梦"
+  "advancements.youkaihomecoming.advancements.main.first_time.title": "小心灵梦",
+  "youkaihomecoming.jei.rack": "Drying"
 }

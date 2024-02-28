@@ -96,7 +96,7 @@ public class YHBlocks {
 			KETTLE_MT = YoukaiHomecoming.REGISTRATE.menu("kettle", KettleMenu::new, () -> KettleScreen::new).register();
 
 			RACK = YoukaiHomecoming.REGISTRATE.block("drying_rack", p -> new DryingRackBlock(
-							BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS)))
+							BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).noOcclusion()))
 					.blockstate(DryingRackBlock::buildModel)
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
 			RACK_BE = YoukaiHomecoming.REGISTRATE.blockEntity("drying_rack", DryingRackBlockEntity::new)
