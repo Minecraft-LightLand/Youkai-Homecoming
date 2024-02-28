@@ -2,8 +2,6 @@
   "parent": "youkaihomecoming:custom/moka_pot",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cup": "youkaihomecoming:block/moka_cup",
-    "foamer": "youkaihomecoming:block/moka_foamer",
     "maker": "youkaihomecoming:block/moka_pot"
   }
 }

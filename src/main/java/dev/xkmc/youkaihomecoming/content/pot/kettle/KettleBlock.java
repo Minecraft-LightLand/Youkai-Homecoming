@@ -5,13 +5,16 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlockEntity;
+import dev.xkmc.youkaihomecoming.init.data.YHLangData;
 import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
@@ -30,6 +33,7 @@ import net.minecraftforge.common.util.Lazy;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 public class KettleBlock extends BasePotBlock {
@@ -70,6 +74,12 @@ public class KettleBlock extends BasePotBlock {
 		return super.use(state, level, pos, player, hand, result);
 	}
 
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+		super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
+		pTooltip.add(YHLangData.KETTLE_INFO.get());
+	}
+
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return SHAPE;
 	}
@@ -88,7 +98,6 @@ public class KettleBlock extends BasePotBlock {
 		return level.isClientSide ? createTickerHelper(blockEntity, YHBlocks.KETTLE_BE.get(), BasePotBlockEntity::animationTick) :
 				createTickerHelper(blockEntity, YHBlocks.KETTLE_BE.get(), BasePotBlockEntity::cookingTick);
 	}
-
 
 	public static void buildModel(DataGenContext<Block, KettleBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var kettle = pvd.models().getBuilder("block/kettle")

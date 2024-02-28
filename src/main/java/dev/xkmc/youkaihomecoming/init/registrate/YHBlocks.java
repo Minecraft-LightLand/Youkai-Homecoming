@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.MenuEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.youkaihomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaihomecoming.content.block.furniture.MultiFenceBlock;
 import dev.xkmc.youkaihomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaihomecoming.content.pot.base.BasePotItem;
@@ -17,9 +18,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
@@ -60,26 +63,39 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeSerializer<KettleRecipe>> KETTLE_RS;
 	public static final MenuEntry<KettleMenu> KETTLE_MT;
 
+	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
+
 	static {
 
-		MOKA = YoukaiHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(
-						BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
-				.blockstate(MokaMakerBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
-				.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
-		MOKA_BE = YoukaiHomecoming.REGISTRATE.blockEntity("moka_pot", MokaMakerBlockEntity::new).validBlock(MOKA).register();
-		MOKA_RT = YoukaiHomecoming.REGISTRATE.recipe("moka_pot");
-		MOKA_RS = reg("moka_pot", () -> new BasePotSerializer<>(MokaRecipe::new));
-		MOKA_MT = YoukaiHomecoming.REGISTRATE.menu("moka_pot", MokaMenu::new, () -> MokaScreen::new).register();
+		{
+			MOKA = YoukaiHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(
+							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
+					.blockstate(MokaMakerBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
+					.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
+			MOKA_BE = YoukaiHomecoming.REGISTRATE.blockEntity("moka_pot", MokaMakerBlockEntity::new).validBlock(MOKA).register();
+			MOKA_RT = YoukaiHomecoming.REGISTRATE.recipe("moka_pot");
+			MOKA_RS = reg("moka_pot", () -> new BasePotSerializer<>(MokaRecipe::new));
+			MOKA_MT = YoukaiHomecoming.REGISTRATE.menu("moka_pot", MokaMenu::new, () -> MokaScreen::new).register();
 
-		KETTLE = YoukaiHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(
-						BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
-				.blockstate(KettleBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
-				.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
-		KETTLE_BE = YoukaiHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
-		KETTLE_RT = YoukaiHomecoming.REGISTRATE.recipe("kettle");
-		KETTLE_RS = reg("kettle", () -> new BasePotSerializer<>(KettleRecipe::new));
-		KETTLE_MT = YoukaiHomecoming.REGISTRATE.menu("kettle", KettleMenu::new, () -> KettleScreen::new).register();
+			KETTLE = YoukaiHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(
+							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
+					.blockstate(KettleBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
+					.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
+			KETTLE_BE = YoukaiHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
+			KETTLE_RT = YoukaiHomecoming.REGISTRATE.recipe("kettle");
+			KETTLE_RS = reg("kettle", () -> new BasePotSerializer<>(KettleRecipe::new));
+			KETTLE_MT = YoukaiHomecoming.REGISTRATE.menu("kettle", KettleMenu::new, () -> KettleScreen::new).register();
+		}
 
+		MOKA_KIT = YoukaiHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
+						BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
+						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_kit")))
+						.texture("maker", pvd.modLoc("block/moka_pot"))
+						.texture("cup", pvd.modLoc("block/moka_cup"))
+						.texture("foamer", pvd.modLoc("block/moka_foamer"))
+						.renderType("cutout")))
+				.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 
 		for (var e : WoodType.values()) {
 			String name = e.name().toLowerCase(Locale.ROOT);

@@ -30,7 +30,7 @@ public abstract class BasePotRecipe extends CookingPotRecipe {
 		List<ItemStack> inputs = new ArrayList<>();
 		int i = 0;
 
-		for(int j = 0; j < 6; ++j) {
+		for(int j = 0; j < 4; ++j) {
 			ItemStack itemstack = inv.getItem(j);
 			if (!itemstack.isEmpty()) {
 				++i;
@@ -38,8 +38,8 @@ public abstract class BasePotRecipe extends CookingPotRecipe {
 			}
 		}
 
-		return i == this.getIngredients().size() &&
-				RecipeMatcher.findMatches(inputs, this.getIngredients()) != null;
+		return i == getIngredients().size() &&
+				RecipeMatcher.findMatches(inputs, getIngredients()) != null;
 	}
 
 	public abstract RecipeSerializer<?> getSerializer();

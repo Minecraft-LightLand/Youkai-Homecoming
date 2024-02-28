@@ -35,6 +35,9 @@ public class YHRecipeGen {
 		food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
 		food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 		pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
+		pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.MOKA);
+		pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.KETTLE);
+		pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.MOKA_KIT);
 		pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 		for (var e : YHBlocks.WoodType.values()) {
 			pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
