@@ -36,10 +36,10 @@ import java.util.Locale;
 import java.util.function.BiFunction;
 
 public enum YHCrops {
-	SOYBEAN(PlantType.CROP, null, "pods"),
-	REDBEAN(PlantType.CROP, null, null),
-	COFFEA(PlantType.COFFEA, "green_coffee_bean", "coffee_berries"),
-	TEA(PlantType.TEA, "tea_seeds", "tea_leaves");
+	SOYBEAN(PlantType.CROP, 16,null, "pods"),
+	REDBEAN(PlantType.CROP, 16,null, null),
+	COFFEA(PlantType.COFFEA, 8,"green_coffee_bean", "coffee_berries"),
+	TEA(PlantType.TEA, 8,"tea_seeds", "tea_leaves");
 
 	private final BlockEntry<? extends CropBlock> PLANT;
 	private final BlockEntry<? extends BushBlock> WILD;
@@ -49,8 +49,11 @@ public enum YHCrops {
 	public final ResourceKey<ConfiguredFeature<?, ?>> configKey;
 	public final ResourceKey<PlacedFeature> placementKey;
 
-	YHCrops(PlantType type, @Nullable String seedName, @Nullable String fruit) {
+	private final int rarity;
+
+	YHCrops(PlantType type, int rarity, @Nullable String seedName, @Nullable String fruit) {
 		String name = name().toLowerCase(Locale.ROOT);
+		this.rarity = rarity;
 		if (seedName == null) seedName = name;
 		this.configKey = ResourceKey.create(Registries.CONFIGURED_FEATURE,
 				new ResourceLocation(YoukaisHomecoming.MODID, name));
@@ -100,7 +103,7 @@ public enum YHCrops {
 
 	public void registerPlacements(BootstapContext<PlacedFeature> ctx) {
 		PlacementUtils.register(ctx, placementKey, ctx.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(configKey),
-				RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+				RarityFilter.onAverageOnceEvery(rarity), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	}
 
 	public BlockEntry<Block> createBag() {

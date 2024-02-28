@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_coffee_powder": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "youkaishomecoming:coffee_powder"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:moka_pot_from_iron_ingot_stonecutting"
+        "recipe": "youkaishomecoming:moka_pot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_ingot",
+      "has_coffee_powder",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:moka_pot_from_iron_ingot_stonecutting"
+      "youkaishomecoming:moka_pot"
     ]
   },
   "sends_telemetry_event": false

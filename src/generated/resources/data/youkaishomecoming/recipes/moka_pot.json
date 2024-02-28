@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "youkaishomecoming:coffee_powder"
+    },
+    "D": {
+      "item": "minecraft:deepslate"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "IWI",
+    "ADA"
+  ],
+  "result": {
+    "item": "youkaishomecoming:moka_pot"
+  },
+  "show_notification": true
+}

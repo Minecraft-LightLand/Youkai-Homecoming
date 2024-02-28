@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_tea_leaves": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "youkaishomecoming:tea_leaves"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:moka_kit_from_iron_ingot_stonecutting"
+        "recipe": "youkaishomecoming:kettle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_ingot",
+      "has_tea_leaves",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:moka_kit_from_iron_ingot_stonecutting"
+      "youkaishomecoming:kettle"
     ]
   },
   "sends_telemetry_event": false

@@ -32,12 +32,13 @@ public class DryingRackRenderer implements BlockEntityRenderer<DryingRackBlockEn
 			ItemStack stack = list.get(j);
 			if (!stack.isEmpty()) {
 				pose.pushPose();
-				pose.translate(0.5F, 0.125F, 0.5F);
+				pose.translate(0.5F, 1.2f / 16, 0.5F);
 				Direction rot = Direction.from2DDataValue((j + dir.get2DDataValue()) % 4);
 				float f = -rot.toYRot();
 				pose.mulPose(Axis.YP.rotationDegrees(f));
 				pose.mulPose(Axis.XP.rotationDegrees(90.0F));
-				pose.translate(-0.3125F, -0.3125F, 0.0F);
+				float dist = 3f / 16;
+				pose.translate(-dist, -dist, 0.0F);
 				pose.scale(0.375F, 0.375F, 0.375F);
 				this.itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, pose, buffer, be.getLevel(), i + j);
 				pose.popPose();

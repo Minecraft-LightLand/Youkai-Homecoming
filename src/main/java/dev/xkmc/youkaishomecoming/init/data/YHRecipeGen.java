@@ -33,20 +33,45 @@ import java.util.function.Supplier;
 public class YHRecipeGen {
 
 	public static void genRecipes(RegistrateRecipeProvider pvd) {
-		foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET);
-		food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
-		food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
-		pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
-		pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.MOKA);
-		pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.KETTLE);
-		pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.MOKA_KIT);
-		pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
-		pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
-		for (var e : YHBlocks.WoodType.values()) {
-			pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
+		{
+			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET);
+			food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
+			food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
+			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
+			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
+			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
+			for (var e : YHBlocks.WoodType.values()) {
+				pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
+			}
+			YHBlocks.HAY.genRecipe(pvd);
+			YHBlocks.STRAW.genRecipe(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.MOKA)::unlockedBy, YHItems.COFFEE_POWDER.get())
+					.pattern("ABA").pattern("IWI").pattern("ADA")
+					.define('A', Items.IRON_NUGGET)
+					.define('I', Items.IRON_INGOT)
+					.define('B', YHItems.COFFEE_POWDER)
+					.define('D', Items.DEEPSLATE)
+					.define('W', new PotionIngredient(Potions.WATER))
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.KETTLE)::unlockedBy, YHCrops.TEA.getFruits())
+					.pattern("ABA").pattern("IWI").pattern("AIA")
+					.define('A', Items.IRON_NUGGET)
+					.define('I', Items.IRON_INGOT)
+					.define('B', YHCrops.TEA.getFruits())
+					.define('W', Items.WATER_BUCKET)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.MOKA_KIT)::unlockedBy, Items.IRON_INGOT)
+					.pattern("ABA").pattern("I I").pattern("EDE")
+					.define('A', Items.IRON_NUGGET)
+					.define('I', Items.IRON_INGOT)
+					.define('B', Items.BLACK_DYE)
+					.define('D', Items.DEEPSLATE)
+					.define('E', Items.TERRACOTTA)
+					.save(pvd);
 		}
-		YHBlocks.HAY.genRecipe(pvd);
-		YHBlocks.STRAW.genRecipe(pvd);
 
 		// plants
 		{

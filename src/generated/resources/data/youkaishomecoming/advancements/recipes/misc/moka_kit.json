@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:kettle_from_iron_ingot_stonecutting"
+        "recipe": "youkaishomecoming:moka_kit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:kettle_from_iron_ingot_stonecutting"
+      "youkaishomecoming:moka_kit"
     ]
   },
   "sends_telemetry_event": false
