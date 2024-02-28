@@ -73,6 +73,21 @@
 		  "candle_cake": "蜡烛蛋糕"
 		}
 	  ]
+	},
+	"wood_set": {
+	  "path": "block.youkaishomecoming",
+	  "list": [
+		{
+		  "hay": "干草",
+		  "straw": "稻草"
+		},
+		{
+		  "stairs": "楼梯",
+		  "slab": "台阶",
+		  "trap_door": "活板门",
+		  "vertical_slab": "墙"
+		}
+	  ]
 	}
   }
 }

@@ -45,6 +45,8 @@ public class YHRecipeGen {
 		for (var e : YHBlocks.WoodType.values()) {
 			pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
 		}
+		YHBlocks.HAY.genRecipe(pvd);
+		YHBlocks.STRAW.genRecipe(pvd);
 
 		// plants
 		{

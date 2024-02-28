@@ -39,11 +39,7 @@ public class YHTagGen {
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
-	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
-			new ResourceLocation(Jeed.MOD_ID, "hidden"));
-
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
-		pvd.addTag(HIDDEN).add(YHEffects.YOUKAIFYING.get());
 	}
 
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
