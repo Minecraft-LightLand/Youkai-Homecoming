@@ -1,6 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/handrail_outer_right_connect",
-  "textures": {
-    "all": "youkaihomecoming:block/dark_oak_handrail"
-  }
-}

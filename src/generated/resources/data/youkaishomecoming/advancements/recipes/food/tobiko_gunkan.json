@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_roe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:roe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:tobiko_gunkan"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_roe",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:tobiko_gunkan"
+    ]
+  },
+  "sends_telemetry_event": false
+}

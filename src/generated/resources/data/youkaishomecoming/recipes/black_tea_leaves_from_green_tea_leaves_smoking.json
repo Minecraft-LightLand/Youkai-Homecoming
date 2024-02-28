@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaishomecoming:green_tea_leaves"
+  },
+  "result": "youkaishomecoming:black_tea_leaves"
+}

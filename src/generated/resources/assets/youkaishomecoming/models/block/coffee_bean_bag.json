@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "youkaishomecoming:block/coffee_bean_bag_bottom",
+    "east": "youkaishomecoming:block/coffee_bean_bag_side_tied",
+    "north": "youkaishomecoming:block/coffee_bean_bag_side",
+    "particle": "youkaishomecoming:block/coffee_bean_bag_top",
+    "south": "youkaishomecoming:block/coffee_bean_bag_side",
+    "up": "youkaishomecoming:block/coffee_bean_bag_top",
+    "west": "youkaishomecoming:block/coffee_bean_bag_side_tied"
+  }
+}

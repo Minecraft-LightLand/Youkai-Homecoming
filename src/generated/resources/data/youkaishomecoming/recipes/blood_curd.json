@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaishomecoming:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:blood_bottle"
+    },
+    {
+      "item": "youkaishomecoming:blood_bottle"
+    },
+    {
+      "tag": "forge:vegetables"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:blood_curd"
+  }
+}

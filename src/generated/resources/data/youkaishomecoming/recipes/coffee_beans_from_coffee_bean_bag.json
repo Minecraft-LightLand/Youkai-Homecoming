@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:coffee_bean_bag"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "youkaishomecoming:coffee_beans"
+  }
+}

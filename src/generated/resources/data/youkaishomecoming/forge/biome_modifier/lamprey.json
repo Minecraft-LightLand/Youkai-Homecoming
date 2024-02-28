@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#youkaishomecoming:lamprey_spawns",
+  "spawners": {
+    "type": "youkaishomecoming:lamprey",
+    "maxCount": 5,
+    "minCount": 3,
+    "weight": 12
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#youkaihomecoming:tea_spawns",
-  "features": "youkaihomecoming:tea",
-  "step": "vegetal_decoration"
-}

@@ -1,0 +1,17 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:white_tea_leaves"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaishomecoming:white_tea"
+  }
+}

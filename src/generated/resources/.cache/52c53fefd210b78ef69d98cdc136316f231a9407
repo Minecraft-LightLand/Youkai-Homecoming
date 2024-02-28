@@ -1,0 +1,5 @@
+// 1.20.1	2024-02-28T16:21:15.231035	Global Loot Modifiers : youkaishomecoming
+d5cb2b9180e9cb1e8ae81b5249d480dd6f377d36 data/forge/loot_modifiers/global_loot_modifiers.json
+b7529ecdd2b8f54c5d2ee4aa068bf3fe363e9849 data/youkaishomecoming/loot_modifiers/fishing_lamprey.json
+b4de1c4a10712ce1d1c0353fa79c518f769f9c8a data/youkaishomecoming/loot_modifiers/scavenging_flesh.json
+5c5bbddf3eaddb43b8a8cf4c7ad959441597a3ae data/youkaishomecoming/loot_modifiers/scavenging_flesh_cooked.json

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "youkaishomecoming:block/lime_red_velvet_candle_cake"
+    },
+    "lit=true": {
+      "model": "youkaishomecoming:block/lime_red_velvet_candle_cake_lit"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/tea_stage5",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/tea_stage5",
+    "side": "youkaishomecoming:block/tea_bush_side",
+    "top": "youkaishomecoming:block/tea_bush_top"
+  }
+}

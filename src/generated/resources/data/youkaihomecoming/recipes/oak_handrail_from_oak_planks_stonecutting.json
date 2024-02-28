@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "minecraft:oak_planks"
-  },
-  "result": "youkaihomecoming:oak_handrail"
-}

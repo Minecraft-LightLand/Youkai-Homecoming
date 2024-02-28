@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/saucer_pastitsio",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/pastitsio",
+    "extra": "youkaishomecoming:block/pastitsio_extra",
+    "particle": "youkaishomecoming:block/pastitsio",
+    "sake": "youkaishomecoming:block/saucer_sake"
+  }
+}

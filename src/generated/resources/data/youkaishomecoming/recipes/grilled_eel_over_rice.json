@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "youkaishomecoming:raw_eel"
+    },
+    {
+      "tag": "youkaishomecoming:raw_eel"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:grilled_eel_over_rice"
+  }
+}

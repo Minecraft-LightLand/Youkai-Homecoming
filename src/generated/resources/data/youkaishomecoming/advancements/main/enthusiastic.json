@@ -1,0 +1,946 @@
+{
+  "parent": "youkaishomecoming:main/mousse",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bamboo_mizuyokan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "1": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:dried_fish"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "10": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:ristretto"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "11": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:latte"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "12": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:affogato"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "13": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:con_panna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "14": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cappuccino"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "15": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:macchiato"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "16": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "17": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_lamprey"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "18": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:roasted_lamprey"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "19": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_lamprey_fillet"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "2": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:imitation_bear_paw"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "20": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:roasted_lamprey_fillet"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "21": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "22": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cooked_flesh"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "23": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:roe"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "24": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:butter"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "25": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "26": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:oily_bean_curd"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "27": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "28": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tsukimi_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "29": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:coffee_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "3": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:pastitsio"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "30": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:matcha_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "31": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:sakura_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "32": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:yashouma_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "33": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:onigili"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "34": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:senbei"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "35": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:sekibankiyaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "36": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:yakumo_inari"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "37": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:koishi_mousse"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "38": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bun"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "39": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:oyaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "4": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:sauce_grilled_fish"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "40": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:pork_rice_ball"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "41": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tobiko_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "42": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tutu_congee"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "43": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:steamed_egg_in_bamboo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "44": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:candy_apple"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "45": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:milk_popsicle"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "46": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:big_popsicle"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "47": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kinako_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "48": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mitarashi_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "49": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:assorted_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "5": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:stinky_tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "50": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:shaved_ice_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "51": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:green_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "52": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "53": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:black_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "54": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:oolong_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "55": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:apaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "56": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:avgolemono"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "57": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:blazing_red_curry"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "58": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_eel_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "59": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:higan_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "6": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "60": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:longevity_noodles"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "61": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:miso_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "62": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:poor_god_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "63": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:power_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "64": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:shirayuki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "65": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "66": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tuscan_salmon"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "67": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_dumplings"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "68": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_roll"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "69": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "7": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:blood_curd"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "70": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bowl_of_flesh_feast"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "8": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:espresso"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "9": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:americano"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.enthusiastic.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:imitation_bear_paw"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.enthusiastic.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ],
+    [
+      "2"
+    ],
+    [
+      "3"
+    ],
+    [
+      "4"
+    ],
+    [
+      "5"
+    ],
+    [
+      "6"
+    ],
+    [
+      "7"
+    ],
+    [
+      "8"
+    ],
+    [
+      "9"
+    ],
+    [
+      "10"
+    ],
+    [
+      "11"
+    ],
+    [
+      "12"
+    ],
+    [
+      "13"
+    ],
+    [
+      "14"
+    ],
+    [
+      "15"
+    ],
+    [
+      "16"
+    ],
+    [
+      "17"
+    ],
+    [
+      "18"
+    ],
+    [
+      "19"
+    ],
+    [
+      "20"
+    ],
+    [
+      "21"
+    ],
+    [
+      "22"
+    ],
+    [
+      "23"
+    ],
+    [
+      "24"
+    ],
+    [
+      "25"
+    ],
+    [
+      "26"
+    ],
+    [
+      "27"
+    ],
+    [
+      "28"
+    ],
+    [
+      "29"
+    ],
+    [
+      "30"
+    ],
+    [
+      "31"
+    ],
+    [
+      "32"
+    ],
+    [
+      "33"
+    ],
+    [
+      "34"
+    ],
+    [
+      "35"
+    ],
+    [
+      "36"
+    ],
+    [
+      "37"
+    ],
+    [
+      "38"
+    ],
+    [
+      "39"
+    ],
+    [
+      "40"
+    ],
+    [
+      "41"
+    ],
+    [
+      "42"
+    ],
+    [
+      "43"
+    ],
+    [
+      "44"
+    ],
+    [
+      "45"
+    ],
+    [
+      "46"
+    ],
+    [
+      "47"
+    ],
+    [
+      "48"
+    ],
+    [
+      "49"
+    ],
+    [
+      "50"
+    ],
+    [
+      "51"
+    ],
+    [
+      "52"
+    ],
+    [
+      "53"
+    ],
+    [
+      "54"
+    ],
+    [
+      "55"
+    ],
+    [
+      "56"
+    ],
+    [
+      "57"
+    ],
+    [
+      "58"
+    ],
+    [
+      "59"
+    ],
+    [
+      "60"
+    ],
+    [
+      "61"
+    ],
+    [
+      "62"
+    ],
+    [
+      "63"
+    ],
+    [
+      "64"
+    ],
+    [
+      "65"
+    ],
+    [
+      "66"
+    ],
+    [
+      "67"
+    ],
+    [
+      "68"
+    ],
+    [
+      "69"
+    ],
+    [
+      "70"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "youkaishomecoming:custom/handrail_inner_right_ccw",
+  "textures": {
+    "all": "youkaishomecoming:block/oak_handrail"
+  }
+}

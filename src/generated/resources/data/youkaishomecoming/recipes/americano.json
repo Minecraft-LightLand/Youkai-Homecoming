@@ -1,0 +1,26 @@
+{
+  "type": "youkaishomecoming:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:coffee_powder"
+    },
+    {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    },
+    {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "count": 2,
+    "item": "youkaishomecoming:americano"
+  }
+}

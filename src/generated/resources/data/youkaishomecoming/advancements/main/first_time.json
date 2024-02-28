@@ -1,0 +1,34 @@
+{
+  "parent": "youkaishomecoming:main/flesh",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "effects": {
+          "youkaishomecoming:youkaifying": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.first_time.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "youkaishomecoming:flesh_roll"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.first_time.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

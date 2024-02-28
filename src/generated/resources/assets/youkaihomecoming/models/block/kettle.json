@@ -1,7 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/kettle",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "kettle": "youkaihomecoming:block/kettle"
-  }
-}

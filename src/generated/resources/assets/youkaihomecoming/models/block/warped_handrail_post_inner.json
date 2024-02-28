@@ -1,6 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/handrail_post_inner",
-  "textures": {
-    "all": "youkaihomecoming:block/warped_handrail"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/moka_pot",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "maker": "youkaihomecoming:block/moka_pot"
-  }
-}

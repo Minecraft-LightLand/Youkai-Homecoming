@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:pods"
+    }
+  ],
+  "result": [
+    {
+      "item": "youkaishomecoming:soybean"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

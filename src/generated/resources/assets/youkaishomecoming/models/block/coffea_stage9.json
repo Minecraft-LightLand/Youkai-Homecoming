@@ -1,0 +1,11 @@
+{
+  "parent": "youkaishomecoming:custom/coffea_stage9",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "youkaishomecoming:block/coffea_trunk9",
+    "side": "youkaishomecoming:block/coffea_bush_side",
+    "top": "youkaishomecoming:block/coffea_bush_top",
+    "trunk": "youkaishomecoming:block/coffea_trunk9"
+  }
+}

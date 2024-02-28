@@ -1,0 +1,49 @@
+{
+  "parent": "youkaishomecoming:main/soybean",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "tag": "youkaishomecoming:farmland_redbean"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "youkaishomecoming:redbean"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.redbean.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:redbean"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.redbean.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

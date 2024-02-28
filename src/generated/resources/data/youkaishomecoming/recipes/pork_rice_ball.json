@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:raw_pork"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pork_rice_ball"
+  }
+}

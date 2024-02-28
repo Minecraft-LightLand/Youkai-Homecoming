@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaishomecoming:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:stinky_tofu"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaishomecoming:item/food/sweet_ormosia_mochi_mixed_boiled"
+  }
+}

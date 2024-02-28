@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "youkaishomecoming:tarte_lune_slice"
+    }
+  },
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "result": {
+    "item": "youkaishomecoming:tarte_lune"
+  },
+  "show_notification": true
+}

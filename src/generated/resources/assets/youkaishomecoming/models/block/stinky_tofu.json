@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/saucer_stinky_tofu",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/stinky_tofu",
+    "extra": "youkaishomecoming:block/stinky_tofu_extra",
+    "particle": "youkaishomecoming:block/stinky_tofu",
+    "sake": "youkaishomecoming:block/saucer_sake"
+  }
+}

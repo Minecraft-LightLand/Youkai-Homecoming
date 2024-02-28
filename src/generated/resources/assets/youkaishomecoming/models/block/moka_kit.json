@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/moka_kit",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cup": "youkaishomecoming:block/moka_cup",
+    "foamer": "youkaishomecoming:block/moka_foamer",
+    "maker": "youkaishomecoming:block/moka_pot"
+  }
+}

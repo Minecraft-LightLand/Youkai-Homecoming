@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    },
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    },
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    },
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    },
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    },
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    },
+    {
+      "item": "youkaishomecoming:red_velvet_cake_slice"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:red_velvet_cake"
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/drying_rack",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "rack": "youkaihomecoming:block/drying_rack"
-  }
-}

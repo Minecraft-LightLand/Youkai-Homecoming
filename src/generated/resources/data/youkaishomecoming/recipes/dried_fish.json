@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaishomecoming:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:raw_fishes"
+    },
+    {
+      "tag": "forge:raw_fishes"
+    },
+    {
+      "tag": "forge:raw_fishes"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:dried_fish"
+  }
+}

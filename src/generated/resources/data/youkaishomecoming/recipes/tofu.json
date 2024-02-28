@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:tofu"
+  }
+}

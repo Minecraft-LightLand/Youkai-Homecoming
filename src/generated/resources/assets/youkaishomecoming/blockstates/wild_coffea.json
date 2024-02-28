@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "youkaishomecoming:block/coffea_bottom"
+    },
+    "half=upper": {
+      "model": "youkaishomecoming:block/coffea"
+    }
+  }
+}

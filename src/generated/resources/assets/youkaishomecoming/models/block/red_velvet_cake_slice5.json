@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/cake_slice5",
+  "textures": {
+    "bottom": "youkaishomecoming:block/red_velvet_cake_bottom",
+    "inside": "youkaishomecoming:block/red_velvet_cake_inner",
+    "particle": "youkaishomecoming:block/red_velvet_cake_side",
+    "side": "youkaishomecoming:block/red_velvet_cake_side",
+    "top": "youkaishomecoming:block/red_velvet_cake_top"
+  }
+}

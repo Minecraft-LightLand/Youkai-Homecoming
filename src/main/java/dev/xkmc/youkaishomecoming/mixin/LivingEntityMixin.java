@@ -16,7 +16,7 @@ public abstract class LivingEntityMixin {
 	public abstract boolean hasEffect(MobEffect pEffect);
 
 	@Inject(at = @At("HEAD"), method = "canBeSeenAsEnemy", cancellable = true)
-	public void youkaihomecoming$canBeSeenAsEnemy$unconscious(CallbackInfoReturnable<Boolean> cir) {
+	public void youkaishomecoming$canBeSeenAsEnemy$unconscious(CallbackInfoReturnable<Boolean> cir) {
 		if (hasEffect(YHEffects.UNCONSCIOUS.get())) {
 			cir.setReturnValue(false);
 		}

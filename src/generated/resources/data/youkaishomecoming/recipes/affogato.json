@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:coffee_powder"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaishomecoming:affogato"
+  }
+}

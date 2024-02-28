@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "youkaishomecoming:redbean"
+    },
+    {
+      "item": "youkaishomecoming:butter"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:sekibankiyaki"
+  }
+}

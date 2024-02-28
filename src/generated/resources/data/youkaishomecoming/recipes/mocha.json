@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:coffee_powder"
+    },
+    {
+      "tag": "forge:milk/milk_bottle"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaishomecoming:mocha"
+  }
+}

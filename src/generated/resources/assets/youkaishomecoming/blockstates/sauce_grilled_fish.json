@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/sauce_grilled_fish",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/sauce_grilled_fish"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/sauce_grilled_fish",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/sauce_grilled_fish",
+      "y": 270
+    }
+  }
+}

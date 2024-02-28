@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:raw_flesh_feast"
+    },
+    {
+      "tag": "youkaishomecoming:raw_flesh"
+    },
+    {
+      "item": "youkaishomecoming:blood_bottle"
+    },
+    {
+      "item": "youkaishomecoming:blood_bottle"
+    },
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:flesh_feast"
+  }
+}

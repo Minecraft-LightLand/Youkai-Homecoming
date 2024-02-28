@@ -16,7 +16,7 @@ import vectorwing.farmersdelight.common.loot.function.CopyMealFunction;
 public class CopyMealFunctionMixin {
 
 	@Inject(at = @At("HEAD"), method = "run", cancellable = true)
-	public void run(ItemStack stack, LootContext context, CallbackInfoReturnable<ItemStack> cir) {
+	public void youkaishomecoming$run(ItemStack stack, LootContext context, CallbackInfoReturnable<ItemStack> cir) {
 		BlockEntity tile = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
 		if (tile instanceof BasePotBlockEntity be) {
 			CompoundTag tag = be.writeMeal(new CompoundTag());

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:milk_bucket"
+    },
+    "C": {
+      "item": "youkaishomecoming:blood_bottle"
+    },
+    "D": {
+      "item": "youkaishomecoming:flesh"
+    },
+    "E": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EEE"
+  ],
+  "result": {
+    "item": "youkaishomecoming:red_velvet_cake"
+  },
+  "show_notification": true
+}

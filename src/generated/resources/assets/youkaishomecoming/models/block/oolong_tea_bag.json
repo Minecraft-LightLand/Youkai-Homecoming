@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "youkaishomecoming:block/oolong_tea_bag_bottom",
+    "east": "youkaishomecoming:block/oolong_tea_bag_side_tied",
+    "north": "youkaishomecoming:block/oolong_tea_bag_side",
+    "particle": "youkaishomecoming:block/oolong_tea_bag_top",
+    "south": "youkaishomecoming:block/oolong_tea_bag_side",
+    "up": "youkaishomecoming:block/oolong_tea_bag_top",
+    "west": "youkaishomecoming:block/oolong_tea_bag_side_tied"
+  }
+}

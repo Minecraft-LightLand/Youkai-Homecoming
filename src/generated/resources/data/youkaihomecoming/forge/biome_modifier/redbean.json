@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#youkaihomecoming:redbean_spawns",
-  "features": "youkaihomecoming:redbean",
-  "step": "vegetal_decoration"
-}

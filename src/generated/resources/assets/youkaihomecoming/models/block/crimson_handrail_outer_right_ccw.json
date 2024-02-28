@@ -1,6 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/handrail_outer_right_ccw",
-  "textures": {
-    "all": "youkaihomecoming:block/crimson_handrail"
-  }
-}

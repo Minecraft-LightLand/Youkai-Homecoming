@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/saucer_bamboo_mizuyokan",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/bamboo_mizuyokan",
+    "extra": "youkaishomecoming:block/bamboo_mizuyokan_extra",
+    "particle": "youkaishomecoming:block/bamboo_mizuyokan",
+    "sake": "youkaishomecoming:block/saucer_sake"
+  }
+}

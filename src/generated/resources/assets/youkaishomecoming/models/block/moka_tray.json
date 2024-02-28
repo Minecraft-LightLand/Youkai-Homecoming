@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/moka_pot_tray",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "maker": "youkaishomecoming:block/moka_pot",
+    "tray_side": "youkaishomecoming:block/cooking_pot_tray_side",
+    "tray_top": "youkaishomecoming:block/cooking_pot_tray_top"
+  }
+}

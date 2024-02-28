@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaishomecoming:redbean_spawns",
+  "features": "youkaishomecoming:redbean",
+  "step": "vegetal_decoration"
+}

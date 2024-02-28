@@ -1,0 +1,824 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_corner",
+        "y": 180
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_connect",
+        "y": 180
+      },
+      "when": {
+        "east": "connect",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_extend",
+        "y": 180
+      },
+      "when": {
+        "east": "open|up|cw|ccw",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_corner",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_connect",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_extend",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_connect",
+        "y": 180
+      },
+      "when": {
+        "east": "connect|flat",
+        "inverted": "false",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_extend",
+        "y": 180
+      },
+      "when": {
+        "east": "open|up|cw|ccw",
+        "inverted": "false",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_connect",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "flat",
+        "west": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_extend",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "flat",
+        "west": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_inner",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_outer",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "true",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_cw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_ccw",
+        "y": 180
+      },
+      "when": {
+        "inverted": "false",
+        "south": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_corner",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "south": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "south": "connect",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "south": "open|up|cw|ccw",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_corner",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "north": "connect",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "north": "open|up|cw|ccw",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "south": "connect|flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "south": "open|up|cw|ccw",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_connect",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "north": "connect|flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_extend",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "north": "open|up|cw|ccw",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_inner",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_outer",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "true",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_cw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_ccw",
+        "y": 270
+      },
+      "when": {
+        "inverted": "false",
+        "west": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_corner"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_connect"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_extend"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "flat",
+        "west": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_corner"
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_connect"
+      },
+      "when": {
+        "east": "connect",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_extend"
+      },
+      "when": {
+        "east": "open|up|cw|ccw",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_connect"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "flat",
+        "west": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_extend"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "flat",
+        "west": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_connect"
+      },
+      "when": {
+        "east": "connect|flat",
+        "inverted": "false",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_extend"
+      },
+      "when": {
+        "east": "open|up|cw|ccw",
+        "inverted": "false",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_inner"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_outer"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_cw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_ccw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_cw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_ccw"
+      },
+      "when": {
+        "inverted": "true",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_cw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_ccw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_cw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "cw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_ccw"
+      },
+      "when": {
+        "inverted": "false",
+        "north": "ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_corner",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "north": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_corner",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "connect"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "true",
+        "south": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "north": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "north": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_connect",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "south": "connect|flat"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_extend",
+        "y": 90
+      },
+      "when": {
+        "east": "flat",
+        "inverted": "false",
+        "south": "open|up|cw|ccw"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_inner",
+        "y": 90
+      },
+      "when": {
+        "east": "up",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_post_outer",
+        "y": 90
+      },
+      "when": {
+        "east": "up",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_left_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_inner_right_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_left_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_cw",
+        "y": 90
+      },
+      "when": {
+        "east": "cw",
+        "inverted": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/crimson_handrail_outer_right_ccw",
+        "y": 90
+      },
+      "when": {
+        "east": "ccw",
+        "inverted": "false"
+      }
+    }
+  ]
+}

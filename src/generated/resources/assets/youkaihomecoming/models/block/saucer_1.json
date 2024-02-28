@@ -1,9 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/saucer_1",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "particle": "youkaihomecoming:block/saucer_plate",
-    "plate": "youkaihomecoming:block/saucer_plate",
-    "sake": "youkaihomecoming:block/saucer_sake"
-  }
-}

@@ -1,0 +1,10 @@
+{
+  "parent": "farmersdelight:block/pie",
+  "textures": {
+    "bottom": "youkaishomecoming:block/pie_bottom",
+    "inner": "youkaishomecoming:block/tarte_lune_inner",
+    "particle": "youkaishomecoming:block/tarte_lune_top",
+    "side": "youkaishomecoming:block/pie_side",
+    "top": "youkaishomecoming:block/tarte_lune_top"
+  }
+}

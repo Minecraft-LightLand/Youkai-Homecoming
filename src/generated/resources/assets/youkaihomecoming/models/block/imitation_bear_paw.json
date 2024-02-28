@@ -1,8 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/saucer_imitation_bear_paw",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "youkaihomecoming:block/imitation_bear_paw",
-    "particle": "youkaihomecoming:block/imitation_bear_paw"
-  }
-}

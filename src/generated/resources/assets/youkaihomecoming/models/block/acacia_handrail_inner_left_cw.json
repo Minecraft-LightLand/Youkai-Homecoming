@@ -1,6 +1,0 @@
-{
-  "parent": "youkaihomecoming:custom/handrail_inner_left_cw",
-  "textures": {
-    "all": "youkaihomecoming:block/acacia_handrail"
-  }
-}

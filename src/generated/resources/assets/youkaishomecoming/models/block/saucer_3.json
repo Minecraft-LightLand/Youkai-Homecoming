@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/saucer_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bowl": "youkaishomecoming:block/saucer_bowl",
+    "particle": "youkaishomecoming:block/saucer_plate",
+    "plate": "youkaishomecoming:block/saucer_plate",
+    "sake": "youkaishomecoming:block/saucer_sake"
+  }
+}

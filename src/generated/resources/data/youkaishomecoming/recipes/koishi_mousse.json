@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "youkaishomecoming:butter"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:koishi_mousse"
+  }
+}

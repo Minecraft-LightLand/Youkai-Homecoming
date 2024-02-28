@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/drying_rack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/drying_rack"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/drying_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/drying_rack",
+      "y": 270
+    }
+  }
+}

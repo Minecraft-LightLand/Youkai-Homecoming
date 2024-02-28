@@ -21,6 +21,7 @@ public enum YHLangData {
 	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
 	USAGE("usage", "Effect: ", 0, ChatFormatting.GRAY),
 	KETTLE_INFO("kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
+	DRYING_RACK("drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 
 	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
