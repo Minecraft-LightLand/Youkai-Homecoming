@@ -9,7 +9,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
@@ -21,9 +20,9 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class DryingRackBlockEntity extends SyncedBlockEntity {
@@ -31,6 +30,7 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 	private static final int NUM_SLOTS = 4;
 	private final NonNullList<ItemStack> list = NonNullList.withSize(NUM_SLOTS, ItemStack.EMPTY);
 	private final ItemStackHandler items = new ItemStackHandler(list);
+	private final DryingRackWrapper handler = new DryingRackWrapper(this);
 	private final int[] cookingProgress = new int[NUM_SLOTS];
 	private final int[] cookingTime = new int[NUM_SLOTS];
 	private final RecipeManager.CachedCheck<Container, DryingRackRecipe> quickCheck = RecipeManager.createCheck(YHBlocks.RACK_RT.get());
@@ -42,6 +42,7 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 	public static void cookTick(Level level, BlockPos pos, BlockState state, DryingRackBlockEntity be) {
 		if (!level.canSeeSky(pos)) return;
 		if (!level.isDay()) return;
+		if (level.isRainingAt(pos)) return;
 		be.cookTick();
 	}
 
@@ -106,7 +107,7 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 				quickCheck.getRecipeFor(new SimpleContainer(pStack), level);
 	}
 
-	public boolean placeFood(@Nullable Entity user, ItemStack stack, int time) {
+	public boolean placeFood(ItemStack stack, int time) {
 		assert level != null;
 		for (int i = 0; i < items.getSlots(); ++i) {
 			ItemStack itemstack = items.getStackInSlot(i);
@@ -114,7 +115,6 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 				cookingTime[i] = time;
 				cookingProgress[i] = 0;
 				items.setStackInSlot(i, stack.split(1));
-				level.gameEvent(GameEvent.BLOCK_CHANGE, getBlockPos(), GameEvent.Context.of(user, getBlockState()));
 				inventoryChanged();
 				return true;
 			}
@@ -127,9 +127,11 @@ public class DryingRackBlockEntity extends SyncedBlockEntity {
 	}
 
 	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction dire) {
+	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction dire) {
 		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return LazyOptional.of(() -> items).cast();
+			if (dire == Direction.DOWN)
+				return LazyOptional.empty();
+			return LazyOptional.of(() -> handler).cast();
 		}
 		return super.getCapability(cap);
 	}

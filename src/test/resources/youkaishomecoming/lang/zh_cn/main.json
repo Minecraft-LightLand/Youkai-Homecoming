@@ -39,6 +39,7 @@
 	"jei.kettle": "泡茶",
 	"jei.moka": "泡咖啡",
 	"jei.rack": "晒干",
-	"kettle": "持水桶或水瓶右键添水"
+	"kettle": "持水桶或水瓶右键添水",
+	"drying_rack": "只能在直接阳光下使用"
   }
 }

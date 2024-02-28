@@ -48,7 +48,7 @@ public class DryingRackBlock extends BaseEntityBlock {
 			ItemStack stack = player.getItemInHand(hand);
 			var opt = be.getCookableRecipe(stack);
 			if (opt.isPresent()) {
-				if (!level.isClientSide && be.placeFood(player, player.getAbilities().instabuild ?
+				if (!level.isClientSide && be.placeFood(player.getAbilities().instabuild ?
 						stack.copy() : stack, opt.get().getCookingTime())) {
 					return InteractionResult.SUCCESS;
 				}
