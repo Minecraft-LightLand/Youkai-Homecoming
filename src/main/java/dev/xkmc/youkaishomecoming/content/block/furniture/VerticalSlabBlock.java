@@ -46,7 +46,7 @@ public class VerticalSlabBlock extends HorizontalLoggedBlock {
 		elem.face(Direction.EAST).uvs(0, 0, 8, 16).texture("#side").end();
 	}
 
-	public static BlockModelBuilder buildModel(DataGenContext<Block, VerticalSlabBlock> ctx, RegistrateBlockstateProvider pvd) {
+	public static BlockModelBuilder buildModel(DataGenContext<Block, ? extends VerticalSlabBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var builder = pvd.models().withExistingParent(ctx.getName(), "block/block");
 		cube(builder);
 		builder.texture("particle", "#top");

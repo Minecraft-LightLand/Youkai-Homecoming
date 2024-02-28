@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("deprecation")
 public class MokaMakerBlock extends BasePotBlock {
 
-	protected static final VoxelShape SHAPE = box(2.0, 0.0, 2.0, 14.0, 10.0, 14.0);
+	protected static final VoxelShape SHAPE = box(5.5, 0, 5.5, 10.5, 8.5, 10.5);
 	protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
 
 	public MokaMakerBlock(Properties prop) {

@@ -8,7 +8,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class MokaKitBlock extends HorizontalLoggedBlock {
 
-	public static final VoxelShape SHAPE = box(2.0, 0.0, 2.0, 14.0, 10.0, 14.0);
+	public static final VoxelShape SHAPE = box(2.0, 0.0, 2.0, 14.0, 8.5, 14.0);
 
 	public MokaKitBlock(Properties pProperties) {
 		super(pProperties);

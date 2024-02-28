@@ -7,9 +7,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.MenuEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
-import dev.xkmc.youkaishomecoming.content.block.furniture.MultiFenceBlock;
-import dev.xkmc.youkaishomecoming.content.block.furniture.VerticalSlabBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
@@ -24,6 +22,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
@@ -31,7 +30,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SimpleCookingSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -166,23 +167,27 @@ public class YHBlocks {
 
 		private final Supplier<Block> base;
 
-		public final BlockEntry<StairBlock> STAIR;
-		public final BlockEntry<SlabBlock> SLAB;
-		public final BlockEntry<TrapDoorBlock> TRAP_DOOR;
-		public final BlockEntry<VerticalSlabBlock> VERTICAL;
+		public final BlockEntry<HayStairBlock> STAIR;
+		public final BlockEntry<HaySlabBlock> SLAB;
+		public final BlockEntry<HayTrapDoorBlock> TRAP_DOOR;
+		public final BlockEntry<HayVerticalSlabBlock> VERTICAL;
 
 		public WoodSet(String id, Supplier<Block> base, BlockBehaviour.Properties prop,
 					   ResourceLocation top, ResourceLocation side, ResourceLocation original) {
 			this.base = base;
-			var set = new BlockSetType(id);
+			var set = new BlockSetType(id, true, SoundType.GRASS,
+					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
+					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
+					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 			STAIR = YoukaisHomecoming.REGISTRATE.block(id + "_stairs", p ->
-							new StairBlock(() -> base.get().defaultBlockState(), prop))
+							new HayStairBlock(() -> base.get().defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side, top, top))
 					.tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.WOODEN_STAIRS)
 					.item().tag(ItemTags.WOODEN_STAIRS).build()
 					.register();
 			SLAB = YoukaisHomecoming.REGISTRATE.block(id + "_slab", p ->
-							new SlabBlock(prop))
+							new HaySlabBlock(prop))
 					.blockstate((ctx, pvd) -> pvd.slabBlock(ctx.get(),
 							pvd.models().slab(ctx.getName(), side, top, top),
 							pvd.models().slabTop(ctx.getName() + "_top", side, top, top),
@@ -191,7 +196,7 @@ public class YHBlocks {
 					.item().tag(ItemTags.WOODEN_SLABS).build()
 					.register();
 			TRAP_DOOR = YoukaisHomecoming.REGISTRATE.block(id + "_trap_door", p ->
-							new TrapDoorBlock(prop, set))
+							new HayTrapDoorBlock(prop, set))
 					.blockstate((ctx, pvd) -> pvd.trapdoorBlock(ctx.get(), side, true))
 					.tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.WOODEN_TRAPDOORS)
 					.item().model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(
@@ -199,7 +204,7 @@ public class YHBlocks {
 					.tag(ItemTags.WOODEN_TRAPDOORS).build()
 					.register();
 			VERTICAL = YoukaisHomecoming.REGISTRATE.block(id + "_vertical_slab", p ->
-							new VerticalSlabBlock(prop))
+							new HayVerticalSlabBlock(prop))
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
 							.texture("top", top).texture("side", side)))
 					.tag(BlockTags.MINEABLE_WITH_AXE).item().build().register();

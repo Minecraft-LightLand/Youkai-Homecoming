@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class KettleBlock extends BasePotBlock {
 
-	protected static final VoxelShape SHAPE = box(2.0, 0.0, 2.0, 14.0, 10.0, 14.0);
+	protected static final VoxelShape SHAPE = box(3, 0, 3, 13, 7, 13);
 	protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
 
 	protected static final Lazy<Map<Ingredient, Integer>> MAP = Lazy.of(() -> Map.of(
