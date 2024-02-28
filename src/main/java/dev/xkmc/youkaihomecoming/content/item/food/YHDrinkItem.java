@@ -10,12 +10,8 @@ import net.minecraft.world.level.Level;
 
 public class YHDrinkItem extends YHFoodItem {
 
-	public YHDrinkItem(Properties props, UseAnim anim) {
-		super(props, anim);
-	}
-
 	public YHDrinkItem(Properties props) {
-		super(props);
+		super(props, UseAnim.DRINK);
 	}
 
 	@Override

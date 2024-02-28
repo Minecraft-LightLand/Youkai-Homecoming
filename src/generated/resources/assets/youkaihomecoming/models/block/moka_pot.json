@@ -4,6 +4,6 @@
   "textures": {
     "cup": "youkaihomecoming:block/moka_cup",
     "foamer": "youkaihomecoming:block/moka_foamer",
-    "maker": "youkaihomecoming:block/moka_maker"
+    "maker": "youkaihomecoming:block/moka_pot"
   }
 }

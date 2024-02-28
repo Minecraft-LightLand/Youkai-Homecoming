@@ -1,6 +1,7 @@
 package dev.xkmc.youkaihomecoming.content.pot.base;
 
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -22,7 +23,7 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import java.util.Objects;
 
 public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
-
+	public static final ResourceLocation EMPTY_CONTAINER_SLOT = new ResourceLocation(YoukaiHomecoming.MODID, "gui/empty_container_slot_bottle");
 	public final BasePotBlockEntity blockEntity;
 	public final ItemStackHandler inventory;
 	private final ContainerData cookingPotData;
@@ -59,7 +60,7 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 		this.addSlot(new CookingPotMealSlot(this.inventory, BasePotBlockEntity.MEAL_DISPLAY_SLOT, 121, 27));
 		this.addSlot(new SlotItemHandler(this.inventory, BasePotBlockEntity.CONTAINER_SLOT, 89, 54) {
 			public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-				return Pair.of(InventoryMenu.BLOCK_ATLAS, vectorwing.farmersdelight.common.block.entity.container.CookingPotMenu.EMPTY_CONTAINER_SLOT_BOWL);
+				return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_CONTAINER_SLOT);
 			}
 		});
 		this.addSlot(new BasePotResultSlot(inv.player, be, this.inventory, BasePotBlockEntity.OUTPUT_SLOT, 121, 54));

@@ -452,46 +452,42 @@ public class YHRecipeGen {
 
 			var tea = tea(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHTea.BLACK.leaves)
-					.addIngredient(new PotionIngredient(Potions.WATER))
 					.build(tea, YHFood.BLACK_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_TEA.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHTea.GREEN.leaves)
-					.addIngredient(new PotionIngredient(Potions.WATER))
 					.build(tea, YHFood.GREEN_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OOLONG_TEA.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OOLONG_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHTea.OOLONG.leaves)
-					.addIngredient(new PotionIngredient(Potions.WATER))
 					.build(tea, YHFood.OOLONG_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WHITE_TEA.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WHITE_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHTea.WHITE.leaves)
-					.addIngredient(new PotionIngredient(Potions.WATER))
 					.build(tea, YHFood.WHITE_TEA.item.getId());
 
 			var coffee = coffee(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.build(coffee, YHCoffee.ESPRESSO.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.RISTRETTO.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.RISTRETTO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.build(coffee, YHCoffee.RISTRETTO.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.AMERICANO.item.get(), 2, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.AMERICANO.item.get(), 2, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
@@ -518,14 +514,14 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM)
 					.build(coffee, YHCoffee.CAPPUCCINO.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.MACCHIATO.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.MACCHIATO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(new PotionIngredient(Potions.WATER))
 					.addIngredient(YHItems.CREAM)
 					.build(coffee, YHCoffee.MACCHIATO.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.CON_PANNA.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.CON_PANNA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(YHItems.COFFEE_POWDER)

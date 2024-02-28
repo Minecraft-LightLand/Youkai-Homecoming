@@ -1,4 +1,12 @@
-TODO moka and kettle pot
 TODO ways to obtain hat
-
 TODO flesh village rework
+TODO Kettle water bar
+- Functionality
+- Screen rendering
+- Serialization
+- BlockEntity Preservation
+- ItemStack rendering
+- JEI display
+TODO moka model remake
+TODO slot bg change to nothing
+TODO potion bottle

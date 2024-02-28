@@ -15,7 +15,7 @@ import vectorwing.farmersdelight.common.loot.function.CopyMealFunction;
 @Mixin(CopyMealFunction.class)
 public class CopyMealFunctionMixin {
 
-	@Inject(at = @At("HEAD"), method = "run", cancellable = true, remap = false)
+	@Inject(at = @At("HEAD"), method = "run", cancellable = true)
 	public void run(ItemStack stack, LootContext context, CallbackInfoReturnable<ItemStack> cir) {
 		BlockEntity tile = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
 		if (tile instanceof BasePotBlockEntity be) {

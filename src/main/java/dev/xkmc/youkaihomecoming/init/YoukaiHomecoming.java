@@ -12,10 +12,12 @@ import dev.xkmc.youkaihomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaihomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaihomecoming.init.registrate.YHItems;
+import dev.xkmc.youkaihomecoming.mixin.ItemAccessor;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -64,6 +66,8 @@ public class YoukaiHomecoming {
 			YHCrops.REDBEAN.registerComposter();
 			YHCrops.COFFEA.registerComposter();
 			YHCrops.TEA.registerComposter();
+
+			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 		});
 	}
 

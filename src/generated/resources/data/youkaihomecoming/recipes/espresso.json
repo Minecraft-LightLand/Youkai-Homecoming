@@ -1,5 +1,8 @@
 {
   "type": "youkaihomecoming:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
   "cookingtime": 200,
   "experience": 0.1,
   "ingredients": [

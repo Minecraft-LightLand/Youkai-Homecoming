@@ -12,6 +12,7 @@ import dev.xkmc.youkaihomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaihomecoming.content.pot.kettle.*;
 import dev.xkmc.youkaihomecoming.content.pot.moka.*;
 import dev.xkmc.youkaihomecoming.init.YoukaiHomecoming;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -62,8 +63,7 @@ public class YHBlocks {
 
 		MOKA = YoukaiHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)))
 				.blockstate(MokaMakerBlock::buildModel).item(BasePotItem::new).build()
-				.loot(BasePotBlock::buildLoot)
-				.register();
+				.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 		MOKA_BE = YoukaiHomecoming.REGISTRATE.blockEntity("moka_pot", MokaMakerBlockEntity::new).validBlock(MOKA).register();
 		MOKA_RT = YoukaiHomecoming.REGISTRATE.recipe("moka_pot");
 		MOKA_RS = reg("moka_pot", () -> new BasePotSerializer<>(MokaRecipe::new));
@@ -71,7 +71,7 @@ public class YHBlocks {
 
 		KETTLE = YoukaiHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA)))
 				.blockstate(KettleBlock::buildModel).item(BasePotItem::new).build()
-				.loot(BasePotBlock::buildLoot).register();
+				.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 		KETTLE_BE = YoukaiHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
 		KETTLE_RT = YoukaiHomecoming.REGISTRATE.recipe("kettle");
 		KETTLE_RS = reg("kettle", () -> new BasePotSerializer<>(KettleRecipe::new));
@@ -84,7 +84,7 @@ public class YHBlocks {
 							p -> new MultiFenceBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE).noOcclusion()))
 					.blockstate(MultiFenceBlock::genModel)
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/handrail/" + ctx.getName()))).build()
-					.defaultLoot()
+					.tag(BlockTags.MINEABLE_WITH_AXE).defaultLoot()
 					.register();
 		}
 

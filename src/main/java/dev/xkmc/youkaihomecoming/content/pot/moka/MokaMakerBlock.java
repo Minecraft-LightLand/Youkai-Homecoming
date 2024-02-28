@@ -53,7 +53,7 @@ public class MokaMakerBlock extends BasePotBlock {
 	public static void buildModel(DataGenContext<Block, MokaMakerBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var kit = pvd.models().getBuilder("block/moka_pot")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_pot")))
-				.texture("maker", pvd.modLoc("block/moka_maker"))
+				.texture("maker", pvd.modLoc("block/moka_pot"))
 				.texture("cup", pvd.modLoc("block/moka_cup"))
 				.texture("foamer", pvd.modLoc("block/moka_foamer"))
 				.renderType("cutout");
