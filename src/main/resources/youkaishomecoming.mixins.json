@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "priority": 1000,
+  "package": "dev.xkmc.youkaishomecoming.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "youkaishomecoming.refmap.json",
+  "mixins": [
+	"AddItemModifierAccessor",
+	"CookingPotRecipeAccessor",
+	"CopyMealFunctionMixin",
+	"ItemAccessor",
+	"LivingEntityMixin",
+	"PhantomSpawnerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
