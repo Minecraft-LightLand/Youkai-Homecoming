@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/saucer_seven_colored_yokan",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/seven_colored_yokan",
+    "extra": "youkaishomecoming:block/seven_colored_yokan_extra",
+    "particle": "youkaishomecoming:block/seven_colored_yokan",
+    "sake": "youkaishomecoming:block/saucer_sake"
+  }
+}

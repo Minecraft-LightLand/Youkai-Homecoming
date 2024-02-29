@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/seven_colored_yokan",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/seven_colored_yokan"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/seven_colored_yokan",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/seven_colored_yokan",
+      "y": 270
+    }
+  }
+}

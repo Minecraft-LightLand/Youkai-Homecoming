@@ -41,7 +41,12 @@
 	"kettle": "茶壶",
 	"moka_pot": "摩卡壶",
 	"moka_kit": "摩卡壶套件",
-	"drying_rack": "晒干架"
+	"drying_rack": "晒干架",
+	"mandrake": "曼德拉草",
+	"seven_colored_yokan": "七色羊羹",
+	"udumbara": "幻昙华",
+	"wild_mandrake": "野生曼德拉草",
+	"wild_udumbara": "野生幻昙华"
   },
   "-cartesian": {
 	"candles": {
