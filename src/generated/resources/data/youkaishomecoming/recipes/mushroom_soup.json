@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:mushroom_soup"
+  }
+}

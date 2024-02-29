@@ -79,6 +79,8 @@ public class YHRecipeGen {
 			cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 1);
 			pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
+			pvd.smelting(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
+			pvd.smoking(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
@@ -417,6 +419,34 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.TUSCAN_SALMON.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MUSHROOM_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(YHItems.CREAM.get())
+					.build(pvd, YHFood.MUSHROOM_SOUP.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LIONS_HEAD.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(ForgeTags.VEGETABLES_CARROT)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.build(pvd, YHFood.LIONS_HEAD.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MAPO_TOFU.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(YHFood.TOFU.item)
+					.addIngredient(YHFood.TOFU.item)
+					.addIngredient(YHFood.TOFU.item)
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(Items.BLAZE_POWDER)
+					.build(pvd, YHFood.MAPO_TOFU.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.UDUMBARA_CAKE.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(ForgeTags.DOUGH_WHEAT)
+					.addIngredient(YHCrops.UDUMBARA.getFruits())
+					.build(pvd, YHFood.UDUMBARA_CAKE.item.getId());
 		}
 
 		// food cooking saucer
@@ -476,6 +506,14 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.BLOOD_BOTTLE)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHDish.BLOOD_CURD.block.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SEVEN_COLORED_YOKAN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.addIngredient(YHCrops.REDBEAN.getSeed())
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.addIngredient(Items.CHERRY_LEAVES)
+					.addIngredient(YHItems.MATCHA)
+					.addIngredient(YHCrops.UDUMBARA.getFruits())
+					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
 
 		}
 

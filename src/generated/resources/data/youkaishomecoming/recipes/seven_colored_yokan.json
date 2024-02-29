@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaishomecoming:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:redbean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "minecraft:cherry_leaves"
+    },
+    {
+      "item": "youkaishomecoming:matcha"
+    },
+    {
+      "item": "youkaishomecoming:udumbara_flower"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:seven_colored_yokan"
+  }
+}

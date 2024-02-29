@@ -49,6 +49,14 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),
 			"You won't be targeted by mobs. Terminates when you attack.");
 
+	public static final RegistryEntry<EmptyEffect> MANDRAKE = genEffect("mandrake",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"");//TODO default 200
+
+	public static final RegistryEntry<EmptyEffect> UDUMBARA = genEffect("udumbara",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"");//TODO default 1200
+
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();
 	}

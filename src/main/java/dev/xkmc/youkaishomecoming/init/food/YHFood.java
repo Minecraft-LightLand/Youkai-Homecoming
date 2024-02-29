@@ -30,7 +30,8 @@ public enum YHFood {
 	),
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD),
-	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f),//TODO effect, recipe
+	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f,
+			new EffectEntry(YHEffects.MANDRAKE::get, 200, 0, 1)),
 
 	// simple
 	ROE(FoodType.MEAT, 1, 0.6f),
@@ -129,20 +130,20 @@ public enum YHFood {
 	MUSHROOM_SOUP(FoodType.BOWL, 8, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	)),//TODO recipe
+	)),
 	LIONS_HEAD(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
-	)),//TODO recipe
+	)),
 	MAPO_TOFU(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1)
-	)),//TODO recipe
+	)),
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)
-	)),//TODO effect recipe
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 0, 1))),
 
 	// flesh
 	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(

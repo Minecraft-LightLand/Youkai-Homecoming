@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Blocks;
@@ -40,7 +41,8 @@ public enum YHDish {
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 	SEVEN_COLORED_YOKAN(Saucer.SAUCER_1, 8, 0.8f, false, 6,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),//TODO recipe, effect
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
+			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 0, 1)),
 	;
 
 	public final Saucer base;
