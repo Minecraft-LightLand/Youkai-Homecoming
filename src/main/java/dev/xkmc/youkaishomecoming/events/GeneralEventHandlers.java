@@ -88,11 +88,6 @@ public class GeneralEventHandlers {
 		if (e.hasEffect(YHEffects.REFRESHING.get()) && e.isOnFire()) {
 			e.clearFire();
 		}
-		var tea = e.getEffect(YHEffects.TEA.get());
-		if (tea != null) {
-			if (e.tickCount % YHModConfig.COMMON.teaHealingPeriod.get() == 0)
-				e.heal(1 << tea.getAmplifier());
-		}
 	}
 
 	@SubscribeEvent

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bloom=false": {
+      "model": "youkaishomecoming:block/udumbara"
+    },
+    "bloom=true": {
+      "model": "youkaishomecoming:block/udumbara_flowering"
+    }
+  }
+}

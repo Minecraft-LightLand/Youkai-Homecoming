@@ -2,10 +2,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.youkaishomecoming.content.block.plant.CoffeaCropBlock;
-import dev.xkmc.youkaishomecoming.content.block.plant.TeaCropBlock;
-import dev.xkmc.youkaishomecoming.content.block.plant.WildCoffeaBlock;
-import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
@@ -17,7 +14,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -36,12 +36,15 @@ import java.util.Locale;
 import java.util.function.BiFunction;
 
 public enum YHCrops {
-	SOYBEAN(PlantType.CROP, 16,null, "pods"),
-	REDBEAN(PlantType.CROP, 16,null, null),
-	COFFEA(PlantType.COFFEA, 8,"green_coffee_bean", "coffee_berries"),
-	TEA(PlantType.TEA, 8,"tea_seeds", "tea_leaves");
+	SOYBEAN(PlantType.CROP, 16, null, "pods"),
+	REDBEAN(PlantType.CROP, 16, null, null),
+	COFFEA(PlantType.COFFEA, 8, "green_coffee_bean", "coffee_berries"),
+	TEA(PlantType.TEA, 8, "tea_seeds", "tea_leaves"),
+	UDUMBARA(PlantType.UDUMBARA, 16, "udumbara_seeds", "udumbara_flower"),
+	MANDRAKE(PlantType.MANDRAKE, 16, "mandrake_root", null),
+	;
 
-	private final BlockEntry<? extends CropBlock> PLANT;
+	private final BlockEntry<? extends BushBlock> PLANT;
 	private final BlockEntry<? extends BushBlock> WILD;
 	public final ItemEntry<ItemNameBlockItem> seed;
 	public final ItemEntry<? extends Item> fruits;
@@ -69,7 +72,7 @@ public enum YHCrops {
 
 	}
 
-	public CropBlock getPlant() {
+	public Block getPlant() {
 		return PLANT.get();
 	}
 
@@ -174,18 +177,40 @@ public enum YHCrops {
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),
-		;
+		UDUMBARA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
+						new UdumbaraBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getFruits))
+				.blockstate(YHBushBlock::buildModel).register(),
+				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p ->
+								new BushBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)))
+						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
+						.loot((pvd, b) -> pvd.dropOther(b, crop.getSeed()))
+						.item().tag(ModTags.WILD_CROPS_ITEM)
+						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.WILD_CROPS)
+						.register()),
+		MANDRAKE((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
+						new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getFruits))
+				.blockstate(YHBushBlock::buildModel).register(),
+				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p ->
+								new BushBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)))
+						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
+						.loot((pvd, b) -> pvd.dropOther(b, crop.getSeed()))
+						.item().tag(ModTags.WILD_CROPS_ITEM)
+						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.WILD_CROPS)
+						.register()
+		);
 
-		private final BiFunction<String, YHCrops, BlockEntry<? extends CropBlock>> plant;
+		private final BiFunction<String, YHCrops, BlockEntry<? extends BushBlock>> plant;
 		private final BiFunction<String, YHCrops, BlockEntry<? extends BushBlock>> wild;
 
-		PlantType(BiFunction<String, YHCrops, BlockEntry<? extends CropBlock>> plant,
+		PlantType(BiFunction<String, YHCrops, BlockEntry<? extends BushBlock>> plant,
 				  BiFunction<String, YHCrops, BlockEntry<? extends BushBlock>> wild) {
 			this.plant = plant;
 			this.wild = wild;
 		}
 
-		public BlockEntry<? extends CropBlock> plant(String name, YHCrops crop) {
+		public BlockEntry<? extends BushBlock> plant(String name, YHCrops crop) {
 			return plant.apply(name, crop);
 		}
 

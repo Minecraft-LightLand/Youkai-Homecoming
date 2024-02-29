@@ -26,6 +26,7 @@ public class YHModConfig {
 
 		public final ForgeConfigSpec.DoubleValue smoothingHealingFactor;
 		public final ForgeConfigSpec.IntValue teaHealingPeriod;
+		public final ForgeConfigSpec.IntValue udumbaraDuration;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			youkaifyingChance = builder.comment("Chance for flesh food to add Youkaifying effect for the first time")
@@ -47,6 +48,8 @@ public class YHModConfig {
 					.defineInRange("smoothingHealingFactor", 1.5, 0, 100);
 			teaHealingPeriod = builder.comment("Tea Healing Interval")
 					.defineInRange("teaHealingPeriod", 60, 0, 10000);
+			udumbaraDuration = builder.comment("Udumbara flowering duration")
+					.defineInRange("udumbaraDuration", 200, 0, 100000);
 		}
 
 	}

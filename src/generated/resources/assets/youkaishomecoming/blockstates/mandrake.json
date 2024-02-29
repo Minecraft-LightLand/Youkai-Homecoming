@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bloom=false": {
+      "model": "youkaishomecoming:block/mandrake"
+    },
+    "bloom=true": {
+      "model": "youkaishomecoming:block/mandrake_flowering"
+    }
+  }
+}

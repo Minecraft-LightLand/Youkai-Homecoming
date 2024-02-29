@@ -18,12 +18,12 @@ public class YHEffects {
 			"You are becoming a Youkai");
 
 	public static final RegistryEntry<CaffeinatedEffect> CAFFEINATED = genEffect("caffeinated",
-			() -> new CaffeinatedEffect(MobEffectCategory.NEUTRAL, -10667225),
+			() -> new CaffeinatedEffect(MobEffectCategory.BENEFICIAL, -10667225),
 			"Boost attack damage");
 
 	public static final RegistryEntry<TeaEffect> TEA = genEffect("tea_polyphenols",
 			() -> new TeaEffect(MobEffectCategory.BENEFICIAL, -5727850),
-			"Boost attack speed, heal every 3 seconds");
+			"Boost attack speed, heal every 3 seconds when under sunlight");
 
 	public static final RegistryEntry<SoberEffect> SOBER = genEffect("sober",
 			() -> new SoberEffect(MobEffectCategory.NEUTRAL, 0x21c189),
