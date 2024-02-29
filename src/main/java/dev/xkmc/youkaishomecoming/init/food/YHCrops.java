@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.content.block.plant.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -14,6 +15,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
@@ -29,6 +31,11 @@ import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -40,8 +47,8 @@ public enum YHCrops {
 	REDBEAN(PlantType.CROP, 16, null, null),
 	COFFEA(PlantType.COFFEA, 8, "green_coffee_bean", "coffee_berries"),
 	TEA(PlantType.TEA, 8, "tea_seeds", "tea_leaves"),
-	UDUMBARA(PlantType.UDUMBARA, 16, "udumbara_seeds", "udumbara_flower"),
-	MANDRAKE(PlantType.MANDRAKE, 16, "mandrake_root", null),
+	UDUMBARA(PlantType.UDUMBARA, 8, "udumbara_seeds", "udumbara_flower"),
+	MANDRAKE(PlantType.MANDRAKE, 8, "mandrake_root", null),
 	;
 
 	private final BlockEntry<? extends BushBlock> PLANT;
@@ -194,7 +201,13 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p ->
 								new BushBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
-						.loot((pvd, b) -> pvd.dropOther(b, crop.getSeed()))
+						.loot((pvd, b) -> pvd.add(b, pvd.applyExplosionDecay(b,
+								LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(crop.getFruits())))
+										.withPool(LootPool.lootPool()
+												.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(b)
+														.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(YHBushBlock.FLOWERING, true)))
+												.add(LootItem.lootTableItem(crop.getFruits())
+														.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))))))
 						.item().tag(ModTags.WILD_CROPS_ITEM)
 						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)

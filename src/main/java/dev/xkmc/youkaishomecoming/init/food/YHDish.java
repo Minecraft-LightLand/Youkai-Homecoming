@@ -42,7 +42,7 @@ public enum YHDish {
 	SEVEN_COLORED_YOKAN(Saucer.SAUCER_1, 8, 0.8f, false, 6,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 0, 1)),
+			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1)),
 	;
 
 	public final Saucer base;

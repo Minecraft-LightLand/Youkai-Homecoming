@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaishomecoming:spawns/mandrake",
+  "features": "youkaishomecoming:mandrake",
+  "step": "vegetal_decoration"
+}

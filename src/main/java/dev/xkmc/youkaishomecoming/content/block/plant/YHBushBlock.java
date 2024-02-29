@@ -34,7 +34,7 @@ public class YHBushBlock extends BushBlock {
 	public static final BooleanProperty FLOWERING = BlockStateProperties.BLOOM;
 	private static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-	private final Supplier<Item> fruit;
+	protected final Supplier<Item> fruit;
 
 	public YHBushBlock(Properties pProperties, Supplier<Item> fruit) {
 		super(pProperties);
@@ -58,20 +58,6 @@ public class YHBushBlock extends BushBlock {
 				level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(next));
 				ForgeHooks.onCropsGrowPost(level, pos, state);
 			}
-		}
-	}
-
-	public InteractionResult use(BlockState state, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-		if (!state.getValue(FLOWERING) && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
-			return InteractionResult.PASS;
-		} else {
-			popResource(pLevel, pPos, fruit.get().getDefaultInstance());
-			pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
-					1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
-			BlockState next = state.setValue(FLOWERING, false);
-			pLevel.setBlock(pPos, next, 2);
-			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, next));
-			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 	}
 

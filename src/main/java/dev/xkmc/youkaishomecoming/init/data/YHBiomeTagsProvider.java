@@ -16,11 +16,13 @@ import java.util.concurrent.CompletableFuture;
 
 public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
-	public static final TagKey<Biome> LAMPREY = asTag("lamprey_spawns");
-	public static final TagKey<Biome> SOYBEAN = asTag("soybean_spawns");
-	public static final TagKey<Biome> REDBEAN = asTag("redbean_spawns");
-	public static final TagKey<Biome> COFFEA = asTag("coffea_spawns");
-	public static final TagKey<Biome> TEA = asTag("tea_spawns");
+	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
+	public static final TagKey<Biome> SOYBEAN = asTag("spawns/soybean");
+	public static final TagKey<Biome> REDBEAN = asTag("spawns/redbean");
+	public static final TagKey<Biome> COFFEA = asTag("spawns/coffea");
+	public static final TagKey<Biome> TEA = asTag("spawns/tea");
+	public static final TagKey<Biome> MANDRAKE = asTag("spawns/mandrake");
+	public static final TagKey<Biome> UDUMBARA = asTag("spawns/udumbara");
 	public static final TagKey<Biome> HAS_NEST = asTag("has_structure/youkai_nest");
 
 	public YHBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
@@ -36,6 +38,8 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
 		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE);
+		tag(MANDRAKE).add(Biomes.DARK_FOREST);
+		tag(UDUMBARA).add(Biomes.SWAMP);
 		tag(HAS_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
 	}
 

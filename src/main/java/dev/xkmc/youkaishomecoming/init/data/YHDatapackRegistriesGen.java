@@ -49,16 +49,14 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(Registries.CONFIGURED_FEATURE, ctx -> {
-				YHCrops.SOYBEAN.registerConfigs(ctx);
-				YHCrops.REDBEAN.registerConfigs(ctx);
-				YHCrops.COFFEA.registerConfigs(ctx);
-				YHCrops.TEA.registerConfigs(ctx);
+				for (var e : YHCrops.values()) {
+					e.registerConfigs(ctx);
+				}
 			})
 			.add(Registries.PLACED_FEATURE, ctx -> {
-				YHCrops.SOYBEAN.registerPlacements(ctx);
-				YHCrops.REDBEAN.registerPlacements(ctx);
-				YHCrops.COFFEA.registerPlacements(ctx);
-				YHCrops.TEA.registerPlacements(ctx);
+				for (var e : YHCrops.values()) {
+					e.registerPlacements(ctx);
+				}
 			})
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers)
 
@@ -100,14 +98,15 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				new ForgeBiomeModifiers.AddSpawnsBiomeModifier(set, List.of(new MobSpawnSettings.SpawnerData(
 						YHEntities.LAMPREY.get(), 12, 3, 5)
 				)));
-		registerTreeBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
-		registerTreeBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
-		registerTreeBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
-		registerTreeBiome(ctx, YHCrops.TEA, biomes.getOrThrow(YHBiomeTagsProvider.TEA), features);
+		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
+		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
+		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
+		registerCropBiome(ctx, YHCrops.TEA, biomes.getOrThrow(YHBiomeTagsProvider.TEA), features);
+		registerCropBiome(ctx, YHCrops.MANDRAKE, biomes.getOrThrow(YHBiomeTagsProvider.MANDRAKE), features);
+		registerCropBiome(ctx, YHCrops.UDUMBARA, biomes.getOrThrow(YHBiomeTagsProvider.UDUMBARA), features);
 	}
 
-
-	private static void registerTreeBiome(BootstapContext<BiomeModifier> ctx,
+	private static void registerCropBiome(BootstapContext<BiomeModifier> ctx,
 										  YHCrops tree,
 										  HolderSet<Biome> set,
 										  HolderGetter<PlacedFeature> features) {

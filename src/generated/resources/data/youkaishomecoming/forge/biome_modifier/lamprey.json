@@ -1,6 +1,6 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#youkaishomecoming:lamprey_spawns",
+  "biomes": "#youkaishomecoming:spawns/lamprey",
   "spawners": {
     "type": "youkaishomecoming:lamprey",
     "maxCount": 5,
