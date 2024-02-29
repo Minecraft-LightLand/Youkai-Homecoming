@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -24,12 +25,6 @@ public class UdumbaraBlock extends YHBushBlock {
 
 	public UdumbaraBlock(BlockBehaviour.Properties pProperties, Supplier<Item> fruit) {
 		super(pProperties, fruit);
-	}
-
-	@Override
-	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-		if (level.getRawBrightness(pos, 0) >= 8) return false;
-		return super.canSurvive(state, level, pos);
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {

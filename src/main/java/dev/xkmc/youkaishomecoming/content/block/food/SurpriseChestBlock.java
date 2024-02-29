@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -14,8 +15,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -23,18 +22,24 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class SurpriseChestBlock extends HorizontalDirectionalBlock {
 
+	private static final VoxelShape SHAPE = box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+
 	public SurpriseChestBlock(Properties prop) {
 		super(prop);
 	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		return super.use(state, level, pos, player, hand, hit);//TODO
+		if (!level.isClientSide()) {
+			level.setBlockAndUpdate(pos, YHItems.SURP_FEAST.getDefaultState()
+					.setValue(FACING, state.getValue(FACING)));
+		}
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-		return super.getShape(pState, pLevel, pPos, pContext);//TODO
+		return SHAPE;
 	}
 
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
@@ -55,8 +60,8 @@ public class SurpriseChestBlock extends HorizontalDirectionalBlock {
 
 	public static void buildModel(DataGenContext<Block, SurpriseChestBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), state -> pvd.models().getBuilder("block/" + ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile("custom/heart_throbbing_surprise_chest"))
-				.texture("base", pvd.modLoc("block/surprise_chest")));
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/heart_throbbing_surprise_chest")))
+				.texture("base", pvd.modLoc("block/surprise_chest")).renderType("cutout"));
 	}
 
 }

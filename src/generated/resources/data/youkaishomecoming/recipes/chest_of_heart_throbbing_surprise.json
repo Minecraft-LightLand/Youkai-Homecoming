@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:chest"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "youkaishomecoming:mandrake_root"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:purple_banner"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:chest_of_heart_throbbing_surprise"
+  }
+}

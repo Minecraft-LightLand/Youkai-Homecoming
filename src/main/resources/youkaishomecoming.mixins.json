@@ -8,6 +8,7 @@
 	"AddItemModifierAccessor",
 	"CookingPotRecipeAccessor",
 	"CopyMealFunctionMixin",
+	"EntityMixin",
 	"ItemAccessor",
 	"LivingEntityMixin",
 	"PhantomSpawnerMixin"

@@ -10,7 +10,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.living.*;
@@ -60,12 +62,25 @@ public class GeneralEventHandlers {
 
 	@SubscribeEvent
 	public static void onDamage(LivingDamageEvent event) {
-		if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) ||
-				event.getSource().is(DamageTypeTags.BYPASSES_RESISTANCE) ||
-				event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+		var source = event.getSource();
+		if (source.is(DamageTypeTags.BYPASSES_EFFECTS) ||
+				source.is(DamageTypeTags.BYPASSES_RESISTANCE) ||
+				source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;
-		if (event.getEntity().hasEffect(YHEffects.THICK.get())) {
-			event.setAmount(Math.max(0, event.getAmount() - 1));
+		int reduction = 0;
+		var e = event.getEntity();
+		if (e.hasEffect(YHEffects.THICK.get())) {
+			reduction += 1;
+		}
+		var udu = e.getEffect(YHEffects.UDUMBARA.get());
+		if (udu != null) {
+			var level = e.level();
+			if (level.isNight() && level.canSeeSky(e.blockPosition().above()) && level.getMoonBrightness() > 0.8f) {
+				reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
+			}
+		}
+		if (reduction > 0) {
+			event.setAmount(Math.max(0, event.getAmount() - reduction));
 		}
 	}
 
@@ -125,4 +140,17 @@ public class GeneralEventHandlers {
 		return player.hasEffect(YHEffects.SOBER.get());
 	}
 
+	public static boolean supressVibration(Entity self) {
+		if (self instanceof TraceableEntity item) {
+			if (item.getOwner() instanceof LivingEntity le) {
+				self = le;
+			}
+		}
+		if (self instanceof LivingEntity le) {
+			if (le.hasEffect(YHEffects.UDUMBARA.get())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

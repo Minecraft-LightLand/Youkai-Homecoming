@@ -1,5 +1,6 @@
 {
-  "parent": "minecraft:custom/heart_throbbing_surprise_leftover",
+  "parent": "youkaishomecoming:custom/heart_throbbing_surprise_leftover",
+  "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaishomecoming:block/surprise_chest",
     "umbrella": "youkaishomecoming:block/surprise_umbrella"

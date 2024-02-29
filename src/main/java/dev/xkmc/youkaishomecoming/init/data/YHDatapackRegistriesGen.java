@@ -81,7 +81,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				var pool = ctx.lookup(Registries.TEMPLATE_POOL).getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, NEST));
 				ctx.register(ResourceKey.create(Registries.STRUCTURE, NEST), new JigsawStructure(
 						new Structure.StructureSettings(biome, Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN),
-						pool, 1, ConstantHeight.of(VerticalAnchor.absolute(-1)), false, Heightmap.Types.WORLD_SURFACE_WG)
+						pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG)
 				);
 			})
 			.add(Registries.STRUCTURE_SET, ctx -> {

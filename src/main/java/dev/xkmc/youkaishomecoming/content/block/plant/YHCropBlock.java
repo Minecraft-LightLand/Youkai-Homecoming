@@ -92,7 +92,7 @@ public class YHCropBlock extends CropBlock {
 				)));
 	}
 
-	public static void buildWildModel(DataGenContext<Block, BushBlock> ctx, RegistrateBlockstateProvider pvd, YHCrops crop) {
+	public static void buildWildModel(DataGenContext<Block, ? extends BushBlock> ctx, RegistrateBlockstateProvider pvd, YHCrops crop) {
 		String tex = "wild_" + crop.getName();
 		pvd.simpleBlock(ctx.get(), pvd.models().cross(tex, pvd.modLoc("block/" + tex)).renderType("cutout"));
 	}

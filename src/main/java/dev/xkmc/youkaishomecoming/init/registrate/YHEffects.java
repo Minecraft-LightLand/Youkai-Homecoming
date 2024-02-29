@@ -27,7 +27,8 @@ public class YHEffects {
 
 	public static final RegistryEntry<SoberEffect> SOBER = genEffect("sober",
 			() -> new SoberEffect(MobEffectCategory.NEUTRAL, 0x21c189),
-			"Prevents phantom spawn, nausea, youkaization, and sleep. You can't have another sobering drink while having this effect.");
+			"Prevents phantom spawn, nausea, youkaization, and sleep. " +
+					"You can't have another sobering drink while having this effect.");
 
 	public static final RegistryEntry<EmptyEffect> REFRESHING = genEffect("refreshing",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xd0c3a5),
@@ -49,13 +50,16 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),
 			"You won't be targeted by mobs. Terminates when you attack.");
 
-	public static final RegistryEntry<EmptyEffect> MANDRAKE = genEffect("mandrake",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
-			"");//TODO default 200
+	public static final RegistryEntry<MandrakeEffect> MANDRAKE = genEffect("mandrake",
+			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xffffff),
+			"Sneak to sink into ground");
 
-	public static final RegistryEntry<EmptyEffect> UDUMBARA = genEffect("udumbara",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
-			"");//TODO default 1200
+	public static final RegistryEntry<UdumbaraEffect> UDUMBARA = genEffect("udumbara",
+			() -> new UdumbaraEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"Prevents vibration from you and your projectiles. " +
+					"Warps you to the top of the world when falling into the void. " +
+					"Heals every 3 seconds under moonlight. " +
+					"Reduced damage taken when under full moon.");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();

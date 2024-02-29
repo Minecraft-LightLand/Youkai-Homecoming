@@ -310,8 +310,6 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.FLESH_DUMPLINGS.item.getId());
 
-			// TODO surprise
-
 		}
 
 		// food cooking bowl
@@ -449,6 +447,16 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.DOUGH_WHEAT)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHFood.UDUMBARA_CAKE.item.getId());
+
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SURP_CHEST.get(), 1, 200, 0.1f, Items.CHEST)
+					.addIngredient(Items.RED_MUSHROOM)
+					.addIngredient(Items.RED_MUSHROOM)
+					.addIngredient(Items.RED_MUSHROOM)
+					.addIngredient(YHCrops.MANDRAKE.getFruits())
+					.addIngredient(YHItems.CREAM.get())
+					.addIngredient(Items.PURPLE_BANNER)
+					.build(pvd, YHItems.SURP_CHEST.getId());
 		}
 
 		// food cooking saucer
