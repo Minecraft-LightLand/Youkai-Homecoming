@@ -144,7 +144,11 @@ public enum YHFood {
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 0, 1))),
-
+	BOWL_OF_HEART_THROBBING_SURPRISE(FoodType.BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1)
+	)),
 	// flesh
 	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),

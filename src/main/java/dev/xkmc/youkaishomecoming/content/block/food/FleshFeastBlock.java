@@ -1,16 +1,25 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -57,6 +66,25 @@ public class FleshFeastBlock extends FeastBlock {
 	@Override
 	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
 		return SHAPE_BY_BITE[pState.getValue(SERVINGS)];
+	}
+
+	public static void builtLoot(RegistrateBlockLootTables pvd, FleshFeastBlock block) {
+		pvd.add(block, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(block.asItem())
+						.when(ExplosionCondition.survivesExplosion())
+						.when(getServe(block))))
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BOWL))
+						.when(ExplosionCondition.survivesExplosion())
+						.when(InvertedLootItemCondition.invert(getServe(block))))
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.SKELETON_SKULL))
+						.when(ExplosionCondition.survivesExplosion())
+						.when(InvertedLootItemCondition.invert(getServe(block)))));
+	}
+
+	private static <T extends FeastBlock> LootItemBlockStatePropertyCondition.Builder getServe(T block) {
+		return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).
+				setProperties(StatePropertiesPredicate.Builder.properties()
+						.hasProperty(block.getServingsProperty(), block.getMaxServings()));
 	}
 
 	public enum Model {

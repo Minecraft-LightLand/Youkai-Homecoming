@@ -5,13 +5,14 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
+import dev.xkmc.youkaishomecoming.content.item.curio.SuwakoHatItem;
 import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
-import dev.xkmc.youkaishomecoming.content.item.curio.SuwakoHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -22,12 +23,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
-import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.common.Tags;
 import org.apache.commons.lang3.StringUtils;
 import vectorwing.farmersdelight.common.block.FeastBlock;
@@ -52,6 +47,8 @@ public class YHItems {
 	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA;
+	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
+	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
 	public static final CakeEntry RED_VELVET, TARTE_LUNE;
@@ -93,27 +90,31 @@ public class YHItems {
 
 		YHFood.register();
 
+		SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
+						new SurpriseChestBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
+				.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.blockstate(SurpriseChestBlock::buildModel)
+				.register();
+
+		SURP_FEAST = YoukaisHomecoming.REGISTRATE.block("heart_throbbing_surprise", p ->
+						new SurpriseFeastBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL),
+								YHFood.BOWL_OF_HEART_THROBBING_SURPRISE.item))
+				.blockstate(SurpriseFeastBlock::buildModel)
+				.loot(SurpriseFeastBlock::builtLoot)
+				.register();
+
 		RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
 				.lang("Raw %1$s Feast")
 				.register();
 
-		FLESH_FEAST = YoukaisHomecoming.REGISTRATE
-				.block("flesh_feast", p -> new FleshFeastBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL),
-						YHFood.BOWL_OF_FLESH_FEAST.item))
+		FLESH_FEAST = YoukaisHomecoming.REGISTRATE.block("flesh_feast", p ->
+						new FleshFeastBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL),
+								YHFood.BOWL_OF_FLESH_FEAST.item))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
 						FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
 				.lang("%1$s Feast")
 				.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx)).build()
-				.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()
-						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(block.asItem())
-								.when(ExplosionCondition.survivesExplosion())
-								.when(getServe(block))))
-						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BOWL))
-								.when(ExplosionCondition.survivesExplosion())
-								.when(InvertedLootItemCondition.invert(getServe(block))))
-						.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.SKELETON_SKULL))
-								.when(ExplosionCondition.survivesExplosion())
-								.when(InvertedLootItemCondition.invert(getServe(block))))))
+				.loot(FleshFeastBlock::builtLoot)
 				.register();
 
 		RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f, true);
@@ -143,12 +144,6 @@ public class YHItems {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
 				.register();
-	}
-
-	private static <T extends FeastBlock> LootItemBlockStatePropertyCondition.Builder getServe(T block) {
-		return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).
-				setProperties(StatePropertiesPredicate.Builder.properties()
-						.hasProperty(block.getServingsProperty(), block.getMaxServings()));
 	}
 
 	public static void register() {

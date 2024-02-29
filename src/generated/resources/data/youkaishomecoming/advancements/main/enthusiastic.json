@@ -715,7 +715,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_dumplings"
+            "youkaishomecoming:bowl_of_heart_throbbing_surprise"
           ]
         }
       },
@@ -725,7 +725,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_roll"
+            "youkaishomecoming:flesh_dumplings"
           ]
         }
       },
@@ -735,13 +735,23 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_stew"
+            "youkaishomecoming:flesh_roll"
           ]
         }
       },
       "trigger": "minecraft:consume_item"
     },
     "76": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "77": {
       "conditions": {
         "item": {
           "items": [
@@ -1018,6 +1028,9 @@
     ],
     [
       "76"
+    ],
+    [
+      "77"
     ]
   ],
   "sends_telemetry_event": true
