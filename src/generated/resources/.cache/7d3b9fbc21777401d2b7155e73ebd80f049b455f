@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-29T21:29:57.679611	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-02-29T22:58:08.585643	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -826,6 +826,7 @@ b7b3464e99168a3c57048fbe27d742e371faea4e data/youkaishomecoming/loot_tables/bloc
 c009206aac6b6d6762740edcf11e8b133d98bcad data/youkaishomecoming/loot_tables/chests/youkai_nest/barrel.json
 8cd8758836804e49be17fd445295d16d0d7230c3 data/youkaishomecoming/loot_tables/chests/youkai_nest/chest.json
 d0567ec241f70e797e8af6bb30a217eca3748af8 data/youkaishomecoming/loot_tables/entities/lamprey.json
+fcbedf27d7ac583c23676f06a9fa4c4a0d5bf315 data/youkaishomecoming/loot_tables/udumbara_chest_loot.json
 3c44d1a73e0c77ffb79d10c146c026b35a9fc91a data/youkaishomecoming/recipes/acacia_handrail_from_acacia_planks_stonecutting.json
 d5914f2b9d917744690edbc3e5da121e84edfbf5 data/youkaishomecoming/recipes/affogato.json
 91db0fb7da022064fc55cab207156e0c92b362ee data/youkaishomecoming/recipes/americano.json

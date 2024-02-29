@@ -3,9 +3,11 @@ package dev.xkmc.youkaishomecoming.init.loot;
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
@@ -13,6 +15,8 @@ public class YHLootGen {
 
 	public static final ResourceLocation NEST_CHEST = new ResourceLocation(YoukaisHomecoming.MODID, "chests/youkai_nest/chest");
 	public static final ResourceLocation NEST_BARREL = new ResourceLocation(YoukaisHomecoming.MODID, "chests/youkai_nest/barrel");
+
+	public static final ResourceLocation UDUMBARA_LOOT = new ResourceLocation(YoukaisHomecoming.MODID, "udumbara_chest_loot");
 
 	public static void genLoot(RegistrateLootTableProvider pvd) {
 		var bone = LootTableTemplate.getPool(1, 0)
@@ -54,6 +58,11 @@ public class YHLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(NEST_BARREL, LootTable.lootTable()
 				.withPool(bone).withPool(misc).withPool(dango).withPool(flesh)
 		));
+
+		pvd.addLootAction(LootContextParamSets.EMPTY, cons -> cons.accept(UDUMBARA_LOOT, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHCrops.UDUMBARA.getSeed(), 2, 4)
+						.when(LootTableTemplate.chance(0.3f))))));
+
 
 	}
 

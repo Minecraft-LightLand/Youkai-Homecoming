@@ -6,6 +6,7 @@
   "refmap": "youkaishomecoming.refmap.json",
   "mixins": [
 	"AddItemModifierAccessor",
+	"AddLootTableModifierAccessor",
 	"CookingPotRecipeAccessor",
 	"CopyMealFunctionMixin",
 	"EntityMixin",

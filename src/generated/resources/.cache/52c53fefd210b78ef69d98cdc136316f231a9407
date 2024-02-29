@@ -1,5 +1,7 @@
-// 1.20.1	2024-02-28T16:21:15.231035	Global Loot Modifiers : youkaishomecoming
-d5cb2b9180e9cb1e8ae81b5249d480dd6f377d36 data/forge/loot_modifiers/global_loot_modifiers.json
+// 1.20.1	2024-02-29T22:58:08.597075	Global Loot Modifiers : youkaishomecoming
+fc15db10ee38e4f650cc61782f4f0479235e0b4a data/forge/loot_modifiers/global_loot_modifiers.json
 b7529ecdd2b8f54c5d2ee4aa068bf3fe363e9849 data/youkaishomecoming/loot_modifiers/fishing_lamprey.json
 b4de1c4a10712ce1d1c0353fa79c518f769f9c8a data/youkaishomecoming/loot_modifiers/scavenging_flesh.json
 5c5bbddf3eaddb43b8a8cf4c7ad959441597a3ae data/youkaishomecoming/loot_modifiers/scavenging_flesh_cooked.json
+5c03ad828128ba42403b528eb5d1a121f3b8f6e4 data/youkaishomecoming/loot_modifiers/udumbara_ancient_city_ice_box_loot.json
+64da0de2ea8d224fa7075292ce7da7b5d1df8fe3 data/youkaishomecoming/loot_modifiers/udumbara_ancient_city_loot.json

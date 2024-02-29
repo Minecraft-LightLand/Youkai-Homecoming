@@ -40,7 +40,7 @@ public class KettleScreen extends BasePotScreen<KettleMenu> {
 		if (minecraft != null) {
 			int l = menu.getWater() * WATER_LINE.width / KettleBlockEntity.WATER_BUCKET;
 			gui.blit(getBackgroundTexture(),
-					leftPos + WATER_LINE.x,
+					leftPos + WATER_LINE.x+ (WATER_LINE.width - l),
 					topPos + WATER_LINE.y,
 					176 + (WATER_LINE.width - l),
 					getHeatIcon().height + getProgressArrow().height,
