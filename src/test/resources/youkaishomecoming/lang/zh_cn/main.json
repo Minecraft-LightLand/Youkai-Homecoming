@@ -22,10 +22,10 @@
 	"smoothing.description": "免疫中毒，提升回血效率",
 	"thick": "醇厚",
 	"thick.description": "免疫凋零，减少1点收到的伤害",
-	"mandrake": "曼德拉",
-	"mandrake.description": "你蹲下就会沉进土里",
-	"udumbara": "幻昙华",
-	"udumbara.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少"
+	"lurking": "曼德拉",
+	"lurking.description": "你蹲下就会沉进土里",
+	"phantom": "幻昙华",
+	"phantom.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少"
   },
   "youkaishomecoming": {
 	"flesh_human": "怪肉",

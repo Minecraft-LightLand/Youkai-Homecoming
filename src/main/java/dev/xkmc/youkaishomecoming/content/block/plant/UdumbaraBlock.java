@@ -42,9 +42,9 @@ public class UdumbaraBlock extends YHCropBlock {
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (!level.isAreaLoaded(pos, 1))
 			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-		if (level.isNight() && level.canSeeSky(pos) && level.getMoonBrightness() > 0.8) {
+		if (level.isNight() && level.canSeeSky(pos)) {
 			int i = this.getAge(state);
-			if (i < this.getMaxAge()) {
+			if (i < getMaxAge() - 1 || i == getMaxAge() - 1 && level.getMoonBrightness() > 0.8) {
 				float f = getGrowthSpeed(this, level, pos);
 				if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 					level.setBlock(pos, getStateForAge(i + 1), 2);

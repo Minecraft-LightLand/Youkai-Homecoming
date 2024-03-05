@@ -76,6 +76,16 @@ public class YHAdvGen {
 								).map(e -> ConsumeItemTrigger.TriggerInstance.usedItem(e.item.get()))
 								.forEach(c::add)), "Tea Master", "Drink all kinds of tea in original flavor")
 				.type(FrameType.GOAL, true, true, false);
+		redbean.create("udumbara", YHCrops.UDUMBARA.getSeed(),
+						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+								LocationPredicate.Builder.location().setBlock(
+										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
+								ItemPredicate.Builder.item().of(YHCrops.UDUMBARA.getSeed()))),
+						"Moon Crop", "Plants an Udumbara. It grows under moonlight and shrinks under sunlight.")
+				.create("udumbara_flower", YHCrops.UDUMBARA.getFruits(),
+						CriterionBuilder.item(YHCrops.UDUMBARA.getFruits()),
+						"Fragile Flower", "Get an Udubara flower. It will only appear for 10 seconds during full moon.")
+				.type(FrameType.CHALLENGE);
 		root.create("mousse", YHFood.KOISHI_MOUSSE.item.asStack(),
 						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
 								ItemPredicate.Builder.item().of(YHFood.KOISHI_MOUSSE.item.get()).build())),

@@ -117,10 +117,10 @@
   "effect.youkaishomecoming.smoothing.description": "免疫中毒，提升回血效率",
   "effect.youkaishomecoming.thick": "醇厚",
   "effect.youkaishomecoming.thick.description": "免疫凋零，减少1点收到的伤害",
-  "effect.youkaishomecoming.mandrake": "曼德拉",
-  "effect.youkaishomecoming.mandrake.description": "你蹲下就会沉进土里",
-  "effect.youkaishomecoming.udumbara": "幻昙华",
-  "effect.youkaishomecoming.udumbara.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少",
+  "effect.youkaishomecoming.lurking": "曼德拉",
+  "effect.youkaishomecoming.lurking.description": "你蹲下就会沉进土里",
+  "effect.youkaishomecoming.phantom": "幻昙华",
+  "effect.youkaishomecoming.phantom.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少",
   "youkaishomecoming.flesh_human": "怪肉",
   "youkaishomecoming.flesh_youkai": "人肉",
   "youkaishomecoming.taste_half_youkai": "奇怪的味道...",
@@ -247,5 +247,9 @@
   "advancements.youkaishomecoming.advancements.main.tea_master.description": "品尝所有原味茶",
   "advancements.youkaishomecoming.advancements.main.tea_master.title": "小罐茶，大师作",
   "advancements.youkaishomecoming.advancements.main.first_time.description": "获得半妖怪化状态",
-  "advancements.youkaishomecoming.advancements.main.first_time.title": "小心灵梦"
+  "advancements.youkaishomecoming.advancements.main.first_time.title": "小心灵梦",
+  "advancements.youkaishomecoming.advancements.main.udumbara.description": "种植幻昙华。这种植物在月光下成长，在阳光下枯萎",
+  "advancements.youkaishomecoming.advancements.main.udumbara.title": "月光作物",
+  "advancements.youkaishomecoming.advancements.main.udumbara_flower.description": "获得幻昙花。幻昙华只在满月夜的月光下开花，开花10秒之后花将会凋谢",
+  "advancements.youkaishomecoming.advancements.main.udumbara_flower.title": "昙花一现"
 }
