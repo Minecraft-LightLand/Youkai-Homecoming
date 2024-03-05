@@ -1,8 +1,8 @@
 {
-  "type": "youkaishomecoming:drying_rack",
-  "category": "misc",
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
   "cookingtime": 200,
-  "experience": 0.0,
+  "experience": 0.1,
   "ingredient": {
     "item": "youkaishomecoming:green_tea_leaves"
   },

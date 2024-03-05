@@ -1,5 +1,5 @@
 {
-  "type": "youkaishomecoming:kettle",
+  "type": "youkaishomecoming:moka_pot",
   "container": {
     "item": "minecraft:glass_bottle"
   },
@@ -7,14 +7,14 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaishomecoming:white_tea_leaves"
+      "item": "youkaishomecoming:espresso"
     },
     {
-      "item": "youkaishomecoming:white_tea_leaves"
+      "item": "youkaishomecoming:coffee_powder"
     }
   ],
   "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaishomecoming:white_tea"
+    "item": "youkaishomecoming:ristretto"
   }
 }

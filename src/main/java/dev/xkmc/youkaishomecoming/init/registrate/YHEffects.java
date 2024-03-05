@@ -50,11 +50,11 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),
 			"You won't be targeted by mobs. Terminates when you attack.");
 
-	public static final RegistryEntry<MandrakeEffect> MANDRAKE = genEffect("mandrake",
+	public static final RegistryEntry<MandrakeEffect> MANDRAKE = genEffect("lurking",
 			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xffffff),
 			"Sneak to sink into ground");
 
-	public static final RegistryEntry<UdumbaraEffect> UDUMBARA = genEffect("udumbara",
+	public static final RegistryEntry<UdumbaraEffect> UDUMBARA = genEffect("phantom",
 			() -> new UdumbaraEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Prevents vibration from you and your projectiles. " +
 					"Warps you to the top of the world when falling into the void. " +

@@ -185,10 +185,12 @@ public enum YHCrops {
 						.register()
 		),
 		UDUMBARA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new UdumbaraBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getFruits))
-				.blockstate(YHBushBlock::buildModel).register(),
+						new UdumbaraBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
+				.blockstate((ctx, pvd) -> YHCropBlock.buildPlantModel(ctx, pvd, name))
+				.loot((pvd, block) -> UdumbaraBlock.buildPlantLoot(pvd, block, crop))
+				.register(),
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p ->
-								new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION),crop::getFruits))
+								new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION), crop::getFruits))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((pvd, b) -> pvd.dropOther(b, crop.getSeed()))
 						.item().tag(ModTags.WILD_CROPS_ITEM)
@@ -199,7 +201,7 @@ public enum YHCrops {
 						new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getFruits))
 				.blockstate(YHBushBlock::buildModel).register(),
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p ->
-								new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION),crop::getFruits))
+								new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION), crop::getFruits))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((pvd, b) -> pvd.add(b, pvd.applyExplosionDecay(b,
 								LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(crop.getFruits())))

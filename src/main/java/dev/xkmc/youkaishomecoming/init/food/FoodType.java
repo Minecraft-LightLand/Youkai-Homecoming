@@ -19,6 +19,7 @@ import java.util.function.Function;
 
 public enum FoodType {
 	SIMPLE(YHFoodItem::new, false, false),
+	FAST(YHFoodItem::new, false, true),
 	MEAT(YHFoodItem::new, true, false),
 	MEAT_SLICE(YHFoodItem::new, true, true),
 	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true),

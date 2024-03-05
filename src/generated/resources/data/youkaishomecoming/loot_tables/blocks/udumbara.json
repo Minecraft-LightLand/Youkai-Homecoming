@@ -1,17 +1,47 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
   "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "youkaishomecoming:udumbara_seeds"
+        }
+      ],
+      "rolls": 1.0
+    },
     {
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "block": "youkaishomecoming:udumbara",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "7"
+          }
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:udumbara_seeds"
+          "functions": [
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "function": "minecraft:apply_bonus",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "youkaishomecoming:udumbara_flower"
         }
       ],
       "rolls": 1.0

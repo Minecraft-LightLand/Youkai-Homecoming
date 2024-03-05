@@ -46,7 +46,7 @@ public class YHAdvGen {
 										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN).build()),
 								ItemPredicate.Builder.item().of(YHCrops.REDBEAN.getSeed()))),
 						"Leanness Resistant Red Bean", "Plant Red Bean on Coarse Dirt, Mud, or Clay");
-		redbean.create("coffea", YHCrops.REDBEAN.getSeed(),
+		redbean.create("coffea", YHCrops.COFFEA.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
 										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_COFFEA).build()),

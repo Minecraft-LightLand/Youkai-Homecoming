@@ -10,6 +10,10 @@
       "item": "youkaishomecoming:coffee_powder"
     },
     {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    },
+    {
       "tag": "forge:milk/milk_bottle"
     },
     {

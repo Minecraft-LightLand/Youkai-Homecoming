@@ -1,10 +1,28 @@
 {
   "variants": {
-    "bloom=false": {
-      "model": "youkaishomecoming:block/udumbara"
+    "age=0": {
+      "model": "youkaishomecoming:block/udumbara_stage0"
     },
-    "bloom=true": {
-      "model": "youkaishomecoming:block/udumbara_flowering"
+    "age=1": {
+      "model": "youkaishomecoming:block/udumbara_stage1"
+    },
+    "age=2": {
+      "model": "youkaishomecoming:block/udumbara_stage2"
+    },
+    "age=3": {
+      "model": "youkaishomecoming:block/udumbara_stage3"
+    },
+    "age=4": {
+      "model": "youkaishomecoming:block/udumbara_stage4"
+    },
+    "age=5": {
+      "model": "youkaishomecoming:block/udumbara_stage5"
+    },
+    "age=6": {
+      "model": "youkaishomecoming:block/udumbara_stage6"
+    },
+    "age=7": {
+      "model": "youkaishomecoming:block/udumbara_stage7"
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "type": "youkaishomecoming:moka_pot",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:espresso"
+    },
+    {
+      "item": "minecraft:ice"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:affogato"
+  }
+}

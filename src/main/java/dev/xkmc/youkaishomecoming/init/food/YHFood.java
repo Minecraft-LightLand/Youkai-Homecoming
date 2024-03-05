@@ -38,17 +38,17 @@ public enum YHFood {
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
 	TOFU(FoodType.SIMPLE, 4, 0.5f),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
-	MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
-	TSUKIMI_DANGO(FoodType.SIMPLE, 3, 0.6f, YHTagGen.DANGO),
-	COFFEE_MOCHI(FoodType.SIMPLE, 4, 0.6f, List.of(
+	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO),
+	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO),
+	COFFEE_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
 			new EffectEntry(YHEffects.CAFFEINATED::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
 	), YHTagGen.DANGO),
-	MATCHA_MOCHI(FoodType.SIMPLE, 4, 0.6f, List.of(
+	MATCHA_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1)
 	), YHTagGen.DANGO),
-	SAKURA_MOCHI(FoodType.SIMPLE, 4, 0.6f, YHTagGen.DANGO),
-	YASHOUMA_DANGO(FoodType.SIMPLE, 6, 0.6f, YHTagGen.DANGO),
+	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO),
+	YASHOUMA_DANGO(FoodType.FAST, 6, 0.6f, YHTagGen.DANGO),
 	ONIGILI(FoodType.SIMPLE, 6, 0.6f),
 	SENBEI(FoodType.SIMPLE, 4, 0.6f),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f),
@@ -147,7 +147,7 @@ public enum YHFood {
 	BOWL_OF_HEART_THROBBING_SURPRISE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(YHEffects.MANDRAKE::get, 400, 0, 1)
+			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
 	)),
 	// flesh
 	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(

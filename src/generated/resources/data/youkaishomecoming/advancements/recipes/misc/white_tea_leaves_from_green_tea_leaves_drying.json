@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:white_tea_leaves_from_green_tea_leaves_campfire"
+        "recipe": "youkaishomecoming:white_tea_leaves_from_green_tea_leaves_drying"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:white_tea_leaves_from_green_tea_leaves_campfire"
+      "youkaishomecoming:white_tea_leaves_from_green_tea_leaves_drying"
     ]
   },
   "sends_telemetry_event": false

@@ -10,11 +10,11 @@
       "item": "youkaishomecoming:coffee_powder"
     },
     {
-      "item": "youkaishomecoming:coffee_powder"
-    },
-    {
       "type": "l2library:potion",
       "potion": "minecraft:water"
+    },
+    {
+      "item": "youkaishomecoming:coffee_powder"
     },
     {
       "item": "youkaishomecoming:bowl_of_cream"
