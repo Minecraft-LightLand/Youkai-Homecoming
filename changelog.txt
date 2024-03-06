@@ -1,2 +1,7 @@
-TODO ways to obtain hat
-TODO flesh village rework
+
+
+2.0.0
+- Rewrite everything in Java
+- Add Tea and udumbara
+- Flesh mechanics overhaul
+- Delete steel, ores, most deco blocks, and weapons

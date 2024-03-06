@@ -87,7 +87,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 			.add(Registries.STRUCTURE_SET, ctx -> {
 				var str = ctx.lookup(Registries.STRUCTURE).getOrThrow(ResourceKey.create(Registries.STRUCTURE, NEST));
 				ctx.register(ResourceKey.create(Registries.STRUCTURE_SET, NEST), new StructureSet(
-						str, new RandomSpreadStructurePlacement(16, 8, RandomSpreadType.LINEAR, NEST.hashCode())));
+						str, new RandomSpreadStructurePlacement(20, 8, RandomSpreadType.LINEAR, NEST.hashCode())));
 			});
 
 	private static void registerBiomeModifiers(BootstapContext<BiomeModifier> ctx) {
@@ -96,7 +96,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		HolderSet<Biome> set = biomes.getOrThrow(YHBiomeTagsProvider.LAMPREY);
 		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(YoukaisHomecoming.MODID, "lamprey")),
 				new ForgeBiomeModifiers.AddSpawnsBiomeModifier(set, List.of(new MobSpawnSettings.SpawnerData(
-						YHEntities.LAMPREY.get(), 12, 3, 5)
+						YHEntities.LAMPREY.get(), 5, 3, 5)
 				)));
 		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);

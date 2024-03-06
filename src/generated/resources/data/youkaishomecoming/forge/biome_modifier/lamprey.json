@@ -5,6 +5,6 @@
     "type": "youkaishomecoming:lamprey",
     "maxCount": 5,
     "minCount": 3,
-    "weight": 12
+    "weight": 5
   }
 }
