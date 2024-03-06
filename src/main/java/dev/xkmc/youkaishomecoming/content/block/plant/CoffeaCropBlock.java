@@ -38,6 +38,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.PlantType;
 
 import java.util.function.Supplier;
 
@@ -121,6 +122,11 @@ public class CoffeaCropBlock extends DoubleCropBlock {
 		if (age == 6 && pState.getValue(HALF) == DoubleBlockHalf.UPPER)
 			return SHAPE_BY_AGE[4];
 		return Shapes.block();
+	}
+
+	@Override
+	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
+		return PlantType.get("coffea");
 	}
 
 	public static void buildPlantModel(DataGenContext<Block, CoffeaCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {

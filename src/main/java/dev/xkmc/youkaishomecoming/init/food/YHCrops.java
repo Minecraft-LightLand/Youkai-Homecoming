@@ -184,7 +184,7 @@ public enum YHCrops {
 						.register()
 		),
 		TEA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new TeaCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
+						new TeaCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().forceSolidOff()
 								.randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY),
 								crop::getSeed))
 				.blockstate((ctx, pvd) -> TeaCropBlock.buildPlantModel(ctx, pvd, name))

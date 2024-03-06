@@ -28,6 +28,7 @@ import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.common.PlantType;
 
 import java.util.function.Supplier;
 
@@ -52,6 +53,12 @@ public class YHCropBlock extends CropBlock {
 	@Override
 	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
 		return seed.get() == YHCrops.REDBEAN.getSeed() ? pState.is(YHTagGen.FARMLAND_REDBEAN) : super.mayPlaceOn(pState, pLevel, pPos);
+	}
+
+
+	@Override
+	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
+		return seed.get() == YHCrops.REDBEAN.getSeed() ? PlantType.get("redbeans") : PlantType.CROP;
 	}
 
 	protected ItemLike getBaseSeedId() {

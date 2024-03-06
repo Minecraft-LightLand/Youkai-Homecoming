@@ -54,7 +54,7 @@ public class TeaCropBlock extends DoubleCropBlock {
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
-			SMALL,
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D)};
 
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
@@ -125,6 +125,9 @@ public class TeaCropBlock extends DoubleCropBlock {
 		int age = getAge(pState);
 		if (age <= 4) {
 			return SHAPE_BY_AGE[age];
+		}
+		if (age == 5) {
+			return SMALL;
 		}
 		if (age == 6 && pState.getValue(HALF) == DoubleBlockHalf.UPPER)
 			return SHAPE_BY_AGE[5];
