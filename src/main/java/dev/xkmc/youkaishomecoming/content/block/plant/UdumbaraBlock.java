@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -37,6 +38,14 @@ public class UdumbaraBlock extends YHCropBlock {
 	public UdumbaraBlock(BlockBehaviour.Properties pProperties, Supplier<Item> seed, Supplier<Item> fruit) {
 		super(pProperties, seed);
 		this.fruit = fruit;
+	}
+
+	@Override
+	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+		BlockPos blockpos = pPos.below();
+		if (pState.getBlock() == this)
+			return pLevel.getBlockState(blockpos).canSustainPlant(pLevel, blockpos, Direction.UP, this);
+		return this.mayPlaceOn(pLevel.getBlockState(blockpos), pLevel, blockpos);
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {

@@ -46,12 +46,15 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import java.util.function.Supplier;
 
 public class TeaCropBlock extends DoubleCropBlock {
+
+	private static final VoxelShape SMALL = Block.box(3, 0, 3, 13, 11, 13);
+
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
+			SMALL,
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D)};
 
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
@@ -126,6 +129,16 @@ public class TeaCropBlock extends DoubleCropBlock {
 		if (age == 6 && pState.getValue(HALF) == DoubleBlockHalf.UPPER)
 			return SHAPE_BY_AGE[5];
 		return Shapes.block();
+	}
+
+	@Override
+	public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+		int age = getAge(state);
+		if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
+			if (age == 5) return SMALL;
+			if (age == 6) return Shapes.block();
+		}
+		return Shapes.empty();
 	}
 
 	public static void buildPlantModel(DataGenContext<Block, TeaCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {

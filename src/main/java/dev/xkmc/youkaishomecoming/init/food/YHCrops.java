@@ -16,10 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -31,6 +28,8 @@ import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -43,11 +42,11 @@ import java.util.Locale;
 import java.util.function.BiFunction;
 
 public enum YHCrops {
-	SOYBEAN(PlantType.CROP, 16, null, "pods"),
+	SOYBEAN(PlantType.CROSS, 16, null, "pods"),
 	REDBEAN(PlantType.CROP, 16, null, null),
 	COFFEA(PlantType.COFFEA, 8, "green_coffee_bean", "coffee_berries"),
 	TEA(PlantType.TEA, 8, "tea_seeds", "tea_leaves"),
-	UDUMBARA(PlantType.UDUMBARA, 16, "udumbara_seeds", "udumbara_flower"),
+	UDUMBARA(PlantType.UDUMBARA, 8, "udumbara_seeds", "udumbara_flower"),
 	MANDRAKE(PlantType.MANDRAKE, 8, "mandrake_root", null),
 	;
 
@@ -150,7 +149,19 @@ public enum YHCrops {
 	public enum PlantType {
 		CROP((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
 						new YHCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
-				.blockstate((ctx, pvd) -> YHCropBlock.buildPlantModel(ctx, pvd, name))
+				.blockstate((ctx, pvd) -> YHCropBlock.buildCropModel(ctx, pvd, name))
+				.loot((pvd, block) -> YHCropBlock.buildPlantLoot(pvd, block, crop))
+				.register(),
+				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
+						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
+						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.WILD_CROPS)
+						.register()
+		),
+		CROSS((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
+						new YHCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
+				.blockstate((ctx, pvd) -> YHCropBlock.buildCrossModel(ctx, pvd, name))
 				.loot((pvd, block) -> YHCropBlock.buildPlantLoot(pvd, block, crop))
 				.register(),
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
@@ -173,7 +184,9 @@ public enum YHCrops {
 						.register()
 		),
 		TEA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new TeaCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
+						new TeaCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
+								.randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY),
+								crop::getSeed))
 				.blockstate((ctx, pvd) -> TeaCropBlock.buildPlantModel(ctx, pvd, name))
 				.loot((pvd, block) -> TeaCropBlock.buildPlantLoot(pvd, block, crop))
 				.register(),
@@ -185,12 +198,12 @@ public enum YHCrops {
 						.register()
 		),
 		UDUMBARA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new UdumbaraBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
-				.blockstate((ctx, pvd) -> YHCropBlock.buildPlantModel(ctx, pvd, name))
+						new UdumbaraBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).lightLevel(s -> 2), crop::getSeed, crop::getFruits))
+				.blockstate((ctx, pvd) -> YHCropBlock.buildCrossModel(ctx, pvd, name))
 				.loot((pvd, block) -> UdumbaraBlock.buildPlantLoot(pvd, block, crop))
 				.register(),
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p ->
-								new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION), crop::getFruits))
+								new YHBushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION).lightLevel(s -> 2), crop::getFruits))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((pvd, b) -> pvd.dropOther(b, crop.getSeed()))
 						.item().tag(ModTags.WILD_CROPS_ITEM)

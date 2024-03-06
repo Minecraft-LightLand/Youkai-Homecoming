@@ -62,11 +62,19 @@ public class YHCropBlock extends CropBlock {
 		return SHAPE_BY_AGE[this.getAge(pState)];
 	}
 
-	public static void buildPlantModel(DataGenContext<Block, ? extends YHCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
+	public static void buildCropModel(DataGenContext<Block, ? extends YHCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
 			String tex = name + "_stage" + age;
 			return ConfiguredModel.builder().modelFile(pvd.models().crop(tex, pvd.modLoc("block/" + tex)).renderType("cutout")).build();
+		});
+	}
+
+	public static void buildCrossModel(DataGenContext<Block, ? extends YHCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
+		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
+			int age = state.getValue(CropBlock.AGE);
+			String tex = name + "_stage" + age;
+			return ConfiguredModel.builder().modelFile(pvd.models().cross(tex, pvd.modLoc("block/" + tex)).renderType("cutout")).build();
 		});
 	}
 
