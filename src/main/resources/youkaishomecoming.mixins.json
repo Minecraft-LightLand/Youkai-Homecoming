@@ -10,9 +10,11 @@
 	"CookingPotRecipeAccessor",
 	"CopyMealFunctionMixin",
 	"EntityMixin",
+	"FrogAttackablesSensorMixin",
 	"ItemAccessor",
 	"LivingEntityMixin",
-	"PhantomSpawnerMixin"
+	"PhantomSpawnerMixin",
+	"ShootTongueMixin"
   ],
   "client": [
   ],

@@ -13,17 +13,16 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 
-public class SuwakoHatItem extends TouhouHatItem {
+public class KoishiHatItem extends TouhouHatItem {
 
-	public SuwakoHatItem(Item.Properties properties) {
-		super(properties, TouhouMat.SUWAKO_HAT);
+	public KoishiHatItem(Properties properties) {
+		super(properties, TouhouMat.KOISHI_HAT);
 	}
 
 	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
@@ -42,7 +41,7 @@ public class SuwakoHatItem extends TouhouHatItem {
 
 	@Override
 	protected void tick(ItemStack stack, Level level, LivingEntity player) {
-		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.NATIVE.get(), 40, 0,
+		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.UNCONSCIOUS.get(), 40, 0,
 				true, true), EffectUtil.AddReason.SELF, player);
 	}
 }

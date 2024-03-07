@@ -4,6 +4,10 @@ import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2library.serial.config.PacketHandler;
+import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
+import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
+import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
@@ -14,6 +18,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -24,6 +29,7 @@ import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.network.NetworkDirection;
 import org.slf4j.Logger;
 
 @Mod(YoukaisHomecoming.MODID)
@@ -33,6 +39,11 @@ public class YoukaisHomecoming {
 	public static final String MODID = "youkaishomecoming";
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
+
+	public static final PacketHandler HANDLER = new PacketHandler(
+			new ResourceLocation(MODID, "main"), 1,
+			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT)
+	);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
@@ -47,6 +58,8 @@ public class YoukaisHomecoming {
 		YHEffects.register();
 		YHEntities.register();
 		YHGLMProvider.register();
+		KoishiAttackCapability.register();
+		FrogGodCapability.register();
 		YHModConfig.init();
 
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
@@ -83,6 +96,7 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, reg);
 		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
 		gen.addProvider(server, new YHGLMProvider(gen));
+		new YHDamageTypes(output, pvd, helper).generate(server, gen);
 	}
 
 	@SubscribeEvent
