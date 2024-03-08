@@ -57,8 +57,8 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 		if (eaten.size() >= COUNT) {
 			eaten.clear();
 			hasHat = false;
-			frog.spawnAtLocation(YHItems.SUWAKO_HAT.get());
 			syncToClient(frog);
+			frog.spawnAtLocation(YHItems.SUWAKO_HAT.get());
 		}
 	}
 

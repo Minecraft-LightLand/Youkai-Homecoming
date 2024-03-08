@@ -5,9 +5,10 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.PacketHandler;
-import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
+import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
+import dev.xkmc.youkaishomecoming.content.capability.KoishiStartPacket;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
@@ -42,7 +43,8 @@ public class YoukaisHomecoming {
 
 	public static final PacketHandler HANDLER = new PacketHandler(
 			new ResourceLocation(MODID, "main"), 1,
-			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT)
+			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
+			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT)
 	);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =

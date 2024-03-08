@@ -3,15 +3,17 @@ package dev.xkmc.youkaishomecoming.content.capability;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import net.minecraft.client.Minecraft;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public class ClientCapHandler {
 	public ClientCapHandler() {
 	}
 
-	public static void handle(FrogSyncPacket packet) {
+	public static void frogUpdate(FrogSyncPacket packet) {
 		Level level = Minecraft.getInstance().level;
 		if (level != null) {
 			Entity entity = level.getEntity(packet.id);
@@ -24,4 +26,11 @@ public class ClientCapHandler {
 			}
 		}
 	}
+
+	public static void koishiAttack() {
+		Player player = Minecraft.getInstance().player;
+		if (player == null) return;
+		player.playSound(SoundEvents.WARDEN_SONIC_CHARGE, 1, 1);//TODO
+	}
+
 }

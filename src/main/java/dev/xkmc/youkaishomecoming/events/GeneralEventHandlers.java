@@ -1,7 +1,9 @@
 package dev.xkmc.youkaishomecoming.events;
 
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -51,6 +53,9 @@ public class GeneralEventHandlers {
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
 				le.removeEffect(YHEffects.UNCONSCIOUS.get());
+				if (le instanceof Player player) {
+					player.getCooldowns().addCooldown(YHItems.KOISHI_HAT.get(), 200);//TODO config
+				}
 			}
 		}
 		if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
@@ -115,6 +120,15 @@ public class GeneralEventHandlers {
 		if (event.getEffectInstance().getEffect() == MobEffects.POISON) {
 			if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
 				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onShieldBlock(ShieldBlockEvent event) {
+		if (event.getDamageSource().is(YHDamageTypes.KOISHI)) {
+			if (event.getEntity() instanceof Player player) {
+				KoishiAttackCapability.HOLDER.get(player).onBlock();
 			}
 		}
 	}

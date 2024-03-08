@@ -7,6 +7,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
+import dev.xkmc.youkaishomecoming.content.item.curio.KoishiHatItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.SuwakoHatItem;
 import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
@@ -42,6 +43,7 @@ public class YHItems {
 	}
 
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
+	public static final ItemEntry<KoishiHatItem> KOISHI_HAT;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
@@ -59,6 +61,11 @@ public class YHItems {
 	static {
 		SUWAKO_HAT = YoukaisHomecoming.REGISTRATE
 				.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
+				.tag(Tags.Items.ARMORS_HELMETS)
+				.register();
+
+		KOISHI_HAT = YoukaisHomecoming.REGISTRATE
+				.item("koishi_hat", p -> new KoishiHatItem(p.rarity(Rarity.EPIC)))
 				.tag(Tags.Items.ARMORS_HELMETS)
 				.register();
 

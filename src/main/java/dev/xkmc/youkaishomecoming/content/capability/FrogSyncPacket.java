@@ -26,6 +26,6 @@ public class FrogSyncPacket extends SerialPacketBase {
 	}
 
 	public void handle(NetworkEvent.Context context) {
-		ClientCapHandler.handle(this);
+		ClientCapHandler.frogUpdate(this);
 	}
 }

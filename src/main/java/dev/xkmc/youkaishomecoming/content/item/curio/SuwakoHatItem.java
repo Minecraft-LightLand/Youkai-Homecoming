@@ -13,6 +13,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -41,7 +42,7 @@ public class SuwakoHatItem extends TouhouHatItem {
 	}
 
 	@Override
-	protected void tick(ItemStack stack, Level level, LivingEntity player) {
+	protected void tick(ItemStack stack, Level level, Player player) {
 		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.NATIVE.get(), 40, 0,
 				true, true), EffectUtil.AddReason.SELF, player);
 	}

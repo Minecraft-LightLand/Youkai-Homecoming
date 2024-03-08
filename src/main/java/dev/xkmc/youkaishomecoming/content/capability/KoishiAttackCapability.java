@@ -6,9 +6,10 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -25,7 +26,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 			KoishiAttackCapability.class, KoishiAttackCapability::new, PlayerCapabilityNetworkHandler::new
 	);
 
-	private static final int COOLDOWN = 6000, DELAY = 20, RANDOM = 1000, COUNT = 3, DAMAGE = 20;
+	private static final int COOLDOWN = 6000, DELAY = 20, RANDOM = 1000, COUNT = 3, DAMAGE = 40;
 
 	@SerialClass.SerialField
 	private int tickRemain = 0;
@@ -44,6 +45,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 
 	@Override
 	public void tick() {
+		if (!(player instanceof ServerPlayer sp)) return;
 		if (tickRemain > 0) {
 			tickRemain--;
 			if (tickRemain == 0 && source != null) {
@@ -52,12 +54,6 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 				source = null;
 				if (player.hurt(YHDamageTypes.koishi(player, vec), DAMAGE)) {
 					blockCount = 0;
-				} else {
-					blockCount++;
-					if (blockCount == COUNT) {
-						blockCount = 0;
-						player.spawnAtLocation(YHFood.KOISHI_MOUSSE.item.get());//TODO
-					}
 				}
 			}
 			return;
@@ -66,7 +62,8 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 			attackCooldown--;
 			return;
 		}
-		if (player.hasEffect(YHEffects.UNCONSCIOUS.get()) ||
+		if (!player.canBeSeenAsEnemy() ||
+				player.hasEffect(YHEffects.UNCONSCIOUS.get()) ||
 				!player.hasEffect(YHEffects.YOUKAIFIED.get()) &&
 						!player.hasEffect(YHEffects.YOUKAIFYING.get())) {
 			blockCount = 0;
@@ -75,8 +72,18 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 		if (player.getRandom().nextDouble() < 1d / RANDOM) {
 			tickRemain = DELAY;
 			source = player.getViewVector(1).normalize().scale(-2);
+			YoukaisHomecoming.HANDLER.toClientPlayer(new KoishiStartPacket(), sp);
 		}
 
+	}
+
+	public void onBlock() {
+		player.getCooldowns().addCooldown(player.getUseItem().getItem(), 100);
+		blockCount++;
+		if (blockCount == COUNT) {
+			blockCount = 0;
+			player.spawnAtLocation(YHItems.KOISHI_HAT.get());
+		}
 	}
 
 	public static void register() {

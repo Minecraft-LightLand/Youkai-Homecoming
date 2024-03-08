@@ -18,7 +18,7 @@ public class TouhouHatItem extends ArmorItem {
 		tick(stack, level, player);
 	}
 
-	protected void tick(ItemStack stack, Level level, LivingEntity player) {
+	protected void tick(ItemStack stack, Level level, Player player) {
 	}
 
 }
