@@ -26,6 +26,8 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 			KoishiAttackCapability.class, KoishiAttackCapability::new, PlayerCapabilityNetworkHandler::new
 	);
 
+	public static boolean ENABLED = false;//TODO
+
 	private static final int COOLDOWN = 6000, DELAY = 20, RANDOM = 1000, COUNT = 3, DAMAGE = 40;
 
 	@SerialClass.SerialField
@@ -45,6 +47,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 
 	@Override
 	public void tick() {
+		if (!ENABLED) return;
 		if (!(player instanceof ServerPlayer sp)) return;
 		if (tickRemain > 0) {
 			tickRemain--;

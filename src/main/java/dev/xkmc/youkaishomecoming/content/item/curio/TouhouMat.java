@@ -7,26 +7,28 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.util.Lazy;
 
 import java.util.Locale;
+import java.util.function.Supplier;
 
 public enum TouhouMat implements ArmorMaterial {
-	SUWAKO_HAT(30, 10, 2, Ingredient.of(Items.WHEAT), SoundEvents.ARMOR_EQUIP_LEATHER),
-	KOISHI_HAT(30, 10, 2, Ingredient.of(YHFood.KOISHI_MOUSSE.item), SoundEvents.ARMOR_EQUIP_IRON),
+	SUWAKO_HAT(30, 10, 2, () -> Ingredient.of(Items.WHEAT), SoundEvents.ARMOR_EQUIP_LEATHER),
+	KOISHI_HAT(30, 10, 2, () -> Ingredient.of(YHFood.KOISHI_MOUSSE.item), SoundEvents.ARMOR_EQUIP_IRON),
 	;
 
 	private static final int[] DURABILITY = {13, 15, 16, 11};
 	private static final int[] DEFENSE = {0, 2, 3, 1};
 
 	private final int durability, enchantment, defense;
-	private final Ingredient repair;
+	private final Lazy<Ingredient> repair;
 	private final SoundEvent sound;
 
-	TouhouMat(int durability, int enchantment, int defense, Ingredient repair, SoundEvent sound) {
+	TouhouMat(int durability, int enchantment, int defense, Supplier<Ingredient> repair, SoundEvent sound) {
 		this.durability = durability;
 		this.enchantment = enchantment;
 		this.defense = defense;
-		this.repair = repair;
+		this.repair = Lazy.of(repair);
 		this.sound = sound;
 	}
 
@@ -47,7 +49,7 @@ public enum TouhouMat implements ArmorMaterial {
 	}
 
 	public Ingredient getRepairIngredient() {
-		return repair;
+		return repair.get();
 	}
 
 	public String getName() {

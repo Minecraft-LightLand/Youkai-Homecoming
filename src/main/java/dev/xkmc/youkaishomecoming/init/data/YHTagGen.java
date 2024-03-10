@@ -4,8 +4,9 @@ import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import net.mehvahdjukaar.jeed.Jeed;
+import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.init.food.YHTea;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -39,6 +40,15 @@ public class YHTagGen {
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
+
+	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
+
+	public static final TagKey<Item> TEA_GREEN = ItemTags.create(new ResourceLocation("forge", "tea_leaves/green"));
+	public static final TagKey<Item> TEA_BLACK = ItemTags.create(new ResourceLocation("forge", "tea_leaves/black"));
+	public static final TagKey<Item> TEA_WHITE = ItemTags.create(new ResourceLocation("forge", "tea_leaves/white"));
+	public static final TagKey<Item> TEA_OOLONG = ItemTags.create(new ResourceLocation("forge", "tea_leaves/oolong"));
+	public static final TagKey<Item> TEA = ItemTags.create(new ResourceLocation("forge", "tea_leaves"));
+
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
 	}
 
@@ -52,7 +62,17 @@ public class YHTagGen {
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
+		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
+
+		pvd.addTag(TEA_GREEN).add(YHTea.GREEN.leaves.get());
+		pvd.addTag(TEA_BLACK).add(YHTea.BLACK.leaves.get());
+		pvd.addTag(TEA_WHITE).add(YHTea.WHITE.leaves.get());
+		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
+		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
+				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
+
 	}
 
 	public static TagKey<Item> item(String id) {

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "youkaishomecoming:matcha",
+    {
+      "id": "delightful:matcha",
+      "required": false
+    }
+  ]
+}

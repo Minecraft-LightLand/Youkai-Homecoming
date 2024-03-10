@@ -237,7 +237,7 @@ public class YHRecipeGen {
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MATCHA_MOCHI.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
-					.addIngredient(YHItems.MATCHA)
+					.addIngredient(YHTagGen.MATCHA)
 					.build(pvd, YHFood.MATCHA_MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SENBEI.item.get(), 3, 200, 0.1f)
@@ -523,7 +523,7 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.CHERRY_LEAVES)
-					.addIngredient(YHItems.MATCHA)
+					.addIngredient(YHTagGen.MATCHA)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
 
@@ -537,29 +537,29 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
-					.addIngredient(YHTea.BLACK.leaves)
-					.addIngredient(YHTea.BLACK.leaves)
+					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(YHTagGen.TEA_BLACK)
 					.build(tea, YHFood.BLACK_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
-					.addIngredient(YHTea.GREEN.leaves)
-					.addIngredient(YHTea.GREEN.leaves)
+					.addIngredient(YHTagGen.TEA_GREEN)
+					.addIngredient(YHTagGen.TEA_GREEN)
 					.build(tea, YHFood.GREEN_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OOLONG_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.OOLONG.leaves)
-					.addIngredient(YHTea.OOLONG.leaves)
-					.addIngredient(YHTea.OOLONG.leaves)
+					.addIngredient(YHTagGen.TEA_OOLONG)
+					.addIngredient(YHTagGen.TEA_OOLONG)
 					.build(tea, YHFood.OOLONG_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WHITE_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.WHITE.leaves)
-					.addIngredient(YHTea.WHITE.leaves)
-					.addIngredient(YHTea.WHITE.leaves)
+					.addIngredient(YHTagGen.TEA_WHITE)
+					.addIngredient(YHTagGen.TEA_WHITE)
 					.build(tea, YHFood.WHITE_TEA.item.getId());
 
 			var coffee = coffee(pvd);

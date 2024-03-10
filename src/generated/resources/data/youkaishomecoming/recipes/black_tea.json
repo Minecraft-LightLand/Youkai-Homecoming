@@ -7,10 +7,10 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaishomecoming:black_tea_leaves"
+      "tag": "forge:tea_leaves/black"
     },
     {
-      "item": "youkaishomecoming:black_tea_leaves"
+      "tag": "forge:tea_leaves/black"
     }
   ],
   "recipe_book_tab": "drinks",

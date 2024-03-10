@@ -1,4 +1,6 @@
-
+2.0.1
+- Loosen Registrate version requirement from 1.3.11+ to 1.3.3+ to improve compatibility
+- Add tags for Mocha and Tea Leaves
 
 2.0.0
 - Rewrite everything in Java

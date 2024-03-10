@@ -61,12 +61,15 @@ public class YHItems {
 	static {
 		SUWAKO_HAT = YoukaisHomecoming.REGISTRATE
 				.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 				.tag(Tags.Items.ARMORS_HELMETS)
 				.register();
 
 		KOISHI_HAT = YoukaisHomecoming.REGISTRATE
 				.item("koishi_hat", p -> new KoishiHatItem(p.rarity(Rarity.EPIC)))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 				.tag(Tags.Items.ARMORS_HELMETS)
+				.removeTab(YoukaisHomecoming.TAB.getKey())
 				.register();
 
 		YHCrops.register();

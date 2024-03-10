@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/curio/suwako_hat"
+    "layer0": "youkaishomecoming:item/curio/koishi_hat"
   }
 }
