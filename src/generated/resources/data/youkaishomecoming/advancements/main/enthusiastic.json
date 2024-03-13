@@ -535,7 +535,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:apaki"
+            "youkaishomecoming:scarlet_mist"
           ]
         }
       },
@@ -545,7 +545,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:avgolemono"
+            "youkaishomecoming:wind_priestesses"
           ]
         }
       },
@@ -555,7 +555,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:blazing_red_curry"
+            "youkaishomecoming:apaki"
           ]
         }
       },
@@ -575,7 +575,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:grilled_eel_over_rice"
+            "youkaishomecoming:avgolemono"
           ]
         }
       },
@@ -585,7 +585,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:higan_soup"
+            "youkaishomecoming:blazing_red_curry"
           ]
         }
       },
@@ -595,7 +595,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:longevity_noodles"
+            "youkaishomecoming:grilled_eel_over_rice"
           ]
         }
       },
@@ -605,7 +605,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:miso_soup"
+            "youkaishomecoming:higan_soup"
           ]
         }
       },
@@ -615,7 +615,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:poor_god_soup"
+            "youkaishomecoming:longevity_noodles"
           ]
         }
       },
@@ -625,7 +625,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:power_soup"
+            "youkaishomecoming:miso_soup"
           ]
         }
       },
@@ -635,7 +635,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:shirayuki"
+            "youkaishomecoming:poor_god_soup"
           ]
         }
       },
@@ -645,7 +645,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
+            "youkaishomecoming:power_soup"
           ]
         }
       },
@@ -655,7 +655,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:tuscan_salmon"
+            "youkaishomecoming:shirayuki"
           ]
         }
       },
@@ -665,7 +665,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:mushroom_soup"
+            "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
           ]
         }
       },
@@ -685,7 +685,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:lions_head"
+            "youkaishomecoming:tuscan_salmon"
           ]
         }
       },
@@ -695,7 +695,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:mapo_tofu"
+            "youkaishomecoming:mushroom_soup"
           ]
         }
       },
@@ -705,7 +705,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:udumbara_cake"
+            "youkaishomecoming:lions_head"
           ]
         }
       },
@@ -715,7 +715,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:bowl_of_heart_throbbing_surprise"
+            "youkaishomecoming:mapo_tofu"
           ]
         }
       },
@@ -725,7 +725,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_dumplings"
+            "youkaishomecoming:udumbara_cake"
           ]
         }
       },
@@ -735,7 +735,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_roll"
+            "youkaishomecoming:bowl_of_heart_throbbing_surprise"
           ]
         }
       },
@@ -745,13 +745,33 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_stew"
+            "youkaishomecoming:flesh_dumplings"
           ]
         }
       },
       "trigger": "minecraft:consume_item"
     },
     "77": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_roll"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "78": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "79": {
       "conditions": {
         "item": {
           "items": [
@@ -1031,6 +1051,12 @@
     ],
     [
       "77"
+    ],
+    [
+      "78"
+    ],
+    [
+      "79"
     ]
   ],
   "sends_telemetry_event": true

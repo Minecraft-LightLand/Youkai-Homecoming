@@ -562,6 +562,20 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.TEA_WHITE)
 					.build(tea, YHFood.WHITE_TEA.item.getId());
 
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SCARLET_MIST.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.build(tea, YHFood.SCARLET_MIST.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WIND_PRIESTESSES.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(YHItems.MATCHA)
+					.addIngredient(YHTagGen.TEA_GREEN)
+					.addIngredient(YHItems.MATCHA)
+					.build(tea, YHFood.WIND_PRIESTESSES.item.getId());
+
 			var coffee = coffee(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)

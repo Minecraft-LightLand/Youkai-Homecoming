@@ -53,7 +53,7 @@ public enum YHFood {
 	SENBEI(FoodType.SIMPLE, 4, 0.6f),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f),
-	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f, new EffectEntry(YHEffects.UNCONSCIOUS::get, 2400, 0, 1)),
+	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f, new EffectEntry(YHEffects.UNCONSCIOUS::get, 200, 0, 1)),
 	BUN(FoodType.SIMPLE, 8, 0.6f),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f),
@@ -90,6 +90,16 @@ public enum YHFood {
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
+	)),
+	SCARLET_MIST(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
+			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
+	)),
+	WIND_PRIESTESSES(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
 	)),
 
 	// bowl

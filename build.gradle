@@ -133,7 +133,7 @@ dependencies {
 
     implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.2.8")) {
         transitive = false
-        jarJar.ranged(it, "[1.2.8,)")
+        jarJar.ranged(it, "[0.2.8,)")
     }
 
     implementation fg.deobf(jarJar("dev.xkmc.l2library:l2library:2.4.23-slim")) {

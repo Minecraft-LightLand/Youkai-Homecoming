@@ -1,3 +1,8 @@
+2.0.2
+- Fix L2DamageTracker JiJ version requirment, solve compat with other L2 mods
+- Add Scarlet Mist and Wind Priestesses as tea variants
+- Reduce Koishi Mousse effect duration to make it balanced
+
 2.0.1
 - Loosen Registrate version requirement from 1.3.11+ to 1.3.3+ to improve compatibility
 - Add tags for Mocha and Tea Leaves

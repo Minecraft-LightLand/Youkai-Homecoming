@@ -122,6 +122,17 @@ public class GeneralEventHandlers {
 				event.setCanceled(true);
 			}
 		}
+		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFYING.get()) {
+			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
+					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
+				event.setCanceled(true);
+			}
+		}
+		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFIED.get()) {
+			if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
+				event.setCanceled(true);
+			}
+		}
 	}
 
 	@SubscribeEvent

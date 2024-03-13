@@ -3,11 +3,14 @@ package dev.xkmc.youkaishomecoming.content.item.food;
 
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -61,7 +64,13 @@ public class YHFoodItem extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
 		ItemStack itemStack = getCraftingRemainingItem(stack);
+		boolean youkai = consumer.hasEffect(YHEffects.YOUKAIFYING.get());
 		super.finishUsingItem(stack, worldIn, consumer);
+		if (!youkai && consumer.hasEffect(YHEffects.YOUKAIFYING.get())) {
+			int dur = YHModConfig.COMMON.youkaifyingConfusionTime.get();
+			consumer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
+					dur, 0, false, false, true));
+		}
 		if (itemStack.isEmpty()) {
 			return stack;
 		}

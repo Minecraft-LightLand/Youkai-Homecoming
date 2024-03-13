@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-10T23:15:50.418178	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-03-12T09:29:09.741283	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -73,8 +73,8 @@ af5031e60c1b4c4666bfdceb02daf51a1b092320 assets/youkaishomecoming/blockstates/wi
 7e7833f6237c2b01c225fa7ea9561350cdf980ac assets/youkaishomecoming/blockstates/wild_tea.json
 8a2e2f2c22f137800a6c7802c573bd6cc6108c59 assets/youkaishomecoming/blockstates/wild_udumbara.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
-a1c08d30abb3e011304c0d2960bf22a95dc8712d assets/youkaishomecoming/lang/en_ud.json
-31f9f9dd9b9b0a97068a27f0e4a373f9f8b83d37 assets/youkaishomecoming/lang/en_us.json
+98e9352888c3a77a51e9ddf20ae29bfeb56f65e8 assets/youkaishomecoming/lang/en_ud.json
+7946814d41f43c9fe6bd58972d77b843bb3e924c assets/youkaishomecoming/lang/en_us.json
 df4b9d00e00bd275d55ff3cd8d94930e42de8585 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
 45b94f41fde25955ebe5374d6687863d20fb52c2 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_connect.json
 7885b5f29c785483156efa810b2ebbd0675a21e9 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_corner.json
@@ -592,6 +592,7 @@ af1f5581612ec2cef86783a309b251d198e946b1 assets/youkaishomecoming/models/item/ro
 11be7d02e0781e9c3ab35789e43411d5b7988d3c assets/youkaishomecoming/models/item/sakura_mochi.json
 ccb730aaca15aacf342aa971b05c9ac08e86b9ed assets/youkaishomecoming/models/item/sauce_grilled_fish.json
 8339341ce429783968173aa395fca7e706b0b885 assets/youkaishomecoming/models/item/saucer.json
+d5e0035fb1d4e41b2ef170c0c73da90fb230f3af assets/youkaishomecoming/models/item/scarlet_mist.json
 7f4d2585178603e99e4a5bc9def9387f859f004b assets/youkaishomecoming/models/item/sekibankiyaki.json
 8af1ac72ff2434ef49581523a910114b9de7017d assets/youkaishomecoming/models/item/senbei.json
 b3b380e37ab83f6975d10c053d5ec8bcd11d3ea6 assets/youkaishomecoming/models/item/seven_colored_yokan.json
@@ -632,6 +633,7 @@ f7dcc6a3def8d4abebf9238c157a86596b0f283f assets/youkaishomecoming/models/item/wh
 248764c521a421382794c4df2142dc2570606c89 assets/youkaishomecoming/models/item/wild_soybean.json
 2944d3413630e5a20bd2be90acd05772c788c702 assets/youkaishomecoming/models/item/wild_tea.json
 f40dacf83244a84451c110f529fe200f599a0d77 assets/youkaishomecoming/models/item/wild_udumbara.json
+1c0101a14d8b5c110c5cf5bdf6c91f01e8e52dd1 assets/youkaishomecoming/models/item/wind_priestesses.json
 5251e3d64c06c72a3c362607ab5c8b04aeb3ae59 assets/youkaishomecoming/models/item/yakumo_inari.json
 cc7deb9b79a8fe614a928d3e4c7ad09c723ec7bc assets/youkaishomecoming/models/item/yashouma_dango.json
 503b5f0cb967ce77e688c6bf8b57ccdb95b18905 data/farmersdelight/tags/blocks/wild_crops.json
@@ -657,7 +659,7 @@ b1a2be7042d7027554e4f91e7f16e3ca490fd6e2 data/forge/tags/items/tea_leaves/white.
 791cf569cf4f6eaa65e2a722646dd16d2070f97c data/youkaishomecoming/advancements/main/bloody.json
 57c75806e81adab9a8f3c32d5fad6b3dab002aa9 data/youkaishomecoming/advancements/main/coffea.json
 94657bd4dad5b6c62d8f35309eb1482241ad43b0 data/youkaishomecoming/advancements/main/coffee_era.json
-9a9da34a338f8fba6e4ed1ec2120f0fd37d346aa data/youkaishomecoming/advancements/main/enthusiastic.json
+c1d50db98518f52a0fca57870f560086f3aa7db0 data/youkaishomecoming/advancements/main/enthusiastic.json
 650f016505d857c3ceb1aeffbd4dc74b58a08877 data/youkaishomecoming/advancements/main/first_time.json
 82808fb224e2127bbd53cdf938729e13dee32b26 data/youkaishomecoming/advancements/main/flesh.json
 0734399822152aa177b5280cb424c8ae0e947b44 data/youkaishomecoming/advancements/main/fragrant.json
@@ -772,7 +774,9 @@ ea255b5ccb1191a11974d2aa0339bc185df33224 data/youkaishomecoming/advancements/rec
 ba982684d4f2fd2bbb0db0064e12be3afd5322e3 data/youkaishomecoming/advancements/recipes/oolong_tea.json
 46da63a7820921f08bf9642e812fe619d7c1f4c4 data/youkaishomecoming/advancements/recipes/ristretto.json
 d46706dc361be52bf1bbb59ef5b891e5d9e0d053 data/youkaishomecoming/advancements/recipes/ristretto_remix.json
+78fc39c3176d47f495762af8160295a64485aaf1 data/youkaishomecoming/advancements/recipes/scarlet_mist.json
 abfa70a318ac324cc4fb3465196251e960139933 data/youkaishomecoming/advancements/recipes/white_tea.json
+5c0ed256ead090b5dea986c9828e6072476ff983 data/youkaishomecoming/advancements/recipes/wind_priestesses.json
 3f06763fadeefd00e2275b16e26f941d570da334 data/youkaishomecoming/loot_tables/blocks/acacia_handrail.json
 4a161718354466f90d017986d8b840f42fd490be data/youkaishomecoming/loot_tables/blocks/bamboo_handrail.json
 861b7bcca0ba3b87bd58bf323dd6620ec014961e data/youkaishomecoming/loot_tables/blocks/bamboo_mizuyokan.json
@@ -973,6 +977,7 @@ c3b330f9f01b77a098c882e50f56a9e6da342d2c data/youkaishomecoming/recipes/roe.json
 c08286e4628866a5e66248c3139665fea2ca5a5f data/youkaishomecoming/recipes/sakura_mochi.json
 9c3640a2d94ab138d7ad0f052f5af3452fb1b5f7 data/youkaishomecoming/recipes/sauce_grilled_fish.json
 6bfdf34d00ab1fca7ebb571fa7e8d3f4936f0919 data/youkaishomecoming/recipes/saucer_from_clay_saucer_smelting.json
+e3b3d5694588a05b7937c09a8bd854f21983a316 data/youkaishomecoming/recipes/scarlet_mist.json
 49e7b5e714e0eb1b4e697b010d5d56fc54fe2764 data/youkaishomecoming/recipes/sekibankiyaki.json
 32665bfddb934b9694dc39c8facbbd292f13f342 data/youkaishomecoming/recipes/senbei.json
 622e134d4c6a0d5984013b104bd80d280da00571 data/youkaishomecoming/recipes/seven_colored_yokan.json
@@ -1007,6 +1012,7 @@ fdbe19c2ea44087b19679ca5e7332fbc0c1f7d8d data/youkaishomecoming/recipes/white_te
 b50a7376bcc1ede3c3abe93f9aad8eb9e759a36d data/youkaishomecoming/recipes/white_tea_bag.json
 34daa82c5e96447acc7b54eb881175cf72711bba data/youkaishomecoming/recipes/white_tea_leaves_from_green_tea_leaves_drying.json
 5594483ca03a9a483d9e615e29b3dd5bbc5b2741 data/youkaishomecoming/recipes/white_tea_leaves_from_white_tea_bag.json
+d91d1e04002e2c976d03fe32f4dc01bbd0b91d68 data/youkaishomecoming/recipes/wind_priestesses.json
 971a7287458341b02bab365ae5fc0332ff5588db data/youkaishomecoming/recipes/yakumo_inari.json
 939c6fd41ffa255719abd95bdf23c7da8428450d data/youkaishomecoming/recipes/yashouma_dango.json
 af93eccd2e52c10c576062e6c8f5b4194221436b data/youkaishomecoming/tags/blocks/farmland_coffea.json
