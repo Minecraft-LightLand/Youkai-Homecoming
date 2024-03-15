@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-12T09:29:09.741283	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-03-16T00:24:34.067022	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -636,6 +636,11 @@ f40dacf83244a84451c110f529fe200f599a0d77 assets/youkaishomecoming/models/item/wi
 1c0101a14d8b5c110c5cf5bdf6c91f01e8e52dd1 assets/youkaishomecoming/models/item/wind_priestesses.json
 5251e3d64c06c72a3c362607ab5c8b04aeb3ae59 assets/youkaishomecoming/models/item/yakumo_inari.json
 cc7deb9b79a8fe614a928d3e4c7ad09c723ec7bc assets/youkaishomecoming/models/item/yashouma_dango.json
+41e367c3a0459e98be0c3cc6169c67b062cff266 data/diet/tags/items/fruits.json
+bd2e9651f4215ecf181ea88e8f6c71d72a5426df data/diet/tags/items/grains.json
+83e26bb98774fcc01fd45d1ed7487bf1ff4aeae0 data/diet/tags/items/proteins.json
+2237bcf1a54b5357d1da0fccc450f4ffc89ea311 data/diet/tags/items/sugars.json
+89242daf6a4936ac6e3e6c6d12c5c0031c0c35cc data/diet/tags/items/vegetables.json
 503b5f0cb967ce77e688c6bf8b57ccdb95b18905 data/farmersdelight/tags/blocks/wild_crops.json
 103ecdd0c137bc44b4347e3785c467ca9d67d7a8 data/farmersdelight/tags/items/cabbage_roll_ingredients.json
 503b5f0cb967ce77e688c6bf8b57ccdb95b18905 data/farmersdelight/tags/items/wild_crops.json
@@ -656,6 +661,14 @@ b1a2be7042d7027554e4f91e7f16e3ca490fd6e2 data/forge/tags/items/tea_leaves/white.
 11bd3226ea04c94a0865aefcf787b539d8b75ff9 data/minecraft/tags/items/wooden_slabs.json
 87eb911af0c5b7d275b165583d5531ba84fef648 data/minecraft/tags/items/wooden_stairs.json
 58eb430334e217351eabceb07256852576e99419 data/minecraft/tags/items/wooden_trapdoors.json
+02bd971e1476752089db0218142488f078e0f9af data/sereneseasons/tags/blocks/autumn_crops.json
+78161638c01808330609f38fec7322886db24a47 data/sereneseasons/tags/blocks/spring_crops.json
+a134fb78a326b70a5ead6490281fba2238b610a8 data/sereneseasons/tags/blocks/summer_crops.json
+14ac9c3f4d5439e2e628bce0713b869b9cdef03b data/sereneseasons/tags/blocks/winter_crops.json
+02bd971e1476752089db0218142488f078e0f9af data/sereneseasons/tags/items/autumn_crops.json
+5c51d09f10bfe93fee09483092acd4bded113f9e data/sereneseasons/tags/items/spring_crops.json
+f13e3f74fca61b398fad5a51330bc8d89beeb0ed data/sereneseasons/tags/items/summer_crops.json
+14ac9c3f4d5439e2e628bce0713b869b9cdef03b data/sereneseasons/tags/items/winter_crops.json
 791cf569cf4f6eaa65e2a722646dd16d2070f97c data/youkaishomecoming/advancements/main/bloody.json
 57c75806e81adab9a8f3c32d5fad6b3dab002aa9 data/youkaishomecoming/advancements/main/coffea.json
 94657bd4dad5b6c62d8f35309eb1482241ad43b0 data/youkaishomecoming/advancements/main/coffee_era.json

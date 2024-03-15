@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init.data;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
+import dev.xkmc.youkaishomecoming.compat.sereneseasons.SeasonCompat;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
@@ -18,7 +19,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
+import sereneseasons.core.SereneSeasons;
 
 public class YHTagGen {
 
@@ -60,6 +63,10 @@ public class YHTagGen {
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT);
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
+
+		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
+			SeasonCompat.genBlock(pvd);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -72,6 +79,9 @@ public class YHTagGen {
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
+		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
+			SeasonCompat.genItem(pvd);
+		}
 
 	}
 

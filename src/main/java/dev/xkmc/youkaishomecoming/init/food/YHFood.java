@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.ItemTags;
@@ -16,62 +17,68 @@ import java.util.Locale;
 public enum YHFood {
 	RAW_LAMPREY(FoodType.MEAT, 2, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
-			ItemTags.FISHES, YHTagGen.RAW_EEL
+			ItemTags.FISHES, YHTagGen.RAW_EEL, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY(FoodType.MEAT, 10, 0.8f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1)
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
+			DietTagGen.PROTEINS.tag
 	),
 	RAW_LAMPREY_FILLET(FoodType.MEAT_SLICE, 1, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
-			YHTagGen.RAW_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS
+			YHTagGen.RAW_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1)
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
+			DietTagGen.PROTEINS.tag
 	),
-	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD),
-	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD),
+	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f,
-			new EffectEntry(YHEffects.MANDRAKE::get, 200, 0, 1)),
+			new EffectEntry(YHEffects.MANDRAKE::get, 200, 0, 1), DietTagGen.VEGETABLES.tag),
 
 	// simple
-	ROE(FoodType.MEAT, 1, 0.6f),
+	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
 	TOFU(FoodType.SIMPLE, 4, 0.5f),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
-	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO),
-	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO),
+	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
+	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	COFFEE_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
 			new EffectEntry(YHEffects.CAFFEINATED::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
-	), YHTagGen.DANGO),
+	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	MATCHA_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1)
-	), YHTagGen.DANGO),
-	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO),
-	YASHOUMA_DANGO(FoodType.FAST, 6, 0.6f, YHTagGen.DANGO),
-	ONIGILI(FoodType.SIMPLE, 6, 0.6f),
-	SENBEI(FoodType.SIMPLE, 4, 0.6f),
-	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f),
-	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f),
-	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f, new EffectEntry(YHEffects.UNCONSCIOUS::get, 200, 0, 1)),
-	BUN(FoodType.SIMPLE, 8, 0.6f),
-	OYAKI(FoodType.SIMPLE, 6, 0.6f),
-	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f),
-	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
-	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f),
-	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f),
+	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
+	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
+	YASHOUMA_DANGO(FoodType.FAST, 6, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
+	ONIGILI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	SENBEI(FoodType.SIMPLE, 4, 0.6f, DietTagGen.GRAINS.tag),
+	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
+			new EffectEntry(YHEffects.UNCONSCIOUS::get, 200, 0, 1),
+			DietTagGen.SUGARS.tag),
+	BUN(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
+	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f,
+			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
+			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
 
 	// stick
 
-	CANDY_APPLE(FoodType.STICK, 4, 0.3f),
-	MILK_POPSICLE(FoodType.STICK, 4, 0.3f),
-	BIG_POPSICLE(FoodType.STICK, 2, 0.1f),
-	KINAKO_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)),
-	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
-	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
+	CANDY_APPLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
+	MILK_POPSICLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag),
+	BIG_POPSICLE(FoodType.STICK, 2, 0.1f, DietTagGen.SUGARS.tag),
+	KINAKO_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1), DietTagGen.GRAINS.tag),
+	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
+	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 
 	// bottle
-	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
+	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 	GREEN_TEA(FoodType.BOTTLE, 0, 0, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
@@ -103,78 +110,80 @@ public enum YHFood {
 	)),
 
 	// bowl
-	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
 	AVGOLEMONO(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.GLOWING, 3600, 0, 1))),
+			new EffectEntry(() -> MobEffects.GLOWING, 3600, 0, 1)), DietTagGen.FRUITS.tag),
 	BLAZING_RED_CURRY(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.FIRE_RESISTANCE, 3600, 0, 1)
-	)),
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	GRILLED_EEL_OVER_RICE(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
-	)),
-	HIGAN_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	HIGAN_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1), DietTagGen.VEGETABLES.tag),
 	LONGEVITY_NOODLES(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
-	)),
-	MISO_SOUP(FoodType.BOWL, 8, 0.5f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	MISO_SOUP(FoodType.BOWL, 8, 0.5f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1), DietTagGen.VEGETABLES.tag),
 	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
-	)),
-	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.6f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
+	), DietTagGen.VEGETABLES.tag),
+	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.6f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SHIRAYUKI(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
-	)),
-	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
+			DietTagGen.GRAINS.tag),
 	TUSCAN_SALMON(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
-	)),
+	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	MUSHROOM_SOUP(FoodType.BOWL, 8, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	)),
+	), DietTagGen.VEGETABLES.tag),
 	LIONS_HEAD(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
-	)),
+	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	MAPO_TOFU(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1)
-	)),
+	), DietTagGen.PROTEINS.tag),
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 0, 1))),
+			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 0, 1)), DietTagGen.VEGETABLES.tag),
 	BOWL_OF_HEART_THROBBING_SURPRISE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
-	)),
+	), DietTagGen.VEGETABLES.tag),
 	// flesh
 	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
-	)),
+	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	FLESH_ROLL(FoodType.FLESH, 3, 0.8f,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)
-			, YHTagGen.APPARENT_FLESH_FOOD),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.APPARENT_FLESH_FOOD),
+	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.APPARENT_FLESH_FOOD),
+	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	;
 
 

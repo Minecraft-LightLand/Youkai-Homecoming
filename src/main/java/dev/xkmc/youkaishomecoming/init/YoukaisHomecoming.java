@@ -3,8 +3,10 @@ package dev.xkmc.youkaishomecoming.init;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.ghen.thirst.Thirst;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.PacketHandler;
+import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkDirection;
@@ -81,6 +84,10 @@ public class YoukaisHomecoming {
 			YHCrops.REDBEAN.registerComposter();
 			YHCrops.COFFEA.registerComposter();
 			YHCrops.TEA.registerComposter();
+
+			if (ModList.get().isLoaded(Thirst.ID)) {
+				ThirstCompat.init();
+			}
 
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 		});

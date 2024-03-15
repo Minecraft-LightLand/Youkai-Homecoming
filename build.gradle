@@ -159,6 +159,8 @@ dependencies {
     implementation fg.deobf("curse.maven:botany-trees-411357:4719845")
     implementation fg.deobf("curse.maven:botany-pots-353928:4793076")
     implementation fg.deobf("curse.maven:serene-seasons-291874:4761603")
+    compileOnly fg.deobf("curse.maven:diet-443570:4634780")
+    implementation fg.deobf("curse.maven:thirst-was-taken-679270:5071555")
 
     //runtimeOnly fg.deobf("curse.maven:rubidium-574856:4573226")
 
