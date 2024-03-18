@@ -45,7 +45,7 @@ public class YHItems {
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final ItemEntry<KoishiHatItem> KOISHI_HAT;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
-			BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
+			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA;
@@ -80,6 +80,7 @@ public class YHItems {
 		SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 		REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 		COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");
+		TEA_BAG = YHCrops.createBag("tea_leaf");
 		BLACK_TEA_BAG = YHTea.BLACK.createBags();
 		GREEN_TEA_BAG = YHTea.GREEN.createBags();
 		OOLONG_TEA_BAG = YHTea.OOLONG.createBags();

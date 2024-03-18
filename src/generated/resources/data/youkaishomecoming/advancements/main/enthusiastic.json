@@ -535,7 +535,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:scarlet_mist"
+            "youkaishomecoming:cornflower_tea"
           ]
         }
       },
@@ -545,7 +545,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:wind_priestesses"
+            "youkaishomecoming:tea_mocha"
           ]
         }
       },
@@ -555,7 +555,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:apaki"
+            "youkaishomecoming:saidi_tea"
           ]
         }
       },
@@ -575,7 +575,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:avgolemono"
+            "youkaishomecoming:sakura_honey_tea"
           ]
         }
       },
@@ -585,7 +585,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:blazing_red_curry"
+            "youkaishomecoming:genmai_tea"
           ]
         }
       },
@@ -595,7 +595,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:grilled_eel_over_rice"
+            "youkaishomecoming:scarlet_mist"
           ]
         }
       },
@@ -605,7 +605,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:higan_soup"
+            "youkaishomecoming:wind_priestesses"
           ]
         }
       },
@@ -615,7 +615,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:longevity_noodles"
+            "youkaishomecoming:apaki"
           ]
         }
       },
@@ -625,7 +625,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:miso_soup"
+            "youkaishomecoming:avgolemono"
           ]
         }
       },
@@ -635,7 +635,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:poor_god_soup"
+            "youkaishomecoming:blazing_red_curry"
           ]
         }
       },
@@ -645,7 +645,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:power_soup"
+            "youkaishomecoming:grilled_eel_over_rice"
           ]
         }
       },
@@ -655,7 +655,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:shirayuki"
+            "youkaishomecoming:higan_soup"
           ]
         }
       },
@@ -665,7 +665,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
+            "youkaishomecoming:longevity_noodles"
           ]
         }
       },
@@ -685,7 +685,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:tuscan_salmon"
+            "youkaishomecoming:miso_soup"
           ]
         }
       },
@@ -695,7 +695,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:mushroom_soup"
+            "youkaishomecoming:poor_god_soup"
           ]
         }
       },
@@ -705,7 +705,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:lions_head"
+            "youkaishomecoming:power_soup"
           ]
         }
       },
@@ -715,7 +715,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:mapo_tofu"
+            "youkaishomecoming:shirayuki"
           ]
         }
       },
@@ -725,7 +725,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:udumbara_cake"
+            "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
           ]
         }
       },
@@ -735,7 +735,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:bowl_of_heart_throbbing_surprise"
+            "youkaishomecoming:tuscan_salmon"
           ]
         }
       },
@@ -745,7 +745,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_dumplings"
+            "youkaishomecoming:mushroom_soup"
           ]
         }
       },
@@ -755,7 +755,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_roll"
+            "youkaishomecoming:lions_head"
           ]
         }
       },
@@ -765,7 +765,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:flesh_stew"
+            "youkaishomecoming:mapo_tofu"
           ]
         }
       },
@@ -775,7 +775,7 @@
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:bowl_of_flesh_feast"
+            "youkaishomecoming:udumbara_cake"
           ]
         }
       },
@@ -786,6 +786,56 @@
         "item": {
           "items": [
             "youkaishomecoming:seven_colored_yokan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "80": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bowl_of_heart_throbbing_surprise"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "81": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_dumplings"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "82": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_roll"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "83": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "84": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bowl_of_flesh_feast"
           ]
         }
       },
@@ -1057,6 +1107,21 @@
     ],
     [
       "79"
+    ],
+    [
+      "80"
+    ],
+    [
+      "81"
+    ],
+    [
+      "82"
+    ],
+    [
+      "83"
+    ],
+    [
+      "84"
     ]
   ],
   "sends_telemetry_event": true

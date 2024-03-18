@@ -98,6 +98,28 @@ public enum YHFood {
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
 	)),
+	CORNFLOWER_TEA(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
+	)),
+	TEA_MOCHA(FoodType.BOTTLE, 4, 0.6f, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+	)),
+	SAIDI_TEA(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
+	)),
+	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 400, 0, 1),
+			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
+	)),
+	GENMAI_TEA(FoodType.BOTTLE, 0, 0, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+	)),
 	SCARLET_MIST(FoodType.BOTTLE, 0, 0, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),

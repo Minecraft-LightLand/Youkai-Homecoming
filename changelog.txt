@@ -1,3 +1,9 @@
+2.0.3
+- Serene Season / Diet / Thirst compat
+- Add 5 kinds of tea
+- Texture improvement
+- Fix Sober effect preveneting Phantom spawn
+
 2.0.2
 - Fix L2DamageTracker JiJ version requirment, solve compat with other L2 mods
 - Add Scarlet Mist and Wind Priestesses as tea variants

@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:tea_leaves/green"
+    },
+    {
+      "tag": "forge:tea_leaves/green"
+    },
+    {
+      "tag": "forge:grain/rice"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaishomecoming:genmai_tea"
+  }
+}

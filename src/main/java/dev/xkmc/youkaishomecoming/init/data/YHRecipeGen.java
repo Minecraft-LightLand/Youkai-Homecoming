@@ -86,6 +86,7 @@ public class YHRecipeGen {
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
+			pvd.storage(YHCrops.TEA::getFruits, RecipeCategory.MISC, YHItems.TEA_BAG);
 			pvd.storage(YHTea.BLACK.leaves, RecipeCategory.MISC, YHItems.BLACK_TEA_BAG);
 			pvd.storage(YHTea.GREEN.leaves, RecipeCategory.MISC, YHItems.GREEN_TEA_BAG);
 			pvd.storage(YHTea.OOLONG.leaves, RecipeCategory.MISC, YHItems.OOLONG_TEA_BAG);
@@ -561,6 +562,44 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.TEA_WHITE)
 					.addIngredient(YHTagGen.TEA_WHITE)
 					.build(tea, YHFood.WHITE_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CORNFLOWER_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(Items.CORNFLOWER)
+					.addIngredient(Items.CORNFLOWER)
+					.addIngredient(Items.CORNFLOWER)
+					.build(tea, YHFood.CORNFLOWER_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TEA_MOCHA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
+					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(Items.COCOA_BEANS)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.build(tea, YHFood.TEA_MOCHA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAIDI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
+					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(Items.SUGAR)
+					.addIngredient(Items.SUGAR)
+					.build(tea, YHFood.SAIDI_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAKURA_HONEY_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(Items.CHERRY_LEAVES)
+					.addIngredient(Items.CHERRY_LEAVES)
+					.addIngredient(Items.HONEY_BOTTLE)
+					.build(tea, YHFood.SAKURA_HONEY_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GENMAI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
+					.addIngredient(YHTagGen.TEA_GREEN)
+					.addIngredient(YHTagGen.TEA_GREEN)
+					.addIngredient(ForgeTags.GRAIN_RICE)
+					.build(tea, YHFood.GENMAI_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SCARLET_MIST.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)

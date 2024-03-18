@@ -13,7 +13,7 @@ public class PhantomSpawnerMixin {
 
 	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;isSpectator()Z"), method = "tick")
 	public boolean youkaishomecoming$phantomSpawn$cancel(ServerPlayer player, Operation<Boolean> original) {
-		return !GeneralEventHandlers.preventPhantomSpawn(player) && original.call(player);
+		return GeneralEventHandlers.preventPhantomSpawn(player) || original.call(player);
 	}
 
 }
