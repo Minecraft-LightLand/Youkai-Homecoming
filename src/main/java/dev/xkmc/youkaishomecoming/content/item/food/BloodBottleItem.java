@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
-import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -22,7 +21,7 @@ public class BloodBottleItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		Player player = Proxy.getPlayer();
+		Player player = FleshHelper.getPlayer();
 		if (player == null) return;
 		boolean obtain = player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
 				player.hasEffect(YHEffects.YOUKAIFYING.get());

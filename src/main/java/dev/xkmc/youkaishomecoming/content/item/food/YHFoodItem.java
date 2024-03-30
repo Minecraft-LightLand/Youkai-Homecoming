@@ -1,7 +1,6 @@
 
 package dev.xkmc.youkaishomecoming.content.item.food;
 
-import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -43,7 +42,7 @@ public class YHFoodItem extends Item {
 	}
 
 	public static void getFoodEffects(ItemStack stack, List<Component> list) {
-		var food = stack.getFoodProperties(Proxy.getPlayer());
+		var food = stack.getFoodProperties(FleshHelper.getPlayer());
 		if (food == null) return;
 		getFoodEffects(food, list);
 	}

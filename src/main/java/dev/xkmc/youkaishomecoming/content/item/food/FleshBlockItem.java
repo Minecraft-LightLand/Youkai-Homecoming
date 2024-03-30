@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
-import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
@@ -17,7 +16,7 @@ public class FleshBlockItem extends BlockItem {
 
 	@Override
 	public Component getName(ItemStack pStack) {
-		Player player = Proxy.getPlayer();
+		Player player = FleshHelper.getPlayer();
 		Component name;
 		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();

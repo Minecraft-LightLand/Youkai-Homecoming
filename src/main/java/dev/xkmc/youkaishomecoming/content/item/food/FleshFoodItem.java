@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
-import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -64,7 +63,7 @@ public class FleshFoodItem extends YHFoodItem {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		Player player = Proxy.getPlayer();
+		Player player = FleshHelper.getPlayer();
 		if (player == null) return;
 		boolean obtain = false;
 		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
@@ -91,7 +90,7 @@ public class FleshFoodItem extends YHFoodItem {
 
 	@Override
 	public Component getName(ItemStack pStack) {
-		Player player = Proxy.getPlayer();
+		Player player = FleshHelper.getPlayer();
 		Component name;
 		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();
