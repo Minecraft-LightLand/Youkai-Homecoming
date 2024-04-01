@@ -10,10 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityEvent;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.sensing.GolemSensor;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.npc.Villager;
@@ -24,6 +21,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -32,6 +31,14 @@ public class FleshFoodItem extends YHFoodItem {
 
 	public FleshFoodItem(Properties props) {
 		super(props);
+	}
+
+	@Nullable
+	public static Player getPlayer() {
+		if (FMLEnvironment.dist == Dist.CLIENT) {
+			return FleshHelper.getPlayerOnClient();
+		}
+		return null;
 	}
 
 	@Override
@@ -63,7 +70,7 @@ public class FleshFoodItem extends YHFoodItem {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		Player player = FleshHelper.getPlayer();
+		Player player = getPlayer();
 		if (player == null) return;
 		boolean obtain = false;
 		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
@@ -90,7 +97,7 @@ public class FleshFoodItem extends YHFoodItem {
 
 	@Override
 	public Component getName(ItemStack pStack) {
-		Player player = FleshHelper.getPlayer();
+		Player player = getPlayer();
 		Component name;
 		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();
@@ -159,4 +166,10 @@ public class FleshFoodItem extends YHFoodItem {
 		consume(player);
 		return ans;
 	}
+
+	@Override
+	public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+		super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+	}
+
 }

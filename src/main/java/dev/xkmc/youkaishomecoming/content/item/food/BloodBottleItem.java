@@ -21,7 +21,7 @@ public class BloodBottleItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		Player player = FleshHelper.getPlayer();
+		Player player = FleshFoodItem.getPlayer();
 		if (player == null) return;
 		boolean obtain = player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
 				player.hasEffect(YHEffects.YOUKAIFYING.get());

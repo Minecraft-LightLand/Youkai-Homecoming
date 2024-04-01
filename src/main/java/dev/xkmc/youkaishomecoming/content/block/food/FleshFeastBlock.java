@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
-import dev.xkmc.youkaishomecoming.content.item.food.FleshHelper;
+import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -53,7 +53,7 @@ public class FleshFeastBlock extends FeastBlock {
 
 	@Override
 	public MutableComponent getName() {
-		Player player = FleshHelper.getPlayer();
+		Player player = FleshFoodItem.getPlayer();
 		Component name;
 		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();

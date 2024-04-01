@@ -1,13 +1,14 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
-import dev.xkmc.l2library.util.Proxy;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.fml.DistExecutor;
+import org.jetbrains.annotations.Nullable;
 
 public class FleshHelper {
 
-	public static Player getPlayer() {
-		return DistExecutor.unsafeRunForDist(() -> () -> (Player) Proxy.getClientPlayer(), () -> () -> null);
+	@Nullable
+	public static Player getPlayerOnClient() {
+		return Minecraft.getInstance().player;
 	}
 
 }
