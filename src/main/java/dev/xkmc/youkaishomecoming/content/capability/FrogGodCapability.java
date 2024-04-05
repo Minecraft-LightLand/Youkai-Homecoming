@@ -34,7 +34,7 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 	public static final int COUNT = 3;
 
 	@SerialClass.SerialField(toClient = true)
-	private boolean hasHat;
+	public boolean hasHat;
 
 	@SerialClass.SerialField
 	private final LinkedHashSet<EntityType<?>> eaten = new LinkedHashSet<>();
@@ -51,7 +51,7 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 		var type = other.getType();
 		if (!type.is(EntityTypeTags.RAIDERS)) return;
 		AABB aabb = frog.getBoundingBox().inflate(20);
-		var list = frog.level().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(frog));
+		var list = frog.level().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(frog) || e.hasLineOfSight(other));
 		if (list.isEmpty()) return;
 		eaten.add(type);
 		if (eaten.size() >= COUNT) {
@@ -66,6 +66,14 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 		if (HOLDER.isProper(frog)) {
 			FrogGodCapability cap = HOLDER.get(frog);
 			return cap.hasHat && target.getType().is(EntityTypeTags.RAIDERS);
+		}
+		return false;
+	}
+
+	public static boolean hasHat(Frog frog) {
+		if (HOLDER.isProper(frog)) {
+			FrogGodCapability cap = HOLDER.get(frog);
+			return cap.hasHat;
 		}
 		return false;
 	}

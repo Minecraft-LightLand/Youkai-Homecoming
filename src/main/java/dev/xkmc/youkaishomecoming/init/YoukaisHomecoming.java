@@ -115,4 +115,7 @@ public class YoukaisHomecoming {
 				SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
+	public static ResourceLocation loc(String id) {
+		return new ResourceLocation(MODID, id);
+	}
 }

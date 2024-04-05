@@ -1,9 +1,13 @@
 package dev.xkmc.youkaishomecoming.init;
 
+import dev.xkmc.youkaishomecoming.content.client.FrogHatLayer;
+import dev.xkmc.youkaishomecoming.content.client.FrogStrawHatModel;
 import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
 import dev.xkmc.youkaishomecoming.content.entity.LampreyModel;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import net.minecraft.client.renderer.entity.FrogRenderer;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -28,6 +32,7 @@ public class YHClient {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
 		event.registerLayerDefinition(SuwakoHatModel.LAYER_LOCATION, SuwakoHatModel::createBodyLayer);
+		event.registerLayerDefinition(FrogStrawHatModel.LAYER_LOCATION, FrogStrawHatModel::createHat);
 	}
 
 	@SubscribeEvent
@@ -36,6 +41,13 @@ public class YHClient {
 		event.registerRecipeCategoryFinder(YHBlocks.MOKA_RT.get(), e -> YHRecipeCategories.MOKA.get());
 		event.registerBookCategories(YoukaisHomecoming.KETTLE, List.of(YHRecipeCategories.KETTLE.get()));
 		event.registerRecipeCategoryFinder(YHBlocks.KETTLE_RT.get(), e -> YHRecipeCategories.KETTLE.get());
+	}
+
+	@SubscribeEvent
+	public static void addLayer(EntityRenderersEvent.AddLayers event) {
+		if (event.getRenderer(EntityType.FROG) instanceof FrogRenderer r) {
+			r.addLayer(new FrogHatLayer<>(r, event.getEntityModels()));
+		}
 	}
 
 }

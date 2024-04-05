@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-17T22:11:57.116663	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-06T00:12:36.991225	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -74,8 +74,8 @@ af5031e60c1b4c4666bfdceb02daf51a1b092320 assets/youkaishomecoming/blockstates/wi
 7e7833f6237c2b01c225fa7ea9561350cdf980ac assets/youkaishomecoming/blockstates/wild_tea.json
 8a2e2f2c22f137800a6c7802c573bd6cc6108c59 assets/youkaishomecoming/blockstates/wild_udumbara.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
-d3199ba54dd9f2a4cce87d010442fb4c2c4ca131 assets/youkaishomecoming/lang/en_ud.json
-5c03d91fb6c98a0bb9f3459d581e6aad922d8b6e assets/youkaishomecoming/lang/en_us.json
+cabec8f07fd1be7755f8127ad1cf8237595c2771 assets/youkaishomecoming/lang/en_ud.json
+0a5853a26e56e6d86aa00f5583b4860c95df92ef assets/youkaishomecoming/lang/en_us.json
 df4b9d00e00bd275d55ff3cd8d94930e42de8585 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
 45b94f41fde25955ebe5374d6687863d20fb52c2 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_connect.json
 7885b5f29c785483156efa810b2ebbd0675a21e9 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_corner.json
@@ -610,6 +610,7 @@ c13d319e7d84b649439befa477ed8e051bf01f93 assets/youkaishomecoming/models/item/sh
 81aeeed5c9bb449e895029d073e07be06969c681 assets/youkaishomecoming/models/item/spruce_handrail.json
 39565b6df892b335d44943b49b8bf9921735ccf9 assets/youkaishomecoming/models/item/steamed_egg_in_bamboo.json
 f8de18d09261086faab121ef43887bca5f27c204 assets/youkaishomecoming/models/item/stinky_tofu.json
+7dbf5da421156224eac5fed85858d68b9c342d33 assets/youkaishomecoming/models/item/straw_hat.json
 89919b52f756dda10c7ff63ef72a544269c13e27 assets/youkaishomecoming/models/item/straw_slab.json
 abde28c5718999b6e2dfe20ba0abec13904a7796 assets/youkaishomecoming/models/item/straw_stairs.json
 4f4e9b44d1d28badb5ce094e7854269f233e5d05 assets/youkaishomecoming/models/item/straw_trap_door.json

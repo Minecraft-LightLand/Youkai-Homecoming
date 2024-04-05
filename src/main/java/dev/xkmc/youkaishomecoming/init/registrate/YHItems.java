@@ -8,6 +8,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.KoishiHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.StrawHatItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.SuwakoHatItem;
 import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
@@ -42,6 +43,7 @@ public class YHItems {
 				.collect(Collectors.joining(" "));
 	}
 
+	public static final ItemEntry<StrawHatItem> STRAW_HAT;
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final ItemEntry<KoishiHatItem> KOISHI_HAT;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
@@ -59,6 +61,11 @@ public class YHItems {
 
 
 	static {
+		STRAW_HAT = YoukaisHomecoming.REGISTRATE
+				.item("straw_hat", p -> new StrawHatItem(p.rarity(Rarity.UNCOMMON)))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+				.register();
+
 		SUWAKO_HAT = YoukaisHomecoming.REGISTRATE
 				.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
