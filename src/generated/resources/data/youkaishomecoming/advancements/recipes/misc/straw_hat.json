@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_straw": {
+    "has_canvas": {
       "conditions": {
         "items": [
           {
             "items": [
-              "farmersdelight:straw"
+              "farmersdelight:canvas"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_straw",
+      "has_canvas",
       "has_the_recipe"
     ]
   ],

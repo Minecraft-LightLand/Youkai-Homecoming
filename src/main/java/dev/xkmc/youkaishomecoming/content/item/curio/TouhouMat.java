@@ -8,13 +8,14 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.util.Lazy;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.Locale;
 import java.util.function.Supplier;
 
 public enum TouhouMat implements ArmorMaterial {
-	SUWAKO_HAT(30, 10, 2, () -> Ingredient.of(Items.WHEAT), SoundEvents.ARMOR_EQUIP_LEATHER),
-	KOISHI_HAT(30, 10, 2, () -> Ingredient.of(YHFood.KOISHI_MOUSSE.item), SoundEvents.ARMOR_EQUIP_IRON),
+	SUWAKO_HAT(60, 10, 2, () -> Ingredient.of(ModItems.CANVAS.get()), SoundEvents.ARMOR_EQUIP_LEATHER),
+	KOISHI_HAT(60, 10, 6, () -> Ingredient.of(YHFood.KOISHI_MOUSSE.item), SoundEvents.ARMOR_EQUIP_IRON),
 	;
 
 	private static final int[] DURABILITY = {13, 15, 16, 11};

@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-06T00:26:15.244584	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-06T15:04:33.407681	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -789,7 +789,7 @@ a96d6d9df56347e7dd064e4ace41774840062b49 data/youkaishomecoming/advancements/rec
 acf32c29592e3ac2b51773a331402207cd33e710 data/youkaishomecoming/advancements/recipes/misc/soybean_from_soybean_bag.json
 7544a0e613cf22d3bc2f0cffdea14d431b83df0b data/youkaishomecoming/advancements/recipes/misc/spruce_handrail_from_spruce_planks_stonecutting.json
 1158423dc6dab8832d4e2a85f659380c240c4b2a data/youkaishomecoming/advancements/recipes/misc/straw_from_wheat_drying.json
-7f1c86a4b78662f56103f0773be645959c0666e1 data/youkaishomecoming/advancements/recipes/misc/straw_hat.json
+13712128f3e67ffa0d324bc7addc7ef60905cc1b data/youkaishomecoming/advancements/recipes/misc/straw_hat.json
 19ee0b1c534644dd24e123db1f2d4da60501fe07 data/youkaishomecoming/advancements/recipes/misc/tea_leaf_bag.json
 5d47f4fbb435afd4fb2a59e4ff86c99154d939f0 data/youkaishomecoming/advancements/recipes/misc/tea_leaves_from_tea_leaf_bag.json
 549b2bdd11c2e834882c8d7c4b64bded28e03797 data/youkaishomecoming/advancements/recipes/misc/warped_handrail_from_warped_planks_stonecutting.json
@@ -1025,7 +1025,7 @@ e3b3d5694588a05b7937c09a8bd854f21983a316 data/youkaishomecoming/recipes/scarlet_
 e4c5b222145bf07d417e5e158d393f44a19985dc data/youkaishomecoming/recipes/steamed_egg_in_bamboo.json
 45f3c12b857e3c794221a11e99208902b69ea0d5 data/youkaishomecoming/recipes/stinky_tofu.json
 e8916544dc6ab3eeab7081017b318aa290d2c975 data/youkaishomecoming/recipes/straw_from_wheat_drying.json
-c203ba55cfb64506656727024b7b9483f8acd786 data/youkaishomecoming/recipes/straw_hat.json
+c10e1885070518a13346f9d738f32e54e21c7987 data/youkaishomecoming/recipes/straw_hat.json
 72798d9f0c1fc48ece1b17a4e9743f81e528a784 data/youkaishomecoming/recipes/straw_slab.json
 65acb9deb90cea472f0a033de90103b3829a245f data/youkaishomecoming/recipes/straw_slab_from_straw_bale_stonecutting.json
 6da6d0ede310802d1779261aec771bc400b4c140 data/youkaishomecoming/recipes/straw_stairs.json

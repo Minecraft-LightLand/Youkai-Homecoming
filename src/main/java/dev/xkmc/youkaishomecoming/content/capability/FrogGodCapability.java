@@ -6,12 +6,14 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
@@ -51,7 +53,8 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 		var type = other.getType();
 		if (!type.is(EntityTypeTags.RAIDERS)) return;
 		AABB aabb = frog.getBoundingBox().inflate(20);
-		var list = frog.level().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(frog) || e.hasLineOfSight(other));
+		var list = frog.level().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e ->
+				e.hasLineOfSight(frog) || e.hasLineOfSight(other) || e.distanceTo(frog) < 10);
 		if (list.isEmpty()) return;
 		eaten.add(type);
 		if (eaten.size() >= COUNT) {
@@ -82,6 +85,13 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 		if (HOLDER.isProper(frog)) {
 			FrogGodCapability cap = HOLDER.get(frog);
 			cap.eat(frog, instance);
+		}
+	}
+
+	public static void startTracking(Frog frog, Player entity) {
+		if (HOLDER.isProper(frog)) {
+			FrogGodCapability cap = HOLDER.get(frog);
+			YoukaisHomecoming.HANDLER.toClientPlayer(new FrogSyncPacket(frog, cap), (ServerPlayer) entity);
 		}
 	}
 

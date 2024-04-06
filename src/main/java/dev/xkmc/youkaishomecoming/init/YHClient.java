@@ -1,9 +1,6 @@
 package dev.xkmc.youkaishomecoming.init;
 
-import dev.xkmc.youkaishomecoming.content.client.FrogHatLayer;
-import dev.xkmc.youkaishomecoming.content.client.FrogStrawHatModel;
-import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
-import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
+import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.LampreyModel;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.client.renderer.entity.FrogRenderer;
@@ -31,7 +28,8 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
-		event.registerLayerDefinition(SuwakoHatModel.LAYER_LOCATION, SuwakoHatModel::createBodyLayer);
+		event.registerLayerDefinition(SuwakoHatModel.LAYER_LOCATION, SuwakoHatModel::createHat);
+		event.registerLayerDefinition(KoishiHatModel.LAYER_LOCATION, KoishiHatModel::createHat);
 		event.registerLayerDefinition(FrogStrawHatModel.LAYER_LOCATION, FrogStrawHatModel::createHat);
 	}
 

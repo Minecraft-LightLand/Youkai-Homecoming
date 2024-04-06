@@ -19,7 +19,7 @@ import java.util.List;
 
 public class FrogHatLayer<T extends Frog> extends RenderLayer<T, FrogModel<T>> {
 
-	private static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/models/suwako_hat.png");
+	private static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/models/straw_hat.png");
 	private static final List<String> PART = List.of("body", "head", "hat");
 
 	private final ModelPart model;

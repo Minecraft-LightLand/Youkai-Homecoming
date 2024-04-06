@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.events;
 
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -15,11 +16,14 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -114,23 +118,23 @@ public class GeneralEventHandlers {
 	public static void onEffectTest(MobEffectEvent.Applicable event) {
 		if (event.getEffectInstance().getEffect() == MobEffects.WITHER) {
 			if (event.getEntity().hasEffect(YHEffects.THICK.get())) {
-				event.setCanceled(true);
+				event.setResult(Event.Result.DENY);
 			}
 		}
 		if (event.getEffectInstance().getEffect() == MobEffects.POISON) {
 			if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
-				event.setCanceled(true);
+				event.setResult(Event.Result.DENY);
 			}
 		}
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFYING.get()) {
 			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
 					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
-				event.setCanceled(true);
+				event.setResult(Event.Result.DENY);
 			}
 		}
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFIED.get()) {
 			if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
-				event.setCanceled(true);
+				event.setResult(Event.Result.DENY);
 			}
 		}
 	}
@@ -158,6 +162,13 @@ public class GeneralEventHandlers {
 					le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack());
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void startTracking(PlayerEvent.StartTracking event) {
+		if (event.getTarget() instanceof Frog frog) {
+			FrogGodCapability.startTracking(frog, event.getEntity());
 		}
 	}
 

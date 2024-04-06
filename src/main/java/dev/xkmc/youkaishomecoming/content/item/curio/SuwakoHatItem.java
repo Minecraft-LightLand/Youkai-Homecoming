@@ -3,20 +3,16 @@ package dev.xkmc.youkaishomecoming.content.item.curio;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
+import dev.xkmc.youkaishomecoming.content.client.HatModel;
 import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,13 +31,7 @@ public class SuwakoHatItem extends TouhouHatItem {
 	}
 
 	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-		consumer.accept(new IClientItemExtensions() {
-			public HumanoidModel<?> getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> defaultModel) {
-				EntityModelSet models = Minecraft.getInstance().getEntityModels();
-				ModelPart root = models.bakeLayer(SuwakoHatModel.LAYER_LOCATION);
-				return new HumanoidModel<>(root);
-			}
-		});
+		consumer.accept(new HatModel(SuwakoHatModel.LAYER_LOCATION));
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
