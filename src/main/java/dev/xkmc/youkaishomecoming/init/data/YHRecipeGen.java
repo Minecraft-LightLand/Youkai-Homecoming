@@ -73,6 +73,12 @@ public class YHRecipeGen {
 					.define('D', Items.DEEPSLATE)
 					.define('E', Items.TERRACOTTA)
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.STRAW.get())
+					.pattern(" A ").pattern("ASA")
+					.define('A', ModItems.STRAW.get())
+					.define('S', Items.STRING)
+					.save(pvd);
 		}
 
 		// plants

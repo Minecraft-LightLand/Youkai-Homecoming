@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "farmersdelight:straw"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ASA"
+  ],
+  "result": {
+    "item": "youkaishomecoming:straw_hat"
+  },
+  "show_notification": true
+}

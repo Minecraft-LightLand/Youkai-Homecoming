@@ -255,11 +255,14 @@
   "youkaishomecoming.obtain": "Source: ",
   "youkaishomecoming.obtain_blood": "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect",
   "youkaishomecoming.obtain_flesh": "Kill human mobs with knife while in %s or %s effect",
+  "youkaishomecoming.obtain_suwako_hat": "Drops when frog with hat eats %s different kinds of raiders in front of villagers",
   "youkaishomecoming.taste_half_youkai": "Strange flavor...",
   "youkaishomecoming.taste_human": "Unappealing smell...",
   "youkaishomecoming.taste_youkai": "Delicious!",
   "youkaishomecoming.tooltip.chance": "%1$s with %2$s%% chance",
   "youkaishomecoming.tooltip.place": "Can be placed on ground",
   "youkaishomecoming.unknown": "???",
-  "youkaishomecoming.usage": "Effect: "
+  "youkaishomecoming.usage": "Usage: ",
+  "youkaishomecoming.usage_straw_hat": "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders",
+  "youkaishomecoming.usage_suwako_hat": "Grants constant %s"
 }

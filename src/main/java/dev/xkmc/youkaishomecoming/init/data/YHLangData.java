@@ -19,7 +19,7 @@ public enum YHLangData {
 	FLESH_TASTE_YOUKAI("taste_youkai", "Delicious!", 0, ChatFormatting.GRAY),
 	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
 	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
-	USAGE("usage", "Effect: ", 0, ChatFormatting.GRAY),
+	USAGE("usage", "Usage: ", 0, ChatFormatting.GRAY),
 	KETTLE_INFO("kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
 	DRYING_RACK("drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 
@@ -29,7 +29,10 @@ public enum YHLangData {
 
 	OBTAIN_FLESH("obtain_flesh", "Kill human mobs with knife while in %s or %s effect", 2, ChatFormatting.GRAY),
 	OBTAIN_BLOOD("obtain_blood", "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect", 2, ChatFormatting.GRAY),
-	;
+
+	USAGE_STRAW_HAT("usage_straw_hat", "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders", 2, ChatFormatting.GRAY),
+	OBTAIN_SUWAKO_HAT("obtain_suwako_hat", "Drops when frog with hat eats %s different kinds of raiders in front of villagers", 1, ChatFormatting.GRAY),
+	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s", 1, ChatFormatting.GRAY);
 
 	private final String key, def;
 	private final int arg;
@@ -57,7 +60,7 @@ public enum YHLangData {
 		return ans;
 	}
 
-	public String key(){
+	public String key() {
 		return key;
 	}
 
