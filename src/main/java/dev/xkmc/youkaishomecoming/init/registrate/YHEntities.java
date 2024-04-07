@@ -5,6 +5,8 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.rumia.Rumia;
+import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -45,6 +47,15 @@ public class YHEntities {
 									.when(LootItemRandomChanceCondition.randomChance(0.05F)))
 			)).register();
 
+	public static final EntityEntry<Rumia> RUMIA = YoukaisHomecoming.REGISTRATE
+			.entity("rumia", Rumia::new, MobCategory.MONSTER)
+			.properties(e -> e.sized(0.4F, 1.7f).clientTrackingRange(24))
+			.attributes(Rumia::createAttributes)
+			.renderer(() -> RumiaRenderer::new)
+			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
+			.loot((pvd, type) -> pvd.add(type,
+					LootTable.lootTable()
+			)).register();
 
 	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {
 		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);

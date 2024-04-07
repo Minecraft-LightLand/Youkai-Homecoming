@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init;
 
 import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
+import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.client.renderer.entity.FrogRenderer;
 import net.minecraft.world.entity.EntityType;
@@ -28,6 +29,7 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
+		event.registerLayerDefinition(RumiaModel.LAYER_LOCATION, RumiaModel::createBodyLayer);
 		event.registerLayerDefinition(SuwakoHatModel.SUWAKO, SuwakoHatModel::createSuwakoHat);
 		event.registerLayerDefinition(SuwakoHatModel.STRAW, SuwakoHatModel::createStrawHat);
 		event.registerLayerDefinition(KoishiHatModel.HAT, KoishiHatModel::createHat);
