@@ -114,6 +114,8 @@
   "block.youkaishomecoming.wild_tea": "ɐǝ⟘ pןıM",
   "block.youkaishomecoming.wild_udumbara": "ɐɹɐqɯnp∩ pןıM",
   "block.youkaishomecoming.yellow_red_velvet_candle_cake": "ǝʞɐƆ ǝןpuɐƆ ʇǝʌןǝΛ pǝᴚ ʍoןןǝʎ",
+  "death.attack.koishi_attack": "ʞɔɐq ǝɥʇ uı noʎ pǝqqɐʇs ıɥsıoʞ",
+  "death.attack.koishi_attack.player": "ʞɔɐq ǝɥʇ uı noʎ pǝqqɐʇs %s",
   "effect.youkaishomecoming.caffeinated": "pǝʇɐuıǝɟɟɐƆ",
   "effect.youkaishomecoming.caffeinated.description": "ǝbɐɯɐp ʞɔɐʇʇɐ ʇsooᗺ",
   "effect.youkaishomecoming.lurking": "buıʞɹnꞀ",
@@ -255,7 +257,9 @@
   "youkaishomecoming.obtain": " :ǝɔɹnoS",
   "youkaishomecoming.obtain_blood": "ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥʍ puɐɥ ɟɟo uı ǝןʇʇoq ssɐןb ǝʌɐɥ puɐ ǝɟıuʞ ɥʇıʍ sqoɯ uɐɯnɥ ןןıʞ",
   "youkaishomecoming.obtain_flesh": "ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥʍ ǝɟıuʞ ɥʇıʍ sqoɯ uɐɯnɥ ןןıʞ",
+  "youkaishomecoming.obtain_koishi_hat": "ʍoɹ ɐ uı sǝɯıʇ %s sʞɔɐʇʇɐ ıɥsıoʞ buıʞɔoןq uǝɥʍ sdoɹᗡ",
   "youkaishomecoming.obtain_suwako_hat": "sɹǝbɐןןıʌ ɟo ʇuoɹɟ uı sɹǝpıɐɹ ɟo spuıʞ ʇuǝɹǝɟɟıp %s sʇɐǝ ʇɐɥ ɥʇıʍ boɹɟ uǝɥʍ sdoɹᗡ",
+  "youkaishomecoming.subtitle.koishi_ring": "ןןɐƆ ǝuoɥԀ ıɥsıoʞ",
   "youkaishomecoming.taste_half_youkai": "˙˙˙ɹoʌɐןɟ ǝbuɐɹʇS",
   "youkaishomecoming.taste_human": "˙˙˙ןןǝɯs buıןɐǝddɐu∩",
   "youkaishomecoming.taste_youkai": "¡snoıɔıןǝᗡ",
@@ -263,6 +267,7 @@
   "youkaishomecoming.tooltip.place": "punoɹb uo pǝɔɐןd ǝq uɐƆ",
   "youkaishomecoming.unknown": "¿¿¿",
   "youkaishomecoming.usage": " :ǝbɐs∩",
+  "youkaishomecoming.usage_koishi_hat": "%s ʇuɐʇsuoɔ sʇuɐɹ⅁",
   "youkaishomecoming.usage_straw_hat": "sɹǝpıɐɹ ʇɐǝ oʇ ɯǝɥʇ ʍoןןɐ oʇ sboɹɟ uo ʇı dınbǝ uɐɔ noʎ 'ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥM",
   "youkaishomecoming.usage_suwako_hat": "%s ʇuɐʇsuoɔ sʇuɐɹ⅁"
 }

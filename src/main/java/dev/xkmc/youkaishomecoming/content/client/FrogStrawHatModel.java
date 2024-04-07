@@ -7,7 +7,7 @@ import net.minecraft.client.model.geom.builders.*;
 
 public class FrogStrawHatModel {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(YoukaisHomecoming.loc("straw_hat"), "main");
+	public static final ModelLayerLocation STRAW = new ModelLayerLocation(YoukaisHomecoming.loc("frog_straw_hat"), "main");
 
 	public static MeshDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();

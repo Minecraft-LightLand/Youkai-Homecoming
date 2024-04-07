@@ -1,12 +1,17 @@
 package dev.xkmc.youkaishomecoming.content.item.curio;
 
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
+import dev.xkmc.youkaishomecoming.content.client.HatModel;
+import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
@@ -14,14 +19,24 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
-public class StrawHatItem extends Item {
+public class StrawHatItem extends TouhouHatItem {
 
-	public StrawHatItem(Properties pProperties) {
-		super(pProperties);
+	public StrawHatItem(Item.Properties properties) {
+		super(properties, TouhouMat.STRAW_HAT);
+	}
+
+	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+		consumer.accept(new HatModel(SuwakoHatModel.STRAW));
+	}
+
+	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
+		return YoukaisHomecoming.MODID + ":textures/models/suwako_hat.png";
 	}
 
 	@Override

@@ -2,12 +2,12 @@
 package dev.xkmc.youkaishomecoming.content.item.curio;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.client.HatModel;
 import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -31,11 +31,11 @@ public class SuwakoHatItem extends TouhouHatItem {
 	}
 
 	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-		consumer.accept(new HatModel(SuwakoHatModel.LAYER_LOCATION));
+		consumer.accept(new HatModel(SuwakoHatModel.SUWAKO));
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-		return YoukaisHomecoming.MODID + ":textures/models/suwako_hat.png";
+		return YoukaisHomecoming.MODID + ":textures/models/straw_hat.png";
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class SuwakoHatItem extends TouhouHatItem {
 			obtain = true;
 		}
 		if (obtain) {
-			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_SUWAKO_HAT.get(Component.literal("" + FrogGodCapability.COUNT))));
+			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_SUWAKO_HAT.get(Component.literal("" + YHModConfig.COMMON.frogEatCountForHat.get()))));
 			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_SUWAKO_HAT.get(Component.translatable(YHEffects.NATIVE.get().getDescriptionId()))));
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));

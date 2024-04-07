@@ -26,7 +26,7 @@ public class FrogHatLayer<T extends Frog> extends RenderLayer<T, FrogModel<T>> {
 
 	public FrogHatLayer(RenderLayerParent<T, FrogModel<T>> pRenderer, EntityModelSet pModelSet) {
 		super(pRenderer);
-		this.model = pModelSet.bakeLayer(FrogStrawHatModel.LAYER_LOCATION);
+		this.model = pModelSet.bakeLayer(FrogStrawHatModel.STRAW);
 	}
 
 	@Override

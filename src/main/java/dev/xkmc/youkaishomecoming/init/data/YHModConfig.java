@@ -30,7 +30,17 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue udumbaraHealingPeriod;
 		public final ForgeConfigSpec.IntValue udumbaraFullMoonReduction;
 
+		public final ForgeConfigSpec.IntValue frogEatCountForHat;
+		public final ForgeConfigSpec.IntValue frogEatRaiderVillagerSightRange;
+		public final ForgeConfigSpec.IntValue frogEatRaiderVillagerNoSightRange;
+		public final ForgeConfigSpec.BooleanValue koishiAttackEnable;
+		public final ForgeConfigSpec.IntValue koishiAttackCoolDown;
+		public final ForgeConfigSpec.DoubleValue koishiAttackChance;
+		public final ForgeConfigSpec.IntValue koishiAttackDamage;
+		public final ForgeConfigSpec.IntValue koishiAttackBlockCount;
+
 		Common(ForgeConfigSpec.Builder builder) {
+			builder.push("youkaifying_effect");
 			youkaifyingChance = builder.comment("Chance for flesh food to add Youkaifying effect for the first time")
 					.defineInRange("youkaifyingChance", 0.2, 0, 1);
 			youkaifyingConfusionTime = builder.comment("Confusion time when flesh food to add Youkaifying effect for the first time")
@@ -45,7 +55,9 @@ public class YHModConfig {
 					.defineInRange("youkaifiedProlongation", 6000, 0, 1000000);
 			youkaifiedBoost = builder.comment("Time for flesh food to add Youkaified effect")
 					.defineInRange("youkaifiedBoost", 2d, 0, 10d);
+			builder.pop();
 
+			builder.push("food_effect");
 			smoothingHealingFactor = builder.comment("Smoothing Healing Factor")
 					.defineInRange("smoothingHealingFactor", 1.5, 0, 100);
 			teaHealingPeriod = builder.comment("Tea Healing Interval")
@@ -56,6 +68,29 @@ public class YHModConfig {
 					.defineInRange("udumbaraDuration", 200, 0, 100000);
 			udumbaraFullMoonReduction = builder.comment("Udumbara full moon damage reduction")
 					.defineInRange("udumbaraFullMoonReduction", 4, 0, 100);
+			builder.pop();
+
+			builder.push("suwako_hat");
+			frogEatCountForHat = builder.comment("Number of raiders with different types frogs need to eat in front of villager to drop Suwako hat")
+					.defineInRange("frogEatCountForHat", 3, 1, 10);
+			frogEatRaiderVillagerSightRange = builder.comment("Range for villagers with direct sight when frog eat raiders")
+					.defineInRange("frogEatRaiderVillagerSightRange", 20, 1, 64);
+			frogEatRaiderVillagerNoSightRange = builder.comment("Range for villagers without direct sight when frog eat raiders")
+					.defineInRange("frogEatRaiderVillagerNoSightRange", 10, 1, 64);
+			builder.pop();
+
+			builder.push("koishi_attack");
+			koishiAttackEnable = builder.comment("Enable koishi attack when player has youkaifying or youkaified effect")
+					.define("koishiAttackEnable", true);
+			koishiAttackCoolDown = builder.comment("Time in ticks for minimum time between koishi attacks")
+					.defineInRange("koishiAttackCoolDown", 6000, 1, 1000000);
+			koishiAttackChance = builder.comment("Chance every tick to do koishi attack")
+					.defineInRange("koishiAttackChance", 0.001, 0, 1);
+			koishiAttackDamage = builder.comment("Koishi attack damage")
+					.defineInRange("koishiAttackDamage", 100, 0, 100000000);
+			koishiAttackBlockCount = builder.comment("Number of times player needs to consecutively block Koishi attack to get hat")
+					.defineInRange("koishiAttackBlockCount", 3, 0, 100);
+			builder.pop();
 		}
 
 	}

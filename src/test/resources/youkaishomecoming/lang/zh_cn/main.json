@@ -47,6 +47,11 @@
 	"drying_rack": "只能在直接阳光下使用",
 	"obtain_suwako_hat": "当戴帽子的青蛙在村民的目击下吃了%s种不同的灾厄村民时掉落",
 	"usage_straw_hat": "在%s或%s状态下右键青蛙给青蛙戴帽子，让青蛙能吃灾厄村民",
-	"usage_suwako_hat": "提供持续的%s"
-  }
+	"usage_suwako_hat": "提供持续的%s",
+	"obtain_koishi_hat": "连续%s次格挡恋恋攻击时获得",
+	"usage_koishi_hat": "提供持续的%s"
+  },
+  "death.attack.koishi_attack": "恋恋从背后捅死你了",
+  "death.attack.koishi_attack.player": "%s从背后捅死你了",
+  "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
 }

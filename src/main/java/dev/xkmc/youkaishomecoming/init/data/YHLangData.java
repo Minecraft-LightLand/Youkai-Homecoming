@@ -32,7 +32,10 @@ public enum YHLangData {
 
 	USAGE_STRAW_HAT("usage_straw_hat", "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders", 2, ChatFormatting.GRAY),
 	OBTAIN_SUWAKO_HAT("obtain_suwako_hat", "Drops when frog with hat eats %s different kinds of raiders in front of villagers", 1, ChatFormatting.GRAY),
-	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s", 1, ChatFormatting.GRAY);
+	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s", 1, ChatFormatting.GRAY),
+	OBTAIN_KOISHI_HAT("obtain_koishi_hat", "Drops when blocking Koishi attacks %s times in a row", 1, ChatFormatting.GRAY),
+	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s", 1, ChatFormatting.GRAY),
+	;
 
 	private final String key, def;
 	private final int arg;
@@ -68,6 +71,9 @@ public enum YHLangData {
 		for (YHLangData lang : YHLangData.values()) {
 			pvd.add(lang.key, lang.def);
 		}
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.koishi_ring", "Koishi Phone Call");
+		pvd.add("death.attack.koishi_attack", "Koishi stabbed you in the back");
+		pvd.add("death.attack.koishi_attack.player", "%s stabbed you in the back");
 	}
 
 

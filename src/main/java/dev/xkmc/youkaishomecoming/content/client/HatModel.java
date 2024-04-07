@@ -16,7 +16,8 @@ public record HatModel(ModelLayerLocation loc) implements IClientItemExtensions 
 		EntityModelSet models = Minecraft.getInstance().getEntityModels();
 		ModelPart root = models.bakeLayer(loc);
 		root.getAllParts().forEach(e -> e.skipDraw = true);
-		root.getChild("head").getChild("hat").skipDraw = false;
+		var hat = root.getChild("head").getChild("hat");
+		hat.getAllParts().forEach(e -> e.skipDraw = false);
 		return new HumanoidModel<>(root);
 	}
 

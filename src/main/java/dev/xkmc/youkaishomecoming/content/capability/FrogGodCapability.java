@@ -4,6 +4,7 @@ import dev.xkmc.l2library.capability.entity.GeneralCapabilityHolder;
 import dev.xkmc.l2library.capability.entity.GeneralCapabilityTemplate;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,8 +34,6 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 			FrogGodCapability.class, FrogGodCapability::new, Frog.class, e -> true
 	);
 
-	public static final int COUNT = 3;
-
 	@SerialClass.SerialField(toClient = true)
 	public boolean hasHat;
 
@@ -52,12 +51,14 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 		if (!hasHat) return;
 		var type = other.getType();
 		if (!type.is(EntityTypeTags.RAIDERS)) return;
-		AABB aabb = frog.getBoundingBox().inflate(20);
+		int noSight = YHModConfig.COMMON.frogEatRaiderVillagerNoSightRange.get();
+		int sight = YHModConfig.COMMON.frogEatRaiderVillagerSightRange.get();
+		AABB aabb = frog.getBoundingBox().inflate(noSight);
 		var list = frog.level().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e ->
-				e.hasLineOfSight(frog) || e.hasLineOfSight(other) || e.distanceTo(frog) < 10);
+				e.hasLineOfSight(frog) || e.hasLineOfSight(other) || e.distanceTo(frog) < sight);
 		if (list.isEmpty()) return;
 		eaten.add(type);
-		if (eaten.size() >= COUNT) {
+		if (eaten.size() >= YHModConfig.COMMON.frogEatCountForHat.get()) {
 			eaten.clear();
 			hasHat = false;
 			syncToClient(frog);

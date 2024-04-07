@@ -11,7 +11,7 @@ import net.minecraft.client.model.geom.builders.*;
 
 public class KoishiHatModel {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(YoukaisHomecoming.loc("koishi_hat"), "main");
+	public static final ModelLayerLocation HAT = new ModelLayerLocation(YoukaisHomecoming.loc("koishi_hat"), "main");
 
 	public static LayerDefinition createHat() {
 		MeshDefinition meshdefinition = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);

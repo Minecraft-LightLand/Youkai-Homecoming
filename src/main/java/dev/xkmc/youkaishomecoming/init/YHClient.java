@@ -28,9 +28,10 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
-		event.registerLayerDefinition(SuwakoHatModel.LAYER_LOCATION, SuwakoHatModel::createHat);
-		event.registerLayerDefinition(KoishiHatModel.LAYER_LOCATION, KoishiHatModel::createHat);
-		event.registerLayerDefinition(FrogStrawHatModel.LAYER_LOCATION, FrogStrawHatModel::createHat);
+		event.registerLayerDefinition(SuwakoHatModel.SUWAKO, SuwakoHatModel::createSuwakoHat);
+		event.registerLayerDefinition(SuwakoHatModel.STRAW, SuwakoHatModel::createStrawHat);
+		event.registerLayerDefinition(KoishiHatModel.HAT, KoishiHatModel::createHat);
+		event.registerLayerDefinition(FrogStrawHatModel.STRAW, FrogStrawHatModel::createHat);
 	}
 
 	@SubscribeEvent

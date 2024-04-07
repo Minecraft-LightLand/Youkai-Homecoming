@@ -114,6 +114,8 @@
   "block.youkaishomecoming.wild_tea": "Wild Tea",
   "block.youkaishomecoming.wild_udumbara": "Wild Udumbara",
   "block.youkaishomecoming.yellow_red_velvet_candle_cake": "Yellow Red Velvet Candle Cake",
+  "death.attack.koishi_attack": "Koishi stabbed you in the back",
+  "death.attack.koishi_attack.player": "%s stabbed you in the back",
   "effect.youkaishomecoming.caffeinated": "Caffeinated",
   "effect.youkaishomecoming.caffeinated.description": "Boost attack damage",
   "effect.youkaishomecoming.lurking": "Lurking",
@@ -255,7 +257,9 @@
   "youkaishomecoming.obtain": "Source: ",
   "youkaishomecoming.obtain_blood": "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect",
   "youkaishomecoming.obtain_flesh": "Kill human mobs with knife while in %s or %s effect",
+  "youkaishomecoming.obtain_koishi_hat": "Drops when blocking Koishi attacks %s times in a row",
   "youkaishomecoming.obtain_suwako_hat": "Drops when frog with hat eats %s different kinds of raiders in front of villagers",
+  "youkaishomecoming.subtitle.koishi_ring": "Koishi Phone Call",
   "youkaishomecoming.taste_half_youkai": "Strange flavor...",
   "youkaishomecoming.taste_human": "Unappealing smell...",
   "youkaishomecoming.taste_youkai": "Delicious!",
@@ -263,6 +267,7 @@
   "youkaishomecoming.tooltip.place": "Can be placed on ground",
   "youkaishomecoming.unknown": "???",
   "youkaishomecoming.usage": "Usage: ",
+  "youkaishomecoming.usage_koishi_hat": "Grants constant %s",
   "youkaishomecoming.usage_straw_hat": "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders",
   "youkaishomecoming.usage_suwako_hat": "Grants constant %s"
 }
