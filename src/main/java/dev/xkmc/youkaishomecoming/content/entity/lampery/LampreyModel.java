@@ -1,5 +1,5 @@
 
-package dev.xkmc.youkaishomecoming.content.entity;
+package dev.xkmc.youkaishomecoming.content.entity.lampery;
 
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.model.HierarchicalModel;

@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import dev.xkmc.youkaishomecoming.content.client.*;
-import dev.xkmc.youkaishomecoming.content.entity.LampreyModel;
+import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.client.renderer.entity.FrogRenderer;
 import net.minecraft.world.entity.EntityType;

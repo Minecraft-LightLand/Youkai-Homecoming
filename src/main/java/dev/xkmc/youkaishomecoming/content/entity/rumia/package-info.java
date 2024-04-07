@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.entity;
+package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 
