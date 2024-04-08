@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:chorus_fruit"
+    },
+    "C": {
+      "item": "youkaishomecoming:bowl_of_cream"
+    },
+    "D": {
+      "item": "minecraft:cornflower"
+    },
+    "E": {
+      "item": "farmersdelight:pie_crust"
+    }
+  },
+  "pattern": [
+    "DBD",
+    "CCC",
+    "AEA"
+  ],
+  "result": {
+    "item": "youkaishomecoming:tarte_lune"
+  },
+  "show_notification": true
+}

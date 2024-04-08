@@ -4,16 +4,19 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaishomecoming:tofu"
+      "item": "minecraft:cornflower"
     },
     {
-      "tag": "forge:vegetables/onion"
+      "item": "minecraft:allium"
+    },
+    {
+      "tag": "forge:dough"
     },
     {
       "item": "minecraft:honey_bottle"
     },
     {
-      "item": "youkaishomecoming:butter"
+      "item": "youkaishomecoming:bowl_of_cream"
     }
   ],
   "result": {

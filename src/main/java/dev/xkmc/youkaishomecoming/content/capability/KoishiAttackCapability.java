@@ -30,7 +30,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 	);
 
 
-	private static final int DELAY = 360, MARK_POS = 240;
+	private static final int DELAY = 360, MARK_POS = 300;
 
 	@SerialClass.SerialField
 	private int tickRemain = 0;
@@ -56,8 +56,8 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 		return !player.level().dimension().equals(Level.NETHER) ||
 				!player.canBeSeenAsEnemy() ||
 				player.hasEffect(YHEffects.UNCONSCIOUS.get()) ||
-				!player.hasEffect(YHEffects.YOUKAIFIED.get()) &&
-						!player.hasEffect(YHEffects.YOUKAIFYING.get());
+				player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+				!player.hasEffect(YHEffects.YOUKAIFYING.get());
 	}
 
 	@Override

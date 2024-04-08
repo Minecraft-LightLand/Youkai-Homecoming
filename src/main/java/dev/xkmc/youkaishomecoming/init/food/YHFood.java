@@ -57,7 +57,7 @@ public enum YHFood {
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
-			new EffectEntry(YHEffects.UNCONSCIOUS::get, 200, 0, 1),
+			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
 	BUN(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
