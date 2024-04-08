@@ -184,6 +184,16 @@ public class YHRecipeGen {
 
 			cake(pvd, YHItems.RED_VELVET);
 			cake(pvd, YHItems.TARTE_LUNE);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.TARTE_LUNE.block, 1)::unlockedBy, ModItems.PIE_CRUST.get())
+					.pattern("DBD").pattern("CCC").pattern("AEA")
+					.define('A', Items.SUGAR)
+					.define('B', Items.CHORUS_FRUIT)
+					.define('D', Items.CORNFLOWER)
+					.define('C', YHItems.CREAM)
+					.define('E', ModItems.PIE_CRUST.get())
+					.save(pvd);
+
 		}
 
 		// food cooking
@@ -263,10 +273,11 @@ public class YHRecipeGen {
 					.build(pvd, YHFood.YAKUMO_INARI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.KOISHI_MOUSSE.item.get(), 1, 200, 0.1f)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(Items.CORNFLOWER)
+					.addIngredient(Items.ALLIUM)
+					.addIngredient(ForgeTags.DOUGH)
 					.addIngredient(Items.HONEY_BOTTLE)
-					.addIngredient(YHFood.BUTTER.item.get())
+					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.KOISHI_MOUSSE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.item.get(), 1, 200, 0.1f)
