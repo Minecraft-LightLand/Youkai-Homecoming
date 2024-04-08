@@ -7,17 +7,17 @@ import net.minecraft.world.phys.Vec3;
 @SerialClass
 public class RumiaStateMachine {
 
-	private static final int PREPARE_TIME = 40, FLY_TIME = 100, BLOCK_TIME = 100;
+	private static final int PREPARE_TIME = 20, FLY_TIME = 60, BLOCK_TIME = 100;
 
 	public enum RumiaStage {
 		NONE, PREPARE, FLY, BLOCKED
 	}
 
 	@SerialClass.SerialField
-	private RumiaStage stage;
+	private RumiaStage stage = RumiaStage.NONE;
 
 	@SerialClass.SerialField
-	private int time;
+	private int time = 0;
 
 	public void tick(Rumia rumia) {
 		if (time > 0) {

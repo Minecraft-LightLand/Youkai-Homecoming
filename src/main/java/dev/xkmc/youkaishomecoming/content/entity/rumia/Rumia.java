@@ -20,7 +20,7 @@ import net.minecraft.world.level.Level;
 public class Rumia extends FloatingYoukai {
 
 	@SerialClass.SerialField
-	final RumiaStateMachine state = new RumiaStateMachine();
+	public final RumiaStateMachine state = new RumiaStateMachine();
 
 	public Rumia(EntityType<? extends Rumia> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);

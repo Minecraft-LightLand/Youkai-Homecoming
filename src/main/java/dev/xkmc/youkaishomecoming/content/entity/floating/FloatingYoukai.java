@@ -122,7 +122,7 @@ public class FloatingYoukai extends Monster {
 
 	protected void customServerAiStep() {
 		LivingEntity target = this.getTarget();
-		if (target != null && this.canAttack(target)) {
+		if (target != null && this.canAttack(target) && moveControl == flyCtrl) {
 			boolean tooHigh = tooHigh();
 			int expectedHeight = tooHigh ? 0 : ATTEMPT_ABOVE;
 			double low = -0.5;

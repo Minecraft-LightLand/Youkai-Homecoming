@@ -6,6 +6,8 @@ import net.minecraft.world.entity.projectile.SmallFireball;
 
 public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<Rumia> {
 
+	private static final int BALL_RANGE = 8;
+
 	public RumiaAttackGoal(Rumia pBlaze) {
 		super(pBlaze, 16);
 	}
@@ -21,7 +23,18 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<Rumia> {
 
 	@Override
 	protected boolean specialAction() {
-		return youkai.isCharged() || youkai.isBlocked();
+		if (youkai.isCharged()) {
+			LivingEntity target = youkai.getTarget();
+			if (target != null) {
+				boolean sight = youkai.getSensing().hasLineOfSight(target);
+				double dist = youkai.distanceToSqr(target);
+				if (sight) {
+					attack(target, dist);
+				}
+			}
+			return true;
+		}
+		return youkai.isBlocked();
 	}
 
 	@Override
@@ -31,7 +44,7 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<Rumia> {
 
 	@Override
 	protected void attack(LivingEntity target, double dist) {
-		if (dist < 8 * 8) {//TODO
+		if (dist < BALL_RANGE * BALL_RANGE) {
 			youkai.state.startAttack(youkai);
 		}
 		super.attack(target, dist);

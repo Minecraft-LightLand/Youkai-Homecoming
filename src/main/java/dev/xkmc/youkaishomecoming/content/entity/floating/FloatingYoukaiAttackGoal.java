@@ -46,7 +46,7 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukai> extends
 		if (meleeTime > 0) {
 			meleeTime--;
 		}
-		if(specialAction()){
+		if (specialAction()) {
 			return;
 		}
 		LivingEntity target = youkai.getTarget();
@@ -86,11 +86,11 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukai> extends
 		youkai.getLookControl().setLookAt(target, 10.0F, 10.0F);
 	}
 
-	protected void meleeAttack(LivingEntity target){
+	protected void meleeAttack(LivingEntity target) {
 		youkai.doHurtTarget(target);
 	}
 
-	protected boolean specialAction(){
+	protected boolean specialAction() {
 		return false;
 	}
 
