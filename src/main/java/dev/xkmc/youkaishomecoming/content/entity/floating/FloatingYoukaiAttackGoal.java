@@ -46,39 +46,61 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukai> extends
 		if (meleeTime > 0) {
 			meleeTime--;
 		}
+		if(specialAction()){
+			return;
+		}
 		LivingEntity target = youkai.getTarget();
 		if (target == null) return;
 		boolean sight = youkai.getSensing().hasLineOfSight(target);
 		double dist = youkai.distanceToSqr(target);
+		double follow = getShootRange();
 		if (!sight) {
-			if (dist < getFollowDistance() * getFollowDistance()) {
+			if (dist < follow * follow) {
 				youkai.getNavigation().moveTo(target.getX(), target.getY(), target.getZ(), 1.0D);
 			}
 			return;
-		} else {
-			if (dist * 2 < range * range) {
-				youkai.getNavigation().stop();
-			}
+		}
+		if (dist * 2 < range * range) {
+			youkai.getNavigation().stop();
 		}
 		if (dist > range * range && youkai.getNavigation().isDone()) {
 			youkai.getNavigation().moveTo(target.getX(), target.getY(), target.getZ(), 2.0D);
 		}
-		if (dist < 4.0D && meleeTime <= 0) {
-			meleeTime = 20;
-			youkai.doHurtTarget(target);
-			return;
+		if (dist < follow * follow) {
+			attack(target, dist);
 		}
-		if (dist < getFollowDistance() * getFollowDistance()) {
-			if (shootTime <= 0) {
-				shootTime = shoot(target);
+	}
+
+
+	protected void attack(LivingEntity target, double dist) {
+		int melee = getMeleeRange();
+		if (dist < melee * melee) {
+			if (meleeTime <= 0) {
+				meleeTime = 20;
+				meleeAttack(target);
 			}
-			youkai.getLookControl().setLookAt(target, 10.0F, 10.0F);
 		}
+		if (shootTime <= 0) {
+			shootTime = shoot(target);
+		}
+		youkai.getLookControl().setLookAt(target, 10.0F, 10.0F);
+	}
+
+	protected void meleeAttack(LivingEntity target){
+		youkai.doHurtTarget(target);
+	}
+
+	protected boolean specialAction(){
+		return false;
 	}
 
 	protected abstract int shoot(LivingEntity target);
 
-	private double getFollowDistance() {
+	protected int getMeleeRange() {
+		return 2;
+	}
+
+	private double getShootRange() {
 		return youkai.getAttributeValue(Attributes.FOLLOW_RANGE);
 	}
 }

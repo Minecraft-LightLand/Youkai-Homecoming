@@ -1,9 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
+import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukai;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -18,9 +16,11 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
+@SerialClass
 public class Rumia extends FloatingYoukai {
 
-	private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Rumia.class, EntityDataSerializers.BYTE);
+	@SerialClass.SerialField
+	final RumiaStateMachine state = new RumiaStateMachine();
 
 	public Rumia(EntityType<? extends Rumia> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -50,23 +50,18 @@ public class Rumia extends FloatingYoukai {
 		super.actuallyHurt(pDamageSource, Math.min(8, amount));//TODO config
 	}
 
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_FLAGS_ID, (byte) 0);
+	@Override
+	public void aiStep() {
+		super.aiStep();
+		state.tick(this);
 	}
 
-	private boolean isCharged() {
-		return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
+	public boolean isCharged() {
+		return state.isCharged(this);
 	}
 
-	void setCharged(boolean charged) {
-		byte b0 = this.entityData.get(DATA_FLAGS_ID);
-		if (charged) {
-			b0 = (byte) (b0 | 1);
-		} else {
-			b0 = (byte) (b0 & -2);
-		}
-		this.entityData.set(DATA_FLAGS_ID, b0);
+	public boolean isBlocked() {
+		return state.isBlocked(this);
 	}
 
 }

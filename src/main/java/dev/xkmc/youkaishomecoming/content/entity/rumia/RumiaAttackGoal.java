@@ -10,12 +10,35 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<Rumia> {
 		super(pBlaze, 16);
 	}
 
+	@Override
+	public boolean canUse() {
+		return !youkai.isBlocked() && super.canUse();
+	}
+
 	public void stop() {
 		super.stop();
-		youkai.setCharged(false);
+	}
+
+	@Override
+	protected boolean specialAction() {
+		return youkai.isCharged() || youkai.isBlocked();
+	}
+
+	@Override
+	protected int getMeleeRange() {
+		return youkai.isCharged() ? 3 : 2;
+	}
+
+	@Override
+	protected void attack(LivingEntity target, double dist) {
+		if (dist < 8 * 8) {//TODO
+			youkai.state.startAttack(youkai);
+		}
+		super.attack(target, dist);
 	}
 
 	protected int shoot(LivingEntity target) {
+		if (youkai.isCharged()) return 10;
 		double dx = target.getX() - youkai.getX();
 		double dy = target.getY(0.5D) - youkai.getY(0.5D);
 		double dz = target.getZ() - youkai.getZ();
