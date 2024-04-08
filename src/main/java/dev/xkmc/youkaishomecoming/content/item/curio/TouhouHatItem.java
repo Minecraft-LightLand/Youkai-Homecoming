@@ -4,6 +4,7 @@ package dev.xkmc.youkaishomecoming.content.item.curio;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -19,6 +20,10 @@ public class TouhouHatItem extends ArmorItem {
 	}
 
 	protected void tick(ItemStack stack, Level level, Player player) {
+	}
+
+	public boolean support(DyeColor color) {
+		return false;
 	}
 
 }

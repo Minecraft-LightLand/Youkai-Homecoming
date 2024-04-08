@@ -14,6 +14,7 @@ import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
@@ -69,13 +70,13 @@ public class YHItems {
 		SUWAKO_HAT = YoukaisHomecoming.REGISTRATE
 				.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-				.tag(Tags.Items.ARMORS_HELMETS)
+				.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
 				.register();
 
 		KOISHI_HAT = YoukaisHomecoming.REGISTRATE
 				.item("koishi_hat", p -> new KoishiHatItem(p.rarity(Rarity.EPIC)))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-				.tag(Tags.Items.ARMORS_HELMETS)
+				.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
 				.register();
 
 		YHCrops.register();

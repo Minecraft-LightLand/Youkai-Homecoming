@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-08T22:30:15.834051	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-08T22:41:20.301847	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -1115,3 +1115,4 @@ aa2571069bda91945b5212ddc4f2945299452f3d data/youkaishomecoming/tags/items/dango
 40343eaeafa358240c2ed0206ca567f00dd3f0a9 data/youkaishomecoming/tags/items/raw_eel.json
 a16b1e0016b47f50aefed39e8e6c4f982ef6fa51 data/youkaishomecoming/tags/items/raw_flesh.json
 1d1f583522176d58b389c68f5e98a8b357e105a6 data/youkaishomecoming/tags/items/simple_damaku.json
+279092a46fd1a6cd2bacf18c5615b3c98f76dced data/youkaishomecoming/tags/items/touhou_hat.json
