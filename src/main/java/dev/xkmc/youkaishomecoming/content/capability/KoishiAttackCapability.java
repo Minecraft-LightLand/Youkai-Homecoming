@@ -10,9 +10,9 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -53,7 +53,8 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 	}
 
 	private boolean notValid() {
-		return !player.canBeSeenAsEnemy() ||
+		return !player.level().dimension().equals(Level.NETHER) ||
+				!player.canBeSeenAsEnemy() ||
 				player.hasEffect(YHEffects.UNCONSCIOUS.get()) ||
 				!player.hasEffect(YHEffects.YOUKAIFIED.get()) &&
 						!player.hasEffect(YHEffects.YOUKAIFYING.get());
