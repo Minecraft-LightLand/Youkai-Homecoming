@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-07T21:36:25.448436	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-08T18:48:40.381323	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -747,6 +747,7 @@ e6aade8ebe4d62a25f019dade5b74c89ca43543d data/youkaishomecoming/advancements/rec
 b7753655a5091fd0dd208051a22d359929691abf data/youkaishomecoming/advancements/recipes/food/roasted_lamprey_from_raw_lamprey_smelting.json
 ab1cf5243a84d59df667a34e289c3030056f1524 data/youkaishomecoming/advancements/recipes/food/roasted_lamprey_from_raw_lamprey_smoking.json
 90311aeea278fa8c44888e11353e2bc3f6f2faef data/youkaishomecoming/advancements/recipes/food/shaved_ice_over_rice.json
+41d9040aa8674a79140d881f7c0e838904e1c302 data/youkaishomecoming/advancements/recipes/food/tarte_lune.json
 eb3adccdf9b8401567aa558a704d6ddef4ecc91e data/youkaishomecoming/advancements/recipes/food/tarte_lune_assemble.json
 d1e88736912f6455ea273e7ab1b976335ba46723 data/youkaishomecoming/advancements/recipes/food/tobiko_gunkan.json
 26e272ab5987b66115884d5b2a120ebe52ea9b52 data/youkaishomecoming/advancements/recipes/genmai_tea.json
@@ -956,7 +957,7 @@ c019c4b86253438ca35b9673fc00f253fbc052be data/youkaishomecoming/recipes/hay_vert
 0385530072eed9467b37bfdbd203bac156215371 data/youkaishomecoming/recipes/jungle_handrail_from_jungle_planks_stonecutting.json
 0a65d5493385171b5cb01719021a1086427741b2 data/youkaishomecoming/recipes/kettle.json
 fb11db056d220ee7523f181b673515af8631f610 data/youkaishomecoming/recipes/kinako_dango.json
-43d48c93f4f3e8c8bc662e8f35d602cfb8727db7 data/youkaishomecoming/recipes/koishi_mousse.json
+629c81e2d4f8b9b20f19d8a206341be58928d54d data/youkaishomecoming/recipes/koishi_mousse.json
 8bb4207e96d746936e2dbfa239b3eee5ffbe3abc data/youkaishomecoming/recipes/latte.json
 6852aa2b25cbcad322ca51767ad1e08c001388de data/youkaishomecoming/recipes/latte_remix.json
 6d44d181257fcb597084bda0ff488660d57f89ab data/youkaishomecoming/recipes/lions_head.json
@@ -1034,6 +1035,7 @@ eedb0dfb778f94a9fbc210a23375b762e5176463 data/youkaishomecoming/recipes/straw_tr
 af14156dd471e0f548c54a2f397ea540b13b8cfc data/youkaishomecoming/recipes/straw_vertical_slab.json
 3f924940f96c19ff20753d2fc819774c565084a4 data/youkaishomecoming/recipes/straw_vertical_slab_from_straw_bale_stonecutting.json
 d18d3126d3bebec0021a16f30881bc1fab96e90b data/youkaishomecoming/recipes/sweet_ormosia_mochi_mixed_boiled.json
+828f936b2ceddc287351fa979d13319d63243560 data/youkaishomecoming/recipes/tarte_lune.json
 2f905c4ea7cbed1e31418abb8c49ef555d68613f data/youkaishomecoming/recipes/tarte_lune_assemble.json
 e8c0949e533b8753098a40a0a36072ae6e7726df data/youkaishomecoming/recipes/tarte_lune_slice.json
 7bfb73b1d8eaf9090499b1bf6fd149675b2bde6a data/youkaishomecoming/recipes/tea_leaf_bag.json
