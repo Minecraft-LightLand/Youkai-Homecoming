@@ -26,14 +26,7 @@ public class RumiaStateMachine {
 	@SerialClass.SerialField
 	private int time = 0, ballDelay = 0;
 
-	@SerialClass.SerialField
-	private boolean refreshDim = false;
-
-	public void tick(Rumia rumia) {
-		if (refreshDim) {
-			rumia.refreshDimensions();
-			refreshDim = false;
-		}
+	public void tick(RumiaEntity rumia) {
 		if (ballDelay > 0) {
 			ballDelay--;
 		}
@@ -66,7 +59,7 @@ public class RumiaStateMachine {
 		}
 	}
 
-	public void startAttack(Rumia rumia) {
+	public void startAttack(RumiaEntity rumia) {
 		if (stage != RumiaStage.NONE) return;
 		if (ballDelay > 0) return;
 		rumia.getNavigation().stop();
@@ -76,7 +69,7 @@ public class RumiaStateMachine {
 		rumia.setDeltaMovement(Vec3.ZERO);
 	}
 
-	public void onAttack(Rumia rumia, LivingEntity target) {
+	public void onAttack(RumiaEntity rumia, LivingEntity target) {
 		if (stage != RumiaStage.FLY) return;
 		if (target.isAlive()) {
 			target.knockback(10, 1, 1);
@@ -92,7 +85,7 @@ public class RumiaStateMachine {
 		ballDelay = SUCCESS_DELAY;
 	}
 
-	public void onBlocked(Rumia rumia) {
+	public void onBlocked(RumiaEntity rumia) {
 		if (stage != RumiaStage.FLY) return;
 		rumia.getNavigation().stop();
 		rumia.setDeltaMovement(rumia.getDeltaMovement().scale(-0.5));
@@ -102,15 +95,15 @@ public class RumiaStateMachine {
 		stage = RumiaStage.BLOCKED;
 	}
 
-	public boolean isCharged(Rumia rumia) {
+	public boolean isCharged(RumiaEntity rumia) {
 		return rumia.getFlag(1);
 	}
 
-	public boolean isBlocked(Rumia rumia) {
+	public boolean isBlocked(RumiaEntity rumia) {
 		return rumia.getFlag(2);
 	}
 
-	private void setCharged(Rumia rumia, boolean charged) {
+	private void setCharged(RumiaEntity rumia, boolean charged) {
 		var attr = rumia.getAttribute(Attributes.ATTACK_DAMAGE);
 		assert attr != null;
 		if (charged) {
@@ -121,9 +114,9 @@ public class RumiaStateMachine {
 		rumia.setFlag(1, charged);
 	}
 
-	private void setBlocked(Rumia rumia, boolean blocked) {
+	private void setBlocked(RumiaEntity rumia, boolean blocked) {
 		rumia.setFlag(2, blocked);
-		refreshDim = true;
+		rumia.refreshDimensions();
 	}
 
 }

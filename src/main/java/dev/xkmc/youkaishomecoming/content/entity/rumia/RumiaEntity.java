@@ -1,8 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukai;
+import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -19,14 +20,14 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 @SerialClass
-public class Rumia extends FloatingYoukai {
+public class RumiaEntity extends FloatingYoukaiEntity {
 
 	private static final EntityDimensions FALL = EntityDimensions.scalable(1.7f, 0.4f);
 
 	@SerialClass.SerialField
 	public final RumiaStateMachine state = new RumiaStateMachine();
 
-	public Rumia(EntityType<? extends Rumia> pEntityType, Level pLevel) {
+	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
 
@@ -99,6 +100,12 @@ public class Rumia extends FloatingYoukai {
 	@Override
 	public EntityDimensions getDimensions(Pose pPose) {
 		return isBlocked() ? FALL.scale(getScale()) : super.getDimensions(pPose);
+	}
+
+	public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
+		if (DATA_FLAGS_ID.equals(pKey)) {
+			this.refreshDimensions();
+		}
 	}
 
 }

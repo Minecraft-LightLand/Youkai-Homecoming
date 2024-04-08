@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-public class RumiaRenderer extends MobRenderer<Rumia, RumiaModel<Rumia>> {
+public class RumiaRenderer extends MobRenderer<RumiaEntity, RumiaModel<RumiaEntity>> {
 
 	public static final ResourceLocation TEX = new ResourceLocation(YoukaisHomecoming.MODID, "textures/entities/rumia.png");
 
@@ -16,11 +16,11 @@ public class RumiaRenderer extends MobRenderer<Rumia, RumiaModel<Rumia>> {
 		super(context, new RumiaModel<>(context.bakeLayer(RumiaModel.LAYER_LOCATION)), 0.2F);
 	}
 
-	public ResourceLocation getTextureLocation(Rumia entity) {
+	public ResourceLocation getTextureLocation(RumiaEntity entity) {
 		return TEX;
 	}
 
-	protected void setupRotations(Rumia rumia, PoseStack pose, float age, float yaw, float pTick) {
+	protected void setupRotations(RumiaEntity rumia, PoseStack pose, float age, float yaw, float pTick) {
 		if (rumia.isBlocked()) {
 			pose.translate(0, 0.2, 0);
 			pose.mulPose(Axis.XP.rotationDegrees(90));
@@ -30,12 +30,12 @@ public class RumiaRenderer extends MobRenderer<Rumia, RumiaModel<Rumia>> {
 	}
 
 	@Override
-	protected float getAttackAnim(Rumia pLivingBase, float pPartialTickTime) {
+	protected float getAttackAnim(RumiaEntity pLivingBase, float pPartialTickTime) {
 		return super.getAttackAnim(pLivingBase, pPartialTickTime);
 	}
 
 	@Override
-	public void render(Rumia rumia, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
+	public void render(RumiaEntity rumia, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
 		super.render(rumia, yaw, pTick, pose, buffer, rumia.isCharged() ? 0 : light);
 	}
 }

@@ -4,11 +4,11 @@ import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiAttackGo
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.SmallFireball;
 
-public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<Rumia> {
+public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 
 	private static final int BALL_RANGE = 8;
 
-	public RumiaAttackGoal(Rumia pBlaze) {
+	public RumiaAttackGoal(RumiaEntity pBlaze) {
 		super(pBlaze, 16);
 	}
 

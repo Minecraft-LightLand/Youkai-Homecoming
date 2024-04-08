@@ -6,7 +6,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
 
-public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukai> extends Goal {
+public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> extends Goal {
 
 	protected final T youkai;
 	private final int range;

@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.entity.floating;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
-import dev.xkmc.youkaishomecoming.content.entity.rumia.Rumia;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -26,16 +25,16 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Objects;
 
 @SerialClass
-public class FloatingYoukai extends Monster {
+public class FloatingYoukaiEntity extends Monster {
 
 	private static final int GROUND_HEIGHT = 5, ATTEMPT_ABOVE = 3;
 
 	public final MoveControl walkCtrl, flyCtrl;
 	public final PathNavigation walkNav, fltNav;
 
-	private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(FloatingYoukai.class, EntityDataSerializers.BYTE);
+	protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(FloatingYoukaiEntity.class, EntityDataSerializers.BYTE);
 
-	public FloatingYoukai(EntityType<? extends FloatingYoukai> pEntityType, Level pLevel) {
+	public FloatingYoukaiEntity(EntityType<? extends FloatingYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		this.walkCtrl = moveControl;
 		this.walkNav = navigation;

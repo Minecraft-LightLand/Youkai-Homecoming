@@ -6,9 +6,9 @@ import java.util.EnumSet;
 
 public class RumiaParalyzeGoal extends Goal {
 
-	private final Rumia rumia;
+	private final RumiaEntity rumia;
 
-	public RumiaParalyzeGoal(Rumia rumia) {
+	public RumiaParalyzeGoal(RumiaEntity rumia) {
 		this.rumia = rumia;
 		setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK, Flag.JUMP));
 	}
