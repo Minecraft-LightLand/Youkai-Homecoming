@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-08T19:37:07.577184	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-08T19:51:29.610343	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -1037,7 +1037,7 @@ eedb0dfb778f94a9fbc210a23375b762e5176463 data/youkaishomecoming/recipes/straw_tr
 af14156dd471e0f548c54a2f397ea540b13b8cfc data/youkaishomecoming/recipes/straw_vertical_slab.json
 3f924940f96c19ff20753d2fc819774c565084a4 data/youkaishomecoming/recipes/straw_vertical_slab_from_straw_bale_stonecutting.json
 d18d3126d3bebec0021a16f30881bc1fab96e90b data/youkaishomecoming/recipes/sweet_ormosia_mochi_mixed_boiled.json
-828f936b2ceddc287351fa979d13319d63243560 data/youkaishomecoming/recipes/tarte_lune.json
+8753eb615a4a74798aa2c70a3ec82a25fecd154e data/youkaishomecoming/recipes/tarte_lune.json
 2f905c4ea7cbed1e31418abb8c49ef555d68613f data/youkaishomecoming/recipes/tarte_lune_assemble.json
 e8c0949e533b8753098a40a0a36072ae6e7726df data/youkaishomecoming/recipes/tarte_lune_slice.json
 7bfb73b1d8eaf9090499b1bf6fd149675b2bde6a data/youkaishomecoming/recipes/tea_leaf_bag.json

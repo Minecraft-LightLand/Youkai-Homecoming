@@ -26,7 +26,14 @@ public class RumiaStateMachine {
 	@SerialClass.SerialField
 	private int time = 0, ballDelay = 0;
 
+	@SerialClass.SerialField
+	private boolean refreshDim = false;
+
 	public void tick(Rumia rumia) {
+		if (refreshDim) {
+			rumia.refreshDimensions();
+			refreshDim = false;
+		}
 		if (ballDelay > 0) {
 			ballDelay--;
 		}
@@ -116,6 +123,7 @@ public class RumiaStateMachine {
 
 	private void setBlocked(Rumia rumia, boolean blocked) {
 		rumia.setFlag(2, blocked);
+		refreshDim = true;
 	}
 
 }

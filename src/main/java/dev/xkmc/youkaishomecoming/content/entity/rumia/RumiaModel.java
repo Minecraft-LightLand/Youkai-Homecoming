@@ -162,7 +162,7 @@ public class RumiaModel<T extends Rumia> extends HierarchicalModel<T> {
 			leftArm.xRot = Mth.cos(pLimbSwing * 0.6662F) * 2.0F * pLimbSwingAmount * 0.5F / f;
 		}
 
-		float legSwing = !e.onGround() ? 0 : Math.min(legMaxSwing, pLimbSwingAmount);
+		float legSwing = !e.onGround() || e.isBlocked() ? 0 : Math.min(legMaxSwing, pLimbSwingAmount);
 		leftLeg.xRot = Mth.cos(pLimbSwing * 0.6662F + (float) Math.PI) * 1.4F * legSwing / f;
 		rightLeg.xRot = Mth.cos(pLimbSwing * 0.6662F) * 1.4F * legSwing / f;
 

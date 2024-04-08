@@ -6,7 +6,7 @@
       "item": "minecraft:sugar"
     },
     "B": {
-      "item": "minecraft:chorus_fruit"
+      "item": "minecraft:allium"
     },
     "C": {
       "item": "youkaishomecoming:bowl_of_cream"
@@ -16,11 +16,14 @@
     },
     "E": {
       "item": "farmersdelight:pie_crust"
+    },
+    "F": {
+      "item": "minecraft:wheat"
     }
   },
   "pattern": [
-    "DBD",
-    "CCC",
+    "FBF",
+    "DCD",
     "AEA"
   ],
   "result": {

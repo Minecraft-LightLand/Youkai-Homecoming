@@ -4,9 +4,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukai;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -22,6 +20,8 @@ import net.minecraft.world.level.Level;
 
 @SerialClass
 public class Rumia extends FloatingYoukai {
+
+	private static final EntityDimensions FALL = EntityDimensions.scalable(1.7f, 0.4f);
 
 	@SerialClass.SerialField
 	public final RumiaStateMachine state = new RumiaStateMachine();
@@ -51,10 +51,20 @@ public class Rumia extends FloatingYoukai {
 	}
 
 	@Override
-	protected void actuallyHurt(DamageSource pDamageSource, float amount) {
-		super.actuallyHurt(pDamageSource, Math.min(8, amount));//TODO config
+	public void aiStep() {
+		super.aiStep();
+		state.tick(this);
 	}
 
+	public boolean isCharged() {
+		return state == null ? false :isAlive() && state.isCharged(this);
+	}
+
+	public boolean isBlocked() {
+		return state == null ? false : isAlive() && state.isBlocked(this);
+	}
+
+	@Override
 	public boolean doHurtTarget(Entity target) {
 		if (isCharged()) {
 			float atk = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
@@ -77,17 +87,18 @@ public class Rumia extends FloatingYoukai {
 	}
 
 	@Override
-	public void aiStep() {
-		super.aiStep();
-		state.tick(this);
+	protected void actuallyHurt(DamageSource pDamageSource, float amount) {
+		super.actuallyHurt(pDamageSource, Math.min(8, amount));//TODO config
 	}
 
-	public boolean isCharged() {
-		return state.isCharged(this);
+	@Override
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions dim) {
+		return isBlocked() ? dim.height / 2 : super.getStandingEyeHeight(pose, dim);
 	}
 
-	public boolean isBlocked() {
-		return state.isBlocked(this);
+	@Override
+	public EntityDimensions getDimensions(Pose pPose) {
+		return isBlocked() ? FALL.scale(getScale()) : super.getDimensions(pPose);
 	}
 
 }

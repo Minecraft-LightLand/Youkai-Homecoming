@@ -186,10 +186,11 @@ public class YHRecipeGen {
 			cake(pvd, YHItems.TARTE_LUNE);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.TARTE_LUNE.block, 1)::unlockedBy, ModItems.PIE_CRUST.get())
-					.pattern("DBD").pattern("CCC").pattern("AEA")
+					.pattern("FBF").pattern("DCD").pattern("AEA")
 					.define('A', Items.SUGAR)
-					.define('B', Items.CHORUS_FRUIT)
+					.define('B', Items.ALLIUM)
 					.define('D', Items.CORNFLOWER)
+					.define('F', Items.WHEAT)
 					.define('C', YHItems.CREAM)
 					.define('E', ModItems.PIE_CRUST.get())
 					.save(pvd);
