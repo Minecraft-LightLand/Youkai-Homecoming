@@ -9,9 +9,9 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.util.Mth;
 
-public class RumiaModel<T extends Entity> extends HierarchicalModel<T> {
+public class RumiaModel<T extends Rumia> extends HierarchicalModel<T> {
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(YoukaisHomecoming.loc("rumia"), "main");
 
@@ -19,25 +19,25 @@ public class RumiaModel<T extends Entity> extends HierarchicalModel<T> {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 16).addBox(-3.5F, -27.0F, -3.5F, 7.0F, 7.0F, 7.0F)
-				.texOffs(0, 0).addBox(-4.0F, -27.5F, -4.0F, 8.0F, 8.0F, 8.0F)
-				.texOffs(21, 16).addBox(-3.0F, -27.0F, -3.51F, 6.0F, 7.0F, 0.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 16).addBox(-3.5F, -7.0F, -3.5F, 7.0F, 7.0F, 7.0F)
+				.texOffs(0, 0).addBox(-4.0F, -7.5F, -4.0F, 8.0F, 8.0F, 8.0F)
+				.texOffs(21, 16).addBox(-3.0F, -7.0F, -3.51F, 6.0F, 7.0F, 0.0F), PartPose.offset(0.0F, 4.0F, 0.0F));
 
-		PartDefinition cube_r1 = head.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F), PartPose.offsetAndRotation(3.25F, -25.0F, -0.7F, -0.3897F, -0.05F, -0.121F));
+		PartDefinition cube_r1 = head.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F), PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.3897F, -0.05F, -0.121F));
 
-		PartDefinition cube_r2 = head.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(0, 4).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F), PartPose.offsetAndRotation(3.25F, -25.0F, -0.7F, -0.0254F, 0.4401F, -0.3778F));
+		PartDefinition cube_r2 = head.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(0, 4).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F), PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.0254F, 0.4401F, -0.3778F));
 
-		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(48, 0).addBox(-2.85F, -10.0F, -1.5F, 3.0F, 10.0F, 3.0F)
-				.texOffs(32, 0).addBox(-3.35F, -10.5F, -2.0F, 4.0F, 11.0F, 4.0F), PartPose.offset(-0.15F, 24.0F, 0.0F));
+		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(48, 0).addBox(-3.0F, 1.0F, -1.5F, 3.0F, 10.0F, 3.0F)
+				.texOffs(32, 0).addBox(-3.5F, 0.5F, -2.0F, 4.0F, 11.0F, 4.0F), PartPose.offset(0.0F, 13.0F, 0.0F));
 
-		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(44, 51).addBox(0.15F, -10.0F, -1.5F, 3.0F, 10.0F, 3.0F)
-				.texOffs(0, 30).addBox(-0.35F, -10.5F, -2.0F, 4.0F, 11.0F, 4.0F), PartPose.offset(-0.15F, 24.0F, 0.0F));
+		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(44, 51).addBox(0.0F, 1.0F, -1.5F, 3.0F, 10.0F, 3.0F)
+				.texOffs(0, 30).addBox(-0.5F, 0.5F, -2.0F, 4.0F, 11.0F, 4.0F), PartPose.offset(0.0F, 13.0F, 0.0F));
 
-		PartDefinition rightArm = partdefinition.addOrReplaceChild("rightArm", CubeListBuilder.create().texOffs(0, 45).addBox(-5.0F, -20.0F, -1.5F, 2.0F, 10.0F, 3.0F)
-				.texOffs(28, 41).addBox(-5.55F, -20.5F, -2.0F, 3.0F, 11.0F, 4.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition rightArm = partdefinition.addOrReplaceChild("rightArm", CubeListBuilder.create().texOffs(0, 45).addBox(-2.0F, -1.0F, -1.5F, 2.0F, 10.0F, 3.0F)
+				.texOffs(28, 41).addBox(-2.55F, -1.5F, -2.0F, 3.0F, 11.0F, 4.0F), PartPose.offset(-3.0F, 5.0F, 0.0F));
 
-		PartDefinition leftArm = partdefinition.addOrReplaceChild("leftArm", CubeListBuilder.create().texOffs(44, 38).addBox(3.0F, -20.0F, -1.5F, 2.0F, 10.0F, 3.0F)
-				.texOffs(12, 41).addBox(2.45F, -20.5F, -2.0F, 3.0F, 11.0F, 4.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition leftArm = partdefinition.addOrReplaceChild("leftArm", CubeListBuilder.create().texOffs(44, 38).addBox(0.0F, -1.0F, -1.5F, 2.0F, 10.0F, 3.0F)
+				.texOffs(12, 41).addBox(-0.55F, -1.5F, -2.0F, 3.0F, 11.0F, 4.0F), PartPose.offset(3.0F, 5.0F, 0.0F));
 
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(42, 15).addBox(-3.0F, -20.0F, -1.5F, 6.0F, 10.0F, 3.0F)
 				.texOffs(24, 26).addBox(-3.5F, -20.5F, -2.0F, 7.0F, 11.0F, 4.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
@@ -134,11 +134,6 @@ public class RumiaModel<T extends Entity> extends HierarchicalModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
-	}
-
-	@Override
 	public void prepareMobModel(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
 
 	}
@@ -147,5 +142,31 @@ public class RumiaModel<T extends Entity> extends HierarchicalModel<T> {
 	public ModelPart root() {
 		return root;
 	}
+
+	public void setupAnim(T e, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+		head.yRot = pNetHeadYaw * ((float) Math.PI / 180F);
+		head.xRot = pHeadPitch * ((float) Math.PI / 180F);
+
+		float f = 1;
+		float legMaxSwing = 0.283f;
+
+		if (e.isAggressive()) {
+			leftArm.zRot = (float) -Math.PI / 2;
+			rightArm.zRot = (float) Math.PI / 2;
+			leftArm.xRot = 0;
+			rightArm.xRot = 0;
+		} else {
+			leftArm.zRot = 0;
+			rightArm.zRot = 0;
+			rightArm.xRot = Mth.cos(pLimbSwing * 0.6662F + (float) Math.PI) * 2.0F * pLimbSwingAmount * 0.5F / f;
+			leftArm.xRot = Mth.cos(pLimbSwing * 0.6662F) * 2.0F * pLimbSwingAmount * 0.5F / f;
+		}
+
+		float legSwing = !e.onGround() ? 0 : Math.min(legMaxSwing, pLimbSwingAmount);
+		leftLeg.xRot = Mth.cos(pLimbSwing * 0.6662F + (float) Math.PI) * 1.4F * legSwing / f;
+		rightLeg.xRot = Mth.cos(pLimbSwing * 0.6662F) * 1.4F * legSwing / f;
+
+	}
+
 
 }
