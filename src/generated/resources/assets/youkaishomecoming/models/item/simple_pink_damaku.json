@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaishomecoming:item/damaku/damaku",
+    "layer1": "youkaishomecoming:item/damaku/damaku_overlay"
+  }
+}

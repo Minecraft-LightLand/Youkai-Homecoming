@@ -1,6 +1,7 @@
 
 package dev.xkmc.youkaishomecoming.content.entity.damaku;
 
+import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
@@ -36,6 +37,12 @@ public class BaseDamakuEntity extends Projectile {
 		this.setOwner(pShooter);
 	}
 
+	public void setup(float damage, int life, Vec3 initVec) {
+		this.damage = damage;
+		this.life = life;
+		setDeltaMovement(initVec);
+	}
+
 	public boolean shouldRenderAtSqrDistance(double pDistance) {
 		double d0 = this.getBoundingBox().getSize() * 4.0D;
 		if (Double.isNaN(d0)) {
@@ -68,13 +75,7 @@ public class BaseDamakuEntity extends Projectile {
 			this.onHit(hitresult);
 		}
 		this.checkInsideBlocks();
-		Vec3 vec3 = this.getDeltaMovement();
-		double d2 = this.getX() + vec3.x;
-		double d0 = this.getY() + vec3.y;
-		double d1 = this.getZ() + vec3.z;
-		this.updateRotation();
-		setDeltaMovement(updateVelocity(vec3));
-		this.setPos(d2, d0, d1);
+		damakuMove();
 		life--;
 		if (life == 0) {
 			level().broadcastEntityEvent(this, EntityEvent.DEATH);
@@ -92,7 +93,7 @@ public class BaseDamakuEntity extends Projectile {
 
 	@Override
 	protected void onHitEntity(EntityHitResult result) {
-		result.getEntity().hurt(damageSources().indirectMagic(this, getOwner()), damage);
+		result.getEntity().hurt(YHDamageTypes.damaku(this), damage);
 	}
 
 	public void handleEntityEvent(byte pId) {
@@ -103,6 +104,16 @@ public class BaseDamakuEntity extends Projectile {
 
 	protected void clientDeathParticle() {
 
+	}
+
+	protected void damakuMove() {
+		Vec3 vec3 = updateVelocity(getDeltaMovement());
+		setDeltaMovement(vec3);
+		this.updateRotation();
+		double d2 = this.getX() + vec3.x;
+		double d0 = this.getY() + vec3.y;
+		double d1 = this.getZ() + vec3.z;
+		this.setPos(d2, d0, d1);
 	}
 
 	protected Vec3 updateVelocity(Vec3 vec) {

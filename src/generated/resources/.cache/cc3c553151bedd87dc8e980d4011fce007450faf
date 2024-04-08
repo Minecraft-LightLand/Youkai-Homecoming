@@ -1,4 +1,6 @@
-// 1.20.1	2024-04-08T19:37:07.588175	Tags for minecraft:damage_type mod id youkaishomecoming
+// 1.20.1	2024-04-08T21:02:32.128699	Tags for minecraft:damage_type mod id youkaishomecoming
+eb7e5b7cfc251c98b9725499d43828c413b56ce8 data/forge/tags/damage_type/is_magic.json
+eb7e5b7cfc251c98b9725499d43828c413b56ce8 data/minecraft/tags/damage_type/bypasses_armor.json
 350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_effects.json
 350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_enchantments.json
 350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_resistance.json

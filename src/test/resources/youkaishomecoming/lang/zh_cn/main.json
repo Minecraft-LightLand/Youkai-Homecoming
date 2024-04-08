@@ -2,6 +2,7 @@
   "itemGroup.youkaishomecoming.youkais_homecoming": "妖怪们的归家",
   "entity.youkaishomecoming.lamprey": "八目鳗",
   "entity.youkaishomecoming.rumia": "露米娅",
+  "entity.youkaishomecoming.item_damaku": "弹幕",
   "effect.youkaishomecoming": {
 	"youkaified": "妖怪化",
 	"youkaified.description": "现在你是妖怪了",
@@ -52,9 +53,13 @@
 	"obtain_koishi_hat": "连续%s次格挡恋恋攻击时获得",
 	"usage_koishi_hat": "提供持续的%s"
   },
-  "death.attack.koishi_attack": "恋恋从背后捅死了%s",
-  "death.attack.koishi_attack.player": "%2$s从背后捅死了%1$s",
-  "death.attack.rumia_attack": "%s被露米娅吃掉了",
-  "death.attack.rumia_attack.player": "%s被%s吃掉了",
+  "death.attack": {
+	"koishi_attack": "恋恋从背后捅死了%s",
+	"koishi_attack.player": "%2$s从背后捅死了%1$s",
+	"rumia_attack": "%s被露米娅吃掉了",
+	"rumia_attack.player": "%s被%s吃掉了",
+	"damaku": "%s在弹幕战中满身疮痍",
+	"damaku.player": "%s在与%s的弹幕战中满身疮痍"
+  },
   "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
 }

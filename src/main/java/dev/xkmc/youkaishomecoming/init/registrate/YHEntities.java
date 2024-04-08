@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
@@ -49,13 +51,19 @@ public class YHEntities {
 
 	public static final EntityEntry<RumiaEntity> RUMIA = YoukaisHomecoming.REGISTRATE
 			.entity("rumia", RumiaEntity::new, MobCategory.MONSTER)
-			.properties(e -> e.sized(0.4F, 1.7f).clientTrackingRange(24))
+			.properties(e -> e.sized(0.4F, 1.7f).clientTrackingRange(10))
 			.attributes(RumiaEntity::createAttributes)
 			.renderer(() -> RumiaRenderer::new)
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
 			)).register();
+
+	public static final EntityEntry<ItemDamakuEntity> ITEM_DAMAKU = YoukaisHomecoming.REGISTRATE
+			.<ItemDamakuEntity>entity("item_damaku", ItemDamakuEntity::new, MobCategory.MISC)
+			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4))
+			.renderer(() -> ItemDamakuRenderer::new)
+			.register();
 
 	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {
 		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);

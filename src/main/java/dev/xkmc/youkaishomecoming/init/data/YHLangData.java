@@ -76,6 +76,8 @@ public enum YHLangData {
 		pvd.add("death.attack.koishi_attack.player", "%2$s stabbed %1$s in the back");
 		pvd.add("death.attack.rumia_attack", "%s is eaten by Rumia");
 		pvd.add("death.attack.rumia_attack.player", "%s is eaten by %s");
+		pvd.add("death.attack.damaku", "%s lost the damaku battle");
+		pvd.add("death.attack.damaku.player", "%s lost the damaku battle to %s");
 	}
 
 

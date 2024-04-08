@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-08T19:51:29.610343	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-08T21:20:09.821343	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -74,8 +74,8 @@ af5031e60c1b4c4666bfdceb02daf51a1b092320 assets/youkaishomecoming/blockstates/wi
 7e7833f6237c2b01c225fa7ea9561350cdf980ac assets/youkaishomecoming/blockstates/wild_tea.json
 8a2e2f2c22f137800a6c7802c573bd6cc6108c59 assets/youkaishomecoming/blockstates/wild_udumbara.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
-fc222fd8d45fdbcefdedba000656d61c524ccdee assets/youkaishomecoming/lang/en_ud.json
-8e1d3135d4c43f7796b5709f2700d7c03d935433 assets/youkaishomecoming/lang/en_us.json
+100e4be0bb1a56c10dd9958ad074453fb199b77b assets/youkaishomecoming/lang/en_ud.json
+cad3af415d15be00fdca4694efaa4969ac014ff6 assets/youkaishomecoming/lang/en_us.json
 df4b9d00e00bd275d55ff3cd8d94930e42de8585 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
 45b94f41fde25955ebe5374d6687863d20fb52c2 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_connect.json
 7885b5f29c785483156efa810b2ebbd0675a21e9 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_corner.json
@@ -605,6 +605,22 @@ d5e0035fb1d4e41b2ef170c0c73da90fb230f3af assets/youkaishomecoming/models/item/sc
 b3b380e37ab83f6975d10c053d5ec8bcd11d3ea6 assets/youkaishomecoming/models/item/seven_colored_yokan.json
 f2b5934c480c8ba23d4a0169a48e4c1075aac4e8 assets/youkaishomecoming/models/item/shaved_ice_over_rice.json
 c13d319e7d84b649439befa477ed8e051bf01f93 assets/youkaishomecoming/models/item/shirayuki.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_black_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_blue_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_brown_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_cyan_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_gray_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_green_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_light_blue_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_light_gray_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_lime_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_magenta_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_orange_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_pink_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_purple_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_red_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_white_damaku.json
+2d43eee9045e12d2f9ad8a966cad64948c73395d assets/youkaishomecoming/models/item/simple_yellow_damaku.json
 69c3e7f2334cad61e0ac37090eb5cf7f93db7f44 assets/youkaishomecoming/models/item/soy_sauce_bottle.json
 3dad0eb03c7ff475680ae2ed369d9ac78011a47f assets/youkaishomecoming/models/item/soybean.json
 35d638812b5961b0d2ab8b6d5aaa1e361fe2e97e assets/youkaishomecoming/models/item/soybean_bag.json
