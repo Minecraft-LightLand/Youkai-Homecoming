@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -29,6 +30,7 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 
 	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
+		setPersistenceRequired();
 	}
 
 	protected void registerGoals() {
@@ -39,7 +41,11 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, this::wouldAttack));
+	}
+
+	private boolean wouldAttack(LivingEntity entity) {
+		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -58,7 +64,7 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 	}
 
 	public boolean isCharged() {
-		return state == null ? false :isAlive() && state.isCharged(this);
+		return state == null ? false : isAlive() && state.isCharged(this);
 	}
 
 	public boolean isBlocked() {
@@ -88,8 +94,11 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 	}
 
 	@Override
-	protected void actuallyHurt(DamageSource pDamageSource, float amount) {
-		super.actuallyHurt(pDamageSource, Math.min(8, amount));//TODO config
+	protected void actuallyHurt(DamageSource source, float amount) {
+		super.actuallyHurt(source, Math.min(getMaxHealth() / 5, amount));
+		if (source.getEntity() instanceof LivingEntity le) {
+			state.onHurt(le, amount);
+		}
 	}
 
 	@Override
@@ -106,6 +115,11 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 		if (DATA_FLAGS_ID.equals(pKey)) {
 			this.refreshDimensions();
 		}
+	}
+
+	@Override
+	protected boolean shouldDespawnInPeaceful() {
+		return false;
 	}
 
 }

@@ -1,8 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
+import dev.xkmc.youkaishomecoming.content.entity.damaku.DamakuHelper;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiAttackGoal;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDamaku;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.SmallFireball;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.phys.Vec3;
 
 public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 
@@ -15,10 +20,6 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 	@Override
 	public boolean canUse() {
 		return !youkai.isBlocked() && super.canUse();
-	}
-
-	public void stop() {
-		super.stop();
 	}
 
 	@Override
@@ -34,12 +35,12 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 			}
 			return true;
 		}
-		return youkai.isBlocked();
+		return false;
 	}
 
 	@Override
-	protected int getMeleeRange() {
-		return youkai.isCharged() ? 3 : 2;
+	protected double getMeleeRange() {
+		return youkai.isCharged() ? 1.5 : 1.8;
 	}
 
 	@Override
@@ -62,18 +63,23 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 		double dx = target.getX() - youkai.getX();
 		double dy = target.getY(0.5D) - youkai.getY(0.5D);
 		double dz = target.getZ() - youkai.getZ();
-		shoot(dx, dy, dz, 1);
-		//shoot(dx, dy, dz, 0.7);
-		//shoot(dx, dy, dz, 0.4);
-		return 20;
+		var vec = new Vec3(dx, dy, dz).normalize();
+		var ori = DamakuHelper.getOrientation(vec);
+		int off = youkai.getRandom().nextFloat() < 0.5 ? -3 : 3;
+		for (int i = 0; i < 3; i++) {
+			float speed = 0.8f + i * 0.1f;
+			int angle = off * (i - 1);
+			shoot(ori.rotate(-12 + angle).scale(speed), DyeColor.RED);
+			shoot(ori.rotate(angle).scale(speed), DyeColor.BLACK);
+			shoot(ori.rotate(12 + angle).scale(speed), DyeColor.RED);
+		}
+		return 40;
 	}
 
-	private void shoot(double dx, double dy, double dz, double speed) {
-		SmallFireball projectile = new SmallFireball(youkai.level(), youkai, dx, dy, dz);
-		projectile.setPos(projectile.getX(), youkai.getY(0.5D) + 0.5D, projectile.getZ());
-		projectile.xPower *= speed;
-		projectile.yPower *= speed;
-		projectile.zPower *= speed;
-		youkai.level().addFreshEntity(projectile);
+	private void shoot(Vec3 vec, DyeColor color) {
+		ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), youkai, youkai.level());
+		damaku.setItem(YHDamaku.SIMPLE.get(color).asStack());
+		damaku.setup(6, 40, vec);
+		youkai.level().addFreshEntity(damaku);
 	}
 }

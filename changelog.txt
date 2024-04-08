@@ -1,7 +1,9 @@
 2.0.6
+- Add Koishi hat
+- Add damaku
+- Add Rumia
 - Fix Suwako hat model
 - Make Straw hat wearable
-- Add Koishi hat
 - Change Koishi musse recipe
 - Add Lune Tarte recipe
 

@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
@@ -14,6 +15,7 @@ import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -57,6 +59,8 @@ public class YHEntities {
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.RED).get(), 8, 16)))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.BLACK).get(), 4, 8)))
 			)).register();
 
 	public static final EntityEntry<ItemDamakuEntity> ITEM_DAMAKU = YoukaisHomecoming.REGISTRATE

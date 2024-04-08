@@ -25,7 +25,8 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> e
 	}
 
 	public void start() {
-		meleeTime = 0;
+		meleeTime = 10;
+		shootTime = 20;
 		youkai.setAggressive(true);
 		youkai.setFlying();
 	}
@@ -73,7 +74,7 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> e
 
 
 	protected void attack(LivingEntity target, double dist) {
-		int melee = getMeleeRange();
+		double melee = getMeleeRange();
 		if (dist < melee * melee) {
 			if (meleeTime <= 0) {
 				meleeTime = 20;
@@ -96,7 +97,7 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> e
 
 	protected abstract int shoot(LivingEntity target);
 
-	protected int getMeleeRange() {
+	protected double getMeleeRange() {
 		return 2;
 	}
 

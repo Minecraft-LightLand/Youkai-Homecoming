@@ -85,6 +85,12 @@ public class RumiaStateMachine {
 		ballDelay = SUCCESS_DELAY;
 	}
 
+	public void onHurt(LivingEntity le, float amount) {
+		if (stage != RumiaStage.BLOCKED) return;
+		if (amount >= 4) time /= 2;
+
+	}
+
 	public void onBlocked(RumiaEntity rumia) {
 		if (stage != RumiaStage.FLY) return;
 		rumia.getNavigation().stop();

@@ -1,8 +1,13 @@
 {
-  "itemGroup.youkaishomecoming.youkais_homecoming": "妖怪们的归家",
-  "entity.youkaishomecoming.lamprey": "八目鳗",
-  "entity.youkaishomecoming.rumia": "露米娅",
-  "entity.youkaishomecoming.item_damaku": "弹幕",
+  "itemGroup.youkaishomecoming": {
+	"youkais_homecoming": "妖怪们的归家",
+	"damaku": "妖怪们的弹幕"
+  },
+  "entity.youkaishomecoming": {
+	"lamprey": "八目鳗",
+	"rumia": "露米娅",
+	"item_damaku": "弹幕"
+  },
   "effect.youkaishomecoming": {
 	"youkaified": "妖怪化",
 	"youkaified.description": "现在你是妖怪了",

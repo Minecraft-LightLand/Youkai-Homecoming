@@ -8,10 +8,13 @@ import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDamaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -20,6 +23,7 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -664,6 +668,21 @@ public class YHRecipeGen {
 					.requires(Items.ICE).requires(YHItems.CREAM)
 					.save(coffee, YHCoffee.AFFOGATO.item.getId().withSuffix("_craft"));
 
+		}
+
+		// damaku
+		{
+			for (int i = 0; i < 16; i++) {
+				DyeColor color = DyeColor.values()[i];
+				Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(color.getName() + "_dye"));
+				assert dye != null;
+				Item damaku = YHDamaku.SIMPLE.get(color).get();
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, damaku, 8)::unlockedBy, damaku)
+						.pattern("AAA").pattern("ABA").pattern("AAA")
+						.define('A', YHTagGen.SIMPLE_DAMAKU)
+						.define('B', dye)
+						.save(pvd);
+			}
 		}
 	}
 

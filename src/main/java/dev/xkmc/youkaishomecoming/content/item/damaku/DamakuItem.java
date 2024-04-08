@@ -30,7 +30,7 @@ public class DamakuItem extends Item {
 		if (!level.isClientSide) {
 			ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), player, level);
 			damaku.setItem(stack);
-			damaku.setup(6, 40, RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
+			damaku.setup(4, 40, RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
 			level.addFreshEntity(damaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));

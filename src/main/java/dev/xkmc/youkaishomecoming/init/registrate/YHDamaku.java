@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.youkaishomecoming.content.item.damaku.DamakuItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Rarity;
@@ -27,6 +28,7 @@ public class YHDamaku {
 							pvd.modLoc("item/damaku/damaku"),
 							pvd.modLoc("item/damaku/damaku_overlay")))
 					.color(() -> () -> (stack, i) -> ((DamakuItem) stack.getItem()).getDamakuColor(stack, i))
+					.tag(YHTagGen.SIMPLE_DAMAKU)
 					.register();
 			SIMPLE.put(e, ent);
 		}
