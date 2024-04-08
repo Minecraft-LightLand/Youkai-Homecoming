@@ -52,7 +52,9 @@
 	"obtain_koishi_hat": "连续%s次格挡恋恋攻击时获得",
 	"usage_koishi_hat": "提供持续的%s"
   },
-  "death.attack.koishi_attack": "恋恋从背后捅死你了",
-  "death.attack.koishi_attack.player": "%s从背后捅死你了",
+  "death.attack.koishi_attack": "恋恋从背后捅死了%s",
+  "death.attack.koishi_attack.player": "%2$s从背后捅死了%1$s",
+  "death.attack.rumia_attack": "%s被露米娅吃掉了",
+  "death.attack.rumia_attack.player": "%s被%s吃掉了",
   "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
 }

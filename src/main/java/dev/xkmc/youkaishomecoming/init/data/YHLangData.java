@@ -72,8 +72,10 @@ public enum YHLangData {
 			pvd.add(lang.key, lang.def);
 		}
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.koishi_ring", "Koishi Phone Call");
-		pvd.add("death.attack.koishi_attack", "Koishi stabbed you in the back");
-		pvd.add("death.attack.koishi_attack.player", "%s stabbed you in the back");
+		pvd.add("death.attack.koishi_attack", "Koishi stabbed %s in the back");
+		pvd.add("death.attack.koishi_attack.player", "%2$s stabbed %1$s in the back");
+		pvd.add("death.attack.rumia_attack", "%s is eaten by Rumia");
+		pvd.add("death.attack.rumia_attack.player", "%s is eaten by %s");
 	}
 
 

@@ -50,6 +50,13 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<Rumia> {
 		super.attack(target, dist);
 	}
 
+	@Override
+	protected void meleeAttack(LivingEntity target) {
+		if (youkai.doHurtTarget(target)) {
+			youkai.state.onAttack(youkai, target);
+		}
+	}
+
 	protected int shoot(LivingEntity target) {
 		if (youkai.isCharged()) return 10;
 		double dx = target.getX() - youkai.getX();

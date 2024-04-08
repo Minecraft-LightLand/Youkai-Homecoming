@@ -19,10 +19,13 @@ import java.util.concurrent.CompletableFuture;
 public class YHDamageTypes extends DamageTypeAndTagsGen {
 
 	public static final ResourceKey<DamageType> KOISHI = createDamage("koishi_attack");
+	public static final ResourceKey<DamageType> RUMIA = createDamage("rumia_attack");
 
 	public YHDamageTypes(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, YoukaisHomecoming.MODID);
 		new DamageTypeHolder(KOISHI, new DamageType("koishi_attack", 0.1f))
+				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
+		new DamageTypeHolder(RUMIA, new DamageType("rumia_attack", 0.1f))
 				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
 	}
 
@@ -34,6 +37,11 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 		return new DamageSource(target.level().registryAccess()
 				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(KOISHI),
 				source);
+	}
+
+	public static DamageSource rumia(LivingEntity self) {
+		return new DamageSource(self.level().registryAccess()
+				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(RUMIA), self);
 	}
 
 

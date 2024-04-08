@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-10T23:15:50.427894	Tags for minecraft:damage_type mod id youkaishomecoming
-cbaeae0e72c5fe9f554ec2fd64fe98f2b802c5f5 data/minecraft/tags/damage_type/bypasses_effects.json
-cbaeae0e72c5fe9f554ec2fd64fe98f2b802c5f5 data/minecraft/tags/damage_type/bypasses_enchantments.json
-cbaeae0e72c5fe9f554ec2fd64fe98f2b802c5f5 data/minecraft/tags/damage_type/bypasses_resistance.json
+// 1.20.1	2024-04-08T19:37:07.588175	Tags for minecraft:damage_type mod id youkaishomecoming
+350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_effects.json
+350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_enchantments.json
+350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_resistance.json

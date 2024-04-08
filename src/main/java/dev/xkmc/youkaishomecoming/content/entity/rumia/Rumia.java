@@ -2,8 +2,11 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukai;
+import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 @SerialClass
@@ -27,6 +31,7 @@ public class Rumia extends FloatingYoukai {
 	}
 
 	protected void registerGoals() {
+		this.goalSelector.addGoal(3, new RumiaParalyzeGoal(this));
 		this.goalSelector.addGoal(4, new RumiaAttackGoal(this));
 		this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.6));
@@ -48,6 +53,27 @@ public class Rumia extends FloatingYoukai {
 	@Override
 	protected void actuallyHurt(DamageSource pDamageSource, float amount) {
 		super.actuallyHurt(pDamageSource, Math.min(8, amount));//TODO config
+	}
+
+	public boolean doHurtTarget(Entity target) {
+		if (isCharged()) {
+			float atk = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+			if (target instanceof LivingEntity le) {
+				atk += EnchantmentHelper.getDamageBonus(getMainHandItem(), le.getMobType());
+			}
+			int fire = EnchantmentHelper.getFireAspect(this);
+			if (fire > 0) {
+				target.setSecondsOnFire(fire * 4);
+			}
+			boolean success = target.hurt(YHDamageTypes.rumia(this), atk);
+			if (success) {
+				this.doEnchantDamageEffects(this, target);
+				this.setLastHurtMob(target);
+			}
+			return success;
+		} else {
+			return super.doHurtTarget(target);
+		}
 	}
 
 	@Override
