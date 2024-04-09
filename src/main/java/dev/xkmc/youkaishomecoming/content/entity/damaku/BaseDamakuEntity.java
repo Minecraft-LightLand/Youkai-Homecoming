@@ -1,7 +1,7 @@
 
 package dev.xkmc.youkaishomecoming.content.entity.damaku;
 
-import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityEvent;
@@ -9,7 +9,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -104,7 +103,7 @@ public class BaseDamakuEntity extends Projectile {
 	protected void onHitEntity(EntityHitResult result) {
 		var e = result.getEntity();
 		if (e.hurt(YHDamageTypes.damaku(this), damage) && e instanceof LivingEntity le) {
-			if (getOwner() instanceof FloatingYoukaiEntity youkai) {
+			if (getOwner() instanceof YoukaiEntity youkai) {
 				youkai.onDamakuHit(le, this);
 			}
 		}

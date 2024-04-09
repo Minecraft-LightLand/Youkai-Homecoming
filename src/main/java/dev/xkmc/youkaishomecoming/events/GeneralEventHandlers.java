@@ -4,8 +4,10 @@ import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
@@ -75,9 +77,12 @@ public class GeneralEventHandlers {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onDamage(LivingDamageEvent event) {
-		if (event.getSource().is(YHDamageTypes.DAMAKU) && event.getEntity() instanceof Player pl) {
-			if (event.getAmount() < pl.getMaxHealth() * 0.1f) {
-				event.setAmount(pl.getMaxHealth() * 0.1f);
+		if (event.getSource().is(YHDamageTypes.DAMAKU) && event.getSource().getDirectEntity() instanceof YoukaiEntity) {
+			double min = YHModConfig.COMMON.damakuMinPHPDamage.get();
+			LivingEntity le = event.getEntity();
+			if (le instanceof Player) min = YHModConfig.COMMON.damakuPlayerPHPDamage.get();
+			if (event.getAmount() < le.getMaxHealth() * min) {
+				event.setAmount(le.getMaxHealth() * (float) min);
 			}
 		}
 	}

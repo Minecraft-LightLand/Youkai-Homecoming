@@ -3,9 +3,8 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.DamakuHelper;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
-import dev.xkmc.youkaishomecoming.init.registrate.YHDamaku;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,6 +30,12 @@ public class RumiaStateMachine {
 
 	@SerialClass.SerialField
 	private int time = 0, ballDelay = 0;
+
+	public void refreshState(RumiaEntity rumia) {
+		if (rumia.getTarget() == null) {
+			rumia.setWalking();
+		}
+	}
 
 	public void tick(RumiaEntity rumia) {
 		if (rumia.getTarget() == null) {
@@ -67,9 +72,11 @@ public class RumiaStateMachine {
 		}
 	}
 
-	public void startAttack(RumiaEntity rumia) {
+	public void startChargeAttack(RumiaEntity rumia, LivingEntity target) {
 		if (stage != RumiaStage.NONE) return;
 		if (ballDelay > 0) return;
+		if (target instanceof YoukaiEntity || target.hasEffect(YHEffects.YOUKAIFIED.get()))
+			return;
 		rumia.getNavigation().stop();
 		stage = RumiaStage.PREPARE;
 		time = PREPARE_TIME;
@@ -94,7 +101,9 @@ public class RumiaStateMachine {
 
 	public void onHurt(RumiaEntity rumia, LivingEntity le, float amount) {
 		if (stage == RumiaStage.BLOCKED) {
-			if (amount >= 2) time /= 2;
+			if (amount >= 2) {
+				time = time / 2 + 1;
+			}
 		} else if (stage != RumiaStage.FLY) {
 			if (amount >= 2) shoot(rumia, le);
 		}
@@ -108,15 +117,8 @@ public class RumiaStateMachine {
 		var ori = DamakuHelper.getOrientation(vec);
 		float dmg = (float) rumia.getAttributeValue(Attributes.ATTACK_DAMAGE);
 		for (int i = 0; i < 12; i++) {
-			shoot(rumia, dmg, ori.rotate(30 * i).scale(0.8), DyeColor.RED);
+			rumia.shoot(dmg, 40, ori.rotate(30 * i).scale(0.8), DyeColor.RED);
 		}
-	}
-
-	private void shoot(RumiaEntity rumia, float dmg, Vec3 vec, DyeColor color) {
-		ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), rumia, rumia.level());
-		damaku.setItem(YHDamaku.SIMPLE.get(color).asStack());
-		damaku.setup(dmg, 40, true, vec);
-		rumia.level().addFreshEntity(damaku);
 	}
 
 	public void onBlocked(RumiaEntity rumia) {
@@ -127,6 +129,7 @@ public class RumiaStateMachine {
 		setBlocked(rumia, true);
 		time = BLOCK_TIME;
 		stage = RumiaStage.BLOCKED;
+		if (rumia.isEx()) time /= 2;
 	}
 
 	public boolean isCharged(RumiaEntity rumia) {
@@ -141,7 +144,7 @@ public class RumiaStateMachine {
 		var attr = rumia.getAttribute(Attributes.ATTACK_DAMAGE);
 		assert attr != null;
 		if (charged) {
-			attr.addPermanentModifier(new AttributeModifier(ATK, "rumia_charge_Attack", 34, AttributeModifier.Operation.ADDITION));
+			attr.addPermanentModifier(new AttributeModifier(ATK, "rumia_charge_attack", 34, AttributeModifier.Operation.ADDITION));
 		} else {
 			attr.removeModifier(ATK);
 		}

@@ -15,9 +15,13 @@ import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -33,6 +37,7 @@ public class YHEntities {
 	public static final EntityEntry<LampreyEntity> LAMPREY = YoukaisHomecoming.REGISTRATE
 			.entity("lamprey", LampreyEntity::new, MobCategory.WATER_AMBIENT)
 			.properties(e -> e.sized(0.5F, 0.4F).clientTrackingRange(4))
+			.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
 			.attributes(LampreyEntity::createAttributes)
 			.renderer(() -> LampreyRenderer::new)
 			.spawnEgg(-3814463, -6646165).tab(YoukaisHomecoming.TAB.getKey()).build()
@@ -54,6 +59,7 @@ public class YHEntities {
 	public static final EntityEntry<RumiaEntity> RUMIA = YoukaisHomecoming.REGISTRATE
 			.entity("rumia", RumiaEntity::new, MobCategory.MONSTER)
 			.properties(e -> e.sized(0.4F, 1.7f).clientTrackingRange(10))
+			.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RumiaEntity::checkRumiaSpawnRules)
 			.attributes(RumiaEntity::createAttributes)
 			.renderer(() -> RumiaRenderer::new)
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()

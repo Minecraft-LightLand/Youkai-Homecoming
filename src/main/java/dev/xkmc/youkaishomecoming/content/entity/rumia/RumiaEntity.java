@@ -1,17 +1,23 @@
 package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
+import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.BaseDamakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
-import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.damaku.DamakuItem;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -25,11 +31,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 @SerialClass
-public class RumiaEntity extends FloatingYoukaiEntity {
+public class RumiaEntity extends YoukaiEntity {
 
 	private static final EntityDimensions FALL = EntityDimensions.scalable(1.7f, 0.4f);
+	private static final UUID EXRUMIA = MathHelper.getUUIDFromString("ex_rumia");
 
 	@SerialClass.SerialField
 	public final RumiaStateMachine state = new RumiaStateMachine();
@@ -63,6 +75,11 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 				.add(Attributes.FOLLOW_RANGE, 48);
 	}
 
+	public void readAdditionalSaveData(CompoundTag tag) {
+		super.readAdditionalSaveData(tag);
+		state.refreshState(this);
+	}
+
 	@Override
 	public void aiStep() {
 		super.aiStep();
@@ -75,6 +92,30 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 
 	public boolean isBlocked() {
 		return state == null ? false : isAlive() && state.isBlocked(this);
+	}
+
+	public boolean isEx() {
+		return getFlag(4);
+	}
+
+	public void setEx(boolean ex) {
+		var hp = getAttribute(Attributes.MAX_HEALTH);
+		var atk = getAttribute(Attributes.ATTACK_DAMAGE);
+		assert hp != null && atk != null;
+		if (ex) {
+			hp.addPermanentModifier(new AttributeModifier(EXRUMIA, "ex_rumia", 4, AttributeModifier.Operation.MULTIPLY_TOTAL));
+			atk.addPermanentModifier(new AttributeModifier(EXRUMIA, "ex_rumia", 1, AttributeModifier.Operation.MULTIPLY_TOTAL));
+		} else {
+			hp.removeModifier(EXRUMIA);
+			atk.removeModifier(EXRUMIA);
+		}
+		setFlag(4, ex);
+	}
+
+	@Override
+	public void knockback(double pStrength, double pX, double pZ) {
+		if (isCharged()) return;
+		super.knockback(pStrength, pX, pZ);
 	}
 
 	@Override
@@ -101,7 +142,11 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 
 	@Override
 	protected void actuallyHurt(DamageSource source, float amount) {
-		super.actuallyHurt(source, Math.min(getMaxHealth() / 5, amount));
+		if (!isEx() && amount >= getMaxHealth()) {//TODO
+			setEx(true);
+		}
+		int reduction = isEx() ? 20 : 5;
+		super.actuallyHurt(source, Math.min(getMaxHealth() / reduction, amount));
 		if (source.getEntity() instanceof LivingEntity le) {
 			state.onHurt(this, le, amount);
 		}
@@ -124,13 +169,8 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 	}
 
 	@Override
-	protected boolean shouldDespawnInPeaceful() {
-		return false;
-	}
-
-	@Override
 	public void onDamakuHit(LivingEntity e, BaseDamakuEntity damaku) {
-		if (e instanceof FloatingYoukaiEntity) return;
+		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
 		if (damaku instanceof ItemDamakuEntity d && d.getItem().getItem() instanceof DamakuItem item) {
 			if (item.color == DyeColor.BLACK)
 				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
@@ -138,4 +178,20 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 		}
 	}
 
+	@Nullable
+	@Override
+	public SpawnGroupData finalizeSpawn(
+			ServerLevelAccessor level, DifficultyInstance diff, MobSpawnType reason,
+			@Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
+		if (reason == MobSpawnType.NATURAL) {
+			restrictTo(blockPosition(), 32);
+		}
+		return super.finalizeSpawn(level, diff, reason, data, nbt);
+	}
+
+	public static boolean checkRumiaSpawnRules(EntityType<RumiaEntity> e, ServerLevelAccessor level, MobSpawnType type,
+											   BlockPos pos, RandomSource rand) {
+		return Monster.checkMonsterSpawnRules(e, level, type, pos, rand) &&
+				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 32, 32, 32)).isEmpty();
+	}
 }

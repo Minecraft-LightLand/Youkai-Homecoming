@@ -39,6 +39,9 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue koishiAttackDamage;
 		public final ForgeConfigSpec.IntValue koishiAttackBlockCount;
 
+		public final ForgeConfigSpec.DoubleValue damakuMinPHPDamage;
+		public final ForgeConfigSpec.DoubleValue damakuPlayerPHPDamage;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			youkaifyingChance = builder.comment("Chance for flesh food to add Youkaifying effect for the first time")
@@ -90,6 +93,13 @@ public class YHModConfig {
 					.defineInRange("koishiAttackDamage", 100, 0, 100000000);
 			koishiAttackBlockCount = builder.comment("Number of times player needs to consecutively block Koishi attack to get hat")
 					.defineInRange("koishiAttackBlockCount", 3, 0, 100);
+			builder.pop();
+
+			builder.push("damaku_battle");
+			damakuMinPHPDamage = builder.comment("Minimum damage youkai damaku will deal against non-player")
+							.defineInRange("damakuMinPHPDamage",0.02,0,1);
+			damakuPlayerPHPDamage = builder.comment("Minimum damage youkai damaku will deal against player")
+					.defineInRange("damakuPlayerPHPDamage",0.1,0,1);
 			builder.pop();
 		}
 

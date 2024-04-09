@@ -1,20 +1,21 @@
-package dev.xkmc.youkaishomecoming.content.entity.floating;
+package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.BaseDamakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDamaku;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,22 +24,29 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Objects;
 
 @SerialClass
-public class FloatingYoukaiEntity extends Monster {
+public class YoukaiEntity extends Monster {
 
 	private static final int GROUND_HEIGHT = 5, ATTEMPT_ABOVE = 3;
 
 	public final MoveControl walkCtrl, flyCtrl;
 	public final PathNavigation walkNav, fltNav;
 
-	protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(FloatingYoukaiEntity.class, EntityDataSerializers.BYTE);
+	private static <T> EntityDataAccessor<T> defineId(EntityDataSerializer<T> ser) {
+		return SynchedEntityData.defineId(YoukaiEntity.class, ser);
+	}
 
-	public FloatingYoukaiEntity(EntityType<? extends FloatingYoukaiEntity> pEntityType, Level pLevel) {
+	private static final SyncedData YOUKAI_DATA = new SyncedData(YoukaiEntity::defineId);
+
+	protected static final EntityDataAccessor<Integer> DATA_FLAGS_ID = YOUKAI_DATA.define(SyncedData.INT, 0, "youkai_flags");
+
+	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		this.walkCtrl = moveControl;
 		this.walkNav = navigation;
@@ -62,7 +70,7 @@ public class FloatingYoukaiEntity extends Monster {
 
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(DATA_FLAGS_ID, (byte) 0);
+		YOUKAI_DATA.register(entityData);
 	}
 
 	public void addAdditionalSaveData(CompoundTag tag) {
@@ -76,7 +84,6 @@ public class FloatingYoukaiEntity extends Monster {
 		if (tag.contains("auto-serial")) {
 			Wrappers.run(() -> TagCodec.fromTag(tag.getCompound("auto-serial"), getClass(), this, (f) -> true));
 		}
-
 	}
 
 	public boolean getFlag(int flag) {
@@ -84,7 +91,7 @@ public class FloatingYoukaiEntity extends Monster {
 	}
 
 	public void setFlag(int flag, boolean enable) {
-		byte b0 = this.entityData.get(DATA_FLAGS_ID);
+		int b0 = this.entityData.get(DATA_FLAGS_ID);
 		if (enable) {
 			b0 = (byte) (b0 | flag);
 		} else {
@@ -93,23 +100,7 @@ public class FloatingYoukaiEntity extends Monster {
 		this.entityData.set(DATA_FLAGS_ID, b0);
 	}
 
-	// flying
-
-	public final void setFlying() {
-		if (moveControl == flyCtrl) return;
-		getNavigation().stop();
-		moveControl = flyCtrl;
-		navigation = fltNav;
-		setNoGravity(true);
-	}
-
-	public final void setWalking() {
-		if (moveControl == walkCtrl) return;
-		getNavigation().stop();
-		moveControl = walkCtrl;
-		navigation = walkNav;
-		setNoGravity(false);
-	}
+	// features
 
 	@Override
 	public boolean isInvulnerableTo(DamageSource pSource) {
@@ -119,6 +110,43 @@ public class FloatingYoukaiEntity extends Monster {
 	@Override
 	protected boolean canRide(Entity pVehicle) {
 		return false;
+	}
+
+	@Override
+	protected boolean shouldDespawnInPeaceful() {
+		return false;
+	}
+
+	public void shoot(float dmg, int life, Vec3 vec, DyeColor color) {
+		ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), this, level());
+		damaku.setItem(YHDamaku.SIMPLE.get(color).asStack());
+		damaku.setup(dmg, life, true, vec);
+		level().addFreshEntity(damaku);
+	}
+
+	public void onDamakuHit(LivingEntity e, BaseDamakuEntity damaku) {
+	}
+
+	// flying
+
+	public final void setFlying() {
+		setNoGravity(true);
+		if (moveControl == flyCtrl) return;
+		getNavigation().stop();
+		moveControl = flyCtrl;
+		navigation = fltNav;
+	}
+
+	public final void setWalking() {
+		setNoGravity(false);
+		if (moveControl == walkCtrl) return;
+		getNavigation().stop();
+		moveControl = walkCtrl;
+		navigation = walkNav;
+	}
+
+	public final boolean isFlying() {
+		return moveControl == flyCtrl;
 	}
 
 	public void aiStep() {
@@ -170,6 +198,4 @@ public class FloatingYoukaiEntity extends Monster {
 		return true;
 	}
 
-	public void onDamakuHit(LivingEntity e, BaseDamakuEntity damaku) {
-	}
 }

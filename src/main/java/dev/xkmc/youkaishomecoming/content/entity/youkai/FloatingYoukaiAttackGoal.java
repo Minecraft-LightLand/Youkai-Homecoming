@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.floating;
+package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -6,7 +6,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
 
-public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> extends Goal {
+public abstract class FloatingYoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 
 	protected final T youkai;
 	private final int range;
@@ -100,7 +100,7 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> e
 		return 2;
 	}
 
-	private double getShootRange() {
+	public double getShootRange() {
 		return youkai.getAttributeValue(Attributes.FOLLOW_RANGE);
 	}
 }
