@@ -1,6 +1,7 @@
 
 package dev.xkmc.youkaishomecoming.content.entity.damaku;
 
+import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityEvent;
@@ -8,6 +9,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -21,6 +23,7 @@ import net.minecraft.world.phys.Vec3;
 public class BaseDamakuEntity extends Projectile {
 
 	private int life = 0;
+	private boolean bypassWall = false;
 	public float damage = 0;
 
 	protected BaseDamakuEntity(EntityType<? extends BaseDamakuEntity> pEntityType, Level pLevel) {
@@ -37,9 +40,10 @@ public class BaseDamakuEntity extends Projectile {
 		this.setOwner(pShooter);
 	}
 
-	public void setup(float damage, int life, Vec3 initVec) {
+	public void setup(float damage, int life, boolean bypassWall, Vec3 initVec) {
 		this.damage = damage;
 		this.life = life;
+		this.bypassWall = bypassWall;
 		setDeltaMovement(initVec);
 	}
 
@@ -70,14 +74,19 @@ public class BaseDamakuEntity extends Projectile {
 				}
 				flag = true;
 			}
+			if (!flag && bypassWall) {
+				life--;
+				flag = true;
+			}
 		}
-		if (hitresult.getType() != HitResult.Type.MISS && !flag && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, hitresult)) {
+		if (hitresult.getType() != HitResult.Type.MISS && !flag &&
+				!net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, hitresult)) {
 			this.onHit(hitresult);
 		}
 		this.checkInsideBlocks();
 		damakuMove();
 		life--;
-		if (life == 0) {
+		if (!level().isClientSide() && life <= 0) {
 			level().broadcastEntityEvent(this, EntityEvent.DEATH);
 			discard();
 		}
@@ -93,7 +102,12 @@ public class BaseDamakuEntity extends Projectile {
 
 	@Override
 	protected void onHitEntity(EntityHitResult result) {
-		result.getEntity().hurt(YHDamageTypes.damaku(this), damage);
+		var e = result.getEntity();
+		if (e.hurt(YHDamageTypes.damaku(this), damage) && e instanceof LivingEntity le) {
+			if (getOwner() instanceof FloatingYoukaiEntity youkai) {
+				youkai.onDamakuHit(le, this);
+			}
+		}
 	}
 
 	public void handleEntityEvent(byte pId) {

@@ -3,9 +3,11 @@ package dev.xkmc.youkaishomecoming.content.item.damaku;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -16,12 +18,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class DamakuItem extends Item {
 
-	private final DyeColor color;
+	public final DyeColor color;
 
 	public DamakuItem(Properties pProperties, DyeColor color) {
 		super(pProperties);
@@ -31,8 +37,7 @@ public class DamakuItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
-		boolean support = head.is(YHTagGen.TOUHOU_HAT) && head.getItem() instanceof TouhouHatItem item && item.support(color);
-		if (!support && !player.getAbilities().instabuild &&
+		if (!head.is(YHTagGen.TOUHOU_HAT) && !player.getAbilities().instabuild &&
 				!player.hasEffect(YHEffects.YOUKAIFIED.get()) &&
 				!player.hasEffect(YHEffects.YOUKAIFYING.get())) {
 			return InteractionResultHolder.fail(stack);
@@ -42,11 +47,11 @@ public class DamakuItem extends Item {
 		if (!level.isClientSide) {
 			ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), player, level);
 			damaku.setItem(stack);
-			damaku.setup(4, 40, RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
+			damaku.setup(4, 40, false, RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
 			level.addFreshEntity(damaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
-		if (support) {
+		if (head.is(YHTagGen.TOUHOU_HAT) && head.getItem() instanceof TouhouHatItem item && item.support(color)) {
 			player.getCooldowns().addCooldown(this, 10);
 		} else {
 			player.getCooldowns().addCooldown(this, 20);
@@ -60,4 +65,13 @@ public class DamakuItem extends Item {
 	public int getDamakuColor(ItemStack stack, int i) {
 		return i == 0 ? color.getFireworkColor() : 0xffffffff;
 	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
+		var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
+		list.add(YHLangData.USAGE_DAMAKU.get(fying, fied));
+	}
+
+
 }

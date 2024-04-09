@@ -12,9 +12,9 @@ import net.minecraft.world.phys.Vec3;
 
 public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 
-	private static final int BALL_RANGE = 8, APPROACH_RANGE = 16, SHOOT_FREQUENCY = 40, SHOOT_LIFE = 60;
+	private static final int BALL_RANGE = 8, APPROACH_RANGE = 16, SHOOT_FREQUENCY = 40, SHOOT_LIFE = 80;
 	private static final int SEPARATION = 12, ANGLE = 3;
-	private static final float MELEE_RANGE = 1.5f, SPEED = 0.8f, SPEED_VAR = 0.1f;
+	private static final float SPEED = 0.64f, SPEED_VAR = 0.08f;
 
 	public RumiaAttackGoal(RumiaEntity pBlaze) {
 		super(pBlaze, APPROACH_RANGE);
@@ -33,7 +33,7 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 				boolean sight = youkai.getSensing().hasLineOfSight(target);
 				double dist = youkai.distanceToSqr(target);
 				if (sight) {
-					attack(target, dist);
+					attack(target, dist, true);
 				}
 			}
 			return true;
@@ -43,15 +43,15 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 
 	@Override
 	protected double getMeleeRange() {
-		return MELEE_RANGE;
+		return youkai.isCharged() ? 3 : 2;
 	}
 
 	@Override
-	protected void attack(LivingEntity target, double dist) {
-		if (dist < BALL_RANGE * BALL_RANGE) {
+	protected void attack(LivingEntity target, double dist, boolean sight) {
+		if (sight && dist < BALL_RANGE * BALL_RANGE) {
 			youkai.state.startAttack(youkai);
 		}
-		super.attack(target, dist);
+		super.attack(target, dist, sight);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 		int off = youkai.getRandom().nextFloat() < 0.5 ? -ANGLE : ANGLE;
 		float dmg = (float) youkai.getAttributeValue(Attributes.ATTACK_DAMAGE);
 		for (int i = 0; i < 3; i++) {
-			float speed = SPEED + i * SPEED_VAR;
+			float speed = SPEED + i * 0.08f;
 			int angle = off * (i - 1);
 			shoot(dmg, ori.rotate(-SEPARATION + angle).scale(speed), DyeColor.RED);
 			shoot(dmg, ori.rotate(angle).scale(speed), DyeColor.BLACK);
@@ -83,7 +83,7 @@ public class RumiaAttackGoal extends FloatingYoukaiAttackGoal<RumiaEntity> {
 	private void shoot(float dmg, Vec3 vec, DyeColor color) {
 		ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), youkai, youkai.level());
 		damaku.setItem(YHDamaku.SIMPLE.get(color).asStack());
-		damaku.setup(dmg, SHOOT_LIFE, vec);
+		damaku.setup(dmg, SHOOT_LIFE, true, vec);
 		youkai.level().addFreshEntity(damaku);
 	}
 }

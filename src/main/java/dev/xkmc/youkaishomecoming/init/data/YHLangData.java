@@ -32,9 +32,10 @@ public enum YHLangData {
 
 	USAGE_STRAW_HAT("usage_straw_hat", "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders", 2, ChatFormatting.GRAY),
 	OBTAIN_SUWAKO_HAT("obtain_suwako_hat", "Drops when frog with hat eats %s different kinds of raiders in front of villagers", 1, ChatFormatting.GRAY),
-	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s", 1, ChatFormatting.GRAY),
+	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s. Allows using Cyan and Lime damaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_KOISHI_HAT("obtain_koishi_hat", "Drops when blocking Koishi attacks %s times in a row", 1, ChatFormatting.GRAY),
-	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s", 1, ChatFormatting.GRAY),
+	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s.  Allows using Blue and Red damaku without consumption.", 1, ChatFormatting.GRAY),
+	USAGE_DAMAKU("usage_damaku","While in %s or %s effect, or equip touhou hats, you can shoot damaku",2,ChatFormatting.GRAY)
 	;
 
 	private final String key, def;

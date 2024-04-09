@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-08T22:41:20.301847	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
+// 1.20.1	2024-04-09T10:25:13.029563	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -74,8 +74,8 @@ af5031e60c1b4c4666bfdceb02daf51a1b092320 assets/youkaishomecoming/blockstates/wi
 7e7833f6237c2b01c225fa7ea9561350cdf980ac assets/youkaishomecoming/blockstates/wild_tea.json
 8a2e2f2c22f137800a6c7802c573bd6cc6108c59 assets/youkaishomecoming/blockstates/wild_udumbara.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
-100e4be0bb1a56c10dd9958ad074453fb199b77b assets/youkaishomecoming/lang/en_ud.json
-cad3af415d15be00fdca4694efaa4969ac014ff6 assets/youkaishomecoming/lang/en_us.json
+7ed57138405b1941d19e2adb89d7fcc76f890962 assets/youkaishomecoming/lang/en_ud.json
+6f4ce9f43cd49ea71fcd61a3a7e09aabbd15d02b assets/youkaishomecoming/lang/en_us.json
 df4b9d00e00bd275d55ff3cd8d94930e42de8585 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
 45b94f41fde25955ebe5374d6687863d20fb52c2 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_connect.json
 7885b5f29c785483156efa810b2ebbd0675a21e9 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_corner.json
@@ -941,7 +941,7 @@ cfa4490b365d5efe573bfd15e7ae870bd0827c95 data/youkaishomecoming/recipes/black_te
 40b0f230df84e8f199680090a8d1a5fe186fd3af data/youkaishomecoming/recipes/blazing_red_curry.json
 b7487e1cc5b4048bb06948559314deaf4c19a5ea data/youkaishomecoming/recipes/blood_curd.json
 33228eca7cc30ccaa75291ee3f66e1e8fcf0cf04 data/youkaishomecoming/recipes/bowl_of_cream.json
-17f43d0be3cf8209b79cef2ad9e8155d28b8de0b data/youkaishomecoming/recipes/bun.json
+372365c74ef46dcafbdf29b59cd344332de8f32f data/youkaishomecoming/recipes/bun.json
 88035e2d5e47d311f0f6a7c417185211b3f8e316 data/youkaishomecoming/recipes/butter.json
 3d4e1f2a5d3c37465569f6ec3eef263232bd9dee data/youkaishomecoming/recipes/candy_apple.json
 8c25a29f854aef9ccc3f5efe63f43cc814fe633e data/youkaishomecoming/recipes/cappuccino.json

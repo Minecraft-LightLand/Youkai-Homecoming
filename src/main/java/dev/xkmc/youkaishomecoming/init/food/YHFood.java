@@ -62,8 +62,9 @@ public enum YHFood {
 	BUN(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f,
+	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),

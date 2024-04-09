@@ -1,11 +1,16 @@
 package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.BaseDamakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.floating.FloatingYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.item.damaku.DamakuItem;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
@@ -97,7 +103,7 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 	protected void actuallyHurt(DamageSource source, float amount) {
 		super.actuallyHurt(source, Math.min(getMaxHealth() / 5, amount));
 		if (source.getEntity() instanceof LivingEntity le) {
-			state.onHurt(le, amount);
+			state.onHurt(this, le, amount);
 		}
 	}
 
@@ -120,6 +126,16 @@ public class RumiaEntity extends FloatingYoukaiEntity {
 	@Override
 	protected boolean shouldDespawnInPeaceful() {
 		return false;
+	}
+
+	@Override
+	public void onDamakuHit(LivingEntity e, BaseDamakuEntity damaku) {
+		if (e instanceof FloatingYoukaiEntity) return;
+		if (damaku instanceof ItemDamakuEntity d && d.getItem().getItem() instanceof DamakuItem item) {
+			if (item.color == DyeColor.BLACK)
+				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+			if (item.color == DyeColor.RED && e == getTarget()) heal(getMaxHealth() * 0.2f);
+		}
 	}
 
 }

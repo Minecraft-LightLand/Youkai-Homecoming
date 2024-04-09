@@ -56,26 +56,25 @@ public abstract class FloatingYoukaiAttackGoal<T extends FloatingYoukaiEntity> e
 		double dist = youkai.distanceToSqr(target);
 		double follow = getShootRange();
 		if (!sight) {
-			if (dist < follow * follow) {
+			if (dist < follow * follow && youkai.getNavigation().isDone()) {
 				youkai.getNavigation().moveTo(target.getX(), target.getY(), target.getZ(), 1.0D);
 			}
-			return;
 		}
-		if (dist * 2 < range * range) {
+		if (sight && dist * 2 < range * range) {
 			youkai.getNavigation().stop();
 		}
 		if (dist > range * range && youkai.getNavigation().isDone()) {
 			youkai.getNavigation().moveTo(target.getX(), target.getY(), target.getZ(), 2.0D);
 		}
 		if (dist < follow * follow) {
-			attack(target, dist);
+			attack(target, dist, sight);
 		}
 	}
 
 
-	protected void attack(LivingEntity target, double dist) {
+	protected void attack(LivingEntity target, double dist, boolean sight) {
 		double melee = getMeleeRange();
-		if (dist < melee * melee) {
+		if (sight && dist < melee * melee) {
 			if (meleeTime <= 0) {
 				meleeTime = 20;
 				meleeAttack(target);

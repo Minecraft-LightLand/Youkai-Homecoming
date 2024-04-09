@@ -290,6 +290,7 @@ public class YHRecipeGen {
 					.addIngredient(ModTags.CABBAGE_ROLL_INGREDIENTS)
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.build(pvd, YHFood.BUN.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OYAKI.item.get(), 1, 200, 0.1f)

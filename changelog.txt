@@ -4,8 +4,7 @@
 - Add Rumia
 - Fix Suwako hat model
 - Make Straw hat wearable
-- Change Koishi musse recipe
-- Add Lune Tarte recipe
+- Recipe change: Koishi musse, bun, Lune Tarte
 
 2.0.5
 - Add Suwako hat obtain method

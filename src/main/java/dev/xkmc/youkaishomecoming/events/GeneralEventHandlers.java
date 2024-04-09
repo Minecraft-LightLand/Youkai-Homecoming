@@ -17,9 +17,12 @@ import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -48,7 +51,7 @@ public class GeneralEventHandlers {
 				KoishiAttackCapability.HOLDER.get(player).onBlock();
 			}
 		}
-		if (event.getDamageSource().getDirectEntity() instanceof RumiaEntity rumia){
+		if (event.getDamageSource().getDirectEntity() instanceof RumiaEntity rumia) {
 			rumia.state.onBlocked(rumia);
 		}
 	}
@@ -66,6 +69,15 @@ public class GeneralEventHandlers {
 				} else {
 					le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack());
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.LOW)
+	public static void onDamage(LivingDamageEvent event) {
+		if (event.getSource().is(YHDamageTypes.DAMAKU) && event.getEntity() instanceof Player pl) {
+			if (event.getAmount() < pl.getMaxHealth() * 0.1f) {
+				event.setAmount(pl.getMaxHealth() * 0.1f);
 			}
 		}
 	}

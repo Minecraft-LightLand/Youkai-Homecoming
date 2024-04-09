@@ -54,9 +54,10 @@
 	"drying_rack": "只能在直接阳光下使用",
 	"obtain_suwako_hat": "当戴帽子的青蛙在村民的目击下吃了%s种不同的灾厄村民时掉落",
 	"usage_straw_hat": "在%s或%s状态下右键青蛙给青蛙戴帽子，让青蛙能吃灾厄村民",
-	"usage_suwako_hat": "提供持续的%s",
+	"usage_suwako_hat": "提供持续的%s。使用青色和黄绿色弹幕时不消耗",
 	"obtain_koishi_hat": "连续%s次格挡恋恋攻击时获得",
-	"usage_koishi_hat": "提供持续的%s"
+	"usage_koishi_hat": "提供持续的%s。使用红色和蓝色弹幕时不消耗",
+	"usage_damaku": "在%s或%s状态下，或者装备东方角色帽子时，右键发射弹幕"
   },
   "death.attack": {
 	"koishi_attack": "恋恋从背后捅死了%s",

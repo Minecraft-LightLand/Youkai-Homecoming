@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.floating;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.BaseDamakuEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -12,6 +13,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -112,6 +116,11 @@ public class FloatingYoukaiEntity extends Monster {
 		return pSource.is(DamageTypeTags.IS_FALL);
 	}
 
+	@Override
+	protected boolean canRide(Entity pVehicle) {
+		return false;
+	}
+
 	public void aiStep() {
 		if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
 			this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
@@ -161,4 +170,6 @@ public class FloatingYoukaiEntity extends Monster {
 		return true;
 	}
 
+	public void onDamakuHit(LivingEntity e, BaseDamakuEntity damaku) {
+	}
 }

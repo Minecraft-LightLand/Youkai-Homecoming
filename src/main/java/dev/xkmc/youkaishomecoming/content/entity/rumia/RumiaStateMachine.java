@@ -2,9 +2,14 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.DamakuHelper;
+import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDamaku;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.UUID;
@@ -87,10 +92,31 @@ public class RumiaStateMachine {
 		ballDelay = SUCCESS_DELAY;
 	}
 
-	public void onHurt(LivingEntity le, float amount) {
-		if (stage != RumiaStage.BLOCKED) return;
-		if (amount >= 2) time /= 2;
+	public void onHurt(RumiaEntity rumia, LivingEntity le, float amount) {
+		if (stage == RumiaStage.BLOCKED) {
+			if (amount >= 2) time /= 2;
+		} else if (stage != RumiaStage.FLY) {
+			if (amount >= 2) shoot(rumia, le);
+		}
+	}
 
+	private void shoot(RumiaEntity rumia, LivingEntity target) {
+		double dx = target.getX() - rumia.getX();
+		double dy = target.getY(0.5D) - rumia.getY(0.5D);
+		double dz = target.getZ() - rumia.getZ();
+		var vec = new Vec3(dx, dy, dz).normalize();
+		var ori = DamakuHelper.getOrientation(vec);
+		float dmg = (float) rumia.getAttributeValue(Attributes.ATTACK_DAMAGE);
+		for (int i = 0; i < 12; i++) {
+			shoot(rumia, dmg, ori.rotate(30 * i).scale(0.8), DyeColor.RED);
+		}
+	}
+
+	private void shoot(RumiaEntity rumia, float dmg, Vec3 vec, DyeColor color) {
+		ItemDamakuEntity damaku = new ItemDamakuEntity(YHEntities.ITEM_DAMAKU.get(), rumia, rumia.level());
+		damaku.setItem(YHDamaku.SIMPLE.get(color).asStack());
+		damaku.setup(dmg, 40, true, vec);
+		rumia.level().addFreshEntity(damaku);
 	}
 
 	public void onBlocked(RumiaEntity rumia) {
