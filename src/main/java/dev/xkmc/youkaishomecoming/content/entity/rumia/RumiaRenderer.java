@@ -25,13 +25,7 @@ public class RumiaRenderer extends MobRenderer<RumiaEntity, RumiaModel<RumiaEnti
 			pose.translate(0, 0.2, 0);
 			pose.mulPose(Axis.XP.rotationDegrees(90));
 			pose.translate(0, -0.85, 0);
-		}
-		else super.setupRotations(rumia, pose, age, yaw, pTick);
-	}
-
-	@Override
-	protected float getAttackAnim(RumiaEntity pLivingBase, float pPartialTickTime) {
-		return super.getAttackAnim(pLivingBase, pPartialTickTime);
+		} else super.setupRotations(rumia, pose, age, yaw, pTick);
 	}
 
 	@Override

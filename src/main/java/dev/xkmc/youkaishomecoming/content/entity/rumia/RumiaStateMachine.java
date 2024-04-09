@@ -14,6 +14,7 @@ public class RumiaStateMachine {
 
 	private static final int PREPARE_TIME = 20, FLY_TIME = 60, BLOCK_TIME = 100;
 	private static final int SUCCESS_DELAY = 100, BLOCK_DELAY = 200;
+	private static final float SPEED = 2, KNOCK = 3;
 	private static final UUID ATK = MathHelper.getUUIDFromString("rumia_charge_attack");
 
 	public enum RumiaStage {
@@ -27,7 +28,9 @@ public class RumiaStateMachine {
 	private int time = 0, ballDelay = 0;
 
 	public void tick(RumiaEntity rumia) {
-		if (ballDelay > 0) {
+		if (rumia.getTarget() == null) {
+			ballDelay = SUCCESS_DELAY;
+		} else if (ballDelay > 0) {
 			ballDelay--;
 		}
 		if (time > 0) {
@@ -38,7 +41,7 @@ public class RumiaStateMachine {
 					if (target != null && target.isAlive() && target.canBeSeenAsEnemy()) {
 						var src = rumia.position().add(0, rumia.getBbHeight() * 0.5, 0);
 						var dst = target.position().add(0, target.getBbHeight() * 0.5, 0);
-						var vec = dst.subtract(src).normalize().scale(2);//TODO config
+						var vec = dst.subtract(src).normalize().scale(SPEED);
 						rumia.setDeltaMovement(vec);
 						stage = RumiaStage.FLY;
 						time = FLY_TIME;
@@ -72,9 +75,8 @@ public class RumiaStateMachine {
 	public void onAttack(RumiaEntity rumia, LivingEntity target) {
 		if (stage != RumiaStage.FLY) return;
 		if (target.isAlive()) {
-			target.knockback(10, 1, 1);
 			target.setDeltaMovement(rumia.getDeltaMovement()
-					.normalize().scale(3)
+					.normalize().scale(KNOCK)
 					.multiply(1, 0, 1)
 					.add(0, 0.4, 0));
 			target.hasImpulse = true;
@@ -87,7 +89,7 @@ public class RumiaStateMachine {
 
 	public void onHurt(LivingEntity le, float amount) {
 		if (stage != RumiaStage.BLOCKED) return;
-		if (amount >= 4) time /= 2;
+		if (amount >= 2) time /= 2;
 
 	}
 
