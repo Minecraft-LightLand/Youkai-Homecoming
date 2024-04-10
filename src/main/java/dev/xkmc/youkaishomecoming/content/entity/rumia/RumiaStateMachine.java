@@ -19,6 +19,7 @@ public class RumiaStateMachine {
 	private static final int PREPARE_TIME = 20, FLY_TIME = 60, BLOCK_TIME = 100;
 	private static final int SUCCESS_DELAY = 100, BLOCK_DELAY = 200;
 	private static final float SPEED = 2, KNOCK = 3;
+	private static final float DAMAKU_SPEED = 0.8f;
 	private static final UUID ATK = MathHelper.getUUIDFromString("rumia_charge_attack");
 
 	public enum RumiaStage {
@@ -37,7 +38,29 @@ public class RumiaStateMachine {
 		}
 	}
 
+	public float getClientPrepareProgress(RumiaEntity rumia) {
+		return isCharged(rumia) ? stage == RumiaStage.PREPARE ? 1f * time / PREPARE_TIME : 1 : 0;
+	}
+
 	public void tick(RumiaEntity rumia) {
+		if (rumia.level().isClientSide()) {
+			if (stage == RumiaStage.NONE && isCharged(rumia)) {
+				stage = RumiaStage.PREPARE;
+				time = PREPARE_TIME;
+			} else if (stage == RumiaStage.PREPARE) {
+				if (time > 0) {
+					time--;
+					if (time == 0) {
+						stage = RumiaStage.NONE;
+					}
+				}
+			} else {
+				time = 0;
+				stage = RumiaStage.NONE;
+			}
+			return;
+		}
+
 		if (rumia.getTarget() == null) {
 			ballDelay = SUCCESS_DELAY;
 		} else if (ballDelay > 0) {
@@ -116,8 +139,9 @@ public class RumiaStateMachine {
 		var vec = new Vec3(dx, dy, dz).normalize();
 		var ori = DamakuHelper.getOrientation(vec);
 		float dmg = (float) rumia.getAttributeValue(Attributes.ATTACK_DAMAGE);
-		for (int i = 0; i < 12; i++) {
-			rumia.shoot(dmg, 40, ori.rotate(30 * i).scale(0.8), DyeColor.RED);
+		int n = rumia.isEx() ? 24 : 12;
+		for (int i = 0; i < n; i++) {
+			rumia.shoot(dmg, 40, ori.rotate(360f / n * i).scale(DAMAKU_SPEED), DyeColor.RED);
 		}
 	}
 

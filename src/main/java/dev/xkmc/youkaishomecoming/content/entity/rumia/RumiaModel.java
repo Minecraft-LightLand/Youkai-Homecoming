@@ -20,9 +20,9 @@ public class RumiaModel<T extends RumiaEntity> extends HierarchicalModel<T> {
 				.texOffs(0, 0).addBox(-4.0F, -7.5F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
 				.texOffs(21, 16).addBox(-3.0F, -7.0F, -3.51F, 6.0F, 7.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 4.0F, 0.0F));
 
-		PartDefinition cube_r1 = head.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.3897F, -0.05F, -0.121F));
+		PartDefinition cube_r1 = head.addOrReplaceChild("tie0", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.3897F, -0.05F, -0.121F));
 
-		PartDefinition cube_r2 = head.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(0, 4).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.0254F, 0.4401F, -0.3778F));
+		PartDefinition cube_r2 = head.addOrReplaceChild("tie1", CubeListBuilder.create().texOffs(0, 4).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.0254F, 0.4401F, -0.3778F));
 
 		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(48, 0).addBox(-3.0F, 1.0F, -1.5F, 3.0F, 10.0F, 3.0F, new CubeDeformation(0.0F))
 				.texOffs(32, 0).addBox(-3.5F, 0.5F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 13.0F, 0.0F));
@@ -112,10 +112,8 @@ public class RumiaModel<T extends RumiaEntity> extends HierarchicalModel<T> {
 	private final ModelPart leftLeg;
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
-	private final ModelPart body;
-	private final ModelPart skirt;
-	private final ModelPart skirt2;
-	private final ModelPart bone;
+	private final ModelPart tie0;
+	private final ModelPart tie1;
 
 	public RumiaModel(ModelPart root) {
 		this.root = root;
@@ -124,15 +122,15 @@ public class RumiaModel<T extends RumiaEntity> extends HierarchicalModel<T> {
 		this.leftLeg = root.getChild("leftLeg");
 		this.rightArm = root.getChild("rightArm");
 		this.leftArm = root.getChild("leftArm");
-		this.body = root.getChild("body");
-		this.skirt = root.getChild("skirt");
-		this.skirt2 = root.getChild("skirt2");
-		this.bone = root.getChild("bone");
+		this.tie0 = head.getChild("tie0");
+		this.tie1 = head.getChild("tie1");
 	}
 
 	@Override
-	public void prepareMobModel(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
-
+	public void prepareMobModel(T e, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
+		boolean ex = e.isEx();
+		tie0.skipDraw = ex;
+		tie1.skipDraw = ex;
 	}
 
 	@Override

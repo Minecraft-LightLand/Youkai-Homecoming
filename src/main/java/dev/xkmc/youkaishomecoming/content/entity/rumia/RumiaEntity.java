@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -109,6 +110,7 @@ public class RumiaEntity extends YoukaiEntity {
 			hp.removeModifier(EXRUMIA);
 			atk.removeModifier(EXRUMIA);
 		}
+		setHealth(getMaxHealth());
 		setFlag(4, ex);
 	}
 
@@ -142,14 +144,18 @@ public class RumiaEntity extends YoukaiEntity {
 
 	@Override
 	protected void actuallyHurt(DamageSource source, float amount) {
-		if (!isEx() && amount >= getMaxHealth()) {//TODO
+		boolean isVoid = source.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
+		if (!isVoid && !isEx() && amount >= getMaxHealth()) {//TODO
 			setEx(true);
 		}
-		int reduction = isEx() ? 20 : 5;
-		super.actuallyHurt(source, Math.min(getMaxHealth() / reduction, amount));
 		if (source.getEntity() instanceof LivingEntity le) {
 			state.onHurt(this, le, amount);
 		}
+		if (!isVoid) {
+			int reduction = isEx() ? 20 : 5;
+			amount = Math.min(getMaxHealth() / reduction, amount);
+		}
+		super.actuallyHurt(source, amount);
 	}
 
 	@Override

@@ -74,7 +74,7 @@ public class BaseDamakuEntity extends Projectile {
 				flag = true;
 			}
 			if (!flag && bypassWall) {
-				life--;
+				if (!level().isClientSide()) life--;
 				flag = true;
 			}
 		}
@@ -84,10 +84,13 @@ public class BaseDamakuEntity extends Projectile {
 		}
 		this.checkInsideBlocks();
 		damakuMove();
-		life--;
-		if (!level().isClientSide() && life <= 0) {
-			level().broadcastEntityEvent(this, EntityEvent.DEATH);
-			discard();
+
+		if (!level().isClientSide()) {
+			life--;
+			if (life <= 0) {
+				level().broadcastEntityEvent(this, EntityEvent.DEATH);
+				discard();
+			}
 		}
 	}
 
@@ -101,6 +104,7 @@ public class BaseDamakuEntity extends Projectile {
 
 	@Override
 	protected void onHitEntity(EntityHitResult result) {
+		if (level().isClientSide) return;
 		var e = result.getEntity();
 		if (e.hurt(YHDamageTypes.damaku(this), damage) && e instanceof LivingEntity le) {
 			if (getOwner() instanceof YoukaiEntity youkai) {

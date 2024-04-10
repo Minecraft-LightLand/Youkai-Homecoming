@@ -14,6 +14,7 @@ public class RumiaRenderer extends MobRenderer<RumiaEntity, RumiaModel<RumiaEnti
 
 	public RumiaRenderer(EntityRendererProvider.Context context) {
 		super(context, new RumiaModel<>(context.bakeLayer(RumiaModel.LAYER_LOCATION)), 0.2F);
+		addLayer(new BlackBallLayer<>(this, context.getModelSet()));
 	}
 
 	public ResourceLocation getTextureLocation(RumiaEntity entity) {
