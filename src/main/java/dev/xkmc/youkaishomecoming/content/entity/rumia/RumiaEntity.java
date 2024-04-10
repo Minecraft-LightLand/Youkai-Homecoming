@@ -2,10 +2,10 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.BaseDamakuEntity;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.BaseDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.item.damaku.DamakuItem;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.BlockPos;
@@ -175,13 +175,13 @@ public class RumiaEntity extends YoukaiEntity {
 	}
 
 	@Override
-	public void onDamakuHit(LivingEntity e, BaseDamakuEntity damaku) {
+	public void onDanmakuHit(LivingEntity e, BaseDanmakuEntity danmaku) {
 		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
-		if (damaku instanceof ItemDamakuEntity d && d.getItem().getItem() instanceof DamakuItem item) {
+		if (danmaku instanceof ItemDanmakuEntity d && d.getItem().getItem() instanceof DanmakuItem item) {
 			if (item.color == DyeColor.BLACK)
 				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
 			if (item.color == DyeColor.RED) {
-				super.onDamakuHit(e, damaku);
+				super.onDanmakuHit(e, danmaku);
 			}
 		}
 	}

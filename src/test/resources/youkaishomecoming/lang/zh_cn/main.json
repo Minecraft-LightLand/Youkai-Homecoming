@@ -1,12 +1,12 @@
 {
   "itemGroup.youkaishomecoming": {
 	"youkais_homecoming": "妖怪们的归家",
-	"damaku": "妖怪们的弹幕"
+	"danmaku": "妖怪们的弹幕"
   },
   "entity.youkaishomecoming": {
 	"lamprey": "八目鳗",
 	"rumia": "露米娅",
-	"item_damaku": "弹幕"
+	"item_danmaku": "弹幕"
   },
   "effect.youkaishomecoming": {
 	"youkaified": "妖怪化",
@@ -57,15 +57,15 @@
 	"usage_suwako_hat": "提供持续的%s。使用青色和黄绿色弹幕时不消耗",
 	"obtain_koishi_hat": "连续%s次格挡恋恋攻击时获得",
 	"usage_koishi_hat": "提供持续的%s。使用红色和蓝色弹幕时不消耗",
-	"usage_damaku": "在%s或%s状态下，或者装备东方角色帽子时，右键发射弹幕"
+	"usage_danmaku": "在%s或%s状态下，或者装备东方角色帽子时，右键发射弹幕"
   },
   "death.attack": {
 	"koishi_attack": "恋恋从背后捅死了%s",
 	"koishi_attack.player": "%2$s从背后捅死了%1$s",
 	"rumia_attack": "%s被露米娅吃掉了",
 	"rumia_attack.player": "%s被%s吃掉了",
-	"damaku": "%s在弹幕战中满身疮痍",
-	"damaku.player": "%s在与%s的弹幕战中满身疮痍"
+	"danmaku": "%s在弹幕战中满身疮痍",
+	"danmaku.player": "%s在与%s的弹幕战中满身疮痍"
   },
   "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
 }

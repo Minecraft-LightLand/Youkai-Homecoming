@@ -9,12 +9,14 @@ import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHDish;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.Util;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.world.level.block.Blocks;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -120,6 +122,21 @@ public class YHAdvGen {
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))),
 						"Powerful Being", "Get Youkaified effect")
+				.type(FrameType.CHALLENGE, true, true, false);
+		
+		youkai.create("mary_call", ModItems.IRON_KNIFE.get(),
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.KOISHI_RING.getId(), ContextAwarePredicate.ANY)),
+						"It’s Mary-san", "Receives a phone call from Koishi in the nether in Youkaifying effect")
+				.create("koishi_hat", YHItems.KOISHI_HAT.get(),
+						CriterionBuilder.item(YHItems.KOISHI_HAT.get()),
+						"Koishi's Hat", "Obtain Koishi's Hat after playing with Koishi")
+				.type(FrameType.CHALLENGE, true, true, false);
+		youkai.create("suwako_wear", YHItems.STRAW_HAT.get(),
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.SUWAKO_WEAR.getId(), ContextAwarePredicate.ANY)),
+						"Godhood Ascension", "In youkaified or youkaifying effect, give the straw hat to a frog")
+				.create("suwako_hat", YHItems.SUWAKO_HAT.get(),
+						CriterionBuilder.item(YHItems.SUWAKO_HAT.get()),
+						"Faith Collection", "Obtain Suwako's Hat after collecting enough faith")
 				.type(FrameType.CHALLENGE, true, true, false);
 
 		root.finish();

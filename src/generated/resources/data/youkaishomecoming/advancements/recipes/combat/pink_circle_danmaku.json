@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pink_circle_danmaku": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:pink_circle_danmaku"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:pink_circle_danmaku"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_pink_circle_danmaku",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:pink_circle_danmaku"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.init.data;
 
 import dev.xkmc.l2damagetracker.init.data.DamageTypeAndTagsGen;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.BaseDamakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.BaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -21,7 +21,7 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 
 	public static final ResourceKey<DamageType> KOISHI = createDamage("koishi_attack");
 	public static final ResourceKey<DamageType> RUMIA = createDamage("rumia_attack");
-	public static final ResourceKey<DamageType> DAMAKU = createDamage("damaku");
+	public static final ResourceKey<DamageType> DANMAKU = createDamage("danmaku");
 
 	public YHDamageTypes(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, YoukaisHomecoming.MODID);
@@ -29,7 +29,7 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
 		new DamageTypeHolder(RUMIA, new DamageType("rumia_attack", 0.1f))
 				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
-		new DamageTypeHolder(DAMAKU, new DamageType("damaku", 0.1f))
+		new DamageTypeHolder(DANMAKU, new DamageType("danmaku", 0.1f))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR);
 	}
 
@@ -48,9 +48,9 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(RUMIA), self);
 	}
 
-	public static DamageSource damaku(BaseDamakuEntity self) {
+	public static DamageSource danmaku(BaseDanmakuEntity self) {
 		return new DamageSource(self.level().registryAccess()
-				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DAMAKU), self,
+				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DANMAKU), self,
 				self.getOwner());
 	}
 

@@ -1,10 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.item.curio;
 
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.util.Lazy;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 public enum TouhouMat implements ArmorMaterial {
 	SUWAKO_HAT(60, 10, 3, 3, () -> Ingredient.of(ModItems.CANVAS.get()), SoundEvents.ARMOR_EQUIP_LEATHER),
 	STRAW_HAT(10, 1, 1, 0, () -> Ingredient.of(ModItems.CANVAS.get()), SoundEvents.ARMOR_EQUIP_LEATHER),
-	KOISHI_HAT(60, 10, 5, 3, () -> Ingredient.of(YHFood.KOISHI_MOUSSE.item), SoundEvents.ARMOR_EQUIP_IRON),
+	KOISHI_HAT(60, 10, 5, 3, () -> Ingredient.of(Items.IRON_INGOT), SoundEvents.ARMOR_EQUIP_IRON),
 	;
 
 	private static final int[] DURABILITY = {13, 15, 16, 11};

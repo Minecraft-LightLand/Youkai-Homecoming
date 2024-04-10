@@ -4,8 +4,8 @@ import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuEntity;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.ItemDamakuRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
@@ -64,16 +64,16 @@ public class YHEntities {
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.RED).get(), 5, 10))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.SIMPLE.get(DyeColor.RED).get(), 5, 10))
 									.when(LootTableTemplate.byPlayer()))
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.BLACK).get(), 3, 6))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.SIMPLE.get(DyeColor.BLACK).get(), 3, 6))
 									.when(LootTableTemplate.byPlayer()))
 			)).register();
 
-	public static final EntityEntry<ItemDamakuEntity> ITEM_DAMAKU = YoukaisHomecoming.REGISTRATE
-			.<ItemDamakuEntity>entity("item_damaku", ItemDamakuEntity::new, MobCategory.MISC)
+	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU = YoukaisHomecoming.REGISTRATE
+			.<ItemDanmakuEntity>entity("item_danmaku", ItemDanmakuEntity::new, MobCategory.MISC)
 			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4))
-			.renderer(() -> ItemDamakuRenderer::new)
+			.renderer(() -> ItemDanmakuRenderer::new)
 			.register();
 
 	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {

@@ -1,0 +1,39 @@
+{
+  "parent": "youkaishomecoming:main/suwako_wear",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:suwako_hat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.suwako_hat.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:suwako_hat",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.suwako_hat.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

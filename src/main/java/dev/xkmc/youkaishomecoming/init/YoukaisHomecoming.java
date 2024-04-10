@@ -58,10 +58,11 @@ public class YoukaisHomecoming {
 		YHItems.register();
 		YHBlocks.register();
 		YHEffects.register();
-		YHDamaku.register();
+		YHDanmaku.register();
 		YHEntities.register();
 		YHSounds.register();
 		YHGLMProvider.register();
+		YHCriteriaTriggers.register();
 		KoishiAttackCapability.register();
 		FrogGodCapability.register();
 		YHModConfig.init();

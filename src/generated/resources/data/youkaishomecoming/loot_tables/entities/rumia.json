@@ -16,13 +16,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 16.0,
-                "min": 8.0
+                "max": 10.0,
+                "min": 5.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "youkaishomecoming:simple_red_damaku"
+          "name": "youkaishomecoming:red_circle_danmaku"
         }
       ],
       "rolls": 1.0
@@ -42,13 +42,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8.0,
-                "min": 4.0
+                "max": 6.0,
+                "min": 3.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "youkaishomecoming:simple_black_damaku"
+          "name": "youkaishomecoming:black_circle_danmaku"
         }
       ],
       "rolls": 1.0

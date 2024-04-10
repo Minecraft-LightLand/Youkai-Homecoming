@@ -1,0 +1,31 @@
+{
+  "parent": "youkaishomecoming:main/first_time",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaishomecoming:koishi_ring"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.mary_call.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "farmersdelight:iron_knife",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.mary_call.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

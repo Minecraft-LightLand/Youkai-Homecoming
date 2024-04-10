@@ -39,9 +39,9 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue koishiAttackDamage;
 		public final ForgeConfigSpec.IntValue koishiAttackBlockCount;
 
-		public final ForgeConfigSpec.DoubleValue damakuMinPHPDamage;
-		public final ForgeConfigSpec.DoubleValue damakuPlayerPHPDamage;
-		public final ForgeConfigSpec.DoubleValue damakuHealOnHitTarget;
+		public final ForgeConfigSpec.DoubleValue danmakuMinPHPDamage;
+		public final ForgeConfigSpec.DoubleValue danmakuPlayerPHPDamage;
+		public final ForgeConfigSpec.DoubleValue danmakuHealOnHitTarget;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
@@ -96,13 +96,13 @@ public class YHModConfig {
 					.defineInRange("koishiAttackBlockCount", 3, 0, 100);
 			builder.pop();
 
-			builder.push("damaku_battle");
-			damakuMinPHPDamage = builder.comment("Minimum damage youkai damaku will deal against non-player")
-					.defineInRange("damakuMinPHPDamage", 0.02, 0, 1);
-			damakuPlayerPHPDamage = builder.comment("Minimum damage youkai damaku will deal against player")
-					.defineInRange("damakuPlayerPHPDamage", 0.1, 0, 1);
-			damakuHealOnHitTarget = builder.comment("When damaku hits target, heal youkai health by percentage of max health")
-					.defineInRange("damakuHealOnHitTarget", 0.2, 0, 1);
+			builder.push("danmaku_battle");
+			danmakuMinPHPDamage = builder.comment("Minimum damage youkai danmaku will deal against non-player")
+					.defineInRange("danmakuMinPHPDamage", 0.02, 0, 1);
+			danmakuPlayerPHPDamage = builder.comment("Minimum damage youkai danmaku will deal against player")
+					.defineInRange("danmakuPlayerPHPDamage", 0.1, 0, 1);
+			danmakuHealOnHitTarget = builder.comment("When danmaku hits target, heal youkai health by percentage of max health")
+					.defineInRange("danmakuHealOnHitTarget", 0.2, 0, 1);
 			builder.pop();
 		}
 

@@ -8,7 +8,7 @@ import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import dev.xkmc.youkaishomecoming.init.registrate.YHDamaku;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
@@ -671,16 +671,16 @@ public class YHRecipeGen {
 
 		}
 
-		// damaku
+		// danmaku
 		{
 			for (int i = 0; i < 16; i++) {
 				DyeColor color = DyeColor.values()[i];
 				Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(color.getName() + "_dye"));
 				assert dye != null;
-				Item damaku = YHDamaku.SIMPLE.get(color).get();
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, damaku, 8)::unlockedBy, damaku)
+				Item danmaku = YHDanmaku.SIMPLE.get(color).get();
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
 						.pattern("AAA").pattern("ABA").pattern("AAA")
-						.define('A', YHTagGen.SIMPLE_DAMAKU)
+						.define('A', YHTagGen.CIRCLE_DANMAKU)
 						.define('B', dye)
 						.save(pvd);
 			}

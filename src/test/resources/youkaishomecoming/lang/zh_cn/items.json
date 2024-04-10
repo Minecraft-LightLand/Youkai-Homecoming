@@ -108,12 +108,9 @@
 	"rumia_spawn_egg": "露米娅生成蛋"
   },
   "-cartesian": {
-	"damaku": {
+	"danmaku": {
 	  "path": "item.youkaishomecoming",
 	  "list": [
-		{
-		  "simple": "普通"
-		},
 		{
 		  "black": "黑色",
 		  "blue": "蓝色",
@@ -133,7 +130,10 @@
 		  "yellow": "黄色"
 		},
 		{
-		  "damaku": "弹幕"
+		  "circle": "环玉"
+		},
+		{
+		  "danmaku": "弹幕"
 		}
 	  ]
 	}

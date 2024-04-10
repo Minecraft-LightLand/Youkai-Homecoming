@@ -39,6 +39,14 @@
 	"udumbara.description": "种植幻昙华。这种植物在月光下成长，在阳光下枯萎",
 	"udumbara.title": "月光作物",
 	"udumbara_flower.description": "获得幻昙花。幻昙华只在满月夜的月光下开花，开花10秒之后花将会凋谢",
-	"udumbara_flower.title": "昙花一现"
+	"udumbara_flower.title": "昙花一现",
+	"koishi_hat.description": "和恋恋玩，获取帽子先生",
+	"koishi_hat.title": "钢盔",
+	"mary_call.description": "半妖怪化状态下在下界被恋恋打电话",
+	"mary_call.title": "这里是玛丽小姐～",
+	"suwako_hat.description": "收集信仰获取诹访子的帽子",
+	"suwako_hat.title": "信仰收集",
+	"suwako_wear.description": "在半妖怪化或者妖怪化状态下给青蛙带草帽",
+	"suwako_wear.title": "祟神之路"
   }
 }

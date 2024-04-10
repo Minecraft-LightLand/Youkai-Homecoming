@@ -32,10 +32,10 @@ public enum YHLangData {
 
 	USAGE_STRAW_HAT("usage_straw_hat", "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders", 2, ChatFormatting.GRAY),
 	OBTAIN_SUWAKO_HAT("obtain_suwako_hat", "Drops when frog with hat eats %s different kinds of raiders in front of villagers", 1, ChatFormatting.GRAY),
-	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s. Allows using Cyan and Lime damaku without consumption.", 1, ChatFormatting.GRAY),
+	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s. Allows using Cyan and Lime danmaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_KOISHI_HAT("obtain_koishi_hat", "Drops when blocking Koishi attacks %s times in a row", 1, ChatFormatting.GRAY),
-	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s.  Allows using Blue and Red damaku without consumption.", 1, ChatFormatting.GRAY),
-	USAGE_DAMAKU("usage_damaku", "While in %s or %s effect, or equip touhou hats, you can shoot damaku", 2, ChatFormatting.GRAY);
+	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s.  Allows using Blue and Red danmaku without consumption.", 1, ChatFormatting.GRAY),
+	USAGE_DANMAKU("usage_danmaku", "While in %s or %s effect, or equip touhou hats, you can shoot danmaku", 2, ChatFormatting.GRAY);
 
 	private final String key, def;
 	private final int arg;
@@ -76,8 +76,8 @@ public enum YHLangData {
 		pvd.add("death.attack.koishi_attack.player", "%2$s stabbed %1$s in the back");
 		pvd.add("death.attack.rumia_attack", "%s is eaten by Rumia");
 		pvd.add("death.attack.rumia_attack.player", "%s is eaten by %s");
-		pvd.add("death.attack.damaku", "%s lost the damaku battle");
-		pvd.add("death.attack.damaku.player", "%s lost the damaku battle to %s");
+		pvd.add("death.attack.danmaku", "%s lost the danmaku battle");
+		pvd.add("death.attack.danmaku.player", "%s lost the danmaku battle to %s");
 	}
 
 

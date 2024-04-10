@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.entity.damaku.DamakuHelper;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,7 +19,7 @@ public class RumiaStateMachine {
 	private static final int PREPARE_TIME = 20, FLY_TIME = 60, BLOCK_TIME = 100;
 	private static final int SUCCESS_DELAY = 100, BLOCK_DELAY = 200;
 	private static final float SPEED = 2, KNOCK = 3;
-	private static final float DAMAKU_SPEED = 0.8f;
+	private static final float DANMAKU_SPEED = 0.8f;
 	private static final UUID ATK = MathHelper.getUUIDFromString("rumia_charge_attack");
 
 	public enum RumiaStage {
@@ -137,11 +137,11 @@ public class RumiaStateMachine {
 		double dy = target.getY(0.5D) - rumia.getY(0.5D);
 		double dz = target.getZ() - rumia.getZ();
 		var vec = new Vec3(dx, dy, dz).normalize();
-		var ori = DamakuHelper.getOrientation(vec);
+		var ori = DanmakuHelper.getOrientation(vec);
 		float dmg = (float) rumia.getAttributeValue(Attributes.ATTACK_DAMAGE);
 		int n = rumia.isEx() ? 24 : 12;
 		for (int i = 0; i < n; i++) {
-			rumia.shoot(dmg, 40, ori.rotate(360f / n * i).scale(DAMAKU_SPEED), DyeColor.RED);
+			rumia.shoot(dmg, 40, ori.rotate(360f / n * i).scale(DANMAKU_SPEED), DyeColor.RED);
 		}
 	}
 
