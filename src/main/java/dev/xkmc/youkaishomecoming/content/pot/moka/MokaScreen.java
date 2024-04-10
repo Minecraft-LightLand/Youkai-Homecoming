@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class MokaScreen extends BasePotScreen<MokaMenu> {
 
-	private static final ResourceLocation BG = new ResourceLocation(YoukaisHomecoming.MODID, "textures/gui/moka.png");
+	private static final ResourceLocation BG = YoukaisHomecoming.loc("textures/gui/moka.png");
 	private static final Rectangle HEAT_ICON = new Rectangle(44, 57, 17, 15);
 	private static final Rectangle PROGRESS_ARROW = new Rectangle(74, 28, 38, 17);
 

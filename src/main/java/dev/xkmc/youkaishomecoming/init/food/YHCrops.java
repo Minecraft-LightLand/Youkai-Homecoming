@@ -12,7 +12,6 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -64,10 +63,8 @@ public enum YHCrops {
 		String name = name().toLowerCase(Locale.ROOT);
 		this.rarity = rarity;
 		if (seedName == null) seedName = name;
-		this.configKey = ResourceKey.create(Registries.CONFIGURED_FEATURE,
-				new ResourceLocation(YoukaisHomecoming.MODID, name));
-		this.placementKey = ResourceKey.create(Registries.PLACED_FEATURE,
-				new ResourceLocation(YoukaisHomecoming.MODID, name));
+		this.configKey = ResourceKey.create(Registries.CONFIGURED_FEATURE, YoukaisHomecoming.loc(name));
+		this.placementKey = ResourceKey.create(Registries.PLACED_FEATURE, YoukaisHomecoming.loc(name));
 
 		PLANT = type.plant(name, this);
 		WILD = type.wild(name, this);

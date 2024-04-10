@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.block.food;
 
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;

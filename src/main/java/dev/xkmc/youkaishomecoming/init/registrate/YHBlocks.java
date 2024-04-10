@@ -138,8 +138,8 @@ public class YHBlocks {
 				new ResourceLocation("block/hay_block")
 		);
 		STRAW = new WoodSet("straw", ModBlocks.STRAW_BALE, prop,
-				new ResourceLocation(YoukaisHomecoming.MODID, "block/straw_bale_end"),
-				new ResourceLocation(YoukaisHomecoming.MODID, "block/straw_bale_side"),
+				YoukaisHomecoming.loc("block/straw_bale_end"),
+				YoukaisHomecoming.loc("block/straw_bale_side"),
 				new ResourceLocation(FarmersDelight.MODID, "block/straw_bale")
 		);
 

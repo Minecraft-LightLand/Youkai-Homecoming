@@ -88,11 +88,11 @@ public class RumiaEntity extends YoukaiEntity {
 	}
 
 	public boolean isCharged() {
-		return state == null ? false : isAlive() && state.isCharged(this);
+		return state != null && isAlive() && state.isCharged(this);
 	}
 
 	public boolean isBlocked() {
-		return state == null ? false : isAlive() && state.isBlocked(this);
+		return state != null && isAlive() && state.isBlocked(this);
 	}
 
 	public boolean isEx() {

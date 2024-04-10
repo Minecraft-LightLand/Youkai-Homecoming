@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.block.plant;
 
 import com.tterrag.registrate.providers.DataGenContext;

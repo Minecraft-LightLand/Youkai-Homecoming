@@ -30,7 +30,7 @@ public abstract class BasePotRecipe extends CookingPotRecipe {
 		List<ItemStack> inputs = new ArrayList<>();
 		int i = 0;
 
-		for(int j = 0; j < 4; ++j) {
+		for (int j = 0; j < 4; ++j) {
 			ItemStack itemstack = inv.getItem(j);
 			if (!itemstack.isEmpty()) {
 				++i;

@@ -13,10 +13,10 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 public class YHLootGen {
 
-	public static final ResourceLocation NEST_CHEST = new ResourceLocation(YoukaisHomecoming.MODID, "chests/youkai_nest/chest");
-	public static final ResourceLocation NEST_BARREL = new ResourceLocation(YoukaisHomecoming.MODID, "chests/youkai_nest/barrel");
+	public static final ResourceLocation NEST_CHEST = YoukaisHomecoming.loc("chests/youkai_nest/chest");
+	public static final ResourceLocation NEST_BARREL = YoukaisHomecoming.loc("chests/youkai_nest/barrel");
 
-	public static final ResourceLocation UDUMBARA_LOOT = new ResourceLocation(YoukaisHomecoming.MODID, "udumbara_chest_loot");
+	public static final ResourceLocation UDUMBARA_LOOT = YoukaisHomecoming.loc("udumbara_chest_loot");
 
 	public static void genLoot(RegistrateLootTableProvider pvd) {
 		var bone = LootTableTemplate.getPool(1, 0)

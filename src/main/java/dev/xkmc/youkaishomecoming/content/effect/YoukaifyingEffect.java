@@ -16,5 +16,5 @@ public class YoukaifyingEffect extends MobEffect {
 	public List<ItemStack> getCurativeItems() {
 		return List.of();
 	}
-	
+
 }

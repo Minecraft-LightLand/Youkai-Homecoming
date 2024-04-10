@@ -48,7 +48,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 
-	private static final ResourceLocation NEST = new ResourceLocation(YoukaisHomecoming.MODID, "youkai_nest");
+	private static final ResourceLocation NEST = YoukaisHomecoming.loc("youkai_nest");
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(Registries.CONFIGURED_FEATURE, ctx -> {
@@ -102,7 +102,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		var biomes = ctx.lookup(Registries.BIOME);
 		var features = ctx.lookup(Registries.PLACED_FEATURE);
 		HolderSet<Biome> set = biomes.getOrThrow(YHBiomeTagsProvider.LAMPREY);
-		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(YoukaisHomecoming.MODID, "lamprey")),
+		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, YoukaisHomecoming.loc("lamprey")),
 				new ForgeBiomeModifiers.AddSpawnsBiomeModifier(set, List.of(new MobSpawnSettings.SpawnerData(
 						YHEntities.LAMPREY.get(), 5, 3, 5)
 				)));
@@ -118,10 +118,10 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 										  YHCrops tree,
 										  HolderSet<Biome> set,
 										  HolderGetter<PlacedFeature> features) {
-		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(YoukaisHomecoming.MODID,
-				tree.getName())), new ForgeBiomeModifiers.AddFeaturesBiomeModifier(set,
-				HolderSet.direct(features.getOrThrow(tree.getPlacementKey())),
-				GenerationStep.Decoration.VEGETAL_DECORATION));
+		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, YoukaisHomecoming.loc(tree.getName())),
+				new ForgeBiomeModifiers.AddFeaturesBiomeModifier(set,
+						HolderSet.direct(features.getOrThrow(tree.getPlacementKey())),
+						GenerationStep.Decoration.VEGETAL_DECORATION));
 	}
 
 	public YHDatapackRegistriesGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

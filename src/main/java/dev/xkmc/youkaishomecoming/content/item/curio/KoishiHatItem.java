@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.item.curio;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;

@@ -8,7 +8,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
@@ -35,7 +34,7 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 	}
 
 	private static ResourceKey<DamageType> createDamage(String id) {
-		return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(YoukaisHomecoming.MODID, id));
+		return ResourceKey.create(Registries.DAMAGE_TYPE, YoukaisHomecoming.loc(id));
 	}
 
 	public static DamageSource koishi(LivingEntity target, Vec3 source) {

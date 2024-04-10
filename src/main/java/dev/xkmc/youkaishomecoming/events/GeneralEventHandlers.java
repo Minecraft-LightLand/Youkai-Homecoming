@@ -105,9 +105,7 @@ public class GeneralEventHandlers {
 			}
 		}
 		if (self instanceof LivingEntity le) {
-			if (le.hasEffect(YHEffects.UDUMBARA.get())) {
-				return true;
-			}
+			return le.hasEffect(YHEffects.UDUMBARA.get());
 		}
 		return false;
 	}

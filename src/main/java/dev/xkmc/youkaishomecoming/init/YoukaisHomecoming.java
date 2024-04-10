@@ -42,7 +42,7 @@ public class YoukaisHomecoming {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	public static final PacketHandler HANDLER = new PacketHandler(
-			new ResourceLocation(MODID, "main"), 1,
+			loc("main"), 1,
 			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
 			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT)
 	);

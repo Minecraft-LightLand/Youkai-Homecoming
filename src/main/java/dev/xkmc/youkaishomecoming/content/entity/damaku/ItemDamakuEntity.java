@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.entity.damaku;
 
 import net.minecraft.nbt.CompoundTag;

@@ -6,7 +6,6 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Entity;
@@ -30,7 +29,7 @@ public class FrogGodCapability extends GeneralCapabilityTemplate<Frog, FrogGodCa
 	});
 
 	public static final GeneralCapabilityHolder<Frog, FrogGodCapability> HOLDER = new GeneralCapabilityHolder<>(
-			new ResourceLocation(YoukaisHomecoming.MODID, "frog_god"), CAPABILITY,
+			YoukaisHomecoming.loc("frog_god"), CAPABILITY,
 			FrogGodCapability.class, FrogGodCapability::new, Frog.class, e -> true
 	);
 

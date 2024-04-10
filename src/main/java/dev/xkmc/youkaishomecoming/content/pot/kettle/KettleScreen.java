@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class KettleScreen extends BasePotScreen<KettleMenu> {
 
-	private static final ResourceLocation BG = new ResourceLocation(YoukaisHomecoming.MODID, "textures/gui/kettle.png");
+	private static final ResourceLocation BG = YoukaisHomecoming.loc("textures/gui/kettle.png");
 	private static final Rectangle HEAT_ICON = new Rectangle(44, 64, 17, 15);
 	private static final Rectangle PROGRESS_ARROW = new Rectangle(74, 28, 35, 17);
 	private static final Rectangle WATER_LINE = new Rectangle(36, 56, 32, 5);
@@ -40,7 +40,7 @@ public class KettleScreen extends BasePotScreen<KettleMenu> {
 		if (minecraft != null) {
 			int l = menu.getWater() * WATER_LINE.width / KettleBlockEntity.WATER_BUCKET;
 			gui.blit(getBackgroundTexture(),
-					leftPos + WATER_LINE.x+ (WATER_LINE.width - l),
+					leftPos + WATER_LINE.x + (WATER_LINE.width - l),
 					topPos + WATER_LINE.y,
 					176 + (WATER_LINE.width - l),
 					getHeatIcon().height + getProgressArrow().height,

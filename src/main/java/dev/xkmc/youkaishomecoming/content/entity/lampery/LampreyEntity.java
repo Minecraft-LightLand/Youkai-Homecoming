@@ -1,5 +1,3 @@
-
-
 package dev.xkmc.youkaishomecoming.content.entity.lampery;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;

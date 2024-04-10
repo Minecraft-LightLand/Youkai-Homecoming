@@ -1,10 +1,9 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
-import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
+import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;

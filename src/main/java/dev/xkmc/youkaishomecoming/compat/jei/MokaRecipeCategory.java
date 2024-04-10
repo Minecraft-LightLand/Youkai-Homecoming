@@ -20,7 +20,7 @@ public class MokaRecipeCategory extends BasePotRecipeCategory<MokaRecipe> {
 
 	public MokaRecipeCategory(IGuiHelper helper) {
 		super(helper, "moka", YHBlocks.MOKA.asStack());
-		ResourceLocation backgroundImage = new ResourceLocation(YoukaisHomecoming.MODID, "textures/gui/moka.png");
+		ResourceLocation backgroundImage = YoukaisHomecoming.loc("textures/gui/moka.png");
 		this.heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 17, 15);
 		this.arrow = helper.drawableBuilder(backgroundImage, 176, 15, 38, 17)
 				.buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);

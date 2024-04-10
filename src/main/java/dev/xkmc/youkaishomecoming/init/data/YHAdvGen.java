@@ -121,6 +121,7 @@ public class YHAdvGen {
 								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))),
 						"Powerful Being", "Get Youkaified effect")
 				.type(FrameType.CHALLENGE, true, true, false);
+
 		root.finish();
 	}
 

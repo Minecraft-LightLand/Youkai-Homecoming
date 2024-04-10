@@ -10,7 +10,6 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -25,7 +24,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 	});
 
 	public static final PlayerCapabilityHolder<KoishiAttackCapability> HOLDER = new PlayerCapabilityHolder<>(
-			new ResourceLocation(YoukaisHomecoming.MODID, "koishi_attack"), CAPABILITY,
+			YoukaisHomecoming.loc("koishi_attack"), CAPABILITY,
 			KoishiAttackCapability.class, KoishiAttackCapability::new, PlayerCapabilityNetworkHandler::new
 	);
 

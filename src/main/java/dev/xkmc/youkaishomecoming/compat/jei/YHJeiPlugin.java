@@ -20,7 +20,7 @@ import vectorwing.farmersdelight.common.registry.ModBlocks;
 @JeiPlugin
 public class YHJeiPlugin implements IModPlugin {
 
-	public static final ResourceLocation ID = new ResourceLocation(YoukaisHomecoming.MODID, "main");
+	public static final ResourceLocation ID = YoukaisHomecoming.loc("main");
 
 	public static final RecipeType<MokaRecipe> MOKA = RecipeType.create(YoukaisHomecoming.MODID, "moka", MokaRecipe.class);
 	public static final RecipeType<KettleRecipe> KETTLE = RecipeType.create(YoukaisHomecoming.MODID, "kettle", KettleRecipe.class);

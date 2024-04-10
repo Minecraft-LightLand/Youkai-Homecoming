@@ -35,8 +35,7 @@ public enum YHLangData {
 	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s. Allows using Cyan and Lime damaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_KOISHI_HAT("obtain_koishi_hat", "Drops when blocking Koishi attacks %s times in a row", 1, ChatFormatting.GRAY),
 	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s.  Allows using Blue and Red damaku without consumption.", 1, ChatFormatting.GRAY),
-	USAGE_DAMAKU("usage_damaku","While in %s or %s effect, or equip touhou hats, you can shoot damaku",2,ChatFormatting.GRAY)
-	;
+	USAGE_DAMAKU("usage_damaku", "While in %s or %s effect, or equip touhou hats, you can shoot damaku", 2, ChatFormatting.GRAY);
 
 	private final String key, def;
 	private final int arg;

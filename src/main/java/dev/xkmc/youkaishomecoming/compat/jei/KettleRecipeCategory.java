@@ -21,7 +21,7 @@ public class KettleRecipeCategory extends BasePotRecipeCategory<KettleRecipe> {
 
 	public KettleRecipeCategory(IGuiHelper helper) {
 		super(helper, "kettle", YHBlocks.KETTLE.asStack());
-		ResourceLocation backgroundImage = new ResourceLocation(YoukaisHomecoming.MODID, "textures/gui/kettle.png");
+		ResourceLocation backgroundImage = YoukaisHomecoming.loc("textures/gui/kettle.png");
 		this.heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 17, 10);
 		this.arrow = helper.drawableBuilder(backgroundImage, 176, 15, 35, 17)
 				.buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);

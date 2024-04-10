@@ -20,7 +20,7 @@ public class BlackBallModel<T extends RumiaEntity> extends HierarchicalModel<T> 
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 		PartDefinition bb_main = partdefinition.addOrReplaceChild("bb_main", CubeListBuilder.create()
-				.texOffs(0, 68).addBox(-15.0F, -32.0F, -15.0F, 30.0F, 30.0F, 30.0F, new CubeDeformation(0.0F)),
+						.texOffs(0, 68).addBox(-15.0F, -32.0F, -15.0F, 30.0F, 30.0F, 30.0F, new CubeDeformation(0.0F)),
 				//.texOffs(0, 0).addBox(-17.0F, -34.0F, -17.0F, 34.0F, 34.0F, 34.0F, new CubeDeformation(0.0F)),
 				PartPose.offset(0.0F, 24.0F, 0.0F));
 		return LayerDefinition.create(meshdefinition, 256, 256);

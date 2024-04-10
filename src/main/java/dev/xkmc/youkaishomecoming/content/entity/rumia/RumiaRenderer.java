@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class RumiaRenderer extends MobRenderer<RumiaEntity, RumiaModel<RumiaEntity>> {
 
-	public static final ResourceLocation TEX = new ResourceLocation(YoukaisHomecoming.MODID, "textures/entities/rumia.png");
+	public static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/entities/rumia.png");
 
 	public RumiaRenderer(EntityRendererProvider.Context context) {
 		super(context, new RumiaModel<>(context.bakeLayer(RumiaModel.LAYER_LOCATION)), 0.2F);

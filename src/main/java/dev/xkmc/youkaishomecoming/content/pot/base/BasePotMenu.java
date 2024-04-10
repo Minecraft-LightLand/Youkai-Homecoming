@@ -23,7 +23,7 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import java.util.Objects;
 
 public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
-	public static final ResourceLocation EMPTY_CONTAINER_SLOT = new ResourceLocation(YoukaisHomecoming.MODID, "item/empty_container_slot_bottle");
+	public static final ResourceLocation EMPTY_CONTAINER_SLOT = YoukaisHomecoming.loc("item/empty_container_slot_bottle");
 	public final BasePotBlockEntity blockEntity;
 	public final ItemStackHandler inventory;
 	protected final ContainerData cookingPotData;

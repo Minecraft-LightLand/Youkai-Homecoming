@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class BlackBallLayer<T extends RumiaEntity> extends RenderLayer<T, RumiaModel<T>> {
 
-	public static final ResourceLocation TEX = new ResourceLocation(YoukaisHomecoming.MODID, "textures/entities/black_ball.png");
+	public static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/entities/black_ball.png");
 
 	private final BlackBallModel<T> model;
 
