@@ -1,10 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
+import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -21,11 +21,8 @@ public class BloodBottleItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		Player player = FleshFoodItem.getPlayer();
-		if (player == null) return;
-		boolean obtain = player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
-				player.hasEffect(YHEffects.YOUKAIFYING.get());
 		if (this == YHFood.FLESH.item.get()) {
+			boolean obtain = TouhouHatItem.showTooltip();
 			Component obt;
 			if (obtain) {
 				var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());

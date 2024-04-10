@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
+import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -72,17 +73,15 @@ public class FleshFoodItem extends YHFoodItem {
 		super.appendHoverText(stack, level, list, flag);
 		Player player = getPlayer();
 		if (player == null) return;
-		boolean obtain = false;
 		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			list.add(YHLangData.FLESH_TASTE_YOUKAI.get());
-			obtain = true;
 		} else if (player.hasEffect(YHEffects.YOUKAIFYING.get())) {
 			list.add(YHLangData.FLESH_TASTE_HALF_YOUKAI.get());
-			obtain = true;
 		} else {
 			list.add(YHLangData.FLESH_TASTE_HUMAN.get());
 		}
 		if (this == YHFood.FLESH.item.get()) {
+			boolean obtain = TouhouHatItem.showTooltip();
 			Component obt;
 			if (obtain) {
 				var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());

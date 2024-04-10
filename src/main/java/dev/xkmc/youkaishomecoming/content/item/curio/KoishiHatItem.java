@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.item.curio;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.youkaishomecoming.content.client.HatModel;
 import dev.xkmc.youkaishomecoming.content.client.KoishiHatModel;
-import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -46,15 +45,7 @@ public class KoishiHatItem extends TouhouHatItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(stack, level, list, flag);
-		Player player = FleshFoodItem.getPlayer();
-		if (player == null) return;
-		boolean obtain = false;
-		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
-			obtain = true;
-		} else if (player.hasEffect(YHEffects.YOUKAIFYING.get())) {
-			obtain = true;
-		}
+		boolean obtain = showTooltip();
 		if (obtain) {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_KOISHI_HAT.get(Component.literal("" + YHModConfig.COMMON.koishiAttackBlockCount.get()))));
 			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_KOISHI_HAT.get(Component.translatable(YHEffects.UNCONSCIOUS.get().getDescriptionId()))));

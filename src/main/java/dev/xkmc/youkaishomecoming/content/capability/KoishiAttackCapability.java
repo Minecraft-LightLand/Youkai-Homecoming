@@ -8,6 +8,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.server.level.ServerPlayer;
@@ -95,6 +96,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 		}
 		if (player.getRandom().nextDouble() < YHModConfig.COMMON.koishiAttackChance.get()) {
 			tickRemain = DELAY;
+			YHCriteriaTriggers.KOISHI_RING.trigger(sp);
 			YoukaisHomecoming.HANDLER.toClientPlayer(new KoishiStartPacket(KoishiStartPacket.Type.START, player.position()), sp);
 		}
 

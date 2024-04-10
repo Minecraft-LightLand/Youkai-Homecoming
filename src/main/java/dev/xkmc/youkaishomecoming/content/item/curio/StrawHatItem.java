@@ -6,8 +6,10 @@ import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -51,9 +53,10 @@ public class StrawHatItem extends TouhouHatItem {
 		if (cap.hasHat) {
 			return InteractionResult.FAIL;
 		} else {
-			if (!player.level().isClientSide()) {
+			if (player instanceof ServerPlayer sp) {
 				cap.hasHat = true;
 				cap.syncToClient(frog);
+				YHCriteriaTriggers.SUWAKO_WEAR.trigger(sp);
 			}
 			return InteractionResult.SUCCESS;
 		}
