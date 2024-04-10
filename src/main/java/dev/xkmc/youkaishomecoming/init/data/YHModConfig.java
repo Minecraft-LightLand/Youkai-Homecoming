@@ -41,6 +41,7 @@ public class YHModConfig {
 
 		public final ForgeConfigSpec.DoubleValue damakuMinPHPDamage;
 		public final ForgeConfigSpec.DoubleValue damakuPlayerPHPDamage;
+		public final ForgeConfigSpec.DoubleValue damakuHealOnHitTarget;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
@@ -97,9 +98,11 @@ public class YHModConfig {
 
 			builder.push("damaku_battle");
 			damakuMinPHPDamage = builder.comment("Minimum damage youkai damaku will deal against non-player")
-							.defineInRange("damakuMinPHPDamage",0.02,0,1);
+					.defineInRange("damakuMinPHPDamage", 0.02, 0, 1);
 			damakuPlayerPHPDamage = builder.comment("Minimum damage youkai damaku will deal against player")
-					.defineInRange("damakuPlayerPHPDamage",0.1,0,1);
+					.defineInRange("damakuPlayerPHPDamage", 0.1, 0, 1);
+			damakuHealOnHitTarget = builder.comment("When damaku hits target, heal youkai health by percentage of max health")
+					.defineInRange("damakuHealOnHitTarget", 0.2, 0, 1);
 			builder.pop();
 		}
 

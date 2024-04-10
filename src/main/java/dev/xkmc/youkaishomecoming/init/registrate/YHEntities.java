@@ -17,7 +17,6 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -65,8 +64,10 @@ public class YHEntities {
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.RED).get(), 8, 16)))
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.BLACK).get(), 4, 8)))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.RED).get(), 5, 10))
+									.when(LootTableTemplate.byPlayer()))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDamaku.SIMPLE.get(DyeColor.BLACK).get(), 3, 6))
+									.when(LootTableTemplate.byPlayer()))
 			)).register();
 
 	public static final EntityEntry<ItemDamakuEntity> ITEM_DAMAKU = YoukaisHomecoming.REGISTRATE

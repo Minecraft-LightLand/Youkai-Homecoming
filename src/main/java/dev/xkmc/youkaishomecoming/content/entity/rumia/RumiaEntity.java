@@ -145,7 +145,7 @@ public class RumiaEntity extends YoukaiEntity {
 	@Override
 	protected void actuallyHurt(DamageSource source, float amount) {
 		boolean isVoid = source.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
-		if (!isVoid && !isEx() && amount >= getMaxHealth()) {//TODO
+		if (!isVoid && !isEx() && amount >= getMaxHealth()) {
 			setEx(true);
 		}
 		if (source.getEntity() instanceof LivingEntity le) {
@@ -180,7 +180,9 @@ public class RumiaEntity extends YoukaiEntity {
 		if (damaku instanceof ItemDamakuEntity d && d.getItem().getItem() instanceof DamakuItem item) {
 			if (item.color == DyeColor.BLACK)
 				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
-			if (item.color == DyeColor.RED && e == getTarget()) heal(getMaxHealth() * 0.2f);
+			if (item.color == DyeColor.RED) {
+				super.onDamakuHit(e, damaku);
+			}
 		}
 	}
 
