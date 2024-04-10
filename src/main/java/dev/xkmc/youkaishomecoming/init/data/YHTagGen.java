@@ -89,15 +89,15 @@ public class YHTagGen {
 	}
 
 	public static TagKey<Item> item(String id) {
-		return ItemTags.create(new ResourceLocation(YoukaisHomecoming.MODID, id));
+		return ItemTags.create(YoukaisHomecoming.loc(id));
 	}
 
 	public static TagKey<Block> block(String id) {
-		return BlockTags.create(new ResourceLocation(YoukaisHomecoming.MODID, id));
+		return BlockTags.create(YoukaisHomecoming.loc(id));
 	}
 
 	public static TagKey<EntityType<?>> entity(String id) {
-		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(YoukaisHomecoming.MODID, id));
+		return TagKey.create(Registries.ENTITY_TYPE, YoukaisHomecoming.loc(id));
 	}
 
 }

@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.item.food;
 
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
