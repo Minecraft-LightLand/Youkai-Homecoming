@@ -57,15 +57,15 @@ public class YoukaiEntity extends Monster {
 	}
 
 	protected SoundEvent getAmbientSound() {
-		return SoundEvents.CAT_AMBIENT;
+		return SoundEvents.EMPTY;
 	}
 
 	protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-		return SoundEvents.CAT_HURT;
+		return SoundEvents.EMPTY;
 	}
 
 	protected SoundEvent getDeathSound() {
-		return SoundEvents.CAT_DEATH;
+		return SoundEvents.EMPTY;
 	}
 
 	// base
@@ -78,7 +78,7 @@ public class YoukaiEntity extends Monster {
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.put("auto-serial", Objects.requireNonNull(TagCodec.toTag(new CompoundTag(), this)));
-
+		YOUKAI_DATA.write(tag, entityData);
 	}
 
 	public void readAdditionalSaveData(CompoundTag tag) {
@@ -86,6 +86,7 @@ public class YoukaiEntity extends Monster {
 		if (tag.contains("auto-serial")) {
 			Wrappers.run(() -> TagCodec.fromTag(tag.getCompound("auto-serial"), getClass(), this, (f) -> true));
 		}
+		YOUKAI_DATA.read(tag, entityData);
 	}
 
 	public boolean getFlag(int flag) {
@@ -122,7 +123,7 @@ public class YoukaiEntity extends Monster {
 	public void shoot(float dmg, int life, Vec3 vec, DyeColor color) {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
 		danmaku.setItem(YHDanmaku.Type.CIRCLE.get(color).asStack());
-		danmaku.setup(dmg, life, true, vec);
+		danmaku.setup(dmg, life, true, true, vec);
 		level().addFreshEntity(danmaku);
 	}
 

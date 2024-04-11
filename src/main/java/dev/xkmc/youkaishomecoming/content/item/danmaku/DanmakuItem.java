@@ -52,7 +52,8 @@ public class DanmakuItem extends Item {
 		if (!level.isClientSide) {
 			ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), player, level);
 			danmaku.setItem(stack);
-			danmaku.setup(4, 40, false, RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
+			danmaku.setup(4, 40, false, type.size > 1,
+					RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
 			level.addFreshEntity(danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));

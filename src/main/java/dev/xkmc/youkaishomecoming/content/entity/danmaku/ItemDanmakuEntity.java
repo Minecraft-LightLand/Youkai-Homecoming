@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
+import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+@SerialClass
 public class ItemDanmakuEntity extends BaseDanmakuEntity implements ItemSupplier {
 
 	private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(ItemDanmakuEntity.class, EntityDataSerializers.ITEM_STACK);
@@ -32,6 +34,14 @@ public class ItemDanmakuEntity extends BaseDanmakuEntity implements ItemSupplier
 	public void setItem(ItemStack pStack) {
 		this.getEntityData().set(DATA_ITEM_STACK, pStack.copyWithCount(1));
 		refreshDimensions();
+	}
+
+	@Override
+	public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+		super.onSyncedDataUpdated(key);
+		if (DATA_ITEM_STACK == key) {
+			refreshDimensions();
+		}
 	}
 
 	protected ItemStack getItemRaw() {

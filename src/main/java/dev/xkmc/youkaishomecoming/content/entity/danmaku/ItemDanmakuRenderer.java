@@ -36,6 +36,7 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 		if (e.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(e) < MIN_CAMERA_DISTANCE_SQUARED)) {
 			pose.pushPose();
 			float scale = e.scale();
+			pose.translate(0, e.getBbHeight() / 2, 0);
 			pose.scale(scale, scale, scale);
 			pose.mulPose(this.entityRenderDispatcher.cameraOrientation());
 			pose.mulPose(Axis.YP.rotationDegrees(180.0F));
@@ -60,7 +61,7 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 	}
 
 	private static void vertex(VertexConsumer vc, Matrix4f m4, Matrix3f m3, int light, float x, int y, int u, int v, int color) {
-		vc.vertex(m4, x - 0.5F, (float) y - 0.25F, 0.0F).color(color)
+		vc.vertex(m4, x - 0.5F, y - 0.5F, 0.0F).color(color)
 				.uv((float) u, (float) v).overlayCoords(OverlayTexture.NO_OVERLAY)
 				.uv2(light).normal(m3, 0.0F, 1.0F, 0.0F).endVertex();
 	}
