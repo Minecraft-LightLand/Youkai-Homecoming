@@ -31,6 +31,6 @@ public class RumiaRenderer extends MobRenderer<RumiaEntity, RumiaModel<RumiaEnti
 
 	@Override
 	public void render(RumiaEntity rumia, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
-		super.render(rumia, yaw, pTick, pose, buffer, rumia.isCharged() ? 0 : light);
+		super.render(rumia, yaw, pTick, pose, buffer, light);
 	}
 }

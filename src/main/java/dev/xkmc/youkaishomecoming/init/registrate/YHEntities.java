@@ -64,9 +64,9 @@ public class YHEntities {
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.SIMPLE.get(DyeColor.RED).get(), 5, 10))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Type.CIRCLE.get(DyeColor.RED).get(), 5, 10))
 									.when(LootTableTemplate.byPlayer()))
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.SIMPLE.get(DyeColor.BLACK).get(), 3, 6))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Type.CIRCLE.get(DyeColor.BLACK).get(), 3, 6))
 									.when(LootTableTemplate.byPlayer()))
 			)).register();
 

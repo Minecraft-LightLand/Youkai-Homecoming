@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.network.chat.Component;
@@ -27,11 +28,13 @@ import java.util.List;
 
 public class DanmakuItem extends Item {
 
+	public final YHDanmaku.Type type;
 	public final DyeColor color;
 	public final float size;
 
-	public DanmakuItem(Properties pProperties, DyeColor color, float size) {
+	public DanmakuItem(Properties pProperties, YHDanmaku.Type type, DyeColor color, float size) {
 		super(pProperties);
+		this.type = type;
 		this.color = color;
 		this.size = size;
 	}

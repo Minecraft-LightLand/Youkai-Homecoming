@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "youkaishomecoming:ball_danmaku"
+    },
+    "B": {
+      "item": "minecraft:brown_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "item": "youkaishomecoming:brown_ball_danmaku"
+  },
+  "show_notification": true
+}

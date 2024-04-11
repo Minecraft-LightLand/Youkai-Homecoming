@@ -130,7 +130,10 @@
 		  "yellow": "黄色"
 		},
 		{
-		  "circle": "环玉"
+		  "circle": "环玉",
+		  "ball": "小玉",
+		  "mentos": "中玉",
+		  "bubble": "大玉"
 		},
 		{
 		  "danmaku": "弹幕"

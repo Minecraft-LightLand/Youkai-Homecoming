@@ -121,7 +121,7 @@ public class YoukaiEntity extends Monster {
 
 	public void shoot(float dmg, int life, Vec3 vec, DyeColor color) {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
-		danmaku.setItem(YHDanmaku.SIMPLE.get(color).asStack());
+		danmaku.setItem(YHDanmaku.Type.CIRCLE.get(color).asStack());
 		danmaku.setup(dmg, life, true, vec);
 		level().addFreshEntity(danmaku);
 	}

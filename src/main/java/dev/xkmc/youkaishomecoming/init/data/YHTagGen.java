@@ -53,7 +53,6 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA = ItemTags.create(new ResourceLocation("forge", "tea_leaves"));
 
 	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
-	public static final TagKey<Item> CIRCLE_DANMAKU = item("circle_danmaku");
 
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
 	}

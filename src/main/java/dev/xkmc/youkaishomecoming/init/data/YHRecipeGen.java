@@ -673,16 +673,17 @@ public class YHRecipeGen {
 
 		// danmaku
 		{
-			for (int i = 0; i < 16; i++) {
-				DyeColor color = DyeColor.values()[i];
-				Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(color.getName() + "_dye"));
-				assert dye != null;
-				Item danmaku = YHDanmaku.SIMPLE.get(color).get();
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
-						.pattern("AAA").pattern("ABA").pattern("AAA")
-						.define('A', YHTagGen.CIRCLE_DANMAKU)
-						.define('B', dye)
-						.save(pvd);
+			for (var t : YHDanmaku.Type.values()) {
+				for (var e : DyeColor.values()) {
+					Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(e.getName() + "_dye"));
+					assert dye != null;
+					Item danmaku = t.get(e).get();
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
+							.pattern("AAA").pattern("ABA").pattern("AAA")
+							.define('A', t.tag)
+							.define('B', dye)
+							.save(pvd);
+				}
 			}
 		}
 	}

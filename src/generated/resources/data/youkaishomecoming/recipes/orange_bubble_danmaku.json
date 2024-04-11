@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "youkaishomecoming:bubble_danmaku"
+    },
+    "B": {
+      "item": "minecraft:orange_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "item": "youkaishomecoming:orange_bubble_danmaku"
+  },
+  "show_notification": true
+}
