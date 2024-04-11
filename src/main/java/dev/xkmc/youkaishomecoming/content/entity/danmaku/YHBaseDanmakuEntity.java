@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
+import dev.xkmc.danmaku.collision.DanmakuHitHelper;
+import dev.xkmc.danmaku.entity.BaseDanmaku;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
@@ -10,7 +12,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,7 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Objects;
 
 @SerialClass
-public class BaseDanmakuEntity extends Projectile {
+public class YHBaseDanmakuEntity extends BaseDanmaku {
 
 	@SerialClass.SerialField
 	private int life = 0;
@@ -33,16 +34,16 @@ public class BaseDanmakuEntity extends Projectile {
 	@SerialClass.SerialField
 	public float damage = 0;
 
-	protected BaseDanmakuEntity(EntityType<? extends BaseDanmakuEntity> pEntityType, Level pLevel) {
+	protected YHBaseDanmakuEntity(EntityType<? extends YHBaseDanmakuEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
 
-	protected BaseDanmakuEntity(EntityType<? extends BaseDanmakuEntity> pEntityType, double pX, double pY, double pZ, Level pLevel) {
+	protected YHBaseDanmakuEntity(EntityType<? extends YHBaseDanmakuEntity> pEntityType, double pX, double pY, double pZ, Level pLevel) {
 		this(pEntityType, pLevel);
 		this.setPos(pX, pY, pZ);
 	}
 
-	protected BaseDanmakuEntity(EntityType<? extends BaseDanmakuEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
+	protected YHBaseDanmakuEntity(EntityType<? extends YHBaseDanmakuEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
 		this(pEntityType, pShooter.getX(), pShooter.getEyeY() - (double) 0.1F, pShooter.getZ(), pLevel);
 		this.setOwner(pShooter);
 	}
@@ -81,7 +82,7 @@ public class BaseDanmakuEntity extends Projectile {
 
 	public void tick() {
 		super.tick();
-		HitResult hitresult = DanmakuHitHelper.getHitResultOnMoveVector(this, this::canHitEntity);
+		HitResult hitresult = DanmakuHitHelper.getHitResultOnMoveVector(this);
 		boolean flag = false;
 		if (hitresult.getType() == HitResult.Type.BLOCK) {
 			BlockPos blockpos = ((BlockHitResult) hitresult).getBlockPos();
@@ -101,8 +102,7 @@ public class BaseDanmakuEntity extends Projectile {
 				flag = true;
 			}
 		}
-		if (hitresult.getType() != HitResult.Type.MISS && !flag &&
-				!net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, hitresult)) {
+		if (hitresult.getType() != HitResult.Type.MISS && !flag) {
 			this.onHit(hitresult);
 		}
 		this.checkInsideBlocks();

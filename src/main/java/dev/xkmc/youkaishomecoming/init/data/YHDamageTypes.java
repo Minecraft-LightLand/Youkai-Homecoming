@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.init.data;
 
 import dev.xkmc.l2damagetracker.init.data.DamageTypeAndTagsGen;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.BaseDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -48,7 +48,7 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(RUMIA), self);
 	}
 
-	public static DamageSource danmaku(BaseDanmakuEntity self) {
+	public static DamageSource danmaku(YHBaseDanmakuEntity self) {
 		return new DamageSource(self.level().registryAccess()
 				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DANMAKU), self,
 				self.getOwner());

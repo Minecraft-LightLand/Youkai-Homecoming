@@ -1,8 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
+import dev.xkmc.danmaku.render.DoubleLayerDanmakuType;
+import dev.xkmc.danmaku.render.RenderableDanmakuType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -77,6 +80,18 @@ public class DanmakuItem extends Item {
 		var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
 		var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
 		list.add(YHLangData.USAGE_DANMAKU.get(fying, fied));
+	}
+
+	private DoubleLayerDanmakuType render;
+
+	public RenderableDanmakuType getTypeForRender() {
+		if (render == null) {
+			render = new DoubleLayerDanmakuType(
+					YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),
+					YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + "_overlay.png"),
+					0xff000000 | color.getFireworkColor());
+		}
+		return render;
 	}
 
 }

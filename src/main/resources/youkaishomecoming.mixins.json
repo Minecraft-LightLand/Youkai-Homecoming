@@ -13,7 +13,9 @@
 	"FrogAttackablesSensorMixin",
 	"ItemAccessor",
 	"LivingEntityMixin",
+	"PersistentEntitySectionManagerAccessor",
 	"PhantomSpawnerMixin",
+	"ServerLevelAccessor",
 	"ShootTongueMixin"
   ],
   "client": [

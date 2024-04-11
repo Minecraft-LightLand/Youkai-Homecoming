@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.youkai;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.BaseDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -127,7 +127,7 @@ public class YoukaiEntity extends Monster {
 		level().addFreshEntity(danmaku);
 	}
 
-	public void onDanmakuHit(LivingEntity e, BaseDanmakuEntity danmaku) {
+	public void onDanmakuHit(LivingEntity e, YHBaseDanmakuEntity danmaku) {
 		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
 		if (e == getTarget()) {
 			double heal = YHModConfig.COMMON.danmakuHealOnHitTarget.get();

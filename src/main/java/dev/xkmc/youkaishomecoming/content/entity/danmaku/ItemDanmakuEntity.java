@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 @SerialClass
-public class ItemDanmakuEntity extends BaseDanmakuEntity implements ItemSupplier {
+public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSupplier {
 
 	private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(ItemDanmakuEntity.class, EntityDataSerializers.ITEM_STACK);
 
