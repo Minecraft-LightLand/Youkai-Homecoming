@@ -154,6 +154,7 @@ dependencies {
     implementation fg.deobf("curse.maven:create-328085:4835191")
     runtimeOnly fg.deobf("curse.maven:appleskin-248787:4605078")
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:4633797")
+    runtimeOnly fg.deobf("curse.maven:spark-361579:4738952")
 
     implementation fg.deobf("curse.maven:bookshelf-228525:4808092")
     implementation fg.deobf("curse.maven:botany-trees-411357:4719845")
