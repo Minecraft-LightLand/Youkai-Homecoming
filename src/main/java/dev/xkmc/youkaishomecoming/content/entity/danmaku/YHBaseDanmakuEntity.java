@@ -3,12 +3,14 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 import dev.xkmc.danmaku.collision.DanmakuHitHelper;
 import dev.xkmc.danmaku.entity.BaseDanmaku;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -20,11 +22,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 
 import java.util.Objects;
 
 @SerialClass
-public class YHBaseDanmakuEntity extends BaseDanmaku {
+public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditionalSpawnData {
 
 	@SerialClass.SerialField
 	private int life = 0;
@@ -68,6 +71,15 @@ public class YHBaseDanmakuEntity extends BaseDanmaku {
 		}
 	}
 
+	@Override
+	public void writeSpawnData(FriendlyByteBuf buffer) {
+		PacketCodec.from(buffer, getClass(), Wrappers.cast(this));
+	}
+
+	@Override
+	public void readSpawnData(FriendlyByteBuf additionalData) {
+		PacketCodec.to(additionalData, this);
+	}
 
 	public boolean shouldRenderAtSqrDistance(double pDistance) {
 		double d0 = this.getBoundingBox().getSize() * 4.0D;
