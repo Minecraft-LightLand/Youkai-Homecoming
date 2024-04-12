@@ -192,7 +192,7 @@ public enum YHFood {
 			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
 	// flesh
-	FLESH_DUMPLINGS(FoodType.FLESH, 5, 0.8f, List.of(
+	FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),

@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class FastMapInit {
 
-	private static boolean useFast;
+	private static boolean useFast = true;
 
 	public static <T> FastMap<T> createFastMap() {
 		return useFast ? new LongFastMap<>() : new HashFastMap<>();

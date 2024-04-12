@@ -107,6 +107,7 @@ public class FleshFoodItem extends YHFoodItem {
 	}
 
 	public void consume(Player consumer) {
+		if (consumer.level().isClientSide()) return;
 		if (consumer.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			var eff = consumer.getEffect(YHEffects.YOUKAIFIED.get());
 			if (eff != null) {

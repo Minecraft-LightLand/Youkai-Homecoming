@@ -61,13 +61,6 @@ public class RumiaStateMachine {
 			return;
 		}
 
-		for (int i = 0; i < 100; i++) {
-			double x = rumia.getRandom().nextDouble() * 2 - 1;
-			double y = rumia.getRandom().nextDouble() * 2 - 1;
-			double z = rumia.getRandom().nextDouble() * 2 - 1;
-			rumia.shoot(1, 40, new Vec3(x, y, z).normalize(), DyeColor.BLUE);
-		}
-
 		if (rumia.getTarget() == null) {
 			ballDelay = SUCCESS_DELAY;
 		} else if (ballDelay > 0) {

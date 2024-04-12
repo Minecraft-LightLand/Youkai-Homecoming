@@ -330,7 +330,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.MITARASHI_DANGO.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_DUMPLINGS.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_DUMPLINGS.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.DOUGH)
 					.addIngredient(YHTagGen.RAW_FLESH)
 					.addIngredient(ForgeTags.VEGETABLES)
