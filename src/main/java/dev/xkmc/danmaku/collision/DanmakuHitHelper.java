@@ -15,14 +15,18 @@ import java.util.Optional;
 
 public class DanmakuHitHelper {
 
-	public static HitResult getHitResultOnMoveVector(BaseDanmaku e) {
+	@Nullable
+	public static HitResult getHitResultOnMoveVector(BaseDanmaku e, boolean checkBlock) {
 		Vec3 src = e.position();
 		Vec3 v = e.getDeltaMovement();
 		Level level = e.level();
 		Vec3 dst = src.add(v);
-		HitResult hit = level.clip(new ClipContext(src, dst, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, e));
-		if (hit.getType() != HitResult.Type.MISS) {
-			dst = hit.getLocation();
+		HitResult hit = null;
+		if (checkBlock) {
+			hit = level.clip(new ClipContext(src, dst, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, e));
+			if (hit.getType() != HitResult.Type.MISS) {
+				dst = hit.getLocation();
+			}
 		}
 		if (level instanceof ServerLevel sl) {
 			HitResult ehit = getEntityHitResult(sl, e, src, dst,

@@ -95,7 +95,7 @@ public class TeaCropBlock extends DoubleCropBlock {
 				int j = 1 + level.random.nextInt(2);
 				popResource(level, pos, new ItemStack(YHCrops.TEA.getFruits(), j));
 				if (level.random.nextInt(8) == 0) {
-					popResource(level, pos, new ItemStack(YHCrops.TEA.getFruits(), j));
+					popResource(level, pos, new ItemStack(YHCrops.TEA.getSeed(), j));
 				}
 				level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
 						1.0F, 0.8F + level.random.nextFloat() * 0.4F);

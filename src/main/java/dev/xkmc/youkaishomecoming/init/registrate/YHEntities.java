@@ -72,7 +72,7 @@ public class YHEntities {
 
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU = YoukaisHomecoming.REGISTRATE
 			.<ItemDanmakuEntity>entity("item_danmaku", ItemDanmakuEntity::new, MobCategory.MISC)
-			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4))
+			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(10))
 			.renderer(() -> ItemDanmakuRenderer::new)
 			.register();
 

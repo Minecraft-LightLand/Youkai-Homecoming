@@ -1,3 +1,22 @@
+Danmaku 2000
+Server:
+- SendChanges 7.78%
+- EntityTick 21.88%
+  - baseTick 3.81%
+  - misc 5.92%
+  - EntityHit 12.08%
+    - BlockClip 2.68%
+    - HashMap.containsKey 5.51%
+Client:
+- EntityRenderer 8.81%
+- RenderEvent 16.51%
+- ClientTick 4.91%
+
+54
+1080000
+100k / 11ms
+
+
 2.1.0
 - Add Koishi hat
 - Add damaku

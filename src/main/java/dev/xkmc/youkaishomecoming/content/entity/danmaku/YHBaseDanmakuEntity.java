@@ -9,7 +9,6 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -82,36 +81,31 @@ public class YHBaseDanmakuEntity extends BaseDanmaku {
 
 	public void tick() {
 		super.tick();
-		HitResult hitresult = DanmakuHitHelper.getHitResultOnMoveVector(this);
-		boolean flag = false;
-		if (hitresult.getType() == HitResult.Type.BLOCK) {
-			BlockPos blockpos = ((BlockHitResult) hitresult).getBlockPos();
-			BlockState blockstate = this.level().getBlockState(blockpos);
-			if (blockstate.is(Blocks.NETHER_PORTAL)) {
-				this.handleInsidePortal(blockpos);
-				flag = true;
-			} else if (blockstate.is(Blocks.END_GATEWAY)) {
-				BlockEntity blockentity = this.level().getBlockEntity(blockpos);
-				if (blockentity instanceof TheEndGatewayBlockEntity && TheEndGatewayBlockEntity.canEntityTeleport(this)) {
-					TheEndGatewayBlockEntity.teleportEntity(this.level(), blockpos, blockstate, this, (TheEndGatewayBlockEntity) blockentity);
+		HitResult hitresult = DanmakuHitHelper.getHitResultOnMoveVector(this, !bypassWall);
+		if (hitresult != null) {
+			boolean flag = false;
+			if (hitresult.getType() == HitResult.Type.BLOCK) {
+				BlockPos blockpos = ((BlockHitResult) hitresult).getBlockPos();
+				BlockState blockstate = this.level().getBlockState(blockpos);
+				if (blockstate.is(Blocks.NETHER_PORTAL)) {
+					this.handleInsidePortal(blockpos);
+					flag = true;
+				} else if (blockstate.is(Blocks.END_GATEWAY)) {
+					BlockEntity blockentity = this.level().getBlockEntity(blockpos);
+					if (blockentity instanceof TheEndGatewayBlockEntity && TheEndGatewayBlockEntity.canEntityTeleport(this)) {
+						TheEndGatewayBlockEntity.teleportEntity(this.level(), blockpos, blockstate, this, (TheEndGatewayBlockEntity) blockentity);
+					}
+					flag = true;
 				}
-				flag = true;
 			}
-			if (!flag && bypassWall) {
-				if (!level().isClientSide()) life--;
-				flag = true;
+			if (hitresult.getType() != HitResult.Type.MISS && !flag) {
+				this.onHit(hitresult);
 			}
 		}
-		if (hitresult.getType() != HitResult.Type.MISS && !flag) {
-			this.onHit(hitresult);
-		}
-		this.checkInsideBlocks();
 		danmakuMove();
-
-		if (!level().isClientSide()) {
-			life--;
-			if (life <= 0) {
-				level().broadcastEntityEvent(this, EntityEvent.DEATH);
+		life--;
+		if (life <= 0) {
+			if (!level().isClientSide()) {
 				discard();
 			}
 		}
@@ -121,7 +115,6 @@ public class YHBaseDanmakuEntity extends BaseDanmaku {
 	protected void onHitBlock(BlockHitResult pResult) {
 		super.onHitBlock(pResult);
 		if (!level().isClientSide) {
-			level().broadcastEntityEvent(this, EntityEvent.DEATH);
 			discard();
 		}
 	}
@@ -137,22 +130,10 @@ public class YHBaseDanmakuEntity extends BaseDanmaku {
 					youkai.onDanmakuHit(le, this);
 				}
 			}
-			if (bypassEntity) life--;
-			else {
-				level().broadcastEntityEvent(this, EntityEvent.DEATH);
+			if (!bypassEntity) {
 				discard();
 			}
 		}
-	}
-
-	public void handleEntityEvent(byte pId) {
-		if (pId == EntityEvent.DEATH) {
-			clientDeathParticle();
-		}
-	}
-
-	protected void clientDeathParticle() {
-
 	}
 
 	protected void danmakuMove() {

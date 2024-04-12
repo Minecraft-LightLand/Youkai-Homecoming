@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
+import dev.xkmc.danmaku.collision.FastMapInit;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.PacketHandler;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
@@ -91,6 +92,7 @@ public class YoukaisHomecoming {
 
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 		});
+		FastMapInit.init();
 	}
 
 	@SubscribeEvent

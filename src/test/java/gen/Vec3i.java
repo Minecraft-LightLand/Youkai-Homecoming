@@ -141,6 +141,19 @@ public class Vec3i implements Comparable<Vec3i> {
 		return MoreObjects.toStringHelper(this).add("x", this.getX()).add("y", this.getY()).add("z", this.getZ()).toString();
 	}
 
+
+	public static long asLong(int pX, int pY, int pZ) {
+		long i = 0L;
+		i |= ((long)pX & 4194303L) << 42;
+		i |= ((long)pY & 1048575L) << 0;
+		return i | ((long)pZ & 4194303L) << 20;
+	}
+
+	public long asLong() {
+		return asLong(this.x, this.y, this.z);
+	}
+
+
 	public String toShortString() {
 		return this.getX() + ", " + this.getY() + ", " + this.getZ();
 	}

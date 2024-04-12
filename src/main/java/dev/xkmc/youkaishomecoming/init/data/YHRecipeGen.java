@@ -285,7 +285,7 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.KOISHI_MOUSSE.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.item.get(), 3, 200, 0.1f)
 					.addIngredient(ForgeTags.DOUGH)
 					.addIngredient(ModTags.CABBAGE_ROLL_INGREDIENTS)
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
