@@ -1,26 +1,15 @@
 package dev.xkmc.danmaku.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.network.NetworkHooks;
 
-import javax.annotation.Nullable;
-import java.util.UUID;
-
-public abstract class BaseDanmaku extends SimplifiedProjectile implements TraceableEntity {
+public abstract class BaseDanmaku extends SimplifiedProjectile {
 
    protected BaseDanmaku(EntityType<? extends BaseDanmaku> pEntityType, Level pLevel) {
       super(pEntityType, pLevel);

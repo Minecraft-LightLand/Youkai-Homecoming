@@ -5,13 +5,14 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public abstract class SimplifiedProjectile extends SimplifiedEntity {
+public abstract class SimplifiedProjectile extends SimplifiedEntity implements TraceableEntity {
 
 	@Nullable
 	private UUID ownerUUID;

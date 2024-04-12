@@ -1,3 +1,6 @@
+2.1.1
+- Fix danmaku crash caused by obf
+
 2.1.0
 - Tea drop seed with 1/8 chance with right click to harvest
 - Fix flesh food youkaifying bug
