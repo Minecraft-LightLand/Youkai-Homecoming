@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -23,6 +24,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import net.minecraftforge.entity.PartEntity;
 
 import java.util.Objects;
 
@@ -73,12 +75,12 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditiona
 
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
-		PacketCodec.from(buffer, getClass(), Wrappers.cast(this));
+		PacketCodec.to(buffer,this);
 	}
 
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
-		PacketCodec.to(additionalData, this);
+		PacketCodec.from(additionalData,  getClass(), Wrappers.cast(this));
 	}
 
 	public boolean shouldRenderAtSqrDistance(double pDistance) {
@@ -135,16 +137,28 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditiona
 	protected void onHitEntity(EntityHitResult result) {
 		if (level().isClientSide) return;
 		var e = result.getEntity();
-		boolean skip = bypassEntity && e instanceof LivingEntity le && le.invulnerableTime > 0;
-		if (!skip && e.hurt(YHDamageTypes.danmaku(this), damage)) {
-			if (e instanceof LivingEntity le) {
-				if (getOwner() instanceof YoukaiEntity youkai) {
-					youkai.onDanmakuHit(le, this);
+		if (bypassEntity && e instanceof LivingEntity le) {
+			if (le.invulnerableTime > 0) {
+				DamageSource source = le.getLastDamageSource();
+				if (source != null && source.getDirectEntity() == this) {
+					return;
 				}
 			}
-			if (!bypassEntity) {
-				discard();
+		}
+		if (!e.hurt(YHDamageTypes.danmaku(this), damage)) return;
+		LivingEntity target = null;
+		while (e instanceof PartEntity<?> pe) {
+			e = pe.getParent();
+		}
+		if (e instanceof LivingEntity le) target = le;
+
+		if (target != null) {
+			if (getOwner() instanceof YoukaiEntity youkai) {
+				youkai.onDanmakuHit(target, this);
 			}
+		}
+		if (!bypassEntity) {
+			discard();
 		}
 	}
 

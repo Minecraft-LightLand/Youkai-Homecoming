@@ -3,8 +3,8 @@ package dev.xkmc.youkaishomecoming.content.entity.youkai;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -29,6 +29,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -36,9 +37,6 @@ import java.util.Objects;
 public class YoukaiEntity extends Monster {
 
 	private static final int GROUND_HEIGHT = 5, ATTEMPT_ABOVE = 3;
-
-	public final MoveControl walkCtrl, flyCtrl;
-	public final PathNavigation walkNav, fltNav;
 
 	private static <T> EntityDataAccessor<T> defineId(EntityDataSerializer<T> ser) {
 		return SynchedEntityData.defineId(YoukaiEntity.class, ser);
@@ -48,12 +46,23 @@ public class YoukaiEntity extends Monster {
 
 	protected static final EntityDataAccessor<Integer> DATA_FLAGS_ID = YOUKAI_DATA.define(SyncedData.INT, 0, "youkai_flags");
 
+	public final MoveControl walkCtrl, flyCtrl;
+	public final PathNavigation walkNav, fltNav;
+
+	@SerialClass.SerialField
+	public final YoukaiTargetContainer targets;
+
 	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel) {
+		this(pEntityType, pLevel, 10);
+	}
+
+	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel, int maxSize) {
 		super(pEntityType, pLevel);
 		this.walkCtrl = moveControl;
 		this.walkNav = navigation;
 		this.flyCtrl = new FlyingMoveControl(this, 10, false);
 		this.fltNav = new FlyingPathNavigation(this, level());
+		this.targets = new YoukaiTargetContainer(this, maxSize);
 	}
 
 	protected SoundEvent getAmbientSound() {
@@ -129,7 +138,7 @@ public class YoukaiEntity extends Monster {
 
 	public void onDanmakuHit(LivingEntity e, YHBaseDanmakuEntity danmaku) {
 		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
-		if (e == getTarget()) {
+		if (targets.contains(e)) {
 			double heal = YHModConfig.COMMON.danmakuHealOnHitTarget.get();
 			heal(getMaxHealth() * (float) heal);
 		}
@@ -161,6 +170,7 @@ public class YoukaiEntity extends Monster {
 		if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
 			this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
 		}
+		targets.tick();
 		super.aiStep();
 	}
 

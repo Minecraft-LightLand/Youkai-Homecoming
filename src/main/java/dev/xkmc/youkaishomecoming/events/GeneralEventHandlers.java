@@ -54,7 +54,7 @@ public class GeneralEventHandlers {
 			}
 		}
 		if (event.getDamageSource().getDirectEntity() instanceof RumiaEntity rumia) {
-			rumia.state.onBlocked(rumia);
+			rumia.state.onBlocked();
 		}
 	}
 
@@ -64,7 +64,8 @@ public class GeneralEventHandlers {
 		if (event.getSource().getDirectEntity() instanceof LivingEntity le) {
 			if (!le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES)) return;
 			if (!le.getOffhandItem().is(Items.GLASS_BOTTLE)) return;
-			if (le.hasEffect(YHEffects.YOUKAIFIED.get()) || le.hasEffect(YHEffects.YOUKAIFYING.get())) {
+			if (le.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+					le.hasEffect(YHEffects.YOUKAIFYING.get())) {
 				le.getOffhandItem().shrink(1);
 				if (le instanceof Player player) {
 					player.getInventory().add(YHItems.BLOOD_BOTTLE.asStack());

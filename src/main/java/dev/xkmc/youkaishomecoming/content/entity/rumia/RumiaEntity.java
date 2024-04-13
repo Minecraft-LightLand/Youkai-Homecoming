@@ -2,8 +2,9 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.MultiHurtByTargetGoal;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -25,7 +26,6 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -45,7 +45,7 @@ public class RumiaEntity extends YoukaiEntity {
 	private static final UUID EXRUMIA = MathHelper.getUUIDFromString("ex_rumia");
 
 	@SerialClass.SerialField
-	public final RumiaStateMachine state = new RumiaStateMachine();
+	public final RumiaStateMachine state = new RumiaStateMachine(this);
 
 	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -59,7 +59,7 @@ public class RumiaEntity extends YoukaiEntity {
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.6));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+		this.targetSelector.addGoal(1, new MultiHurtByTargetGoal(this, RumiaEntity.class));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, this::wouldAttack));
 	}
 
@@ -78,21 +78,26 @@ public class RumiaEntity extends YoukaiEntity {
 
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
-		state.refreshState(this);
+		state.refreshState();
+	}
+
+	@Override
+	public boolean isInvulnerableTo(DamageSource source) {
+		return super.isInvulnerableTo(source) || source.getEntity() instanceof RumiaEntity;
 	}
 
 	@Override
 	public void aiStep() {
 		super.aiStep();
-		state.tick(this);
+		state.tick();
 	}
 
 	public boolean isCharged() {
-		return state != null && isAlive() && state.isCharged(this);
+		return state != null && isAlive() && state.isCharged();
 	}
 
 	public boolean isBlocked() {
-		return state != null && isAlive() && state.isBlocked(this);
+		return state != null && isAlive() && state.isBlocked();
 	}
 
 	public boolean isEx() {
@@ -149,7 +154,7 @@ public class RumiaEntity extends YoukaiEntity {
 			setEx(true);
 		}
 		if (source.getEntity() instanceof LivingEntity le) {
-			state.onHurt(this, le, amount);
+			state.onHurt(le, amount);
 		}
 		if (!isVoid) {
 			int reduction = isEx() ? 20 : 5;
@@ -178,12 +183,12 @@ public class RumiaEntity extends YoukaiEntity {
 	public void onDanmakuHit(LivingEntity e, YHBaseDanmakuEntity danmaku) {
 		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
 		if (danmaku instanceof ItemDanmakuEntity d && d.getItem().getItem() instanceof DanmakuItem item) {
-			if (item.color == DyeColor.BLACK)
+			if (item.color == DyeColor.BLACK) {
 				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
-			if (item.color == DyeColor.RED) {
-				super.onDanmakuHit(e, danmaku);
+				if (!isEx()) return;
 			}
 		}
+		super.onDanmakuHit(e, danmaku);
 	}
 
 	@Nullable

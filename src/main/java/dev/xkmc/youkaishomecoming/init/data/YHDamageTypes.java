@@ -30,7 +30,7 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 		new DamageTypeHolder(RUMIA, new DamageType("rumia_attack", 0.1f))
 				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
 		new DamageTypeHolder(DANMAKU, new DamageType("danmaku", 0.1f))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR);
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN);
 	}
 
 	private static ResourceKey<DamageType> createDamage(String id) {

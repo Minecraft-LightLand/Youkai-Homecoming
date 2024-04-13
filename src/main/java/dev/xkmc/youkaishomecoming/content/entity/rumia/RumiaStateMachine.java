@@ -26,25 +26,31 @@ public class RumiaStateMachine {
 		NONE, PREPARE, FLY, BLOCKED
 	}
 
+	private final RumiaEntity rumia;
+
 	@SerialClass.SerialField
 	private RumiaStage stage = RumiaStage.NONE;
 
 	@SerialClass.SerialField
 	private int time = 0, ballDelay = 0;
 
-	public void refreshState(RumiaEntity rumia) {
+	RumiaStateMachine(RumiaEntity rumia) {
+		this.rumia = rumia;
+	}
+
+	public void refreshState() {
 		if (rumia.getTarget() == null) {
 			rumia.setWalking();
 		}
 	}
 
-	public float getClientPrepareProgress(RumiaEntity rumia) {//TODO
-		return isCharged(rumia) ? stage == RumiaStage.PREPARE ? 1f * time / PREPARE_TIME : 1 : 0;
+	public float getClientPrepareProgress() {//TODO
+		return isCharged() ? stage == RumiaStage.PREPARE ? 1f * time / PREPARE_TIME : 1 : 0;
 	}
 
-	public void tick(RumiaEntity rumia) {
+	public void tick() {
 		if (rumia.level().isClientSide()) {
-			if (stage == RumiaStage.NONE && isCharged(rumia)) {
+			if (stage == RumiaStage.NONE && isCharged()) {
 				stage = RumiaStage.PREPARE;
 				time = PREPARE_TIME;
 			} else if (stage == RumiaStage.PREPARE) {
@@ -80,22 +86,22 @@ public class RumiaStateMachine {
 						time = FLY_TIME;
 					} else {
 						stage = RumiaStage.NONE;
-						setCharged(rumia, false);
+						setCharged(false);
 					}
 				} else if (stage == RumiaStage.FLY) {
 					stage = RumiaStage.NONE;
-					setCharged(rumia, false);
+					setCharged(false);
 					ballDelay = SUCCESS_DELAY;
 				} else if (stage == RumiaStage.BLOCKED) {
 					stage = RumiaStage.NONE;
-					setBlocked(rumia, false);
+					setBlocked(false);
 					ballDelay = BLOCK_DELAY;
 				}
 			}
 		}
 	}
 
-	public void startChargeAttack(RumiaEntity rumia, LivingEntity target) {
+	public void startChargeAttack(LivingEntity target) {
 		if (stage != RumiaStage.NONE) return;
 		if (ballDelay > 0) return;
 		if (target instanceof YoukaiEntity || target.hasEffect(YHEffects.YOUKAIFIED.get()))
@@ -103,11 +109,11 @@ public class RumiaStateMachine {
 		rumia.getNavigation().stop();
 		stage = RumiaStage.PREPARE;
 		time = PREPARE_TIME;
-		setCharged(rumia, true);
+		setCharged(true);
 		rumia.setDeltaMovement(Vec3.ZERO);
 	}
 
-	public void onAttack(RumiaEntity rumia, LivingEntity target) {
+	public void onAttack(LivingEntity target) {
 		if (stage != RumiaStage.FLY) return;
 		if (target.isAlive()) {
 			target.setDeltaMovement(rumia.getDeltaMovement()
@@ -118,21 +124,21 @@ public class RumiaStateMachine {
 		}
 		rumia.setDeltaMovement(Vec3.ZERO);
 		stage = RumiaStage.NONE;
-		setCharged(rumia, false);
+		setCharged(false);
 		ballDelay = SUCCESS_DELAY;
 	}
 
-	public void onHurt(RumiaEntity rumia, LivingEntity le, float amount) {
+	public void onHurt(LivingEntity le, float amount) {
 		if (stage == RumiaStage.BLOCKED) {
 			if (amount >= 2) {
 				time = time / 2 + 1;
 			}
 		} else if (stage != RumiaStage.FLY) {
-			if (amount >= 2) shoot(rumia, le);
+			if (amount >= 2) shoot(le);
 		}
 	}
 
-	private void shoot(RumiaEntity rumia, LivingEntity target) {
+	private void shoot(LivingEntity target) {
 		double dx = target.getX() - rumia.getX();
 		double dy = target.getY(0.5D) - rumia.getY(0.5D);
 		double dz = target.getZ() - rumia.getZ();
@@ -145,26 +151,26 @@ public class RumiaStateMachine {
 		}
 	}
 
-	public void onBlocked(RumiaEntity rumia) {
+	public void onBlocked() {
 		if (stage != RumiaStage.FLY) return;
 		rumia.getNavigation().stop();
 		rumia.setDeltaMovement(rumia.getDeltaMovement().scale(-0.5));
-		setCharged(rumia, false);
-		setBlocked(rumia, true);
+		setCharged(false);
+		setBlocked(true);
 		time = BLOCK_TIME;
 		stage = RumiaStage.BLOCKED;
 		if (rumia.isEx()) time /= 2;
 	}
 
-	public boolean isCharged(RumiaEntity rumia) {
+	public boolean isCharged() {
 		return rumia.getFlag(1);
 	}
 
-	public boolean isBlocked(RumiaEntity rumia) {
+	public boolean isBlocked() {
 		return rumia.getFlag(2);
 	}
 
-	private void setCharged(RumiaEntity rumia, boolean charged) {
+	private void setCharged(boolean charged) {
 		var attr = rumia.getAttribute(Attributes.ATTACK_DAMAGE);
 		assert attr != null;
 		if (charged) {
@@ -175,7 +181,7 @@ public class RumiaStateMachine {
 		rumia.setFlag(1, charged);
 	}
 
-	private void setBlocked(RumiaEntity rumia, boolean blocked) {
+	private void setBlocked(boolean blocked) {
 		rumia.setFlag(2, blocked);
 		rumia.refreshDimensions();
 	}

@@ -5,15 +5,16 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
+import java.util.List;
 
-public abstract class FloatingYoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
+public abstract class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 
 	protected final T youkai;
 	private final int range;
 	private int meleeTime;
 	private int shootTime;
 
-	public FloatingYoukaiAttackGoal(T youkai, int range) {
+	public YoukaiAttackGoal(T youkai, int range) {
 		this.youkai = youkai;
 		this.range = range;
 		setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
@@ -81,7 +82,7 @@ public abstract class FloatingYoukaiAttackGoal<T extends YoukaiEntity> extends G
 			}
 		}
 		if (shootTime <= 0) {
-			shootTime = shoot(target);
+			shootTime = shoot(target, youkai.targets.getTargets());
 		}
 		youkai.getLookControl().setLookAt(target, 10.0F, 10.0F);
 	}
@@ -94,7 +95,7 @@ public abstract class FloatingYoukaiAttackGoal<T extends YoukaiEntity> extends G
 		return false;
 	}
 
-	protected abstract int shoot(LivingEntity target);
+	protected abstract int shoot(LivingEntity target, List<LivingEntity> all);
 
 	protected double getMeleeRange() {
 		return 2;
