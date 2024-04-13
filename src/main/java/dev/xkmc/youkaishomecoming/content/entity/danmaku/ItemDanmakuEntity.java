@@ -56,18 +56,18 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		this.getEntityData().define(DATA_ITEM_STACK, ItemStack.EMPTY);
 	}
 
-	public void addAdditionalSaveData(CompoundTag pCompound) {
-		super.addAdditionalSaveData(pCompound);
+	public void addAdditionalSaveData(CompoundTag nbt) {
+		super.addAdditionalSaveData(nbt);
 		ItemStack itemstack = this.getItemRaw();
 		if (!itemstack.isEmpty()) {
-			pCompound.put("Item", itemstack.save(new CompoundTag()));
+			nbt.put("Item", itemstack.save(new CompoundTag()));
 		}
 
 	}
 
-	public void readAdditionalSaveData(CompoundTag pCompound) {
-		super.readAdditionalSaveData(pCompound);
-		ItemStack itemstack = ItemStack.of(pCompound.getCompound("Item"));
+	public void readAdditionalSaveData(CompoundTag nbt) {
+		super.readAdditionalSaveData(nbt);
+		ItemStack itemstack = ItemStack.of(nbt.getCompound("Item"));
 		this.setItem(itemstack);
 	}
 

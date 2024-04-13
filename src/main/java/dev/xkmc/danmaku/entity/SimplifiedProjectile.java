@@ -23,27 +23,24 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		super(pEntityType, pLevel);
 	}
 
-	/**
-	 * Updates the entity motion clientside, called by packets from the server
-	 */
 	public void lerpMotion(double pX, double pY, double pZ) {
-		this.setDeltaMovement(pX, pY, pZ);
-		if (this.xRotO == 0.0F && this.yRotO == 0.0F) {
+		setDeltaMovement(pX, pY, pZ);
+		if (xRotO == 0.0F && yRotO == 0.0F) {
 			double d0 = Math.sqrt(pX * pX + pZ * pZ);
-			this.setXRot((float) (Mth.atan2(pY, d0) * (double) (180F / (float) Math.PI)));
-			this.setYRot((float) (Mth.atan2(pX, pZ) * (double) (180F / (float) Math.PI)));
-			this.xRotO = this.getXRot();
-			this.yRotO = this.getYRot();
-			this.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), this.getXRot());
+			setXRot((float) (Mth.atan2(pY, d0) * Mth.RAD_TO_DEG));
+			setYRot((float) (Mth.atan2(pX, pZ) * Mth.RAD_TO_DEG));
+			xRotO = getXRot();
+			yRotO = getYRot();
+			moveTo(getX(), getY(), getZ(), getYRot(), getXRot());
 		}
 
 	}
 
 	protected void updateRotation() {
-		Vec3 vec3 = this.getDeltaMovement();
+		Vec3 vec3 = getDeltaMovement();
 		double d0 = vec3.horizontalDistance();
-		this.setXRot(lerpRotation(this.xRotO, (float) (Mth.atan2(vec3.y, d0) * (double) (180F / (float) Math.PI))));
-		this.setYRot(lerpRotation(this.yRotO, (float) (Mth.atan2(vec3.x, vec3.z) * (double) (180F / (float) Math.PI))));
+		setXRot(lerpRotation(xRotO, (float) (Mth.atan2(vec3.y, d0) * Mth.RAD_TO_DEG)));
+		setYRot(lerpRotation(yRotO, (float) (Mth.atan2(vec3.x, vec3.z) * Mth.RAD_TO_DEG)));
 	}
 
 	protected static float lerpRotation(float pCurrentRotation, float pTargetRotation) {
@@ -58,47 +55,42 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		return Mth.lerp(0.2F, pCurrentRotation, pTargetRotation);
 	}
 
-
 	public void setOwner(@Nullable Entity pOwner) {
 		if (pOwner != null) {
-			this.ownerUUID = pOwner.getUUID();
-			this.cachedOwner = pOwner;
+			ownerUUID = pOwner.getUUID();
+			cachedOwner = pOwner;
 		}
 	}
 
-	/**
-	 * Returns null or the entityliving it was ignited by
-	 */
 	@Nullable
 	public Entity getOwner() {
-		if (this.cachedOwner != null && !this.cachedOwner.isRemoved()) {
-			return this.cachedOwner;
-		} else if (this.ownerUUID != null && this.level() instanceof ServerLevel) {
-			this.cachedOwner = ((ServerLevel) this.level()).getEntity(this.ownerUUID);
-			return this.cachedOwner;
+		if (cachedOwner != null && !cachedOwner.isRemoved()) {
+			return cachedOwner;
+		} else if (ownerUUID != null && level() instanceof ServerLevel) {
+			cachedOwner = ((ServerLevel) level()).getEntity(ownerUUID);
+			return cachedOwner;
 		} else {
 			return null;
 		}
 	}
 
-	protected void addAdditionalSaveData(CompoundTag pCompound) {
-		if (this.ownerUUID != null) {
-			pCompound.putUUID("Owner", this.ownerUUID);
+	protected void addAdditionalSaveData(CompoundTag nbt) {
+		if (ownerUUID != null) {
+			nbt.putUUID("Owner", ownerUUID);
 		}
+		nbt.putInt("Age", tickCount);
 	}
 
 	protected boolean ownedBy(Entity pEntity) {
-		return pEntity.getUUID().equals(this.ownerUUID);
+		return pEntity.getUUID().equals(ownerUUID);
 	}
 
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
-	protected void readAdditionalSaveData(CompoundTag pCompound) {
-		if (pCompound.hasUUID("Owner")) {
-			this.ownerUUID = pCompound.getUUID("Owner");
-			this.cachedOwner = null;
+	protected void readAdditionalSaveData(CompoundTag nbt) {
+		if (nbt.hasUUID("Owner")) {
+			ownerUUID = nbt.getUUID("Owner");
+			cachedOwner = null;
 		}
+		tickCount = nbt.getInt("Age");
 	}
 
 }

@@ -1,13 +1,19 @@
 package dev.xkmc.danmaku.entity;
 
+import dev.xkmc.danmaku.collision.DanmakuHitHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public abstract class BaseDanmaku extends SimplifiedProjectile {
 
@@ -15,44 +21,90 @@ public abstract class BaseDanmaku extends SimplifiedProjectile {
       super(pEntityType, pLevel);
    }
 
+   @Override
+   protected void defineSynchedData() {
+
+   }
+
+   public abstract boolean checkBlockHit();
+
+   public abstract int lifetime();
+
    public void tick() {
       super.tick();
-   }
-
-   protected void onHit(HitResult pResult) {
-      HitResult.Type hitresult$type = pResult.getType();
-      if (hitresult$type == HitResult.Type.ENTITY) {
-         this.onHitEntity((EntityHitResult) pResult);
-         this.level().gameEvent(GameEvent.PROJECTILE_LAND, pResult.getLocation(), GameEvent.Context.of(this, null));
-      } else if (hitresult$type == HitResult.Type.BLOCK) {
-         BlockHitResult blockhitresult = (BlockHitResult) pResult;
-         this.onHitBlock(blockhitresult);
-         BlockPos blockpos = blockhitresult.getBlockPos();
-         this.level().gameEvent(GameEvent.PROJECTILE_LAND, blockpos, GameEvent.Context.of(this, this.level().getBlockState(blockpos)));
+      HitResult hitresult = DanmakuHitHelper.getHitResultOnMoveVector(this, checkBlockHit());
+      if (hitresult != null) {
+         onHit(hitresult);
       }
-
+      danmakuMove();
+      if (tickCount >= lifetime()) {
+         if (!level().isClientSide()) {
+            discard();
+         }
+      }
    }
 
-   /**
-    * Called when the arrow hits an entity
-    */
-   protected void onHitEntity(EntityHitResult pResult) {
+   protected void danmakuMove() {
+      Vec3 vec3 = updateVelocity(getDeltaMovement());
+      setDeltaMovement(vec3);
+      updateRotation();
+      double d2 = getX() + vec3.x;
+      double d0 = getY() + vec3.y;
+      double d1 = getZ() + vec3.z;
+      setPos(d2, d0, d1);
    }
 
-   protected void onHitBlock(BlockHitResult pResult) {
+   protected Vec3 updateVelocity(Vec3 vec) {
+      return vec;
+   }
+
+   public boolean shouldRenderAtSqrDistance(double pDistance) {
+      double d0 = getBoundingBox().getSize() * 4;
+      if (Double.isNaN(d0)) d0 = 4;
+      d0 *= 64;
+      return pDistance < d0 * d0;
    }
 
    public boolean canHitEntity(Entity target) {
       if (!target.canBeHitByProjectile()) {
          return false;
       } else {
-         Entity entity = this.getOwner();
+         Entity entity = getOwner();
          if (entity == null) return false;
          if (entity.isPassenger() || target.isPassenger()) {
             return !entity.isPassengerOfSameVehicle(target);
          }
          return !entity.isAlliedTo(target);
       }
+   }
+
+   protected void onHit(HitResult hitresult) {
+      if (hitresult.getType() == HitResult.Type.MISS) return;
+      if (hitresult instanceof EntityHitResult ehit) {
+         onHitEntity(ehit);
+         level().gameEvent(GameEvent.PROJECTILE_LAND, hitresult.getLocation(), GameEvent.Context.of(this, null));
+      } else if (hitresult instanceof BlockHitResult bhit) {
+         BlockPos pos = bhit.getBlockPos();
+         BlockState state = level().getBlockState(pos);
+         if (state.is(Blocks.NETHER_PORTAL)) {
+            handleInsidePortal(pos);
+            return;
+         } else if (state.is(Blocks.END_GATEWAY)) {
+            BlockEntity be = level().getBlockEntity(pos);
+            if (be instanceof TheEndGatewayBlockEntity gate && TheEndGatewayBlockEntity.canEntityTeleport(this)) {
+               TheEndGatewayBlockEntity.teleportEntity(level(), pos, state, this, gate);
+            }
+            return;
+         }
+         onHitBlock(bhit);
+         level().gameEvent(GameEvent.PROJECTILE_LAND, pos, GameEvent.Context.of(this, level().getBlockState(pos)));
+      }
+   }
+
+   protected void onHitEntity(EntityHitResult pResult) {
+   }
+
+   protected void onHitBlock(BlockHitResult pResult) {
    }
 
 }
