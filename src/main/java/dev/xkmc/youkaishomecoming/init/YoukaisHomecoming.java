@@ -6,7 +6,9 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
 import dev.xkmc.danmaku.collision.FastMapInit;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.serial.config.PacketHandler;
+import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
+import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.spellcircle.SpellCircleConfig;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
@@ -42,11 +44,13 @@ public class YoukaisHomecoming {
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
-	public static final PacketHandler HANDLER = new PacketHandler(
+	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			loc("main"), 1,
 			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
 			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT)
 	);
+
+	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",

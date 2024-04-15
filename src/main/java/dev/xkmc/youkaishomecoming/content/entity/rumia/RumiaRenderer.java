@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import dev.xkmc.spellcircle.SpellCircleLayer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,6 +16,7 @@ public class RumiaRenderer extends MobRenderer<RumiaEntity, RumiaModel<RumiaEnti
 	public RumiaRenderer(EntityRendererProvider.Context context) {
 		super(context, new RumiaModel<>(context.bakeLayer(RumiaModel.LAYER_LOCATION)), 0.2F);
 		addLayer(new BlackBallLayer<>(this, context.getModelSet()));
+		addLayer(new SpellCircleLayer<>(this));
 	}
 
 	public ResourceLocation getTextureLocation(RumiaEntity entity) {
