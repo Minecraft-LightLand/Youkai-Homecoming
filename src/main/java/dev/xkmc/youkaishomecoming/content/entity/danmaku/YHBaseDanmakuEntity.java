@@ -5,11 +5,9 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
-import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -17,12 +15,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.entity.PartEntity;
 
 import java.util.Objects;
 
 @SerialClass
-public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditionalSpawnData {
+public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditionalSpawnData, IYHDanmaku {
 
 	@SerialClass.SerialField
 	private int life = 0;
@@ -77,12 +74,12 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditiona
 
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
-		PacketCodec.to(buffer,this);
+		PacketCodec.to(buffer, this);
 	}
 
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
-		PacketCodec.from(additionalData,  getClass(), Wrappers.cast(this));
+		PacketCodec.from(additionalData, getClass(), Wrappers.cast(this));
 	}
 
 	@Override
@@ -94,29 +91,14 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditiona
 	}
 
 	@Override
-	protected void onHitEntity(EntityHitResult result) {
-		if (level().isClientSide) return;
-		var e = result.getEntity();
-		if (bypassEntity && e instanceof LivingEntity le) {
-			if (le.invulnerableTime > 0) {
-				DamageSource source = le.getLastDamageSource();
-				if (source != null && source.getDirectEntity() == this) {
-					return;
-				}
-			}
-		}
-		if (!e.hurt(YHDamageTypes.danmaku(this), damage)) return;
-		LivingEntity target = null;
-		while (e instanceof PartEntity<?> pe) {
-			e = pe.getParent();
-		}
-		if (e instanceof LivingEntity le) target = le;
+	public float damage(Entity target) {
+		return damage;
+	}
 
-		if (target != null) {
-			if (getOwner() instanceof YoukaiEntity youkai) {
-				youkai.onDanmakuHit(target, this);
-			}
-		}
+	@Override
+	public void onHitEntity(EntityHitResult result) {
+		if (level().isClientSide) return;
+		hurtTarget(result);
 		if (!bypassEntity) {
 			discard();
 		}

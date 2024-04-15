@@ -23,6 +23,19 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		super(pEntityType, pLevel);
 	}
 
+	public boolean canHitEntity(Entity target) {
+		if (!target.canBeHitByProjectile()) {
+			return false;
+		} else {
+			Entity entity = getOwner();
+			if (entity == null) return false;
+			if (entity.isPassenger() || target.isPassenger()) {
+				return !entity.isPassengerOfSameVehicle(target);
+			}
+			return !entity.isAlliedTo(target);
+		}
+	}
+
 	public void lerpMotion(double pX, double pY, double pZ) {
 		setDeltaMovement(pX, pY, pZ);
 		if (xRotO == 0.0F && yRotO == 0.0F) {
@@ -79,10 +92,6 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 			nbt.putUUID("Owner", ownerUUID);
 		}
 		nbt.putInt("Age", tickCount);
-	}
-
-	protected boolean ownedBy(Entity pEntity) {
-		return pEntity.getUUID().equals(ownerUUID);
 	}
 
 	protected void readAdditionalSaveData(CompoundTag nbt) {

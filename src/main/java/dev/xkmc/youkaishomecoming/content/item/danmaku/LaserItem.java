@@ -1,13 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.danmaku.render.DoubleLayerDanmakuType;
-import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.danmaku.render.DoubleLayerLaserType;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
-import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.network.chat.Component;
@@ -23,20 +21,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DanmakuItem extends Item {
+public class LaserItem extends Item {
 
-	public final YHDanmaku.Bullet type;
 	public final DyeColor color;
 	public final float size;
 
-	public DanmakuItem(Properties pProperties, YHDanmaku.Bullet type, DyeColor color, float size) {
+	public LaserItem(Properties pProperties, DyeColor color, float size) {
 		super(pProperties);
-		this.type = type;
 		this.color = color;
 		this.size = size;
 	}
@@ -52,17 +47,16 @@ public class DanmakuItem extends Item {
 		level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS,
 				0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 		if (!level.isClientSide) {
-			ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), player, level);
+			ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), player, level);
 			danmaku.setItem(stack);
-			danmaku.setup(4, 40, false, type.size > 1,
-					RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
+			danmaku.setup(4, 100, 10, false, player.getYRot(), player.getXRot());
 			level.addFreshEntity(danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
 		if (head.is(YHTagGen.TOUHOU_HAT) && head.getItem() instanceof TouhouHatItem item && item.support(color)) {
-			player.getCooldowns().addCooldown(this, 10);
+			player.getCooldowns().addCooldown(this, 40);
 		} else {
-			player.getCooldowns().addCooldown(this, 20);
+			player.getCooldowns().addCooldown(this, 80);
 			if (!player.getAbilities().instabuild) {
 				stack.shrink(1);
 			}
@@ -81,13 +75,13 @@ public class DanmakuItem extends Item {
 		list.add(YHLangData.USAGE_DANMAKU.get(fying, fied));
 	}
 
-	private DoubleLayerDanmakuType render;
+	private DoubleLayerLaserType render;
 
-	public DoubleLayerDanmakuType getTypeForRender() {
+	public DoubleLayerLaserType getTypeForRender() {
 		if (render == null) {
-			render = new DoubleLayerDanmakuType(
-					YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),
-					YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + "_overlay.png"),
+			render = new DoubleLayerLaserType(
+					YoukaisHomecoming.loc("textures/entities/laser_inner.png"),
+					YoukaisHomecoming.loc("textures/entities/laser_outer.png"),
 					0xff000000 | color.getFireworkColor());
 		}
 		return render;

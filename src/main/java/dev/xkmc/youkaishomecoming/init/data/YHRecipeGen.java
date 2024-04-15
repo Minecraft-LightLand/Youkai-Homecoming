@@ -673,7 +673,7 @@ public class YHRecipeGen {
 
 		// danmaku
 		{
-			for (var t : YHDanmaku.Type.values()) {
+			for (var t : YHDanmaku.Bullet.values()) {
 				for (var e : DyeColor.values()) {
 					Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(e.getName() + "_dye"));
 					assert dye != null;
