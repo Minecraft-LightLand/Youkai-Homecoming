@@ -35,7 +35,7 @@ public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer
 		pose.translate(0, e.getBbHeight() / 2, 0);
 		pose.mulPose(Axis.YP.rotationDegrees(-e.getViewYRot(pTick)));
 		pose.mulPose(Axis.XP.rotationDegrees(e.getViewXRot(pTick) + 90));
-		pose.scale(e.getBbWidth() * scale, e.length, e.getBbWidth() * scale);
+		pose.scale(e.getBbWidth() * scale, e.effectiveLength(), e.getBbWidth() * scale);
 		PoseStack.Pose mat = pose.last();
 		Matrix4f m4 = new Matrix4f(mat.pose());
 		Matrix3f m3 = new Matrix3f(mat.normal());

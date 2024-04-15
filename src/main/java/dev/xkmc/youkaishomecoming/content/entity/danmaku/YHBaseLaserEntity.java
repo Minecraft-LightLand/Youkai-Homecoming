@@ -14,6 +14,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 
@@ -28,6 +29,8 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 	private boolean bypassWall = false;
 	@SerialClass.SerialField
 	public float damage = 0, length = 0;
+
+	public double earlyTerminate = -1;
 
 	protected YHBaseLaserEntity(EntityType<? extends YHBaseLaserEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -72,6 +75,7 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 		return !bypassWall;
 	}
 
+	@Override
 	public float getEffectiveHitRadius() {
 		return getBbWidth() / 4f;
 	}
@@ -97,6 +101,10 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 		else return 0;
 	}
 
+	public float effectiveLength() {
+		return (float) (earlyTerminate >= 0 ? earlyTerminate : length);
+	}
+
 	@Override
 	public void tick() {
 		super.tick();
@@ -108,6 +116,11 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 
 	@Override
 	protected void onHit(LaserHitHelper.LaserHitResult hit) {
+		if (level().isClientSide()) {
+			if (hit.bhit() != null && hit.bhit().getType() != HitResult.Type.MISS) {
+				earlyTerminate = position().add(0, getBbHeight() / 2f, 0).distanceTo(hit.bhit().getLocation());
+			} else earlyTerminate = -1;
+		}
 		for (var e : hit.ehit()) {
 			hurtTarget(e);
 		}

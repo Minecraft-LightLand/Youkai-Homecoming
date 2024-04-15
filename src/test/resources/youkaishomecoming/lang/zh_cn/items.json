@@ -130,13 +130,11 @@
 		  "yellow": "黄色"
 		},
 		{
-		  "circle": "环玉",
-		  "ball": "小玉",
-		  "mentos": "中玉",
-		  "bubble": "大玉"
-		},
-		{
-		  "danmaku": "弹幕"
+		  "circle_danmaku": "环玉弹幕",
+		  "ball_danmaku": "小玉弹幕",
+		  "mentos_danmaku": "中玉弹幕",
+		  "bubble_danmaku": "大玉弹幕",
+		  "laser": "激光"
 		}
 	  ]
 	}

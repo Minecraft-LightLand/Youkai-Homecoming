@@ -19,7 +19,7 @@ public class LaserHitHelper {
 	}
 
 	public static LaserHitResult getHitResultOnProjection(BaseLaser e, boolean checkBlock, boolean checkEntity) {
-		Vec3 src = e.position();
+		Vec3 src = e.position().add(0, e.getBbHeight() / 2f, 0);
 		Vec3 v = e.getForward().scale(e.getLength());
 		Level level = e.level();
 		Vec3 dst = src.add(v);

@@ -30,7 +30,25 @@ public class YHDanmaku {
 		}
 
 		public ItemEntry<DanmakuItem> get(DyeColor color) {
-			return DANMAKU[ordinal()][color.ordinal()];
+			return YHDanmaku.DANMAKU[ordinal()][color.ordinal()];
+		}
+	}
+
+	public enum Laser {
+		LASER(1);
+
+		public final String name;
+		public final TagKey<Item> tag;
+		public final float size;
+
+		Laser(float size) {
+			this.size = size;
+			name = name().toLowerCase(Locale.ROOT);
+			tag = YHTagGen.item(name);
+		}
+
+		public ItemEntry<LaserItem> get(DyeColor color) {
+			return YHDanmaku.LASER[ordinal()][color.ordinal()];
 		}
 	}
 
@@ -40,7 +58,7 @@ public class YHDanmaku {
 
 	private static final ItemEntry<DanmakuItem>[][] DANMAKU;
 
-	private static final ItemEntry<LaserItem>[] LASER;
+	private static final ItemEntry<LaserItem>[][] LASER;
 
 	static {
 		DANMAKU = new ItemEntry[Bullet.values().length][DyeColor.values().length];
@@ -58,18 +76,19 @@ public class YHDanmaku {
 			}
 		}
 
-		LASER = new ItemEntry[DyeColor.values().length];
-
-		for (var e : DyeColor.values()) {
-			var ent = YoukaisHomecoming.REGISTRATE
-					.item(e.getName() + "_laser", p -> new LaserItem(p.rarity(Rarity.RARE), e, 1))
-					.model((ctx, pvd) -> pvd.generated(ctx,
-							pvd.modLoc("item/danmaku/laser"),
-							pvd.modLoc("item/danmaku/laser_overlay")))
-					.color(() -> () -> (stack, i) -> ((LaserItem) stack.getItem()).getDanmakuColor(stack, i))
-					//TODO tag
-					.register();
-			LASER[e.ordinal()] = ent;
+		LASER = new ItemEntry[Laser.values().length][DyeColor.values().length];
+		for (var t : Laser.values()) {
+			for (var e : DyeColor.values()) {
+				var ent = YoukaisHomecoming.REGISTRATE
+						.item(e.getName() + "_" + t.name, p -> new LaserItem(p.rarity(Rarity.RARE), e, 1))
+						.model((ctx, pvd) -> pvd.generated(ctx,
+								pvd.modLoc("item/danmaku/" + t.name),
+								pvd.modLoc("item/danmaku/" + t.name + "_overlay")))
+						.color(() -> () -> (stack, i) -> ((LaserItem) stack.getItem()).getDanmakuColor(stack, i))
+						.tag(t.tag)
+						.register();
+				LASER[t.ordinal()][e.ordinal()] = ent;
+			}
 		}
 	}
 

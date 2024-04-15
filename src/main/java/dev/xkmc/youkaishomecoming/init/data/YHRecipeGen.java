@@ -673,11 +673,20 @@ public class YHRecipeGen {
 
 		// danmaku
 		{
-			for (var t : YHDanmaku.Bullet.values()) {
-				for (var e : DyeColor.values()) {
-					Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(e.getName() + "_dye"));
-					assert dye != null;
-					Item danmaku = t.get(e).get();
+			for (var e : DyeColor.values()) {
+				Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(e.getName() + "_dye"));
+				assert dye != null;
+				for (var t : YHDanmaku.Bullet.values()) {
+					var danmaku = t.get(e).get();
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
+							.pattern("AAA").pattern("ABA").pattern("AAA")
+							.define('A', t.tag)
+							.define('B', dye)
+							.save(pvd);
+
+				}
+				for (var t : YHDanmaku.Laser.values()) {
+					var danmaku = t.get(e).get();
 					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
 							.pattern("AAA").pattern("ABA").pattern("AAA")
 							.define('A', t.tag)

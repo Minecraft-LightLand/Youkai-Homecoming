@@ -49,7 +49,7 @@ public class LaserItem extends Item {
 		if (!level.isClientSide) {
 			ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), player, level);
 			danmaku.setItem(stack);
-			danmaku.setup(4, 100, 10, false, player.getYRot(), player.getXRot());
+			danmaku.setup(4, 100, 40, false, player.getYRot(), player.getXRot());
 			level.addFreshEntity(danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
