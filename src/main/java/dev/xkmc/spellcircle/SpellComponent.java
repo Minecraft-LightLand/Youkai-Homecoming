@@ -58,7 +58,7 @@ public class SpellComponent {
 	public static class Stroke {
 
 		@SerialClass.SerialField
-		public int vertex, cycle = 1;
+		public int vertex, cycle = 1, rune = 0;
 
 		@SerialClass.SerialField
 		public String color;
@@ -72,9 +72,10 @@ public class SpellComponent {
 			float a = angle;
 			float w = width / (float) Math.cos(da / 2);
 			int col = getColor();
+			float dv = (rune > 0 ? 8 : 1) / 128f;
+			float du = (int) (Math.PI * 2 * radius * cycle / width * 8) / 8f / vertex * dv;
 			for (int i = 0; i < vertex; i++) {
-				rect(handle, a, da, radius, w, z, col);
-				a += da;
+				rect(handle, a + da * i, da, radius, w, z, col, i * du, rune == 0 ? 0 : (rune - 1) * dv, du, dv);
 			}
 
 		}
@@ -90,15 +91,17 @@ public class SpellComponent {
 		}
 
 		@OnlyIn(Dist.CLIENT)
-		private static void rect(RenderHandle handle, float a, float da, float r, float w, float z, int col) {
-			vertex(handle, a, r - w / 2, z, col);
-			vertex(handle, a, r + w / 2, z, col);
-			vertex(handle, a + da, r + w / 2, z, col);
-			vertex(handle, a + da, r - w / 2, z, col);
+		private static void rect(RenderHandle handle, float a, float da, float r, float w, float z, int col, float u, float v, float du, float dv) {
+			float inner = r - w / 2;
+			float outer = r + w / 2;
+			vertex(handle, a, inner, z, col, u, v);
+			vertex(handle, a, outer, z, col, u, v + dv);
+			vertex(handle, a + da, outer, z, col, u + du, v + dv);
+			vertex(handle, a + da, inner, z, col, u + du, v);
 		}
 
 		@OnlyIn(Dist.CLIENT)
-		private static void vertex(RenderHandle handle, float a, float r, float z, int col) {
+		private static void vertex(RenderHandle handle, float a, float r, float z, int col, float u, float v) {
 			int alp = (int) ((col >> 24 & 0xff) * handle.alpha);
 			handle.builder.vertex(handle.matrix.last().pose(),
 							r * (float) Math.cos(a),
@@ -107,7 +110,7 @@ public class SpellComponent {
 							col >> 16 & 0xff,
 							col >> 8 & 0xff,
 							col & 0xff,
-							alp)
+							alp).uv(u, v)
 					.endVertex();
 		}
 

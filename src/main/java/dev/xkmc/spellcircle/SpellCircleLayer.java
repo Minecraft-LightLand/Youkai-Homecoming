@@ -11,7 +11,7 @@ import net.minecraft.world.entity.Entity;
 
 public class SpellCircleLayer<T extends Entity, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
-	private static final ResourceLocation WHITE = YoukaisHomecoming.loc("textures/entities/laser_inner.png");
+	private static final ResourceLocation SPELL = YoukaisHomecoming.loc("textures/entities/spell_circle.png");
 
 	public SpellCircleLayer(RenderLayerParent<T, M> pRenderer) {
 		super(pRenderer);
@@ -24,12 +24,10 @@ public class SpellCircleLayer<T extends Entity, M extends EntityModel<T>> extend
 		SpellComponent component = SpellCircleConfig.getFromConfig(YoukaisHomecoming.loc("test_spell"));
 		if (component == null) return;
 		SpellComponent.RenderHandle handle = new SpellComponent.RenderHandle(pose,
-				buffer.getBuffer(SpellRenderState.getSpell(WHITE)),
+				buffer.getBuffer(SpellRenderState.getSpell(SPELL)),
 				e.tickCount + pTick, light);
 		pose.pushPose();
 		pose.translate(0, e.getBbHeight() / 2, e.getBbWidth());
-		//pose.mulPose(Axis.YP.rotationDegrees(-e.getViewYRot(pTick)));
-		//pose.mulPose(Axis.XP.rotationDegrees(e.getViewXRot(pTick)));
 		float scale = 1;//e.getSize(partial);
 		pose.scale(scale / 16f, scale / 16f, scale / 16f);
 		component.render(handle);

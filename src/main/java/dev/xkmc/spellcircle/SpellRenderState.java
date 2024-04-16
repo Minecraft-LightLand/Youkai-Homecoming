@@ -14,13 +14,13 @@ public class SpellRenderState extends RenderStateShard {
 	public static RenderType getSpell(ResourceLocation id) {
 		return RenderType.create(
 				"spell_blend",
-				DefaultVertexFormat.POSITION_COLOR,
+				DefaultVertexFormat.POSITION_COLOR_TEX,
 				VertexFormat.Mode.QUADS, 256, true, true,
 				RenderType.CompositeState.builder()
 						.setShaderState(RenderStateShard.POSITION_COLOR_TEX_SHADER)
 						.setTextureState(new TextureStateShard(id, false, false))
 						.setCullState(NO_CULL)
-						.setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+						.setTransparencyState(ADDITIVE_TRANSPARENCY)
 						.createCompositeState(false)
 		);
 	}

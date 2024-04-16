@@ -8,7 +8,11 @@
 		  "rotation": {
 			"delta": 1
 		  },
+		  "radius": {
+			"value": 32
+		  },
 		  "children": [
+			"youkaishomecoming:test_spell_0",
 			"youkaishomecoming:test_spell_0",
 			"youkaishomecoming:test_spell_0",
 			"youkaishomecoming:test_spell_0",
@@ -34,13 +38,28 @@
 		  "cycle": 1,
 		  "color": "0xFFFF0000",
 		  "radius": 48,
-		  "width": 1
+		  "width": 8
 		},
 		{
 		  "vertex": 7,
 		  "cycle": 2,
 		  "color": "0xFFFF0000",
-		  "radius": 47,
+		  "radius": 44,
+		  "width": 1
+		},
+		{
+		  "vertex": 32,
+		  "cycle": 1,
+		  "color": "0xFFFF0000",
+		  "radius": 22,
+		  "width": 1
+		}
+	  ,
+		{
+		  "vertex": 7,
+		  "cycle": 2,
+		  "color": "0xFFFF0000",
+		  "radius": 21,
 		  "width": 1
 		}
 	  ]
@@ -70,7 +89,7 @@
 		},
 		{
 		  "vertex": 7,
-		  "cycle": 2,
+		  "cycle": 3,
 		  "color": "0xFFFF0000",
 		  "radius": 8,
 		  "width": 1
