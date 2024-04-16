@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
-public class SpellCircleLayer<T extends Entity, M extends EntityModel<T>> extends RenderLayer<T, M> {
+public class SpellCircleLayer<T extends Entity & SpellCircleHolder, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
 	private static final ResourceLocation SPELL = YoukaisHomecoming.loc("textures/entities/spell_circle.png");
 
@@ -21,14 +21,16 @@ public class SpellCircleLayer<T extends Entity, M extends EntityModel<T>> extend
 	public void render(PoseStack pose, MultiBufferSource buffer, int light, T e,
 					   float swing, float swingAmp, float pTick, float age,
 					   float yaw, float pitch) {
-		SpellComponent component = SpellCircleConfig.getFromConfig(YoukaisHomecoming.loc("test_spell"));
+		ResourceLocation rl = e.getSpellCircle();
+		if (rl == null) return;
+		SpellComponent component = SpellCircleConfig.getFromConfig(rl);
 		if (component == null) return;
 		SpellComponent.RenderHandle handle = new SpellComponent.RenderHandle(pose,
 				buffer.getBuffer(SpellRenderState.getSpell(SPELL)),
 				e.tickCount + pTick, light);
 		pose.pushPose();
 		pose.translate(0, e.getBbHeight() / 2, e.getBbWidth());
-		float scale = 1;//e.getSize(partial);
+		float scale = e.getCircleSize(pTick);
 		pose.scale(scale / 16f, scale / 16f, scale / 16f);
 		component.render(handle);
 		pose.popPose();

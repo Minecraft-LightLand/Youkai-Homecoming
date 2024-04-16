@@ -59,7 +59,7 @@ public class EtchingGen {
 		}
 		var img = new BufferedImage(w, (n + 4) * h, BufferedImage.TYPE_4BYTE_ABGR);
 		int white = 0xffffffff;
-		int black = 0xff000000;
+		int black = 0x00ffffff;
 		for (int i = 0; i < len; i++) {
 			int x = i % w;
 			int y = i / w * (n + 4);

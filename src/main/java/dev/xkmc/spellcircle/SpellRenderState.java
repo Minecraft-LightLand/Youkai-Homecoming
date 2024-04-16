@@ -20,7 +20,7 @@ public class SpellRenderState extends RenderStateShard {
 						.setShaderState(RenderStateShard.POSITION_COLOR_TEX_SHADER)
 						.setTextureState(new TextureStateShard(id, false, false))
 						.setCullState(NO_CULL)
-						.setTransparencyState(ADDITIVE_TRANSPARENCY)
+						.setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
 						.createCompositeState(false)
 		);
 	}

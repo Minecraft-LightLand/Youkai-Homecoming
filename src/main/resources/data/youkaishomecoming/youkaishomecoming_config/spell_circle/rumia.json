@@ -1,0 +1,60 @@
+{
+  "map": {
+	"youkaishomecoming:rumia": {
+	  "strokes": [
+	  ],
+	  "layers": [
+		{
+		  "rotation": {
+			"delta": 5
+		  },
+		  "radius": {
+			"value": 16
+		  },
+		  "children": [
+			"youkaishomecoming:rumia_cube_base"
+		  ]
+		},
+		{
+		  "rotation": {
+			"value": 30,
+			"delta": 5
+		  },
+		  "radius": {
+			"value": 24
+		  },
+		  "children": [
+			"youkaishomecoming:rumia_cube"
+		  ]
+		}
+	  ]
+	},
+	"youkaishomecoming:rumia_cube": {
+	  "strokes": [
+	  ],
+	  "layers": [
+		{
+		  "rotation": {
+			"delta": -10
+		  },
+		  "children": [
+			"youkaishomecoming:rumia_cube_base"
+		  ]
+		}
+	  ]
+	},
+	"youkaishomecoming:rumia_cube_base": {
+	  "strokes": [
+		{
+		  "vertex": 4,
+		  "cycle": 1,
+		  "color": "0xFFFFFFFF",
+		  "radius": 8,
+		  "width": 1
+		}
+	  ],
+	  "layers": [
+	  ]
+	}
+  }
+}

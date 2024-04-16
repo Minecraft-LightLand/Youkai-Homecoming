@@ -2,16 +2,19 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.spellcircle.SpellCircleHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MultiHurtByTargetGoal;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -39,13 +42,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 @SerialClass
-public class RumiaEntity extends YoukaiEntity {
+public class RumiaEntity extends YoukaiEntity implements SpellCircleHolder {
 
 	private static final EntityDimensions FALL = EntityDimensions.scalable(1.7f, 0.4f);
 	private static final UUID EXRUMIA = MathHelper.getUUIDFromString("ex_rumia");
+	private static final ResourceLocation SPELL_RUMIA = YoukaisHomecoming.loc("rumia");
+	private static final ResourceLocation SPELL_EX_RUMIA = YoukaisHomecoming.loc("ex_rumia");
 
 	@SerialClass.SerialField
 	public final RumiaStateMachine state = new RumiaStateMachine(this);
+
+	private int tickAggressive;
 
 	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -84,6 +91,29 @@ public class RumiaEntity extends YoukaiEntity {
 	@Override
 	public boolean isInvulnerableTo(DamageSource source) {
 		return super.isInvulnerableTo(source) || source.getEntity() instanceof RumiaEntity;
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (level().isClientSide()) {
+			if (isAggressive() && !isBlocked() && !isCharged()) {
+				if (tickAggressive < 20)
+					tickAggressive++;
+			} else if (tickAggressive > 0) {
+				tickAggressive--;
+			}
+		}
+	}
+
+	@Override
+	public @Nullable ResourceLocation getSpellCircle() {
+		return isEx() ? SPELL_EX_RUMIA : SPELL_RUMIA;
+	}
+
+	@Override
+	public float getCircleSize(float pTick) {
+		return isBlocked() || isCharged() || tickAggressive == 0 ? 0 : Math.min(1, (tickAggressive + pTick) / 20f);
 	}
 
 	@Override

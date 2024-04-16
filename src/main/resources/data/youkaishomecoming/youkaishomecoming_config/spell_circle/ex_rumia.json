@@ -1,6 +1,6 @@
 {
   "map": {
-	"youkaishomecoming:test_spell": {
+	"youkaishomecoming:ex_rumia": {
 	  "strokes": [
 	  ],
 	  "layers": [
@@ -12,13 +12,13 @@
 			"value": 32
 		  },
 		  "children": [
-			"youkaishomecoming:test_spell_0",
-			"youkaishomecoming:test_spell_0",
-			"youkaishomecoming:test_spell_0",
-			"youkaishomecoming:test_spell_0",
-			"youkaishomecoming:test_spell_0",
-			"youkaishomecoming:test_spell_0",
-			"youkaishomecoming:test_spell_0"
+			"youkaishomecoming:ex_rumia_small",
+			"youkaishomecoming:ex_rumia_small",
+			"youkaishomecoming:ex_rumia_small",
+			"youkaishomecoming:ex_rumia_small",
+			"youkaishomecoming:ex_rumia_small",
+			"youkaishomecoming:ex_rumia_small",
+			"youkaishomecoming:ex_rumia_small"
 		  ]
 		},
 		{
@@ -26,12 +26,12 @@
 			"delta": 1
 		  },
 		  "children": [
-			"youkaishomecoming:test_spell_root"
+			"youkaishomecoming:ex_rumia_base"
 		  ]
 		}
 	  ]
 	},
-	"youkaishomecoming:test_spell_root": {
+	"youkaishomecoming:ex_rumia_base": {
 	  "strokes": [
 		{
 		  "vertex": 64,
@@ -65,7 +65,7 @@
 		}
 	  ]
 	},
-	"youkaishomecoming:test_spell_0": {
+	"youkaishomecoming:ex_rumia_small": {
 	  "strokes": [
 	  ],
 	  "layers": [
@@ -74,12 +74,12 @@
 			"delta": 2
 		  },
 		  "children": [
-			"youkaishomecoming:test_spell_1"
+			"youkaishomecoming:ex_rumia_small_base"
 		  ]
 		}
 	  ]
 	},
-	"youkaishomecoming:test_spell_1": {
+	"youkaishomecoming:ex_rumia_small_base": {
 	  "strokes": [
 		{
 		  "vertex": 28,
