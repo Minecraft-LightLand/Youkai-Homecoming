@@ -108,6 +108,9 @@ public class RumiaEntity extends YoukaiEntity implements SpellCircleHolder {
 
 	@Override
 	public @Nullable ResourceLocation getSpellCircle() {
+		if (isBlocked() || isCharged() || tickAggressive == 0) {
+			return null;
+		}
 		return isEx() ? SPELL_EX_RUMIA : SPELL_RUMIA;
 	}
 
@@ -117,9 +120,17 @@ public class RumiaEntity extends YoukaiEntity implements SpellCircleHolder {
 	}
 
 	@Override
+	public boolean canBeAffected(MobEffectInstance ins) {
+		return !isEx() && super.canBeAffected(ins);
+	}
+
+	@Override
 	public void aiStep() {
 		super.aiStep();
 		state.tick();
+		if (isEx() && !getActiveEffectsMap().isEmpty()) {
+			removeAllEffects();
+		}
 	}
 
 	public boolean isCharged() {

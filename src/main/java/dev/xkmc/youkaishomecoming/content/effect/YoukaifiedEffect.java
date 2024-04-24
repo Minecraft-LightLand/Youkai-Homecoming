@@ -29,6 +29,7 @@ public class YoukaifiedEffect extends MobEffect {
 	public void applyEffectTick(LivingEntity e, int lv) {
 		if (e instanceof Player player) {
 			player.causeFoodExhaustion(0.02f);
+			if (player.level().isClientSide()) return;
 			if (player.getFoodData().getFoodLevel() < 10) {
 				EffectUtil.refreshEffect(e, new MobEffectInstance(MobEffects.CONFUSION, 40, 0,
 						true, true), EffectUtil.AddReason.SELF, e);
