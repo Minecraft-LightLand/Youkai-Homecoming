@@ -15,9 +15,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -57,6 +60,14 @@ public class RumiaEntity extends YoukaiEntity implements SpellCircleHolder {
 	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		setPersistenceRequired();
+	}
+
+	@Override
+	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+		if (isAggressive()) return InteractionResult.PASS;
+		if (!player.hasEffect(YHEffects.YOUKAIFIED.get())) return InteractionResult.PASS;
+		if (player instanceof ServerPlayer sp) RumiaMerchant.openMenu(this, sp);
+		return InteractionResult.SUCCESS;
 	}
 
 	protected void registerGoals() {

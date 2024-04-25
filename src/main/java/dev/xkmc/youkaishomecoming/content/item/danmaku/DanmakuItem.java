@@ -54,7 +54,7 @@ public class DanmakuItem extends Item {
 		if (!level.isClientSide) {
 			ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), player, level);
 			danmaku.setItem(stack);
-			danmaku.setup(4, 40, false, type.size > 1,
+			danmaku.setup(type.damage(), 40, false, type.bypass(),
 					RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
 			level.addFreshEntity(danmaku);
 		}
@@ -79,6 +79,9 @@ public class DanmakuItem extends Item {
 		var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
 		var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
 		list.add(YHLangData.USAGE_DANMAKU.get(fying, fied));
+		list.add(YHLangData.DANMAKU_DAMAGE.get(type.damage()));
+		if (type.bypass())
+			list.add(YHLangData.DANMAKU_BYPASS.get());
 	}
 
 	private DoubleLayerDanmakuType render;

@@ -17,14 +17,16 @@ import java.util.Locale;
 public class YHDanmaku {
 
 	public enum Bullet {
-		CIRCLE(1), BALL(1), MENTOS(2), BUBBLE(4);
+		CIRCLE(1, 4), BALL(1, 4), MENTOS(2, 6), BUBBLE(4, 8);
 
 		public final String name;
 		public final TagKey<Item> tag;
 		public final float size;
+		private final int damage;
 
-		Bullet(float size) {
+		Bullet(float size, int damage) {
 			this.size = size;
+			this.damage = damage;
 			name = name().toLowerCase(Locale.ROOT);
 			tag = YHTagGen.item(name + "_danmaku");
 		}
@@ -32,17 +34,27 @@ public class YHDanmaku {
 		public ItemEntry<DanmakuItem> get(DyeColor color) {
 			return YHDanmaku.DANMAKU[ordinal()][color.ordinal()];
 		}
+
+		public int damage() {
+			return damage;
+		}
+
+		public boolean bypass() {
+			return size > 1;
+		}
 	}
 
 	public enum Laser {
-		LASER(1);
+		LASER(1, 4);
 
 		public final String name;
 		public final TagKey<Item> tag;
 		public final float size;
+		private final int damage;
 
-		Laser(float size) {
+		Laser(float size, int damage) {
 			this.size = size;
+			this.damage = damage;
 			name = name().toLowerCase(Locale.ROOT);
 			tag = YHTagGen.item(name);
 		}
@@ -50,6 +62,11 @@ public class YHDanmaku {
 		public ItemEntry<LaserItem> get(DyeColor color) {
 			return YHDanmaku.LASER[ordinal()][color.ordinal()];
 		}
+
+		public int damage() {
+			return damage;
+		}
+
 	}
 
 	public static final RegistryEntry<CreativeModeTab> TAB = YoukaisHomecoming.REGISTRATE
@@ -80,7 +97,7 @@ public class YHDanmaku {
 		for (var t : Laser.values()) {
 			for (var e : DyeColor.values()) {
 				var ent = YoukaisHomecoming.REGISTRATE
-						.item(e.getName() + "_" + t.name, p -> new LaserItem(p.rarity(Rarity.RARE), e, 1))
+						.item(e.getName() + "_" + t.name, p -> new LaserItem(p.rarity(Rarity.RARE), t, e, 1))
 						.model((ctx, pvd) -> pvd.generated(ctx,
 								pvd.modLoc("item/danmaku/" + t.name),
 								pvd.modLoc("item/danmaku/" + t.name + "_overlay")))

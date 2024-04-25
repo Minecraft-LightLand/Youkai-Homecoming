@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.network.chat.Component;
@@ -28,11 +29,13 @@ import java.util.List;
 public class LaserItem extends Item {
 
 	public final DyeColor color;
+	public final YHDanmaku.Laser type;
 	public final float size;
 
-	public LaserItem(Properties pProperties, DyeColor color, float size) {
+	public LaserItem(Properties pProperties, YHDanmaku.Laser type, DyeColor color, float size) {
 		super(pProperties);
 		this.color = color;
+		this.type = type;
 		this.size = size;
 	}
 
@@ -49,7 +52,7 @@ public class LaserItem extends Item {
 		if (!level.isClientSide) {
 			ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), player, level);
 			danmaku.setItem(stack);
-			danmaku.setup(4, 100, 40, false, player.getYRot(), player.getXRot());
+			danmaku.setup(type.damage(), 100, 40, false, player.getYRot(), player.getXRot());
 			level.addFreshEntity(danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
@@ -73,6 +76,7 @@ public class LaserItem extends Item {
 		var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
 		var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
 		list.add(YHLangData.USAGE_DANMAKU.get(fying, fied));
+		list.add(YHLangData.DANMAKU_DAMAGE.get(type.damage()));
 	}
 
 	private DoubleLayerLaserType render;

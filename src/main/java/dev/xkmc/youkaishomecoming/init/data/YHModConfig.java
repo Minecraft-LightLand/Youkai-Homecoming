@@ -22,7 +22,6 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue youkaifyingThreshold;
 		public final ForgeConfigSpec.IntValue youkaifiedDuration;
 		public final ForgeConfigSpec.IntValue youkaifiedProlongation;
-		public final ForgeConfigSpec.DoubleValue youkaifiedBoost;
 
 		public final ForgeConfigSpec.DoubleValue smoothingHealingFactor;
 		public final ForgeConfigSpec.IntValue teaHealingPeriod;
@@ -57,8 +56,6 @@ public class YHModConfig {
 					.defineInRange("youkaifiedDuration", 24000, 0, 1000000);
 			youkaifiedProlongation = builder.comment("Time for flesh food to add Youkaified effect")
 					.defineInRange("youkaifiedProlongation", 6000, 0, 1000000);
-			youkaifiedBoost = builder.comment("Time for flesh food to add Youkaified effect")
-					.defineInRange("youkaifiedBoost", 2d, 0, 10d);
 			builder.pop();
 
 			builder.push("food_effect");

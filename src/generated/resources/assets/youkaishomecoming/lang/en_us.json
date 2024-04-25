@@ -348,6 +348,8 @@
   "item.youkaishomecoming.yellow_mentos_danmaku": "Yellow Mentos Danmaku",
   "itemGroup.youkaishomecoming.danmaku": "Youkai's Danmaku",
   "itemGroup.youkaishomecoming.youkais_homecoming": "Youkai's Homecoming",
+  "youkaishomecoming.danmaku_bypass": "Bypasses entities",
+  "youkaishomecoming.danmaku_damage": "Deals %s damage on hit",
   "youkaishomecoming.drying_rack": "Only works directly under the sun",
   "youkaishomecoming.flesh_human": "Weird Meat",
   "youkaishomecoming.flesh_youkai": "Flesh",
