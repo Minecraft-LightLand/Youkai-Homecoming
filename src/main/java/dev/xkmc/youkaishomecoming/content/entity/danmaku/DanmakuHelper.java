@@ -6,14 +6,19 @@ public class DanmakuHelper {
 
 	public record Orientation(Vec3 dir, Vec3 ax0, Vec3 ax1) {
 
+		public Vec3 rotateDegrees(double rad) {
+			return rotate(rad / 180 * Math.PI);
+		}
+
+		public Vec3 rotateDegrees(double rad, double ver) {
+			return rotate(rad / 180 * Math.PI, ver / 180 * Math.PI);
+		}
+
 		public Vec3 rotate(double rad) {
-			rad = rad / 180 * Math.PI;
 			return ax1.scale(Math.sin(rad)).add(dir.scale(Math.cos(rad)));
 		}
 
 		public Vec3 rotate(double rad, double ver) {
-			rad = rad / 180 * Math.PI;
-			ver = ver / 180 * Math.PI;
 			return ax1.scale(Math.sin(rad) * Math.cos(ver))
 					.add(dir.scale(Math.cos(rad) * Math.cos(ver)))
 					.add(ax0.scale(Math.sin(ver)));

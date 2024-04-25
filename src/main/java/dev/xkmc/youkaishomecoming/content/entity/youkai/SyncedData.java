@@ -19,6 +19,7 @@ public class SyncedData {
 
 	public static final Serializer<Integer> INT;
 	public static final Serializer<BlockPos> BLOCK_POS;
+	public static final Serializer<String> STRING;
 	public static final Serializer<Optional<UUID>> UUID;
 
 	static {
@@ -28,6 +29,7 @@ public class SyncedData {
 			ans.fromBlockPos(pos);
 			return ans.tag;
 		}, tag -> tag instanceof CompoundTag ct ? new NBTObj(ct).toBlockPos() : BlockPos.ZERO);
+		STRING = new Serializer<>(EntityDataSerializers.STRING, StringTag::valueOf, Tag::getAsString);
 		UUID = new Serializer<>(EntityDataSerializers.OPTIONAL_UUID, uuid -> uuid.map(NbtUtils::createUUID).orElse(null),
 				tag -> Optional.ofNullable(tag).map(NbtUtils::loadUUID));
 	}
@@ -36,14 +38,25 @@ public class SyncedData {
 
 	private final List<Data<?>> list = new ArrayList<>();
 
+	@Nullable
+	private final SyncedData parent;
+
 	public SyncedData(Definer cls) {
 		this.cls = cls;
+		parent = null;
+	}
+
+	public SyncedData(Definer cls, SyncedData parent) {
+		this.cls = cls;
+		this.parent = parent;
 	}
 
 	public void register(SynchedEntityData data) {
 		for (Data<?> entry : list) {
 			entry.register(data);
 		}
+		if (parent != null)
+			parent.register(data);
 	}
 
 	public <T> EntityDataAccessor<T> define(Serializer<T> ser, T init, @Nullable String name) {
@@ -52,16 +65,20 @@ public class SyncedData {
 		return data.data;
 	}
 
-	public void write(CompoundTag tag, SynchedEntityData entityData) {
+	public void write(CompoundTag tag, SynchedEntityData data) {
 		for (Data<?> entry : list) {
-			entry.write(tag, entityData);
+			entry.write(tag, data);
 		}
+		if (parent != null)
+			parent.write(tag, data);
 	}
 
-	public void read(CompoundTag tag, SynchedEntityData entityData) {
+	public void read(CompoundTag tag, SynchedEntityData data) {
 		for (Data<?> entry : list) {
-			entry.read(tag, entityData);
+			entry.read(tag, data);
 		}
+		if (parent != null)
+			parent.read(tag, data);
 	}
 
 	private class Data<T> {

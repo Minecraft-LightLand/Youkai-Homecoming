@@ -12,6 +12,8 @@ import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -63,7 +65,7 @@ public class YHEntities {
 			.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RumiaEntity::checkRumiaSpawnRules)
 			.attributes(RumiaEntity::createAttributes)
 			.renderer(() -> RumiaRenderer::new)
-			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
+			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
 							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).get(), 5, 10))
@@ -72,15 +74,23 @@ public class YHEntities {
 									.when(LootTableTemplate.byPlayer()))
 			)).register();
 
+	public static final EntityEntry<GeneralYoukaiEntity> GENERAL_YOUKAI = YoukaisHomecoming.REGISTRATE
+			.entity("youkai", GeneralYoukaiEntity::new, MobCategory.MONSTER)
+			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+			.attributes(GeneralYoukaiEntity::createAttributes)
+			.renderer(() -> GeneralYoukaiRenderer::new)
+			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
+
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU = YoukaisHomecoming.REGISTRATE
 			.<ItemDanmakuEntity>entity("item_danmaku", ItemDanmakuEntity::new, MobCategory.MISC)
-			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(10))
+			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(1 << 16))
 			.renderer(() -> ItemDanmakuRenderer::new)
 			.register();
 
 	public static final EntityEntry<ItemLaserEntity> ITEM_LASER = YoukaisHomecoming.REGISTRATE
 			.<ItemLaserEntity>entity("item_laser", ItemLaserEntity::new, MobCategory.MISC)
-			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(10))
+			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(1 << 16))
 			.renderer(() -> ItemLaserRenderer::new)
 			.register();
 

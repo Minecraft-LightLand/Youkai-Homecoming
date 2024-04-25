@@ -147,7 +147,7 @@ public class RumiaStateMachine {
 		float dmg = (float) rumia.getAttributeValue(Attributes.ATTACK_DAMAGE);
 		int n = rumia.isEx() ? 24 : 12;
 		for (int i = 0; i < n; i++) {
-			rumia.shoot(dmg, 40, ori.rotate(360f / n * i).scale(DANMAKU_SPEED), DyeColor.RED);
+			rumia.shoot(dmg, 40, ori.rotateDegrees(360f / n * i).scale(DANMAKU_SPEED), DyeColor.RED);
 		}
 	}
 

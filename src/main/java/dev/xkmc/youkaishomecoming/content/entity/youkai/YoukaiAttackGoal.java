@@ -7,7 +7,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import java.util.EnumSet;
 import java.util.List;
 
-public abstract class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
+public class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 
 	protected final T youkai;
 	private final int range;
@@ -96,7 +96,9 @@ public abstract class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 		return false;
 	}
 
-	protected abstract int shoot(LivingEntity target, List<LivingEntity> all);
+	protected int shoot(LivingEntity target, List<LivingEntity> all){
+		return 20;
+	}
 
 	protected double getMeleeRange() {
 		return 2;

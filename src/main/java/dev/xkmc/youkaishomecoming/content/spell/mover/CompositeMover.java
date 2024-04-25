@@ -12,6 +12,7 @@ public class CompositeMover extends DanmakuMover {
 	@SerialClass.SerialField
 	private final ArrayList<Entry> list = new ArrayList<>();
 
+	@SerialClass.SerialField
 	private int total = 0, index = 0;
 
 	public CompositeMover() {
@@ -35,7 +36,7 @@ public class CompositeMover extends DanmakuMover {
 		return ent.mover.move(tick - ent.subtract, prevPos, prevVel);
 	}
 
-	private record Entry(int subtract, DanmakuMover mover) {
+	public record Entry(int subtract, DanmakuMover mover) {
 
 	}
 

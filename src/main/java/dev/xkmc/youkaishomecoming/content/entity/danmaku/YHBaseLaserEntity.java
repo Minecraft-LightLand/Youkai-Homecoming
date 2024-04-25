@@ -146,11 +146,13 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
+		super.writeSpawnData(buffer);
 		PacketCodec.to(buffer, this);
 	}
 
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
+		super.readSpawnData(additionalData);
 		PacketCodec.from(additionalData, getClass(), Wrappers.cast(this));
 	}
 

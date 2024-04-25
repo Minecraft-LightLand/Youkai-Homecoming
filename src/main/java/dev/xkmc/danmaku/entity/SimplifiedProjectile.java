@@ -1,6 +1,7 @@
 package dev.xkmc.danmaku.entity;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -8,11 +9,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 
 import javax.annotation.Nullable;
+import javax.annotation.OverridingMethodsMustInvokeSuper;
 import java.util.UUID;
 
-public abstract class SimplifiedProjectile extends SimplifiedEntity implements TraceableEntity {
+public abstract class SimplifiedProjectile extends SimplifiedEntity implements TraceableEntity, IEntityAdditionalSpawnData {
 
 	@Nullable
 	private UUID ownerUUID;
@@ -28,7 +31,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 			return false;
 		} else {
 			Entity entity = getOwner();
-			if (entity == null) return false;
+			if (entity == null || entity == target) return false;
 			if (entity.isPassenger() || target.isPassenger()) {
 				return !entity.isPassengerOfSameVehicle(target);
 			}
@@ -85,6 +88,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		}
 	}
 
+	@OverridingMethodsMustInvokeSuper
 	protected void addAdditionalSaveData(CompoundTag nbt) {
 		if (ownerUUID != null) {
 			nbt.putUUID("Owner", ownerUUID);
@@ -92,6 +96,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		nbt.putInt("Age", tickCount);
 	}
 
+	@OverridingMethodsMustInvokeSuper
 	protected void readAdditionalSaveData(CompoundTag nbt) {
 		if (nbt.hasUUID("Owner")) {
 			ownerUUID = nbt.getUUID("Owner");
@@ -100,4 +105,15 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		tickCount = nbt.getInt("Age");
 	}
 
+	@OverridingMethodsMustInvokeSuper
+	@Override
+	public void writeSpawnData(FriendlyByteBuf buffer) {
+		buffer.writeInt(tickCount);
+	}
+
+	@OverridingMethodsMustInvokeSuper
+	@Override
+	public void readSpawnData(FriendlyByteBuf additionalData) {
+		tickCount = additionalData.readInt();
+	}
 }

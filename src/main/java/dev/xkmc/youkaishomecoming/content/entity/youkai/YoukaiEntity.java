@@ -7,7 +7,7 @@ import dev.xkmc.spellcircle.SpellCircleHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -47,7 +47,7 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 		return SynchedEntityData.defineId(YoukaiEntity.class, ser);
 	}
 
-	private static final SyncedData YOUKAI_DATA = new SyncedData(YoukaiEntity::defineId);
+	protected static final SyncedData YOUKAI_DATA = new SyncedData(YoukaiEntity::defineId);
 
 	protected static final EntityDataAccessor<Integer> DATA_FLAGS_ID = YOUKAI_DATA.define(SyncedData.INT, 0, "youkai_flags");
 
@@ -58,7 +58,7 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 	public final YoukaiTargetContainer targets;
 
 	@SerialClass.SerialField
-	public SpellCard spellCard;
+	public SpellCardWrapper spellCard;
 
 	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel) {
 		this(pEntityType, pLevel, 10);
@@ -87,16 +87,20 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 
 	// base
 
+	protected SyncedData data() {
+		return YOUKAI_DATA;
+	}
+
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		YOUKAI_DATA.register(entityData);
+		data().register(entityData);
 	}
 
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putInt("Age", tickCount);
 		tag.put("auto-serial", Objects.requireNonNull(TagCodec.toTag(new CompoundTag(), this)));
-		YOUKAI_DATA.write(tag, entityData);
+		data().write(tag, entityData);
 	}
 
 	public void readAdditionalSaveData(CompoundTag tag) {
@@ -105,7 +109,7 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 		if (tag.contains("auto-serial")) {
 			Wrappers.run(() -> TagCodec.fromTag(tag.getCompound("auto-serial"), getClass(), this, (f) -> true));
 		}
-		YOUKAI_DATA.read(tag, entityData);
+		data().read(tag, entityData);
 	}
 
 	public boolean getFlag(int flag) {
@@ -146,6 +150,10 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 
 	@Override
 	public Vec3 forward() {
+		LivingEntity target = target();
+		if (target != null) {
+			return center().subtract(target.position().add(0, target.getBbHeight() / 2, 0)).normalize();
+		}
 		return getForward();
 	}
 

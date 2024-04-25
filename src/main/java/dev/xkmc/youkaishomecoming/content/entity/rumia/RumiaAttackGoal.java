@@ -91,9 +91,9 @@ public class RumiaAttackGoal extends YoukaiAttackGoal<RumiaEntity> {
 			float speed = SPEED + i * SPEED_VAR;
 			int angle = off * (round - i - 2);
 			int life = (int) (range / speed);
-			youkai.shoot(dmg, life, ori.rotate(-SEPARATION + angle).scale(speed), DyeColor.RED);
-			youkai.shoot(dmg, life, ori.rotate(angle).scale(speed), DyeColor.BLACK);
-			youkai.shoot(dmg, life, ori.rotate(SEPARATION + angle).scale(speed), DyeColor.RED);
+			youkai.shoot(dmg, life, ori.rotateDegrees(-SEPARATION + angle).scale(speed), DyeColor.RED);
+			youkai.shoot(dmg, life, ori.rotateDegrees(angle).scale(speed), DyeColor.BLACK);
+			youkai.shoot(dmg, life, ori.rotateDegrees(SEPARATION + angle).scale(speed), DyeColor.RED);
 		}
 	}
 

@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import dev.xkmc.danmaku.entity.BaseDanmaku;
-import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -15,12 +14,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 
 import java.util.Objects;
 
 @SerialClass
-public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditionalSpawnData, IYHDanmaku {
+public class YHBaseDanmakuEntity extends BaseDanmaku implements IYHDanmaku {
 
 	@SerialClass.SerialField
 	private int life = 0;
@@ -75,11 +73,13 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IEntityAdditiona
 
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
+		super.writeSpawnData(buffer);
 		PacketCodec.to(buffer, this);
 	}
 
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
+		super.readSpawnData(additionalData);
 		PacketCodec.from(additionalData, getClass(), Wrappers.cast(this));
 	}
 

@@ -7,6 +7,19 @@ import net.minecraft.world.phys.Vec3;
 @SerialClass
 public final class ZeroMover extends DanmakuMover {
 
+	private static double closest(double a, double b) {
+		double step = Math.PI * 2;
+		if (Math.abs(b - a) > Math.abs(b - a + step))
+			return b + step;
+		if (Math.abs(b - a) > Math.abs(b - a - step))
+			return b - step;
+		return b;
+	}
+
+	private static Vec3 closest(Vec3 a, Vec3 b) {
+		return new Vec3(closest(a.x, b.x), closest(a.y, b.y), closest(a.z, b.z));
+	}
+
 	@SerialClass.SerialField
 	private Vec3 rot0, rot1;
 	@SerialClass.SerialField
@@ -19,7 +32,7 @@ public final class ZeroMover extends DanmakuMover {
 
 	public ZeroMover(Vec3 rot0, Vec3 rot1, int time) {
 		this.rot0 = DanmakuMovement.of(rot0).rot();
-		this.rot1 = DanmakuMovement.of(rot1).rot();
+		this.rot1 = closest(rot0, DanmakuMovement.of(rot1).rot());
 		this.time = time;
 	}
 

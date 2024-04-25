@@ -8,15 +8,23 @@ import net.minecraft.world.phys.Vec3;
 public final class RectMover extends DanmakuMover {
 
 	@SerialClass.SerialField
-	private final Vec3 a;
+	private Vec3 pos = Vec3.ZERO, v = Vec3.ZERO, a = Vec3.ZERO;
 
-	public RectMover(Vec3 a) {
+	@Deprecated
+	public RectMover() {
+
+	}
+
+	public RectMover(Vec3 pos, Vec3 v, Vec3 a) {
+		this.pos = pos;
+		this.v = v;
 		this.a = a;
 	}
 
 	@Override
 	public DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel) {
-		return DanmakuMovement.of(prevVel.add(a));
+		Vec3 p = pos.add(v.scale(tick)).add(a.scale(tick * tick * 0.5));
+		return DanmakuMovement.of(p.subtract(prevPos));
 	}
 
 }

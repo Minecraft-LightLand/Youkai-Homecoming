@@ -25,8 +25,8 @@ public final class PolarMover extends DanmakuMover {
 		this.f = f;
 	}
 
-	public static PolarMover ofPlane(Vec3 pos, Vec3 a1) {
-		var ori = DanmakuHelper.getOrientation(a1);
+	public static PolarMover ofPlane(Vec3 pos, Vec3 a1, Vec3 a2) {
+		var ori = DanmakuHelper.getOrientation(a1, a2);
 		return new PolarMover(pos, Vec3.ZERO, Vec3.ZERO, ori.ax0(), ori.dir());
 	}
 
@@ -39,7 +39,7 @@ public final class PolarMover extends DanmakuMover {
 	}
 
 	public Vec3 dir(double tick) {
-		return pos(tick + 5e-4).subtract(pos(tick - 5e-4)).scale(1e3);
+		return pos(tick + 1e-3).subtract(pos(tick)).scale(1e3);
 	}
 
 	public DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel) {
@@ -82,7 +82,7 @@ public final class PolarMover extends DanmakuMover {
 	}
 
 	public RectMover toRect() {
-		return new RectMover(dir(0));
+		return new RectMover(pos(0), dir(0), Vec3.ZERO);
 	}
 
 }

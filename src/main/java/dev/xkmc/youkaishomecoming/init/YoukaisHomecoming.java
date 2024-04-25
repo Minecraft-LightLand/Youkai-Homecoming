@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.init;
 
+import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -10,6 +11,8 @@ import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.spellcircle.SpellCircleConfig;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
@@ -27,6 +30,7 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -72,6 +76,9 @@ public class YoukaisHomecoming {
 		FrogGodCapability.register();
 		YHModConfig.init();
 
+		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
+		}
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
