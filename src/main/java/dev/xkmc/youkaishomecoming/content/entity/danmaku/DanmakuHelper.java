@@ -29,4 +29,9 @@ public class DanmakuHelper {
 		return new Orientation(dir, ax0, ax1);
 	}
 
+	public static Orientation getOrientation(Vec3 dir, Vec3 ax0) {
+		Vec3 ax1 = dir.cross(ax0).normalize();
+		return new Orientation(dir, ax0, ax1);
+	}
+
 }

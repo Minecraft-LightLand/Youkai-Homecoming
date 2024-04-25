@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.spellcircle.SpellCircleHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MultiHurtByTargetGoal;
@@ -45,7 +44,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 @SerialClass
-public class RumiaEntity extends YoukaiEntity implements SpellCircleHolder {
+public class RumiaEntity extends YoukaiEntity {
 
 	private static final EntityDimensions FALL = EntityDimensions.scalable(1.7f, 0.4f);
 	private static final UUID EXRUMIA = MathHelper.getUUIDFromString("ex_rumia");
@@ -118,8 +117,13 @@ public class RumiaEntity extends YoukaiEntity implements SpellCircleHolder {
 	}
 
 	@Override
+	public boolean shouldShowSpellCircle() {
+		return !(isBlocked() || isCharged() || tickAggressive == 0);
+	}
+
+	@Override
 	public @Nullable ResourceLocation getSpellCircle() {
-		if (isBlocked() || isCharged() || tickAggressive == 0) {
+		if (!shouldShowSpellCircle()) {
 			return null;
 		}
 		return isEx() ? SPELL_EX_RUMIA : SPELL_RUMIA;

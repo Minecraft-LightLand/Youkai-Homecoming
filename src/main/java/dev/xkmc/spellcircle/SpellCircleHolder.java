@@ -5,6 +5,8 @@ import org.jetbrains.annotations.Nullable;
 
 public interface SpellCircleHolder {
 
+	boolean shouldShowSpellCircle();
+
 	@Nullable
 	ResourceLocation getSpellCircle();
 

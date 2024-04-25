@@ -44,17 +44,17 @@ public abstract class BaseDanmaku extends SimplifiedProjectile {
 	}
 
 	protected void danmakuMove() {
-		Vec3 vec3 = updateVelocity(getDeltaMovement());
-		setDeltaMovement(vec3);
-		updateRotation();
-		double d2 = getX() + vec3.x;
-		double d0 = getY() + vec3.y;
-		double d1 = getZ() + vec3.z;
+		DanmakuMovement movement = updateVelocity(getDeltaMovement(), position());
+		setDeltaMovement(movement.vec());
+		updateRotation(movement.rot());
+		double d2 = getX() + movement.vec().x;
+		double d0 = getY() + movement.vec().y;
+		double d1 = getZ() + movement.vec().z;
 		setPos(d2, d0, d1);
 	}
 
-	protected Vec3 updateVelocity(Vec3 vec) {
-		return vec;
+	protected DanmakuMovement updateVelocity(Vec3 vec, Vec3 pos) {
+		return DanmakuMovement.of(vec);
 	}
 
 	public boolean shouldRenderAtSqrDistance(double pDistance) {

@@ -49,11 +49,9 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	}
 
-	protected void updateRotation() {
-		Vec3 vec3 = getDeltaMovement();
-		double d0 = vec3.horizontalDistance();
-		setXRot(lerpRotation(xRotO, (float) (Mth.atan2(vec3.y, d0) * Mth.RAD_TO_DEG)));
-		setYRot(lerpRotation(yRotO, (float) (Mth.atan2(vec3.x, vec3.z) * Mth.RAD_TO_DEG)));
+	protected void updateRotation(Vec3 rot) {
+		setXRot(lerpRotation(xRotO, (float) (rot.x * Mth.RAD_TO_DEG)));
+		setYRot(lerpRotation(yRotO, (float) (rot.y * Mth.RAD_TO_DEG)));
 	}
 
 	protected static float lerpRotation(float pCurrentRotation, float pTargetRotation) {

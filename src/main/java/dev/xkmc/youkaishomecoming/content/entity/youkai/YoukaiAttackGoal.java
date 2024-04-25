@@ -68,7 +68,9 @@ public abstract class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 			youkai.getNavigation().moveTo(target.getX(), target.getY(), target.getZ(), 2.0D);
 		}
 		if (dist < follow * follow) {
-			attack(target, dist, sight);
+			if (youkai.spellCard == null)
+				attack(target, dist, sight);
+			youkai.getLookControl().setLookAt(target, 10.0F, 10.0F);
 		}
 	}
 
@@ -84,7 +86,6 @@ public abstract class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 		if (shootTime <= 0) {
 			shootTime = shoot(target, youkai.targets.getTargets());
 		}
-		youkai.getLookControl().setLookAt(target, 10.0F, 10.0F);
 	}
 
 	protected void meleeAttack(LivingEntity target) {

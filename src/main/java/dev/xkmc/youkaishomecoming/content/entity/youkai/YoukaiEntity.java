@@ -3,8 +3,11 @@ package dev.xkmc.youkaishomecoming.content.entity.youkai;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.spellcircle.SpellCircleHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -17,10 +20,12 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
@@ -29,11 +34,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
 @SerialClass
-public class YoukaiEntity extends Monster {
+public abstract class YoukaiEntity extends Monster implements SpellCircleHolder, CardHolder {
 
 	private static final int GROUND_HEIGHT = 5, ATTEMPT_ABOVE = 3;
 
@@ -50,6 +56,9 @@ public class YoukaiEntity extends Monster {
 
 	@SerialClass.SerialField
 	public final YoukaiTargetContainer targets;
+
+	@SerialClass.SerialField
+	public SpellCard spellCard;
 
 	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel) {
 		this(pEntityType, pLevel, 10);
@@ -85,12 +94,14 @@ public class YoukaiEntity extends Monster {
 
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
+		tag.putInt("Age", tickCount);
 		tag.put("auto-serial", Objects.requireNonNull(TagCodec.toTag(new CompoundTag(), this)));
 		YOUKAI_DATA.write(tag, entityData);
 	}
 
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
+		tickCount = tag.getInt("Age");
 		if (tag.contains("auto-serial")) {
 			Wrappers.run(() -> TagCodec.fromTag(tag.getCompound("auto-serial"), getClass(), this, (f) -> true));
 		}
@@ -126,6 +137,40 @@ public class YoukaiEntity extends Monster {
 	@Override
 	protected boolean shouldDespawnInPeaceful() {
 		return false;
+	}
+
+	@Override
+	public Vec3 center() {
+		return position().add(0, getBbHeight() / 2, 0);
+	}
+
+	@Override
+	public Vec3 forward() {
+		return getForward();
+	}
+
+	@Override
+	public @Nullable LivingEntity target() {
+		return getTarget();
+	}
+
+	@Override
+	public RandomSource random() {
+		return random;
+	}
+
+	@Override
+	public ItemDanmakuEntity prepare(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color) {
+		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
+		danmaku.setItem(YHDanmaku.Bullet.CIRCLE.get(color).asStack());
+		danmaku.setup((float) getAttributeValue(Attributes.ATTACK_DAMAGE),
+				life, true, true, vec);
+		return danmaku;
+	}
+
+	@Override
+	public void shoot(ItemDanmakuEntity danmaku) {
+		level().addFreshEntity(danmaku);
 	}
 
 	public void shoot(float dmg, int life, Vec3 vec, DyeColor color) {
@@ -170,6 +215,13 @@ public class YoukaiEntity extends Monster {
 			this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
 		}
 		targets.tick();
+		if (!level().isClientSide() && spellCard != null) {
+			if (shouldShowSpellCircle()) {
+				spellCard.tick(this);
+			} else {
+				spellCard.reset();
+			}
+		}
 		super.aiStep();
 	}
 

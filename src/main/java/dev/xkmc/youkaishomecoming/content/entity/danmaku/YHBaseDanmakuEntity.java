@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import dev.xkmc.danmaku.entity.BaseDanmaku;
+import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
