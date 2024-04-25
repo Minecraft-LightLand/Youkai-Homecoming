@@ -21,6 +21,7 @@ public class ThirstCompat {
 		ThirstHelper.addDrink(YHFood.GENMAI_TEA.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.SCARLET_MIST.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.WIND_PRIESTESSES.item.get(), 8, 13);
+		ThirstHelper.addDrink(YHFood.GREEN_WATER.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.TEA_MOCHA.item.get(), 6, 10);
 
 		ThirstHelper.addDrink(YHFood.MILK_POPSICLE.item.get(), 6, 10);
@@ -34,6 +35,7 @@ public class ThirstCompat {
 		ThirstHelper.addDrink(YHFood.POWER_SOUP.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.MUSHROOM_SOUP.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.MISO_SOUP.item.get(), 8, 13);
+		ThirstHelper.addDrink(YHFood.SEAFOOD_MISO_SOUP.item.get(), 8, 13);
 
 
 	}

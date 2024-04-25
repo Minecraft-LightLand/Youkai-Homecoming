@@ -28,6 +28,7 @@ public enum FoodType {
 	BOTTLE_FAST(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true),
 	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false),
 	FLESH(FleshFoodItem::new, true, false, YHTagGen.FLESH_FOOD),
+	FLESH_FAST(FleshFoodItem::new, true, true, YHTagGen.FLESH_FOOD),
 	BOWL_FLESH(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, YHTagGen.FLESH_FOOD),
 	;
 
@@ -74,7 +75,7 @@ public enum FoodType {
 
 	public String makeLang(String id) {
 		String name = YHItems.toEnglishName(id.toLowerCase(Locale.ROOT));
-		if (this == FLESH || this == BOWL_FLESH) {
+		if (this == FLESH || this == BOWL_FLESH || this == FLESH_FAST) {
 			name = name.replaceFirst("Flesh", "%1\\$s");
 		}
 		return YHItems.toEnglishName(name);

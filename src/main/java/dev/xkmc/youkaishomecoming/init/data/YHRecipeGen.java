@@ -199,6 +199,26 @@ public class YHRecipeGen {
 					.define('E', ModItems.PIE_CRUST.get())
 					.save(pvd);
 
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.FLESH_CHOCOLATE_MOUSSE.item, 4)::unlockedBy, YHFood.FLESH.item.get())
+					.pattern(" B ").pattern("FDF").pattern("ECE")
+					.define('B', ForgeTags.MILK)
+					.define('C', YHItems.BLOOD_BOTTLE)
+					.define('D', YHFood.FLESH.item)
+					.define('E', Items.WHEAT)
+					.define('F', Items.COCOA_BEANS)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.SCARLET_DEVIL_CAKE.item, 4)::unlockedBy, YHFood.FLESH.item.get())
+					.pattern("FBF").pattern("ADA").pattern("ECE")
+					.define('A', Items.HONEY_BOTTLE)
+					.define('B', ForgeTags.MILK)
+					.define('C', YHItems.BLOOD_BOTTLE)
+					.define('D', YHFood.FLESH.item)
+					.define('E', Items.WHEAT)
+					.define('F', Items.PINK_PETALS)
+					.save(pvd);
+
 		}
 
 		// food cooking
@@ -387,6 +407,15 @@ public class YHRecipeGen {
 					.addIngredient(Items.DRIED_KELP)
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.build(pvd, YHFood.MISO_SOUP.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEAFOOD_MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(YHFood.TOFU.item.get())
+					.addIngredient(YHCrops.SOYBEAN.getSeed())
+					.addIngredient(Items.DRIED_KELP)
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
+					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
+					.build(pvd, YHFood.SEAFOOD_MISO_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.SEEDS)
@@ -637,6 +666,13 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(YHItems.MATCHA)
 					.build(tea, YHFood.WIND_PRIESTESSES.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(Items.GLASS_BOTTLE)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.build(tea, YHFood.GREEN_WATER.item.getId());
 
 			var coffee = coffee(pvd);
 

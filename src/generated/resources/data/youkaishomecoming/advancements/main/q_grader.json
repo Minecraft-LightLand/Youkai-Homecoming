@@ -1,47 +1,7 @@
 {
   "parent": "youkaishomecoming:main/fragrant",
   "criteria": {
-    "0": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:espresso"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "1": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:americano"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "2": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:ristretto"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "3": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:latte"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "4": {
+    "youkaishomecoming:affogato": {
       "conditions": {
         "item": {
           "items": [
@@ -51,17 +11,17 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "5": {
+    "youkaishomecoming:americano": {
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:con_panna"
+            "youkaishomecoming:americano"
           ]
         }
       },
       "trigger": "minecraft:consume_item"
     },
-    "6": {
+    "youkaishomecoming:cappuccino": {
       "conditions": {
         "item": {
           "items": [
@@ -71,7 +31,37 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "7": {
+    "youkaishomecoming:con_panna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:con_panna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:espresso": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:espresso"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:latte": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:latte"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:macchiato": {
       "conditions": {
         "item": {
           "items": [
@@ -81,11 +71,21 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "8": {
+    "youkaishomecoming:mocha": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:ristretto": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:ristretto"
           ]
         }
       },
@@ -109,31 +109,31 @@
   },
   "requirements": [
     [
-      "0"
+      "youkaishomecoming:espresso"
     ],
     [
-      "1"
+      "youkaishomecoming:americano"
     ],
     [
-      "2"
+      "youkaishomecoming:ristretto"
     ],
     [
-      "3"
+      "youkaishomecoming:latte"
     ],
     [
-      "4"
+      "youkaishomecoming:affogato"
     ],
     [
-      "5"
+      "youkaishomecoming:con_panna"
     ],
     [
-      "6"
+      "youkaishomecoming:cappuccino"
     ],
     [
-      "7"
+      "youkaishomecoming:macchiato"
     ],
     [
-      "8"
+      "youkaishomecoming:mocha"
     ]
   ],
   "sends_telemetry_event": true

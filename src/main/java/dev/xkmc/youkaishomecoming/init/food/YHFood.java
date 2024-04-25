@@ -131,6 +131,7 @@ public enum YHFood {
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
 	)),
+	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
 
 	// bowl
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
@@ -152,6 +153,10 @@ public enum YHFood {
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	MISO_SOUP(FoodType.BOWL, 8, 0.5f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1), DietTagGen.VEGETABLES.tag),
+	SEAFOOD_MISO_SOUP(FoodType.BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
+			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
@@ -207,6 +212,8 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	FLESH_CHOCOLATE_MOUSSE(FoodType.FLESH_FAST, 3, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
+	SCARLET_DEVIL_CAKE(FoodType.FLESH_FAST, 4, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
 	;
 
 

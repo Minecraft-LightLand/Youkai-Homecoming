@@ -6,7 +6,8 @@
   "entity.youkaishomecoming": {
 	"lamprey": "八目鳗",
 	"rumia": "露米娅",
-	"item_danmaku": "弹幕"
+	"item_danmaku": "弹幕",
+	"item_laser": "激光"
   },
   "effect.youkaishomecoming": {
 	"youkaified": "妖怪化",

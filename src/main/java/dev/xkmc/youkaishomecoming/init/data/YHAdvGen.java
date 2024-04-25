@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
 import com.google.common.collect.Streams;
+import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateAdvancementProvider;
 import dev.xkmc.l2library.serial.advancements.AdvancementGenerator;
 import dev.xkmc.l2library.serial.advancements.CriterionBuilder;
@@ -16,6 +17,7 @@ import net.minecraft.Util;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.Arrays;
@@ -62,8 +64,8 @@ public class YHAdvGen {
 						"Fragrant!", "Drink Espresso")
 				.create("q_grader", YHCoffee.ESPRESSO.item.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Arrays.stream(YHCoffee.values())
-								.map(e -> ConsumeItemTrigger.TriggerInstance.usedItem(e.item.get()))
-								.forEach(c::add)),
+								.map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
+								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Q Grader", "Drink Espresso")
 				.type(FrameType.CHALLENGE, true, true, false);
 		redbean.create("tea", YHCrops.TEA.getSeed(),
@@ -75,8 +77,9 @@ public class YHAdvGen {
 				.create("tea_master", YHFood.OOLONG_TEA.item.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
 										YHFood.WHITE_TEA, YHFood.OOLONG_TEA, YHFood.GREEN_TEA, YHFood.BLACK_TEA
-								).map(e -> ConsumeItemTrigger.TriggerInstance.usedItem(e.item.get()))
-								.forEach(c::add)), "Tea Master", "Drink all kinds of tea in original flavor")
+								).map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
+								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
+						"Tea Master", "Drink all kinds of tea in original flavor")
 				.type(FrameType.GOAL, true, true, false);
 		redbean.create("udumbara", YHCrops.UDUMBARA.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
@@ -98,8 +101,8 @@ public class YHAdvGen {
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).map(e -> e.item.get()))
-								.map(ConsumeItemTrigger.TriggerInstance::usedItem)
-								.forEach(c::add)),
+								.map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
+								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Gensokyo Food Enthusiastic", "Eat all Youkai's Homecoming food")
 				.type(FrameType.CHALLENGE, true, true, false);
 		var youkai = root.create("flesh", YHFood.FLESH.item.asStack(),
