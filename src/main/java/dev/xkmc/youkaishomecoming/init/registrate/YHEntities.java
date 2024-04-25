@@ -6,6 +6,8 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
@@ -64,9 +66,9 @@ public class YHEntities {
 			.spawnEgg(0x000000, 0x000000).tab(YoukaisHomecoming.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type,
 					LootTable.lootTable()
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Type.CIRCLE.get(DyeColor.RED).get(), 5, 10))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).get(), 5, 10))
 									.when(LootTableTemplate.byPlayer()))
-							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Type.CIRCLE.get(DyeColor.BLACK).get(), 3, 6))
+							.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.Bullet.CIRCLE.get(DyeColor.BLACK).get(), 3, 6))
 									.when(LootTableTemplate.byPlayer()))
 			)).register();
 
@@ -74,6 +76,12 @@ public class YHEntities {
 			.<ItemDanmakuEntity>entity("item_danmaku", ItemDanmakuEntity::new, MobCategory.MISC)
 			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(10))
 			.renderer(() -> ItemDanmakuRenderer::new)
+			.register();
+
+	public static final EntityEntry<ItemLaserEntity> ITEM_LASER = YoukaisHomecoming.REGISTRATE
+			.<ItemLaserEntity>entity("item_laser", ItemLaserEntity::new, MobCategory.MISC)
+			.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(10))
+			.renderer(() -> ItemLaserRenderer::new)
 			.register();
 
 	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {

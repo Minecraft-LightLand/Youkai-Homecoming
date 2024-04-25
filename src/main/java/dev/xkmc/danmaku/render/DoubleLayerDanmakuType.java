@@ -6,10 +6,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
 public record DoubleLayerDanmakuType(ResourceLocation colored, ResourceLocation overlay, int color)
-		implements RenderableDanmakuType {
+		implements RenderableDanmakuType<DoubleLayerDanmakuType, SimpleDanmakuInstance> {
 
 	@Override
-	public void start(MultiBufferSource buffer, Iterable<RenderableDanmakuInstance> list) {
+	public void start(MultiBufferSource buffer, Iterable<SimpleDanmakuInstance> list) {
 		VertexConsumer vc;
 		vc = buffer.getBuffer(RenderType.entityCutoutNoCull(colored));
 		for (var e : list) {

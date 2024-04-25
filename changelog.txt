@@ -1,3 +1,13 @@
+2.1.3
+- Add spell circle
+- Ex Rumia now immunes to potion effects
+
+2.1.2
+- Danmaku damage now bypasses cooldown, but cannot hurt one entity twice
+- Allow rumia to target multiple entities at the same time
+- Now rumia cannot hurt other rumia
+- Fix a logspam
+
 2.1.1
 - Fix danmaku crash caused by obf
 

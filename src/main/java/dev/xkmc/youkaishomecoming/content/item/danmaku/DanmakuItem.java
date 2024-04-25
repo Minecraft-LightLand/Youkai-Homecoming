@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.danmaku.render.DoubleLayerDanmakuType;
-import dev.xkmc.danmaku.render.RenderableDanmakuType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
@@ -31,11 +30,11 @@ import java.util.List;
 
 public class DanmakuItem extends Item {
 
-	public final YHDanmaku.Type type;
+	public final YHDanmaku.Bullet type;
 	public final DyeColor color;
 	public final float size;
 
-	public DanmakuItem(Properties pProperties, YHDanmaku.Type type, DyeColor color, float size) {
+	public DanmakuItem(Properties pProperties, YHDanmaku.Bullet type, DyeColor color, float size) {
 		super(pProperties);
 		this.type = type;
 		this.color = color;
@@ -84,7 +83,7 @@ public class DanmakuItem extends Item {
 
 	private DoubleLayerDanmakuType render;
 
-	public RenderableDanmakuType getTypeForRender() {
+	public DoubleLayerDanmakuType getTypeForRender() {
 		if (render == null) {
 			render = new DoubleLayerDanmakuType(
 					YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),

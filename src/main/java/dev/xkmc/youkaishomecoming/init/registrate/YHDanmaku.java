@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.tags.TagKey;
@@ -15,21 +16,39 @@ import java.util.Locale;
 
 public class YHDanmaku {
 
-	public enum Type {
+	public enum Bullet {
 		CIRCLE(1), BALL(1), MENTOS(2), BUBBLE(4);
 
 		public final String name;
 		public final TagKey<Item> tag;
 		public final float size;
 
-		Type(float size) {
+		Bullet(float size) {
 			this.size = size;
 			name = name().toLowerCase(Locale.ROOT);
 			tag = YHTagGen.item(name + "_danmaku");
 		}
 
 		public ItemEntry<DanmakuItem> get(DyeColor color) {
-			return DANMAKU[ordinal()][color.ordinal()];
+			return YHDanmaku.DANMAKU[ordinal()][color.ordinal()];
+		}
+	}
+
+	public enum Laser {
+		LASER(1);
+
+		public final String name;
+		public final TagKey<Item> tag;
+		public final float size;
+
+		Laser(float size) {
+			this.size = size;
+			name = name().toLowerCase(Locale.ROOT);
+			tag = YHTagGen.item(name);
+		}
+
+		public ItemEntry<LaserItem> get(DyeColor color) {
+			return YHDanmaku.LASER[ordinal()][color.ordinal()];
 		}
 	}
 
@@ -39,9 +58,11 @@ public class YHDanmaku {
 
 	private static final ItemEntry<DanmakuItem>[][] DANMAKU;
 
+	private static final ItemEntry<LaserItem>[][] LASER;
+
 	static {
-		DANMAKU = new ItemEntry[Type.values().length][DyeColor.values().length];
-		for (var t : Type.values()) {
+		DANMAKU = new ItemEntry[Bullet.values().length][DyeColor.values().length];
+		for (var t : Bullet.values()) {
 			for (var e : DyeColor.values()) {
 				var ent = YoukaisHomecoming.REGISTRATE
 						.item(e.getName() + "_" + t.name + "_danmaku", p -> new DanmakuItem(p.rarity(Rarity.RARE), t, e, t.size))
@@ -52,6 +73,21 @@ public class YHDanmaku {
 						.tag(t.tag)
 						.register();
 				DANMAKU[t.ordinal()][e.ordinal()] = ent;
+			}
+		}
+
+		LASER = new ItemEntry[Laser.values().length][DyeColor.values().length];
+		for (var t : Laser.values()) {
+			for (var e : DyeColor.values()) {
+				var ent = YoukaisHomecoming.REGISTRATE
+						.item(e.getName() + "_" + t.name, p -> new LaserItem(p.rarity(Rarity.RARE), e, 1))
+						.model((ctx, pvd) -> pvd.generated(ctx,
+								pvd.modLoc("item/danmaku/" + t.name),
+								pvd.modLoc("item/danmaku/" + t.name + "_overlay")))
+						.color(() -> () -> (stack, i) -> ((LaserItem) stack.getItem()).getDanmakuColor(stack, i))
+						.tag(t.tag)
+						.register();
+				LASER[t.ordinal()][e.ordinal()] = ent;
 			}
 		}
 	}

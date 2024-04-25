@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public record SimpleDanmakuInstance(RenderableDanmakuType key,
+public record SimpleDanmakuInstance(DoubleLayerDanmakuType key,
 									Matrix3f m3, Matrix4f m4
-) implements RenderableDanmakuInstance {
+) implements RenderableDanmakuInstance<DoubleLayerDanmakuType> {
 
 	public void tex(VertexConsumer vc, int color) {
 		vertex(vc, m4, m3, 0, 0, 0, 1, color);

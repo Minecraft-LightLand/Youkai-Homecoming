@@ -123,7 +123,7 @@ public class YHAdvGen {
 								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))),
 						"Powerful Being", "Get Youkaified effect")
 				.type(FrameType.CHALLENGE, true, true, false);
-		
+
 		youkai.create("mary_call", ModItems.IRON_KNIFE.get(),
 						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.KOISHI_RING.getId(), ContextAwarePredicate.ANY)),
 						"It’s Mary-san", "Receives a phone call from Koishi in the nether in Youkaifying effect")

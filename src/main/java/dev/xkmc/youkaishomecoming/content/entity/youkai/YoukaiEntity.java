@@ -3,8 +3,8 @@ package dev.xkmc.youkaishomecoming.content.entity.youkai;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.YHBaseDanmakuEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -29,7 +29,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -131,12 +130,12 @@ public class YoukaiEntity extends Monster {
 
 	public void shoot(float dmg, int life, Vec3 vec, DyeColor color) {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
-		danmaku.setItem(YHDanmaku.Type.CIRCLE.get(color).asStack());
+		danmaku.setItem(YHDanmaku.Bullet.CIRCLE.get(color).asStack());
 		danmaku.setup(dmg, life, true, true, vec);
 		level().addFreshEntity(danmaku);
 	}
 
-	public void onDanmakuHit(LivingEntity e, YHBaseDanmakuEntity danmaku) {
+	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
 		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
 		if (targets.contains(e)) {
 			double heal = YHModConfig.COMMON.danmakuHealOnHitTarget.get();
