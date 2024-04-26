@@ -7,6 +7,6 @@ import net.minecraft.world.phys.Vec3;
 @SerialClass
 public abstract class DanmakuMover {
 
-	 public abstract DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel);
+	public abstract DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel);
 
 }

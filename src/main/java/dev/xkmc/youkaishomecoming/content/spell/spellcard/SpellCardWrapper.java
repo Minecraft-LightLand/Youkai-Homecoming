@@ -27,6 +27,11 @@ public class SpellCardWrapper extends SpellCard {
 		return super.move(code, tickCount, vec);
 	}
 
+	@Override
+	public void reset() {
+		if (card != null) card.reset();
+	}
+
 	@Nullable
 	public String getModelId() {
 		return modelId;

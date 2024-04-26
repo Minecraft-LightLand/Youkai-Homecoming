@@ -5,9 +5,8 @@ import com.github.tartaricacid.touhoulittlemaid.item.ItemGarageKit;
 import com.github.tartaricacid.touhoulittlemaid.tileentity.TileEntityGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
-import dev.xkmc.youkaishomecoming.content.spell.game.yukari.DoubleButterfly;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCards;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,11 +21,6 @@ import java.util.Objects;
 
 public class TLMCompat {
 
-	private static void setSpell(GeneralYoukaiEntity e, String id) {
-		if (id.equals("touhou_little_maid:yukari_yakumo")) {
-			e.spellCard.card = SpellCards.yukari();
-		}
-	}
 
 	@SubscribeEvent
 	public static void onInteract(PlayerInteractEvent.EntityInteract event) {
@@ -36,7 +30,7 @@ public class TLMCompat {
 					String id = ItemGarageKit.getMaidData(event.getItemStack()).getString("ModelId");
 					e.spellCard = new SpellCardWrapper();
 					e.spellCard.modelId = id;
-					setSpell(e, id);
+					TouhouSpellCards.setSpell(e, id);
 					e.syncModel();
 				}
 				event.setCancellationResult(InteractionResult.SUCCESS);
@@ -68,7 +62,7 @@ public class TLMCompat {
 					String id = kit.getExtraData().getString("ModelId");
 					e.spellCard = new SpellCardWrapper();
 					e.spellCard.modelId = id;
-					setSpell(e, id);
+					TouhouSpellCards.setSpell(e, id);
 					sl.addFreshEntity(e);
 					sl.gameEvent(event.getEntity(), GameEvent.ENTITY_PLACE, pos);
 				}

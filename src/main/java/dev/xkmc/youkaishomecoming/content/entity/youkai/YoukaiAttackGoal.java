@@ -96,7 +96,7 @@ public class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 		return false;
 	}
 
-	protected int shoot(LivingEntity target, List<LivingEntity> all){
+	protected int shoot(LivingEntity target, List<LivingEntity> all) {
 		return 20;
 	}
 

@@ -11,12 +11,12 @@ import java.util.ArrayList;
 public class ListSpellCard extends SpellCard {
 
 	@SerialClass.SerialField
-	public final ArrayList<SpellCard> list = new ArrayList<>();
+	public final ArrayList<ActualSpellCard> list = new ArrayList<>();
 
 	@SerialClass.SerialField
 	public int index, health = 20;
 
-	public SpellCard card() {
+	public ActualSpellCard card() {
 		return list.get(index);
 	}
 

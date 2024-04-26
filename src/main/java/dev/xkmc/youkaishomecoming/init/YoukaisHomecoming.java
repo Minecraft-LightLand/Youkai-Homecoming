@@ -12,7 +12,6 @@ import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.spellcircle.SpellCircleConfig;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
-import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;

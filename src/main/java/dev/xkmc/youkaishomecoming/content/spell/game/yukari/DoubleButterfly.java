@@ -6,14 +6,14 @@ import dev.xkmc.youkaishomecoming.content.spell.mover.CompositeMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.PolarMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.ZeroMover;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class DoubleButterfly extends SpellCard {
+public class DoubleButterfly extends ActualSpellCard {
 
 	@Override
 	public void tick(CardHolder holder) {
