@@ -6,7 +6,7 @@ import com.github.tartaricacid.touhoulittlemaid.tileentity.TileEntityGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

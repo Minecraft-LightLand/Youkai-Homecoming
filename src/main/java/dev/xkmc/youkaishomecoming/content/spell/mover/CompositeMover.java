@@ -26,14 +26,14 @@ public class CompositeMover extends DanmakuMover {
 	}
 
 	@Override
-	public DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel) {
+	public DanmakuMovement move(MoverInfo info) {
 		if (index < list.size() - 1) {
-			if (list.get(index + 1).subtract <= tick) {
+			if (list.get(index + 1).subtract <= info.tick()) {
 				index++;
 			}
 		}
 		var ent = list.get(index);
-		return ent.mover.move(tick - ent.subtract, prevPos, prevVel);
+		return ent.mover.move(info.offsetTime(-ent.subtract));
 	}
 
 	public record Entry(int subtract, DanmakuMover mover) {

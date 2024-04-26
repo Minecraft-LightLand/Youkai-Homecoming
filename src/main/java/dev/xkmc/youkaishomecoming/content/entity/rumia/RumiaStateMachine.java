@@ -39,9 +39,6 @@ public class RumiaStateMachine {
 	}
 
 	public void refreshState() {
-		if (rumia.getTarget() == null) {
-			rumia.setWalking();
-		}
 	}
 
 	public float getClientPrepareProgress() {//TODO

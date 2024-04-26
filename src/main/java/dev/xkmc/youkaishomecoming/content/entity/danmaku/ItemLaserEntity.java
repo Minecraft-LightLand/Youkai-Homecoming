@@ -1,7 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
+import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
+import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
+import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -13,11 +16,15 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 @SerialClass
 public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier {
 
 	private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(ItemLaserEntity.class, EntityDataSerializers.ITEM_STACK);
+
+	@SerialClass.SerialField
+	public DanmakuMover mover;
 
 	public ItemLaserEntity(EntityType<? extends ItemLaserEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -29,6 +36,24 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier {
 
 	public ItemLaserEntity(EntityType<? extends ItemLaserEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
 		super(pEntityType, pShooter, pLevel);
+	}
+
+	@Override
+	protected void danmakuMove() {
+		DanmakuMovement movement = updateVelocity(getDeltaMovement(), position());
+		setDeltaMovement(movement.vec());
+		updateRotation(movement.rot());
+		double d2 = getX() + movement.vec().x;
+		double d0 = getY() + movement.vec().y;
+		double d1 = getZ() + movement.vec().z;
+		setPos(d2, d0, d1);
+	}
+
+	protected DanmakuMovement updateVelocity(Vec3 vec, Vec3 pos) {
+		if (mover != null) {
+			return mover.move(new MoverInfo(tickCount, pos, vec, this));
+		}
+		return DanmakuMovement.of(vec);
 	}
 
 	public void setItem(ItemStack pStack) {

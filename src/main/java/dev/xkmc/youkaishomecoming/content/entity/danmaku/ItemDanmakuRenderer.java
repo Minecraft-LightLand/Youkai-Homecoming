@@ -6,6 +6,7 @@ import dev.xkmc.danmaku.render.DanmakuRenderHelper;
 import dev.xkmc.danmaku.render.SimpleDanmakuInstance;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.TextureAtlas;
@@ -27,6 +28,11 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 
 	protected int getBlockLightLevel(T e, BlockPos pPos) {
 		return e.fullBright() ? 15 : super.getBlockLightLevel(e, pPos);
+	}
+
+	@Override
+	public boolean shouldRender(T pLivingEntity, Frustum pCamera, double pCamX, double pCamY, double pCamZ) {
+		return true;
 	}
 
 	public void render(T e, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {

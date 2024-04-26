@@ -112,6 +112,9 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			Wrappers.run(() -> TagCodec.fromTag(tag.getCompound("auto-serial"), getClass(), this, (f) -> true));
 		}
 		data().read(tag, entityData);
+		if (getTarget() == null) {
+			setWalking();
+		}
 	}
 
 	public boolean getFlag(int flag) {
@@ -238,7 +241,8 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public void aiStep() {
 		if (!level().isClientSide()) {
 			if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
-				this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
+				double fall = isAggressive() ? 0.6 : 0.8;
+				this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, fall, 1.0D));
 			}
 			targets.tick();
 			if (spellCard != null) {

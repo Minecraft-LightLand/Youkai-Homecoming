@@ -53,14 +53,19 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 				(float) (-Mth.atan2(vec3.y, d0) * Mth.RAD_TO_DEG));
 	}
 
+
+	public void setupTime(int prepare, int start, int life, int end) {
+		this.prepare = prepare;
+		this.start = this.prepare + start;
+		this.end = this.start + life;
+		this.life = this.end + end;
+	}
+
 	public void setup(float damage, int life, float length, boolean bypassWall, float rY, float rX) {
 		this.damage = damage;
 		this.bypassWall = bypassWall;
 		this.length = length;
-		this.prepare = 20;
-		this.start = 40;
-		this.end = life + 40;
-		this.life = life + 60;
+		setupTime(20, 20, life, 20);
 		setYRot(rY);
 		setXRot(rX);
 	}
@@ -108,9 +113,14 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 	@Override
 	public void tick() {
 		super.tick();
+		danmakuMove();
 		if (!level().isClientSide() && tickCount > life) {
 			discard();
 		}
+	}
+
+	protected void danmakuMove() {
+
 	}
 
 	@Override

@@ -1,9 +1,12 @@
-package dev.xkmc.youkaishomecoming.content.spell.spellcard;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.spell.game.koishi.Polygraph;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.DoubleButterfly;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.LightHole;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.ListSpellCard;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
 
 public class TouhouSpellCards {
 
@@ -14,6 +17,9 @@ public class TouhouSpellCards {
 		if (id.equals("touhou_little_maid:hakurei_reimu")) {
 			e.spellCard.card = reimu();
 		}
+		if (id.equals("touhou_little_maid:komeiji_koishi")) {
+			e.spellCard.card = koishi();
+		}
 	}
 
 	public static SpellCard yukari() {
@@ -23,10 +29,15 @@ public class TouhouSpellCards {
 		return ans;
 	}
 
-
 	public static SpellCard reimu() {
 		ListSpellCard ans = new ListSpellCard();
 		ans.list.add(new StagedHoming());
+		return ans;
+	}
+
+	public static SpellCard koishi() {
+		ListSpellCard ans = new ListSpellCard();
+		ans.list.add(new Polygraph());
 		return ans;
 	}
 

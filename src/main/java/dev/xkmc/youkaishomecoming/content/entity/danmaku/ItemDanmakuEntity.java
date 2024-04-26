@@ -4,6 +4,7 @@ import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
+import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -51,7 +52,7 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	@Override
 	protected DanmakuMovement updateVelocity(Vec3 vec, Vec3 pos) {
 		if (mover != null) {
-			return mover.move(tickCount, pos, vec);
+			return mover.move(new MoverInfo(tickCount, pos, vec, this));
 		}
 		if (controlCode > 0 && getOwner() instanceof DanmakuCommander commander)
 			return commander.move(controlCode, tickCount, vec);

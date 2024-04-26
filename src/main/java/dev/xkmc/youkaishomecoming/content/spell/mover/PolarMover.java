@@ -1,12 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.spell.mover;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public final class PolarMover extends DanmakuMover {
+public final class PolarMover extends TargetPosMover {
 
 	@SerialClass.SerialField
 	public Vec3 p, v, a, n, f;
@@ -30,6 +29,11 @@ public final class PolarMover extends DanmakuMover {
 		return new PolarMover(pos, Vec3.ZERO, Vec3.ZERO, ori.ax0(), ori.dir());
 	}
 
+	@Override
+	public Vec3 pos(MoverInfo info) {
+		return pos(info.tick());
+	}
+
 	public Vec3 pos(double tick) {
 		Vec3 rect = p.add(v.scale(tick)).add(a.scale(tick * tick * 0.5));
 		Vec3 polar = DanmakuHelper.getOrientation(f, n)
@@ -40,11 +44,6 @@ public final class PolarMover extends DanmakuMover {
 
 	public Vec3 dir(double tick) {
 		return pos(tick + 1e-3).subtract(pos(tick)).scale(1e3);
-	}
-
-	public DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel) {
-		Vec3 diff = pos(tick).subtract(prevPos);
-		return DanmakuMovement.of(diff);
 	}
 
 	public PolarMover copy() {

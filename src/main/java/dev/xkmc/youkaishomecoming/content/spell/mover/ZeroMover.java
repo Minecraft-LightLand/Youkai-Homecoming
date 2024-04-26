@@ -37,8 +37,8 @@ public final class ZeroMover extends DanmakuMover {
 	}
 
 	@Override
-	public DanmakuMovement move(int tick, Vec3 prevPos, Vec3 prevVel) {
-		return new DanmakuMovement(Vec3.ZERO, rot0.add(rot1.subtract(rot0).scale(1.0 * tick / time)));
+	public DanmakuMovement move(MoverInfo info) {
+		return new DanmakuMovement(Vec3.ZERO, rot0.add(rot1.subtract(rot0).scale(1.0 * info.tick() / time)));
 	}
 
 }

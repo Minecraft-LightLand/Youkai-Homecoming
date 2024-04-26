@@ -54,6 +54,10 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	}
 
+	public Vec3 rot() {
+		return new Vec3(getXRot() * Mth.DEG_TO_RAD, getYRot() * Mth.DEG_TO_RAD, 0);
+	}
+
 	protected void updateRotation(Vec3 rot) {
 		setXRot(lerpRotation(xRotO, (float) (rot.x * Mth.RAD_TO_DEG)));
 		setYRot(lerpRotation(yRotO, (float) (rot.y * Mth.RAD_TO_DEG)));
@@ -111,11 +115,21 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
 		buffer.writeInt(tickCount);
+		var owner = getOwner();
+		buffer.writeInt(owner == null ? -1 : owner.getId());
 	}
 
 	@OverridingMethodsMustInvokeSuper
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
 		tickCount = additionalData.readInt();
+		int id = additionalData.readInt();
+		if (id >= 0) {
+			var e = level().getEntity(id);
+			if (e != null) {
+				setOwner(e);
+			}
+		}
 	}
+
 }
