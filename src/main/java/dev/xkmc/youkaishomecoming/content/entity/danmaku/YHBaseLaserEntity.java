@@ -49,8 +49,8 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 	public void setup(float damage, int life, float length, boolean bypassWall, Vec3 vec3) {
 		double d0 = vec3.horizontalDistance();
 		setup(damage, life, length, bypassWall,
-				(float) (Mth.atan2(vec3.x, vec3.z) * Mth.RAD_TO_DEG),
-				(float) (Mth.atan2(vec3.y, d0) * Mth.RAD_TO_DEG));
+				(float) (-Mth.atan2(vec3.x, vec3.z) * Mth.RAD_TO_DEG),
+				(float) (-Mth.atan2(vec3.y, d0) * Mth.RAD_TO_DEG));
 	}
 
 	public void setup(float damage, int life, float length, boolean bypassWall, float rY, float rX) {

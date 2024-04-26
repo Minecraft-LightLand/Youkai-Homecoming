@@ -1,6 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
+import dev.xkmc.danmaku.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,8 +21,10 @@ public interface CardHolder {
 
 	RandomSource random();
 
-	ItemDanmakuEntity prepare(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color);
+	ItemDanmakuEntity prepareDanmaku(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color);
 
-	void shoot(ItemDanmakuEntity danmaku);
+	ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, int len, YHDanmaku.Laser type, DyeColor color);
+
+	void shoot(SimplifiedProjectile danmaku);
 
 }

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
 import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,8 +28,12 @@ public class SpellCardWrapper extends SpellCard {
 	}
 
 	@Nullable
-	public String getModelId(){
+	public String getModelId() {
 		return modelId;
+	}
+
+	public void hurt(DamageSource source, float amount) {
+		if (card != null) card.hurt(source, amount);
 	}
 
 }

@@ -74,7 +74,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 	}
 
 	private boolean wouldAttack(LivingEntity entity) {
-		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
+		return true || entity.hasEffect(YHEffects.YOUKAIFYING.get());//TODO
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -137,7 +137,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 			int reduction = 20;
 			amount = Math.min(getMaxHealth() / reduction, amount);
 		}
-		YoukaisHomecoming.LOGGER.info("Youkai Health: " + getHealth() + ", Damage: " + amount);
+		if (spellCard != null) spellCard.hurt(source, amount);
 		super.actuallyHurt(source, amount);
 	}
 

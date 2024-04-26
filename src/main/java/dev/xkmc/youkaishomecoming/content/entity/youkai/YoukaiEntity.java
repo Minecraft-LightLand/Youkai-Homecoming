@@ -1,13 +1,16 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
+import dev.xkmc.danmaku.entity.SimplifiedProjectile;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.spellcircle.SpellCircleHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -152,7 +155,7 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 	public Vec3 forward() {
 		LivingEntity target = target();
 		if (target != null) {
-			return center().subtract(target.position().add(0, target.getBbHeight() / 2, 0)).normalize();
+			return target.position().add(0, target.getBbHeight() / 2, 0).subtract(center()).normalize();
 		}
 		return getForward();
 	}
@@ -168,7 +171,7 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 	}
 
 	@Override
-	public ItemDanmakuEntity prepare(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color) {
+	public ItemDanmakuEntity prepareDanmaku(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color) {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
 		danmaku.setItem(YHDanmaku.Bullet.CIRCLE.get(color).asStack());
 		danmaku.setup((float) getAttributeValue(Attributes.ATTACK_DAMAGE),
@@ -177,7 +180,17 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 	}
 
 	@Override
-	public void shoot(ItemDanmakuEntity danmaku) {
+	public ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, int len, YHDanmaku.Laser type, DyeColor color) {
+		ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), this, level());
+		danmaku.setItem(YHDanmaku.Laser.LASER.get(color).asStack());
+		danmaku.setup((float) getAttributeValue(Attributes.ATTACK_DAMAGE),
+				life, len, true, vec);
+		danmaku.setPos(pos);
+		return danmaku;
+	}
+
+	@Override
+	public void shoot(SimplifiedProjectile danmaku) {
 		level().addFreshEntity(danmaku);
 	}
 
@@ -210,6 +223,9 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 		setNoGravity(false);
 		if (moveControl == walkCtrl) return;
 		getNavigation().stop();
+		setYya(0);
+		setXxa(0);
+		setZza(0);
 		moveControl = walkCtrl;
 		navigation = walkNav;
 	}
@@ -219,15 +235,17 @@ public abstract class YoukaiEntity extends Monster implements SpellCircleHolder,
 	}
 
 	public void aiStep() {
-		if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
-			this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
-		}
-		targets.tick();
-		if (!level().isClientSide() && spellCard != null) {
-			if (shouldShowSpellCircle()) {
-				spellCard.tick(this);
-			} else {
-				spellCard.reset();
+		if (!level().isClientSide()) {
+			if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
+				this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, 0.6D, 1.0D));
+			}
+			targets.tick();
+			if (spellCard != null) {
+				if (shouldShowSpellCircle()) {
+					spellCard.tick(this);
+				} else {
+					spellCard.reset();
+				}
 			}
 		}
 		super.aiStep();

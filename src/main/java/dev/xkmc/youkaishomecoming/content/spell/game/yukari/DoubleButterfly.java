@@ -67,7 +67,7 @@ public class DoubleButterfly extends SpellCard {
 			mover.add(t2, polar0);
 			mover.add(t3, polar1);
 			mover.add(t4, rect);
-			var danmaku = holder.prepare(total + r.nextInt(40), v1, type, color);
+			var danmaku = holder.prepareDanmaku(total + r.nextInt(40), v1, type, color);
 			danmaku.mover = mover;
 			holder.shoot(danmaku);
 		}
