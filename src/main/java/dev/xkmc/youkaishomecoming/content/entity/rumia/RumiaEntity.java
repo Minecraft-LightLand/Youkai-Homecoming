@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -260,7 +261,10 @@ public class RumiaEntity extends YoukaiEntity {
 
 	public static boolean checkRumiaSpawnRules(EntityType<RumiaEntity> e, ServerLevelAccessor level, MobSpawnType type,
 											   BlockPos pos, RandomSource rand) {
-		return Monster.checkMonsterSpawnRules(e, level, type, pos, rand) &&
+		return level.getDifficulty() != Difficulty.PEACEFUL &&
+				Monster.isDarkEnoughToSpawn(level, pos, rand) &&
+				checkMobSpawnRules(e, level, type, pos, rand) &&
 				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 32, 32, 32)).isEmpty();
 	}
+
 }

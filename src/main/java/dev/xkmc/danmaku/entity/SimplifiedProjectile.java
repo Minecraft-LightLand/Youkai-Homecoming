@@ -33,7 +33,9 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 			Entity entity = getOwner();
 			if (entity == null || entity == target) return false;
 			if (entity.isPassenger() || target.isPassenger()) {
-				return !entity.isPassengerOfSameVehicle(target);
+				if (entity.isPassengerOfSameVehicle(target)) {
+					return false;
+				}
 			}
 			return !entity.isAlliedTo(target);
 		}

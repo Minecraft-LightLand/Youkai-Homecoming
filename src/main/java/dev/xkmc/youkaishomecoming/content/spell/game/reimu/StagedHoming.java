@@ -16,8 +16,10 @@ public class StagedHoming extends ActualSpellCard {
 	@Override
 	public void tick(CardHolder holder) {
 		super.tick(holder);
-		int interval = 20;
+		int interval = 10;
 		if (tick % interval == 0) {
+			int step = tick / interval % 5;
+			if (step >= 3) return;
 			addTicker(new StateChange());
 		}
 	}
@@ -31,9 +33,7 @@ public class StagedHoming extends ActualSpellCard {
 
 		@Override
 		public boolean tick(CardHolder holder, StagedHoming card) {
-			if (tick % 20 == 0) {
-				step(holder);
-			}
+			step(holder);
 			super.tick(holder, card);
 			return false;
 		}
@@ -42,10 +42,10 @@ public class StagedHoming extends ActualSpellCard {
 			var le = holder.target();
 			if (le == null) return;
 
-			int n = 40;
+			int n = 20;
 			int r0 = 8;
 			int t0 = 20;
-			int r1 = 8;
+			int r1 = 6;
 			int t1 = 20;
 			int t2 = 40;
 			int dt = 20;

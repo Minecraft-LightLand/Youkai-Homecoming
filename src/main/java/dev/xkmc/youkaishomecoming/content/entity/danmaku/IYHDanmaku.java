@@ -6,8 +6,10 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.PartEntity;
+import org.jetbrains.annotations.Nullable;
 
 public interface IYHDanmaku {
 
@@ -17,13 +19,25 @@ public interface IYHDanmaku {
 		return (SimplifiedProjectile) this;
 	}
 
+	default boolean shouldHurt(@Nullable Entity owner, Entity e) {
+		if (owner == null) return false;
+		if (owner instanceof YoukaiEntity youkai) {
+			if (e instanceof LivingEntity le) {
+				if (le instanceof Enemy) return true;
+				return youkai.targets.contains(le);
+			}
+			return false;
+		}
+		return true;
+	}
+
 	default void hurtTarget(EntityHitResult result) {
 		if (self().level().isClientSide) return;
 		var e = result.getEntity();
 		if (e instanceof LivingEntity le) {
 			if (le.hurtTime > 0) {
 				DamageSource source = le.getLastDamageSource();
-				if (source != null && source.getDirectEntity() == this) {
+				if (source != null && source.getDirectEntity() instanceof IYHDanmaku) {
 					return;
 				}
 			}

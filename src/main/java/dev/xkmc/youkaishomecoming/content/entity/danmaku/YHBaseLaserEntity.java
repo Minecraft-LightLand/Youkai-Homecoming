@@ -111,7 +111,11 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 		if (!level().isClientSide() && tickCount > life) {
 			discard();
 		}
+	}
 
+	@Override
+	public boolean canHitEntity(Entity target) {
+		return super.canHitEntity(target) && shouldHurt(getOwner(), target);
 	}
 
 	@Override

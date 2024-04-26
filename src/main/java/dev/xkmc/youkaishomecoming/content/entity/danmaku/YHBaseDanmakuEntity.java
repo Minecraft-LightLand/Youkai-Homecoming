@@ -97,6 +97,11 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IYHDanmaku {
 	}
 
 	@Override
+	public boolean canHitEntity(Entity target) {
+		return super.canHitEntity(target) && shouldHurt(getOwner(), target);
+	}
+
+	@Override
 	public void onHitEntity(EntityHitResult result) {
 		if (level().isClientSide) return;
 		hurtTarget(result);
