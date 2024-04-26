@@ -17,7 +17,9 @@ import java.util.Locale;
 public class YHDanmaku {
 
 	public enum Bullet {
-		CIRCLE(1, 4), BALL(1, 4), MENTOS(2, 6), BUBBLE(4, 8);
+		CIRCLE(1, 4), BALL(1, 4),
+		MENTOS(2, 6), BUBBLE(4, 8),
+		BUTTERFLY(1, 4),;
 
 		public final String name;
 		public final TagKey<Item> tag;

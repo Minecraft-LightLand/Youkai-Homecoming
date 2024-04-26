@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import dev.xkmc.danmaku.entity.BaseDanmaku;
+import dev.xkmc.danmaku.entity.DanmakuMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -47,6 +48,7 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IYHDanmaku {
 		this.bypassWall = bypassWall;
 		this.bypassEntity = bypassEntity;
 		setDeltaMovement(initVec);
+		updateRotation(DanmakuMovement.of(initVec).rot());
 	}
 
 	@Override

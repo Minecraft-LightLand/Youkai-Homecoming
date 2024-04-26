@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaishomecoming:item/danmaku/butterfly",
+    "layer1": "youkaishomecoming:item/danmaku/butterfly_overlay"
+  }
+}

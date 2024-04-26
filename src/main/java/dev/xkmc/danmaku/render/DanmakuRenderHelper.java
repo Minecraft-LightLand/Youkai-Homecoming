@@ -17,10 +17,14 @@ import java.util.Set;
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DanmakuRenderHelper {
 
-	private static final Map<RenderableDanmakuType<?, ?>, Set<RenderableDanmakuInstance<?>>> MAP = Maps.newConcurrentMap();
+	private static final Map<RenderableDanmakuType<?, ?>, Set<?>> MAP = Maps.newConcurrentMap();
 
-	public static void add(RenderableDanmakuInstance<?> ins) {
-		MAP.computeIfAbsent(ins.key(), l -> Sets.newConcurrentHashSet()).add(ins);
+	public static <T extends RenderableDanmakuType<T, I>, I> Set<I> setOf(RenderableDanmakuType<T, I> key) {
+		return Wrappers.cast(MAP.computeIfAbsent(key, l -> Sets.newConcurrentHashSet()));
+	}
+
+	public static <T extends RenderableDanmakuType<T, I>, I> void add(RenderableDanmakuType<T, I> key, I ins) {
+		setOf(key).add(ins);
 	}
 
 	@SubscribeEvent

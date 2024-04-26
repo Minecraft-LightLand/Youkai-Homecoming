@@ -1,9 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import dev.xkmc.danmaku.render.DanmakuRenderHelper;
-import dev.xkmc.danmaku.render.SimpleDanmakuInstance;
+import dev.xkmc.danmaku.render.DanmakuRenderer;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -14,11 +12,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
 @OnlyIn(Dist.CLIENT)
-public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRenderer<T> {
+public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRenderer<T> implements DanmakuRenderer {
 
 	private static final float MIN_CAMERA_DISTANCE_SQUARED = 12.25F;
 
@@ -35,6 +32,11 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 		return true;
 	}
 
+	@Override
+	public Quaternionf cameraOrientation() {
+		return entityRenderDispatcher.cameraOrientation();
+	}
+
 	public void render(T e, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
 		if (!(e.getItem().getItem() instanceof DanmakuItem danmaku)) return;
 		if (e.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(e) < MIN_CAMERA_DISTANCE_SQUARED)) {
@@ -42,12 +44,7 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 			float scale = e.scale();
 			pose.translate(0, e.getBbHeight() / 2, 0);
 			pose.scale(scale, scale, scale);
-			pose.mulPose(this.entityRenderDispatcher.cameraOrientation());
-			pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-			PoseStack.Pose mat = pose.last();
-			Matrix4f m4 = new Matrix4f(mat.pose());
-			Matrix3f m3 = new Matrix3f(mat.normal());
-			DanmakuRenderHelper.add(new SimpleDanmakuInstance(danmaku.getTypeForRender(), m3, m4));
+			danmaku.getTypeForRender().create(this, e, pose, pTick);
 			pose.popPose();
 			super.render(e, yaw, pTick, pose, buffer, light);
 		}

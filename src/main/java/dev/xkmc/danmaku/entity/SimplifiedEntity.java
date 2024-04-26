@@ -65,6 +65,11 @@ public abstract class SimplifiedEntity extends Entity {
 	}
 
 	@Override
+	public boolean ignoreExplosion() {
+		return true;
+	}
+
+	@Override
 	public void clearFire() {
 	}
 

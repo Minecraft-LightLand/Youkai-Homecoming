@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -74,7 +75,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 	}
 
 	private boolean wouldAttack(LivingEntity entity) {
-		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
+		return entity instanceof Enemy || entity.hasEffect(YHEffects.YOUKAIFYING.get());//TODO
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

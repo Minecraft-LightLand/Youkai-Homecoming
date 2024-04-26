@@ -21,10 +21,8 @@ public class DoubleButterfly extends ActualSpellCard {
 		int interval = 60;
 		if (tick < interval) return;
 		if (tick % interval == 0) {
-			int round = tick / interval;
-			var type = round % 2 == 0 ? YHDanmaku.Bullet.BALL : YHDanmaku.Bullet.CIRCLE;
-			launch(holder, type, DyeColor.CYAN, 1);
-			launch(holder, type, DyeColor.MAGENTA, -1);
+			launch(holder, YHDanmaku.Bullet.BUTTERFLY, DyeColor.CYAN, 1);
+			launch(holder, YHDanmaku.Bullet.BUTTERFLY, DyeColor.MAGENTA, -1);
 		}
 	}
 
@@ -36,9 +34,9 @@ public class DoubleButterfly extends ActualSpellCard {
 		int n = 100;
 		int mrange = 12, vrange = 8;
 		int t0 = 40;
-		int t1 = 5;
+		int t1 = 10;
 		double tvr = 0.8;
-		int t2 = 5;
+		int t2 = 10;
 		int t3 = 30;
 		int t4 = 40;
 		double avar = Math.PI / 4;

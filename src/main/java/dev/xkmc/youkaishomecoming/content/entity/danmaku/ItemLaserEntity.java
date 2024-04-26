@@ -53,7 +53,7 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier {
 		if (mover != null) {
 			return mover.move(new MoverInfo(tickCount, pos, vec, this));
 		}
-		return DanmakuMovement.of(vec);
+		return new DanmakuMovement(vec, rot());
 	}
 
 	public void setItem(ItemStack pStack) {

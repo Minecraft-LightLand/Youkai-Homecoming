@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "youkaishomecoming:butterfly_danmaku"
+    },
+    "B": {
+      "item": "minecraft:pink_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "item": "youkaishomecoming:pink_butterfly_danmaku"
+  },
+  "show_notification": true
+}
