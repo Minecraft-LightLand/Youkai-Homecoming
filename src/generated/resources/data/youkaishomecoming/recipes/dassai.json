@@ -11,7 +11,10 @@
       "tag": "forge:grain/rice"
     },
     {
-      "tag": "forge:grain/rice"
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:shulker_shell"
     }
   ],
   "inputFluid": {
@@ -20,7 +23,7 @@
   },
   "outputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:flowing_mio"
+    "fluid": "youkaishomecoming:flowing_dassai"
   },
   "results": [],
   "time": 2400

@@ -131,6 +131,8 @@
   "death.attack.rumia_attack.player": "%s is eaten by %s",
   "effect.youkaishomecoming.caffeinated": "Caffeinated",
   "effect.youkaishomecoming.caffeinated.description": "Boost attack damage",
+  "effect.youkaishomecoming.drunk": "Drunk",
+  "effect.youkaishomecoming.drunk.description": "Increase attack damage, but inflict nausea ans slowness effect once a while",
   "effect.youkaishomecoming.lurking": "Lurking",
   "effect.youkaishomecoming.lurking.description": "Sneak to sink into ground",
   "effect.youkaishomecoming.native_god_bless": "Native God Bless",

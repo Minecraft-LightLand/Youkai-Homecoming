@@ -711,18 +711,33 @@ public class YHRecipeGen {
 
 		// sake
 		{
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MIO.fluid.get(), 600)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MIO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.save(pvd, YHSake.MIO.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MEAD.fluid.get(), 600)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MEAD.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd, YHSake.MEAD.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.FULL_MOONS_EVE.fluid.get(), 600)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
-					.addInput(YHCrops.UDUMBARA.getFruits())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DAIGINJO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
+					.save(pvd, YHSake.DAIGINJO.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DASSAI.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.NETHER_WART).addInput(Items.SHULKER_SHELL)
+					.save(pvd, YHSake.DASSAI.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.TENGU_TANGO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
+					.save(pvd, YHSake.TENGU_TANGO.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.FULL_MOONS_EVE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd, YHSake.FULL_MOONS_EVE.item.getId());
 		}
 

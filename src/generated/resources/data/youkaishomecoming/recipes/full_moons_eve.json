@@ -11,7 +11,7 @@
       "tag": "forge:grain/rice"
     },
     {
-      "tag": "forge:grain/rice"
+      "item": "minecraft:nether_wart"
     },
     {
       "item": "youkaishomecoming:udumbara_flower"
@@ -26,5 +26,5 @@
     "fluid": "youkaishomecoming:flowing_full_moons_eve"
   },
   "results": [],
-  "time": 600
+  "time": 2400
 }
