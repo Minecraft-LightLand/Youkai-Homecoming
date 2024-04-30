@@ -6,13 +6,18 @@ import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.client.renderer.entity.FrogRenderer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -33,11 +38,13 @@ public class YHClient {
 	}
 
 	@SubscribeEvent
-	public static void registerBlockColor(RegisterColorHandlersEvent.Block event) {
+	public static void registerOverlay(RegisterGuiOverlaysEvent event) {
+		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "info_tile", new TileInfoDisplay());
 	}
 
 	@SubscribeEvent
-	public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
+	public static void registerClientTooltip(RegisterClientTooltipComponentFactoriesEvent event) {
+		event.register(TileTooltip.class, TileClientTooltip::new);
 	}
 
 	@SubscribeEvent

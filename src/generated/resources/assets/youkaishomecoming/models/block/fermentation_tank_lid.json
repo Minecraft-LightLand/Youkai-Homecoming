@@ -1,0 +1,12 @@
+{
+  "parent": "youkaishomecoming:custom/fermentation_tank_lid",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaishomecoming:block/fermentation_tank_bottom",
+    "inside": "youkaishomecoming:block/fermentation_tank_inside",
+    "lid": "youkaishomecoming:block/fermentation_tank_lid",
+    "lid_handle": "youkaishomecoming:block/fermentation_tank_lid_handle",
+    "side": "youkaishomecoming:block/fermentation_tank_side",
+    "top": "youkaishomecoming:block/fermentation_tank_top"
+  }
+}

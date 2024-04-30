@@ -7,7 +7,8 @@
 	"lamprey": "八目鳗",
 	"rumia": "露米娅",
 	"item_danmaku": "弹幕",
-	"item_laser": "激光"
+	"item_laser": "激光",
+	"youkai": "妖怪"
   },
   "effect.youkaishomecoming": {
 	"youkaified": "妖怪化",
@@ -58,7 +59,9 @@
 	"usage_suwako_hat": "提供持续的%s。使用青色和黄绿色弹幕时不消耗",
 	"obtain_koishi_hat": "连续%s次格挡恋恋攻击时获得",
 	"usage_koishi_hat": "提供持续的%s。使用红色和蓝色弹幕时不消耗",
-	"usage_danmaku": "在%s或%s状态下，或者装备东方角色帽子时，右键发射弹幕"
+	"usage_danmaku": "在%s或%s状态下，或者装备东方角色帽子时，右键发射弹幕",
+	"danmaku_bypass": "穿透实体",
+	"danmaku_damage": "%s伤害"
   },
   "death.attack": {
 	"koishi_attack": "恋恋从背后捅死了%s",

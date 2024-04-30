@@ -7,10 +7,13 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.MenuEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.l2library.serial.recipe.BaseRecipe;
+import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
+import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.*;
 import dev.xkmc.youkaishomecoming.content.pot.moka.*;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
@@ -86,6 +89,11 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeType<DryingRackRecipe>> RACK_RT;
 	public static final RegistryEntry<RecipeSerializer<DryingRackRecipe>> RACK_RS;
 
+	public static final BlockEntry<DelegateBlock> FERMENT;
+	public static final BlockEntityEntry<FermentationTankBlockEntity> FERMENT_BE;
+	public static final RegistryEntry<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
+	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
+
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 	public static final WoodSet HAY, STRAW;
 
@@ -118,6 +126,18 @@ public class YHBlocks {
 					.validBlock(RACK).renderer(() -> DryingRackRenderer::new).register();
 			RACK_RT = YoukaisHomecoming.REGISTRATE.recipe("drying_rack");
 			RACK_RS = reg("drying_rack", () -> new SimpleCookingSerializer<>(DryingRackRecipe::new, 100));
+
+			FERMENT = YoukaisHomecoming.REGISTRATE.block("fermentation_tank", p ->
+							DelegateBlock.newBaseBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS),
+									new FermentationTankBlock(), FermentationTankBlock.TE))
+					.blockstate(FermentationTankBlock::buildModel)
+					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+			FERMENT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("fermentation_tank", FermentationTankBlockEntity::new)
+					.validBlock(FERMENT).renderer(() -> FermentationTankRenderer::new).register();
+			FERMENT_RT = YoukaisHomecoming.REGISTRATE.recipe("fermentation");
+			FERMENT_RS = reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
+
 		}
 
 		MOKA_KIT = YoukaisHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
