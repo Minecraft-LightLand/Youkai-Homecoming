@@ -7,8 +7,8 @@ import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
-import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.client.renderer.entity.FrogRenderer;
 import net.minecraft.world.entity.EntityType;
@@ -29,10 +29,9 @@ import java.util.List;
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class YHClient {
 
-
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
-		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+		if (YoukaisHomecoming.ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			MinecraftForge.EVENT_BUS.register(TLMRenderHandler.class);
 		}
 	}
@@ -71,7 +70,7 @@ public class YHClient {
 		if (event.getRenderer(EntityType.FROG) instanceof FrogRenderer r) {
 			r.addLayer(new FrogHatLayer<>(r, event.getEntityModels()));
 		}
-		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+		if (YoukaisHomecoming.ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			TLMRenderHandler.addLayers(event);
 		}
 	}

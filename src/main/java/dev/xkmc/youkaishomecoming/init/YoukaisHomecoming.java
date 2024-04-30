@@ -43,6 +43,8 @@ import org.slf4j.Logger;
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class YoukaisHomecoming {
 
+	static final boolean ENABLE_TLM = false;//TODO
+
 	public static final String MODID = "youkaishomecoming";
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
@@ -75,7 +77,7 @@ public class YoukaisHomecoming {
 		FrogGodCapability.register();
 		YHModConfig.init();
 
-		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+		if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
 		}
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);

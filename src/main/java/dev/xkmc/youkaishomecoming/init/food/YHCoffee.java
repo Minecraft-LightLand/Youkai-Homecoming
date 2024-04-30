@@ -37,7 +37,7 @@ public enum YHCoffee {
 			list.add(new EffectEntry(YHEffects.SOBER::get, 1200 * coffee, 0, 1));
 		}
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build("coffee/", name, nutrition, sat, tags, list, true);
+		item = type.build("coffee/", name, nutrition, sat, tags, list);
 	}
 
 	public static void register() {

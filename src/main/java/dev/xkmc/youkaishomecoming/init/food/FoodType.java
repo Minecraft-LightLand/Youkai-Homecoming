@@ -18,47 +18,44 @@ import java.util.Locale;
 import java.util.function.Function;
 
 public enum FoodType {
-	SIMPLE(YHFoodItem::new, false, false),
-	FAST(YHFoodItem::new, false, true),
-	MEAT(YHFoodItem::new, true, false),
-	MEAT_SLICE(YHFoodItem::new, true, true),
-	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true),
-	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false),
-	SAKE(p -> new YHDrinkItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false),
-	BOTTLE(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false),
-	BAMBOO(p -> new YHDrinkItem(p.craftRemainder(Items.BAMBOO).stacksTo(16)), false, false),
-	BOTTLE_FAST(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true),
-	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false),
-	FLESH(FleshFoodItem::new, true, false, YHTagGen.FLESH_FOOD),
-	FLESH_FAST(FleshFoodItem::new, true, true, YHTagGen.FLESH_FOOD),
-	BOWL_FLESH(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, YHTagGen.FLESH_FOOD),
+	SIMPLE(YHFoodItem::new, false, false, false),
+	FAST(YHFoodItem::new, false, true, false),
+	MEAT(YHFoodItem::new, true, false, false),
+	MEAT_SLICE(YHFoodItem::new, true, true, false),
+	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true, false),
+	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false, false),
+	SAKE(p -> new YHDrinkItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false, true),
+	BOTTLE(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false, true),
+	BAMBOO(p -> new YHDrinkItem(p.craftRemainder(Items.BAMBOO).stacksTo(16)), false, false, true),
+	BOTTLE_FAST(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true, true),
+	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, false),
+	FLESH(FleshFoodItem::new, true, false, false, YHTagGen.FLESH_FOOD),
+	FLESH_FAST(FleshFoodItem::new, true, true, false, YHTagGen.FLESH_FOOD),
+	BOWL_FLESH(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, false, YHTagGen.FLESH_FOOD),
 	;
 
 	private final Function<Item.Properties, Item> factory;
-	private final boolean meat, fast;
+	private final boolean meat, fast, alwaysEat;
 
 	private final TagKey<Item>[] tags;
 	private final EffectEntry[] effs;
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, boolean meat, boolean fast, EffectEntry[] effs, TagKey<Item>... tags) {
+	FoodType(Function<Item.Properties, Item> factory, boolean meat, boolean fast, boolean alwaysEat, EffectEntry[] effs, TagKey<Item>... tags) {
 		this.factory = factory;
 		this.meat = meat;
 		this.fast = fast;
+		this.alwaysEat = alwaysEat;
 		this.tags = tags;
 		this.effs = effs;
 	}
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, boolean meat, boolean fast, TagKey<Item>... tags) {
-		this(factory, meat, fast, new EffectEntry[0], tags);
+	FoodType(Function<Item.Properties, Item> factory, boolean meat, boolean fast, boolean alwaysEat, TagKey<Item>... tags) {
+		this(factory, meat, fast, alwaysEat, new EffectEntry[0], tags);
 	}
 
 	public ItemEntry<Item> build(String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
-		return build(folder, name, nutrition, sat, tags, effs, false);
-	}
-
-	public ItemEntry<Item> build(String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs, boolean alwaysEat) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		if (meat) food.meat();

@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
+import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleMenu;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleScreen;
@@ -17,6 +18,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
+import java.util.Objects;
+
 @JeiPlugin
 public class YHJeiPlugin implements IModPlugin {
 
@@ -25,6 +28,7 @@ public class YHJeiPlugin implements IModPlugin {
 	public static final RecipeType<MokaRecipe> MOKA = RecipeType.create(YoukaisHomecoming.MODID, "moka", MokaRecipe.class);
 	public static final RecipeType<KettleRecipe> KETTLE = RecipeType.create(YoukaisHomecoming.MODID, "kettle", KettleRecipe.class);
 	public static final RecipeType<DryingRackRecipe> RACK = RecipeType.create(YoukaisHomecoming.MODID, "drying_rack", DryingRackRecipe.class);
+	public static final RecipeType<SimpleFermentationRecipe> FERMENT = RecipeType.create(YoukaisHomecoming.MODID, "ferment", SimpleFermentationRecipe.class);
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -36,6 +40,7 @@ public class YHJeiPlugin implements IModPlugin {
 		registry.addRecipeCategories(new MokaRecipeCategory(helper));
 		registry.addRecipeCategories(new KettleRecipeCategory(helper));
 		registry.addRecipeCategories(new DryingRackCategory(helper));
+		registry.addRecipeCategories(new FermentRecipeCategory().init(helper));
 	}
 
 	public void registerRecipes(IRecipeRegistration registration) {
@@ -45,12 +50,15 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipes(MOKA, m.getAllRecipesFor(YHBlocks.MOKA_RT.get()));
 		registration.addRecipes(KETTLE, m.getAllRecipesFor(YHBlocks.KETTLE_RT.get()));
 		registration.addRecipes(RACK, m.getAllRecipesFor(YHBlocks.RACK_RT.get()));
+		registration.addRecipes(FERMENT, m.getAllRecipesFor(YHBlocks.FERMENT_RT.get())
+				.stream().map(e -> e instanceof SimpleFermentationRecipe x ? x : null).filter(Objects::nonNull).toList());
 	}
 
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 		registration.addRecipeCatalyst(YHBlocks.MOKA.asStack(), MOKA);
 		registration.addRecipeCatalyst(YHBlocks.KETTLE.asStack(), KETTLE);
 		registration.addRecipeCatalyst(YHBlocks.RACK.asStack(), RACK);
+		registration.addRecipeCatalyst(YHBlocks.FERMENT.asStack(), FERMENT);
 		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE);
 	}
 

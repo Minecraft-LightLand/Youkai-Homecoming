@@ -10,11 +10,11 @@ import net.minecraft.world.effect.MobEffectCategory;
 public class YHEffects {
 
 	public static final RegistryEntry<YoukaifiedEffect> YOUKAIFIED = genEffect("youkaified",
-			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),
+			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
 			"You are a Youkai now");
 
 	public static final RegistryEntry<YoukaifyingEffect> YOUKAIFYING = genEffect("youkaifying",
-			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),
+			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
 			"You are becoming a Youkai");
 
 	public static final RegistryEntry<CaffeinatedEffect> CAFFEINATED = genEffect("caffeinated",
@@ -29,6 +29,10 @@ public class YHEffects {
 			() -> new SoberEffect(MobEffectCategory.NEUTRAL, 0x21c189),
 			"Prevents phantom spawn, nausea, youkaization, and sleep. " +
 					"You can't have another sobering drink while having this effect.");
+
+	public static final RegistryEntry<DrunkEffect> DRUNK = genEffect("drunk",
+			() -> new DrunkEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
+			"Increase attack damage, but inflict nausea ans slowness effect once a while");
 
 	public static final RegistryEntry<EmptyEffect> REFRESHING = genEffect("refreshing",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xd0c3a5),
@@ -51,11 +55,11 @@ public class YHEffects {
 			"You won't be targeted by mobs. Terminates when you attack.");
 
 	public static final RegistryEntry<MandrakeEffect> MANDRAKE = genEffect("lurking",
-			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xffffff),
+			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
 			"Sneak to sink into ground");
 
 	public static final RegistryEntry<UdumbaraEffect> UDUMBARA = genEffect("phantom",
-			() -> new UdumbaraEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			() -> new UdumbaraEffect(MobEffectCategory.BENEFICIAL, 0xffffff),//TODO color
 			"Prevents vibration from you and your projectiles. " +
 					"Warps you to the top of the world when falling into the void. " +
 					"Heals every 3 seconds under moonlight. " +
