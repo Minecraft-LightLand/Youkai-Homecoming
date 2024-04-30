@@ -113,6 +113,25 @@
 	"youkai_spawn_egg": "妖怪生成蛋"
   },
   "-cartesian": {
+	"sake": {
+	  "path": "",
+	  "use_dot": true,
+	  "list": [
+		{
+		  "fluid.youkaishomecoming": "",
+		  "item.youkaishomecoming": ""
+		},
+		{
+		  "daiginjo": "大吟酿",
+		  "dassai": "水獭祭",
+		  "full_moons_eve": "十四夜",
+		  "mead": "蜜酒",
+		  "mio": "淇酒",
+		  "sparrow_sake": "雀酒",
+		  "tengu_tango": "天狗踊"
+		}
+	  ]
+	},
 	"danmaku": {
 	  "path": "item.youkaishomecoming",
 	  "list": [

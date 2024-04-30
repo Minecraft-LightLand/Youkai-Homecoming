@@ -61,7 +61,9 @@
 	"usage_koishi_hat": "提供持续的%s。使用红色和蓝色弹幕时不消耗",
 	"usage_danmaku": "在%s或%s状态下，或者装备东方角色帽子时，右键发射弹幕",
 	"danmaku_bypass": "穿透实体",
-	"danmaku_damage": "%s伤害"
+	"danmaku_damage": "%s伤害",
+	"fermenting_progress": "发酵进度：%s",
+	"jei.ferment": "发酵"
   },
   "death.attack": {
 	"koishi_attack": "恋恋从背后捅死了%s",

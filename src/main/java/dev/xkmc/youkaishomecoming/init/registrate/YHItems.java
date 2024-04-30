@@ -149,6 +149,7 @@ public class YHItems {
 
 		YHDish.register();
 		YHCoffee.register();
+		YHSake.register();
 
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(

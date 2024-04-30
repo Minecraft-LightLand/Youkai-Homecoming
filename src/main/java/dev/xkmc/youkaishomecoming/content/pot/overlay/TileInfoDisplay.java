@@ -19,7 +19,7 @@ public class TileInfoDisplay implements IGuiOverlay {
 		var hit = Minecraft.getInstance().hitResult;
 		if (!(hit instanceof BlockHitResult bhit)) return;
 		if (!(level.getBlockEntity(bhit.getBlockPos()) instanceof InfoTile tile)) return;
-		new ImageBox(g, (int) (sw * 0.7), (int) (sh * 0.5), 0, new TileClientTooltip(tile.getTooltip()))
+		new ImageBox(g, (int) (sw * 0.7), (int) (sh * 0.5), 0, new TileClientTooltip(tile.getImage()))
 				.render();
 	}
 

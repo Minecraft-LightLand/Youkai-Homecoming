@@ -4,7 +4,6 @@ import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 
 public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extends BaseRecipe<T, FermentationRecipe<?>, FermentationDummyContainer> {
 
@@ -22,4 +21,5 @@ public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extend
 		return ItemStack.EMPTY;
 	}
 
+	public abstract int getFermentationTime();
 }

@@ -25,6 +25,7 @@ public enum FoodType {
 	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true),
 	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false),
 	BOTTLE(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false),
+	BAMBOO(p -> new YHFoodItem(p.craftRemainder(Items.BAMBOO).stacksTo(16)), false, false),
 	BOTTLE_FAST(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true),
 	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false),
 	FLESH(FleshFoodItem::new, true, false, YHTagGen.FLESH_FOOD),
@@ -52,13 +53,16 @@ public enum FoodType {
 		this(factory, meat, fast, new EffectEntry[0], tags);
 	}
 
-
 	public ItemEntry<Item> build(String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+		return build(folder, name, nutrition, sat, tags, effs, false);
+	}
+
+	public ItemEntry<Item> build(String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs, boolean alwaysEat) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		if (meat) food.meat();
 		if (fast) food.fast();
-		if (this == BOTTLE || this == BOTTLE_FAST) food.alwaysEat();
+		if (alwaysEat) food.alwaysEat();
 		for (var e : this.effs) {
 			food.effect(e::getEffect, e.chance());
 		}

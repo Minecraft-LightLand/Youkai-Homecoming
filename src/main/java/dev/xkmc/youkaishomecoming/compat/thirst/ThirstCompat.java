@@ -3,11 +3,15 @@ package dev.xkmc.youkaishomecoming.compat.thirst;
 import dev.ghen.thirst.api.ThirstHelper;
 import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
+import dev.xkmc.youkaishomecoming.init.food.YHSake;
 
 public class ThirstCompat {
 
 	public static void init() {
 		for (var e : YHCoffee.values()) {
+			ThirstHelper.addDrink(e.item.get(), 8, 13);
+		}
+		for (var e : YHSake.values()) {
 			ThirstHelper.addDrink(e.item.get(), 8, 13);
 		}
 

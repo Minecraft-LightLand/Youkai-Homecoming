@@ -222,7 +222,8 @@ public enum YHFood {
 	@SafeVarargs
 	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build("food/", name, nutrition, sat, tags, effs);
+		item = type.build("food/", name, nutrition, sat, tags, effs,
+				type == FoodType.BOTTLE || type == FoodType.BOTTLE_FAST);
 	}
 
 	@SafeVarargs

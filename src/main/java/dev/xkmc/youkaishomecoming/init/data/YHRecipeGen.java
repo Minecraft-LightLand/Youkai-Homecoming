@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.compat.patchouli.ShapelessPatchouliBuilder;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -705,6 +707,23 @@ public class YHRecipeGen {
 					.requires(Items.ICE).requires(YHItems.CREAM)
 					.save(coffee, YHCoffee.AFFOGATO.item.getId().withSuffix("_craft"));
 
+		}
+
+		// sake
+		{
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MIO.fluid.get(), 600)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.save(pvd, YHSake.MIO.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MEAD.fluid.get(), 600)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.HONEY_BOTTLE)
+					.save(pvd, YHSake.MEAD.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.FULL_MOONS_EVE.fluid.get(), 600)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(YHCrops.UDUMBARA.getFruits())
+					.save(pvd, YHSake.FULL_MOONS_EVE.item.getId());
 		}
 
 		// danmaku

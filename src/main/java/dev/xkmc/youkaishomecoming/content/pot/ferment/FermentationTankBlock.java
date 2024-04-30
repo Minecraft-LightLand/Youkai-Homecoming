@@ -4,12 +4,16 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
+import dev.xkmc.l2modularblock.mult.AnimateTickBlockMethod;
 import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -24,15 +28,19 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.Nullable;
 
-public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnClickBlockMethod, ShapeBlockMethod {
+public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnClickBlockMethod, ShapeBlockMethod, AnimateTickBlockMethod {
 
 	public static final BlockMethod TE = new BlockEntityBlockMethodImpl<>(YHBlocks.FERMENT_BE, FermentationTankBlockEntity.class);
 
@@ -50,6 +58,15 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
 		return state.getValue(OPEN) ? NO_LID : LID;
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		if (level.getBlockEntity(pos) instanceof FermentationTankBlockEntity be) {
+			if (be.inProgress() > 0) {
+			}
+		}
 	}
 
 	@Override
@@ -77,13 +94,27 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	}
 
 	private static InteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
-		if (opt.resolve().isPresent()) {
-			if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
-				be.notifyTile();
+		FluidStack fluid = be.fluids.getFluidInTank(0);
+		if (fluid.getFluid() instanceof SakeFluid sake) {
+			if (fluid.getAmount() >= 250 && stack.is(sake.type.getContainer())) {
+				if (!level.isClientSide()) {
+					be.fluids.drain(250, IFluidHandler.FluidAction.EXECUTE);
+					player.getInventory().placeItemBackInInventory(sake.type.item.asStack());
+					if (!player.isCreative()) {
+						stack.shrink(1);
+					}
+				}
 				return InteractionResult.SUCCESS;
-			} else {
-				return InteractionResult.CONSUME;
+			}
+		} else {
+			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
+			if (opt.resolve().isPresent()) {
+				if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
+					be.notifyTile();
+					return InteractionResult.SUCCESS;
+				} else {
+					return InteractionResult.CONSUME;
+				}
 			}
 		}
 		ItemStack copy = stack.copy();

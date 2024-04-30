@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.overlay;
 
+import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.util.JEIFluidStackRenderer;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -41,7 +42,11 @@ public record TileClientTooltip(List<ItemStack> items, List<FluidStack> fluids) 
             if (stack.isEmpty()) continue;
             int y = my + n / w * 18 + 1;
             int x = mx + n % w * 18 + 1;
-            renderSlot(font, x, y, g, stack);
+            if (stack.getFluid() instanceof SakeFluid sake) {
+                renderSlot(font, x, y, g, sake.type.item.asStack(stack.getAmount() / 250));
+            } else {
+                renderSlot(font, x, y, g, stack);
+            }
             n++;
         }
 

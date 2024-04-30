@@ -1,0 +1,30 @@
+{
+  "type": "youkaishomecoming:simple_fermentation",
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "youkaishomecoming:udumbara_flower"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:flowing_full_moons_eve"
+  },
+  "results": [],
+  "time": 600
+}
