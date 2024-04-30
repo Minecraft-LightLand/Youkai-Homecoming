@@ -145,7 +145,7 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 	@Override
 	public List<Component> lines() {
 		float progress = inProgress();
-		if (progress <= 0) {
+		if (totalTime <= 0) {
 			return List.of();
 		} else {
 			return List.of(YHLangData.FERMENT_PROGRESS.get(Math.round(progress * 100) + "%"));

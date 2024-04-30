@@ -21,10 +21,10 @@ public enum YHSake {
 	MIO(FoodType.BOTTLE, 0xffffffff),
 	MEAD(FoodType.BOTTLE, 0xffffffff),
 	SPARROW_SAKE(FoodType.BAMBOO, 0xffffffff),
-	DAIGINJO(FoodType.BOWL, 0xffffffff),
-	DASSAI(FoodType.BOWL, 0xffffffff),
-	TENGU_TANGO(FoodType.BOWL, 0xffffffff),
-	FULL_MOONS_EVE(FoodType.BOWL, 0xffffffff);
+	DAIGINJO(FoodType.SAKE, 0xffffffff),
+	DASSAI(FoodType.SAKE, 0xffffffff),
+	TENGU_TANGO(FoodType.SAKE, 0xffffffff),
+	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff);
 
 
 	public final int color;

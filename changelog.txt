@@ -1,5 +1,6 @@
 2.1.4
 - Add seafood miso, green water, flesh choco cake, scarlet devil cake
+- Add 7 sake
 - Fix advancement details
 
 2.1.3

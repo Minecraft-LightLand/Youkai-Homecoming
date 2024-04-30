@@ -23,7 +23,7 @@ public enum YHLangData {
 	KETTLE_INFO("kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
 	DRYING_RACK("drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 
-	FERMENT_PROGRESS("fermenting_progress", "Fermenting Progress: %s", 1, ChatFormatting.GRAY),
+	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
 
 	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
