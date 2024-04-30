@@ -63,10 +63,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-		if (level.getBlockEntity(pos) instanceof FermentationTankBlockEntity be) {
-			if (be.inProgress() > 0) {
-			}
-		}
+
 	}
 
 	@Override
@@ -96,9 +93,9 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	private static InteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.fluids.getFluidInTank(0);
 		if (fluid.getFluid() instanceof SakeFluid sake) {
-			if (fluid.getAmount() >= 250 && stack.is(sake.type.getContainer())) {
+			if (fluid.getAmount() >= sake.type.amount() && stack.is(sake.type.getContainer())) {
 				if (!level.isClientSide()) {
-					be.fluids.drain(250, IFluidHandler.FluidAction.EXECUTE);
+					be.fluids.drain(sake.type.amount(), IFluidHandler.FluidAction.EXECUTE);
 					player.getInventory().placeItemBackInInventory(sake.type.item.asStack());
 					if (!player.isCreative()) {
 						stack.shrink(1);

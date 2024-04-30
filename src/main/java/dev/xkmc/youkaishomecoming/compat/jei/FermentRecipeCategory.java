@@ -62,8 +62,8 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
             int y = n / 3 * 18 + 1;
             int x = n % 3 * 18 + 91;
             if (recipe.outputFluid.getFluid() instanceof SakeFluid sake) {
-                builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.type.item.asStack(4));
-                builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(new ItemStack(sake.type.getContainer(), 4));
+                builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.type.item.asStack(sake.type.count()));
+                builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(new ItemStack(sake.type.getContainer(), sake.type.count()));
             } else {
                 builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.outputFluid));
             }

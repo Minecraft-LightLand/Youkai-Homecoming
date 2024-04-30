@@ -28,18 +28,17 @@ public enum YHSake {
 	SPARROW_SAKE(FoodType.BAMBOO, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
 	DAIGINJO(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 1200, 2, 1))),
 	DASSAI(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 1200, 2, 1))),
 	TENGU_TANGO(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
 	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1)));
-
 
 	public final int color;
 
@@ -53,6 +52,14 @@ public enum YHSake {
 		fluid = virtualFluid(name, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
 				.defaultLang().register();
 		item = type.build("sake/", name, 0, 0, tags, effs);
+	}
+
+	public int amount() {
+		return 250;
+	}
+
+	public int count() {
+		return 4;
 	}
 
 	@SuppressWarnings("deprecation")
