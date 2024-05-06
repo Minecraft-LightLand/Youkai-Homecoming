@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Blocks;
@@ -64,7 +65,7 @@ public enum YHDish {
 		block = YoukaisHomecoming.REGISTRATE
 				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd)))
-				.item((block, p) -> new FoodSaucerItem(block, p.food(food)))
+				.item((block, p) -> new FoodSaucerItem(block, p.food(food).craftRemainder(YHItems.SAUCER.asItem())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()
 				.register();
 	}

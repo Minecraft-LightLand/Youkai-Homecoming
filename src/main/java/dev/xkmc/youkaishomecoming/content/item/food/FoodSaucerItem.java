@@ -32,20 +32,17 @@ public class FoodSaucerItem extends BlockItem {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
-		ItemStack itemStack = getCraftingRemainingItem(stack);
+		ItemStack remain = stack.getCraftingRemainingItem();
 		super.finishUsingItem(stack, worldIn, consumer);
-		if (itemStack.isEmpty()) {
+		if (remain.isEmpty()) {
 			return stack;
 		}
 		if (stack.isEmpty()) {
-			return itemStack;
+			return remain;
 		}
-		if (consumer instanceof Player player && !player.getAbilities().instabuild) {
-			if (!player.getInventory().add(itemStack)) {
-				player.drop(itemStack, false);
-			}
+		if (!remain.isEmpty() && consumer instanceof Player player && !player.isCreative()) {
+			player.getInventory().placeItemBackInInventory(remain);
 		}
-
 		return stack;
 	}
 

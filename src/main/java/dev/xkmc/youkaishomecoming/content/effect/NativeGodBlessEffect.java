@@ -11,7 +11,7 @@ import net.minecraftforge.common.ForgeMod;
 
 import java.util.List;
 
-public class NativeGodBlessEffect extends MobEffect {
+public class NativeGodBlessEffect extends EmptyEffect {
 
 	public NativeGodBlessEffect(MobEffectCategory category, int color) {
 		super(category, color);
@@ -31,11 +31,6 @@ public class NativeGodBlessEffect extends MobEffect {
 	@Override
 	public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
 		return true;
-	}
-
-	@Override
-	public List<ItemStack> getCurativeItems() {
-		return List.of();
 	}
 
 }

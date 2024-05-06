@@ -28,11 +28,13 @@ public class YHEffects {
 	public static final RegistryEntry<SoberEffect> SOBER = genEffect("sober",
 			() -> new SoberEffect(MobEffectCategory.NEUTRAL, 0x21c189),
 			"Prevents phantom spawn, nausea, youkaization, and sleep. " +
-					"You can't have another sobering drink while having this effect.");
+					"You can't have another alcohol or sobering drink while having this effect.");
 
 	public static final RegistryEntry<DrunkEffect> DRUNK = genEffect("drunk",
 			() -> new DrunkEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
-			"Increase attack damage, but inflict nausea ans slowness effect once a while");
+			"Increase attack damage, but you feel drunk. " +
+					"You can't have sobering drink while having this effect. " +
+					"Drunk effect can stack up to 5 layers.");
 
 	public static final RegistryEntry<EmptyEffect> REFRESHING = genEffect("refreshing",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xd0c3a5),

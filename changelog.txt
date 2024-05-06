@@ -1,6 +1,9 @@
 2.1.4
 - Add seafood miso, green water, flesh choco cake, scarlet devil cake
 - Add 7 kinds of sake
+- Reduce youkai nest spawn rate
+- Fix Rumia spawning multiple in nest
+- return saucer when consuming dishes
 - Fix advancement details
 
 2.1.3

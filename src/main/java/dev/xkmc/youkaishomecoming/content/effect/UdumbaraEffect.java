@@ -1,12 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 
-public class UdumbaraEffect extends EmptyEffect {
+public class UdumbaraEffect extends MobEffect {
 
 	public UdumbaraEffect(MobEffectCategory category, int color) {
 		super(category, color);

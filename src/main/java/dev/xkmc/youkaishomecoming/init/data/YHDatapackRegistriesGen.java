@@ -95,7 +95,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 			.add(Registries.STRUCTURE_SET, ctx -> {
 				var str = ctx.lookup(Registries.STRUCTURE).getOrThrow(ResourceKey.create(Registries.STRUCTURE, NEST));
 				ctx.register(ResourceKey.create(Registries.STRUCTURE_SET, NEST), new StructureSet(
-						str, new RandomSpreadStructurePlacement(20, 8, RandomSpreadType.LINEAR, NEST.hashCode())));
+						str, new RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, NEST.hashCode())));
 			});
 
 	private static void registerBiomeModifiers(BootstapContext<BiomeModifier> ctx) {

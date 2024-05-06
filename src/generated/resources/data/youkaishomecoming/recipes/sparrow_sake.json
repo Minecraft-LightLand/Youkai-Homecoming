@@ -11,10 +11,10 @@
       "tag": "forge:grain/rice"
     },
     {
-      "item": "minecraft:nether_wart"
+      "item": "minecraft:feather"
     },
     {
-      "item": "minecraft:nautilus_shell"
+      "item": "minecraft:rabbit_foot"
     }
   ],
   "inputFluid": {
@@ -23,7 +23,7 @@
   },
   "outputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:flowing_dassai"
+    "fluid": "youkaishomecoming:flowing_sparrow_sake"
   },
   "results": [],
   "time": 2400
