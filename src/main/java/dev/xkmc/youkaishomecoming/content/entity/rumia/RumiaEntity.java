@@ -254,7 +254,7 @@ public class RumiaEntity extends YoukaiEntity {
 			ServerLevelAccessor level, DifficultyInstance diff, MobSpawnType reason,
 			@Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
 		if (reason == MobSpawnType.NATURAL) {
-			restrictTo(blockPosition(), 16);
+			restrictTo(blockPosition(), 8);
 		}
 		return super.finalizeSpawn(level, diff, reason, data, nbt);
 	}
@@ -264,7 +264,7 @@ public class RumiaEntity extends YoukaiEntity {
 		return level.getDifficulty() != Difficulty.PEACEFUL &&
 				Monster.isDarkEnoughToSpawn(level, pos, rand) &&
 				checkMobSpawnRules(e, level, type, pos, rand) &&
-				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 32, 32, 32)).isEmpty();
+				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty();
 	}
 
 }

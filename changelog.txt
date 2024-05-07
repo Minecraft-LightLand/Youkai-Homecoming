@@ -1,3 +1,7 @@
+2.1.5
+- Add recipe for fermentation tank
+- Fix Rumia spawning multiple in nest (again)
+
 2.1.4
 - Add seafood miso, green water, flesh choco cake, scarlet devil cake
 - Add 7 kinds of sake

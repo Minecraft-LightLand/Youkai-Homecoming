@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-06T09:35:12.218574	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-05-07T08:44:10.934001	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -987,6 +987,7 @@ efa477e4fcc6460b36f982cec4c3caad755edf19 data/youkaishomecoming/advancements/rec
 b4b2372f4227d6151a2196b1f612ccaced66a098 data/youkaishomecoming/advancements/recipes/misc/crimson_handrail_from_crimson_planks_stonecutting.json
 88909d005e4cd6617d03d751be5a61d04fdadac3 data/youkaishomecoming/advancements/recipes/misc/dark_oak_handrail_from_dark_oak_planks_stonecutting.json
 af012689b18cd4a62c50c71f56c2f3909cf8530d data/youkaishomecoming/advancements/recipes/misc/drying_rack_from_bamboo_block_stonecutting.json
+43a84e8b4a5866e9bf88e51d71c7ccd93d429b52 data/youkaishomecoming/advancements/recipes/misc/fermentation_tank.json
 984305e368b23492f493e3e083c22e0939798893 data/youkaishomecoming/advancements/recipes/misc/green_tea_bag.json
 4ab0ebe4edf281e4b98b96591073cff9120a7064 data/youkaishomecoming/advancements/recipes/misc/green_tea_leaves_from_green_tea_bag.json
 a30b6aa8e73052d3a59d72acc996f02e5a9a9ba7 data/youkaishomecoming/advancements/recipes/misc/green_tea_leaves_from_tea_leaves_drying.json
@@ -1187,6 +1188,7 @@ b66468b6c0c2ca463d44b02c68f6ef65b67cde6b data/youkaishomecoming/recipes/dassai.j
 67a00d682a12c1a7be77e654a7dfe564fe2f862b data/youkaishomecoming/recipes/dried_fish.json
 76d38c69a45cf78a7f1f963e3569a9b0391fc8ce data/youkaishomecoming/recipes/drying_rack_from_bamboo_block_stonecutting.json
 c622e5ad8dea79220685440764a8c74d48394445 data/youkaishomecoming/recipes/espresso.json
+aa7191a59903a6da81661d263d1863f0e6ad8a3a data/youkaishomecoming/recipes/fermentation_tank.json
 0c064da21b75e54baf9f5b7cfc590265d57cd2d5 data/youkaishomecoming/recipes/flesh_chocolate_mousse.json
 0cbbdb2b658d466deee0194b38a6873d79c4f0eb data/youkaishomecoming/recipes/flesh_dumplings.json
 884a1aad5b1dfea3e0ab6d6c9733a7df8a86d204 data/youkaishomecoming/recipes/flesh_feast.json

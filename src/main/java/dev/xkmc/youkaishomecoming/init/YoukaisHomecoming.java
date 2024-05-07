@@ -43,7 +43,7 @@ import org.slf4j.Logger;
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class YoukaisHomecoming {
 
-	static final boolean ENABLE_TLM = false;//TODO
+	static final boolean ENABLE_TLM = true;
 
 	public static final String MODID = "youkaishomecoming";
 	public static final Logger LOGGER = LogUtils.getLogger();

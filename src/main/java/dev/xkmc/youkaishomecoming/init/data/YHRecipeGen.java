@@ -80,6 +80,13 @@ public class YHRecipeGen {
 					.define('E', Items.TERRACOTTA)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.FERMENT)::unlockedBy, Items.BUCKET)
+					.pattern("ABA").pattern("ACA").pattern("AAA")
+					.define('A', Items.MUD_BRICKS)
+					.define('B', ItemTags.WOODEN_TRAPDOORS)
+					.define('C', Items.BUCKET)
+					.save(pvd);
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.CANVAS.get())
 					.pattern(" A ").pattern("ASA")
 					.define('A', ModItems.CANVAS.get())

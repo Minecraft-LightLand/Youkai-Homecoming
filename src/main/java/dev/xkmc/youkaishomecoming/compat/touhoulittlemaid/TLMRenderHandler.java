@@ -1,14 +1,13 @@
 package dev.xkmc.youkaishomecoming.compat.touhoulittlemaid;
 
-import com.github.tartaricacid.touhoulittlemaid.api.event.client.ConvertMaidEvent;
-import com.github.tartaricacid.touhoulittlemaid.api.event.client.EntityMaidRenderable;
+import com.github.tartaricacid.touhoulittlemaid.api.entity.IMaid;
+import com.github.tartaricacid.touhoulittlemaid.api.event.ConvertMaidEvent;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.entity.EntityMaidRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.spellcircle.SpellCircleLayer;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -34,16 +33,11 @@ public class TLMRenderHandler {
 		RENDERER.addLayer(new SpellCircleLayer<>(RENDERER));
 	}
 
-	private record MaidWrapper(Mob mob, String id) implements EntityMaidRenderable {
+	private record MaidWrapper(Mob mob, String id) implements IMaid {
 
 		@Override
 		public String getModelId() {
 			return id;
-		}
-
-		@Override
-		public ItemStack getHeadBlock(Mob mob) {
-			return ItemStack.EMPTY;
 		}
 
 		@Override

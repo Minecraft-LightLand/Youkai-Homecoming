@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:mud_bricks"
+    },
+    "B": {
+      "tag": "minecraft:wooden_trapdoors"
+    },
+    "C": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "AAA"
+  ],
+  "result": {
+    "item": "youkaishomecoming:fermentation_tank"
+  },
+  "show_notification": true
+}
