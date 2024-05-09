@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MultiHurtByTargetGoal;
@@ -73,8 +74,8 @@ public class RumiaEntity extends YoukaiEntity {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(3, new RumiaParalyzeGoal(this));
 		this.goalSelector.addGoal(4, new RumiaAttackGoal(this));
-		this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
-		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.6));
+		this.goalSelector.addGoal(5, new MoveAroundNestGoal(this, 1.0));
+		this.goalSelector.addGoal(7, new MoveRandomlyGoal(this, 0.6));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new MultiHurtByTargetGoal(this, RumiaEntity.class));
@@ -94,9 +95,25 @@ public class RumiaEntity extends YoukaiEntity {
 				.add(Attributes.FOLLOW_RANGE, 48);
 	}
 
+	@Override
+	public void addAdditionalSaveData(CompoundTag tag) {
+		super.addAdditionalSaveData(tag);
+		if (hasRestriction()) {
+			var data = TagCodec.valueToTag(new RestrictData(getRestrictCenter(), getRestrictRadius()));
+			if (data != null) tag.put("Restrict", data);
+		}
+	}
+
+
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
-		state.refreshState();
+		var data = tag.get("Restrict");
+		if (data != null) {
+			RestrictData res = TagCodec.valueFromTag(data, RestrictData.class);
+			if (res != null) {
+				restrictTo(res.center(), (int) res.radius());
+			}
+		}
 	}
 
 	@Override
@@ -261,9 +278,7 @@ public class RumiaEntity extends YoukaiEntity {
 
 	public static boolean checkRumiaSpawnRules(EntityType<RumiaEntity> e, ServerLevelAccessor level, MobSpawnType type,
 											   BlockPos pos, RandomSource rand) {
-		return level.getDifficulty() != Difficulty.PEACEFUL &&
-				Monster.isDarkEnoughToSpawn(level, pos, rand) &&
-				checkMobSpawnRules(e, level, type, pos, rand) &&
+		return checkMobSpawnRules(e, level, type, pos, rand) &&
 				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty();
 	}
 

@@ -6,7 +6,7 @@
   "size": 1,
   "spawn_overrides": {
     "monster": {
-      "bounding_box": "full",
+      "bounding_box": "piece",
       "spawns": [
         {
           "type": "youkaishomecoming:rumia",

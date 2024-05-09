@@ -84,7 +84,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				var pool = ctx.lookup(Registries.TEMPLATE_POOL).getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, NEST));
 				ctx.register(ResourceKey.create(Registries.STRUCTURE, NEST), new JigsawStructure(
 						new Structure.StructureSettings(biome, Map.of(
-								MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE,
+								MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE,
 										WeightedRandomList.create(new MobSpawnSettings.SpawnerData(
 												YHEntities.RUMIA.get(), 1, 1, 1
 										)))

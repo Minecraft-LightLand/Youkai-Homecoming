@@ -38,13 +38,6 @@ public class RumiaStateMachine {
 		this.rumia = rumia;
 	}
 
-	public void refreshState() {
-	}
-
-	public float getClientPrepareProgress() {//TODO
-		return isCharged() ? stage == RumiaStage.PREPARE ? 1f * time / PREPARE_TIME : 1 : 0;
-	}
-
 	public void tick() {
 		if (rumia.level().isClientSide()) {
 			if (stage == RumiaStage.NONE && isCharged()) {

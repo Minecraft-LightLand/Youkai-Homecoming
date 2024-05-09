@@ -72,3 +72,10 @@ description='''
     versionRange="[1.20.1-1.2.4,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.youkaishomecoming]]
+    modId="touhou_little_maid"
+    mandatory=false
+    # This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.1.9,)"
+    ordering="NONE"
+    side="BOTH"
