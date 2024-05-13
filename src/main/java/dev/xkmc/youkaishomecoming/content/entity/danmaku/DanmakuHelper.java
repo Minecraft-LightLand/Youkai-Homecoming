@@ -4,7 +4,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class DanmakuHelper {
 
-	public record Orientation(Vec3 dir, Vec3 ax0, Vec3 ax1) {
+	public record Orientation(Vec3 forward, Vec3 normal, Vec3 side) {
 
 		public Vec3 rotateDegrees(double rad) {
 			return rotate(rad / 180 * Math.PI);
@@ -15,13 +15,17 @@ public class DanmakuHelper {
 		}
 
 		public Vec3 rotate(double rad) {
-			return ax1.scale(Math.sin(rad)).add(dir.scale(Math.cos(rad)));
+			return side.scale(Math.sin(rad)).add(forward.scale(Math.cos(rad)));
 		}
 
 		public Vec3 rotate(double rad, double ver) {
-			return ax1.scale(Math.sin(rad) * Math.cos(ver))
-					.add(dir.scale(Math.cos(rad) * Math.cos(ver)))
-					.add(ax0.scale(Math.sin(ver)));
+			return side.scale(Math.sin(rad) * Math.cos(ver))
+					.add(forward.scale(Math.cos(rad) * Math.cos(ver)))
+					.add(normal.scale(Math.sin(ver)));
+		}
+
+		public Orientation asNormal() {
+			return new Orientation(normal, forward, side);
 		}
 
 	}

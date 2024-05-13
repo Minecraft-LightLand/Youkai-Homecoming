@@ -26,7 +26,7 @@ public final class PolarMover extends TargetPosMover {
 
 	public static PolarMover ofPlane(Vec3 pos, Vec3 a1, Vec3 a2) {
 		var ori = DanmakuHelper.getOrientation(a1, a2);
-		return new PolarMover(pos, Vec3.ZERO, Vec3.ZERO, ori.ax0(), ori.dir());
+		return new PolarMover(pos, Vec3.ZERO, Vec3.ZERO, ori.normal(), ori.forward());
 	}
 
 	@Override

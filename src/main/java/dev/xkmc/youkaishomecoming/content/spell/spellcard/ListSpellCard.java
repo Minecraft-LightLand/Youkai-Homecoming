@@ -6,9 +6,16 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SerialClass
 public class ListSpellCard extends SpellCard {
+
+	public static ListSpellCard of(ActualSpellCard... cards) {
+		ListSpellCard ans = new ListSpellCard();
+		ans.list.addAll(Arrays.asList(cards));
+		return ans;
+	}
 
 	@SerialClass.SerialField
 	public final ArrayList<ActualSpellCard> list = new ArrayList<>();

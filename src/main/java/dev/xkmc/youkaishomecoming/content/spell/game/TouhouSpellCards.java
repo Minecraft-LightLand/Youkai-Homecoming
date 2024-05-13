@@ -1,45 +1,39 @@
 package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.Polygraph;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
+import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.DoubleButterfly;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.LightHole;
+import dev.xkmc.youkaishomecoming.content.spell.game.yuyuko.YuyukoTest;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ListSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
+
 public class TouhouSpellCards {
 
+	private static final Map<String, Supplier<SpellCard>> MAP = new ConcurrentHashMap<>();
+
+	public static void registerSpell(String id, Supplier<SpellCard> card) {
+		MAP.put(id, card);
+	}
+
+	public static void registerSpells() {
+		registerSpell("touhou_little_maid:yukari_yakumo", () -> ListSpellCard.of(new LightHole(), new DoubleButterfly()));
+		registerSpell("touhou_little_maid:hakurei_reimu", () -> ListSpellCard.of(new StagedHoming()));
+		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new KoishiTest()));
+		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
+		registerSpell("touhou_little_maid:saigyouji_yuyuko", () -> ListSpellCard.of(new YuyukoTest()));
+	}
+
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
-		if (id.equals("touhou_little_maid:yukari_yakumo")) {
-			e.spellCard.card = yukari();
-		}
-		if (id.equals("touhou_little_maid:hakurei_reimu")) {
-			e.spellCard.card = reimu();
-		}
-		if (id.equals("touhou_little_maid:komeiji_koishi")) {
-			e.spellCard.card = koishi();
-		}
+		var sup = MAP.get(id);
+		if (sup != null) e.spellCard.card = sup.get();
 	}
-
-	public static SpellCard yukari() {
-		ListSpellCard ans = new ListSpellCard();
-		ans.list.add(new LightHole());
-		ans.list.add(new DoubleButterfly());
-		return ans;
-	}
-
-	public static SpellCard reimu() {
-		ListSpellCard ans = new ListSpellCard();
-		ans.list.add(new StagedHoming());
-		return ans;
-	}
-
-	public static SpellCard koishi() {
-		ListSpellCard ans = new ListSpellCard();
-		ans.list.add(new Polygraph());
-		return ans;
-	}
-
 
 }

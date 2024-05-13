@@ -270,7 +270,7 @@ public class RumiaEntity extends YoukaiEntity {
 	public SpawnGroupData finalizeSpawn(
 			ServerLevelAccessor level, DifficultyInstance diff, MobSpawnType reason,
 			@Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
-		if (reason == MobSpawnType.NATURAL) {
+		if (reason == MobSpawnType.NATURAL || reason == MobSpawnType.STRUCTURE) {
 			restrictTo(blockPosition(), 8);
 		}
 		return super.finalizeSpawn(level, diff, reason, data, nbt);

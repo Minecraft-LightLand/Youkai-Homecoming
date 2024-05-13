@@ -20,9 +20,7 @@ public class ActualSpellCard extends SpellCard {
 	@OverridingMethodsMustInvokeSuper
 	public void tick(CardHolder holder) {
 		tick++;
-		for (var t : tickers) {
-			t.tick(holder, Wrappers.cast(this));
-		}
+		tickers.removeIf(t -> t.tick(holder, Wrappers.cast(this)));
 	}
 
 	public void reset() {

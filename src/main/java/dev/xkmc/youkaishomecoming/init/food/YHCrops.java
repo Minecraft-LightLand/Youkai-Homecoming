@@ -69,7 +69,7 @@ public enum YHCrops {
 		PLANT = type.plant(name, this);
 		WILD = type.wild(name, this);
 
-		seed = YHItems.crop(seedName, p -> new ItemNameBlockItem(getPlant(), p));
+		seed = YHItems.seed(seedName, p -> new ItemNameBlockItem(getPlant(), p));
 
 		fruits = fruit == null ? seed : YHItems.crop(fruit, Item::new);
 

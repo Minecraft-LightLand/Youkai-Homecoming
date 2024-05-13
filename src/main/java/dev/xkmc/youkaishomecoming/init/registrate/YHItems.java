@@ -29,6 +29,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import org.apache.commons.lang3.StringUtils;
 import vectorwing.farmersdelight.common.block.FeastBlock;
+import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -156,6 +157,13 @@ public class YHItems {
 						YHEntities.LAMPREY, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
+				.register();
+	}
+
+	public static <T extends Item> ItemEntry<T> seed(String id, NonNullFunction<Item.Properties, T> factory) {
+		return YoukaisHomecoming.REGISTRATE.item(id, factory)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
+				.tag(ForgeTags.SEEDS)
 				.register();
 	}
 
