@@ -47,7 +47,7 @@ public class YoukaiTargetContainer {
 	}
 
 	public boolean contains(LivingEntity e) {
-		return list.contains(e.getUUID());
+		return youkai.getTarget() == e || list.contains(e.getUUID());
 	}
 
 	public void checkTarget() {
