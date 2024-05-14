@@ -27,8 +27,6 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	@SerialClass.SerialField
 	public int controlCode = 0;
 	@SerialClass.SerialField
-	public long startTime = 0;
-	@SerialClass.SerialField
 	public DanmakuMover mover = null;
 
 	public ItemDanmakuEntity(EntityType<? extends ItemDanmakuEntity> pEntityType, Level pLevel) {
@@ -45,7 +43,6 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 
 	public void setItem(ItemStack pStack) {
 		this.getEntityData().set(DATA_ITEM_STACK, pStack.copyWithCount(1));
-		startTime = level().getGameTime();
 		refreshDimensions();
 	}
 
@@ -96,19 +93,6 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		super.readAdditionalSaveData(nbt);
 		ItemStack itemstack = ItemStack.of(nbt.getCompound("Item"));
 		this.setItem(itemstack);
-	}
-
-	@Override
-	public void writeSpawnData(FriendlyByteBuf buffer) {
-		super.writeSpawnData(buffer);
-	}
-
-	@Override
-	public void readSpawnData(FriendlyByteBuf additionalData) {
-		super.readSpawnData(additionalData);
-		if (startTime != 0) {
-			tickCount = (int) (level().getGameTime() - startTime);
-		}
 	}
 
 	@Override

@@ -114,7 +114,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	@OverridingMethodsMustInvokeSuper
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
-		buffer.writeInt(tickCount);
+		buffer.writeLong(level().getGameTime() - tickCount);
 		var owner = getOwner();
 		buffer.writeInt(owner == null ? -1 : owner.getId());
 	}
@@ -122,7 +122,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	@OverridingMethodsMustInvokeSuper
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
-		tickCount = additionalData.readInt();
+		tickCount = (int) (level().getGameTime() - additionalData.readInt());
 		int id = additionalData.readInt();
 		if (id >= 0) {
 			var e = level().getEntity(id);
