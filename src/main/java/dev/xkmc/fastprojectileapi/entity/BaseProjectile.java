@@ -35,7 +35,7 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 		if (hitresult != null) {
 			onHit(hitresult);
 		}
-		danmakuMove();
+		projectileMove();
 		if (tickCount >= lifetime()) {
 			if (!level().isClientSide()) {
 				discard();
@@ -43,7 +43,7 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 		}
 	}
 
-	protected void danmakuMove() {
+	protected void projectileMove() {
 		ProjectileMovement movement = updateVelocity(getDeltaMovement(), position());
 		setDeltaMovement(movement.vec());
 		updateRotation(movement.rot());
