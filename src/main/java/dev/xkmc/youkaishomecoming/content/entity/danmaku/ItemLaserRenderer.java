@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.danmaku.render.ProjectileRenderer;
+import dev.xkmc.fastprojectileapi.render.ProjectileRenderer;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;

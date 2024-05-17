@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.entity;
+package dev.xkmc.fastprojectileapi.entity;
 
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;

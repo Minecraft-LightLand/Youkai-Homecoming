@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.danmaku.spellcircle;
+package dev.xkmc.fastprojectileapi.render;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

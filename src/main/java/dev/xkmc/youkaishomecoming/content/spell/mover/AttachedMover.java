@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.mover;
 
-import dev.xkmc.danmaku.entity.ProjectileMovement;
+import dev.xkmc.fastprojectileapi.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import net.minecraft.world.phys.Vec3;

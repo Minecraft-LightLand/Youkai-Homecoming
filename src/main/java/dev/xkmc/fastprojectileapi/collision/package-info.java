@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.danmaku.entity;
+package dev.xkmc.fastprojectileapi.collision;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

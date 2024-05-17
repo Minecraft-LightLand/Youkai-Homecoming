@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.danmaku.render.DoubleLayerLaserType;
+import dev.xkmc.fastprojectileapi.render.DoubleLayerLaserType;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;

@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.entity;
+package dev.xkmc.fastprojectileapi.entity;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;

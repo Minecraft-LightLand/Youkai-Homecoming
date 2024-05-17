@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.collision;
+package dev.xkmc.fastprojectileapi.collision;
 
 import dev.xkmc.youkaishomecoming.mixin.PersistentEntitySectionManagerAccessor;
 import dev.xkmc.youkaishomecoming.mixin.ServerLevelAccessor;

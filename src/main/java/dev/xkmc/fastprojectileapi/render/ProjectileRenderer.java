@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.render;
+package dev.xkmc.fastprojectileapi.render;
 
 import org.joml.Quaternionf;
 

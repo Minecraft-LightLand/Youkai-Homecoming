@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.spellcircle;
+package dev.xkmc.fastprojectileapi.spellcircle;
 
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;

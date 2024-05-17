@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.danmaku.render.ButterflyProjectileType;
-import dev.xkmc.danmaku.render.DoubleLayerProjectileType;
-import dev.xkmc.danmaku.render.RenderableProjectileType;
+import dev.xkmc.fastprojectileapi.render.ButterflyProjectileType;
+import dev.xkmc.fastprojectileapi.render.DoubleLayerProjectileType;
+import dev.xkmc.fastprojectileapi.render.RenderableProjectileType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;

@@ -1,6 +1,6 @@
-package dev.xkmc.danmaku.entity;
+package dev.xkmc.fastprojectileapi.entity;
 
-import dev.xkmc.danmaku.collision.ProjectileHitHelper;
+import dev.xkmc.fastprojectileapi.collision.ProjectileHitHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;

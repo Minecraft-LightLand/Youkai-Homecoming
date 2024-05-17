@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.render;
+package dev.xkmc.fastprojectileapi.render;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;

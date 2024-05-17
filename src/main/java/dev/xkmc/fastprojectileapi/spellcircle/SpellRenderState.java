@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.spellcircle;
+package dev.xkmc.fastprojectileapi.spellcircle;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;

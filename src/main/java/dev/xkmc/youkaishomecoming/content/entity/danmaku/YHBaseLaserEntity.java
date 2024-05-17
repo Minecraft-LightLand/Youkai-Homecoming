@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
-import dev.xkmc.danmaku.collision.LaserHitHelper;
-import dev.xkmc.danmaku.entity.BaseLaser;
+import dev.xkmc.fastprojectileapi.collision.LaserHitHelper;
+import dev.xkmc.fastprojectileapi.entity.BaseLaser;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;

@@ -1,6 +1,6 @@
-package dev.xkmc.danmaku.collision;
+package dev.xkmc.fastprojectileapi.collision;
 
-import dev.xkmc.danmaku.entity.BaseProjectile;
+import dev.xkmc.fastprojectileapi.entity.BaseProjectile;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ClipContext;

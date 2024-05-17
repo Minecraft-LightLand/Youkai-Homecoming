@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.collision;
+package dev.xkmc.fastprojectileapi.collision;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;

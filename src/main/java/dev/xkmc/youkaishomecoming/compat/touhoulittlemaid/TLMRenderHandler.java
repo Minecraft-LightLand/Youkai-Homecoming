@@ -4,7 +4,7 @@ import com.github.tartaricacid.touhoulittlemaid.api.entity.IMaid;
 import com.github.tartaricacid.touhoulittlemaid.api.event.ConvertMaidEvent;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.entity.EntityMaidRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.xkmc.danmaku.spellcircle.SpellCircleLayer;
+import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleLayer;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.entity.Mob;

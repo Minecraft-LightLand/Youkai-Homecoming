@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.spellcircle;
+package dev.xkmc.fastprojectileapi.spellcircle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;

@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.collision;
+package dev.xkmc.fastprojectileapi.collision;
 
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;

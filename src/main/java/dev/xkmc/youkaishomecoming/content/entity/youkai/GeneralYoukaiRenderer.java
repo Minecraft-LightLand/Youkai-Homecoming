@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.xkmc.danmaku.spellcircle.SpellCircleLayer;
+import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleLayer;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMClientCompat;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;

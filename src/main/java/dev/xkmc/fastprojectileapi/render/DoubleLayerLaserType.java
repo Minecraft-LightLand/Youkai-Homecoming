@@ -1,8 +1,8 @@
-package dev.xkmc.danmaku.render;
+package dev.xkmc.fastprojectileapi.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import dev.xkmc.danmaku.entity.SimplifiedProjectile;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;

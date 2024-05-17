@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
-import dev.xkmc.danmaku.entity.SimplifiedProjectile;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;

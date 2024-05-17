@@ -1,4 +1,4 @@
-package dev.xkmc.danmaku.collision;
+package dev.xkmc.fastprojectileapi.collision;
 
 public interface FastMap<T> {
 
