@@ -1,12 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -51,7 +50,7 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	}
 
 	@Override
-	protected DanmakuMovement updateVelocity(Vec3 vec, Vec3 pos) {
+	protected ProjectileMovement updateVelocity(Vec3 vec, Vec3 pos) {
 		if (mover != null) {
 			return mover.move(new MoverInfo(tickCount, pos, vec, this));
 		}

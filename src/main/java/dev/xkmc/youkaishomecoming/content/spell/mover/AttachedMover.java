@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.mover;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import net.minecraft.world.phys.Vec3;
@@ -18,7 +18,7 @@ public class AttachedMover extends TargetPosMover {
 	}
 
 	@Override
-	public DanmakuMovement move(MoverInfo info) {
-		return new DanmakuMovement(pos(info).subtract(info.prevPos()), info.self().self().rot());
+	public ProjectileMovement move(MoverInfo info) {
+		return new ProjectileMovement(pos(info).subtract(info.prevPos()), info.self().self().rot());
 	}
 }

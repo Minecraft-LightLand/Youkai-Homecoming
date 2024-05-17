@@ -12,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public record DoubleLayerDanmakuType(ResourceLocation colored, ResourceLocation overlay, int color)
-		implements RenderableDanmakuType<DoubleLayerDanmakuType, DoubleLayerDanmakuType.Ins> {
+public record DoubleLayerProjectileType(ResourceLocation colored, ResourceLocation overlay, int color)
+		implements RenderableProjectileType<DoubleLayerProjectileType, DoubleLayerProjectileType.Ins> {
 
 	@Override
 	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
@@ -29,13 +29,13 @@ public record DoubleLayerDanmakuType(ResourceLocation colored, ResourceLocation 
 	}
 
 	@Override
-	public void create(DanmakuRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		pose.mulPose(r.cameraOrientation());
 		pose.mulPose(Axis.YP.rotationDegrees(180.0F));
 		PoseStack.Pose mat = pose.last();
 		Matrix4f m4 = new Matrix4f(mat.pose());
 		Matrix3f m3 = new Matrix3f(mat.normal());
-		DanmakuRenderHelper.add(this, new Ins(m3, m4));
+		ProjectileRenderHelper.add(this, new Ins(m3, m4));
 	}
 
 	public record Ins(Matrix3f m3, Matrix4f m4) {

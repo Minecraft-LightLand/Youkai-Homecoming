@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
-import dev.xkmc.danmaku.entity.BaseDanmaku;
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.BaseProjectile;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -19,7 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Objects;
 
 @SerialClass
-public class YHBaseDanmakuEntity extends BaseDanmaku implements IYHDanmaku {
+public class YHBaseDanmakuEntity extends BaseProjectile implements IYHDanmaku {
 
 	@SerialClass.SerialField
 	private int life = 0;
@@ -48,7 +48,7 @@ public class YHBaseDanmakuEntity extends BaseDanmaku implements IYHDanmaku {
 		this.bypassWall = bypassWall;
 		this.bypassEntity = bypassEntity;
 		setDeltaMovement(initVec);
-		updateRotation(DanmakuMovement.of(initVec).rot());
+		updateRotation(ProjectileMovement.of(initVec).rot());
 	}
 
 	@Override

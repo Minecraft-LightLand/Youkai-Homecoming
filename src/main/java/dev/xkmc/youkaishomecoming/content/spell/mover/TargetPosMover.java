@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.mover;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.world.phys.Vec3;
 
@@ -9,12 +9,12 @@ public abstract class TargetPosMover extends DanmakuMover {
 
 	public abstract Vec3 pos(MoverInfo info);
 
-	public DanmakuMovement move(MoverInfo info) {
-		var ans = DanmakuMovement.of(pos(info).subtract(info.prevPos()));
+	public ProjectileMovement move(MoverInfo info) {
+		var ans = ProjectileMovement.of(pos(info).subtract(info.prevPos()));
 		if (ans.vec().lengthSqr() > 1e-4) {
 			return ans;
 		}
-		return new DanmakuMovement(ans.vec(), info.self().self().rot());
+		return new ProjectileMovement(ans.vec(), info.self().self().rot());
 	}
 
 }

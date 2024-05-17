@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.spellcircle.SpellCircleLayer;
+import dev.xkmc.danmaku.spellcircle.SpellCircleLayer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

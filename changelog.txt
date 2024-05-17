@@ -1,12 +1,9 @@
-TODO danmaku sync fix
-Rumia Danmaku Fix
-Rumia trading
-
 2.1.7
 - Seed tags
 - Fix initial spawn Rumia wandering around
 - Fix Rumia can't hit player when player did not attack Rumia
 - Fix Rumia can't launch attack player with youkaified effect
+- Fix Rumia rading glitch
 
 
 2.1.6

@@ -13,8 +13,8 @@ import net.minecraft.util.Mth;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public record ButterflyDanmakuType(ResourceLocation colored, ResourceLocation overlay, int period, int color)
-		implements RenderableDanmakuType<ButterflyDanmakuType, ButterflyDanmakuType.Ins> {
+public record ButterflyProjectileType(ResourceLocation colored, ResourceLocation overlay, int period, int color)
+		implements RenderableProjectileType<ButterflyProjectileType, ButterflyProjectileType.Ins> {
 
 	@Override
 	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
@@ -30,7 +30,7 @@ public record ButterflyDanmakuType(ResourceLocation colored, ResourceLocation ov
 	}
 
 	@Override
-	public void create(DanmakuRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		pose.mulPose(Axis.YP.rotationDegrees(-Mth.lerp(pTick, e.yRotO, e.getYRot())));
 		pose.mulPose(Axis.XP.rotationDegrees(Mth.lerp(pTick, e.xRotO, e.getXRot())));
 		float time = Math.abs((e.tickCount + pTick) / period % 1 * 4 - 2) - 1;
@@ -41,7 +41,7 @@ public record ButterflyDanmakuType(ResourceLocation colored, ResourceLocation ov
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
 			Matrix3f m3 = new Matrix3f(mat.normal());
-			DanmakuRenderHelper.add(this, new Ins(m3, m4, false));
+			ProjectileRenderHelper.add(this, new Ins(m3, m4, false));
 			pose.popPose();
 		}
 		{
@@ -50,7 +50,7 @@ public record ButterflyDanmakuType(ResourceLocation colored, ResourceLocation ov
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
 			Matrix3f m3 = new Matrix3f(mat.normal());
-			DanmakuRenderHelper.add(this, new Ins(m3, m4, true));
+			ProjectileRenderHelper.add(this, new Ins(m3, m4, true));
 			pose.popPose();
 		}
 	}

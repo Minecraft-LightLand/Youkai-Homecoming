@@ -1,4 +1,4 @@
-package dev.xkmc.spellcircle;
+package dev.xkmc.danmaku.spellcircle;
 
 import dev.xkmc.l2library.serial.config.BaseConfig;
 import dev.xkmc.l2library.serial.config.CollectType;

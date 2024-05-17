@@ -1,4 +1,4 @@
-package dev.xkmc.spellcircle;
+package dev.xkmc.danmaku.spellcircle;
 
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;

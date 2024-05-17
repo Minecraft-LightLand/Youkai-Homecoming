@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.mover;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.world.phys.Vec3;
 
@@ -31,14 +31,14 @@ public final class ZeroMover extends DanmakuMover {
 	}
 
 	public ZeroMover(Vec3 rot0, Vec3 rot1, int time) {
-		this.rot0 = DanmakuMovement.of(rot0).rot();
-		this.rot1 = closest(rot0, DanmakuMovement.of(rot1).rot());
+		this.rot0 = ProjectileMovement.of(rot0).rot();
+		this.rot1 = closest(rot0, ProjectileMovement.of(rot1).rot());
 		this.time = time;
 	}
 
 	@Override
-	public DanmakuMovement move(MoverInfo info) {
-		return new DanmakuMovement(Vec3.ZERO, rot0.add(rot1.subtract(rot0).scale(1.0 * info.tick() / time)));
+	public ProjectileMovement move(MoverInfo info) {
+		return new ProjectileMovement(Vec3.ZERO, rot0.add(rot1.subtract(rot0).scale(1.0 * info.tick() / time)));
 	}
 
 }

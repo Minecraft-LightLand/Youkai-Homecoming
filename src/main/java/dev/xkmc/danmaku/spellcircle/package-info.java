@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.spellcircle;
+package dev.xkmc.danmaku.spellcircle;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

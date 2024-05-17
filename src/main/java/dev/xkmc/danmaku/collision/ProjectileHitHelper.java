@@ -1,6 +1,6 @@
 package dev.xkmc.danmaku.collision;
 
-import dev.xkmc.danmaku.entity.BaseDanmaku;
+import dev.xkmc.danmaku.entity.BaseProjectile;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ClipContext;
@@ -13,10 +13,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class DanmakuHitHelper {
+public class ProjectileHitHelper {
 
 	@Nullable
-	public static HitResult getHitResultOnMoveVector(BaseDanmaku e, boolean checkBlock) {
+	public static HitResult getHitResultOnMoveVector(BaseProjectile e, boolean checkBlock) {
 		Vec3 src = e.position();
 		Vec3 v = e.getDeltaMovement();
 		Level level = e.level();
@@ -39,7 +39,7 @@ public class DanmakuHitHelper {
 	}
 
 	@Nullable
-	public static EntityHitResult getEntityHitResult(ServerLevel level, BaseDanmaku self, Vec3 src, Vec3 dst, AABB box, float radius) {
+	public static EntityHitResult getEntityHitResult(ServerLevel level, BaseProjectile self, Vec3 src, Vec3 dst, AABB box, float radius) {
 		double d0 = Double.MAX_VALUE;
 		Entity entity = null;
 

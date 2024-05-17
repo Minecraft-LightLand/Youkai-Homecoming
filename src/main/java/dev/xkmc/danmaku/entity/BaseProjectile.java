@@ -1,6 +1,6 @@
 package dev.xkmc.danmaku.entity;
 
-import dev.xkmc.danmaku.collision.DanmakuHitHelper;
+import dev.xkmc.danmaku.collision.ProjectileHitHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
@@ -14,9 +14,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-public abstract class BaseDanmaku extends SimplifiedProjectile {
+public abstract class BaseProjectile extends SimplifiedProjectile {
 
-	protected BaseDanmaku(EntityType<? extends BaseDanmaku> pEntityType, Level pLevel) {
+	protected BaseProjectile(EntityType<? extends BaseProjectile> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
 
@@ -31,7 +31,7 @@ public abstract class BaseDanmaku extends SimplifiedProjectile {
 
 	public void tick() {
 		super.tick();
-		HitResult hitresult = DanmakuHitHelper.getHitResultOnMoveVector(this, checkBlockHit());
+		HitResult hitresult = ProjectileHitHelper.getHitResultOnMoveVector(this, checkBlockHit());
 		if (hitresult != null) {
 			onHit(hitresult);
 		}
@@ -44,7 +44,7 @@ public abstract class BaseDanmaku extends SimplifiedProjectile {
 	}
 
 	protected void danmakuMove() {
-		DanmakuMovement movement = updateVelocity(getDeltaMovement(), position());
+		ProjectileMovement movement = updateVelocity(getDeltaMovement(), position());
 		setDeltaMovement(movement.vec());
 		updateRotation(movement.rot());
 		double d2 = getX() + movement.vec().x;
@@ -53,8 +53,8 @@ public abstract class BaseDanmaku extends SimplifiedProjectile {
 		setPos(d2, d0, d1);
 	}
 
-	protected DanmakuMovement updateVelocity(Vec3 vec, Vec3 pos) {
-		return DanmakuMovement.of(vec);
+	protected ProjectileMovement updateVelocity(Vec3 vec, Vec3 pos) {
+		return ProjectileMovement.of(vec);
 	}
 
 	public boolean shouldRenderAtSqrDistance(double pDistance) {

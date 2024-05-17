@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
@@ -40,7 +40,7 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier {
 
 	@Override
 	protected void danmakuMove() {
-		DanmakuMovement movement = updateVelocity(getDeltaMovement(), position());
+		ProjectileMovement movement = updateVelocity(getDeltaMovement(), position());
 		setDeltaMovement(movement.vec());
 		updateRotation(movement.rot());
 		double d2 = getX() + movement.vec().x;
@@ -49,11 +49,11 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier {
 		setPos(d2, d0, d1);
 	}
 
-	protected DanmakuMovement updateVelocity(Vec3 vec, Vec3 pos) {
+	protected ProjectileMovement updateVelocity(Vec3 vec, Vec3 pos) {
 		if (mover != null) {
 			return mover.move(new MoverInfo(tickCount, pos, vec, this));
 		}
-		return new DanmakuMovement(vec, rot());
+		return new ProjectileMovement(vec, rot());
 	}
 
 	public void setItem(ItemStack pStack) {

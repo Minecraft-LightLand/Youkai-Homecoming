@@ -9,7 +9,7 @@ import dev.xkmc.danmaku.collision.FastMapInit;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
-import dev.xkmc.spellcircle.SpellCircleConfig;
+import dev.xkmc.danmaku.spellcircle.SpellCircleConfig;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;

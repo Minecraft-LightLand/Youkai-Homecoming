@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.danmaku.render.ButterflyDanmakuType;
-import dev.xkmc.danmaku.render.DoubleLayerDanmakuType;
-import dev.xkmc.danmaku.render.RenderableDanmakuType;
+import dev.xkmc.danmaku.render.ButterflyProjectileType;
+import dev.xkmc.danmaku.render.DoubleLayerProjectileType;
+import dev.xkmc.danmaku.render.RenderableProjectileType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
@@ -86,17 +86,17 @@ public class DanmakuItem extends Item {
 			list.add(YHLangData.DANMAKU_BYPASS.get());
 	}
 
-	private RenderableDanmakuType<?, ?> render;
+	private RenderableProjectileType<?, ?> render;
 
-	public RenderableDanmakuType<?, ?> getTypeForRender() {
+	public RenderableProjectileType<?, ?> getTypeForRender() {
 		if (render == null) {
 			if (type == YHDanmaku.Bullet.BUTTERFLY) {
-				render = new ButterflyDanmakuType(
+				render = new ButterflyProjectileType(
 						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),
 						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + "_overlay.png"),
 						20, 0xff000000 | color.getFireworkColor());
 			} else {
-				render = new DoubleLayerDanmakuType(
+				render = new DoubleLayerProjectileType(
 						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),
 						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + "_overlay.png"),
 						0xff000000 | color.getFireworkColor());

@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuCommander;
 import net.minecraft.world.damagesource.DamageSource;
@@ -13,8 +13,8 @@ public class SpellCard implements DanmakuCommander {
 	}
 
 	@Override
-	public DanmakuMovement move(int code, int tickCount, Vec3 vec) {
-		return DanmakuMovement.of(vec);
+	public ProjectileMovement move(int code, int tickCount, Vec3 vec) {
+		return ProjectileMovement.of(vec);
 	}
 
 	public void reset() {

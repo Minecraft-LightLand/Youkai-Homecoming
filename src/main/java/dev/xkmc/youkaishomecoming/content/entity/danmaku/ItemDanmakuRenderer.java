@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.xkmc.danmaku.render.DanmakuRenderer;
+import dev.xkmc.danmaku.render.ProjectileRenderer;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Quaternionf;
 
 @OnlyIn(Dist.CLIENT)
-public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRenderer<T> implements DanmakuRenderer {
+public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRenderer<T> implements ProjectileRenderer {
 
 	private static final float MIN_CAMERA_DISTANCE_SQUARED = 12.25F;
 

@@ -1,8 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.spell.mover;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,7 @@ public class CompositeMover extends DanmakuMover {
 	}
 
 	@Override
-	public DanmakuMovement move(MoverInfo info) {
+	public ProjectileMovement move(MoverInfo info) {
 		if (index < list.size() - 1) {
 			if (list.get(index + 1).subtract <= info.tick()) {
 				index++;

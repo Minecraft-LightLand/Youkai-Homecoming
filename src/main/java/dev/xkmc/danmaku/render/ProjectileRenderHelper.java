@@ -15,15 +15,15 @@ import java.util.Set;
 
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class DanmakuRenderHelper {
+public class ProjectileRenderHelper {
 
-	private static final Map<RenderableDanmakuType<?, ?>, Set<?>> MAP = Maps.newConcurrentMap();
+	private static final Map<RenderableProjectileType<?, ?>, Set<?>> MAP = Maps.newConcurrentMap();
 
-	public static <T extends RenderableDanmakuType<T, I>, I> Set<I> setOf(RenderableDanmakuType<T, I> key) {
+	public static <T extends RenderableProjectileType<T, I>, I> Set<I> setOf(RenderableProjectileType<T, I> key) {
 		return Wrappers.cast(MAP.computeIfAbsent(key, l -> Sets.newConcurrentHashSet()));
 	}
 
-	public static <T extends RenderableDanmakuType<T, I>, I> void add(RenderableDanmakuType<T, I> key, I ins) {
+	public static <T extends RenderableProjectileType<T, I>, I> void add(RenderableProjectileType<T, I> key, I ins) {
 		setOf(key).add(ins);
 	}
 

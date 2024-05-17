@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
-import dev.xkmc.danmaku.entity.DanmakuMovement;
+import dev.xkmc.danmaku.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.phys.Vec3;
@@ -22,7 +22,7 @@ public class SpellCardWrapper extends SpellCard {
 	}
 
 	@Override
-	public DanmakuMovement move(int code, int tickCount, Vec3 vec) {
+	public ProjectileMovement move(int code, int tickCount, Vec3 vec) {
 		if (card != null) return card.move(code, tickCount, vec);
 		return super.move(code, tickCount, vec);
 	}
