@@ -79,7 +79,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 			}
 			if (tickRemain == 0 && source != null) {
 				attackCooldown = YHModConfig.COMMON.koishiAttackCoolDown.get();
-				if (notValid() || player.hurt(YHDamageTypes.koishi(player, source), YHModConfig.COMMON.koishiAttackDamage.get())) {
+				if (!notValid() && player.hurt(YHDamageTypes.koishi(player, source), YHModConfig.COMMON.koishiAttackDamage.get())) {
 					blockCount = 0;
 				}
 				source = null;
@@ -91,7 +91,6 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 			return;
 		}
 		if (notValid()) {
-			blockCount = 0;
 			return;
 		}
 		if (player.getRandom().nextDouble() < YHModConfig.COMMON.koishiAttackChance.get()) {
