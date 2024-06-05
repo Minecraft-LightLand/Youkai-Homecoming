@@ -211,6 +211,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:doughnut": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:doughnut"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:dried_fish": {
       "conditions": {
         "item": {
@@ -326,6 +336,26 @@
         "item": {
           "items": [
             "youkaishomecoming:higan_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:higi_chocolate": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:higi_chocolate"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:higi_doughnut": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:higi_doughnut"
           ]
         }
       },
@@ -671,11 +701,11 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:scarlet_mist": {
+    "youkaishomecoming:scarlet_tea": {
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:scarlet_mist"
+            "youkaishomecoming:scarlet_tea"
           ]
         }
       },
@@ -861,16 +891,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:wind_priestesses": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:wind_priestesses"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:yakumo_inari": {
       "conditions": {
         "item": {
@@ -1047,6 +1067,15 @@
       "youkaishomecoming:steamed_egg_in_bamboo"
     ],
     [
+      "youkaishomecoming:doughnut"
+    ],
+    [
+      "youkaishomecoming:higi_chocolate"
+    ],
+    [
+      "youkaishomecoming:higi_doughnut"
+    ],
+    [
       "youkaishomecoming:candy_apple"
     ],
     [
@@ -1095,10 +1124,7 @@
       "youkaishomecoming:genmai_tea"
     ],
     [
-      "youkaishomecoming:scarlet_mist"
-    ],
-    [
-      "youkaishomecoming:wind_priestesses"
+      "youkaishomecoming:scarlet_tea"
     ],
     [
       "youkaishomecoming:green_water"

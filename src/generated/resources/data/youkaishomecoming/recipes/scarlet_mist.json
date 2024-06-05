@@ -1,20 +1,39 @@
 {
-  "type": "youkaishomecoming:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
+  "type": "youkaishomecoming:simple_fermentation",
   "ingredients": [
     {
-      "tag": "forge:tea_leaves/black"
+      "item": "minecraft:rose_bush"
+    },
+    {
+      "item": "minecraft:rose_bush"
+    },
+    {
+      "item": "minecraft:poppy"
+    },
+    {
+      "item": "minecraft:weeping_vines"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "youkaishomecoming:blood_bottle"
+    },
+    {
+      "item": "youkaishomecoming:blood_bottle"
     },
     {
       "item": "youkaishomecoming:blood_bottle"
     }
   ],
-  "recipe_book_tab": "drinks",
-  "result": {
-    "item": "youkaishomecoming:scarlet_mist"
-  }
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:flowing_scarlet_mist"
+  },
+  "results": [],
+  "time": 3600
 }

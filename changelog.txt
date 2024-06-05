@@ -1,3 +1,9 @@
+2.1.9
+- Add Reimu spawning when you eat flesh or kill villager in front of villagers
+- Add doughnut, higi doughnut, and high chocolate
+- Move Scarlet Mist and Wind Priestesses to sake
+- Add Scarlet Tea
+
 2.1.8
 - Fix Koishi hat drop requirements
 

@@ -228,6 +228,23 @@ public class YHRecipeGen {
 					.define('F', Items.PINK_PETALS)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.DOUGHNUT.item, 4)::unlockedBy, ModItems.WHEAT_DOUGH.get())
+					.pattern("CAC").pattern("ABA").pattern("CAC")
+					.define('A', ForgeTags.DOUGH_WHEAT)
+					.define('B', YHItems.CREAM)
+					.define('C', Items.SUGAR)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.HIGI_CHOCOLATE.item, 3)::unlockedBy, Items.COCOA_BEANS)
+					.requires(Items.COCOA_BEANS, 3)
+					.requires(Items.HONEY_BOTTLE).requires(YHItems.MATCHA)
+					.requires(Items.PINK_PETALS).requires(Items.BLUE_ORCHID)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.HIGI_DOUGHNUT.item, 1)::unlockedBy, YHFood.HIGI_CHOCOLATE.item.get())
+					.requires(YHFood.DOUGHNUT.item).requires(YHFood.HIGI_CHOCOLATE.item)
+					.save(pvd);
+
 		}
 
 		// food cooking
@@ -662,19 +679,12 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.build(tea, YHFood.GENMAI_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SCARLET_MIST.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SCARLET_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHItems.BLOOD_BOTTLE)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(YHItems.BLOOD_BOTTLE)
-					.build(tea, YHFood.SCARLET_MIST.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WIND_PRIESTESSES.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHItems.MATCHA)
-					.addIngredient(YHTagGen.TEA_GREEN)
-					.addIngredient(YHItems.MATCHA)
-					.build(tea, YHFood.WIND_PRIESTESSES.item.getId());
+					.build(tea, YHFood.SCARLET_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
@@ -751,6 +761,18 @@ public class YHRecipeGen {
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd, YHSake.FULL_MOONS_EVE.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SCARLET_MIST.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())
+					.addInput(Items.ROSE_BUSH).addInput(Items.ROSE_BUSH).addInput(Items.POPPY)
+					.addInput(Items.WEEPING_VINES).addInput(Items.NETHER_WART)
+					.addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE)
+					.save(pvd, YHSake.SCARLET_MIST.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.WIND_PRIESTESSES.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.DANDELION).addInput(YHTagGen.TEA_GREEN).addInput(YHItems.MATCHA)
+					.save(pvd, YHSake.WIND_PRIESTESSES.item.getId());
+
 		}
 
 		// danmaku

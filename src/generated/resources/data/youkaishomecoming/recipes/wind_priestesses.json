@@ -1,11 +1,18 @@
 {
-  "type": "youkaishomecoming:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
+  "type": "youkaishomecoming:simple_fermentation",
   "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "minecraft:dandelion"
+    },
     {
       "tag": "forge:tea_leaves/green"
     },
@@ -13,8 +20,14 @@
       "item": "youkaishomecoming:matcha"
     }
   ],
-  "recipe_book_tab": "drinks",
-  "result": {
-    "item": "youkaishomecoming:wind_priestesses"
-  }
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:flowing_wind_priestesses"
+  },
+  "results": [],
+  "time": 3600
 }

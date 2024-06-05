@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:doughnut"
+    },
+    {
+      "item": "youkaishomecoming:higi_chocolate"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:higi_doughnut"
+  }
+}

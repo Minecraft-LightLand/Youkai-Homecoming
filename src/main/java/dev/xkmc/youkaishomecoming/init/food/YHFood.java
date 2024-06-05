@@ -68,6 +68,13 @@ public enum YHFood {
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
+	DOUGHNUT(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f,
+			new EffectEntry(ModEffects.COMFORT, 600, 0, 1), DietTagGen.SUGARS.tag),
+	HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(
+			new EffectEntry(ModEffects.COMFORT, 600, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
+	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
 	// stick
 
@@ -121,15 +128,10 @@ public enum YHFood {
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	)),
-	SCARLET_MIST(FoodType.BOTTLE, 0, 0, List.of(
+	SCARLET_TEA(FoodType.BOTTLE, 0, 0, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
 			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
-	)),
-	WIND_PRIESTESSES(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
 	)),
 	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
 

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "youkaishomecoming:matcha"
+    },
+    {
+      "item": "minecraft:pink_petals"
+    },
+    {
+      "item": "minecraft:blue_orchid"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "youkaishomecoming:higi_chocolate"
+  }
+}

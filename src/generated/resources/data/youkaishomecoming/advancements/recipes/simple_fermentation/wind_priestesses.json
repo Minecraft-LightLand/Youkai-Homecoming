@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_rice": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:blood_bottle"
+              "farmersdelight:rice"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:scarlet_mist"
+        "recipe": "youkaishomecoming:wind_priestesses"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_rice",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:scarlet_mist"
+      "youkaishomecoming:wind_priestesses"
     ]
   },
   "sends_telemetry_event": true

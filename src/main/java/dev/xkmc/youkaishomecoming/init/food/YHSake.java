@@ -39,7 +39,15 @@ public enum YHSake {
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
 	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1)));
+			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1))),
+	SCARLET_MIST(FoodType.SAKE, 0xFFEA6B88, List.of(
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
+			new EffectEntry(YHEffects.YOUKAIFIED::get, 1200, 0, 1)
+	)),
+	WIND_PRIESTESSES(FoodType.SAKE, 0xFF79E1CA, List.of(
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
+	)),;
 
 	public final int color;
 

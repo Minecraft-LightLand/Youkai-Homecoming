@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_higi_chocolate": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:matcha"
+              "youkaishomecoming:higi_chocolate"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:wind_priestesses"
+        "recipe": "youkaishomecoming:higi_doughnut"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_higi_chocolate",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:wind_priestesses"
+      "youkaishomecoming:higi_doughnut"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }
