@@ -4,11 +4,8 @@
 	"danmaku": "妖怪们的弹幕"
   },
   "entity.youkaishomecoming": {
-	"lamprey": "八目鳗",
-	"rumia": "露米娅",
 	"item_danmaku": "弹幕",
-	"item_laser": "激光",
-	"youkai": "妖怪"
+	"item_laser": "激光"
   },
   "effect.youkaishomecoming": {
 	"youkaified": "妖怪化",
@@ -19,6 +16,8 @@
 	"caffeinated.description": "提高攻击伤害",
 	"tea_polyphenols": "茶多酚",
 	"tea_polyphenols.description": "提高攻击速度，阳光下每3秒回血",
+	"higi": "生命力",
+	"higi.description": "提高攻击伤害和移动速度，缓慢回血",
 	"sober": "清醒",
 	"sober.description": "阻止幻翼生成，阻止睡觉，阻止妖怪化，防止反胃。清醒状态下无法再喝酒精或清醒饮品",
 	"drunk": "醉酒",

@@ -1,4 +1,4 @@
-2.1.9
+2.2.0
 - Add Reimu spawning when you eat flesh or kill villager in front of villagers
 - Add doughnut, higi doughnut, and high chocolate
 - Move Scarlet Mist and Wind Priestesses to sake

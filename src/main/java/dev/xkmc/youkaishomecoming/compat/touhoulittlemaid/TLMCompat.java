@@ -4,10 +4,8 @@ import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -26,10 +24,7 @@ public class TLMCompat {
 			if (event.getItemStack().getItem() instanceof ItemGarageKit) {
 				if (!event.getTarget().level().isClientSide()) {
 					String id = ItemGarageKit.getMaidData(event.getItemStack()).getString("ModelId");
-					e.spellCard = new SpellCardWrapper();
-					e.spellCard.modelId = id;
 					TouhouSpellCards.setSpell(e, id);
-					e.syncModel();
 				}
 				event.setCancellationResult(InteractionResult.SUCCESS);
 				event.setCanceled(true);
@@ -39,7 +34,7 @@ public class TLMCompat {
 
 	public static boolean summonReimu(LivingEntity sp) {
 		BlockPos center = BlockPos.containing(sp.position().add(sp.getForward().scale(8)).add(0, 5, 0));
-		GeneralYoukaiEntity e = YHEntities.GENERAL_YOUKAI.create(sp.level());
+		GeneralYoukaiEntity e = YHEntities.MAIDEN.create(sp.level());
 		if (e == null) return false;
 		BlockPos pos = getPos(sp, e, center, 16, 8, 5);
 		if (pos == null) {
@@ -49,12 +44,8 @@ public class TLMCompat {
 		if (pos == null) return false;
 		e.moveTo(pos, 0, 0);
 		e.setTarget(sp);
-		String id = "touhou_little_maid:hakurei_reimu";
-		e.spellCard = new SpellCardWrapper();
-		e.spellCard.modelId = id;
-		TouhouSpellCards.setSpell(e, id);
+		TouhouSpellCards.setSpell(e, "touhou_little_maid:hakurei_reimu");
 		e.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(InitItems.HAKUREI_GOHEI.get(), 1));
-		e.syncModel();
 		sp.level().addFreshEntity(e);
 		return true;
 	}

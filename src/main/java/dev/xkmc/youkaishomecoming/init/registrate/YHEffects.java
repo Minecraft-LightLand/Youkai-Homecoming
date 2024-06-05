@@ -67,6 +67,10 @@ public class YHEffects {
 					"Heals every 3 seconds under moonlight. " +
 					"Reduced damage taken when under full moon.");
 
+	public static final RegistryEntry<HigiEffect> HIGI = genEffect("higi",
+			() -> new HigiEffect(MobEffectCategory.BENEFICIAL, 0xffffff),//TODO color
+			"Boost attack damage and movement speed, heal slowly");
+
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();
 	}

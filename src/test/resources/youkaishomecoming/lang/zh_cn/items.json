@@ -3,7 +3,6 @@
 	"cooked_flesh": "烤%1$s",
 	"flesh": "%1$s",
 	"lamprey_bucket": "八目鳗桶",
-	"lamprey_spawn_egg": "八目鳗生成蛋",
 	"raw_lamprey": "生八目鳗",
 	"raw_lamprey_fillet": "生八目鳗片",
 	"roasted_lamprey": "烤八目鳗",
@@ -103,18 +102,30 @@
 	"sakura_honey_tea": "樱花蜜茶",
 	"tea_mocha": "摩卡茶",
 	"straw_hat": "稻草帽",
-	"rumia_spawn_egg": "露米娅生成蛋",
 	"flesh_chocolate_mousse": "%s巧克力慕斯",
 	"green_water": "青汁",
 	"scarlet_devil_cake": "猩红恶魔蛋糕",
 	"seafood_miso_soup": "海鲜味增汤",
-	"youkai_spawn_egg": "妖怪生成蛋",
 	"doughnut": "甜甜圈",
 	"higi_chocolate": "秘仪巧克力",
 	"higi_doughnut": "秘仪甜甜圈",
 	"scarlet_tea": "红魔馆红茶"
   },
   "-cartesian": {
+	"entity": {
+	  "path": "",
+	  "list": [
+		{
+		  "lamprey": "八目鳗",
+		  "rumia": "露米娅",
+		  "youkai": "妖怪",
+		  "shrine_maiden": "神社巫女"
+		},{
+		  "entity.youkaishomecoming.*": "",
+		  "item.youkaishomecoming.*_spawn_egg": "生成蛋"
+		}
+	  ]
+	},
 	"sake": {
 	  "path": "",
 	  "use_dot": true,

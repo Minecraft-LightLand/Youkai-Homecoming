@@ -69,10 +69,11 @@ public enum YHFood {
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f,
-			new EffectEntry(ModEffects.COMFORT, 600, 0, 1), DietTagGen.SUGARS.tag),
+	HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f, List.of(
+			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1)
+	), DietTagGen.SUGARS.tag),
 	HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(
-			new EffectEntry(ModEffects.COMFORT, 600, 0, 1),
+			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 

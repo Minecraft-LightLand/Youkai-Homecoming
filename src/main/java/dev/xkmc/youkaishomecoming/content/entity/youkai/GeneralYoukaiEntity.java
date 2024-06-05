@@ -83,8 +83,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 	}
 
 	private boolean wouldAttack(LivingEntity entity) {
-		return entity instanceof Mob mob && mob.getTarget() instanceof Villager ||
-				entity.hasEffect(YHEffects.YOUKAIFYING.get());//TODO
+		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -161,7 +160,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 		}
 	}
 
-	public void setCustomName(@javax.annotation.Nullable Component pName) {
+	public void setCustomName(@Nullable Component pName) {
 		super.setCustomName(pName);
 		bossEvent.setName(getDisplayName());
 	}

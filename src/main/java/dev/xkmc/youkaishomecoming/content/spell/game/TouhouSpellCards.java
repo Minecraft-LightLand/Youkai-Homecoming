@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.spell.game.yukari.LightHole;
 import dev.xkmc.youkaishomecoming.content.spell.game.yuyuko.YuyukoTest;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ListSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -33,8 +34,11 @@ public class TouhouSpellCards {
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
+		e.spellCard = new SpellCardWrapper();
+		e.spellCard.modelId = id;
 		var sup = MAP.get(id);
 		if (sup != null) e.spellCard.card = sup.get();
+		e.syncModel();
 		var rl = new ResourceLocation(id);
 		var name = Component.translatable(rl.toLanguageKey("model") + ".name");
 		var desc = Component.translatable(rl.toLanguageKey("model") + ".desc");

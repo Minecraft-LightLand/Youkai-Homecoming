@@ -23,8 +23,7 @@ public interface IYHDanmaku {
 		if (owner == null) return false;
 		if (owner instanceof YoukaiEntity youkai) {
 			if (e instanceof LivingEntity le) {
-				if (le instanceof Enemy) return true;
-				return youkai.targets.contains(le);
+				return youkai.shouldHurt(le);
 			}
 			return false;
 		}

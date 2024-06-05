@@ -28,6 +28,7 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue udumbaraDuration;
 		public final ForgeConfigSpec.IntValue udumbaraHealingPeriod;
 		public final ForgeConfigSpec.IntValue udumbaraFullMoonReduction;
+		public final ForgeConfigSpec.IntValue higiHealingPeriod;
 
 		public final ForgeConfigSpec.IntValue frogEatCountForHat;
 		public final ForgeConfigSpec.IntValue frogEatRaiderVillagerSightRange;
@@ -69,6 +70,8 @@ public class YHModConfig {
 					.defineInRange("udumbaraDuration", 200, 0, 100000);
 			udumbaraFullMoonReduction = builder.comment("Udumbara full moon damage reduction")
 					.defineInRange("udumbaraFullMoonReduction", 4, 0, 100);
+			higiHealingPeriod = builder.comment("Higi Healing Interval")
+					.defineInRange("higiHealingPeriod", 60, 0, 10000);
 			builder.pop();
 
 			builder.push("suwako_hat");

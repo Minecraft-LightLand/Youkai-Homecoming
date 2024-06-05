@@ -33,6 +33,7 @@ import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -296,6 +297,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			if (!level().getBlockState(off).isAir()) return false;
 		}
 		return true;
+	}
+
+	public boolean shouldHurt(LivingEntity le) {
+		return targets.contains(le);
 	}
 
 }
