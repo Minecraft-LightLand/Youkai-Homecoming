@@ -122,7 +122,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	@OverridingMethodsMustInvokeSuper
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
-		tickCount = (int) (level().getGameTime() - additionalData.readInt());
+		tickCount = (int) (level().getGameTime() - additionalData.readLong());
 		int id = additionalData.readInt();
 		if (id >= 0) {
 			var e = level().getEntity(id);

@@ -1,3 +1,6 @@
+2.1.8
+- Fix Koishi hat drop requirements
+
 2.1.7
 - Seed tags
 - Fix initial spawn Rumia wandering around

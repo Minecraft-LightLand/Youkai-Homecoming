@@ -29,7 +29,7 @@ public class ActualSpellCard extends SpellCard {
 		tickers.clear();
 	}
 
-	public void hurt(DamageSource source, float amount) {
+	public void hurt(CardHolder holder, DamageSource source, float amount) {
 		if (source.getEntity() instanceof LivingEntity && amount > 1) {
 			hit++;
 		}

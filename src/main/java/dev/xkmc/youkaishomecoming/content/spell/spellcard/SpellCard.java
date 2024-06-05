@@ -20,7 +20,7 @@ public class SpellCard implements DanmakuCommander {
 	public void reset() {
 	}
 
-	public void hurt(DamageSource source, float amount) {
+	public void hurt(CardHolder holder, DamageSource source, float amount) {
 	}
 
 }

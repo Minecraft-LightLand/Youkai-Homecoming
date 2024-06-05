@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -8,10 +9,11 @@ import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.sensing.GolemSensor;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.npc.Villager;
@@ -140,22 +142,7 @@ public class FleshFoodItem extends YHFoodItem {
 			}
 		}
 		if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD) && consumer instanceof ServerPlayer sp) {
-			AABB aabb = sp.getBoundingBox().inflate(20);
-			var list = sp.serverLevel().getEntities(EntityTypeTest.forClass(Villager.class), aabb, e -> e.hasLineOfSight(sp));
-			if (!list.isEmpty()) {
-				var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sp.serverLevel(), sp.blockPosition(),
-						10, 8, 6, SpawnUtil.Strategy.LEGACY_IRON_GOLEM);
-				if (opt.isPresent()) {
-					int time = 3 * 60 * 20;
-					list.forEach(GolemSensor::golemDetected);
-					opt.get().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, time, 4));
-					opt.get().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, time, 2));
-				}
-			}
-			for (var e : list) {
-				sp.serverLevel().broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
-				sp.serverLevel().onReputationEvent(ReputationEventType.VILLAGER_KILLED, sp, e);
-			}
+			GeneralEventHandlers.generateYoukaiResponse(sp, 24, true);
 		}
 	}
 

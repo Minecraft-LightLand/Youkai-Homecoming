@@ -27,8 +27,13 @@ public class YoukaiTargetContainer {
 	public void tick() {
 		if (youkai.level().isClientSide()) return;
 		LivingEntity le = youkai.getLastHurtByMob();
-		if (le != null && le.isAlive() && le.canBeSeenAsEnemy()) {
+		if (le != null && le.isAlive() && le.canBeSeenAsEnemy() && !list.contains(le.getUUID())) {
 			list.add(le.getUUID());
+		} else {
+			le = youkai.getTarget();
+			if (le != null && le.isAlive() && le.canBeSeenAsEnemy()) {
+				list.add(le.getUUID());
+			}
 		}
 		list.removeIf(e -> !isValid(e));
 		if (list.size() > maxSize) {

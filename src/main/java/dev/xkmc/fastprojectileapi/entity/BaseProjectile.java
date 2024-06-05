@@ -39,6 +39,8 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 		if (tickCount >= lifetime()) {
 			if (!level().isClientSide()) {
 				discard();
+			} else {
+				int a = 1 + 2;
 			}
 		}
 	}

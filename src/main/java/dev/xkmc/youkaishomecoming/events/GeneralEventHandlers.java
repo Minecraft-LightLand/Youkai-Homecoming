@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.events;
 
+import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
@@ -12,13 +14,19 @@ import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.sensing.GolemSensor;
+import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;
@@ -26,6 +34,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
@@ -93,6 +102,46 @@ public class GeneralEventHandlers {
 		if (event.getTarget() instanceof Frog frog) {
 			FrogGodCapability.startTracking(frog, event.getEntity());
 		}
+	}
+
+	@SubscribeEvent
+	public static void onEntityKilled(LivingDeathEvent event) {
+		if (event.getEntity() instanceof Villager) {
+			if (event.getSource().getEntity() instanceof ServerPlayer sp) {
+				generateYoukaiResponse(sp, 16, false);
+			}
+		}
+	}
+
+	public static void generateYoukaiResponse(ServerPlayer sp, int range, boolean requireSight) {
+		AABB aabb = sp.getBoundingBox().inflate(range);
+		var list = sp.serverLevel().getEntities(EntityTypeTest.forClass(Villager.class), aabb,
+				e -> e.isAlive() && (!requireSight || e.hasLineOfSight(sp)));
+		if (!list.isEmpty()) {
+			if (GeneralEventHandlers.summonProtector(sp)) {
+				list.forEach(GolemSensor::golemDetected);
+			}
+		}
+		for (var e : list) {
+			sp.serverLevel().broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
+			sp.serverLevel().onReputationEvent(ReputationEventType.VILLAGER_KILLED, sp, e);
+		}
+	}
+
+	private static boolean summonProtector(ServerPlayer sp) {
+		if (sp.isCreative()) return false;
+		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+			return TLMCompat.summonReimu(sp);
+		}
+		var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sp.serverLevel(), sp.blockPosition(),
+				10, 8, 6, SpawnUtil.Strategy.LEGACY_IRON_GOLEM);
+		if (opt.isPresent()) {
+			int time = 3 * 60 * 20;
+			opt.get().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, time, 4));
+			opt.get().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, time, 2));
+			return true;
+		}
+		return false;
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {

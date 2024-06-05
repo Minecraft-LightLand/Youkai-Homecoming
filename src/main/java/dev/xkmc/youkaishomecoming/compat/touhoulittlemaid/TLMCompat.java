@@ -1,23 +1,20 @@
 package dev.xkmc.youkaishomecoming.compat.touhoulittlemaid;
 
-import com.github.tartaricacid.touhoulittlemaid.init.InitBlocks;
+import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemGarageKit;
-import com.github.tartaricacid.touhoulittlemaid.tileentity.TileEntityGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import java.util.Objects;
+import org.jetbrains.annotations.Nullable;
 
 public class TLMCompat {
 
@@ -39,37 +36,42 @@ public class TLMCompat {
 		}
 	}
 
-	@SubscribeEvent
-	public static void onInteract(PlayerInteractEvent.RightClickBlock event) {
-		var state = event.getLevel().getBlockState(event.getPos());
-		var te = event.getLevel().getBlockEntity(event.getPos());
-		if (state.is(InitBlocks.GARAGE_KIT.get()) && event.getEntity().isCreative()) {
-			if (event.getItemStack().getItem() instanceof DanmakuItem) {
-				if (event.getLevel() instanceof ServerLevel sl && te instanceof TileEntityGarageKit kit) {
-					BlockPos pos = event.getPos();
-					BlockPos blockpos1;
-					Direction dir = event.getHitVec().getDirection();
-					if (state.getCollisionShape(sl, pos).isEmpty()) {
-						blockpos1 = pos;
-					} else {
-						blockpos1 = pos.relative(dir);
-					}
-					var entitytype = YHEntities.GENERAL_YOUKAI.get();
-					var e = entitytype.create(sl, null, null, event.getPos(),
-							MobSpawnType.SPAWN_EGG, true,
-							!Objects.equals(pos, blockpos1) && dir == Direction.UP);
-					if (e == null) return;
-					String id = kit.getExtraData().getString("ModelId");
-					e.spellCard = new SpellCardWrapper();
-					e.spellCard.modelId = id;
-					TouhouSpellCards.setSpell(e, id);
-					sl.addFreshEntity(e);
-					sl.gameEvent(event.getEntity(), GameEvent.ENTITY_PLACE, pos);
-				}
-				event.setCancellationResult(InteractionResult.SUCCESS);
-				event.setCanceled(true);
+	public static boolean summonReimu(ServerPlayer sp) {
+		BlockPos center = BlockPos.containing(sp.position().add(sp.getForward().scale(8)).add(0, 5, 0));
+		GeneralYoukaiEntity e = YHEntities.GENERAL_YOUKAI.create(sp.level());
+		if (e == null) return false;
+		BlockPos pos = getPos(sp, e, center, 16, 8, 5);
+		if (pos == null) {
+			center = sp.blockPosition().above(5);
+			pos = getPos(sp, e, center, 16, 16, 5);
+		}
+		if (pos == null) return false;
+		e.moveTo(pos, 0, 0);
+		e.setTarget(sp);
+		String id = "touhou_little_maid:hakurei_reimu";
+		e.spellCard = new SpellCardWrapper();
+		e.spellCard.modelId = id;
+		TouhouSpellCards.setSpell(e, id);
+		e.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(InitItems.HAKUREI_GOHEI.get(), 1));
+		e.syncModel();
+		sp.level().addFreshEntity(e);
+		return true;
+	}
+
+	@Nullable
+	private static BlockPos getPos(ServerPlayer sp, Entity e, BlockPos center, int trial, int range, int dy) {
+		for (int i = 0; i < trial; i++) {
+			BlockPos pos = center.offset(
+					sp.getRandom().nextInt(-range, range),
+					sp.getRandom().nextInt(-dy, dy),
+					sp.getRandom().nextInt(-range, range)
+			);
+			e.moveTo(pos, 0, 0);
+			if (sp.serverLevel().noCollision(e)) {
+				return pos;
 			}
 		}
+		return null;
 	}
 
 }

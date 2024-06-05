@@ -37,8 +37,8 @@ public class SpellCardWrapper extends SpellCard {
 		return modelId;
 	}
 
-	public void hurt(DamageSource source, float amount) {
-		if (card != null) card.hurt(source, amount);
+	public void hurt(CardHolder holder, DamageSource source, float amount) {
+		if (card != null) card.hurt(holder, source, amount);
 	}
 
 }

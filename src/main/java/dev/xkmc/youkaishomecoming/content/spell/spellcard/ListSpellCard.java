@@ -45,9 +45,9 @@ public class ListSpellCard extends SpellCard {
 		return card().move(code, tickCount, vec);
 	}
 
-	public void hurt(DamageSource source, float amount) {
-		super.hurt(source, amount);
-		card().hurt(source, amount);
+	public void hurt(CardHolder holder, DamageSource source, float amount) {
+		super.hurt(holder, source, amount);
+		card().hurt(holder, source, amount);
 	}
 
 	@Override
