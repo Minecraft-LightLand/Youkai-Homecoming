@@ -13,6 +13,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.InteractionResult;
@@ -107,33 +108,35 @@ public class GeneralEventHandlers {
 	@SubscribeEvent
 	public static void onEntityKilled(LivingDeathEvent event) {
 		if (event.getEntity() instanceof Villager) {
-			if (event.getSource().getEntity() instanceof ServerPlayer sp) {
-				generateYoukaiResponse(sp, 16, false);
+			if (event.getSource().getEntity() instanceof LivingEntity le) {
+				if (le.hasEffect(YHEffects.YOUKAIFIED.get()) || le.hasEffect(YHEffects.YOUKAIFYING.get()))
+					generateYoukaiResponse(le, 16, false);
 			}
 		}
 	}
 
-	public static void generateYoukaiResponse(ServerPlayer sp, int range, boolean requireSight) {
-		AABB aabb = sp.getBoundingBox().inflate(range);
-		var list = sp.serverLevel().getEntities(EntityTypeTest.forClass(Villager.class), aabb,
-				e -> e.isAlive() && (!requireSight || e.hasLineOfSight(sp)));
+	public static void generateYoukaiResponse(LivingEntity le, int range, boolean requireSight) {
+		if (!(le.level() instanceof ServerLevel sl)) return;
+		AABB aabb = le.getBoundingBox().inflate(range);
+		var list = sl.getEntities(EntityTypeTest.forClass(Villager.class), aabb,
+				e -> e.isAlive() && (!requireSight || e.hasLineOfSight(le)));
 		if (!list.isEmpty()) {
-			if (GeneralEventHandlers.summonProtector(sp)) {
+			if (GeneralEventHandlers.summonProtector(sl, le)) {
 				list.forEach(GolemSensor::golemDetected);
 			}
 		}
 		for (var e : list) {
-			sp.serverLevel().broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
-			sp.serverLevel().onReputationEvent(ReputationEventType.VILLAGER_KILLED, sp, e);
+			sl.broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
+			sl.onReputationEvent(ReputationEventType.VILLAGER_KILLED, le, e);
 		}
 	}
 
-	private static boolean summonProtector(ServerPlayer sp) {
-		if (sp.isCreative()) return false;
+	private static boolean summonProtector(ServerLevel sl, LivingEntity le) {
+		if (le instanceof ServerPlayer sp && sp.isCreative()) return false;
 		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-			return TLMCompat.summonReimu(sp);
+			return TLMCompat.summonReimu(le);
 		}
-		var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sp.serverLevel(), sp.blockPosition(),
+		var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sl, le.blockPosition(),
 				10, 8, 6, SpawnUtil.Strategy.LEGACY_IRON_GOLEM);
 		if (opt.isPresent()) {
 			int time = 3 * 60 * 20;

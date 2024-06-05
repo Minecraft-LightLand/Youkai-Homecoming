@@ -764,12 +764,14 @@ public class YHRecipeGen {
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SCARLET_MIST.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())
 					.addInput(Items.ROSE_BUSH).addInput(Items.ROSE_BUSH).addInput(Items.POPPY)
-					.addInput(Items.WEEPING_VINES).addInput(Items.NETHER_WART)
-					.addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE)
+					.addInput(YHDanmaku.Bullet.BUBBLE.get(DyeColor.RED))
+					.addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE)
+					.addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE)
 					.save(pvd, YHSake.SCARLET_MIST.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.WIND_PRIESTESSES.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.LIME))
 					.addInput(Items.DANDELION).addInput(YHTagGen.TEA_GREEN).addInput(YHItems.MATCHA)
 					.save(pvd, YHSake.WIND_PRIESTESSES.item.getId());
 

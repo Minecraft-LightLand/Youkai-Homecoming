@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-04T23:48:25.761557	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-06-05T00:05:37.708491	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
 46908dae890da41df0c05b9ffa2bfa05fb7aadf2 assets/youkaishomecoming/blockstates/bamboo_handrail.json
 1db5ab727a6bdcaef93a46a8a1696efaee42cd85 assets/youkaishomecoming/blockstates/bamboo_mizuyokan.json
@@ -1345,7 +1345,7 @@ c08286e4628866a5e66248c3139665fea2ca5a5f data/youkaishomecoming/recipes/sakura_m
 9c3640a2d94ab138d7ad0f052f5af3452fb1b5f7 data/youkaishomecoming/recipes/sauce_grilled_fish.json
 6bfdf34d00ab1fca7ebb571fa7e8d3f4936f0919 data/youkaishomecoming/recipes/saucer_from_clay_saucer_smelting.json
 d8fb88c44b66e7ec4635751401d3325239b841f9 data/youkaishomecoming/recipes/scarlet_devil_cake.json
-a8378c0f7864b456aa6a55a063df52c9e53203fd data/youkaishomecoming/recipes/scarlet_mist.json
+8ca8882b9ee75e868eb8c294027aa993e12588d8 data/youkaishomecoming/recipes/scarlet_mist.json
 25d6a76584d329ad18ec43b701efa614c8932056 data/youkaishomecoming/recipes/scarlet_tea.json
 7778df9c224e6faa0d07d7977698fcb457394aeb data/youkaishomecoming/recipes/seafood_miso_soup.json
 49e7b5e714e0eb1b4e697b010d5d56fc54fe2764 data/youkaishomecoming/recipes/sekibankiyaki.json
@@ -1395,7 +1395,7 @@ fdbe19c2ea44087b19679ca5e7332fbc0c1f7d8d data/youkaishomecoming/recipes/white_te
 b50a7376bcc1ede3c3abe93f9aad8eb9e759a36d data/youkaishomecoming/recipes/white_tea_bag.json
 34daa82c5e96447acc7b54eb881175cf72711bba data/youkaishomecoming/recipes/white_tea_leaves_from_green_tea_leaves_drying.json
 5594483ca03a9a483d9e615e29b3dd5bbc5b2741 data/youkaishomecoming/recipes/white_tea_leaves_from_white_tea_bag.json
-5fae118c0a19ec333d65301f060682b82f9e26d2 data/youkaishomecoming/recipes/wind_priestesses.json
+131d4a182db52810363f0e9d6196cc0f8e2fb346 data/youkaishomecoming/recipes/wind_priestesses.json
 971a7287458341b02bab365ae5fc0332ff5588db data/youkaishomecoming/recipes/yakumo_inari.json
 939c6fd41ffa255719abd95bdf23c7da8428450d data/youkaishomecoming/recipes/yashouma_dango.json
 592177b6f4ac198865cdd3440db4a9a871ed9015 data/youkaishomecoming/recipes/yellow_ball_danmaku.json

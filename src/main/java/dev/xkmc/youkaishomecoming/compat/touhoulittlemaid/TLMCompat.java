@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,7 +37,7 @@ public class TLMCompat {
 		}
 	}
 
-	public static boolean summonReimu(ServerPlayer sp) {
+	public static boolean summonReimu(LivingEntity sp) {
 		BlockPos center = BlockPos.containing(sp.position().add(sp.getForward().scale(8)).add(0, 5, 0));
 		GeneralYoukaiEntity e = YHEntities.GENERAL_YOUKAI.create(sp.level());
 		if (e == null) return false;
@@ -59,7 +60,7 @@ public class TLMCompat {
 	}
 
 	@Nullable
-	private static BlockPos getPos(ServerPlayer sp, Entity e, BlockPos center, int trial, int range, int dy) {
+	private static BlockPos getPos(LivingEntity sp, Entity e, BlockPos center, int trial, int range, int dy) {
 		for (int i = 0; i < trial; i++) {
 			BlockPos pos = center.offset(
 					sp.getRandom().nextInt(-range, range),
@@ -67,7 +68,7 @@ public class TLMCompat {
 					sp.getRandom().nextInt(-range, range)
 			);
 			e.moveTo(pos, 0, 0);
-			if (sp.serverLevel().noCollision(e)) {
+			if (sp.level().noCollision(e)) {
 				return pos;
 			}
 		}
