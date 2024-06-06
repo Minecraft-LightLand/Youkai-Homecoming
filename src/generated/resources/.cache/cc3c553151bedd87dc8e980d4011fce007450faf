@@ -1,7 +1,7 @@
-// 1.20.1	2024-04-13T14:00:50.904695	Tags for minecraft:damage_type mod id youkaishomecoming
-abae17a033329c561dd4039c17edd1bc23f50075 data/forge/tags/damage_type/is_magic.json
-abae17a033329c561dd4039c17edd1bc23f50075 data/minecraft/tags/damage_type/bypasses_armor.json
-abae17a033329c561dd4039c17edd1bc23f50075 data/minecraft/tags/damage_type/bypasses_cooldown.json
-350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_effects.json
-350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_enchantments.json
-350603eaa861a8cff7ccee344e40d5602930084d data/minecraft/tags/damage_type/bypasses_resistance.json
+// 1.20.1	2024-06-06T09:07:52.071738	Tags for minecraft:damage_type mod id youkaishomecoming
+627f902f2d6cdf3772b7aa1590ccfa7e016bfd6b data/forge/tags/damage_type/is_magic.json
+627f902f2d6cdf3772b7aa1590ccfa7e016bfd6b data/minecraft/tags/damage_type/bypasses_armor.json
+627f902f2d6cdf3772b7aa1590ccfa7e016bfd6b data/minecraft/tags/damage_type/bypasses_cooldown.json
+474eeb34c3b91892285ef8aa5505a1264dd88042 data/minecraft/tags/damage_type/bypasses_effects.json
+474eeb34c3b91892285ef8aa5505a1264dd88042 data/minecraft/tags/damage_type/bypasses_enchantments.json
+474eeb34c3b91892285ef8aa5505a1264dd88042 data/minecraft/tags/damage_type/bypasses_resistance.json

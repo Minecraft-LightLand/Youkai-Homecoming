@@ -92,7 +92,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 				.add(Attributes.ATTACK_DAMAGE, 10)
 				.add(Attributes.MOVEMENT_SPEED, 0.4)
 				.add(Attributes.FLYING_SPEED, 0.4)
-				.add(Attributes.FOLLOW_RANGE, 48);
+				.add(Attributes.FOLLOW_RANGE, 128);
 	}
 
 	@Override

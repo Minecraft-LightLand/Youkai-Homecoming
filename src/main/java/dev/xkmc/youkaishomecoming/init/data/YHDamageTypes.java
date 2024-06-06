@@ -22,6 +22,7 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 	public static final ResourceKey<DamageType> KOISHI = createDamage("koishi_attack");
 	public static final ResourceKey<DamageType> RUMIA = createDamage("rumia_attack");
 	public static final ResourceKey<DamageType> DANMAKU = createDamage("danmaku");
+	public static final ResourceKey<DamageType> ABYSSAL = createDamage("abyssal_danmaku");
 
 	public YHDamageTypes(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, YoukaisHomecoming.MODID);
@@ -31,6 +32,9 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
 		new DamageTypeHolder(DANMAKU, new DamageType("danmaku", 0.1f))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN);
+		new DamageTypeHolder(ABYSSAL, new DamageType("abyssal_danmaku", 0.1f))
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN)
+				.add(L2DamageTypes.BYPASS_MAGIC);
 	}
 
 	private static ResourceKey<DamageType> createDamage(String id) {
@@ -51,6 +55,12 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 	public static DamageSource danmaku(IYHDanmaku self) {
 		return new DamageSource(self.self().level().registryAccess()
 				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DANMAKU), self.self(),
+				self.self().getOwner());
+	}
+
+	public static DamageSource abyssal(IYHDanmaku self) {
+		return new DamageSource(self.self().level().registryAccess()
+				.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ABYSSAL), self.self(),
 				self.self().getOwner());
 	}
 

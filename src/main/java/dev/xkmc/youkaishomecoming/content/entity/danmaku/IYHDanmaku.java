@@ -2,11 +2,11 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.PartEntity;
 import org.jetbrains.annotations.Nullable;
@@ -41,7 +41,11 @@ public interface IYHDanmaku {
 				}
 			}
 		}
-		if (!e.hurt(YHDamageTypes.danmaku(this), damage(e))) return;
+		DamageSource dmgType = YHDamageTypes.danmaku(this);
+		if (self().getServer() instanceof CardHolder youkai) {
+			dmgType = youkai.getDanmakuDamageSource(this);
+		}
+		if (!e.hurt(dmgType, damage(e))) return;
 		LivingEntity target = null;
 		while (e instanceof PartEntity<?> pe) {
 			e = pe.getParent();

@@ -303,4 +303,9 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		return targets.contains(le);
 	}
 
+	@Override
+	public LivingEntity self() {
+		return super.self();
+	}
+
 }

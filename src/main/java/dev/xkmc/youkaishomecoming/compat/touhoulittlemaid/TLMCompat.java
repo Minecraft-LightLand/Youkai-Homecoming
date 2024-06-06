@@ -1,16 +1,14 @@
 package dev.xkmc.youkaishomecoming.compat.touhoulittlemaid;
 
-import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +32,7 @@ public class TLMCompat {
 
 	public static boolean summonReimu(LivingEntity sp) {
 		BlockPos center = BlockPos.containing(sp.position().add(sp.getForward().scale(8)).add(0, 5, 0));
-		GeneralYoukaiEntity e = YHEntities.MAIDEN.create(sp.level());
+		MaidenEntity e = YHEntities.MAIDEN.create(sp.level());
 		if (e == null) return false;
 		BlockPos pos = getPos(sp, e, center, 16, 8, 5);
 		if (pos == null) {
@@ -44,8 +42,7 @@ public class TLMCompat {
 		if (pos == null) return false;
 		e.moveTo(pos, 0, 0);
 		e.setTarget(sp);
-		TouhouSpellCards.setSpell(e, "touhou_little_maid:hakurei_reimu");
-		e.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(InitItems.HAKUREI_GOHEI.get(), 1));
+		TouhouSpellCards.setReimu(e);
 		sp.level().addFreshEntity(e);
 		return true;
 	}

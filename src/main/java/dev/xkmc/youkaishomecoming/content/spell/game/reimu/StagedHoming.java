@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.game.reimu;
 
+import dev.xkmc.fastprojectileapi.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
@@ -7,8 +8,12 @@ import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
@@ -18,16 +23,62 @@ public class StagedHoming extends ActualSpellCard {
 	public void tick(CardHolder holder) {
 		super.tick(holder);
 		int interval = 10;
+		var target = holder.target();
+		var dist = target == null ? 0 : holder.center().distanceTo(target);
+		boolean far = dist > 40;
 		if (tick % interval == 0) {
 			int step = tick / interval % 5;
-			if (step >= 3) return;
-			addTicker(new StateChange());
+			if (step < 3) {
+				var ans = new StateChange();
+				ans.r0 = far ? 32 : 8;
+				ans.r1 = far ? 32 : 6;
+				ans.t0 = far ? 10 : 20;
+				ans.t1 = far ? 10 : 20;
+				ans.termSpeed = far ? 3 : 1;
+				addTicker(ans);
+			} else {
+				if (dist > 40) {
+					var dir = target.subtract(holder.center()).normalize();
+					teleport(holder.self(), target.add(dir.scale(32)));
+				}
+			}
+		}
+		if (target != null && holder.self().getHealth() < holder.self().getMaxHealth()) {
+			var forward = holder.forward();
+			var ori = DanmakuHelper.getOrientation(forward);
+			double angle = ProjectileMovement.of(forward).rot().y * Mth.RAD_TO_DEG;
+			double speed = Mth.clamp(dist / 30, 1.5, 3);
+			for (int i = 0; i < 8; i++) {
+				var dir = ori.rotateDegrees(360d / 8 * i - angle);
+				var e = holder.prepareDanmaku(40, dir.scale(speed), YHDanmaku.Bullet.BALL, DyeColor.LIGHT_BLUE);
+				holder.shoot(e);
+			}
+		}
+	}
+
+	private static void teleport(LivingEntity mob, Vec3 target) {
+		Vec3 old = mob.position();
+		mob.teleportTo(target.x(), target.y(), target.z());
+		if (!mob.level().noCollision(mob)) {
+			mob.teleportTo(old.x(), old.y(), old.z());
+			return;
+		}
+		mob.level().gameEvent(GameEvent.TELEPORT, mob.position(), GameEvent.Context.of(mob));
+		if (!mob.isSilent()) {
+			mob.level().playSound(null, mob.xo, mob.yo, mob.zo, SoundEvents.ENDERMAN_TELEPORT, mob.getSoundSource(), 1.0F, 1.0F);
+			mob.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, 1.0F);
 		}
 	}
 
 	@Override
 	public void hurt(CardHolder holder, DamageSource source, float amount) {
 		super.hurt(holder, source, amount);
+		var target = holder.target();
+		var dist = target == null ? 0 : holder.center().distanceTo(target);
+		homingReact(holder, dist > 40);
+	}
+
+	private void homingReact(CardHolder holder, boolean far) {
 		var le = holder.target();
 		if (le == null) return;
 		var r = holder.random();
@@ -39,8 +90,11 @@ public class StagedHoming extends ActualSpellCard {
 		int s = r.nextDouble() < 0.5 ? -1 : 1;
 		for (int i = 0; i <= 5; i++) {
 			var ans = new StateChange();
-			ans.r0 = 24;
-			ans.r1 = 18;
+			ans.r0 = far ? 32 : 24;
+			ans.r1 = far ? 32 : 18;
+			ans.t0 = far ? 10 : 20;
+			ans.t1 = far ? 10 : 20;
+			ans.termSpeed = far ? 3 : 1;
 			ans.n = n;
 			ans.bullet = YHDanmaku.Bullet.BUBBLE;
 			ans.pos = holder.center();
@@ -59,6 +113,10 @@ public class StagedHoming extends ActualSpellCard {
 		@SerialClass.SerialField
 		private int r0 = 8, r1 = 6, n = 20;
 		@SerialClass.SerialField
+		private int t0 = 20, t1 = 20, t2 = 40, dt = 20;
+		@SerialClass.SerialField
+		private double termSpeed = 1;
+		@SerialClass.SerialField
 		private YHDanmaku.Bullet bullet = YHDanmaku.Bullet.CIRCLE;
 
 		@Override
@@ -71,12 +129,6 @@ public class StagedHoming extends ActualSpellCard {
 		private void step(CardHolder holder) {
 			var le = holder.target();
 			if (le == null) return;
-
-			int t0 = 20;
-			int t1 = 20;
-			int t2 = 40;
-			int dt = 20;
-
 			var r = holder.random();
 			if (init == null) {
 				pos = holder.center();
@@ -119,7 +171,7 @@ public class StagedHoming extends ActualSpellCard {
 					var f1 = target1.subtract(p0).normalize();
 					var p1 = p0.add(f1.scale(r1));
 					var f2 = le.subtract(p1).normalize();
-					var vec = f2.scale(1);
+					var vec = f2.scale(termSpeed);
 					int t = t2 + r.nextInt(dt);
 					var e = holder.prepareDanmaku(t, vec, bullet, DyeColor.RED);
 					e.setPos(p1);

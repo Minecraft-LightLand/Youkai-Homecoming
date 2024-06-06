@@ -1,6 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.spell.game;
 
+import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
 import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
@@ -12,6 +14,8 @@ import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -45,4 +49,8 @@ public class TouhouSpellCards {
 		e.setCustomName(name.append(" - ").append(desc));
 	}
 
+	public static void setReimu(MaidenEntity e) {
+		setSpell(e, "touhou_little_maid:hakurei_reimu");
+		e.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(InitItems.HAKUREI_GOHEI.get(), 1));
+	}
 }

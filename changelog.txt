@@ -1,3 +1,7 @@
+2.2.1
+- Fix Reimu spawn through spawn eggs
+- Add more variety to Reimu danmaku
+
 2.2.0
 - Add Reimu spawning when you eat flesh or kill villager in front of villagers
 - Add doughnut, higi doughnut, and high chocolate
