@@ -123,6 +123,8 @@
   "block.youkaishomecoming.wild_tea": "Wild Tea",
   "block.youkaishomecoming.wild_udumbara": "Wild Udumbara",
   "block.youkaishomecoming.yellow_red_velvet_candle_cake": "Yellow Red Velvet Candle Cake",
+  "death.attack.abyssal_danmaku": "%s lost the danmaku battle",
+  "death.attack.abyssal_danmaku.player": "%s lost the danmaku battle to %s",
   "death.attack.danmaku": "%s lost the danmaku battle",
   "death.attack.danmaku.player": "%s lost the danmaku battle to %s",
   "death.attack.koishi_attack": "Koishi stabbed %s in the back",

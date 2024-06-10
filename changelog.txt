@@ -1,3 +1,10 @@
+2.2.2
+- Add escape interception danmaku for reimu
+- Fix death message language
+- Fix crash when summon reimu without TLM
+- Reimu heals when it has no target
+- Reimu now has damage cooldown
+
 2.2.1
 - Fix Reimu spawn through spawn eggs
 - Add more variety to Reimu danmaku
@@ -17,7 +24,6 @@
 - Fix Rumia can't hit player when player did not attack Rumia
 - Fix Rumia can't launch attack player with youkaified effect
 - Fix Rumia rading glitch
-
 
 2.1.6
 - Make TLM not mandatory dependency

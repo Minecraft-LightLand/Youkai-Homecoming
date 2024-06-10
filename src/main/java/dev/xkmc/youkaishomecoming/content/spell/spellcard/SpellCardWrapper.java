@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
 import dev.xkmc.fastprojectileapi.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -41,4 +42,9 @@ public class SpellCardWrapper extends SpellCard {
 		if (card != null) card.hurt(holder, source, amount);
 	}
 
+	@Override
+	public DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
+		if (card != null) return card.getDanmakuDamageSource(danmaku);
+		return super.getDanmakuDamageSource(danmaku);
+	}
 }

@@ -42,7 +42,7 @@ public interface IYHDanmaku {
 			}
 		}
 		DamageSource dmgType = YHDamageTypes.danmaku(this);
-		if (self().getServer() instanceof CardHolder youkai) {
+		if (self().getOwner() instanceof CardHolder youkai) {
 			dmgType = youkai.getDanmakuDamageSource(this);
 		}
 		if (!e.hurt(dmgType, damage(e))) return;

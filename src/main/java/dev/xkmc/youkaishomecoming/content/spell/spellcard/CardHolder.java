@@ -36,4 +36,7 @@ public interface CardHolder {
 		return YHDamageTypes.danmaku(danmaku);
 	}
 
+	@Nullable
+	Vec3 targetVelocity();
+
 }

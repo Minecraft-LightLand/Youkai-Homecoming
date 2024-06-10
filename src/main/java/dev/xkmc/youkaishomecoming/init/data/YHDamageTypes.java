@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,6 +25,8 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 	public static final ResourceKey<DamageType> DANMAKU = createDamage("danmaku");
 	public static final ResourceKey<DamageType> ABYSSAL = createDamage("abyssal_danmaku");
 
+	public static final TagKey<DamageType> DANMAKU_TYPE = TagKey.create(Registries.DAMAGE_TYPE, YoukaisHomecoming.loc("danmaku"));
+
 	public YHDamageTypes(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, YoukaisHomecoming.MODID);
 		new DamageTypeHolder(KOISHI, new DamageType("koishi_attack", 0.1f))
@@ -31,9 +34,9 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 		new DamageTypeHolder(RUMIA, new DamageType("rumia_attack", 0.1f))
 				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
 		new DamageTypeHolder(DANMAKU, new DamageType("danmaku", 0.1f))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN);
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN, DANMAKU_TYPE);
 		new DamageTypeHolder(ABYSSAL, new DamageType("abyssal_danmaku", 0.1f))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN)
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN, DANMAKU_TYPE)
 				.add(L2DamageTypes.BYPASS_MAGIC);
 	}
 

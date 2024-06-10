@@ -296,6 +296,8 @@
   "death.attack.rumia_attack.player": "%s被%s吃掉了",
   "death.attack.danmaku": "%s在弹幕战中满身疮痍",
   "death.attack.danmaku.player": "%s在与%s的弹幕战中满身疮痍",
+  "death.attack.abyssal_danmaku": "%s在弹幕战中满身疮痍",
+  "death.attack.abyssal_danmaku.player": "%s在与%s的弹幕战中满身疮痍",
   "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～",
   "block.youkaishomecoming.redbean": "红豆",
   "block.youkaishomecoming.soybean": "黄豆",

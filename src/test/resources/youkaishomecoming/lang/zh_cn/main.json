@@ -72,7 +72,9 @@
 	"rumia_attack": "%s被露米娅吃掉了",
 	"rumia_attack.player": "%s被%s吃掉了",
 	"danmaku": "%s在弹幕战中满身疮痍",
-	"danmaku.player": "%s在与%s的弹幕战中满身疮痍"
+	"danmaku.player": "%s在与%s的弹幕战中满身疮痍",
+	"abyssal_danmaku": "%s在弹幕战中满身疮痍",
+	"abyssal_danmaku.player": "%s在与%s的弹幕战中满身疮痍"
   },
   "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
 }

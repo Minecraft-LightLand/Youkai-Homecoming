@@ -27,10 +27,17 @@ public class EffectEventHandlers {
 	@SubscribeEvent
 	public static void onAttack(LivingAttackEvent event) {
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
+			var hat = YHItems.KOISHI_HAT.get();
 			if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
 				le.removeEffect(YHEffects.UNCONSCIOUS.get());
 				if (le instanceof Player player) {
-					player.getCooldowns().addCooldown(YHItems.KOISHI_HAT.get(), 200);//TODO config
+					player.getCooldowns().addCooldown(hat, 200);//TODO config
+				}
+			}
+			if (le instanceof Player player) {
+				if (player.getCooldowns().isOnCooldown(hat)){
+					player.getCooldowns().removeCooldown(hat);
+					player.getCooldowns().addCooldown(hat, 200);//TODO config
 				}
 			}
 		}

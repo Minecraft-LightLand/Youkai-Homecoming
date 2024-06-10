@@ -1,15 +1,16 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
+import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
-import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
+import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -19,8 +20,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,10 +36,11 @@ import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -171,6 +175,13 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	}
 
 	@Override
+	public @Nullable Vec3 targetVelocity() {
+		var le = getTarget();
+		if (le == null) return null;
+		return le.getDeltaMovement();
+	}
+
+	@Override
 	public RandomSource random() {
 		return random;
 	}
@@ -257,6 +268,46 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		super.aiStep();
 	}
 
+	@Override
+	protected void actuallyHurt(DamageSource source, float amount) {
+		if (spellCard != null) spellCard.hurt(this, source, amount);
+		actuallyHurtImpl(source, amount);
+	}
+
+	protected final void actuallyHurtImpl(DamageSource source, float amount) {
+		if (!isInvulnerableTo(source)) {
+			amount = ForgeHooks.onLivingHurt(this, source, amount);
+			if (amount <= 0) return;
+			amount = getDamageAfterArmorAbsorb(source, amount);
+			amount = getDamageAfterMagicAbsorb(source, amount);
+			amount = ForgeHooks.onLivingDamage(this, source, amount);
+			hurtFinal(source, amount);
+
+		}
+	}
+
+	protected void hurtFinal(DamageSource source, float amount) {
+		float f1 = Math.max(amount - getAbsorptionAmount(), 0.0F);
+		float f = amount - f1;
+		setAbsorptionAmount(getAbsorptionAmount() - f);
+		if (f > 0.0F && f < 3.4028235E37F) {
+			Entity entity = source.getEntity();
+			if (entity instanceof ServerPlayer serverplayer) {
+				serverplayer.awardStat(Stats.DAMAGE_DEALT_ABSORBED, Math.round(f * 10.0F));
+			}
+		}
+		if (f1 != 0.0F) {
+			getCombatTracker().recordDamage(source, f1);
+			hurtFinalImpl(source, getHealth() - f1);
+			setAbsorptionAmount(getAbsorptionAmount() - f1);
+			gameEvent(GameEvent.ENTITY_DAMAGE);
+		}
+	}
+
+	protected void hurtFinalImpl(DamageSource source, float amount){
+		super.setHealth(amount);
+	}
+
 	protected void customServerAiStep() {
 		LivingEntity target = this.getTarget();
 		if (target != null && this.canAttack(target) && moveControl == flyCtrl) {
@@ -306,6 +357,12 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	@Override
 	public LivingEntity self() {
 		return super.self();
+	}
+
+	@Override
+	public DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
+		if (spellCard != null) return spellCard.card.getDanmakuDamageSource(danmaku);
+		return YHDamageTypes.danmaku(danmaku);
 	}
 
 }
