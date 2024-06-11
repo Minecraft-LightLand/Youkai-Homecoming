@@ -121,7 +121,7 @@ public class YHAdvGen {
 						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(YHFood.BOWL_OF_FLESH_FEAST.item.get())),
 						"Monstrosity", "Eat a bowl of flesh feast")
 				.type(FrameType.GOAL, true, true, false);
-		youkai.create("powerful_being", YHItems.SUWAKO_HAT.asStack(),
+		var youkaified = youkai.create("powerful_being", YHItems.SUWAKO_HAT.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))),
 						"Powerful Being", "Get Youkaified effect")
@@ -141,6 +141,11 @@ public class YHAdvGen {
 						CriterionBuilder.item(YHItems.SUWAKO_HAT.get()),
 						"Faith Collection", "Obtain Suwako's Hat after collecting enough faith")
 				.type(FrameType.CHALLENGE, true, true, false);
+
+		// trade danmaku
+		// ex rumia
+		// rumia hairband
+		// reimu spell
 
 		root.finish();
 	}

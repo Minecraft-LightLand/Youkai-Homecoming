@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.item.food;
 
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -21,17 +20,15 @@ public class BloodBottleItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (this == YHFood.FLESH.item.get()) {
-			boolean obtain = TouhouHatItem.showTooltip();
-			Component obt;
-			if (obtain) {
-				var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
-				var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
-				obt = YHLangData.OBTAIN_BLOOD.get(fying, fied);
-			} else {
-				obt = YHLangData.UNKNOWN.get();
-			}
-			list.add(YHLangData.OBTAIN.get().append(obt));
+		boolean obtain = TouhouHatItem.showTooltip();
+		Component obt;
+		if (obtain) {
+			var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
+			var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
+			obt = YHLangData.OBTAIN_BLOOD.get(fying, fied);
+		} else {
+			obt = YHLangData.UNKNOWN.get();
 		}
+		list.add(YHLangData.OBTAIN.get().append(obt));
 	}
 }

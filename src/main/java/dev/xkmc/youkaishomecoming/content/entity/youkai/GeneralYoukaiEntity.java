@@ -184,7 +184,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 			} else {
 				if (source.is(DamageTypes.FELL_OUT_OF_WORLD))
 					return Math.min(4, amount);
-				if (source.is(DamageTypes.GENERIC)) {
+				if (source.is(DamageTypes.GENERIC_KILL)) {
 					return amount;
 				}
 			}

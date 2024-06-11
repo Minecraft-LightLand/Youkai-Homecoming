@@ -1,8 +1,14 @@
 2.2.3
 - Add can and canned flesh
+- Suwako Hat now grant magic damage bonus
+- Add Rumia Hairband
+- Add blood bottle tooltip
 - Fix Scarlet mist and Wind priestess container
 - Maiden disables Koishi hat on target
+- Ex. Rumia now has similar property as Reimu
+
 - Add spell card TODO
+- Add more advancements TODO
 
 2.2.2
 - Add escape interception danmaku for reimu

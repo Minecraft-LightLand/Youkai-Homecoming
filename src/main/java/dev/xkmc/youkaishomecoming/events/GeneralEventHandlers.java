@@ -71,7 +71,7 @@ public class GeneralEventHandlers {
 	@SubscribeEvent
 	public static void collectBlood(LivingDeathEvent event) {
 		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
-		if (event.getSource().getDirectEntity() instanceof LivingEntity le) {
+		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES) &&
 					(le.hasEffect(YHEffects.YOUKAIFIED.get()) ||
 							le.hasEffect(YHEffects.YOUKAIFYING.get())))

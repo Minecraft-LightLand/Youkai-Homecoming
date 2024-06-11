@@ -111,6 +111,7 @@
   "item.youkaishomecoming.scarlet_tea": "红魔馆红茶",
   "item.youkaishomecoming.can": "空罐头",
   "item.youkaishomecoming.canned_flesh": "%1$s罐头",
+  "item.youkaishomecoming.rumia_hairband": "露米娅的发带",
   "entity.youkaishomecoming.lamprey": "八目鳗",
   "item.youkaishomecoming.lamprey_spawn_egg": "八目鳗生成蛋",
   "entity.youkaishomecoming.rumia": "露米娅",
@@ -292,6 +293,8 @@
   "youkaishomecoming.danmaku_damage": "%s伤害",
   "youkaishomecoming.fermenting_progress": "发酵进度：%s",
   "youkaishomecoming.jei.ferment": "发酵",
+  "youkaishomecoming.obtain_rumia_hairband": "玩家用弹幕击败Ex露米娅时掉落",
+  "youkaishomecoming.usage_rumia_hairband": "适用时提供持续的%s。击杀特定时掉落头颅。人肉和血瓶不需要小刀也能掉落（使用小刀时额外掉落）。",
   "death.attack.koishi_attack": "恋恋从背后捅死了%s",
   "death.attack.koishi_attack.player": "%2$s从背后捅死了%1$s",
   "death.attack.rumia_attack": "%s被露米娅吃掉了",
@@ -424,8 +427,5 @@
   "advancements.youkaishomecoming.advancements.main.suwako_hat.description": "收集信仰获取诹访子的帽子",
   "advancements.youkaishomecoming.advancements.main.suwako_hat.title": "信仰收集",
   "advancements.youkaishomecoming.advancements.main.suwako_wear.description": "在半妖怪化或者妖怪化状态下给青蛙带草帽",
-  "advancements.youkaishomecoming.advancements.main.suwako_wear.title": "祟神之路",
-  "item.youkaishomecoming.rumia_hairband": "Rumia Hairband",
-  "youkaishomecoming.obtain_rumia_hairband": "Drops when player defeat Ex. Rumia with Danmaku",
-  "youkaishomecoming.usage_rumia_hairband": "Grants constant %s when applicable. Flesh and blood drops no longer require knife (bonus when still using knife)."
+  "advancements.youkaishomecoming.advancements.main.suwako_wear.title": "祟神之路"
 }
