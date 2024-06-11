@@ -47,6 +47,16 @@
 	"suwako_hat.description": "收集信仰获取诹访子的帽子",
 	"suwako_hat.title": "信仰收集",
 	"suwako_wear.description": "在半妖怪化或者妖怪化状态下给青蛙带草帽",
-	"suwako_wear.title": "祟神之路"
+	"suwako_wear.title": "祟神之路",
+	"lost_memories.description": "露米娅受到40点以上的伤害时会变化为Ex露米娅。用弹幕击败Ex露米娅并获得露米娅的发带",
+	"lost_memories.title": "失落的记忆",
+	"spellcard_power.description": "你在村民面前吃人肉时灵梦会出现并试图治退你。击败灵梦并获得她的符卡",
+	"spellcard_power.title": "赤色杀人魔",
+	"trade_danmaku.description": "妖怪化状态下和露米娅交易获取弹幕",
+	"trade_danmaku.title": "可口的交易",
+	"alcoholic.description": "使用发酵桶酿酒并喝酒获得醉酒效果",
+	"alcoholic.title": "嗜酒如命",
+	"passed_out.description": "不断喝酒直到醉酒效果堆叠到最高级",
+	"passed_out.title": "烂醉如泥"
   }
 }

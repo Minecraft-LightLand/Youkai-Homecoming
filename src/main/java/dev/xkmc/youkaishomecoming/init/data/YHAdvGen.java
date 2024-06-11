@@ -6,10 +6,8 @@ import com.tterrag.registrate.providers.RegistrateAdvancementProvider;
 import dev.xkmc.l2library.serial.advancements.AdvancementGenerator;
 import dev.xkmc.l2library.serial.advancements.CriterionBuilder;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
-import dev.xkmc.youkaishomecoming.init.food.YHCrops;
-import dev.xkmc.youkaishomecoming.init.food.YHDish;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
+import dev.xkmc.youkaishomecoming.init.food.*;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
@@ -91,6 +89,17 @@ public class YHAdvGen {
 						CriterionBuilder.item(YHCrops.UDUMBARA.getFruits()),
 						"Fragile Flower", "Get an Udubara flower. It will only appear for 10 seconds during full moon.")
 				.type(FrameType.CHALLENGE);
+		root.create("alcoholic", YHBlocks.FERMENT.asStack(),
+				CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
+						MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
+				"Alcoholic", "Brew and drink an alcoholic drink and obtain Drunk effect");
+		root.create("passed_out", YHSake.DAIGINJO.item.asStack(),
+				CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
+						MobEffectsPredicate.effects().and(YHEffects.DRUNK.get(),
+								new MobEffectsPredicate.MobEffectInstancePredicate(
+										MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
+										null, null)))),
+				"Passed Out", "Drink until you have maximum Drunk effect");
 		root.create("mousse", YHFood.KOISHI_MOUSSE.item.asStack(),
 						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
 								ItemPredicate.Builder.item().of(YHFood.KOISHI_MOUSSE.item.get()).build())),
@@ -99,6 +108,7 @@ public class YHAdvGen {
 				.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
+										Arrays.stream(YHSake.values()).map(e -> e.item.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).map(e -> e.item.get()))
 								.map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))

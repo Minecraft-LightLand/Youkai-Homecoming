@@ -221,6 +221,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:daiginjo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:daiginjo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:dassai": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:dassai"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:doughnut": {
       "conditions": {
         "item": {
@@ -296,6 +316,16 @@
         "item": {
           "items": [
             "youkaishomecoming:flesh_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:full_moons_eve": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:full_moons_eve"
           ]
         }
       },
@@ -461,11 +491,31 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:mead": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mead"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:milk_popsicle": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:milk_popsicle"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:mio": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mio"
           ]
         }
       },
@@ -711,6 +761,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:scarlet_mist": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:scarlet_mist"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:scarlet_tea": {
       "conditions": {
         "item": {
@@ -781,6 +841,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:sparrow_sake": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:sparrow_sake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:steamed_egg_in_bamboo": {
       "conditions": {
         "item": {
@@ -816,6 +886,16 @@
         "item": {
           "items": [
             "youkaishomecoming:tea_mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:tengu_tango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tengu_tango"
           ]
         }
       },
@@ -901,6 +981,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:wind_priestesses": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:wind_priestesses"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:yakumo_inari": {
       "conditions": {
         "item": {
@@ -964,6 +1054,33 @@
     ],
     [
       "youkaishomecoming:seven_colored_yokan"
+    ],
+    [
+      "youkaishomecoming:mio"
+    ],
+    [
+      "youkaishomecoming:mead"
+    ],
+    [
+      "youkaishomecoming:sparrow_sake"
+    ],
+    [
+      "youkaishomecoming:daiginjo"
+    ],
+    [
+      "youkaishomecoming:dassai"
+    ],
+    [
+      "youkaishomecoming:tengu_tango"
+    ],
+    [
+      "youkaishomecoming:full_moons_eve"
+    ],
+    [
+      "youkaishomecoming:scarlet_mist"
+    ],
+    [
+      "youkaishomecoming:wind_priestesses"
     ],
     [
       "youkaishomecoming:espresso"
