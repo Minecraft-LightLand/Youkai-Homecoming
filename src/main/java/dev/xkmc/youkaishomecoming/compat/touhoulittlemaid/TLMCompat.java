@@ -4,6 +4,7 @@ import com.github.tartaricacid.touhoulittlemaid.item.ItemGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -41,6 +42,7 @@ public class TLMCompat {
 		}
 		if (pos == null) return false;
 		e.moveTo(pos, 0, 0);
+		EffectEventHandlers.removeKoishi(sp);
 		e.setTarget(sp);
 		TouhouSpellCards.setReimu(e);
 		sp.level().addFreshEntity(e);

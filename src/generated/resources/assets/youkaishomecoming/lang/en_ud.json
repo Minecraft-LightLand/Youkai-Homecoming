@@ -207,7 +207,9 @@
   "item.youkaishomecoming.brown_mentos_danmaku": "nʞɐɯuɐᗡ soʇuǝW uʍoɹᗺ",
   "item.youkaishomecoming.bun": "unᗺ",
   "item.youkaishomecoming.butter": "ɹǝʇʇnᗺ",
+  "item.youkaishomecoming.can": "uɐƆ",
   "item.youkaishomecoming.candy_apple": "ǝןddⱯ ʎpuɐƆ",
+  "item.youkaishomecoming.canned_flesh": "%1$s pǝuuɐƆ",
   "item.youkaishomecoming.cappuccino": "ouıɔɔnddɐƆ",
   "item.youkaishomecoming.clay_saucer": "ɹǝɔnɐS ʎɐןƆ",
   "item.youkaishomecoming.coffee_beans": "suɐǝᗺ ǝǝɟɟoƆ",
@@ -342,6 +344,7 @@
   "item.youkaishomecoming.roasted_lamprey": "ʎǝɹdɯɐꞀ pǝʇsɐoᴚ",
   "item.youkaishomecoming.roasted_lamprey_fillet": "ʇǝןןıℲ ʎǝɹdɯɐꞀ pǝʇsɐoᴚ",
   "item.youkaishomecoming.roe": "ǝoᴚ",
+  "item.youkaishomecoming.rumia_hairband": "puɐqɹıɐH ɐıɯnᴚ",
   "item.youkaishomecoming.rumia_spawn_egg": "bbƎ uʍɐdS ɐıɯnᴚ",
   "item.youkaishomecoming.saidi_tea": "ɐǝ⟘ ıpıɐS",
   "item.youkaishomecoming.sakura_honey_tea": "ɐǝ⟘ ʎǝuoH ɐɹnʞɐS",
@@ -410,6 +413,7 @@
   "youkaishomecoming.obtain_blood": "ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥʍ puɐɥ ɟɟo uı ǝןʇʇoq ssɐןb ǝʌɐɥ puɐ ǝɟıuʞ ɥʇıʍ sqoɯ uɐɯnɥ ןןıʞ",
   "youkaishomecoming.obtain_flesh": "ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥʍ ǝɟıuʞ ɥʇıʍ sqoɯ uɐɯnɥ ןןıʞ",
   "youkaishomecoming.obtain_koishi_hat": "ʍoɹ ɐ uı sǝɯıʇ %s sʞɔɐʇʇɐ ıɥsıoʞ buıʞɔoןq uǝɥʍ sdoɹᗡ",
+  "youkaishomecoming.obtain_rumia_hairband": "nʞɐɯuɐᗡ ɥʇıʍ ɐıɯnᴚ ˙xƎ ʇɐǝɟǝp ɹǝʎɐןd uǝɥʍ sdoɹᗡ",
   "youkaishomecoming.obtain_suwako_hat": "sɹǝbɐןןıʌ ɟo ʇuoɹɟ uı sɹǝpıɐɹ ɟo spuıʞ ʇuǝɹǝɟɟıp %s sʇɐǝ ʇɐɥ ɥʇıʍ boɹɟ uǝɥʍ sdoɹᗡ",
   "youkaishomecoming.subtitle.koishi_ring": "ןןɐƆ ǝuoɥԀ ıɥsıoʞ",
   "youkaishomecoming.taste_half_youkai": "˙˙˙ɹoʌɐןɟ ǝbuɐɹʇS",
@@ -421,6 +425,7 @@
   "youkaishomecoming.usage": " :ǝbɐs∩",
   "youkaishomecoming.usage_danmaku": "nʞɐɯuɐp ʇooɥs uɐɔ noʎ 'sʇɐɥ noɥnoʇ dınbǝ ɹo 'ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥM",
   "youkaishomecoming.usage_koishi_hat": "˙uoıʇdɯnsuoɔ ʇnoɥʇıʍ nʞɐɯuɐp pǝᴚ puɐ ǝnןᗺ buısn sʍoןןⱯ  ˙%s ʇuɐʇsuoɔ sʇuɐɹ⅁",
+  "youkaishomecoming.usage_rumia_hairband": "˙)ǝɟıuʞ buısn ןןıʇs uǝɥʍ snuoq( ǝɟıuʞ ǝɹınbǝɹ ɹǝbuoן ou sdoɹp pooןq puɐ ɥsǝןℲ ˙sqoɯ buıןןıʞ uǝɥʍ spɐǝɥ sdoɹᗡ ˙ǝןqɐɔıןddɐ uǝɥʍ %s ʇuɐʇsuoɔ sʇuɐɹ⅁",
   "youkaishomecoming.usage_straw_hat": "sɹǝpıɐɹ ʇɐǝ oʇ ɯǝɥʇ ʍoןןɐ oʇ sboɹɟ uo ʇı dınbǝ uɐɔ noʎ 'ʇɔǝɟɟǝ %s ɹo %s uı ǝןıɥM",
   "youkaishomecoming.usage_suwako_hat": "˙uoıʇdɯnsuoɔ ʇnoɥʇıʍ nʞɐɯuɐp ǝɯıꞀ puɐ uɐʎƆ buısn sʍoןןⱯ ˙%s ʇuɐʇsuoɔ sʇuɐɹ⅁"
 }

@@ -158,7 +158,8 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		if (!(source.getEntity() instanceof LivingEntity))
+		if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
+				!(source.getEntity() instanceof LivingEntity))
 			return false;
 		int cd = getCD(source);
 		if (hurtCD < cd) {

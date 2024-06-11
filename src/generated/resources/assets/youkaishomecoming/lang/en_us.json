@@ -207,7 +207,9 @@
   "item.youkaishomecoming.brown_mentos_danmaku": "Brown Mentos Danmaku",
   "item.youkaishomecoming.bun": "Bun",
   "item.youkaishomecoming.butter": "Butter",
+  "item.youkaishomecoming.can": "Can",
   "item.youkaishomecoming.candy_apple": "Candy Apple",
+  "item.youkaishomecoming.canned_flesh": "Canned %1$s",
   "item.youkaishomecoming.cappuccino": "Cappuccino",
   "item.youkaishomecoming.clay_saucer": "Clay Saucer",
   "item.youkaishomecoming.coffee_beans": "Coffee Beans",
@@ -342,6 +344,7 @@
   "item.youkaishomecoming.roasted_lamprey": "Roasted Lamprey",
   "item.youkaishomecoming.roasted_lamprey_fillet": "Roasted Lamprey Fillet",
   "item.youkaishomecoming.roe": "Roe",
+  "item.youkaishomecoming.rumia_hairband": "Rumia Hairband",
   "item.youkaishomecoming.rumia_spawn_egg": "Rumia Spawn Egg",
   "item.youkaishomecoming.saidi_tea": "Saidi Tea",
   "item.youkaishomecoming.sakura_honey_tea": "Sakura Honey Tea",
@@ -410,6 +413,7 @@
   "youkaishomecoming.obtain_blood": "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect",
   "youkaishomecoming.obtain_flesh": "Kill human mobs with knife while in %s or %s effect",
   "youkaishomecoming.obtain_koishi_hat": "Drops when blocking Koishi attacks %s times in a row",
+  "youkaishomecoming.obtain_rumia_hairband": "Drops when player defeat Ex. Rumia with Danmaku",
   "youkaishomecoming.obtain_suwako_hat": "Drops when frog with hat eats %s different kinds of raiders in front of villagers",
   "youkaishomecoming.subtitle.koishi_ring": "Koishi Phone Call",
   "youkaishomecoming.taste_half_youkai": "Strange flavor...",
@@ -421,6 +425,7 @@
   "youkaishomecoming.usage": "Usage: ",
   "youkaishomecoming.usage_danmaku": "While in %s or %s effect, or equip touhou hats, you can shoot danmaku",
   "youkaishomecoming.usage_koishi_hat": "Grants constant %s.  Allows using Blue and Red danmaku without consumption.",
+  "youkaishomecoming.usage_rumia_hairband": "Grants constant %s when applicable. Drops heads when killing mobs. Flesh and blood drops no longer require knife (bonus when still using knife).",
   "youkaishomecoming.usage_straw_hat": "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders",
   "youkaishomecoming.usage_suwako_hat": "Grants constant %s. Allows using Cyan and Lime danmaku without consumption."
 }

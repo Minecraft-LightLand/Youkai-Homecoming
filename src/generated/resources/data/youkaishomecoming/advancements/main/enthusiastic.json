@@ -151,6 +151,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:canned_flesh": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:canned_flesh"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:cappuccino": {
       "conditions": {
         "item": {
@@ -1188,6 +1198,9 @@
     ],
     [
       "youkaishomecoming:flesh_roll"
+    ],
+    [
+      "youkaishomecoming:canned_flesh"
     ],
     [
       "youkaishomecoming:flesh_stew"

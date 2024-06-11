@@ -43,6 +43,12 @@ public class YHTagGen {
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
+	public static final TagKey<EntityType<?>> SKULL_SOURCE = entity("drops_skeleton_skull");
+	public static final TagKey<EntityType<?>> WITHER_SOURCE = entity("drops_wither_skull");
+	public static final TagKey<EntityType<?>> ZOMBIE_SOURCE = entity("drops_zombie_head");
+	public static final TagKey<EntityType<?>> CREEPER_SOURCE = entity("drops_creeper_head");
+	public static final TagKey<EntityType<?>> PIGLIN_SOURCE = entity("drops_piglin_head");
+
 
 	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
 
@@ -60,6 +66,12 @@ public class YHTagGen {
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
 		pvd.addTag(FLESH_SOURCE).add(EntityType.EVOKER, EntityType.PILLAGER, EntityType.VINDICATOR, EntityType.ILLUSIONER, EntityType.WITCH,
 				EntityType.VILLAGER, EntityType.WANDERING_TRADER, EntityType.PLAYER);
+
+		pvd.addTag(SKULL_SOURCE).add(EntityType.SKELETON, EntityType.STRAY);
+		pvd.addTag(WITHER_SOURCE).add(EntityType.WITHER_SKELETON, EntityType.WITHER);
+		pvd.addTag(ZOMBIE_SOURCE).add(EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.HUSK, EntityType.DROWNED);
+		pvd.addTag(CREEPER_SOURCE).add(EntityType.CREEPER);
+		pvd.addTag(PIGLIN_SOURCE).add(EntityType.PIGLIN, EntityType.PIGLIN_BRUTE);
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {

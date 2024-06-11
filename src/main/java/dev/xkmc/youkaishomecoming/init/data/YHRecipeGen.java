@@ -48,6 +48,8 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
+			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
+			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
 			for (var e : YHBlocks.WoodType.values()) {
 				pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
 			}
@@ -381,6 +383,12 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.RAW_FLESH)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.FLESH_DUMPLINGS.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CANNED_FLESH.item.get(), 2, 200, 0.1f, YHItems.CAN)
+					.addIngredient(YHTagGen.RAW_FLESH)
+					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.build(pvd, YHFood.CANNED_FLESH.item.getId());
 
 		}
 

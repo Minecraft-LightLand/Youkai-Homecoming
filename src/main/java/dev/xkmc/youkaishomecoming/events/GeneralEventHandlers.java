@@ -72,17 +72,22 @@ public class GeneralEventHandlers {
 	public static void collectBlood(LivingDeathEvent event) {
 		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
 		if (event.getSource().getDirectEntity() instanceof LivingEntity le) {
-			if (!le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES)) return;
-			if (!le.getOffhandItem().is(Items.GLASS_BOTTLE)) return;
-			if (le.hasEffect(YHEffects.YOUKAIFIED.get()) ||
-					le.hasEffect(YHEffects.YOUKAIFYING.get())) {
-				le.getOffhandItem().shrink(1);
-				if (le instanceof Player player) {
-					player.getInventory().add(YHItems.BLOOD_BOTTLE.asStack());
-				} else {
-					le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack());
-				}
-			}
+			if (le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES) &&
+					(le.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+							le.hasEffect(YHEffects.YOUKAIFYING.get())))
+				spawnBlood(le);
+			if (le.getItemBySlot(EquipmentSlot.HEAD).is(YHItems.RUMIA_HAIRBAND.get()))
+				spawnBlood(le);
+		}
+	}
+
+	private static void spawnBlood(LivingEntity le) {
+		if (!le.getOffhandItem().is(Items.GLASS_BOTTLE)) return;
+		le.getOffhandItem().shrink(1);
+		if (le instanceof Player player) {
+			player.getInventory().add(YHItems.BLOOD_BOTTLE.asStack());
+		} else {
+			le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack());
 		}
 	}
 

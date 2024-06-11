@@ -6,12 +6,16 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import dev.xkmc.youkaishomecoming.mixin.AddItemModifierAccessor;
 import dev.xkmc.youkaishomecoming.mixin.AddLootTableModifierAccessor;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -55,6 +59,21 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 		add("scavenging_flesh_cooked", Objects.requireNonNull(create(YHFood.COOKED_FLESH.item.get(), 1,
 				killedByKnife(), fire(true), isFleshSource(), killedByYoukai())));
 
+		add("rumia_scavenging_flesh", Objects.requireNonNull(create(YHFood.FLESH.item.get(), 1,
+				killedByRumia(), fire(false), isFleshSource())));
+		add("rumia_scavenging_flesh_cooked", Objects.requireNonNull(create(YHFood.COOKED_FLESH.item.get(), 1,
+				killedByRumia(), fire(true), isFleshSource())));
+		add("rumia_scavenging_skeleton_skull", Objects.requireNonNull(create(Items.SKELETON_SKULL, 1,
+				killedByRumia(), entity(YHTagGen.SKULL_SOURCE))));
+		add("rumia_scavenging_wither_skeleton_skull", Objects.requireNonNull(create(Items.WITHER_SKELETON_SKULL, 1,
+				killedByRumia(), entity(YHTagGen.WITHER_SOURCE))));
+		add("rumia_scavenging_zombie_head", Objects.requireNonNull(create(Items.ZOMBIE_HEAD, 1,
+				killedByRumia(), entity(YHTagGen.ZOMBIE_SOURCE))));
+		add("rumia_scavenging_creeper_head", Objects.requireNonNull(create(Items.CREEPER_HEAD, 1,
+				killedByRumia(), entity(YHTagGen.CREEPER_SOURCE))));
+		add("rumia_scavenging_piglin_head", Objects.requireNonNull(create(Items.PIGLIN_HEAD, 1,
+				killedByRumia(), entity(YHTagGen.PIGLIN_SOURCE))));
+
 		add("udumbara_ancient_city_loot", loot(YHLootGen.UDUMBARA_LOOT,
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY).build()));
 		add("udumbara_ancient_city_ice_box_loot", loot(YHLootGen.UDUMBARA_LOOT,
@@ -72,12 +91,28 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 						EntityTypePredicate.of(YHTagGen.FLESH_SOURCE))).build();
 	}
 
+	private static LootItemCondition entity(TagKey<EntityType<?>> tag) {
+		return LootItemEntityPropertyCondition.hasProperties(
+				LootContext.EntityTarget.THIS,
+				EntityPredicate.Builder.entity().entityType(
+						EntityTypePredicate.of(tag))).build();
+	}
+
 	private static LootItemCondition killedByKnife() {
 		return LootItemEntityPropertyCondition.hasProperties(
 				LootContext.EntityTarget.KILLER,
 				EntityPredicate.Builder.entity().equipment(
 						EntityEquipmentPredicate.Builder.equipment().mainhand(
 										ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+								.build()).build()).build();
+	}
+
+	private static LootItemCondition killedByRumia() {
+		return LootItemEntityPropertyCondition.hasProperties(
+				LootContext.EntityTarget.KILLER,
+				EntityPredicate.Builder.entity().equipment(
+						EntityEquipmentPredicate.Builder.equipment().head(
+										ItemPredicate.Builder.item().of(YHItems.RUMIA_HAIRBAND).build())
 								.build()).build()).build();
 	}
 

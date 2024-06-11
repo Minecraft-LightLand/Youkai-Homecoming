@@ -1,11 +1,13 @@
 package dev.xkmc.youkaishomecoming.events;
 
+import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.*;
@@ -27,17 +29,18 @@ public class EffectEventHandlers {
 	@SubscribeEvent
 	public static void onAttack(LivingAttackEvent event) {
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
-			var hat = YHItems.KOISHI_HAT.get();
-			if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
-				le.removeEffect(YHEffects.UNCONSCIOUS.get());
-				if (le instanceof Player player) {
-					player.getCooldowns().addCooldown(hat, 200);//TODO config
-				}
-			}
 			if (le instanceof Player player) {
-				if (player.getCooldowns().isOnCooldown(hat)){
-					player.getCooldowns().removeCooldown(hat);
-					player.getCooldowns().addCooldown(hat, 200);//TODO config
+				boolean flag = false;
+				var hat = YHItems.KOISHI_HAT.get();
+				if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
+					le.removeEffect(YHEffects.UNCONSCIOUS.get());
+					flag = true;
+				}
+				if (player.getCooldowns().isOnCooldown(hat)) {
+					flag = true;
+				}
+				if (flag) {
+					player.getCooldowns().addCooldown(hat, 200);
 				}
 			}
 		}
@@ -90,6 +93,20 @@ public class EffectEventHandlers {
 		}
 		if (e.hasEffect(YHEffects.REFRESHING.get()) && e.isOnFire()) {
 			e.clearFire();
+		}
+		if (e.getLastHurtMob() instanceof MaidenEntity ||
+				e.getLastHurtByMob() instanceof MaidenEntity) {
+			removeKoishi(e);
+		}
+	}
+
+	public static void removeKoishi(LivingEntity le) {
+		if (le instanceof Player player) {
+			var hat = YHItems.KOISHI_HAT.get();
+			if (player.getItemBySlot(EquipmentSlot.HEAD).is(hat)) {
+				if (player.getCooldowns().getCooldownPercent(hat, 0) > 0.8)
+					player.getCooldowns().addCooldown(hat, 200);
+			}
 		}
 	}
 

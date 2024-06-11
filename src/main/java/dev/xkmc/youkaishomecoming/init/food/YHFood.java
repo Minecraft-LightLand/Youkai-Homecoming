@@ -207,6 +207,7 @@ public enum YHFood {
 	FLESH_ROLL(FoodType.FLESH, 3, 0.8f,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
+	CANNED_FLESH(FoodType.CAN_FLESH, 4, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)

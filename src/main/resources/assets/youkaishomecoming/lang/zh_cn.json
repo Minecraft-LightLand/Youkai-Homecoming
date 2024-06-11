@@ -109,6 +109,8 @@
   "item.youkaishomecoming.higi_chocolate": "秘仪巧克力",
   "item.youkaishomecoming.higi_doughnut": "秘仪甜甜圈",
   "item.youkaishomecoming.scarlet_tea": "红魔馆红茶",
+  "item.youkaishomecoming.can": "空罐头",
+  "item.youkaishomecoming.canned_flesh": "%1$s罐头",
   "entity.youkaishomecoming.lamprey": "八目鳗",
   "item.youkaishomecoming.lamprey_spawn_egg": "八目鳗生成蛋",
   "entity.youkaishomecoming.rumia": "露米娅",
@@ -422,5 +424,8 @@
   "advancements.youkaishomecoming.advancements.main.suwako_hat.description": "收集信仰获取诹访子的帽子",
   "advancements.youkaishomecoming.advancements.main.suwako_hat.title": "信仰收集",
   "advancements.youkaishomecoming.advancements.main.suwako_wear.description": "在半妖怪化或者妖怪化状态下给青蛙带草帽",
-  "advancements.youkaishomecoming.advancements.main.suwako_wear.title": "祟神之路"
+  "advancements.youkaishomecoming.advancements.main.suwako_wear.title": "祟神之路",
+  "item.youkaishomecoming.rumia_hairband": "Rumia Hairband",
+  "youkaishomecoming.obtain_rumia_hairband": "Drops when player defeat Ex. Rumia with Danmaku",
+  "youkaishomecoming.usage_rumia_hairband": "Grants constant %s when applicable. Flesh and blood drops no longer require knife (bonus when still using knife)."
 }

@@ -109,7 +109,9 @@
 	"doughnut": "甜甜圈",
 	"higi_chocolate": "秘仪巧克力",
 	"higi_doughnut": "秘仪甜甜圈",
-	"scarlet_tea": "红魔馆红茶"
+	"scarlet_tea": "红魔馆红茶",
+	"can": "空罐头",
+	"canned_flesh": "%1$s罐头"
   },
   "-cartesian": {
 	"entity": {

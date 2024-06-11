@@ -2,8 +2,15 @@
   "entries": [
     "youkaishomecoming:scavenging_flesh_cooked",
     "youkaishomecoming:fishing_lamprey",
+    "youkaishomecoming:rumia_scavenging_creeper_head",
+    "youkaishomecoming:rumia_scavenging_flesh_cooked",
+    "youkaishomecoming:rumia_scavenging_skeleton_skull",
+    "youkaishomecoming:rumia_scavenging_wither_skeleton_skull",
+    "youkaishomecoming:rumia_scavenging_zombie_head",
     "youkaishomecoming:scavenging_flesh",
     "youkaishomecoming:udumbara_ancient_city_loot",
+    "youkaishomecoming:rumia_scavenging_flesh",
+    "youkaishomecoming:rumia_scavenging_piglin_head",
     "youkaishomecoming:udumbara_ancient_city_ice_box_loot"
   ],
   "replace": false

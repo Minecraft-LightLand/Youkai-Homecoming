@@ -64,7 +64,10 @@
 	"danmaku_bypass": "穿透实体",
 	"danmaku_damage": "%s伤害",
 	"fermenting_progress": "发酵进度：%s",
-	"jei.ferment": "发酵"
+	"jei.ferment": "发酵",
+	"obtain_rumia_hairband": "玩家用弹幕击败Ex露米娅时掉落",
+	"usage_rumia_hairband": "适用时提供持续的%s。击杀特定时掉落头颅。人肉和血瓶不需要小刀也能掉落（使用小刀时额外掉落）。"
+
   },
   "death.attack": {
 	"koishi_attack": "恋恋从背后捅死了%s",

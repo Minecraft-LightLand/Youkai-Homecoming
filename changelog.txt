@@ -1,3 +1,9 @@
+2.2.3
+- Add can and canned flesh
+- Fix Scarlet mist and Wind priestess container
+- Maiden disables Koishi hat on target
+- Add spell card TODO
+
 2.2.2
 - Add escape interception danmaku for reimu
 - Fix death message language

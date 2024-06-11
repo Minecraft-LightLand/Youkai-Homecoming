@@ -13,6 +13,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -123,6 +124,11 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	@Override
 	public boolean isInvulnerableTo(DamageSource source) {
+		if (isEx()) {
+			if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
+					!(source.getEntity() instanceof LivingEntity))
+				return true;
+		}
 		return super.isInvulnerableTo(source) || source.getEntity() instanceof RumiaEntity;
 	}
 
@@ -168,6 +174,20 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 		state.tick();
 		if (isEx() && !getActiveEffectsMap().isEmpty()) {
 			removeAllEffects();
+		}
+	}
+
+	int noTargetTime;
+
+	@Override
+	protected void customServerAiStep() {
+		super.customServerAiStep();
+		if (isEx() && (getTarget() == null || !getTarget().isAlive())) {
+			noTargetTime++;
+			if (noTargetTime >= 20 && tickCount % 20 == 0) {
+				if (getHealth() < getMaxHealth())
+					setHealth(getMaxHealth());
+			}
 		}
 	}
 
@@ -270,6 +290,24 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 		super.onDanmakuHit(e, danmaku);
 	}
 
+	private boolean dropHairband = false;
+
+	@Override
+	public void die(DamageSource source) {
+		dropHairband = isEx() && source.is(YHDamageTypes.DANMAKU_TYPE) && source.getEntity() instanceof Player;
+		super.die(source);
+	}
+
+	@Override
+	protected void dropEquipment() {
+		super.dropEquipment();
+		if (dropHairband) {
+			ItemStack stack = YHItems.RUMIA_HAIRBAND.asStack();
+			stack.setDamageValue(stack.getMaxDamage());
+			spawnAtLocation(stack);
+		}
+	}
+
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(
@@ -298,8 +336,10 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	private static MerchantOffers getOfferList() {
 		MerchantOffers ans = new MerchantOffers();
+		ans.add(new MerchantOffer(YHFood.COOKED_FLESH.item.asStack(1), YHFood.FLESH.item.asStack(), 64, 0, 0));
 		ans.add(offer(4, YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(4, YHDanmaku.Bullet.BALL.get(DyeColor.RED).asStack(8)));
+		ans.add(offer(4, YHDanmaku.Bullet.BUTTERFLY.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(8, YHDanmaku.Bullet.MENTOS.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(16, YHDanmaku.Bullet.BUBBLE.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(32, YHDanmaku.Laser.LASER.get(DyeColor.RED).asStack(8)));

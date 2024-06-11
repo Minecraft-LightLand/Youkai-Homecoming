@@ -5,7 +5,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 @SerialClass
-public class Ticker<T extends SpellCard> {
+public class Ticker<T> {
 
 	@SerialClass.SerialField
 	public int tick;

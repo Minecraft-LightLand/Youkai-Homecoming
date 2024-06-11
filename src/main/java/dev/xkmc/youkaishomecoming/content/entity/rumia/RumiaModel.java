@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -10,7 +11,20 @@ import net.minecraft.util.Mth;
 
 public class RumiaModel<T extends RumiaEntity> extends HierarchicalModel<T> {
 
+	public static final ModelLayerLocation HAIRBAND = new ModelLayerLocation(YoukaisHomecoming.loc("rumia_hairband"), "main");
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(YoukaisHomecoming.loc("rumia"), "main");
+
+	public static LayerDefinition createHairbandLayer() {
+		MeshDefinition meshdefinition = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
+		PartDefinition head = meshdefinition.getRoot().getChild("head");
+		head.addOrReplaceChild("tie0", CubeListBuilder.create()
+						.texOffs(0, 0).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F),
+				PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.3897F, -0.05F, -0.121F));
+		head.addOrReplaceChild("tie1", CubeListBuilder.create()
+				.texOffs(0, 4).addBox(0.0F, -3.0F, 0.0F, 3.0F, 3.0F, 1.0F),
+				PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.0254F, 0.4401F, -0.3778F));
+		return LayerDefinition.create(meshdefinition, 128, 128);
+	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();

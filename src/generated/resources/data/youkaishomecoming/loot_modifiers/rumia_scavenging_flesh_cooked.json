@@ -1,0 +1,35 @@
+{
+  "type": "farmersdelight:add_item",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "killer",
+      "predicate": {
+        "equipment": {
+          "head": {
+            "items": [
+              "youkaishomecoming:rumia_hairband"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "flags": {
+          "is_on_fire": true
+        }
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "#youkaishomecoming:flesh_source"
+      }
+    }
+  ],
+  "item": "youkaishomecoming:cooked_flesh"
+}
