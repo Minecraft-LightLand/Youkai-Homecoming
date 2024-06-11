@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/chest_of_heart_throbbing_surprise"
+    "layer0": "youkaishomecoming:item/feast/chest_of_heart_throbbing_surprise"
   }
 }

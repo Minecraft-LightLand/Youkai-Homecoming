@@ -45,6 +45,9 @@ public enum YHLangData {
 	DANMAKU_DAMAGE("danmaku_damage", "Deals %s damage on hit", 1, ChatFormatting.BLUE),
 	DANMAKU_BYPASS("danmaku_bypass", "Bypasses entities", 0, ChatFormatting.DARK_AQUA),
 
+	SPELL_TARGET("spell_target","Requires targeting an entity to activate", 0, ChatFormatting.RED),
+	SPELL_COST("spell_cost","Costs 1 %s", 1, ChatFormatting.GRAY),
+
 	;
 
 	private final String key, def;

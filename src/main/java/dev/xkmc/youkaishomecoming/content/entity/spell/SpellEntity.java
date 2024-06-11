@@ -6,7 +6,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
 @SerialClass
-public class SpellEntity extends BaseEntity {
+public class SpellEntity extends BaseEntity {//TODO
 
 	public SpellEntity(EntityType<? extends SpellEntity> type, Level world) {
 		super(type, world);

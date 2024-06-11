@@ -1,3 +1,10 @@
+2.2.4
+- Rumia follows youkaified player holding flesh cake TODO test
+- Add more advancements TODO test
+
+- Spell entity TODO
+- Darkened Aura on immunity TODO
+
 2.2.3
 - Add can and canned flesh
 - Suwako Hat now grant magic damage bonus
@@ -6,9 +13,7 @@
 - Fix Scarlet mist and Wind priestess container
 - Maiden disables Koishi hat on target
 - Ex. Rumia now has similar property as Reimu
-
-- Add spell card TODO
-- Add more advancements TODO
+- Add spell card
 
 2.2.2
 - Add escape interception danmaku for reimu

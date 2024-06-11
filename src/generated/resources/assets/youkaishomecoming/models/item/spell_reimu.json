@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/feast/raw_flesh_feast"
+    "layer0": "youkaishomecoming:item/curio/spell_reimu"
   }
 }

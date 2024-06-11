@@ -53,7 +53,7 @@ public class ReimuSpell extends ItemSpell {
 			if (init == null) {
 				pos = holder.center();
 				var dir = le.subtract(holder.center()).normalize();
-				init = DanmakuHelper.getOrientation(dir).rotateDegrees(90, 60 * r.nextDouble() - 30);
+				init = DanmakuHelper.getOrientation(dir).rotateDegrees(90, 0);
 				normal = dir.cross(init);
 			}
 			if (tick < 0) return;

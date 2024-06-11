@@ -8,6 +8,8 @@ public class YHCriteriaTriggers {
 
 	public static final PlayerTrigger SUWAKO_WEAR = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("suwako_wear")));
 	public static final PlayerTrigger KOISHI_RING = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("koishi_ring")));
+	public static final PlayerTrigger TRADE = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("rumia_trade")));
+
 
 	private static PlayerTrigger reg(String id) {
 		return CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc(id)));

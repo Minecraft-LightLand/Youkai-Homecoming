@@ -142,10 +142,19 @@ public class YHAdvGen {
 						"Faith Collection", "Obtain Suwako's Hat after collecting enough faith")
 				.type(FrameType.CHALLENGE, true, true, false);
 
-		// trade danmaku
-		// ex rumia
-		// rumia hairband
-		// reimu spell
+		var danmaku = youkaified.create("trade_danmaku", YHFood.FLESH_CHOCOLATE_MOUSSE.item.get(),
+				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.TRADE.getId(), ContextAwarePredicate.ANY)),
+				"Cute Merchant", "In youkaified effect, trade with Rumia to get Danmaku");
+
+		danmaku.create("lost_memories", YHItems.RUMIA_HAIRBAND.get(),
+						CriterionBuilder.item(YHItems.RUMIA_HAIRBAND.get()),
+						"Lost Memories", "When Rumia takes more than 40 damage, she will convert to Ex. Rumia. Defeat Ex. Rumia with danmaku and obtain Rumia's Hairband.")
+				.type(FrameType.CHALLENGE);
+
+		danmaku.create("spellcard_power", YHItems.REIMU_SPELL.get(),
+						CriterionBuilder.item(YHItems.REIMU_SPELL.get()),
+						"Spellcard Power", "When you eat flesh in front of villagers, Reimu will try to exterminate you. Defat Reimu and obtain her spellcard")
+				.type(FrameType.CHALLENGE);
 
 		root.finish();
 	}

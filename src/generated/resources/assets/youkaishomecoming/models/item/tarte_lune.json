@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/tarte_lune"
+    "layer0": "youkaishomecoming:item/feast/tarte_lune"
   }
 }

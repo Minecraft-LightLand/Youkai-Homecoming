@@ -11,17 +11,16 @@ import dev.xkmc.youkaishomecoming.content.item.curio.KoishiHatItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.RumiaHairbandItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.StrawHatItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.SuwakoHatItem;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
+import dev.xkmc.youkaishomecoming.content.spell.game.reimu.ReimuSpell;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MobBucketItem;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -50,6 +49,7 @@ public class YHItems {
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final ItemEntry<KoishiHatItem> KOISHI_HAT;
 	public static final ItemEntry<RumiaHairbandItem> RUMIA_HAIRBAND;
+	public static final ItemEntry<SpellItem> REIMU_SPELL;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
@@ -88,6 +88,14 @@ public class YHItems {
 				.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
 				.register();
 
+		REIMU_SPELL = YoukaisHomecoming.REGISTRATE
+				.item("spell_reimu", p -> new SpellItem(
+						p.stacksTo(1), ReimuSpell::new, true,
+						() -> YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).get()))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+				.lang("Reimu's Spellcard \"Innate Dream\"")
+				.register();
+
 		YHCrops.register();
 		COFFEE_BEAN = crop("coffee_beans", Item::new);
 		COFFEE_POWDER = crop("coffee_powder", Item::new);
@@ -121,7 +129,7 @@ public class YHItems {
 
 		SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
 						new SurpriseChestBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
-				.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 				.blockstate(SurpriseChestBlock::buildModel)
 				.register();
 
@@ -133,6 +141,7 @@ public class YHItems {
 				.register();
 
 		RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName())))
 				.lang("Raw %1$s Feast")
 				.register();
 
@@ -142,7 +151,7 @@ public class YHItems {
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
 						FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
 				.lang("%1$s Feast")
-				.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx)).build()
+				.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 				.loot(FleshFeastBlock::builtLoot)
 				.register();
 

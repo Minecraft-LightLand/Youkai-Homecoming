@@ -55,7 +55,7 @@ record PlayerHolder(
 	public ItemDanmakuEntity prepareDanmaku(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color) {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), player, player.level());
 		danmaku.setItem(type.get(color).asStack());
-		danmaku.setup(type.damage(), life, false, type.bypass(), vec);
+		danmaku.setup(type.damage(), life, true, true, vec);
 		return danmaku;
 	}
 
@@ -63,7 +63,7 @@ record PlayerHolder(
 	public ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, int len, YHDanmaku.Laser type, DyeColor color) {
 		ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), player, player.level());
 		danmaku.setItem(type.get(color).asStack());
-		danmaku.setup(type.damage(), life, len, false, vec);
+		danmaku.setup(type.damage(), life, len, true, vec);
 		danmaku.setPos(pos);
 		return danmaku;
 	}

@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
@@ -40,6 +41,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.trading.Merchant;
 import net.minecraft.world.item.trading.MerchantOffer;
@@ -80,7 +82,8 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(3, new RumiaParalyzeGoal(this));
 		this.goalSelector.addGoal(4, new RumiaAttackGoal(this));
-		this.goalSelector.addGoal(5, new MoveAroundNestGoal(this, 1.0));
+		this.goalSelector.addGoal(5, new RumiaTemptGoal(this, Ingredient.of(YHFood.FLESH_CHOCOLATE_MOUSSE.item.get())));
+		this.goalSelector.addGoal(6, new MoveAroundNestGoal(this, 1.0));
 		this.goalSelector.addGoal(7, new MoveRandomlyGoal(this, 0.6));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
@@ -380,8 +383,10 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	}
 
 	@Override
-	public void notifyTrade(MerchantOffer pOffer) {
-
+	public void notifyTrade(MerchantOffer offer) {
+		if (tradingPlayer instanceof ServerPlayer sp &&
+				offer.getCostA().is(YHFood.FLESH_CHOCOLATE_MOUSSE.item.get()))
+			YHCriteriaTriggers.TRADE.trigger(sp);
 	}
 
 	@Override
