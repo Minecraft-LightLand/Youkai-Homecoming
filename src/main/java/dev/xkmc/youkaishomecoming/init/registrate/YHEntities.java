@@ -12,6 +12,7 @@ import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
@@ -75,10 +76,10 @@ public class YHEntities {
 									.when(LootTableTemplate.byPlayer()))
 			)).register();
 
-	public static final EntityEntry<GeneralYoukaiEntity> GENERAL_YOUKAI = YoukaisHomecoming.REGISTRATE
-			.entity("youkai", GeneralYoukaiEntity::new, MobCategory.MONSTER)
+	public static final EntityEntry<BossYoukaiEntity> GENERAL_YOUKAI = YoukaisHomecoming.REGISTRATE
+			.entity("youkai", BossYoukaiEntity::new, MobCategory.MONSTER)
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
-			.attributes(GeneralYoukaiEntity::createAttributes)
+			.attributes(BossYoukaiEntity::createAttributes)
 			.renderer(() -> GeneralYoukaiRenderer::new)
 			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
@@ -86,7 +87,7 @@ public class YHEntities {
 	public static final EntityEntry<MaidenEntity> MAIDEN = YoukaisHomecoming.REGISTRATE
 			.entity("shrine_maiden", MaidenEntity::new, MobCategory.MONSTER)
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
-			.attributes(GeneralYoukaiEntity::createAttributes)
+			.attributes(BossYoukaiEntity::createAttributes)
 			.renderer(() -> GeneralYoukaiRenderer::new)
 			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();

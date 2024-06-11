@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.entity.youkai;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -14,15 +13,17 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
-public class MaidenEntity extends GeneralYoukaiEntity {
+public class MaidenEntity extends BossYoukaiEntity {
 
 	public MaidenEntity(EntityType<? extends MaidenEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
 
-	private boolean wouldAttack(LivingEntity entity) {
-		return entity instanceof Mob mob && mob.getTarget() instanceof Villager ||
-				entity.hasEffect(YHEffects.YOUKAIFYING.get());
+	protected boolean wouldAttack(LivingEntity entity) {
+		return entity instanceof Mob mob && (
+				mob.getTarget() instanceof Villager ||
+						mob.getLastHurtMob() instanceof Villager
+		) || entity.hasEffect(YHEffects.YOUKAIFYING.get());
 	}
 
 	@Override
@@ -41,4 +42,5 @@ public class MaidenEntity extends GeneralYoukaiEntity {
 		TouhouSpellCards.setReimu(this);
 		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
 	}
+
 }
