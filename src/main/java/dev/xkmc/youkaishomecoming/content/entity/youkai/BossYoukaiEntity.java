@@ -24,15 +24,13 @@ import org.jetbrains.annotations.Nullable;
 public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Monster.createMonsterAttributes()
+		return YoukaiEntity.createAttributes()
 				.add(Attributes.MAX_HEALTH, 200)
 				.add(Attributes.ATTACK_DAMAGE, 10)
-				.add(Attributes.MOVEMENT_SPEED, 0.4)
-				.add(Attributes.FLYING_SPEED, 0.4)
 				.add(Attributes.FOLLOW_RANGE, 128);
 	}
 
-	private final ServerBossEvent bossEvent = new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.NOTCHED_20);
+	protected final ServerBossEvent bossEvent = new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.NOTCHED_20);
 
 	public BossYoukaiEntity(EntityType<? extends BossYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -152,7 +150,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		bossEvent.setName(getDisplayName());
 	}
 
-	int noTargetTime;
+	protected int noTargetTime;
 
 	@Override
 	protected void customServerAiStep() {
@@ -164,6 +162,8 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 				if (getHealth() < getMaxHealth())
 					setHealth(getMaxHealth());
 			}
+		} else {
+			noTargetTime = 0;
 		}
 	}
 

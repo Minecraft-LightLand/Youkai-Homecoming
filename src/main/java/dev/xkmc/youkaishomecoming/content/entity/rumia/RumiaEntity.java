@@ -83,8 +83,8 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 		this.goalSelector.addGoal(3, new RumiaParalyzeGoal(this));
 		this.goalSelector.addGoal(4, new RumiaAttackGoal(this));
 		this.goalSelector.addGoal(5, new RumiaTemptGoal(this, Ingredient.of(YHFood.FLESH_CHOCOLATE_MOUSSE.item.get())));
-		this.goalSelector.addGoal(6, new MoveAroundNestGoal(this, 1.0));
-		this.goalSelector.addGoal(7, new MoveRandomlyGoal(this, 0.6));
+		this.goalSelector.addGoal(6, new MoveAroundNestGoal(this, 1));
+		this.goalSelector.addGoal(7, new MoveRandomlyGoal(this, 0.8));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new MultiHurtByTargetGoal(this, RumiaEntity.class));
@@ -96,12 +96,9 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Monster.createMonsterAttributes()
+		return YoukaiEntity.createAttributes()
 				.add(Attributes.MAX_HEALTH, 40)
-				.add(Attributes.ATTACK_DAMAGE, 6)
-				.add(Attributes.MOVEMENT_SPEED, 0.4)
-				.add(Attributes.FLYING_SPEED, 0.4)
-				.add(Attributes.FOLLOW_RANGE, 48);
+				.add(Attributes.ATTACK_DAMAGE, 6);
 	}
 
 	@Override

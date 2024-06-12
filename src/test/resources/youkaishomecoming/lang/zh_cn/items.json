@@ -123,7 +123,9 @@
 		  "lamprey": "八目鳗",
 		  "rumia": "露米娅",
 		  "youkai": "妖怪",
-		  "shrine_maiden": "神社巫女"
+		  "shrine_maiden": "神社巫女",
+		  "fairy": "妖精",
+		  "cirno": "琪露诺"
 		},{
 		  "entity.youkaishomecoming.*": "",
 		  "item.youkaishomecoming.*_spawn_egg": "生成蛋"

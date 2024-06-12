@@ -1,9 +1,12 @@
 2.2.4
-- Rumia follows youkaified player holding flesh cake TODO test
-- Add more advancements TODO test
-
-- Spell entity TODO
-- Darkened Aura on immunity TODO
+- Add more advancements
+- Rumia follows youkaified player holding flesh cake
+- Hide Reimu boss bar when no target
+- Fix drunk stacking
+- Fix Reimu targeting
+- Fix bug that mobs can be leashed
+- Reduce walking speed
+- Add Cirno (WIP)
 
 2.2.3
 - Add can and canned flesh

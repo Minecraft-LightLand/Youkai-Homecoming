@@ -17,6 +17,7 @@ public class MaidenEntity extends BossYoukaiEntity {
 
 	public MaidenEntity(EntityType<? extends MaidenEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
+		bossEvent.setVisible(false);
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
@@ -29,6 +30,17 @@ public class MaidenEntity extends BossYoukaiEntity {
 	@Override
 	public boolean shouldHurt(LivingEntity le) {
 		return le instanceof Enemy || super.shouldHurt(le) || wouldAttack(le);
+	}
+
+	@Override
+	protected void customServerAiStep() {
+		super.customServerAiStep();
+		if (noTargetTime == 0) {
+			bossEvent.setVisible(true);
+		}
+		if (noTargetTime > 40) {
+			bossEvent.setVisible(false);
+		}
 	}
 
 	@Override

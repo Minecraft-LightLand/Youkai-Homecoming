@@ -107,7 +107,9 @@ public class SyncedData {
 
 		public void read(CompoundTag tag, SynchedEntityData entityData) {
 			if (name == null) return;
-			entityData.set(data, ser.read(tag.get(name)));
+			var val = tag.get(name);
+			if (val == null) return;
+			entityData.set(data, ser.read(val));
 		}
 	}
 

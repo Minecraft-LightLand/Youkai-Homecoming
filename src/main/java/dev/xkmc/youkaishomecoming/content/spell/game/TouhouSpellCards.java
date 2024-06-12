@@ -2,8 +2,10 @@ package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.spell.game.cirno.CirnoIceStorm;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
 import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
@@ -39,6 +41,7 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new KoishiTest()));
 		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
 		registerSpell("touhou_little_maid:saigyouji_yuyuko", () -> ListSpellCard.of(new YuyukoTest()));
+		registerSpell("touhou_little_maid:cirno", () -> ListSpellCard.of(new CirnoIceStorm()));
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
@@ -61,4 +64,9 @@ public class TouhouSpellCards {
 		e.setItemInHand(InteractionHand.OFF_HAND, YHItems.REIMU_SPELL.asStack());
 		e.setDropChance(EquipmentSlot.OFFHAND, 1);
 	}
+
+	public static void setCirno(CirnoEntity e) {
+		setSpell(e, "touhou_little_maid:cirno");
+	}
+
 }

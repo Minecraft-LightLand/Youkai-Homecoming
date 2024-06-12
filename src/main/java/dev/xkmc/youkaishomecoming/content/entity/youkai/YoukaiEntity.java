@@ -31,11 +31,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -57,6 +60,13 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	protected static final SyncedData YOUKAI_DATA = new SyncedData(YoukaiEntity::defineId);
 
 	protected static final EntityDataAccessor<Integer> DATA_FLAGS_ID = YOUKAI_DATA.define(SyncedData.INT, 0, "youkai_flags");
+
+	public static AttributeSupplier.Builder createAttributes() {
+		return Monster.createMonsterAttributes()
+				.add(Attributes.MOVEMENT_SPEED, 0.3)
+				.add(Attributes.FLYING_SPEED, 0.4)
+				.add(Attributes.FOLLOW_RANGE, 48);
+	}
 
 	public final MoveControl walkCtrl, flyCtrl;
 	public final PathNavigation walkNav, fltNav;
@@ -90,6 +100,11 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 
 	protected SoundEvent getDeathSound() {
 		return SoundEvents.EMPTY;
+	}
+
+	@Override
+	public boolean canBeLeashed(Player pPlayer) {
+		return false;
 	}
 
 	// base
@@ -189,6 +204,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	@Override
 	public ItemDanmakuEntity prepareDanmaku(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color) {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
+		danmaku.setPos(center());
 		danmaku.setItem(type.get(color).asStack());
 		danmaku.setup((float) getAttributeValue(Attributes.ATTACK_DAMAGE),
 				life, true, true, vec);
