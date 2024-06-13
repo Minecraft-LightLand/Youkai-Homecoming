@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
@@ -14,10 +15,9 @@ import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.BossYoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -91,7 +91,7 @@ public class YHEntities {
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 			.attributes(BossYoukaiEntity::createAttributes)
 			.renderer(() -> GeneralYoukaiRenderer::new)
-			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+			.spawnEgg(0xC20C1C, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
 
 	public static final EntityEntry<FairyEntity> FAIRY = YoukaisHomecoming.REGISTRATE
@@ -107,7 +107,15 @@ public class YHEntities {
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 			.attributes(CirnoEntity::createAttributes)
 			.renderer(() -> GeneralYoukaiRenderer::new)
-			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+			.spawnEgg(0xA8C3D9, 0x7E8DC4).tab(YHDanmaku.TAB.getKey()).build()
+			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
+
+	public static final EntityEntry<YukariEntity> YUKARI = YoukaisHomecoming.REGISTRATE
+			.entity("yukari", YukariEntity::new, MobCategory.MONSTER)
+			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+			.attributes(BossYoukaiEntity::createAttributes)
+			.renderer(() -> GeneralYoukaiRenderer::new)
+			.spawnEgg(0x4B1442, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
 
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU = YoukaisHomecoming.REGISTRATE

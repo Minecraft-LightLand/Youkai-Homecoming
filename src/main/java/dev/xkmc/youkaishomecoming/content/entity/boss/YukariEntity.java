@@ -1,30 +1,28 @@
-package dev.xkmc.youkaishomecoming.content.entity.youkai;
+package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
-public class MaidenEntity extends BossYoukaiEntity {
+public class YukariEntity extends BossYoukaiEntity {
 
-	public MaidenEntity(EntityType<? extends MaidenEntity> pEntityType, Level pLevel) {
+	public YukariEntity(EntityType<? extends BossYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
-		bossEvent.setVisible(false);
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
-		return entity instanceof Mob mob && (
-				mob.getTarget() instanceof Villager ||
-						mob.getLastHurtMob() instanceof Villager
-		) || entity.hasEffect(YHEffects.YOUKAIFYING.get());
+		return entity.hasEffect(YHEffects.YOUKAIFIED.get());
 	}
 
 	@Override
@@ -32,26 +30,10 @@ public class MaidenEntity extends BossYoukaiEntity {
 		return le instanceof Enemy || super.shouldHurt(le) || wouldAttack(le);
 	}
 
-	@Override
-	protected void customServerAiStep() {
-		super.customServerAiStep();
-		if (noTargetTime == 0) {
-			bossEvent.setVisible(true);
-		}
-		if (noTargetTime > 40) {
-			bossEvent.setVisible(false);
-		}
-	}
-
-	@Override
-	protected void dropEquipment() {
-		super.dropEquipment();
-	}
-
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-		TouhouSpellCards.setReimu(this);
+		TouhouSpellCards.setYukari(this);
 		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
 	}
 

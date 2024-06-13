@@ -2,15 +2,17 @@ package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
+import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.cirno.CirnoIceStorm;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
 import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.DoubleButterfly;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.LightHole;
+import dev.xkmc.youkaishomecoming.content.spell.game.yukari.YukariMain;
 import dev.xkmc.youkaishomecoming.content.spell.game.yuyuko.YuyukoTest;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ListSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
@@ -36,12 +38,13 @@ public class TouhouSpellCards {
 	}
 
 	public static void registerSpells() {
-		registerSpell("touhou_little_maid:yukari_yakumo", () -> ListSpellCard.of(new LightHole(), new DoubleButterfly()));
-		registerSpell("touhou_little_maid:hakurei_reimu", () -> ListSpellCard.of(new StagedHoming()));
+		registerSpell("touhou_little_maid:hakurei_reimu", StagedHoming::new);
+		registerSpell("touhou_little_maid:yukari_yakumo", YukariMain::new);
+		registerSpell("touhou_little_maid:cirno", CirnoIceStorm::new);
+
 		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new KoishiTest()));
 		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
 		registerSpell("touhou_little_maid:saigyouji_yuyuko", () -> ListSpellCard.of(new YuyukoTest()));
-		registerSpell("touhou_little_maid:cirno", () -> ListSpellCard.of(new CirnoIceStorm()));
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
@@ -67,6 +70,10 @@ public class TouhouSpellCards {
 
 	public static void setCirno(CirnoEntity e) {
 		setSpell(e, "touhou_little_maid:cirno");
+	}
+
+	public static void setYukari(YukariEntity e) {
+		setSpell(e, "touhou_little_maid:yukari_yakumo");
 	}
 
 }

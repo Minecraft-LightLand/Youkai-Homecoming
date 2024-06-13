@@ -125,7 +125,8 @@
 		  "youkai": "妖怪",
 		  "shrine_maiden": "神社巫女",
 		  "fairy": "妖精",
-		  "cirno": "琪露诺"
+		  "cirno": "琪露诺",
+		  "yukari": "八云紫"
 		},{
 		  "entity.youkaishomecoming.*": "",
 		  "item.youkaishomecoming.*_spawn_egg": "生成蛋"
