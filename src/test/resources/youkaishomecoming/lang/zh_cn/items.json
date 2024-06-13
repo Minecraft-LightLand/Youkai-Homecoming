@@ -113,7 +113,11 @@
 	"can": "空罐头",
 	"canned_flesh": "%1$s罐头",
 	"rumia_hairband": "露米娅的发带",
-	"spell_reimu": "「梦想天生」"
+	"spell_reimu": "「梦想天生」",
+	"lemon_black_tea": "柠檬红茶",
+	"moon_rocket": "月面火箭",
+	"peach_tapioca": "桃花羹",
+	"peach_yatsuhashi": "桃子八桥"
   },
   "-cartesian": {
 	"entity": {

@@ -3,8 +3,14 @@ package dev.xkmc.youkaishomecoming.init.data;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.fruitsdelight.init.FruitsDelight;
+import dev.xkmc.fruitsdelight.init.data.TagGen;
+import dev.xkmc.fruitsdelight.init.food.FDFood;
+import dev.xkmc.fruitsdelight.init.food.FruitType;
+import dev.xkmc.fruitsdelight.init.plants.FDBushes;
 import dev.xkmc.l2library.compat.patchouli.ShapelessPatchouliBuilder;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
@@ -25,6 +31,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -616,10 +623,11 @@ public class YHRecipeGen {
 
 		}
 
+		var tea = tea(pvd);
+		var coffee = coffee(pvd);
+
 		// drinks
 		{
-
-			var tea = tea(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
@@ -700,8 +708,6 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(tea, YHFood.GREEN_WATER.item.getId());
-
-			var coffee = coffee(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
@@ -808,6 +814,35 @@ public class YHRecipeGen {
 							.save(pvd);
 				}
 			}
+		}
+
+		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
+			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.MOON_ROCKET.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(FDFood.LEMON_SLICE.get())
+					.addIngredient(FDFood.LEMON_SLICE.get())
+					.addIngredient(Items.SUGAR)
+					.build(tea, FruitsDelightCompatFood.MOON_ROCKET.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.LEMON_BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+					.unlockedByAnyIngredient(FDFood.LEMON_SLICE.get())
+					.addIngredient(FDFood.LEMON_SLICE.get())
+					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(Items.SUGAR)
+					.build(tea, FruitsDelightCompatFood.LEMON_BLACK_TEA.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.PEACH_TAPIOCA.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(FruitType.PEACH.getFruitTag())
+					.addIngredient(Items.LILY_PAD)
+					.build(pvd, FruitsDelightCompatFood.PEACH_TAPIOCA.item.getId());
+
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FruitsDelightCompatFood.PEACH_YATSUHASHI.item, 2)::unlockedBy,FruitType.PEACH.getFruit())
+					.requires(FruitType.PEACH.getFruitTag())
+					.requires(ModItems.COOKED_RICE.get())
+					.save(pvd);
+
 		}
 	}
 

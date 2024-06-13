@@ -1,9 +1,12 @@
 package dev.xkmc.youkaishomecoming.compat.thirst;
 
 import dev.ghen.thirst.api.ThirstHelper;
+import dev.xkmc.fruitsdelight.init.FruitsDelight;
+import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.food.YHSake;
+import net.minecraftforge.fml.ModList;
 
 public class ThirstCompat {
 
@@ -39,6 +42,12 @@ public class ThirstCompat {
 		ThirstHelper.addDrink(YHFood.MUSHROOM_SOUP.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.MISO_SOUP.item.get(), 8, 13);
 		ThirstHelper.addDrink(YHFood.SEAFOOD_MISO_SOUP.item.get(), 8, 13);
+
+		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
+			ThirstHelper.addDrink(FruitsDelightCompatFood.LEMON_BLACK_TEA.item.get(), 8, 13);
+			ThirstHelper.addDrink(FruitsDelightCompatFood.MOON_ROCKET.item.get(), 8, 13);
+			ThirstHelper.addDrink(FruitsDelightCompatFood.PEACH_TAPIOCA.item.get(), 8, 13);
+		}
 
 
 	}

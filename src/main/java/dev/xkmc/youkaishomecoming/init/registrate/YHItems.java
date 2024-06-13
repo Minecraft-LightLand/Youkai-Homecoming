@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import dev.xkmc.fruitsdelight.init.FruitsDelight;
+import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
@@ -27,6 +29,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
 import vectorwing.farmersdelight.common.block.FeastBlock;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -170,6 +173,10 @@ public class YHItems {
 		YHDish.register();
 		YHCoffee.register();
 		YHSake.register();
+
+		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
+			FruitsDelightCompatFood.register();
+		}
 
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(

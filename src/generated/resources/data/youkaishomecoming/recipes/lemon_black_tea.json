@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "fruitsdelight:lemon_slice"
+    },
+    {
+      "tag": "forge:tea_leaves/black"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaishomecoming:lemon_black_tea"
+  }
+}

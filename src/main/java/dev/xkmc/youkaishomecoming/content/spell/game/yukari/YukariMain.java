@@ -34,7 +34,7 @@ public class YukariMain extends ActualSpellCard {
 		var pos = holder.center();
 		var vel = holder.targetVelocity();
 		double dist = target.distanceTo(pos);
-		if (vel != null && dist > 40 && vulnerable == 0) {
+		if (vel != null && dist > 40 && tick % 5 == 0) {
 			if (vel.length() < 0.5 || vel.length() > 1) {
 				var dst = target.add(target.subtract(pos).normalize().scale(32));
 				if (teleport(holder.self(), dst)) {

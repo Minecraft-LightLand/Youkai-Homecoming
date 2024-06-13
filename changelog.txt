@@ -1,3 +1,7 @@
+2.2.5
+- Add 4 compat food for Fruits Delight
+
+
 2.2.4
 - Add more advancements
 - Rumia follows youkaified player holding flesh cake
