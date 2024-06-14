@@ -34,6 +34,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -49,6 +50,7 @@ import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -80,15 +82,16 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	}
 
 	protected void registerGoals() {
-		this.goalSelector.addGoal(3, new RumiaParalyzeGoal(this));
-		this.goalSelector.addGoal(4, new RumiaAttackGoal(this));
-		this.goalSelector.addGoal(5, new RumiaTemptGoal(this, Ingredient.of(YHFood.FLESH_CHOCOLATE_MOUSSE.item.get())));
-		this.goalSelector.addGoal(6, new MoveAroundNestGoal(this, 1));
-		this.goalSelector.addGoal(7, new MoveRandomlyGoal(this, 0.8));
-		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
-		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.targetSelector.addGoal(1, new MultiHurtByTargetGoal(this, RumiaEntity.class));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, this::wouldAttack));
+		goalSelector.addGoal(3, new RumiaParalyzeGoal(this));
+		goalSelector.addGoal(4, new RumiaAttackGoal(this));
+		goalSelector.addGoal(5, new RumiaTemptGoal(this, Ingredient.of(YHFood.FLESH_CHOCOLATE_MOUSSE.item.get())));
+		goalSelector.addGoal(6, new FloatGoal(this));
+		goalSelector.addGoal(6, new MoveAroundNestGoal(this, 1));
+		goalSelector.addGoal(7, new MoveRandomlyGoal(this, 0.8));
+		goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));
+		goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+		targetSelector.addGoal(1, new MultiHurtByTargetGoal(this, RumiaEntity.class));
+		targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, this::wouldAttack));
 	}
 
 	private boolean wouldAttack(LivingEntity entity) {
@@ -166,6 +169,17 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	@Override
 	public boolean canBeAffected(MobEffectInstance ins) {
 		return !isEx() && super.canBeAffected(ins);
+	}
+
+
+	@Override
+	public boolean canSwimInFluidType(FluidType type) {
+		return isEx() || super.canSwimInFluidType(type);
+	}
+
+	@Override
+	public boolean fireImmune() {
+		return isEx();
 	}
 
 	@Override

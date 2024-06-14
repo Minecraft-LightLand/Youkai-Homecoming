@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
@@ -80,6 +81,16 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		boolean ans = super.hurt(source, amount);
 		hurtCall = false;
 		return ans;
+	}
+
+	@Override
+	public boolean canSwimInFluidType(FluidType type) {
+		return true;
+	}
+
+	@Override
+	public boolean fireImmune() {
+		return true;
 	}
 
 	protected float clampDamage(DamageSource source, float amount) {
