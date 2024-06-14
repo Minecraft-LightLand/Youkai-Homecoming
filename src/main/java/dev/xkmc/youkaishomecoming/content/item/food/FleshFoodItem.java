@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
-import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
+import dev.xkmc.youkaishomecoming.events.ReimuEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -12,18 +12,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.sensing.GolemSensor;
-import net.minecraft.world.entity.ai.village.ReputationEventType;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.jetbrains.annotations.Nullable;
@@ -79,7 +73,7 @@ public class FleshFoodItem extends YHFoodItem {
 			list.add(YHLangData.FLESH_TASTE_YOUKAI.get());
 		} else if (player.hasEffect(YHEffects.YOUKAIFYING.get())) {
 			list.add(YHLangData.FLESH_TASTE_HALF_YOUKAI.get());
-		} else {
+		} else if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD)) {
 			list.add(YHLangData.FLESH_TASTE_HUMAN.get());
 		}
 		if (this == YHFood.FLESH.item.get()) {
@@ -142,7 +136,7 @@ public class FleshFoodItem extends YHFoodItem {
 			}
 		}
 		if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD) && consumer instanceof ServerPlayer sp) {
-			GeneralEventHandlers.generateYoukaiResponse(sp, 24, true);
+			ReimuEventHandlers.triggerReimuResponse(sp, 24, true);
 		}
 	}
 

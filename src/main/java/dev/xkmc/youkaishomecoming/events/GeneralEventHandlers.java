@@ -1,36 +1,32 @@
 package dev.xkmc.youkaishomecoming.events;
 
+import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
-import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
-import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.sensing.GolemSensor;
-import net.minecraft.world.entity.ai.village.ReputationEventType;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;
@@ -39,7 +35,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -104,6 +99,19 @@ public class GeneralEventHandlers {
 				event.setAmount(le.getMaxHealth() * (float) min);
 			}
 		}
+		if (event.getEntity() instanceof AbstractVillager e &&
+				YHModConfig.COMMON.reimuSummonKill.get() &&
+				event.getSource().getEntity() instanceof ServerPlayer sp && (
+				sp.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+						sp.hasEffect(YHEffects.YOUKAIFYING.get())
+		)) {
+			GeneralEventHandler.schedule(() -> {
+				if (e.isAlive()) {
+					ReimuEventHandlers.hurtWarn(sp);
+				}
+			});
+
+		}
 	}
 
 	@SubscribeEvent
@@ -115,72 +123,12 @@ public class GeneralEventHandlers {
 
 	@SubscribeEvent
 	public static void onEntityKilled(LivingDeathEvent event) {
-		if (event.getEntity() instanceof Villager) {
+		if (event.getEntity() instanceof Villager && YHModConfig.COMMON.reimuSummonKill.get()) {
 			if (event.getSource().getEntity() instanceof LivingEntity le) {
 				if (le.hasEffect(YHEffects.YOUKAIFIED.get()) || le.hasEffect(YHEffects.YOUKAIFYING.get()))
-					generateYoukaiResponse(le, 16, false);
+					ReimuEventHandlers.triggerReimuResponse(le, 16, false);
 			}
 		}
-	}
-
-	public static void generateYoukaiResponse(LivingEntity le, int range, boolean requireSight) {
-		if (!(le.level() instanceof ServerLevel sl)) return;
-		AABB aabb = le.getBoundingBox().inflate(range);
-		var list = sl.getEntities(EntityTypeTest.forClass(Villager.class), aabb,
-				e -> e.isAlive() && (!requireSight || e.hasLineOfSight(le)));
-		if (!list.isEmpty()) {
-			if (GeneralEventHandlers.summonProtector(sl, le)) {
-				list.forEach(GolemSensor::golemDetected);
-			}
-		}
-		for (var e : list) {
-			sl.broadcastEntityEvent(e, EntityEvent.VILLAGER_ANGRY);
-			sl.onReputationEvent(ReputationEventType.VILLAGER_KILLED, le, e);
-		}
-	}
-
-	private static boolean summonProtector(ServerLevel sl, LivingEntity le) {
-		if (le instanceof ServerPlayer sp && sp.isCreative()) return false;
-		var list = sl.getEntities(EntityTypeTest.forClass(MaidenEntity.class),
-				le.getBoundingBox().inflate(32), LivingEntity::isAlive);
-		if (!list.isEmpty()) {
-			for (var e : list) {
-				e.setTarget(le);
-				e.refreshIdle();
-			}
-			return true;
-		}
-		BlockPos center = BlockPos.containing(le.position().add(le.getForward().scale(8)).add(0, 5, 0));
-		MaidenEntity e = YHEntities.REIMU.create(sl);
-		if (e == null) return false;
-		BlockPos pos = getPos(le, e, center, 16, 8, 5);
-		if (pos == null) {
-			center = le.blockPosition().above(5);
-			pos = getPos(le, e, center, 16, 16, 5);
-		}
-		if (pos == null) return false;
-		e.moveTo(pos, 0, 0);
-		EffectEventHandlers.removeKoishi(le);
-		e.setTarget(le);
-		TouhouSpellCards.setReimu(e);
-		sl.addFreshEntity(e);
-		return true;
-	}
-
-	@Nullable
-	private static BlockPos getPos(LivingEntity sp, Entity e, BlockPos center, int trial, int range, int dy) {
-		for (int i = 0; i < trial; i++) {
-			BlockPos pos = center.offset(
-					sp.getRandom().nextInt(-range, range),
-					sp.getRandom().nextInt(-dy, dy),
-					sp.getRandom().nextInt(-range, range)
-			);
-			e.moveTo(pos, 0, 0);
-			if (sp.level().noCollision(e)) {
-				return pos;
-			}
-		}
-		return null;
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {

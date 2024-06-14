@@ -15,8 +15,10 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.Util;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -28,7 +30,17 @@ import java.util.stream.Stream;
 
 public class YHAdvGen {
 
+	public static final ResourceLocation FLESH_WARN = YoukaisHomecoming.loc("flesh_warn");
+	public static final ResourceLocation HURT_WARN = YoukaisHomecoming.loc("hurt_warn");
+
 	public static void genAdv(RegistrateAdvancementProvider pvd) {
+		pvd.accept(Advancement.Builder.advancement().addCriterion("flesh_warn",
+				new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.FLESH_WARN.getId(), ContextAwarePredicate.ANY)
+		).build(FLESH_WARN));
+		pvd.accept(Advancement.Builder.advancement().addCriterion("hurt_warn",
+				new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.HURT_WARN.getId(), ContextAwarePredicate.ANY)
+		).build(HURT_WARN));
+
 		var gen = new AdvancementGenerator(pvd, YoukaisHomecoming.MODID);
 		var b = gen.new TabBuilder("main");
 		var root = b.root("welcome_to_youkais_homecoming", YHItems.SUWAKO_HAT.asStack(),
@@ -122,7 +134,6 @@ public class YHAdvGen {
 				.type(FrameType.CHALLENGE, true, true, false);
 
 
-
 		var youkai = root.create("flesh", YHFood.FLESH.item.asStack(),
 						CriterionBuilder.item(YHFood.FLESH.item.get()),
 						"Where is it from?", "Get weird meat")
@@ -179,7 +190,7 @@ public class YHAdvGen {
 										Arrays.stream(YHDish.values()).filter(e -> !e.isFlesh()).map(e -> e.block.get()),
 										Arrays.stream(YHSake.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
-										Arrays.stream(YHFood.values()).filter(YHFood::isAppealing).map(e -> e.item.get()))
+										Arrays.stream(YHFood.values()).filter(YHFood::isReimuFood).map(e -> e.item.get()))
 								.map(e -> Pair.of(e, FeedReimuTrigger.usedItem(e)))
 								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Satisfied Reimu", "Feed Reimu all appealing food from Youkai's Homecoming to make her happy and give you her hairband")

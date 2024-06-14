@@ -43,6 +43,9 @@ public class YHModConfig {
 		public final ForgeConfigSpec.DoubleValue danmakuPlayerPHPDamage;
 		public final ForgeConfigSpec.DoubleValue danmakuHealOnHitTarget;
 
+		public final ForgeConfigSpec.BooleanValue reimuSummonFlesh;
+		public final ForgeConfigSpec.BooleanValue reimuSummonKill;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			youkaifyingChance = builder.comment("Chance for flesh food to add Youkaifying effect for the first time")
@@ -103,6 +106,13 @@ public class YHModConfig {
 					.defineInRange("danmakuPlayerPHPDamage", 0.1, 0, 1);
 			danmakuHealOnHitTarget = builder.comment("When danmaku hits target, heal youkai health by percentage of max health")
 					.defineInRange("danmakuHealOnHitTarget", 0.2, 0, 1);
+			builder.pop();
+
+			builder.push("reimu");
+			reimuSummonFlesh = builder.comment("Summon Reimu when player eats flesh in front of villagers")
+					.define("reimuSummonFlesh", true);
+			reimuSummonKill = builder.comment("Summon Reimu when player with youkaified/fying effect kills villager in front of other villagers")
+					.define("reimuSummonKill", true);
 			builder.pop();
 		}
 

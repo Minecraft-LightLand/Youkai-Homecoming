@@ -70,7 +70,10 @@
 	"obtain_reimu_hairband": "玩家投喂灵梦各种食物掉落",
 	"usage_reimu_hairband": "激活创造飞行。弹幕伤害穿透魔法防御",
 	"spell_cost": "消耗1个%s",
-	"spell_target": "需要瞄准目标发动"
+	"spell_target": "需要瞄准目标发动",
+	"koishi_reimu": "灵梦：谁在那？",
+	"reimu_flesh": "灵梦：别吃这个。最后警告",
+	"reimu_warn": "灵梦：喝点茶清醒一下。最后警告"
 
   },
   "death.attack": {

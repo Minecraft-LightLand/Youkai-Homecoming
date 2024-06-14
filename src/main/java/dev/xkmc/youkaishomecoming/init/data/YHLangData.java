@@ -47,8 +47,12 @@ public enum YHLangData {
 	DANMAKU_DAMAGE("danmaku_damage", "Deals %s damage on hit", 1, ChatFormatting.BLUE),
 	DANMAKU_BYPASS("danmaku_bypass", "Bypasses entities", 0, ChatFormatting.DARK_AQUA),
 
-	SPELL_TARGET("spell_target","Requires targeting an entity to activate", 0, ChatFormatting.RED),
-	SPELL_COST("spell_cost","Costs 1 %s", 1, ChatFormatting.GRAY),
+	SPELL_TARGET("spell_target", "Requires targeting an entity to activate", 0, ChatFormatting.RED),
+	SPELL_COST("spell_cost", "Costs 1 %s", 1, ChatFormatting.GRAY),
+
+	REIMU_FLESH("reimu_flesh", "Reimu: You shall not eat it. Last warning.", 0, ChatFormatting.RED),
+	REIMU_WARN("reimu_warn", "Reimu: Drink some tea and keep your sanity. Last warning.", 0, ChatFormatting.RED),
+	KOISHI_REIMU("koishi_reimu", "Reimu: ???", 0, ChatFormatting.RED),
 
 	;
 

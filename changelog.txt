@@ -1,9 +1,10 @@
 2.2.5
 - Add 4 compat food for Fruits Delight
 - Add Reimu Hairband
-- Use standalone Reimu model
+- Give warnings before summing reimu
+- Use standalone Reimu model, so Reimu summon no longer require TLM
+- Add configs for disabling Reimu summon
 - Reimu now will dispawn and will not spawn multiple in an area
-- Add Reimu trades
 
 2.2.4
 - Add more advancements

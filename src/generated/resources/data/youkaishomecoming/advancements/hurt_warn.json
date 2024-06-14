@@ -1,0 +1,14 @@
+{
+  "criteria": {
+    "hurt_warn": {
+      "conditions": {},
+      "trigger": "youkaishomecoming:hurt_warn"
+    }
+  },
+  "requirements": [
+    [
+      "hurt_warn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

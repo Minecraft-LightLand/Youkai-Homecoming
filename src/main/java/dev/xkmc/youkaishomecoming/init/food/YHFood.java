@@ -246,7 +246,7 @@ public enum YHFood {
 		return type.isFlesh() || this == SCARLET_TEA;
 	}
 
-	public boolean isAppealing() {
+	public boolean isReimuFood() {
 		return !isFlesh() && this != RAW_LAMPREY && this != RAW_LAMPREY_FILLET && this != COOKED_MANDRAKE_ROOT;
 	}
 

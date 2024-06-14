@@ -102,9 +102,12 @@ public class EffectEventHandlers {
 
 	public static void removeKoishi(LivingEntity le) {
 		if (le instanceof Player player) {
+			if (player.hasEffect(YHEffects.UNCONSCIOUS.get())){
+				player.removeEffect(YHEffects.UNCONSCIOUS.get());
+			}
 			var hat = YHItems.KOISHI_HAT.get();
 			if (player.getItemBySlot(EquipmentSlot.HEAD).is(hat)) {
-				if (player.getCooldowns().getCooldownPercent(hat, 0) > 0.8)
+				if (player.getCooldowns().getCooldownPercent(hat, 0) < 0.5)
 					player.getCooldowns().addCooldown(hat, 200);
 			}
 		}
