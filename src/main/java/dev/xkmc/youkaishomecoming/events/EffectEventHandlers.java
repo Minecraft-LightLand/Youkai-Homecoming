@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.events;
 
-import dev.xkmc.youkaishomecoming.content.entity.boss.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;

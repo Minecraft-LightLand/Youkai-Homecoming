@@ -1,24 +1,23 @@
 package dev.xkmc.youkaishomecoming.events;
 
-import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
-import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
+import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.sensing.GolemSensor;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
@@ -35,8 +34,8 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -138,18 +137,37 @@ public class GeneralEventHandlers {
 
 	private static boolean summonProtector(ServerLevel sl, LivingEntity le) {
 		if (le instanceof ServerPlayer sp && sp.isCreative()) return false;
-		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-			return TLMCompat.summonReimu(le);
+		BlockPos center = BlockPos.containing(le.position().add(le.getForward().scale(8)).add(0, 5, 0));
+		MaidenEntity e = YHEntities.MAIDEN.create(sl);
+		if (e == null) return false;
+		BlockPos pos = getPos(le, e, center, 16, 8, 5);
+		if (pos == null) {
+			center = le.blockPosition().above(5);
+			pos = getPos(le, e, center, 16, 16, 5);
 		}
-		var opt = SpawnUtil.trySpawnMob(EntityType.IRON_GOLEM, MobSpawnType.MOB_SUMMONED, sl, le.blockPosition(),
-				10, 8, 6, SpawnUtil.Strategy.LEGACY_IRON_GOLEM);
-		if (opt.isPresent()) {
-			int time = 3 * 60 * 20;
-			opt.get().addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, time, 4));
-			opt.get().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, time, 2));
-			return true;
+		if (pos == null) return false;
+		e.moveTo(pos, 0, 0);
+		EffectEventHandlers.removeKoishi(le);
+		e.setTarget(le);
+		TouhouSpellCards.setReimu(e);
+		sl.addFreshEntity(e);
+		return true;
+	}
+
+	@Nullable
+	private static BlockPos getPos(LivingEntity sp, Entity e, BlockPos center, int trial, int range, int dy) {
+		for (int i = 0; i < trial; i++) {
+			BlockPos pos = center.offset(
+					sp.getRandom().nextInt(-range, range),
+					sp.getRandom().nextInt(-dy, dy),
+					sp.getRandom().nextInt(-range, range)
+			);
+			e.moveTo(pos, 0, 0);
+			if (sp.level().noCollision(e)) {
+				return pos;
+			}
 		}
-		return false;
+		return null;
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {

@@ -1,5 +1,6 @@
 2.2.5
 - Add 4 compat food for Fruits Delight
+- Use standalone Reimu model
 
 
 2.2.4

@@ -1,6 +1,7 @@
-package dev.xkmc.youkaishomecoming.content.entity.boss;
+package dev.xkmc.youkaishomecoming.content.entity.reimu;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
