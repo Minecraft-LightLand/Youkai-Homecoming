@@ -78,10 +78,14 @@ public enum FoodType {
 
 	public String makeLang(String id) {
 		String name = YHItems.toEnglishName(id.toLowerCase(Locale.ROOT));
-		if (this == FLESH || this == BOWL_FLESH || this == FLESH_FAST || this == CAN_FLESH) {
+		if (isFlesh()) {
 			name = name.replaceFirst("Flesh", "%1\\$s");
 		}
 		return YHItems.toEnglishName(name);
+	}
+
+	public boolean isFlesh() {
+		return this == FLESH || this == BOWL_FLESH || this == FLESH_FAST || this == CAN_FLESH;
 	}
 
 	@SuppressWarnings({"unsafe", "unchecked"})

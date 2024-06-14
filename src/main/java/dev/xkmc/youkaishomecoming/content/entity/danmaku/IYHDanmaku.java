@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -45,6 +46,8 @@ public interface IYHDanmaku {
 		if (self().getOwner() instanceof CardHolder youkai) {
 			dmgType = youkai.getDanmakuDamageSource(this);
 		}
+		if (self().getOwner() instanceof LivingEntity le)
+			dmgType = GeneralEventHandlers.modifyDamageType(le, dmgType, this);
 		if (!e.hurt(dmgType, damage(e))) return;
 		LivingEntity target = null;
 		while (e instanceof PartEntity<?> pe) {

@@ -90,6 +90,10 @@ public enum YHDish {
 		return builder;
 	}
 
+	public boolean isFlesh() {
+		return this == BLOOD_CURD;
+	}
+
 	public static void register() {
 	}
 

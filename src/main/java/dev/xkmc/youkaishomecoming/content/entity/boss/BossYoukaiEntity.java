@@ -162,6 +162,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		bossEvent.setName(getDisplayName());
 	}
 
+	@SerialClass.SerialField
 	protected int noTargetTime;
 
 	@Override

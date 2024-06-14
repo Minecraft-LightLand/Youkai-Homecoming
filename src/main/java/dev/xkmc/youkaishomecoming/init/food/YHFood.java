@@ -223,8 +223,11 @@ public enum YHFood {
 
 	public final ItemEntry<Item> item;
 
+	private final FoodType type;
+
 	@SafeVarargs
 	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
 		item = type.build("food/", name, nutrition, sat, tags, effs);
 	}
@@ -237,6 +240,14 @@ public enum YHFood {
 	@SafeVarargs
 	YHFood(FoodType type, int nutrition, float sat, EffectEntry eff, TagKey<Item>... tags) {
 		this(type, nutrition, sat, List.of(eff), tags);
+	}
+
+	public boolean isFlesh() {
+		return type.isFlesh() || this == SCARLET_TEA;
+	}
+
+	public boolean isAppealing() {
+		return !isFlesh() && this != RAW_LAMPREY && this != RAW_LAMPREY_FILLET && this != COOKED_MANDRAKE_ROOT;
 	}
 
 	public static void register() {

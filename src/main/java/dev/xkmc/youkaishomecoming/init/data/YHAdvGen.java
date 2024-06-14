@@ -5,6 +5,9 @@ import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateAdvancementProvider;
 import dev.xkmc.l2library.serial.advancements.AdvancementGenerator;
 import dev.xkmc.l2library.serial.advancements.CriterionBuilder;
+import dev.xkmc.l2library.serial.advancements.RewardBuilder;
+import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.entity.reimu.FeedReimuTrigger;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -15,6 +18,8 @@ import net.minecraft.Util;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -115,6 +120,9 @@ public class YHAdvGen {
 								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Gensokyo Food Enthusiastic", "Eat all Youkai's Homecoming food")
 				.type(FrameType.CHALLENGE, true, true, false);
+
+
+
 		var youkai = root.create("flesh", YHFood.FLESH.item.asStack(),
 						CriterionBuilder.item(YHFood.FLESH.item.get()),
 						"Where is it from?", "Get weird meat")
@@ -165,6 +173,19 @@ public class YHAdvGen {
 						CriterionBuilder.item(YHItems.REIMU_SPELL.get()),
 						"Spellcard Power", "When you eat flesh in front of villagers, Reimu will try to exterminate you. Defat Reimu and obtain her spellcard")
 				.type(FrameType.CHALLENGE);
+
+		danmaku.create("feed_reimu", YHItems.REIMU_HAIRBAND.get(),
+						Util.make(CriterionBuilder.and(), c -> Streams.concat(
+										Arrays.stream(YHDish.values()).filter(e -> !e.isFlesh()).map(e -> e.block.get()),
+										Arrays.stream(YHSake.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
+										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
+										Arrays.stream(YHFood.values()).filter(YHFood::isAppealing).map(e -> e.item.get()))
+								.map(e -> Pair.of(e, FeedReimuTrigger.usedItem(e)))
+								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
+						"Satisfied Reimu", "Feed Reimu all appealing food from Youkai's Homecoming to make her happy and give you her hairband")
+				.add(new RewardBuilder(YoukaisHomecoming.REGISTRATE, 0, YoukaisHomecoming.loc("reimu_reward"), () ->
+						LootTable.lootTable().withPool(LootPool.lootPool().add(
+								LootTableTemplate.getItem(YHItems.REIMU_HAIRBAND.get(), 1, 1)))));
 
 		root.finish();
 	}

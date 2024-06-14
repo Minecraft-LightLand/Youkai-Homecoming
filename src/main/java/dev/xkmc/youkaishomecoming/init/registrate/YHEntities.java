@@ -13,12 +13,12 @@ import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -87,13 +87,16 @@ public class YHEntities {
 			.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
 
-	public static final EntityEntry<MaidenEntity> MAIDEN = YoukaisHomecoming.REGISTRATE
-			.entity("shrine_maiden", MaidenEntity::new, MobCategory.MONSTER)
+	public static final EntityEntry<ReimuEntity> REIMU = YoukaisHomecoming.REGISTRATE
+			.entity("shrine_maiden", ReimuEntity::new, MobCategory.MONSTER)
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 			.attributes(BossYoukaiEntity::createAttributes)
 			.renderer(() -> ReimuRenderer::new)
 			.spawnEgg(0xC20C1C, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
-			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
+			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable()
+					.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.REIMU_SPELL.get(), 1, 1))
+							.when(LootTableTemplate.byPlayer()))
+			)).register();
 
 	public static final EntityEntry<FairyEntity> FAIRY = YoukaisHomecoming.REGISTRATE
 			.entity("fairy", FairyEntity::new, MobCategory.MONSTER)

@@ -40,6 +40,8 @@ public enum YHLangData {
 	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s.  Allows using Blue and Red danmaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_RUMIA_HAIRBAND("obtain_rumia_hairband", "Drops when player defeat Ex. Rumia with Danmaku", 0, ChatFormatting.GRAY),
 	USAGE_RUMIA_HAIRBAND("usage_rumia_hairband", "Grants constant %s when applicable. Drops heads when killing mobs. Flesh and blood drops no longer require knife (bonus when still using knife).", 1, ChatFormatting.GRAY),
+	OBTAIN_REIMU_HAIRBAND("obtain_reimu_hairband", "Feed Reimu a variety of food", 0, ChatFormatting.GRAY),
+	USAGE_REIMU_HAIRBAND("usage_reimu_hairband", "Enables Creative Flight. Your danmaku damage bypasses magical protection.", 0, ChatFormatting.GRAY),
 
 	USAGE_DANMAKU("usage_danmaku", "While in %s or %s effect, or equip touhou hats, you can shoot danmaku", 2, ChatFormatting.GRAY),
 	DANMAKU_DAMAGE("danmaku_damage", "Deals %s damage on hit", 1, ChatFormatting.BLUE),

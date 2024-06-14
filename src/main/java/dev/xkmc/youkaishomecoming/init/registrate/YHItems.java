@@ -9,10 +9,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
-import dev.xkmc.youkaishomecoming.content.item.curio.KoishiHatItem;
-import dev.xkmc.youkaishomecoming.content.item.curio.RumiaHairbandItem;
-import dev.xkmc.youkaishomecoming.content.item.curio.StrawHatItem;
-import dev.xkmc.youkaishomecoming.content.item.curio.SuwakoHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.*;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
@@ -52,6 +49,7 @@ public class YHItems {
 	public static final ItemEntry<SuwakoHatItem> SUWAKO_HAT;
 	public static final ItemEntry<KoishiHatItem> KOISHI_HAT;
 	public static final ItemEntry<RumiaHairbandItem> RUMIA_HAIRBAND;
+	public static final ItemEntry<ReimuHairbandItem> REIMU_HAIRBAND;
 	public static final ItemEntry<SpellItem> REIMU_SPELL;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
@@ -87,6 +85,12 @@ public class YHItems {
 
 		RUMIA_HAIRBAND = YoukaisHomecoming.REGISTRATE
 				.item("rumia_hairband", p -> new RumiaHairbandItem(p.rarity(Rarity.EPIC)))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+				.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+				.register();
+
+		REIMU_HAIRBAND = YoukaisHomecoming.REGISTRATE
+				.item("reimu_hairband", p -> new ReimuHairbandItem(p.rarity(Rarity.EPIC)))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 				.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
 				.register();

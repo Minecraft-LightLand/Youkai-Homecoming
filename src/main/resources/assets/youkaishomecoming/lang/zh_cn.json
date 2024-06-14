@@ -112,6 +112,7 @@
   "item.youkaishomecoming.can": "空罐头",
   "item.youkaishomecoming.canned_flesh": "%1$s罐头",
   "item.youkaishomecoming.rumia_hairband": "露米娅的发带",
+  "item.youkaishomecoming.reimu_hairband": "灵梦的大蝴蝶结",
   "item.youkaishomecoming.spell_reimu": "「梦想天生」",
   "item.youkaishomecoming.lemon_black_tea": "柠檬红茶",
   "item.youkaishomecoming.moon_rocket": "月面火箭",
@@ -123,8 +124,8 @@
   "item.youkaishomecoming.rumia_spawn_egg": "露米娅生成蛋",
   "entity.youkaishomecoming.youkai": "妖怪",
   "item.youkaishomecoming.youkai_spawn_egg": "妖怪生成蛋",
-  "entity.youkaishomecoming.shrine_maiden": "神社巫女",
-  "item.youkaishomecoming.shrine_maiden_spawn_egg": "神社巫女生成蛋",
+  "entity.youkaishomecoming.shrine_maiden": "博丽灵梦",
+  "item.youkaishomecoming.shrine_maiden_spawn_egg": "博丽灵梦生成蛋",
   "entity.youkaishomecoming.fairy": "妖精",
   "item.youkaishomecoming.fairy_spawn_egg": "妖精生成蛋",
   "entity.youkaishomecoming.cirno": "琪露诺",
@@ -306,6 +307,8 @@
   "youkaishomecoming.jei.ferment": "发酵",
   "youkaishomecoming.obtain_rumia_hairband": "玩家用弹幕击败Ex露米娅时掉落",
   "youkaishomecoming.usage_rumia_hairband": "适用时提供持续的%s。击杀特定时掉落头颅。人肉和血瓶不需要小刀也能掉落（使用小刀时额外掉落）。",
+  "youkaishomecoming.obtain_reimu_hairband": "玩家投喂灵梦各种食物掉落",
+  "youkaishomecoming.usage_reimu_hairband": "激活创造飞行。弹幕伤害穿透魔法防御",
   "youkaishomecoming.spell_cost": "消耗1个%s",
   "youkaishomecoming.spell_target": "需要瞄准目标发动",
   "death.attack.koishi_attack": "恋恋从背后捅死了%s",
@@ -450,5 +453,7 @@
   "advancements.youkaishomecoming.advancements.main.alcoholic.description": "使用发酵桶酿酒并喝酒获得醉酒效果",
   "advancements.youkaishomecoming.advancements.main.alcoholic.title": "嗜酒如命",
   "advancements.youkaishomecoming.advancements.main.passed_out.description": "不断喝酒直到醉酒效果堆叠到最高级",
-  "advancements.youkaishomecoming.advancements.main.passed_out.title": "烂醉如泥"
+  "advancements.youkaishomecoming.advancements.main.passed_out.title": "烂醉如泥",
+  "advancements.youkaishomecoming.advancements.main.feed_reimu.description": "投喂灵梦妖怪归家中所有正常的食物，灵梦会给你她的大蝴蝶结作为谢礼",
+  "advancements.youkaishomecoming.advancements.main.feed_reimu.title": "满足的灵梦"
 }

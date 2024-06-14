@@ -504,19 +504,8 @@ public class ReimuModel<T extends MaidenEntity> extends HierarchicalModel<T> {
 				PartDefinition cube_r57 = l_r.addOrReplaceChild("cube_r57", CubeListBuilder.create().texOffs(70, 0).addBox(0.0F, 0.0F, -1.0F, 8.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-7.1219F, -6.9424F, 8.6F, -0.2802F, -0.2789F, 0.8075F));
 			}
 
-			PartDefinition bone4 = head.addOrReplaceChild("bone4", CubeListBuilder.create().texOffs(8, 68).addBox(-5.0379F, -17.506F, -2.2F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(0, 82).addBox(-4.6027F, -17.0845F, -1.0F, 2.0F, 2.0F, 4.0F, new CubeDeformation(0.0F))
-					.texOffs(12, 83).addBox(-4.6027F, -15.0845F, 1.0F, 2.0F, 7.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(85, 56).addBox(-2.0F, -7.0F, 1.0F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(84, 77).addBox(-7.2F, -7.0F, 1.0F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(74, 81).addBox(-5.6027F, -8.0845F, 1.0001F, 4.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(27, 0).addBox(-5.6027F, -4.0845F, 1.0001F, 4.0F, 3.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(42, 22).addBox(-7.2F, -4.0F, 1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
-					.texOffs(27, 5).addBox(-2.0F, -4.0F, 1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(3.6027F, 7.5845F, 3.5F));
+			PartDefinition bone4 = head.addOrReplaceChild("bone4", CubeListBuilder.create().texOffs(8, 68).addBox(-5.0379F, -17.506F, -2.2F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(3.6027F, 7.5845F, 3.5F));
 
-			PartDefinition cube_r58 = bone4.addOrReplaceChild("cube_r58", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -0.9998F, 2.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-3.6027F, -13.0845F, 2.0F, 0.0F, 0.0F, 0.3927F));
-
-			PartDefinition cube_r59 = bone4.addOrReplaceChild("cube_r59", CubeListBuilder.create().texOffs(30, 83).addBox(-1.0F, 0.0F, -0.9999F, 2.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-3.6027F, -13.0845F, 2.0F, 0.0F, 0.0F, -0.3927F));
 		}
 
 		return LayerDefinition.create(meshdefinition, 128, 128);

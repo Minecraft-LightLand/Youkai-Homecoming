@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidType;
 import dev.xkmc.youkaishomecoming.content.item.fluid.VirtualFluidBuilder;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
@@ -43,11 +44,12 @@ public enum YHSake {
 	SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(YHEffects.YOUKAIFIED::get, 1200, 0, 1)
-	)),
+	), YHTagGen.FLESH_FOOD),
 	WIND_PRIESTESSES(FoodType.BOTTLE, 0xFF79E1CA, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
-	)),;
+	)),
+	;
 
 	public final int color;
 
@@ -83,6 +85,10 @@ public enum YHSake {
 		return YoukaisHomecoming.REGISTRATE.entry(id, (c) -> new VirtualFluidBuilder<>(
 				YoukaisHomecoming.REGISTRATE, YoukaisHomecoming.REGISTRATE,
 				id, c, typeFactory, factory));
+	}
+
+	public boolean isFlesh() {
+		return this == SCARLET_MIST;
 	}
 
 	public static void register() {

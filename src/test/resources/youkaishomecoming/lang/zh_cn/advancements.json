@@ -57,6 +57,8 @@
 	"alcoholic.description": "使用发酵桶酿酒并喝酒获得醉酒效果",
 	"alcoholic.title": "嗜酒如命",
 	"passed_out.description": "不断喝酒直到醉酒效果堆叠到最高级",
-	"passed_out.title": "烂醉如泥"
+	"passed_out.title": "烂醉如泥",
+	"feed_reimu.description": "投喂灵梦妖怪归家中所有正常的食物，灵梦会给你她的大蝴蝶结作为谢礼",
+	"feed_reimu.title": "满足的灵梦"
   }
 }

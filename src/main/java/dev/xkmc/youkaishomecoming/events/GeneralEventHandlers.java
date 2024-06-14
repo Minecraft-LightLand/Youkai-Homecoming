@@ -3,9 +3,11 @@ package dev.xkmc.youkaishomecoming.events;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -18,12 +20,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.sensing.GolemSensor;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
@@ -137,8 +141,17 @@ public class GeneralEventHandlers {
 
 	private static boolean summonProtector(ServerLevel sl, LivingEntity le) {
 		if (le instanceof ServerPlayer sp && sp.isCreative()) return false;
+		var list = sl.getEntities(EntityTypeTest.forClass(MaidenEntity.class),
+				le.getBoundingBox().inflate(32), LivingEntity::isAlive);
+		if (!list.isEmpty()) {
+			for (var e : list) {
+				e.setTarget(le);
+				e.refreshIdle();
+			}
+			return true;
+		}
 		BlockPos center = BlockPos.containing(le.position().add(le.getForward().scale(8)).add(0, 5, 0));
-		MaidenEntity e = YHEntities.MAIDEN.create(sl);
+		MaidenEntity e = YHEntities.REIMU.create(sl);
 		if (e == null) return false;
 		BlockPos pos = getPos(le, e, center, 16, 8, 5);
 		if (pos == null) {
@@ -185,4 +198,13 @@ public class GeneralEventHandlers {
 		}
 		return false;
 	}
+
+	public static DamageSource modifyDamageType(LivingEntity le, DamageSource type, IYHDanmaku danmaku) {
+		ItemStack stack = le.getItemBySlot(EquipmentSlot.HEAD);
+		if (stack.getItem() instanceof TouhouHatItem hat) {
+			return hat.modifyDamageType(stack, le, danmaku, type);
+		}
+		return type;
+	}
+
 }

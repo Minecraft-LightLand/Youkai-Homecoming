@@ -67,12 +67,7 @@ public class StrawHatItem extends TouhouHatItem {
 		super.appendHoverText(stack, level, list, flag);
 		Player player = FleshFoodItem.getPlayer();
 		if (player == null) return;
-		boolean obtain = false;
-		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
-			obtain = true;
-		} else if (player.hasEffect(YHEffects.YOUKAIFYING.get())) {
-			obtain = true;
-		}
+		boolean obtain = showTooltip();
 		Component obt;
 		if (obtain) {
 			var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
