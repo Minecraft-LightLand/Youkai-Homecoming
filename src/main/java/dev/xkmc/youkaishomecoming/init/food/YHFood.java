@@ -34,7 +34,7 @@ public enum YHFood {
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f,
-			new EffectEntry(YHEffects.MANDRAKE::get, 200, 0, 1), DietTagGen.VEGETABLES.tag),
+			new EffectEntry(YHEffects.APHRODISIAC::get, 200, 0, 1), DietTagGen.VEGETABLES.tag),
 
 	// simple
 	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),

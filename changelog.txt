@@ -7,7 +7,8 @@
 - Ice cubes and recipe swap
 - Add Donation Box
 - Fix Soybean drop
-- Reimu return container
+- Reimu return container when feed
+- Reimu will not warn you for hurting villagers without witness
 
 2.2.5
 - Add 4 compat food for Fruits Delight

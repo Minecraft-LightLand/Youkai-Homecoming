@@ -16,7 +16,8 @@
 	"PersistentEntitySectionManagerAccessor",
 	"PhantomSpawnerMixin",
 	"ServerLevelAccessor",
-	"ShootTongueMixin"
+	"ShootTongueMixin",
+	"VillagerMixin"
   ],
   "client": [
 	"GameRendererMixin"

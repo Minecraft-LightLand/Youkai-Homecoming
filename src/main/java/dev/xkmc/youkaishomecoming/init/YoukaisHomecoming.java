@@ -103,6 +103,8 @@ public class YoukaisHomecoming {
 				ThirstCompat.init();
 			}
 
+			YHEffects.registerBrewingRecipe();
+
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 
 			TouhouSpellCards.registerSpells();

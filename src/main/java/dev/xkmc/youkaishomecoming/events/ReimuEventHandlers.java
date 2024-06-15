@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHAdvGen;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
@@ -24,13 +25,21 @@ import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class ReimuEventHandlers {
+
+	private static List<Villager> getWitness(LivingEntity le, int range, boolean eatFlesh) {
+		if (!(le.level() instanceof ServerLevel sl)) return List.of();
+		AABB aabb = le.getBoundingBox().inflate(range);
+		return sl.getEntities(EntityTypeTest.forClass(Villager.class), aabb,
+				e -> e.isAlive() && !e.hasEffect(YHEffects.HYPNOSIS.get())
+						&& (!eatFlesh || e.hasLineOfSight(le)));
+	}
 
 	public static void triggerReimuResponse(LivingEntity le, int range, boolean eatFlesh) {
 		if (!(le.level() instanceof ServerLevel sl)) return;
-		AABB aabb = le.getBoundingBox().inflate(range);
-		var list = sl.getEntities(EntityTypeTest.forClass(Villager.class), aabb,
-				e -> e.isAlive() && (!eatFlesh || e.hasLineOfSight(le)));
+		var list = getWitness(le, range, eatFlesh);
 		if (!list.isEmpty()) {
 			if (le instanceof ServerPlayer sp && eatFlesh) {
 				if (!YHModConfig.COMMON.reimuSummonFlesh.get() || fleshWarn(sp)) {
@@ -76,6 +85,7 @@ public class ReimuEventHandlers {
 	}
 
 	public static void hurtWarn(ServerPlayer sp) {
+		if (getWitness(sp, 16, false).isEmpty()) return;
 		if (koishiBlockReimu(sp)) return;
 		var adv = sp.server.getAdvancements().getAdvancement(YHAdvGen.HURT_WARN);
 		if (adv == null || sp.getAdvancements().getOrStartProgress(adv).isDone()) return;
