@@ -8,7 +8,11 @@ import com.tterrag.registrate.util.entry.MenuEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
+import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlock;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlockEntity;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxMethod;
 import dev.xkmc.youkaishomecoming.content.block.furniture.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
@@ -40,6 +44,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.FarmersDelight;
@@ -95,6 +100,10 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
+
+	public static final BlockEntry<DelegateBlock> DONATION_BOX;
+	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
+
 	public static final WoodSet HAY, STRAW;
 
 	static {
@@ -149,6 +158,18 @@ public class YHBlocks {
 						.texture("foamer", pvd.modLoc("block/moka_foamer"))
 						.renderType("cutout")))
 				.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
+
+		DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
+						BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
+								.mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASS),
+						BlockProxy.HORIZONTAL, new DonationBoxMethod(), DonationBoxBlock.TE
+				)).blockstate(DonationBoxBlock::buildStates)
+				.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()))
+				.register();
+
+		DONATION_BOX_BE = YoukaisHomecoming.REGISTRATE.blockEntity("donation_box", DonationBoxBlockEntity::new)
+				.validBlock(DONATION_BOX)
+				.register();
 
 		var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
 				.instrument(NoteBlockInstrument.BANJO).strength(0.5F).sound(SoundType.GRASS);

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/donation_box",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/donation_box"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/donation_box",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/donation_box",
+      "y": 270
+    }
+  }
+}

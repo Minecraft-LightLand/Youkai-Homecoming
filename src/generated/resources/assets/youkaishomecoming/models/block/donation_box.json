@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "youkaishomecoming:block/donation_box_down",
+    "east": "youkaishomecoming:block/donation_box_side",
+    "north": "youkaishomecoming:block/donation_box_empty",
+    "south": "youkaishomecoming:block/donation_box_end",
+    "up": "youkaishomecoming:block/donation_box_up",
+    "west": "youkaishomecoming:block/donation_box_side"
+  }
+}
