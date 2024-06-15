@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/soy_sauce_bottle"
+    "layer0": "youkaishomecoming:item/ingredient/soy_sauce_bottle"
   }
 }

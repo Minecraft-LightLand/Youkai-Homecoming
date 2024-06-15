@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ice": {
+    "has_ice_cube": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:ice"
+              "youkaishomecoming:ice_cube"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_ice",
+      "has_ice_cube",
       "has_the_recipe"
     ]
   ],

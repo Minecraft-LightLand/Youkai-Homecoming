@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:add_item",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "killer",
+      "predicate": {
+        "type": "youkaishomecoming:cirno"
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:frog"
+      }
+    }
+  ],
+  "item": "youkaishomecoming:frozen_frog"
+}

@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/mandrake_flowering"
+    "cross": "youkaishomecoming:block/mandrake_stage3"
   }
 }

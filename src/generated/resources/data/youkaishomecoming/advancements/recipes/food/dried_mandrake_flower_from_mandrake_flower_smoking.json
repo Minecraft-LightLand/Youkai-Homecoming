@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ice_cube": {
+    "has_mandrake_flower": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:ice_cube"
+              "youkaishomecoming:mandrake_flower"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:shaved_ice_over_rice"
+        "recipe": "youkaishomecoming:dried_mandrake_flower_from_mandrake_flower_smoking"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ice_cube",
+      "has_mandrake_flower",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:shaved_ice_over_rice"
+      "youkaishomecoming:dried_mandrake_flower_from_mandrake_flower_smoking"
     ]
   },
   "sends_telemetry_event": false
