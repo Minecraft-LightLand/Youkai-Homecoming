@@ -12,7 +12,8 @@ import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlock;
 import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlockEntity;
-import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxMethod;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationShape;
+import dev.xkmc.youkaishomecoming.content.block.donation.DoubleBlockHorizontal;
 import dev.xkmc.youkaishomecoming.content.block.furniture.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
@@ -162,8 +163,10 @@ public class YHBlocks {
 		DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
 						BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
 								.mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASS),
-						BlockProxy.HORIZONTAL, new DonationBoxMethod(), DonationBoxBlock.TE
+						BlockProxy.HORIZONTAL, new DoubleBlockHorizontal(),
+						new DonationShape(), DonationBoxBlock.TE
 				)).blockstate(DonationBoxBlock::buildStates)
+				.simpleItem()
 				.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()))
 				.register();
 

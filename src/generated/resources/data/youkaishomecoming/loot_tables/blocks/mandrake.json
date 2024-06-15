@@ -11,6 +11,25 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "youkaishomecoming:mandrake_root"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:mandrake",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "7"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
           "name": "youkaishomecoming:mandrake_flower"
         }
       ],
@@ -41,7 +60,7 @@
               }
             }
           ],
-          "name": "youkaishomecoming:mandrake_flower"
+          "name": "youkaishomecoming:mandrake_root"
         }
       ],
       "rolls": 1.0

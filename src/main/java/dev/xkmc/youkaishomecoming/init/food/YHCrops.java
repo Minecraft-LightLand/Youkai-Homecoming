@@ -46,7 +46,7 @@ public enum YHCrops {
 	COFFEA(PlantType.COFFEA, 8, "green_coffee_bean", "coffee_berries"),
 	TEA(PlantType.TEA, 8, "tea_seeds", "tea_leaves"),
 	UDUMBARA(PlantType.UDUMBARA, 8, "udumbara_seeds", "udumbara_flower"),
-	MANDRAKE(PlantType.CROSS, 8, "mandrake_root", "mandrake_flower"),
+	MANDRAKE(PlantType.MANDRAKE, 8, "mandrake_root", "mandrake_flower"),
 	;
 
 	private final BlockEntry<? extends BushBlock> PLANT;
@@ -207,6 +207,19 @@ public enum YHCrops {
 						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()),
+
+		MANDRAKE((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
+						new YHCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
+				.blockstate((ctx, pvd) -> YHCropBlock.buildCrossModel(ctx, pvd, name))
+				.loot((pvd, block) -> MandrakeGen.buildPlantLoot(pvd, block, crop))
+				.register(),
+				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
+						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
+						.loot((ctx, pvd) -> MandrakeGen.buildWildLoot(ctx, pvd, crop))
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.WILD_CROPS)
+						.register()
+		),
 		;
 
 		private final BiFunction<String, YHCrops, BlockEntry<? extends BushBlock>> plant;

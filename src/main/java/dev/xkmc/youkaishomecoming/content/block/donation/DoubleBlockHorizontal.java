@@ -17,12 +17,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class DonationBoxMethod implements PlacementBlockMethod, SetPlacedByBlockMethod, ShapeUpdateBlockMethod {
+public class DoubleBlockHorizontal implements PlacementBlockMethod, SetPlacedByBlockMethod, ShapeUpdateBlockMethod {
 
 	@Nullable
 	public BlockState getStateForPlacement(@Nullable BlockState def, BlockPlaceContext ctx) {
 		if (def == null) return null;
-		Direction dir = def.getValue(BlockProxy.HORIZONTAL_FACING);
+		Direction dir = def.getValue(BlockProxy.HORIZONTAL_FACING).getOpposite();
 		BlockState next = ctx.getLevel().getBlockState(ctx.getClickedPos().relative(dir));
 		if (!next.canBeReplaced()) return null;
 		return def;
@@ -30,14 +30,14 @@ public class DonationBoxMethod implements PlacementBlockMethod, SetPlacedByBlock
 
 	@Override
 	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity le, ItemStack stack) {
-		Direction dir = state.getValue(BlockProxy.HORIZONTAL_FACING);
-		level.setBlockAndUpdate(pos.relative(dir), state.setValue(BlockProxy.HORIZONTAL_FACING, dir.getOpposite()));
+		Direction dir = state.getValue(BlockProxy.HORIZONTAL_FACING).getOpposite();
+		level.setBlockAndUpdate(pos.relative(dir), state.setValue(BlockProxy.HORIZONTAL_FACING, dir));
 	}
 
 	@Override
 	public BlockState updateShape(Block self, BlockState current, BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-		if (facing == current.getValue(BlockProxy.HORIZONTAL_FACING)) {
-			if (!facingState.is(self) || facingState.getValue(BlockProxy.HORIZONTAL_FACING) != facing.getOpposite())
+		if (facing == current.getValue(BlockProxy.HORIZONTAL_FACING).getOpposite()) {
+			if (!facingState.is(self) || facingState.getValue(BlockProxy.HORIZONTAL_FACING) != facing)
 				return Blocks.AIR.defaultBlockState();
 		}
 		return current;

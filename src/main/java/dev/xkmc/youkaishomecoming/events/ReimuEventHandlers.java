@@ -84,6 +84,23 @@ public class ReimuEventHandlers {
 		sp.sendSystemMessage(YHLangData.REIMU_WARN.get(), true);
 	}
 
+	@Nullable
+	public static MaidenEntity trySummonReimu(ServerLevel sl, LivingEntity le) {
+		BlockPos center = BlockPos.containing(le.position().add(le.getForward().scale(8)).add(0, 5, 0));
+		MaidenEntity e = YHEntities.REIMU.create(sl);
+		if (e == null) return null;
+		BlockPos pos = getPosForReimuSpawn(le, e, center, 16, 8, 5);
+		if (pos == null) {
+			center = le.blockPosition().above(5);
+			pos = getPosForReimuSpawn(le, e, center, 16, 16, 5);
+		}
+		if (pos == null) return null;
+		e.moveTo(pos, 0, 0);
+		TouhouSpellCards.setReimu(e);
+		sl.addFreshEntity(e);
+		return e;
+	}
+
 	private static boolean trySummonReimuAttack(ServerLevel sl, LivingEntity le) {
 		if (le instanceof ServerPlayer sp && sp.isCreative()) return false;
 		if (koishiBlockReimu(le)) return false;
@@ -97,20 +114,10 @@ public class ReimuEventHandlers {
 			}
 			return false;
 		}
-		BlockPos center = BlockPos.containing(le.position().add(le.getForward().scale(8)).add(0, 5, 0));
-		MaidenEntity e = YHEntities.REIMU.create(sl);
-		if (e == null) return false;
-		BlockPos pos = getPosForReimuSpawn(le, e, center, 16, 8, 5);
-		if (pos == null) {
-			center = le.blockPosition().above(5);
-			pos = getPosForReimuSpawn(le, e, center, 16, 16, 5);
-		}
-		if (pos == null) return false;
-		e.moveTo(pos, 0, 0);
+		var maiden = trySummonReimu(sl, le);
+		if (maiden == null) return false;
 		EffectEventHandlers.removeKoishi(le);
-		e.setTarget(le);
-		TouhouSpellCards.setReimu(e);
-		sl.addFreshEntity(e);
+		maiden.setTarget(le);
 		return true;
 	}
 

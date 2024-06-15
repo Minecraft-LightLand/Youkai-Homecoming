@@ -40,12 +40,15 @@ public class ReimuEntity extends MaidenEntity {
 	protected void customServerAiStep() {
 		super.customServerAiStep();
 		if (feedCD > 0) feedCD--;
+		if (feedCD > 0) {
+			setFlag(16, true);
+		} else setFlag(16, false);
 	}
 
 	@Override
 	protected void tickEffects() {
 		super.tickEffects();
-		if (feedCD > 0) {
+		if (getFlag(16)) {
 			boolean flag;
 			if (this.isInvisible()) {
 				flag = this.random.nextInt(15) == 0;
@@ -71,6 +74,7 @@ public class ReimuEntity extends MaidenEntity {
 			var food = stack.getFoodProperties(this);
 			if (food != null) {
 				if (player instanceof ServerPlayer sp && feedCD == 0) {
+					ItemStack remain = stack.getCraftingRemainingItem();
 					stack.shrink(1);
 					YHCriteriaTriggers.FEED_REIMU.trigger(sp, stack);
 					feedCD += food.getNutrition() * 100;
@@ -81,6 +85,8 @@ public class ReimuEntity extends MaidenEntity {
 					if (stack.getUseAnimation() == UseAnim.DRINK)
 						playSound(stack.getDrinkingSound());
 					else playSound(stack.getEatingSound());
+					if (!remain.isEmpty())
+						sp.getInventory().placeItemBackInInventory(remain);
 				}
 				return InteractionResult.SUCCESS;
 			}

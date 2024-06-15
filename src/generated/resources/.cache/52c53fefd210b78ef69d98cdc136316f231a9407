@@ -1,7 +1,7 @@
-// 1.20.1	2024-06-15T10:42:01.059989	Global Loot Modifiers : youkaishomecoming
+// 1.20.1	2024-06-15T17:40:21.665853	Global Loot Modifiers : youkaishomecoming
 f00f8edbf386f6ee7f693cfe061dec6e11908a1f data/forge/loot_modifiers/global_loot_modifiers.json
 59098a61896508b972edb180cd6b3353087d6b80 data/youkaishomecoming/loot_modifiers/cirno_frozen_frog.json
-b7529ecdd2b8f54c5d2ee4aa068bf3fe363e9849 data/youkaishomecoming/loot_modifiers/fishing_lamprey.json
+ee1b70d650151a2c5a14c8cf1fb8908212accb5a data/youkaishomecoming/loot_modifiers/fishing_lamprey.json
 33391d560529de7de10fdc1ae1a10a448283a415 data/youkaishomecoming/loot_modifiers/rumia_scavenging_creeper_head.json
 4c40d6f1bb10f83285a6d107eb0ae35a6ce799bb data/youkaishomecoming/loot_modifiers/rumia_scavenging_flesh.json
 bfcb798d79d6bbbc50dfce82618a7a6336010471 data/youkaishomecoming/loot_modifiers/rumia_scavenging_flesh_cooked.json

@@ -50,7 +50,7 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 	@Override
 	protected void start() {
 		add("fishing_lamprey", new ReplaceItemModifier(0.1f, YHFood.RAW_LAMPREY.item.asStack(),
-				LootTableIdCondition.builder(BuiltInLootTables.FISHING_FISH).build()
+				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build()
 		));
 
 		add("scavenging_flesh", create(YHFood.FLESH.item.get(), 1,

@@ -5,6 +5,9 @@
 
 2.2.6
 - Ice cubes and recipe swap
+- Add Donation Box
+- Fix Soybean drop
+- Reimu return container
 
 2.2.5
 - Add 4 compat food for Fruits Delight
