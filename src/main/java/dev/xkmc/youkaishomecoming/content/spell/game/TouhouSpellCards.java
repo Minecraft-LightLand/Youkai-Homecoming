@@ -5,10 +5,12 @@ import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.entity.sanae.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.cirno.CirnoIceStorm;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
+import dev.xkmc.youkaishomecoming.content.spell.game.sanae.Sugiruyoru;
 import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
 import dev.xkmc.youkaishomecoming.content.spell.game.yukari.YukariMain;
 import dev.xkmc.youkaishomecoming.content.spell.game.yuyuko.YuyukoTest;
@@ -37,6 +39,7 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:hakurei_reimu", StagedHoming::new);
 		registerSpell("touhou_little_maid:yukari_yakumo", YukariMain::new);
 		registerSpell("touhou_little_maid:cirno", CirnoIceStorm::new);
+		registerSpell("touhou_little_maid:kochiya_sanae", Sugiruyoru::new);
 
 		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new KoishiTest()));
 		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
@@ -70,6 +73,10 @@ public class TouhouSpellCards {
 
 	public static void setYukari(YukariEntity e) {
 		setSpell(e, "touhou_little_maid:yukari_yakumo");
+	}
+
+	public static void setSanae(SanaeEntity e) {
+		setSpell(e, "touhou_little_maid:kochiya_sanae");
 	}
 
 }

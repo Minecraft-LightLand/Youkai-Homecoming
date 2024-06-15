@@ -18,6 +18,7 @@ import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.sanae.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -120,6 +121,15 @@ public class YHEntities {
 			.attributes(BossYoukaiEntity::createAttributes)
 			.renderer(() -> GeneralYoukaiRenderer::new)
 			.spawnEgg(0x4B1442, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
+
+
+	public static final EntityEntry<SanaeEntity> Sanae = YoukaisHomecoming.REGISTRATE
+			.entity("kochiya_sanae", SanaeEntity::new, MobCategory.MONSTER)
+			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+			.attributes(BossYoukaiEntity::createAttributes)
+			.renderer(() -> GeneralYoukaiRenderer::new)
+			.spawnEgg(0x4eaff9, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
 			.loot((pvd, type) -> pvd.add(type, LootTable.lootTable())).register();
 
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU = YoukaisHomecoming.REGISTRATE
