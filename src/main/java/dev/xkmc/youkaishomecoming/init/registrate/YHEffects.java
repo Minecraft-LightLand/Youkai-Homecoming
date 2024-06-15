@@ -118,7 +118,7 @@ public class YHEffects {
 	}
 
 	public static void register() {
-		regPotion2("aphrodisiac", APHRODISIAC::get, YHCrops.MANDRAKE::getFruits, 3600, 9600, () -> Potions.HEALING);
+		regPotion2("aphrodisiac", APHRODISIAC::get, YHItems.DRIED_MANDRAKE_FLOWER, 3600, 9600, () -> Potions.HEALING);
 		regPotion2("hypnosis", HYPNOSIS::get, YHCrops.MANDRAKE::getSeed, 3600, 9600, () -> Potions.WEAKNESS);
 	}
 

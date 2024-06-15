@@ -1,14 +1,15 @@
-- TODO Mandrake effects, potions, and food
 - TODO Reimu's Shrine
 - TODO Cirno Ice & Food
 - TODO more food
 
 2.2.6
+- Add Mandrake effects and potions
 - Ice cubes and recipe swap
 - Add Donation Box
 - Fix Soybean drop
 - Reimu return container when feed
 - Reimu will not warn you for hurting villagers without witness
+
 
 2.2.5
 - Add 4 compat food for Fruits Delight
