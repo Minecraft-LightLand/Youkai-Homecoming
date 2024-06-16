@@ -11,6 +11,15 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "youkaishomecoming:fine_grid_framed_shoji",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
           "name": "youkaishomecoming:fine_grid_framed_shoji"
         }
       ],

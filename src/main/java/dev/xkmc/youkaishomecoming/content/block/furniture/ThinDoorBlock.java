@@ -18,7 +18,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class ThinDoorBlock extends DoorBlock {
 
-	protected static final float TH = 3.0F;
+	protected static final float TH = 1;
 	protected static final VoxelShape SOUTH_AABB = Block.box(0, 0, 0, 16, 16, TH);
 	protected static final VoxelShape NORTH_AABB = Block.box(0, 0, 16 - TH, 16, 16, 16);
 	protected static final VoxelShape WEST_AABB = Block.box(16 - TH, 0, 0, 16, 16, 16);

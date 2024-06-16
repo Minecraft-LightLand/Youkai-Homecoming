@@ -16,7 +16,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class ThinTrapdoorBlock extends TrapDoorBlock {
 
-	protected static final int TH = 3;
+	protected static final int TH = 1;
 	protected static final VoxelShape EAST_OPEN_AABB = Block.box(0, 0, 0, TH, 16, 16);
 	protected static final VoxelShape WEST_OPEN_AABB = Block.box(16 - TH, 0, 0, 16, 16, 16);
 	protected static final VoxelShape SOUTH_OPEN_AABB = Block.box(0, 0, 0, 16, 16, TH);

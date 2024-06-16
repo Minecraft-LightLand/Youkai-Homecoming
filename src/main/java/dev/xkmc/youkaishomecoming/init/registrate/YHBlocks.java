@@ -195,14 +195,10 @@ public class YHBlocks {
 					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
 					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 
-			FINE_GRID_SHOJI = YoukaisHomecoming.REGISTRATE.block("fine_grid_framed_shoji", p -> new ThinDoorBlock(BlockBehaviour.Properties.copy(Blocks.CLAY)
-							.noOcclusion().pushReaction(PushReaction.DESTROY), set))
-					.blockstate((ctx, pvd) -> pvd.doorBlock(ctx.get(),
-							pvd.modLoc("block/fine_grid_framed_shoji_bottom"),
-							pvd.modLoc("block/fine_grid_framed_shoji_top")))
-					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
-					.item().model((ctx, pvd) -> pvd.generated(ctx)).build().register();
+			var doorProp = BlockBehaviour.Properties.copy(Blocks.CLAY)
+					.noOcclusion().pushReaction(PushReaction.DESTROY);
 
+			FINE_GRID_SHOJI = door("fine_grid_framed_shoji", doorProp, set);
 
 			var prop = BlockBehaviour.Properties.copy(Blocks.CLAY);
 
@@ -266,14 +262,14 @@ public class YHBlocks {
 				.register();
 	}
 
-	private static BlockEntry<ThinDoorBlock> door(String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side) {
-		return YoukaisHomecoming.REGISTRATE.block(id, p -> new ThinDoorBlock(BlockBehaviour.Properties.copy(Blocks.CLAY)
-						.noOcclusion().pushReaction(PushReaction.DESTROY), set))
+	private static BlockEntry<ThinDoorBlock> door(String id, BlockBehaviour.Properties prop, BlockSetType set) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> new ThinDoorBlock(prop, set))
 				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(),
 						pvd.modLoc("block/" + id + "_bottom"),
 						pvd.modLoc("block/" + id + "_top")))
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
-				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).build().register();
+				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).build()
+				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b))).register();
 	}
 
 
