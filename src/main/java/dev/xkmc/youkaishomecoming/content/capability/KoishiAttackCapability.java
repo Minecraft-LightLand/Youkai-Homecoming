@@ -6,6 +6,7 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHAdvGen;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
@@ -79,8 +80,18 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 			}
 			if (tickRemain == 0 && source != null) {
 				attackCooldown = YHModConfig.COMMON.koishiAttackCoolDown.get();
-				if (!notValid() && player.hurt(YHDamageTypes.koishi(player, source), YHModConfig.COMMON.koishiAttackDamage.get())) {
-					blockCount = 0;
+				if (!notValid()) {
+					float dmg = YHModConfig.COMMON.koishiAttackDamage.get();
+
+					var adv = sp.server.getAdvancements().getAdvancement(YHAdvGen.KOISHI_FIRST);
+					if (adv != null && !sp.getAdvancements().getOrStartProgress(adv).isDone()) {
+						YHCriteriaTriggers.KOISHI_FIRST.trigger(sp);
+						dmg = Math.min(dmg, player.getMaxHealth() - 1);
+					}
+
+					if (player.hurt(YHDamageTypes.koishi(player, source), dmg)) {
+						blockCount = 0;
+					}
 				}
 				source = null;
 			}

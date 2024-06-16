@@ -15,6 +15,7 @@
 	"LivingEntityMixin",
 	"PersistentEntitySectionManagerAccessor",
 	"PhantomSpawnerMixin",
+	"RandomizableContainerBlockEntityMixin",
 	"ServerLevelAccessor",
 	"ShootTongueMixin",
 	"VillagerMixin"

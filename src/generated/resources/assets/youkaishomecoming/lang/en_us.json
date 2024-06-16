@@ -169,7 +169,7 @@
   "effect.youkaishomecoming.thick": "Thick",
   "effect.youkaishomecoming.thick.description": "Immune to wither, reduces damage by 1",
   "effect.youkaishomecoming.unconscious": "Unconscious",
-  "effect.youkaishomecoming.unconscious.description": "You won't be targeted by mobs. Terminates when you attack.",
+  "effect.youkaishomecoming.unconscious.description": "You won't be targeted by mobs. Terminates when you attack or open loot chests.",
   "effect.youkaishomecoming.youkaified": "Youkaified",
   "effect.youkaishomecoming.youkaified.description": "You are a Youkai now",
   "effect.youkaishomecoming.youkaifying": "Youkaifying",

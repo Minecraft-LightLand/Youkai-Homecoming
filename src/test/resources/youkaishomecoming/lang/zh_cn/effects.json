@@ -17,7 +17,7 @@
 	"native_god_bless": "土著神的祝福",
 	"native_god_bless.description": "提升触及距离和移动速度",
 	"unconscious": "无意识",
-	"unconscious.description": "你不会成为攻击目标。进行攻击后效果消失",
+	"unconscious.description": "你不会成为攻击目标。进行攻击或者打开战利品箱后效果消失",
 	"refreshing": "清爽",
 	"refreshing.description": "免疫火焰伤害，熄灭身上火焰",
 	"smoothing": "抚慰",

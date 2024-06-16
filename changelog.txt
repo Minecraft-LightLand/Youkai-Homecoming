@@ -8,8 +8,11 @@
 - Add Donation Box
 - Fix Soybean drop
 - Reimu return container when feed
+- Fix Reimu feed
 - Reimu will not warn you for hurting villagers without witness
-
+- Reimu can open doors now
+- Opening loot chest will disable Unconscious
+- First Koishi attack will not be fatal
 
 2.2.5
 - Add 4 compat food for Fruits Delight

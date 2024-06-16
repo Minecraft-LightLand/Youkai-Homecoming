@@ -69,7 +69,7 @@ public class YHEffects {
 
 	public static final RegistryEntry<EmptyEffect> UNCONSCIOUS = genEffect("unconscious",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),
-			"You won't be targeted by mobs. Terminates when you attack.");
+			"You won't be targeted by mobs. Terminates when you attack or open loot chests.");
 
 	public static final RegistryEntry<MandrakeEffect> APHRODISIAC = genEffect("aphrodisiac",
 			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xE17A84),

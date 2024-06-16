@@ -131,7 +131,7 @@ public enum YHFood {
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
 			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
-	)),
+	), YHTagGen.FLESH_FOOD),
 	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
 
 	// bowl
