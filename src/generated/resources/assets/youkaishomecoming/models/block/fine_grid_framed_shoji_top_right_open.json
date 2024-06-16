@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right_open",
+  "textures": {
+    "bottom": "youkaishomecoming:block/fine_grid_framed_shoji_bottom",
+    "top": "youkaishomecoming:block/fine_grid_framed_shoji_top"
+  }
+}

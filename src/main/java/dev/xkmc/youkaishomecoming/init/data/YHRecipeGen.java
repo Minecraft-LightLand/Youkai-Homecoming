@@ -61,6 +61,16 @@ public class YHRecipeGen {
 			YHBlocks.HAY.genRecipe(pvd);
 			YHBlocks.STRAW.genRecipe(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.CANVAS.get())
+					.pattern(" A ").pattern("ASA")
+					.define('A', ModItems.CANVAS.get())
+					.define('S', Items.STRING)
+					.save(pvd);
+		}
+
+		// furniture
+		{
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.MOKA)::unlockedBy, YHItems.COFFEE_POWDER.get())
 					.pattern("ABA").pattern("IWI").pattern("ADA")
 					.define('A', Items.IRON_NUGGET)
@@ -94,11 +104,38 @@ public class YHRecipeGen {
 					.define('C', Items.BUCKET)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.CANVAS.get())
-					.pattern(" A ").pattern("ASA")
-					.define('A', ModItems.CANVAS.get())
-					.define('S', Items.STRING)
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI)::unlockedBy, ModItems.STRAW.get())
+					.pattern("ABA").pattern("BCB").pattern("ABA")
+					.define('A', Items.CLAY_BALL)
+					.define('B', Items.BONE_MEAL)
+					.define('C', ModItems.STRAW.get())
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI)::unlockedBy, YHBlocks.SIKKUI.asItem())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', Items.STICK)
+					.define('B', YHBlocks.SIKKUI)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI)::unlockedBy, YHBlocks.FRAMED_SIKKUI.asItem())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', Items.STICK)
+					.define('B', YHBlocks.FRAMED_SIKKUI)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.asItem())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', Items.STICK)
+					.define('B', YHBlocks.GRID_SIKKUI)
+					.save(pvd);
+
+			pvd.stonecutting(DataIngredient.items(YHBlocks.SIKKUI.get()), RecipeCategory.MISC, YHBlocks.SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.FRAMED_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FRAMED_SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.GRID_SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SHOJI, 3);
+
+
 		}
 
 		// plants
@@ -109,7 +146,7 @@ public class YHRecipeGen {
 			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smelting(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
-			pvd.smoking(DataIngredient.items(YHCrops.MANDRAKE.getFruits()), RecipeCategory.FOOD, YHItems.DRIED_MANDRAKE_FLOWER, 0.1f, 200);
+			drying(pvd, DataIngredient.items(YHCrops.MANDRAKE.getFruits()), YHItems.DRIED_MANDRAKE_FLOWER);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);

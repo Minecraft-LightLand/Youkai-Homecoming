@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mandrake_flower": {
+    "has_grid_framed_sikkui": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:mandrake_flower"
+              "youkaishomecoming:grid_framed_sikkui"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:dried_mandrake_flower_from_mandrake_flower_smoking"
+        "recipe": "youkaishomecoming:fine_grid_framed_sikkui"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_mandrake_flower",
+      "has_grid_framed_sikkui",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:dried_mandrake_flower_from_mandrake_flower_smoking"
+      "youkaishomecoming:fine_grid_framed_sikkui"
     ]
   },
   "sends_telemetry_event": false

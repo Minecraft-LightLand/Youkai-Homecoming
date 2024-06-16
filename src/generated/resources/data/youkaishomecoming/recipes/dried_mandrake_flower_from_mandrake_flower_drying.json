@@ -1,8 +1,8 @@
 {
-  "type": "minecraft:smoking",
-  "category": "food",
+  "type": "youkaishomecoming:drying_rack",
+  "category": "misc",
   "cookingtime": 200,
-  "experience": 0.1,
+  "experience": 0.0,
   "ingredient": {
     "item": "youkaishomecoming:mandrake_flower"
   },
