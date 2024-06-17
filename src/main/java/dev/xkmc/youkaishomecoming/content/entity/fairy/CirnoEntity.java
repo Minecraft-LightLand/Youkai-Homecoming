@@ -22,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
@@ -73,6 +74,7 @@ public class CirnoEntity extends FairyEntity {
 
 	public static boolean checkCirnoSpawnRules(EntityType<CirnoEntity> e, ServerLevelAccessor level, MobSpawnType type, BlockPos pos, RandomSource rand) {
 		if (!checkMobSpawnRules(e, level, type, pos, rand)) return false;
+		if (!level.getEntitiesOfClass(CirnoEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty()) return false;
 		var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 128, false);
 		if (player == null) return false;
 		return player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
