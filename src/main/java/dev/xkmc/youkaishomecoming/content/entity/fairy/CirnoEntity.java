@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.nbt.CompoundTag;
@@ -45,8 +46,9 @@ public class CirnoEntity extends FairyEntity {
 				e.getItemBySlot(EquipmentSlot.CHEST).is(Items.LEATHER_CHESTPLATE) &&
 				e.getItemBySlot(EquipmentSlot.LEGS).is(Items.LEATHER_LEGGINGS) &&
 				e.getItemBySlot(EquipmentSlot.FEET).is(Items.LEATHER_BOOTS)) {
-			var ice = YHItems.ICE_CUBE.asStack();//FIXME fairy ice
-			if (e.getRandom().nextDouble() < 0.03) {//TODO config
+			var ice = YHItems.FAIRY_ICE_CRYSTAL.asStack();
+			double chance = YHModConfig.COMMON.cirnoFairyDrop.get();
+			if (e.getRandom().nextDouble() < chance) {
 				if (e instanceof Player pl) {
 					pl.getInventory().placeItemBackInInventory(ice);
 				} else {

@@ -55,7 +55,8 @@ public class YHItems {
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, DRIED_MANDRAKE_FLOWER, CAN,
+			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
+			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN,
 			ICE_CUBE, FAIRY_ICE_CRYSTAL, FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
@@ -115,6 +116,7 @@ public class YHItems {
 			COFFEE_POWDER = crop("coffee_powder", Item::new);
 			YHTea.register();
 			MATCHA = crop("matcha", Item::new);
+			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
 			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);
 			SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 			REDBEAN_BAG = YHCrops.REDBEAN.createBag();

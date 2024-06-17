@@ -51,7 +51,8 @@
 	"heart_throbbing_surprise": "惊吓大冒险",
 	"tea_leaf_bag": "茶叶袋",
 	"fermentation_tank": "发酵桶",
-	"donation_box": "赛钱箱"
+	"donation_box": "赛钱箱",
+	"fine_grid_framed_shoji": "细木框日式障子门"
   },
   "-cartesian": {
 	"candles": {
@@ -96,6 +97,21 @@
 		  "slab": "台阶",
 		  "trap_door": "活板门",
 		  "vertical_slab": "墙"
+		}
+	  ]
+	},
+	"sikkui": {
+	  "path": "block.youkaishomecoming",
+	  "list": [
+		{
+		  "sikkui": "日式灰泥",
+		  "framed_sikkui": "木框日式灰泥",
+		  "grid_framed_sikkui": "井字木框日式灰泥",
+		  "fine_grid_framed_sikkui": "细木框日式灰泥"
+		},
+		{
+		  "*": "",
+		  "*_trap_door": "活板门"
 		}
 	  ]
 	}

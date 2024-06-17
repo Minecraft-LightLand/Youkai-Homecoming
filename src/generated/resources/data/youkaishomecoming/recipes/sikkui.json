@@ -10,11 +10,14 @@
     },
     "C": {
       "item": "farmersdelight:straw"
+    },
+    "D": {
+      "item": "minecraft:paper"
     }
   },
   "pattern": [
     "ABA",
-    "BCB",
+    "DCD",
     "ABA"
   ],
   "result": {

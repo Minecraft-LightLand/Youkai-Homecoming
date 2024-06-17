@@ -105,9 +105,10 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI)::unlockedBy, ModItems.STRAW.get())
-					.pattern("ABA").pattern("BCB").pattern("ABA")
+					.pattern("ABA").pattern("DCD").pattern("ABA")
 					.define('A', Items.CLAY_BALL)
 					.define('B', Items.BONE_MEAL)
+					.define('D', Items.PAPER)
 					.define('C', ModItems.STRAW.get())
 					.save(pvd);
 
@@ -145,7 +146,8 @@ public class YHRecipeGen {
 			pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smelting(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
-			pvd.smoking(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
+			cutting(pvd, YHCrops.MANDRAKE.seed, YHItems.STRIPPED_MANDRAKE_ROOT, 1);
+			pvd.smoking(DataIngredient.items(YHItems.STRIPPED_MANDRAKE_ROOT.get()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
 			drying(pvd, DataIngredient.items(YHCrops.MANDRAKE.getFruits()), YHItems.DRIED_MANDRAKE_FLOWER);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
