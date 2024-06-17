@@ -3,25 +3,31 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:cocoa_beans"
-    },
-    {
-      "item": "minecraft:cocoa_beans"
-    },
-    {
-      "item": "minecraft:cocoa_beans"
-    },
-    {
-      "item": "minecraft:honey_bottle"
-    },
-    {
       "item": "youkaishomecoming:matcha"
+    },
+    {
+      "item": "minecraft:twisting_vines"
     },
     {
       "item": "minecraft:pink_petals"
     },
     {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
       "item": "minecraft:blue_orchid"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
     }
   ],
   "result": {

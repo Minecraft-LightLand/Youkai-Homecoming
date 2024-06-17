@@ -7,6 +7,7 @@
 - Fix Soybean drop
 - Fix Lamprey fishing
 - Fix Reimu feed
+- Fix Danmaku and Laser rendering
 - Make Rumia loots affected by looting
 - Reimu will not warn you for hurting villagers without witness
 - Reimu can open doors now

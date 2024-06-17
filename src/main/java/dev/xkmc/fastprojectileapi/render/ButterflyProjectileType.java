@@ -4,10 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.joml.Matrix3f;
@@ -19,11 +16,11 @@ public record ButterflyProjectileType(ResourceLocation colored, ResourceLocation
 	@Override
 	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
 		VertexConsumer vc;
-		vc = buffer.getBuffer(RenderType.entityCutoutNoCull(colored));
+		vc = buffer.getBuffer(DanmakuRenderStates.danmaku(colored));
 		for (var e : list) {
 			e.tex(vc, color);
 		}
-		vc = buffer.getBuffer(RenderType.entityCutoutNoCull(overlay));
+		vc = buffer.getBuffer(DanmakuRenderStates.danmaku(overlay));
 		for (var e : list) {
 			e.tex(vc, -1);
 		}
@@ -71,9 +68,7 @@ public record ButterflyProjectileType(ResourceLocation colored, ResourceLocation
 		}
 
 		private static void vertex(VertexConsumer vc, Matrix4f m4, Matrix3f m3, float x, float y, float u, float v, int color) {
-			vc.vertex(m4, x - 0.5F, 0.0F, y - 0.5F).color(color)
-					.uv(u, v).overlayCoords(OverlayTexture.NO_OVERLAY)
-					.uv2(LightTexture.FULL_BRIGHT).normal(m3, 0.0F, 1.0F, 0.0F).endVertex();
+			vc.vertex(m4, x - 0.5F, 0.0F, y - 0.5F).color(color).uv(u, v).endVertex();
 		}
 
 	}

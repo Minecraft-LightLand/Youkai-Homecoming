@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.cirno.CirnoIceStorm;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;
+import dev.xkmc.youkaishomecoming.content.spell.game.koishi.Polygraph;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
 import dev.xkmc.youkaishomecoming.content.spell.game.sanae.Sugiruyoru;
 import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
@@ -41,7 +42,7 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:cirno", CirnoIceStorm::new);
 		registerSpell("touhou_little_maid:kochiya_sanae", Sugiruyoru::new);
 
-		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new KoishiTest()));
+		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new Polygraph()));
 		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
 		registerSpell("touhou_little_maid:saigyouji_yuyuko", () -> ListSpellCard.of(new YuyukoTest()));
 	}

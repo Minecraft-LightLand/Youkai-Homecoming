@@ -10,9 +10,9 @@
     }
   },
   "pattern": [
-    "AAA",
+    " A ",
     "ABA",
-    "AAA"
+    " A "
   ],
   "result": {
     "item": "youkaishomecoming:cross_framed_sikkui"

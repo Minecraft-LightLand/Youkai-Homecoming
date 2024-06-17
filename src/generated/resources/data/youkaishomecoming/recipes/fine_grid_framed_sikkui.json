@@ -10,9 +10,9 @@
     }
   },
   "pattern": [
-    "AAA",
+    " A ",
     "ABA",
-    "AAA"
+    " A "
   ],
   "result": {
     "item": "youkaishomecoming:fine_grid_framed_sikkui"

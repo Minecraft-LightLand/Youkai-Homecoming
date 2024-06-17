@@ -113,25 +113,25 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI.BASE)::unlockedBy, YHBlocks.SIKKUI.BASE.asItem())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern(" A ").pattern("ABA").pattern(" A ")
 					.define('A', Items.STICK)
 					.define('B', YHBlocks.SIKKUI.BASE)
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.CROSS_SIKKUI.BASE)::unlockedBy, YHBlocks.FRAMED_SIKKUI.BASE.asItem())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern(" A ").pattern("ABA").pattern(" A ")
 					.define('A', Items.STICK)
 					.define('B', YHBlocks.FRAMED_SIKKUI.BASE)
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI.BASE)::unlockedBy, YHBlocks.CROSS_SIKKUI.BASE.asItem())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern(" A ").pattern("ABA").pattern(" A ")
 					.define('A', Items.STICK)
 					.define('B', YHBlocks.CROSS_SIKKUI.BASE)
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.BASE.asItem())
-					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.pattern(" A ").pattern("ABA").pattern(" A ")
 					.define('A', Items.STICK)
 					.define('B', YHBlocks.GRID_SIKKUI.BASE)
 					.save(pvd);
@@ -295,9 +295,9 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.HIGI_CHOCOLATE.item, 3)::unlockedBy, Items.COCOA_BEANS)
+					.requires(YHItems.MATCHA).requires(Items.TWISTING_VINES).requires(Items.PINK_PETALS)
+					.requires(Items.HONEY_BOTTLE).requires(Items.BLAZE_POWDER).requires(Items.BLUE_ORCHID)
 					.requires(Items.COCOA_BEANS, 3)
-					.requires(Items.HONEY_BOTTLE).requires(YHItems.MATCHA)
-					.requires(Items.PINK_PETALS).requires(Items.BLUE_ORCHID)
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.HIGI_DOUGHNUT.item, 1)::unlockedBy, YHFood.HIGI_CHOCOLATE.item.get())

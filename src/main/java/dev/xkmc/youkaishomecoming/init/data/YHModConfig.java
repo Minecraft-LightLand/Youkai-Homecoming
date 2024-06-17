@@ -9,7 +9,14 @@ public class YHModConfig {
 
 	public static class Client {
 
+		public final ForgeConfigSpec.BooleanValue laserRenderAdditive;
+		public final ForgeConfigSpec.BooleanValue laserRenderInverted;
+		public final ForgeConfigSpec.DoubleValue laserTransparency;
+
 		Client(ForgeConfigSpec.Builder builder) {
+			laserRenderAdditive = builder.define("laserRenderAdditive", true);
+			laserRenderInverted = builder.define("laserRenderInverted", true);
+			laserTransparency = builder.defineInRange("laserTransparency", 0.5, 0, 1);
 		}
 
 	}
@@ -119,7 +126,7 @@ public class YHModConfig {
 
 			builder.push("cirno");
 			cirnoFairyDrop = builder.comment("Chance for fairy ice crystal to drop")
-							.defineInRange("cirnoFairyDrop",0.03,0,1);
+					.defineInRange("cirnoFairyDrop", 0.03, 0, 1);
 			builder.pop();
 		}
 
