@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 0.1,
   "ingredient": {
-    "item": "youkaishomecoming:mandrake_root"
+    "item": "youkaishomecoming:stripped_mandrake_root"
   },
   "result": "youkaishomecoming:cooked_mandrake_root"
 }

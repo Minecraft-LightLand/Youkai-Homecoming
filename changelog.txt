@@ -1,21 +1,19 @@
-- TODO Reimu's Shrine
-- TODO Cirno Ice & Food
-
-
 2.2.6
 - Add Mandrake effects and potions
 - Add ice cubes, change recipes
 - Add Donation Box
 - Add Sukkui decoration blocks
+- Add Cirno spawn, fairy ice crystal, and frozen frogs
 - Fix Soybean drop
+- Fix Lamprey fishing
 - Fix Reimu feed
 - Reimu will not warn you for hurting villagers without witness
 - Reimu can open doors now
 - Opening loot chest will disable Unconscious
 - First Koishi attack will not be fatal
-- TODO stripped mandrake
-- TODO Cirno attack drop fairy ice
-- TODO ice frog variants
+- TODO texture: cooked mandrake, fairy ice crystal, frozen frog variants
+- TODO Reimu's Shrine
+- TODO Cirno house & Food
 - TODO more food
 
 2.2.5

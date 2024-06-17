@@ -109,6 +109,7 @@ public class YHEntities {
 	public static final EntityEntry<CirnoEntity> CIRNO = YoukaisHomecoming.REGISTRATE
 			.entity("cirno", CirnoEntity::new, MobCategory.MONSTER)
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+			.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CirnoEntity::checkCirnoSpawnRules)
 			.attributes(CirnoEntity::createAttributes)
 			.renderer(() -> GeneralYoukaiRenderer::new)
 			.spawnEgg(0xA8C3D9, 0x7E8DC4).tab(YHDanmaku.TAB.getKey()).build()
