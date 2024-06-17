@@ -55,8 +55,8 @@ public class YHItems {
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, DRIED_MANDRAKE_FLOWER,
-			CAN, ICE_CUBE, FROZEN_FROG;
+			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, DRIED_MANDRAKE_FLOWER, CAN,
+			ICE_CUBE, FAIRY_ICE_CRYSTAL, FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
@@ -144,15 +144,11 @@ public class YHItems {
 					.lang("Bowl of Cream")
 					.register();
 
-			ICE_CUBE = YoukaisHomecoming.REGISTRATE
-					.item("ice_cube", Item::new)
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
-					.register();
-
-			FROZEN_FROG = YoukaisHomecoming.REGISTRATE
-					.item("frozen_frog", Item::new)
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
-					.register();
+			ICE_CUBE = ingredient("ice_cube", Item::new);
+			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", Item::new);
+			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", Item::new);
+			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", Item::new);
+			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", Item::new);
 		}
 
 		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
@@ -228,6 +224,12 @@ public class YHItems {
 	public static <T extends Item> ItemEntry<T> crop(String id, NonNullFunction<Item.Properties, T> factory) {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
+				.register();
+	}
+
+	public static <T extends Item> ItemEntry<T> ingredient(String id, NonNullFunction<Item.Properties, T> factory) {
+		return YoukaisHomecoming.REGISTRATE.item(id, factory)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
 				.register();
 	}
 

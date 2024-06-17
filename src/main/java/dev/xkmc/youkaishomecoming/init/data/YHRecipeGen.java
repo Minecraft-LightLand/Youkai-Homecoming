@@ -657,6 +657,7 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.CHERRY_LEAVES)
+					.addIngredient(Items.CHORUS_FRUIT)
 					.addIngredient(YHTagGen.MATCHA)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());

@@ -15,6 +15,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -73,8 +74,12 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 		add("rumia_scavenging_piglin_head", create(Items.PIGLIN_HEAD, 1,
 				killedByRumia(), entity(YHTagGen.PIGLIN_SOURCE)));
 
-		add("cirno_frozen_frog", create(YHItems.FROZEN_FROG.get(), 1,
-				killer(YHEntities.CIRNO.get()), entity(EntityType.FROG)));
+		add("cirno_frozen_frog_cold", create(YHItems.FROZEN_FROG_COLD.get(), 1,
+				killer(YHEntities.CIRNO.get()), frog(FrogVariant.COLD)));
+		add("cirno_frozen_frog_warm", create(YHItems.FROZEN_FROG_WARM.get(), 1,
+				killer(YHEntities.CIRNO.get()), frog(FrogVariant.WARM)));
+		add("cirno_frozen_frog_temperate", create(YHItems.FROZEN_FROG_TEMPERATE.get(), 1,
+				killer(YHEntities.CIRNO.get()), frog(FrogVariant.TEMPERATE)));
 
 		add("udumbara_ancient_city_loot", loot(YHLootGen.UDUMBARA_LOOT,
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY).build()));
@@ -100,11 +105,20 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 						EntityTypePredicate.of(type))).build();
 	}
 
+
 	private static LootItemCondition entity(EntityType<?> type) {
 		return LootItemEntityPropertyCondition.hasProperties(
 				LootContext.EntityTarget.THIS,
 				EntityPredicate.Builder.entity().entityType(
 						EntityTypePredicate.of(type))).build();
+	}
+
+	private static LootItemCondition frog(FrogVariant type) {
+		return LootItemEntityPropertyCondition.hasProperties(
+				LootContext.EntityTarget.THIS,
+				EntityPredicate.Builder.entity().of(EntityType.FROG)
+						.subPredicate(EntitySubPredicate.variant(type))
+		).build();
 	}
 
 	private static LootItemCondition entity(TagKey<EntityType<?>> tag) {
