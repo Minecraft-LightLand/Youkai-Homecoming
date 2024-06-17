@@ -18,16 +18,18 @@ import java.util.Locale;
 public enum YHLangData {
 	CHANCE_EFFECT("tooltip.chance", "%1$s with %2$s%% chance", 2, ChatFormatting.GRAY),
 	PLACE("tooltip.place", "Can be placed on ground", 0, ChatFormatting.GRAY),
+	FLESH_TASTE_HUMAN("tooltip.taste_human", "Unappealing smell...", 0, ChatFormatting.GRAY),
+	FLESH_TASTE_HALF_YOUKAI("tooltip.taste_half_youkai", "Strange flavor...", 0, ChatFormatting.GRAY),
+	FLESH_TASTE_YOUKAI("tooltip.taste_youkai", "Delicious!", 0, ChatFormatting.GRAY),
+	DANMAKU_DAMAGE("tooltip.danmaku_damage", "Deals %s damage on hit", 1, ChatFormatting.BLUE),
+	DANMAKU_BYPASS("tooltip.danmaku_bypass", "Bypasses entities", 0, ChatFormatting.DARK_AQUA),
+	SPELL_TARGET("tooltip.spell_target", "Requires targeting an entity to activate", 0, ChatFormatting.RED),
+	SPELL_COST("tooltip.spell_cost", "Costs 1 %s", 1, ChatFormatting.GRAY),
+	KETTLE_INFO("tooltip.kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
+	DRYING_RACK("tooltip.drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
+
 	FLESH_NAME_HUMAN("flesh_human", "Weird Meat", 0, null),
 	FLESH_NAME_YOUKAI("flesh_youkai", "Flesh", 0, null),
-	FLESH_TASTE_HUMAN("taste_human", "Unappealing smell...", 0, ChatFormatting.GRAY),
-	FLESH_TASTE_HALF_YOUKAI("taste_half_youkai", "Strange flavor...", 0, ChatFormatting.GRAY),
-	FLESH_TASTE_YOUKAI("taste_youkai", "Delicious!", 0, ChatFormatting.GRAY),
-	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
-	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
-	USAGE("usage", "Usage: ", 0, ChatFormatting.GRAY),
-	KETTLE_INFO("kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
-	DRYING_RACK("drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 
 	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
 
@@ -36,25 +38,26 @@ public enum YHLangData {
 	JEI_RACK("jei.rack", "Drying", 0, null),
 	JEI_FERMENT("jei.ferment", "Fermenting", 0, null),
 
+	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
+	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
+	USAGE("usage", "Usage: ", 0, ChatFormatting.GRAY),
+
 	OBTAIN_FLESH("obtain_flesh", "Kill human mobs with knife while in %s or %s effect", 2, ChatFormatting.GRAY),
 	OBTAIN_BLOOD("obtain_blood", "Kill human mobs with knife and have glass bottle in off hand while in %s or %s effect", 2, ChatFormatting.GRAY),
+	OBTAIN_FAIRY_ICE("obtain_fairy_ice", "Rarely dropped when you got hit by Cirno's Danmaku while wearing full leather suits. Dropped from Cirno.",0, ChatFormatting.GRAY),
+	OBTAIN_FROZEN_FROG("obtain_frozen_frog", "Dropped when Cirno freezes a frog. Rarely dropped from Cirno when defeated with Danmaku.",0,ChatFormatting.GRAY),
+	USEAGE_FROZEN_FROG("usage_frozen_frog", "Throw toward target to summon a frog.",0,ChatFormatting.GRAY),
+	USAGE_DANMAKU("usage_danmaku", "While in %s or %s effect, or equip touhou hats, you can shoot danmaku", 2, ChatFormatting.GRAY),
 
 	USAGE_STRAW_HAT("usage_straw_hat", "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders", 2, ChatFormatting.GRAY),
 	OBTAIN_SUWAKO_HAT("obtain_suwako_hat", "Drops when frog with hat eats %s different kinds of raiders in front of villagers", 1, ChatFormatting.GRAY),
 	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s. Allows using Cyan and Lime danmaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_KOISHI_HAT("obtain_koishi_hat", "Drops when blocking Koishi attacks %s times in a row", 1, ChatFormatting.GRAY),
-	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s.  Allows using Blue and Red danmaku without consumption.", 1, ChatFormatting.GRAY),
+	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s. Allows using Blue and Red danmaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_RUMIA_HAIRBAND("obtain_rumia_hairband", "Drops when player defeat Ex. Rumia with Danmaku", 0, ChatFormatting.GRAY),
 	USAGE_RUMIA_HAIRBAND("usage_rumia_hairband", "Grants constant %s when applicable. Drops heads when killing mobs. Flesh and blood drops no longer require knife (bonus when still using knife).", 1, ChatFormatting.GRAY),
 	OBTAIN_REIMU_HAIRBAND("obtain_reimu_hairband", "Feed Reimu a variety of food", 0, ChatFormatting.GRAY),
 	USAGE_REIMU_HAIRBAND("usage_reimu_hairband", "Enables Creative Flight. Your danmaku damage bypasses magical protection.", 0, ChatFormatting.GRAY),
-
-	USAGE_DANMAKU("usage_danmaku", "While in %s or %s effect, or equip touhou hats, you can shoot danmaku", 2, ChatFormatting.GRAY),
-	DANMAKU_DAMAGE("danmaku_damage", "Deals %s damage on hit", 1, ChatFormatting.BLUE),
-	DANMAKU_BYPASS("danmaku_bypass", "Bypasses entities", 0, ChatFormatting.DARK_AQUA),
-
-	SPELL_TARGET("spell_target", "Requires targeting an entity to activate", 0, ChatFormatting.RED),
-	SPELL_COST("spell_cost", "Costs 1 %s", 1, ChatFormatting.GRAY),
 
 	REIMU_FLESH("reimu_flesh", "Reimu: You shall not eat it. Last warning.", 0, ChatFormatting.RED),
 	REIMU_WARN("reimu_warn", "Reimu: Drink some tea and keep your sanity. Last warning.", 0, ChatFormatting.RED),

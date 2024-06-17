@@ -6,23 +6,23 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "name": "youkaishomecoming:raw_lamprey"
+        }
+      ],
+      "functions": [
+        {
+          "conditions": [
             {
-              "conditions": [
-                {
-                  "condition": "minecraft:entity_properties",
-                  "entity": "this",
-                  "predicate": {
-                    "flags": {
-                      "is_on_fire": true
-                    }
-                  }
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "flags": {
+                  "is_on_fire": true
                 }
-              ],
-              "function": "minecraft:furnace_smelt"
+              }
             }
           ],
-          "name": "youkaishomecoming:raw_lamprey"
+          "function": "minecraft:furnace_smelt"
         }
       ],
       "rolls": 1.0

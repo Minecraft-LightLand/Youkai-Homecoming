@@ -25,6 +25,16 @@
           "name": "youkaishomecoming:red_circle_danmaku"
         }
       ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 1.0,
+            "min": 0.5
+          },
+          "function": "minecraft:looting_enchant"
+        }
+      ],
       "rolls": 1.0
     },
     {
@@ -49,6 +59,16 @@
             }
           ],
           "name": "youkaishomecoming:black_circle_danmaku"
+        }
+      ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 1.0,
+            "min": 0.5
+          },
+          "function": "minecraft:looting_enchant"
         }
       ],
       "rolls": 1.0

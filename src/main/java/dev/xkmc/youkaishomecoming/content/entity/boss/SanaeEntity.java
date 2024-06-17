@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.sanae;
+package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;

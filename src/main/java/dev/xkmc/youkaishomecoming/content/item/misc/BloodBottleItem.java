@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.item.food;
+package dev.xkmc.youkaishomecoming.content.item.misc;
 
 import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;

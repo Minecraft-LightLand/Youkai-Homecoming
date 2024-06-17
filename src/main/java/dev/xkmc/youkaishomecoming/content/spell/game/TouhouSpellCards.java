@@ -5,7 +5,7 @@ import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
-import dev.xkmc.youkaishomecoming.content.entity.sanae.SanaeEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.cirno.CirnoIceStorm;
 import dev.xkmc.youkaishomecoming.content.spell.game.koishi.KoishiTest;

@@ -11,9 +11,10 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.*;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
-import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
+import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.ReimuSpell;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -55,12 +56,14 @@ public class YHItems {
 	public static final ItemEntry<SpellItem> REIMU_SPELL;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
-	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
+
 	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
-			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN,
-			ICE_CUBE, FAIRY_ICE_CRYSTAL;
+			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
+	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
+	public static final ItemEntry<FairyIceItem> FAIRY_ICE_CRYSTAL;
 	public static final ItemEntry<FrozenFrogItem> FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
+
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
@@ -150,7 +153,7 @@ public class YHItems {
 					.register();
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);
-			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", Item::new);
+			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", FairyIceItem::new);
 			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.COLD));
 			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.WARM));
 			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.TEMPERATE));

@@ -7,6 +7,7 @@
 - Fix Soybean drop
 - Fix Lamprey fishing
 - Fix Reimu feed
+- Make Rumia loots affected by looting
 - Reimu will not warn you for hurting villagers without witness
 - Reimu can open doors now
 - Opening loot chest will disable Unconscious
@@ -15,6 +16,7 @@
 - TODO Reimu's Shrine
 - TODO Cirno house & Food
 - TODO more food
+- Add Sanae (WIP)
 
 2.2.5
 - Add 4 compat food for Fruits Delight

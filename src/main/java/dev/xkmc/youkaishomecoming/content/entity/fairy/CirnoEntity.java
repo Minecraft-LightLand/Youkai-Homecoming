@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.fairy;
 
+import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
@@ -73,8 +75,10 @@ public class CirnoEntity extends FairyEntity {
 	}
 
 	public static boolean checkCirnoSpawnRules(EntityType<CirnoEntity> e, ServerLevelAccessor level, MobSpawnType type, BlockPos pos, RandomSource rand) {
+		if (!ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) return false;
 		if (!checkMobSpawnRules(e, level, type, pos, rand)) return false;
-		if (!level.getEntitiesOfClass(CirnoEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty()) return false;
+		var aabb = AABB.ofSize(pos.getCenter(), 48, 24, 48);
+		if (!level.getEntitiesOfClass(CirnoEntity.class, aabb).isEmpty()) return false;
 		var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 128, false);
 		if (player == null) return false;
 		return player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
