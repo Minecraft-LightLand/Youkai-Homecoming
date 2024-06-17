@@ -14,11 +14,13 @@ import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.food.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
+import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.ReimuSpell;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -57,7 +59,8 @@ public class YHItems {
 	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
 			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN,
-			ICE_CUBE, FAIRY_ICE_CRYSTAL, FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
+			ICE_CUBE, FAIRY_ICE_CRYSTAL;
+	public static final ItemEntry<FrozenFrogItem> FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
@@ -148,9 +151,9 @@ public class YHItems {
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);
 			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", Item::new);
-			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", Item::new);
-			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", Item::new);
-			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", Item::new);
+			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.COLD));
+			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.WARM));
+			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.TEMPERATE));
 		}
 
 		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
