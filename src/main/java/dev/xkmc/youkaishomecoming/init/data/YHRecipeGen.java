@@ -4,10 +4,8 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
-import dev.xkmc.fruitsdelight.init.data.TagGen;
 import dev.xkmc.fruitsdelight.init.food.FDFood;
 import dev.xkmc.fruitsdelight.init.food.FruitType;
-import dev.xkmc.fruitsdelight.init.plants.FDBushes;
 import dev.xkmc.l2library.compat.patchouli.ShapelessPatchouliBuilder;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
@@ -63,6 +61,16 @@ public class YHRecipeGen {
 			YHBlocks.HAY.genRecipe(pvd);
 			YHBlocks.STRAW.genRecipe(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.CANVAS.get())
+					.pattern(" A ").pattern("ASA")
+					.define('A', ModItems.CANVAS.get())
+					.define('S', Items.STRING)
+					.save(pvd);
+		}
+
+		// furniture
+		{
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.MOKA)::unlockedBy, YHItems.COFFEE_POWDER.get())
 					.pattern("ABA").pattern("IWI").pattern("ADA")
 					.define('A', Items.IRON_NUGGET)
@@ -96,11 +104,39 @@ public class YHRecipeGen {
 					.define('C', Items.BUCKET)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.CANVAS.get())
-					.pattern(" A ").pattern("ASA")
-					.define('A', ModItems.CANVAS.get())
-					.define('S', Items.STRING)
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI)::unlockedBy, ModItems.STRAW.get())
+					.pattern("ABA").pattern("DCD").pattern("ABA")
+					.define('A', Items.CLAY_BALL)
+					.define('B', Items.BONE_MEAL)
+					.define('D', Items.PAPER)
+					.define('C', ModItems.STRAW.get())
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI)::unlockedBy, YHBlocks.SIKKUI.asItem())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', Items.STICK)
+					.define('B', YHBlocks.SIKKUI)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI)::unlockedBy, YHBlocks.FRAMED_SIKKUI.asItem())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', Items.STICK)
+					.define('B', YHBlocks.FRAMED_SIKKUI)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.asItem())
+					.pattern("AAA").pattern("ABA").pattern("AAA")
+					.define('A', Items.STICK)
+					.define('B', YHBlocks.GRID_SIKKUI)
+					.save(pvd);
+
+			pvd.stonecutting(DataIngredient.items(YHBlocks.SIKKUI.get()), RecipeCategory.MISC, YHBlocks.SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.FRAMED_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FRAMED_SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.GRID_SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SIKKUI_TD, 6);
+			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SHOJI, 3);
+
+
 		}
 
 		// plants
@@ -109,8 +145,10 @@ public class YHRecipeGen {
 			cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 1);
 			pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
-			pvd.smelting(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
-			pvd.smoking(DataIngredient.items(YHCrops.MANDRAKE.getSeed()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
+			pvd.smelting(DataIngredient.items(YHItems.STRIPPED_MANDRAKE_ROOT.get()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
+			pvd.smoking(DataIngredient.items(YHItems.STRIPPED_MANDRAKE_ROOT.get()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
+			cutting(pvd, YHCrops.MANDRAKE.seed, YHItems.STRIPPED_MANDRAKE_ROOT, 1);
+			drying(pvd, DataIngredient.items(YHCrops.MANDRAKE.getFruits()), YHItems.DRIED_MANDRAKE_FLOWER);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
@@ -140,23 +178,27 @@ public class YHRecipeGen {
 							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.MATCHA, 1)
 					.build(pvd, YHItems.MATCHA.getId());
 
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.ICE),
+							Ingredient.of(ForgeTags.TOOLS_PICKAXES), YHItems.ICE_CUBE, 8)
+					.build(pvd, YHItems.ICE_CUBE.getId());
+
 			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.WHITE.leaves);
 		}
 
 		// food craft
 		{
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.MILK_POPSICLE.item, 1)::unlockedBy, Items.ICE)
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.MILK_POPSICLE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
 					.pattern(" MM").pattern("SIM").pattern("TS ")
 					.define('M', ForgeTags.MILK_BOTTLE)
 					.define('S', Items.SUGAR)
-					.define('I', Items.ICE)
+					.define('I', YHItems.ICE_CUBE)
 					.define('T', Items.STICK)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.BIG_POPSICLE.item, 1)::unlockedBy, Items.ICE)
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.BIG_POPSICLE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
 					.pattern(" II").pattern("SII").pattern("TS ")
 					.define('S', Items.SUGAR)
-					.define('I', Items.ICE)
+					.define('I', YHItems.ICE_CUBE)
 					.define('T', Items.STICK)
 					.save(pvd);
 
@@ -169,8 +211,8 @@ public class YHRecipeGen {
 					.requires(YHCrops.SOYBEAN.getSeed()).requires(Items.STICK)
 					.save(pvd);
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.SHAVED_ICE_OVER_RICE.item, 1)::unlockedBy, Items.ICE)
-					.requires(ForgeTags.GRAIN_RICE).requires(Items.ICE).requires(YHCrops.REDBEAN.getSeed())
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.SHAVED_ICE_OVER_RICE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
+					.requires(ForgeTags.GRAIN_RICE).requires(YHItems.ICE_CUBE).requires(YHCrops.REDBEAN.getSeed())
 					.requires(ModItems.COD_ROLL.get())
 					.save(pvd);
 
@@ -617,6 +659,7 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.CHERRY_LEAVES)
+					.addIngredient(Items.CHORUS_FRUIT)
 					.addIngredient(YHTagGen.MATCHA)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
@@ -730,12 +773,12 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(YHItems.CREAM));
 			coffee(coffee, YHCoffee.AFFOGATO, e -> e
-					.addIngredient(Items.ICE)
+					.addIngredient(YHItems.ICE_CUBE)
 					.addIngredient(YHItems.CREAM));
 
 			unlock(pvd, ShapelessPatchouliBuilder.shapeless(RecipeCategory.FOOD, YHCoffee.AFFOGATO.item.get(), 1)::unlockedBy,
 					YHCoffee.ESPRESSO.item.get()).requires(YHCoffee.ESPRESSO.item)
-					.requires(Items.ICE).requires(YHItems.CREAM)
+					.requires(YHItems.ICE_CUBE).requires(YHItems.CREAM)
 					.save(coffee, YHCoffee.AFFOGATO.item.getId().withSuffix("_craft"));
 
 		}
@@ -838,7 +881,7 @@ public class YHRecipeGen {
 					.build(pvd, FruitsDelightCompatFood.PEACH_TAPIOCA.item.getId());
 
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FruitsDelightCompatFood.PEACH_YATSUHASHI.item, 2)::unlockedBy,FruitType.PEACH.getFruit())
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FruitsDelightCompatFood.PEACH_YATSUHASHI.item, 2)::unlockedBy, FruitType.PEACH.getFruit())
 					.requires(FruitType.PEACH.getFruitTag())
 					.requires(ModItems.COOKED_RICE.get())
 					.save(pvd);

@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.content.entity.reimu;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.particles.ParticleTypes;
@@ -11,6 +13,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -40,12 +43,13 @@ public class ReimuEntity extends MaidenEntity {
 	protected void customServerAiStep() {
 		super.customServerAiStep();
 		if (feedCD > 0) feedCD--;
+		setFlag(16, feedCD > 0);
 	}
 
 	@Override
 	protected void tickEffects() {
 		super.tickEffects();
-		if (feedCD > 0) {
+		if (getFlag(16)) {
 			boolean flag;
 			if (this.isInvisible()) {
 				flag = this.random.nextInt(15) == 0;
@@ -71,8 +75,13 @@ public class ReimuEntity extends MaidenEntity {
 			var food = stack.getFoodProperties(this);
 			if (food != null) {
 				if (player instanceof ServerPlayer sp && feedCD == 0) {
+					if (stack.is(YHTagGen.FLESH_FOOD)) {
+						setTarget(player);
+						return InteractionResult.SUCCESS;
+					}
+					ItemStack remain = stack.getCraftingRemainingItem();
+					feedTrigger(sp, stack);
 					stack.shrink(1);
-					YHCriteriaTriggers.FEED_REIMU.trigger(sp, stack);
 					feedCD += food.getNutrition() * 100;
 					if (food.getEffects().stream().anyMatch(e -> e.getFirst().getEffect() == YHEffects.UDUMBARA.get())) {
 						verifiedPlayers.add(sp.getUUID());
@@ -81,11 +90,38 @@ public class ReimuEntity extends MaidenEntity {
 					if (stack.getUseAnimation() == UseAnim.DRINK)
 						playSound(stack.getDrinkingSound());
 					else playSound(stack.getEatingSound());
+					if (!remain.isEmpty())
+						sp.getInventory().placeItemBackInInventory(remain);
 				}
 				return InteractionResult.SUCCESS;
 			}
 		}
 		return super.mobInteract(player, hand);
+	}
+
+	private void feedTrigger(ServerPlayer sp, ItemStack stack) {
+		var sv = sp.getServer();
+		if (sv == null) return;
+		var e = sv.getAdvancements().getAdvancement(YoukaisHomecoming.loc("main/feed_reimu"));
+		if (e == null) return;
+		var prog = sp.getAdvancements().getOrStartProgress(e);
+		float count = prog.getPercent();
+		YHCriteriaTriggers.FEED_REIMU.trigger(sp, stack);
+		if (prog.getPercent() > count) {
+			level().broadcastEntityEvent(this, EntityEvent.IN_LOVE_HEARTS);
+		}
+	}
+
+	@Override
+	public void handleEntityEvent(byte pId) {
+		if (pId == EntityEvent.IN_LOVE_HEARTS) {
+			for (int i = 0; i < 7; ++i) {
+				double d0 = this.random.nextGaussian() * 0.02D;
+				double d1 = this.random.nextGaussian() * 0.02D;
+				double d2 = this.random.nextGaussian() * 0.02D;
+				this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
+			}
+		} else super.handleEntityEvent(pId);
 	}
 
 	@Nullable

@@ -1,7 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Animal;
 
 public class MandrakeEffect extends EmptyEffect {
 
@@ -11,13 +13,13 @@ public class MandrakeEffect extends EmptyEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity e, int lv) {
-		var pos = e.blockPosition();
-		if (!e.onGround()) return;
-		if (!e.isCrouching()) return;
-		if (e.level().getBlockState(pos).isCollisionShapeFullBlock(e.level(), pos))
-			return;
-		e.moveTo(e.getX(), e.getY() - 0.1f, e.getZ());
-
+		if (e instanceof Animal animal) {
+			if (animal.getAge() != 0) return;
+			if (animal.getInLoveTime() < 20) {
+				animal.setInLoveTime(60);
+				animal.level().broadcastEntityEvent(animal, EntityEvent.IN_LOVE_HEARTS);
+			}
+		}
 	}
 
 	@Override

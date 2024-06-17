@@ -46,6 +46,8 @@ public class YHModConfig {
 		public final ForgeConfigSpec.BooleanValue reimuSummonFlesh;
 		public final ForgeConfigSpec.BooleanValue reimuSummonKill;
 
+		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			youkaifyingChance = builder.comment("Chance for flesh food to add Youkaifying effect for the first time")
@@ -113,6 +115,11 @@ public class YHModConfig {
 					.define("reimuSummonFlesh", true);
 			reimuSummonKill = builder.comment("Summon Reimu when player with youkaified/fying effect kills villager in front of other villagers")
 					.define("reimuSummonKill", true);
+			builder.pop();
+
+			builder.push("cirno");
+			cirnoFairyDrop = builder.comment("Chance for fairy ice crystal to drop")
+							.defineInRange("cirnoFairyDrop",0.03,0,1);
 			builder.pop();
 		}
 

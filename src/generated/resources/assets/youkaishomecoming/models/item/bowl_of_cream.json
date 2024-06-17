@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/bowl_of_cream"
+    "layer0": "youkaishomecoming:item/ingredient/bowl_of_cream"
   }
 }

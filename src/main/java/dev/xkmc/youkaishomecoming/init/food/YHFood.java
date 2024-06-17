@@ -33,9 +33,7 @@ public enum YHFood {
 	),
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f,
-			new EffectEntry(YHEffects.MANDRAKE::get, 200, 0, 1), DietTagGen.VEGETABLES.tag),
-
+	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 	// simple
 	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
@@ -133,7 +131,7 @@ public enum YHFood {
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
 			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
-	)),
+	), YHTagGen.FLESH_FOOD),
 	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
 
 	// bowl

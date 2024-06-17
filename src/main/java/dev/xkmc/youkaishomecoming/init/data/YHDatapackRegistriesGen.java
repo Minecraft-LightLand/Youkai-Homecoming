@@ -13,6 +13,7 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -101,11 +102,10 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	private static void registerBiomeModifiers(BootstapContext<BiomeModifier> ctx) {
 		var biomes = ctx.lookup(Registries.BIOME);
 		var features = ctx.lookup(Registries.PLACED_FEATURE);
-		HolderSet<Biome> set = biomes.getOrThrow(YHBiomeTagsProvider.LAMPREY);
-		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, YoukaisHomecoming.loc("lamprey")),
-				new ForgeBiomeModifiers.AddSpawnsBiomeModifier(set, List.of(new MobSpawnSettings.SpawnerData(
-						YHEntities.LAMPREY.get(), 5, 3, 5)
-				)));
+		registerMobSpawn(ctx, YoukaisHomecoming.loc("lamprey"), YHBiomeTagsProvider.LAMPREY, biomes,
+				new MobSpawnSettings.SpawnerData(YHEntities.LAMPREY.get(), 5, 3, 5));
+		registerMobSpawn(ctx, YoukaisHomecoming.loc("cirno"), YHBiomeTagsProvider.CIRNO, biomes,
+				new MobSpawnSettings.SpawnerData(YHEntities.CIRNO.get(), 5, 1, 1));
 		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
 		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
@@ -115,13 +115,20 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	}
 
 	private static void registerCropBiome(BootstapContext<BiomeModifier> ctx,
-										  YHCrops tree,
-										  HolderSet<Biome> set,
+										  YHCrops tree, HolderSet<Biome> set,
 										  HolderGetter<PlacedFeature> features) {
 		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, YoukaisHomecoming.loc(tree.getName())),
 				new ForgeBiomeModifiers.AddFeaturesBiomeModifier(set,
 						HolderSet.direct(features.getOrThrow(tree.getPlacementKey())),
 						GenerationStep.Decoration.VEGETAL_DECORATION));
+	}
+
+	private static void registerMobSpawn(
+			BootstapContext<BiomeModifier> ctx, ResourceLocation rl,
+			TagKey<Biome> tag, HolderGetter<Biome> biomes,
+			MobSpawnSettings.SpawnerData entity) {
+		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, rl),
+				new ForgeBiomeModifiers.AddSpawnsBiomeModifier(biomes.getOrThrow(tag), List.of(entity)));
 	}
 
 	public YHDatapackRegistriesGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

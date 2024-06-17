@@ -8,7 +8,12 @@ import com.tterrag.registrate.util.entry.MenuEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
+import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlock;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlockEntity;
+import dev.xkmc.youkaishomecoming.content.block.donation.DonationShape;
+import dev.xkmc.youkaishomecoming.content.block.donation.DoubleBlockHorizontal;
 import dev.xkmc.youkaishomecoming.content.block.furniture.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
@@ -40,6 +45,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.FarmersDelight;
@@ -95,6 +102,14 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
+
+	public static final BlockEntry<DelegateBlock> DONATION_BOX;
+	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
+
+	public static final BlockEntry<Block> SIKKUI, FRAMED_SIKKUI, GRID_SIKKUI, FINE_GRID_SIKKUI;
+	public static final BlockEntry<ThinTrapdoorBlock> SIKKUI_TD, FRAMED_SIKKUI_TD, GRID_SIKKUI_TD, FINE_GRID_SIKKUI_TD;
+	public static final BlockEntry<ThinDoorBlock> FINE_GRID_SHOJI;
+
 	public static final WoodSet HAY, STRAW;
 
 	static {
@@ -140,15 +155,72 @@ public class YHBlocks {
 
 		}
 
-		MOKA_KIT = YoukaisHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
-						BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
-				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
-						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_kit")))
-						.texture("maker", pvd.modLoc("block/moka_pot"))
-						.texture("cup", pvd.modLoc("block/moka_cup"))
-						.texture("foamer", pvd.modLoc("block/moka_foamer"))
-						.renderType("cutout")))
-				.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
+		{
+			MOKA_KIT = YoukaisHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
+							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
+					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
+							.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_kit")))
+							.texture("maker", pvd.modLoc("block/moka_pot"))
+							.texture("cup", pvd.modLoc("block/moka_cup"))
+							.texture("foamer", pvd.modLoc("block/moka_foamer"))
+							.renderType("cutout")))
+					.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
+
+			SIKKUI = YoukaisHomecoming.REGISTRATE.block("sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
+					.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+					.simpleItem().register();
+
+			FRAMED_SIKKUI = YoukaisHomecoming.REGISTRATE.block("framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
+					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE)
+					.simpleItem().register();
+
+			GRID_SIKKUI = YoukaisHomecoming.REGISTRATE.block("grid_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
+					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE)
+					.simpleItem().register();
+
+			FINE_GRID_SIKKUI = YoukaisHomecoming.REGISTRATE.block("fine_grid_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(),
+							pvd.models().cubeColumn("block/" + ctx.getName(),
+									pvd.modLoc("block/" + ctx.getName() + "_side"),
+									pvd.modLoc("block/" + ctx.getName() + "_top"))))
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE)
+					.simpleItem().register();
+
+			var set = new BlockSetType("sikkui", true, SoundType.WOOD,
+					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
+					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
+					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+
+			var doorProp = BlockBehaviour.Properties.copy(Blocks.CLAY)
+					.noOcclusion().pushReaction(PushReaction.DESTROY);
+
+			FINE_GRID_SHOJI = door("fine_grid_framed_shoji", doorProp, set);
+
+			var prop = BlockBehaviour.Properties.copy(Blocks.CLAY);
+
+			SIKKUI_TD = trapdoor("sikkui", prop, set, YoukaisHomecoming.loc("block/sikkui"));
+			FRAMED_SIKKUI_TD = trapdoor("framed_sikkui", prop, set, YoukaisHomecoming.loc("block/framed_sikkui"));
+			GRID_SIKKUI_TD = trapdoor("grid_framed_sikkui", prop, set, YoukaisHomecoming.loc("block/grid_framed_sikkui"));
+			FINE_GRID_SIKKUI_TD = trapdoor("fine_grid_framed_sikkui", prop, set, YoukaisHomecoming.loc("block/fine_grid_framed_sikkui_side"));
+		}
+
+		DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
+						BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
+								.mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASS),
+						BlockProxy.HORIZONTAL, new DoubleBlockHorizontal(),
+						new DonationShape(), DonationBoxBlock.TE
+				)).blockstate(DonationBoxBlock::buildStates)
+				.simpleItem()
+				.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()))
+				.register();
+
+		DONATION_BOX_BE = YoukaisHomecoming.REGISTRATE.blockEntity("donation_box", DonationBoxBlockEntity::new)
+				.validBlock(DONATION_BOX)
+				.register();
 
 		var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
 				.instrument(NoteBlockInstrument.BANJO).strength(0.5F).sound(SoundType.GRASS);
@@ -178,6 +250,28 @@ public class YHBlocks {
 	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {
 		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);
 	}
+
+	private static BlockEntry<ThinTrapdoorBlock> trapdoor(String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side) {
+		return YoukaisHomecoming.REGISTRATE.block(id + "_trap_door", p ->
+						new ThinTrapdoorBlock(prop, set))
+				.blockstate((ctx, pvd) -> ThinTrapdoorBlock.buildModels(pvd, ctx.get(), ctx.getName(), side))
+				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.TRAPDOORS)
+				.item().model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(
+						new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id + "_trap_door_bottom"))))
+				.tag(ItemTags.TRAPDOORS).build()
+				.register();
+	}
+
+	private static BlockEntry<ThinDoorBlock> door(String id, BlockBehaviour.Properties prop, BlockSetType set) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> new ThinDoorBlock(prop, set))
+				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(),
+						pvd.modLoc("block/" + id + "_bottom"),
+						pvd.modLoc("block/" + id + "_top")))
+				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
+				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).build()
+				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b))).register();
+	}
+
 
 	public static void register() {
 

@@ -87,6 +87,13 @@ public class YHCropBlock extends CropBlock {
 	public static void buildPlantLoot(RegistrateBlockLootTables pvd, YHCropBlock block, YHCrops crop) {
 		pvd.add(block, pvd.applyExplosionDecay(block,
 				LootTable.lootTable().withPool(LootPool.lootPool()
+								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7))
+										.invert())
+								.add(LootItem.lootTableItem(crop.getSeed())))
+						.withPool(LootPool.lootPool()
+								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7)))
 								.add(LootItem.lootTableItem(crop.getFruits())))
 						.withPool(LootPool.lootPool()
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)

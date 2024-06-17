@@ -118,7 +118,15 @@
 	"lemon_black_tea": "柠檬红茶",
 	"moon_rocket": "月面火箭",
 	"peach_tapioca": "桃花羹",
-	"peach_yatsuhashi": "桃子八桥"
+	"peach_yatsuhashi": "桃子八桥",
+	"dried_mandrake_flower": "干燥的曼德拉花",
+	"frozen_frog_cold": "冻青蛙",
+	"frozen_frog_warm": "冻青蛙",
+	"frozen_frog_temperate": "冻青蛙",
+	"ice_cube": "冰块",
+	"fairy_ice_crystal": "妖精冰晶",
+	"stripped_mandrake_root": "去皮曼德拉根",
+	"mandrake_flower": "曼德拉花"
   },
   "-cartesian": {
 	"entity": {

@@ -16,6 +16,7 @@ import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiStartPacket;
+import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
@@ -23,12 +24,20 @@ import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.*;
 import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
+import net.minecraft.Util;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -103,9 +112,21 @@ public class YoukaisHomecoming {
 				ThirstCompat.init();
 			}
 
+			YHEffects.registerBrewingRecipe();
+
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 
 			TouhouSpellCards.registerSpells();
+
+			var thrower = new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
+					return Util.make(new FrozenFrog(level, pos.x(), pos.y(), pos.z()), e -> e.setItem(stack));
+				}
+			};
+
+			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_COLD.get(), thrower);
+			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_WARM.get(), thrower);
+			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_TEMPERATE.get(), thrower);
 		});
 		FastMapInit.init();
 	}

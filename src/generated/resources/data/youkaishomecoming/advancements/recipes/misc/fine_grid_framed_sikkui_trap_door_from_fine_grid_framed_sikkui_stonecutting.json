@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fine_grid_framed_sikkui": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:fine_grid_framed_sikkui"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:fine_grid_framed_sikkui_trap_door_from_fine_grid_framed_sikkui_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_fine_grid_framed_sikkui",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:fine_grid_framed_sikkui_trap_door_from_fine_grid_framed_sikkui_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

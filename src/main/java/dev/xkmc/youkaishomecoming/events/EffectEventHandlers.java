@@ -26,22 +26,26 @@ public class EffectEventHandlers {
 		}
 	}
 
+	public static void disableKoishi(Player player) {
+		boolean flag = false;
+		var hat = YHItems.KOISHI_HAT.get();
+		if (player.hasEffect(YHEffects.UNCONSCIOUS.get())) {
+			player.removeEffect(YHEffects.UNCONSCIOUS.get());
+			flag = true;
+		}
+		if (player.getCooldowns().isOnCooldown(hat)) {
+			flag = true;
+		}
+		if (flag) {
+			player.getCooldowns().addCooldown(hat, 200);
+		}
+	}
+
 	@SubscribeEvent
 	public static void onAttack(LivingAttackEvent event) {
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le instanceof Player player) {
-				boolean flag = false;
-				var hat = YHItems.KOISHI_HAT.get();
-				if (le.hasEffect(YHEffects.UNCONSCIOUS.get())) {
-					le.removeEffect(YHEffects.UNCONSCIOUS.get());
-					flag = true;
-				}
-				if (player.getCooldowns().isOnCooldown(hat)) {
-					flag = true;
-				}
-				if (flag) {
-					player.getCooldowns().addCooldown(hat, 200);
-				}
+				disableKoishi(player);
 			}
 		}
 		if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
@@ -102,7 +106,7 @@ public class EffectEventHandlers {
 
 	public static void removeKoishi(LivingEntity le) {
 		if (le instanceof Player player) {
-			if (player.hasEffect(YHEffects.UNCONSCIOUS.get())){
+			if (player.hasEffect(YHEffects.UNCONSCIOUS.get())) {
 				player.removeEffect(YHEffects.UNCONSCIOUS.get());
 			}
 			var hat = YHItems.KOISHI_HAT.get();

@@ -1,12 +1,18 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Locale;
 
 public enum YHLangData {
@@ -99,6 +105,22 @@ public enum YHLangData {
 		pvd.add("death.attack.danmaku.player", "%s lost the danmaku battle to %s");
 		pvd.add("death.attack.abyssal_danmaku", "%s lost the danmaku battle");
 		pvd.add("death.attack.abyssal_danmaku.player", "%s lost the danmaku battle to %s");
+
+
+		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
+		for (RegistryEntry<? extends Potion> ent : YHEffects.POTION_LIST) {
+			for (Item item : list) {
+				String pref = item.getDescriptionId();
+				String[] prefs = pref.split("\\.");
+				String str = ent.get().getName(item.getDescriptionId() + ".effect.");
+				String[] ids = ent.get().getEffects().get(0).getDescriptionId().split("\\.");
+				String id = ids[ids.length - 1];
+				String name = RegistrateLangProvider.toEnglishName(id);
+				String pref_name = RegistrateLangProvider.toEnglishName(prefs[prefs.length - 1]);
+				if (item == Items.TIPPED_ARROW) pref_name = "Arrow";
+				pvd.add(str, pref_name + " of " + name);
+			}
+		}
 	}
 
 

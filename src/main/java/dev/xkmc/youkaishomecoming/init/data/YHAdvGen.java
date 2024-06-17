@@ -32,6 +32,7 @@ public class YHAdvGen {
 
 	public static final ResourceLocation FLESH_WARN = YoukaisHomecoming.loc("flesh_warn");
 	public static final ResourceLocation HURT_WARN = YoukaisHomecoming.loc("hurt_warn");
+	public static final ResourceLocation KOISHI_FIRST = YoukaisHomecoming.loc("koishi_first");
 
 	public static void genAdv(RegistrateAdvancementProvider pvd) {
 		pvd.accept(Advancement.Builder.advancement().addCriterion("flesh_warn",
@@ -40,6 +41,9 @@ public class YHAdvGen {
 		pvd.accept(Advancement.Builder.advancement().addCriterion("hurt_warn",
 				new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.HURT_WARN.getId(), ContextAwarePredicate.ANY)
 		).build(HURT_WARN));
+		pvd.accept(Advancement.Builder.advancement().addCriterion("koishi_first",
+				new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.KOISHI_FIRST.getId(), ContextAwarePredicate.ANY)
+		).build(KOISHI_FIRST));
 
 		var gen = new AdvancementGenerator(pvd, YoukaisHomecoming.MODID);
 		var b = gen.new TabBuilder("main");

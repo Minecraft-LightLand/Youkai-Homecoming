@@ -15,8 +15,10 @@
 	"LivingEntityMixin",
 	"PersistentEntitySectionManagerAccessor",
 	"PhantomSpawnerMixin",
+	"RandomizableContainerBlockEntityMixin",
 	"ServerLevelAccessor",
-	"ShootTongueMixin"
+	"ShootTongueMixin",
+	"VillagerMixin"
   ],
   "client": [
 	"GameRendererMixin"
