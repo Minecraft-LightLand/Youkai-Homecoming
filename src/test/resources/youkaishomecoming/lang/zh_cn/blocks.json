@@ -106,12 +106,27 @@
 		{
 		  "sikkui": "日式灰泥",
 		  "framed_sikkui": "木框日式灰泥",
+		  "cross_framed_sikkui": "十字木框日式灰泥",
 		  "grid_framed_sikkui": "井字木框日式灰泥",
 		  "fine_grid_framed_sikkui": "细木框日式灰泥"
 		},
 		{
 		  "*": "",
 		  "*_trap_door": "活板门"
+		}
+	  ]
+	},
+	"sikkui_full": {
+	  "path": "block.youkaishomecoming",
+	  "list": [
+		{
+		  "sikkui": "日式灰泥",
+		  "cross_framed_sikkui": "十字木框日式灰泥"
+		},
+		{
+		  "stairs": "楼梯",
+		  "slab": "台阶",
+		  "vertical_slab": "墙"
 		}
 	  ]
 	}

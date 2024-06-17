@@ -104,7 +104,7 @@ public class YHRecipeGen {
 					.define('C', Items.BUCKET)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI)::unlockedBy, ModItems.STRAW.get())
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI.BASE)::unlockedBy, ModItems.STRAW.get())
 					.pattern("ABA").pattern("DCD").pattern("ABA")
 					.define('A', Items.CLAY_BALL)
 					.define('B', Items.BONE_MEAL)
@@ -112,34 +112,35 @@ public class YHRecipeGen {
 					.define('C', ModItems.STRAW.get())
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI)::unlockedBy, YHBlocks.SIKKUI.asItem())
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI.BASE)::unlockedBy, YHBlocks.SIKKUI.BASE.asItem())
 					.pattern("AAA").pattern("ABA").pattern("AAA")
 					.define('A', Items.STICK)
-					.define('B', YHBlocks.SIKKUI)
+					.define('B', YHBlocks.SIKKUI.BASE)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.CROSS_SIKKUI)::unlockedBy, YHBlocks.FRAMED_SIKKUI.asItem())
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.CROSS_SIKKUI.BASE)::unlockedBy, YHBlocks.FRAMED_SIKKUI.BASE.asItem())
 					.pattern("AAA").pattern("ABA").pattern("AAA")
 					.define('A', Items.STICK)
-					.define('B', YHBlocks.FRAMED_SIKKUI)
+					.define('B', YHBlocks.FRAMED_SIKKUI.BASE)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI)::unlockedBy, YHBlocks.CROSS_SIKKUI.asItem())
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI.BASE)::unlockedBy, YHBlocks.CROSS_SIKKUI.BASE.asItem())
 					.pattern("AAA").pattern("ABA").pattern("AAA")
 					.define('A', Items.STICK)
-					.define('B', YHBlocks.CROSS_SIKKUI)
+					.define('B', YHBlocks.CROSS_SIKKUI.BASE)
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.asItem())
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.BASE.asItem())
 					.pattern("AAA").pattern("ABA").pattern("AAA")
 					.define('A', Items.STICK)
-					.define('B', YHBlocks.GRID_SIKKUI)
+					.define('B', YHBlocks.GRID_SIKKUI.BASE)
 					.save(pvd);
 
-			pvd.stonecutting(DataIngredient.items(YHBlocks.SIKKUI.get()), RecipeCategory.MISC, YHBlocks.SIKKUI_TD, 6);
-			pvd.stonecutting(DataIngredient.items(YHBlocks.FRAMED_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FRAMED_SIKKUI_TD, 6);
-			pvd.stonecutting(DataIngredient.items(YHBlocks.CROSS_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.CROSS_SIKKUI_TD, 6);
-			pvd.stonecutting(DataIngredient.items(YHBlocks.GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.GRID_SIKKUI_TD, 6);
+			YHBlocks.SIKKUI.genRecipe(pvd);
+			YHBlocks.FRAMED_SIKKUI.genRecipe(pvd);
+			YHBlocks.CROSS_SIKKUI.genRecipe(pvd);
+			YHBlocks.GRID_SIKKUI.genRecipe(pvd);
+
 			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SIKKUI_TD, 6);
 			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SHOJI, 3);
 

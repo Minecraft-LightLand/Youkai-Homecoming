@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "youkaishomecoming:cross_framed_sikkui"
+    }
+  },
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "youkaishomecoming:cross_framed_sikkui_stairs"
+  },
+  "show_notification": true
+}
