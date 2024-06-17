@@ -106,8 +106,8 @@ public class YHBlocks {
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
 
-	public static final BlockEntry<Block> SIKKUI, FRAMED_SIKKUI, GRID_SIKKUI, FINE_GRID_SIKKUI;
-	public static final BlockEntry<ThinTrapdoorBlock> SIKKUI_TD, FRAMED_SIKKUI_TD, GRID_SIKKUI_TD, FINE_GRID_SIKKUI_TD;
+	public static final BlockEntry<Block> SIKKUI, FRAMED_SIKKUI, CROSS_SIKKUI, GRID_SIKKUI, FINE_GRID_SIKKUI;
+	public static final BlockEntry<ThinTrapdoorBlock> SIKKUI_TD, FRAMED_SIKKUI_TD,CROSS_SIKKUI_TD, GRID_SIKKUI_TD, FINE_GRID_SIKKUI_TD;
 	public static final BlockEntry<ThinDoorBlock> FINE_GRID_SHOJI;
 
 	public static final WoodSet HAY, STRAW;
@@ -176,6 +176,11 @@ public class YHBlocks {
 					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE)
 					.simpleItem().register();
 
+			CROSS_SIKKUI = YoukaisHomecoming.REGISTRATE.block("cross_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
+					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE)
+					.simpleItem().register();
+
 			GRID_SIKKUI = YoukaisHomecoming.REGISTRATE.block("grid_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
 					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
 					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE)
@@ -204,6 +209,7 @@ public class YHBlocks {
 
 			SIKKUI_TD = trapdoor("sikkui", prop, set, YoukaisHomecoming.loc("block/sikkui"));
 			FRAMED_SIKKUI_TD = trapdoor("framed_sikkui", prop, set, YoukaisHomecoming.loc("block/framed_sikkui"));
+			CROSS_SIKKUI_TD = trapdoor("cross_framed_sikkui", prop, set, YoukaisHomecoming.loc("block/cross_framed_sikkui"));
 			GRID_SIKKUI_TD = trapdoor("grid_framed_sikkui", prop, set, YoukaisHomecoming.loc("block/grid_framed_sikkui"));
 			FINE_GRID_SIKKUI_TD = trapdoor("fine_grid_framed_sikkui", prop, set, YoukaisHomecoming.loc("block/fine_grid_framed_sikkui_side"));
 		}

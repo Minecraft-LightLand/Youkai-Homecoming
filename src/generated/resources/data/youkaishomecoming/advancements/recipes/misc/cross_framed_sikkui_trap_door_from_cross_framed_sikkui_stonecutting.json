@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:grid_framed_sikkui"
+        "recipe": "youkaishomecoming:cross_framed_sikkui_trap_door_from_cross_framed_sikkui_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:grid_framed_sikkui"
+      "youkaishomecoming:cross_framed_sikkui_trap_door_from_cross_framed_sikkui_stonecutting"
     ]
   },
   "sends_telemetry_event": false

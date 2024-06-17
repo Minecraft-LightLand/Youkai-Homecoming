@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cross_framed_sikkui": {
+    "has_framed_sikkui": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:cross_framed_sikkui"
+              "youkaishomecoming:framed_sikkui"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:grid_framed_sikkui"
+        "recipe": "youkaishomecoming:cross_framed_sikkui"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cross_framed_sikkui",
+      "has_framed_sikkui",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:grid_framed_sikkui"
+      "youkaishomecoming:cross_framed_sikkui"
     ]
   },
   "sends_telemetry_event": false

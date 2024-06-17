@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-17T11:07:21.794018	Youkai's Homecoming Data
+// 1.20.1	2024-06-17T17:35:20.651345	Youkai's Homecoming Data
 7a5ce4efb28f15eca1b0f9a185c94252902a167a data/youkaishomecoming/forge/biome_modifier/cirno.json
 4c53f3215ef2e35056b33ec837c7b88840d98d6f data/youkaishomecoming/forge/biome_modifier/coffea.json
 567bbfe64f8496bda7107ba10f470f4c0f67dd14 data/youkaishomecoming/forge/biome_modifier/lamprey.json
@@ -19,7 +19,10 @@ f6d9c6087f366db3f72180943fcb8f4f88757677 data/youkaishomecoming/worldgen/placed_
 ef1fa83890b69f5f58a6e9cd211b4321c5107f30 data/youkaishomecoming/worldgen/placed_feature/soybean.json
 fb060076d385d151b39e955d8aad79d831508d7a data/youkaishomecoming/worldgen/placed_feature/tea.json
 4419a2019f25545399bf08f34c366fe3edd4d952 data/youkaishomecoming/worldgen/placed_feature/udumbara.json
+ff8939774a2034bae84b5fbb6f390cd299e9e3c6 data/youkaishomecoming/worldgen/processor_list/hakurei_shrine.json
 6c290179e3934719b1ac86aa08f0a6b6991d0633 data/youkaishomecoming/worldgen/processor_list/youkai_nest.json
+217efdaccf3d0602382d92b453a024d929166ba5 data/youkaishomecoming/worldgen/structure/hakurei_shrine.json
 f36b85ce3a267c16bcb96af2809b1681db579fd7 data/youkaishomecoming/worldgen/structure/youkai_nest.json
 ff6b7cf11742cdc3095e24a1a5d3a8756dd9add7 data/youkaishomecoming/worldgen/structure_set/youkai_nest.json
+a6239073473de8ecb3da33d17f46df4db5f54a48 data/youkaishomecoming/worldgen/template_pool/hakurei_shrine.json
 00ab3b0ee327f5bdb8d78d2e52d512424a35b822 data/youkaishomecoming/worldgen/template_pool/youkai_nest.json

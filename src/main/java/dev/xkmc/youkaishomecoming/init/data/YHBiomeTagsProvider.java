@@ -24,6 +24,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> MANDRAKE = asTag("spawns/mandrake");
 	public static final TagKey<Biome> UDUMBARA = asTag("spawns/udumbara");
 	public static final TagKey<Biome> HAS_NEST = asTag("has_structure/youkai_nest");
+	public static final TagKey<Biome> HAS_SHRINE = asTag("has_structure/hakurei_shrine");
 
 	public YHBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, YoukaisHomecoming.MODID, helper);
@@ -43,6 +44,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(MANDRAKE).add(Biomes.DARK_FOREST);
 		tag(UDUMBARA).add(Biomes.SWAMP);
 		tag(HAS_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
+		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE);
 	}
 
 	public static TagKey<Biome> asTag(String name) {
