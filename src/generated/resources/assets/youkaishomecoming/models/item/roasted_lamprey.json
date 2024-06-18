@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/roasted_lamprey"
+    "layer0": "youkaishomecoming:item/food/basic/roasted_lamprey"
   }
 }

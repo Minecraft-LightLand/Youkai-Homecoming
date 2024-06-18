@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/fairy_candy"
+    "layer0": "youkaishomecoming:item/food/simple/fairy_candy"
   }
 }

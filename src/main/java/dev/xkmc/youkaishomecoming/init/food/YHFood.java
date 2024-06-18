@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Locale;
 
 public enum YHFood {
+
+	// basic
 	RAW_LAMPREY(FoodType.MEAT, 2, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
 			ItemTags.FISHES, YHTagGen.RAW_EEL, DietTagGen.PROTEINS.tag
@@ -34,11 +36,13 @@ public enum YHFood {
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
-	// simple
+
 	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
 	TOFU(FoodType.SIMPLE, 4, 0.5f),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
+
+	// mochi
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	COFFEE_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
@@ -50,6 +54,8 @@ public enum YHFood {
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	YASHOUMA_DANGO(FoodType.FAST, 6, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
+
+	// simple
 	ONIGILI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	SENBEI(FoodType.SIMPLE, 4, 0.6f, DietTagGen.GRAINS.tag),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
@@ -229,9 +235,12 @@ public enum YHFood {
 	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
-		String id = "food/";
+		String id = "food/simple/";
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
+		if (type == FoodType.STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
+		if (ordinal() <= 16) id = "food/mochi/";
+		if (ordinal() <= 10) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		item = type.build(id, name, nutrition, sat, tags, effs);
 	}

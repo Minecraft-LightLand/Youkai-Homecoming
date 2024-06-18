@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/cooked_mandrake_root"
+    "layer0": "youkaishomecoming:item/food/basic/cooked_mandrake_root"
   }
 }
