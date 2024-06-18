@@ -4,6 +4,7 @@
 - Add Donation Box
 - Add Sukkui decoration blocks
 - Add Cirno spawn, fairy ice crystal, and frozen frogs
+- Add new structure: Reimu's Shrine
 - Fix Soybean drop
 - Fix Lamprey fishing
 - Fix Reimu feed
@@ -13,10 +14,10 @@
 - Reimu can open doors now
 - Opening loot chest will disable Unconscious
 - First Koishi attack will not be fatal
-- TODO texture: cooked mandrake, frozen frog variants
-- TODO Reimu's Shrine
+- TODO texture: cooked mandrake
 - TODO Cirno house & Food
 - TODO more food
+- TODO shrine loot
 - Add Sanae (WIP)
 
 2.2.5

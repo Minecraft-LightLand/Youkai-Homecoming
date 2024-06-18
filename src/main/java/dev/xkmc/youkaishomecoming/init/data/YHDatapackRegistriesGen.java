@@ -41,6 +41,7 @@ import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.List;
 import java.util.Map;
@@ -60,8 +61,10 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_NEST, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(injectData(Blocks.CHEST, YHLootGen.NEST_CHEST),
-									injectData(Blocks.BARREL, YHLootGen.NEST_BARREL)))
+							new RuleProcessor(List.of(
+									injectData(Blocks.CHEST, YHLootGen.NEST_CHEST),
+									injectData(Blocks.BARREL, YHLootGen.NEST_BARREL)
+							))
 					),
 					Map.of(
 							MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE,
@@ -71,7 +74,14 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					)),
 			new YHStructure(YoukaisHomecoming.loc("hakurei_shrine"),
 					YHBiomeTagsProvider.HAS_SHRINE, 24, 8,
-					List.of(new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)),
+					List.of(
+							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
+							new RuleProcessor(List.of(
+									injectData(Blocks.CHEST, YHLootGen.SHRINE_CHEST),
+									injectData(Blocks.BARREL, YHLootGen.SHRINE_BARREL),
+									injectData(ModBlocks.SPRUCE_CABINET.get(), YHLootGen.SHRINE_CABINET)
+							))
+					),
 					Map.of())
 	);
 
@@ -120,7 +130,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				for (var e : STRUCTURES) {
 					var str = ctx.lookup(Registries.STRUCTURE).getOrThrow(ResourceKey.create(Registries.STRUCTURE, e.id));
 					ctx.register(ResourceKey.create(Registries.STRUCTURE_SET, e.id), new StructureSet(
-							str, new RandomSpreadStructurePlacement(e.spacing(), e.separation(), RandomSpreadType.LINEAR, e.id.hashCode())));
+							str, new RandomSpreadStructurePlacement(e.spacing(), e.separation(), RandomSpreadType.LINEAR, e.id.hashCode() & 0x7fffffff)));
 				}
 			});
 

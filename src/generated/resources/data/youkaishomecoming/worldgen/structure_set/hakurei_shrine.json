@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1495216848,
+    "separation": 8,
+    "spacing": 24
+  },
+  "structures": [
+    {
+      "structure": "youkaishomecoming:hakurei_shrine",
+      "weight": 1
+    }
+  ]
+}
