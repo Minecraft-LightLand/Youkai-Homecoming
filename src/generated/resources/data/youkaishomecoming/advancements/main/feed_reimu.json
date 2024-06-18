@@ -221,6 +221,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:fairy_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:fairy_candy"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:full_moons_eve": {
       "conditions": {
         "item": {
@@ -1031,6 +1041,9 @@
     ],
     [
       "youkaishomecoming:higi_doughnut"
+    ],
+    [
+      "youkaishomecoming:fairy_candy"
     ],
     [
       "youkaishomecoming:candy_apple"

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/bowl_of_flesh_feast"
+    "layer0": "youkaishomecoming:item/bowl/bowl_of_flesh_feast"
   }
 }

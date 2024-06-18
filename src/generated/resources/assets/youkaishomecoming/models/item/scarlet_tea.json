@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/scarlet_tea"
+    "layer0": "youkaishomecoming:item/bottle/scarlet_tea"
   }
 }

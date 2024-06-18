@@ -75,6 +75,8 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
+	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, DietTagGen.SUGARS.tag),
+
 	// stick
 
 	CANDY_APPLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
@@ -227,7 +229,11 @@ public enum YHFood {
 	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build("food/", name, nutrition, sat, tags, effs);
+		String id = "food/";
+		if (type == FoodType.BOTTLE) id = "bottle/";
+		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT ||
+				type == FoodType.BOWL_FLESH) id = "bowl/";
+		item = type.build(id, name, nutrition, sat, tags, effs);
 	}
 
 	@SafeVarargs
