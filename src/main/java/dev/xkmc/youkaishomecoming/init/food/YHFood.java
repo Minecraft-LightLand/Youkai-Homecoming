@@ -230,9 +230,9 @@ public enum YHFood {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
 		String id = "food/";
-		if (type == FoodType.BOTTLE) id = "bottle/";
-		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT ||
-				type == FoodType.BOWL_FLESH) id = "bowl/";
+		if (type == FoodType.BOTTLE) id = "food/bottle/";
+		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
+		if (type.isFlesh()) id = "food/flesh/";
 		item = type.build(id, name, nutrition, sat, tags, effs);
 	}
 

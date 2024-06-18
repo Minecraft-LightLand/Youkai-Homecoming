@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/bottle/shaved_ice_over_rice"
+    "layer0": "youkaishomecoming:item/food/bottle/shaved_ice_over_rice"
   }
 }

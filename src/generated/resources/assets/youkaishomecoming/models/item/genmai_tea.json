@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/bottle/genmai_tea"
+    "layer0": "youkaishomecoming:item/food/bottle/genmai_tea"
   }
 }

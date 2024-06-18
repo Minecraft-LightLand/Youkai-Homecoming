@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/scarlet_devil_cake"
+    "layer0": "youkaishomecoming:item/food/flesh/scarlet_devil_cake"
   }
 }

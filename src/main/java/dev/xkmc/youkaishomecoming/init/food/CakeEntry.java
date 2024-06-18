@@ -44,12 +44,12 @@ public class CakeEntry {
 				.sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY);
 
 		if (!isCake) {
-			item = type.build("food/", base + "_slice", nut, sat, new TagKey[0], List.of(effects));
+			item = type.build("feast/", base + "_slice", nut, sat, new TagKey[0], List.of(effects));
 			block = YoukaisHomecoming.REGISTRATE.block(base, p -> new YHPieBlock(props, item::get))
 					.blockstate(this::genPieModels).loot((pvd, block) -> pvd.dropOther(block, item.get()))
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build().register();
 		} else {
-			item = type.build("food/", base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
+			item = type.build("feast/", base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
 			var b = YoukaisHomecoming.REGISTRATE.block(base + "_cake", p -> new YHCakeBlock(item::get, props))
 					.blockstate(this::genCakeModels).loot((pvd, block) -> pvd.dropOther(block, item.get()))
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build().register();
