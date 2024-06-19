@@ -36,8 +36,8 @@ public class CirnoEntity extends FairyEntity {
 				.add(Attributes.ATTACK_DAMAGE, 6);
 	}
 
-	public CirnoEntity(EntityType<? extends GeneralYoukaiEntity> pEntityType, Level pLevel) {
-		super(pEntityType, pLevel);
+	public CirnoEntity(EntityType<? extends CirnoEntity> type, Level level) {
+		super(type, level);
 	}
 
 	@Override

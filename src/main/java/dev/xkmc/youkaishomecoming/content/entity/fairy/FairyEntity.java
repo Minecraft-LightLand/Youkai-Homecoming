@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -12,7 +13,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,8 +30,15 @@ public class FairyEntity extends GeneralYoukaiEntity {
 				.add(Attributes.ATTACK_DAMAGE, 4);
 	}
 
-	public FairyEntity(EntityType<? extends GeneralYoukaiEntity> pEntityType, Level pLevel) {
-		super(pEntityType, pLevel);
+	public FairyEntity(EntityType<? extends FairyEntity> type, Level level) {
+		super(type, level);
+	}
+
+	@Override
+	protected void registerGoals() {
+		super.registerGoals();
+		goalSelector.addGoal(5, new TemptGoal(this, 1,
+				Ingredient.of(YHFood.FAIRY_CANDY.item.get()), false));
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {

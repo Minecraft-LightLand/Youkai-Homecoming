@@ -50,7 +50,7 @@ public class FrozenFrogItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_FROZEN_FROG.get()));
-		list.add(YHLangData.USAGE.get().append(YHLangData.USEAGE_FROZEN_FROG.get()));
+		list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_FROZEN_FROG.get()));
 	}
 
 }

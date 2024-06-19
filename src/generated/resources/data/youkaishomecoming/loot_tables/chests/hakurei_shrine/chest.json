@@ -9,7 +9,7 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],
@@ -21,7 +21,7 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],
@@ -33,11 +33,11 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:glowstone",
+          "name": "minecraft:glowstone_dust",
           "weight": 2
         },
         {
@@ -45,7 +45,7 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],
@@ -57,7 +57,7 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],
@@ -69,7 +69,7 @@
           "functions": [
             {
               "add": false,
-              "count": 2.0,
+              "count": 1.0,
               "function": "minecraft:set_count"
             }
           ],
@@ -80,7 +80,7 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],
@@ -91,7 +91,7 @@
           "functions": [
             {
               "add": false,
-              "count": 4.0,
+              "count": 2.0,
               "function": "minecraft:set_count"
             }
           ],

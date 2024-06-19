@@ -20,7 +20,8 @@ public class HigiEffect extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity e, int lv) {
 		if (!e.level().isClientSide) {
-			if (e.tickCount % (YHModConfig.COMMON.higiHealingPeriod.get() >> lv) == 0)
+			int period = YHModConfig.COMMON.higiHealingPeriod.get() >> lv;
+			if (e.tickCount % period == 0)
 				e.heal(1);
 		}
 	}

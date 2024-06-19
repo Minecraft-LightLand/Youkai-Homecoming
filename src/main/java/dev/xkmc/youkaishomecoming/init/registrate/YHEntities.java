@@ -13,6 +13,7 @@ import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuRenderer;
@@ -33,16 +34,17 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class YHEntities {
 
 	public static final EntityEntry<LampreyEntity> LAMPREY;
-
 	public static final EntityEntry<RumiaEntity> RUMIA;
-	public static final EntityEntry<BossYoukaiEntity> GENERAL_YOUKAI;
 	public static final EntityEntry<ReimuEntity> REIMU;
-	public static final EntityEntry<FairyEntity> FAIRY;
 	public static final EntityEntry<CirnoEntity> CIRNO;
+
+	public static final EntityEntry<BossYoukaiEntity> GENERAL_YOUKAI;
+	public static final EntityEntry<FairyEntity> FAIRY;
 	public static final EntityEntry<YukariEntity> YUKARI;
 	public static final EntityEntry<SanaeEntity> SANAE;
 
 	public static final EntityEntry<FrozenFrog> FROZEN_FROG;
+	public static final EntityEntry<FairyIce> FAIRY_ICE;
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU;
 	public static final EntityEntry<ItemLaserEntity> ITEM_LASER;
 
@@ -122,6 +124,12 @@ public class YHEntities {
 		{
 			FROZEN_FROG = YoukaisHomecoming.REGISTRATE
 					.<FrozenFrog>entity("frozen_frog", FrozenFrog::new, MobCategory.MISC)
+					.properties(p -> p.sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10))
+					.renderer(() -> ThrownItemRenderer::new)
+					.register();
+
+			FAIRY_ICE = YoukaisHomecoming.REGISTRATE
+					.<FairyIce>entity("fairy_ice_crystal", FairyIce::new, MobCategory.MISC)
 					.properties(p -> p.sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10))
 					.renderer(() -> ThrownItemRenderer::new)
 					.register();

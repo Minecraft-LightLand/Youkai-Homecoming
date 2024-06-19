@@ -16,6 +16,7 @@
 	"obtain_reimu_hairband": "玩家投喂灵梦各种食物掉落",
 	"usage_reimu_hairband": "激活创造飞行。弹幕伤害穿透魔法防御",
 	"obtain_fairy_ice": "穿全套皮革套被琪露诺的弹幕击中时小概率掉落。击败琪露诺时掉落。",
+	"usage_fairy_ice": "可以朝目标扔出。造成范围伤害并冻结。",
 	"obtain_frozen_frog": "琪露诺冻结青蛙时掉落。用弹幕击败琪露诺时小概率掉落。",
 	"usage_frozen_frog": "可以朝目标扔出。落地后生成一只青蛙。"
   }

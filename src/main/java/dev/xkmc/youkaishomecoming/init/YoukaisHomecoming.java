@@ -16,6 +16,7 @@ import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiStartPacket;
+import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.data.*;
@@ -127,6 +128,13 @@ public class YoukaisHomecoming {
 			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_COLD.get(), thrower);
 			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_WARM.get(), thrower);
 			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_TEMPERATE.get(), thrower);
+
+			DispenserBlock.registerBehavior(YHItems.FAIRY_ICE_CRYSTAL.get(),  new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
+					return new FairyIce(level, pos.x(), pos.y(), pos.z());
+				}
+			});
+
 		});
 		FastMapInit.init();
 	}
