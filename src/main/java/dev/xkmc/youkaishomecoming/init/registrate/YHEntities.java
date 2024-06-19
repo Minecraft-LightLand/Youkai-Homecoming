@@ -10,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
@@ -82,7 +83,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CirnoEntity::checkCirnoSpawnRules)
 					.attributes(CirnoEntity::createAttributes)
-					.renderer(() -> GeneralYoukaiRenderer::new)
+					.renderer(() -> CirnoRenderer::new)
 					.spawnEgg(0xA8C3D9, 0x7E8DC4).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::cirno).register();
 		}

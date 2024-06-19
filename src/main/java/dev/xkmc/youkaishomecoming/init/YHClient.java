@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init;
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.client.*;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
@@ -59,6 +60,8 @@ public class YHClient {
 		event.registerLayerDefinition(BlackBallModel.LAYER_LOCATION, BlackBallModel::createBodyLayer);
 		event.registerLayerDefinition(ReimuModel.LAYER_LOCATION, ReimuModel::createBodyLayer);
 		event.registerLayerDefinition(ReimuModel.HAT_LOCATION, ReimuModel::createHatLayer);
+		event.registerLayerDefinition(CirnoModel.LAYER_LOCATION, CirnoModel::createBodyLayer);
+		event.registerLayerDefinition(CirnoModel.HAT_LOCATION, CirnoModel::createHatLayer);
 	}
 
 	@SubscribeEvent

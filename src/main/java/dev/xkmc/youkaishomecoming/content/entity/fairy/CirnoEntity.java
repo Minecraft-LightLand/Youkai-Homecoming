@@ -75,7 +75,6 @@ public class CirnoEntity extends FairyEntity {
 	}
 
 	public static boolean checkCirnoSpawnRules(EntityType<CirnoEntity> e, ServerLevelAccessor level, MobSpawnType type, BlockPos pos, RandomSource rand) {
-		if (!ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) return false;
 		if (!checkMobSpawnRules(e, level, type, pos, rand)) return false;
 		var aabb = AABB.ofSize(pos.getCenter(), 48, 24, 48);
 		if (!level.getEntitiesOfClass(CirnoEntity.class, aabb).isEmpty()) return false;
