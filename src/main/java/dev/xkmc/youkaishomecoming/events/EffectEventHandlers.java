@@ -19,6 +19,22 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EffectEventHandlers {
 
+	public static boolean isWeakCharacter(LivingEntity e) {
+		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.FAIRY.get());
+	}
+
+	public static boolean isYoukai(LivingEntity e) {
+		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.YOUKAIFIED.get());
+	}
+
+	public static boolean isCharacter(LivingEntity e) {
+		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+				e.hasEffect(YHEffects.FAIRY.get());
+	}
+
 	@SubscribeEvent
 	public static void onSleep(PlayerSleepInBedEvent event) {
 		if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
@@ -131,12 +147,14 @@ public class EffectEventHandlers {
 		}
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFYING.get()) {
 			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
+					event.getEntity().hasEffect(YHEffects.FAIRY.get()) ||
 					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
 				event.setResult(Event.Result.DENY);
 			}
 		}
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFIED.get()) {
-			if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
+			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
+					event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
 				event.setResult(Event.Result.DENY);
 			}
 		}

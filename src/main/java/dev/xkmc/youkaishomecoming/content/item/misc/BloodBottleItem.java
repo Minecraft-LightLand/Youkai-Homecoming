@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.misc;
 
-import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;

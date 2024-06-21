@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
-import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.ReimuEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;

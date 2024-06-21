@@ -7,7 +7,7 @@ import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -71,8 +71,7 @@ public class GeneralEventHandlers {
 		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES) &&
-					(le.hasEffect(YHEffects.YOUKAIFIED.get()) ||
-							le.hasEffect(YHEffects.YOUKAIFYING.get())))
+					EffectEventHandlers.isYoukai(le))
 				spawnBlood(le);
 			if (le.getItemBySlot(EquipmentSlot.HEAD).is(YHItems.RUMIA_HAIRBAND.get()))
 				spawnBlood(le);
@@ -101,10 +100,9 @@ public class GeneralEventHandlers {
 		}
 		if (event.getEntity() instanceof AbstractVillager e &&
 				YHModConfig.COMMON.reimuSummonKill.get() &&
-				event.getSource().getEntity() instanceof ServerPlayer sp && (
-				sp.hasEffect(YHEffects.YOUKAIFIED.get()) ||
-						sp.hasEffect(YHEffects.YOUKAIFYING.get())
-		)) {
+				event.getSource().getEntity() instanceof ServerPlayer sp &&
+				EffectEventHandlers.isYoukai(sp)
+		) {
 			GeneralEventHandler.schedule(() -> {
 				if (e.isAlive()) {
 					ReimuEventHandlers.hurtWarn(sp);
@@ -125,7 +123,7 @@ public class GeneralEventHandlers {
 	public static void onEntityKilled(LivingDeathEvent event) {
 		if (event.getEntity() instanceof Villager && YHModConfig.COMMON.reimuSummonKill.get()) {
 			if (event.getSource().getEntity() instanceof LivingEntity le) {
-				if (le.hasEffect(YHEffects.YOUKAIFIED.get()) || le.hasEffect(YHEffects.YOUKAIFYING.get()))
+				if (EffectEventHandlers.isYoukai(le))
 					ReimuEventHandlers.triggerReimuResponse(le, 16, false);
 			}
 		}

@@ -1,4 +1,9 @@
+2.2.7
+- Cirno will not freeze, and immune to freezing damage
+- New Cirno model, now Cirno doesn't need TLM to spawn
+- Fix Danmaku rendering with shaders
 TODO
+- Reimu Shine improvements & loot
 - Cirno house & Food
 - more food
 - Fairies tempted by fairy candy
@@ -20,7 +25,6 @@ TODO
 - Reimu can open doors now
 - Opening loot chest will disable Unconscious
 - First Koishi attack will not be fatal
-- TODO shrine loot
 - Add Sanae (WIP)
 
 2.2.5
@@ -130,10 +134,10 @@ TODO
 - Serene Season / Diet / Thirst compat
 - Add 5 kinds of tea
 - Texture improvement
-- Fix Sober effect preveneting Phantom spawn
+- Fix Sober effect preventing Phantom spawn
 
 2.0.2
-- Fix L2DamageTracker JiJ version requirment, solve compat with other L2 mods
+- Fix L2DamageTracker JiJ version requirement, solve compat with other L2 mods
 - Add Scarlet Mist and Wind Priestesses as tea variants
 - Reduce Koishi Mousse effect duration to make it balanced
 

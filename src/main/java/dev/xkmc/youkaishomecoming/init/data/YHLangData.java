@@ -60,6 +60,8 @@ public enum YHLangData {
 	OBTAIN_REIMU_HAIRBAND("obtain_reimu_hairband", "Feed Reimu a variety of food", 0, ChatFormatting.GRAY),
 	USAGE_REIMU_HAIRBAND("usage_reimu_hairband", "Enables Creative Flight. Your danmaku damage bypasses magical protection.", 0, ChatFormatting.GRAY),
 
+	USAGE_CIRNO_HAIRBAND("usage_cirno_hairband", "Grants constant %s. Your magic damage freezes target (and frogs). Allows using Light Blue danmaku without consumption.", 1, ChatFormatting.GRAY),
+
 	REIMU_FLESH("reimu_flesh", "Reimu: You shall not eat it. Last warning.", 0, ChatFormatting.RED),
 	REIMU_WARN("reimu_warn", "Reimu: Drink some tea and keep your sanity. Last warning.", 0, ChatFormatting.RED),
 	KOISHI_REIMU("koishi_reimu", "Reimu: ???", 0, ChatFormatting.RED),

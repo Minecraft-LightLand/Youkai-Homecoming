@@ -68,7 +68,7 @@ public record ButterflyProjectileType(ResourceLocation colored, ResourceLocation
 		}
 
 		private static void vertex(VertexConsumer vc, Matrix4f m4, Matrix3f m3, float x, float y, float u, float v, int color) {
-			vc.vertex(m4, x - 0.5F, 0.0F, y - 0.5F).color(color).uv(u, v).endVertex();
+			vc.vertex(m4, x - 0.5F, 0.0F, y - 0.5F).uv(u, v).color(color).endVertex();
 		}
 
 	}

@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.item.curio;
+package dev.xkmc.youkaishomecoming.content.item.curio.wings;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

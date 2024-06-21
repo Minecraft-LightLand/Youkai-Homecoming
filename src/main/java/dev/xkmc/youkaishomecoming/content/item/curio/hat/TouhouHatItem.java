@@ -1,10 +1,10 @@
-package dev.xkmc.youkaishomecoming.content.item.curio;
+package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +16,8 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.util.function.Consumer;
+
 public class TouhouHatItem extends ArmorItem {
 
 	public static boolean showTooltip() {
@@ -23,9 +25,7 @@ public class TouhouHatItem extends ArmorItem {
 		if (player == null) return false;
 		if (player.getAbilities().instabuild)
 			return true;
-		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
-			return true;
-		} else return player.hasEffect(YHEffects.YOUKAIFYING.get());
+		return EffectEventHandlers.isCharacter(player);
 	}
 
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
@@ -50,6 +50,11 @@ public class TouhouHatItem extends ArmorItem {
 	}
 
 	@Override
+	public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken) {
+		return Math.min(amount, 1);
+	}
+
+	@Override
 	public void onArmorTick(ItemStack stack, Level level, Player player) {
 		tick(stack, level, player);
 	}
@@ -63,6 +68,9 @@ public class TouhouHatItem extends ArmorItem {
 
 	public DamageSource modifyDamageType(ItemStack stack, LivingEntity le, IYHDanmaku danmaku, DamageSource type) {
 		return type;
+	}
+
+	public void onHurtTarget(ItemStack head, DamageSource source, LivingEntity target) {
 	}
 
 }

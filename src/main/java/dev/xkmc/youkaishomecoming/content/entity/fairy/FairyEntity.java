@@ -4,6 +4,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -42,8 +43,7 @@ public class FairyEntity extends GeneralYoukaiEntity {
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
-		return entity.hasEffect(YHEffects.YOUKAIFYING.get()) ||
-				entity.hasEffect(YHEffects.YOUKAIFIED.get());
+		return EffectEventHandlers.isYoukai(entity);
 	}
 
 	@Override

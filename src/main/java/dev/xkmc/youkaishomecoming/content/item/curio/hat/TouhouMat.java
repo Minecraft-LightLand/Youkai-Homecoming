@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.item.curio;
+package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,6 +18,7 @@ public enum TouhouMat implements ArmorMaterial {
 	KOISHI_HAT(60, 10, 5, 3, () -> Ingredient.of(Items.IRON_INGOT), SoundEvents.ARMOR_EQUIP_IRON),
 	RUMIA_HAIRBAND(60, 10, 1, 0, () -> Ingredient.of(ModItems.CANVAS.get()), SoundEvents.ARMOR_EQUIP_LEATHER),
 	REIMU_HAIRBAND(60, 10, 3, 0, () -> Ingredient.of(ModItems.CANVAS.get()), SoundEvents.ARMOR_EQUIP_LEATHER),
+	CIRNO_HAIRBAND(60, 10, 1, 0, () -> Ingredient.of(ModItems.CANVAS.get()), SoundEvents.ARMOR_EQUIP_LEATHER),
 	;
 
 	private static final int[] DURABILITY = {13, 15, 16, 11};

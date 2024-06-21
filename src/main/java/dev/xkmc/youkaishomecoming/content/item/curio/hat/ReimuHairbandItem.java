@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.item.curio;
+package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import dev.xkmc.l2library.capability.conditionals.*;
 import dev.xkmc.l2library.util.math.MathHelper;

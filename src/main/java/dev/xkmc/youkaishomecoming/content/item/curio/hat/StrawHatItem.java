@@ -1,9 +1,10 @@
-package dev.xkmc.youkaishomecoming.content.item.curio;
+package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.client.HatModel;
 import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
@@ -45,7 +46,7 @@ public class StrawHatItem extends TouhouHatItem {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
 		if (!(target instanceof Frog frog))
 			return InteractionResult.PASS;
-		if (!player.hasEffect(YHEffects.YOUKAIFYING.get()) && !player.hasEffect(YHEffects.YOUKAIFIED.get()))
+		if (!EffectEventHandlers.isYoukai(player))
 			return InteractionResult.FAIL;
 		if (!FrogGodCapability.HOLDER.isProper(frog))
 			return InteractionResult.FAIL;

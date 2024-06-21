@@ -151,6 +151,7 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, reg);
 		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
 		gen.addProvider(server, new YHGLMProvider(gen));
+		gen.addProvider(server, new SlotGen(gen));
 		new YHDamageTypes(output, pvd, helper).generate(server, gen);
 	}
 

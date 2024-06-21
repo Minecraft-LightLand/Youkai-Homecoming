@@ -447,7 +447,7 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
 					.build(pvd, YHFood.CANNED_FLESH.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FAIRY_CANDY.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FAIRY_CANDY.item.get(), 3, 200, 0.1f)
 					.addIngredient(YHItems.FAIRY_ICE_CRYSTAL)
 					.addIngredient(Items.SUGAR)
 					.addIngredient(Items.HONEY_BOTTLE)

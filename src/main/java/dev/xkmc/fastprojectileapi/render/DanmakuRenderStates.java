@@ -18,14 +18,15 @@ public abstract class DanmakuRenderStates extends RenderType {
 	}
 
 	protected static final RenderStateShard.ShaderStateShard LASER_SHADER = new RenderStateShard.ShaderStateShard(GameRenderer::getPositionTexColorNormalShader);
+	protected static final RenderStateShard.ShaderStateShard DANMAKU_SHADER = new RenderStateShard.ShaderStateShard(GameRenderer::getPositionTexColorShader);
 
 	private static final Function<ResourceLocation, RenderType> SOLID = Util.memoize((rl) ->
 			create("danmaku_solid",
-					DefaultVertexFormat.POSITION_COLOR_TEX,
+					DefaultVertexFormat.POSITION_TEX_COLOR,
 					VertexFormat.Mode.QUADS,
 					256, true, false,
 					CompositeState.builder()
-							.setShaderState(POSITION_COLOR_TEX_SHADER)
+							.setShaderState(DANMAKU_SHADER)
 							.setTextureState(new TextureStateShard(rl, false, false))
 							.setTransparencyState(NO_TRANSPARENCY)
 							.setCullState(NO_CULL)

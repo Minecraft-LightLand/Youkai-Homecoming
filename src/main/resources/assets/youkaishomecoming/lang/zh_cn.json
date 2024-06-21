@@ -511,5 +511,10 @@
   "advancements.youkaishomecoming.advancements.main.passed_out.description": "不断喝酒直到醉酒效果堆叠到最高级",
   "advancements.youkaishomecoming.advancements.main.passed_out.title": "烂醉如泥",
   "advancements.youkaishomecoming.advancements.main.feed_reimu.description": "投喂灵梦妖怪归家中所有正常的食物，灵梦会给你她的大蝴蝶结作为谢礼",
-  "advancements.youkaishomecoming.advancements.main.feed_reimu.title": "满足的灵梦"
+  "advancements.youkaishomecoming.advancements.main.feed_reimu.title": "满足的灵梦",
+  "effect.youkaishomecoming.fairy": "Fairy",
+  "effect.youkaishomecoming.fairy.description": "Reduce max HP but give other benefits",
+  "item.youkaishomecoming.cirno_hairband": "Cirno Hairband",
+  "item.youkaishomecoming.cirno_wings": "Cirno Wings",
+  "youkaishomecoming.usage_cirno_hairband": "Grants constant %s. Your magic damage freezes target (and frogs). Allows using Light Blue danmaku without consumption."
 }

@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.events;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
-import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;

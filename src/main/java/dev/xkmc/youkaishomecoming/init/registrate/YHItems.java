@@ -9,18 +9,21 @@ import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
-import dev.xkmc.youkaishomecoming.content.item.curio.*;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
+import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
-import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
+import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
 import dev.xkmc.youkaishomecoming.content.spell.game.reimu.ReimuSpell;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +56,8 @@ public class YHItems {
 	public static final ItemEntry<KoishiHatItem> KOISHI_HAT;
 	public static final ItemEntry<RumiaHairbandItem> RUMIA_HAIRBAND;
 	public static final ItemEntry<ReimuHairbandItem> REIMU_HAIRBAND;
+	public static final ItemEntry<CirnoHairbandItem> CIRNO_HAIRBAND;
+	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
 	public static final ItemEntry<SpellItem> REIMU_SPELL;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
@@ -104,6 +109,19 @@ public class YHItems {
 					.item("reimu_hairband", p -> new ReimuHairbandItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+
+			CIRNO_HAIRBAND = YoukaisHomecoming.REGISTRATE
+					.item("cirno_hairband", p -> new CirnoHairbandItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+			CIRNO_WINGS = YoukaisHomecoming.REGISTRATE
+					.item("cirno_wings", p -> new CirnoWingsItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(ItemTags.create(new ResourceLocation("curios", "back")))
 					.register();
 
 			REIMU_SPELL = YoukaisHomecoming.REGISTRATE
