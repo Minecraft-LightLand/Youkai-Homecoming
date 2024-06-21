@@ -90,9 +90,8 @@ public class YHEffects {
 			() -> new HigiEffect(MobEffectCategory.BENEFICIAL, 0x6CA16E),
 			"Boost attack damage and movement speed, heal slowly");
 
-
-	public static final RegistryEntry<EmptyEffect> FAIRY = genEffect("fairy",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xd0c3a5),
+	public static final RegistryEntry<FairyEffect> FAIRY = genEffect("fairy",
+			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
 			"Reduce max HP but give other benefits");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
