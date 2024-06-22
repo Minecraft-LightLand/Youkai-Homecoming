@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/spruce_dining_chair",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "youkaishomecoming:block/spruce_dining_chair",
+    "particle": "minecraft:block/birch_planks"
+  }
+}

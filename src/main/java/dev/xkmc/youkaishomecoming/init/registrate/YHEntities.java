@@ -3,7 +3,10 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.youkaishomecoming.content.block.furniture.SeatEntity;
+import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
@@ -20,7 +23,6 @@ import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.loot.EntityLootGen;
@@ -48,6 +50,7 @@ public class YHEntities {
 	public static final EntityEntry<FairyIce> FAIRY_ICE;
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU;
 	public static final EntityEntry<ItemLaserEntity> ITEM_LASER;
+	public static final EntityEntry<SeatEntity> SEAT;
 
 	static {
 
@@ -145,6 +148,12 @@ public class YHEntities {
 					.<ItemLaserEntity>entity("item_laser", ItemLaserEntity::new, MobCategory.MISC)
 					.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(1 << 16))
 					.renderer(() -> ItemLaserRenderer::new)
+					.register();
+
+			SEAT = YoukaisHomecoming.REGISTRATE
+					.<SeatEntity>entity("seat", SeatEntity::new, MobCategory.MISC)
+					.properties(e -> e.sized(0.25f, 0.5f))
+					.renderer(() -> NothingRenderer::new)
 					.register();
 		}
 

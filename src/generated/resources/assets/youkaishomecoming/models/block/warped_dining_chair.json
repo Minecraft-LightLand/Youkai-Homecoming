@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/warped_dining_chair",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "youkaishomecoming:block/warped_dining_chair",
+    "particle": "minecraft:block/birch_planks"
+  }
+}

@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.events;
 
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
-import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;

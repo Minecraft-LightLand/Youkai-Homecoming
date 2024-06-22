@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/moon_lantern",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "youkaishomecoming:block/moon_lantern",
+    "particle": "minecraft:block/mangrove_planks"
+  }
+}
