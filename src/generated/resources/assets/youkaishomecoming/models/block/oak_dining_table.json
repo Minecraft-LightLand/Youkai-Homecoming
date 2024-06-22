@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/oak_dining_table",
+  "parent": "youkaishomecoming:custom/wooden_dining_table",
   "render_type": "minecraft:cutout",
   "textures": {
     "all": "youkaishomecoming:block/oak_dining_table",

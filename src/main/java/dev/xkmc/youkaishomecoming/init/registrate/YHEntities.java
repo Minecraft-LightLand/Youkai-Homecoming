@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.youkaishomecoming.content.block.furniture.SeatEntity;
+import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
@@ -50,7 +50,7 @@ public class YHEntities {
 	public static final EntityEntry<FairyIce> FAIRY_ICE;
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU;
 	public static final EntityEntry<ItemLaserEntity> ITEM_LASER;
-	public static final EntityEntry<SeatEntity> SEAT;
+	public static final EntityEntry<ChairEntity> CHAIR;
 
 	static {
 
@@ -150,8 +150,8 @@ public class YHEntities {
 					.renderer(() -> ItemLaserRenderer::new)
 					.register();
 
-			SEAT = YoukaisHomecoming.REGISTRATE
-					.<SeatEntity>entity("seat", SeatEntity::new, MobCategory.MISC)
+			CHAIR = YoukaisHomecoming.REGISTRATE
+					.<ChairEntity>entity("dining_chair", ChairEntity::new, MobCategory.MISC)
 					.properties(e -> e.sized(0.25f, 0.5f))
 					.renderer(() -> NothingRenderer::new)
 					.register();

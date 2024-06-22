@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.events;
 
+import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -86,8 +87,11 @@ public class EffectEventHandlers {
 		var udu = e.getEffect(YHEffects.UDUMBARA.get());
 		if (udu != null) {
 			var level = e.level();
-			if (level.isNight() && level.canSeeSky(e.blockPosition().above()) && level.getMoonBrightness() > 0.8f) {
-				reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
+			if (level.isNight()) {
+				if (level.canSeeSky(e.blockPosition().above()) &&
+						level.getMoonBrightness() > 0.8f ||
+						UdumbaraEffect.hasLantern(e))
+					reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
 			}
 		}
 		if (reduction > 0) {

@@ -2,7 +2,11 @@ package dev.xkmc.youkaishomecoming.content.block.furniture;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LanternBlock;
@@ -11,6 +15,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ModelFile;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class MoonLanternBlock extends LanternBlock {
 
@@ -37,6 +44,12 @@ public class MoonLanternBlock extends LanternBlock {
 				.texture("all", pvd.modLoc("block/" + ctx.getName()))
 				.texture("particle", pvd.mcLoc("block/mangrove_planks"))
 				.renderType("cutout"));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		list.add(YHLangData.MOON_LANTERN_PLACE.get());
+		list.add(YHLangData.MOON_LANTERN_HOLD.get());
 	}
 
 }

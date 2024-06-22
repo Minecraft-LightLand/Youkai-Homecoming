@@ -30,7 +30,7 @@ public class WoodTableBlock extends Block {
 
 	public static void buildStates(DataGenContext<Block, WoodTableBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.simpleBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/" + ctx.getName())))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/wooden_dining_table")))
 				.texture("all", pvd.modLoc("block/" + ctx.getName()))
 				.texture("particle", pvd.mcLoc("block/birch_planks"))
 				.renderType("cutout"));

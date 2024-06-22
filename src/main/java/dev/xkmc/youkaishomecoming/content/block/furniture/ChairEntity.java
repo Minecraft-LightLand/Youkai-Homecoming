@@ -2,15 +2,8 @@ package dev.xkmc.youkaishomecoming.content.block.furniture;
 
 import dev.xkmc.fastprojectileapi.entity.SimplifiedEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,17 +13,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
 
-public class SeatEntity extends SimplifiedEntity {
+public class ChairEntity extends SimplifiedEntity {
 
-	public SeatEntity(EntityType<?> type, Level level) {
+	public ChairEntity(EntityType<?> type, Level level) {
 		super(type, level);
 	}
 
-	public SeatEntity(Level level, BlockPos pos) {
-		this(YHEntities.SEAT.get(), level);
+	public ChairEntity(Level level, BlockPos pos) {
+		this(YHEntities.CHAIR.get(), level);
 		this.noPhysics = true;
 	}
 
@@ -47,7 +38,7 @@ public class SeatEntity extends SimplifiedEntity {
 	public void tick() {
 		if (this.level().isClientSide) return;
 		boolean blockPresent = this.level().getBlockState(this.blockPosition())
-				.getBlock() instanceof WoodSeatBlock;
+				.getBlock() instanceof WoodChairBlock;
 		if (!this.isVehicle() || !blockPresent) {
 			this.discard();
 		}

@@ -19,11 +19,11 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 import java.util.List;
 
-public class WoodSeatBlock extends Block {
+public class WoodChairBlock extends Block {
 
 	public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 10, 15);
 
-	public WoodSeatBlock(Properties pProperties) {
+	public WoodChairBlock(Properties pProperties) {
 		super(pProperties);
 	}
 
@@ -37,9 +37,9 @@ public class WoodSeatBlock extends Block {
 		if (player.isShiftKeyDown()) {
 			return InteractionResult.PASS;
 		}
-		List<SeatEntity> seats = world.getEntitiesOfClass(SeatEntity.class, new AABB(pos));
+		List<ChairEntity> seats = world.getEntitiesOfClass(ChairEntity.class, new AABB(pos));
 		if (!seats.isEmpty()) {
-			SeatEntity seat = seats.get(0);
+			ChairEntity seat = seats.get(0);
 			List<Entity> passengers = seat.getPassengers();
 			if (!passengers.isEmpty() && passengers.get(0) instanceof Player) {
 				return InteractionResult.PASS;
@@ -58,7 +58,7 @@ public class WoodSeatBlock extends Block {
 
 	public static void sitDown(Level world, BlockPos pos, Entity entity) {
 		if (!world.isClientSide) {
-			SeatEntity seat = new SeatEntity(world, pos);
+			ChairEntity seat = new ChairEntity(world, pos);
 			seat.setPos(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
 			world.addFreshEntity(seat);
 			entity.startRiding(seat, true);
@@ -66,12 +66,12 @@ public class WoodSeatBlock extends Block {
 	}
 
 	public static boolean isSeatOccupied(Level world, BlockPos pos) {
-		return !world.getEntitiesOfClass(SeatEntity.class, new AABB(pos)).isEmpty();
+		return !world.getEntitiesOfClass(ChairEntity.class, new AABB(pos)).isEmpty();
 	}
 
-	public static void buildStates(DataGenContext<Block, WoodSeatBlock> ctx, RegistrateBlockstateProvider pvd) {
+	public static void buildStates(DataGenContext<Block, WoodChairBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.simpleBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/" + ctx.getName())))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/wooden_dining_chair")))
 				.texture("all", pvd.modLoc("block/" + ctx.getName()))
 				.texture("particle", pvd.mcLoc("block/birch_planks"))
 				.renderType("cutout"));

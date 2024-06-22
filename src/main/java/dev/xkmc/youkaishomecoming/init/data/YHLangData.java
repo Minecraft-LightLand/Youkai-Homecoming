@@ -28,6 +28,9 @@ public enum YHLangData {
 	KETTLE_INFO("tooltip.kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
 	DRYING_RACK("tooltip.drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 
+	MOON_LANTERN_PLACE("tooltip.moon_lantern_place", "Udumbara within 3x3x3 blocks below this latern will grow as night as if they can see full moon.", 0,ChatFormatting.GRAY),
+	MOON_LANTERN_HOLD("tooltip.moon_lantern_hold", "When holding in hand, Udumbara effect will always trigger at night regardless if player can see full moons", 0,ChatFormatting.GRAY),
+
 	FLESH_NAME_HUMAN("flesh_human", "Weird Meat", 0, null),
 	FLESH_NAME_YOUKAI("flesh_youkai", "Flesh", 0, null),
 

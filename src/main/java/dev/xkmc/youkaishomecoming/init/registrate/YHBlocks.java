@@ -16,7 +16,7 @@ import dev.xkmc.youkaishomecoming.content.block.donation.DonationShape;
 import dev.xkmc.youkaishomecoming.content.block.donation.DoubleBlockHorizontal;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
-import dev.xkmc.youkaishomecoming.content.block.furniture.WoodSeatBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodTableBlock;
 import dev.xkmc.youkaishomecoming.content.block.variants.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
@@ -77,7 +77,7 @@ public class YHBlocks {
 		public final ItemLike plank, strippedWood, slab;
 		public BlockEntry<MultiFenceBlock> fence;
 		public BlockEntry<WoodTableBlock> table;
-		public BlockEntry<WoodSeatBlock> seat;
+		public BlockEntry<WoodChairBlock> seat;
 
 		WoodType(Block plankProp, Block fenceProp, ItemLike strippedWood, ItemLike slab) {
 			this.plankProp = plankProp;
@@ -255,9 +255,9 @@ public class YHBlocks {
 								BlockBehaviour.Properties.copy(e.plankProp)))
 						.blockstate(WoodTableBlock::buildStates)
 						.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
-				e.seat = YoukaisHomecoming.REGISTRATE.block(name + "_dining_chair", p -> new WoodSeatBlock(
+				e.seat = YoukaisHomecoming.REGISTRATE.block(name + "_dining_chair", p -> new WoodChairBlock(
 								BlockBehaviour.Properties.copy(e.plankProp)))
-						.blockstate(WoodSeatBlock::buildStates)
+						.blockstate(WoodChairBlock::buildStates)
 						.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
 			}
 

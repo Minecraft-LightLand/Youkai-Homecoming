@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.block.plant;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -51,9 +52,21 @@ public class UdumbaraBlock extends YHCropBlock {
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (!level.isAreaLoaded(pos, 1))
 			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-		if (level.isNight() && level.canSeeSky(pos)) {
+		if (level.isNight()) {
 			int i = this.getAge(state);
-			if (i < getMaxAge() - 1 || i == getMaxAge() - 1 && level.getMoonBrightness() > 0.8) {
+			boolean seeSky = level.canSeeSky(pos);
+			boolean brightMoon = level.getMoonBrightness() > 0.8;
+			for (int x = -1; x <= 1; x++) {
+				for (int y = 1; y <= 3; y++) {
+					for (int z = -1; z <= 1; z++) {
+						if (level.getBlockState(pos.offset(x, y, z)).is(YHBlocks.MOON_LANTERN.get())) {
+							seeSky = true;
+							brightMoon = true;
+						}
+					}
+				}
+			}
+			if (seeSky && (i < getMaxAge() - 1 || i == getMaxAge() - 1 && brightMoon)) {
 				float f = getGrowthSpeed(this, level, pos);
 				if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 					level.setBlock(pos, getStateForAge(i + 1), 2);

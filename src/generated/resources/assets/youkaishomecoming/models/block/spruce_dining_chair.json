@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/spruce_dining_chair",
+  "parent": "youkaishomecoming:custom/wooden_dining_chair",
   "render_type": "minecraft:cutout",
   "textures": {
     "all": "youkaishomecoming:block/spruce_dining_chair",
