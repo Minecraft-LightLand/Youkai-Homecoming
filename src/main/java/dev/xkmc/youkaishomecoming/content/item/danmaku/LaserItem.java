@@ -2,7 +2,8 @@ package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.fastprojectileapi.render.DoubleLayerLaserType;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
-import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -43,8 +44,7 @@ public class LaserItem extends Item {
 		ItemStack stack = player.getItemInHand(hand);
 		ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
 		if (!head.is(YHTagGen.TOUHOU_HAT) && !player.getAbilities().instabuild &&
-				!player.hasEffect(YHEffects.YOUKAIFIED.get()) &&
-				!player.hasEffect(YHEffects.YOUKAIFYING.get())) {
+				!EffectEventHandlers.isCharacter(player)) {
 			return InteractionResultHolder.fail(stack);
 		}
 		level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS,

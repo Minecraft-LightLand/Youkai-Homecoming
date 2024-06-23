@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.effect;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +21,9 @@ public class HigiEffect extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity e, int lv) {
 		if (!e.level().isClientSide) {
-			if (e.tickCount % (YHModConfig.COMMON.higiHealingPeriod.get() >> lv) == 0)
+			if (e.hasEffect(YHEffects.FAIRY.get())) lv++;
+			int period = YHModConfig.COMMON.higiHealingPeriod.get() >> lv;
+			if (e.tickCount % period == 0)
 				e.heal(1);
 		}
 	}

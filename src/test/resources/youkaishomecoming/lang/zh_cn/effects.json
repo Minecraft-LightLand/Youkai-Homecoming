@@ -29,7 +29,9 @@
 	"aphrodisiac": "催情",
 	"aphrodisiac.description": "让动物进入繁殖状态",
 	"hypnosis": "催眠",
-	"hypnosis.description": "让村民无视你的罪行"
+	"hypnosis.description": "让村民无视你的罪行",
+	"fairy": "妖精化",
+	"fairy.description": "减半血量，但是提供其他增益"
   },
   "item.minecraft.tipped_arrow.effect": {
 	"aphrodisiac": "催情之箭",

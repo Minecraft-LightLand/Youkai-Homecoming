@@ -6,7 +6,9 @@
   "entity.youkaishomecoming": {
 	"item_danmaku": "弹幕",
 	"item_laser": "激光",
-	"frozen_frog": "冻青蛙"
+	"frozen_frog": "冻青蛙",
+	"fairy_ice_crystal": "妖精冰晶",
+	"dining_chair": "板凳"
   },
   "youkaishomecoming": {
 	"jei": {
@@ -26,7 +28,9 @@
 	  "taste_human": "不详的气味...",
 	  "taste_youkai": "美味极了!",
 	  "kettle": "持水桶或水瓶右键添水",
-	  "drying_rack": "只能在直接阳光下使用"
+	  "drying_rack": "只能在直接阳光下使用",
+	  "moon_lantern_place": "下方3x3x3内的幻昙华在夜间会把幻月灯当做满月",
+	  "moon_lantern_hold": "手持幻月灯且持有幻昙华效果时，在夜间激活全部幻昙华效果"
 	},
 	"flesh_human": "怪肉",
 	"flesh_youkai": "人肉",

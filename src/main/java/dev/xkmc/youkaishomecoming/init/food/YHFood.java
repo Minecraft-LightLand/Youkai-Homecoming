@@ -81,7 +81,9 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
-	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, DietTagGen.SUGARS.tag),
+	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(
+			new EffectEntry(YHEffects.FAIRY::get, 1200, 0, 1)
+	), DietTagGen.SUGARS.tag),
 
 	// stick
 
@@ -260,7 +262,9 @@ public enum YHFood {
 	}
 
 	public boolean isReimuFood() {
-		return !isFlesh() && this != RAW_LAMPREY && this != RAW_LAMPREY_FILLET && this != COOKED_MANDRAKE_ROOT;
+		return !isFlesh() &&
+				this != RAW_LAMPREY && this != RAW_LAMPREY_FILLET &&
+				this != COOKED_MANDRAKE_ROOT && this != FAIRY_CANDY;
 	}
 
 	public static void register() {

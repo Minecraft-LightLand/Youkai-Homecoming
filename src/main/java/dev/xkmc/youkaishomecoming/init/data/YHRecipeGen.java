@@ -56,7 +56,22 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
 			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
 			for (var e : YHBlocks.WoodType.values()) {
-				pvd.stonecutting(DataIngredient.items(e.item), RecipeCategory.MISC, e.fence);
+				pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, e.fence);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.seat, 4)::unlockedBy, ModItems.CANVAS.get())
+						.pattern("PCP").pattern("PSP")
+						.define('C', ModItems.CANVAS.get())
+						.define('P', e.plank)
+						.define('S', Items.STICK)
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.table, 4)::unlockedBy, Items.STICK)
+						.pattern("WWW").pattern(" S ").pattern(" P ")
+						.define('W', e.strippedWood)
+						.define('S', Items.STICK)
+						.define('P', e.slab)
+						.save(pvd);
+
 			}
 			YHBlocks.HAY.genRecipe(pvd);
 			YHBlocks.STRAW.genRecipe(pvd);
@@ -144,6 +159,13 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SIKKUI_TD, 6);
 			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SHOJI, 3);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.MOON_LANTERN)::unlockedBy, YHCrops.UDUMBARA.getFruits())
+					.pattern("RAR").pattern("GFG").pattern("RAR")
+					.define('A', Items.MANGROVE_PLANKS)
+					.define('G', Items.AMETHYST_SHARD)
+					.define('R', Items.END_ROD)
+					.define('F', YHCrops.UDUMBARA.getFruits())
+					.save(pvd);
 
 		}
 
@@ -447,7 +469,7 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
 					.build(pvd, YHFood.CANNED_FLESH.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FAIRY_CANDY.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FAIRY_CANDY.item.get(), 3, 200, 0.1f)
 					.addIngredient(YHItems.FAIRY_ICE_CRYSTAL)
 					.addIngredient(Items.SUGAR)
 					.addIngredient(Items.HONEY_BOTTLE)

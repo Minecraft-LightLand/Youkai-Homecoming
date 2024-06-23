@@ -5,7 +5,8 @@ import dev.xkmc.fastprojectileapi.render.DoubleLayerProjectileType;
 import dev.xkmc.fastprojectileapi.render.RenderableProjectileType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
-import dev.xkmc.youkaishomecoming.content.item.curio.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -47,8 +48,7 @@ public class DanmakuItem extends Item {
 		ItemStack stack = player.getItemInHand(hand);
 		ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
 		if (!head.is(YHTagGen.TOUHOU_HAT) && !player.getAbilities().instabuild &&
-				!player.hasEffect(YHEffects.YOUKAIFIED.get()) &&
-				!player.hasEffect(YHEffects.YOUKAIFYING.get())) {
+				!EffectEventHandlers.isCharacter(player)) {
 			return InteractionResultHolder.fail(stack);
 		}
 		level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS,

@@ -14,7 +14,11 @@ import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlock;
 import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlockEntity;
 import dev.xkmc.youkaishomecoming.content.block.donation.DonationShape;
 import dev.xkmc.youkaishomecoming.content.block.donation.DoubleBlockHorizontal;
-import dev.xkmc.youkaishomecoming.content.block.furniture.*;
+import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.WoodTableBlock;
+import dev.xkmc.youkaishomecoming.content.block.variants.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
@@ -56,25 +60,33 @@ import java.util.function.Supplier;
 public class YHBlocks {
 
 	public enum WoodType {
-		OAK(Items.OAK_PLANKS),
-		BIRCH(Items.BIRCH_PLANKS),
-		SPRUCE(Items.SPRUCE_PLANKS),
-		JUNGLE(Items.JUNGLE_PLANKS),
-		DARK_OAK(Items.DARK_OAK_PLANKS),
-		ACACIA(Items.ACACIA_PLANKS),
-		CRIMSON(Items.CRIMSON_PLANKS),
-		WARPED(Items.WARPED_PLANKS),
-		MANGROVE(Items.MANGROVE_PLANKS),
-		CHERRY(Items.CHERRY_PLANKS),
-		BAMBOO(Items.BAMBOO_PLANKS),
+		OAK(Blocks.OAK_PLANKS, Blocks.OAK_FENCE, Items.STRIPPED_OAK_WOOD, Items.OAK_SLAB),
+		BIRCH(Blocks.BIRCH_PLANKS, Blocks.BIRCH_FENCE, Items.STRIPPED_BIRCH_WOOD, Items.BIRCH_SLAB),
+		SPRUCE(Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_FENCE, Items.STRIPPED_SPRUCE_WOOD, Items.SPRUCE_SLAB),
+		JUNGLE(Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_FENCE, Items.STRIPPED_JUNGLE_WOOD, Items.JUNGLE_SLAB),
+		DARK_OAK(Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_FENCE, Items.STRIPPED_DARK_OAK_WOOD, Items.DARK_OAK_SLAB),
+		ACACIA(Blocks.ACACIA_PLANKS, Blocks.ACACIA_FENCE, Items.STRIPPED_ACACIA_WOOD, Items.ACACIA_SLAB),
+		CRIMSON(Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_FENCE, Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_SLAB),
+		WARPED(Blocks.WARPED_PLANKS, Blocks.WARPED_FENCE, Items.STRIPPED_CRIMSON_HYPHAE, Items.WARPED_SLAB),
+		MANGROVE(Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_FENCE, Items.STRIPPED_MANGROVE_WOOD, Items.MANGROVE_SLAB),
+		CHERRY(Blocks.CHERRY_PLANKS, Blocks.CHERRY_FENCE, Items.STRIPPED_CHERRY_WOOD, Items.CHERRY_SLAB),
+		BAMBOO(Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_FENCE, Items.STRIPPED_BAMBOO_BLOCK, Items.BAMBOO_SLAB),
 		;
 
-		public final ItemLike item;
+		private final Block plankProp, fenceProp;
+		public final ItemLike plank, strippedWood, slab;
 		public BlockEntry<MultiFenceBlock> fence;
+		public BlockEntry<WoodTableBlock> table;
+		public BlockEntry<WoodChairBlock> seat;
 
-		WoodType(ItemLike item) {
-			this.item = item;
+		WoodType(Block plankProp, Block fenceProp, ItemLike strippedWood, ItemLike slab) {
+			this.plankProp = plankProp;
+			this.fenceProp = fenceProp;
+			this.plank = plankProp;
+			this.strippedWood = strippedWood;
+			this.slab = slab;
 		}
+
 	}
 
 	public static final BlockEntry<MokaMakerBlock> MOKA;
@@ -99,10 +111,11 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
-	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
-
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
+
+	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
+	public static final BlockEntry<MoonLanternBlock> MOON_LANTERN;
 
 	public static FullSikkuiSet SIKKUI, CROSS_SIKKUI;
 	public static SikkuiSet FRAMED_SIKKUI, GRID_SIKKUI;
@@ -156,6 +169,20 @@ public class YHBlocks {
 		}
 
 		{
+			DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
+							BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
+									.mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASS),
+							BlockProxy.HORIZONTAL, new DoubleBlockHorizontal(),
+							new DonationShape(), DonationBoxBlock.TE
+					)).blockstate(DonationBoxBlock::buildStates)
+					.simpleItem()
+					.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()))
+					.register();
+
+			DONATION_BOX_BE = YoukaisHomecoming.REGISTRATE.blockEntity("donation_box", DonationBoxBlockEntity::new)
+					.validBlock(DONATION_BOX)
+					.register();
+
 			MOKA_KIT = YoukaisHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
@@ -166,18 +193,27 @@ public class YHBlocks {
 							.renderType("cutout")))
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 
+			MOON_LANTERN = YoukaisHomecoming.REGISTRATE.block("moon_lantern", p -> new MoonLanternBlock(
+							BlockBehaviour.Properties.copy(Blocks.LANTERN)))
+					.blockstate(MoonLanternBlock::buildStates)
+					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
+
+		}
+
+		{
+
 			var set = new BlockSetType("sikkui", true, SoundType.WOOD,
 					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
 					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
 					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
 					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 
-			var prop = BlockBehaviour.Properties.copy(Blocks.CLAY);
+			var sikkuiProp = BlockBehaviour.Properties.copy(Blocks.CLAY);
 
-			SIKKUI = new FullSikkuiSet("sikkui", prop);
-			FRAMED_SIKKUI = new SikkuiSet("framed_sikkui", prop);
-			CROSS_SIKKUI = new FullSikkuiSet("cross_framed_sikkui", prop);
-			GRID_SIKKUI = new SikkuiSet("grid_framed_sikkui", prop);
+			SIKKUI = new FullSikkuiSet("sikkui", sikkuiProp);
+			FRAMED_SIKKUI = new SikkuiSet("framed_sikkui", sikkuiProp);
+			CROSS_SIKKUI = new FullSikkuiSet("cross_framed_sikkui", sikkuiProp);
+			GRID_SIKKUI = new SikkuiSet("grid_framed_sikkui", sikkuiProp);
 
 			FINE_GRID_SIKKUI = YoukaisHomecoming.REGISTRATE.block("fine_grid_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
 					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(),
@@ -187,50 +223,44 @@ public class YHBlocks {
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE)
 					.simpleItem().register();
 
-			FINE_GRID_SIKKUI_TD = trapdoor("fine_grid_framed_sikkui", prop, set, YoukaisHomecoming.loc("block/fine_grid_framed_sikkui_side"));
+			FINE_GRID_SIKKUI_TD = thinTrapdoor("fine_grid_framed_sikkui", sikkuiProp, set, YoukaisHomecoming.loc("block/fine_grid_framed_sikkui_side"));
 
 			var doorProp = BlockBehaviour.Properties.copy(Blocks.CLAY)
 					.noOcclusion().pushReaction(PushReaction.DESTROY);
 
-			FINE_GRID_SHOJI = door("fine_grid_framed_shoji", doorProp, set);
+			FINE_GRID_SHOJI = thinDoor("fine_grid_framed_shoji", doorProp, set);
 
-		}
+			var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
+					.instrument(NoteBlockInstrument.BANJO).strength(0.5F).sound(SoundType.GRASS);
+			HAY = new WoodSet("hay", () -> Blocks.HAY_BLOCK, prop,
+					new ResourceLocation("block/hay_block_top"),
+					new ResourceLocation("block/hay_block_side"),
+					new ResourceLocation("block/hay_block")
+			);
+			STRAW = new WoodSet("straw", ModBlocks.STRAW_BALE, prop,
+					YoukaisHomecoming.loc("block/straw_bale_end"),
+					YoukaisHomecoming.loc("block/straw_bale_side"),
+					new ResourceLocation(FarmersDelight.MODID, "block/straw_bale")
+			);
 
-		DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
-						BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
-								.mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASS),
-						BlockProxy.HORIZONTAL, new DoubleBlockHorizontal(),
-						new DonationShape(), DonationBoxBlock.TE
-				)).blockstate(DonationBoxBlock::buildStates)
-				.simpleItem()
-				.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()))
-				.register();
+			for (var e : WoodType.values()) {
+				String name = e.name().toLowerCase(Locale.ROOT);
+				e.fence = YoukaisHomecoming.REGISTRATE.block(name + "_handrail",
+								p -> new MultiFenceBlock(BlockBehaviour.Properties.copy(e.fenceProp).noOcclusion()))
+						.blockstate(MultiFenceBlock::genModel)
+						.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/handrail/" + ctx.getName()))).build()
+						.tag(BlockTags.MINEABLE_WITH_AXE).defaultLoot()
+						.register();
+				e.table = YoukaisHomecoming.REGISTRATE.block(name + "_dining_table", p -> new WoodTableBlock(
+								BlockBehaviour.Properties.copy(e.plankProp)))
+						.blockstate(WoodTableBlock::buildStates)
+						.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
+				e.seat = YoukaisHomecoming.REGISTRATE.block(name + "_dining_chair", p -> new WoodChairBlock(
+								BlockBehaviour.Properties.copy(e.plankProp)))
+						.blockstate(WoodChairBlock::buildStates)
+						.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
+			}
 
-		DONATION_BOX_BE = YoukaisHomecoming.REGISTRATE.blockEntity("donation_box", DonationBoxBlockEntity::new)
-				.validBlock(DONATION_BOX)
-				.register();
-
-		var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
-				.instrument(NoteBlockInstrument.BANJO).strength(0.5F).sound(SoundType.GRASS);
-		HAY = new WoodSet("hay", () -> Blocks.HAY_BLOCK, prop,
-				new ResourceLocation("block/hay_block_top"),
-				new ResourceLocation("block/hay_block_side"),
-				new ResourceLocation("block/hay_block")
-		);
-		STRAW = new WoodSet("straw", ModBlocks.STRAW_BALE, prop,
-				YoukaisHomecoming.loc("block/straw_bale_end"),
-				YoukaisHomecoming.loc("block/straw_bale_side"),
-				new ResourceLocation(FarmersDelight.MODID, "block/straw_bale")
-		);
-
-		for (var e : WoodType.values()) {
-			String name = e.name().toLowerCase(Locale.ROOT);
-			e.fence = YoukaisHomecoming.REGISTRATE.block(name + "_handrail",
-							p -> new MultiFenceBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_FENCE).noOcclusion()))
-					.blockstate(MultiFenceBlock::genModel)
-					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/handrail/" + ctx.getName()))).build()
-					.tag(BlockTags.MINEABLE_WITH_AXE).defaultLoot()
-					.register();
 		}
 
 	}
@@ -239,7 +269,7 @@ public class YHBlocks {
 		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);
 	}
 
-	private static BlockEntry<ThinTrapdoorBlock> trapdoor(String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side) {
+	private static BlockEntry<ThinTrapdoorBlock> thinTrapdoor(String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side) {
 		return YoukaisHomecoming.REGISTRATE.block(id + "_trap_door", p ->
 						new ThinTrapdoorBlock(prop, set))
 				.blockstate((ctx, pvd) -> ThinTrapdoorBlock.buildModels(pvd, ctx.get(), ctx.getName(), side))
@@ -250,7 +280,7 @@ public class YHBlocks {
 				.register();
 	}
 
-	private static BlockEntry<ThinDoorBlock> door(String id, BlockBehaviour.Properties prop, BlockSetType set) {
+	private static BlockEntry<ThinDoorBlock> thinDoor(String id, BlockBehaviour.Properties prop, BlockSetType set) {
 		return YoukaisHomecoming.REGISTRATE.block(id, p -> new ThinDoorBlock(prop, set))
 				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(),
 						pvd.modLoc("block/" + id + "_bottom"),
@@ -343,7 +373,7 @@ public class YHBlocks {
 					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
 					.tag(BlockTags.MINEABLE_WITH_SHOVEL)
 					.simpleItem().register();
-			TRAP_DOOR = trapdoor(id, prop, set, YoukaisHomecoming.loc("block/" + id));
+			TRAP_DOOR = thinTrapdoor(id, prop, set, YoukaisHomecoming.loc("block/" + id));
 		}
 
 		public void genRecipe(RegistrateRecipeProvider pvd) {

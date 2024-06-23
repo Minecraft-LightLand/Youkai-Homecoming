@@ -45,8 +45,7 @@ public record DoubleLayerProjectileType(ResourceLocation colored, ResourceLocati
 		}
 
 		private static void vertex(VertexConsumer vc, Matrix4f m4, Matrix3f m3, float x, int y, int u, int v, int color) {
-			vc.vertex(m4, x - 0.5F, y - 0.5F, 0.0F)
-					.color(color).uv((float) u, (float) v).endVertex();
+			vc.vertex(m4, x - 0.5F, y - 0.5F, 0.0F).uv(u, v).color(color).endVertex();
 		}
 
 	}

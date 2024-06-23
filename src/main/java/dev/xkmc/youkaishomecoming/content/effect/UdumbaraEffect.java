@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -20,9 +21,15 @@ public class UdumbaraEffect extends MobEffect {
 			e.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 6000));
 		}
 		if (e.tickCount % YHModConfig.COMMON.udumbaraHealingPeriod.get() == 0 &&
-				e.level().isNight() && e.level().canSeeSky(e.blockPosition().above())) {
+				e.level().isNight() &&
+				(e.level().canSeeSky(e.blockPosition().above()) || hasLantern(e))) {
 			e.heal(1 << lv);
 		}
+	}
+
+	public static boolean hasLantern(LivingEntity player) {
+		return player.getMainHandItem().is(YHBlocks.MOON_LANTERN.asItem()) ||
+				player.getOffhandItem().is(YHBlocks.MOON_LANTERN.asItem());
 	}
 
 	@Override

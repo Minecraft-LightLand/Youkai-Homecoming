@@ -126,7 +126,10 @@
 	"ice_cube": "冰块",
 	"fairy_ice_crystal": "妖精冰晶",
 	"stripped_mandrake_root": "去皮曼德拉根",
-	"mandrake_flower": "曼德拉花"
+	"mandrake_flower": "曼德拉花",
+	"fairy_candy": "妖精糖果",
+	"cirno_hairband": "琪露诺的蝴蝶结",
+	"cirno_wings": "琪露诺的翅膀"
   },
   "-cartesian": {
 	"entity": {
@@ -141,7 +144,8 @@
 		  "cirno": "琪露诺",
 		  "yukari": "八云紫",
 		  "kochiya_sanae": "东风谷早苗"
-		},{
+		},
+		{
 		  "entity.youkaishomecoming.*": "",
 		  "item.youkaishomecoming.*_spawn_egg": "生成蛋"
 		}

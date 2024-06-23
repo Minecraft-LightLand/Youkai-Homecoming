@@ -2,11 +2,29 @@
   "type": "farmersdelight:add_item",
   "conditions": [
     {
-      "condition": "minecraft:entity_properties",
-      "entity": "killer",
-      "predicate": {
-        "type": "youkaishomecoming:cirno"
-      }
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "killer",
+          "predicate": {
+            "type": "youkaishomecoming:cirno"
+          }
+        },
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "killer",
+          "predicate": {
+            "equipment": {
+              "head": {
+                "items": [
+                  "youkaishomecoming:cirno_hairband"
+                ]
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "condition": "minecraft:entity_properties",

@@ -69,47 +69,65 @@ public class YHLootGen {
 		}
 		{
 			var misc = LootTableTemplate.getPool(3, 1)
-					.add(LootTableTemplate.getItem(Items.REDSTONE, 4).setWeight(2))
-					.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 4).setWeight(2))
-					.add(LootTableTemplate.getItem(Items.GLOWSTONE, 4).setWeight(2))
-					.add(LootTableTemplate.getItem(Items.AMETHYST_SHARD, 4).setWeight(2))
-					.add(LootTableTemplate.getItem(Items.COAL, 4).setWeight(4))
-					.add(LootTableTemplate.getItem(Items.EMERALD, 2))
-					.add(LootTableTemplate.getItem(Items.IRON_INGOT, 4))
-					.add(LootTableTemplate.getItem(Items.GOLD_NUGGET, 4));
+					.add(LootTableTemplate.getItem(Items.REDSTONE, 2).setWeight(2))
+					.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 2).setWeight(2))
+					.add(LootTableTemplate.getItem(Items.GLOWSTONE_DUST, 2).setWeight(2))
+					.add(LootTableTemplate.getItem(Items.AMETHYST_SHARD, 2).setWeight(2))
+					.add(LootTableTemplate.getItem(Items.COAL, 2).setWeight(4))
+					.add(LootTableTemplate.getItem(Items.EMERALD, 1))
+					.add(LootTableTemplate.getItem(Items.IRON_INGOT, 2))
+					.add(LootTableTemplate.getItem(Items.GOLD_NUGGET, 2));
 
-			var tea = LootTableTemplate.getPool(3, 1)
+			var crops = LootTableTemplate.getPool(2, 1)
 					.add(LootTableTemplate.getItem(YHCrops.TEA.getSeed(), 4).setWeight(4))
 					.add(LootTableTemplate.getItem(YHCrops.SOYBEAN.getSeed(), 4).setWeight(4))
 					.add(LootTableTemplate.getItem(YHCrops.REDBEAN.getSeed(), 4).setWeight(4))
 					.add(LootTableTemplate.getItem(YHCrops.COFFEA.getSeed(), 4).setWeight(2))
+					.add(LootTableTemplate.getItem(YHCrops.UDUMBARA.getSeed(), 1).setWeight(1))
+					.add(LootTableTemplate.getItem(ModItems.RICE.get(), 2).setWeight(8))
+					.add(LootTableTemplate.getItem(ModItems.CABBAGE.get(), 2).setWeight(4))
+					.add(LootTableTemplate.getItem(ModItems.TOMATO.get(), 2).setWeight(4))
+					.add(LootTableTemplate.getItem(Items.CARROT, 2).setWeight(4))
+					.add(LootTableTemplate.getItem(Items.POTATO, 2).setWeight(4));
+
+			var tea = LootTableTemplate.getPool(2,1)
 					.add(LootTableTemplate.getItem(YHCrops.TEA.getFruits(), 4))
 					.add(LootTableTemplate.getItem(YHTea.BLACK.leaves.get(), 2))
 					.add(LootTableTemplate.getItem(YHTea.WHITE.leaves.get(), 2))
 					.add(LootTableTemplate.getItem(YHTea.OOLONG.leaves.get(), 2))
 					.add(LootTableTemplate.getItem(YHTea.GREEN.leaves.get(), 2))
-					.add(LootTableTemplate.getItem(YHItems.MATCHA.get(), 2))
-					.add(LootTableTemplate.getItem(ModItems.RICE.get(), 2).setWeight(8));
+					.add(LootTableTemplate.getItem(YHItems.MATCHA.get(), 2));
 
-			var rice = LootTableTemplate.getPool(5, 1)
+			var rice = LootTableTemplate.getPool(3, 1)
 					.add(LootTableTemplate.getItem(YHFood.ONIGILI.item.get(), 2))
 					.add(LootTableTemplate.getItem(YHFood.SENBEI.item.get(), 2))
 					.add(LootTableTemplate.getItem(YHFood.SEKIBANKIYAKI.item.get(), 2))
 					.add(LootTableTemplate.getItem(YHFood.YAKUMO_INARI.item.get(), 2))
 					.add(LootTableTemplate.getItem(YHFood.BUN.item.get(), 1))
 					.add(LootTableTemplate.getItem(YHFood.OYAKI.item.get(), 2))
-					.add(LootTableTemplate.getItem(YHFood.PORK_RICE_BALL.item.get(), 1));
+					.add(LootTableTemplate.getItem(YHFood.PORK_RICE_BALL.item.get(), 1))
+					.add(LootTableTemplate.getItem(YHFood.OILY_BEAN_CURD.item.get(), 2))
+					.add(LootTableTemplate.getItem(YHFood.ROASTED_LAMPREY_FILLET.item.get(), 2));
+
+			var dango = LootTableTemplate.getPool(1, 1)
+					.add(LootTableTemplate.getItem(YHFood.MOCHI.item.get(), 2))
+					.add(LootTableTemplate.getItem(YHFood.TSUKIMI_DANGO.item.get(), 2))
+					.add(LootTableTemplate.getItem(YHFood.COFFEE_MOCHI.item.get(), 2))
+					.add(LootTableTemplate.getItem(YHFood.MATCHA_MOCHI.item.get(), 2))
+					.add(LootTableTemplate.getItem(YHFood.SAKURA_MOCHI.item.get(), 2))
+					.add(LootTableTemplate.getItem(YHFood.YASHOUMA_DANGO.item.get(), 2))
+					;
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(SHRINE_CHEST, LootTable.lootTable()
 					.withPool(misc)
 			));
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(SHRINE_BARREL, LootTable.lootTable()
-					.withPool(tea)
+					.withPool(crops).withPool(tea)
 			));
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(SHRINE_CABINET, LootTable.lootTable()
-					.withPool(rice)
+					.withPool(rice).withPool(dango)
 			));
 		}
 		pvd.addLootAction(LootContextParamSets.EMPTY, cons -> cons.accept(UDUMBARA_LOOT, LootTable.lootTable()

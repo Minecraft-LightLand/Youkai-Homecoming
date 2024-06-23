@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.events;
 
+import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -18,6 +19,22 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EffectEventHandlers {
+
+	public static boolean isWeakCharacter(LivingEntity e) {
+		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.FAIRY.get());
+	}
+
+	public static boolean isYoukai(LivingEntity e) {
+		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.YOUKAIFIED.get());
+	}
+
+	public static boolean isCharacter(LivingEntity e) {
+		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+				e.hasEffect(YHEffects.FAIRY.get());
+	}
 
 	@SubscribeEvent
 	public static void onSleep(PlayerSleepInBedEvent event) {
@@ -70,8 +87,11 @@ public class EffectEventHandlers {
 		var udu = e.getEffect(YHEffects.UDUMBARA.get());
 		if (udu != null) {
 			var level = e.level();
-			if (level.isNight() && level.canSeeSky(e.blockPosition().above()) && level.getMoonBrightness() > 0.8f) {
-				reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
+			if (level.isNight()) {
+				if (level.canSeeSky(e.blockPosition().above()) &&
+						level.getMoonBrightness() > 0.8f ||
+						UdumbaraEffect.hasLantern(e))
+					reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
 			}
 		}
 		if (reduction > 0) {
@@ -131,12 +151,14 @@ public class EffectEventHandlers {
 		}
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFYING.get()) {
 			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
+					event.getEntity().hasEffect(YHEffects.FAIRY.get()) ||
 					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
 				event.setResult(Event.Result.DENY);
 			}
 		}
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFIED.get()) {
-			if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
+			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
+					event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
 				event.setResult(Event.Result.DENY);
 			}
 		}

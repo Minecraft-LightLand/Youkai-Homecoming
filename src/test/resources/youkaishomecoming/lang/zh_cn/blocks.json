@@ -26,17 +26,6 @@
 	"white_tea_bag": "袋装白茶",
 	"tea": "茶树",
 	"wild_tea": "野生茶树",
-	"oak_handrail": "橡木扶手",
-	"spruce_handrail": "云杉扶手",
-	"birch_handrail": "白桦扶手",
-	"jungle_handrail": "丛林扶手",
-	"acacia_handrail": "金合欢扶手",
-	"dark_oak_handrail": "深色橡木扶手",
-	"cherry_handrail": "樱花扶手",
-	"mangrove_handrail": "红树扶手",
-	"bamboo_handrail": "竹扶手",
-	"crimson_handrail": "绯红木扶手",
-	"warped_handrail": "诡异木扶手",
 	"tarte_lune": "月亮派",
 	"kettle": "茶壶",
 	"moka_pot": "摩卡壶",
@@ -52,7 +41,8 @@
 	"tea_leaf_bag": "茶叶袋",
 	"fermentation_tank": "发酵桶",
 	"donation_box": "赛钱箱",
-	"fine_grid_framed_shoji": "细木框日式障子门"
+	"fine_grid_framed_shoji": "细木框日式障子门",
+	"moon_lantern": "幻月灯"
   },
   "-cartesian": {
 	"candles": {
@@ -82,6 +72,29 @@
 		},
 		{
 		  "candle_cake": "蜡烛蛋糕"
+		}
+	  ]
+	},
+	"wood_type": {
+	  "path": "block.youkaishomecoming",
+	  "list": [
+		{
+		  "oak": "橡木",
+		  "spruce": "云杉",
+		  "birch": "白桦",
+		  "jungle": "丛林",
+		  "acacia": "金合欢",
+		  "dark_oak": "深色橡木",
+		  "cherry": "樱花",
+		  "mangrove": "红树",
+		  "bamboo": "竹",
+		  "crimson": "绯红木",
+		  "warped": "诡异手"
+		},
+		{
+		  "handrail": "扶手",
+		  "dining_table": "餐桌",
+		  "dining_chair": "板凳"
 		}
 	  ]
 	},

@@ -75,11 +75,11 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 				killedByRumia(), entity(YHTagGen.PIGLIN_SOURCE)));
 
 		add("cirno_frozen_frog_cold", create(YHItems.FROZEN_FROG_COLD.get(), 1,
-				killer(YHEntities.CIRNO.get()), frog(FrogVariant.COLD)));
+				killedByCirno(), frog(FrogVariant.COLD)));
 		add("cirno_frozen_frog_warm", create(YHItems.FROZEN_FROG_WARM.get(), 1,
-				killer(YHEntities.CIRNO.get()), frog(FrogVariant.WARM)));
+				killedByCirno(), frog(FrogVariant.WARM)));
 		add("cirno_frozen_frog_temperate", create(YHItems.FROZEN_FROG_TEMPERATE.get(), 1,
-				killer(YHEntities.CIRNO.get()), frog(FrogVariant.TEMPERATE)));
+				killedByCirno(), frog(FrogVariant.TEMPERATE)));
 
 		add("udumbara_ancient_city_loot", loot(YHLootGen.UDUMBARA_LOOT,
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY).build()));
@@ -144,6 +144,20 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 						EntityEquipmentPredicate.Builder.equipment().head(
 										ItemPredicate.Builder.item().of(YHItems.RUMIA_HAIRBAND).build())
 								.build()).build()).build();
+	}
+
+	private static LootItemCondition killedByCirno() {
+		return LootItemEntityPropertyCondition.hasProperties(
+						LootContext.EntityTarget.KILLER,
+						EntityPredicate.Builder.entity().entityType(
+								EntityTypePredicate.of(YHEntities.CIRNO.get())))
+				.or(LootItemEntityPropertyCondition.hasProperties(
+						LootContext.EntityTarget.KILLER,
+						EntityPredicate.Builder.entity().equipment(
+								EntityEquipmentPredicate.Builder.equipment()
+										.head(ItemPredicate.Builder.item()
+												.of(YHItems.CIRNO_HAIRBAND.get())
+												.build()).build()).build())).build();
 	}
 
 	private static LootItemCondition killedByYoukai() {
