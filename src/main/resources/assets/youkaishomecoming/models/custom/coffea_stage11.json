@@ -2,8 +2,8 @@
   "credit": "Made with Blockbench",
   "render_type": "cutout",
   "texture_size": [
-    64,
-    64
+    32,
+    32
   ],
   "elements": [
     {
@@ -28,30 +28,12 @@
         ]
       },
       "faces": {
-        "north": {
-          "uv": [
-            0,
-            0,
-            0,
-            4
-          ],
-          "texture": "#trunk"
-        },
         "east": {
           "uv": [
-            3.9375,
+            8,
             0,
             0,
-            8
-          ],
-          "texture": "#trunk"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            0,
-            4
+            16
           ],
           "texture": "#trunk"
         },
@@ -59,26 +41,8 @@
           "uv": [
             0,
             0,
-            4,
-            8
-          ],
-          "texture": "#trunk"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            0,
-            4
-          ],
-          "texture": "#trunk"
-        },
-        "down": {
-          "uv": [
-            0,
-            0,
-            0,
-            4
+            8,
+            16
           ],
           "texture": "#trunk"
         }
@@ -108,19 +72,10 @@
       "faces": {
         "north": {
           "uv": [
-            4,
+            8,
             0,
             0,
-            8
-          ],
-          "texture": "#trunk"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            0,
-            8
+            16
           ],
           "texture": "#trunk"
         },
@@ -128,35 +83,8 @@
           "uv": [
             0,
             0,
-            4,
-            8
-          ],
-          "texture": "#trunk"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            0,
-            8
-          ],
-          "texture": "#trunk"
-        },
-        "up": {
-          "uv": [
-            5.75,
-            0,
-            0,
-            0
-          ],
-          "texture": "#trunk"
-        },
-        "down": {
-          "uv": [
-            5.75,
-            0,
-            0,
-            0
+            8,
+            16
           ],
           "texture": "#trunk"
         }

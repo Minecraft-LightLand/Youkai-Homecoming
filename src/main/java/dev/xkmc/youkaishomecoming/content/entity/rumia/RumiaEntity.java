@@ -38,7 +38,6 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -344,7 +343,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	public void openMenu(RumiaEntity rumia, Player player) {
 		if (this.tradingPlayer != null && this.tradingPlayer.isAlive())
 			return;
-		init(getOfferList(), player);
+		init(player);
 		openTradingScreen(player, rumia.getName(), 0);
 	}
 
@@ -367,8 +366,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	private MerchantOffers tradingOffers;
 	private Player tradingPlayer;
 
-	public void init(MerchantOffers offers, Player player) {
-		this.tradingOffers = offers;
+	public void init(Player player) {
 		this.tradingPlayer = player;
 	}
 
@@ -385,6 +383,8 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	@Override
 	public MerchantOffers getOffers() {
+		if (tradingOffers == null)
+			tradingOffers = getOfferList();
 		return tradingOffers;
 	}
 

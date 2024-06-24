@@ -161,6 +161,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:cooked_mandrake_root": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cooked_mandrake_root"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:cornflower_tea": {
       "conditions": {
         "item": {
@@ -216,6 +226,16 @@
         "item": {
           "items": [
             "youkaishomecoming:espresso"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:fairy_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:fairy_candy"
           ]
         }
       },
@@ -961,6 +981,9 @@
       "youkaishomecoming:roasted_lamprey_fillet"
     ],
     [
+      "youkaishomecoming:cooked_mandrake_root"
+    ],
+    [
       "youkaishomecoming:roe"
     ],
     [
@@ -1031,6 +1054,9 @@
     ],
     [
       "youkaishomecoming:higi_doughnut"
+    ],
+    [
+      "youkaishomecoming:fairy_candy"
     ],
     [
       "youkaishomecoming:candy_apple"

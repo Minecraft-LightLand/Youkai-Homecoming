@@ -257,14 +257,16 @@ public enum YHFood {
 		this(type, nutrition, sat, List.of(eff), tags);
 	}
 
-	public boolean isFlesh() {
+	private boolean isFlesh() {
 		return type.isFlesh() || this == SCARLET_TEA;
 	}
 
+	private boolean isUnappealing() {
+		return this == RAW_LAMPREY || this == RAW_LAMPREY_FILLET;
+	}
+
 	public boolean isReimuFood() {
-		return !isFlesh() &&
-				this != RAW_LAMPREY && this != RAW_LAMPREY_FILLET &&
-				this != COOKED_MANDRAKE_ROOT && this != FAIRY_CANDY;
+		return !isFlesh() && !isUnappealing();
 	}
 
 	public static void register() {

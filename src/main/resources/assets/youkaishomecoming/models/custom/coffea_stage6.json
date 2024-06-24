@@ -301,30 +301,12 @@
         ]
       },
       "faces": {
-        "north": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
-          ],
-          "texture": "#leaves"
-        },
         "east": {
           "uv": [
             0,
             0,
-            6,
-            4.75
-          ],
-          "texture": "#leaves"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
+            12,
+            9.5
           ],
           "texture": "#leaves"
         },
@@ -332,26 +314,8 @@
           "uv": [
             0,
             0,
-            6,
-            4.75
-          ],
-          "texture": "#leaves"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
-          ],
-          "texture": "#leaves"
-        },
-        "down": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
+            12,
+            9.5
           ],
           "texture": "#leaves"
         }
@@ -382,17 +346,8 @@
           "uv": [
             0,
             0,
-            6,
-            4.75
-          ],
-          "texture": "#leaves"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
+            12,
+            9.5
           ],
           "texture": "#leaves"
         },
@@ -400,38 +355,9 @@
           "uv": [
             0,
             0,
-            6,
-            4.75
+            12,
+            9.5
           ],
-          "texture": "#leaves"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
-          ],
-          "texture": "#leaves"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
-          ],
-          "rotation": 270,
-          "texture": "#leaves"
-        },
-        "down": {
-          "uv": [
-            0,
-            0,
-            0,
-            16
-          ],
-          "rotation": 90,
           "texture": "#leaves"
         }
       }

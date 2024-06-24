@@ -191,7 +191,7 @@
   "effect.youkaishomecoming.drunk": "Drunk",
   "effect.youkaishomecoming.drunk.description": "Increase attack damage, but you feel drunk. You can't have sobering drink while having this effect. Drunk effect can stack up to 5 layers.",
   "effect.youkaishomecoming.fairy": "Fairy",
-  "effect.youkaishomecoming.fairy.description": "Reduce max HP but give other benefits",
+  "effect.youkaishomecoming.fairy.description": "Reduce max HP but gives speed boost and enables danmaku",
   "effect.youkaishomecoming.higi": "Higi",
   "effect.youkaishomecoming.higi.description": "Boost attack damage and movement speed, heal slowly",
   "effect.youkaishomecoming.hypnosis": "Hypnosis",

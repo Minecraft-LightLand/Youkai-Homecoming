@@ -1,8 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
-import dev.xkmc.l2library.capability.conditionals.*;
 import dev.xkmc.l2library.util.math.MathHelper;
-import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.client.ReimuHairbandModel;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
@@ -25,10 +23,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public class ReimuHairbandItem extends TouhouHatItem implements TokenProvider<ReimuHairbandItem.Token, ReimuHairbandItem>, Context {
+public class ReimuHairbandItem extends TouhouHatItem {
 
 	private static final UUID ID = MathHelper.getUUIDFromString("reimu_hairband");
-	private static final TokenKey<Token> KEY = TokenKey.of(YoukaisHomecoming.loc("reimu_hairband"));
 
 	public ReimuHairbandItem(Properties properties) {
 		super(properties, TouhouMat.REIMU_HAIRBAND);
@@ -49,17 +46,7 @@ public class ReimuHairbandItem extends TouhouHatItem implements TokenProvider<Re
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {
-		ConditionalData.HOLDER.get(player).getOrCreateData(this, this).update(player);
-	}
-
-	@Override
-	public Token getData(ReimuHairbandItem item) {
-		return new Token();
-	}
-
-	@Override
-	public TokenKey<Token> getKey() {
-		return KEY;
+		FlyingToken.tickFlying(player);
 	}
 
 	@Override
@@ -72,41 +59,6 @@ public class ReimuHairbandItem extends TouhouHatItem implements TokenProvider<Re
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));
 		}
-	}
-
-	@SerialClass
-	public static class Token extends ConditionalToken {
-
-		@SerialClass.SerialField
-		private int life = 0;
-
-		public void update(Player player) {
-			life = 2;
-		}
-
-		@Override
-		public boolean tick(Player player) {
-			life--;
-			if (life > 0) {
-				if (!player.getAbilities().mayfly) {
-					player.getAbilities().mayfly = true;
-					player.onUpdateAbilities();
-				}
-				return false;
-			} else {
-				if (player.getAbilities().mayfly || player.getAbilities().flying) {
-					if (player.isCreative() || player.isSpectator()) {
-						return true;
-					} else {
-						player.getAbilities().mayfly = false;
-						player.getAbilities().flying = false;
-						player.onUpdateAbilities();
-					}
-				}
-				return true;
-			}
-		}
-
 	}
 
 }

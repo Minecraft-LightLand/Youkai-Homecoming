@@ -116,12 +116,14 @@ public class YHItems {
 					.item("cirno_hairband", p -> new CirnoHairbandItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 
 			CIRNO_WINGS = YoukaisHomecoming.REGISTRATE
 					.item("cirno_wings", p -> new CirnoWingsItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 					.tag(ItemTags.create(new ResourceLocation("curios", "back")))
+					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 
 			REIMU_SPELL = YoukaisHomecoming.REGISTRATE

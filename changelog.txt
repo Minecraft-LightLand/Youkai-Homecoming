@@ -1,13 +1,18 @@
-2.2.7
-- Cirno will not freeze, and immune to freezing damage
-- New Cirno model, now Cirno doesn't need TLM to spawn
-- Fix Danmaku rendering with shaders
-TODO
 - Reimu Shine improvements & loot
+- Cirno hairband and wings
 - Cirno house & Food
 - more food
+
+2.2.7
+- Add moon lantern, dining tables, and dining chairs
+- Add fairy effects
+- New Cirno model, now Cirno doesn't need TLM to spawn
 - Fairies tempted by fairy candy
-- Farification
+- Cirno will not freeze, and immune to freezing damage
+- Fix Danmaku rendering with shaders
+- Fix minimum percentage damage
+- Fix Botania Compatibility
+- Make crop textures GPU friendly
 
 2.2.6
 - Add Mandrake effects and potions
@@ -81,7 +86,7 @@ TODO
 - Fix initial spawn Rumia wandering around
 - Fix Rumia can't hit player when player did not attack Rumia
 - Fix Rumia can't launch attack player with youkaified effect
-- Fix Rumia rading glitch
+- Fix Rumia trading glitch
 
 2.1.6
 - Make TLM not mandatory dependency
@@ -116,7 +121,7 @@ TODO
 - Tea drop seed with 1/8 chance with right click to harvest
 - Fix flesh food youkaifying bug
 - Add Koishi hat
-- Add damaku
+- Add danmaku
 - Add Rumia
 - Fix Suwako hat model
 - Make Straw hat wearable
