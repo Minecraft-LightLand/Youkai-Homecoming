@@ -42,7 +42,7 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:cirno", CirnoIceStorm::new);
 		registerSpell("touhou_little_maid:kochiya_sanae", Sugiruyoru::new);
 
-		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new Polygraph()));
+		registerSpell("touhou_little_maid:komeiji_koishi", () -> ListSpellCard.of(new KoishiTest(), new Polygraph()));
 		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
 		registerSpell("touhou_little_maid:saigyouji_yuyuko", () -> ListSpellCard.of(new YuyukoTest()));
 	}
