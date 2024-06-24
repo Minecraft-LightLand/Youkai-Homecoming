@@ -119,10 +119,12 @@ public class YHItems {
 					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 
+			var back = ItemTags.create(new ResourceLocation("curios", "back"));
+
 			CIRNO_WINGS = YoukaisHomecoming.REGISTRATE
 					.item("cirno_wings", p -> new CirnoWingsItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(ItemTags.create(new ResourceLocation("curios", "back")))
+					.tag(back, YHTagGen.TOUHOU_WINGS)
 					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 

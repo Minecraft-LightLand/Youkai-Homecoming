@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.compat.curios;
 
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -16,6 +17,17 @@ public class CuriosManager {
 					.resolve().flatMap(e -> e.findFirstCurio(item))
 					.map(e -> !checkRender || e.slotContext().visible())
 					.orElse(false);
+		}
+		return false;
+	}
+
+	public static boolean hasAnyWings(LivingEntity le) {
+		if (le.getItemBySlot(EquipmentSlot.CHEST).is(YHTagGen.TOUHOU_WINGS))
+			return true;
+		if (ModList.get().isLoaded("curios")) {
+			return CuriosApi.getCuriosInventory(le)
+					.resolve().flatMap(e -> e.findFirstCurio(s -> s.is(YHTagGen.TOUHOU_WINGS)))
+					.isPresent();
 		}
 		return false;
 	}

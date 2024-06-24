@@ -36,6 +36,7 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue udumbaraHealingPeriod;
 		public final ForgeConfigSpec.IntValue udumbaraFullMoonReduction;
 		public final ForgeConfigSpec.IntValue higiHealingPeriod;
+		public final ForgeConfigSpec.DoubleValue fairyHealingFactor;
 
 		public final ForgeConfigSpec.IntValue frogEatCountForHat;
 		public final ForgeConfigSpec.IntValue frogEatRaiderVillagerSightRange;
@@ -73,7 +74,7 @@ public class YHModConfig {
 
 			builder.push("food_effect");
 			smoothingHealingFactor = builder.comment("Smoothing Healing Factor")
-					.defineInRange("smoothingHealingFactor", 1.5, 0, 100);
+					.defineInRange("smoothingHealingFactor", 1.5, 1, 100);
 			teaHealingPeriod = builder.comment("Tea Healing Interval")
 					.defineInRange("teaHealingPeriod", 60, 0, 10000);
 			udumbaraHealingPeriod = builder.comment("Udumbara effect Healing Interval")
@@ -84,6 +85,8 @@ public class YHModConfig {
 					.defineInRange("udumbaraFullMoonReduction", 4, 0, 100);
 			higiHealingPeriod = builder.comment("Higi Healing Interval")
 					.defineInRange("higiHealingPeriod", 60, 0, 10000);
+			fairyHealingFactor = builder.comment("Fairy Healing Factor")
+					.defineInRange("fairyHealingFactor", 2d, 1, 100);
 			builder.pop();
 
 			builder.push("suwako_hat");

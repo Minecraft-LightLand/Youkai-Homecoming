@@ -78,7 +78,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> ReimuRenderer::new)
-					.spawnEgg(0xC20C1C, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0xa93937, 0xfaf5f2).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::reimu).register();
 
 			CIRNO = YoukaisHomecoming.REGISTRATE
@@ -87,7 +87,7 @@ public class YHEntities {
 					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CirnoEntity::checkCirnoSpawnRules)
 					.attributes(CirnoEntity::createAttributes)
 					.renderer(() -> CirnoRenderer::new)
-					.spawnEgg(0xA8C3D9, 0x7E8DC4).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x5676af, 0xb6ecf1).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::cirno).register();
 		}
 

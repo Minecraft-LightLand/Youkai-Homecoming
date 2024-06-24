@@ -21,10 +21,12 @@ public class HigiEffect extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity e, int lv) {
 		if (!e.level().isClientSide) {
-			if (e.hasEffect(YHEffects.FAIRY.get())) lv++;
+			float amount = 1;
 			int period = YHModConfig.COMMON.higiHealingPeriod.get() >> lv;
+			if (e.hasEffect(YHEffects.FAIRY.get())) period /= 3;
+			if (period < 10) period = 10;
 			if (e.tickCount % period == 0)
-				e.heal(1);
+				e.heal(amount);
 		}
 	}
 

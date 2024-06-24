@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -99,11 +100,16 @@ public class EffectEventHandlers {
 		}
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onHeal(LivingHealEvent event) {
+		float amount = event.getAmount();
 		if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
-			event.setAmount((float) (event.getAmount() * YHModConfig.COMMON.smoothingHealingFactor.get()));
+			amount *= YHModConfig.COMMON.smoothingHealingFactor.get();
 		}
+		if (event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
+			amount *= YHModConfig.COMMON.fairyHealingFactor.get();
+		}
+		event.setAmount(amount);
 	}
 
 	@SubscribeEvent
@@ -159,6 +165,12 @@ public class EffectEventHandlers {
 		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFIED.get()) {
 			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
 					event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
+				event.setResult(Event.Result.DENY);
+			}
+		}
+		if (event.getEffectInstance().getEffect() == YHEffects.FAIRY.get()) {
+			if (event.getEntity().hasEffect(YHEffects.YOUKAIFYING.get()) ||
+					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
 				event.setResult(Event.Result.DENY);
 			}
 		}

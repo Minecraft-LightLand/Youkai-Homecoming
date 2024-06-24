@@ -59,7 +59,6 @@ public class CirnoHairbandItem extends TouhouHatItem {
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		boolean obtain = showTooltip();
 		if (obtain) {//TODO
-			//list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_KOISHI_HAT.get(Component.literal("" + YHModConfig.COMMON.koishiAttackBlockCount.get()))));
 			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_CIRNO_HAIRBAND
 					.get(Component.translatable(YHEffects.FAIRY.get().getDescriptionId()))));
 		} else {

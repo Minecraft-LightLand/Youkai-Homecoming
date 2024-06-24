@@ -92,7 +92,7 @@ public class YHEffects {
 
 	public static final RegistryEntry<FairyEffect> FAIRY = genEffect("fairy",
 			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
-			"Reduce max HP but gives speed boost and enables danmaku");
+			"Reduce max HP. Gives speed and healing boost. Enables danmaku");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();
