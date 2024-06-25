@@ -94,9 +94,9 @@ public class GeneralEventHandlers {
 		if (!le.getOffhandItem().is(Items.GLASS_BOTTLE)) return;
 		le.getOffhandItem().shrink(1);
 		if (le instanceof Player player) {
-			player.getInventory().add(YHItems.BLOOD_BOTTLE.asStack());
+			player.getInventory().add(YHItems.BLOOD_BOTTLE.asStack(1));
 		} else {
-			le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack());
+			le.spawnAtLocation(YHItems.BLOOD_BOTTLE.asStack(1));
 		}
 	}
 

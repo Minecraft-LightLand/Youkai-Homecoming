@@ -19,6 +19,7 @@
 	"usage_fairy_ice": "可以朝目标扔出。造成范围伤害并冻结。",
 	"obtain_frozen_frog": "琪露诺冻结青蛙时掉落。用弹幕击败琪露诺时小概率掉落。",
 	"usage_frozen_frog": "可以朝目标扔出。落地后生成一只青蛙。",
-	"usage_cirno_hairband": "适用时提供持续的%s。使用淡蓝色弹幕时不消耗。魔法伤害冰冻目标，冻结青蛙"
+	"usage_cirno_hairband": "适用时提供持续的%s。使用淡蓝色弹幕时不消耗。魔法伤害冰冻目标，冻结青蛙",
+	"usage_fairy_wings": "在%s状态下激活创造飞行"
   }
 }

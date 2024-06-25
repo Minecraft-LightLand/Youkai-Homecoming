@@ -11,24 +11,15 @@
       "item": "minecraft:poppy"
     },
     {
-      "item": "youkaishomecoming:red_bubble_danmaku"
+      "item": "youkaishomecoming:red_circle_danmaku"
     },
     {
-      "item": "youkaishomecoming:blood_bottle"
-    },
-    {
-      "item": "youkaishomecoming:blood_bottle"
-    },
-    {
-      "item": "youkaishomecoming:blood_bottle"
-    },
-    {
-      "item": "youkaishomecoming:blood_bottle"
+      "item": "youkaishomecoming:red_circle_danmaku"
     }
   ],
   "inputFluid": {
     "amount": 1000,
-    "fluid": "minecraft:water"
+    "fluid": "youkaishomecoming:flowing_blood"
   },
   "outputFluid": {
     "amount": 1000,

@@ -18,7 +18,6 @@
 	"sekibankiyaki": "生首烧",
 	"longevity_noodles": "长寿面",
 	"senbei": "仙贝",
-	"soy_sauce_bottle": "酱油瓶",
 	"mochi": "麻薯",
 	"miso_soup": "味噌汤",
 	"sweet_ormosia_mochi_mixed_boiled": "甜豆沙麻薯杂煮",
@@ -39,7 +38,6 @@
 	"assorted_dango": "三色团子",
 	"candy_apple": "苹果糖",
 	"koishi_mousse": "恋恋慕斯",
-	"blood_bottle": "瓶装血液",
 	"milk_popsicle": "牛奶冰棍",
 	"tutu_congee": "筒粥",
 	"avgolemono": "鸡蛋柠檬汤",
@@ -148,6 +146,20 @@
 		{
 		  "entity.youkaishomecoming.*": "",
 		  "item.youkaishomecoming.*_spawn_egg": "生成蛋"
+		}
+	  ]
+	},
+	"bottle": {
+	  "path": "",
+	  "reverse": true,
+	  "list": [
+		{
+		  "soy_sauce": "酱油",
+		  "blood": "血液"
+		},
+		{
+		  "fluid.youkaishomecoming.*": "",
+		  "item.youkaishomecoming.*_bottle": "瓶装"
 		}
 	  ]
 	},

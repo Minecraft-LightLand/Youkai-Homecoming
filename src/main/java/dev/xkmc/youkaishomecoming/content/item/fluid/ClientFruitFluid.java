@@ -17,7 +17,7 @@ public record ClientFruitFluid(SakeFluidType type) implements IClientFluidTypeEx
     }
 
     public int getTintColor() {
-        return this.type.type.color;
+        return this.type.type.getColor();
     }
 
     public SakeFluidType type() {

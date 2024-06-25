@@ -43,7 +43,7 @@ public record TileClientTooltip(List<ItemStack> items, List<FluidStack> fluids) 
             int y = my + n / w * 18 + 1;
             int x = mx + n % w * 18 + 1;
             if (stack.getFluid() instanceof SakeFluid sake) {
-                renderSlot(font, x, y, g, sake.type.item.asStack(stack.getAmount() / sake.type.amount()));
+                renderSlot(font, x, y, g, sake.type.asStack(stack.getAmount() / sake.type.amount()));
             } else {
                 renderSlot(font, x, y, g, stack);
             }

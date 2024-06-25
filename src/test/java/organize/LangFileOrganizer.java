@@ -53,8 +53,7 @@ public class LangFileOrganizer extends ResourceOrganizer {
 																ent2.getKey().contains("*") ?
 																		ent2.getKey().replaceFirst("\\*", ent1.getFirst()) :
 																		ent1.getFirst() + con + ent2.getKey(),
-														reverse ? ent2.getValue().getAsString() + ent1.getSecond() :
-																ent1.getSecond() + ent2.getValue().getAsString())))
+														merge(reverse, ent1.getSecond(), ent2.getValue().getAsString()))))
 										.collect(Collectors.toList());
 							}
 						}
@@ -69,6 +68,10 @@ public class LangFileOrganizer extends ResourceOrganizer {
 			w.write(GSON.toJson(dst_json));
 			w.close();
 		}
+	}
+
+	private String merge(boolean reverse, String prev, String pattern) {
+		return reverse ? pattern + prev : prev + pattern;
 	}
 
 	private void inject(String path, JsonObject src, JsonObject dst) {

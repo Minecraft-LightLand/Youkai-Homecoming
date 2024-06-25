@@ -15,8 +15,10 @@ public class WoodTableBlock extends Block {
 
 	public static final VoxelShape SHAPE = Shapes.or(
 			Block.box(0, 14, 0, 16, 16, 16),
-			Block.box(7, 1, 7, 9, 14, 9),
-			Block.box(4, 0, 4, 12, 1, 12)
+			Block.box(5, 13, 5, 11, 14, 11),
+			Block.box(7, 4, 7, 9, 13, 9),
+			Block.box(6, 2, 6, 10, 4, 10),
+			Block.box(4, 0, 4, 12, 2, 12)
 	);
 
 	public WoodTableBlock(Properties pProperties) {

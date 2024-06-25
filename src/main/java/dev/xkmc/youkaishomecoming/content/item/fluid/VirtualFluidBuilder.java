@@ -11,15 +11,6 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 public class VirtualFluidBuilder<T extends ForgeFlowingFluid, P> extends FluidBuilder<T, P> {
 
-
-    private static final ResourceLocation FLOW = new ResourceLocation("block/water_flow");
-    private static final ResourceLocation STILL = new ResourceLocation("block/water_still");
-
-    public VirtualFluidBuilder(AbstractRegistrate<?> owner, P parent, String name, BuilderCallback callback,
-                               FluidBuilder.FluidTypeFactory typeFactory, NonNullFunction<ForgeFlowingFluid.Properties, T> factory) {
-        this(owner, parent, name, callback, STILL, FLOW, typeFactory, factory);
-    }
-
     public VirtualFluidBuilder(AbstractRegistrate<?> owner, P parent, String name, BuilderCallback callback,
                                ResourceLocation stillTexture, ResourceLocation flowingTexture,
                                FluidBuilder.FluidTypeFactory typeFactory, NonNullFunction<ForgeFlowingFluid.Properties, T> factory) {

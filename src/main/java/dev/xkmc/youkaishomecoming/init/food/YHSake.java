@@ -1,26 +1,23 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
-import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.nullness.NonNullFunction;
-import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHSake;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidType;
-import dev.xkmc.youkaishomecoming.content.item.fluid.VirtualFluidBuilder;
-import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import java.util.List;
 import java.util.Locale;
 
-public enum YHSake {
+public enum YHSake implements IYHSake {
 	MIO(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
 	MEAD(FoodType.BOTTLE, 0xffffffff, List.of(
@@ -60,7 +57,7 @@ public enum YHSake {
 	YHSake(FoodType type, int color, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.color = color;
 		String name = name().toLowerCase(Locale.ROOT);
-		fluid = virtualFluid(name, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
+		fluid = BottledFluid.water(name, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
 				.defaultLang().register();
 		item = type.build("sake/", name, 0, 0, tags, effs);
 	}
@@ -80,11 +77,9 @@ public enum YHSake {
 		return ans;
 	}
 
-	private static <T extends SakeFluid> FluidBuilder<T, L2Registrate> virtualFluid(
-			String id, FluidBuilder.FluidTypeFactory typeFactory, NonNullFunction<ForgeFlowingFluid.Properties, T> factory) {
-		return YoukaisHomecoming.REGISTRATE.entry(id, (c) -> new VirtualFluidBuilder<>(
-				YoukaisHomecoming.REGISTRATE, YoukaisHomecoming.REGISTRATE,
-				id, c, typeFactory, factory));
+	@Override
+	public ItemStack asStack(int count) {
+		return item.asStack(count);
 	}
 
 	public boolean isFlesh() {
@@ -95,4 +90,8 @@ public enum YHSake {
 
 	}
 
+	@Override
+	public int getColor() {
+		return color;
+	}
 }

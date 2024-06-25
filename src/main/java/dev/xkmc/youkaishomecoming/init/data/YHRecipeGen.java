@@ -267,7 +267,7 @@ public class YHRecipeGen {
 					.pattern("ABA").pattern("CDC").pattern("EEE")
 					.define('A', Items.SUGAR)
 					.define('B', Items.MILK_BUCKET)
-					.define('C', YHItems.BLOOD_BOTTLE)
+					.define('C', YHItems.BLOOD_BOTTLE.item)
 					.define('D', YHFood.FLESH.item)
 					.define('E', Items.WHEAT)
 					.save(pvd);
@@ -293,7 +293,7 @@ public class YHRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.FLESH_CHOCOLATE_MOUSSE.item, 4)::unlockedBy, YHFood.FLESH.item.get())
 					.pattern(" B ").pattern("FDF").pattern("ECE")
 					.define('B', ForgeTags.MILK)
-					.define('C', YHItems.BLOOD_BOTTLE)
+					.define('C', YHItems.BLOOD_BOTTLE.item)
 					.define('D', YHFood.FLESH.item)
 					.define('E', Items.WHEAT)
 					.define('F', Items.COCOA_BEANS)
@@ -303,7 +303,7 @@ public class YHRecipeGen {
 					.pattern("FBF").pattern("ADA").pattern("ECE")
 					.define('A', Items.HONEY_BOTTLE)
 					.define('B', ForgeTags.MILK)
-					.define('C', YHItems.BLOOD_BOTTLE)
+					.define('C', YHItems.BLOOD_BOTTLE.item)
 					.define('D', YHFood.FLESH.item)
 					.define('E', Items.WHEAT)
 					.define('F', Items.PINK_PETALS)
@@ -330,11 +330,6 @@ public class YHRecipeGen {
 
 		// food cooking
 		{
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SOY_SAUCE_BOTTLE.get(), 1, 200, 0.1f)
-					.addIngredient(new PotionIngredient(Potions.WATER))
-					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.build(pvd, YHItems.SOY_SAUCE_BOTTLE.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUTTER.item.get(), 1, 200, 0.1f)
 					.addIngredient(ForgeTags.MILK_BOTTLE)
@@ -453,7 +448,7 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.DANGO)
 					.addIngredient(YHTagGen.DANGO)
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.MITARASHI_DANGO.item.getId());
 
@@ -466,7 +461,7 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CANNED_FLESH.item.get(), 2, 200, 0.1f, YHItems.CAN)
 					.addIngredient(YHTagGen.RAW_FLESH)
 					.addIngredient(ForgeTags.VEGETABLES_ONION)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHFood.CANNED_FLESH.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FAIRY_CANDY.item.get(), 3, 200, 0.1f)
@@ -504,7 +499,7 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(ForgeTags.GRAIN_RICE)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHFood.GRILLED_EEL_OVER_RICE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HIGAN_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
@@ -570,15 +565,15 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHFood.FLESH_STEW.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.FLESH_FEAST.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHItems.RAW_FLESH_FEAST)
 					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHItems.BLOOD_BOTTLE)
-					.addIngredient(YHItems.BLOOD_BOTTLE)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.BLOOD_BOTTLE.item)
+					.addIngredient(YHItems.BLOOD_BOTTLE.item)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHItems.FLESH_FEAST.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
@@ -654,7 +649,7 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(ForgeTags.VEGETABLES_ONION)
 					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHDish.IMITATION_BEAR_PAW.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.PASTITSIO.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
@@ -667,7 +662,7 @@ public class YHRecipeGen {
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SAUCE_GRILLED_FISH.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(ForgeTags.RAW_FISHES)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.addIngredient(ForgeTags.VEGETABLES_ONION)
@@ -686,8 +681,8 @@ public class YHRecipeGen {
 					.build(pvd, YHDish.TOFU_BURGER.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.BLOOD_CURD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(YHItems.BLOOD_BOTTLE)
-					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHItems.BLOOD_BOTTLE.item)
+					.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHDish.BLOOD_CURD.block.getId());
 
@@ -776,9 +771,9 @@ public class YHRecipeGen {
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SCARLET_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHItems.BLOOD_BOTTLE)
+					.unlockedByAnyIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(YHTagGen.TEA_BLACK)
-					.addIngredient(YHItems.BLOOD_BOTTLE)
+					.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.build(tea, YHFood.SCARLET_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
@@ -821,6 +816,12 @@ public class YHRecipeGen {
 
 		// sake
 		{
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHItems.SOY_SAUCE_BOTTLE.fluid.get(), 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
+					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
+					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
+					.save(pvd, YHItems.SOY_SAUCE_BOTTLE.item.getId());
+
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MIO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.save(pvd, YHSake.MIO.item.getId());
@@ -855,11 +856,11 @@ public class YHRecipeGen {
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd, YHSake.FULL_MOONS_EVE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SCARLET_MIST.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())
-					.addInput(Items.ROSE_BUSH).addInput(Items.ROSE_BUSH).addInput(Items.POPPY)
-					.addInput(YHDanmaku.Bullet.BUBBLE.get(DyeColor.RED))
-					.addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE)
-					.addInput(YHItems.BLOOD_BOTTLE).addInput(YHItems.BLOOD_BOTTLE)
+			unlock(pvd, new SimpleFermentationBuilder(YHItems.BLOOD_BOTTLE.fluid.get(), YHSake.SCARLET_MIST.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())
+					.addInput(Items.ROSE_BUSH).addInput(Items.ROSE_BUSH)
+					.addInput(Items.POPPY)
+					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED))
+					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED))
 					.save(pvd, YHSake.SCARLET_MIST.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.WIND_PRIESTESSES.fluid.get(), 3600)::unlockedBy, ModItems.RICE.get())

@@ -12,6 +12,8 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
@@ -62,10 +64,11 @@ public class YHItems {
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 
-	public static final ItemEntry<Item> SOY_SAUCE_BOTTLE, CLAY_SAUCER,
+	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE;
+	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
+	public static final ItemEntry<Item> CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
 			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
-	public static final ItemEntry<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<FairyIceItem> FAIRY_ICE_CRYSTAL;
 	public static final ItemEntry<FrozenFrogItem> FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 
@@ -158,15 +161,8 @@ public class YHItems {
 
 		// ingredients
 		{
-			SOY_SAUCE_BOTTLE = YoukaisHomecoming.REGISTRATE
-					.item("soy_sauce_bottle", p -> new Item(p.craftRemainder(Items.GLASS_BOTTLE)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
-					.register();
-
-			BLOOD_BOTTLE = YoukaisHomecoming.REGISTRATE
-					.item("blood_bottle", p -> new BloodBottleItem(p.craftRemainder(Items.GLASS_BOTTLE)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
-					.register();
+			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
+			BLOOD_BOTTLE = new BottledFluid<>("blood", 0xff772221, () -> Items.GLASS_BOTTLE, "ingredient", BloodBottleItem::new);
 
 			CREAM = YoukaisHomecoming.REGISTRATE
 					.item("bowl_of_cream", p -> new Item(p.craftRemainder(Items.BOWL)))

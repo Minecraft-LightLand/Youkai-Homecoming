@@ -1,17 +1,27 @@
 {
-  "type": "farmersdelight:cooking",
-  "cookingtime": 200,
-  "experience": 0.1,
+  "type": "youkaishomecoming:simple_fermentation",
   "ingredients": [
     {
-      "type": "l2library:potion",
-      "potion": "minecraft:water"
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
     },
     {
       "item": "youkaishomecoming:soybean"
     }
   ],
-  "result": {
-    "item": "youkaishomecoming:soy_sauce_bottle"
-  }
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:flowing_soy_sauce"
+  },
+  "results": [],
+  "time": 1800
 }
