@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +25,7 @@ public class SanaeEntity extends BossYoukaiEntity {
     }
 
     protected boolean wouldAttack(LivingEntity entity) {
-        return entity.hasEffect(YHEffects.YOUKAIFIED.get());
+        return PlayerStatusData.Kind.WORTHY.is(entity);
     }
 
     @Override

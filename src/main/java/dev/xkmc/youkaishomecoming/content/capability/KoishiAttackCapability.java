@@ -57,8 +57,7 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 		return !player.level().dimension().equals(Level.NETHER) ||
 				!player.canBeSeenAsEnemy() ||
 				player.hasEffect(YHEffects.UNCONSCIOUS.get()) ||
-				player.hasEffect(YHEffects.YOUKAIFIED.get()) ||
-				!player.hasEffect(YHEffects.YOUKAIFYING.get());
+				!PlayerStatusData.Kind.TEMPTING.is(player);
 	}
 
 	@Override

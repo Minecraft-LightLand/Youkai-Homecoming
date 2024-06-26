@@ -1,12 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.client.CirnoHairbandModel;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,8 +40,9 @@ public class CirnoHairbandItem extends TouhouHatItem {
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {
-		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.FAIRY.get(), 40, 0,
-				true, true), EffectUtil.AddReason.SELF, player);
+		if (PlayerStatusData.HOLDER.isProper(player)) {
+			PlayerStatusData.HOLDER.get(player).lock(PlayerStatusData.Status.FAIRY);
+		}
 	}
 
 	@Override
@@ -59,8 +59,7 @@ public class CirnoHairbandItem extends TouhouHatItem {
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		boolean obtain = showTooltip();
 		if (obtain) {//TODO
-			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_CIRNO_HAIRBAND
-					.get(Component.translatable(YHEffects.FAIRY.get().getDescriptionId()))));
+			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_CIRNO_HAIRBAND.get()));
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));

@@ -137,14 +137,13 @@ public class YHAdvGen {
 						"Gensokyo Food Enthusiastic", "Eat all Youkai's Homecoming food")
 				.type(FrameType.CHALLENGE, true, true, false);
 
-
 		var youkai = root.create("flesh", YHFood.FLESH.item.asStack(),
 						CriterionBuilder.item(YHFood.FLESH.item.get()),
 						"Where is it from?", "Get weird meat")
 				.type(FrameType.GOAL, true, true, false)
 				.create("first_time", YHFood.FLESH_ROLL.item.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
-								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFYING.get()))),
+								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFYING.get()))),//TODO
 						"The First Time", "Get Youkaifying effect")
 				.type(FrameType.CHALLENGE, true, true, true);
 		youkai.create("bloody", YHItems.BLOOD_BOTTLE.asStack(1),
@@ -156,7 +155,7 @@ public class YHAdvGen {
 				.type(FrameType.GOAL, true, true, false);
 		var youkaified = youkai.create("powerful_being", YHItems.SUWAKO_HAT.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
-								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))),
+								MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))),//TODO
 						"Powerful Being", "Get Youkaified effect")
 				.type(FrameType.CHALLENGE, true, true, false);
 

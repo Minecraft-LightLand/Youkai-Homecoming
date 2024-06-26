@@ -4,6 +4,7 @@ import dev.xkmc.fastprojectileapi.render.ButterflyProjectileType;
 import dev.xkmc.fastprojectileapi.render.DoubleLayerProjectileType;
 import dev.xkmc.fastprojectileapi.render.RenderableProjectileType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
@@ -48,7 +49,7 @@ public class DanmakuItem extends Item {
 		ItemStack stack = player.getItemInHand(hand);
 		ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
 		if (!head.is(YHTagGen.TOUHOU_HAT) && !player.getAbilities().instabuild &&
-				!EffectEventHandlers.isCharacter(player)) {
+				!PlayerStatusData.Kind.CHARACTER.is(player)) {
 			return InteractionResultHolder.fail(stack);
 		}
 		level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS,
@@ -78,9 +79,7 @@ public class DanmakuItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
-		var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
-		list.add(YHLangData.USAGE_DANMAKU.get(fying, fied));
+		list.add(YHLangData.USAGE_DANMAKU.get());
 		list.add(YHLangData.DANMAKU_DAMAGE.get(type.damage()));
 		if (type.bypass())
 			list.add(YHLangData.DANMAKU_BYPASS.get());

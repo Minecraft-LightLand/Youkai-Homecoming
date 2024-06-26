@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.events;
 
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
+import dev.xkmc.youkaishomecoming.content.effect.StatusTokenEffect;
 import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -20,22 +22,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EffectEventHandlers {
-
-	public static boolean isWeakCharacter(LivingEntity e) {
-		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
-				e.hasEffect(YHEffects.FAIRY.get());
-	}
-
-	public static boolean isYoukai(LivingEntity e) {
-		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
-				e.hasEffect(YHEffects.YOUKAIFIED.get());
-	}
-
-	public static boolean isCharacter(LivingEntity e) {
-		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
-				e.hasEffect(YHEffects.YOUKAIFIED.get()) ||
-				e.hasEffect(YHEffects.FAIRY.get());
-	}
 
 	@SubscribeEvent
 	public static void onSleep(PlayerSleepInBedEvent event) {
@@ -106,7 +92,7 @@ public class EffectEventHandlers {
 		if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
 			amount *= YHModConfig.COMMON.smoothingHealingFactor.get();
 		}
-		if (event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
+		if (PlayerStatusData.Status.FAIRY.is(event.getEntity())) {
 			amount *= YHModConfig.COMMON.fairyHealingFactor.get();
 		}
 		event.setAmount(amount);
@@ -155,24 +141,8 @@ public class EffectEventHandlers {
 				event.setResult(Event.Result.DENY);
 			}
 		}
-		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFYING.get()) {
-			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
-					event.getEntity().hasEffect(YHEffects.FAIRY.get()) ||
-					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
-				event.setResult(Event.Result.DENY);
-			}
-		}
-		if (event.getEffectInstance().getEffect() == YHEffects.YOUKAIFIED.get()) {
-			if (event.getEntity().hasEffect(YHEffects.SOBER.get()) ||
-					event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
-				event.setResult(Event.Result.DENY);
-			}
-		}
-		if (event.getEffectInstance().getEffect() == YHEffects.FAIRY.get()) {
-			if (event.getEntity().hasEffect(YHEffects.YOUKAIFYING.get()) ||
-					event.getEntity().hasEffect(YHEffects.YOUKAIFIED.get())) {
-				event.setResult(Event.Result.DENY);
-			}
+		if (event.getEffectInstance().getEffect() instanceof StatusTokenEffect) {
+			event.setResult(Event.Result.DENY);
 		}
 	}
 

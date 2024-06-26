@@ -82,7 +82,7 @@ public enum YHFood {
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
 	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(
-			//new EffectEntry(YHEffects.FAIRY::get, 1200, 0, 1) TODO
+			new EffectEntry(YHEffects.FAIRY::get, 1200, 0, 1)
 	), DietTagGen.SUGARS.tag),
 
 	// stick

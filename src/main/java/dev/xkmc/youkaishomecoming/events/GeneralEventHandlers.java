@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.compat.curios.CuriosManager;
 import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
@@ -47,7 +48,7 @@ public class GeneralEventHandlers {
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase != TickEvent.Phase.END) return;
 		var e = event.player;
-		if (e.hasEffect(YHEffects.FAIRY.get()) && CuriosManager.hasAnyWings(e)) {
+		if (PlayerStatusData.Status.FAIRY.is(e) && CuriosManager.hasAnyWings(e)) {
 			FlyingToken.tickFlying(e);
 		}
 	}
@@ -83,7 +84,7 @@ public class GeneralEventHandlers {
 		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES) &&
-					EffectEventHandlers.isYoukai(le))
+					PlayerStatusData.Kind.YOUKAI.is(le))
 				spawnBlood(le);
 			if (le.getItemBySlot(EquipmentSlot.HEAD).is(YHItems.RUMIA_HAIRBAND.get()))
 				spawnBlood(le);
@@ -113,7 +114,7 @@ public class GeneralEventHandlers {
 		if (event.getEntity() instanceof AbstractVillager e &&
 				YHModConfig.COMMON.reimuSummonKill.get() &&
 				event.getSource().getEntity() instanceof ServerPlayer sp &&
-				EffectEventHandlers.isYoukai(sp)
+				PlayerStatusData.Kind.YOUKAI.is(sp)
 		) {
 			GeneralEventHandler.schedule(() -> {
 				if (e.isAlive()) {
@@ -135,7 +136,7 @@ public class GeneralEventHandlers {
 	public static void onEntityKilled(LivingDeathEvent event) {
 		if (event.getEntity() instanceof Villager && YHModConfig.COMMON.reimuSummonKill.get()) {
 			if (event.getSource().getEntity() instanceof LivingEntity le) {
-				if (EffectEventHandlers.isYoukai(le))
+				if (PlayerStatusData.Kind.YOUKAI.is(le))
 					ReimuEventHandlers.triggerReimuResponse(le, 16, false);
 			}
 		}

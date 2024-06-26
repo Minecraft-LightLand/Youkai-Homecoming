@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
@@ -22,7 +22,7 @@ public class YukariEntity extends BossYoukaiEntity {
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
-		return entity.hasEffect(YHEffects.YOUKAIFIED.get());
+		return PlayerStatusData.Kind.WORTHY.is(entity);
 	}
 
 	@Override

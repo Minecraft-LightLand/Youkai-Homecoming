@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
@@ -25,7 +26,7 @@ public class TouhouHatItem extends ArmorItem {
 		if (player == null) return false;
 		if (player.getAbilities().instabuild)
 			return true;
-		return EffectEventHandlers.isCharacter(player);
+		return PlayerStatusData.Kind.CHARACTER.is(player);
 	}
 
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;

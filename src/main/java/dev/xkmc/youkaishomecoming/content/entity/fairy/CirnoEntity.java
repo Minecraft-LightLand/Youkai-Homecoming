@@ -1,12 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.entity.fairy;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -72,7 +72,7 @@ public class CirnoEntity extends FairyEntity {
 			}
 			return;
 		}
-		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
+		if (PlayerStatusData.Kind.WORTHY.is(e)) return;
 		e.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2));
 		if (e.canFreeze()) {
 			e.setTicksFrozen(Math.min(200, e.getTicksFrozen() + 120));
@@ -92,7 +92,7 @@ public class CirnoEntity extends FairyEntity {
 		if (!level.getEntitiesOfClass(CirnoEntity.class, aabb).isEmpty()) return false;
 		var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 128, false);
 		if (player == null) return false;
-		return EffectEventHandlers.isCharacter(player);
+		return PlayerStatusData.Kind.CHARACTER.is(player);
 	}
 
 }

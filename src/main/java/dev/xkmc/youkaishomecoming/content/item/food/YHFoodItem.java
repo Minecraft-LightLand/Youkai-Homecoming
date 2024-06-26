@@ -1,8 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
+import dev.xkmc.youkaishomecoming.content.effect.StatusTokenEffect;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
@@ -62,9 +63,22 @@ public class YHFoodItem extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
 		ItemStack itemStack = getCraftingRemainingItem(stack);
-		boolean youkai = consumer.hasEffect(YHEffects.YOUKAIFYING.get());
+		var prop = getFoodProperties(stack, consumer);
+		if (prop != null && consumer instanceof Player player && PlayerStatusData.HOLDER.isProper(player)) {
+			var cap = PlayerStatusData.HOLDER.get(player);
+			for (var e : prop.getEffects()) {
+				var ins = e.getFirst();
+				if (ins == null) continue;
+				if (ins.getEffect() instanceof StatusTokenEffect eff) {
+					if (consumer.getRandom().nextDouble() < e.getSecond()) {
+						cap.extend(eff.status, ins.getDuration());
+					}
+				}
+			}
+		}
+		boolean youkai = PlayerStatusData.Status.YOUKAIFYING.is(consumer);
 		super.finishUsingItem(stack, worldIn, consumer);
-		if (!youkai && consumer.hasEffect(YHEffects.YOUKAIFYING.get())) {
+		if (!youkai && PlayerStatusData.Status.YOUKAIFYING.is(consumer)) {
 			int dur = YHModConfig.COMMON.youkaifyingConfusionTime.get();
 			consumer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
 					dur, 0, false, false, true));

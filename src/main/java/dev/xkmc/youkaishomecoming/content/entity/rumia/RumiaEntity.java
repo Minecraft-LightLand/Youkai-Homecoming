@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MultiHurtByTargetGoal;
@@ -13,7 +14,6 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -75,7 +75,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	@Override
 	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
 		if (isAggressive()) return InteractionResult.PASS;
-		if (!player.hasEffect(YHEffects.YOUKAIFIED.get())) return InteractionResult.PASS;
+		if (!PlayerStatusData.Kind.WORTHY.is(player)) return InteractionResult.PASS;
 		if (player instanceof ServerPlayer sp) openMenu(this, sp);
 		return InteractionResult.SUCCESS;
 	}
@@ -94,7 +94,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	}
 
 	private boolean wouldAttack(LivingEntity entity) {
-		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
+		return PlayerStatusData.Kind.TEMPTING.is(entity);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -293,7 +293,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	@Override
 	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
-		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
+		if (PlayerStatusData.Kind.WORTHY.is(e)) return;
 		if (danmaku instanceof ItemDanmakuEntity d && d.getItem().getItem() instanceof DanmakuItem item) {
 			if (item.color == DyeColor.BLACK) {
 				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));

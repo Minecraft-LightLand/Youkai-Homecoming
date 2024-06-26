@@ -5,6 +5,7 @@ import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
@@ -13,7 +14,6 @@ import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -234,7 +234,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	}
 
 	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
-		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
+		if (PlayerStatusData.Kind.WORTHY.is(e)) return;
 		if (targets.contains(e)) {
 			double heal = YHModConfig.COMMON.danmakuHealOnHitTarget.get();
 			heal(getMaxHealth() * (float) heal);
@@ -320,7 +320,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		}
 	}
 
-	protected void hurtFinalImpl(DamageSource source, float amount){
+	protected void hurtFinalImpl(DamageSource source, float amount) {
 		super.setHealth(amount);
 	}
 

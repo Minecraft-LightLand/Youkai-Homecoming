@@ -26,9 +26,7 @@ public class BloodBottleItem extends SakeBottleItem {
 		boolean obtain = TouhouHatItem.showTooltip();
 		Component obt;
 		if (obtain) {
-			var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
-			var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
-			obt = YHLangData.OBTAIN_BLOOD.get(fying, fied);
+			obt = YHLangData.OBTAIN_BLOOD.get();
 		} else {
 			obt = YHLangData.UNKNOWN.get();
 		}

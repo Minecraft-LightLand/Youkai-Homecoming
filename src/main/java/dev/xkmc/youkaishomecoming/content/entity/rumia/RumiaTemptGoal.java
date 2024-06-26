@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -42,7 +42,7 @@ public class RumiaTemptGoal extends Goal {
 	}
 
 	private boolean shouldFollow(LivingEntity le) {
-		return le.hasEffect(YHEffects.YOUKAIFIED.get()) &&
+		return PlayerStatusData.Kind.WORTHY.is(le) &&
 				(items.test(le.getMainHandItem()) || items.test(le.getOffhandItem()));
 	}
 

@@ -1,15 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import com.google.common.collect.ImmutableMultimap;
-import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.client.RumiaHairbandModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -49,10 +47,9 @@ public class RumiaHairbandItem extends TouhouHatItem {
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {
-		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) return;
-		if (player.hasEffect(YHEffects.SOBER.get())) return;
-		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.YOUKAIFYING.get(), 40, 0,
-				true, true), EffectUtil.AddReason.SELF, player);
+		if (PlayerStatusData.HOLDER.isProper(player)) {
+			PlayerStatusData.HOLDER.get(player).lock(PlayerStatusData.Status.YOUKAIFYING);
+		}
 	}
 
 	@Override
@@ -60,7 +57,7 @@ public class RumiaHairbandItem extends TouhouHatItem {
 		boolean obtain = showTooltip();
 		if (obtain) {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_RUMIA_HAIRBAND.get()));
-			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_RUMIA_HAIRBAND.get(Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId()))));
+			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_RUMIA_HAIRBAND.get()));
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));

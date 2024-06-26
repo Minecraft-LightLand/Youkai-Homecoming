@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.ReimuEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -44,11 +45,10 @@ public class FleshFoodItem extends YHFoodItem {
 		if (old == null) return null;
 		int factor = 1;
 		if (entity != null) {
-			if (entity.hasEffect(YHEffects.YOUKAIFIED.get())) {
-				factor = 3;
-			} else if (entity.hasEffect(YHEffects.YOUKAIFYING.get())) {
-				factor = 2;
-			}
+			if (PlayerStatusData.Kind.YOUKAI.is(entity))
+				factor++;
+			if (PlayerStatusData.Status.YOUKAIFIED.is(entity))
+				factor++;
 		}
 		var builder = new FoodProperties.Builder();
 		builder.nutrition(old.getNutrition() * factor);
@@ -69,20 +69,18 @@ public class FleshFoodItem extends YHFoodItem {
 		super.appendHoverText(stack, level, list, flag);
 		Player player = getPlayer();
 		if (player == null) return;
-		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) {
+		if (PlayerStatusData.Status.YOUKAIFIED.is(player))
 			list.add(YHLangData.FLESH_TASTE_YOUKAI.get());
-		} else if (player.hasEffect(YHEffects.YOUKAIFYING.get())) {
+		else if (PlayerStatusData.Kind.YOUKAI.is(player))
 			list.add(YHLangData.FLESH_TASTE_HALF_YOUKAI.get());
-		} else if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD)) {
+		else if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD)) {
 			list.add(YHLangData.FLESH_TASTE_HUMAN.get());
 		}
 		if (this == YHFood.FLESH.item.get()) {
 			boolean obtain = TouhouHatItem.showTooltip();
 			Component obt;
 			if (obtain) {
-				var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
-				var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
-				obt = YHLangData.OBTAIN_FLESH.get(fying, fied);
+				obt = YHLangData.OBTAIN_FLESH.get();
 			} else {
 				obt = YHLangData.UNKNOWN.get();
 			}
@@ -94,7 +92,7 @@ public class FleshFoodItem extends YHFoodItem {
 	public Component getName(ItemStack pStack) {
 		Player player = getPlayer();
 		Component name;
-		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
+		if (player != null && PlayerStatusData.Status.YOUKAIFIED.is(player)) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();
 		} else {
 			name = YHLangData.FLESH_NAME_HUMAN.get();
@@ -103,38 +101,8 @@ public class FleshFoodItem extends YHFoodItem {
 	}
 
 	public void consume(Player consumer) {
-		if (consumer.level().isClientSide()) return;
-		if (consumer.hasEffect(YHEffects.YOUKAIFIED.get())) {
-			var eff = consumer.getEffect(YHEffects.YOUKAIFIED.get());
-			if (eff != null) {
-				int dur = eff.getDuration() + YHModConfig.COMMON.youkaifiedProlongation.get();
-				consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFIED.get(),
-						dur, 0, true, false, true));
-			}
-		} else if (consumer.hasEffect(YHEffects.YOUKAIFYING.get())) {
-			var eff = consumer.getEffect(YHEffects.YOUKAIFYING.get());
-			if (eff != null) {
-				int dur = eff.getDuration() + YHModConfig.COMMON.youkaifyingTime.get();
-				if (dur > YHModConfig.COMMON.youkaifyingThreshold.get()) {
-					dur = YHModConfig.COMMON.youkaifiedDuration.get();
-					consumer.removeEffect(YHEffects.YOUKAIFYING.get());
-					consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFIED.get(),
-							dur, 0, true, false, true));
-				} else {
-					consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFYING.get(),
-							dur, 0, false, false, false));
-				}
-			}
-		} else {
-			if (consumer.getRandom().nextDouble() < YHModConfig.COMMON.youkaifyingChance.get()) {
-				int dur = YHModConfig.COMMON.youkaifyingTime.get();
-				consumer.addEffect(new MobEffectInstance(YHEffects.YOUKAIFYING.get(),
-						dur, 0, false, false, false));
-				dur = YHModConfig.COMMON.youkaifyingConfusionTime.get();
-				consumer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
-						dur, 0, false, false, true));
-			}
-		}
+		if (consumer.level().isClientSide() || !PlayerStatusData.HOLDER.isProper(consumer)) return;
+		PlayerStatusData.HOLDER.get(consumer).triggerFlesh();
 		if (getDefaultInstance().is(YHTagGen.APPARENT_FLESH_FOOD) && consumer instanceof ServerPlayer sp) {
 			ReimuEventHandlers.triggerReimuResponse(sp, 24, true);
 		}

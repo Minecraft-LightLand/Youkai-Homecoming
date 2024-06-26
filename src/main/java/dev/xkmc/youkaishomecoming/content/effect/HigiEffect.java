@@ -1,13 +1,14 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
 import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 
 public class HigiEffect extends MobEffect {
 
@@ -23,7 +24,7 @@ public class HigiEffect extends MobEffect {
 		if (!e.level().isClientSide) {
 			float amount = 1;
 			int period = YHModConfig.COMMON.higiHealingPeriod.get() >> lv;
-			if (e.hasEffect(YHEffects.FAIRY.get())) period /= 3;
+			if (e instanceof Player player && PlayerStatusData.Status.FAIRY.is(player)) period /= 3;
 			if (period < 10) period = 10;
 			if (e.tickCount % period == 0)
 				e.heal(amount);

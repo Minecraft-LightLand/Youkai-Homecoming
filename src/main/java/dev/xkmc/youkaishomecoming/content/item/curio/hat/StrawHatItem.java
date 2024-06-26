@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.client.HatModel;
 import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
@@ -46,7 +47,7 @@ public class StrawHatItem extends TouhouHatItem {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
 		if (!(target instanceof Frog frog))
 			return InteractionResult.PASS;
-		if (!EffectEventHandlers.isYoukai(player))
+		if (!PlayerStatusData.Kind.CHARACTER.is(player))
 			return InteractionResult.FAIL;
 		if (!FrogGodCapability.HOLDER.isProper(frog))
 			return InteractionResult.FAIL;
@@ -71,9 +72,7 @@ public class StrawHatItem extends TouhouHatItem {
 		boolean obtain = showTooltip();
 		Component obt;
 		if (obtain) {
-			var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
-			var fied = Component.translatable(YHEffects.YOUKAIFIED.get().getDescriptionId());
-			obt = YHLangData.USAGE_STRAW_HAT.get(fying, fied);
+			obt = YHLangData.USAGE_STRAW_HAT.get();
 		} else {
 			obt = YHLangData.UNKNOWN.get();
 		}

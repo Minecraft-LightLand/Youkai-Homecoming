@@ -3,9 +3,9 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.builders.NoConfigBuilder;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.effect.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,20 +17,10 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 public class YHEffects {
-
-	public static final RegistryEntry<YoukaifiedEffect> YOUKAIFIED = genEffect("youkaified",
-			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
-			"You are a Youkai now");
-
-	public static final RegistryEntry<YoukaifyingEffect> YOUKAIFYING = genEffect("youkaifying",
-			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
-			"You are becoming a Youkai");
 
 	public static final RegistryEntry<CaffeinatedEffect> CAFFEINATED = genEffect("caffeinated",
 			() -> new CaffeinatedEffect(MobEffectCategory.BENEFICIAL, -10667225),
@@ -90,8 +80,20 @@ public class YHEffects {
 			() -> new HigiEffect(MobEffectCategory.BENEFICIAL, 0x6CA16E),
 			"Boost attack damage and movement speed, heal slowly");
 
-	public static final RegistryEntry<FairyEffect> FAIRY = genEffect("fairy",
-			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
+
+	public static final RegistryEntry<StatusTokenEffect> YOUKAIFIED = genEffect("youkaified",
+			() -> new StatusTokenEffect(MobEffectCategory.NEUTRAL, 0xffffff,
+					PlayerStatusData.Status.YOUKAIFIED),
+			"You are a Youkai now");
+
+	public static final RegistryEntry<StatusTokenEffect> YOUKAIFYING = genEffect("youkaifying",
+			() -> new StatusTokenEffect(MobEffectCategory.NEUTRAL, 0xffffff,
+					PlayerStatusData.Status.YOUKAIFYING),
+			"You are becoming a Youkai");
+
+	public static final RegistryEntry<StatusTokenEffect> FAIRY = genEffect("fairy",
+			() -> new StatusTokenEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5,
+					PlayerStatusData.Status.FAIRY),
 			"Reduce max HP. Gives speed and healing boost. Enables danmaku");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {

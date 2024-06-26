@@ -18,7 +18,7 @@ public class CirnoWingsItem extends TouhouWingsItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(YHLangData.USAGE_FAIRY_WINGS.get(Component.translatable(YHEffects.FAIRY.get().getDescriptionId())));
+		list.add(YHLangData.USAGE_FAIRY_WINGS.get());
 	}
 
 }

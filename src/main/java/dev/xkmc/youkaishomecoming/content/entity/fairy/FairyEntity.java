@@ -1,13 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.entity.fairy;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -43,7 +43,8 @@ public class FairyEntity extends GeneralYoukaiEntity {
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
-		return EffectEventHandlers.isYoukai(entity);
+		return !PlayerStatusData.Status.FAIRY.is(entity) &&
+				PlayerStatusData.Kind.CHARACTER.is(entity);
 	}
 
 	@Override

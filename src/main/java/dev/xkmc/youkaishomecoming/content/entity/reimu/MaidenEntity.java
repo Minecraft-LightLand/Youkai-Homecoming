@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.entity.reimu;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.PlayerStatusData;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,7 +30,7 @@ public class MaidenEntity extends BossYoukaiEntity {
 				mob.getTarget() instanceof Villager ||
 						mob.getLastHurtMob() instanceof Villager
 		) || entity.getType().is(EntityTypeTags.RAIDERS) ||
-				entity.hasEffect(YHEffects.YOUKAIFYING.get());
+				PlayerStatusData.Kind.TEMPTING.is(entity);
 	}
 
 	@Override

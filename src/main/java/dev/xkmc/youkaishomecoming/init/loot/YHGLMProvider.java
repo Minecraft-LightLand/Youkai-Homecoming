@@ -163,10 +163,10 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 	private static LootItemCondition killedByYoukai() {
 		return LootItemEntityPropertyCondition.hasProperties(
 				LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().effects(MobEffectsPredicate.effects().and(YHEffects.YOUKAIFYING.get()))
+				EntityPredicate.Builder.entity().effects(MobEffectsPredicate.effects().and(YHEffects.YOUKAIFYING.get()))//TODO
 		).or(LootItemEntityPropertyCondition.hasProperties(
 				LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().effects(MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))
+				EntityPredicate.Builder.entity().effects(MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))//TODO
 		)).build();
 	}
 
