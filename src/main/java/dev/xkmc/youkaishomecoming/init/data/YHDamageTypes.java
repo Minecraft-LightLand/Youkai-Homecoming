@@ -27,17 +27,19 @@ public class YHDamageTypes extends DamageTypeAndTagsGen {
 
 	public static final TagKey<DamageType> DANMAKU_TYPE = TagKey.create(Registries.DAMAGE_TYPE, YoukaisHomecoming.loc("danmaku"));
 
+	private static final DamageTypeTagGroup DANMAKU_GROUP = DamageTypeTagGroup.of(DamageTypeTags.NO_IMPACT,
+			L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN, DANMAKU_TYPE);
+
 	public YHDamageTypes(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, YoukaisHomecoming.MODID);
 		new DamageTypeHolder(KOISHI, new DamageType("koishi_attack", 0.1f))
-				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
-		new DamageTypeHolder(RUMIA, new DamageType("rumia_attack", 0.1f))
-				.add(DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_RESISTANCE, DamageTypeTags.BYPASSES_EFFECTS);
-		new DamageTypeHolder(DANMAKU, new DamageType("danmaku", 0.1f))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN, DANMAKU_TYPE);
-		new DamageTypeHolder(ABYSSAL, new DamageType("abyssal_danmaku", 0.1f))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN, DANMAKU_TYPE)
 				.add(L2DamageTypes.BYPASS_MAGIC);
+		new DamageTypeHolder(RUMIA, new DamageType("rumia_attack", 0.1f))
+				.add(L2DamageTypes.BYPASS_MAGIC);
+		new DamageTypeHolder(DANMAKU, new DamageType("danmaku", 0.1f))
+				.add(DANMAKU_GROUP);
+		new DamageTypeHolder(ABYSSAL, new DamageType("abyssal_danmaku", 0.1f))
+				.add(DANMAKU_GROUP).add(L2DamageTypes.BYPASS_MAGIC);
 	}
 
 	private static ResourceKey<DamageType> createDamage(String id) {

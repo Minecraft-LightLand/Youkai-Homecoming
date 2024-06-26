@@ -1,14 +1,16 @@
-- Reimu Shine improvements & loot
+- Add fairy effects
 - Cirno hairband and wings
+- Reimu Shine improvements & loot
 - Cirno house & Food
 - more food
+- Danmaku no longer knock back player
 
 2.2.7
 - Add moon lantern, dining tables, and dining chairs
-- Add fairy effects
 - New Cirno model, now Cirno doesn't need TLM to spawn
 - Fairies tempted by fairy candy
 - Cirno will not freeze, and immune to freezing damage
+- Change soy sauce and scarlet mist recipe
 - Fix Danmaku rendering with shaders
 - Fix minimum percentage damage
 - Fix Botania Compatibility
