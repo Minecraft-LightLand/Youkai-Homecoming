@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-25T18:10:27.712959	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-06-26T08:54:33.868705	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1518,9 +1518,31 @@ b66468b6c0c2ca463d44b02c68f6ef65b67cde6b data/youkaishomecoming/recipes/dassai.j
 67a00d682a12c1a7be77e654a7dfe564fe2f862b data/youkaishomecoming/recipes/dried_fish.json
 5f2f7cd89d16e9d9903fa987f84e25a976b86630 data/youkaishomecoming/recipes/dried_mandrake_flower_from_mandrake_flower_drying.json
 76d38c69a45cf78a7f1f963e3569a9b0391fc8ce data/youkaishomecoming/recipes/drying_rack_from_bamboo_block_stonecutting.json
+a9ba7184aa59901d9cdc35f312fd852ad5354907 data/youkaishomecoming/recipes/emptying/blood_bottle_emptying.json
+b07e7bb5a1083c9aaebd26d09ae5c7fb847c3748 data/youkaishomecoming/recipes/emptying/daiginjo_emptying.json
+0b403c8c511206aad40753b237cb86b8be2b1f2d data/youkaishomecoming/recipes/emptying/dassai_emptying.json
+8e512c0852e5362139e68de57afddbffd4459dc6 data/youkaishomecoming/recipes/emptying/full_moons_eve_emptying.json
+6356408c774f6618e45e030f04999952669d5bcd data/youkaishomecoming/recipes/emptying/mead_emptying.json
+fb87deb5680c126839307cef0a15222bbe63294d data/youkaishomecoming/recipes/emptying/mio_emptying.json
+e011c319e24771320149f11cf0e445b96a449303 data/youkaishomecoming/recipes/emptying/scarlet_mist_emptying.json
+e18d5b26a4882f3646a81fcb8b5163625004d707 data/youkaishomecoming/recipes/emptying/soy_sauce_bottle_emptying.json
+2de405bb0304dc512f2e56d23d5050e2b8549dc4 data/youkaishomecoming/recipes/emptying/sparrow_sake_emptying.json
+ba0eeca7dcc5329c2ba8a4594e24bacfcfa6b250 data/youkaishomecoming/recipes/emptying/tengu_tango_emptying.json
+3a6a3861739af71bb4c100b2bf8baba98fd484d6 data/youkaishomecoming/recipes/emptying/wind_priestesses_emptying.json
 c622e5ad8dea79220685440764a8c74d48394445 data/youkaishomecoming/recipes/espresso.json
 f20a4cd5729f0761fd4d415393f36af9a4f89472 data/youkaishomecoming/recipes/fairy_candy.json
 aa7191a59903a6da81661d263d1863f0e6ad8a3a data/youkaishomecoming/recipes/fermentation_tank.json
+801780f441080c78f1dfa45e7a8d2e8b3f490b11 data/youkaishomecoming/recipes/filling/blood_bottle.json
+2180b234032956ed7bfcc15304629f4478f5bd8b data/youkaishomecoming/recipes/filling/daiginjo.json
+1937a911b6d69aae312dd887017156e46a6f0d11 data/youkaishomecoming/recipes/filling/dassai.json
+1b35e76dbd53ba57151daca049bec76aee1d5ce9 data/youkaishomecoming/recipes/filling/full_moons_eve.json
+f01192cb293e2944605186f3e99a8704fddd2de0 data/youkaishomecoming/recipes/filling/mead.json
+9609c9c9e04376f47e4bf98cf94d46d8d01463d6 data/youkaishomecoming/recipes/filling/mio.json
+badfe9ad16c48132d2e7686874e2008f190664f4 data/youkaishomecoming/recipes/filling/scarlet_mist.json
+e04df0e36873bdf7cc55acf158cdbd0f4b98d116 data/youkaishomecoming/recipes/filling/soy_sauce_bottle.json
+09293db2ee50f32761e3ffa1dfb795453edacdff data/youkaishomecoming/recipes/filling/sparrow_sake.json
+3ea998bcca015498ba9ae9632186f9326f5218f9 data/youkaishomecoming/recipes/filling/tengu_tango.json
+dd035f8126a452060ea70c6a72ec40b46828be73 data/youkaishomecoming/recipes/filling/wind_priestesses.json
 94f2650a20cbbd3346b6cb3f45d0cd9f236aa8bd data/youkaishomecoming/recipes/fine_grid_framed_shoji_from_fine_grid_framed_sikkui_stonecutting.json
 c220c92ffef392f3887ca4d87dc50457029a136f data/youkaishomecoming/recipes/fine_grid_framed_sikkui.json
 25d98f31bddf3d835a2388a0b2c874c81f423dc3 data/youkaishomecoming/recipes/fine_grid_framed_sikkui_trap_door_from_fine_grid_framed_sikkui_stonecutting.json

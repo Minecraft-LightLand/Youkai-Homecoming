@@ -62,12 +62,19 @@ public enum YHSake implements IYHSake {
 		item = type.build("sake/", name, 0, 0, tags, effs);
 	}
 
-	public int amount() {
-		return 250;
+	@Override
+	public int getColor() {
+		return color;
 	}
 
-	public int count() {
-		return 4;
+	@Override
+	public ItemEntry<?> item() {
+		return item;
+	}
+
+	@Override
+	public FluidEntry<? extends SakeFluid> fluid() {
+		return fluid;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -90,8 +97,4 @@ public enum YHSake implements IYHSake {
 
 	}
 
-	@Override
-	public int getColor() {
-		return color;
-	}
 }

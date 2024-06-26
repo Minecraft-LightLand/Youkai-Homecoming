@@ -66,16 +66,6 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHSake {
 	}
 
 	@Override
-	public int count() {
-		return 4;
-	}
-
-	@Override
-	public int amount() {
-		return 250;
-	}
-
-	@Override
 	public Item getContainer() {
 		return container.get();
 	}
@@ -83,6 +73,16 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHSake {
 	@Override
 	public ItemStack asStack(int count) {
 		return item.asStack(count);
+	}
+
+	@Override
+	public ItemEntry<?> item() {
+		return item;
+	}
+
+	@Override
+	public FluidEntry<? extends SakeFluid> fluid() {
+		return fluid;
 	}
 
 }

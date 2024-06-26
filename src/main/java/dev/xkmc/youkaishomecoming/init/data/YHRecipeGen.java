@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
+import com.simibubi.create.Create;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -8,6 +9,7 @@ import dev.xkmc.fruitsdelight.init.food.FDFood;
 import dev.xkmc.fruitsdelight.init.food.FruitType;
 import dev.xkmc.l2library.compat.patchouli.ShapelessPatchouliBuilder;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
@@ -924,6 +926,11 @@ public class YHRecipeGen {
 					.save(pvd);
 
 		}
+
+		if (ModList.get().isLoaded(Create.ID)) {
+			CreateRecipeGen.onRecipeGen(pvd);
+		}
+
 	}
 
 	private static void food(RegistrateRecipeProvider pvd, YHFood raw, YHFood cooked) {
