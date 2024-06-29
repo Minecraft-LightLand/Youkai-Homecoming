@@ -1,6 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fruitsdelight"
+    }
+  ],
   "ingredients": [
     {
       "tag": "forge:fruits/peach"

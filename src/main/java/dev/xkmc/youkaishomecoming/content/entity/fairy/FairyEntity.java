@@ -7,7 +7,6 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +14,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -48,7 +46,7 @@ public class FairyEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public boolean shouldHurt(LivingEntity le) {
-		return super.shouldHurt(le) || le instanceof Player || le instanceof Mob mob && mob.getTarget() != null;
+		return super.shouldHurt(le) || le instanceof Mob mob && mob.getTarget() != null;
 	}
 
 	@Override

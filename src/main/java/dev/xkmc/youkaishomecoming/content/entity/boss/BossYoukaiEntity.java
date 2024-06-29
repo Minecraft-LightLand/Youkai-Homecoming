@@ -72,6 +72,9 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
 				!(source.getEntity() instanceof LivingEntity))
 			return false;
+		if (source.getEntity() instanceof LivingEntity le) {
+			if (shouldIgnore(le)) return false;
+		}
 		int cd = getCD(source);
 		if (hurtCD < cd) {
 			return false;

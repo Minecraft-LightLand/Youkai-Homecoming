@@ -23,11 +23,13 @@ public class SanaeEntity extends BossYoukaiEntity {
     }
 
     protected boolean wouldAttack(LivingEntity entity) {
+        if (shouldIgnore(entity)) return false;
         return entity.hasEffect(YHEffects.YOUKAIFIED.get());
     }
 
     @Override
     public boolean shouldHurt(LivingEntity le) {
+        if (shouldIgnore(le)) return false;
         return le instanceof Enemy || super.shouldHurt(le) || wouldAttack(le);
     }
 

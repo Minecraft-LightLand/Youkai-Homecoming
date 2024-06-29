@@ -170,6 +170,12 @@ dependencies {
     compileOnly fg.deobf("curse.maven:diet-443570:4634780")
     compileOnly fg.deobf("curse.maven:thirst-was-taken-679270:5071555")
 
+    implementation fg.deobf("curse.maven:better-advancements-272515:4631253")
+
+    implementation fg.deobf("curse.maven:placebo-283644:5098182")
+    implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
+    implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
+
     //runtimeOnly fg.deobf("curse.maven:rubidium-574856:4573226")
 
 }

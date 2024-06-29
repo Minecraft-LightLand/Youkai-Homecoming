@@ -10,8 +10,10 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
+import dev.xkmc.youkaishomecoming.events.YoukaiFightEvent;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
@@ -44,6 +46,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.MinecraftForge;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -153,8 +156,18 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 
 	// features
 
+	public boolean shouldIgnore(LivingEntity e) {
+		if (e.getType().is(YHTagGen.YOUKAI_IGNORE))
+			return true;
+		var event = new YoukaiFightEvent(this, e);
+		return MinecraftForge.EVENT_BUS.post(event);
+	}
+
 	@Override
 	public boolean isInvulnerableTo(DamageSource pSource) {
+		if (pSource.getEntity() instanceof LivingEntity le && shouldIgnore(le)) {
+			return true;
+		}
 		return pSource.is(DamageTypeTags.IS_FALL);
 	}
 
@@ -320,7 +333,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		}
 	}
 
-	protected void hurtFinalImpl(DamageSource source, float amount){
+	protected void hurtFinalImpl(DamageSource source, float amount) {
 		super.setHealth(amount);
 	}
 

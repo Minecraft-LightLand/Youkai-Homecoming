@@ -94,6 +94,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	}
 
 	private boolean wouldAttack(LivingEntity entity) {
+		if (shouldIgnore(entity)) return false;
 		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
 	}
 

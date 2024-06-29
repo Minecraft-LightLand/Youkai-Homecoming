@@ -49,6 +49,8 @@ public class YHTagGen {
 	public static final TagKey<EntityType<?>> CREEPER_SOURCE = entity("drops_creeper_head");
 	public static final TagKey<EntityType<?>> PIGLIN_SOURCE = entity("drops_piglin_head");
 
+	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
+
 
 	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
 
@@ -73,6 +75,8 @@ public class YHTagGen {
 		pvd.addTag(ZOMBIE_SOURCE).add(EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.HUSK, EntityType.DROWNED);
 		pvd.addTag(CREEPER_SOURCE).add(EntityType.CREEPER);
 		pvd.addTag(PIGLIN_SOURCE).add(EntityType.PIGLIN, EntityType.PIGLIN_BRUTE);
+
+		pvd.addTag(YOUKAI_IGNORE).add(EntityType.ENDER_DRAGON);
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {

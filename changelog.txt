@@ -5,6 +5,12 @@
 - more food
 - Danmaku no longer knock back player
 
+2.2.8
+- Fix compat recipe conditions
+- BetterAdvancement screen displays item name instead of ID
+- Cirno no longer hurt non-target players
+- Add reimu attack target blacklist
+
 2.2.7
 - Add moon lantern, dining tables, and dining chairs
 - New Cirno model, now Cirno doesn't need TLM to spawn

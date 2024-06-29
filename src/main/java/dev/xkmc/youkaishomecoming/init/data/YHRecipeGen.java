@@ -9,6 +9,7 @@ import dev.xkmc.fruitsdelight.init.food.FDFood;
 import dev.xkmc.fruitsdelight.init.food.FruitType;
 import dev.xkmc.l2library.compat.patchouli.ShapelessPatchouliBuilder;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
@@ -31,6 +32,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
@@ -899,12 +901,13 @@ public class YHRecipeGen {
 		}
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
+			Consumer<FinishedRecipe> modtea = e -> tea.accept(new ConditionalRecipeWrapper(e, new ModLoadedCondition(FruitsDelight.MODID)));
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.MOON_ROCKET.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(FDFood.LEMON_SLICE.get())
 					.addIngredient(FDFood.LEMON_SLICE.get())
 					.addIngredient(Items.SUGAR)
-					.build(tea, FruitsDelightCompatFood.MOON_ROCKET.item.getId());
+					.build(modtea, FruitsDelightCompatFood.MOON_ROCKET.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.LEMON_BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
@@ -912,18 +915,18 @@ public class YHRecipeGen {
 					.addIngredient(FDFood.LEMON_SLICE.get())
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(Items.SUGAR)
-					.build(tea, FruitsDelightCompatFood.LEMON_BLACK_TEA.item.getId());
+					.build(modtea, FruitsDelightCompatFood.LEMON_BLACK_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.PEACH_TAPIOCA.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(FruitType.PEACH.getFruitTag())
 					.addIngredient(Items.LILY_PAD)
-					.build(pvd, FruitsDelightCompatFood.PEACH_TAPIOCA.item.getId());
+					.build(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID), FruitsDelightCompatFood.PEACH_TAPIOCA.item.getId());
 
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FruitsDelightCompatFood.PEACH_YATSUHASHI.item, 2)::unlockedBy, FruitType.PEACH.getFruit())
 					.requires(FruitType.PEACH.getFruitTag())
 					.requires(ModItems.COOKED_RICE.get())
-					.save(pvd);
+					.save(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
 
 		}
 

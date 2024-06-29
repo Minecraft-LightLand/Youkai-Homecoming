@@ -21,7 +21,8 @@
 	"VillagerMixin"
   ],
   "client": [
-	"GameRendererMixin"
+	"GameRendererMixin",
+	"CriterionGridMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

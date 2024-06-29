@@ -80,11 +80,13 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
+		if (shouldIgnore(entity)) return false;
 		return entity.hasEffect(YHEffects.YOUKAIFYING.get());
 	}
 
 	@Override
 	public boolean shouldHurt(LivingEntity le) {
+		if (shouldIgnore(le)) return false;
 		return super.shouldHurt(le) || wouldAttack(le);
 	}
 

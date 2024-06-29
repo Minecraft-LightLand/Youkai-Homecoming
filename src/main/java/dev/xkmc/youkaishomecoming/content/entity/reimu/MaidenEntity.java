@@ -26,6 +26,7 @@ public class MaidenEntity extends BossYoukaiEntity {
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
+		if (shouldIgnore(entity)) return false;
 		return entity instanceof Mob mob && (
 				mob.getTarget() instanceof Villager ||
 						mob.getLastHurtMob() instanceof Villager
@@ -35,6 +36,7 @@ public class MaidenEntity extends BossYoukaiEntity {
 
 	@Override
 	public boolean shouldHurt(LivingEntity le) {
+		if (shouldIgnore(le)) return false;
 		return le instanceof Enemy || super.shouldHurt(le);
 	}
 
