@@ -5,11 +5,13 @@ import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
+import dev.shadowsoffire.gateways.Gateways;
 import dev.xkmc.fastprojectileapi.collision.FastMapInit;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleConfig;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
 import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
@@ -32,7 +34,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -91,6 +92,9 @@ public class YoukaisHomecoming {
 		if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
 		}
+		if (ModList.get().isLoaded(Gateways.MODID)) {
+			MinecraftForge.EVENT_BUS.register(GatewayEventHandlers.class);
+		}
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
@@ -129,7 +133,7 @@ public class YoukaisHomecoming {
 			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_WARM.get(), thrower);
 			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_TEMPERATE.get(), thrower);
 
-			DispenserBlock.registerBehavior(YHItems.FAIRY_ICE_CRYSTAL.get(),  new AbstractProjectileDispenseBehavior() {
+			DispenserBlock.registerBehavior(YHItems.FAIRY_ICE_CRYSTAL.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
 					return new FairyIce(level, pos.x(), pos.y(), pos.z());
 				}
