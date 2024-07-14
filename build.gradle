@@ -250,10 +250,14 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addEnvironment("Client", "Server")
     mainFile.addGameVersion("1.20.1")
     mainFile.addModLoader("Forge","NeoForge")
-    mainFile.addRequirement("l2-complements", "l2library")
-    mainFile.addOptional("the-twilight-forest", "ice-and-fire-dragons", "aerial-hell", "the-undergarden",
-            "modulargolems", "ars-nouveau", "passive-skill-tree",
-            "better-combat-by-daedelus", "just-enough-effect-descriptions-jeed")
+    mainFile.addRequirement("farmers-delight")
+    mainFile.addOptional(
+            "delightful",
+            "diet",
+            "fruits-delight",
+            "serene-seasons",
+            "thirst-was-taken",
+            "touhou-little-maid")
     mainFile.releaseType = "release"
     disableVersionDetection()
 }
@@ -269,14 +273,12 @@ modrinth {
     loaders = ["forge", "neoforge"]
     changelog = new File('./changelog.txt').text.split("\n\n")[0]
     dependencies {
-        required.project "l2library"
-        required.project "l2-complements"
-        optional.project "better-combat"
-        optional.project "just-enough-effect-descriptions-jeed"
-        optional.project "the-undergarden"
-        optional.project "ice-and-fire-dragons"
-        optional.project "ars-nouveau"
-        optional.project "modular-golems"
-        optional.project "aerial-hell"
+        required.project "farmers-delight"
+        optional.project "fruits-delight"
+        optional.project "diet"
+        optional.project "delightful"
+        optional.project "touhou-little-maid"
+        optional.project "thirst-was-taken"
+        optional.project "serene-seasons"
     }
 }
