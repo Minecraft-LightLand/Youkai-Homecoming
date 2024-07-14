@@ -13,7 +13,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class KoishiTest extends ActualSpellCard {
+public class AncestorDream extends ActualSpellCard {
 
 	@Override
 	public void tick(CardHolder holder) {
@@ -111,7 +111,7 @@ public class KoishiTest extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class StateChange extends Ticker<KoishiTest> {
+	public static class StateChange extends Ticker<AncestorDream> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, front;
@@ -123,7 +123,7 @@ public class KoishiTest extends ActualSpellCard {
 		private double termSpeed = 1, dr = 20;
 
 		@Override
-		public boolean tick(CardHolder holder, KoishiTest card) {
+		public boolean tick(CardHolder holder, AncestorDream card) {
 			step(holder);
 			super.tick(holder, card);
 			return false;

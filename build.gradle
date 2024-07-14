@@ -8,7 +8,6 @@ buildscript {
         maven { url = 'https://maven.parchmentmc.org' }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath "org.spongepowered:mixingradle:${mixingradle_version}"
         classpath 'org.parchmentmc:librarian:1.+'
     }
@@ -233,14 +232,11 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 tasks.jarJar.configure {
-    // remove '-all' from jarJar jar file
-    classifier ''
+    archiveClassifier.set('')
 }
 
 jar {
-    // this now conflicts with jarJar as filenames are the same
-    // append a `-slim` to this jar, as this jar contains no pre-packaged libs
-    classifier 'slim'
+    archiveClassifier.set('slim')
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {

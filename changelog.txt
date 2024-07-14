@@ -6,6 +6,7 @@
 - Youkai will not attack mobs spawned from Gateway to Eternity
 - Fix compat recipe conditions
 - Fix compat with Apotheosis: use Apoth bamboo instead of vanilla as container when possible
+- Add WIP Koishi entity
 
 2.2.7
 - Add moon lantern, dining tables, and dining chairs

@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.KoishiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
@@ -45,6 +46,7 @@ public class YHEntities {
 	public static final EntityEntry<FairyEntity> FAIRY;
 	public static final EntityEntry<YukariEntity> YUKARI;
 	public static final EntityEntry<SanaeEntity> SANAE;
+	public static final EntityEntry<KoishiEntity> KOISHI;
 
 	public static final EntityEntry<FrozenFrog> FROZEN_FROG;
 	public static final EntityEntry<FairyIce> FAIRY_ICE;
@@ -122,6 +124,14 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x4eaff9, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+			KOISHI = YoukaisHomecoming.REGISTRATE
+					.entity("komeiji_koishi", KoishiEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(BossYoukaiEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0x88BA7F, 0x645856).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::noLoot).register();
 		}
 
