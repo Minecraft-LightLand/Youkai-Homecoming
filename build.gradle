@@ -1,3 +1,5 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
@@ -12,8 +14,13 @@ buildscript {
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.darkhax.curseforgegradle' version '[1.1.24,)'
+    id "at.stnwtr.gradle-secrets-plugin" version "1.0.1"
+    id "com.modrinth.minotaur" version "2.+"
+}
+
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
@@ -234,4 +241,42 @@ jar {
     // this now conflicts with jarJar as filenames are the same
     // append a `-slim` to this jar, as this jar contains no pre-packaged libs
     classifier 'slim'
+}
+
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = secrets.get("curseforge_token")
+    def mainFile = upload(project.curseforge_project, new File("./build/libs/${modid}-${ll_version}.jar"))
+    mainFile.changelog = new File('./changelog.txt')
+    mainFile.addEnvironment("Client", "Server")
+    mainFile.addGameVersion("1.20.1")
+    mainFile.addModLoader("Forge","NeoForge")
+    mainFile.addRequirement("l2-complements", "l2library")
+    mainFile.addOptional("the-twilight-forest", "ice-and-fire-dragons", "aerial-hell", "the-undergarden",
+            "modulargolems", "ars-nouveau", "passive-skill-tree",
+            "better-combat-by-daedelus", "just-enough-effect-descriptions-jeed")
+    mainFile.releaseType = "release"
+    disableVersionDetection()
+}
+
+modrinth {
+    token = secrets.get("modrinth_token")
+    projectId = project.modrinth_project
+    versionName = "Youkai's Homecoming ${project.ll_version}"
+    versionNumber = project.ll_version
+    versionType = "release"
+    uploadFile = new File("./build/libs/${modid}-${ll_version}.jar")
+    gameVersions = ["1.20.1"]
+    loaders = ["forge", "neoforge"]
+    changelog = new File('./changelog.txt').text.split("\n\n")[0]
+    dependencies {
+        required.project "l2library"
+        required.project "l2-complements"
+        optional.project "better-combat"
+        optional.project "just-enough-effect-descriptions-jeed"
+        optional.project "the-undergarden"
+        optional.project "ice-and-fire-dragons"
+        optional.project "ars-nouveau"
+        optional.project "modular-golems"
+        optional.project "aerial-hell"
+    }
 }

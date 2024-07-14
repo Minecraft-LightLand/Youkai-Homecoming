@@ -8,11 +8,13 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidType;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Locale;
@@ -80,6 +82,9 @@ public enum YHSake implements IYHSake {
 	@SuppressWarnings("deprecation")
 	public Item getContainer() {
 		Item ans = item.get().getCraftingRemainingItem();
+		if (ans == Items.BAMBOO) {
+			ans = ForgeRegistries.ITEMS.getValue(new ResourceLocation("bamboo"));
+		}
 		if (ans == null) return Items.AIR;
 		return ans;
 	}

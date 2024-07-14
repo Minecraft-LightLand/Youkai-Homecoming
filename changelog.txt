@@ -1,16 +1,11 @@
-- Add fairy effects
-- Cirno hairband and wings
-- Reimu Shine improvements & loot
-- Cirno house & Food
-- more food
-- Danmaku no longer knock back player
-
 2.2.8
 - BetterAdvancement screen displays item name instead of ID
 - Cirno no longer hurt non-target players
+- Config toggle for Cirno spawns
 - Add youkai attack target blacklist
 - Youkai will not attack mobs spawned from Gateway to Eternity
 - Fix compat recipe conditions
+- Fix compat with Apotheosis: use Apoth bamboo instead of vanilla as container when possible
 
 2.2.7
 - Add moon lantern, dining tables, and dining chairs

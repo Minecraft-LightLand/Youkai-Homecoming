@@ -54,6 +54,7 @@ public class YHModConfig {
 		public final ForgeConfigSpec.BooleanValue reimuSummonFlesh;
 		public final ForgeConfigSpec.BooleanValue reimuSummonKill;
 
+		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
 
 		Common(ForgeConfigSpec.Builder builder) {
@@ -128,6 +129,8 @@ public class YHModConfig {
 			builder.pop();
 
 			builder.push("cirno");
+			cirnoSpawn = builder.comment("Toggle for Cirno natural spawns")
+					.define("cirnoSpawn",true);
 			cirnoFairyDrop = builder.comment("Chance for fairy ice crystal to drop")
 					.defineInRange("cirnoFairyDrop", 0.03, 0, 1);
 			builder.pop();
