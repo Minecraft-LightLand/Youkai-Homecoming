@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -52,14 +53,16 @@ public class LaserItem extends Item {
 		if (!level.isClientSide) {
 			ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), player, level);
 			danmaku.setItem(stack);
-			danmaku.setup(type.damage(), 100, 40, false, player.getYRot(), player.getXRot());
+			int dur = YHModConfig.COMMON.playerLaserDuration.get();
+			danmaku.setup(type.damage(), dur, 40, false, player.getYRot(), player.getXRot());
 			level.addFreshEntity(danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
+		int cooldown = YHModConfig.COMMON.playerLaserCooldown.get();
 		if (head.is(YHTagGen.TOUHOU_HAT) && head.getItem() instanceof TouhouHatItem item && item.support(color)) {
-			player.getCooldowns().addCooldown(this, 40);
+			player.getCooldowns().addCooldown(this, cooldown / 2);
 		} else {
-			player.getCooldowns().addCooldown(this, 80);
+			player.getCooldowns().addCooldown(this, cooldown);
 			if (!player.getAbilities().instabuild) {
 				stack.shrink(1);
 			}

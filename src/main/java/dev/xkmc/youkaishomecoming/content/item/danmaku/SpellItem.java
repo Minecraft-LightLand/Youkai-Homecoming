@@ -5,6 +5,7 @@ import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.spell.item.ItemSpell;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -50,7 +51,8 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget {
 			if (!player.getAbilities().instabuild)
 				ammo.shrink(1);
 			SpellContainer.castSpell(sp, spell, target);
-			sp.getCooldowns().addCooldown(this, 40);
+			int cooldown = YHModConfig.COMMON.playerSpellCooldown.get();
+			sp.getCooldowns().addCooldown(this, cooldown);
 		}
 		return InteractionResultHolder.consume(stack);
 	}

@@ -1,12 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
-import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.content.client.ReimuHairbandModel;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -20,12 +20,9 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.function.Consumer;
 
 public class ReimuHairbandItem extends TouhouHatItem {
-
-	private static final UUID ID = MathHelper.getUUIDFromString("reimu_hairband");
 
 	public ReimuHairbandItem(Properties properties) {
 		super(properties, TouhouMat.REIMU_HAIRBAND);
@@ -46,7 +43,8 @@ public class ReimuHairbandItem extends TouhouHatItem {
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {
-		FlyingToken.tickFlying(player);
+		if (YHModConfig.COMMON.reimuHairbandFlightEnable.get())
+			FlyingToken.tickFlying(player);
 	}
 
 	@Override

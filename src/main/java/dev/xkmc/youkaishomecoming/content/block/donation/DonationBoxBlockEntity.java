@@ -4,6 +4,7 @@ import dev.xkmc.l2library.base.tile.BaseBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -57,8 +58,10 @@ public class DonationBoxBlockEntity extends BaseBlockEntity {
 		public void add(BlockPos pos, ServerLevel level, @Nullable Player player, int count) {
 			donation += count;
 			if (player == null) return;
-			if (donation - rewarded >= 8) {
-				rewarded += 8;
+			if (!YHModConfig.COMMON.reimuSummonMoney.get()) return;
+			int cost = YHModConfig.COMMON.reimuSummonCost.get();
+			if (donation - rewarded >= cost) {
+				rewarded += cost;
 				var list = level.getEntities(EntityTypeTest.forClass(MaidenEntity.class),
 						player.getBoundingBox().inflate(32), LivingEntity::isAlive);
 				if (list.isEmpty()) {

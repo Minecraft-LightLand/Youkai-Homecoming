@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -61,10 +62,11 @@ public class DanmakuItem extends Item {
 			level.addFreshEntity(danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
+		int cooldown = YHModConfig.COMMON.playerDanmakuCooldown.get();
 		if (head.is(YHTagGen.TOUHOU_HAT) && head.getItem() instanceof TouhouHatItem item && item.support(color)) {
-			player.getCooldowns().addCooldown(this, 10);
+			player.getCooldowns().addCooldown(this, cooldown / 2);
 		} else {
-			player.getCooldowns().addCooldown(this, 20);
+			player.getCooldowns().addCooldown(this, cooldown);
 			if (!player.getAbilities().instabuild) {
 				stack.shrink(1);
 			}

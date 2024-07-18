@@ -1,3 +1,9 @@
+2.2.9
+- Add a lot of rumia and reimu spawn / entity config entries
+- Add danmaku, laser, spell cooldown configs
+- Add laser duration config
+- Add reimu hairband creative flight config
+
 2.2.8
 - BetterAdvancement screen displays item name instead of ID
 - Cirno no longer hurt non-target players

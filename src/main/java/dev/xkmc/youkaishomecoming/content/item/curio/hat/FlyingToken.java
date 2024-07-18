@@ -25,7 +25,7 @@ public class FlyingToken extends ConditionalToken {
 
 	private static final TokenHolder HOLDER = new TokenHolder();
 
-	public static void tickFlying(Player player){
+	public static void tickFlying(Player player) {
 		ConditionalData.HOLDER.get(player).getOrCreateData(HOLDER, HOLDER).update(player);
 	}
 

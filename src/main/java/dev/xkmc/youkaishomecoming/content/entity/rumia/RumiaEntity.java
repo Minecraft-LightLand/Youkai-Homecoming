@@ -10,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -198,7 +199,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 		super.customServerAiStep();
 		if (isEx() && (getTarget() == null || !getTarget().isAlive())) {
 			noTargetTime++;
-			if (noTargetTime >= 20 && tickCount % 20 == 0) {
+			if (noTargetTime >= 20 && tickCount % 20 == 0 && YHModConfig.COMMON.rumiaNoTargetHealing.get()) {
 				if (getHealth() < getMaxHealth())
 					setHealth(getMaxHealth());
 			}
@@ -264,12 +265,13 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	protected void actuallyHurt(DamageSource source, float amount) {
 		boolean isVoid = source.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
 		if (!isVoid && !isEx() && amount >= getMaxHealth()) {
-			setEx(true);
+			if (YHModConfig.COMMON.exRumiaConversion.get())
+				setEx(true);
 		}
 		if (source.getEntity() instanceof LivingEntity le) {
 			state.onHurt(le, amount);
 		}
-		if (!isVoid) {
+		if (!isVoid && YHModConfig.COMMON.rumiaDamageCap.get()) {
 			int reduction = isEx() ? 20 : 5;
 			amount = Math.min(getMaxHealth() / reduction, amount);
 		}
@@ -315,7 +317,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	@Override
 	protected void dropEquipment() {
 		super.dropEquipment();
-		if (dropHairband) {
+		if (dropHairband && YHModConfig.COMMON.rumiaHairbandDrop.get()) {
 			ItemStack stack = YHItems.RUMIA_HAIRBAND.asStack();
 			stack.setDamageValue(stack.getMaxDamage());
 			spawnAtLocation(stack);
@@ -335,7 +337,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	public static boolean checkRumiaSpawnRules(EntityType<RumiaEntity> e, ServerLevelAccessor level, MobSpawnType type,
 											   BlockPos pos, RandomSource rand) {
-		return checkMobSpawnRules(e, level, type, pos, rand) &&
+		return checkMobSpawnRules(e, level, type, pos, rand) && YHModConfig.COMMON.rumiaNaturalSpawn.get() &&
 				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty();
 	}
 
