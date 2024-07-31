@@ -96,7 +96,7 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 			vc.vertex(m4, pX, pY, pZ)
 					.uv(pU, pV)
 					.color(color)
-					.normal(m3, 0, 1, 0)
+					//.normal(m3, 0, 1, 0)
 					.endVertex();
 		}
 

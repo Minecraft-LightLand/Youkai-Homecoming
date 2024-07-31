@@ -17,7 +17,7 @@ public abstract class DanmakuRenderStates extends RenderType {
 		super(pName, pFormat, pMode, pBufferSize, pAffectsCrumbling, pSortOnUpload, pSetupState, pClearState);
 	}
 
-	protected static final RenderStateShard.ShaderStateShard LASER_SHADER = new RenderStateShard.ShaderStateShard(GameRenderer::getPositionTexColorNormalShader);
+	protected static final RenderStateShard.ShaderStateShard LASER_SHADER = new RenderStateShard.ShaderStateShard(GameRenderer::getPositionTexColorShader);
 	protected static final RenderStateShard.ShaderStateShard DANMAKU_SHADER = new RenderStateShard.ShaderStateShard(GameRenderer::getPositionTexColorShader);
 
 	private static final Function<ResourceLocation, RenderType> SOLID = Util.memoize((rl) ->
@@ -34,7 +34,7 @@ public abstract class DanmakuRenderStates extends RenderType {
 
 	private static final Function<ResourceLocation, RenderType> LASER = Util.memoize((rl) ->
 			create("laser_solid",
-					DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL,
+					DefaultVertexFormat.POSITION_TEX_COLOR,
 					VertexFormat.Mode.QUADS,
 					256, true, false,
 					CompositeState.builder()
@@ -47,7 +47,7 @@ public abstract class DanmakuRenderStates extends RenderType {
 
 	private static final Function<ResourceLocation, RenderType> TRANSPARENT = Util.memoize((rl) ->
 			create("laser_transparent",
-					DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL,
+					DefaultVertexFormat.POSITION_TEX_COLOR,
 					VertexFormat.Mode.QUADS,
 					256, true, false,
 					CompositeState.builder()
@@ -60,7 +60,7 @@ public abstract class DanmakuRenderStates extends RenderType {
 
 	private static final Function<ResourceLocation, RenderType> ADDITIVE = Util.memoize((rl) ->
 			create("laser_additive",
-					DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL,
+					DefaultVertexFormat.POSITION_TEX_COLOR,
 					VertexFormat.Mode.QUADS,
 					256, true, false,
 					CompositeState.builder()
