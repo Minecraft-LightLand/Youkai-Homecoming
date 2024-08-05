@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
-import dev.xkmc.l2library.base.tile.BaseTank;
-import net.minecraft.world.SimpleContainer;
+import dev.xkmc.l2core.base.tile.BaseTank;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeInput;
 
-public final class FermentationDummyContainer extends SimpleContainer {
+public final class FermentationDummyContainer implements RecipeInput {
 
 	private final FermentationItemContainer items;
 	private final BaseTank fluids;
@@ -22,4 +23,14 @@ public final class FermentationDummyContainer extends SimpleContainer {
 		return fluids;
 	}
 
+	@Override
+	public ItemStack getItem(int i) {
+		return items().getItem(i);
+	}
+
+	@Override
+	public int size() {
+		return items().getContainerSize();
+	}
+	
 }

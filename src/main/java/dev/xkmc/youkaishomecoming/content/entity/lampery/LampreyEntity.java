@@ -1,8 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.lampery;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -18,17 +16,12 @@ import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.common.NeoForgeMod;
 
 public class LampreyEntity extends AbstractSchoolingFish {
 
 	public LampreyEntity(EntityType<? extends LampreyEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
-	}
-
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	public ItemStack getBucketItemStack() {
@@ -58,7 +51,7 @@ public class LampreyEntity extends AbstractSchoolingFish {
 		builder = builder.add(Attributes.ARMOR, 0.0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 1);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16.0);
-		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 0.5);
+		builder = builder.add(NeoForgeMod.SWIM_SPEED, 0.5);
 		return builder;
 	}
 

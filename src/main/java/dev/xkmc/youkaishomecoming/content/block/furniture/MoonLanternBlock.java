@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -14,18 +15,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import java.util.List;
 
 public class MoonLanternBlock extends LanternBlock {
 
 	public static final VoxelShape SHAPE = Shapes.or(
-			Block.box(5,0,5,11,2,11),
-			Block.box(4,2,4,12,7,12),
-			Block.box(3,7,3,13,13,13),
-			Block.box(6,13,6,10,16,10)
+			Block.box(5, 0, 5, 11, 2, 11),
+			Block.box(4, 2, 4, 12, 7, 12),
+			Block.box(3, 7, 3, 13, 13, 13),
+			Block.box(6, 13, 6, 10, 16, 10)
 	);
 
 	public MoonLanternBlock(Properties pProperties) {
@@ -47,7 +47,7 @@ public class MoonLanternBlock extends LanternBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, Item.TooltipContext level, List<Component> list, TooltipFlag flag) {
 		list.add(YHLangData.MOON_LANTERN_PLACE.get());
 		list.add(YHLangData.MOON_LANTERN_HOLD.get());
 	}

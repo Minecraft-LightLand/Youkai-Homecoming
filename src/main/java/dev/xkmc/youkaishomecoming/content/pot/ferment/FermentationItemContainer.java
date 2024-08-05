@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
-import dev.xkmc.l2library.base.tile.BaseContainer;
+import dev.xkmc.l2core.base.tile.BaseContainer;
 
 public class FermentationItemContainer extends BaseContainer<FermentationItemContainer> {
 

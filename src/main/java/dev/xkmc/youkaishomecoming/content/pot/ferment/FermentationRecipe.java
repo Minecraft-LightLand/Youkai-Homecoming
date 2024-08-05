@@ -1,14 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 
 public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extends BaseRecipe<T, FermentationRecipe<?>, FermentationDummyContainer> {
 
-	public FermentationRecipe(ResourceLocation id, RecType<T, FermentationRecipe<?>, FermentationDummyContainer> fac) {
-		super(id, fac);
+	public FermentationRecipe(RecType<T, FermentationRecipe<?>, FermentationDummyContainer> fac) {
+		super(fac);
 	}
 
 	@Override
@@ -17,7 +16,7 @@ public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extend
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess registryAccess) {
+	public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
 		return ItemStack.EMPTY;
 	}
 

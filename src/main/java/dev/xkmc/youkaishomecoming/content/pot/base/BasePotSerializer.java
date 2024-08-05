@@ -18,14 +18,14 @@ public record BasePotSerializer<T extends BasePotRecipe>(Factory<T> factory) imp
 
 	public interface Factory<R extends BasePotRecipe> {
 
-		R create(ResourceLocation id, String group, @Nullable CookingPotRecipeBookTab tab,
+		R create(String group, @Nullable CookingPotRecipeBookTab tab,
 				 NonNullList<Ingredient> inputItems, ItemStack output, ItemStack container,
 				 float experience, int cookTime);
 
 	}
 
 	private T wrap(CookingPotRecipe recipe) {
-		return factory.create(recipe.getId(), recipe.getGroup(), recipe.getRecipeBookTab(),
+		return factory.create(recipe.getGroup(), recipe.getRecipeBookTab(),
 				recipe.getIngredients(), ((CookingPotRecipeAccessor) recipe).getOutput(), recipe.getOutputContainer(),
 				recipe.getExperience(), recipe.getCookTime());
 	}

@@ -4,7 +4,6 @@ import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -36,8 +35,7 @@ import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import vectorwing.farmersdelight.common.block.CookingPotBlock;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
 import vectorwing.farmersdelight.common.loot.function.CopyMealFunction;
@@ -71,9 +69,9 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 					if (!player.getInventory().add(servingStack)) {
 						player.drop(servingStack, false);
 					}
-					level.playSound(null, pos, SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.BLOCKS, 1.0F, 1.0F);
+					level.playSound(null, pos, SoundEvents.ARMOR_EQUIP_GENERIC.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
 				} else {
-					NetworkHooks.openScreen((ServerPlayer) player, maker, pos);
+					player.openMenu(maker, pos);
 				}
 			}
 			return InteractionResult.SUCCESS;

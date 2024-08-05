@@ -6,12 +6,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
-public class SakeFluid extends ForgeFlowingFluid {
+public class SakeFluid extends BaseFlowingFluid {
 	public final IYHSake type;
 
-	public SakeFluid(ForgeFlowingFluid.Properties properties, IYHSake type) {
+	public SakeFluid(Properties properties, IYHSake type) {
 		super(properties);
 		this.type = type;
 	}

@@ -2,8 +2,8 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import java.util.Locale;
 

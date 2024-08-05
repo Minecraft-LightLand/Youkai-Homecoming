@@ -13,8 +13,8 @@ import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 
 public class KettleRecipe extends BasePotRecipe {
 
-	public KettleRecipe(ResourceLocation id, String group, @Nullable CookingPotRecipeBookTab tab, NonNullList<Ingredient> inputItems, ItemStack output, ItemStack container, float experience, int cookTime) {
-		super(id, group, tab, inputItems, output, container, experience, cookTime);
+	public KettleRecipe(String group, @Nullable CookingPotRecipeBookTab tab, NonNullList<Ingredient> inputItems, ItemStack output, ItemStack container, float experience, int cookTime) {
+		super(group, tab, inputItems, output, container, experience, cookTime);
 	}
 
 	@Override

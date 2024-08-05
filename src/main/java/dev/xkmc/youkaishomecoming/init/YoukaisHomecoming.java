@@ -1,16 +1,12 @@
 package dev.xkmc.youkaishomecoming.init;
 
-import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
-import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.util.entry.RegistryEntry;
-import dev.ghen.thirst.Thirst;
-import dev.shadowsoffire.gateways.Gateways;
 import dev.xkmc.fastprojectileapi.collision.FastMapInit;
-import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleConfig;
-import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
-import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
+import dev.xkmc.l2core.init.reg.simple.Reg;
+import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2serial.network.PacketHandler;
 import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
@@ -23,13 +19,13 @@ import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.init.food.YHSake;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.*;
 import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
 import net.minecraft.Util;
 import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -41,35 +37,35 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.network.NetworkDirection;
-import org.slf4j.Logger;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.ItemCapability;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(YoukaisHomecoming.MODID)
-@Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class YoukaisHomecoming {
 
 	static final boolean ENABLE_TLM = true;
 
 	public static final String MODID = "youkaishomecoming";
-	public static final Logger LOGGER = LogUtils.getLogger();
+	public static final Logger LOGGER = LogManager.getLogger();
+	public static final Reg REG = new Reg(MODID);
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			loc("main"), 1,
-			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT)
+			e -> e.create(FrogSyncPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
+			e -> e.create(KoishiStartPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT)
 	);
 
-	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
-
-	public static final RegistryEntry<CreativeModeTab> TAB =
+	public static final SimpleEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
 					e -> e.icon(YHItems.SUWAKO_HAT::asStack));
 
@@ -80,7 +76,6 @@ public class YoukaisHomecoming {
 		YHItems.register();
 		YHBlocks.register();
 		YHEffects.register();
-		YHDanmaku.register();
 		YHEntities.register();
 		YHSounds.register();
 		YHGLMProvider.register();
@@ -103,6 +98,14 @@ public class YoukaisHomecoming {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, YHAdvGen::genAdv);
+	}
+
+
+	@SubscribeEvent
+	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+		for(var e : YHSake.values()){
+			event.registerItem(Capabilities.FluidHandler.ITEM, e.item().get()
+		}
 	}
 
 	@SubscribeEvent
@@ -167,6 +170,6 @@ public class YoukaisHomecoming {
 	}
 
 	public static ResourceLocation loc(String id) {
-		return new ResourceLocation(MODID, id);
+		return ResourceLocation.fromNamespaceAndPath(MODID, id);
 	}
 }

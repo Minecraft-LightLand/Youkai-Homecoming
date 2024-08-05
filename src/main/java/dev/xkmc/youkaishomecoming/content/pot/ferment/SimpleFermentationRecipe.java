@@ -1,13 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -17,30 +17,30 @@ import java.util.Set;
 @SerialClass
 public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentationRecipe> {
 
-	@SerialClass.SerialField
+	@SerialField
 	public ArrayList<Ingredient> ingredients = new ArrayList<>();
 
-	@SerialClass.SerialField
+	@SerialField
 	public ArrayList<ItemStack> results = new ArrayList<>();
 
-	@SerialClass.SerialField
+	@SerialField
 	public FluidStack outputFluid = FluidStack.EMPTY;
 
-	@SerialClass.SerialField
+	@SerialField
 	public FluidStack inputFluid = FluidStack.EMPTY;
 
-	@SerialClass.SerialField
+	@SerialField
 	public int time;
 
-	public SimpleFermentationRecipe(ResourceLocation id) {
-		super(id, YHBlocks.FERMENT_RS.get());
+	public SimpleFermentationRecipe() {
+		super(YHBlocks.FERMENT_RS.get());
 	}
 
 	@Override
 	public boolean matches(FermentationDummyContainer cont, Level level) {
 		FluidStack fluid = cont.fluids().getFluidInTank(0);
 		if (!inputFluid.isEmpty()) {
-			if (!inputFluid.isFluidEqual(fluid)) {
+			if (!FluidStack.isSameFluidSameComponents(inputFluid, fluid)) {
 				return false;
 			}
 		}
@@ -66,7 +66,7 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	}
 
 	@Override
-	public ItemStack assemble(FermentationDummyContainer cont, RegistryAccess access) {
+	public ItemStack assemble(FermentationDummyContainer cont, HolderLookup.Provider access) {
 		List<ItemStack> remain = new ArrayList<>();
 		for (var e : cont.items().getAsList()) {
 			ItemStack rem = e.getCraftingRemainingItem();

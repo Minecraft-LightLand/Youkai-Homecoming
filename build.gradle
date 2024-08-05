@@ -1,105 +1,120 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        mavenCentral()
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public' }
-        maven { url = 'https://maven.parchmentmc.org' }
-    }
-    dependencies {
-        classpath "org.spongepowered:mixingradle:${mixingradle_version}"
-        classpath 'org.parchmentmc:librarian:1.+'
-    }
-}
-
 plugins {
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.153'
     id 'net.darkhax.curseforgegradle' version '[1.1.24,)'
     id "at.stnwtr.gradle-secrets-plugin" version "1.0.1"
     id "com.modrinth.minotaur" version "2.+"
 }
 
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+version = mod_version
+group = 'dev.kxmc'
 
-version = "${ll_version}"
-group = "dev.xkmc.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "${modid}"
-jarJar.enable()
+repositories {
+    mavenLocal()
+}
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+base {
+    archivesName = mod_id
+}
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    //mappings channel: 'official', version: "${minecraft_version}"
-    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    runs {
-        client {
-            workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            mods {
-                "${modid}" {
-                    source sourceSets.main
-                }
-            }
+java {
+    withSourcesJar()
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource project.sourceSets.main
+    }
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        programArgument '--nogui'
+    }
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
+    data {
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neo_version}"
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            neo_version         : neo_version, neo_version_range: neo_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors         : mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+// Example configuration to allow publishing using the maven-publish plugin
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
         }
-
-        server {
-            workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            mods {
-                "${modid}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            arg "-mixin.config=${modid}.mixins.json"
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', "${modid}", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                "${modid}" {
-                    source sourceSets.main
-                }
-            }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
         }
     }
 }
 
-// Include resources generated by data generators.
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
 
-mixin {
-    add sourceSets.main, "${modid}.refmap.json"
-    config "${modid}.mixins.json"
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : "${mod_id}",
+                "Specification-Vendor"    : "xkmc",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "xkmc",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs'            : "${mod_id}.mixins.json"
+        ])
+    }
 }
 
 repositories {
     flatDir {
         dirs 'libs'
     }
-    maven { url 'https://jitpack.io' }
     maven { // Registrate
-        url "https://maven.tterrag.com/"
+        url "https://maven.ithundxr.dev/snapshots"
+    }
+    maven {
+        url = "https://maven.theillusivec4.top/"
     }
     maven {
         // Location of the maven for vazkii's mods
@@ -112,169 +127,45 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     maven {
-        url = "https://maven.theillusivec4.top/"
+        // Location of the maven that hosts JEI files (and TiC)
+        name 'Progwml6 maven'
+        url 'https://dvs1.progwml6.com/files/maven'
     }
+
+    maven {
+        name = "OctoStudios"
+        url = uri("https://maven.octo-studios.com/releases")
+    }
+    mavenLocal();
+}
+
+if (lljij.toBoolean()) {
+
+    tasks.jarJar.configure {
+        archiveClassifier.set('')
+    }
+
+    jar {
+        archiveClassifier.set('slim')
+    }
+
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixin_extras_version}"))
-    implementation(jarJar("com.github.llamalad7.mixinextras:mixinextras-forge:${mixin_extras_version}")) {
-        transitive = false
-        jarJar.ranged(it, "[${mixin_extras_version},)")
-    }
-    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
-    compileOnly fg.deobf(jarJar("com.tterrag.registrate:Registrate:${registrate_version}")) {
-        transitive = false
-        jarJar.ranged(it, "[MC1.20-1.3.3,)")
-    }
+    implementation "com.tterrag.registrate:Registrate:${registrate_version}"
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2serial:l2serial:1.2.2")) {
-        transitive = false
-        jarJar.ranged(it, "[1.2.2,)")
-    }
+    implementation "dev.xkmc:l2serial:${l2serial_ver}"
+    implementation "dev.xkmc:l2modularblocks:${l2modularblocks_ver}"
+    implementation "dev.xkmc:l2core:${l2core_ver}"
+    implementation "dev.xkmc:l2library:${l2library_ver}"
+    implementation "dev.xkmc:l2damagetracker:${l2damagetracker_ver}"
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2modularblock:l2modularblock:1.1.0")) {
-        transitive = false
-        jarJar.ranged(it, "[1.1.0,)")
-    }
+    implementation "dev.xkmc:fast_projectile_api:${fast_projectile_api_ver}"
+    implementation "dev.xkmc:danmaku_api:${danmaku_api_ver}"
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2damagetracker:l2damagetracker:0.3.7")) {
-        transitive = false
-        jarJar.ranged(it, "[0.3.7,)")
-    }
+    implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2library:l2library:2.4.25-slim")) {
-        transitive = false
-        jarJar.ranged(it, "[2.4.25,)")
-    }
-
-
-    implementation fg.deobf("dev.xkmc.cuisinedelight:cuisinedelight:1.1.12-slim")
-    implementation fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.10-slim")
-
-    implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
-    implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-    implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")
-
-    implementation fg.deobf("curse.maven:touhou-little-maid-355044:5406149")
-
-    implementation fg.deobf("curse.maven:jade-324717:4654448")
-    implementation fg.deobf("curse.maven:create-328085:4835191")
-    runtimeOnly fg.deobf("curse.maven:appleskin-248787:4605078")
-    runtimeOnly fg.deobf("curse.maven:patchouli-306770:4633797")
-    runtimeOnly fg.deobf("curse.maven:spark-361579:4738952")
-
-    implementation fg.deobf("curse.maven:bookshelf-228525:4808092")
-    implementation fg.deobf("curse.maven:botany-trees-411357:4719845")
-    implementation fg.deobf("curse.maven:botany-pots-353928:4793076")
-    implementation fg.deobf("curse.maven:serene-seasons-291874:4761603")
-    compileOnly fg.deobf("curse.maven:diet-443570:4634780")
-    compileOnly fg.deobf("curse.maven:thirst-was-taken-679270:5071555")
-
-    implementation fg.deobf("curse.maven:better-advancements-272515:4631253")
-
-    implementation fg.deobf("curse.maven:placebo-283644:5098182")
-    implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
-    implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
-
-    //runtimeOnly fg.deobf("curse.maven:rubidium-574856:4573226")
-
-}
-
-// Example for how to get properties into the manifest for reading at runtime.
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "${modid}",
-                "Specification-Vendor"    : "xkmc",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "xkmc",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                'MixinConfigs'            : "${modid}.mixins.json"
-        ])
-    }
-}
-
-reobf {
-    jarJar {}
-}
-
-// Example configuration to allow publishing using the maven-publish plugin
-// This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
-
-tasks.jarJar.finalizedBy('reobfJarJar')
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
-}
-
-tasks.jarJar.configure {
-    archiveClassifier.set('')
-}
-
-jar {
-    archiveClassifier.set('slim')
-}
-
-tasks.register('publishCurseForge', TaskPublishCurseForge) {
-    apiToken = secrets.get("curseforge_token")
-    def mainFile = upload(project.curseforge_project, new File("./build/libs/${modid}-${ll_version}.jar"))
-    mainFile.changelog = new File('./changelog.txt')
-    mainFile.addEnvironment("Client", "Server")
-    mainFile.addGameVersion("1.20.1")
-    mainFile.addModLoader("Forge","NeoForge")
-    mainFile.addRequirement("farmers-delight")
-    mainFile.addOptional(
-            "delightful",
-            "diet",
-            "fruits-delight",
-            "serene-seasons",
-            "thirst-was-taken",
-            "touhou-little-maid")
-    mainFile.releaseType = "release"
-    disableVersionDetection()
-}
-
-modrinth {
-    token = secrets.get("modrinth_token")
-    projectId = project.modrinth_project
-    versionName = "Youkai's Homecoming ${project.ll_version}"
-    versionNumber = project.ll_version
-    versionType = "release"
-    uploadFile = new File("./build/libs/${modid}-${ll_version}.jar")
-    gameVersions = ["1.20.1"]
-    loaders = ["forge", "neoforge"]
-    changelog = new File('./changelog.txt').text.split("\n\n")[0]
-    dependencies {
-        required.project "farmers-delight"
-        optional.project "fruits-delight"
-        optional.project "diet"
-        optional.project "delightful"
-        optional.project "touhou-little-maid"
-        optional.project "thirst-was-taken"
-        optional.project "serene-seasons"
-    }
+    implementation "curse.maven:farmers-delight-398521:5566383"
 }
