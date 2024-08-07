@@ -2,25 +2,25 @@ package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.base.BasePotRecipe;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class KettleBlockEntity extends BasePotBlockEntity {
+public class KettleBlockEntity extends BasePotBlockEntity<KettleRecipe> {
 
 	public static final int WATER_BOTTLE = 200, WATER_BUCKET = 600;
 
@@ -40,7 +40,7 @@ public class KettleBlockEntity extends BasePotBlockEntity {
 	}
 
 	@Override
-	public RecipeType<? extends BasePotRecipe> getRecipeType() {
+	public RecipeType<KettleRecipe> getRecipeType() {
 		return YHBlocks.KETTLE_RT.get();
 	}
 
@@ -59,22 +59,34 @@ public class KettleBlockEntity extends BasePotBlockEntity {
 	}
 
 	@Override
-	protected CompoundTag writeItems(CompoundTag compound) {
-		compound.putInt(WATER, getWater());
-		return super.writeItems(compound);
+	protected void applyImplicitComponents(DataComponentInput data) {
+		super.applyImplicitComponents(data);
+		water = data.getOrDefault(YHItems.WATER, 0);
 	}
 
 	@Override
-	public void load(CompoundTag compound) {
-		super.load(compound);
+	protected void collectImplicitComponents(DataComponentMap.Builder data) {
+		super.collectImplicitComponents(data);
+		data.set(YHItems.WATER.get(), water);
+	}
+
+	@Override
+	public void removeComponentsFromTag(CompoundTag tag) {
+		super.removeComponentsFromTag(tag);
+		tag.remove(WATER);
+	}
+
+	@Override
+	public void loadAdditional(CompoundTag compound, HolderLookup.Provider registries) {
+		super.loadAdditional(compound, registries);
 		if (compound.contains(WATER)) {
 			setWater(compound.getInt(WATER));
 		}
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag compound) {
-		super.saveAdditional(compound);
+	public void saveAdditional(CompoundTag compound, HolderLookup.Provider registries) {
+		super.saveAdditional(compound, registries);
 		compound.putInt(WATER, getWater());
 	}
 
@@ -93,20 +105,15 @@ public class KettleBlockEntity extends BasePotBlockEntity {
 	}
 
 	@Override
-	protected boolean processCooking(BasePotRecipe recipe) {
+	protected boolean processCooking(RecipeHolder<KettleRecipe> recipe) {
 		if (level == null) return false;
 		if (getWater() == 0) return false;
 		addWater(-1);
 		return super.processCooking(recipe);
 	}
 
-	@NotNull
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.FLUID_HANDLER) {
-			return LazyOptional.of(() -> tank).cast();
-		}
-		return super.getCapability(cap, side);
+	public IFluidHandler getFluidHandler(@Nullable Direction dir) {
+		return tank;
 	}
 
 }

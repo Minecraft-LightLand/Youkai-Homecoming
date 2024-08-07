@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.pot.base;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.BlockItem;
@@ -8,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import vectorwing.farmersdelight.client.gui.CookingPotTooltip;
+import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 import java.util.Optional;
 
@@ -37,12 +37,8 @@ public class BasePotItem extends BlockItem {
 	}
 
 	private static int getServingCount(ItemStack stack) {
-		CompoundTag nbt = stack.getTagElement("BlockEntityTag");
-		if (nbt == null) {
-			return 0;
-		} else {
-			ItemStack mealStack = BasePotBlockEntity.getMealFromItem(stack);
-			return mealStack.getCount();
-		}
+		ItemStack mealStack = CookingPotBlockEntity.getMealFromItem(stack);
+		return mealStack.getCount();
 	}
+
 }

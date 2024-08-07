@@ -18,19 +18,19 @@ public enum YHFood {
 
 	// basic
 	RAW_LAMPREY(FoodType.MEAT, 2, 0.3f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
+			new EffectEntry(MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
 			ItemTags.FISHES, YHTagGen.RAW_EEL, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY(FoodType.MEAT, 10, 0.8f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 2400, 0, 1),
 			DietTagGen.PROTEINS.tag
 	),
 	RAW_LAMPREY_FILLET(FoodType.MEAT_SLICE, 1, 0.3f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
+			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
 			YHTagGen.RAW_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 1),
 			DietTagGen.PROTEINS.tag
 	),
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
@@ -46,11 +46,11 @@ public enum YHFood {
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	COFFEE_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.CAFFEINATED::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.CAFFEINATED, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	MATCHA_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1)
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	YASHOUMA_DANGO(FoodType.FAST, 6, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
@@ -61,7 +61,7 @@ public enum YHFood {
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
-			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
+			new EffectEntry(YHEffects.UNCONSCIOUS, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
 	BUN(FoodType.SIMPLE, 8, 0.8f, DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
@@ -74,15 +74,15 @@ public enum YHFood {
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.HIGI, 1200, 0, 1)
 	), DietTagGen.SUGARS.tag),
 	HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.HIGI, 1200, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
 	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(
-			//new EffectEntry(YHEffects.FAIRY::get, 1200, 0, 1) TODO
+			//new EffectEntry(YHEffects.FAIRY, 1200, 0, 1) TODO
 	), DietTagGen.SUGARS.tag),
 
 	// stick
@@ -97,66 +97,66 @@ public enum YHFood {
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 	GREEN_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 1, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
 	)),
 	WHITE_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.REFRESHING::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
+			new EffectEntry(YHEffects.REFRESHING, 1200, 0, 1)
 	)),
 	BLACK_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK::get, 600, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
+			new EffectEntry(YHEffects.THICK, 600, 0, 1)
 	)),
 	OOLONG_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
+			new EffectEntry(YHEffects.SMOOTHING, 600, 0, 1)
 	)),
 	CORNFLOWER_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
+			new EffectEntry(MobEffects.REGENERATION, 200, 0, 1)
 	)),
 	TEA_MOCHA(FoodType.BOTTLE, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	)),
 	SAIDI_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
+			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
 	)),
 	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 400, 0, 1),
-			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
+			new EffectEntry(MobEffects.MOVEMENT_SPEED, 400, 0, 1),
+			new EffectEntry(MobEffects.REGENERATION, 400, 0, 1)
 	)),
 	GENMAI_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.TEA, 1200, 1, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	)),
 	SCARLET_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
-			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
+			new EffectEntry(YHEffects.THICK, 600, 0, 1),
+			new EffectEntry(YHEffects.YOUKAIFYING, 1200, 0, 1)
 	), YHTagGen.FLESH_FOOD),
-	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
+	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA, 600, 0, 0.1f))),
 
 	// bowl
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
 	AVGOLEMONO(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.GLOWING, 3600, 0, 1)), DietTagGen.FRUITS.tag),
+			new EffectEntry(MobEffects.GLOWING, 3600, 0, 1)), DietTagGen.FRUITS.tag),
 	BLAZING_RED_CURRY(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.FIRE_RESISTANCE, 3600, 0, 1)
+			new EffectEntry(MobEffects.FIRE_RESISTANCE, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	GRILLED_EEL_OVER_RICE(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
+			new EffectEntry(MobEffects.NIGHT_VISION, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	HIGAN_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1), DietTagGen.VEGETABLES.tag),
 	LONGEVITY_NOODLES(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
@@ -170,14 +170,14 @@ public enum YHFood {
 			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
+			new EffectEntry(MobEffects.UNLUCK, 3600, 0, 0.3f)
 	), DietTagGen.VEGETABLES.tag),
 	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.6f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SHIRAYUKI(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
+			new EffectEntry(MobEffects.NIGHT_VISION, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			DietTagGen.GRAINS.tag),
@@ -192,20 +192,20 @@ public enum YHFood {
 	LIONS_HEAD(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
+			new EffectEntry(MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	MAPO_TOFU(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1)
+			new EffectEntry(MobEffects.DAMAGE_BOOST, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag),
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 0, 1)), DietTagGen.VEGETABLES.tag),
+			new EffectEntry(YHEffects.UDUMBARA, 3600, 0, 1)), DietTagGen.VEGETABLES.tag),
 	BOWL_OF_HEART_THROBBING_SURPRISE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
+			new EffectEntry(YHEffects.UDUMBARA, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
 	// flesh
 	FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(

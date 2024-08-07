@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.block.variants;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.ModelBuilder;
-import net.minecraftforge.client.model.generators.ModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
 
 public class TemplateModelHandler<T extends ModelBuilder<T>> {
 

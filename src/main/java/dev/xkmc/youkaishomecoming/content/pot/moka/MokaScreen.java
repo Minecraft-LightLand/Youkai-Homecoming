@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 import java.awt.*;
 
-public class MokaScreen extends BasePotScreen<MokaMenu> {
+public class MokaScreen extends BasePotScreen<MokaMenu, MokaRecipe> {
 
 	private static final ResourceLocation BG = YoukaisHomecoming.loc("textures/gui/moka.png");
 	private static final Rectangle HEAT_ICON = new Rectangle(44, 57, 17, 15);

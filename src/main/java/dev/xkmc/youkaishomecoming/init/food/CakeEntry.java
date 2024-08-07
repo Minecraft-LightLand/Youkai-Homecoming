@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.YHCandleCakeBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.YHPieBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -21,10 +22,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
 import java.util.List;
@@ -62,8 +62,7 @@ public class CakeEntry {
 					.register();
 			for (DyeColor dye : DyeColor.values()) {
 				String color_name = dye.getName();
-				Block candle = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(color_name + "_candle"));
-				assert candle != null;
+				Block candle = BuiltInRegistries.BLOCK.get(ResourceLocation.withDefaultNamespace(color_name + "_candle"));
 				YoukaisHomecoming.REGISTRATE.block(color_name + "_" + base + "_candle_cake",
 								p -> new YHCandleCakeBlock(b, candle, props))
 						.blockstate((ctx, pvd) -> genCandleModels(ctx, pvd, color_name + "_candle"))
@@ -107,7 +106,7 @@ public class CakeEntry {
 	}
 
 	private BlockModelBuilder genCakeModel(RegistrateBlockstateProvider pvd, String model) {
-		return pvd.models().withExistingParent(base + "_" + model, new ResourceLocation("block/" + model))
+		return pvd.models().withExistingParent(base + "_" + model, ResourceLocation.withDefaultNamespace("block/" + model))
 				.texture("particle", pvd.modLoc("block/" + base + "_cake_side"))
 				.texture("bottom", pvd.modLoc("block/" + base + "_cake_bottom"))
 				.texture("top", pvd.modLoc("block/" + base + "_cake_top"))
@@ -121,7 +120,7 @@ public class CakeEntry {
 			name += "_lit";
 			candle += "_lit";
 		}
-		return pvd.models().withExistingParent(name, new ResourceLocation("block/template_cake_with_candle"))
+		return pvd.models().withExistingParent(name, ResourceLocation.withDefaultNamespace("block/template_cake_with_candle"))
 				.texture("particle", pvd.modLoc("block/" + base + "_cake_side"))
 				.texture("bottom", pvd.modLoc("block/" + base + "_cake_bottom"))
 				.texture("top", pvd.modLoc("block/" + base + "_cake_top"))

@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 public class ThinTrapdoorBlock extends TrapDoorBlock {
 
@@ -26,7 +26,7 @@ public class ThinTrapdoorBlock extends TrapDoorBlock {
 
 
 	public ThinTrapdoorBlock(Properties pProperties, BlockSetType pType) {
-		super(pProperties, pType);
+		super(pType, pProperties);
 	}
 
 	@Override

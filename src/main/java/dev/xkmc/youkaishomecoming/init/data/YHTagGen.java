@@ -25,15 +25,6 @@ import sereneseasons.core.SereneSeasons;
 
 public class YHTagGen {
 
-
-	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<MobEffect>> EFF_TAGS =
-			ProviderType.register("tags/mob_effect",
-					type -> (p, e) -> new RegistrateTagsProvider.IntrinsicImpl<>(p, type, "mob_effects",
-							e.getGenerator().getPackOutput(), Registries.MOB_EFFECT, e.getLookupProvider(),
-							ench -> ResourceKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
-									ForgeRegistries.MOB_EFFECTS.getKey(ench)),
-							e.getExistingFileHelper()));
-
 	public static final TagKey<Item> RAW_EEL = item("raw_eel");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> DANGO = item("dango");

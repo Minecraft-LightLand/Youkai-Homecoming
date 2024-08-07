@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 
@@ -42,10 +43,10 @@ public abstract class DoubleCropBlock extends CropBlock {
 		if (pLevel.getRawBrightness(pPos, 0) >= 9) {
 			int i = this.getAge(pState);
 			if (i < this.getMaxAge()) {
-				float f = getGrowthSpeed(this, pLevel, pPos);
-				if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+				float f = getGrowthSpeed(pState, pLevel, pPos);
+				if (CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
 					setGrowth(pLevel, pPos, i + 1, 2);
-					net.minecraftforge.common.ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+					CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
 				}
 			}
 		}
@@ -119,7 +120,7 @@ public abstract class DoubleCropBlock extends CropBlock {
 		return super.updateShape(state, dir, sourceState, level, pos, sourcePos);
 	}
 
-	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+	public BlockState playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
 		if (!pLevel.isClientSide) {
 			if (pPlayer.isCreative()) {
 				preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
@@ -127,8 +128,7 @@ public abstract class DoubleCropBlock extends CropBlock {
 				dropResources(pState, pLevel, pPos, null, pPlayer, pPlayer.getMainHandItem());
 			}
 		}
-
-		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+		return super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
 	}
 
 	public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pPos, BlockState pState, @Nullable BlockEntity pTe, ItemStack pStack) {

@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class HayStairBlock extends StairBlock {
 
-	public HayStairBlock(Supplier<BlockState> state, Properties properties) {
+	public HayStairBlock(BlockState state, Properties properties) {
 		super(state, properties);
 	}
 

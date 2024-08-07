@@ -1,31 +1,33 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.l2core.serial.loot.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
-import dev.xkmc.youkaishomecoming.init.food.YHTea;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import vectorwing.farmersdelight.common.registry.ModItems;
 
 public class YHLootGen {
 
+	/*
 	public static final ResourceLocation NEST_CHEST = YoukaisHomecoming.loc("chests/youkai_nest/chest");
 	public static final ResourceLocation NEST_BARREL = YoukaisHomecoming.loc("chests/youkai_nest/barrel");
-
 	public static final ResourceLocation SHRINE_CHEST = YoukaisHomecoming.loc("chests/hakurei_shrine/chest");
 	public static final ResourceLocation SHRINE_BARREL = YoukaisHomecoming.loc("chests/hakurei_shrine/barrel");
 	public static final ResourceLocation SHRINE_CABINET = YoukaisHomecoming.loc("chests/hakurei_shrine/cabinet");
+*/
 
-	public static final ResourceLocation UDUMBARA_LOOT = YoukaisHomecoming.loc("udumbara_chest_loot");
+	public static final ResourceKey<LootTable> UDUMBARA_LOOT = loc("udumbara_chest_loot");
+
+	private static ResourceKey<LootTable> loc(String str) {
+		return ResourceKey.create(Registries.LOOT_TABLE, YoukaisHomecoming.loc(str));
+	}
 
 	public static void genLoot(RegistrateLootTableProvider pvd) {
+		/*
 		{
 			var bone = LootTableTemplate.getPool(1, 0)
 					.add(LootTableTemplate.getItem(Items.BONE, 16));
@@ -130,6 +132,7 @@ public class YHLootGen {
 					.withPool(rice).withPool(dango)
 			));
 		}
+		 */
 		pvd.addLootAction(LootContextParamSets.EMPTY, cons -> cons.accept(UDUMBARA_LOOT, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHCrops.UDUMBARA.getSeed(), 2, 4)
 						.when(LootTableTemplate.chance(0.3f))))));

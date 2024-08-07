@@ -1,22 +1,23 @@
 package dev.xkmc.youkaishomecoming.content.pot.overlay;
 
-import dev.xkmc.l2library.base.overlay.OverlayUtil;
+import dev.xkmc.l2itemselector.overlay.OverlayUtil;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTextTooltip;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileInfoDisplay implements IGuiOverlay {
+public class TileInfoDisplay implements LayeredDraw.Layer {
 
 	@Override
-	public void render(ForgeGui gui, GuiGraphics g, float pTick, int sw, int sh) {
+	public void render(GuiGraphics g, DeltaTracker delta) {
+		int sw = g.guiWidth(), sh = g.guiHeight();
 		ClientLevel level = Minecraft.getInstance().level;
 		if (level == null) return;
 		var hit = Minecraft.getInstance().hitResult;

@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.moka;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
@@ -8,6 +9,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -16,7 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
 
 import javax.annotation.Nullable;
@@ -67,4 +69,9 @@ public class MokaMakerBlock extends BasePotBlock {
 		});
 	}
 
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return null;//TODO block codec
+	}
+	
 }

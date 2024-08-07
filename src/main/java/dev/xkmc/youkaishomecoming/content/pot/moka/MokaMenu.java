@@ -12,13 +12,13 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
-public class MokaMenu extends BasePotMenu {
+public class MokaMenu extends BasePotMenu<MokaRecipe> {
 
 	public MokaMenu(MenuType<MokaMenu> menu, int id, Inventory inv, @Nullable FriendlyByteBuf data) {
 		super(menu, id, inv, data);
 	}
 
-	public MokaMenu(MenuType<MokaMenu> menu, int id, Inventory inv, BasePotBlockEntity be, ContainerData data) {
+	public MokaMenu(MenuType<MokaMenu> menu, int id, Inventory inv, BasePotBlockEntity<MokaRecipe> be, ContainerData data) {
 		super(menu, id, inv, be, data);
 	}
 

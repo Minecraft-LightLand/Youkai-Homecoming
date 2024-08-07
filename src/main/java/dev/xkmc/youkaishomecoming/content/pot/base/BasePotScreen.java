@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
@@ -23,8 +24,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractContainerScreen<T> implements RecipeUpdateListener {
-	private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
+public abstract class BasePotScreen<T extends BasePotMenu<R>, R extends BasePotRecipe> extends AbstractContainerScreen<T> implements RecipeUpdateListener {
+	private static final WidgetSprites RECIPE_BUTTON = new WidgetSprites(ResourceLocation.withDefaultNamespace("recipe_book/button"), ResourceLocation.withDefaultNamespace("recipe_book/button"));
 	private final CookingPotRecipeBookComponent book = new CookingPotRecipeBookComponent();
 	private boolean widthTooNarrow;
 
@@ -45,9 +46,7 @@ public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractConta
 		book.init(width, height, minecraft, widthTooNarrow, menu);
 		leftPos = book.updateScreenPosition(width, imageWidth);
 		if (Configuration.ENABLE_RECIPE_BOOK_COOKING_POT.get()) {
-			addRenderableWidget(new ImageButton(leftPos + 5, height / 2 - 49,
-					20, 18, 0, 0, 19,
-					RECIPE_BUTTON_LOCATION, (button) -> {
+			addRenderableWidget(new ImageButton(leftPos + 5, height / 2 - 49, 20, 18, RECIPE_BUTTON, (button) -> {
 				book.toggleVisibility();
 				leftPos = book.updateScreenPosition(width, imageWidth);
 				button.setPosition(leftPos + 5, height / 2 - 49);
@@ -67,13 +66,12 @@ public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractConta
 	}
 
 	public void render(GuiGraphics gui, int mouseX, int mouseY, float partialTicks) {
-		renderBackground(gui);
 		if (book.isVisible() && widthTooNarrow) {
-			renderBg(gui, partialTicks, mouseX, mouseY);
+			renderBackground(gui, mouseX, mouseY, partialTicks);
 			book.render(gui, mouseX, mouseY, partialTicks);
 		} else {
-			book.render(gui, mouseX, mouseY, partialTicks);
 			super.render(gui, mouseX, mouseY, partialTicks);
+			book.render(gui, mouseX, mouseY, partialTicks);
 			book.renderGhostRecipe(gui, leftPos, topPos, false, partialTicks);
 		}
 
@@ -95,7 +93,7 @@ public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractConta
 			if (hoveredSlot.index == BasePotBlockEntity.MEAL_DISPLAY_SLOT) {
 				List<Component> tooltip = new ArrayList<>();
 				ItemStack mealStack = hoveredSlot.getItem();
-				tooltip.add(((MutableComponent) mealStack.getItem().getDescription()).withStyle(mealStack.getRarity().color));
+				tooltip.add(((MutableComponent) mealStack.getItem().getDescription()).withStyle(mealStack.getRarity().getStyleModifier()));
 				ItemStack containerStack = menu.blockEntity.getContainer();
 				String container = !containerStack.isEmpty() ? containerStack.getItem().getDescription().getString() : "";
 				tooltip.add(TextUtils.getTranslation("container.cooking_pot.served_on", container).withStyle(ChatFormatting.GRAY));

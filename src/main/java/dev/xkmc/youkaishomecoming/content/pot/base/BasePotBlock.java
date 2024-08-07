@@ -3,46 +3,44 @@ package dev.xkmc.youkaishomecoming.content.pot.base;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import vectorwing.farmersdelight.common.block.CookingPotBlock;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
-import vectorwing.farmersdelight.common.loot.function.CopyMealFunction;
+import vectorwing.farmersdelight.common.registry.ModDataComponents;
+import vectorwing.farmersdelight.common.registry.ModSounds;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.MathUtils;
-
-import javax.annotation.Nullable;
 
 @SuppressWarnings("deprecation")
 public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
@@ -56,28 +54,30 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 		registerDefaultState(defaultBlockState().setValue(SUPPORT, CookingPotSupport.NONE).setValue(WATERLOGGED, false));
 	}
 
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		ItemStack heldStack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (heldStack.isEmpty() && player.isShiftKeyDown()) {
-			level.setBlockAndUpdate(pos, state.setValue(SUPPORT, state.getValue(SUPPORT).equals(CookingPotSupport.HANDLE) ?
-					this.getTrayState(level, pos) : CookingPotSupport.HANDLE));
+			level.setBlockAndUpdate(pos, state.setValue(SUPPORT,
+					state.getValue(SUPPORT).equals(CookingPotSupport.HANDLE) ?
+							this.getTrayState(level, pos) : CookingPotSupport.HANDLE));
 			level.playSound(null, pos, SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
 		} else if (!level.isClientSide) {
-			if (level.getBlockEntity(pos) instanceof BasePotBlockEntity maker) {
-				ItemStack servingStack = maker.useHeldItemOnMeal(heldStack);
+			BlockEntity tileEntity = level.getBlockEntity(pos);
+			if (tileEntity instanceof BasePotBlockEntity<?> be) {
+				ItemStack servingStack = be.useHeldItemOnMeal(heldStack);
 				if (servingStack != ItemStack.EMPTY) {
 					if (!player.getInventory().add(servingStack)) {
 						player.drop(servingStack, false);
 					}
 					level.playSound(null, pos, SoundEvents.ARMOR_EQUIP_GENERIC.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
 				} else {
-					player.openMenu(maker, pos);
+					player.openMenu(be, pos);
 				}
 			}
-			return InteractionResult.SUCCESS;
+
+			return ItemInteractionResult.SUCCESS;
 		}
 
-		return InteractionResult.SUCCESS;
+		return ItemInteractionResult.SUCCESS;
 	}
 
 	public RenderShape getRenderShape(BlockState pState) {
@@ -100,6 +100,7 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 		if (state.getValue(WATERLOGGED)) {
 			level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
+
 		return facing.getAxis().equals(Direction.Axis.Y) &&
 				!state.getValue(SUPPORT).equals(CookingPotSupport.HANDLE) ?
 				state.setValue(SUPPORT, this.getTrayState(level, currentPos)) : state;
@@ -109,27 +110,23 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 		return level.getBlockState(pos.below()).is(ModTags.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
 	}
 
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 		ItemStack stack = super.getCloneItemStack(level, pos, state);
-		if (level.getBlockEntity(pos) instanceof BasePotBlockEntity moka) {
-			CompoundTag nbt = moka.writeMeal(new CompoundTag());
-			if (!nbt.isEmpty()) {
-				stack.addTagElement("BlockEntityTag", nbt);
-			}
-			if (moka.hasCustomName()) {
-				stack.setHoverName(moka.getCustomName());
-			}
-		}
+		if (level.getBlockEntity(pos) instanceof BasePotBlockEntity<?> pot)
+			return pot.getAsItem();
 		return stack;
 	}
 
 	public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
-			if (level.getBlockEntity(pos) instanceof BasePotBlockEntity moka) {
-				Containers.dropContents(level, pos, moka.getDroppableInventory());
-				moka.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
+			BlockEntity tileEntity = level.getBlockEntity(pos);
+			if (tileEntity instanceof BasePotBlockEntity<?>) {
+				BasePotBlockEntity<?> cookingPotEntity = (BasePotBlockEntity<?>) tileEntity;
+				Containers.dropContents(level, pos, cookingPotEntity.getDroppableInventory());
+				cookingPotEntity.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
 				level.updateNeighbourForOutputSignal(pos, this);
 			}
+
 			super.onRemove(state, level, pos, newState, isMoving);
 		}
 
@@ -137,15 +134,23 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(FACING, SUPPORT, WATERLOGGED);
+		builder.add(new Property[]{FACING, SUPPORT, WATERLOGGED});
 	}
 
-	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-		if (stack.hasCustomHoverName()) {
-			if (level.getBlockEntity(pos) instanceof BasePotBlockEntity pot) {
-				pot.setCustomName(stack.getHoverName());
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		BlockEntity tileEntity = level.getBlockEntity(pos);
+		if (tileEntity instanceof BasePotBlockEntity<?> cookingPotEntity) {
+			if (cookingPotEntity.isHeated()) {
+				SoundEvent boilSound = !cookingPotEntity.getMeal().isEmpty() ? (SoundEvent) ModSounds.BLOCK_COOKING_POT_BOIL_SOUP.get() : (SoundEvent) ModSounds.BLOCK_COOKING_POT_BOIL.get();
+				double x = (double) pos.getX() + 0.5;
+				double y = (double) pos.getY();
+				double z = (double) pos.getZ() + 0.5;
+				if (random.nextInt(10) == 0) {
+					level.playLocalSound(x, y, z, boilSound, SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.2F + 0.9F, false);
+				}
 			}
 		}
+
 	}
 
 	public boolean hasAnalogOutputSignal(BlockState state) {
@@ -153,15 +158,17 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 	}
 
 	public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
-		if (level.getBlockEntity(pos) instanceof BasePotBlockEntity moka) {
-			ItemStackHandler inventory = moka.getInventory();
+		BlockEntity tileEntity = level.getBlockEntity(pos);
+		if (tileEntity instanceof BasePotBlockEntity<?>) {
+			ItemStackHandler inventory = ((BasePotBlockEntity<?>) tileEntity).getInventory();
 			return MathUtils.calcRedstoneFromItemHandler(inventory);
+		} else {
+			return 0;
 		}
-		return 0;
 	}
 
 	public FluidState getFluidState(BlockState state) {
-		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+		return (Boolean) state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	public static void buildLoot(RegistrateBlockLootTables pvd, BasePotBlock block) {
@@ -169,7 +176,11 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 				pvd.applyExplosionCondition(block,
 						LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 								.add(LootItem.lootTableItem(block)
-										.apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
-										.apply(CopyMealFunction.builder())))));
+										.apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+												.include(DataComponents.CUSTOM_NAME)
+												.include(ModDataComponents.MEAL.get())
+												.include(ModDataComponents.CONTAINER.get()))))));
+
 	}
+
 }

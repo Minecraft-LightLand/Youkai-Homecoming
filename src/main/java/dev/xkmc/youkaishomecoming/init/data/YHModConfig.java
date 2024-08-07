@@ -1,76 +1,61 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
-import org.apache.commons.lang3.tuple.Pair;
+import dev.xkmc.l2core.util.ConfigInit;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class YHModConfig {
 
-	public static class Client {
+	public static class Common extends ConfigInit {
 
-		public final ForgeConfigSpec.BooleanValue laserRenderAdditive;
-		public final ForgeConfigSpec.BooleanValue laserRenderInverted;
-		public final ForgeConfigSpec.DoubleValue laserTransparency;
+		public final ModConfigSpec.IntValue youkaifyingTime;
+		public final ModConfigSpec.DoubleValue youkaifyingChance;
+		public final ModConfigSpec.IntValue youkaifyingConfusionTime;
+		public final ModConfigSpec.IntValue youkaifyingThreshold;
+		public final ModConfigSpec.IntValue youkaifiedDuration;
+		public final ModConfigSpec.IntValue youkaifiedProlongation;
 
-		Client(ForgeConfigSpec.Builder builder) {
-			laserRenderAdditive = builder.define("laserRenderAdditive", true);
-			laserRenderInverted = builder.define("laserRenderInverted", true);
-			laserTransparency = builder.defineInRange("laserTransparency", 0.5, 0, 1);
-		}
+		public final ModConfigSpec.DoubleValue smoothingHealingFactor;
+		public final ModConfigSpec.IntValue teaHealingPeriod;
+		public final ModConfigSpec.IntValue udumbaraDuration;
+		public final ModConfigSpec.IntValue udumbaraHealingPeriod;
+		public final ModConfigSpec.IntValue udumbaraFullMoonReduction;
+		public final ModConfigSpec.IntValue higiHealingPeriod;
+		public final ModConfigSpec.DoubleValue fairyHealingFactor;
 
-	}
+		public final ModConfigSpec.IntValue frogEatCountForHat;
+		public final ModConfigSpec.IntValue frogEatRaiderVillagerSightRange;
+		public final ModConfigSpec.IntValue frogEatRaiderVillagerNoSightRange;
+		public final ModConfigSpec.BooleanValue koishiAttackEnable;
+		public final ModConfigSpec.IntValue koishiAttackCoolDown;
+		public final ModConfigSpec.DoubleValue koishiAttackChance;
+		public final ModConfigSpec.IntValue koishiAttackDamage;
+		public final ModConfigSpec.IntValue koishiAttackBlockCount;
 
-	public static class Common {
+		public final ModConfigSpec.DoubleValue danmakuMinPHPDamage;
+		public final ModConfigSpec.DoubleValue danmakuPlayerPHPDamage;
+		public final ModConfigSpec.DoubleValue danmakuHealOnHitTarget;
+		public final ModConfigSpec.IntValue playerDanmakuCooldown;
+		public final ModConfigSpec.IntValue playerLaserCooldown;
+		public final ModConfigSpec.IntValue playerSpellCooldown;
+		public final ModConfigSpec.IntValue playerLaserDuration;
 
-		public final ForgeConfigSpec.IntValue youkaifyingTime;
-		public final ForgeConfigSpec.DoubleValue youkaifyingChance;
-		public final ForgeConfigSpec.IntValue youkaifyingConfusionTime;
-		public final ForgeConfigSpec.IntValue youkaifyingThreshold;
-		public final ForgeConfigSpec.IntValue youkaifiedDuration;
-		public final ForgeConfigSpec.IntValue youkaifiedProlongation;
+		public final ModConfigSpec.BooleanValue rumiaNaturalSpawn;
+		public final ModConfigSpec.BooleanValue exRumiaConversion;
+		public final ModConfigSpec.BooleanValue rumiaDamageCap;
+		public final ModConfigSpec.BooleanValue rumiaNoTargetHealing;
+		public final ModConfigSpec.BooleanValue rumiaHairbandDrop;
 
-		public final ForgeConfigSpec.DoubleValue smoothingHealingFactor;
-		public final ForgeConfigSpec.IntValue teaHealingPeriod;
-		public final ForgeConfigSpec.IntValue udumbaraDuration;
-		public final ForgeConfigSpec.IntValue udumbaraHealingPeriod;
-		public final ForgeConfigSpec.IntValue udumbaraFullMoonReduction;
-		public final ForgeConfigSpec.IntValue higiHealingPeriod;
-		public final ForgeConfigSpec.DoubleValue fairyHealingFactor;
+		public final ModConfigSpec.BooleanValue reimuSummonFlesh;
+		public final ModConfigSpec.BooleanValue reimuSummonKill;
+		public final ModConfigSpec.BooleanValue reimuSummonMoney;
+		public final ModConfigSpec.IntValue reimuSummonCost;
+		public final ModConfigSpec.BooleanValue reimuHairbandFlightEnable;
 
-		public final ForgeConfigSpec.IntValue frogEatCountForHat;
-		public final ForgeConfigSpec.IntValue frogEatRaiderVillagerSightRange;
-		public final ForgeConfigSpec.IntValue frogEatRaiderVillagerNoSightRange;
-		public final ForgeConfigSpec.BooleanValue koishiAttackEnable;
-		public final ForgeConfigSpec.IntValue koishiAttackCoolDown;
-		public final ForgeConfigSpec.DoubleValue koishiAttackChance;
-		public final ForgeConfigSpec.IntValue koishiAttackDamage;
-		public final ForgeConfigSpec.IntValue koishiAttackBlockCount;
+		public final ModConfigSpec.BooleanValue cirnoSpawn;
+		public final ModConfigSpec.DoubleValue cirnoFairyDrop;
 
-		public final ForgeConfigSpec.DoubleValue danmakuMinPHPDamage;
-		public final ForgeConfigSpec.DoubleValue danmakuPlayerPHPDamage;
-		public final ForgeConfigSpec.DoubleValue danmakuHealOnHitTarget;
-		public final ForgeConfigSpec.IntValue playerDanmakuCooldown;
-		public final ForgeConfigSpec.IntValue playerLaserCooldown;
-		public final ForgeConfigSpec.IntValue playerSpellCooldown;
-		public final ForgeConfigSpec.IntValue playerLaserDuration;
-
-		public final ForgeConfigSpec.BooleanValue rumiaNaturalSpawn;
-		public final ForgeConfigSpec.BooleanValue exRumiaConversion;
-		public final ForgeConfigSpec.BooleanValue rumiaDamageCap;
-		public final ForgeConfigSpec.BooleanValue rumiaNoTargetHealing;
-		public final ForgeConfigSpec.BooleanValue rumiaHairbandDrop;
-
-		public final ForgeConfigSpec.BooleanValue reimuSummonFlesh;
-		public final ForgeConfigSpec.BooleanValue reimuSummonKill;
-		public final ForgeConfigSpec.BooleanValue reimuSummonMoney;
-		public final ForgeConfigSpec.IntValue reimuSummonCost;
-		public final ForgeConfigSpec.BooleanValue reimuHairbandFlightEnable;
-
-		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
-		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
-
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(ModConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			{
 				youkaifyingChance = builder.comment("Chance for flesh food to add Youkaifying effect for the first time")
@@ -194,28 +179,12 @@ public class YHModConfig {
 
 	}
 
-	public static final ForgeConfigSpec CLIENT_SPEC;
-	public static final Client CLIENT;
-
-	public static final ForgeConfigSpec COMMON_SPEC;
-	public static final Common COMMON;
-
-	static {
-		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
-		CLIENT_SPEC = client.getRight();
-		CLIENT = client.getLeft();
-
-		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
-		COMMON_SPEC = common.getRight();
-		COMMON = common.getLeft();
-	}
+	public static final Common COMMON = YoukaisHomecoming.REGISTRATE.registerClient(Common::new);
 
 	/**
 	 * Registers any relevant listeners for config
 	 */
 	public static void init() {
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_SPEC);
 	}
 
 

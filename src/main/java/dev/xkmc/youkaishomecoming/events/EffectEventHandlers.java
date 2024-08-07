@@ -17,8 +17,14 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
 
-@Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class EffectEventHandlers {
 
 	public static boolean isWeakCharacter(LivingEntity e) {
@@ -38,9 +44,9 @@ public class EffectEventHandlers {
 	}
 
 	@SubscribeEvent
-	public static void onSleep(PlayerSleepInBedEvent event) {
-		if (event.getEntity().hasEffect(YHEffects.SOBER.get())) {
-			event.setResult(Player.BedSleepingProblem.OTHER_PROBLEM);
+	public static void onSleep(CanPlayerSleepEvent event) {
+		if (event.getEntity().hasEffect(YHEffects.SOBER)) {
+			event.setProblem(Player.BedSleepingProblem.OTHER_PROBLEM);
 		}
 	}
 
@@ -103,7 +109,7 @@ public class EffectEventHandlers {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onHeal(LivingHealEvent event) {
 		float amount = event.getAmount();
-		if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
+		if (event.getEntity().hasEffect(YHEffects.SMOOTHING)) {
 			amount *= YHModConfig.COMMON.smoothingHealingFactor.get();
 		}
 		if (event.getEntity().hasEffect(YHEffects.FAIRY.get())) {
@@ -113,7 +119,7 @@ public class EffectEventHandlers {
 	}
 
 	@SubscribeEvent
-	public static void onTick(LivingEvent.LivingTickEvent event) {
+	public static void onTick(LivingTickEvent event) {
 		var e = event.getEntity();
 		if (e.hasEffect(YHEffects.THICK.get()) && e.hasEffect(MobEffects.WITHER)) {
 			e.removeEffect(MobEffects.WITHER);
@@ -146,12 +152,12 @@ public class EffectEventHandlers {
 	@SubscribeEvent
 	public static void onEffectTest(MobEffectEvent.Applicable event) {
 		if (event.getEffectInstance().getEffect() == MobEffects.WITHER) {
-			if (event.getEntity().hasEffect(YHEffects.THICK.get())) {
+			if (event.getEntity().hasEffect(YHEffects.THICK)) {
 				event.setResult(Event.Result.DENY);
 			}
 		}
 		if (event.getEffectInstance().getEffect() == MobEffects.POISON) {
-			if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
+			if (event.getEntity().hasEffect(YHEffects.SMOOTHING)) {
 				event.setResult(Event.Result.DENY);
 			}
 		}

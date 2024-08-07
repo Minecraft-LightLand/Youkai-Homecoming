@@ -3,12 +3,8 @@ package dev.xkmc.youkaishomecoming.content.pot.ferment;
 import dev.xkmc.l2core.base.tile.BaseBlockEntity;
 import dev.xkmc.l2core.base.tile.BaseContainerListener;
 import dev.xkmc.l2core.base.tile.BaseTank;
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
-import dev.xkmc.l2library.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
-import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
@@ -25,16 +21,9 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -160,15 +149,12 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 		}
 	}
 
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return itemHandler.cast();
-		}
-		if (cap == ForgeCapabilities.FLUID_HANDLER) {
-			return fluidHandler.cast();
-		}
-		return super.getCapability(cap, side);
+
+	public IItemHandler getItemHandler(@Nullable Direction direction) {
+		return itemHandler;
 	}
 
+	public IFluidHandler getFluidHandler(@Nullable Direction direction) {
+		return fluids;
+	}
 }

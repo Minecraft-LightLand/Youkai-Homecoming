@@ -15,6 +15,7 @@ import mezz.jei.common.Constants;
 import mezz.jei.library.plugins.vanilla.cooking.AbstractCookingCategory;
 import mezz.jei.library.util.RecipeUtil;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class DryingRackCategory extends AbstractCookingCategory<DryingRackRecipe> {
 
@@ -28,7 +29,7 @@ public class DryingRackCategory extends AbstractCookingCategory<DryingRackRecipe
 	}
 
 	@Override
-	public RecipeType<DryingRackRecipe> getRecipeType() {
+	public RecipeType<RecipeHolder<DryingRackRecipe>> getRecipeType() {
 		return YHJeiPlugin.RACK;
 	}
 
@@ -38,7 +39,7 @@ public class DryingRackCategory extends AbstractCookingCategory<DryingRackRecipe
 	}
 
 	@Override
-	public void draw(DryingRackRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+	public void draw(RecipeHolder<DryingRackRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		animatedFlame.draw(guiGraphics, 1, 20);
 		IDrawableAnimated arrow = getArrow(recipe);
 		arrow.draw(guiGraphics, 24, 8);
@@ -46,12 +47,12 @@ public class DryingRackCategory extends AbstractCookingCategory<DryingRackRecipe
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, DryingRackRecipe recipe, IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<DryingRackRecipe> recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-				.addIngredients(recipe.getIngredients().get(0));
+				.addIngredients(recipe.value().getIngredients().get(0));
 
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 9)
-				.addItemStack(RecipeUtil.getResultItem(recipe));
+				.addItemStack(RecipeUtil.getResultItem(recipe.value()));
 	}
 
 }

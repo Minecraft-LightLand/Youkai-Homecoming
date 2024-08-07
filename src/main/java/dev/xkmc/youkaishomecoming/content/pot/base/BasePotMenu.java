@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.base;
 
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -9,22 +10,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.container.CookingPotMealSlot;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Objects;
 
-public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
+public abstract class BasePotMenu<T extends BasePotRecipe> extends RecipeBookMenu<RecipeWrapper, T> {
 	public static final ResourceLocation EMPTY_CONTAINER_SLOT = YoukaisHomecoming.loc("item/empty_container_slot_bottle");
-	public final BasePotBlockEntity blockEntity;
+	public final BasePotBlockEntity<T> blockEntity;
 	public final ItemStackHandler inventory;
 	protected final ContainerData cookingPotData;
 	private final ContainerLevelAccess canInteractWithCallable;
@@ -34,12 +35,13 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 		this(menu, id, inv, getTileEntity(inv, data), new SimpleContainerData(4));
 	}
 
-	public BasePotMenu(MenuType<? extends BasePotMenu> menu, int id, Inventory inv, BasePotBlockEntity be, ContainerData data) {
+	public BasePotMenu(MenuType<? extends BasePotMenu> menu, int id, Inventory inv, BasePotBlockEntity<T> be, ContainerData data) {
 		super(menu, id);
 		blockEntity = be;
 		inventory = be.getInventory();
 		cookingPotData = data;
 		level = inv.player.level();
+		assert be.getLevel() != null;
 		canInteractWithCallable = ContainerLevelAccess.create(be.getLevel(), be.getBlockPos());
 		int startX = 8;
 		int startY = 18;
@@ -79,12 +81,12 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 		addDataSlots(data);
 	}
 
-	private static BasePotBlockEntity getTileEntity(Inventory playerInventory, @Nullable FriendlyByteBuf data) {
+	private static <T extends BasePotRecipe> BasePotBlockEntity<T> getTileEntity(Inventory playerInventory, @Nullable FriendlyByteBuf data) {
 		Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
 		Objects.requireNonNull(data, "data cannot be null");
 		BlockEntity tileAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
-		if (tileAtPos instanceof BasePotBlockEntity pot) {
-			return pot;
+		if (tileAtPos instanceof BasePotBlockEntity<?> pot) {
+			return Wrappers.cast(pot);
 		} else {
 			throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
 		}
@@ -170,8 +172,9 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 
 	}
 
-	public boolean recipeMatches(Recipe<? super RecipeWrapper> recipe) {
-		return recipe.matches(new RecipeWrapper(inventory), level);
+	@Override
+	public boolean recipeMatches(RecipeHolder<T> recipeHolder) {
+		return recipeHolder.value().matches(new RecipeWrapper(inventory), level);
 	}
 
 	public int getResultSlotIndex() {

@@ -2,13 +2,14 @@ package dev.xkmc.youkaishomecoming.content.block.variants;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.util.VoxelBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -31,9 +32,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -159,11 +160,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(hand);
-		if (stack.is(Items.DEBUG_STICK)) return InteractionResult.PASS;
-		if (canBeReplaced(state, new BlockPlaceContext(player, hand, stack, hit)))
-			return InteractionResult.PASS;
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (!level.isClientSide()) {
 			while (level.getBlockState(pos.above()).getBlock() instanceof MultiFenceBlock) pos = pos.above();
 			state = level.getBlockState(pos);
@@ -173,8 +170,16 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 	}
 
 	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (stack.is(Items.DEBUG_STICK)) return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+		if (canBeReplaced(state, new BlockPlaceContext(player, hand, stack, hit)))
+			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+	}
+
+	@Override
 	public boolean leftClick(BlockState state, Level level, BlockPos pos, Player player) {
-		var result = RayTraceUtil.rayTraceBlock(level, player, player.getBlockReach());
+		var result = RayTraceUtil.rayTraceBlock(level, player, player.blockInteractionRange());
 		var hit = result.getLocation();
 		if (!new AABB(pos).inflate(0.1).contains(hit)) {
 			return true;

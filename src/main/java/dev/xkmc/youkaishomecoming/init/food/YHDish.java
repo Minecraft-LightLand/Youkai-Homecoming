@@ -11,39 +11,39 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.Locale;
 
 public enum YHDish {
-	BAMBOO_MIZUYOKAN(Saucer.SAUCER_1, 6, 0.6f, false, 6,
+	BAMBOO_MIZUYOKAN(Saucer.SAUCER_1, 6, 0.6f, 6,
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	DRIED_FISH(Saucer.SAUCER_2, 8, 0.8f, true, 3,
+	DRIED_FISH(Saucer.SAUCER_2, 8, 0.8f, 3,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-	IMITATION_BEAR_PAW(Saucer.SAUCER_4, 12, 0.8f, true, 3,
+	IMITATION_BEAR_PAW(Saucer.SAUCER_4, 12, 0.8f, 3,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
-	PASTITSIO(Saucer.SAUCER_2, 12, 0.8f, true, 3,
+			new EffectEntry(MobEffects.DAMAGE_BOOST, 3600, 1, 1),
+			new EffectEntry(MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
+	PASTITSIO(Saucer.SAUCER_2, 12, 0.8f, 3,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SAUCE_GRILLED_FISH(Saucer.SAUCER_4, 12, 0.8f, true, 3,
+	SAUCE_GRILLED_FISH(Saucer.SAUCER_4, 12, 0.8f, 3,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	STINKY_TOFU(Saucer.SAUCER_1, 8, 0.6f, false, 6,
+	STINKY_TOFU(Saucer.SAUCER_1, 8, 0.6f, 6,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-	TOFU_BURGER(Saucer.SAUCER_2, 8, 0.6f, false, 3,
+	TOFU_BURGER(Saucer.SAUCER_2, 8, 0.6f, 3,
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	BLOOD_CURD(Saucer.SAUCER_3, 8, 0.8f, true, 4,
+	BLOOD_CURD(Saucer.SAUCER_3, 8, 0.8f, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SEVEN_COLORED_YOKAN(Saucer.SAUCER_1, 8, 0.8f, false, 6,
+	SEVEN_COLORED_YOKAN(Saucer.SAUCER_1, 8, 0.8f, 6,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
+			new EffectEntry(YHEffects.UDUMBARA, 3600, 1, 1)),
 	;
 
 	public final Saucer base;
@@ -51,19 +51,17 @@ public enum YHDish {
 
 	public final BlockEntry<FoodSaucerBlock> block;
 
-	YHDish(Saucer base, int nutrition, float sat, boolean meat, int height, EffectEntry... effs) {
+	YHDish(Saucer base, int nutrition, float sat, int height, EffectEntry... effs) {
 		this.base = base;
 		this.height = height;
 		var builder = new FoodProperties.Builder()
-				.nutrition(nutrition).saturationMod(sat);
+				.nutrition(nutrition).saturationModifier(sat);
 		for (var e : effs) {
 			builder.effect(e::getEffect, e.chance());
 		}
-		if (meat)
-			builder.meat();
 		var food = builder.build();
 		block = YoukaisHomecoming.REGISTRATE
-				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
+				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT_GRAY_WOOL), this))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd)))
 				.item((block, p) -> new FoodSaucerItem(block, p.food(food).craftRemainder(YHItems.SAUCER.asItem())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()

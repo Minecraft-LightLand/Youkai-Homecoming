@@ -1,10 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.block.plant;
 
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
+import dev.xkmc.l2core.serial.loot.LootHelper;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -15,7 +15,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.CropBlock;
@@ -25,10 +24,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.function.Supplier;
 
@@ -42,11 +39,15 @@ public class UdumbaraBlock extends YHCropBlock {
 	}
 
 	@Override
-	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-		BlockPos blockpos = pPos.below();
-		if (pState.getBlock() == this)
-			return pLevel.getBlockState(blockpos).canSustainPlant(pLevel, blockpos, Direction.UP, this);
-		return this.mayPlaceOn(pLevel.getBlockState(blockpos), pLevel, blockpos);
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+		BlockPos low = pos.below();
+		if (state.getBlock() == this) {
+			var soil = level.getBlockState(low);
+			var tri = soil.canSustainPlant(level, low, Direction.UP, state);
+			if (tri.isTrue()) return true;
+			if (tri.isFalse()) return false;
+		}
+		return this.mayPlaceOn(level.getBlockState(low), level, low);
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -67,10 +68,10 @@ public class UdumbaraBlock extends YHCropBlock {
 				}
 			}
 			if (seeSky && (i < getMaxAge() - 1 || i == getMaxAge() - 1 && brightMoon)) {
-				float f = getGrowthSpeed(this, level, pos);
-				if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+				float f = getGrowthSpeed(state, level, pos);
+				if (CommonHooks.canCropGrow(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 					level.setBlock(pos, getStateForAge(i + 1), 2);
-					ForgeHooks.onCropsGrowPost(level, pos, state);
+					CommonHooks.fireCropGrowPost(level, pos, state);
 					if (i + 1 == getMaxAge())
 						level.scheduleTick(pos, this, YHModConfig.COMMON.udumbaraDuration.get());
 				}
@@ -103,19 +104,18 @@ public class UdumbaraBlock extends YHCropBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+	public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
 		return false;
 	}
 
 	public static void buildPlantLoot(RegistrateBlockLootTables pvd, YHCropBlock block, YHCrops crop) {
-		pvd.add(block, pvd.applyExplosionDecay(block,
-				LootTable.lootTable().withPool(LootPool.lootPool()
-								.add(LootItem.lootTableItem(crop.getSeed())))
-						.withPool(LootPool.lootPool()
-								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7)))
-								.add(LootItem.lootTableItem(crop.getFruits())
-										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
+		var helper = new LootHelper(pvd);
+		pvd.add(block, pvd.applyExplosionDecay(block, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(crop.getSeed())))
+				.withPool(LootPool.lootPool()
+						.when(helper.intState(block, CropBlock.AGE, 7))
+						.add(LootItem.lootTableItem(crop.getFruits()).apply(helper.fortuneBin())))));
 	}
 
 }

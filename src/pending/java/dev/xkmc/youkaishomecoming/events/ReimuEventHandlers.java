@@ -5,10 +5,7 @@ import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.data.YHAdvGen;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import dev.xkmc.youkaishomecoming.init.registrate.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -78,7 +75,7 @@ public class ReimuEventHandlers {
 		if (koishiBlockReimu(sp)) return true;
 		var adv = sp.server.getAdvancements().getAdvancement(YHAdvGen.FLESH_WARN);
 		if (adv == null || sp.getAdvancements().getOrStartProgress(adv).isDone()) return false;
-		YHCriteriaTriggers.FLESH_WARN.trigger(sp);
+		YHBlocks.YHCriteriaTriggers.FLESH_WARN.trigger(sp);
 		sp.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100));
 		sp.sendSystemMessage(YHLangData.REIMU_FLESH.get(), true);
 		return true;
@@ -89,7 +86,7 @@ public class ReimuEventHandlers {
 		if (koishiBlockReimu(sp)) return;
 		var adv = sp.server.getAdvancements().getAdvancement(YHAdvGen.HURT_WARN);
 		if (adv == null || sp.getAdvancements().getOrStartProgress(adv).isDone()) return;
-		YHCriteriaTriggers.HURT_WARN.trigger(sp);
+		YHBlocks.YHCriteriaTriggers.HURT_WARN.trigger(sp);
 		sp.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100));
 		sp.sendSystemMessage(YHLangData.REIMU_WARN.get(), true);
 	}

@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 import dev.xkmc.youkaishomecoming.init.food.YHDish;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -27,7 +26,7 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (player.canEat(false)) {
 			if (!level.isClientSide()) {
 				player.eat(level, asItem().getDefaultInstance());
@@ -38,7 +37,7 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 			}
 			return InteractionResult.CONSUME;
 		}
-		return super.use(state, level, pos, player, hand, hit);
+		return super.useWithoutItem(state, level, pos, player, hit);
 	}
 
 	@Override

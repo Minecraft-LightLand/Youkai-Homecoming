@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 public class ThinDoorBlock extends DoorBlock {
 
@@ -25,7 +25,7 @@ public class ThinDoorBlock extends DoorBlock {
 	protected static final VoxelShape EAST_AABB = Block.box(0, 0, 0, TH, 16, 16);
 
 	public ThinDoorBlock(Properties pProperties, BlockSetType pType) {
-		super(pProperties, pType);
+		super(pType, pProperties);
 	}
 
 	@Override

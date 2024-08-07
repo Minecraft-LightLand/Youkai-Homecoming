@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.compat.touhoulittlemaid;
 
 import com.github.tartaricacid.touhoulittlemaid.item.ItemGarageKit;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import net.minecraft.world.InteractionResult;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;

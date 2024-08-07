@@ -12,13 +12,13 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
-public class KettleMenu extends BasePotMenu {
+public class KettleMenu extends BasePotMenu<KettleRecipe> {
 
 	public KettleMenu(MenuType<KettleMenu> menu, int windowId, Inventory playerInventory, @Nullable FriendlyByteBuf data) {
 		super(menu, windowId, playerInventory, data);
 	}
 
-	public KettleMenu(MenuType<KettleMenu> menu, int id, Inventory inv, BasePotBlockEntity be, ContainerData data) {
+	public KettleMenu(MenuType<KettleMenu> menu, int id, Inventory inv, BasePotBlockEntity<KettleRecipe> be, ContainerData data) {
 		super(menu, id, inv, be, data);
 	}
 

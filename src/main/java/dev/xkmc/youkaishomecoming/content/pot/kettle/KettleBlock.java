@@ -1,8 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -11,7 +12,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
@@ -19,6 +22,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -28,8 +32,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.util.Lazy;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.util.Lazy;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
 
 import javax.annotation.Nullable;
@@ -43,15 +47,14 @@ public class KettleBlock extends BasePotBlock {
 
 	protected static final Lazy<Map<Ingredient, Integer>> MAP = Lazy.of(() -> Map.of(
 			Ingredient.of(Items.WATER_BUCKET), KettleBlockEntity.WATER_BUCKET,
-			new PotionIngredient(Potions.WATER), KettleBlockEntity.WATER_BOTTLE));
+			PotionIngredient.of(Potions.WATER), KettleBlockEntity.WATER_BOTTLE));
 
 	public KettleBlock(Properties prop) {
 		super(prop);
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		ItemStack stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		for (var e : MAP.get().entrySet()) {
 			if (e.getKey().test(stack)) {
 				if (!level.isClientSide()) {
@@ -63,19 +66,19 @@ public class KettleBlock extends BasePotBlock {
 								stack.shrink(1);
 								player.getInventory().placeItemBackInInventory(remain);
 							}
-							return InteractionResult.SUCCESS;
+							return ItemInteractionResult.SUCCESS;
 						}
 					}
-					return InteractionResult.FAIL;
+					return ItemInteractionResult.FAIL;
 				}
-				return InteractionResult.CONSUME;
+				return ItemInteractionResult.CONSUME;
 			}
 		}
-		return super.use(state, level, pos, player, hand, result);
+		return super.useItemOn(stack, state, level, pos, player, hand, result);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+	public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 		super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
 		pTooltip.add(YHLangData.KETTLE_INFO.get());
 	}
@@ -121,6 +124,11 @@ public class KettleBlock extends BasePotBlock {
 			case HANDLE -> handle;
 			case TRAY -> tray;
 		});
+	}
+
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return null;//TODO block codec
 	}
 
 }

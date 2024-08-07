@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
-import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -12,13 +12,12 @@ public class TeaEffect extends EmptyEffect {
 
 	public TeaEffect(MobEffectCategory category, int color) {
 		super(category, color);
-		addAttributeModifier(Attributes.ATTACK_SPEED,
-				MathHelper.getUUIDFromString("tea").toString(), 0.05f,
-				AttributeModifier.Operation.MULTIPLY_BASE);
+		addAttributeModifier(Attributes.ATTACK_SPEED, YoukaisHomecoming.loc("tea"), 0.05f,
+				AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity e, int lv) {
+	public boolean applyEffectTick(LivingEntity e, int lv) {
 		if (e.level().isDay() && !e.level().isClientSide) {
 			float f = e.getLightLevelDependentMagicValue();
 			BlockPos blockpos = BlockPos.containing(e.getX(), e.getEyeY(), e.getZ());
@@ -26,10 +25,11 @@ public class TeaEffect extends EmptyEffect {
 				e.heal(1 << lv);
 			}
 		}
+		return true;
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int tick, int lv) {
+	public boolean shouldApplyEffectTickThisTick(int tick, int lv) {
 		return tick % YHModConfig.COMMON.teaHealingPeriod.get() == 0;
 	}
 

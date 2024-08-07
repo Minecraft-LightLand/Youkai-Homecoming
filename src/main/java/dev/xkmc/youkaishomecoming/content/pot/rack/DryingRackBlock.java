@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.rack;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -10,6 +11,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -26,8 +28,8 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import javax.annotation.Nullable;
@@ -49,7 +51,7 @@ public class DryingRackBlock extends BaseEntityBlock {
 			var opt = be.getCookableRecipe(stack);
 			if (opt.isPresent()) {
 				if (!level.isClientSide && be.placeFood(player.getAbilities().instabuild ?
-						stack.copy() : stack, opt.get().getCookingTime())) {
+						stack.copy() : stack, opt.get().value().getCookingTime())) {
 					return InteractionResult.SUCCESS;
 				}
 				return InteractionResult.CONSUME;
@@ -71,7 +73,7 @@ public class DryingRackBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+	public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 		pTooltip.add(YHLangData.DRYING_RACK.get());
 	}
 
@@ -119,6 +121,11 @@ public class DryingRackBlock extends BaseEntityBlock {
 
 	public BlockState mirror(BlockState pState, Mirror pMirror) {
 		return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+	}
+
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return null;//TODO
 	}
 
 	public static void buildModel(DataGenContext<Block, DryingRackBlock> ctx, RegistrateBlockstateProvider pvd) {

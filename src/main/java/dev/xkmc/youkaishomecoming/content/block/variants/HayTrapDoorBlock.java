@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 public class HayTrapDoorBlock extends TrapDoorBlock {
 
 	public HayTrapDoorBlock(Properties pProperties, BlockSetType pType) {
-		super(pProperties, pType);
+		super(pType, pProperties);
 	}
 
 	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float dist) {

@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-public class HorizontalLoggedBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+public abstract class HorizontalLoggedBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 import java.awt.*;
 
-public class KettleScreen extends BasePotScreen<KettleMenu> {
+public class KettleScreen extends BasePotScreen<KettleMenu, KettleRecipe> {
 
 	private static final ResourceLocation BG = YoukaisHomecoming.loc("textures/gui/kettle.png");
 	private static final Rectangle HEAT_ICON = new Rectangle(44, 64, 17, 15);

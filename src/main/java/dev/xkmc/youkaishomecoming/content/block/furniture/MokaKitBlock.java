@@ -1,8 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.block.furniture;
 
+import com.mojang.serialization.MapCodec;
 import dev.xkmc.youkaishomecoming.content.block.variants.HorizontalLoggedBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -18,6 +20,11 @@ public class MokaKitBlock extends HorizontalLoggedBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
 		return SHAPE;
+	}
+
+	@Override
+	protected MapCodec<? extends MokaKitBlock> codec() {
+		return null;//TODO
 	}
 
 }

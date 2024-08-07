@@ -1,12 +1,14 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import dev.xkmc.l2library.serial.config.ConfigDataProvider;
+import dev.xkmc.l2core.serial.config.ConfigDataProvider;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 
-public class YHConfigGen extends ConfigDataProvider {
+import java.util.concurrent.CompletableFuture;
 
-	public YHConfigGen(DataGenerator generator) {
-		super(generator, "Youkai Homecoming Config");
+public class YHConfigGen extends ConfigDataProvider {
+	public YHConfigGen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> pvd) {
+		super(generator, pvd, "Youkai Homecoming Config");
 	}
 
 	@Override
