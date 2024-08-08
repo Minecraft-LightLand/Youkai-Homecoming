@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:tofu"
+  }
+}

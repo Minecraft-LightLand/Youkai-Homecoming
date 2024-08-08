@@ -1,0 +1,21 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "container": {
+    "count": 1,
+    "id": "minecraft:glass_bottle"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "c:foods/cabbage"
+    },
+    {
+      "tag": "c:foods/cabbage"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:green_water"
+  }
+}

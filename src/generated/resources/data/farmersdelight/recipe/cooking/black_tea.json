@@ -1,0 +1,21 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "container": {
+    "count": 1,
+    "id": "minecraft:glass_bottle"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "c:tea_leaves/black"
+    },
+    {
+      "tag": "c:tea_leaves/black"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:black_tea"
+  }
+}

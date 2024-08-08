@@ -1,0 +1,27 @@
+{
+  "type": "youkaishomecoming:simple_fermentation",
+  "ingredients": [
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "id": "youkaishomecoming:flowing_mio"
+  },
+  "results": [],
+  "time": 2400
+}

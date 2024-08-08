@@ -1,0 +1,33 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "minecraft:stick"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "youkaishomecoming:dango"
+    },
+    {
+      "tag": "youkaishomecoming:dango"
+    },
+    {
+      "tag": "youkaishomecoming:dango"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:mitarashi_dango"
+  }
+}

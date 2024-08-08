@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "farmersdelight:straw_bale"
-  },
-  "result": "youkaishomecoming:straw_vertical_slab"
-}

@@ -1,0 +1,30 @@
+{
+  "type": "youkaishomecoming:simple_fermentation",
+  "ingredients": [
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "id": "youkaishomecoming:flowing_daiginjo"
+  },
+  "results": [],
+  "time": 2400
+}

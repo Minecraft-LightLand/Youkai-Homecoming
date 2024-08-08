@@ -1,0 +1,28 @@
+{
+  "type": "youkaishomecoming:moka_pot",
+  "container": {
+    "count": 1,
+    "id": "minecraft:glass_bottle"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:coffee_powder"
+    },
+    {
+      "type": "l2core:potion",
+      "potion": "minecraft:water"
+    },
+    {
+      "item": "youkaishomecoming:coffee_powder"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:con_panna"
+  }
+}

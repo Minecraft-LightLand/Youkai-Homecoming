@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "youkaishomecoming:saucer"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:redbean"
+    },
+    {
+      "type": "l2core:potion",
+      "potion": "minecraft:water"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:bamboo_mizuyokan"
+  }
+}

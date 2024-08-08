@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:espresso"
+    },
+    {
+      "item": "youkaishomecoming:ice_cube"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:affogato"
+  }
+}

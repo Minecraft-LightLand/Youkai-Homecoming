@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
 import dev.xkmc.l2core.serial.recipe.BaseRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -56,4 +58,8 @@ public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 		return this;
 	}
 
+	@Override
+	public void save(RecipeOutput recipeOutput) {
+		this.save(recipeOutput, BuiltInRegistries.FLUID.getKey(recipe.outputFluid.getFluid()));
+	}
 }
