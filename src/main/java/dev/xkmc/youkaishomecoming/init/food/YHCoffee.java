@@ -33,8 +33,8 @@ public enum YHCoffee {
 		List<EffectEntry> list = new ArrayList<>();
 		if (cream > 0) list.add(new EffectEntry(ModEffects.COMFORT, 3600, 0, 1));
 		if (coffee > 0) {
-			list.add(new EffectEntry(YHEffects.CAFFEINATED::get, 1200, coffee - 1, 1));
-			list.add(new EffectEntry(YHEffects.SOBER::get, 1200 * coffee, 0, 1));
+			list.add(new EffectEntry(YHEffects.CAFFEINATED, 1200, coffee - 1, 1));
+			list.add(new EffectEntry(YHEffects.SOBER, 1200 * coffee, 0, 1));
 		}
 		String name = name().toLowerCase(Locale.ROOT);
 		item = type.build("coffee/", name, nutrition, sat, tags, list);

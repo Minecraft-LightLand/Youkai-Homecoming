@@ -8,12 +8,10 @@ import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -74,11 +72,8 @@ public class TeaCropBlock extends DoubleCropBlock {
 		return 6;
 	}
 
-	@Deprecated
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		if (state.getValue(AGE) != getMaxAge() && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
-			return InteractionResult.PASS;
-		}
+	@Override
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
 		if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
 			state = level.getBlockState(pos.below());
 			pos = pos.below();
@@ -98,7 +93,7 @@ public class TeaCropBlock extends DoubleCropBlock {
 			}
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		} else {
-			return super.use(state, level, pos, player, hand, result);
+			return super.useWithoutItem(state, level, pos, player, result);
 		}
 	}
 

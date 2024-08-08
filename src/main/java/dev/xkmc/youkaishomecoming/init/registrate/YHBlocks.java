@@ -26,8 +26,6 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -91,13 +89,13 @@ public class YHBlocks {
 	public static final BlockEntry<MokaMakerBlock> MOKA;
 	public static final BlockEntityEntry<MokaMakerBlockEntity> MOKA_BE;
 	public static final Val<RecipeType<MokaRecipe>> MOKA_RT;
-	public static final Val<RecipeSerializer<MokaRecipe>> MOKA_RS;
+	public static final Val<BasePotSerializer<MokaRecipe>> MOKA_RS;
 	public static final MenuEntry<MokaMenu> MOKA_MT;
 
 	public static final BlockEntry<KettleBlock> KETTLE;
 	public static final BlockEntityEntry<KettleBlockEntity> KETTLE_BE;
 	public static final Val<RecipeType<KettleRecipe>> KETTLE_RT;
-	public static final Val<RecipeSerializer<KettleRecipe>> KETTLE_RS;
+	public static final Val<BasePotSerializer<KettleRecipe>> KETTLE_RS;
 	public static final MenuEntry<KettleMenu> KETTLE_MT;
 
 	public static final BlockEntry<DryingRackBlock> RACK;
@@ -295,7 +293,7 @@ public class YHBlocks {
 					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
 					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 			STAIR = YoukaisHomecoming.REGISTRATE.block(id + "_stairs", p ->
-							new HayStairBlock(() -> base.get().defaultBlockState(), prop))
+							new HayStairBlock(base.get().defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side, top, top))
 					.tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.WOODEN_STAIRS)
 					.item().tag(ItemTags.WOODEN_STAIRS).build()

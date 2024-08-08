@@ -170,4 +170,5 @@ dependencies {
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
 
     implementation "curse.maven:farmers-delight-398521:5566383"
+    implementation "curse.maven:better-advancements-272515:5511371"
 }

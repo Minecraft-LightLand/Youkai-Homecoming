@@ -51,7 +51,7 @@ public class YHJeiPlugin implements IModPlugin {
 		var m = level.getRecipeManager();
 		registration.addRecipes(MOKA, m.getAllRecipesFor(YHBlocks.MOKA_RT.get()).stream().map(RecipeHolder::value).toList());
 		registration.addRecipes(KETTLE, m.getAllRecipesFor(YHBlocks.KETTLE_RT.get()).stream().map(RecipeHolder::value).toList());
-		registration.addRecipes(RACK, m.getAllRecipesFor(YHBlocks.RACK_RT.get()).stream().map(RecipeHolder::value).toList());
+		registration.addRecipes(RACK, m.getAllRecipesFor(YHBlocks.RACK_RT.get()));
 		registration.addRecipes(FERMENT, m.getAllRecipesFor(YHBlocks.FERMENT_RT.get())
 				.stream().map(e -> e.value() instanceof SimpleFermentationRecipe x ? x : null).filter(Objects::nonNull).toList());
 	}

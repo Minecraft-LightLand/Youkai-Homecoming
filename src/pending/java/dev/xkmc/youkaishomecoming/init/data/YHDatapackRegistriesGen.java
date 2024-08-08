@@ -134,38 +134,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				}
 			});
 
-	private static void registerBiomeModifiers(BootstapContext<BiomeModifier> ctx) {
-		var biomes = ctx.lookup(Registries.BIOME);
-		var features = ctx.lookup(Registries.PLACED_FEATURE);
-		registerMobSpawn(ctx, YoukaisHomecoming.loc("lamprey"), YHBiomeTagsProvider.LAMPREY, biomes,
-				new MobSpawnSettings.SpawnerData(YHEntities.LAMPREY.get(), 5, 3, 5));
-		registerMobSpawn(ctx, YoukaisHomecoming.loc("cirno"), YHBiomeTagsProvider.CIRNO, biomes,
-				new MobSpawnSettings.SpawnerData(YHEntities.CIRNO.get(), 5, 1, 1));
-		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
-		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
-		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
-		registerCropBiome(ctx, YHCrops.TEA, biomes.getOrThrow(YHBiomeTagsProvider.TEA), features);
-		registerCropBiome(ctx, YHCrops.MANDRAKE, biomes.getOrThrow(YHBiomeTagsProvider.MANDRAKE), features);
-		registerCropBiome(ctx, YHCrops.UDUMBARA, biomes.getOrThrow(YHBiomeTagsProvider.UDUMBARA), features);
-	}
-
-	private static void registerCropBiome(BootstapContext<BiomeModifier> ctx,
-										  YHCrops tree, HolderSet<Biome> set,
-										  HolderGetter<PlacedFeature> features) {
-		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, YoukaisHomecoming.loc(tree.getName())),
-				new ForgeBiomeModifiers.AddFeaturesBiomeModifier(set,
-						HolderSet.direct(features.getOrThrow(tree.getPlacementKey())),
-						GenerationStep.Decoration.VEGETAL_DECORATION));
-	}
-
-	private static void registerMobSpawn(
-			BootstapContext<BiomeModifier> ctx, ResourceLocation rl,
-			TagKey<Biome> tag, HolderGetter<Biome> biomes,
-			MobSpawnSettings.SpawnerData entity) {
-		ctx.register(ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, rl),
-				new ForgeBiomeModifiers.AddSpawnsBiomeModifier(biomes.getOrThrow(tag), List.of(entity)));
-	}
-
 	public YHDatapackRegistriesGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
 		super(output, registries, BUILDER, Set.of("minecraft", YoukaisHomecoming.MODID));
 	}

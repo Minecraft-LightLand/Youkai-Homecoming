@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.mixin;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
@@ -26,7 +25,7 @@ public abstract class VillagerMixin extends AbstractVillager {
 		if (pType == ReputationEventType.VILLAGER_KILLED ||
 				pType == ReputationEventType.VILLAGER_HURT ||
 				pType == ReputationEventType.GOLEM_KILLED) {
-			if (hasEffect(YHEffects.HYPNOSIS.get())) {
+			if (hasEffect(YHEffects.HYPNOSIS)) {
 				ci.cancel();
 			}
 		}

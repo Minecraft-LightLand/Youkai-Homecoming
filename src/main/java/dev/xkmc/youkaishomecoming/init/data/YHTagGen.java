@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import dev.xkmc.youkaishomecoming.compat.sereneseasons.SeasonCompat;
@@ -9,7 +8,6 @@ import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -19,9 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
-import sereneseasons.core.SereneSeasons;
+import net.neoforged.fml.ModList;
 
 public class YHTagGen {
 
@@ -43,13 +39,13 @@ public class YHTagGen {
 	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
 
 
-	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
+	public static final TagKey<Item> MATCHA = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "matcha"));
 
-	public static final TagKey<Item> TEA_GREEN = ItemTags.create(new ResourceLocation("forge", "tea_leaves/green"));
-	public static final TagKey<Item> TEA_BLACK = ItemTags.create(new ResourceLocation("forge", "tea_leaves/black"));
-	public static final TagKey<Item> TEA_WHITE = ItemTags.create(new ResourceLocation("forge", "tea_leaves/white"));
-	public static final TagKey<Item> TEA_OOLONG = ItemTags.create(new ResourceLocation("forge", "tea_leaves/oolong"));
-	public static final TagKey<Item> TEA = ItemTags.create(new ResourceLocation("forge", "tea_leaves"));
+	public static final TagKey<Item> TEA_GREEN = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tea_leaves/green"));
+	public static final TagKey<Item> TEA_BLACK = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tea_leaves/black"));
+	public static final TagKey<Item> TEA_WHITE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tea_leaves/white"));
+	public static final TagKey<Item> TEA_OOLONG = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tea_leaves/oolong"));
+	public static final TagKey<Item> TEA = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tea_leaves"));
 
 	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
 	public static final TagKey<Item> TOUHOU_WINGS = item("touhou_wings");
@@ -74,14 +70,15 @@ public class YHTagGen {
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT);
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 
-		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
+		if (ModList.get().isLoaded("sereneseasons")) {
 			SeasonCompat.genBlock(pvd);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
-		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
+		pvd.addTag(MATCHA).add(YHItems.MATCHA.get())
+				.addOptional(ResourceLocation.fromNamespaceAndPath("delightful", "matcha"));
 
 		pvd.addTag(TEA_GREEN).add(YHTea.GREEN.leaves.get());
 		pvd.addTag(TEA_BLACK).add(YHTea.BLACK.leaves.get());
@@ -89,7 +86,7 @@ public class YHTagGen {
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
-		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
+		if (ModList.get().isLoaded("sereneseasons")) {
 			SeasonCompat.genItem(pvd);
 		}
 

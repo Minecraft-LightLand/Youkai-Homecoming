@@ -6,7 +6,8 @@ import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.AnimateTickBlockMethod;
 import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseWithoutItemBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
@@ -16,6 +17,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -28,17 +30,15 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidUtil;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
-import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.Nullable;
 
-public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnClickBlockMethod, ShapeBlockMethod, AnimateTickBlockMethod {
+public class FermentationTankBlock implements CreateBlockStateBlockMethod, UseWithoutItemBlockMethod, UseItemOnBlockMethod, ShapeBlockMethod, AnimateTickBlockMethod {
 
 	public static final BlockMethod TE = new BlockEntityBlockMethodImpl<>(YHBlocks.FERMENT_BE, FermentationTankBlockEntity.class);
 
@@ -64,30 +64,40 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	}
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (level.getBlockEntity(pos) instanceof FermentationTankBlockEntity be) {
-			ItemStack stack = player.getItemInHand(hand);
 			if (!state.getValue(OPEN)) {
-				level.setBlockAndUpdate(pos, state.setValue(OPEN, true));
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			}
 			if (stack.isEmpty()) {
-				if (!level.isClientSide()) {
-					if (player.isShiftKeyDown()) {
-						be.dumpInventory();
-					} else {
-						level.setBlockAndUpdate(pos, state.setValue(OPEN, false));
-					}
-				}
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			} else {
 				return addItem(be, stack, level, pos, player, hand, hit);
 			}
 		}
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+	}
+
+	@Override
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+		if (level.getBlockEntity(pos) instanceof FermentationTankBlockEntity be) {
+			if (!state.getValue(OPEN)) {
+				level.setBlockAndUpdate(pos, state.setValue(OPEN, true));
+				return InteractionResult.SUCCESS;
+			}
+			if (!level.isClientSide()) {
+				if (player.isShiftKeyDown()) {
+					be.dumpInventory();
+				} else {
+					level.setBlockAndUpdate(pos, state.setValue(OPEN, false));
+				}
+			}
+			return InteractionResult.SUCCESS;
+		}
 		return InteractionResult.PASS;
 	}
 
-	private static InteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	private static ItemInteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.fluids.getFluidInTank(0);
 		boolean hasFluid = false;
 		if (fluid.getFluid() instanceof SakeFluid sake) {
@@ -99,18 +109,18 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 						stack.shrink(1);
 					}
 				}
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 			hasFluid = true;
 		}
 		if (!hasFluid || player.getItemInHand(hand).getItem() instanceof SakeBottleItem) {
-			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
-			if (opt.resolve().isPresent()) {
+			var cap = stack.getCapability(Capabilities.FluidHandler.ITEM);
+			if (cap != null) {
 				if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
 					be.notifyTile();
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				} else {
-					return InteractionResult.CONSUME;
+					return ItemInteractionResult.CONSUME;
 				}
 			}
 		}
@@ -121,10 +131,10 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 			if (remain.isEmpty()) {
 				stack.shrink(1);
 				be.notifyTile();
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return InteractionResult.CONSUME;
+		return ItemInteractionResult.CONSUME;
 	}
 
 	public static void buildModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {

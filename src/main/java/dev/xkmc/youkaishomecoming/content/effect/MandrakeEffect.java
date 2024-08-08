@@ -12,18 +12,19 @@ public class MandrakeEffect extends EmptyEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity e, int lv) {
+	public boolean applyEffectTick(LivingEntity e, int lv) {
 		if (e instanceof Animal animal) {
-			if (animal.getAge() != 0) return;
+			if (animal.getAge() != 0) return true;
 			if (animal.getInLoveTime() < 20) {
 				animal.setInLoveTime(60);
 				animal.level().broadcastEntityEvent(animal, EntityEvent.IN_LOVE_HEARTS);
 			}
 		}
+		return true;
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+	public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
 		return true;
 	}
 

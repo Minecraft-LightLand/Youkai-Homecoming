@@ -18,7 +18,6 @@ import java.util.List;
 @EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class YHClient {
 
-
 	@SubscribeEvent
 	public static void registerOverlay(RegisterGuiLayersEvent event) {
 		event.registerAbove(VanillaGuiLayers.CROSSHAIR, YoukaisHomecoming.loc("info_tile"), new TileInfoDisplay());
@@ -31,10 +30,10 @@ public class YHClient {
 
 	@SubscribeEvent
 	public static void registerRecipeTab(RegisterRecipeBookCategoriesEvent event) {
-		event.registerBookCategories(YoukaisHomecoming.MOKA, List.of(YHRecipeCategories.MOKA.get()));
-		event.registerRecipeCategoryFinder(YHBlocks.MOKA_RT.get(), e -> YHRecipeCategories.MOKA.get());
-		event.registerBookCategories(YoukaisHomecoming.KETTLE, List.of(YHRecipeCategories.KETTLE.get()));
-		event.registerRecipeCategoryFinder(YHBlocks.KETTLE_RT.get(), e -> YHRecipeCategories.KETTLE.get());
+		event.registerBookCategories(YoukaisHomecoming.MOKA, List.of(YHRecipeCategories.MOKA));
+		event.registerRecipeCategoryFinder(YHBlocks.MOKA_RT.get(), e -> YHRecipeCategories.MOKA);
+		event.registerBookCategories(YoukaisHomecoming.KETTLE, List.of(YHRecipeCategories.KETTLE));
+		event.registerRecipeCategoryFinder(YHBlocks.KETTLE_RT.get(), e -> YHRecipeCategories.KETTLE);
 	}
 
 }

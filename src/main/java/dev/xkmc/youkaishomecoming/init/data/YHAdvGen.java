@@ -23,10 +23,6 @@ import java.util.stream.Stream;
 
 public class YHAdvGen {
 
-	public static final ResourceLocation FLESH_WARN = YoukaisHomecoming.loc("flesh_warn");
-	public static final ResourceLocation HURT_WARN = YoukaisHomecoming.loc("hurt_warn");
-	public static final ResourceLocation KOISHI_FIRST = YoukaisHomecoming.loc("koishi_first");
-
 	public static void genAdv(RegistrateAdvancementProvider pvd) {
 
 		var gen = new AdvancementGenerator(pvd, YoukaisHomecoming.MODID);
@@ -105,12 +101,7 @@ public class YHAdvGen {
 										MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
 										Optional.empty(), Optional.empty())))),
 				"Passed Out", "Drink until you have maximum Drunk effect");
-		root.create("mousse", YHFood.KOISHI_MOUSSE.item.asStack(),
-						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
-								ItemPredicate.Builder.item().of(YHFood.KOISHI_MOUSSE.item.get()))),
-						"Well... Yes? What's Just Happened?", "Eat a Koishi Mousse")
-				.type(AdvancementType.GOAL, true, true, true)
-				.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
+		root.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
 										Arrays.stream(YHSake.values()).map(e -> e.item.get()),
@@ -120,7 +111,6 @@ public class YHAdvGen {
 								.forEach(p -> c.add(BuiltInRegistries.ITEM.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Gensokyo Food Enthusiastic", "Eat all Youkai's Homecoming food")
 				.type(AdvancementType.CHALLENGE, true, true, false);
-
 		root.finish();
 	}
 

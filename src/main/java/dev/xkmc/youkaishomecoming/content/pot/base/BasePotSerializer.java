@@ -1,11 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.pot.base;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.mixin.CookingPotRecipeAccessor;
 import net.minecraft.core.NonNullList;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -24,27 +24,20 @@ public record BasePotSerializer<T extends BasePotRecipe>(Factory<T> factory) imp
 
 	}
 
-	private T wrap(CookingPotRecipe recipe) {
+	public T wrap(CookingPotRecipe recipe) {
 		return factory.create(recipe.getGroup(), recipe.getRecipeBookTab(),
 				recipe.getIngredients(), ((CookingPotRecipeAccessor) recipe).getOutput(), recipe.getOutputContainer(),
 				recipe.getExperience(), recipe.getCookTime());
 	}
 
 	@Override
-	public T fromJson(ResourceLocation id, JsonObject json) {
-		return wrap(getOriginal().fromJson(id, json));
+	public MapCodec<T> codec() {
+		return getOriginal().codec().xmap(this::wrap, e -> e);
 	}
 
 	@Override
-	public @Nullable T fromNetwork(ResourceLocation id, FriendlyByteBuf packet) {
-		var old = getOriginal().fromNetwork(id, packet);
-		if (old == null) return null;
-		return wrap(old);
-	}
-
-	@Override
-	public void toNetwork(FriendlyByteBuf packet, T recipe) {
-		getOriginal().toNetwork(packet, recipe);
+	public StreamCodec<RegistryFriendlyByteBuf, T> streamCodec() {
+		return getOriginal().streamCodec().map(this::wrap, e -> e);
 	}
 
 	private static RecipeSerializer<CookingPotRecipe> getOriginal() {

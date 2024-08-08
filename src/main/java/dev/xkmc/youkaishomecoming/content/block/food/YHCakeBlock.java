@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -14,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CakeBlock;
@@ -22,7 +20,6 @@ import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 
 import java.util.List;
@@ -74,7 +71,7 @@ public class YHCakeBlock extends CakeBlock {
 			player.awardStat(Stats.EAT_CAKE_SLICE);
 			if (!level.isClientSide()) {
 				player.eat(level, food.get().getDefaultInstance());
-				if (food.get() instanceof FleshFoodItem flesh) {
+				if (food.get() instanceof IEatEffectFood flesh) {
 					flesh.consume(player);
 				}
 			}
@@ -92,10 +89,12 @@ public class YHCakeBlock extends CakeBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-		super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
-		if (Configuration.FOOD_EFFECT_TOOLTIP.get())
-			YHFoodItem.getFoodEffects(food.get().getFoodProperties(), pTooltip);
+	public void appendHoverText(ItemStack stack, Item.TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(stack, ctx, list, flag);
+		if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+			var prop = food.get().getFoodProperties(stack, null);
+			if (prop != null) YHFoodItem.getFoodEffects(prop, list);
+		}
 	}
 
 }

@@ -2,8 +2,6 @@ package dev.xkmc.youkaishomecoming.events;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
-import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;
@@ -13,7 +11,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ClientEventHandlers {

@@ -33,8 +33,6 @@ public enum YHFood {
 			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 1),
 			DietTagGen.PROTEINS.tag
 	),
-	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
@@ -60,9 +58,6 @@ public enum YHFood {
 	SENBEI(FoodType.SIMPLE, 4, 0.6f, DietTagGen.GRAINS.tag),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
-			new EffectEntry(YHEffects.UNCONSCIOUS, 400, 0, 1),
-			DietTagGen.SUGARS.tag),
 	BUN(FoodType.SIMPLE, 8, 0.8f, DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
@@ -73,17 +68,6 @@ public enum YHFood {
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI, 1200, 0, 1)
-	), DietTagGen.SUGARS.tag),
-	HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI, 1200, 0, 1),
-			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
-	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
-
-	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(
-			//new EffectEntry(YHEffects.FAIRY, 1200, 0, 1) TODO
-	), DietTagGen.SUGARS.tag),
 
 	// stick
 
@@ -137,11 +121,6 @@ public enum YHFood {
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	)),
-	SCARLET_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK, 600, 0, 1),
-			new EffectEntry(YHEffects.YOUKAIFYING, 1200, 0, 1)
-	), YHTagGen.FLESH_FOOD),
 	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA, 600, 0, 0.1f))),
 
 	// bowl
@@ -208,24 +187,21 @@ public enum YHFood {
 			new EffectEntry(YHEffects.UDUMBARA, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
 	// flesh
-	FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
-	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
-	FLESH_ROLL(FoodType.FLESH, 3, 0.8f,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
-	CANNED_FLESH(FoodType.CAN_FLESH, 4, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	FLESH_CHOCOLATE_MOUSSE(FoodType.FLESH_FAST, 3, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
-	SCARLET_DEVIL_CAKE(FoodType.FLESH_FAST, 4, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
+	//TODO KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f, new EffectEntry(YHEffects.UNCONSCIOUS, 400, 0, 1), DietTagGen.SUGARS.tag),
+	//TODO HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f, List.of(new EffectEntry(YHEffects.HIGI, 1200, 0, 1)), DietTagGen.SUGARS.tag),
+	//TODO HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(new EffectEntry(YHEffects.HIGI, 1200, 0, 1), new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
+	//TODO FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(new EffectEntry(YHEffects.FAIRY, 1200, 0, 1)), DietTagGen.SUGARS.tag),
+	//TODO FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	//TODO COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+
+	//TODO SCARLET_TEA(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA, 1200, 0, 1), new EffectEntry(YHEffects.THICK, 600, 0, 1), new EffectEntry(YHEffects.YOUKAIFYING, 1200, 0, 1)), YHTagGen.FLESH_FOOD),
+	//TODO FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
+	//TODO FLESH_ROLL(FoodType.FLESH, 3, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
+	//TODO CANNED_FLESH(FoodType.CAN_FLESH, 4, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	//TODO FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1), new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	//TODO BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1), new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	//TODO FLESH_CHOCOLATE_MOUSSE(FoodType.FLESH_FAST, 3, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
+	//TODO SCARLET_DEVIL_CAKE(FoodType.FLESH_FAST, 4, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
 	;
 
 
@@ -258,7 +234,7 @@ public enum YHFood {
 	}
 
 	private boolean isFlesh() {
-		return type.isFlesh() || this == SCARLET_TEA;
+		return type.isFlesh();
 	}
 
 	private boolean isUnappealing() {

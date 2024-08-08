@@ -40,14 +40,14 @@ public class FoodSaucerItem extends BlockItem {
 		if (stack.isEmpty()) {
 			return remain;
 		}
-		if (!remain.isEmpty() && consumer instanceof Player player && !player.isCreative()) {
+		if (consumer instanceof Player player && !player.isCreative()) {
 			player.getInventory().placeItemBackInInventory(remain);
 		}
 		return stack;
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		list.add(YHLangData.PLACE.get());
 		if (Configuration.FOOD_EFFECT_TOOLTIP.get())
 			YHFoodItem.getFoodEffects(stack, list);

@@ -6,7 +6,6 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IYHSake;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidType;
-import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -20,34 +19,15 @@ import java.util.List;
 import java.util.Locale;
 
 public enum YHSake implements IYHSake {
-	MIO(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1))),
-	MEAD(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 0, 1))),
-	SPARROW_SAKE(FoodType.BAMBOO, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(MobEffects.LUCK, 1200, 0, 1))),
-	DAIGINJO(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(MobEffects.DAMAGE_BOOST, 1200, 2, 1))),
-	DASSAI(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(MobEffects.DIG_SPEED, 1200, 2, 1))),
-	TENGU_TANGO(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
-	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA, 1200, 1, 1))),
-	SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(YHEffects.YOUKAIFIED, 1200, 0, 1)
-	), YHTagGen.FLESH_FOOD),
-	WIND_PRIESTESSES(FoodType.BOTTLE, 0xFF79E1CA, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.NATIVE, 600, 0, 1)
-	)),
+	MIO(FoodType.BOTTLE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1))),
+	MEAD(FoodType.BOTTLE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1), new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 0, 1))),
+	SPARROW_SAKE(FoodType.BAMBOO, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1), new EffectEntry(MobEffects.LUCK, 1200, 0, 1))),
+	DAIGINJO(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(MobEffects.DAMAGE_BOOST, 1200, 2, 1))),
+	DASSAI(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(MobEffects.DIG_SPEED, 1200, 2, 1))),
+	TENGU_TANGO(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
+	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1), new EffectEntry(YHEffects.UDUMBARA, 1200, 1, 1))),
+	//TODO SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(YHEffects.YOUKAIFIED, 1200, 0, 1)), YHTagGen.FLESH_FOOD),
+	//TODO WIND_PRIESTESSES(FoodType.BOTTLE, 0xFF79E1CA, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1), new EffectEntry(YHEffects.NATIVE, 600, 0, 1))),
 	;
 
 	public final int color;
@@ -92,10 +72,6 @@ public enum YHSake implements IYHSake {
 	@Override
 	public ItemStack asStack(int count) {
 		return item.asStack(count);
-	}
-
-	public boolean isFlesh() {
-		return this == SCARLET_MIST;
 	}
 
 	public static void register() {

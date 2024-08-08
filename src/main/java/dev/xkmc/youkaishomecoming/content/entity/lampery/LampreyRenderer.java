@@ -20,13 +20,14 @@ public class LampreyRenderer extends MobRenderer<LampreyEntity, LampreyModel<Lam
 		return TEX;
 	}
 
-	protected void setupRotations(LampreyEntity pEntityLiving, PoseStack pPoseStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks) {
-		super.setupRotations(pEntityLiving, pPoseStack, pAgeInTicks, pRotationYaw, pPartialTicks);
-		float f = 4.3F * Mth.sin(0.6F * pAgeInTicks);
-		pPoseStack.mulPose(Axis.YP.rotationDegrees(f));
-		if (!pEntityLiving.isInWater()) {
-			pPoseStack.translate(0.1F, 0.1F, -0.1F);
-			pPoseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+	@Override
+	protected void setupRotations(LampreyEntity entity, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) {
+		super.setupRotations(entity, poseStack, bob, yBodyRot, partialTick, scale);
+		float f = 4.3F * Mth.sin(0.6F * (entity.tickCount + partialTick));
+		poseStack.mulPose(Axis.YP.rotationDegrees(f));
+		if (!entity.isInWater()) {
+			poseStack.translate(0.1F, 0.1F, -0.1F);
+			poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
 		}
 
 	}

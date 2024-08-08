@@ -1,11 +1,11 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import com.tterrag.registrate.providers.ProviderType;
+import dev.xkmc.l2core.init.L2TagGen;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
-import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.FermentationTankBlockEntity;
@@ -21,17 +21,13 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
-import net.minecraft.Util;
-import net.minecraft.core.Position;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -42,8 +38,11 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
 
 @Mod(YoukaisHomecoming.MODID)
 @EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -62,8 +61,8 @@ public class YoukaisHomecoming {
 			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
 					e -> e.icon(YHItems.OOLONG_TEA_BAG::asStack));
 
-	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
-	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
+	public static final RecipeBookType MOKA = Enum.valueOf(RecipeBookType.class, "MOKA");
+	public static final RecipeBookType KETTLE = Enum.valueOf(RecipeBookType.class, "KETTLE");
 
 	public YoukaisHomecoming() {
 		YHItems.register();
@@ -71,7 +70,6 @@ public class YoukaisHomecoming {
 		YHEffects.register();
 		YHEntities.register();
 		YHGLMProvider.register();
-		YHBlocks.YHCriteriaTriggers.register();
 		YHModConfig.init();
 	}
 
@@ -92,11 +90,7 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-
-			YHEffects.registerBrewingRecipe();
-
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
-
 		});
 	}
 
@@ -106,25 +100,25 @@ public class YoukaisHomecoming {
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
-		REGISTRATE.addDataGenerator(YHTagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, YHAdvGen::genAdv);
 		REGISTRATE.addDataGenerator(ProviderType.DATA_MAP, YHCrops::registerComposters);
+		var init = REGISTRATE.getDataGenInitializer();
+		init.add(Registries.CONFIGURED_FEATURE, ctx -> Arrays.stream(YHCrops.values()).forEach(e -> e.registerConfigs(ctx)));
+		init.add(Registries.PLACED_FEATURE, ctx -> Arrays.stream(YHCrops.values()).forEach(e -> e.registerPlacements(ctx)));
+		init.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, YHDynamicGen::registerBiomeModifiers);
 
 		boolean server = event.includeServer();
 		var gen = event.getGenerator();
 		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		gen.addProvider(server, new YHConfigGen(gen));
-		//var reg = new YHDatapackRegistriesGen(output, pvd);
-		//gen.addProvider(server, reg);
+		gen.addProvider(server, new YHConfigGen(gen, pvd));
 		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
 		gen.addProvider(server, new YHGLMProvider(output, pvd));
-		//gen.addProvider(server, new SlotGen(gen));
-		//new YHDamageTypes(output, pvd, helper).generate(server, gen);
 	}
 
 	@SubscribeEvent
