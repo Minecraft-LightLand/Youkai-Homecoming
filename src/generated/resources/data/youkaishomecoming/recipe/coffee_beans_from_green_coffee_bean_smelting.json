@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaishomecoming:green_coffee_bean"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:coffee_beans"
+  }
+}

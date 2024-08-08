@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:dark_oak_planks"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:dark_oak_handrail"
+  }
+}

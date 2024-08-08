@@ -7,9 +7,9 @@ import java.util.function.Supplier;
 public class YHRecipeCategories {
 
 	public static final RecipeBookCategories MOKA =
-			Enum.valueOf(RecipeBookCategories.class, "MOKA");
+			Enum.valueOf(RecipeBookCategories.class, "YOUKAISHOMECOMING_MOKA");
 
 	public static final RecipeBookCategories KETTLE =
-			Enum.valueOf(RecipeBookCategories.class, "KETTLE");
+			Enum.valueOf(RecipeBookCategories.class, "YOUKAISHOMECOMING_KETTLE");
 
 }

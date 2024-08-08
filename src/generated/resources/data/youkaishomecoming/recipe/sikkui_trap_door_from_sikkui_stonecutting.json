@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "youkaishomecoming:sikkui"
+  },
+  "result": {
+    "count": 6,
+    "id": "youkaishomecoming:sikkui_trap_door"
+  }
+}

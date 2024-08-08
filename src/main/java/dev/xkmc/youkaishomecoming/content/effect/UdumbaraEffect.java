@@ -20,7 +20,7 @@ public class UdumbaraEffect extends MobEffect {
 			e.moveTo(e.getX(), e.level().getMaxBuildHeight(), e.getZ());
 			e.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 6000));
 		}
-		if (e.tickCount % YHModConfig.COMMON.udumbaraHealingPeriod.get() == 0 &&
+		if (e.tickCount % YHModConfig.SERVER.udumbaraHealingPeriod.get() == 0 &&
 				e.level().isNight() &&
 				(e.level().canSeeSky(e.blockPosition().above()) || hasLantern(e))) {
 			e.heal(1 << lv);

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:bamboo_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:stripped_bamboo_block"
+    }
+  },
+  "pattern": [
+    "WWW",
+    " S ",
+    " P "
+  ],
+  "result": {
+    "count": 4,
+    "id": "youkaishomecoming:bamboo_dining_table"
+  }
+}

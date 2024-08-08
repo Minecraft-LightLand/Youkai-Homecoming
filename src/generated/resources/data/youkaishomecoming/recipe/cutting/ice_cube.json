@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 8,
+        "id": "youkaishomecoming:ice_cube"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "minecraft:pickaxes"
+  }
+}

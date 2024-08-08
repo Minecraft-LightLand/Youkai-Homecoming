@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:oily_bean_curd_from_tofu_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tofu": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:tofu"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tofu"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:oily_bean_curd_from_tofu_smoking"
+    ]
+  }
+}

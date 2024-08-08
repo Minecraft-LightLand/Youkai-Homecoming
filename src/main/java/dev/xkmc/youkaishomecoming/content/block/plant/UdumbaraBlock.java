@@ -73,7 +73,7 @@ public class UdumbaraBlock extends YHCropBlock {
 					level.setBlock(pos, getStateForAge(i + 1), 2);
 					CommonHooks.fireCropGrowPost(level, pos, state);
 					if (i + 1 == getMaxAge())
-						level.scheduleTick(pos, this, YHModConfig.COMMON.udumbaraDuration.get());
+						level.scheduleTick(pos, this, YHModConfig.SERVER.udumbaraDuration.get());
 				}
 			}
 		} else if (level.isDay() && level.canSeeSky(pos)) {

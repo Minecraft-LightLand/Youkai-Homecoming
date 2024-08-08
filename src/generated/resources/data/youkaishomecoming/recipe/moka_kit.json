@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "D": {
+      "item": "minecraft:deepslate"
+    },
+    "E": {
+      "item": "minecraft:terracotta"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "I I",
+    "EDE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:moka_kit"
+  }
+}

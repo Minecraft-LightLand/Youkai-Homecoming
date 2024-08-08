@@ -24,7 +24,10 @@ public class YHEntities {
 				.entity("lamprey", LampreyEntity::new, MobCategory.WATER_AMBIENT)
 				.properties(e -> e.sized(0.5F, 0.4F).clientTrackingRange(4))
 				.spawnPlacement(SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-						WaterAnimal::checkSurfaceWaterAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.OR)
+						(t, l, reason, pos, rand) ->
+								pos.getY() >= 50 && pos.getY() <= 64 &&
+										WaterAnimal.checkSurfaceWaterAnimalSpawnRules(t, l, reason, pos, rand),
+						RegisterSpawnPlacementsEvent.Operation.REPLACE)
 				.attributes(LampreyEntity::createAttributes)
 				.renderer(() -> LampreyRenderer::new)
 				.spawnEgg(-3814463, -6646165).tab(YoukaisHomecoming.TAB.key()).build()

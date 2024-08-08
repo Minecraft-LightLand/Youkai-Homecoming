@@ -1,0 +1,33 @@
+{
+  "parent": "youkaishomecoming:main/coffea",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:coffee_powder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.coffee_era.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:coffee_powder"
+    },
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.coffee_era.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

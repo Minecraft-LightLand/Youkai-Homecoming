@@ -217,8 +217,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 16) id = "food/mochi/";
-		if (ordinal() <= 10) id = "food/basic/";
+		if (ordinal() <= 14) id = "food/mochi/";
+		if (ordinal() <= 8) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		item = type.build(id, name, nutrition, sat, tags, effs);
 	}

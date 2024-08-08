@@ -1,8 +1,8 @@
 {
-  "type": "farmersdelight:add_loot_table",
+  "type": "l2core:add_table",
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/ancient_city_ice_box"
     }
   ],

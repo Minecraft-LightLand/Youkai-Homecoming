@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#youkaishomecoming:spawns/lamprey",
+  "spawners": {
+    "type": "youkaishomecoming:lamprey",
+    "maxCount": 5,
+    "minCount": 3,
+    "weight": 5
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_lamprey_fillet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:raw_lamprey_fillet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:roasted_lamprey_fillet_from_raw_lamprey_fillet_campfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_lamprey_fillet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:roasted_lamprey_fillet_from_raw_lamprey_fillet_campfire"
+    ]
+  }
+}

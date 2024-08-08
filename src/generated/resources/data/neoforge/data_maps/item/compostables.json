@@ -1,0 +1,72 @@
+{
+  "values": {
+    "youkaishomecoming:coffee_berries": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "youkaishomecoming:green_coffee_bean": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "youkaishomecoming:mandrake_flower": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "youkaishomecoming:mandrake_root": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "youkaishomecoming:pods": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "youkaishomecoming:redbean": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "youkaishomecoming:soybean": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "youkaishomecoming:tea_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "youkaishomecoming:tea_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "youkaishomecoming:udumbara_flower": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "youkaishomecoming:udumbara_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "youkaishomecoming:wild_coffea": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "youkaishomecoming:wild_mandrake": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "youkaishomecoming:wild_redbean": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "youkaishomecoming:wild_soybean": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "youkaishomecoming:wild_tea": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "youkaishomecoming:wild_udumbara": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    }
+  }
+}

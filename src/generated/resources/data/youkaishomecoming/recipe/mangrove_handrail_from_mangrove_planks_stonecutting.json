@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:mangrove_planks"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:mangrove_handrail"
+  }
+}

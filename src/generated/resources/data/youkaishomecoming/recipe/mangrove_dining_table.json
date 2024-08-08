@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:mangrove_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:stripped_mangrove_wood"
+    }
+  },
+  "pattern": [
+    "WWW",
+    " S ",
+    " P "
+  ],
+  "result": {
+    "count": 4,
+    "id": "youkaishomecoming:mangrove_dining_table"
+  }
+}

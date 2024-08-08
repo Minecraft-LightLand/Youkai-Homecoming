@@ -8,16 +8,9 @@
 	"AddItemModifierAccessor",
 	"AddLootTableModifierAccessor",
 	"CookingPotRecipeAccessor",
-	"CopyMealFunctionMixin",
 	"EntityMixin",
-	"FrogAttackablesSensorMixin",
 	"ItemAccessor",
-	"LivingEntityMixin",
-	"PersistentEntitySectionManagerAccessor",
 	"PhantomSpawnerMixin",
-	"RandomizableContainerBlockEntityMixin",
-	"ServerLevelAccessor",
-	"ShootTongueMixin",
 	"VillagerMixin"
   ],
   "client": [

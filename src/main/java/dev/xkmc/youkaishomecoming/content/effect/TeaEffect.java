@@ -30,7 +30,7 @@ public class TeaEffect extends EmptyEffect {
 
 	@Override
 	public boolean shouldApplyEffectTickThisTick(int tick, int lv) {
-		return tick % YHModConfig.COMMON.teaHealingPeriod.get() == 0;
+		return tick % YHModConfig.SERVER.teaHealingPeriod.get() == 0;
 	}
 
 }

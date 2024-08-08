@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "youkaishomecoming:textures/gui/advancements/backgrounds/main.png",
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.welcome_to_youkais_homecoming.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:oolong_tea_bag"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.welcome_to_youkais_homecoming.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

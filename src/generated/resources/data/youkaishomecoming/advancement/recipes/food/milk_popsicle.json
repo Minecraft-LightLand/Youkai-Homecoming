@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ice_cube": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:ice_cube"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:milk_popsicle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ice_cube"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:milk_popsicle"
+    ]
+  }
+}

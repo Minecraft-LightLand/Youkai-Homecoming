@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaishomecoming:green_tea_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:oolong_tea_leaves"
+  }
+}

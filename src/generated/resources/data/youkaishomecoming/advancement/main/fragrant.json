@@ -1,0 +1,31 @@
+{
+  "parent": "youkaishomecoming:main/coffee_era",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:espresso"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.fragrant.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:espresso"
+    },
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.fragrant.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

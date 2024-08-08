@@ -61,8 +61,8 @@ public class YoukaisHomecoming {
 			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
 					e -> e.icon(YHItems.OOLONG_TEA_BAG::asStack));
 
-	public static final RecipeBookType MOKA = Enum.valueOf(RecipeBookType.class, "MOKA");
-	public static final RecipeBookType KETTLE = Enum.valueOf(RecipeBookType.class, "KETTLE");
+	public static final RecipeBookType MOKA = Enum.valueOf(RecipeBookType.class, "YOUKAISHOMECOMING_MOKA");
+	public static final RecipeBookType KETTLE = Enum.valueOf(RecipeBookType.class, "YOUKAISHOMECOMING_KETTLE");
 
 	public YoukaisHomecoming() {
 		YHItems.register();
@@ -119,13 +119,6 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, new YHConfigGen(gen, pvd));
 		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
 		gen.addProvider(server, new YHGLMProvider(output, pvd));
-	}
-
-	@SubscribeEvent
-	public static void onSpawnPlacementRegister(RegisterSpawnPlacementsEvent event) {
-		event.register(YHEntities.LAMPREY.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos, random) -> pos.getY() >= 50 && pos.getY() <= 64,
-				RegisterSpawnPlacementsEvent.Operation.REPLACE);
 	}
 
 	public static ResourceLocation loc(String id) {

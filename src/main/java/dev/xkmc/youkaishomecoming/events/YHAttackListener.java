@@ -40,7 +40,7 @@ public class YHAttackListener implements AttackListener {
 				if (level.canSeeSky(e.blockPosition().above()) &&
 						level.getMoonBrightness() > 0.8f ||
 						UdumbaraEffect.hasLantern(e))
-					reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
+					reduction += YHModConfig.SERVER.udumbaraFullMoonReduction.get() << udu.getAmplifier();
 			}
 		}
 		if (reduction > 0) {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:warped_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:stripped_crimson_hyphae"
+    }
+  },
+  "pattern": [
+    "WWW",
+    " S ",
+    " P "
+  ],
+  "result": {
+    "count": 4,
+    "id": "youkaishomecoming:warped_dining_table"
+  }
+}

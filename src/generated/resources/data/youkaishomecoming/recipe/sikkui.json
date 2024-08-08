@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "minecraft:clay_ball"
+    },
+    "B": {
+      "item": "minecraft:bone_meal"
+    },
+    "C": {
+      "item": "farmersdelight:straw"
+    },
+    "D": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "DCD",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:sikkui"
+  }
+}

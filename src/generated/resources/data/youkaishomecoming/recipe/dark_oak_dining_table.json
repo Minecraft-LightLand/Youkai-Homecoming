@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:dark_oak_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:stripped_dark_oak_wood"
+    }
+  },
+  "pattern": [
+    "WWW",
+    " S ",
+    " P "
+  ],
+  "result": {
+    "count": 4,
+    "id": "youkaishomecoming:dark_oak_dining_table"
+  }
+}

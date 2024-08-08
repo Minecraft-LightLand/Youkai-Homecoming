@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "youkaishomecoming:tea_leaves"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "IWI",
+    "AIA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:kettle"
+  }
+}

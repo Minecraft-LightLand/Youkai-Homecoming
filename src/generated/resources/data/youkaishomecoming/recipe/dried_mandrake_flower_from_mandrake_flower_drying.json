@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaishomecoming:mandrake_flower"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:dried_mandrake_flower"
+  }
+}

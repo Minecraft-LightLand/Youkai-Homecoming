@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaishomecoming:green_tea_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:white_tea_leaves"
+  }
+}

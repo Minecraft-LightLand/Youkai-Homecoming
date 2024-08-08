@@ -1,0 +1,31 @@
+{
+  "parent": "youkaishomecoming:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": "#youkaishomecoming:dango"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.sweet.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:mochi"
+    },
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.sweet.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

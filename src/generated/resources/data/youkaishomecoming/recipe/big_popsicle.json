@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "youkaishomecoming:ice_cube"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " II",
+    "SII",
+    "TS "
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:big_popsicle"
+  }
+}

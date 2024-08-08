@@ -171,4 +171,5 @@ dependencies {
 
     implementation "curse.maven:farmers-delight-398521:5566383"
     implementation "curse.maven:better-advancements-272515:5511371"
+    implementation "dev.xkmc:cuisinedelight:1.2.1-slim"
 }

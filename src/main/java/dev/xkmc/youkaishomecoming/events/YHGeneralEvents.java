@@ -34,7 +34,7 @@ public class YHGeneralEvents {
 	public static void onHeal(LivingHealEvent event) {
 		float amount = event.getAmount();
 		if (event.getEntity().hasEffect(YHEffects.SMOOTHING)) {
-			amount *= YHModConfig.COMMON.smoothingHealingFactor.get();
+			amount *= YHModConfig.SERVER.smoothingHealingFactor.get();
 		}
 		event.setAmount(amount);
 	}

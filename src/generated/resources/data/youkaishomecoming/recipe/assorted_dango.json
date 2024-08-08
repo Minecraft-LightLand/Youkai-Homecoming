@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:mochi"
+    },
+    {
+      "item": "youkaishomecoming:matcha_mochi"
+    },
+    {
+      "item": "youkaishomecoming:sakura_mochi"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:assorted_dango"
+  }
+}

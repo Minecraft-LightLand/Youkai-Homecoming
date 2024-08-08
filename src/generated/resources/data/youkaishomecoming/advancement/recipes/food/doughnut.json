@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:doughnut"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wheat_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:wheat_dough"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wheat_dough"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:doughnut"
+    ]
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "parent": "youkaishomecoming:main/fragrant",
+  "criteria": {
+    "youkaishomecoming:affogato": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:affogato"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:americano": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:americano"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:cappuccino": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:cappuccino"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:con_panna": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:con_panna"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:espresso": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:espresso"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:latte": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:latte"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:macchiato": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:macchiato"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:mocha": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:mocha"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:ristretto": {
+      "conditions": {
+        "item": {
+          "items": "youkaishomecoming:ristretto"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.q_grader.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:espresso"
+    },
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.q_grader.title"
+    }
+  },
+  "requirements": [
+    [
+      "youkaishomecoming:espresso"
+    ],
+    [
+      "youkaishomecoming:americano"
+    ],
+    [
+      "youkaishomecoming:ristretto"
+    ],
+    [
+      "youkaishomecoming:latte"
+    ],
+    [
+      "youkaishomecoming:affogato"
+    ],
+    [
+      "youkaishomecoming:con_panna"
+    ],
+    [
+      "youkaishomecoming:cappuccino"
+    ],
+    [
+      "youkaishomecoming:macchiato"
+    ],
+    [
+      "youkaishomecoming:mocha"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

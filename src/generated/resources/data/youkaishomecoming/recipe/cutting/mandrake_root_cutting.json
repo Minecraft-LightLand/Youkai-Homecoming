@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:mandrake_root"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "youkaishomecoming:stripped_mandrake_root"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

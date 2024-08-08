@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "youkaishomecoming:ice_cube"
+    },
+    "M": {
+      "tag": "c:foods/milk"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " MM",
+    "SIM",
+    "TS "
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:milk_popsicle"
+  }
+}
