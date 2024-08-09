@@ -89,17 +89,18 @@ public class UdumbaraBlock extends YHCropBlock {
 		level.setBlock(pos, state.setValue(AGE, getMaxAge() - 1), 2);
 	}
 
-	public InteractionResult use(BlockState state, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+	@Override
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
 		if (state.getValue(AGE) < getMaxAge()) {
 			return InteractionResult.PASS;
 		} else {
-			popResource(pLevel, pPos, fruit.get().getDefaultInstance());
-			pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
-					1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
+			popResource(level, pos, fruit.get().getDefaultInstance());
+			level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
+					1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 			BlockState next = state.setValue(AGE, state.getValue(AGE) - 1);
-			pLevel.setBlock(pPos, next, 2);
-			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, next));
-			return InteractionResult.sidedSuccess(pLevel.isClientSide);
+			level.setBlock(pos, next, 2);
+			level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, next));
+			return InteractionResult.sidedSuccess(level.isClientSide);
 		}
 	}
 

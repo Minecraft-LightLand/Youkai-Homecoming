@@ -7,7 +7,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -70,25 +71,25 @@ public class YHCandleCakeBlock extends AbstractCandleBlock {
 		return SHAPE;
 	}
 
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		ItemStack itemstack = player.getItemInHand(hand);
-		if (!itemstack.is(Items.FLINT_AND_STEEL) && !itemstack.is(Items.FIRE_CHARGE)) {
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+		if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
 			if (candleHit(result) && player.getItemInHand(hand).isEmpty() && state.getValue(LIT)) {
 				extinguish(player, state, level, pos);
-				return InteractionResult.sidedSuccess(level.isClientSide);
+				return ItemInteractionResult.sidedSuccess(level.isClientSide);
 			}
-			InteractionResult interactionresult = baseCake.get().eatSlice(level, pos, baseCake.get().defaultBlockState(), player);
-			if (interactionresult.consumesAction()) {
+			var use = baseCake.get().eatSlice(level, pos, baseCake.get().defaultBlockState(), player);
+			if (use.consumesAction()) {
 				dropResources(state, level, pos);
 			}
 
-			return interactionresult;
+			return use;
 		}
-
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	@Override
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return new ItemStack(this.baseCake.get());
 	}
 

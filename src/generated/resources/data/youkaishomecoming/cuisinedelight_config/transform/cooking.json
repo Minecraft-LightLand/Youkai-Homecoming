@@ -1,0 +1,13 @@
+{
+  "fluidTransform": {},
+  "itemTransform": {
+    "youkaishomecoming:raw_lamprey": {
+      "next": "youkaishomecoming:roasted_lamprey",
+      "stage": "COOKED"
+    },
+    "youkaishomecoming:raw_lamprey_fillet": {
+      "next": "youkaishomecoming:roasted_lamprey_fillet",
+      "stage": "COOKED"
+    }
+  }
+}

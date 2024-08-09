@@ -8,13 +8,14 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.List;
 import java.util.Locale;
 
-public enum YHFood {
+public enum YHFood implements ItemLike {
 
 	// basic
 	RAW_LAMPREY(FoodType.MEAT, 2, 0.3f,
@@ -247,6 +248,11 @@ public enum YHFood {
 
 	public static void register() {
 
+	}
+
+	@Override
+	public Item asItem() {
+		return item.asItem();
 	}
 
 }

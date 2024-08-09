@@ -63,8 +63,6 @@ public class YHItems {
 	public static final ItemEntry<FairyIceItem> FAIRY_ICE_CRYSTAL;
 	public static final ItemEntry<FrozenFrogItem> FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 
-	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
-	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
 	public static final CakeEntry RED_VELVET;
@@ -134,18 +132,6 @@ public class YHItems {
 
 		// feasts
 		{
-			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
-							new SurpriseChestBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_WOOL)))
-					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
-					.blockstate(SurpriseChestBlock::buildModel)
-					.register();
-
-			SURP_FEAST = YoukaisHomecoming.REGISTRATE.block("heart_throbbing_surprise", p ->
-							new SurpriseFeastBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_WOOL),
-									YHFood.BOWL_OF_HEART_THROBBING_SURPRISE.item))
-					.blockstate(SurpriseFeastBlock::buildModel)
-					.loot(SurpriseFeastBlock::builtLoot)
-					.register();
 
 			RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName())))

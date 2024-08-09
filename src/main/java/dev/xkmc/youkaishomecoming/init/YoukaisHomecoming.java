@@ -78,6 +78,8 @@ public class YoukaisHomecoming {
 		for (var e : YHSake.values()) {
 			event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new SakeFluidWrapper(stack), e.item().get());
 		}
+		event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new SakeFluidWrapper(stack), YHItems.SOY_SAUCE_BOTTLE.item().get());
+
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.KETTLE_BE.get(), BasePotBlockEntity::getItemHandler);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::getItemHandler);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, YHBlocks.KETTLE_BE.get(), KettleBlockEntity::getFluidHandler);

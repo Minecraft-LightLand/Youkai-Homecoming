@@ -97,12 +97,12 @@ public class FluidRenderer {
 			float u1;
 			float u2;
 			if (dir != Direction.NORTH && dir != Direction.EAST) {
-				u1 = texture.getU(((x1 - f) * 16.0F * textureScale));
-				u2 = texture.getU(((x2 - f) * 16.0F * textureScale));
+				u1 = texture.getU(((x1 - f) * textureScale));
+				u2 = texture.getU(((x2 - f) * textureScale));
 			} else {
 				f = (float) Mth.ceil(x2);
-				u1 = texture.getU(((f - x2) * 16.0F * textureScale));
-				u2 = texture.getU(((f - x1) * 16.0F * textureScale));
+				u1 = texture.getU(((f - x2) * textureScale));
+				u2 = texture.getU(((f - x1) * textureScale));
 			}
 
 			u1 = Mth.lerp(shrink, u1, centerU);
@@ -114,12 +114,12 @@ public class FluidRenderer {
 				float v1;
 				float v2;
 				if (dir == Direction.UP) {
-					v1 = texture.getV(((y1 - f) * 16.0F * textureScale));
-					v2 = texture.getV(((y2 - f) * 16.0F * textureScale));
+					v1 = texture.getV(((y1 - f) * textureScale));
+					v2 = texture.getV(((y2 - f) * textureScale));
 				} else {
 					f = (float) Mth.ceil(y2);
-					v1 = texture.getV(((f - y2) * 16.0F * textureScale));
-					v2 = texture.getV(((f - y1) * 16.0F * textureScale));
+					v1 = texture.getV(((f - y2) * textureScale));
+					v2 = texture.getV(((f - y1) * textureScale));
 				}
 
 				v1 = Mth.lerp(shrink, v1, centerV);

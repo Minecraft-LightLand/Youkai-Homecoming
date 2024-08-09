@@ -9,7 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -44,20 +44,19 @@ public class DryingRackBlock extends BaseEntityBlock {
 		super(pProperties);
 	}
 
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
-								 InteractionHand hand, BlockHitResult hit) {
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 		if (level.getBlockEntity(pos) instanceof DryingRackBlockEntity be) {
-			ItemStack stack = player.getItemInHand(hand);
 			var opt = be.getCookableRecipe(stack);
 			if (opt.isPresent()) {
 				if (!level.isClientSide && be.placeFood(player.getAbilities().instabuild ?
 						stack.copy() : stack, opt.get().value().getCookingTime())) {
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				}
-				return InteractionResult.CONSUME;
+				return ItemInteractionResult.CONSUME;
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	public RenderShape getRenderShape(BlockState pState) {
@@ -93,10 +92,12 @@ public class DryingRackBlock extends BaseEntityBlock {
 
 	}
 
+	@Deprecated
 	public boolean hasAnalogOutputSignal(BlockState state) {
 		return true;
 	}
 
+	@Deprecated
 	public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
 		if (level.getBlockEntity(pos) instanceof DryingRackBlockEntity moka) {
 			ItemStackHandler inventory = moka.getInventory();
@@ -115,10 +116,12 @@ public class DryingRackBlock extends BaseEntityBlock {
 		return level.isClientSide ? null : createTickerHelper(blockEntity, YHBlocks.RACK_BE.get(), DryingRackBlockEntity::cookTick);
 	}
 
+	@Deprecated
 	public BlockState rotate(BlockState pState, Rotation pRot) {
 		return pState.setValue(FACING, pRot.rotate(pState.getValue(FACING)));
 	}
 
+	@Deprecated
 	public BlockState mirror(BlockState pState, Mirror pMirror) {
 		return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
 	}

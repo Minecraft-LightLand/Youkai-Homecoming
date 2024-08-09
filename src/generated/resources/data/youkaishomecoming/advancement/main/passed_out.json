@@ -1,0 +1,35 @@
+{
+  "parent": "youkaishomecoming:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "effects": {
+          "youkaishomecoming:drunk": {
+            "amplifier": {
+              "min": 4
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.passed_out.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:daiginjo"
+    },
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.passed_out.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

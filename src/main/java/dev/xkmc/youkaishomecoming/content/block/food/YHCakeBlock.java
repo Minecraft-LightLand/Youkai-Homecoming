@@ -9,6 +9,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,8 +34,18 @@ public class YHCakeBlock extends CakeBlock {
 		this.food = food;
 	}
 
-	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(handIn);
+	@Override
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		if (level.isClientSide) {
+			if (this.eatSlice(level, pos, state, player).consumesAction()) {
+				return InteractionResult.SUCCESS;
+			}
+		}
+		return this.eatSlice(level, pos, state, player).result();
+	}
+
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 		Item item = stack.getItem();
 		if (stack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
 			Block block = Block.byItem(item);
@@ -42,31 +53,19 @@ public class YHCakeBlock extends CakeBlock {
 				if (!player.isCreative()) {
 					stack.shrink(1);
 				}
-				worldIn.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-				worldIn.setBlockAndUpdate(pos, YHCandleCakeBlock.byCandle(block, this));
-				worldIn.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+				level.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+				level.setBlockAndUpdate(pos, YHCandleCakeBlock.byCandle(block, this));
+				level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 				player.awardStat(Stats.ITEM_USED.get(item));
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-
-		if (worldIn.isClientSide) {
-			ItemStack itemstack = player.getItemInHand(handIn);
-			if (this.eatSlice(worldIn, pos, state, player).consumesAction()) {
-				return InteractionResult.SUCCESS;
-			}
-
-			if (itemstack.isEmpty()) {
-				return InteractionResult.CONSUME;
-			}
-		}
-
-		return this.eatSlice(worldIn, pos, state, player);
+		return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
 	}
 
-	public InteractionResult eatSlice(Level level, BlockPos pos, BlockState state, Player player) {
+	public ItemInteractionResult eatSlice(Level level, BlockPos pos, BlockState state, Player player) {
 		if (!player.canEat(false)) {
-			return InteractionResult.PASS;
+			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		} else {
 			player.awardStat(Stats.EAT_CAKE_SLICE);
 			if (!level.isClientSide()) {
@@ -84,7 +83,7 @@ public class YHCakeBlock extends CakeBlock {
 				level.removeBlock(pos, false);
 				level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
 			}
-			return InteractionResult.SUCCESS;
+			return ItemInteractionResult.SUCCESS;
 		}
 	}
 

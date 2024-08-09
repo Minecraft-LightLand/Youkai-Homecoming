@@ -42,7 +42,7 @@ public abstract class BasePotScreen<T extends BasePotMenu<R>, R extends BasePotR
 	public void init() {
 		super.init();
 		widthTooNarrow = width < 379;
-		titleLabelX = 28;
+		titleLabelX = 8;
 		book.init(width, height, minecraft, widthTooNarrow, menu);
 		leftPos = book.updateScreenPosition(width, imageWidth);
 		if (Configuration.ENABLE_RECIPE_BOOK_COOKING_POT.get()) {
@@ -83,7 +83,7 @@ public abstract class BasePotScreen<T extends BasePotMenu<R>, R extends BasePotR
 	private void renderHeatIndicatorTooltip(GuiGraphics gui, int mouseX, int mouseY) {
 		if (isHovering(getHeatIcon().x, getHeatIcon().y, getHeatIcon().width, getHeatIcon().height, mouseX, mouseY)) {
 			String key = "container.cooking_pot." + (menu.isHeated() ? "heated" : "not_heated");
-			gui.renderTooltip(font, TextUtils.getTranslation(key, menu), mouseX, mouseY);
+			gui.renderTooltip(font, TextUtils.getTranslation(key), mouseX, mouseY);
 		}
 
 	}
@@ -106,7 +106,7 @@ public abstract class BasePotScreen<T extends BasePotMenu<R>, R extends BasePotR
 	}
 
 	protected void renderLabels(GuiGraphics gui, int mouseX, int mouseY) {
-		super.renderLabels(gui, mouseX, mouseY);
+		gui.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
 		gui.drawString(font, playerInventoryTitle, 8, imageHeight - 96 + 2, 4210752, false);
 	}
 

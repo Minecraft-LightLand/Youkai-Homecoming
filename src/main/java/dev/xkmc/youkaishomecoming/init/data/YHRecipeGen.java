@@ -401,6 +401,16 @@ public class YHRecipeGen {
 					.addIngredient(Items.SUGAR)
 					.build(pvd);
 
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SURP_CHEST.get(), 1, 200, 0.1f, Items.CHEST)
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+					.addIngredient(Items.RED_MUSHROOM)
+					.addIngredient(Items.RED_MUSHROOM)
+					.addIngredient(Items.HONEY_BOTTLE)
+					.addIngredient(YHItems.CREAM.get())
+					.addIngredient(YHCrops.UDUMBARA.getFruits())
+					.addIngredient(Items.PURPLE_BANNER)
+					.build(pvd);
+
 
 		}
 
@@ -710,20 +720,20 @@ public class YHRecipeGen {
 					.addIngredient(PotionIngredient.of(Potions.WATER))
 					.build(coffee);
 
-			coffee(coffee, YHCoffee.RISTRETTO, e -> e.addIngredient(YHItems.COFFEE_POWDER));
-			coffee(coffee, YHCoffee.AMERICANO, e -> e.addIngredient(PotionIngredient.of(Potions.WATER)));
-			coffee(coffee, YHCoffee.LATTE, e -> e.addIngredient(CommonTags.FOODS_MILK));
-			coffee(coffee, YHCoffee.MOCHA, e -> e
+			coffee(coffee, YHCoffee.RISTRETTO, 1, e -> e.addIngredient(YHItems.COFFEE_POWDER));
+			coffee(coffee, YHCoffee.AMERICANO, 2, e -> e.addIngredient(PotionIngredient.of(Potions.WATER)));
+			coffee(coffee, YHCoffee.LATTE, 2, e -> e.addIngredient(CommonTags.FOODS_MILK));
+			coffee(coffee, YHCoffee.MOCHA, 2, e -> e
 					.addIngredient(CommonTags.FOODS_MILK)
 					.addIngredient(Items.COCOA_BEANS));
-			coffee(coffee, YHCoffee.CAPPUCCINO, e -> e
+			coffee(coffee, YHCoffee.CAPPUCCINO, 2, e -> e
 					.addIngredient(CommonTags.FOODS_MILK)
 					.addIngredient(YHItems.CREAM));
-			coffee(coffee, YHCoffee.MACCHIATO, e -> e.addIngredient(YHItems.CREAM));
-			coffee(coffee, YHCoffee.CON_PANNA, e -> e
+			coffee(coffee, YHCoffee.MACCHIATO, 2, e -> e.addIngredient(YHItems.CREAM));
+			coffee(coffee, YHCoffee.CON_PANNA, 1, e -> e
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.addIngredient(YHItems.CREAM));
-			coffee(coffee, YHCoffee.AFFOGATO, e -> e
+			coffee(coffee, YHCoffee.AFFOGATO, 2, e -> e
 					.addIngredient(YHItems.ICE_CUBE)
 					.addIngredient(YHItems.CREAM));
 
@@ -822,15 +832,15 @@ public class YHRecipeGen {
 				.build(pvd, in.getId().withSuffix("_cutting"));
 	}
 
-	private static void coffee(RecipeOutput cons, YHCoffee coffee, UnaryOperator<CookingPotRecipeBuilder> func) {
-		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+	private static void coffee(RecipeOutput cons, YHCoffee coffee, int count, UnaryOperator<CookingPotRecipeBuilder> func) {
+		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), count, 200, 0.1f, Items.GLASS_BOTTLE)
 						.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 						.unlockedByAnyIngredient(YHItems.COFFEE_POWDER)
 						.addIngredient(YHItems.COFFEE_POWDER)
 						.addIngredient(PotionIngredient.of(Potions.WATER)))
 				.build(cons);
 
-		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), count, 200, 0.1f, Items.GLASS_BOTTLE)
 						.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 						.unlockedByAnyIngredient(YHCoffee.ESPRESSO.item)
 						.addIngredient(YHCoffee.ESPRESSO.item))

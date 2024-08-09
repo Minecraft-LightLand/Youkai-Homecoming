@@ -8,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -16,7 +15,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.block.FeastBlock;
 
 import java.util.function.Supplier;
@@ -25,7 +24,7 @@ public class SurpriseFeastBlock extends FeastBlock {
 
 	protected static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 10.0, 15.0);
 
-	public SurpriseFeastBlock(BlockBehaviour.Properties properties, Supplier<Item> servingItem) {
+	public SurpriseFeastBlock(Properties properties, Supplier<Item> servingItem) {
 		super(properties, servingItem, true);
 	}
 

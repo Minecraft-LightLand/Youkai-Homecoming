@@ -113,7 +113,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, UseWi
 			}
 			hasFluid = true;
 		}
-		if (!hasFluid || player.getItemInHand(hand).getItem() instanceof SakeBottleItem) {
+		if (!hasFluid || stack.getItem() instanceof SakeBottleItem) {
 			var cap = stack.getCapability(Capabilities.FluidHandler.ITEM);
 			if (cap != null) {
 				if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {

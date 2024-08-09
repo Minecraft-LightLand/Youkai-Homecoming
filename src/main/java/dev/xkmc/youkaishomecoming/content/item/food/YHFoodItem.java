@@ -54,25 +54,6 @@ public class YHFoodItem extends Item {
 		}
 	}
 
-	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
-		ItemStack itemStack = getCraftingRemainingItem(stack);
-		super.finishUsingItem(stack, worldIn, consumer);
-		if (itemStack.isEmpty()) {
-			return stack;
-		}
-		if (stack.isEmpty()) {
-			return itemStack;
-		}
-		if (consumer instanceof Player player && !player.getAbilities().instabuild) {
-			if (!player.getInventory().add(itemStack)) {
-				player.drop(itemStack, false);
-			}
-		}
-
-		return stack;
-	}
-
 	private final UseAnim anim;
 
 	public YHFoodItem(Properties props, UseAnim anim) {

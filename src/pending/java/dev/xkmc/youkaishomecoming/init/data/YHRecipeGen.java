@@ -112,16 +112,6 @@ unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.RED_VELVET.b
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHItems.FLESH_FEAST.getRegisteredName());
 
-
-		CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SURP_CHEST.get(), 1, 200, 0.1f, Items.CHEST)
-		.addIngredient(Items.RED_MUSHROOM)
-					.addIngredient(Items.RED_MUSHROOM)
-					.addIngredient(Items.HONEY_BOTTLE)
-					.addIngredient(YHItems.CREAM.get())
-		.addIngredient(YHCrops.UDUMBARA.getFruits())
-		.addIngredient(Items.PURPLE_BANNER)
-					.build(pvd, YHItems.SURP_CHEST.getRegisteredName());
-
 		CookingPotRecipeBuilder.cookingPotRecipe(YHDish.BLOOD_CURD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 		.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(YHItems.BLOOD_BOTTLE.item)

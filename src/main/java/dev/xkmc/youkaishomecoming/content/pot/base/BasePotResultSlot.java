@@ -10,11 +10,11 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public class BasePotResultSlot extends SlotItemHandler {
-	public final BasePotBlockEntity tileEntity;
+	public final BasePotBlockEntity<?> tileEntity;
 	private final Player player;
 	private int removeCount;
 
-	public BasePotResultSlot(Player player, BasePotBlockEntity tile, IItemHandler inventoryIn, int index, int xPosition, int yPosition) {
+	public BasePotResultSlot(Player player, BasePotBlockEntity<?> tile, IItemHandler inventoryIn, int index, int xPosition, int yPosition) {
 		super(inventoryIn, index, xPosition, yPosition);
 		this.tileEntity = tile;
 		this.player = player;

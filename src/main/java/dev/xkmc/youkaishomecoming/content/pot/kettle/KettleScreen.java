@@ -35,6 +35,10 @@ public class KettleScreen extends BasePotScreen<KettleMenu, KettleRecipe> {
 		return PROGRESS_ARROW;
 	}
 
+	protected void renderLabels(GuiGraphics gui, int mouseX, int mouseY) {
+		gui.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
+	}
+
 	protected void renderBg(GuiGraphics gui, float partialTicks, int mouseX, int mouseY) {
 		super.renderBg(gui, partialTicks, mouseX, mouseY);
 		if (minecraft != null) {

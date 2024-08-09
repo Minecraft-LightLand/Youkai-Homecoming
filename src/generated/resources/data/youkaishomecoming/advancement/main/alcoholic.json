@@ -1,0 +1,31 @@
+{
+  "parent": "youkaishomecoming:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "effects": {
+          "youkaishomecoming:drunk": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaishomecoming.main.alcoholic.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaishomecoming:fermentation_tank"
+    },
+    "title": {
+      "translate": "advancements.youkaishomecoming.main.alcoholic.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
