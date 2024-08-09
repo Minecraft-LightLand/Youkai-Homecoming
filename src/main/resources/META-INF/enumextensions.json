@@ -17,7 +17,7 @@
 	  "name": "YOUKAISHOMECOMING_MOKA",
 	  "constructor": "(Ljava/util/function/Supplier;)V",
 	  "parameters": {
-		"class": "dev/xkmc/youkaishomecoming/content/client/YHRecipeCategories",
+		"class": "dev/xkmc/youkaishomecoming/content/client/YHRCParameters",
 		"field": "MOKA_ICON"
 	  }
 	},
@@ -26,7 +26,7 @@
 	  "name": "YOUKAISHOMECOMING_KETTLE",
 	  "constructor": "(Ljava/util/function/Supplier;)V",
 	  "parameters": {
-		"class": "dev/xkmc/youkaishomecoming/content/client/YHRecipeCategories",
+		"class": "dev/xkmc/youkaishomecoming/content/client/YHRCParameters",
 		"field": "KETTLE_ICON"
 	  }
 	}

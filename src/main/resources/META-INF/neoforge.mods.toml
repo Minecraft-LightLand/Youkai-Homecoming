@@ -28,3 +28,9 @@ mandatory=true
 versionRange="${project.farmersdelight_version_range}"
 ordering="AFTER"
 side="BOTH"
+[[dependencies.${ mod_id }]]
+modId = "l2library"
+type = "required"
+versionRange = "${project.l2library_version_range}"
+ordering = "NONE"
+side = "BOTH"

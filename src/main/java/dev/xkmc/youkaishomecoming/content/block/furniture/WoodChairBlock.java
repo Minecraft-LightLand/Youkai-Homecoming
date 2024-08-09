@@ -32,26 +32,26 @@ public class WoodChairBlock extends Block {
 		return SHAPE;
 	}
 
-
-	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	@Override
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
 		if (player.isShiftKeyDown()) {
 			return InteractionResult.PASS;
 		}
-		List<ChairEntity> seats = world.getEntitiesOfClass(ChairEntity.class, new AABB(pos));
+		List<ChairEntity> seats = level.getEntitiesOfClass(ChairEntity.class, new AABB(pos));
 		if (!seats.isEmpty()) {
-			ChairEntity seat = seats.get(0);
+			ChairEntity seat = seats.getFirst();
 			List<Entity> passengers = seat.getPassengers();
-			if (!passengers.isEmpty() && passengers.get(0) instanceof Player) {
+			if (!passengers.isEmpty() && passengers.getFirst() instanceof Player) {
 				return InteractionResult.PASS;
 			}
-			if (!world.isClientSide) {
+			if (!level.isClientSide) {
 				seat.ejectPassengers();
 				player.startRiding(seat);
 			}
 			return InteractionResult.SUCCESS;
 		}
-		if (!world.isClientSide) {
-			sitDown(world, pos, player);
+		if (!level.isClientSide) {
+			sitDown(level, pos, player);
 		}
 		return InteractionResult.SUCCESS;
 	}
