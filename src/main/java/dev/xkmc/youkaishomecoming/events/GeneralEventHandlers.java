@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.events;
 import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TraceableEntity;
@@ -11,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerSpawnPhantomsEvent;
 
 @EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class GeneralEventHandlers {
@@ -28,9 +28,11 @@ public class GeneralEventHandlers {
 		}
 	}
 
-
-	public static boolean preventPhantomSpawn(ServerPlayer player) {
-		return player.hasEffect(YHEffects.SOBER);
+	@SubscribeEvent
+	public static void onPhantomSpawn(PlayerSpawnPhantomsEvent event) {
+		if (event.getEntity().hasEffect(YHEffects.SOBER)) {
+			event.setResult(PlayerSpawnPhantomsEvent.Result.DENY);
+		}
 	}
 
 	public static boolean supressVibration(Entity self) {

@@ -10,7 +10,6 @@
 	"CookingPotRecipeAccessor",
 	"EntityMixin",
 	"ItemAccessor",
-	"PhantomSpawnerMixin",
 	"VillagerMixin"
   ],
   "client": [
