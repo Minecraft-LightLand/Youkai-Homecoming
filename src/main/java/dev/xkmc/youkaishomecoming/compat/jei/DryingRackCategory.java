@@ -41,8 +41,6 @@ public class DryingRackCategory extends AbstractCookingCategory<DryingRackRecipe
 	@Override
 	public void draw(RecipeHolder<DryingRackRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		animatedFlame.draw(guiGraphics, 1, 20);
-		IDrawableAnimated arrow = getArrow(recipe);
-		arrow.draw(guiGraphics, 24, 8);
 		drawCookTime(recipe, guiGraphics, 35);
 	}
 

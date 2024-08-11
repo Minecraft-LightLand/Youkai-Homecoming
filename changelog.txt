@@ -1,3 +1,10 @@
+3.0.0+6
+- Add Thirst compat back
+- Fix JEI compat with newest version of JEI
+- Fix sikkui block sounds
+- Fix warped wood chair recipe
+- Add Surprise Feast back
+
 3.0.0
 - Remove characters and related food
 - Remove flesh, blood and related food

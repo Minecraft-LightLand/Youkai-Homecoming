@@ -345,7 +345,7 @@ public class YHBlocks {
 
 		public SikkuiSet(String id, BlockBehaviour.Properties prop) {
 			var set = new BlockSetType(id, true, true, true,
-					BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.GRASS,
+					BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.GRAVEL,
 					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
 					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
 					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
