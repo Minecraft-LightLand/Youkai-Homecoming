@@ -1,4 +1,8 @@
+2.2.10
+- Fix JEI compatibility
+
 2.2.9
+- Switch to new Thirst compat system
 - Add a lot of rumia and reimu spawn / entity config entries
 - Add danmaku, laser, spell cooldown configs
 - Add laser duration config
