@@ -85,7 +85,8 @@ public class UdumbaraBlock extends YHCropBlock {
 
 	@Override
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		level.setBlock(pos, state.setValue(AGE, getMaxAge() - 1), 2);
+		if (state.is(this) && state.getValue(AGE) == getMaxAge())
+			level.setBlock(pos, state.setValue(AGE, getMaxAge() - 1), 2);
 	}
 
 	public InteractionResult use(BlockState state, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {

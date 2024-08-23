@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-14T16:02:01.632744	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-08-16T18:29:53.027772	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1675,7 +1675,7 @@ ee4192d5a6d1532b103f4ebbee7c26512616dff0 data/youkaishomecoming/recipes/pink_but
 7cc3bf9f45789647bb06974fbbc6c466a4b988e6 data/youkaishomecoming/recipes/pink_laser.json
 c6e60f2b6efd14660a18ac7ff3bdf05f19b228f2 data/youkaishomecoming/recipes/pink_mentos_danmaku.json
 97fe5ff5497ead0ca523f15f2902a051eafeb8c5 data/youkaishomecoming/recipes/pods_cutting.json
-45664453ca1020de7a9612e94c7e7aa8e00d0e8c data/youkaishomecoming/recipes/poor_god_soup.json
+b4e70906cd710cb26bc51c173d9b6024d59f8a6e data/youkaishomecoming/recipes/poor_god_soup.json
 add654637b7db4c8bebd26c06272507ce2c47f9b data/youkaishomecoming/recipes/pork_rice_ball.json
 09bfef684a88a1a75bea13e809f1e285d8d68da4 data/youkaishomecoming/recipes/power_soup.json
 10637b2c7b98a3e41723ed5e63fd0e6422b3ed92 data/youkaishomecoming/recipes/purple_ball_danmaku.json

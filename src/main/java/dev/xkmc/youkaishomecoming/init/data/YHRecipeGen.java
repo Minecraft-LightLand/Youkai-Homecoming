@@ -539,6 +539,7 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.SEEDS)
 					.addIngredient(ForgeTags.CROPS)
 					.addIngredient(ItemTags.FLOWERS)
+					.addIngredient(Items.BONE_MEAL)
 					.build(pvd, YHFood.POOR_GOD_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POWER_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)

@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 import dev.xkmc.l2library.capability.conditionals.*;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.world.entity.player.Player;
 
 @SerialClass
@@ -26,7 +27,8 @@ public class FlyingToken extends ConditionalToken {
 	private static final TokenHolder HOLDER = new TokenHolder();
 
 	public static void tickFlying(Player player) {
-		ConditionalData.HOLDER.get(player).getOrCreateData(HOLDER, HOLDER).update(player);
+		if (YHModConfig.COMMON.reimuHairbandFlightEnable.get())
+			ConditionalData.HOLDER.get(player).getOrCreateData(HOLDER, HOLDER).update(player);
 	}
 
 	@SerialClass.SerialField
@@ -40,7 +42,7 @@ public class FlyingToken extends ConditionalToken {
 	public boolean tick(Player player) {
 		life--;
 		if (life > 0) {
-			if (!player.getAbilities().mayfly) {
+			if (!player.level().isClientSide() && !player.getAbilities().mayfly) {
 				player.getAbilities().mayfly = true;
 				player.onUpdateAbilities();
 			}
@@ -49,7 +51,7 @@ public class FlyingToken extends ConditionalToken {
 			if (player.getAbilities().mayfly || player.getAbilities().flying) {
 				if (player.isCreative() || player.isSpectator()) {
 					return true;
-				} else {
+				} else if (!player.level().isClientSide()) {
 					player.getAbilities().mayfly = false;
 					player.getAbilities().flying = false;
 					player.onUpdateAbilities();

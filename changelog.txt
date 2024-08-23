@@ -1,3 +1,8 @@
+2.2.11
+- Change Poor god Soup recipe
+- Fix flying config
+- Fix Udumbara jumping to second last stage when planted immediately after breaking
+
 2.2.10
 - Fix JEI compatibility
 

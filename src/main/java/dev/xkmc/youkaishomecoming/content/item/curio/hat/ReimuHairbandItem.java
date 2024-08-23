@@ -6,7 +6,6 @@ import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
-import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -43,8 +42,7 @@ public class ReimuHairbandItem extends TouhouHatItem {
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {
-		if (YHModConfig.COMMON.reimuHairbandFlightEnable.get())
-			FlyingToken.tickFlying(player);
+		FlyingToken.tickFlying(player);
 	}
 
 	@Override
