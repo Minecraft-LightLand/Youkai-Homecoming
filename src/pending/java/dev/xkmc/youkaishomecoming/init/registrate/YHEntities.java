@@ -77,13 +77,6 @@ public class YHEntities {
 		}
 
 		{
-			GENERAL_YOUKAI = YoukaisHomecoming.REGISTRATE
-					.entity("youkai", BossYoukaiEntity::new, MobCategory.MONSTER)
-					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
-					.attributes(BossYoukaiEntity::createAttributes)
-					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x000000, 0x000000).tab(DanmakuAPI.TAB.key()).build()
-					.loot(EntityLootGen::noLoot).register();
 
 			FAIRY = YoukaisHomecoming.REGISTRATE
 					.entity("fairy", FairyEntity::new, MobCategory.MONSTER)

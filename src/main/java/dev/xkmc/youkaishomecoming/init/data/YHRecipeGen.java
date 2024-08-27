@@ -486,6 +486,7 @@ public class YHRecipeGen {
 					.addIngredient(Tags.Items.SEEDS)
 					.addIngredient(Tags.Items.CROPS)
 					.addIngredient(ItemTags.FLOWERS)
+					.addIngredient(Items.BONE_MEAL)
 					.build(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POWER_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)

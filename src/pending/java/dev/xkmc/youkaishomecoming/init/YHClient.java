@@ -38,23 +38,14 @@ import java.util.Map;
 public class YHClient {
 
 	@SubscribeEvent
-	public static void clientSetup(FMLClientSetupEvent event) {
-		if (YoukaisHomecoming.ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-			MinecraftForge.EVENT_BUS.register(TLMRenderHandler.class);
-		}
-	}
-
-	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
 		event.registerLayerDefinition(SuwakoHatModel.SUWAKO, SuwakoHatModel::createSuwakoHat);
 		event.registerLayerDefinition(SuwakoHatModel.STRAW, SuwakoHatModel::createStrawHat);
 		event.registerLayerDefinition(FrogStrawHatModel.STRAW, FrogStrawHatModel::createHat);
 		event.registerLayerDefinition(KoishiHatModel.HAT, KoishiHatModel::createHat);
-		event.registerLayerDefinition(RumiaModel.LAYER_LOCATION, RumiaModel::createBodyLayer);
 		event.registerLayerDefinition(RumiaModel.HAIRBAND, RumiaModel::createHairbandLayer);
 		event.registerLayerDefinition(BlackBallModel.LAYER_LOCATION, BlackBallModel::createBodyLayer);
-		event.registerLayerDefinition(ReimuModel.LAYER_LOCATION, ReimuModel::createBodyLayer);
 		event.registerLayerDefinition(ReimuModel.HAT_LOCATION, ReimuModel::createHatLayer);
 		event.registerLayerDefinition(CirnoModel.LAYER_LOCATION, CirnoModel::createBodyLayer);
 		event.registerLayerDefinition(CirnoModel.HAT_LOCATION, CirnoModel::createHatLayer);
@@ -65,9 +56,6 @@ public class YHClient {
 	public static void addLayer(EntityRenderersEvent.AddLayers event) {
 		if (event.getRenderer(EntityType.FROG) instanceof FrogRenderer r) {
 			r.addLayer(new FrogHatLayer<>(r, event.getEntityModels()));
-		}
-		if (YoukaisHomecoming.ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-			TLMRenderHandler.addLayers(event);
 		}
 	}
 

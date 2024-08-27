@@ -68,9 +68,6 @@ public class YoukaisHomecoming {
 		FrogGodCapability.register();
 		YHModConfig.init();
 
-		if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
-		}
 		if (ModList.get().isLoaded(Gateways.MODID)) {
 			MinecraftForge.EVENT_BUS.register(GatewayEventHandlers.class);
 		}
@@ -79,8 +76,6 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-
-			TouhouSpellCards.registerSpells();
 
 
 			if (ModList.get().isLoaded(Thirst.ID)) {
