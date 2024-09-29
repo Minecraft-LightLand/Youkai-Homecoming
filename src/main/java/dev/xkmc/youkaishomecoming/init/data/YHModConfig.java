@@ -66,6 +66,8 @@ public class YHModConfig {
 		public final ForgeConfigSpec.BooleanValue reimuSummonMoney;
 		public final ForgeConfigSpec.IntValue reimuSummonCost;
 		public final ForgeConfigSpec.BooleanValue reimuHairbandFlightEnable;
+		public final ForgeConfigSpec.BooleanValue reimuExtraDamageCoolDown;
+		public final ForgeConfigSpec.BooleanValue reimuDamageReduction;
 
 		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
@@ -179,6 +181,10 @@ public class YHModConfig {
 						.defineInRange("reimuSummonCost", 8, 1, 100000);
 				reimuHairbandFlightEnable = builder.comment("Enable creative flight on Reimu hairband")
 						.define("reimuHairbandFlightEnable", true);
+				reimuExtraDamageCoolDown =  builder.comment("Enable non-danmaku extra damage cooldown on Reimu")
+						.define("reimuExtraDamageCoolDown",true);
+				reimuDamageReduction = builder.comment("Enable non-danmaku damage reduction on Reimu")
+						.define("reimuDamageReduction",true);
 			}
 			builder.pop();
 

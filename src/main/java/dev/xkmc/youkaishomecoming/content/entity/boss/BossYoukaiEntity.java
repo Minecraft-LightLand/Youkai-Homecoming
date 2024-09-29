@@ -4,6 +4,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
@@ -56,7 +57,9 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	private boolean hurtCall = false;
 
 	private int getCD(DamageSource source) {
-		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+		if (!YHModConfig.COMMON.reimuExtraDamageCoolDown.get()) {
+			return 10;
+		} else if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
 			return 10;
 		} else if (source.is(YHDamageTypes.DANMAKU)) {
 			return 20;
@@ -69,15 +72,17 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
-				!(source.getEntity() instanceof LivingEntity))
-			return false;
-		if (source.getEntity() instanceof LivingEntity le) {
-			if (shouldIgnore(le)) return false;
-		}
-		int cd = getCD(source);
-		if (hurtCD < cd) {
-			return false;
+		if (!source.is(DamageTypes.GENERIC_KILL) || source.getEntity() != null) {
+			if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
+					!(source.getEntity() instanceof LivingEntity))
+				return false;
+			if (source.getEntity() instanceof LivingEntity le) {
+				if (shouldIgnore(le)) return false;
+			}
+			int cd = getCD(source);
+			if (hurtCD < cd) {
+				return false;
+			}
 		}
 		hurtCD = 0;
 		hurtCall = true;
@@ -115,7 +120,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		}
 		int reduction = 20;
 		amount = Math.min(getMaxHealth() / reduction, amount);
-		if (!source.is(YHDamageTypes.DANMAKU_TYPE))
+		if (YHModConfig.COMMON.reimuDamageReduction.get() && !source.is(YHDamageTypes.DANMAKU_TYPE))
 			amount /= 5;
 		return amount;
 	}

@@ -177,7 +177,7 @@ public class StagedHoming extends ActualSpellCard {
 		public boolean tick(CardHolder holder, StagedHoming card) {
 			step(holder);
 			super.tick(holder, card);
-			return false;
+			return tick > t0 + t1 || holder.target() == null;
 		}
 
 		private void step(CardHolder holder) {
@@ -217,7 +217,7 @@ public class StagedHoming extends ActualSpellCard {
 					holder.shoot(e);
 				}
 			}
-			if (tick == t0 + t1) {
+			if (tick == t0 + t1 && target1 != null) {
 				DanmakuHelper.Orientation o0 = DanmakuHelper.getOrientation(init, normal);
 				for (int i = 0; i < n; i++) {
 					var f0 = o0.rotateDegrees(360.0 / n * i);
