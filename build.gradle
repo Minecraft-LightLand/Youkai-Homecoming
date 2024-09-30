@@ -5,7 +5,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.153'
+    id 'net.neoforged.gradle.userdev' version '7.0.165'
     id 'net.darkhax.curseforgegradle' version '[1.1.24,)'
     id "at.stnwtr.gradle-secrets-plugin" version "1.0.1"
     id "com.modrinth.minotaur" version "2.+"
@@ -175,4 +175,45 @@ dependencies {
     implementation "dev.xkmc:fruitsdelight:1.2.0-slim"
 
     implementation "curse.maven:thirst-was-taken-679270:5568715"
+}
+
+
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = secrets.get("curseforge_token")
+    def mainFile = upload(project.curseforge_project, new File("./build/libs/${mod_id}-${mod_version}.jar"))
+    mainFile.changelog = new File('./changelog.txt')
+    mainFile.addEnvironment("Client", "Server")
+    mainFile.addGameVersion("1.21.1")
+    mainFile.addModLoader("NeoForge")
+    mainFile.addRequirement("farmers-delight")
+    mainFile.addOptional(
+            "delightful",
+            "diet",
+            "fruits-delight",
+            "serene-seasons",
+            "thirst-was-taken",
+            "touhou-little-maid")
+    mainFile.releaseType = "release"
+    disableVersionDetection()
+}
+
+modrinth {
+    token = secrets.get("modrinth_token")
+    projectId = project.modrinth_project
+    versionName = "Youkai's Homecoming ${project.mod_version}"
+    versionNumber = project.mod_version
+    versionType = "release"
+    uploadFile = new File("./build/libs/${mod_id}-${mod_version}.jar")
+    gameVersions = ["1.21.1"]
+    loaders = ["neoforge"]
+    changelog = new File('./changelog.txt').text.split("\n\n")[0]
+    dependencies {
+        required.project "farmers-delight"
+        optional.project "fruits-delight"
+        optional.project "diet"
+        optional.project "delightful"
+        optional.project "touhou-little-maid"
+        optional.project "thirst-was-taken"
+        optional.project "serene-seasons"
+    }
 }

@@ -4,53 +4,35 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.common.Constants;
 import mezz.jei.library.plugins.vanilla.cooking.AbstractCookingCategory;
 import mezz.jei.library.util.RecipeUtil;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class DryingRackCategory extends AbstractCookingCategory<DryingRackRecipe> {
 
-	private final IDrawable background;
-
 	public DryingRackCategory(IGuiHelper guiHelper) {
-		super(guiHelper, YHBlocks.RACK.get(), YHLangData.JEI_RACK.key(), 200);
-		background = guiHelper.drawableBuilder(Constants.RECIPE_GUI_VANILLA, 0, 186, 82, 34)
-				.addPadding(0, 10, 0, 0)
-				.build();
+		super(guiHelper, YHJeiPlugin.RACK, YHBlocks.RACK.get(), YHLangData.JEI_RACK.key(), 200, 82, 44);
 	}
 
-	@Override
-	public RecipeType<RecipeHolder<DryingRackRecipe>> getRecipeType() {
-		return YHJeiPlugin.RACK;
+	public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<DryingRackRecipe> recipeHolder, IFocusGroup focuses) {
+		DryingRackRecipe recipe = recipeHolder.value();
+		builder.addInputSlot(1, 1).setStandardSlotBackground().addIngredients(recipe.getIngredients().getFirst());
+		builder.addOutputSlot(61, 9).setOutputSlotBackground().addItemStack(RecipeUtil.getResultItem(recipe));
 	}
 
-	@Override
-	public IDrawable getBackground() {
-		return background;
-	}
-
-	@Override
-	public void draw(RecipeHolder<DryingRackRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-		animatedFlame.draw(guiGraphics, 1, 20);
-		drawCookTime(recipe, guiGraphics, 35);
-	}
-
-	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<DryingRackRecipe> recipe, IFocusGroup focuses) {
-		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-				.addIngredients(recipe.value().getIngredients().get(0));
-
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 9)
-				.addItemStack(RecipeUtil.getResultItem(recipe.value()));
+	public void createRecipeExtras(IRecipeExtrasBuilder builder, RecipeHolder<DryingRackRecipe> recipeHolder, IRecipeSlotsView recipeSlotsView, IFocusGroup focuses) {
+		DryingRackRecipe recipe = recipeHolder.value();
+		int cookTime = recipe.getCookingTime();
+		if (cookTime <= 0) {
+			cookTime = this.regularCookTime;
+		}
+		builder.addAnimatedRecipeArrow(cookTime, 26, 7);
+		builder.addAnimatedRecipeFlame(300, 1, 20);
+		this.addCookTime(builder, recipeHolder);
 	}
 
 }
