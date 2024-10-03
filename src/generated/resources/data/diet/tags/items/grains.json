@@ -27,6 +27,9 @@
     "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled",
     "youkaishomecoming:flesh_dumplings",
     "youkaishomecoming:flesh_roll",
-    "youkaishomecoming:peach_yatsuhashi"
+    {
+      "id": "youkaishomecoming:peach_yatsuhashi",
+      "required": false
+    }
   ]
 }

@@ -902,7 +902,11 @@ public class YHRecipeGen {
 		}
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
-			Consumer<FinishedRecipe> modtea = e -> tea.accept(new ConditionalRecipeWrapper(e, new ModLoadedCondition(FruitsDelight.MODID)));
+			Consumer<FinishedRecipe> modtea =
+					e -> pvd.accept(new ConditionalRecipeWrapper(
+							new BasePotFinishedRecipe(YHBlocks.KETTLE_RS.get(), e),
+							new ModLoadedCondition(FruitsDelight.MODID)));
+
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.MOON_ROCKET.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(FDFood.LEMON_SLICE.get())

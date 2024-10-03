@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-16T18:29:53.027772	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-10-03T02:12:11.857062	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -941,8 +941,8 @@ de7c3042fa70abf95501b24d11aa7901d2cc9141 assets/youkaishomecoming/models/item/ye
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/youkai_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/yukari_spawn_egg.json
 c90b811672ed77454ab02ce25bbe794d6ac8c607 data/curios/tags/items/back.json
-aa932717408bfd8b7aeaeccfe09b324381a02880 data/diet/tags/items/fruits.json
-7558586b403e8bc7540d6973d2598bd0e2459f1d data/diet/tags/items/grains.json
+0ce21b81c580f483b908baa0792ab7e3bfc39ac0 data/diet/tags/items/fruits.json
+848a5fd234ecbf2724ebfd0f22919ad431093622 data/diet/tags/items/grains.json
 7df5bd593cc76a1ea3dea6a068539f1151ac0a7c data/diet/tags/items/proteins.json
 0895706e95733e1e75c5445782716e839bde1eb0 data/diet/tags/items/sugars.json
 a801a271310e5830c90b3ec632cef90c8c1b6300 data/diet/tags/items/vegetables.json
@@ -1598,7 +1598,7 @@ fb11db056d220ee7523f181b673515af8631f610 data/youkaishomecoming/recipes/kinako_d
 629c81e2d4f8b9b20f19d8a206341be58928d54d data/youkaishomecoming/recipes/koishi_mousse.json
 8bb4207e96d746936e2dbfa239b3eee5ffbe3abc data/youkaishomecoming/recipes/latte.json
 6852aa2b25cbcad322ca51767ad1e08c001388de data/youkaishomecoming/recipes/latte_remix.json
-d78832125db435a7aac4af74d336df1e1249d6fb data/youkaishomecoming/recipes/lemon_black_tea.json
+c48eeb09ee091eb884904d6d43bd5acab77f617c data/youkaishomecoming/recipes/lemon_black_tea.json
 e4d4c28d55c0821de5917aae6001ec01f052f05e data/youkaishomecoming/recipes/light_blue_ball_danmaku.json
 e852de88b1174094dc5bfadcd4bb62eee21e4076 data/youkaishomecoming/recipes/light_blue_bubble_danmaku.json
 f98645b2589121bc8b635dc7918eb3fd70469c52 data/youkaishomecoming/recipes/light_blue_butterfly_danmaku.json
@@ -1645,7 +1645,7 @@ ecb48ef43576033ebe80200b3dfab711bedf2957 data/youkaishomecoming/recipes/mochi.js
 0d67bd9659d681a3f36f3ef7aa6902d68c63308f data/youkaishomecoming/recipes/moka_kit.json
 d7240528e91ec3a505304a8f0ca988602955ce3c data/youkaishomecoming/recipes/moka_pot.json
 d5eb1268ff752859d4aa2075cd98b642271a5694 data/youkaishomecoming/recipes/moon_lantern.json
-5f0180ca61f2e9216392e51904bfcc49fd8e9878 data/youkaishomecoming/recipes/moon_rocket.json
+db9b632687a2461ac19cffe5b35b1bd1ce257026 data/youkaishomecoming/recipes/moon_rocket.json
 edf56d3ebac619e26aa29507fa4d0ef7233ecb58 data/youkaishomecoming/recipes/mushroom_soup.json
 19523a92a71bc2f5108c408edd3fdf64a0472f2d data/youkaishomecoming/recipes/oak_dining_chair.json
 afd1396139fa8dd3582f0baa38061dbe80ca9496 data/youkaishomecoming/recipes/oak_dining_table.json

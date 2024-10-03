@@ -23,6 +23,10 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import sereneseasons.core.SereneSeasons;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
 public class YHTagGen {
 
 
@@ -63,6 +67,8 @@ public class YHTagGen {
 	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
 	public static final TagKey<Item> TOUHOU_WINGS = item("touhou_wings");
 
+	public static final List<Consumer<RegistrateItemTagsProvider>> OPTIONAL_TAGS = new ArrayList<>();
+
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
 	}
 
@@ -100,6 +106,9 @@ public class YHTagGen {
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
+		}
+		for (var e : OPTIONAL_TAGS) {
+			e.accept(pvd);
 		}
 
 	}
