@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -27,7 +28,7 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	public FluidStack outputFluid = FluidStack.EMPTY;
 
 	@SerialField
-	public FluidStack inputFluid = FluidStack.EMPTY;
+	public FluidIngredient inputFluid = FluidIngredient.empty();
 
 	@SerialField
 	public int time;
@@ -40,7 +41,7 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	public boolean matches(FermentationDummyContainer cont, Level level) {
 		FluidStack fluid = cont.fluids().getFluidInTank(0);
 		if (!inputFluid.isEmpty()) {
-			if (!FluidStack.isSameFluidSameComponents(inputFluid, fluid)) {
+			if (inputFluid.test(fluid)) {
 				return false;
 			}
 		}

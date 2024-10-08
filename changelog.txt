@@ -1,6 +1,12 @@
+3.0.0+8
+- Migrate to standard JEI api without accessing non-api JEI code
+
+3.0.0+7
+- Fix JEI compat with JEI 19.18+
+- Fix enchantment description compat
+
 3.0.0+6
 - Add Thirst compat back
-- Fix JEI compat with newest version of JEI
 - Fix sikkui block sounds
 - Fix warped wood chair recipe
 - Add Surprise Feast back
