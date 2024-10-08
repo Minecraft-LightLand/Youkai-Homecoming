@@ -157,6 +157,7 @@ dependencies {
     implementation fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.10-slim")
 
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
+    //compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-api:${jei_version}")
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")
@@ -181,6 +182,9 @@ dependencies {
     implementation fg.deobf("curse.maven:placebo-283644:5098182")
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
+
+    implementation fg.deobf("curse.maven:oculus-581495:5299671")
+    implementation fg.deobf("curse.maven:embeddium-908741:5681725")
 
     //runtimeOnly fg.deobf("curse.maven:rubidium-574856:4573226")
 
