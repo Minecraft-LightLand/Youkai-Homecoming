@@ -41,7 +41,7 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	public boolean matches(FermentationDummyContainer cont, Level level) {
 		FluidStack fluid = cont.fluids().getFluidInTank(0);
 		if (!inputFluid.isEmpty()) {
-			if (inputFluid.test(fluid)) {
+			if (!inputFluid.test(fluid)) {
 				return false;
 			}
 		}
