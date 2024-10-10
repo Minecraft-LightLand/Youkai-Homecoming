@@ -1,3 +1,6 @@
+3.0.0+10
+- Fix peach related recipes
+
 3.0.0+9
 - Migrate to standard JEI api without accessing non-api JEI code
 - Use NeoForge FluidIngredient for fermentation tank
