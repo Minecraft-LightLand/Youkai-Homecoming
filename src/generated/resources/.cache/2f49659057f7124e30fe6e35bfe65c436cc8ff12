@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-03T02:12:11.857062	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-11-11T16:10:18.119768	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1400,12 +1400,12 @@ bb500bcb8658a7f609eb5f8fcf715d9fcd801d1a data/youkaishomecoming/loot_tables/bloc
 2ea34046fb270d4669249b7ab1938401ed6db008 data/youkaishomecoming/loot_tables/blocks/warped_handrail.json
 2cebf9ae2f57986ff89e90bde6482aa8e7080762 data/youkaishomecoming/loot_tables/blocks/white_red_velvet_candle_cake.json
 c915d178780a30bb5166226f5be9b097260762b4 data/youkaishomecoming/loot_tables/blocks/white_tea_bag.json
-8af454aac46f8e89ffbefde12fea346cc8c86793 data/youkaishomecoming/loot_tables/blocks/wild_coffea.json
-c53944cf88312985de871628dd792b77da7d038f data/youkaishomecoming/loot_tables/blocks/wild_mandrake.json
-030f8fcc66d9c3229c5948c37ce49d2e94af2d7e data/youkaishomecoming/loot_tables/blocks/wild_redbean.json
-8c5d9500a08c126e018b0dec3652cd5e69de0341 data/youkaishomecoming/loot_tables/blocks/wild_soybean.json
-40b3c2a5e72bfaa43d56fe36bfa852a69664297e data/youkaishomecoming/loot_tables/blocks/wild_tea.json
-6f1e63baf7fb208551ec1d3c124a566d07e488f4 data/youkaishomecoming/loot_tables/blocks/wild_udumbara.json
+f3f3c764b570685afa6907ba63d8303d723530ef data/youkaishomecoming/loot_tables/blocks/wild_coffea.json
+a1b46202b0fd88ea599a1feec8e37502dbf45cc0 data/youkaishomecoming/loot_tables/blocks/wild_mandrake.json
+17341a95d02d9fce1f1edc2d2324a22f3ff27c95 data/youkaishomecoming/loot_tables/blocks/wild_redbean.json
+644b5e46ef302ae319251b4d29640da92c5eb9b7 data/youkaishomecoming/loot_tables/blocks/wild_soybean.json
+d62a11f2285d074b5f1555524b9cfbfb12b5407a data/youkaishomecoming/loot_tables/blocks/wild_tea.json
+209167abff8b04105332068d55088fc4f22024cb data/youkaishomecoming/loot_tables/blocks/wild_udumbara.json
 b7b3464e99168a3c57048fbe27d742e371faea4e data/youkaishomecoming/loot_tables/blocks/yellow_red_velvet_candle_cake.json
 8833954325ab6007a615fbb2b344d26daa8f49b3 data/youkaishomecoming/loot_tables/chests/hakurei_shrine/barrel.json
 b6fdcb7f69021ec0c86bacd6b90ee062f784612e data/youkaishomecoming/loot_tables/chests/hakurei_shrine/cabinet.json

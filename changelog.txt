@@ -1,3 +1,6 @@
+2.2.16
+- Fix wild crop drop with shears
+
 2.2.15
 - Support JEI 15.20+
 - Support Thirst Was Taken's water types

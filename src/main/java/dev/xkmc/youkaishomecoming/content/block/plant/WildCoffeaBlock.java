@@ -20,6 +20,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.common.Tags;
 
 public class WildCoffeaBlock extends DoublePlantBlock {
 
@@ -28,11 +29,13 @@ public class WildCoffeaBlock extends DoublePlantBlock {
 	}
 
 	public static void buildWildLoot(RegistrateBlockLootTables pvd, WildCoffeaBlock block, YHCrops crop) {
+		var silk = MatchTool.toolMatches(ItemPredicate.Builder.item()
+				.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
+						MinMaxBounds.Ints.atLeast(1)))).or(
+				MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS)));
 		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
 				.add(LootItem.lootTableItem(block.asItem())
-						.when(MatchTool.toolMatches(ItemPredicate.Builder.item()
-								.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
-										MinMaxBounds.Ints.atLeast(1)))))
+						.when(silk)
 						.otherwise(pvd.applyExplosionDecay(block, LootItem.lootTableItem(crop.getFruits())
 								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))
 				).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)

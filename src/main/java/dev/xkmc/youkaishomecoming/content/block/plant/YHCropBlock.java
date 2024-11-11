@@ -28,6 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.PlantType;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Supplier;
 
@@ -103,11 +104,13 @@ public class YHCropBlock extends CropBlock {
 	}
 
 	public static void buildWildLoot(RegistrateBlockLootTables pvd, BushBlock block, YHCrops crop) {
+		var silk = MatchTool.toolMatches(ItemPredicate.Builder.item()
+				.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
+						MinMaxBounds.Ints.atLeast(1)))).or(
+				MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS)));
 		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
 				.add(LootItem.lootTableItem(block.asItem())
-						.when(MatchTool.toolMatches(ItemPredicate.Builder.item()
-								.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
-										MinMaxBounds.Ints.atLeast(1)))))
+						.when(silk)
 						.otherwise(pvd.applyExplosionDecay(block, LootItem.lootTableItem(crop.getFruits())
 								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))
 				)));

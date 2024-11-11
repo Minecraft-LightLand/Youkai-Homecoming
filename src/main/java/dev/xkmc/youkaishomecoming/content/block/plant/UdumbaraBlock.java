@@ -4,6 +4,9 @@ import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,8 +31,10 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Supplier;
 
@@ -118,5 +124,16 @@ public class UdumbaraBlock extends YHCropBlock {
 								.add(LootItem.lootTableItem(crop.getFruits())
 										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
 	}
+
+	public static void buildWildLoot(RegistrateBlockLootTables pvd, BushBlock block, YHCrops crop) {
+		var silk = MatchTool.toolMatches(ItemPredicate.Builder.item()
+				.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
+						MinMaxBounds.Ints.atLeast(1)))).or(
+				MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS)));
+		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
+				.add(LootItem.lootTableItem(block.asItem()).when(silk)
+						.otherwise(pvd.applyExplosionDecay(block, LootItem.lootTableItem(crop.getSeed()))))));
+	}
+
 
 }
