@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "I": {
-      "item": "youkaishomecoming:ice_cube"
+      "tag": "forge:ice_cubes"
     },
     "M": {
       "tag": "forge:milk/milk_bottle"

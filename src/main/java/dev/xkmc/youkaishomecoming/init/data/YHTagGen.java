@@ -57,6 +57,7 @@ public class YHTagGen {
 
 
 	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
+	public static final TagKey<Item> ICE = ItemTags.create(new ResourceLocation("forge", "ice_cubes"));
 
 	public static final TagKey<Item> TEA_GREEN = ItemTags.create(new ResourceLocation("forge", "tea_leaves/green"));
 	public static final TagKey<Item> TEA_BLACK = ItemTags.create(new ResourceLocation("forge", "tea_leaves/black"));
@@ -97,7 +98,7 @@ public class YHTagGen {
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
-
+		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());
 		pvd.addTag(TEA_GREEN).add(YHTea.GREEN.leaves.get());
 		pvd.addTag(TEA_BLACK).add(YHTea.BLACK.leaves.get());
 		pvd.addTag(TEA_WHITE).add(YHTea.WHITE.leaves.get());

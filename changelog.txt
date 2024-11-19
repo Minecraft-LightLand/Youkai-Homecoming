@@ -1,5 +1,10 @@
 2.2.16
 - Fix wild crop drop with shears
+- Use ice cube tag in recipe
+- Add jp translation
+- Support custom JEI fluid takeout item
+- Allow Create filling recipe interaction for fermentation tank item right click
+- Increase spawn rate of all plants
 
 2.2.15
 - Support JEI 15.20+

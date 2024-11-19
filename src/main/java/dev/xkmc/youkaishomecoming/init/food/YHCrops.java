@@ -34,12 +34,12 @@ import java.util.Locale;
 import java.util.function.BiFunction;
 
 public enum YHCrops {
-	SOYBEAN(PlantType.CROSS, 16, null, "pods"),
-	REDBEAN(PlantType.CROP, 16, null, null),
-	COFFEA(PlantType.COFFEA, 8, "green_coffee_bean", "coffee_berries"),
-	TEA(PlantType.TEA, 8, "tea_seeds", "tea_leaves"),
-	UDUMBARA(PlantType.UDUMBARA, 8, "udumbara_seeds", "udumbara_flower"),
-	MANDRAKE(PlantType.MANDRAKE, 8, "mandrake_root", "mandrake_flower"),
+	SOYBEAN(PlantType.CROSS, 8, null, "pods"),
+	REDBEAN(PlantType.CROP, 8, null, null),
+	COFFEA(PlantType.COFFEA, 6, "green_coffee_bean", "coffee_berries"),
+	TEA(PlantType.TEA, 6, "tea_seeds", "tea_leaves"),
+	UDUMBARA(PlantType.UDUMBARA, 6, "udumbara_seeds", "udumbara_flower"),
+	MANDRAKE(PlantType.MANDRAKE, 6, "mandrake_root", "mandrake_flower"),
 	;
 
 	private final BlockEntry<? extends BushBlock> PLANT;

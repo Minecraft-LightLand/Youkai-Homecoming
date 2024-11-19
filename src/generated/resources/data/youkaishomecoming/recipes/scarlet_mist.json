@@ -19,11 +19,11 @@
   ],
   "inputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:flowing_blood"
+    "fluid": "youkaishomecoming:blood"
   },
   "outputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:flowing_scarlet_mist"
+    "fluid": "youkaishomecoming:scarlet_mist"
   },
   "results": [],
   "time": 3600

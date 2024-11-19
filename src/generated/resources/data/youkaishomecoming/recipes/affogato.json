@@ -14,7 +14,7 @@
       "potion": "minecraft:water"
     },
     {
-      "item": "youkaishomecoming:ice_cube"
+      "tag": "forge:ice_cubes"
     },
     {
       "item": "youkaishomecoming:bowl_of_cream"

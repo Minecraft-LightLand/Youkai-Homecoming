@@ -65,7 +65,12 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.type.asStack(sake.type.count()));
 				builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(new ItemStack(sake.type.getContainer(), sake.type.count()));
 			} else {
-				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.outputFluid));
+				if (!recipe.defaultContainer.isEmpty() && !recipe.defaultBottle.isEmpty()) {
+					builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(recipe.defaultBottle);
+					builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(recipe.defaultContainer);
+				} else {
+					builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.outputFluid));
+				}
 			}
 		}
 	}

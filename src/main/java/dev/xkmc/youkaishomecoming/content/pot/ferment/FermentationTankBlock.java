@@ -9,6 +9,7 @@ import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
+import dev.xkmc.youkaishomecoming.compat.create.CreateFillingTest;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -105,6 +106,15 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 				return InteractionResult.SUCCESS;
 			}
 			hasFluid = true;
+		}
+		var fillOpt = CreateFillingTest.test(level, fluid, stack);
+		if (fillOpt.isPresent()) {
+			if (!level.isClientSide()) {
+				ItemStack ans = fillOpt.get().result().get();
+				player.getInventory().placeItemBackInInventory(ans);
+				be.notifyTile();
+			}
+			return InteractionResult.SUCCESS;
 		}
 		if (!hasFluid || player.getItemInHand(hand).getItem() instanceof SakeBottleItem) {
 			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
