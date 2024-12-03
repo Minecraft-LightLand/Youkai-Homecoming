@@ -90,7 +90,7 @@ public class YHLootGen {
 					.add(LootTableTemplate.getItem(Items.CARROT, 2).setWeight(4))
 					.add(LootTableTemplate.getItem(Items.POTATO, 2).setWeight(4));
 
-			var tea = LootTableTemplate.getPool(2,1)
+			var tea = LootTableTemplate.getPool(2, 1)
 					.add(LootTableTemplate.getItem(YHCrops.TEA.getFruits(), 4))
 					.add(LootTableTemplate.getItem(YHTea.BLACK.leaves.get(), 2))
 					.add(LootTableTemplate.getItem(YHTea.WHITE.leaves.get(), 2))
@@ -115,8 +115,7 @@ public class YHLootGen {
 					.add(LootTableTemplate.getItem(YHFood.COFFEE_MOCHI.item.get(), 2))
 					.add(LootTableTemplate.getItem(YHFood.MATCHA_MOCHI.item.get(), 2))
 					.add(LootTableTemplate.getItem(YHFood.SAKURA_MOCHI.item.get(), 2))
-					.add(LootTableTemplate.getItem(YHFood.YASHOUMA_DANGO.item.get(), 2))
-					;
+					.add(LootTableTemplate.getItem(YHFood.YASHOUMA_DANGO.item.get(), 2));
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(SHRINE_CHEST, LootTable.lootTable()
 					.withPool(misc)

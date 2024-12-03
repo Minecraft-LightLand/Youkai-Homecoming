@@ -1,4 +1,3 @@
-
 //
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by FernFlower decompiler)
@@ -54,7 +53,7 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 	protected void addExperience(IRecipeExtrasBuilder builder, T recipe) {
 		float experience = recipe.getExperience();
 		if (experience > 0.0F) {
-			Component experienceString = Component.translatable("gui.jei.category.smelting.experience", new Object[]{experience});
+			Component experienceString = Component.translatable("gui.jei.category.smelting.experience", experience);
 			builder.addText(experienceString, this.getWidth() - 20, 10)
 					.setPosition(0, 0, this.getWidth(), this.getHeight(), HorizontalAlignment.RIGHT, VerticalAlignment.TOP)
 					.setTextAlignment(HorizontalAlignment.RIGHT).setColor(-8355712);
@@ -70,7 +69,7 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 
 		if (cookTime > 0) {
 			int cookTimeSeconds = cookTime / 20;
-			Component timeString = Component.translatable("gui.jei.category.smelting.time.seconds", new Object[]{cookTimeSeconds});
+			Component timeString = Component.translatable("gui.jei.category.smelting.time.seconds", cookTimeSeconds);
 			builder.addText(timeString, this.getWidth() - 20, 10)
 					.setPosition(0, 0, this.getWidth(), this.getHeight(), HorizontalAlignment.RIGHT, VerticalAlignment.BOTTOM)
 					.setTextAlignment(HorizontalAlignment.RIGHT).setTextAlignment(VerticalAlignment.BOTTOM).setColor(-8355712);

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.spell.game.yukari;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.spell.mover.CompositeMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.PolarMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
@@ -9,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.spell.mover.ZeroMover;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
+import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,6 +25,11 @@ public class YukariMain extends ActualSpellCard {
 
 	@SerialClass.SerialField
 	private int cooldown, vulnerable;
+
+	@Override
+	public DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
+		return YHDamageTypes.abyssal(danmaku);
+	}
 
 	@Override
 	public void tick(CardHolder holder) {

@@ -78,7 +78,7 @@ public class CirnoModel<T extends CirnoEntity> extends HierarchicalModel<T> {
 		PartDefinition cube_r3 = r_r.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(72, 8).addBox(-6.0F, -3.0F, 0.0F, 6.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.1962F, 1.0F, 0.0F, -0.0087F, -0.0151F, 0.5237F));
 
 		PartDefinition l_r = head.addOrReplaceChild("l_r", CubeListBuilder.create().texOffs(58, 68)
-				.addBox(-1.0F, -2.0F, 0.0F, 6.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)),
+						.addBox(-1.0F, -2.0F, 0.0F, 6.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)),
 				PartPose.offset(1.75F, -7.5F, 3.0F));
 
 		PartDefinition cube_r4 = l_r.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(0, 30).addBox(8.0F, -2.0F, 0.0F, 1.0F, 3.0F, 1.0F, new CubeDeformation(0.0F))
@@ -89,7 +89,7 @@ public class CirnoModel<T extends CirnoEntity> extends HierarchicalModel<T> {
 		PartDefinition cube_r6 = l_r.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(30, 70).addBox(0.0F, -3.0F, 0.0F, 6.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-0.1962F, 1.0F, 0.0F, -0.0087F, 0.0151F, -0.5237F));
 
 		head.addOrReplaceChild("tie", CubeListBuilder.create()
-				.texOffs(78, 40).addBox(-1.5F, -8.5F, 2.5F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
+						.texOffs(78, 40).addBox(-1.5F, -8.5F, 2.5F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
 				PartPose.offset(0.0F, -1f, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);

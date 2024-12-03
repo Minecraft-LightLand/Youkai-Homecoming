@@ -22,10 +22,10 @@ import java.util.List;
 public class MoonLanternBlock extends LanternBlock {
 
 	public static final VoxelShape SHAPE = Shapes.or(
-			Block.box(5,0,5,11,2,11),
-			Block.box(4,2,4,12,7,12),
-			Block.box(3,7,3,13,13,13),
-			Block.box(6,13,6,10,16,10)
+			Block.box(5, 0, 5, 11, 2, 11),
+			Block.box(4, 2, 4, 12, 7, 12),
+			Block.box(3, 7, 3, 13, 13, 13),
+			Block.box(6, 13, 6, 10, 16, 10)
 	);
 
 	public MoonLanternBlock(Properties pProperties) {

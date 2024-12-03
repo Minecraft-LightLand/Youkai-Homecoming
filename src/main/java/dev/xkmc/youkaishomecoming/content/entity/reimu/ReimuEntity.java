@@ -1,28 +1,29 @@
 package dev.xkmc.youkaishomecoming.content.entity.reimu;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.DifficultyInstance;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.UUID;
@@ -124,11 +125,39 @@ public class ReimuEntity extends MaidenEntity {
 		} else super.handleEntityEvent(pId);
 	}
 
-	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+	public void initSpellCard() {
 		TouhouSpellCards.setReimu(this);
-		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+	}
+
+	@Override
+	public void die(DamageSource source) {
+		boolean prev = dead;
+		super.die(source);
+		var e = source.getEntity();
+		if (!prev && dead && e instanceof LivingEntity le && !source.is(YHDamageTypes.DANMAKU_TYPE)) {
+			if (!e.isAlive() || !e.isAddedToWorld() || e.isRemoved())
+				return;
+			TouhouConditionalSpawns.triggetYukari(le, position());
+		}
+	}
+
+	@Override
+	public void onDanmakuImmune(LivingEntity e, IYHDanmaku danmaku, DamageSource source) {
+		if (e.tickCount - e.getLastHurtByMobTimestamp() < 20)
+			return;
+		if (e instanceof Player player && player.getAbilities().instabuild)
+			return;
+		if (!source.is(DamageTypeTags.BYPASSES_EFFECTS))
+			return;
+		double rate = e instanceof Player ?
+				YHModConfig.COMMON.danmakuPlayerPHPDamage.get() :
+				YHModConfig.COMMON.danmakuMinPHPDamage.get();
+		double dmg = Math.max(rate * Math.max(e.getHealth(), e.getMaxHealth()), danmaku.damage(e));
+		e.setHealth(e.getHealth() - (float) dmg);
+		if (e.isDeadOrDying()) {
+			e.die(YHDamageTypes.abyssal(danmaku));
+		}
 	}
 
 }

@@ -9,7 +9,7 @@ public interface DanmakuCommander {
 
 	ProjectileMovement move(int code, int tickCount, Vec3 vec);
 
-	default DamageSource getDanmakuDamageSource(IYHDanmaku danmaku){
+	default DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
 		return YHDamageTypes.danmaku(danmaku);
 	}
 

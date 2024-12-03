@@ -32,7 +32,7 @@ public interface CardHolder {
 
 	LivingEntity self();
 
-	default DamageSource getDanmakuDamageSource(IYHDanmaku danmaku){
+	default DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
 		return YHDamageTypes.danmaku(danmaku);
 	}
 

@@ -5,6 +5,7 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHAdvGen;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -118,6 +119,8 @@ public class KoishiAttackCapability extends PlayerCapabilityTemplate<KoishiAttac
 		if (blockCount >= YHModConfig.COMMON.koishiAttackBlockCount.get()) {
 			blockCount = 0;
 			player.spawnAtLocation(YHItems.KOISHI_HAT.get());
+		} else if (player.getY() > 127 && source != null) {
+			TouhouConditionalSpawns.triggerKoishi(player, source);
 		}
 	}
 

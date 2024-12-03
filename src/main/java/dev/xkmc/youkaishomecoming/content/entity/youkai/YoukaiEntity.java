@@ -159,6 +159,8 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public boolean shouldIgnore(LivingEntity e) {
 		if (e.getType().is(YHTagGen.YOUKAI_IGNORE))
 			return true;
+		if (!e.isAddedToWorld())
+			return true;
 		var event = new YoukaiFightEvent(this, e);
 		return MinecraftForge.EVENT_BUS.post(event);
 	}
@@ -252,6 +254,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			double heal = YHModConfig.COMMON.danmakuHealOnHitTarget.get();
 			heal(getMaxHealth() * (float) heal);
 		}
+	}
+
+	public void onDanmakuImmune(LivingEntity e, IYHDanmaku danmaku, DamageSource source) {
+
 	}
 
 	// flying

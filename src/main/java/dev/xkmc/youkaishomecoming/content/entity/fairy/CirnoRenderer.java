@@ -2,8 +2,6 @@ package dev.xkmc.youkaishomecoming.content.entity.fairy;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleLayer;
-import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
-import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

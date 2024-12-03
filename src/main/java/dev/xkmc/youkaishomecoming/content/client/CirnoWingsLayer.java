@@ -37,8 +37,8 @@ public class CirnoWingsLayer<T extends LivingEntity, M extends HumanoidModel<T>>
 		if (!CuriosManager.hasWings(e, YHItems.CIRNO_WINGS.get(), true)) return;
 
 		pose.pushPose();
-		pose.scale(2,2,2);
-		pose.translate(0,-0.75,0);
+		pose.scale(2, 2, 2);
+		pose.translate(0, -0.75, 0);
 
 		Minecraft minecraft = Minecraft.getInstance();
 		boolean flag = minecraft.shouldEntityAppearGlowing(e) && e.isInvisible();

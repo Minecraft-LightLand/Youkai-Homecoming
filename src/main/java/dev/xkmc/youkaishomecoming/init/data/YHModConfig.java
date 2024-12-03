@@ -181,10 +181,10 @@ public class YHModConfig {
 						.defineInRange("reimuSummonCost", 8, 1, 100000);
 				reimuHairbandFlightEnable = builder.comment("Enable creative flight on Reimu hairband")
 						.define("reimuHairbandFlightEnable", true);
-				reimuExtraDamageCoolDown =  builder.comment("Enable non-danmaku extra damage cooldown on Reimu")
-						.define("reimuExtraDamageCoolDown",true);
+				reimuExtraDamageCoolDown = builder.comment("Enable non-danmaku extra damage cooldown on Reimu")
+						.define("reimuExtraDamageCoolDown", true);
 				reimuDamageReduction = builder.comment("Enable non-danmaku damage reduction on Reimu")
-						.define("reimuDamageReduction",true);
+						.define("reimuDamageReduction", true);
 			}
 			builder.pop();
 

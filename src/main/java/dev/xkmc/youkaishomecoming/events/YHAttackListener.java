@@ -13,7 +13,7 @@ public class YHAttackListener implements AttackListener {
 		var attacker = cache.getAttacker();
 		if (attacker == null) return;
 		var damageEvent = cache.getLivingDamageEvent();
-		assert damageEvent!=null;
+		assert damageEvent != null;
 		ItemStack head = attacker.getItemBySlot(EquipmentSlot.HEAD);
 		if (head.getItem() instanceof TouhouHatItem hat) {
 			hat.onHurtTarget(head, damageEvent.getSource(), cache.getAttackTarget());

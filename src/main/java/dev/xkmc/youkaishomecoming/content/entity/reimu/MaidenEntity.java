@@ -8,7 +8,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.level.Level;
 
@@ -32,12 +31,6 @@ public class MaidenEntity extends BossYoukaiEntity {
 						mob.getLastHurtMob() instanceof Villager
 		) || entity.getType().is(EntityTypeTags.RAIDERS) ||
 				entity.hasEffect(YHEffects.YOUKAIFYING.get());
-	}
-
-	@Override
-	public boolean shouldHurt(LivingEntity le) {
-		if (shouldIgnore(le)) return false;
-		return le instanceof Enemy || super.shouldHurt(le);
 	}
 
 	@SerialClass.SerialField

@@ -5,20 +5,27 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -39,6 +46,17 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		super(pEntityType, pLevel);
 	}
 
+	protected boolean wouldAttack(LivingEntity entity) {
+		if (shouldIgnore(entity)) return false;
+		return entity.hasEffect(YHEffects.YOUKAIFIED.get());
+	}
+
+	@Override
+	public boolean shouldHurt(LivingEntity le) {
+		if (shouldIgnore(le)) return false;
+		return le instanceof Enemy || super.shouldHurt(le);
+	}
+
 	@Override
 	public boolean canBeAffected(MobEffectInstance ins) {
 		return false;
@@ -57,17 +75,17 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	private boolean hurtCall = false;
 
 	private int getCD(DamageSource source) {
-		if (!YHModConfig.COMMON.reimuExtraDamageCoolDown.get()) {
+		if (!YHModConfig.COMMON.reimuExtraDamageCoolDown.get())
 			return 10;
-		} else if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return 10;
-		} else if (source.is(YHDamageTypes.DANMAKU)) {
+		if (source.getEntity() instanceof Player pl && pl.getAbilities().instabuild)
+			return 10;
+		if (source.is(YHDamageTypes.DANMAKU))
 			return 20;
-		} else if (source.is(DamageTypeTags.BYPASSES_COOLDOWN)) {
+		if (source.is(DamageTypeTags.BYPASSES_COOLDOWN))
 			return 40;
-		} else {
-			return 80;
-		}
+		return 80;
 	}
 
 	@Override
@@ -179,9 +197,15 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		bossEvent.setProgress(getHealth() / getMaxHealth());
 		if (getTarget() == null || !getTarget().isAlive()) {
 			noTargetTime++;
-			if (noTargetTime >= 20 && tickCount % 20 == 0) {
-				if (getHealth() < getMaxHealth())
-					setHealth(getMaxHealth());
+			boolean doHeal = noTargetTime >= 20 && tickCount % 20 == 0;
+			doHeal |= getHealth() < getMaxHealth();
+			if (doHeal && getLastHurtByMob() instanceof Player player && player.getAbilities().instabuild) {
+				if (tickCount - getLastHurtByMobTimestamp() < 100) {
+					doHeal = false;
+				}
+			}
+			if (doHeal) {
+				setHealth(getMaxHealth());
 			}
 		} else {
 			noTargetTime = 0;
@@ -196,6 +220,16 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	public void stopSeenByPlayer(ServerPlayer pPlayer) {
 		super.stopSeenByPlayer(pPlayer);
 		this.bossEvent.removePlayer(pPlayer);
+	}
+
+	@Nullable
+	@Override
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+		initSpellCard();
+		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+	}
+
+	public void initSpellCard() {
 	}
 
 }

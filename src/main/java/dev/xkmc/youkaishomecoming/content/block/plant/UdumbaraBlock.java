@@ -1,6 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.block.plant;
 
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -35,10 +37,12 @@ import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.Tags;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
-public class UdumbaraBlock extends YHCropBlock {
+public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 
 	private final Supplier<Item> fruit;
 
@@ -107,6 +111,13 @@ public class UdumbaraBlock extends YHCropBlock {
 			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, next));
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
+	}
+
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState state, BlockPos blockPos) {
+		if (state.getValue(AGE) < getMaxAge()) return null;
+		return new HarvestResult(state.setValue(AGE, state.getValue(AGE) - 1),
+				List.of(fruit.get().getDefaultInstance()));
 	}
 
 	@Override

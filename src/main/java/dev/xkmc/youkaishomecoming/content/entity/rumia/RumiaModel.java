@@ -21,7 +21,7 @@ public class RumiaModel<T extends RumiaEntity> extends HierarchicalModel<T> {
 						.texOffs(0, 0).addBox(0.0F, -4.0F, 0.0F, 3.0F, 3.0F, 1.0F),
 				PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.3897F, -0.05F, -0.121F));
 		head.addOrReplaceChild("tie1", CubeListBuilder.create()
-				.texOffs(0, 4).addBox(0.0F, -4.0F, 0.0F, 3.0F, 3.0F, 1.0F),
+						.texOffs(0, 4).addBox(0.0F, -4.0F, 0.0F, 3.0F, 3.0F, 1.0F),
 				PartPose.offsetAndRotation(3.25F, -5.0F, -0.7F, -0.0254F, 0.4401F, -0.3778F));
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}

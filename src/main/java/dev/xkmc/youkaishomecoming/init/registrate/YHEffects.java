@@ -5,7 +5,6 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.youkaishomecoming.content.effect.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,9 +16,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 public class YHEffects {

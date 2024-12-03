@@ -55,7 +55,6 @@ public class YHCropBlock extends CropBlock {
 		return seed.get() == YHCrops.REDBEAN.getSeed() ? pState.is(YHTagGen.FARMLAND_REDBEAN) : super.mayPlaceOn(pState, pLevel, pPos);
 	}
 
-
 	@Override
 	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
 		return seed.get() == YHCrops.REDBEAN.getSeed() ? PlantType.get("redbeans") : PlantType.CROP;

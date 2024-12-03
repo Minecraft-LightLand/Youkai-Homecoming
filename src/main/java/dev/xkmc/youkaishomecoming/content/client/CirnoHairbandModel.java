@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.client;
 
-import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;

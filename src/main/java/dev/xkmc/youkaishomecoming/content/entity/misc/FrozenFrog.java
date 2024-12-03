@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.entity.misc;
 
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;

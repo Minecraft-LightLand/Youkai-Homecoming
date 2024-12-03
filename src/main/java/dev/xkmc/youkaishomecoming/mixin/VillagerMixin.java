@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.mixin;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.village.ReputationEventType;

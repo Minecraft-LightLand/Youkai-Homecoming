@@ -31,6 +31,16 @@ public interface IYHDanmaku {
 		return true;
 	}
 
+	default DamageSource source(){
+		DamageSource dmgType = YHDamageTypes.danmaku(this);
+		if (self().getOwner() instanceof CardHolder youkai) {
+			dmgType = youkai.getDanmakuDamageSource(this);
+		}
+		if (self().getOwner() instanceof LivingEntity le)
+			dmgType = GeneralEventHandlers.modifyDamageType(le, dmgType, this);
+		return dmgType;
+	}
+
 	default void hurtTarget(EntityHitResult result) {
 		if (self().level().isClientSide) return;
 		var e = result.getEntity();
@@ -42,13 +52,8 @@ public interface IYHDanmaku {
 				}
 			}
 		}
-		DamageSource dmgType = YHDamageTypes.danmaku(this);
-		if (self().getOwner() instanceof CardHolder youkai) {
-			dmgType = youkai.getDanmakuDamageSource(this);
-		}
-		if (self().getOwner() instanceof LivingEntity le)
-			dmgType = GeneralEventHandlers.modifyDamageType(le, dmgType, this);
-		if (!e.hurt(dmgType, damage(e))) return;
+		var source = source();
+		boolean immune = !e.hurt(source, damage(e));
 		LivingEntity target = null;
 		while (e instanceof PartEntity<?> pe) {
 			e = pe.getParent();
@@ -57,6 +62,9 @@ public interface IYHDanmaku {
 		if (target != null) {
 			if (self().getOwner() instanceof YoukaiEntity youkai) {
 				youkai.onDanmakuHit(target, this);
+				if (immune) {
+					youkai.onDanmakuImmune(target, this, source);
+				}
 			}
 		}
 	}
