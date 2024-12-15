@@ -24,6 +24,9 @@
     "youkaishomecoming:grilled_eel_over_rice",
     "youkaishomecoming:longevity_noodles",
     "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled",
-    "youkaishomecoming:peach_yatsuhashi"
+    {
+      "id": "youkaishomecoming:peach_yatsuhashi",
+      "required": false
+    }
   ]
 }

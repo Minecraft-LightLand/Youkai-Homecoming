@@ -2,7 +2,13 @@
   "values": [
     "youkaishomecoming:candy_apple",
     "youkaishomecoming:avgolemono",
-    "youkaishomecoming:peach_tapioca",
-    "youkaishomecoming:peach_yatsuhashi"
+    {
+      "id": "youkaishomecoming:peach_tapioca",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:peach_yatsuhashi",
+      "required": false
+    }
   ]
 }

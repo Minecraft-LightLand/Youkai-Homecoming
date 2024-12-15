@@ -36,7 +36,7 @@ public enum FruitsDelightCompatFood {
 	@SafeVarargs
 	FruitsDelightCompatFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build("fruitsdelight/", name, nutrition, sat, tags, effs);
+		item = type.build("?fruitsdelight/", name, nutrition, sat, tags, effs);
 	}
 
 	@SafeVarargs

@@ -82,9 +82,12 @@ public class FoodType {
 	}
 
 	public ItemEntry<Item> build(Function<Item.Properties, Item> factory, String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+		boolean opt = folder.startsWith("?");
+		var path = opt ? folder.substring(1) : folder;
 		return YoukaisHomecoming.REGISTRATE
 				.item(name, p -> factory.apply(food(p, nutrition, sat, effs)))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + folder + ctx.getName())))
+				.transform(e -> opt ? e.asOptional() : e)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + path + ctx.getName())))
 				.tag(getTags(this.tags, tags))
 				.lang(Item::getDescriptionId, makeLang(name))
 				.register();
