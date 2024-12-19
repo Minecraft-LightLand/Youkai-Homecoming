@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "youkaishomecoming:block/sikkui/light_yellow_grid_framed_sikkui"
+  }
+}

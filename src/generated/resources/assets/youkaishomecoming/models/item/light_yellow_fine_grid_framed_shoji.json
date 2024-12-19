@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaishomecoming:item/light_yellow_fine_grid_framed_shoji"
+  }
+}

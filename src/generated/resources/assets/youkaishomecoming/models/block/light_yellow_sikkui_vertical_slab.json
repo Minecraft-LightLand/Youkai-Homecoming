@@ -66,7 +66,7 @@
   ],
   "textures": {
     "particle": "#top",
-    "side": "youkaishomecoming:block/light_yellow_sikkui",
-    "top": "youkaishomecoming:block/light_yellow_sikkui"
+    "side": "youkaishomecoming:block/sikkui/light_yellow_sikkui",
+    "top": "youkaishomecoming:block/sikkui/light_yellow_sikkui"
   }
 }

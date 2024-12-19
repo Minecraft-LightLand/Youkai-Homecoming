@@ -1,7 +1,0 @@
-{
-  "parent": "youkaishomecoming:template/door_top_right",
-  "textures": {
-    "bottom": "youkaishomecoming:block/fine_grid_framed_light_yellow_shoji_bottom",
-    "top": "youkaishomecoming:block/fine_grid_framed_light_yellow_shoji_top"
-  }
-}

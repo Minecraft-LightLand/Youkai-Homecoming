@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "youkaishomecoming:brown_fine_grid_framed_sikkui"
+  },
+  "result": {
+    "count": 3,
+    "id": "youkaishomecoming:brown_fine_grid_framed_shoji"
+  }
+}

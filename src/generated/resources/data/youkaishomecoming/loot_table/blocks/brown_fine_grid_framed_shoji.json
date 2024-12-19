@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "youkaishomecoming:brown_fine_grid_framed_shoji",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
+          "name": "youkaishomecoming:brown_fine_grid_framed_shoji"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaishomecoming:blocks/brown_fine_grid_framed_shoji"
+}

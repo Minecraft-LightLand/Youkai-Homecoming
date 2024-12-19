@@ -1,6 +1,6 @@
 {
   "parent": "youkaishomecoming:custom/handrail_post_outer",
   "textures": {
-    "all": "youkaishomecoming:block/warped_handrail"
+    "all": "youkaishomecoming:block/wood/warped_handrail"
   }
 }

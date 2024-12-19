@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "bottom": "youkaishomecoming:block/cross_framed_sikkui",
-    "side": "youkaishomecoming:block/cross_framed_sikkui",
-    "top": "youkaishomecoming:block/cross_framed_sikkui"
+    "bottom": "youkaishomecoming:block/sikkui/cross_framed_sikkui",
+    "side": "youkaishomecoming:block/sikkui/cross_framed_sikkui",
+    "top": "youkaishomecoming:block/sikkui/cross_framed_sikkui"
   }
 }

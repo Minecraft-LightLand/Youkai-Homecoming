@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "youkaishomecoming:block/brown_sikkui"
+    "all": "youkaishomecoming:block/sikkui/brown_sikkui"
   }
 }

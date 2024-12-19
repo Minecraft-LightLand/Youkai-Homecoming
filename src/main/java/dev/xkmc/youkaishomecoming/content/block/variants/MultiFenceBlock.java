@@ -535,14 +535,14 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			String name = (f.name() + "_" + s.name() + "_" + t.name()).toLowerCase(Locale.ROOT);
 			return pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
 					.parent(FLAT[f.ordinal()][s.ordinal()][t.ordinal()])
-					.texture("all", pvd.modLoc("block/" + ctx.getName()));
+					.texture("all", pvd.modLoc("block/wood/" + ctx.getName()));
 		}
 
 		private ModelFile genDiagModel(Face f, Side s, Rotate r) {
 			String name = (f.name() + "_" + s.name() + "_" + r.name()).toLowerCase(Locale.ROOT);
 			return pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
 					.parent(DIAG[f.ordinal()][s.ordinal()][r.ordinal()])
-					.texture("all", pvd.modLoc("block/" + ctx.getName()));
+					.texture("all", pvd.modLoc("block/wood/" + ctx.getName()));
 		}
 
 		private ModelFile getModel(Face f, Side s, Type t) {
@@ -610,7 +610,7 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 			String name = "post_" + face.name().toLowerCase(Locale.ROOT);
 			builder.part().modelFile(pvd.models().getBuilder("block/" + ctx.getName() + "_" + name)
 							.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/handrail_" + name)))
-							.texture("all", pvd.modLoc("block/" + ctx.getName()))
+							.texture("all", pvd.modLoc("block/wood/" + ctx.getName()))
 					).rotationY(rot).addModel()
 					.condition(INVERTED, face == Face.INNER)
 					.condition(self, State.UP)

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "youkaishomecoming:block/cross_framed_light_yellow_sikkui",
-    "side": "youkaishomecoming:block/cross_framed_light_yellow_sikkui",
-    "top": "youkaishomecoming:block/cross_framed_light_yellow_sikkui"
-  }
-}
