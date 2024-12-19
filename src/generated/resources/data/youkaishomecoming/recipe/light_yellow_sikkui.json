@@ -1,24 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "building",
-  "key": {
-    "A": {
-      "item": "minecraft:clay_ball"
-    },
-    "B": {
+  "ingredients": [
+    {
       "item": "minecraft:sand"
     },
-    "C": {
-      "item": "farmersdelight:straw"
-    },
-    "D": {
+    {
       "item": "minecraft:clay"
+    },
+    {
+      "item": "farmersdelight:straw"
     }
-  },
-  "pattern": [
-    "ABA",
-    "CDC",
-    "ABA"
   ],
   "result": {
     "count": 2,

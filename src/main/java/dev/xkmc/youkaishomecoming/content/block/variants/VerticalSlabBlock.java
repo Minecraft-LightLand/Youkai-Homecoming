@@ -11,14 +11,21 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 
 import java.util.function.Supplier;
@@ -46,6 +53,24 @@ public class VerticalSlabBlock extends HorizontalLoggedBlock {
 	}
 
 	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+		BlockState state = defaultBlockState();
+		FluidState fluid = ctx.getLevel().getFluidState(ctx.getClickedPos());
+		var face = ctx.getClickedFace();
+		Direction dir;
+		if (face.getAxis().isVertical()) {
+			var loc = ctx.getClickLocation();
+			dir = Direction.getNearest(Mth.positiveModulo(loc.x, 1) - 0.5, 0, Mth.positiveModulo(loc.z, 1) - 0.5);
+		} else {
+			if (ctx.replacingClickedOnBlock())
+				dir = face;
+			else dir = face.getOpposite();
+		}
+		state = state.setValue(FACING, dir);
+		return state.setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
+	}
+
+	@Override
 	protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
 		return null;//TODO
 	}
@@ -68,6 +93,12 @@ public class VerticalSlabBlock extends HorizontalLoggedBlock {
 		return builder;
 	}
 
+	public static void buildBlockState(DataGenContext<Block, ? extends VerticalSlabBlock> ctx, RegistrateBlockstateProvider pvd,
+									   ResourceLocation top, ResourceLocation side) {
+		var model = buildModel(ctx, pvd).texture("top", top).texture("side", side);
+		pvd.getVariantBuilder(ctx.get()).forAllStates((state) -> ConfiguredModel.builder().modelFile(model).uvLock(true)
+				.rotationY(((int) (state.getValue(BlockStateProperties.HORIZONTAL_FACING)).toYRot() + 180) % 360).build());
+	}
 
 	public static void genRecipe(RegistrateRecipeProvider pvd, Supplier<? extends ItemLike> base, Supplier<? extends VerticalSlabBlock> vertical) {
 		YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, vertical.get(), 6)::unlockedBy, base.get().asItem())

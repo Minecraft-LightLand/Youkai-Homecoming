@@ -34,6 +34,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
@@ -122,7 +123,7 @@ public class YHBlocks {
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 	public static final BlockEntry<MoonLanternBlock> MOON_LANTERN;
 
-	public static SikkuiGroup SIKKUI;
+	public static SikkuiGroup SIKKUI, LIGHT_YELLOW_SIKKUI, BROWN_SIKKUI;
 
 	public static final WoodSet HAY, STRAW;
 
@@ -226,28 +227,20 @@ public class YHBlocks {
 
 		{
 			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "", (ctx, pvd) ->
-					YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get())::unlockedBy, ModItems.STRAW.get())
+					YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
 							.pattern("ABA").pattern("DCD").pattern("ABA")
 							.define('A', Items.CLAY_BALL)
 							.define('B', Items.BONE_MEAL)
 							.define('D', Items.PAPER)
 							.define('C', ModItems.STRAW.get())
 							.save(pvd));
-			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "light_yellow_", (ctx, pvd) ->
-					YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
-							.pattern("ABA").pattern("CDC").pattern("ABA")
-							.define('A', Items.CLAY_BALL)
-							.define('B', Items.SAND)
-							.define('D', Items.CLAY)
-							.define('C', ModItems.STRAW.get())
+			LIGHT_YELLOW_SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "light_yellow_", (ctx, pvd) ->
+					YHRecipeGen.unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
+							.requires(Items.SAND).requires(Items.CLAY).requires(ModItems.STRAW.get())
 							.save(pvd));
-			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "brown_", (ctx, pvd) ->
-					YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
-							.pattern("ABA").pattern("CDC").pattern("ABA")
-							.define('A', Items.CLAY_BALL)
-							.define('B', Items.DIRT)
-							.define('D', Items.CLAY)
-							.define('C', ModItems.STRAW.get())
+			BROWN_SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "brown_", (ctx, pvd) ->
+					YHRecipeGen.unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
+							.requires(Items.DIRT).requires(Items.CLAY).requires(ModItems.STRAW.get())
 							.save(pvd));
 
 			var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
@@ -268,8 +261,7 @@ public class YHBlocks {
 				ResourceLocation side = ResourceLocation.withDefaultNamespace("block/" + name + "_planks");
 				e.vertical = YoukaisHomecoming.REGISTRATE.block(name + "_vertical_slab", p ->
 								new VerticalSlabBlock(prop))
-						.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
-								.texture("top", side).texture("side", side)))
+						.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, side, side))
 						.tag(YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_AXE).item().build()
 						.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, () -> e.plank, ctx))
 						.register();
@@ -424,8 +416,7 @@ public class YHBlocks {
 					.register();
 			VERTICAL = reg.block(id + "_vertical_slab", p ->
 							new HayVerticalSlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
-							.texture("top", top).texture("side", side)))
+					.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, top, side))
 					.tag(YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_AXE).item().build()
 					.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, base, ctx))
 					.register();
@@ -482,8 +473,7 @@ public class YHBlocks {
 					.register();
 			VERTICAL = reg.block(id + "_vertical_slab", p ->
 							new VerticalSlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
-							.texture("top", side).texture("side", side)))
+					.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, side, side))
 					.tag(YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE).item().build()
 					.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, BASE, ctx))
 					.register();
@@ -520,8 +510,7 @@ public class YHBlocks {
 					.register();
 			VERTICAL = reg.block(id + "_vertical_slab", p ->
 							new VerticalSlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
-							.texture("top", side).texture("side", side)))
+					.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, side, side))
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, YHTagGen.VERTICAL_SLAB).item().build()
 					.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, BASE, ctx))
 					.register();
