@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brown_sikkui": {
+    "has_straw": {
       "conditions": {
         "items": [
           {
-            "items": "youkaishomecoming:brown_sikkui"
+            "items": "farmersdelight:straw"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_brown_sikkui"
+      "has_straw"
     ]
   ],
   "rewards": {

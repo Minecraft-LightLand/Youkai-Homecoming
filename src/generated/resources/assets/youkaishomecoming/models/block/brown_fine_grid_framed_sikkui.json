@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "youkaishomecoming:block/sikkui/brown_framed_sikkui",
+    "side": "youkaishomecoming:block/sikkui/brown_fine_grid_framed_sikkui_side"
+  }
+}

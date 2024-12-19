@@ -1,6 +1,0 @@
-{
-  "parent": "youkaishomecoming:template/template_orientable_trapdoor_open",
-  "textures": {
-    "texture": "youkaishomecoming:block/cross_framed_light_yellow_sikkui"
-  }
-}

@@ -1,6 +1,6 @@
 {
   "parent": "youkaishomecoming:custom/handrail_inner_left_connect",
   "textures": {
-    "all": "youkaishomecoming:block/crimson_handrail"
+    "all": "youkaishomecoming:block/wood/crimson_handrail"
   }
 }

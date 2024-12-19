@@ -4,7 +4,7 @@
       "model": "youkaishomecoming:block/cross_framed_sikkui_slab"
     },
     "type=double": {
-      "model": "youkaishomecoming:block/cross_framed_sikkui"
+      "model": "youkaishomecoming:block/sikkui/cross_framed_sikkui"
     },
     "type=top": {
       "model": "youkaishomecoming:block/cross_framed_sikkui_slab_top"

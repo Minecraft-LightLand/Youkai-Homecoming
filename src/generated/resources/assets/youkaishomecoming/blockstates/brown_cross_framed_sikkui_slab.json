@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "youkaishomecoming:block/brown_cross_framed_sikkui_slab"
+    },
+    "type=double": {
+      "model": "youkaishomecoming:block/sikkui/brown_cross_framed_sikkui"
+    },
+    "type=top": {
+      "model": "youkaishomecoming:block/brown_cross_framed_sikkui_slab_top"
+    }
+  }
+}

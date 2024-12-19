@@ -3,19 +3,25 @@
   "category": "building",
   "key": {
     "A": {
-      "item": "youkaishomecoming:brown_sikkui"
+      "item": "minecraft:clay_ball"
     },
     "B": {
-      "tag": "c:dyed/yellow"
+      "item": "minecraft:sand"
+    },
+    "C": {
+      "item": "farmersdelight:straw"
+    },
+    "D": {
+      "item": "minecraft:clay"
     }
   },
   "pattern": [
-    "AAA",
     "ABA",
-    "AAA"
+    "CDC",
+    "ABA"
   ],
   "result": {
-    "count": 8,
+    "count": 2,
     "id": "youkaishomecoming:light_yellow_sikkui"
   }
 }

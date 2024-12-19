@@ -52,7 +52,6 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.Tags;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -234,8 +233,22 @@ public class YHBlocks {
 							.define('D', Items.PAPER)
 							.define('C', ModItems.STRAW.get())
 							.save(pvd));
-			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "light_yellow_", Ingredient.of(Tags.Items.DYED_YELLOW));
-			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "brown_", Ingredient.of(Tags.Items.DYES_BROWN));
+			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "light_yellow_", (ctx, pvd) ->
+					YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
+							.pattern("ABA").pattern("CDC").pattern("ABA")
+							.define('A', Items.CLAY_BALL)
+							.define('B', Items.SAND)
+							.define('D', Items.CLAY)
+							.define('C', ModItems.STRAW.get())
+							.save(pvd));
+			SIKKUI = new SikkuiGroup(YoukaisHomecoming.REGISTRATE, "brown_", (ctx, pvd) ->
+					YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 2)::unlockedBy, ModItems.STRAW.get())
+							.pattern("ABA").pattern("CDC").pattern("ABA")
+							.define('A', Items.CLAY_BALL)
+							.define('B', Items.DIRT)
+							.define('D', Items.CLAY)
+							.define('C', ModItems.STRAW.get())
+							.save(pvd));
 
 			var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
 					.instrument(NoteBlockInstrument.BANJO).strength(0.5F).sound(SoundType.GRASS);
@@ -278,11 +291,12 @@ public class YHBlocks {
 				.register();
 	}
 
-	private static BlockEntry<ThinDoorBlock> thinDoor(L2Registrate reg, String id, BlockBehaviour.Properties prop, BlockSetType set, Supplier<Block> base) {
+	private static BlockEntry<ThinDoorBlock> thinDoor(
+			L2Registrate reg, String id, BlockBehaviour.Properties prop, BlockSetType set,
+			ResourceLocation bottom, ResourceLocation top, Supplier<Block> base
+	) {
 		return reg.block(id, p -> new ThinDoorBlock(prop, set))
-				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(),
-						pvd.modLoc("block/" + id + "_bottom"),
-						pvd.modLoc("block/" + id + "_top")))
+				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(), bottom, top))
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
 				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).tab(TAB_FURNITURE.key()).build()
 				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b)))
@@ -318,28 +332,31 @@ public class YHBlocks {
 			var sikkuiProp = BlockBehaviour.Properties.ofFullCopy(Blocks.CLAY);
 
 			SIKKUI = new FullSikkuiSet(reg, id + "sikkui", sikkuiProp, builder);
-			FRAMED_SIKKUI = new SikkuiSet(reg, "framed_" + id + "sikkui", sikkuiProp, (ctx, pvd) -> genStickRecipe(pvd, SIKKUI.BASE, ctx));
-			CROSS_SIKKUI = new FullSikkuiSet(reg, "cross_framed_" + id + "sikkui", sikkuiProp, (ctx, pvd) -> genStickRecipe(pvd, FRAMED_SIKKUI.BASE, ctx));
-			GRID_SIKKUI = new SikkuiSet(reg, "grid_framed_" + id + "sikkui", sikkuiProp, (ctx, pvd) -> genStickRecipe(pvd, CROSS_SIKKUI.BASE, ctx));
+			FRAMED_SIKKUI = new SikkuiSet(reg, id + "framed_sikkui", sikkuiProp, (ctx, pvd) -> genStickRecipe(pvd, SIKKUI.BASE, ctx));
+			CROSS_SIKKUI = new FullSikkuiSet(reg, id + "cross_framed_sikkui", sikkuiProp, (ctx, pvd) -> genStickRecipe(pvd, FRAMED_SIKKUI.BASE, ctx));
+			GRID_SIKKUI = new SikkuiSet(reg, id + "grid_framed_sikkui", sikkuiProp, (ctx, pvd) -> genStickRecipe(pvd, CROSS_SIKKUI.BASE, ctx));
 
-			FINE_GRID_SIKKUI = reg.block("fine_grid_framed_" + id + "sikkui",
+			FINE_GRID_SIKKUI = reg.block(id + "fine_grid_framed_sikkui",
 							p -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CLAY)))
 					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(),
 							pvd.models().cubeColumn("block/" + ctx.getName(),
-									pvd.modLoc("block/" + ctx.getName() + "_side"),
-									pvd.modLoc("block/framed_" + id + "sikkui"))))
+									pvd.modLoc("block/sikkui/" + ctx.getName() + "_side"),
+									pvd.modLoc("block/sikkui/" + id + "framed_sikkui"))))
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE)
 					.simpleItem()
 					.recipe((ctx, pvd) -> genStickRecipe(pvd, GRID_SIKKUI.BASE, ctx))
 					.register();
 
-			FINE_GRID_SIKKUI_TD = thinTrapdoor(reg, "fine_grid_framed_" + id + "sikkui", sikkuiProp, set,
-					reg.loc("block/fine_grid_framed_" + id + "sikkui_side"), FINE_GRID_SIKKUI);
+			FINE_GRID_SIKKUI_TD = thinTrapdoor(reg, id + "fine_grid_framed_sikkui", sikkuiProp, set,
+					reg.loc("block/sikkui/" + id + "fine_grid_framed_sikkui_side"), FINE_GRID_SIKKUI);
 
 			var doorProp = BlockBehaviour.Properties.ofFullCopy(Blocks.CLAY)
 					.noOcclusion().pushReaction(PushReaction.DESTROY);
 
-			FINE_GRID_SHOJI = thinDoor(reg, "fine_grid_framed_" + id + "shoji", doorProp, set, FINE_GRID_SIKKUI);
+			FINE_GRID_SHOJI = thinDoor(reg, id + "fine_grid_framed_shoji", doorProp, set,
+					reg.loc("block/sikkui/" + id + "fine_grid_framed_shoji_bottom"),
+					reg.loc("block/sikkui/" + id + "fine_grid_framed_sikkui_side"),
+					FINE_GRID_SIKKUI);
 
 		}
 
@@ -429,10 +446,10 @@ public class YHBlocks {
 					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
 					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 			BASE = reg.block(id, p -> new Block(prop))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cubeAll(ctx.getName(), reg.loc("block/sikkui/" + id))))
 					.tag(BlockTags.MINEABLE_WITH_SHOVEL)
 					.simpleItem().recipe(builder).register();
-			TRAP_DOOR = thinTrapdoor(reg, id, prop, set, reg.loc("block/" + id), BASE);
+			TRAP_DOOR = thinTrapdoor(reg, id, prop, set, reg.loc("block/sikkui/" + id), BASE);
 		}
 
 	}
@@ -445,7 +462,7 @@ public class YHBlocks {
 
 		public FullSikkuiSet(L2Registrate reg, String id, BlockBehaviour.Properties prop, BlockRecipe builder) {
 			super(reg, id, prop, builder);
-			ResourceLocation side = reg.loc("block/" + id);
+			ResourceLocation side = reg.loc("block/sikkui/" + id);
 			STAIR = reg.block(id + "_stairs", p ->
 							new StairBlock(BASE.get().defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side))

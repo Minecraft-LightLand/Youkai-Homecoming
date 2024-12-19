@@ -4,7 +4,7 @@
       "model": "youkaishomecoming:block/brown_sikkui_slab"
     },
     "type=double": {
-      "model": "youkaishomecoming:block/brown_sikkui"
+      "model": "youkaishomecoming:block/sikkui/brown_sikkui"
     },
     "type=top": {
       "model": "youkaishomecoming:block/brown_sikkui_slab_top"
