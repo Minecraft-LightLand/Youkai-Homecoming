@@ -275,7 +275,7 @@ public class YHBlocks {
 		return reg.block(id + "_trap_door", p ->
 						new ThinTrapdoorBlock(prop, set))
 				.blockstate((ctx, pvd) -> ThinTrapdoorBlock.buildModels(pvd, ctx.get(), ctx.getName(), side))
-				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.TRAPDOORS)
+				.tag(YHTagGen.SIKKUI, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.TRAPDOORS)
 				.item().model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(
 						new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id + "_trap_door_bottom"))))
 				.tag(ItemTags.TRAPDOORS).tab(TAB_FURNITURE.key()).build()
@@ -289,7 +289,7 @@ public class YHBlocks {
 	) {
 		return reg.block(id, p -> new ThinDoorBlock(prop, set))
 				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(), bottom, top))
-				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
+				.tag(YHTagGen.SIKKUI, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
 				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).tab(TAB_FURNITURE.key()).build()
 				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b)))
 				.recipe((ctx, pvd) -> pvd.stonecutting(DataIngredient.items(base.get()), RecipeCategory.MISC, ctx, 3))
@@ -438,7 +438,7 @@ public class YHBlocks {
 					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 			BASE = reg.block(id, p -> new Block(prop))
 					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cubeAll(ctx.getName(), reg.loc("block/sikkui/" + id))))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+					.tag(YHTagGen.SIKKUI, BlockTags.MINEABLE_WITH_SHOVEL)
 					.simpleItem().recipe(builder).register();
 			TRAP_DOOR = thinTrapdoor(reg, id, prop, set, reg.loc("block/sikkui/" + id), BASE);
 		}
@@ -457,7 +457,7 @@ public class YHBlocks {
 			STAIR = reg.block(id + "_stairs", p ->
 							new StairBlock(BASE.get().defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.STAIRS)
+					.tag(YHTagGen.SIKKUI, BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.STAIRS)
 					.item().tag(ItemTags.STAIRS).build()
 					.recipe((ctx, pvd) -> pvd.stairs(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))
 					.register();
@@ -467,14 +467,14 @@ public class YHBlocks {
 							pvd.models().slab(ctx.getName(), side, side, side),
 							pvd.models().slabTop(ctx.getName() + "_top", side, side, side),
 							new ModelFile.UncheckedModelFile(side)))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.SLABS)
+					.tag(YHTagGen.SIKKUI, BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.SLABS)
 					.item().tag(ItemTags.SLABS).build()
 					.recipe((ctx, pvd) -> pvd.slab(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))
 					.register();
 			VERTICAL = reg.block(id + "_vertical_slab", p ->
 							new VerticalSlabBlock(prop))
 					.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, side, side))
-					.tag(YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE).item().build()
+					.tag(YHTagGen.SIKKUI, YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE).item().build()
 					.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, BASE, ctx))
 					.register();
 		}
