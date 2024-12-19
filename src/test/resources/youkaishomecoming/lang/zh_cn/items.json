@@ -118,31 +118,17 @@
 	"peach_tapioca": "桃花羹",
 	"peach_yatsuhashi": "桃子八桥",
 	"dried_mandrake_flower": "干燥的曼德拉花",
-	"frozen_frog_cold": "冻青蛙",
-	"frozen_frog_warm": "冻青蛙",
-	"frozen_frog_temperate": "冻青蛙",
 	"ice_cube": "冰块",
 	"fairy_ice_crystal": "妖精冰晶",
 	"stripped_mandrake_root": "去皮曼德拉根",
-	"mandrake_flower": "曼德拉花",
-	"fairy_candy": "妖精糖果",
-	"cirno_hairband": "琪露诺的蝴蝶结",
-	"cirno_wings": "琪露诺的翅膀"
+	"mandrake_flower": "曼德拉花"
   },
   "-cartesian": {
 	"entity": {
 	  "path": "",
 	  "list": [
 		{
-		  "lamprey": "八目鳗",
-		  "rumia": "露米娅",
-		  "youkai": "妖怪",
-		  "shrine_maiden": "博丽灵梦",
-		  "fairy": "妖精",
-		  "cirno": "琪露诺",
-		  "yukari": "八云紫",
-		  "kochiya_sanae": "东风谷早苗",
-		  "komeiji_koishi": "古明地恋"
+		  "lamprey": "八目鳗"
 		},
 		{
 		  "entity.youkaishomecoming.*": "",
@@ -182,37 +168,6 @@
 		  "tengu_tango": "天狗踊",
 		  "scarlet_mist": "绯红迷雾",
 		  "wind_priestesses": "风祝"
-		}
-	  ]
-	},
-	"danmaku": {
-	  "path": "item.youkaishomecoming",
-	  "list": [
-		{
-		  "black": "黑色",
-		  "blue": "蓝色",
-		  "brown": "棕色",
-		  "cyan": "青色",
-		  "gray": "灰色",
-		  "green": "绿色",
-		  "light_blue": "淡蓝色",
-		  "light_gray": "淡灰色",
-		  "lime": "黄绿色",
-		  "magenta": "品红色",
-		  "orange": "橙色",
-		  "pink": "粉红色",
-		  "purple": "紫色",
-		  "red": "红色",
-		  "white": "白色",
-		  "yellow": "黄色"
-		},
-		{
-		  "circle_danmaku": "环玉弹幕",
-		  "ball_danmaku": "小玉弹幕",
-		  "mentos_danmaku": "中玉弹幕",
-		  "bubble_danmaku": "大玉弹幕",
-		  "butterfly_danmaku": "蝴蝶弹幕",
-		  "laser": "激光"
 		}
 	  ]
 	}

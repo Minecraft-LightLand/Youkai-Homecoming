@@ -93,7 +93,8 @@
 				{
 					"handrail": "扶手",
 					"dining_table": "餐桌",
-					"dining_chair": "板凳"
+					"dining_chair": "板凳",
+					"vertical_slab": "墙"
 				}
 			]
 		},
