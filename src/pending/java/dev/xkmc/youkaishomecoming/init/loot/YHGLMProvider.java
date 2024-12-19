@@ -63,12 +63,6 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 		add("rumia_scavenging_piglin_head", create(Items.PIGLIN_HEAD, 1,
 				killedByRumia(), entity(YHTagGen.PIGLIN_SOURCE)));
 
-		add("cirno_frozen_frog_cold", create(YHItems.FROZEN_FROG_COLD.get(), 1,
-				killedByCirno(), frog(FrogVariant.COLD)));
-		add("cirno_frozen_frog_warm", create(YHItems.FROZEN_FROG_WARM.get(), 1,
-				killedByCirno(), frog(FrogVariant.WARM)));
-		add("cirno_frozen_frog_temperate", create(YHItems.FROZEN_FROG_TEMPERATE.get(), 1,
-				killedByCirno(), frog(FrogVariant.TEMPERATE)));
 
 	}
 

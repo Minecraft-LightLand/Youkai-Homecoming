@@ -33,6 +33,7 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 	private final IDrawable icon;
 
 	public BasePotRecipeCategory(IGuiHelper helper, String path, ItemStack icon) {
+
 		ResourceLocation backgroundImage = YoukaisHomecoming.loc("textures/gui/" + path + ".png");
 		this.background = helper.createDrawable(backgroundImage, 29, 16, 116, 56);
 		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, icon);

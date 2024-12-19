@@ -13,6 +13,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 
 public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 		SimpleFermentationBuilder,
@@ -22,14 +23,18 @@ public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 		> {
 
 	public SimpleFermentationBuilder(Fluid output, int time) {
-		this(Fluids.EMPTY, output, time);
+		this(FluidIngredient.empty(), output, time);
 	}
 
-	public SimpleFermentationBuilder(Fluid input, Fluid output, int time) {
-		this(new FluidStack(input, 1000), new FluidStack(output, 1000), time);
+	public SimpleFermentationBuilder(TagKey<Fluid> input, Fluid output, int time) {
+		this(FluidIngredient.tag(input), new FluidStack(output, 1000), time);
 	}
 
-	public SimpleFermentationBuilder(FluidStack input, FluidStack output, int time) {
+	public SimpleFermentationBuilder(FluidIngredient input, Fluid output, int time) {
+		this(input, new FluidStack(output, 1000), time);
+	}
+
+	public SimpleFermentationBuilder(FluidIngredient input, FluidStack output, int time) {
 		super(YHBlocks.FERMENT_RS.get(), Items.AIR);
 		recipe.inputFluid = input;
 		recipe.outputFluid = output;

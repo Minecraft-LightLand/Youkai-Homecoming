@@ -44,6 +44,15 @@ import vectorwing.farmersdelight.common.tag.ForgeTags;
 public class GeneralEventHandlers {
 
 	@SubscribeEvent
+	public static void onShieldBlock(ShieldBlockEvent event) {
+		if (event.getDamageSource().is(YHDamageTypes.KOISHI)) {
+			if (event.getEntity() instanceof Player player) {
+				KoishiAttackCapability.HOLDER.get(player).onBlock();
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase != TickEvent.Phase.END) return;
 		var e = event.player;
@@ -52,18 +61,6 @@ public class GeneralEventHandlers {
 		}
 	}
 
-
-	@SubscribeEvent
-	public static void onShieldBlock(ShieldBlockEvent event) {
-		if (event.getDamageSource().is(YHDamageTypes.KOISHI)) {
-			if (event.getEntity() instanceof Player player) {
-				KoishiAttackCapability.HOLDER.get(player).onBlock();
-			}
-		}
-		if (event.getDamageSource().getDirectEntity() instanceof RumiaEntity rumia) {
-			rumia.state.onBlocked();
-		}
-	}
 
 	@SubscribeEvent
 	public static void collectBlood(LivingDeathEvent event) {

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brown_sikkui": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:brown_sikkui"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:brown_sikkui_vertical_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brown_sikkui"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:brown_sikkui_vertical_slab"
+    ]
+  }
+}

@@ -28,6 +28,7 @@ public class YHTagGen {
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
+	public static final TagKey<Block> VERTICAL_SLAB = block("vertical_slab");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
 	public static final TagKey<EntityType<?>> SKULL_SOURCE = entity("drops_skeleton_skull");

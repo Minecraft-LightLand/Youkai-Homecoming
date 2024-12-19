@@ -17,6 +17,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentationRecipe, FermentRecipeCategory> {
@@ -48,7 +49,7 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 		if (!recipe.inputFluid.isEmpty()) {
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 1;
-			builder.addSlot(RecipeIngredientRole.INPUT, x, y).addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.inputFluid));
+			builder.addSlot(RecipeIngredientRole.INPUT, x, y).addIngredients(NeoForgeTypes.FLUID_STACK, Arrays.asList(recipe.inputFluid.getStacks()));
 		}
 		n = 0;
 		for (var stack : recipe.results) {

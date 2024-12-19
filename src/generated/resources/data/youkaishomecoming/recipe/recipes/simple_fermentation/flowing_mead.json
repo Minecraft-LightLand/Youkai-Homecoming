@@ -18,8 +18,7 @@
     }
   ],
   "inputFluid": {
-    "amount": 1000,
-    "id": "minecraft:water"
+    "tag": "minecraft:water"
   },
   "outputFluid": {
     "amount": 1000,

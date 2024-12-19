@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cross_framed_brown_sikkui": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:cross_framed_brown_sikkui"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:cross_framed_brown_sikkui_stairs_from_cross_framed_brown_sikkui_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cross_framed_brown_sikkui"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:cross_framed_brown_sikkui_stairs_from_cross_framed_brown_sikkui_stonecutting"
+    ]
+  }
+}

@@ -18,6 +18,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -27,7 +28,6 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
@@ -54,27 +54,6 @@ public class YHRecipeGen {
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
 			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
-			for (var e : YHBlocks.WoodType.values()) {
-				pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, e.fence);
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.seat, 4)::unlockedBy, ModItems.CANVAS.get())
-						.pattern("PCP").pattern("PSP")
-						.define('C', ModItems.CANVAS.get())
-						.define('P', e.plank)
-						.define('S', Items.STICK)
-						.save(pvd);
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.table, 4)::unlockedBy, Items.STICK)
-						.pattern("WWW").pattern(" S ").pattern(" P ")
-						.define('W', e.strippedWood)
-						.define('S', Items.STICK)
-						.define('P', e.slab)
-						.save(pvd);
-
-			}
-			YHBlocks.HAY.genRecipe(pvd);
-			YHBlocks.STRAW.genRecipe(pvd);
-
 		}
 
 		// furniture
@@ -112,46 +91,6 @@ public class YHRecipeGen {
 					.define('B', ItemTags.WOODEN_TRAPDOORS)
 					.define('C', Items.BUCKET)
 					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI.BASE)::unlockedBy, ModItems.STRAW.get())
-					.pattern("ABA").pattern("DCD").pattern("ABA")
-					.define('A', Items.CLAY_BALL)
-					.define('B', Items.BONE_MEAL)
-					.define('D', Items.PAPER)
-					.define('C', ModItems.STRAW.get())
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI.BASE)::unlockedBy, YHBlocks.SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.SIKKUI.BASE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.CROSS_SIKKUI.BASE)::unlockedBy, YHBlocks.FRAMED_SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.FRAMED_SIKKUI.BASE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI.BASE)::unlockedBy, YHBlocks.CROSS_SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.CROSS_SIKKUI.BASE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.GRID_SIKKUI.BASE)
-					.save(pvd);
-
-			YHBlocks.SIKKUI.genRecipe(pvd);
-			YHBlocks.FRAMED_SIKKUI.genRecipe(pvd);
-			YHBlocks.CROSS_SIKKUI.genRecipe(pvd);
-			YHBlocks.GRID_SIKKUI.genRecipe(pvd);
-
-			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SIKKUI_TD, 6);
-			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SHOJI, 3);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.MOON_LANTERN)::unlockedBy, YHCrops.UDUMBARA.getFruits())
 					.pattern("RAR").pattern("GFG").pattern("RAR")
@@ -486,6 +425,7 @@ public class YHRecipeGen {
 					.addIngredient(Tags.Items.SEEDS)
 					.addIngredient(Tags.Items.CROPS)
 					.addIngredient(ItemTags.FLOWERS)
+					.addIngredient(Items.BONE_MEAL)
 					.build(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POWER_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
@@ -747,41 +687,41 @@ public class YHRecipeGen {
 		// sake
 		{
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHItems.SOY_SAUCE_BOTTLE.fluid.get(), 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHItems.SOY_SAUCE_BOTTLE.fluid.get(), 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
 					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
 					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MIO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.MIO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MEAD.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.MEAD.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DAIGINJO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.DAIGINJO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DASSAI.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.DASSAI.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.NAUTILUS_SHELL)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.TENGU_TANGO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.TENGU_TANGO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SPARROW_SAKE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.SPARROW_SAKE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.FULL_MOONS_EVE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.FULL_MOONS_EVE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd);

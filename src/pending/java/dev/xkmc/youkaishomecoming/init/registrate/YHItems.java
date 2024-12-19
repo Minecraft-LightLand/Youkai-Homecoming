@@ -60,8 +60,6 @@ public class YHItems {
 	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
 
 	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
-	public static final ItemEntry<FairyIceItem> FAIRY_ICE_CRYSTAL;
-	public static final ItemEntry<FrozenFrogItem> FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 
 	public static final ItemEntry<FleshSimpleItem> RAW_FLESH_FEAST;
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
@@ -124,10 +122,6 @@ public class YHItems {
 		{
 			BLOOD_BOTTLE = new BottledFluid<>("blood", 0xff772221, () -> Items.GLASS_BOTTLE, "ingredient", BloodBottleItem::new);
 
-			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", FairyIceItem::new);
-			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.COLD));
-			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.WARM));
-			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.TEMPERATE));
 		}
 
 		// feasts
@@ -151,12 +145,6 @@ public class YHItems {
 			RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f, true);
 		}
 
-	}
-
-	public static <T extends Item> ItemEntry<T> ingredient(String id, NonNullFunction<Item.Properties, T> factory) {
-		return YoukaisHomecoming.REGISTRATE.item(id, factory)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
-				.register();
 	}
 
 	public static void register() {

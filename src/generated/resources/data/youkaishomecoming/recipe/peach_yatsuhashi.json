@@ -9,7 +9,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "c:fruits/peach"
+      "tag": "c:foods/fruits/peach"
     },
     {
       "item": "farmersdelight:cooked_rice"

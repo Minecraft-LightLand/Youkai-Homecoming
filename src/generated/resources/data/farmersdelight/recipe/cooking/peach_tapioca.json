@@ -13,7 +13,7 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "tag": "c:fruits/peach"
+      "tag": "c:foods/fruits/peach"
     },
     {
       "item": "minecraft:lily_pad"

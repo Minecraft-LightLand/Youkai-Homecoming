@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "youkaishomecoming:block/cross_framed_brown_sikkui",
+    "side": "youkaishomecoming:block/cross_framed_brown_sikkui",
+    "top": "youkaishomecoming:block/cross_framed_brown_sikkui"
+  }
+}

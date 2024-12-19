@@ -1,11 +1,14 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import com.tterrag.registrate.providers.ProviderType;
+import dev.ghen.thirst.Thirst;
 import dev.xkmc.l2core.init.L2TagGen;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2serial.serialization.custom_handler.CodecHandler;
+import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.FermentationTankBlockEntity;
@@ -24,20 +27,19 @@ import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -71,6 +73,10 @@ public class YoukaisHomecoming {
 		YHEntities.register();
 		YHGLMProvider.register();
 		YHModConfig.init();
+
+		if (ModList.get().isLoaded(Thirst.ID)) {
+			ThirstCompat.init();
+		}
 	}
 
 	@SubscribeEvent
@@ -89,15 +95,19 @@ public class YoukaisHomecoming {
 
 	}
 
+	private static void init(){
+		((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
+		new CodecHandler<>(FluidIngredient.class, FluidIngredient.CODEC, FluidIngredient.STREAM_CODEC);
+	}
+
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
-		event.enqueueWork(() -> {
-			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
-		});
+		event.enqueueWork(YoukaisHomecoming::init);
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		init();
 
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
