@@ -28,7 +28,6 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
@@ -55,27 +54,6 @@ public class YHRecipeGen {
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
 			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
-			for (var e : YHBlocks.WoodType.values()) {
-				pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, e.fence);
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.seat, 4)::unlockedBy, ModItems.CANVAS.get())
-						.pattern("PCP").pattern("PSP")
-						.define('C', ModItems.CANVAS.get())
-						.define('P', e.plank)
-						.define('S', Items.STICK)
-						.save(pvd);
-
-				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.table, 4)::unlockedBy, Items.STICK)
-						.pattern("WWW").pattern(" S ").pattern(" P ")
-						.define('W', e.strippedWood)
-						.define('S', Items.STICK)
-						.define('P', e.slab)
-						.save(pvd);
-
-			}
-			YHBlocks.HAY.genRecipe(pvd);
-			YHBlocks.STRAW.genRecipe(pvd);
-
 		}
 
 		// furniture
@@ -113,46 +91,6 @@ public class YHRecipeGen {
 					.define('B', ItemTags.WOODEN_TRAPDOORS)
 					.define('C', Items.BUCKET)
 					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI.BASE)::unlockedBy, ModItems.STRAW.get())
-					.pattern("ABA").pattern("DCD").pattern("ABA")
-					.define('A', Items.CLAY_BALL)
-					.define('B', Items.BONE_MEAL)
-					.define('D', Items.PAPER)
-					.define('C', ModItems.STRAW.get())
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FRAMED_SIKKUI.BASE)::unlockedBy, YHBlocks.SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.SIKKUI.BASE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.CROSS_SIKKUI.BASE)::unlockedBy, YHBlocks.FRAMED_SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.FRAMED_SIKKUI.BASE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.GRID_SIKKUI.BASE)::unlockedBy, YHBlocks.CROSS_SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.CROSS_SIKKUI.BASE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.FINE_GRID_SIKKUI)::unlockedBy, YHBlocks.GRID_SIKKUI.BASE.asItem())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
-					.define('A', Items.STICK)
-					.define('B', YHBlocks.GRID_SIKKUI.BASE)
-					.save(pvd);
-
-			YHBlocks.SIKKUI.genRecipe(pvd);
-			YHBlocks.FRAMED_SIKKUI.genRecipe(pvd);
-			YHBlocks.CROSS_SIKKUI.genRecipe(pvd);
-			YHBlocks.GRID_SIKKUI.genRecipe(pvd);
-
-			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SIKKUI_TD, 6);
-			pvd.stonecutting(DataIngredient.items(YHBlocks.FINE_GRID_SIKKUI.get()), RecipeCategory.MISC, YHBlocks.FINE_GRID_SHOJI, 3);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.MOON_LANTERN)::unlockedBy, YHCrops.UDUMBARA.getFruits())
 					.pattern("RAR").pattern("GFG").pattern("RAR")

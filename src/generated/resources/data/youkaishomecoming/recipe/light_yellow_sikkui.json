@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "youkaishomecoming:brown_sikkui"
+    },
+    "B": {
+      "tag": "c:dyed/yellow"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "id": "youkaishomecoming:light_yellow_sikkui"
+  }
+}

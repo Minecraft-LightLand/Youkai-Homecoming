@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "youkaishomecoming:block/brown_sikkui",
+    "side": "youkaishomecoming:block/brown_sikkui",
+    "top": "youkaishomecoming:block/brown_sikkui"
+  }
+}

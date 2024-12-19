@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "youkaishomecoming:block/light_yellow_sikkui_slab"
+    },
+    "type=double": {
+      "model": "youkaishomecoming:block/light_yellow_sikkui"
+    },
+    "type=top": {
+      "model": "youkaishomecoming:block/light_yellow_sikkui_slab_top"
+    }
+  }
+}

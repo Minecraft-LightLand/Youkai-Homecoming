@@ -2,12 +2,18 @@ package dev.xkmc.youkaishomecoming.content.block.furniture;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,8 +22,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class WoodChairBlock extends Block {
 
@@ -75,6 +83,15 @@ public class WoodChairBlock extends Block {
 				.texture("all", pvd.modLoc("block/" + ctx.getName()))
 				.texture("particle", pvd.mcLoc("block/birch_planks"))
 				.renderType("cutout"));
+	}
+
+	public static void genRecipe(RegistrateRecipeProvider pvd, YHBlocks.WoodType base, Supplier<? extends ItemLike> self) {
+		YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, self.get(), 4)::unlockedBy, ModItems.CANVAS.get())
+				.pattern("PCP").pattern("PSP")
+				.define('C', ModItems.CANVAS.get())
+				.define('P', base.plank)
+				.define('S', Items.STICK)
+				.save(pvd);
 	}
 
 }

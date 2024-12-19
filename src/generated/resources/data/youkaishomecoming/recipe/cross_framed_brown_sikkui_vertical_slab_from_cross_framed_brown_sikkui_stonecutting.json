@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "youkaishomecoming:cross_framed_brown_sikkui"
+  },
+  "result": {
+    "count": 2,
+    "id": "youkaishomecoming:cross_framed_brown_sikkui_vertical_slab"
+  }
+}

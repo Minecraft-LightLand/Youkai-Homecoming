@@ -2,14 +2,24 @@ package dev.xkmc.youkaishomecoming.content.block.furniture;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import vectorwing.farmersdelight.common.registry.ModItems;
+
+import java.util.function.Supplier;
 
 public class WoodTableBlock extends Block {
 
@@ -37,4 +47,14 @@ public class WoodTableBlock extends Block {
 				.texture("particle", pvd.mcLoc("block/birch_planks"))
 				.renderType("cutout"));
 	}
+
+	public static void genRecipe(RegistrateRecipeProvider pvd, YHBlocks.WoodType e, Supplier<? extends ItemLike> self) {
+		YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, self.get(), 4)::unlockedBy, Items.STICK)
+				.pattern("WWW").pattern(" S ").pattern(" P ")
+				.define('W', e.strippedWood)
+				.define('S', Items.STICK)
+				.define('P', e.slab)
+				.save(pvd);
+	}
+
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:spruce_planks"
+  },
+  "result": {
+    "count": 2,
+    "id": "youkaishomecoming:spruce_vertical_slab"
+  }
+}

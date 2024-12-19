@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "youkaishomecoming:cross_framed_brown_sikkui"
+    }
+  },
+  "pattern": [
+    "X",
+    "X",
+    "X"
+  ],
+  "result": {
+    "count": 6,
+    "id": "youkaishomecoming:cross_framed_brown_sikkui_vertical_slab"
+  }
+}
