@@ -153,19 +153,13 @@ if (lljij.toBoolean()) {
 }
 
 dependencies {
-
-    implementation "com.tterrag.registrate:Registrate:${registrate_version}"
-
-    implementation "dev.xkmc:l2serial:${l2serial_ver}"
-    implementation "dev.xkmc:l2modularblocks:${l2modularblocks_ver}"
-    implementation "dev.xkmc:l2library:${l2library_ver}"
-    implementation "dev.xkmc:l2itemselector:${l2itemselector_ver}"
-
+    implementation jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[${registrate_version},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${l2serial_ver},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'l2modularblocks', version: "[${l2modularblocks_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2core', version: "[${l2core_ver},)")
-    implementation jarJar(group: 'dev.xkmc', name: 'fast_projectile_api', version: "[${fast_projectile_api_ver},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'l2itemselector', version: "[${l2itemselector_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${l2damagetracker_ver},)")
-
-    implementation "dev.xkmc:danmaku_api:${danmaku_api_ver}"
+    implementation jarJar(group: 'dev.xkmc', name: 'fast_projectile_api', version: "[${fast_projectile_api_ver},)")
 
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
 

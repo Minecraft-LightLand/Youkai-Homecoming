@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.variants;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
+import dev.xkmc.youkaishomecoming.util.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.util.VoxelBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
