@@ -2,6 +2,7 @@
 - Add 2 more sikkui set
 - Add wooden vertical slabs
 - Improve vertical slab placing
+- Remove dependency on L2Library
 
 3.0.1
 - Optional tag fix
