@@ -5,17 +5,12 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.entity.boss.KoishiEntity;
-import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
-import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.*;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.*;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
@@ -46,7 +41,12 @@ public class YHEntities {
 	public static final EntityEntry<FairyEntity> FAIRY;
 	public static final EntityEntry<YukariEntity> YUKARI;
 	public static final EntityEntry<SanaeEntity> SANAE;
+	public static final EntityEntry<MarisaEntity> MARISA;
 	public static final EntityEntry<KoishiEntity> KOISHI;
+	public static final EntityEntry<MystiaEntity> MYSTIA;
+	public static final EntityEntry<LunaEntity> LUNA;
+	public static final EntityEntry<SunnyEntity> SUNNY;
+	public static final EntityEntry<StarEntity> STAR;
 
 	public static final EntityEntry<FrozenFrog> FROZEN_FROG;
 	public static final EntityEntry<FairyIce> FAIRY_ICE;
@@ -126,6 +126,14 @@ public class YHEntities {
 					.spawnEgg(0x4eaff9, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::noLoot).register();
 
+			MARISA = YoukaisHomecoming.REGISTRATE
+					.entity("kirisame_marisa", MarisaEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(BossYoukaiEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0x52403C, 0xFAF2EF).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
 			KOISHI = YoukaisHomecoming.REGISTRATE
 					.entity("komeiji_koishi", KoishiEntity::new, MobCategory.MONSTER)
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
@@ -133,6 +141,40 @@ public class YHEntities {
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x88BA7F, 0x645856).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::noLoot).register();
+
+			MYSTIA = YoukaisHomecoming.REGISTRATE
+					.entity("mystia_lorelei", MystiaEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(BossYoukaiEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0x9B6D79, 0xF4BDAE).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+			SUNNY = YoukaisHomecoming.REGISTRATE
+					.entity("sunny_milk", SunnyEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(FairyEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0xB14435, 0xFCF5D8).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+			LUNA = YoukaisHomecoming.REGISTRATE
+					.entity("luna_child", LunaEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(FairyEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0xFFF9DA, 0xA26B4F).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+			STAR = YoukaisHomecoming.REGISTRATE
+					.entity("star_sapphire", StarEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(FairyEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0x353D95, 0x482E25).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+
 		}
 
 		{

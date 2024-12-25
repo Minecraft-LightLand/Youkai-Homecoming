@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game.sanae;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
@@ -11,7 +11,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class Sugiruyoru extends ActualSpellCard {
+public class SanaeSpell extends ActualSpellCard {
 
 	@SerialClass.SerialField
 	private int selection = 0, groundTime = 0;
@@ -77,14 +77,14 @@ public class Sugiruyoru extends ActualSpellCard {
 
 	//奇迹「客星辉煌之夜」
 	@SerialClass
-	public static class RotatingStar extends Ticker<Sugiruyoru> {
+	public static class RotatingStar extends Ticker<SanaeSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, init;
 		@SerialClass.SerialField
 		private double start;
 
-		public boolean tick(CardHolder holder, Sugiruyoru card) {
+		public boolean tick(CardHolder holder, SanaeSpell card) {
 			step(holder);
 			super.tick(holder, card);
 			return tick > 40;
@@ -103,7 +103,7 @@ public class Sugiruyoru extends ActualSpellCard {
 
 	//神德「五谷丰穰米之浴」
 	@SerialClass
-	public static class ExplosiveGrains extends Ticker<Sugiruyoru> {
+	public static class ExplosiveGrains extends Ticker<SanaeSpell> {
 
 		private static final DyeColor[] COLORS = {DyeColor.LIGHT_BLUE, DyeColor.CYAN, DyeColor.LIME, DyeColor.YELLOW, DyeColor.LIGHT_GRAY};
 
@@ -112,7 +112,7 @@ public class Sugiruyoru extends ActualSpellCard {
 		@SerialClass.SerialField
 		private double speed;
 
-		public boolean tick(CardHolder holder, Sugiruyoru card) {
+		public boolean tick(CardHolder holder, SanaeSpell card) {
 			step(holder);
 			super.tick(holder, card);
 			return tick >= 50;

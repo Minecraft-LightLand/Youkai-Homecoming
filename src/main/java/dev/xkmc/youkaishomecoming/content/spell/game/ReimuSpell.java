@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game.reimu;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.fastprojectileapi.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -22,7 +22,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class StagedHoming extends ActualSpellCard {
+public class ReimuSpell extends ActualSpellCard {
 
 	@SerialClass.SerialField
 	private boolean border, abyss;
@@ -158,7 +158,7 @@ public class StagedHoming extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class StateChange extends Ticker<StagedHoming> {
+	public static class StateChange extends Ticker<ReimuSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, init, normal, target1;
@@ -174,7 +174,7 @@ public class StagedHoming extends ActualSpellCard {
 		private DyeColor color = DyeColor.RED;
 
 		@Override
-		public boolean tick(CardHolder holder, StagedHoming card) {
+		public boolean tick(CardHolder holder, ReimuSpell card) {
 			step(holder);
 			super.tick(holder, card);
 			return tick > t0 + t1 || holder.target() == null;
@@ -238,7 +238,7 @@ public class StagedHoming extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class Intercept extends Ticker<StagedHoming> {
+	public static class Intercept extends Ticker<ReimuSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 vec = Vec3.ZERO, dir = new Vec3(1, 0, 0);
@@ -246,7 +246,7 @@ public class StagedHoming extends ActualSpellCard {
 		private double dist = 32, w = 360d / 60 * 3, speed = 2, duration = 80;
 
 		@Override
-		public boolean tick(CardHolder holder, StagedHoming card) {
+		public boolean tick(CardHolder holder, ReimuSpell card) {
 			var target = holder.target();
 			if (target != null) vec = vec.scale(0.95).add(target.scale(0.05));
 			var ori = DanmakuHelper.getOrientation(dir);

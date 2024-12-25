@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.entity.boss.MarisaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
@@ -59,6 +61,20 @@ public class EntityLootGen {
 	public static void reimu(RegistrateEntityLootTables pvd, EntityType<ReimuEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.REIMU_SPELL.get(), 1, 1))
+						.when(LootTableTemplate.byPlayer()))
+		);
+	}
+
+	public static void sanae(RegistrateEntityLootTables pvd, EntityType<SanaeEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.SANAE_SPELL.get(), 1, 1))
+						.when(LootTableTemplate.byPlayer()))
+		);
+	}
+
+	public static void marisa(RegistrateEntityLootTables pvd, EntityType<MarisaEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MARISA_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()))
 		);
 	}

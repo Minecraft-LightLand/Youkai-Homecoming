@@ -2,20 +2,13 @@ package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
-import dev.xkmc.youkaishomecoming.content.entity.boss.KoishiEntity;
-import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
-import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.*;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.LunaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.StarEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.SunnyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.spell.game.cirno.CirnoIceStorm;
-import dev.xkmc.youkaishomecoming.content.spell.game.koishi.AncestorDream;
-import dev.xkmc.youkaishomecoming.content.spell.game.reimu.StagedHoming;
-import dev.xkmc.youkaishomecoming.content.spell.game.sanae.Sugiruyoru;
-import dev.xkmc.youkaishomecoming.content.spell.game.youmu.YoumuSlash;
-import dev.xkmc.youkaishomecoming.content.spell.game.yukari.YukariMain;
-import dev.xkmc.youkaishomecoming.content.spell.game.yuyuko.YuyukoTest;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.ListSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import net.minecraft.network.chat.Component;
@@ -37,14 +30,16 @@ public class TouhouSpellCards {
 	}
 
 	public static void registerSpells() {
-		registerSpell("touhou_little_maid:hakurei_reimu", StagedHoming::new);
-		registerSpell("touhou_little_maid:yukari_yakumo", YukariMain::new);
-		registerSpell("touhou_little_maid:cirno", CirnoIceStorm::new);
-		registerSpell("touhou_little_maid:kochiya_sanae", Sugiruyoru::new);
-		registerSpell("touhou_little_maid:komeiji_koishi", AncestorDream::new);
-
-		registerSpell("touhou_little_maid:konpaku_youmu", () -> ListSpellCard.of(new YoumuSlash()));
-		registerSpell("touhou_little_maid:saigyouji_yuyuko", () -> ListSpellCard.of(new YuyukoTest()));
+		registerSpell("touhou_little_maid:hakurei_reimu", ReimuSpell::new);
+		registerSpell("touhou_little_maid:yukari_yakumo", YukariSpell::new);
+		registerSpell("touhou_little_maid:cirno", CirnoSpell::new);
+		registerSpell("touhou_little_maid:kochiya_sanae", SanaeSpell::new);
+		registerSpell("touhou_little_maid:komeiji_koishi", KoishiSpell::new);
+		registerSpell("touhou_little_maid:kirisame_marisa", MarisaSpell::new);
+		registerSpell("touhou_little_maid:mystia_lorelei", MystiaSpell::new);
+		registerSpell("touhou_little_maid:sunny_milk", SunnySpell::new);
+		registerSpell("touhou_little_maid:luna_child", LunaSpell::new);
+		registerSpell("touhou_little_maid:star_sapphire", StarSpell::new);
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
@@ -80,8 +75,28 @@ public class TouhouSpellCards {
 		setSpell(e, "touhou_little_maid:kochiya_sanae");
 	}
 
+	public static void setMarisa(MarisaEntity e) {
+		setSpell(e, "touhou_little_maid:kirisame_marisa");
+	}
+
 	public static void setKoishi(KoishiEntity e) {
 		setSpell(e, "touhou_little_maid:komeiji_koishi");
+	}
+
+	public static void setMystia(MystiaEntity e) {
+		setSpell(e, "touhou_little_maid:mystia_lorelei");
+	}
+
+	public static void setLuna(LunaEntity e) {
+		setSpell(e, "touhou_little_maid:luna_child");
+	}
+
+	public static void setSunny(SunnyEntity e) {
+		setSpell(e, "touhou_little_maid:sunny_milk");
+	}
+
+	public static void setStar(StarEntity e) {
+		setSpell(e, "touhou_little_maid:star_sapphire");
 	}
 
 }

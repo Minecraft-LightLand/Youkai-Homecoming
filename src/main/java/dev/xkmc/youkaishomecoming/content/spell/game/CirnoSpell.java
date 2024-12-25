@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game.cirno;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class CirnoIceStorm extends ActualSpellCard {
+public class CirnoSpell extends ActualSpellCard {
 
 	@Override
 	public void tick(CardHolder holder) {
@@ -39,7 +39,7 @@ public class CirnoIceStorm extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class StateChange extends Ticker<CirnoIceStorm> {
+	public static class StateChange extends Ticker<CirnoSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, init, normal;
@@ -51,7 +51,7 @@ public class CirnoIceStorm extends ActualSpellCard {
 		private double termSpeed = 1, dr = 20;
 
 		@Override
-		public boolean tick(CardHolder holder, CirnoIceStorm card) {
+		public boolean tick(CardHolder holder, CirnoSpell card) {
 			step(holder);
 			super.tick(holder, card);
 			return false;

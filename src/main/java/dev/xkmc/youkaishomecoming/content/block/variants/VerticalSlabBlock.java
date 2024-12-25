@@ -5,9 +5,13 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.util.VoxelBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
@@ -28,6 +32,24 @@ public class VerticalSlabBlock extends HorizontalLoggedBlock {
 
 	public VerticalSlabBlock(Properties pProperties) {
 		super(pProperties);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+		BlockState state = defaultBlockState();
+		FluidState fluid = ctx.getLevel().getFluidState(ctx.getClickedPos());
+		var face = ctx.getClickedFace();
+		Direction dir;
+		if (face.getAxis().isVertical()) {
+			var loc = ctx.getClickLocation();
+			dir = Direction.getNearest(Mth.positiveModulo(loc.x, 1) - 0.5, 0, Mth.positiveModulo(loc.z, 1) - 0.5);
+		} else {
+			if (ctx.replacingClickedOnBlock())
+				dir = face;
+			else dir = face.getOpposite();
+		}
+		state = state.setValue(FACING, dir);
+		return state.setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
 	}
 
 	@Override

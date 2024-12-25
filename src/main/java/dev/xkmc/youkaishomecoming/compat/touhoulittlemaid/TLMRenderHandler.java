@@ -24,8 +24,7 @@ public class TLMRenderHandler {
 	@SubscribeEvent
 	public static void onMaidConvert(ConvertMaidEvent event) {
 		if (!(event.getEntity() instanceof GeneralYoukaiEntity mob)) return;
-		String id = mob.getModelId();
-		if (id != null) event.setMaid(new MaidWrapper(mob, id));
+		event.setMaid(new MaidWrapper(mob));
 	}
 
 	public static void addLayers(EntityRenderersEvent.AddLayers event) {
@@ -33,11 +32,11 @@ public class TLMRenderHandler {
 		RENDERER.addLayer(new SpellCircleLayer<>(RENDERER));
 	}
 
-	private record MaidWrapper(Mob mob, String id) implements IMaid {
+	private record MaidWrapper(GeneralYoukaiEntity mob) implements IMaid {
 
 		@Override
 		public String getModelId() {
-			return id;
+			return mob.getModelId();
 		}
 
 		@Override

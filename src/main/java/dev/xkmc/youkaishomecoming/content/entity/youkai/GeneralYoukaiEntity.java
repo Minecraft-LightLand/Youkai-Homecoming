@@ -43,10 +43,9 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 		return SPELL_DATA;
 	}
 
-	@Nullable
 	public String getModelId() {
 		String ans = entityData.get(SPELL_MODEL);
-		if (ans.isEmpty()) return null;
+		if (ans.isEmpty()) return "";
 		return ans;
 	}
 

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game.reimu;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
@@ -14,7 +14,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
-public class ReimuSpell extends ItemSpell {
+public class ReimuItemSpell extends ItemSpell {
 
 	@Override
 	public void start(Player player, @Nullable LivingEntity target) {
@@ -24,7 +24,7 @@ public class ReimuSpell extends ItemSpell {
 	}
 
 	@SerialClass
-	public static class StateChange extends Ticker<ReimuSpell> {
+	public static class StateChange extends Ticker<ReimuItemSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, init, normal, target1;
@@ -40,7 +40,7 @@ public class ReimuSpell extends ItemSpell {
 		private DyeColor color = DyeColor.RED;
 
 		@Override
-		public boolean tick(CardHolder holder, ReimuSpell card) {
+		public boolean tick(CardHolder holder, ReimuItemSpell card) {
 			step(holder);
 			super.tick(holder, card);
 			return false;

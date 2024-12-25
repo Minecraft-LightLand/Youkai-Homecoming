@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game.koishi;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class AncestorDream extends ActualSpellCard {
+public class KoishiSpell extends ActualSpellCard {
 
 	@Override
 	public void tick(CardHolder holder) {
@@ -111,7 +111,7 @@ public class AncestorDream extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class StateChange extends Ticker<AncestorDream> {
+	public static class StateChange extends Ticker<KoishiSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, front;
@@ -123,7 +123,7 @@ public class AncestorDream extends ActualSpellCard {
 		private double termSpeed = 1, dr = 20;
 
 		@Override
-		public boolean tick(CardHolder holder, AncestorDream card) {
+		public boolean tick(CardHolder holder, KoishiSpell card) {
 			step(holder);
 			super.tick(holder, card);
 			return false;

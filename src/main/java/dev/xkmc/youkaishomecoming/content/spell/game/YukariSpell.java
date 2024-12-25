@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game.yukari;
+package dev.xkmc.youkaishomecoming.content.spell.game;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
@@ -21,7 +21,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
 @SerialClass
-public class YukariMain extends ActualSpellCard {
+public class YukariSpell extends ActualSpellCard {
 
 	@SerialClass.SerialField
 	private int cooldown, vulnerable;
@@ -205,13 +205,13 @@ public class YukariMain extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class LaserAdder extends Ticker<YukariMain> {
+	public static class LaserAdder extends Ticker<YukariSpell> {
 
 		@SerialClass.SerialField
 		private Vec3 pos, forward;
 
 		@Override
-		public boolean tick(CardHolder holder, YukariMain card) {
+		public boolean tick(CardHolder holder, YukariSpell card) {
 			if (tick == 0) {
 				forward = holder.forward();
 				forward = forward.multiply(1, 0.5, 1).normalize();
@@ -271,13 +271,13 @@ public class YukariMain extends ActualSpellCard {
 	}
 
 	@SerialClass
-	public static class DelayedHidden extends Ticker<YukariMain> {
+	public static class DelayedHidden extends Ticker<YukariSpell> {
 
 		@SerialClass.SerialField
 		public Vec3 pos = Vec3.ZERO;
 
 		@Override
-		public boolean tick(CardHolder holder, YukariMain card) {
+		public boolean tick(CardHolder holder, YukariSpell card) {
 			if (tick == 0) {
 				var target = holder.target();
 				if (target != null) {

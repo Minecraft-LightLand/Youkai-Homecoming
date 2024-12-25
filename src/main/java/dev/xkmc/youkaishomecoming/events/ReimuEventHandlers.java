@@ -100,9 +100,14 @@ public class ReimuEventHandlers {
 	@Nullable
 	public static BossYoukaiEntity trySummonMaiden(ServerLevel sl, LivingEntity le) {
 		EntityEntry<? extends BossYoukaiEntity> type = YHEntities.REIMU;
-		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID) &&
-				le.position().y() >= 100 && le.getRandom().nextFloat() > 0.5) {
-			type = YHEntities.SANAE;
+		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+			if (le.getRandom().nextFloat() > 0.5) {
+				if (le.getRandom().nextFloat() > 0.5) {
+					type = YHEntities.SANAE;
+				} else {
+					type = YHEntities.MARISA;
+				}
+			}
 		}
 		var e = trySummon(type, sl, le, 5, 5);
 		if (e == null) return null;
