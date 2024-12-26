@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.spell.game;
+package dev.xkmc.youkaishomecoming.content.spell.player;
 
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;

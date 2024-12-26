@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.CustomSpellItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
@@ -19,9 +20,7 @@ import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
-import dev.xkmc.youkaishomecoming.content.spell.game.MarisaItemSpell;
-import dev.xkmc.youkaishomecoming.content.spell.game.ReimuItemSpell;
-import dev.xkmc.youkaishomecoming.content.spell.game.SanaeItemSpell;
+import dev.xkmc.youkaishomecoming.content.spell.player.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
@@ -62,7 +61,6 @@ public class YHItems {
 	public static final ItemEntry<ReimuHairbandItem> REIMU_HAIRBAND;
 	public static final ItemEntry<CirnoHairbandItem> CIRNO_HAIRBAND;
 	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
-	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL;
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 
@@ -82,6 +80,9 @@ public class YHItems {
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
+	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL,
+			MYSTIA_SPELL, YUKARI_SPELL_LASER, YUKARI_SPELL_BUTTERFLY;
+	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL;
 
 	static {
 
@@ -133,6 +134,16 @@ public class YHItems {
 					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 
+		}
+
+		// spell
+		{
+
+			CUSTOM_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("custom_spell", p -> new CustomSpellItem(p.stacksTo(1)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.register();
+
 			REIMU_SPELL = YoukaisHomecoming.REGISTRATE
 					.item("spell_reimu", p -> new SpellItem(
 							p.stacksTo(1), ReimuItemSpell::new, true,
@@ -155,6 +166,30 @@ public class YHItems {
 							() -> YHDanmaku.Bullet.BALL.get(DyeColor.GREEN).get()))//TODO spark
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
 					.lang("Sanae's Spellcard \"Inherited Ritual\"")
+					.register();
+
+			MYSTIA_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_mystia", p -> new SpellItem(
+							p.stacksTo(1), MystiaItemSpell::new, false,
+							() -> YHDanmaku.Bullet.MENTOS.get(DyeColor.GREEN).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.lang("Night Sparrow \"Midnight Chorus Master\"")
+					.register();
+
+			YUKARI_SPELL_LASER = YoukaisHomecoming.REGISTRATE
+					.item("spell_yukari_laser", p -> new SpellItem(
+							p.stacksTo(1), YukariItemSpellLaser::new, false,
+							() -> YHDanmaku.Laser.LASER.get(DyeColor.RED).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
+					.lang("Barrier \"Mesh of Light & Darkness\"")
+					.register();
+
+			YUKARI_SPELL_BUTTERFLY = YoukaisHomecoming.REGISTRATE
+					.item("spell_yukari_butterfly", p -> new SpellItem(
+							p.stacksTo(1), YukariItemSpellButterfly::new, false,
+							() -> YHDanmaku.Bullet.BUTTERFLY.get(DyeColor.MAGENTA).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
+					.lang("Barrier \"Double Black Death Butterfly\"")
 					.register();
 		}
 

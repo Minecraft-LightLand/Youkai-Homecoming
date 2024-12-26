@@ -1,53 +1,107 @@
 {
-  "itemGroup.youkaishomecoming": {
-	"youkais_homecoming": "妖怪们的归家",
-	"danmaku": "妖怪们的弹幕"
-  },
-  "entity.youkaishomecoming": {
-	"item_danmaku": "弹幕",
-	"item_laser": "激光",
-	"frozen_frog": "冻青蛙",
-	"fairy_ice_crystal": "妖精冰晶",
-	"dining_chair": "板凳"
-  },
-  "youkaishomecoming": {
-	"jei": {
-	  "kettle": "泡茶",
-	  "moka": "泡咖啡",
-	  "rack": "晒干",
-	  "ferment": "发酵"
+	"itemGroup.youkaishomecoming": {
+		"youkais_homecoming": "妖怪们的归家",
+		"danmaku": "妖怪们的弹幕"
 	},
-	"tooltip": {
-	  "chance": " %2$s%%概率获得%1$s",
-	  "place": "可被放置于地上",
-	  "danmaku_bypass": "穿透实体",
-	  "danmaku_damage": "%s伤害",
-	  "spell_cost": "消耗1个%s",
-	  "spell_target": "需要瞄准目标发动",
-	  "taste_half_youkai": "奇怪的味道...",
-	  "taste_human": "不详的气味...",
-	  "taste_youkai": "美味极了!",
-	  "kettle": "持水桶或水瓶右键添水",
-	  "drying_rack": "只能在直接阳光下使用",
-	  "moon_lantern_place": "下方3x3x3内的幻昙华在夜间会把幻月灯当做满月",
-	  "moon_lantern_hold": "手持幻月灯且持有幻昙华效果时，在夜间激活全部幻昙华效果"
+	"entity.youkaishomecoming": {
+		"item_danmaku": "弹幕",
+		"item_laser": "激光",
+		"frozen_frog": "冻青蛙",
+		"fairy_ice_crystal": "妖精冰晶",
+		"dining_chair": "板凳"
 	},
-	"flesh_human": "怪肉",
-	"flesh_youkai": "人肉",
-	"fermenting_progress": "发酵进度：%s",
-	"koishi_reimu": "灵梦：谁在那？",
-	"reimu_flesh": "灵梦：别吃这个。最后警告",
-	"reimu_warn": "灵梦：喝点茶清醒一下。最后警告"
-  },
-  "death.attack": {
-	"koishi_attack": "恋恋从背后捅死了%s",
-	"koishi_attack.player": "%2$s从背后捅死了%1$s",
-	"rumia_attack": "%s被露米娅吃掉了",
-	"rumia_attack.player": "%s被%s吃掉了",
-	"danmaku": "%s在弹幕战中满身疮痍",
-	"danmaku.player": "%s在与%s的弹幕战中满身疮痍",
-	"abyssal_danmaku": "%s在弹幕战中满身疮痍",
-	"abyssal_danmaku.player": "%s在与%s的弹幕战中满身疮痍"
-  },
-  "youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
+	"youkaishomecoming": {
+		"jei": {
+			"kettle": "泡茶",
+			"moka": "泡咖啡",
+			"rack": "晒干",
+			"ferment": "发酵"
+		},
+		"tooltip": {
+			"chance": " %2$s%%概率获得%1$s",
+			"place": "可被放置于地上",
+			"danmaku_bypass": "穿透实体",
+			"danmaku_damage": "%s伤害",
+			"spell_cost": "消耗1个%s",
+			"spell_target": "需要瞄准目标发动",
+			"taste_half_youkai": "奇怪的味道...",
+			"taste_human": "不详的气味...",
+			"taste_youkai": "美味极了!",
+			"kettle": "持水桶或水瓶右键添水",
+			"drying_rack": "只能在直接阳光下使用",
+			"moon_lantern_place": "下方3x3x3内的幻昙华在夜间会把幻月灯当做满月",
+			"moon_lantern_hold": "手持幻月灯且持有幻昙华效果时，在夜间激活全部幻昙华效果"
+		},
+		"custom_spell": {
+			"bullet": {
+				"title": "弹幕形状",
+				"circle": "环玉",
+				"ball": "小玉",
+				"mentos": "中玉",
+				"bubble": "大玉",
+				"butterfly": "蝶弹"
+			},
+			"color": {
+				"title": "弹幕颜色",
+				"black": "黑色",
+				"blue": "蓝色",
+				"brown": "棕色",
+				"cyan": "青色",
+				"gray": "灰色",
+				"green": "绿色",
+				"light_blue": "淡蓝色",
+				"light_gray": "淡灰色",
+				"lime": "黄绿色",
+				"magenta": "品红色",
+				"orange": "橙色",
+				"pink": "粉红色",
+				"purple": "紫色",
+				"red": "红色",
+				"white": "白色",
+				"yellow": "黄色"
+			},
+			"branches": "瓣数",
+			"branches.desc": "发射的弹幕形成多少瓣",
+			"steps": "步数",
+			"steps.desc": "一瓣的弹幕数量",
+			"delay": "步延迟",
+			"delay.desc": "每步之间的时间间隔。单位：游戏刻",
+			"range": "弹幕行程",
+			"range.desc": "弹幕能飞多远",
+			"randomizedRange": "行程随机量",
+			"randomizedRange.desc": "弹幕行程的随机变化范围，正负百分比",
+			"branchAngle": "瓣横角",
+			"branchAngle.desc": "相邻弹幕瓣之间的横向夹角。单位：度",
+			"stepAngle": "步横角",
+			"stepAngle.desc": "相邻弹幕步之间的横向夹角。单位：度",
+			"stepVerticalAngle": "步竖角",
+			"stepVerticalAngle.desc": "相邻弹幕步之间的纵向夹角。单位：度",
+			"randomizedAngle": "角度随机量",
+			"randomizedAngle.desc": "弹幕角度的横向和纵向角度随机量。单位：度",
+			"speedFirst": "第一步速度",
+			"speedFirst.desc": "每瓣中第一步弹幕的速度",
+			"speedLast": "最后步速度",
+			"speedLast.desc": "每瓣中最后一步弹幕的速度",
+			"randomizedSpeed": "速度随机量",
+			"randomizedSpeed.desc": "弹幕速度的随机变化范围，正负百分比",
+			"reset": "还原"
+		},
+		"flesh_human": "怪肉",
+		"flesh_youkai": "人肉",
+		"fermenting_progress": "发酵进度：%s",
+		"koishi_reimu": "灵梦：谁在那？",
+		"reimu_flesh": "灵梦：别吃这个。最后警告",
+		"reimu_warn": "灵梦：喝点茶清醒一下。最后警告"
+	},
+	"death.attack": {
+		"koishi_attack": "恋恋从背后捅死了%s",
+		"koishi_attack.player": "%2$s从背后捅死了%1$s",
+		"rumia_attack": "%s被露米娅吃掉了",
+		"rumia_attack.player": "%s被%s吃掉了",
+		"danmaku": "%s在弹幕战中满身疮痍",
+		"danmaku.player": "%s在与%s的弹幕战中满身疮痍",
+		"abyssal_danmaku": "%s在弹幕战中满身疮痍",
+		"abyssal_danmaku.player": "%s在与%s的弹幕战中满身疮痍"
+	},
+	"youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～"
 }

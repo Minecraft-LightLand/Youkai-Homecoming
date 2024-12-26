@@ -10,14 +10,13 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Quaternionf;
 
 @OnlyIn(Dist.CLIENT)
 public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRenderer<T> implements ProjectileRenderer {
-
-	private static final float MIN_CAMERA_DISTANCE_SQUARED = 12.25F;
 
 	public ItemDanmakuRenderer(EntityRendererProvider.Context pContext) {
 		super(pContext);
@@ -39,7 +38,11 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 
 	public void render(T e, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
 		if (!(e.getItem().getItem() instanceof DanmakuItem danmaku)) return;
-		if (e.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(e) < MIN_CAMERA_DISTANCE_SQUARED)) {
+		Entity cam = this.entityRenderDispatcher.camera.getEntity();
+		double dh = e.getBbHeight() / 2;
+		double dist = cam.getEyePosition().distanceToSqr(e.position().add(0, dh, 0));
+		double dy = Math.abs(cam.getEyeY() - e.getY() - dh);
+		if (e.getOwner() != cam || dist > 12 || dy > 0.1 + dh * 2 && dist > 2 || e.tickCount >= 40) {
 			pose.pushPose();
 			float scale = e.scale();
 			pose.translate(0, e.getBbHeight() / 2, 0);

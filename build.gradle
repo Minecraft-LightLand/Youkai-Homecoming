@@ -137,9 +137,9 @@ dependencies {
         jarJar.ranged(it, "[0.0.4,)")
     }
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2serial:l2serial:1.2.2")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2serial:l2serial:1.2.3")) {
         transitive = false
-        jarJar.ranged(it, "[1.2.2,)")
+        jarJar.ranged(it, "[1.2.3,)")
     }
 
     implementation fg.deobf(jarJar("dev.xkmc.l2modularblock:l2modularblock:1.1.0")) {

@@ -3,7 +3,9 @@ package dev.xkmc.youkaishomecoming.init.loot;
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.entity.boss.MarisaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.MystiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.SanaeEntity;
+import dev.xkmc.youkaishomecoming.content.entity.boss.YukariEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
@@ -76,6 +78,22 @@ public class EntityLootGen {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MARISA_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()))
+		);
+	}
+
+	public static void mystia(RegistrateEntityLootTables pvd, EntityType<MystiaEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MYSTIA_SPELL.get(), 1, 1))
+						.when(LootTableTemplate.byPlayer()))
+		);
+	}
+
+	public static void yukari(RegistrateEntityLootTables pvd, EntityType<YukariEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.when(LootTableTemplate.byPlayer())
+						.add(LootTableTemplate.getItem(YHItems.YUKARI_SPELL_LASER.get(), 1, 1))
+						.add(LootTableTemplate.getItem(YHItems.YUKARI_SPELL_BUTTERFLY.get(), 1, 1)))
 		);
 	}
 

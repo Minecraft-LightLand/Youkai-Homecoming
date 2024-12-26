@@ -8,6 +8,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.PartEntity;
 import org.jetbrains.annotations.Nullable;
@@ -44,15 +45,15 @@ public interface IYHDanmaku {
 	default void hurtTarget(EntityHitResult result) {
 		if (self().level().isClientSide) return;
 		var e = result.getEntity();
-		if (e instanceof LivingEntity le) {
+		var source = source();
+		if (e instanceof Player le) {//TODO change to living entity
 			if (le.hurtTime > 0) {
-				DamageSource source = le.getLastDamageSource();
-				if (source != null && source.getDirectEntity() instanceof IYHDanmaku) {
+				DamageSource last = le.getLastDamageSource();
+				if (last != null && last.getDirectEntity() instanceof IYHDanmaku) {
 					return;
 				}
 			}
 		}
-		var source = source();
 		boolean immune = !e.hurt(source, damage(e));
 		LivingEntity target = null;
 		while (e instanceof PartEntity<?> pe) {

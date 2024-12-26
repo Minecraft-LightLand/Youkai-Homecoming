@@ -3,10 +3,12 @@ package dev.xkmc.youkaishomecoming.init.data;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -70,6 +72,7 @@ public enum YHLangData {
 	REIMU_WARN("reimu_warn", "Reimu: Drink some tea and keep your sanity. Last warning.", 0, ChatFormatting.RED),
 	KOISHI_REIMU("koishi_reimu", "Reimu: ???", 0, ChatFormatting.RED),
 
+	EDITOR_RESET("custom_spell.reset", "Reset", 0, null),
 	;
 
 	private final String key, def;
@@ -116,6 +119,45 @@ public enum YHLangData {
 		pvd.add("death.attack.abyssal_danmaku", "%s lost the danmaku battle");
 		pvd.add("death.attack.abyssal_danmaku.player", "%s lost the danmaku battle to %s");
 
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.bullet.title", "Bullet Type");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.color.title", "Bullet Color");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.branches", "Branch Count");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.branches.desc", "Number of branches of bullets to shoot");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.steps", "Step Count");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.steps.desc", "Number of bullets per branch");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.delay", "Step Delay");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.delay.desc", "Delay in ticks per step");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.range", "Bullet Range");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.range.desc", "Distance for bullet to fly before vanishing");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.randomizedRange", "Range Variation");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.randomizedRange.desc", "Variation of bullet range in percentage, plus or minus");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.branchAngle", "Branch Angle Offset");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.branchAngle.desc", "Horizontal angle difference between adjacent branches, in degree");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.stepAngle", "Step Angle Offset");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.stepAngle.desc", "Horizontal angle difference between adjacent steps, in degree");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.stepVerticalAngle", "Step Vertical Angle Offset");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.stepVerticalAngle.desc", "Vertical angle difference between adjacent steps, in degree");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.randomizedAngle", "Angle Variation");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.randomizedAngle.desc", "Variation of bullet direction in degree, both horizontal and vertical, plus or minus");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.speedFirst", "First Step Speed");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.speedFirst.desc", "Bullet speed in block per tick for first step");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.speedLast", "Last Step Speed");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.speedLast.desc", "Bullet speed in block per tick for last step");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.randomizedSpeed", "Speed Variation");
+		pvd.add(YoukaisHomecoming.MODID + ".custom_spell.randomizedSpeed.desc", "Variation of bullet speed in percentage, plus or minus");
+
+
+		for (var e : YHDanmaku.Bullet.values()) {
+			var name = e.name().toLowerCase(Locale.ROOT);
+			pvd.add(YoukaisHomecoming.MODID + ".custom_spell.bullet." + name,
+					RegistrateLangProvider.toEnglishName(name));
+		}
+
+		for (var e : DyeColor.values()) {
+			var name = e.getName();
+			pvd.add(YoukaisHomecoming.MODID + ".custom_spell.color." + name,
+					RegistrateLangProvider.toEnglishName(name));
+		}
 
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
 		for (RegistryEntry<? extends Potion> ent : YHEffects.POTION_LIST) {

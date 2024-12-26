@@ -112,9 +112,6 @@
 		"canned_flesh": "%1$s罐头",
 		"rumia_hairband": "露米娅的发带",
 		"reimu_hairband": "灵梦的大蝴蝶结",
-		"spell_reimu": "「梦想天生」",
-		"spell_marisa": "恋符「极限火花」",
-		"spell_sanae": "秘术「一脉单传的弹幕」",
 		"lemon_black_tea": "柠檬红茶",
 		"moon_rocket": "月面火箭",
 		"peach_tapioca": "桃花羹",
@@ -129,7 +126,14 @@
 		"mandrake_flower": "曼德拉花",
 		"fairy_candy": "妖精糖果",
 		"cirno_hairband": "琪露诺的蝴蝶结",
-		"cirno_wings": "琪露诺的翅膀"
+		"cirno_wings": "琪露诺的翅膀",
+		"spell_reimu": "「梦想天生」",
+		"spell_marisa": "恋符「极限火花」",
+		"spell_sanae": "秘术「一脉单传的弹幕」",
+		"spell_mystia": "夜雀「午夜的合唱指挥」",
+		"spell_yukari_butterfly": "魍魉「二重黑死蝶」",
+		"spell_yukari_laser": "结界「光与暗的网目」",
+		"custom_spell": "自定义符卡"
 	},
 	"-cartesian": {
 		"entity": {

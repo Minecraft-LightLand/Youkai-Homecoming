@@ -116,7 +116,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x4B1442, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::yukari).register();
 
 			SANAE = YoukaisHomecoming.REGISTRATE
 					.entity("kochiya_sanae", SanaeEntity::new, MobCategory.MONSTER)
@@ -124,7 +124,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x4eaff9, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::sanae).register();
 
 			MARISA = YoukaisHomecoming.REGISTRATE
 					.entity("kirisame_marisa", MarisaEntity::new, MobCategory.MONSTER)
@@ -132,7 +132,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x52403C, 0xFAF2EF).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::marisa).register();
 
 			KOISHI = YoukaisHomecoming.REGISTRATE
 					.entity("komeiji_koishi", KoishiEntity::new, MobCategory.MONSTER)
@@ -148,7 +148,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x9B6D79, 0xF4BDAE).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::mystia).register();
 
 			SUNNY = YoukaisHomecoming.REGISTRATE
 					.entity("sunny_milk", SunnyEntity::new, MobCategory.MONSTER)
