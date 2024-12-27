@@ -4,6 +4,7 @@ import dev.xkmc.youkaishomecoming.content.spell.custom.annotation.ArgRange;
 import dev.xkmc.youkaishomecoming.content.spell.custom.forms.CustomItemSpell;
 import dev.xkmc.youkaishomecoming.content.spell.custom.forms.RingSpellForm;
 import dev.xkmc.youkaishomecoming.content.spell.item.ItemSpell;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 
 public record RingSpellFormData(
 		BaseSpellData base,
@@ -27,7 +28,7 @@ public record RingSpellFormData(
 		double speedLast,
 		@ArgRange
 		double randomizedSpeed
-) implements ISpellFormData {
+) implements ISpellFormData<RingSpellFormData> {
 
 	public static final RingSpellFormData SIMPLE = new RingSpellFormData(
 			BaseSpellData.DEF, 6, 6, 0,
@@ -48,6 +49,15 @@ public record RingSpellFormData(
 			BaseSpellData.DEF, 7, 8, 10,
 			5, 0, 0, 3,
 			0.8, 0.8, 0.2);
+
+	public int getDuration() {
+		return (steps - 1) * delay;
+	}
+
+	public int cost() {
+		int cost = YHModConfig.COMMON.customSpellDanmakuPerItemCost.get();
+		return branches * steps / cost + 1;
+	}
 
 	public ItemSpell createInstance() {
 		var form = new RingSpellForm();

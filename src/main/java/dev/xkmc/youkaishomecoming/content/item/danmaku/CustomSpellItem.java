@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
+import dev.xkmc.youkaishomecoming.content.spell.custom.data.ISpellFormData;
 import dev.xkmc.youkaishomecoming.content.spell.custom.data.RingSpellFormData;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.ClientCustomSpellHandler;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
@@ -24,11 +25,11 @@ public class CustomSpellItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (hand != InteractionHand.MAIN_HAND) return InteractionResultHolder.fail(stack);
-		RingSpellFormData data = null;
+		ISpellFormData<?> data = null;
 		var tag = stack.getTag();
 		if (tag != null && tag.contains("SpellData")) {
 			var obj = TagCodec.valueFromTag(tag.getCompound("SpellData"), Record.class);
-			if (obj instanceof RingSpellFormData dat)
+			if (obj instanceof ISpellFormData<?> dat)
 				data = dat;
 		}
 		if (data == null) data = RingSpellFormData.FLOWER;

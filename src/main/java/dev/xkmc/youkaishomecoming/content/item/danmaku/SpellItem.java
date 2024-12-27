@@ -59,7 +59,7 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(YHLangData.SPELL_COST.get(pred.get().getName(pred.get().getDefaultInstance())));
+		list.add(YHLangData.SPELL_COST.get(1, pred.get().getName(pred.get().getDefaultInstance())));
 		if (requireTarget) {
 			list.add(YHLangData.SPELL_TARGET.get());
 		}

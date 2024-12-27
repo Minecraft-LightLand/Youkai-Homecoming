@@ -19,36 +19,33 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class SpellOptionInstances<T> {
+public class SpellOptionInstances<T extends Record & ISpellFormData<T>> {
 
-	private static SimpleValue<Integer> createLinear(String name, int def, int low, int high) {
+	private SimpleValue<Integer> createLinear(String name, int def, int low, int high) {
 		var key = YoukaisHomecoming.MODID + ".custom_spell." + name;
 		return new SimpleValue<>(new OptionInstance<>(key,
 				v -> Tooltip.create(Component.translatable(key + ".desc")),
-				Options::genericValueLabel, new OptionInstance.IntRange(low, high), def, v -> {
-		}), def);
+				Options::genericValueLabel, new OptionInstance.IntRange(low, high), def, v -> update()), def);
 	}
 
-	private static DoubleValue createDouble(String name, OptionInstance.CaptionBasedToString<Double> caption, double def, Double2DoubleFunction toUnit, Double2DoubleFunction fromUnit) {
+	private DoubleValue createDouble(String name, OptionInstance.CaptionBasedToString<Double> caption, double def, Double2DoubleFunction toUnit, Double2DoubleFunction fromUnit) {
 		var key = YoukaisHomecoming.MODID + ".custom_spell." + name;
 		return new DoubleValue(new OptionInstance<>(key,
 				v -> Tooltip.create(Component.translatable(key + ".desc")),
 				(e, v) -> caption.toString(e, fromUnit.apply(v)),
-				OptionInstance.UnitDouble.INSTANCE, toUnit.apply(def), v -> {
-		}), toUnit, fromUnit, def);
+				OptionInstance.UnitDouble.INSTANCE, toUnit.apply(def), v -> update()), toUnit, fromUnit, def);
 	}
 
-	private static <T extends Enum<T>> SimpleValue<T> createEnum(String name, T[] values, T def) {
+	private <E extends Enum<E>> SimpleValue<E> createEnum(String name, E[] values, E def) {
 		var key = YoukaisHomecoming.MODID + ".custom_spell." + name;
 		return new SimpleValue<>(new OptionInstance<>(key + ".title",
 				OptionInstance.noTooltip(),
 				(e, v) -> Component.translatable(key + "." + v.name().toLowerCase(Locale.ROOT)),
-				new OptionInstance.Enum<>(Arrays.asList(values), Codec.INT.xmap(e -> values[e], T::ordinal)),
-				def, (p_268018_) -> {
-		}), def);
+				new OptionInstance.Enum<>(Arrays.asList(values), Codec.INT.xmap(e -> values[e], E::ordinal)),
+				def, (p_268018_) -> update()), def);
 	}
 
-	private static DoubleValue createExp(String name, double def, double a, double b, int decimal) {
+	private DoubleValue createExp(String name, double def, double a, double b, int decimal) {
 		double factor = Math.pow(10, decimal);
 		return createDouble(name, (e, v) -> Component.translatable("options.generic_value", e, v), def,
 				v -> Math.log(v / b + 1) / Math.log(a + 1),
@@ -56,12 +53,12 @@ public class SpellOptionInstances<T> {
 		);
 	}
 
-	private static DoubleValue createPercent(String name, double def) {
+	private DoubleValue createPercent(String name, double def) {
 		return createDouble(name, (e, v) -> Component.translatable("options.percent_value",
-				e, Math.round(v)), def, v -> v / 100, u -> Math.round(u * 100));
+				e, Math.round(v * 100)), def, v -> v, u -> Math.round(u * 100) * 0.01);
 	}
 
-	private static OptionHolder<?> create(ArgField entry, Object obj) {
+	private OptionHolder<?> create(ArgField entry, Object obj) {
 		String name = entry.field().getName();
 		if (entry.range() instanceof UnitArgEntry)
 			return createPercent(name, ((Number) obj).doubleValue());
@@ -74,7 +71,7 @@ public class SpellOptionInstances<T> {
 		throw new IllegalArgumentException("Argument Type " + entry.getClass() + " is invalid");
 	}
 
-	private static <T> OptionGroup<T> create(List<OptionHolder<?>> list, ArgGroup entry, T obj) throws Exception {
+	private <E> OptionGroup<E> create(List<OptionHolder<?>> list, ArgGroup entry, E obj) throws Exception {
 		List<OptionPair> pairs = new ArrayList<>();
 		for (var e : entry.list()) {
 			var sub = e.field().getAccessor().invoke(obj);
@@ -90,27 +87,27 @@ public class SpellOptionInstances<T> {
 	}
 
 	@Nullable
-	public static <T> SpellOptionInstances<T> create(T obj) {
+	public static <T extends Record & ISpellFormData<T>> SpellOptionInstances<T> create(T obj) {
 		try {
-			List<OptionHolder<?>> ans = new ArrayList<>();
+			var ans = new SpellOptionInstances<T>();
+			ans.list = new ArrayList<>();
 			var group = ArgGroup.of(obj.getClass());
-			var builder = create(ans, group, obj);
-			return new SpellOptionInstances<>(builder, ans);
+			ans.builder = ans.create(ans.list, group, obj);
+			return ans;
 		} catch (Exception ignored) {
-
 		}
 		return null;
 	}
 
-	private final OptionGroup<T> builder;
-	private final List<OptionHolder<?>> list;
+	private OptionGroup<T> builder;
+	private List<OptionHolder<?>> list;
+	private Runnable listener;
 
-	public SpellOptionInstances(OptionGroup<T> builder, List<OptionHolder<?>> list) {
-		this.builder = builder;
-		this.list = list;
+	private SpellOptionInstances() {
 	}
 
-	public void add(OptionsList widget) {
+	public void add(OptionsList widget, Runnable listener) {
+		this.listener = listener;
 		int n = list.size();
 		for (int i = 0; i < n; i += 2) {
 			if (i == n - 1) {
@@ -119,6 +116,10 @@ public class SpellOptionInstances<T> {
 				widget.addSmall(list.get(i).option(), list.get(i + 1).option());
 			}
 		}
+	}
+
+	private void update() {
+		if (listener != null) listener.run();
 	}
 
 	public void reset() {
@@ -139,7 +140,7 @@ public class SpellOptionInstances<T> {
 	public void save() {
 		var val = build();
 		if (val == null) return;
-		ClientCustomSpellHandler.sendToPlayer((ISpellFormData) val);
+		ClientCustomSpellHandler.sendToPlayer(val);
 	}
 
 }

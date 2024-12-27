@@ -26,7 +26,7 @@ public enum YHLangData {
 	DANMAKU_DAMAGE("tooltip.danmaku_damage", "Deals %s damage on hit", 1, ChatFormatting.BLUE),
 	DANMAKU_BYPASS("tooltip.danmaku_bypass", "Bypasses entities", 0, ChatFormatting.DARK_AQUA),
 	SPELL_TARGET("tooltip.spell_target", "Requires targeting an entity to activate", 0, ChatFormatting.RED),
-	SPELL_COST("tooltip.spell_cost", "Costs 1 %s", 1, ChatFormatting.GRAY),
+	SPELL_COST("tooltip.spell_cost", "Costs %s %s", 2, ChatFormatting.GRAY),
 	KETTLE_INFO("tooltip.kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
 	DRYING_RACK("tooltip.drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 
@@ -73,7 +73,7 @@ public enum YHLangData {
 	KOISHI_REIMU("koishi_reimu", "Reimu: ???", 0, ChatFormatting.RED),
 
 	EDITOR_RESET("custom_spell.reset", "Reset", 0, null),
-	;
+	INVALID_TIME("custom_spell.invalid_time", "Max duration of %s allowed. Current duration: %s", 2, ChatFormatting.RED);
 
 	private final String key, def;
 	private final int arg;

@@ -15,8 +15,8 @@ public class SpellSetToServer extends SerialPacketBase {
 
 	}
 
-	public SpellSetToServer(ISpellFormData data) {
-		this.data = (Record) data;
+	public SpellSetToServer(ISpellFormData<?> data) {
+		this.data = data.cast();
 	}
 
 	@Override

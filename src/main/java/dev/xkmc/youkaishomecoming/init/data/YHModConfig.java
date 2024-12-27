@@ -72,6 +72,9 @@ public class YHModConfig {
 		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
 
+		public final ForgeConfigSpec.IntValue customSpellMaxDuration;
+		public final ForgeConfigSpec.IntValue customSpellDanmakuPerItemCost;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			{
@@ -194,6 +197,15 @@ public class YHModConfig {
 						.define("cirnoSpawn", true);
 				cirnoFairyDrop = builder.comment("Chance for fairy ice crystal to drop")
 						.defineInRange("cirnoFairyDrop", 0.03, 0, 1);
+			}
+			builder.pop();
+
+			builder.push("custom_spell");
+			{
+				customSpellMaxDuration = builder.comment("Max duration of custom spell allowed")
+						.defineInRange("customSpellMaxDuration", 1, 60, 1000);
+				customSpellDanmakuPerItemCost = builder.comment("Max number of bullet allowed per item cost")
+						.defineInRange("customSpellDanmakuPerItemCost", 32, 1, 1024);
 			}
 			builder.pop();
 		}

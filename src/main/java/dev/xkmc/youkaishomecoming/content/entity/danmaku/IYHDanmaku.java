@@ -32,7 +32,7 @@ public interface IYHDanmaku {
 		return true;
 	}
 
-	default DamageSource source(){
+	default DamageSource source() {
 		DamageSource dmgType = YHDamageTypes.danmaku(this);
 		if (self().getOwner() instanceof CardHolder youkai) {
 			dmgType = youkai.getDanmakuDamageSource(this);

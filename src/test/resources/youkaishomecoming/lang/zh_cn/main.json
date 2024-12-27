@@ -22,7 +22,7 @@
 			"place": "可被放置于地上",
 			"danmaku_bypass": "穿透实体",
 			"danmaku_damage": "%s伤害",
-			"spell_cost": "消耗1个%s",
+			"spell_cost": "消耗%s个%s",
 			"spell_target": "需要瞄准目标发动",
 			"taste_half_youkai": "奇怪的味道...",
 			"taste_human": "不详的气味...",
@@ -84,7 +84,8 @@
 			"speedLast.desc": "每瓣中最后一步弹幕的速度",
 			"randomizedSpeed": "速度随机量",
 			"randomizedSpeed.desc": "弹幕速度的随机变化范围，正负百分比",
-			"reset": "还原"
+			"reset": "还原",
+			"invalid_time": "符卡最高持续时间为%s刻。当前持续时间：%s刻"
 		},
 		"flesh_human": "怪肉",
 		"flesh_youkai": "人肉",
