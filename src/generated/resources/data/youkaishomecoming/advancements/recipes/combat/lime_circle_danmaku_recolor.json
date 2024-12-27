@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lime_circle_danmaku": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:lime_circle_danmaku"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:lime_circle_danmaku_recolor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lime_circle_danmaku",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:lime_circle_danmaku_recolor"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:lime_mentos_danmaku"
+    },
+    {
+      "item": "youkaishomecoming:lime_mentos_danmaku"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:lime_bubble_danmaku"
+  }
+}

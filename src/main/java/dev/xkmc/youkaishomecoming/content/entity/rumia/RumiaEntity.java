@@ -356,8 +356,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 		ans.add(offer(4, YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(4, YHDanmaku.Bullet.BALL.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(4, YHDanmaku.Bullet.BUTTERFLY.get(DyeColor.RED).asStack(8)));
-		ans.add(offer(8, YHDanmaku.Bullet.MENTOS.get(DyeColor.RED).asStack(8)));
-		ans.add(offer(16, YHDanmaku.Bullet.BUBBLE.get(DyeColor.RED).asStack(8)));
+		ans.add(offer(4, YHDanmaku.Bullet.SPARK.get(DyeColor.RED).asStack(8)));
 		ans.add(offer(32, YHDanmaku.Laser.LASER.get(DyeColor.RED).asStack(8)));
 		return ans;
 	}

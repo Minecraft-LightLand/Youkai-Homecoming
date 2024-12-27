@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_spark_danmaku": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:black_spark_danmaku"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:black_star_danmaku_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_black_spark_danmaku",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:black_star_danmaku_upgrade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

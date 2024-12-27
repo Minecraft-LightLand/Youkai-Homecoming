@@ -887,7 +887,7 @@ public class YHRecipeGen {
 							.pattern("AAA").pattern("ABA").pattern("AAA")
 							.define('A', t.tag)
 							.define('B', dye)
-							.save(pvd);
+							.save(pvd, t.get(e).getId().withSuffix("_recolor"));
 
 				}
 				for (var t : YHDanmaku.Laser.values()) {
@@ -896,8 +896,23 @@ public class YHRecipeGen {
 							.pattern("AAA").pattern("ABA").pattern("AAA")
 							.define('A', t.tag)
 							.define('B', dye)
-							.save(pvd);
+							.save(pvd, t.get(e).getId().withSuffix("_recolor"));
 				}
+
+				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Bullet.MENTOS.get(e), 1)::unlockedBy,
+						YHDanmaku.Bullet.BALL.get(e).get())
+						.requires(YHDanmaku.Bullet.BALL.get(e), 2)
+						.save(pvd, YHDanmaku.Bullet.MENTOS.get(e).getId().withSuffix("_upgrade"));
+
+				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Bullet.BUBBLE.get(e), 1)::unlockedBy,
+						YHDanmaku.Bullet.MENTOS.get(e).get())
+						.requires(YHDanmaku.Bullet.MENTOS.get(e), 2)
+						.save(pvd, YHDanmaku.Bullet.BUBBLE.get(e).getId().withSuffix("_upgrade"));
+
+				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Bullet.STAR.get(e), 1)::unlockedBy,
+						YHDanmaku.Bullet.SPARK.get(e).get())
+						.requires(YHDanmaku.Bullet.SPARK.get(e), 2)
+						.save(pvd, YHDanmaku.Bullet.STAR.get(e).getId().withSuffix("_upgrade"));
 			}
 		}
 

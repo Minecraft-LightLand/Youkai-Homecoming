@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:light_blue_ball_danmaku"
+    },
+    {
+      "item": "youkaishomecoming:light_blue_ball_danmaku"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:light_blue_mentos_danmaku"
+  }
+}

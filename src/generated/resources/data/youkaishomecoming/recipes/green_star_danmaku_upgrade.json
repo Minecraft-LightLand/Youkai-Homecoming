@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:green_spark_danmaku"
+    },
+    {
+      "item": "youkaishomecoming:green_spark_danmaku"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:green_star_danmaku"
+  }
+}
