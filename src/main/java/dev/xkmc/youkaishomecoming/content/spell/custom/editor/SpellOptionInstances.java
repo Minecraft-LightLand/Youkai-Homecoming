@@ -65,7 +65,7 @@ public class SpellOptionInstances<T extends Record & ISpellFormData<T>> {
 		if (entry.range() instanceof IntArgEntry arg)
 			return createLinear(name, ((Number) obj).intValue(), arg.low(), arg.high());
 		if (entry.range() instanceof ExpArgEntry arg)
-			return createExp(name, ((Number) obj).intValue(), arg.base(), arg.factor(), arg.decimal());
+			return createExp(name, ((Number) obj).doubleValue(), arg.base(), arg.factor(), arg.decimal());
 		if (entry.range() instanceof EnumArgEntry arg)
 			return createEnum(name, Wrappers.cast(arg.vals()), Wrappers.cast(obj));
 		throw new IllegalArgumentException("Argument Type " + entry.getClass() + " is invalid");

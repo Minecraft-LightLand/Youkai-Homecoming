@@ -20,6 +20,8 @@ import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
+import dev.xkmc.youkaishomecoming.content.spell.custom.data.HomingSpellFormData;
+import dev.xkmc.youkaishomecoming.content.spell.custom.data.RingSpellFormData;
 import dev.xkmc.youkaishomecoming.content.spell.player.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -82,7 +84,7 @@ public class YHItems {
 
 	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL,
 			MYSTIA_SPELL, YUKARI_SPELL_LASER, YUKARI_SPELL_BUTTERFLY;
-	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL;
+	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL_RING, CUSTOM_SPELL_HOMING;
 
 	static {
 
@@ -139,9 +141,16 @@ public class YHItems {
 		// spell
 		{
 
-			CUSTOM_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("custom_spell", p -> new CustomSpellItem(p.stacksTo(1)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+			CUSTOM_SPELL_RING = YoukaisHomecoming.REGISTRATE
+					.item("custom_spell_ring", p -> new CustomSpellItem(p.stacksTo(1), false, RingSpellFormData.FLOWER))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/custom_spell")))
+					.tag(YHTagGen.CUSTOM_SPELL)
+					.register();
+
+			CUSTOM_SPELL_HOMING = YoukaisHomecoming.REGISTRATE
+					.item("custom_spell_homing", p -> new CustomSpellItem(p.stacksTo(1), true, HomingSpellFormData.RING))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/custom_spell")))
+					.tag(YHTagGen.CUSTOM_SPELL)
 					.register();
 
 			REIMU_SPELL = YoukaisHomecoming.REGISTRATE
@@ -163,7 +172,7 @@ public class YHItems {
 			SANAE_SPELL = YoukaisHomecoming.REGISTRATE
 					.item("spell_sanae", p -> new SpellItem(
 							p.stacksTo(1), SanaeItemSpell::new, false,
-							() -> YHDanmaku.Bullet.BALL.get(DyeColor.GREEN).get()))//TODO spark
+							() -> YHDanmaku.Bullet.SPARK.get(DyeColor.GREEN).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
 					.lang("Sanae's Spellcard \"Inherited Ritual\"")
 					.register();

@@ -39,7 +39,9 @@
 				"ball": "小玉",
 				"mentos": "中玉",
 				"bubble": "大玉",
-				"butterfly": "蝶弹"
+				"butterfly": "蝶弹",
+				"spark": "小星弹",
+				"star": "大星弹"
 			},
 			"color": {
 				"title": "弹幕颜色",
@@ -78,12 +80,16 @@
 			"stepVerticalAngle.desc": "相邻弹幕步之间的纵向夹角。单位：度",
 			"randomizedAngle": "角度随机量",
 			"randomizedAngle.desc": "弹幕角度的横向和纵向角度随机量。单位：度",
+			"speed": "弹幕速度",
+			"speed.desc": "弹幕的速度",
 			"speedFirst": "第一步速度",
 			"speedFirst.desc": "每瓣中第一步弹幕的速度",
 			"speedLast": "最后步速度",
 			"speedLast.desc": "每瓣中最后一步弹幕的速度",
 			"randomizedSpeed": "速度随机量",
 			"randomizedSpeed.desc": "弹幕速度的随机变化范围，正负百分比",
+			"turnTime": "转向延迟",
+			"turnTime.desc": "弹幕发射到重新定向至目标的时间间隔，单位：游戏刻",
 			"reset": "还原",
 			"invalid_time": "符卡最高持续时间为%s刻。当前持续时间：%s刻"
 		},

@@ -73,7 +73,8 @@ public class YHModConfig {
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
 
 		public final ForgeConfigSpec.IntValue customSpellMaxDuration;
-		public final ForgeConfigSpec.IntValue customSpellDanmakuPerItemCost;
+		public final ForgeConfigSpec.IntValue ringSpellDanmakuPerItemCost;
+		public final ForgeConfigSpec.IntValue homingSpellDanmakuPerItemCost;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
@@ -204,8 +205,10 @@ public class YHModConfig {
 			{
 				customSpellMaxDuration = builder.comment("Max duration of custom spell allowed")
 						.defineInRange("customSpellMaxDuration", 1, 60, 1000);
-				customSpellDanmakuPerItemCost = builder.comment("Max number of bullet allowed per item cost")
-						.defineInRange("customSpellDanmakuPerItemCost", 32, 1, 1024);
+				ringSpellDanmakuPerItemCost = builder.comment("Ring Spell: Max number of bullet allowed per item cost")
+						.defineInRange("ringSpellDanmakuPerItemCost", 32, 1, 1024);
+				homingSpellDanmakuPerItemCost = builder.comment("Homing Spell: Max number of bullet allowed per item cost")
+						.defineInRange("homingSpellDanmakuPerItemCost", 8, 1, 1024);
 			}
 			builder.pop();
 		}

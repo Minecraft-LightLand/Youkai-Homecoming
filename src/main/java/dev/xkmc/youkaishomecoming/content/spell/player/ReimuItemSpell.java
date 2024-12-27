@@ -43,7 +43,7 @@ public class ReimuItemSpell extends ItemSpell {
 		public boolean tick(CardHolder holder, ReimuItemSpell card) {
 			step(holder);
 			super.tick(holder, card);
-			return false;
+			return tick > t0 + t1;
 		}
 
 		private void step(CardHolder holder) {

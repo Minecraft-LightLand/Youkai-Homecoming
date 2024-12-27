@@ -49,7 +49,7 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 				if (!fluid.getFluid().is(FluidTags.WATER)) {
 					return false;
 				}
-			} else if (!inputFluid.isFluidEqual(fluid)) {
+			} else if (inputFluid.getFluid().getFluidType() != fluid.getFluid().getFluidType()) {
 				return false;
 			}
 		}

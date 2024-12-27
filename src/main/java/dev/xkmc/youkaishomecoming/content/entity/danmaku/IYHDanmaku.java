@@ -46,8 +46,8 @@ public interface IYHDanmaku {
 		if (self().level().isClientSide) return;
 		var e = result.getEntity();
 		var source = source();
-		if (e instanceof Player le) {//TODO change to living entity
-			if (le.hurtTime > 0) {
+		if (e instanceof LivingEntity le) {//TODO change to living entity
+			if (le.hurtTime > 0 && (e instanceof Player || e instanceof YoukaiEntity)) {
 				DamageSource last = le.getLastDamageSource();
 				if (last != null && last.getDirectEntity() instanceof IYHDanmaku) {
 					return;

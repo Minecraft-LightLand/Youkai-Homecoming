@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.spell.item;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,6 +26,7 @@ public class ItemSpell {
 	public Vec3 dir = new Vec3(1, 0, 0), targetPos;
 
 	private LivingEntity targetCache;
+	protected CardHolder holder;
 
 	public void start(Player player, @Nullable LivingEntity target) {
 		this.dir = RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 1);
@@ -59,7 +61,7 @@ public class ItemSpell {
 		if (!(player instanceof ServerPlayer sp)) return true;
 		var target = getTarget(sp.serverLevel());
 		if (target != null) targetPos = target.position().add(0, target.getBbHeight() / 2, 0);
-		var holder = new PlayerHolder(player, dir, this, target);
+		holder = new PlayerHolder(player, dir, this, target);
 		tickers.removeIf(e -> e.tick(holder, Wrappers.cast(this)));
 		return tickers.isEmpty();
 	}
