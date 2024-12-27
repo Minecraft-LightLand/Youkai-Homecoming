@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/danmaku/mentos",
-    "layer1": "youkaishomecoming:item/danmaku/mentos_overlay"
+    "layer0": "youkaishomecoming:item/bullet/mentos/light_gray"
   }
 }

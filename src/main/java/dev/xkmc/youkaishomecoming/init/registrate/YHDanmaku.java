@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.fastprojectileapi.render.DisplayType;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -17,22 +18,29 @@ import java.util.Locale;
 public class YHDanmaku {
 
 	public enum Bullet {
-		CIRCLE(1, 4), BALL(1, 4),
-		MENTOS(2, 6), BUBBLE(4, 8),
-		BUTTERFLY(1, 4),
+		CIRCLE(1, 4, DisplayType.SOLID),
+		BALL(1, 4, DisplayType.SOLID),
+		MENTOS(2, 6, DisplayType.SOLID),
+		BUBBLE(4, 8, DisplayType.ADDITIVE),
+		BUTTERFLY(1, 4, DisplayType.TRANSPARENT),
+		SPARK(1, 4, DisplayType.SOLID),
+		STAR(2, 6, DisplayType.TRANSPARENT),
 		;
 
 		public final String name;
 		public final TagKey<Item> tag;
 		public final float size;
 		private final int damage;
+		private final DisplayType display;
 
-		Bullet(float size, int damage) {
+		Bullet(float size, int damage, DisplayType display) {
 			this.size = size;
 			this.damage = damage;
+			this.display = display;
 			name = name().toLowerCase(Locale.ROOT);
 			tag = YHTagGen.item(name + "_danmaku");
 		}
+
 
 		public ItemEntry<DanmakuItem> get(DyeColor color) {
 			return YHDanmaku.DANMAKU[ordinal()][color.ordinal()];
@@ -45,6 +53,15 @@ public class YHDanmaku {
 		public boolean bypass() {
 			return size > 1;
 		}
+
+		public String getName() {
+			return name;
+		}
+
+		public DisplayType display() {
+			return display;
+		}
+
 	}
 
 	public enum Laser {
@@ -86,10 +103,7 @@ public class YHDanmaku {
 			for (var e : DyeColor.values()) {
 				var ent = YoukaisHomecoming.REGISTRATE
 						.item(e.getName() + "_" + t.name + "_danmaku", p -> new DanmakuItem(p.rarity(Rarity.RARE), t, e, t.size))
-						.model((ctx, pvd) -> pvd.generated(ctx,
-								pvd.modLoc("item/danmaku/" + t.name),
-								pvd.modLoc("item/danmaku/" + t.name + "_overlay")))
-						.color(() -> () -> (stack, i) -> ((DanmakuItem) stack.getItem()).getDanmakuColor(stack, i))
+						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/bullet/" + t.name + "/" + e.getName())))
 						.tag(t.tag)
 						.register();
 				DANMAKU[t.ordinal()][e.ordinal()] = ent;

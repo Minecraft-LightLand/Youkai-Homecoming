@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gray_spark_danmaku": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:gray_spark_danmaku"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:gray_spark_danmaku"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_gray_spark_danmaku",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:gray_spark_danmaku"
+    ]
+  },
+  "sends_telemetry_event": false
+}

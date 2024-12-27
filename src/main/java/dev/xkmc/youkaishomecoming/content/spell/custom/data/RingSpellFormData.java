@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.spell.custom.forms.CustomItemSpell;
 import dev.xkmc.youkaishomecoming.content.spell.custom.forms.RingSpellForm;
 import dev.xkmc.youkaishomecoming.content.spell.item.ItemSpell;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import net.minecraft.world.item.Item;
 
 public record RingSpellFormData(
 		BaseSpellData base,
@@ -57,6 +58,11 @@ public record RingSpellFormData(
 	public int cost() {
 		int cost = YHModConfig.COMMON.customSpellDanmakuPerItemCost.get();
 		return branches * steps / cost + 1;
+	}
+
+	@Override
+	public Item getAmmoCost() {
+		return base().bullet().get(base().color()).get();
 	}
 
 	public ItemSpell createInstance() {

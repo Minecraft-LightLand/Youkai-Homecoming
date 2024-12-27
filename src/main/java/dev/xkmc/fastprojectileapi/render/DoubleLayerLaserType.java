@@ -6,11 +6,20 @@ import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
 
 public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation outer, int color)
 		implements RenderableProjectileType<DoubleLayerLaserType, DoubleLayerLaserType.Ins> {
+
+	@Override
+	public int order() {
+		return 10;
+	}
+
+	@Override
+	public RenderLevelStageEvent.Stage stage() {
+		return RenderLevelStageEvent.Stage.AFTER_PARTICLES;
+	}
 
 	@Override
 	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
@@ -22,24 +31,24 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 				(int) ((color >> 8 & 0xff) * tran) << 8 |
 				(int) ((color >> 16 & 0xff) * tran) << 16 | 0xff000000;
 		VertexConsumer vc;
-		vc = buffer.getBuffer(DanmakuRenderStates.laser(inner));
+		vc = buffer.getBuffer(DanmakuRenderStates.laser(inner, DisplayType.SOLID));
 		for (var e : list) {
 			e.texInner(vc, -1);
 		}
 		if (ADDITIVE) {
-			vc = buffer.getBuffer(DanmakuRenderStates.additive(outer));
+			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.ADDITIVE));
 			for (var e : list) {
 				e.texOuter(false, vc, add);
 			}
 		}
 		if (INVERT) {
-			vc = buffer.getBuffer(DanmakuRenderStates.transparent(outer));
+			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT));
 			for (var e : list) {
 				e.texOuter(true, vc, col);
 			}
 		}
 		if (!ADDITIVE && !INVERT) {
-			vc = buffer.getBuffer(DanmakuRenderStates.transparent(outer));
+			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT));
 			for (var e : list) {
 				e.texOuter(false, vc, col);
 			}
@@ -49,12 +58,10 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 	@Override
 	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		PoseStack.Pose mat = pose.last();
-		Matrix4f m4 = new Matrix4f(mat.pose());
-		Matrix3f m3 = new Matrix3f(mat.normal());
-		ProjectileRenderHelper.add(this, new Ins(m3, m4));
+		ProjectileRenderHelper.add(this, new Ins(mat));
 	}
 
-	public record Ins(Matrix3f m3, Matrix4f m4) {
+	public record Ins(PoseStack.Pose pose) {
 
 		public void texInner(VertexConsumer vc, int color) {
 			float v0 = -0.167f, v1 = 0.167f;
@@ -93,11 +100,7 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 		}
 
 		private void addVertex(VertexConsumer vc, int color, int pY, float pX, float pZ, float pU, float pV) {
-			vc.vertex(m4, pX, pY, pZ)
-					.uv(pU, pV)
-					.color(color)
-					//.normal(m3, 0, 1, 0)
-					.endVertex();
+			vc.vertex(pose.pose(), pX, pY, pZ).uv(pU, pV).color(color).endVertex();
 		}
 
 	}

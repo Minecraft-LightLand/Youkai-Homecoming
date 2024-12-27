@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.custom.screen;
 
+import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.spell.custom.data.ISpellFormData;
 import dev.xkmc.youkaishomecoming.content.spell.custom.editor.SpellOptionInstances;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -20,7 +21,7 @@ public class EditorScreen extends Screen {
 
 	public EditorScreen(ISpellFormData<?> data) {
 		super(Component.literal(""));
-		ins = SpellOptionInstances.create(data.cast());
+		ins = SpellOptionInstances.create(Wrappers.cast(data));
 	}
 
 	@Override

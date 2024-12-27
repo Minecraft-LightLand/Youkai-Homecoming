@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/danmaku/ball",
-    "layer1": "youkaishomecoming:item/danmaku/ball_overlay"
+    "layer0": "youkaishomecoming:item/bullet/ball/light_blue"
   }
 }

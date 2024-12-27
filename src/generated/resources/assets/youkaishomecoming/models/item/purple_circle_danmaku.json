@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/danmaku/circle",
-    "layer1": "youkaishomecoming:item/danmaku/circle_overlay"
+    "layer0": "youkaishomecoming:item/bullet/circle/purple"
   }
 }

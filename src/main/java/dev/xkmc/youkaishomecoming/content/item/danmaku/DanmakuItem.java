@@ -1,8 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.fastprojectileapi.render.ButterflyProjectileType;
-import dev.xkmc.fastprojectileapi.render.DoubleLayerProjectileType;
 import dev.xkmc.fastprojectileapi.render.RenderableProjectileType;
+import dev.xkmc.fastprojectileapi.render.RotatingProjectileType;
+import dev.xkmc.fastprojectileapi.render.SimpleProjectileType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
@@ -74,10 +75,6 @@ public class DanmakuItem extends Item {
 		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
 	}
 
-	public int getDanmakuColor(ItemStack stack, int i) {
-		return i == 0 ? color.getFireworkColor() : 0xffffffff;
-	}
-
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		var fying = Component.translatable(YHEffects.YOUKAIFYING.get().getDescriptionId());
@@ -92,17 +89,13 @@ public class DanmakuItem extends Item {
 
 	public RenderableProjectileType<?, ?> getTypeForRender() {
 		if (render == null) {
-			if (type == YHDanmaku.Bullet.BUTTERFLY) {
-				render = new ButterflyProjectileType(
-						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),
-						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + "_overlay.png"),
-						20, 0xff000000 | color.getFireworkColor());
-			} else {
-				render = new DoubleLayerProjectileType(
-						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + ".png"),
-						YoukaisHomecoming.loc("textures/item/danmaku/" + type.name + "_overlay.png"),
-						0xff000000 | color.getFireworkColor());
-			}
+			var loc = YoukaisHomecoming.loc("textures/entity/bullet/" + type.getName() + "/" + color.getName() + ".png");
+			render = switch (type) {
+				case BUTTERFLY -> new ButterflyProjectileType(loc, type.display(), 20);
+				case SPARK -> new RotatingProjectileType(loc, type.display(), 20);
+				case STAR -> new RotatingProjectileType(loc, type.display(), 40);
+				default -> new SimpleProjectileType(loc, type.display());
+			};
 		}
 		return render;
 	}
