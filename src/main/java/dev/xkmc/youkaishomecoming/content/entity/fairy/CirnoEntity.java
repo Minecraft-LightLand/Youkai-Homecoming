@@ -4,14 +4,11 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
-import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,7 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
@@ -79,21 +75,8 @@ public class CirnoEntity extends FairyEntity {
 		}
 	}
 
-	@Nullable
-	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+	public void initSpellCard() {
 		TouhouSpellCards.setCirno(this);
-		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
-	}
-
-	public static boolean checkCirnoSpawnRules(EntityType<CirnoEntity> e, ServerLevelAccessor level, MobSpawnType type, BlockPos pos, RandomSource rand) {
-		if (!checkMobSpawnRules(e, level, type, pos, rand)) return false;
-		if (!YHModConfig.COMMON.cirnoSpawn.get()) return false;
-		var aabb = AABB.ofSize(pos.getCenter(), 48, 24, 48);
-		if (!level.getEntitiesOfClass(CirnoEntity.class, aabb).isEmpty()) return false;
-		var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 128, false);
-		if (player == null) return false;
-		return EffectEventHandlers.isCharacter(player);
 	}
 
 }

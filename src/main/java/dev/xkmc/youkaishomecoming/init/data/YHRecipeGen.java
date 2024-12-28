@@ -914,6 +914,14 @@ public class YHRecipeGen {
 						.requires(YHDanmaku.Bullet.SPARK.get(e), 2)
 						.save(pvd, YHDanmaku.Bullet.STAR.get(e).getId().withSuffix("_upgrade"));
 			}
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHItems.CUSTOM_SPELL_RING)::unlockedBy, Items.INK_SAC)
+					.requires(YHTagGen.PRESET_SPELL).requires(Items.PAPER).requires(Items.INK_SAC)
+					.save(pvd);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHItems.CUSTOM_SPELL_HOMING)::unlockedBy, Items.GLOW_INK_SAC)
+					.requires(YHTagGen.PRESET_SPELL).requires(Items.PAPER).requires(Items.GLOW_INK_SAC)
+					.save(pvd);
 		}
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {

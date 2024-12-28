@@ -158,6 +158,7 @@ public class YHItems {
 							p.stacksTo(1), ReimuItemSpell::new, true,
 							() -> YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Reimu's Spellcard \"Innate Dream\"")
 					.register();
 
@@ -166,6 +167,7 @@ public class YHItems {
 							p.stacksTo(1), MarisaItemSpell::new, false,
 							() -> YHDanmaku.Laser.LASER.get(DyeColor.WHITE).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Marisa's Spellcard \"Master Spark\"")
 					.register();
 
@@ -174,6 +176,7 @@ public class YHItems {
 							p.stacksTo(1), SanaeItemSpell::new, false,
 							() -> YHDanmaku.Bullet.SPARK.get(DyeColor.GREEN).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Sanae's Spellcard \"Inherited Ritual\"")
 					.register();
 
@@ -182,6 +185,7 @@ public class YHItems {
 							p.stacksTo(1), MystiaItemSpell::new, false,
 							() -> YHDanmaku.Bullet.MENTOS.get(DyeColor.GREEN).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Night Sparrow \"Midnight Chorus Master\"")
 					.register();
 
@@ -190,6 +194,7 @@ public class YHItems {
 							p.stacksTo(1), YukariItemSpellLaser::new, false,
 							() -> YHDanmaku.Laser.LASER.get(DyeColor.RED).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
+					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Barrier \"Mesh of Light & Darkness\"")
 					.register();
 
@@ -198,6 +203,7 @@ public class YHItems {
 							p.stacksTo(1), YukariItemSpellButterfly::new, false,
 							() -> YHDanmaku.Bullet.BUTTERFLY.get(DyeColor.MAGENTA).get()))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
+					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Barrier \"Double Black Death Butterfly\"")
 					.register();
 		}

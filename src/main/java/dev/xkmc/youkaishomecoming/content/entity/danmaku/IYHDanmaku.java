@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -46,8 +47,8 @@ public interface IYHDanmaku {
 		if (self().level().isClientSide) return;
 		var e = result.getEntity();
 		var source = source();
-		if (e instanceof LivingEntity le) {//TODO change to living entity
-			if (le.hurtTime > 0 && (e instanceof Player || e instanceof YoukaiEntity)) {
+		if (e instanceof LivingEntity le) {
+			if (le.hurtTime > 0 && (YHModConfig.COMMON.invulFrameForDanmaku.get() || e instanceof Player || e instanceof YoukaiEntity)) {
 				DamageSource last = le.getLastDamageSource();
 				if (last != null && last.getDirectEntity() instanceof IYHDanmaku) {
 					return;

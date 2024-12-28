@@ -1,4 +1,4 @@
-// 1.20.1	2024-12-27T19:52:36.374093	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-12-29T01:00:32.394845	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1156,6 +1156,8 @@ cd0daef2c279ac7a238c5ae2834dfac0ca2bfa93 data/youkaishomecoming/advancements/rec
 7fb367b1b7da5fd673cf04eb931805485967a3c9 data/youkaishomecoming/advancements/recipes/combat/brown_spark_danmaku_recolor.json
 1725585e5d0cbad1486c78f61edbe2b1a75d9979 data/youkaishomecoming/advancements/recipes/combat/brown_star_danmaku_recolor.json
 742fae8d23fa155e09500a8ce752d85cd411ddd5 data/youkaishomecoming/advancements/recipes/combat/brown_star_danmaku_upgrade.json
+3b27ac96c55be7d07ce49731acfc2f55b4a010ac data/youkaishomecoming/advancements/recipes/combat/custom_spell_homing.json
+4397f2498fd87f473101a6621a733d4fd6eaa9f2 data/youkaishomecoming/advancements/recipes/combat/custom_spell_ring.json
 2fe1f1d1e9a5ec78fc4c4af868085e462d09b134 data/youkaishomecoming/advancements/recipes/combat/cyan_ball_danmaku_recolor.json
 550ca451764d3afd708cf64c925fe930dd43bbd7 data/youkaishomecoming/advancements/recipes/combat/cyan_bubble_danmaku_recolor.json
 618e13a77cb56016e707ef6fa6c6a5e5fb4ca9e0 data/youkaishomecoming/advancements/recipes/combat/cyan_bubble_danmaku_upgrade.json
@@ -1650,6 +1652,8 @@ bf88761470c2db88eb8f720a80837cb04b9377ab data/youkaishomecoming/recipes/cross_fr
 f1351f1e3a93f0403520679395c1c33721df4a2a data/youkaishomecoming/recipes/cross_framed_sikkui_trap_door_from_cross_framed_sikkui_stonecutting.json
 4b2bd58cc9b79bcf1bee466ec5d6d6bc2e4d0dad data/youkaishomecoming/recipes/cross_framed_sikkui_vertical_slab.json
 31490eb9b68488c62954fb70b0c7dab06dcbfd06 data/youkaishomecoming/recipes/cross_framed_sikkui_vertical_slab_from_cross_framed_sikkui_stonecutting.json
+6765f05b0f1ca3a52910ff02682553993e6e240c data/youkaishomecoming/recipes/custom_spell_homing.json
+59c63818abcd28949f25947e6ad9dfacf25f1708 data/youkaishomecoming/recipes/custom_spell_ring.json
 15fed379c6b2b6f812d2b74cf8922e7d7eda0cd4 data/youkaishomecoming/recipes/cyan_ball_danmaku_recolor.json
 900eafaf44adf6a9510e0f159ab57301274bd6f2 data/youkaishomecoming/recipes/cyan_bubble_danmaku_recolor.json
 7307620770fca7ea57b66d4234262781ec138a62 data/youkaishomecoming/recipes/cyan_bubble_danmaku_upgrade.json
@@ -2012,6 +2016,7 @@ aa2571069bda91945b5212ddc4f2945299452f3d data/youkaishomecoming/tags/items/dango
 9bc5fcee3b058bf7f305dc8baaada3f8399d29b2 data/youkaishomecoming/tags/items/flesh_food.json
 8b21bcb43701c60a0c301d5d7a97ff3c996c0c40 data/youkaishomecoming/tags/items/laser.json
 f018744d350b9b328ed4b073e544cf44b1427941 data/youkaishomecoming/tags/items/mentos_danmaku.json
+c38b910507cee521f725b3fe08352a39e045ee33 data/youkaishomecoming/tags/items/preset_spell.json
 40343eaeafa358240c2ed0206ca567f00dd3f0a9 data/youkaishomecoming/tags/items/raw_eel.json
 a16b1e0016b47f50aefed39e8e6c4f982ef6fa51 data/youkaishomecoming/tags/items/raw_flesh.json
 20fe7ddf2791e1b0d71cd529e58f4146a7787ff9 data/youkaishomecoming/tags/items/spark_danmaku.json

@@ -24,11 +24,8 @@ public class LunaEntity extends FairyEntity {
 	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
 	}
 
-	@Nullable
-	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+	public void initSpellCard() {
 		TouhouSpellCards.setLuna(this);
-		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
 	}
 
 }

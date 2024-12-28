@@ -86,7 +86,7 @@ public class YHEntities {
 			CIRNO = YoukaisHomecoming.REGISTRATE
 					.entity("cirno", CirnoEntity::new, MobCategory.MONSTER)
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
-					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CirnoEntity::checkCirnoSpawnRules)
+					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FairyEntity::checkFairySpawnRules)
 					.attributes(CirnoEntity::createAttributes)
 					.renderer(() -> CirnoRenderer::new)
 					.spawnEgg(0x5676af, 0xb6ecf1).tab(YHDanmaku.TAB.getKey()).build()
@@ -153,6 +153,7 @@ public class YHEntities {
 			SUNNY = YoukaisHomecoming.REGISTRATE
 					.entity("sunny_milk", SunnyEntity::new, MobCategory.MONSTER)
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FairyEntity::checkFairySpawnRules)
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0xB14435, 0xFCF5D8).tab(YHDanmaku.TAB.getKey()).build()
@@ -161,6 +162,7 @@ public class YHEntities {
 			LUNA = YoukaisHomecoming.REGISTRATE
 					.entity("luna_child", LunaEntity::new, MobCategory.MONSTER)
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FairyEntity::checkFairySpawnRules)
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0xFFF9DA, 0xA26B4F).tab(YHDanmaku.TAB.getKey()).build()
@@ -169,6 +171,7 @@ public class YHEntities {
 			STAR = YoukaisHomecoming.REGISTRATE
 					.entity("star_sapphire", StarEntity::new, MobCategory.MONSTER)
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FairyEntity::checkFairySpawnRules)
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x353D95, 0x482E25).tab(YHDanmaku.TAB.getKey()).build()

@@ -66,6 +66,7 @@ public class CustomSpellItem extends Item implements IGlowingTarget {
 			}
 			if (player instanceof ServerPlayer sp) {
 				SpellContainer.castSpell(sp, data::createInstance, target);
+				player.getCooldowns().addCooldown(this, data.getDuration());
 			}
 		}
 		return InteractionResultHolder.success(stack);

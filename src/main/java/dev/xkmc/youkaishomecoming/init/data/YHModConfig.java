@@ -54,6 +54,7 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue playerLaserCooldown;
 		public final ForgeConfigSpec.IntValue playerSpellCooldown;
 		public final ForgeConfigSpec.IntValue playerLaserDuration;
+		public final ForgeConfigSpec.BooleanValue invulFrameForDanmaku;
 
 		public final ForgeConfigSpec.BooleanValue rumiaNaturalSpawn;
 		public final ForgeConfigSpec.BooleanValue exRumiaConversion;
@@ -71,6 +72,9 @@ public class YHModConfig {
 
 		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
+		public final ForgeConfigSpec.BooleanValue cirnoSpawnCheckEffect;
+		public final ForgeConfigSpec.BooleanValue fairyAttackYoukaified;
+		public final ForgeConfigSpec.DoubleValue fairySummonReinforcement;
 
 		public final ForgeConfigSpec.IntValue customSpellMaxDuration;
 		public final ForgeConfigSpec.IntValue ringSpellDanmakuPerItemCost;
@@ -155,6 +159,9 @@ public class YHModConfig {
 						.defineInRange("playerSpellCooldown", 40, 5, 1000);
 				playerLaserDuration = builder.comment("Player laser duration")
 						.defineInRange("playerLaserDuration", 100, 5, 1000);
+				invulFrameForDanmaku = builder.comment("Enable danmaku damage invulnerability frame against non-player non-youkai mobs.")
+						.comment("It's always enabled against player and youkais")
+						.define("invulFrameForDanmaku", true);
 			}
 			builder.pop();
 
@@ -198,6 +205,12 @@ public class YHModConfig {
 						.define("cirnoSpawn", true);
 				cirnoFairyDrop = builder.comment("Chance for fairy ice crystal to drop")
 						.defineInRange("cirnoFairyDrop", 0.03, 0, 1);
+				cirnoSpawnCheckEffect = builder.comment("Cirno spawns naturally only when there are youkaifying/ed player nearby")
+						.define("cirnoSpawnCheckEffect", true);
+				fairyAttackYoukaified = builder.comment("Fairies will actively attack players with youkaifying/ed effects")
+						.define("fairyAttackYoukaified", true);
+				fairySummonReinforcement = builder.comment("Chance for fairies to summon other fairies when killed by non-danmaku damage")
+						.defineInRange("fairySummonReinforcement", 0.5, 0, 1);
 			}
 			builder.pop();
 
