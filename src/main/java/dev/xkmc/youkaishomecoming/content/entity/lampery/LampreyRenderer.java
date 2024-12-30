@@ -10,7 +10,7 @@ import net.minecraft.util.Mth;
 
 public class LampreyRenderer extends MobRenderer<LampreyEntity, LampreyModel<LampreyEntity>> {
 
-	public static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/entities/lamprey.png");
+	public static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/entity/lamprey.png");
 
 	public LampreyRenderer(EntityRendererProvider.Context context) {
 		super(context, new LampreyModel<>(context.bakeLayer(LampreyModel.LAYER_LOCATION)), 0.2F);

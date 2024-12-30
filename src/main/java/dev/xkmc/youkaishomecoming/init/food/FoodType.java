@@ -29,10 +29,6 @@ public class FoodType {
 	public static final FoodType BAMBOO = new FoodType(YHDrinkItem::new, false, true, () -> Items.BAMBOO);
 	public static final FoodType BOTTLE_FAST = new FoodType(YHDrinkItem::new, true, true, () -> Items.GLASS_BOTTLE);
 	public static final FoodType BOWL_MEAT = new FoodType(YHFoodItem::new, false, false, () -> Items.BOWL);
-	//public static final FoodType FLESH = new FoodType(FleshFoodItem::new, true, false, false, YHTagGen.FLESH_FOOD);
-	//public static final FoodType FLESH_FAST = new FoodType(FleshFoodItem::new, true, true, false, YHTagGen.FLESH_FOOD);
-	//public static final FoodType BOWL_FLESH = new FoodType(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false, YHTagGen.FLESH_FOOD);
-	//public static final FoodType CAN_FLESH = new FoodType(p -> new FleshFoodItem(p.craftRemainder(YHItems.CAN.get()).stacksTo(64)), true, false, YHTagGen.FLESH_FOOD);
 
 	private final Function<Item.Properties, Item> factory;
 	private final boolean fast;
@@ -43,7 +39,7 @@ public class FoodType {
 
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, boolean fast, boolean alwaysEat, @Nullable Supplier<Item> container, EffectEntry[] effs, TagKey<Item>... tags) {
+	public FoodType(Function<Item.Properties, Item> factory, boolean fast, boolean alwaysEat, @Nullable Supplier<Item> container, EffectEntry[] effs, TagKey<Item>... tags) {
 		this.factory = factory;
 		this.fast = fast;
 		this.alwaysEat = alwaysEat;
@@ -53,7 +49,7 @@ public class FoodType {
 	}
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, boolean fast, boolean alwaysEat, @Nullable Supplier<Item> container, TagKey<Item>... tags) {
+	public FoodType(Function<Item.Properties, Item> factory, boolean fast, boolean alwaysEat, @Nullable Supplier<Item> container, TagKey<Item>... tags) {
 		this(factory, fast, alwaysEat, container, new EffectEntry[0], tags);
 	}
 
@@ -95,14 +91,7 @@ public class FoodType {
 
 	public String makeLang(String id) {
 		String name = YHItems.toEnglishName(id.toLowerCase(Locale.ROOT));
-		if (isFlesh()) {
-			name = name.replaceFirst("Flesh", "%1\\$s");
-		}
 		return YHItems.toEnglishName(name);
-	}
-
-	public boolean isFlesh() {
-		return false;
 	}
 
 	@SuppressWarnings({"unsafe", "unchecked"})

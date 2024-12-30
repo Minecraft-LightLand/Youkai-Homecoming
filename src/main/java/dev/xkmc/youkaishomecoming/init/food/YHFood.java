@@ -187,22 +187,6 @@ public enum YHFood implements ItemLike {
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
-	// flesh
-	//TODO KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f, new EffectEntry(YHEffects.UNCONSCIOUS, 400, 0, 1), DietTagGen.SUGARS.tag),
-	//TODO HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f, List.of(new EffectEntry(YHEffects.HIGI, 1200, 0, 1)), DietTagGen.SUGARS.tag),
-	//TODO HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(new EffectEntry(YHEffects.HIGI, 1200, 0, 1), new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
-	//TODO FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(new EffectEntry(YHEffects.FAIRY, 1200, 0, 1)), DietTagGen.SUGARS.tag),
-	//TODO FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	//TODO COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-
-	//TODO SCARLET_TEA(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA, 1200, 0, 1), new EffectEntry(YHEffects.THICK, 600, 0, 1), new EffectEntry(YHEffects.YOUKAIFYING, 1200, 0, 1)), YHTagGen.FLESH_FOOD),
-	//TODO FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
-	//TODO FLESH_ROLL(FoodType.FLESH, 3, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
-	//TODO CANNED_FLESH(FoodType.CAN_FLESH, 4, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	//TODO FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1), new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	//TODO BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1), new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	//TODO FLESH_CHOCOLATE_MOUSSE(FoodType.FLESH_FAST, 3, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
-	//TODO SCARLET_DEVIL_CAKE(FoodType.FLESH_FAST, 4, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
 	;
 
 
@@ -220,7 +204,6 @@ public enum YHFood implements ItemLike {
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
 		if (ordinal() <= 14) id = "food/mochi/";
 		if (ordinal() <= 8) id = "food/basic/";
-		if (type.isFlesh()) id = "food/flesh/";
 		item = type.build(id, name, nutrition, sat, tags, effs);
 	}
 
@@ -232,18 +215,6 @@ public enum YHFood implements ItemLike {
 	@SafeVarargs
 	YHFood(FoodType type, int nutrition, float sat, EffectEntry eff, TagKey<Item>... tags) {
 		this(type, nutrition, sat, List.of(eff), tags);
-	}
-
-	private boolean isFlesh() {
-		return type.isFlesh();
-	}
-
-	private boolean isUnappealing() {
-		return this == RAW_LAMPREY || this == RAW_LAMPREY_FILLET;
-	}
-
-	public boolean isReimuFood() {
-		return !isFlesh() && !isUnappealing();
 	}
 
 	public static void register() {

@@ -13,8 +13,6 @@ public class YHModConfig {
 		public final ModConfigSpec.IntValue udumbaraDuration;
 		public final ModConfigSpec.IntValue udumbaraHealingPeriod;
 		public final ModConfigSpec.IntValue udumbaraFullMoonReduction;
-		public final ModConfigSpec.IntValue higiHealingPeriod;
-		public final ModConfigSpec.DoubleValue fairyHealingFactor;
 
 		Server(Builder builder) {
 			markPlain();
@@ -28,10 +26,6 @@ public class YHModConfig {
 					.defineInRange("udumbaraDuration", 200, 0, 100000);
 			udumbaraFullMoonReduction = builder.text("Udumbara full moon damage reduction")
 					.defineInRange("udumbaraFullMoonReduction", 4, 0, 100);
-			higiHealingPeriod = builder.text("Higi Healing Interval")
-					.defineInRange("higiHealingPeriod", 60, 0, 10000);
-			fairyHealingFactor = builder.text("Fairy Healing Factor")
-					.defineInRange("fairyHealingFactor", 2d, 1, 100);
 
 		}
 
