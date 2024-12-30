@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import com.tterrag.registrate.AbstractRegistrate;

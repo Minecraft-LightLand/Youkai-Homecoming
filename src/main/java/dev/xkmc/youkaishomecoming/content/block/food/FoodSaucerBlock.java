@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.youkaishomecoming.init.food.YHDish;
+import dev.xkmc.youkaishomecoming.init.food.IYHDish;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -17,12 +17,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class FoodSaucerBlock extends BaseSaucerBlock {
 
 	private final VoxelShape shape;
-	private final YHDish base;
+	private final IYHDish base;
 
-	public FoodSaucerBlock(Properties pProperties, YHDish base) {
+	public FoodSaucerBlock(Properties pProperties, IYHDish base) {
 		super(pProperties);
 		this.base = base;
-		shape = Block.box(2.0D, 0.0D, 2.0D, 14.0D, base.height, 14.0D);
+		shape = Block.box(2.0D, 0.0D, 2.0D, 14.0D, base.height(), 14.0D);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 			if (!level.isClientSide()) {
 				player.eat(level, asItem().getDefaultInstance());
 				level.setBlockAndUpdate(pos, YHItems.SAUCER.getDefaultState()
-						.setValue(EmptySaucerBlock.TYPE, base.base)
+						.setValue(EmptySaucerBlock.TYPE, base.base())
 						.setValue(BlockStateProperties.HORIZONTAL_FACING,
 								state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
 			}

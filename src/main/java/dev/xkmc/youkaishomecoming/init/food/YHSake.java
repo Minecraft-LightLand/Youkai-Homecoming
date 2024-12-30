@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.content.item.fluid.*;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -23,8 +24,6 @@ public enum YHSake implements IYHSake {
 	DASSAI(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(MobEffects.DIG_SPEED, 1200, 2, 1))),
 	TENGU_TANGO(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
 	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1), new EffectEntry(YHEffects.UDUMBARA, 1200, 1, 1))),
-	//TODO SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 1, 1), new EffectEntry(YHEffects.YOUKAIFIED, 1200, 0, 1)), YHTagGen.FLESH_FOOD),
-	//TODO WIND_PRIESTESSES(FoodType.BOTTLE, 0xFF79E1CA, List.of(new EffectEntry(YHEffects.DRUNK, 1200, 0, 1), new EffectEntry(YHEffects.NATIVE, 600, 0, 1))),
 	;
 
 	public final int color;
@@ -36,9 +35,11 @@ public enum YHSake implements IYHSake {
 	YHSake(FoodType type, int color, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.color = color;
 		String name = name().toLowerCase(Locale.ROOT);
-		fluid = BottledFluid.water(name, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
+		fluid = BottledFluid.water(YoukaisHomecoming.REGISTRATE, name,
+						(p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
 				.defaultLang().register();
-		item = type.build(p -> new SakeBottleItem(fluid, p), "sake/", name, 0, 0, tags, effs);
+		item = type.build(YoukaisHomecoming.REGISTRATE,
+				p -> new SakeBottleItem(fluid, p), "sake/", name, 0, 0, tags, effs);
 	}
 
 	@Override

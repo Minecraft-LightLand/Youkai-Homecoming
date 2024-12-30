@@ -73,5 +73,5 @@ public class MokaMakerBlock extends BasePotBlock {
 	protected MapCodec<? extends BaseEntityBlock> codec() {
 		return null;//TODO block codec
 	}
-	
+
 }

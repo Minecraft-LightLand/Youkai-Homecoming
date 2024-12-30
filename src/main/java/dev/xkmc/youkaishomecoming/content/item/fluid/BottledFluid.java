@@ -23,21 +23,22 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHSake {
 	public static final ResourceLocation SOLID_STILL = YoukaisHomecoming.loc("block/water_still");
 
 	public static <T extends SakeFluid> FluidBuilder<T, L2Registrate> virtualFluid(
+			L2Registrate reg,
 			String id, ResourceLocation flow, ResourceLocation still,
 			FluidBuilder.FluidTypeFactory typeFactory, NonNullFunction<BaseFlowingFluid.Properties, T> factory) {
-		return YoukaisHomecoming.REGISTRATE.entry(id, (c) -> new VirtualFluidBuilder<>(
-				YoukaisHomecoming.REGISTRATE, YoukaisHomecoming.REGISTRATE,
-				id, c, still, flow, typeFactory, factory));
+		return reg.entry(id, (c) -> new VirtualFluidBuilder<>(reg, reg, id, c, still, flow, typeFactory, factory));
 	}
 
 	public static <T extends SakeFluid> FluidBuilder<T, L2Registrate> water(
-			String id, FluidBuilder.FluidTypeFactory typeFactory, NonNullFunction<BaseFlowingFluid.Properties, T> factory) {
-		return virtualFluid(id, WATER_FLOW, WATER_STILL, typeFactory, factory);
+			L2Registrate reg, String id, FluidBuilder.FluidTypeFactory typeFactory,
+			NonNullFunction<BaseFlowingFluid.Properties, T> factory) {
+		return virtualFluid(reg, id, WATER_FLOW, WATER_STILL, typeFactory, factory);
 	}
 
 	public static <T extends SakeFluid> FluidBuilder<T, L2Registrate> solid(
-			String id, FluidBuilder.FluidTypeFactory typeFactory, NonNullFunction<BaseFlowingFluid.Properties, T> factory) {
-		return virtualFluid(id, SOLID_FLOW, SOLID_STILL, typeFactory, factory);
+			L2Registrate reg, String id, FluidBuilder.FluidTypeFactory typeFactory,
+			NonNullFunction<BaseFlowingFluid.Properties, T> factory) {
+		return virtualFluid(reg, id, SOLID_FLOW, SOLID_STILL, typeFactory, factory);
 	}
 
 	private final int color;
@@ -46,15 +47,14 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHSake {
 	public final ItemEntry<T> item;
 	public final FluidEntry<SakeFluid> fluid;
 
-	public BottledFluid(String id, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<SakeFluid>, Item.Properties, T> factory) {
+	public BottledFluid(L2Registrate reg, String id, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<SakeFluid>, Item.Properties, T> factory) {
 		this.color = color;
 		this.container = container;
 
-		fluid = solid(id, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
+		fluid = solid(reg, id, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
 				.defaultLang().register();
 
-		item = YoukaisHomecoming.REGISTRATE
-				.item(id + "_bottle", p -> factory.apply(fluid, p.craftRemainder(container.get())))
+		item = reg.item(id + "_bottle", p -> factory.apply(fluid, p.craftRemainder(container.get())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName())))
 				.register();
 

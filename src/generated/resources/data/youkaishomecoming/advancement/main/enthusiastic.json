@@ -73,14 +73,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:blood_curd": {
-      "conditions": {
-        "item": {
-          "items": "youkaishomecoming:blood_curd"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:bowl_of_heart_throbbing_surprise": {
       "conditions": {
         "item": {
@@ -724,9 +716,6 @@
     ],
     [
       "youkaishomecoming:tofu_burger"
-    ],
-    [
-      "youkaishomecoming:blood_curd"
     ],
     [
       "youkaishomecoming:seven_colored_yokan"

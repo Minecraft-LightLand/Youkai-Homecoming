@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.pot.kettle;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotRecipe;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;

@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;

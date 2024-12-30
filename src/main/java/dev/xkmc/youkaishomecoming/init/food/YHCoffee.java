@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -37,7 +38,7 @@ public enum YHCoffee {
 			list.add(new EffectEntry(YHEffects.SOBER, 1200 * coffee, 0, 1));
 		}
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build("coffee/", name, nutrition, sat, tags, list);
+		item = type.build(YoukaisHomecoming.REGISTRATE, "coffee/", name, nutrition, sat, tags, list);
 	}
 
 	public static void register() {

@@ -14,9 +14,7 @@ public class YHAttackListener implements AttackListener {
 	@Override
 	public boolean onAttack(DamageData.Attack data) {
 		if (data.getSource().is(DamageTypeTags.IS_FIRE)) {
-			if (data.getTarget().hasEffect(YHEffects.REFRESHING)) {
-				return true;
-			}
+			return data.getTarget().hasEffect(YHEffects.REFRESHING);
 		}
 		return false;
 	}

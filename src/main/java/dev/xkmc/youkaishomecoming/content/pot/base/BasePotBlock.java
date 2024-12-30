@@ -120,8 +120,7 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 	public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity tileEntity = level.getBlockEntity(pos);
-			if (tileEntity instanceof BasePotBlockEntity<?>) {
-				BasePotBlockEntity<?> cookingPotEntity = (BasePotBlockEntity<?>) tileEntity;
+			if (tileEntity instanceof BasePotBlockEntity<?> cookingPotEntity) {
 				Containers.dropContents(level, pos, cookingPotEntity.getDroppableInventory());
 				cookingPotEntity.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
 				level.updateNeighbourForOutputSignal(pos, this);
@@ -134,16 +133,16 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
-		builder.add(new Property[]{FACING, SUPPORT, WATERLOGGED});
+		builder.add(FACING, SUPPORT, WATERLOGGED);
 	}
 
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
 		BlockEntity tileEntity = level.getBlockEntity(pos);
 		if (tileEntity instanceof BasePotBlockEntity<?> cookingPotEntity) {
 			if (cookingPotEntity.isHeated()) {
-				SoundEvent boilSound = !cookingPotEntity.getMeal().isEmpty() ? (SoundEvent) ModSounds.BLOCK_COOKING_POT_BOIL_SOUP.get() : (SoundEvent) ModSounds.BLOCK_COOKING_POT_BOIL.get();
+				SoundEvent boilSound = !cookingPotEntity.getMeal().isEmpty() ? ModSounds.BLOCK_COOKING_POT_BOIL_SOUP.get() : ModSounds.BLOCK_COOKING_POT_BOIL.get();
 				double x = (double) pos.getX() + 0.5;
-				double y = (double) pos.getY();
+				double y = pos.getY();
 				double z = (double) pos.getZ() + 0.5;
 				if (random.nextInt(10) == 0) {
 					level.playLocalSound(x, y, z, boilSound, SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.2F + 0.9F, false);
@@ -168,7 +167,7 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 	}
 
 	public FluidState getFluidState(BlockState state) {
-		return (Boolean) state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	public static void buildLoot(RegistrateBlockLootTables pvd, BasePotBlock block) {

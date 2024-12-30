@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.util;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;

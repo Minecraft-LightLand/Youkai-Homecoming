@@ -115,7 +115,6 @@ public class CoffeaCropBlock extends DoubleCropBlock {
 	}
 
 
-
 	public static void buildPlantModel(DataGenContext<Block, CoffeaCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(AGE);

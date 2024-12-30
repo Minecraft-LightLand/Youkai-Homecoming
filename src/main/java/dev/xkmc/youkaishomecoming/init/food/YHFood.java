@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.ItemTags;
@@ -204,7 +205,7 @@ public enum YHFood implements ItemLike {
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
 		if (ordinal() <= 14) id = "food/mochi/";
 		if (ordinal() <= 8) id = "food/basic/";
-		item = type.build(id, name, nutrition, sat, tags, effs);
+		item = type.build(YoukaisHomecoming.REGISTRATE, id, name, nutrition, sat, tags, effs);
 	}
 
 	@SafeVarargs

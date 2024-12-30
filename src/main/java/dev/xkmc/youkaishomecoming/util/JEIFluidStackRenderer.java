@@ -1,4 +1,3 @@
-
 package dev.xkmc.youkaishomecoming.util;
 
 import com.google.common.base.Preconditions;

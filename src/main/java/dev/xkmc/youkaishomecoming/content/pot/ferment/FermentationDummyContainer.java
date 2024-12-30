@@ -32,5 +32,5 @@ public final class FermentationDummyContainer implements RecipeInput {
 	public int size() {
 		return items().getContainerSize();
 	}
-	
+
 }

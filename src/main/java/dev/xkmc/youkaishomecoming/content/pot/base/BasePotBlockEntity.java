@@ -294,7 +294,7 @@ public abstract class BasePotBlockEntity<T extends BasePotRecipe> extends Synced
 		double x = (double) worldPosition.getX() + 0.5 + (double) direction.getStepX() * 0.25;
 		double y = (double) worldPosition.getY() + 0.7;
 		double z = (double) worldPosition.getZ() + 0.5 + (double) direction.getStepZ() * 0.25;
-		ItemUtils.spawnItemEntity(level, remainderStack, x, y, z, (float) direction.getStepX() * 0.08F, 0.25, (double) ((float) direction.getStepZ() * 0.08F));
+		ItemUtils.spawnItemEntity(level, remainderStack, x, y, z, (float) direction.getStepX() * 0.08F, 0.25, (float) direction.getStepZ() * 0.08F);
 	}
 
 	public void setRecipeUsed(@Nullable RecipeHolder<?> recipe) {

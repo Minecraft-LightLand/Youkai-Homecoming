@@ -95,7 +95,7 @@ public class YoukaisHomecoming {
 
 	}
 
-	private static void init(){
+	private static void init() {
 		((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 		new CodecHandler<>(FluidIngredient.class, FluidIngredient.CODEC, FluidIngredient.STREAM_CODEC);
 	}

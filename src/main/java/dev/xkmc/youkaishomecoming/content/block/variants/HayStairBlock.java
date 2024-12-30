@@ -6,8 +6,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.function.Supplier;
-
 public class HayStairBlock extends StairBlock {
 
 	public HayStairBlock(BlockState state, Properties properties) {

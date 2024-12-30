@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.compat.food;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.fruitsdelight.init.registrate.FDEffects;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.EffectEntry;
 import dev.xkmc.youkaishomecoming.init.food.FoodType;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -36,7 +37,7 @@ public enum FruitsDelightCompatFood {
 	@SafeVarargs
 	FruitsDelightCompatFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		String name = name().toLowerCase(Locale.ROOT);
-		item = type.build("?fruitsdelight/", name, nutrition, sat, tags, effs);
+		item = type.build(YoukaisHomecoming.REGISTRATE, "?fruitsdelight/", name, nutrition, sat, tags, effs);
 	}
 
 	@SafeVarargs

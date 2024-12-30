@@ -4,11 +4,11 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.food.YHCakeBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.YHCandleCakeBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.YHPieBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
-import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -37,24 +37,24 @@ public class CakeEntry {
 	public boolean isCake;
 
 	@SuppressWarnings({"unchecked", "rawtype", "unsafe"})
-	public CakeEntry(String base, MapColor color, FoodType type, int nut, float sat, boolean isCake, EffectEntry... effects) {
+	public CakeEntry(L2Registrate reg, String base, MapColor color, FoodType type, int nut, float sat, boolean isCake, EffectEntry... effects) {
 		this.base = base;
 		this.isCake = isCake;
 		var props = BlockBehaviour.Properties.of().mapColor(color).forceSolidOn().strength(0.5F)
 				.sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY);
 
 		if (!isCake) {
-			item = type.build("feast/", base + "_slice", nut, sat, new TagKey[0], List.of(effects));
-			block = YoukaisHomecoming.REGISTRATE.block(base, p -> new YHPieBlock(props, item::get))
+			item = type.build(reg, "feast/", base + "_slice", nut, sat, new TagKey[0], List.of(effects));
+			block = reg.block(base, p -> new YHPieBlock(props, item::get))
 					.blockstate(this::genPieModels).loot((pvd, block) -> pvd.dropOther(block, item.get()))
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build().register();
 		} else {
-			item = type.build("feast/", base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
-			var b = YoukaisHomecoming.REGISTRATE.block(base + "_cake", p -> new YHCakeBlock(item::get, props))
+			item = type.build(reg, "feast/", base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
+			var b = reg.block(base + "_cake", p -> new YHCakeBlock(item::get, props))
 					.blockstate(this::genCakeModels).loot((pvd, block) -> pvd.dropOther(block, item.get()))
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build().register();
 			block = b;
-			YoukaisHomecoming.REGISTRATE.block(base + "_candle_cake",
+			reg.block(base + "_candle_cake",
 							p -> new YHCandleCakeBlock(b, Blocks.CANDLE, props))
 					.blockstate((ctx, pvd) -> genCandleModels(ctx, pvd, "candle"))
 					.loot((pvd, block) -> pvd.dropOther(block, Items.CANDLE))
@@ -63,7 +63,7 @@ public class CakeEntry {
 			for (DyeColor dye : DyeColor.values()) {
 				String color_name = dye.getName();
 				Block candle = BuiltInRegistries.BLOCK.get(ResourceLocation.withDefaultNamespace(color_name + "_candle"));
-				YoukaisHomecoming.REGISTRATE.block(color_name + "_" + base + "_candle_cake",
+				reg.block(color_name + "_" + base + "_candle_cake",
 								p -> new YHCandleCakeBlock(b, candle, props))
 						.blockstate((ctx, pvd) -> genCandleModels(ctx, pvd, color_name + "_candle"))
 						.loot((pvd, block) -> pvd.dropOther(block, candle.asItem()))

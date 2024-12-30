@@ -47,7 +47,7 @@ public class YHItems {
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE;
 	public static final ItemEntry<Item> CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
-			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
+			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, ICE_CUBE;
 
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
@@ -59,6 +59,7 @@ public class YHItems {
 	public static final DCVal<Integer> WATER = DC.intVal("water");
 
 	static {
+		var reg = YoukaisHomecoming.REGISTRATE;
 
 		// plants
 		{
@@ -81,8 +82,9 @@ public class YHItems {
 
 		// ingredients
 		{
-			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
-			CREAM = YoukaisHomecoming.REGISTRATE
+			SOY_SAUCE_BOTTLE = new BottledFluid<>(reg, "soy_sauce", 0xff3B302C,
+					() -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
+			CREAM = reg
 					.item("bowl_of_cream", p -> new Item(p.craftRemainder(Items.BOWL)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
 					.lang("Bowl of Cream")
@@ -91,32 +93,31 @@ public class YHItems {
 			ICE_CUBE = ingredient("ice_cube", Item::new);
 		}
 
-		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
 
 		YHFood.register();
 
 		// feasts
 		{
 
-			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
+			SURP_CHEST = reg.block("chest_of_heart_throbbing_surprise", p ->
 							new SurpriseChestBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_WOOL)))
 					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.blockstate(SurpriseChestBlock::buildModel)
 					.register();
 
-			SURP_FEAST = YoukaisHomecoming.REGISTRATE.block("heart_throbbing_surprise", p ->
+			SURP_FEAST = reg.block("heart_throbbing_surprise", p ->
 							new SurpriseFeastBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_WOOL),
 									YHFood.BOWL_OF_HEART_THROBBING_SURPRISE.item))
 					.blockstate(SurpriseFeastBlock::buildModel)
 					.loot(SurpriseFeastBlock::builtLoot)
 					.register();
 
-			TARTE_LUNE = new CakeEntry("tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 4, 0.6f, false);
+			TARTE_LUNE = new CakeEntry(reg, "tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 4, 0.6f, false);
 		}
 
-		CLAY_SAUCER = YoukaisHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
+		CLAY_SAUCER = reg.item("clay_saucer", Item::new).register();
 
-		SAUCER = YoukaisHomecoming.REGISTRATE.block("saucer", p -> new EmptySaucerBlock(
+		SAUCER = reg.block("saucer", p -> new EmptySaucerBlock(
 						BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT_GRAY_WOOL)))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
 						state -> state.getValue(EmptySaucerBlock.TYPE).build(pvd)))
@@ -131,7 +132,7 @@ public class YHItems {
 			FruitsDelightCompatFood.register();
 		}
 
-		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
+		LAMPREY_BUCKET = reg
 				.item("lamprey_bucket", p -> new MobBucketItem(
 						YHEntities.LAMPREY.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))

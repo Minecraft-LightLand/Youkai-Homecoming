@@ -14,7 +14,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.crafting.Ingredient;
-import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.concurrent.CompletableFuture;
 
