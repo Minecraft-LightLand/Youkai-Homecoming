@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rice": {
+    "has_soybean": {
       "conditions": {
         "items": [
           {
-            "items": "farmersdelight:rice"
+            "items": "youkaishomecoming:soybean"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:flowing_daiginjo"
+        "recipe": "youkaishomecoming:soy_sauce"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_rice"
+      "has_soybean"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:flowing_daiginjo"
+      "youkaishomecoming:soy_sauce"
     ]
   }
 }

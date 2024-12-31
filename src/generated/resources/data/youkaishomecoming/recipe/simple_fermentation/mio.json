@@ -2,16 +2,16 @@
   "type": "youkaishomecoming:simple_fermentation",
   "ingredients": [
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "c:crops/rice"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "c:crops/rice"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "c:crops/rice"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "c:crops/rice"
     }
   ],
   "inputFluid": {
@@ -19,8 +19,8 @@
   },
   "outputFluid": {
     "amount": 1000,
-    "id": "youkaishomecoming:flowing_soy_sauce"
+    "id": "youkaishomecoming:mio"
   },
   "results": [],
-  "time": 1800
+  "time": 2400
 }

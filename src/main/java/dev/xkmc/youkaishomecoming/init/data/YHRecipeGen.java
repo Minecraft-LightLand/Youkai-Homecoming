@@ -685,41 +685,41 @@ public class YHRecipeGen {
 		// sake
 		{
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHItems.SOY_SAUCE_BOTTLE.fluid.get(), 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHItems.SOY_SAUCE_BOTTLE, 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
 					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
 					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.MIO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.MIO, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.MEAD.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.MEAD, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.DAIGINJO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.DAIGINJO, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.DASSAI.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.DASSAI, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.NAUTILUS_SHELL)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.TENGU_TANGO.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.TENGU_TANGO, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.SPARROW_SAKE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.SPARROW_SAKE, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.FULL_MOONS_EVE.fluid.get(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHSake.FULL_MOONS_EVE, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd);

@@ -14,7 +14,7 @@
       "item": "minecraft:nether_wart"
     },
     {
-      "item": "minecraft:nautilus_shell"
+      "item": "youkaishomecoming:udumbara_flower"
     }
   ],
   "inputFluid": {
@@ -22,7 +22,7 @@
   },
   "outputFluid": {
     "amount": 1000,
-    "id": "youkaishomecoming:flowing_dassai"
+    "id": "youkaishomecoming:full_moons_eve"
   },
   "results": [],
   "time": 2400

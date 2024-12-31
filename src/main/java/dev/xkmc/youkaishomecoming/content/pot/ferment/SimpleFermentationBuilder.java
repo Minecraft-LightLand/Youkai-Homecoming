@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
 import dev.xkmc.l2core.serial.recipe.BaseRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHSake;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -21,16 +22,21 @@ public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 		FermentationDummyContainer
 		> {
 
-	public SimpleFermentationBuilder(Fluid output, int time) {
+	public SimpleFermentationBuilder(IYHSake output, int time) {
 		this(FluidIngredient.empty(), output, time);
 	}
 
-	public SimpleFermentationBuilder(TagKey<Fluid> input, Fluid output, int time) {
-		this(FluidIngredient.tag(input), new FluidStack(output, 1000), time);
+	public SimpleFermentationBuilder(TagKey<Fluid> input, IYHSake output, int time) {
+		this(FluidIngredient.tag(input), new FluidStack(output.fluid().get().getSource(), 1000), time);
 	}
 
-	public SimpleFermentationBuilder(FluidIngredient input, Fluid output, int time) {
-		this(input, new FluidStack(output, 1000), time);
+
+	public SimpleFermentationBuilder(IYHSake input, IYHSake output, int time) {
+		this(FluidIngredient.of(input.fluid().get().getSource()), new FluidStack(output.fluid().get().getSource(), 1000), time);
+	}
+
+	public SimpleFermentationBuilder(FluidIngredient input, IYHSake output, int time) {
+		this(input, new FluidStack(output.fluid().get().getSource(), 1000), time);
 	}
 
 	public SimpleFermentationBuilder(FluidIngredient input, FluidStack output, int time) {

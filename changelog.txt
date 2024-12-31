@@ -1,3 +1,6 @@
+3.0.3
+- clean up stale files
+
 3.0.2
 - Add 2 more sikkui set
 - Add wooden vertical slabs

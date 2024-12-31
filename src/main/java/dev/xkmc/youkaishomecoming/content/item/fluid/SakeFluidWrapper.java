@@ -29,7 +29,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem {
 	public FluidStack getFluid() {
 		Item item = container.getItem();
 		if (item instanceof SakeBottleItem sake)
-			return new FluidStack(sake.getFluid(), sake.getFluid().type.amount());
+			return new FluidStack(sake.getFluid().getSource(), sake.getFluid().type.amount());
 		return FluidStack.EMPTY;
 	}
 

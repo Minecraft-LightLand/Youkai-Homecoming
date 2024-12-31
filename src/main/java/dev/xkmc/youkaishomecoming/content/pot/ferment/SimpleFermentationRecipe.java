@@ -41,9 +41,12 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	public boolean matches(FermentationDummyContainer cont, Level level) {
 		FluidStack fluid = cont.fluids().getFluidInTank(0);
 		if (!inputFluid.isEmpty()) {
-			if (!inputFluid.test(fluid)) {
+			int amount = outputFluid.getAmount();
+			if (amount == 0) amount = 1000;
+			if (fluid.getAmount() != amount)
 				return false;
-			}
+			if (!inputFluid.test(fluid))
+				return false;
 		}
 		Set<ItemStack> available = new LinkedHashSet<>();
 		for (var e : cont.items().getAsList()) {
@@ -58,9 +61,8 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 					break;
 				}
 			}
-			if (match == null) {
+			if (match == null)
 				return false;
-			}
 			available.remove(match);
 		}
 		return available.isEmpty();

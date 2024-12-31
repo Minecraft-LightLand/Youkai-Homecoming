@@ -11,7 +11,10 @@
       "tag": "c:crops/rice"
     },
     {
-      "tag": "c:crops/rice"
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:nautilus_shell"
     }
   ],
   "inputFluid": {
@@ -19,7 +22,7 @@
   },
   "outputFluid": {
     "amount": 1000,
-    "id": "youkaishomecoming:flowing_mio"
+    "id": "youkaishomecoming:dassai"
   },
   "results": [],
   "time": 2400

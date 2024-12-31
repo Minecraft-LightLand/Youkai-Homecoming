@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:flowing_mead"
+        "recipe": "youkaishomecoming:sparrow_sake"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:flowing_mead"
+      "youkaishomecoming:sparrow_sake"
     ]
   }
 }

@@ -73,33 +73,6 @@ public class YoukaisHomecoming {
 		}
 	}
 
-	@SubscribeEvent
-	public static void commonSetup(FMLCommonSetupEvent event) {
-		event.enqueueWork(() -> {
-
-
-			if (ModList.get().isLoaded(Thirst.ID)) {
-				ThirstCompat.init();
-			}
-
-			var thrower = new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
-					return Util.make(new FrozenFrog(level, pos.x(), pos.y(), pos.z()), e -> e.setItem(stack));
-				}
-			};
-
-			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_COLD.get(), thrower);
-			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_WARM.get(), thrower);
-			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_TEMPERATE.get(), thrower);
-
-			DispenserBlock.registerBehavior(YHItems.FAIRY_ICE_CRYSTAL.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
-					return new FairyIce(level, pos.x(), pos.y(), pos.z());
-				}
-			});
-
-		});
-	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {

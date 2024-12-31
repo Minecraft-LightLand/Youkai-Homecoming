@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:flowing_full_moons_eve"
+        "recipe": "youkaishomecoming:full_moons_eve"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:flowing_full_moons_eve"
+      "youkaishomecoming:full_moons_eve"
     ]
   }
 }

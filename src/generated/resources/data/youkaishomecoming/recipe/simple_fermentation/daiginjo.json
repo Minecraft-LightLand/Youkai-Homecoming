@@ -11,10 +11,10 @@
       "tag": "c:crops/rice"
     },
     {
-      "tag": "c:crops/rice"
+      "item": "minecraft:nether_wart"
     },
     {
-      "item": "minecraft:honey_bottle"
+      "item": "minecraft:blaze_powder"
     }
   ],
   "inputFluid": {
@@ -22,7 +22,7 @@
   },
   "outputFluid": {
     "amount": 1000,
-    "id": "youkaishomecoming:flowing_mead"
+    "id": "youkaishomecoming:daiginjo"
   },
   "results": [],
   "time": 2400
