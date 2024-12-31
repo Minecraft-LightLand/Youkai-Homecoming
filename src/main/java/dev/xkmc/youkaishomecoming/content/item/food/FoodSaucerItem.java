@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -52,4 +53,15 @@ public class FoodSaucerItem extends BlockItem {
 			YHFoodItem.getFoodEffects(stack, list);
 		super.appendHoverText(stack, level, list, flag);
 	}
+
+	@Override
+	public boolean hasCraftingRemainingItem(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public ItemStack getCraftingRemainingItem(ItemStack stack) {
+		return YHItems.SAUCER.asStack();
+	}
+
 }
