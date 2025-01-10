@@ -5,6 +5,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
@@ -44,7 +45,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(MANDRAKE).add(Biomes.DARK_FOREST);
 		tag(UDUMBARA).add(Biomes.SWAMP);
 		tag(HAS_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
-		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE);
+		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"));
 	}
 
 	public static TagKey<Biome> asTag(String name) {

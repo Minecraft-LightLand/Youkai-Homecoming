@@ -58,7 +58,7 @@ public class FairyEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public boolean shouldHurt(LivingEntity le) {
-		return super.shouldHurt(le) || le instanceof Mob mob && mob.getTarget() != null;
+		return super.shouldHurt(le) || (!(le instanceof YoukaiEntity)) && le instanceof Mob mob && mob.getTarget() != null;
 	}
 
 	@Override

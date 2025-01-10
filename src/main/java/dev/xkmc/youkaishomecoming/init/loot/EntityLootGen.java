@@ -63,35 +63,35 @@ public class EntityLootGen {
 	public static void reimu(RegistrateEntityLootTables pvd, EntityType<ReimuEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.REIMU_SPELL.get(), 1, 1))
-						.when(LootTableTemplate.byPlayer()))
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void sanae(RegistrateEntityLootTables pvd, EntityType<SanaeEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.SANAE_SPELL.get(), 1, 1))
-						.when(LootTableTemplate.byPlayer()))
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void marisa(RegistrateEntityLootTables pvd, EntityType<MarisaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MARISA_SPELL.get(), 1, 1))
-						.when(LootTableTemplate.byPlayer()))
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void mystia(RegistrateEntityLootTables pvd, EntityType<MystiaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MYSTIA_SPELL.get(), 1, 1))
-						.when(LootTableTemplate.byPlayer()))
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void yukari(RegistrateEntityLootTables pvd, EntityType<YukariEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-						.when(LootTableTemplate.byPlayer())
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill())
 						.add(LootTableTemplate.getItem(YHItems.YUKARI_SPELL_LASER.get(), 1, 1))
 						.add(LootTableTemplate.getItem(YHItems.YUKARI_SPELL_BUTTERFLY.get(), 1, 1)))
 		);

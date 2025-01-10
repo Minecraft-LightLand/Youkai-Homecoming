@@ -1,5 +1,9 @@
 {
   "values": [
-    "minecraft:cherry_grove"
+    "minecraft:cherry_grove",
+    {
+      "id": "wythers:sakura_forest",
+      "required": false
+    }
   ]
 }

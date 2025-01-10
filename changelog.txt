@@ -1,3 +1,17 @@
+2.3.1
+- Allow knife to cut slices off scarlet velvet cake
+- Add wythers sakura forest to Shrine spawnable biome tag
+- Fix danmaku render flashing problem
+- Improve Reimu's Spell
+
+2.3.0
+- Fix scarlet mist brewing
+- Add 3 fairies, summoned randomly at chance when TLM is present and other fairies are killed with non-Danmaku damage
+- Add 5 new spell cards
+- Add 2 customizable spell cards
+- Add more configs
+- Remake all danmaku textures
+
 2.2.18
 - Improve vertical slab placement
 

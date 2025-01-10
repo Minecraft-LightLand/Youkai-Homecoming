@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.TargetTracker;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -27,33 +28,75 @@ public class ReimuSpell extends ActualSpellCard {
 	@SerialClass.SerialField
 	private boolean border, abyss;
 
+	@SerialClass.SerialField
+	private TargetTracker tracker = new TargetTracker();
+
 	@Override
 	public void tick(CardHolder holder) {
 		super.tick(holder);
 		int interval = 10;
+		if (tick > 2400) {
+			abyss = true;
+		}
 		var target = holder.target();
-		var dist = target == null ? 0 : holder.center().distanceTo(target);
-		boolean far = dist > 40;
+		if (target == null) return;
+		tracker.tick(tick, holder);
+		var dist = holder.center().distanceTo(target);
 		if (tick % interval == 0) {
 			int step = tick / interval % 5;
 			if (step < 3) {
-				shoot(far);
+				shoot(holder, dist);
 			} else if (dist > 40) {
 				intercept(holder, target);
+			} else if (step == 3 && abyss && tracker.flyTime() > 20) {
+				var dir = target.subtract(holder.center()).normalize();
+				var ori = DanmakuHelper.getOrientation(dir).rotateDegrees(holder.random().nextDouble() * 120 + 30, 0);
+				var sec = DanmakuHelper.getOrientation(ori).rotateDegrees(90, holder.random().nextDouble() * 120 - 60);
+				sequence(holder, dist, ori, sec, 10, -0.6, 1, 5, 10, 2d, YHDanmaku.Bullet.BALL);
 			}
 		}
-		if (target != null && border)
+		if (border)
 			border(holder, dist);
 	}
 
-	private void shoot(boolean far) {
+	@Override
+	public void reset() {
+		super.reset();
+		border = false;
+		abyss = false;
+		tracker = new TargetTracker();
+	}
+
+	private void shoot(CardHolder holder, double dist) {
+		var target = holder.target();
+		var vel = tracker.vel();
+		if (target == null) return;
 		var ans = new StateChange();
-		ans.r0 = far ? 32 : 8;
-		ans.r1 = far ? 32 : 6;
-		ans.t0 = far ? 10 : 20;
-		ans.t1 = far ? 10 : 20;
-		ans.termSpeed = far ? 3 : 1;
+		double perc = Mth.clamp((dist - 16) / 24, 0, 1);
+		ans.r0 = (int) Mth.lerp(perc, 8, 20);
+		ans.r1 = (int) Mth.lerp(perc, 6, 18);
+		ans.t0 = (int) Mth.lerp(perc, 20, 10);
+		ans.t1 = (int) Mth.lerp(perc, 20, 10);
+		ans.termSpeed = (int) Mth.lerp(perc, 1, 3);
 		if (abyss) ans.color = DyeColor.BLUE;
+
+		var diff = target.subtract(holder.center());
+		var r = holder.random();
+		ans.pos = holder.center();
+		if (Math.abs(diff.y) > 6 && vel.length() > 0.2) {
+			var a = diff.normalize();
+			var b = diff.add(vel.scale(20)).normalize();
+			var c = a.cross(b).normalize();
+			var ori = DanmakuHelper.getOrientation(a, c);
+			ans.init = ori.rotateDegrees(90, r.nextDouble() * 360);
+			ans.normal = a.cross(ans.init);
+		} else {
+			var dir = diff.normalize();
+			var tilt = 60 * r.nextDouble() - 30;
+			ans.init = DanmakuHelper.getOrientation(dir).rotateDegrees(90, tilt);
+			ans.normal = dir.cross(ans.init);
+		}
+
 		addTicker(ans);
 	}
 
@@ -109,33 +152,50 @@ public class ReimuSpell extends ActualSpellCard {
 			abyss = true;
 		}
 		var target = holder.target();
-		var dist = target == null ? 0 : holder.center().distanceTo(target);
-		homingReact(holder, dist > 40);
+		if (target == null) return;
+		if (abyss) {
+			var dist = holder.center().distanceTo(target);
+			var dir = target.subtract(holder.center()).normalize();
+			Vec3 ori, sec;
+			int n = 6, m = 5;
+			for (int i = 0; i < 3; i++) {
+				ori = DanmakuHelper.getOrientation(dir).rotateDegrees(120 * (i + 0.5), 0);
+				sec = DanmakuHelper.getOrientation(ori).rotateDegrees(90, -45);
+				sequence(holder, dist, ori, sec, 6, 0, 2, n, m, 360d / n / m, YHDanmaku.Bullet.BUBBLE);
+			}
+		} else {
+			var dist = holder.center().distanceTo(target);
+			var dir = target.subtract(holder.center()).normalize();
+			var ori = DanmakuHelper.getOrientation(dir).rotateDegrees(holder.random().nextDouble() * 120 + 30, 0);
+			var sec = DanmakuHelper.getOrientation(ori).rotateDegrees(90, holder.random().nextDouble() * 60 - 30);
+			sequence(holder, dist, ori, sec, 6, 0, 2, 8, 5, 360d / 8 / 5, YHDanmaku.Bullet.BUBBLE);
+		}
 	}
 
-	private void homingReact(CardHolder holder, boolean far) {
+	private void sequence(
+			CardHolder holder, double dist, Vec3 dir, Vec3 ori,
+			double base, double bv, int delay, int n, int step, double angle, YHDanmaku.Bullet bullet
+	) {
 		var le = holder.target();
 		if (le == null) return;
 		var r = holder.random();
-		var dir = le.subtract(holder.center()).normalize();
-		if (r.nextDouble() < 0.5) dir = new Vec3(1, 0, 0);
-		var ori = DanmakuHelper.getOrientation(dir).rotateDegrees(90, 60 * r.nextDouble() - 30);
 		var normal = dir.cross(ori);
-		int n = 8;
 		int s = r.nextDouble() < 0.5 ? -1 : 1;
-		for (int i = 0; i <= 5; i++) {
+		for (int i = 0; i <= step; i++) {
 			var ans = new StateChange();
-			ans.r0 = far ? 32 : 24;
-			ans.r1 = far ? 32 : 18;
-			ans.t0 = far ? 10 : 20;
-			ans.t1 = far ? 10 : 20;
-			ans.termSpeed = far ? 3 : 1;
+			double perc = Mth.clamp((dist - 16) / 24, 0, 1);
+			double b = base + bv * i;
+			ans.r0 = (int) Mth.lerp(perc, b * 4, b * 10);
+			ans.r1 = (int) Mth.lerp(perc, b * 3, b * 8);
+			ans.t0 = (int) Mth.lerp(perc, 20, 10);
+			ans.t1 = (int) Mth.lerp(perc, 20, 10);
+			ans.termSpeed = (int) Mth.lerp(perc, 1, 3);
 			ans.n = n;
-			ans.bullet = YHDanmaku.Bullet.BUBBLE;
+			ans.bullet = bullet;
 			ans.pos = holder.center();
-			ans.init = DanmakuHelper.getOrientation(ori, normal).rotateDegrees(s * (i - 2) * 360d / n / 4);
+			ans.init = DanmakuHelper.getOrientation(ori, normal).rotateDegrees(s * (i - 2) * angle);
 			ans.normal = normal;
-			ans.tick = -i * 2;
+			ans.tick = -i * delay;
 			if (abyss) ans.color = DyeColor.BLUE;
 			addTicker(ans);
 		}
@@ -267,6 +327,7 @@ public class ReimuSpell extends ActualSpellCard {
 			super.tick(holder, card);
 			return tick > duration;
 		}
+
 	}
 
 }

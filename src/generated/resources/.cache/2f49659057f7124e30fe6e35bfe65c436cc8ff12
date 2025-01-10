@@ -1,4 +1,4 @@
-// 1.20.1	2024-12-29T01:00:32.394845	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2024-12-31T09:58:30.807441	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1541,18 +1541,18 @@ c009206aac6b6d6762740edcf11e8b133d98bcad data/youkaishomecoming/loot_tables/ches
 8cd8758836804e49be17fd445295d16d0d7230c3 data/youkaishomecoming/loot_tables/chests/youkai_nest/chest.json
 b2c235ad61cc81cdd1b9d8616e03ac734dc656b2 data/youkaishomecoming/loot_tables/entities/cirno.json
 2bd5478ee9bc964d9bd7104ea061afe433e71057 data/youkaishomecoming/loot_tables/entities/fairy.json
-f41f5010cdd3e08ca288982d50b7ed1de96f97ca data/youkaishomecoming/loot_tables/entities/kirisame_marisa.json
-942447363b3cd737ed148913169143732bc3b7d7 data/youkaishomecoming/loot_tables/entities/kochiya_sanae.json
+6290f59963dc9129a1cb71a561dea49d60e01ff5 data/youkaishomecoming/loot_tables/entities/kirisame_marisa.json
+9c6c4ab596c48c9530309458f11a98c262290572 data/youkaishomecoming/loot_tables/entities/kochiya_sanae.json
 cae29a81e931202173ab27a3724e9c422257efd9 data/youkaishomecoming/loot_tables/entities/komeiji_koishi.json
 1e0ae0ad273dc3b61b6477738dc313bf701976dc data/youkaishomecoming/loot_tables/entities/lamprey.json
 cd040943f69dd15a1ba3879877f7fa9ea602bd38 data/youkaishomecoming/loot_tables/entities/luna_child.json
-1a51174789832bd5272a6108970d75908f22f4cd data/youkaishomecoming/loot_tables/entities/mystia_lorelei.json
+cbd19915a5bbf3a15db18f65d089c2306391ef38 data/youkaishomecoming/loot_tables/entities/mystia_lorelei.json
 ef2f4f528800044f354e954d4e5988dd331d8bbd data/youkaishomecoming/loot_tables/entities/rumia.json
-65e19d7d696123f58a4e3ed51a3b1f3d4ca7f62e data/youkaishomecoming/loot_tables/entities/shrine_maiden.json
+64b9441313acdf220fd1c2bafda469245c2fddf7 data/youkaishomecoming/loot_tables/entities/shrine_maiden.json
 4e30d4fae9f548834c900c7aeacdcfcdd72f8291 data/youkaishomecoming/loot_tables/entities/star_sapphire.json
 221e46868ca6ad0fa5aa475d4cd5f39356765944 data/youkaishomecoming/loot_tables/entities/sunny_milk.json
 7a3a270dc277ab0b9bd13afde6a5d5a9d2e8a0d5 data/youkaishomecoming/loot_tables/entities/youkai.json
-4a850b9a1931e2ed5ef65d8e4e3ad76696580f65 data/youkaishomecoming/loot_tables/entities/yukari.json
+cc8676507f223051013e2e18bb45ad604c16454a data/youkaishomecoming/loot_tables/entities/yukari.json
 579cce9859cd9e19626c29a0db99824296018ac6 data/youkaishomecoming/loot_tables/reimu_reward.json
 fcbedf27d7ac583c23676f06a9fa4c4a0d5bf315 data/youkaishomecoming/loot_tables/udumbara_chest_loot.json
 5dcf7a5ff5ba2bda87c36b00df597589f608d6ae data/youkaishomecoming/recipes/acacia_dining_chair.json

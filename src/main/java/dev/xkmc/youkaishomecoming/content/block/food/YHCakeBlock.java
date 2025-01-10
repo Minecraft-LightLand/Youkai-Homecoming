@@ -24,6 +24,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
+import vectorwing.farmersdelight.common.tag.ForgeTags;
+import vectorwing.farmersdelight.common.utility.ItemUtils;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -36,7 +38,7 @@ public class YHCakeBlock extends CakeBlock {
 		this.food = food;
 	}
 
-	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(handIn);
 		Item item = stack.getItem();
 		if (stack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
@@ -45,17 +47,29 @@ public class YHCakeBlock extends CakeBlock {
 				if (!player.isCreative()) {
 					stack.shrink(1);
 				}
-				worldIn.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-				worldIn.setBlockAndUpdate(pos, YHCandleCakeBlock.byCandle(block, this));
-				worldIn.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+				level.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+				level.setBlockAndUpdate(pos, YHCandleCakeBlock.byCandle(block, this));
+				level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 				player.awardStat(Stats.ITEM_USED.get(item));
 				return InteractionResult.SUCCESS;
 			}
 		}
+		if (stack.is(ForgeTags.TOOLS_KNIVES)) {
+			if (!level.isClientSide()) {
+				int bite = state.getValue(BITES);
+				if (bite < MAX_BITES) level.setBlockAndUpdate(pos, state.setValue(BITES, bite + 1));
+				else level.removeBlock(pos, false);
+				ItemUtils.spawnItemEntity(level, food.get().getDefaultInstance(),
+						pos.getX() + bite * 0.1, pos.getY() + 0.2, pos.getZ() + 0.5,
+						-0.05, 0.0, 0.0);
+				level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+			}
+			return InteractionResult.SUCCESS;
+		}
 
-		if (worldIn.isClientSide) {
+		if (level.isClientSide) {
 			ItemStack itemstack = player.getItemInHand(handIn);
-			if (this.eatSlice(worldIn, pos, state, player).consumesAction()) {
+			if (this.eatSlice(level, pos, state, player).consumesAction()) {
 				return InteractionResult.SUCCESS;
 			}
 
@@ -64,7 +78,7 @@ public class YHCakeBlock extends CakeBlock {
 			}
 		}
 
-		return this.eatSlice(worldIn, pos, state, player);
+		return this.eatSlice(level, pos, state, player);
 	}
 
 	public InteractionResult eatSlice(Level level, BlockPos pos, BlockState state, Player player) {

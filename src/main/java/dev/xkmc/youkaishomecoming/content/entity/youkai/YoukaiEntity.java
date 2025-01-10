@@ -376,7 +376,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		}
 	}
 
-	private boolean tooHigh() {
+	public boolean tooHigh() {
 		BlockPos pos = getOnPos();
 		for (int i = 0; i < GROUND_HEIGHT; i++) {
 			BlockPos off = pos.offset(0, -i, 0);
