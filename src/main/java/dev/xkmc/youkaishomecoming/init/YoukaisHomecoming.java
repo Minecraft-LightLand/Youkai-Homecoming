@@ -51,8 +51,6 @@ import java.util.Arrays;
 @EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class YoukaisHomecoming {
 
-	static final boolean ENABLE_TLM = true;
-
 	public static final String MODID = "youkaishomecoming";
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final Reg REG = new Reg(MODID);

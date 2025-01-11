@@ -363,5 +363,6 @@
 	"youkaishomecoming.configuration.udumbaraFullMoonReduction.tooltip": "Range: 0 ~ 100",
 	"youkaishomecoming.configuration.udumbaraHealingPeriod": "Udumbara effect Healing Interval",
 	"youkaishomecoming.configuration.udumbaraHealingPeriod.tooltip": "Range: 0 ~ 10000",
-	"youkaishomecoming.title": "Youkai's Homecoming"
+	"youkaishomecoming.title": "Youkai's Homecoming",
+	"itemGroup.youkaishomecoming.composite_blocks": "Youkai's Homecoming - Composite Blocks"
 }
