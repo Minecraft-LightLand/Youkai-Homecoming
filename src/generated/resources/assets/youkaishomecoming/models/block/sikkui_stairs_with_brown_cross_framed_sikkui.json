@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:block/combined_stairs",
+  "textures": {
+    "side_a": "youkaishomecoming:block/sikkui/sikkui",
+    "side_b": "youkaishomecoming:block/sikkui/brown_cross_framed_sikkui",
+    "top_a": "youkaishomecoming:block/sikkui/sikkui",
+    "top_b": "youkaishomecoming:block/sikkui/brown_cross_framed_sikkui"
+  }
+}

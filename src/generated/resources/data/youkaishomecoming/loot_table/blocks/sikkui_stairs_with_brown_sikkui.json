@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:sikkui_stairs"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:brown_sikkui_vertical_slab"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaishomecoming:blocks/sikkui_stairs_with_brown_sikkui"
+}

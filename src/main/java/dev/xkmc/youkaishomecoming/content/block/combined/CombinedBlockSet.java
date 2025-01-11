@@ -10,6 +10,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.phys.AABB;
@@ -83,7 +84,7 @@ public class CombinedBlockSet {
 		var state = getStateToReplace(event);
 		if (state == null) return false;
 		var player = event.getEntity();
-		event.getLevel().setBlockAndUpdate(event.getPos(), state);
+		event.getLevel().setBlock(event.getPos(), state, 18);
 		if (!player.getAbilities().instabuild) {
 			event.getItemStack().shrink(1);
 		}
@@ -107,7 +108,9 @@ public class CombinedBlockSet {
 			if (state.is(a.vertical()) && b.vertical().value() == bi.getBlock()) {
 				return a.base().value().defaultBlockState();
 			}
-			//TODO stair of same kind
+			if (state.is(a.stairs()) && b.vertical().value() == bi.getBlock()) {
+				return a.base().value().defaultBlockState();
+			}
 			return null;
 		}
 		var set = CombinedBlockSet.get(a, b);
@@ -121,14 +124,19 @@ public class CombinedBlockSet {
 			var dir = state.getValue(HorizontalDirectionalBlock.FACING);
 			if (a == set.a) dir = dir.getOpposite();
 			return set.slab.get().defaultBlockState().setValue(CombinedSlabBlock.FACING, dir);
+		} else if (state.is(a.stairs()) && b.vertical().value() == bi.getBlock()) {
+			var block = set.a == a ? set.stairA : set.stairB;
+			return block.get().defaultBlockState()
+					.setValue(CombinedStairsBlock.FACING, state.getValue(StairBlock.FACING))
+					.setValue(CombinedStairsBlock.HALF, state.getValue(StairBlock.HALF))
+					.setValue(CombinedStairsBlock.SHAPE, state.getValue(StairBlock.SHAPE));
 		}
-		//TODO stair filling
 		return null;
 	}
 
 	public final IBlockSet a, b;
 	public final BlockEntry<CombinedSlabBlock> slab;
-	//public final BlockEntry<CombinedStairsBlock> stairA, stairB;
+	public final BlockEntry<CombinedStairsBlock> stairA, stairB;
 
 	private CombinedBlockSet(L2Registrate reg, IBlockSet a, IBlockSet b) {
 		this.a = a;
@@ -136,18 +144,19 @@ public class CombinedBlockSet {
 		this.slab = reg.block(a.getName() + "_slab_with_" + b.getName(), p -> new CombinedSlabBlock(a.prop()))
 				.blockstate((ctx, pvd) -> CombinedSlabBlock.buildStates(ctx, pvd, a, b))
 				.loot((pvd, block) -> CombinedSlabBlock.buildLoot(pvd, block, a, b))
-				.register();
-		/* TODO
-		this.stairA = reg.block(a.name() + "_stairs" + "_with_" + b.name(), p -> new CombinedStairsBlock(a.prop()))
-				.blockstate((ctx, pvd) -> CombinedStairsBlock.buildStates(ctx, pvd, a, b))
-				.loot((pvd, block) -> CombinedStairsBlock.buildLoot(pvd, block, a, b))
-				.register();
-		this.stairB = reg.block(b.name() + "_stairs" + "_with_" + a.name(), p -> new CombinedStairsBlock(b.prop()))
-				.blockstate((ctx, pvd) -> CombinedStairsBlock.buildStates(ctx, pvd, b, a))
-				.loot((pvd, block) -> CombinedStairsBlock.buildLoot(pvd, block, b, a))
+				.simpleItem()
 				.register();
 
-		 */
+		this.stairA = reg.block(a.getName() + "_stairs_with_" + b.getName(), p -> new CombinedStairsBlock(a.prop()))
+				.blockstate((ctx, pvd) -> CombinedStairsBlock.buildStates(ctx, pvd, a, b))
+				.loot((pvd, block) -> CombinedStairsBlock.buildLoot(pvd, block, a, b))
+				.simpleItem()
+				.register();
+		this.stairB = reg.block(b.getName() + "_stairs_with_" + a.getName(), p -> new CombinedStairsBlock(b.prop()))
+				.blockstate((ctx, pvd) -> CombinedStairsBlock.buildStates(ctx, pvd, b, a))
+				.loot((pvd, block) -> CombinedStairsBlock.buildLoot(pvd, block, b, a))
+				.simpleItem()
+				.register();
 	}
 
 }

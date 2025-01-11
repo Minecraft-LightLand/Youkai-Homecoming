@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:block/combined_stairs_inner",
+  "textures": {
+    "side_a": "minecraft:block/lime_concrete",
+    "side_b": "minecraft:block/green_concrete",
+    "top_a": "minecraft:block/lime_concrete",
+    "top_b": "minecraft:block/green_concrete"
+  }
+}

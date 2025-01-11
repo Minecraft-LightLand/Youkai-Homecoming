@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:mangrove_stairs"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:oak_vertical_slab"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaishomecoming:blocks/mangrove_stairs_with_oak"
+}

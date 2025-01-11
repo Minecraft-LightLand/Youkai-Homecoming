@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:light_blue_concrete_stairs"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:cyan_concrete_vertical_slab"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaishomecoming:blocks/light_blue_concrete_stairs_with_cyan_concrete"
+}

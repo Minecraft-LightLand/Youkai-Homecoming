@@ -1,0 +1,15 @@
+{
+	"youkaishomecoming.configuration.section.youkaishomecoming.server.toml": "Youkai's Homecoming Server Configuration",
+	"youkaishomecoming.configuration.section.youkaishomecoming.server.toml.title": "Youkai's Homecoming Server Configuration",
+	"youkaishomecoming.configuration.smoothingHealingFactor": "Smoothing Healing Factor",
+	"youkaishomecoming.configuration.smoothingHealingFactor.tooltip": "Range: 1.0 ~ 100.0",
+	"youkaishomecoming.configuration.teaHealingPeriod": "Tea Healing Interval",
+	"youkaishomecoming.configuration.teaHealingPeriod.tooltip": "Range: 0 ~ 10000",
+	"youkaishomecoming.configuration.title": "Youkai's Homecoming Configuration",
+	"youkaishomecoming.configuration.udumbaraDuration": "Udumbara flowering duration",
+	"youkaishomecoming.configuration.udumbaraDuration.tooltip": "Range: 0 ~ 100000",
+	"youkaishomecoming.configuration.udumbaraFullMoonReduction": "Udumbara full moon damage reduction",
+	"youkaishomecoming.configuration.udumbaraFullMoonReduction.tooltip": "Range: 0 ~ 100",
+	"youkaishomecoming.configuration.udumbaraHealingPeriod": "Udumbara effect Healing Interval",
+	"youkaishomecoming.configuration.udumbaraHealingPeriod.tooltip": "Range: 0 ~ 10000"
+}

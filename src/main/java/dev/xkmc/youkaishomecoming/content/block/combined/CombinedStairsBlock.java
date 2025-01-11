@@ -3,8 +3,9 @@ package dev.xkmc.youkaishomecoming.content.block.combined;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -14,7 +15,9 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EntryGroup;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 public class CombinedStairsBlock extends Block {
@@ -32,6 +35,16 @@ public class CombinedStairsBlock extends Block {
 						.setValue(HALF, Half.BOTTOM)
 						.setValue(SHAPE, StairsShape.STRAIGHT)
 		);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+		Direction dir = ctx.getClickedFace();
+		BlockPos pos = ctx.getClickedPos();
+		boolean low = dir != Direction.DOWN && (dir == Direction.UP || !(ctx.getClickLocation().y - (double) pos.getY() > 0.5));
+		return defaultBlockState()
+				.setValue(FACING, ctx.getHorizontalDirection())
+				.setValue(HALF, low ? Half.BOTTOM : Half.TOP);
 	}
 
 	@Override
@@ -90,11 +103,103 @@ public class CombinedStairsBlock extends Block {
 		return false;
 	}
 
-	private static void stairsBlockInternal(RegistrateBlockstateProvider pvd, CombinedStairsBlock block, String baseName, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
-		ModelFile stairs = pvd.models().stairs(baseName, side, bottom, top);
-		ModelFile stairsInner = pvd.models().stairsInner(baseName + "_inner", side, bottom, top);
-		ModelFile stairsOuter = pvd.models().stairsOuter(baseName + "_outer", side, bottom, top);
-		stairsBlock(pvd, block, stairs, stairsInner, stairsOuter);
+	private static void cubeStair(ModelBuilder<?> builder) {
+		builder.element()
+				.from(0, 0, 0).to(16, 8, 16)
+				.face(Direction.DOWN).texture("#t1").cullface(Direction.DOWN).end()
+				.face(Direction.NORTH).texture("#s1").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).texture("#s1").cullface(Direction.WEST).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(8, 8, 0).to(16, 16, 16)
+				.face(Direction.UP).texture("#t1").cullface(Direction.UP).end()
+				.face(Direction.NORTH).texture("#s1").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(0, 8, 0).to(8, 16, 16)
+				.face(Direction.UP).texture("#t2").cullface(Direction.UP).end()
+				.face(Direction.NORTH).texture("#s2").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s2").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).texture("#s2").cullface(Direction.WEST).end()
+				.end()
+				.texture("t1", "#top_a")
+				.texture("s1", "#side_a")
+				.texture("t2", "#top_b")
+				.texture("s2", "#side_b");
+	}
+
+	private static void cubeOuter(ModelBuilder<?> builder) {
+		builder.element()
+				.from(0, 0, 0).to(16, 8, 16)
+				.face(Direction.DOWN).texture("#t1").cullface(Direction.DOWN).end()
+				.face(Direction.NORTH).texture("#s1").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).texture("#s1").cullface(Direction.WEST).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(8, 8, 8).to(16, 16, 16)
+				.face(Direction.UP).texture("#t1").cullface(Direction.UP).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(0, 8, 0).to(8, 16, 16)
+				.face(Direction.UP).texture("#t2").cullface(Direction.UP).end()
+				.face(Direction.NORTH).texture("#s2").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s2").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).texture("#s2").cullface(Direction.WEST).end()
+				.end()
+				.element()
+				.from(0, 8, 0).to(16, 16, 8)
+				.face(Direction.UP).texture("#t2").cullface(Direction.UP).end()
+				.face(Direction.NORTH).texture("#s2").cullface(Direction.NORTH).end()
+				.face(Direction.EAST).texture("#s2").cullface(Direction.EAST).end()
+				.face(Direction.WEST).texture("#s2").cullface(Direction.WEST).end()
+				.end()
+				.texture("t1", "#top_a")
+				.texture("s1", "#side_a")
+				.texture("t2", "#top_b")
+				.texture("s2", "#side_b");
+	}
+
+	private static void cubeInner(ModelBuilder<?> builder) {
+		builder.element()
+				.from(0, 0, 0).to(16, 8, 16)
+				.face(Direction.DOWN).texture("#t1").cullface(Direction.DOWN).end()
+				.face(Direction.NORTH).texture("#s1").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).texture("#s1").cullface(Direction.WEST).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(8, 8, 0).to(16, 16, 16)
+				.face(Direction.UP).texture("#t1").cullface(Direction.UP).end()
+				.face(Direction.NORTH).texture("#s1").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(0, 8, 8).to(16, 16, 16)
+				.face(Direction.UP).texture("#t1").cullface(Direction.UP).end()
+				.face(Direction.SOUTH).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.EAST).texture("#s1").cullface(Direction.EAST).end()
+				.face(Direction.WEST).texture("#s1").cullface(Direction.WEST).end()
+				.end()
+				.element()
+				.from(0, 8, 0).to(8, 16, 8)
+				.face(Direction.UP).texture("#t2").cullface(Direction.UP).end()
+				.face(Direction.NORTH).texture("#s2").cullface(Direction.NORTH).end()
+				.face(Direction.WEST).texture("#s2").cullface(Direction.WEST).end()
+				.end()
+				.texture("t1", "#top_a")
+				.texture("s1", "#side_a")
+				.texture("t2", "#top_b")
+				.texture("s2", "#side_b");
 	}
 
 	public static void stairsBlock(RegistrateBlockstateProvider pvd, CombinedStairsBlock block, ModelFile stairs, ModelFile stairsInner, ModelFile stairsOuter) {
@@ -121,9 +226,40 @@ public class CombinedStairsBlock extends Block {
 				});
 	}
 
+	private static BlockModelBuilder stair = null, inner = null, outer = null;
 
 	public static void buildStates(DataGenContext<Block, CombinedStairsBlock> ctx, RegistrateBlockstateProvider pvd, IBlockSet a, IBlockSet b) {
-		pvd.stairsBlock(null, a.side(), a.top(), a.top());
+		if (stair == null) {
+			stair = pvd.models().withExistingParent("combined_stairs", "block/block");
+			cubeStair(stair);
+			stair.texture("particle", "#top_a");
+			inner = pvd.models().withExistingParent("combined_stairs_inner", "block/block");
+			cubeInner(inner);
+			inner.texture("particle", "#top_a");
+			outer = pvd.models().withExistingParent("combined_stairs_outer", "block/block");
+			cubeOuter(outer);
+			outer.texture("particle", "#top_a");
+		}
+		ModelFile stairs = pvd.models().getBuilder(ctx.getName())
+				.parent(stair)
+				.texture("top_a", a.top())
+				.texture("side_a", a.side())
+				.texture("top_b", b.top())
+				.texture("side_b", b.side());
+		ModelFile stairsInner = pvd.models().getBuilder(ctx.getName() + "_inner")
+				.parent(inner)
+				.texture("top_a", a.top())
+				.texture("side_a", a.side())
+				.texture("top_b", b.top())
+				.texture("side_b", b.side());
+
+		ModelFile stairsOuter = pvd.models().getBuilder(ctx.getName() + "_outer")
+				.parent(outer)
+				.texture("top_a", a.top())
+				.texture("side_a", a.side())
+				.texture("top_b", b.top())
+				.texture("side_b", b.side());
+		stairsBlock(pvd, ctx.get(), stairs, stairsInner, stairsOuter);
 	}
 
 	public static void buildLoot(RegistrateBlockLootTables pvd, CombinedStairsBlock block, IBlockSet a, IBlockSet b) {

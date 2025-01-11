@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:block/combined_stairs_outer",
+  "textures": {
+    "side_a": "minecraft:block/red_nether_bricks",
+    "side_b": "youkaishomecoming:block/sikkui/brown_sikkui",
+    "top_a": "minecraft:block/red_nether_bricks",
+    "top_b": "youkaishomecoming:block/sikkui/brown_sikkui"
+  }
+}
