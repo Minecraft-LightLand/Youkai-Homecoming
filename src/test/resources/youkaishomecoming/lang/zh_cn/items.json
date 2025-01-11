@@ -1,0 +1,149 @@
+{
+  "item.youkaishomecoming": {
+	"lamprey_bucket": "八目鳗桶",
+	"raw_lamprey": "生八目鳗",
+	"raw_lamprey_fillet": "生八目鳗片",
+	"roasted_lamprey": "烤八目鳗",
+	"roasted_lamprey_fillet": "烤八目鳗片",
+	"pods": "豆荚",
+	"redbean": "红豆",
+	"soybean": "黄豆",
+	"poor_god_soup": "穷神汤",
+	"apaki": "拜占庭香草熏猪肉",
+	"butter": "黄油",
+	"sakura_mochi": "樱饼",
+	"sekibankiyaki": "生首烧",
+	"longevity_noodles": "长寿面",
+	"senbei": "仙贝",
+	"mochi": "麻薯",
+	"miso_soup": "味噌汤",
+	"sweet_ormosia_mochi_mixed_boiled": "甜豆沙麻薯杂煮",
+	"blazing_red_curry": "烈焰红咖喱",
+	"higan_soup": "彼岸汤",
+	"power_soup": "力量汤",
+	"grilled_eel_over_rice": "鳗鱼饭",
+	"shirayuki": "白雪",
+	"onigili": "饭团",
+	"oily_bean_curd": "油豆腐",
+	"tofu": "豆腐",
+	"yakumo_inari": "八云豆包饭",
+	"mitarashi_dango": "御手洗团子",
+	"clay_saucer": "粘土碟",
+	"oyaki": "御烧",
+	"kinako_dango": "黄豆粉团子",
+	"bun": "包子",
+	"assorted_dango": "三色团子",
+	"candy_apple": "苹果糖",
+	"milk_popsicle": "牛奶冰棍",
+	"tutu_congee": "筒粥",
+	"avgolemono": "鸡蛋柠檬汤",
+	"big_popsicle": "大冰棍儿",
+	"shaved_ice_over_rice": "儿童刨冰盖饭",
+	"coffee_beans": "咖啡豆",
+	"coffee_powder": "咖啡粉",
+	"coffee_berries": "咖啡果",
+	"green_coffee_bean": "生咖啡豆",
+	"coffee_mochi": "咖啡麻薯",
+	"roe": "三文鱼籽",
+	"tobiko_gunkan": "鱼籽军舰",
+	"tuscan_salmon": "蔬菜奶油三文鱼",
+	"bowl_of_cream": "碗装奶油",
+	"affogato": "阿芙佳朵",
+	"americano": "美式",
+	"cappuccino": "卡布奇诺",
+	"con_panna": "康宝蓝",
+	"espresso": "意式浓缩",
+	"latte": "拿铁",
+	"macchiato": "玛琪雅朵",
+	"mocha": "摩卡",
+	"ristretto": "芮斯崔朵",
+	"black_tea_leaves": "红茶叶",
+	"green_tea_leaves": "绿茶叶",
+	"oolong_tea_leaves": "乌龙茶叶",
+	"white_tea_leaves": "白茶叶",
+	"tea_leaves": "生茶叶",
+	"tea_seeds": "茶籽",
+	"black_tea": "红茶",
+	"green_tea": "绿茶",
+	"oolong_tea": "乌龙茶",
+	"white_tea": "白茶",
+	"matcha": "抹茶",
+	"matcha_mochi": "抹茶麻薯",
+	"pork_rice_ball": "猪肉饭团",
+	"steamed_egg_in_bamboo": "竹筒蒸蛋",
+	"tsukimi_dango": "月见团子",
+	"yashouma_dango": "信州瘦马",
+	"tarte_lune_slice": "月亮派切片",
+	"cooked_mandrake_root": "烤曼德拉根",
+	"lions_head": "狮子头",
+	"mandrake_root": "曼德拉根",
+	"mapo_tofu": "麻婆豆腐",
+	"mushroom_soup": "奶油蘑菇浓汤",
+	"udumbara_cake": "幻昙花羹",
+	"udumbara_flower": "幻昙花",
+	"udumbara_seeds": "幻昙华种子",
+	"bowl_of_heart_throbbing_surprise": "碗装惊吓大冒险",
+	"cornflower_tea": "矢车菊茶",
+	"genmai_tea": "玄米茶",
+	"saidi_tea": "埃及糖茶",
+	"sakura_honey_tea": "樱花蜜茶",
+	"tea_mocha": "摩卡茶",
+	"green_water": "青汁",
+	"seafood_miso_soup": "海鲜味增汤",
+	"doughnut": "甜甜圈",
+	"lemon_black_tea": "柠檬红茶",
+	"moon_rocket": "月面火箭",
+	"peach_tapioca": "桃花羹",
+	"peach_yatsuhashi": "桃子八桥",
+	"dried_mandrake_flower": "干燥的曼德拉花",
+	"ice_cube": "冰块",
+	"stripped_mandrake_root": "去皮曼德拉根",
+	"mandrake_flower": "曼德拉花"
+  },
+  "-cartesian": {
+	"entity": {
+	  "path": "",
+	  "list": [
+		{
+		  "lamprey": "八目鳗"
+		},
+		{
+		  "entity.youkaishomecoming.*": "",
+		  "item.youkaishomecoming.*_spawn_egg": "生成蛋"
+		}
+	  ]
+	},
+	"bottle": {
+	  "path": "",
+	  "reverse": true,
+	  "list": [
+		{
+		  "soy_sauce": "酱油"
+		},
+		{
+		  "fluid.youkaishomecoming.*": "",
+		  "item.youkaishomecoming.*_bottle": "瓶装"
+		}
+	  ]
+	},
+	"sake": {
+	  "path": "",
+	  "use_dot": true,
+	  "list": [
+		{
+		  "fluid.youkaishomecoming": "",
+		  "item.youkaishomecoming": ""
+		},
+		{
+		  "daiginjo": "大吟酿",
+		  "dassai": "水獭祭",
+		  "full_moons_eve": "十四夜",
+		  "mead": "蜜酒",
+		  "mio": "淇酒",
+		  "sparrow_sake": "雀酒",
+		  "tengu_tango": "天狗踊"
+		}
+	  ]
+	}
+  }
+}

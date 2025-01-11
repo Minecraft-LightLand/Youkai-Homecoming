@@ -12,7 +12,7 @@ plugins {
 }
 
 version = mod_version
-group = 'dev.kxmc'
+group = 'dev.xkmc'
 
 repositories {
     mavenLocal()
