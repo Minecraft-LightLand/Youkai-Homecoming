@@ -1,22 +1,22 @@
 {
-  "required": true,
-  "priority": 1000,
-  "package": "dev.xkmc.youkaishomecoming.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-	"AddItemModifierAccessor",
-	"AddLootTableModifierAccessor",
-	"CookingPotRecipeAccessor",
-	"EntityMixin",
-	"ItemAccessor",
-	"VillagerMixin"
-  ],
-  "client": [
-	"GameRendererMixin",
-	"CriterionGridMixin"
-  ],
-  "injectors": {
-	"defaultRequire": 1
-  },
-  "minVersion": "0.8"
+	"required": true,
+	"priority": 1000,
+	"package": "dev.xkmc.youkaishomecoming.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"AddItemModifierAccessor",
+		"AddLootTableModifierAccessor",
+		"CookingPotRecipeAccessor",
+		"EntityMixin",
+		"ItemAccessor",
+		"VillagerMixin"
+	],
+	"client": [
+		"CriterionGridMixin",
+		"GameRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"minVersion": "0.8"
 }
