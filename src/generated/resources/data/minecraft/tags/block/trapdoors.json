@@ -1,19 +1,13 @@
 {
   "values": [
-    "youkaishomecoming:sikkui_trap_door",
-    "youkaishomecoming:framed_sikkui_trap_door",
-    "youkaishomecoming:cross_framed_sikkui_trap_door",
-    "youkaishomecoming:grid_framed_sikkui_trap_door",
-    "youkaishomecoming:fine_grid_framed_sikkui_trap_door",
-    "youkaishomecoming:light_yellow_sikkui_trap_door",
-    "youkaishomecoming:light_yellow_framed_sikkui_trap_door",
-    "youkaishomecoming:light_yellow_cross_framed_sikkui_trap_door",
-    "youkaishomecoming:light_yellow_grid_framed_sikkui_trap_door",
-    "youkaishomecoming:light_yellow_fine_grid_framed_sikkui_trap_door",
     "youkaishomecoming:brown_sikkui_trap_door",
     "youkaishomecoming:brown_framed_sikkui_trap_door",
     "youkaishomecoming:brown_cross_framed_sikkui_trap_door",
     "youkaishomecoming:brown_grid_framed_sikkui_trap_door",
-    "youkaishomecoming:brown_fine_grid_framed_sikkui_trap_door"
+    "youkaishomecoming:brown_fine_grid_framed_sikkui_trap_door",
+    "youkaishomecoming:sikkui_trap_door",
+    "youkaishomecoming:framed_sikkui_trap_door",
+    "youkaishomecoming:cross_framed_sikkui_trap_door",
+    "youkaishomecoming:grid_framed_sikkui_trap_door"
   ]
 }

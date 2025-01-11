@@ -1,9 +1,5 @@
 {
   "values": [
-    "youkaishomecoming:sikkui_vertical_slab",
-    "youkaishomecoming:cross_framed_sikkui_vertical_slab",
-    "youkaishomecoming:light_yellow_sikkui_vertical_slab",
-    "youkaishomecoming:light_yellow_cross_framed_sikkui_vertical_slab",
     "youkaishomecoming:brown_sikkui_vertical_slab",
     "youkaishomecoming:brown_cross_framed_sikkui_vertical_slab",
     "youkaishomecoming:hay_vertical_slab",
@@ -18,6 +14,10 @@
     "youkaishomecoming:warped_vertical_slab",
     "youkaishomecoming:mangrove_vertical_slab",
     "youkaishomecoming:cherry_vertical_slab",
-    "youkaishomecoming:bamboo_vertical_slab"
+    "youkaishomecoming:bamboo_vertical_slab",
+    "youkaishomecoming:sikkui_vertical_slab",
+    "youkaishomecoming:cross_framed_sikkui_vertical_slab",
+    "youkaishomecoming:light_yellow_sikkui_vertical_slab",
+    "youkaishomecoming:light_yellow_cross_framed_sikkui_vertical_slab"
   ]
 }

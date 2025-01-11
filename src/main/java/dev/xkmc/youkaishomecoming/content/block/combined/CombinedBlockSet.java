@@ -26,7 +26,7 @@ public class CombinedBlockSet {
 	private static final Map<Block, IBlockSet> BLOCK_2_SET = new LinkedHashMap<>();
 
 	private static boolean verify(IBlockSet set) {
-		var id = set.name();
+		var id = set.getName();
 		var old = NAME_2_SET.get(id);
 		if (old != null && old != set) return false;
 		if (old == null) NAME_2_SET.put(id, set);
@@ -49,8 +49,8 @@ public class CombinedBlockSet {
 
 	@Nullable
 	public static CombinedBlockSet get(IBlockSet a, IBlockSet b) {
-		var sa = a.name();
-		var sb = b.name();
+		var sa = a.getName();
+		var sb = b.getName();
 		if (sa.compareTo(sb) < 0) {
 			return TABLE.get(sa, sb);
 		} else {
@@ -61,17 +61,17 @@ public class CombinedBlockSet {
 	public synchronized static void add(L2Registrate reg, IBlockSet a, IBlockSet b) {
 		if (a == b) return;
 		if (!verify(a) || !verify(b)) return;
-		var sa = a.name();
-		var sb = b.name();
+		var sa = a.getName();
+		var sb = b.getName();
 		if (sa.compareTo(sb) > 0) {
 			var t = a;
 			a = b;
 			b = t;
-			sa = a.name();
-			sb = b.name();
+			sa = a.getName();
+			sb = b.getName();
 		}
 		var ans = TABLE.get(sa, sb);
-		if (ans == null) return;
+		if (ans != null) return;
 		TABLE.put(sa, sb, new CombinedBlockSet(reg, a, b));
 	}
 
@@ -115,7 +115,7 @@ public class CombinedBlockSet {
 					type == SlabType.TOP ^ a == set.a ? Direction.UP : Direction.DOWN);
 		} else if (state.is(a.vertical()) && b.vertical().value() == bi.getBlock()) {
 			var dir = state.getValue(HorizontalDirectionalBlock.FACING);
-			if (a != set.a) dir = dir.getOpposite();
+			if (a == set.a) dir = dir.getOpposite();
 			return set.slab.get().defaultBlockState().setValue(CombinedSlabBlock.FACING, dir);
 		}
 		//TODO stair filling
@@ -129,7 +129,7 @@ public class CombinedBlockSet {
 	private CombinedBlockSet(L2Registrate reg, IBlockSet a, IBlockSet b) {
 		this.a = a;
 		this.b = b;
-		this.slab = reg.block(a.name() + "_" + b.name() + "_slab", p -> new CombinedSlabBlock(a.prop()))
+		this.slab = reg.block(a.getName() + "_slab_with_" + b.getName(), p -> new CombinedSlabBlock(a.prop()))
 				.blockstate((ctx, pvd) -> CombinedSlabBlock.buildStates(ctx, pvd, a, b))
 				.loot((pvd, block) -> CombinedSlabBlock.buildLoot(pvd, block, a, b))
 				.register();

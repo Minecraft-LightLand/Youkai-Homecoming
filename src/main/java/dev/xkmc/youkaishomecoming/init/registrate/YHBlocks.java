@@ -60,6 +60,7 @@ import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
 
@@ -80,6 +81,7 @@ public class YHBlocks {
 		;
 
 		private final Block plankProp, fenceProp, slab, stairs;
+		private final String name;
 		private final ResourceLocation tex;
 		public final ItemLike plank, strippedWood;
 		public BlockEntry<MultiFenceBlock> fence;
@@ -94,9 +96,14 @@ public class YHBlocks {
 			this.strippedWood = strippedWood;
 			this.slab = slab;
 			this.stairs = stairs;
-			tex = ResourceLocation.withDefaultNamespace("block/" + name().toLowerCase(Locale.ROOT) + "_planks");
+			name = name().toLowerCase(Locale.ROOT);
+			tex = ResourceLocation.withDefaultNamespace("block/" + name + "_planks");
 		}
 
+		@Override
+		public String getName() {
+			return name;
+		}
 
 		@Override
 		public BlockBehaviour.Properties prop() {
@@ -308,13 +315,22 @@ public class YHBlocks {
 						.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, () -> e.plank, ctx))
 						.register();
 			}
-			
+
 			for (var a : WoodType.values()) {
 				for (var b : WoodType.values()) {
 					CombinedBlockSet.add(reg, a, b);
 				}
 			}
-
+			List<FullSikkuiSet> sikkui = List.of(
+					SIKKUI.SIKKUI, SIKKUI.CROSS_SIKKUI,
+					LIGHT_YELLOW_SIKKUI.SIKKUI, LIGHT_YELLOW_SIKKUI.CROSS_SIKKUI,
+					BROWN_SIKKUI.SIKKUI, BROWN_SIKKUI.CROSS_SIKKUI
+			);
+			for (var a : sikkui){
+				for (var b : sikkui){
+					CombinedBlockSet.add(reg, a, b);
+				}
+			}
 		}
 
 	}
@@ -493,15 +509,21 @@ public class YHBlocks {
 
 	}
 
-	public static class FullSikkuiSet extends SikkuiSet {
+	public static class FullSikkuiSet extends SikkuiSet implements IBlockSet {
 
 		public final BlockEntry<StairBlock> STAIR;
 		public final BlockEntry<SlabBlock> SLAB;
 		public final BlockEntry<VerticalSlabBlock> VERTICAL;
 
+		private final BlockBehaviour.Properties prop;
+		private final String id;
+		private final ResourceLocation side;
+
 		public FullSikkuiSet(L2Registrate reg, String id, BlockBehaviour.Properties prop, BlockRecipe builder) {
 			super(reg, id, prop, builder);
-			ResourceLocation side = reg.loc("block/sikkui/" + id);
+			this.id = id;
+			this.prop = prop;
+			side = reg.loc("block/sikkui/" + id);
 			STAIR = reg.block(id + "_stairs", p ->
 							new StairBlock(BASE.get().defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side))
@@ -527,6 +549,45 @@ public class YHBlocks {
 					.register();
 		}
 
+		@Override
+		public String getName() {
+			return id;
+		}
+
+		@Override
+		public BlockBehaviour.Properties prop() {
+			return prop;
+		}
+
+		@Override
+		public Holder<Block> base() {
+			return BASE;
+		}
+
+		@Override
+		public Holder<Block> stairs() {
+			return STAIR;
+		}
+
+		@Override
+		public Holder<Block> slab() {
+			return SLAB;
+		}
+
+		@Override
+		public Holder<Block> vertical() {
+			return VERTICAL;
+		}
+
+		@Override
+		public ResourceLocation top() {
+			return side;
+		}
+
+		@Override
+		public ResourceLocation side() {
+			return side;
+		}
 	}
 
 	public static class StoneSet {

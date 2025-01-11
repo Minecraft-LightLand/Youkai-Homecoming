@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public interface IBlockSet {
 
-	String name();
+	String getName();
 
 	BlockBehaviour.Properties prop();
 

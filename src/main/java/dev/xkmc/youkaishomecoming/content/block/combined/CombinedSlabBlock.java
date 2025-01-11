@@ -46,19 +46,25 @@ public class CombinedSlabBlock extends Block {
 
 	private static void cube(ModelBuilder<?> builder) {
 		builder.element()
-				.from(0, 0, 0).to(16, 16, 8)
-				.face(Direction.NORTH).uvs(0, 0, 16, 16).texture("#side_a").cullface(Direction.NORTH).end()
-				.face(Direction.UP).uvs(16, 0, 0, 8).texture("#top_a").cullface(Direction.UP).end()
-				.face(Direction.DOWN).uvs(16, 8, 0, 16).texture("#top_a").cullface(Direction.DOWN).end()
-				.face(Direction.WEST).uvs(8, 0, 16, 16).texture("#side_a").cullface(Direction.WEST).end()
-				.face(Direction.EAST).uvs(0, 0, 8, 16).texture("#side_a").cullface(Direction.EAST).end();
-		builder.element()
-				.from(16, 16, 8).to(16, 16, 16)
-				.face(Direction.SOUTH).uvs(16, 0, 0, 16).texture("#side_b").cullface(Direction.SOUTH).end()
-				.face(Direction.UP).uvs(16, 8, 0, 16).texture("#top_b").cullface(Direction.UP).end()
-				.face(Direction.DOWN).uvs(16, 0, 0, 8).texture("#top_b").cullface(Direction.DOWN).end()
-				.face(Direction.WEST).uvs(0, 0, 8, 16).texture("#side_b").cullface(Direction.WEST).end()
-				.face(Direction.EAST).uvs(8, 0, 16, 16).texture("#side_b").cullface(Direction.EAST).end();
+				.from(0, 0, 0).to(16, 8, 16)
+				.face(Direction.DOWN).uvs(0, 0, 16, 16).texture("#t1").cullface(Direction.DOWN).end()
+				.face(Direction.NORTH).uvs(0, 8, 16, 16).texture("#s1").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).uvs(0, 8, 16, 16).texture("#s1").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).uvs(0, 8, 16, 16).texture("#s1").cullface(Direction.WEST).end()
+				.face(Direction.EAST).uvs(0, 8, 16, 16).texture("#s1").cullface(Direction.EAST).end()
+				.end()
+				.element()
+				.from(0, 8, 0).to(16, 16, 16)
+				.face(Direction.UP).uvs(0, 0, 16, 16).texture("#t2").cullface(Direction.UP).end()
+				.face(Direction.NORTH).uvs(0, 0, 16, 8).texture("#s2").cullface(Direction.NORTH).end()
+				.face(Direction.SOUTH).uvs(0, 0, 16, 8).texture("#s2").cullface(Direction.SOUTH).end()
+				.face(Direction.WEST).uvs(0, 0, 16, 8).texture("#s2").cullface(Direction.WEST).end()
+				.face(Direction.EAST).uvs(0, 0, 16, 8).texture("#s2").cullface(Direction.EAST).end()
+				.end()
+				.texture("t1", "#top_a")
+				.texture("s1", "#side_a")
+				.texture("t2", "#top_b")
+				.texture("s2", "#side_b");
 	}
 
 	private static BlockModelBuilder base = null;

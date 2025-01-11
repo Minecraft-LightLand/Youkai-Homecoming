@@ -1,5 +1,14 @@
 {
   "values": [
+    "youkaishomecoming:brown_sikkui_stairs",
+    "youkaishomecoming:brown_sikkui_slab",
+    "youkaishomecoming:brown_sikkui_vertical_slab",
+    "youkaishomecoming:brown_framed_sikkui",
+    "youkaishomecoming:brown_cross_framed_sikkui",
+    "youkaishomecoming:brown_cross_framed_sikkui_stairs",
+    "youkaishomecoming:brown_cross_framed_sikkui_slab",
+    "youkaishomecoming:brown_cross_framed_sikkui_vertical_slab",
+    "youkaishomecoming:brown_grid_framed_sikkui",
     "youkaishomecoming:sikkui",
     "youkaishomecoming:sikkui_stairs",
     "youkaishomecoming:sikkui_slab",
@@ -14,21 +23,6 @@
     "youkaishomecoming:light_yellow_sikkui_stairs",
     "youkaishomecoming:light_yellow_sikkui_slab",
     "youkaishomecoming:light_yellow_sikkui_vertical_slab",
-    "youkaishomecoming:light_yellow_framed_sikkui",
-    "youkaishomecoming:light_yellow_cross_framed_sikkui",
-    "youkaishomecoming:light_yellow_cross_framed_sikkui_stairs",
-    "youkaishomecoming:light_yellow_cross_framed_sikkui_slab",
-    "youkaishomecoming:light_yellow_cross_framed_sikkui_vertical_slab",
-    "youkaishomecoming:light_yellow_grid_framed_sikkui",
-    "youkaishomecoming:brown_sikkui",
-    "youkaishomecoming:brown_sikkui_stairs",
-    "youkaishomecoming:brown_sikkui_slab",
-    "youkaishomecoming:brown_sikkui_vertical_slab",
-    "youkaishomecoming:brown_framed_sikkui",
-    "youkaishomecoming:brown_cross_framed_sikkui",
-    "youkaishomecoming:brown_cross_framed_sikkui_stairs",
-    "youkaishomecoming:brown_cross_framed_sikkui_slab",
-    "youkaishomecoming:brown_cross_framed_sikkui_vertical_slab",
-    "youkaishomecoming:brown_grid_framed_sikkui"
+    "youkaishomecoming:light_yellow_framed_sikkui"
   ]
 }
