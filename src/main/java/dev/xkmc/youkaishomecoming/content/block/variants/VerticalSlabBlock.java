@@ -78,19 +78,23 @@ public class VerticalSlabBlock extends HorizontalLoggedBlock {
 	private static void cube(ModelBuilder<?> builder) {
 		var elem = builder.element();
 		elem.from(0, 0, 0).to(16, 16, 8);
-		elem.face(Direction.NORTH).uvs(0, 0, 16, 16).texture("#side").end();
+		elem.face(Direction.NORTH).uvs(0, 0, 16, 16).texture("#side").cullface(Direction.NORTH).end();
 		elem.face(Direction.SOUTH).uvs(16, 0, 0, 16).texture("#side").end();
-		elem.face(Direction.UP).uvs(16, 0, 0, 8).texture("#top").end();
-		elem.face(Direction.DOWN).uvs(16, 8, 0, 16).texture("#top").end();
-		elem.face(Direction.WEST).uvs(8, 0, 16, 16).texture("#side").end();
-		elem.face(Direction.EAST).uvs(0, 0, 8, 16).texture("#side").end();
+		elem.face(Direction.UP).uvs(16, 0, 0, 8).texture("#top").cullface(Direction.UP).end();
+		elem.face(Direction.DOWN).uvs(16, 8, 0, 16).texture("#top").cullface(Direction.DOWN).end();
+		elem.face(Direction.WEST).uvs(8, 0, 16, 16).texture("#side").cullface(Direction.WEST).end();
+		elem.face(Direction.EAST).uvs(0, 0, 8, 16).texture("#side").cullface(Direction.EAST).end();
 	}
 
+	private static BlockModelBuilder base = null;
+
 	public static BlockModelBuilder buildModel(DataGenContext<Block, ? extends VerticalSlabBlock> ctx, RegistrateBlockstateProvider pvd) {
-		var builder = pvd.models().withExistingParent(ctx.getName(), "block/block");
-		cube(builder);
-		builder.texture("particle", "#top");
-		return builder;
+		if (base == null) {
+			base = pvd.models().withExistingParent("vertical_slab", "block/block");
+			cube(base);
+			base.texture("particle", "#top");
+		}
+		return pvd.models().getBuilder("block/" + ctx.getName()).parent(base);
 	}
 
 	public static void buildBlockState(DataGenContext<Block, ? extends VerticalSlabBlock> ctx, RegistrateBlockstateProvider pvd,

@@ -9,6 +9,7 @@ import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2serial.serialization.custom_handler.CodecHandler;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
+import dev.xkmc.youkaishomecoming.content.block.combined.CombinedBlockSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.FermentationTankBlockEntity;
@@ -98,6 +99,7 @@ public class YoukaisHomecoming {
 	private static void init() {
 		((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 		new CodecHandler<>(FluidIngredient.class, FluidIngredient.CODEC, FluidIngredient.STREAM_CODEC);
+		CombinedBlockSet.init();
 	}
 
 	@SubscribeEvent

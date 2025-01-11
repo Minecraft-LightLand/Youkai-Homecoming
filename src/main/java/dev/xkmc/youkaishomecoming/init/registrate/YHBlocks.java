@@ -13,6 +13,8 @@ import dev.xkmc.l2core.init.reg.simple.SR;
 import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
+import dev.xkmc.youkaishomecoming.content.block.combined.CombinedBlockSet;
+import dev.xkmc.youkaishomecoming.content.block.combined.IBlockSet;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
@@ -31,6 +33,7 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -62,33 +65,72 @@ import java.util.function.Supplier;
 
 public class YHBlocks {
 
-	public enum WoodType {
-		OAK(Blocks.OAK_PLANKS, Blocks.OAK_FENCE, Items.STRIPPED_OAK_WOOD, Items.OAK_SLAB),
-		BIRCH(Blocks.BIRCH_PLANKS, Blocks.BIRCH_FENCE, Items.STRIPPED_BIRCH_WOOD, Items.BIRCH_SLAB),
-		SPRUCE(Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_FENCE, Items.STRIPPED_SPRUCE_WOOD, Items.SPRUCE_SLAB),
-		JUNGLE(Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_FENCE, Items.STRIPPED_JUNGLE_WOOD, Items.JUNGLE_SLAB),
-		DARK_OAK(Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_FENCE, Items.STRIPPED_DARK_OAK_WOOD, Items.DARK_OAK_SLAB),
-		ACACIA(Blocks.ACACIA_PLANKS, Blocks.ACACIA_FENCE, Items.STRIPPED_ACACIA_WOOD, Items.ACACIA_SLAB),
-		CRIMSON(Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_FENCE, Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_SLAB),
-		WARPED(Blocks.WARPED_PLANKS, Blocks.WARPED_FENCE, Items.STRIPPED_WARPED_HYPHAE, Items.WARPED_SLAB),
-		MANGROVE(Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_FENCE, Items.STRIPPED_MANGROVE_WOOD, Items.MANGROVE_SLAB),
-		CHERRY(Blocks.CHERRY_PLANKS, Blocks.CHERRY_FENCE, Items.STRIPPED_CHERRY_WOOD, Items.CHERRY_SLAB),
-		BAMBOO(Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_FENCE, Items.STRIPPED_BAMBOO_BLOCK, Items.BAMBOO_SLAB),
+	public enum WoodType implements IBlockSet {
+		OAK(Blocks.OAK_PLANKS, Blocks.OAK_FENCE, Items.STRIPPED_OAK_WOOD, Blocks.OAK_SLAB, Blocks.OAK_STAIRS),
+		BIRCH(Blocks.BIRCH_PLANKS, Blocks.BIRCH_FENCE, Items.STRIPPED_BIRCH_WOOD, Blocks.BIRCH_SLAB, Blocks.BRICK_STAIRS),
+		SPRUCE(Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_FENCE, Items.STRIPPED_SPRUCE_WOOD, Blocks.SPRUCE_SLAB, Blocks.SPRUCE_STAIRS),
+		JUNGLE(Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_FENCE, Items.STRIPPED_JUNGLE_WOOD, Blocks.JUNGLE_SLAB, Blocks.JUNGLE_STAIRS),
+		DARK_OAK(Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_FENCE, Items.STRIPPED_DARK_OAK_WOOD, Blocks.DARK_OAK_SLAB, Blocks.DARK_OAK_STAIRS),
+		ACACIA(Blocks.ACACIA_PLANKS, Blocks.ACACIA_FENCE, Items.STRIPPED_ACACIA_WOOD, Blocks.ACACIA_SLAB, Blocks.ACACIA_STAIRS),
+		CRIMSON(Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_FENCE, Items.STRIPPED_CRIMSON_HYPHAE, Blocks.CRIMSON_SLAB, Blocks.CRIMSON_STAIRS),
+		WARPED(Blocks.WARPED_PLANKS, Blocks.WARPED_FENCE, Items.STRIPPED_WARPED_HYPHAE, Blocks.WARPED_SLAB, Blocks.WARPED_STAIRS),
+		MANGROVE(Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_FENCE, Items.STRIPPED_MANGROVE_WOOD, Blocks.MANGROVE_SLAB, Blocks.MANGROVE_STAIRS),
+		CHERRY(Blocks.CHERRY_PLANKS, Blocks.CHERRY_FENCE, Items.STRIPPED_CHERRY_WOOD, Blocks.CHERRY_SLAB, Blocks.CHERRY_STAIRS),
+		BAMBOO(Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_FENCE, Items.STRIPPED_BAMBOO_BLOCK, Blocks.BAMBOO_SLAB, Blocks.BAMBOO_STAIRS),
 		;
 
-		private final Block plankProp, fenceProp;
-		public final ItemLike plank, strippedWood, slab;
+		private final Block plankProp, fenceProp, slab, stairs;
+		private final ResourceLocation tex;
+		public final ItemLike plank, strippedWood;
 		public BlockEntry<MultiFenceBlock> fence;
 		public BlockEntry<WoodTableBlock> table;
 		public BlockEntry<WoodChairBlock> seat;
 		public BlockEntry<VerticalSlabBlock> vertical;
 
-		WoodType(Block plankProp, Block fenceProp, ItemLike strippedWood, ItemLike slab) {
+		WoodType(Block plankProp, Block fenceProp, ItemLike strippedWood, Block slab, Block stairs) {
 			this.plankProp = plankProp;
 			this.fenceProp = fenceProp;
 			this.plank = plankProp;
 			this.strippedWood = strippedWood;
 			this.slab = slab;
+			this.stairs = stairs;
+			tex = ResourceLocation.withDefaultNamespace("block/" + name().toLowerCase(Locale.ROOT) + "_planks");
+		}
+
+
+		@Override
+		public BlockBehaviour.Properties prop() {
+			return BlockBehaviour.Properties.ofFullCopy(plankProp);
+		}
+
+		@Override
+		public Holder<Block> base() {
+			return plankProp.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> stairs() {
+			return stairs.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> slab() {
+			return slab.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> vertical() {
+			return vertical;
+		}
+
+		@Override
+		public ResourceLocation top() {
+			return tex;
+		}
+
+		@Override
+		public ResourceLocation side() {
+			return tex;
 		}
 
 	}
@@ -259,13 +301,18 @@ public class YHBlocks {
 
 			for (var e : WoodType.values()) {
 				String name = e.name().toLowerCase(Locale.ROOT);
-				ResourceLocation side = ResourceLocation.withDefaultNamespace("block/" + name + "_planks");
 				e.vertical = reg.block(name + "_vertical_slab", p ->
 								new VerticalSlabBlock(prop))
-						.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, side, side))
+						.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, e.side(), e.side()))
 						.tag(YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_AXE).item().build()
 						.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, () -> e.plank, ctx))
 						.register();
+			}
+			
+			for (var a : WoodType.values()) {
+				for (var b : WoodType.values()) {
+					CombinedBlockSet.add(reg, a, b);
+				}
 			}
 
 		}

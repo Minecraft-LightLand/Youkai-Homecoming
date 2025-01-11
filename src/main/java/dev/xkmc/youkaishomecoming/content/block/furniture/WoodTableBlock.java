@@ -52,7 +52,7 @@ public class WoodTableBlock extends Block {
 				.pattern("WWW").pattern(" S ").pattern(" P ")
 				.define('W', e.strippedWood)
 				.define('S', Items.STICK)
-				.define('P', e.slab)
+				.define('P', e.slab().value())
 				.save(pvd);
 	}
 

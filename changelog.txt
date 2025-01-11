@@ -1,5 +1,6 @@
 3.0.3
 - clean up stale files
+- Use source fluid instead of flowing fluid for recipes
 
 3.0.2
 - Add 2 more sikkui set
