@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "youkaishomecoming:block/orange_concrete_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/orange_concrete"
+    },
+    "type=top": {
+      "model": "youkaishomecoming:block/orange_concrete_slab_top"
+    }
+  }
+}

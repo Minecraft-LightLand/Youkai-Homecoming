@@ -60,6 +60,7 @@ import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
@@ -316,23 +317,67 @@ public class YHBlocks {
 						.register();
 			}
 
-			for (var a : WoodType.values()) {
-				for (var b : WoodType.values()) {
-					CombinedBlockSet.add(reg, a, b);
-				}
+			for (var e : VanillaStoneSet.values()) {
+				e.vertical = reg.block(e.getName() + "_vertical_slab", p ->
+								new VerticalSlabBlock(prop))
+						.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, e.side(), e.side()))
+						.tag(YHTagGen.VERTICAL_SLAB, BlockTags.MINEABLE_WITH_AXE).item().build()
+						.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, () -> e.base, ctx))
+						.register();
 			}
-			List<FullSikkuiSet> sikkui = List.of(
-					SIKKUI.SIKKUI, SIKKUI.CROSS_SIKKUI,
-					LIGHT_YELLOW_SIKKUI.SIKKUI, LIGHT_YELLOW_SIKKUI.CROSS_SIKKUI,
-					BROWN_SIKKUI.SIKKUI, BROWN_SIKKUI.CROSS_SIKKUI
-			);
-			for (var a : sikkui){
-				for (var b : sikkui){
-					CombinedBlockSet.add(reg, a, b);
-				}
-			}
+
+			VanillaBlockSet.values();
 		}
 
+
+		reg.buildModCreativeTab("composite_blocks", "Youkai's Homecoming - Composite Blocks",
+				e -> e.icon(CombinedBlockSet.any().slab::asStack));
+
+		{
+
+			List<IBlockSet> wood = new ArrayList<>(List.of(WoodType.values()));
+			wood.add(VanillaStoneSet.BAMBOO_MOSAIC);
+			buildComposite(reg, wood);
+
+			buildComposite(reg, List.of(
+					SIKKUI.SIKKUI,
+					LIGHT_YELLOW_SIKKUI.SIKKUI,
+					BROWN_SIKKUI.SIKKUI,
+					SIKKUI.CROSS_SIKKUI,
+					LIGHT_YELLOW_SIKKUI.CROSS_SIKKUI,
+					BROWN_SIKKUI.CROSS_SIKKUI,
+					VanillaStoneSet.BRICK,
+					VanillaStoneSet.NETHER_BRICK,
+					VanillaStoneSet.RED_NETHER_BRICK,
+					VanillaStoneSet.DEEPSLATE_TILES
+			));
+
+			buildComposite(reg, List.of(
+					VanillaStoneSet.STONE_BRICK,
+					VanillaStoneSet.MOSSY_STONE_BRICK,
+					VanillaStoneSet.DEEPSLATE_BRICK,
+					VanillaStoneSet.POLISHED_BLACKSTONE_BRICK,
+					VanillaStoneSet.TUFF_BRICK,
+					VanillaStoneSet.END_STONE_BRICK,
+					VanillaStoneSet.PURPUR_BLOCK
+			));
+
+			buildComposite(reg, List.of(VanillaBlockSet.values()));
+
+			// COBBLESTONE,MOSSY_COBBLESTONE,COBBLED_DEEPSLATE
+			// STONE,BLACKSTONE,GRANITE,ANDESITE,DIORITE,TUFF
+			// POLISHED_DEEPSLATE,POLISHED_BLACKSTONE,POLISHED_BLACKSTONE,POLISHED_GRANITE,POLISHED_ANDESITE,POLISHED_DIORITE,POLISHED_TUFF
+
+		}
+
+	}
+
+	private static void buildComposite(L2Registrate reg, List<IBlockSet> list) {
+		for (var a : list) {
+			for (var b : list) {
+				CombinedBlockSet.add(reg, a, b);
+			}
+		}
 	}
 
 	private static BlockEntry<ThinTrapdoorBlock> thinTrapdoor(L2Registrate reg, String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side, Supplier<Block> base) {
@@ -590,22 +635,144 @@ public class YHBlocks {
 		}
 	}
 
-	public static class StoneSet {
+	// MUD_BRICK_STAIRS, BAMBOO_MOSAIC_STAIRS
+	// SANDSTONE_STAIRS, RED_SANDSTONE_STAIRS, SMOOTH_SANDSTONE_STAIRS, SMOOTH_RED_SANDSTONE_STAIRS
+	// QUARTZ_STAIRS, SMOOTH_QUARTZ_STAIRS,
+	// PRISMARINE_STAIRS, PRISMARINE_BRICK_STAIRS, DARK_PRISMARINE_STAIRS
+	// PURPUR_STAIRS, END_STONE_BRICK_STAIRS
+	// copper
+	public enum VanillaStoneSet implements IBlockSet {
+		BAMBOO_MOSAIC(Blocks.BAMBOO_MOSAIC, Blocks.BAMBOO_MOSAIC_SLAB, Blocks.BAMBOO_MOSAIC_STAIRS, true),
 
-		public final Supplier<Block> BASE;
+		COBBLESTONE(Blocks.COBBLESTONE, Blocks.COBBLESTONE_SLAB, Blocks.COBBLESTONE_STAIRS, true),
+		MOSSY_COBBLESTONE(Blocks.MOSSY_COBBLESTONE, Blocks.MOSSY_COBBLESTONE_SLAB, Blocks.MOSSY_COBBLESTONE_STAIRS, true),
+		COBBLED_DEEPSLATE(Blocks.COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE_SLAB, Blocks.COBBLED_DEEPSLATE_STAIRS, true),
+
+		BRICK(Blocks.BRICKS, Blocks.BRICK_SLAB, Blocks.BRICK_STAIRS, true),
+		NETHER_BRICK(Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_SLAB, Blocks.NETHER_BRICK_STAIRS, true),
+		RED_NETHER_BRICK(Blocks.RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB, Blocks.RED_NETHER_BRICK_STAIRS, true),
+		DEEPSLATE_TILES(Blocks.DEEPSLATE_TILES, Blocks.DEEPSLATE_TILE_SLAB, Blocks.DEEPSLATE_TILE_STAIRS, true),
+
+		STONE(Blocks.STONE, Blocks.STONE_SLAB, Blocks.STONE_STAIRS, true),
+		BLACKSTONE(Blocks.BLACKSTONE, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE_STAIRS, false),
+		GRANITE(Blocks.GRANITE, Blocks.GRANITE_SLAB, Blocks.GRANITE_STAIRS, true),
+		ANDESITE(Blocks.ANDESITE, Blocks.ANDESITE_SLAB, Blocks.ANDESITE_STAIRS, true),
+		DIORITE(Blocks.DIORITE, Blocks.DIORITE_SLAB, Blocks.DIORITE_STAIRS, true),
+		TUFF(Blocks.TUFF, Blocks.TUFF_SLAB, Blocks.TUFF_STAIRS, true),
+
+		POLISHED_DEEPSLATE(Blocks.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE_SLAB, Blocks.POLISHED_DEEPSLATE_STAIRS, true),
+		POLISHED_BLACKSTONE(Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_SLAB, Blocks.POLISHED_BLACKSTONE_STAIRS, true),
+		POLISHED_GRANITE(Blocks.POLISHED_GRANITE, Blocks.POLISHED_GRANITE_SLAB, Blocks.POLISHED_GRANITE_STAIRS, true),
+		POLISHED_ANDESITE(Blocks.POLISHED_ANDESITE, Blocks.POLISHED_ANDESITE_SLAB, Blocks.POLISHED_ANDESITE_STAIRS, true),
+		POLISHED_DIORITE(Blocks.POLISHED_DIORITE, Blocks.POLISHED_DIORITE_SLAB, Blocks.POLISHED_DIORITE_STAIRS, true),
+		POLISHED_TUFF(Blocks.POLISHED_TUFF, Blocks.POLISHED_TUFF_SLAB, Blocks.POLISHED_TUFF_STAIRS, true),
+
+		STONE_BRICK(Blocks.STONE_BRICKS, Blocks.STONE_BRICK_SLAB, Blocks.STONE_BRICK_STAIRS, true),
+		MOSSY_STONE_BRICK(Blocks.MOSSY_STONE_BRICKS, Blocks.MOSSY_STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_STAIRS, true),
+		DEEPSLATE_BRICK(Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICK_SLAB, Blocks.DEEPSLATE_BRICK_STAIRS, true),
+		POLISHED_BLACKSTONE_BRICK(Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, true),
+		TUFF_BRICK(Blocks.TUFF_BRICKS, Blocks.TUFF_BRICK_SLAB, Blocks.TUFF_BRICK_STAIRS, true),
+		END_STONE_BRICK(Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_STAIRS, true),
+		PURPUR_BLOCK(Blocks.PURPUR_BLOCK, Blocks.PURPUR_SLAB, Blocks.PURPUR_STAIRS, true),
+
+		;
+
+		private final Block base, slab, stair;
+		private final String name;
+		private final ResourceLocation top, side;
+		public BlockEntry<VerticalSlabBlock> vertical;
+
+		VanillaStoneSet(Block base, Block slab, Block stair, boolean uniform) {
+			this.base = base;
+			this.slab = slab;
+			this.stair = stair;
+			this.name = name().toLowerCase(Locale.ROOT);
+			String tex = name.endsWith("brick") ? name + "s" : name;
+			this.side = ResourceLocation.withDefaultNamespace("block/" + tex);
+			this.top = uniform ? side : side.withSuffix("_top");
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
+		@Override
+		public BlockBehaviour.Properties prop() {
+			return BlockBehaviour.Properties.ofFullCopy(base);
+		}
+
+		@Override
+		public Holder<Block> base() {
+			return base.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> stairs() {
+			return stair.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> slab() {
+			return slab.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> vertical() {
+			return vertical;
+		}
+
+		@Override
+		public ResourceLocation top() {
+			return top;
+		}
+
+		@Override
+		public ResourceLocation side() {
+			return side;
+		}
+	}
+
+	public enum VanillaBlockSet implements IBlockSet {
+		WHITE_CONCRETE(Blocks.WHITE_CONCRETE),
+		ORANGE_CONCRETE(Blocks.ORANGE_CONCRETE),
+		MAGENTA_CONCRETE(Blocks.MAGENTA_CONCRETE),
+		LIGHT_BLUE_CONCRETE(Blocks.LIGHT_BLUE_CONCRETE),
+		YELLOW_CONCRETE(Blocks.YELLOW_CONCRETE),
+		LIME_CONCRETE(Blocks.LIME_CONCRETE),
+		PINK_CONCRETE(Blocks.PINK_CONCRETE),
+		GRAY_CONCRETE(Blocks.GRAY_CONCRETE),
+		LIGHT_GRAY_CONCRETE(Blocks.LIGHT_GRAY_CONCRETE),
+		CYAN_CONCRETE(Blocks.CYAN_CONCRETE),
+		PURPLE_CONCRETE(Blocks.PURPLE_CONCRETE),
+		BLUE_CONCRETE(Blocks.BLUE_CONCRETE),
+		BROWN_CONCRETE(Blocks.BROWN_CONCRETE),
+		GREEN_CONCRETE(Blocks.GREEN_CONCRETE),
+		RED_CONCRETE(Blocks.RED_CONCRETE),
+		BLACK_CONCRETE(Blocks.BLACK_CONCRETE),
+
+		;
+
+		public final Block BASE;
 		public final BlockEntry<StairBlock> STAIR;
 		public final BlockEntry<SlabBlock> SLAB;
 		public final BlockEntry<VerticalSlabBlock> VERTICAL;
+		private final BlockBehaviour.Properties prop;
+		private final String id;
+		private final ResourceLocation side;
 
-		public StoneSet(L2Registrate reg, String id, BlockBehaviour.Properties prop, Supplier<Block> base) {
+		VanillaBlockSet(Block base) {
+			L2Registrate reg = YoukaisHomecoming.REGISTRATE;
+			this.id = name().toLowerCase(Locale.ROOT);
 			this.BASE = base;
-			ResourceLocation side = reg.loc("block/" + id);
+			this.prop = BlockBehaviour.Properties.ofFullCopy(base);
+			this.side = ResourceLocation.withDefaultNamespace("block/" + id);
 			STAIR = reg.block(id + "_stairs", p ->
-							new StairBlock(BASE.get().defaultBlockState(), prop))
+							new StairBlock(BASE.defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side))
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.STAIRS)
 					.item().tag(ItemTags.STAIRS).build()
-					.recipe((ctx, pvd) -> pvd.stairs(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))
+					.recipe((ctx, pvd) -> pvd.stairs(DataIngredient.items(BASE), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))
 					.register();
 			SLAB = reg.block(id + "_slab", p ->
 							new SlabBlock(prop))
@@ -615,16 +782,55 @@ public class YHBlocks {
 							new ModelFile.UncheckedModelFile(side)))
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.SLABS)
 					.item().tag(ItemTags.SLABS).build()
-					.recipe((ctx, pvd) -> pvd.slab(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))
+					.recipe((ctx, pvd) -> pvd.slab(DataIngredient.items(BASE), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))
 					.register();
 			VERTICAL = reg.block(id + "_vertical_slab", p ->
 							new VerticalSlabBlock(prop))
 					.blockstate((ctx, pvd) -> VerticalSlabBlock.buildBlockState(ctx, pvd, side, side))
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, YHTagGen.VERTICAL_SLAB).item().build()
-					.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, BASE, ctx))
+					.recipe((ctx, pvd) -> VerticalSlabBlock.genRecipe(pvd, () -> BASE, ctx))
 					.register();
 		}
 
+		@Override
+		public String getName() {
+			return id;
+		}
+
+		@Override
+		public BlockBehaviour.Properties prop() {
+			return prop;
+		}
+
+		@Override
+		public Holder<Block> base() {
+			return BASE.builtInRegistryHolder();
+		}
+
+		@Override
+		public Holder<Block> stairs() {
+			return STAIR;
+		}
+
+		@Override
+		public Holder<Block> slab() {
+			return SLAB;
+		}
+
+		@Override
+		public Holder<Block> vertical() {
+			return VERTICAL;
+		}
+
+		@Override
+		public ResourceLocation top() {
+			return side;
+		}
+
+		@Override
+		public ResourceLocation side() {
+			return side;
+		}
 	}
 
 	public interface BlockRecipe extends NonNullBiConsumer<DataGenContext<Block, Block>, RegistrateRecipeProvider> {

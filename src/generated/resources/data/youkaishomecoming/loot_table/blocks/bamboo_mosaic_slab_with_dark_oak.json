@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:group",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "name": "minecraft:bamboo_mosaic_slab"
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "minecraft:dark_oak_slab"
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:any_of",
+                  "terms": [
+                    {
+                      "block": "youkaishomecoming:bamboo_mosaic_slab_with_dark_oak",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "facing": "up"
+                      }
+                    },
+                    {
+                      "block": "youkaishomecoming:bamboo_mosaic_slab_with_dark_oak",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "facing": "down"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "minecraft:group",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "name": "youkaishomecoming:bamboo_mosaic_vertical_slab"
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "youkaishomecoming:dark_oak_vertical_slab"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaishomecoming:blocks/bamboo_mosaic_slab_with_dark_oak"
+}

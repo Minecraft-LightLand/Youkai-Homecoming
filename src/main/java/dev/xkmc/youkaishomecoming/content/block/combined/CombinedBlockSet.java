@@ -25,6 +25,10 @@ public class CombinedBlockSet {
 	private static final Map<String, IBlockSet> NAME_2_SET = new LinkedHashMap<>();
 	private static final Map<Block, IBlockSet> BLOCK_2_SET = new LinkedHashMap<>();
 
+	public static CombinedBlockSet any() {
+		return TABLE.values().stream().findFirst().orElseThrow();
+	}
+
 	private static boolean verify(IBlockSet set) {
 		var id = set.getName();
 		var old = NAME_2_SET.get(id);

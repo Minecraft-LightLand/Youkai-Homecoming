@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:block/vertical_slab",
+  "textures": {
+    "side": "minecraft:block/mossy_cobblestone",
+    "top": "minecraft:block/mossy_cobblestone"
+  }
+}

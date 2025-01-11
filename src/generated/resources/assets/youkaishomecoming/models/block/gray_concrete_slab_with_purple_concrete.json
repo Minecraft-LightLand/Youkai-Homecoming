@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:block/combined_slabs",
+  "textures": {
+    "side_a": "minecraft:block/gray_concrete",
+    "side_b": "minecraft:block/purple_concrete",
+    "top_a": "minecraft:block/gray_concrete",
+    "top_b": "minecraft:block/purple_concrete"
+  }
+}

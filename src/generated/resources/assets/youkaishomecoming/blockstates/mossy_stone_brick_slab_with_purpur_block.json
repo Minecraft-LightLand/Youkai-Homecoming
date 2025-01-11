@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "youkaishomecoming:block/mossy_stone_brick_slab_with_purpur_block",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east": {
+      "model": "youkaishomecoming:block/mossy_stone_brick_slab_with_purpur_block",
+      "uvlock": true,
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/mossy_stone_brick_slab_with_purpur_block",
+      "uvlock": true,
+      "x": 90
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/mossy_stone_brick_slab_with_purpur_block",
+      "uvlock": true,
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "youkaishomecoming:block/mossy_stone_brick_slab_with_purpur_block",
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/mossy_stone_brick_slab_with_purpur_block",
+      "uvlock": true,
+      "x": 90,
+      "y": 270
+    }
+  }
+}

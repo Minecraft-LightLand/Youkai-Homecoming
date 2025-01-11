@@ -1,9 +1,26 @@
 {
   "values": [
-    "youkaishomecoming:brown_sikkui_stairs",
-    "youkaishomecoming:brown_cross_framed_sikkui_stairs",
     "youkaishomecoming:sikkui_stairs",
     "youkaishomecoming:cross_framed_sikkui_stairs",
-    "youkaishomecoming:light_yellow_sikkui_stairs"
+    "youkaishomecoming:light_yellow_sikkui_stairs",
+    "youkaishomecoming:light_yellow_cross_framed_sikkui_stairs",
+    "youkaishomecoming:brown_sikkui_stairs",
+    "youkaishomecoming:brown_cross_framed_sikkui_stairs",
+    "youkaishomecoming:white_concrete_stairs",
+    "youkaishomecoming:orange_concrete_stairs",
+    "youkaishomecoming:magenta_concrete_stairs",
+    "youkaishomecoming:light_blue_concrete_stairs",
+    "youkaishomecoming:yellow_concrete_stairs",
+    "youkaishomecoming:lime_concrete_stairs",
+    "youkaishomecoming:pink_concrete_stairs",
+    "youkaishomecoming:gray_concrete_stairs",
+    "youkaishomecoming:light_gray_concrete_stairs",
+    "youkaishomecoming:cyan_concrete_stairs",
+    "youkaishomecoming:purple_concrete_stairs",
+    "youkaishomecoming:blue_concrete_stairs",
+    "youkaishomecoming:brown_concrete_stairs",
+    "youkaishomecoming:green_concrete_stairs",
+    "youkaishomecoming:red_concrete_stairs",
+    "youkaishomecoming:black_concrete_stairs"
   ]
 }

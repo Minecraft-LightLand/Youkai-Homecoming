@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "youkaishomecoming:block/red_nether_brick_slab_with_sikkui",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east": {
+      "model": "youkaishomecoming:block/red_nether_brick_slab_with_sikkui",
+      "uvlock": true,
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/red_nether_brick_slab_with_sikkui",
+      "uvlock": true,
+      "x": 90
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/red_nether_brick_slab_with_sikkui",
+      "uvlock": true,
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "youkaishomecoming:block/red_nether_brick_slab_with_sikkui",
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/red_nether_brick_slab_with_sikkui",
+      "uvlock": true,
+      "x": 90,
+      "y": 270
+    }
+  }
+}

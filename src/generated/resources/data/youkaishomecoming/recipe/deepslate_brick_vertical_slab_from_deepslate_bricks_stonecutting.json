@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:deepslate_bricks"
+  },
+  "result": {
+    "count": 2,
+    "id": "youkaishomecoming:deepslate_brick_vertical_slab"
+  }
+}

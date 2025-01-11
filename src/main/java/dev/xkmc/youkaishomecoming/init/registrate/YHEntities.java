@@ -20,6 +20,8 @@ public class YHEntities {
 
 	static {
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB);
+
 		LAMPREY = YoukaisHomecoming.REGISTRATE
 				.entity("lamprey", LampreyEntity::new, MobCategory.WATER_AMBIENT)
 				.properties(e -> e.sized(0.5F, 0.4F).clientTrackingRange(4))
