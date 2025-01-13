@@ -2,8 +2,10 @@ package dev.xkmc.youkaishomecoming.content.block.combined;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
+import com.mojang.datafixers.util.Either;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BlockItem;
@@ -41,6 +43,11 @@ public class CombinedBlockSet {
 	@Nullable
 	public static IBlockSet fetch(Block block) {
 		return BLOCK_2_SET.get(block);
+	}
+
+	@Nullable
+	public static IBlockSet fetch(String block) {
+		return NAME_2_SET.get(block);
 	}
 
 	public static void init() {
@@ -84,7 +91,15 @@ public class CombinedBlockSet {
 		var state = getStateToReplace(event);
 		if (state == null) return false;
 		var player = event.getEntity();
-		event.getLevel().setBlock(event.getPos(), state, 18);
+		if (state.left().isPresent())
+			event.getLevel().setBlock(event.getPos(), state.left().get(), 18);
+		if (state.right().isPresent()) {
+			var complex = state.right().get();
+			event.getLevel().setBlock(event.getPos(), complex.state(), 18);
+			if (event.getLevel().getBlockEntity(event.getPos()) instanceof CombinedBlockEntity be) {
+				be.set(complex.a().getName(), complex.b().getName());
+			}
+		}
 		if (!player.getAbilities().instabuild) {
 			event.getItemStack().shrink(1);
 		}
@@ -94,7 +109,7 @@ public class CombinedBlockSet {
 	}
 
 	@Nullable
-	private static BlockState getStateToReplace(PlayerInteractEvent.RightClickBlock event) {
+	private static Either<BlockState, Complex> getStateToReplace(PlayerInteractEvent.RightClickBlock event) {
 		var state = event.getLevel().getBlockState(event.getPos());
 		var stack = event.getItemStack();
 		if (!(stack.getItem() instanceof BlockItem bi)) return null;
@@ -106,32 +121,53 @@ public class CombinedBlockSet {
 		if (!inside) return null;
 		if (a == b) {
 			if (state.is(a.vertical()) && b.vertical().value() == bi.getBlock()) {
-				return a.base().value().defaultBlockState();
+				return Either.left(a.base().value().defaultBlockState());
 			}
 			if (state.is(a.stairs()) && b.vertical().value() == bi.getBlock()) {
-				return a.base().value().defaultBlockState();
+				return Either.left(a.base().value().defaultBlockState());
 			}
 			return null;
 		}
 		var set = CombinedBlockSet.get(a, b);
-		if (set == null) return null;
-		if (state.is(a.slab()) && b.slab().value() == bi.getBlock()) {
-			var type = state.getValue(SlabBlock.TYPE);
-			if (type == SlabType.DOUBLE) return null;
-			return set.slab.get().defaultBlockState().setValue(CombinedSlabBlock.FACING,
-					type == SlabType.TOP ^ a == set.a ? Direction.UP : Direction.DOWN);
-		} else if (state.is(a.vertical()) && b.vertical().value() == bi.getBlock()) {
-			var dir = state.getValue(HorizontalDirectionalBlock.FACING);
-			if (a == set.a) dir = dir.getOpposite();
-			return set.slab.get().defaultBlockState().setValue(CombinedSlabBlock.FACING, dir);
-		} else if (state.is(a.stairs()) && b.vertical().value() == bi.getBlock()) {
-			var block = set.a == a ? set.stairA : set.stairB;
-			return block.get().defaultBlockState()
-					.setValue(CombinedStairsBlock.FACING, state.getValue(StairBlock.FACING))
-					.setValue(CombinedStairsBlock.HALF, state.getValue(StairBlock.HALF))
-					.setValue(CombinedStairsBlock.SHAPE, state.getValue(StairBlock.SHAPE));
+		if (set != null) {
+			if (state.is(a.slab()) && b.slab().value() == bi.getBlock()) {
+				var type = state.getValue(SlabBlock.TYPE);
+				if (type == SlabType.DOUBLE) return null;
+				return Either.left(set.slab.get().defaultBlockState().setValue(CombinedSlabBlock.FACING,
+						type == SlabType.TOP ^ a == set.a ? Direction.UP : Direction.DOWN));
+			} else if (state.is(a.vertical()) && b.vertical().value() == bi.getBlock()) {
+				var dir = state.getValue(HorizontalDirectionalBlock.FACING);
+				if (a == set.a) dir = dir.getOpposite();
+				return Either.left(set.slab.get().defaultBlockState().setValue(CombinedSlabBlock.FACING, dir));
+			} else if (state.is(a.stairs()) && b.vertical().value() == bi.getBlock()) {
+				var block = set.a == a ? set.stairA : set.stairB;
+				return Either.left(block.get().defaultBlockState()
+						.setValue(CombinedStairsBlock.FACING, state.getValue(StairBlock.FACING))
+						.setValue(CombinedStairsBlock.HALF, state.getValue(StairBlock.HALF))
+						.setValue(CombinedStairsBlock.SHAPE, state.getValue(StairBlock.SHAPE)));
+			}
+			return null;
+		} else {
+			if (state.is(a.slab()) && b.slab().value() == bi.getBlock()) {
+				var type = state.getValue(SlabBlock.TYPE);
+				if (type == SlabType.DOUBLE) return null;
+				return Either.right(new Complex(YHBlocks.COMPLEX_SLAB.get().defaultBlockState().setValue(CombinedSlabBlock.FACING,
+						type == SlabType.TOP ? Direction.UP : Direction.DOWN), a, b));
+			} else if (state.is(a.vertical()) && b.vertical().value() == bi.getBlock()) {
+				var dir = state.getValue(HorizontalDirectionalBlock.FACING).getOpposite();
+				return Either.right(new Complex(YHBlocks.COMPLEX_SLAB.get().defaultBlockState().setValue(CombinedSlabBlock.FACING, dir), a, b));
+			} else if (state.is(a.stairs()) && b.vertical().value() == bi.getBlock()) {
+				return Either.right(new Complex(YHBlocks.COMPLEX_STAIRS.get().defaultBlockState()
+						.setValue(CombinedStairsBlock.FACING, state.getValue(StairBlock.FACING))
+						.setValue(CombinedStairsBlock.HALF, state.getValue(StairBlock.HALF))
+						.setValue(CombinedStairsBlock.SHAPE, state.getValue(StairBlock.SHAPE)), a, b));
+			}
+			return null;
 		}
-		return null;
+	}
+
+	private record Complex(BlockState state, IBlockSet a, IBlockSet b) {
+
 	}
 
 	public final IBlockSet a, b;

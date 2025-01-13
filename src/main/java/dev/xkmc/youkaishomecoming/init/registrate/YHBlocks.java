@@ -13,8 +13,7 @@ import dev.xkmc.l2core.init.reg.simple.SR;
 import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
-import dev.xkmc.youkaishomecoming.content.block.combined.CombinedBlockSet;
-import dev.xkmc.youkaishomecoming.content.block.combined.IBlockSet;
+import dev.xkmc.youkaishomecoming.content.block.combined.*;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
@@ -176,6 +175,10 @@ public class YHBlocks {
 	public static SikkuiGroup SIKKUI, LIGHT_YELLOW_SIKKUI, BROWN_SIKKUI;
 
 	public static final WoodSet HAY, STRAW;
+
+	public static final BlockEntry<ComplexSlabBlock> COMPLEX_SLAB;
+	public static final BlockEntry<ComplexStairsBlock> COMPLEX_STAIRS;
+	public static final BlockEntityEntry<CombinedBlockEntity> BE_COMBINED;
 
 	static {
 		var reg = YoukaisHomecoming.REGISTRATE;
@@ -363,6 +366,15 @@ public class YHBlocks {
 			));
 
 			buildComposite(reg, List.of(VanillaBlockSet.values()));
+
+			COMPLEX_SLAB = reg.block("complex_slab", ComplexSlabBlock::new)
+					.blockstate((ctx, pvd) -> CombinedSlabBlock.buildStates(ctx, pvd, WoodType.BIRCH, WoodType.OAK))
+					.loot((pvd, block) -> pvd.dropOther(block, Items.AIR)).register();
+			COMPLEX_STAIRS = reg.block("complex_stairs", ComplexStairsBlock::new)
+					.blockstate((ctx, pvd) -> CombinedStairsBlock.buildStates(ctx, pvd, WoodType.BIRCH, WoodType.OAK))
+					.loot((pvd, block) -> pvd.dropOther(block, Items.AIR)).register();
+			BE_COMBINED = reg.blockEntity("combined_block", CombinedBlockEntity::new)
+					.validBlocks(COMPLEX_SLAB, COMPLEX_STAIRS).register();
 
 			// COBBLESTONE,MOSSY_COBBLESTONE,COBBLED_DEEPSLATE
 			// STONE,BLACKSTONE,GRANITE,ANDESITE,DIORITE,TUFF

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.events;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import dev.xkmc.youkaishomecoming.content.block.combined.CompositeBlockRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;
@@ -10,10 +11,16 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.AddSectionGeometryEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ClientEventHandlers {
+
+	@SubscribeEvent
+	public static void addGeometry(AddSectionGeometryEvent event) {
+		event.addRenderer(ctx -> CompositeBlockRenderer.renderSection(event.getSectionOrigin(), ctx));
+	}
 
 	private static float oTilt, tilt;
 

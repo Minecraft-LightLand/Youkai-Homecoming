@@ -1,3 +1,7 @@
+3.0.4
+- Composite blocks (slab + slab, stair to full block)
+- Improve vertical slab interaction
+
 3.0.3
 - clean up stale files
 - Use source fluid instead of flowing fluid for recipes
