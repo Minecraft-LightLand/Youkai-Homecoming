@@ -19,7 +19,7 @@ public class ClientEventHandlers {
 
 	@SubscribeEvent
 	public static void addGeometry(AddSectionGeometryEvent event) {
-		event.addRenderer(ctx -> CompositeBlockRenderer.renderSection(event.getSectionOrigin(), ctx));
+		event.addRenderer(ctx -> CompositeBlockRenderer.renderSection(event.getSectionOrigin().immutable(), ctx));
 	}
 
 	private static float oTilt, tilt;
