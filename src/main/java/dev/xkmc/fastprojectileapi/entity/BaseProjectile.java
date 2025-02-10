@@ -35,13 +35,18 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 		if (hitresult != null) {
 			onHit(hitresult);
 		}
-		projectileMove();
 		if (tickCount >= lifetime()) {
 			if (!level().isClientSide()) {
 				discard();
-			} else {
-				int a = 1 + 2;
 			}
+		} else {
+			if (!level().isClientSide()) {
+				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4)) {
+					discard();
+					return;
+				}
+			}
+			projectileMove();
 		}
 	}
 

@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget {
 		if (!player.getAbilities().instabuild && !canUse)
 			return InteractionResultHolder.fail(stack);
 		if (player instanceof ServerPlayer sp) {
-			if (!player.getAbilities().instabuild)
+			if (!player.getAbilities().instabuild && !(sp instanceof FakePlayer))
 				ammo.shrink(1);
 			SpellContainer.castSpell(sp, spell, target);
 			int cooldown = YHModConfig.COMMON.playerSpellCooldown.get();

@@ -20,7 +20,7 @@ public record HomingSpellFormData(
 	public static final HomingSpellFormData RING = new HomingSpellFormData(
 			BaseSpellData.DEF, new RingFormData(4, 4, 5,
 			90, 20, 2, 0),
-			20, 1);
+			1, 20);
 
 	public int getDuration() {
 		return form.getDuration();

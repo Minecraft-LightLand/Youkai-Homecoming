@@ -61,7 +61,8 @@ public class SanaeItemSpell extends ItemSpell {
 			if (dir == null) {
 				dir = holder.forward();
 			}
-			int n = 20, m = 2;
+			int n = 20, m = 2, t0 = 10;
+			double accel = 0.3, dist = 4;
 			var o = DanmakuHelper.getOrientation(dir);
 			var pos = holder.center().add(0, -0.3, 0);
 			for (int i = 0; i < 5; i++) {
@@ -69,14 +70,17 @@ public class SanaeItemSpell extends ItemSpell {
 				var p1 = o.rotateDegrees(a0 + (i + 1) * 360d * 2 / 5);
 				for (int j = 0; j < m; j++) {
 					var d = p0.lerp(p1, (tick + 1d * j / m) / n);
-					var e = holder.prepareDanmaku(65 + n - tick, Vec3.ZERO,
+					double acc = d.length() * accel;
+					int life = Math.min(50, (int) ((100 - acc * (t0 * t0 * 0.5 + dist / accel)) / (acc * t0)));
+					var e = holder.prepareDanmaku(
+							life + t0 + 5 + n - tick, Vec3.ZERO,
 							YHDanmaku.Bullet.SPARK, color
 					);
-					var p = pos.add(d.scale(4));
+					var p = pos.add(d.scale(dist));
 					e.setPos(p);
 					CompositeMover mover = new CompositeMover();
 					mover.add(n - tick + 5, new ZeroMover(d, d, n - tick + 5));
-					mover.add(10, new RectMover(p, Vec3.ZERO, d.scale(0.3)));
+					mover.add(t0, new RectMover(p, Vec3.ZERO, d.scale(accel)));
 					e.mover = mover;
 					holder.shoot(e);
 				}

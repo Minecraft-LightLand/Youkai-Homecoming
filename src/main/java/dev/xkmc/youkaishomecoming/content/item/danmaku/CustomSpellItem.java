@@ -18,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -56,7 +57,7 @@ public class CustomSpellItem extends Item implements IGlowingTarget {
 			LivingEntity target = RayTraceUtil.serverGetTarget(player);
 			if (requireTarget && target == null)
 				return InteractionResultHolder.fail(stack);
-			if (!player.getAbilities().instabuild) {
+			if (!player.getAbilities().instabuild && !(player instanceof FakePlayer)) {
 				Item ammo = data.getAmmoCost();
 				int toCost = data.cost();
 				if (!consumeAmmo(ammo, toCost, player, false))
