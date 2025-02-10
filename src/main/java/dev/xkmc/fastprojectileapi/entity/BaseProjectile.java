@@ -40,13 +40,12 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 				discard();
 			}
 		} else {
+			projectileMove();
 			if (!level().isClientSide()) {
 				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4)) {
 					discard();
-					return;
 				}
 			}
-			projectileMove();
 		}
 	}
 

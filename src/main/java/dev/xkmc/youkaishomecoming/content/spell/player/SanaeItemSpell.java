@@ -81,6 +81,7 @@ public class SanaeItemSpell extends ItemSpell {
 					CompositeMover mover = new CompositeMover();
 					mover.add(n - tick + 5, new ZeroMover(d, d, n - tick + 5));
 					mover.add(t0, new RectMover(p, Vec3.ZERO, d.scale(accel)));
+					mover.addEnd();
 					e.mover = mover;
 					holder.shoot(e);
 				}

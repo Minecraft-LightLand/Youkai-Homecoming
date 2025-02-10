@@ -64,6 +64,7 @@ public class MystiaItemSpell extends ItemSpell {
 						var p1 = p0.add(v.scale(t0 * 0.5));
 						mover.add(t1, new ZeroMover(vec, vec, t1));
 						mover.add(20, new RectMover(p1, Vec3.ZERO, vec.scale(speed / 10)));
+						mover.addEnd();
 						e.mover = mover;
 						holder.shoot(e);
 					}
