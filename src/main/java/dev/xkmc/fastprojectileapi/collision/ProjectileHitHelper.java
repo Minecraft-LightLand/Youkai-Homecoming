@@ -47,10 +47,10 @@ public class ProjectileHitHelper {
 			if (e == self) continue;
 			Vec3 vel = e.getDeltaMovement();
 			double speed = vel.length();
-			int n = (int) Math.min(4, Math.floor(speed / 0.8));
-			AABB aabb = e.getBoundingBox().inflate(radius);
+			int n = (int) Math.min(4, speed / 0.8);
+			AABB base = e.getBoundingBox().inflate(radius);
 			for (int i = 0; i <= n; i++) {
-				aabb.move(vel.scale(n == 0 ? 0 : 1d * i / n));
+				AABB aabb = n == 0 ? base : base.move(vel.scale(1d * i / n));
 				Optional<Vec3> optional = aabb.contains(src) ? Optional.of(src) : aabb.clip(src, dst);
 				if (optional.isPresent()) {
 					double d1 = src.distanceToSqr(optional.get());

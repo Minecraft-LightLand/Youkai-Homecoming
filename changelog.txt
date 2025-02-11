@@ -1,3 +1,9 @@
+2.3.2
+- Improve danmaku collision calculation to be able to hit hi-speed entities
+- Remove danmaku once it exits loading chunk
+- Improve Sanae spell card item
+- Fix bugs in custom spell card
+
 2.3.1
 - Allow knife to cut slices off scarlet velvet cake
 - Add wythers sakura forest to Shrine spawnable biome tag
@@ -11,6 +17,7 @@
 - Add 2 customizable spell cards
 - Add more configs
 - Remake all danmaku textures
+
 
 2.2.18
 - Improve vertical slab placement
