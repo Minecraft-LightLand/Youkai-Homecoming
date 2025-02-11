@@ -42,27 +42,33 @@ public class ProjectileHitHelper {
 	public static EntityHitResult getEntityHitResult(ServerLevel level, BaseProjectile self, Vec3 src, Vec3 dst, AABB box, float radius) {
 		double d0 = Double.MAX_VALUE;
 		Entity entity = null;
-
 		for (Entity e : EntityStorageCache.get(level).foreach(box.inflate(1 + radius), self::canHitEntity)) {
 			if (e == self) continue;
-			Vec3 vel = e.getDeltaMovement();
-			double speed = vel.length();
-			int n = (int) Math.min(4, speed / 0.8);
-			AABB base = e.getBoundingBox().inflate(radius);
-			for (int i = 0; i <= n; i++) {
-				AABB aabb = n == 0 ? base : base.move(vel.scale(1d * i / n));
-				Optional<Vec3> optional = aabb.contains(src) ? Optional.of(src) : aabb.clip(src, dst);
-				if (optional.isPresent()) {
-					double d1 = src.distanceToSqr(optional.get());
-					if (d1 < d0) {
-						entity = e;
-						d0 = d1;
-					}
+			var hit = checkHit(e, radius, src, dst);
+			if (hit != null) {
+				double d1 = src.distanceToSqr(hit);
+				if (d1 < d0) {
+					entity = e;
+					d0 = d1;
 				}
 			}
 		}
-
 		return entity == null ? null : new EntityHitResult(entity);
+	}
+
+	@Nullable
+	public static Vec3 checkHit(Entity e, double radius, Vec3 src, Vec3 dst) {
+		Vec3 vel = e.getDeltaMovement();
+		double speed = vel.length();
+		int n = (int) Math.min(8, Math.floor(speed / 0.5));
+		AABB base = e.getBoundingBox().inflate(radius);
+		for (int i = 0; i <= n; i++) {
+			AABB aabb = n == 0 ? base : base.move(vel.scale(1d * i / n));
+			Optional<Vec3> optional = aabb.contains(src) ? Optional.of(src) : aabb.clip(src, dst);
+			if (optional.isPresent())
+				return optional.get();
+		}
+		return null;
 	}
 
 }

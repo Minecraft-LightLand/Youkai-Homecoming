@@ -1,5 +1,5 @@
 2.3.3
-- Add doremi
+- Add Doremi Sweet spell card
 
 2.3.2
 - Improve danmaku collision calculation to be able to hit hi-speed entities

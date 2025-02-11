@@ -49,7 +49,8 @@ public class EntityStorageCache {
 				for (int z = z0; z <= z1; z++) {
 					checkSection(x, y, z);
 					for (var e : map.get(x, y, z).intersect(aabb)) {
-						if (aabb.intersects(e.getBoundingBox()) && filter.test(e)) {
+						var ebox = e.getBoundingBox().expandTowards(e.getDeltaMovement());
+						if (aabb.intersects(ebox) && filter.test(e)) {
 							list.add(e);
 						}
 					}

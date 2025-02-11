@@ -41,9 +41,8 @@ public class LaserHitHelper {
 	public static void getEntityHitResult(List<EntityHitResult> ans, ServerLevel level, BaseLaser self, Vec3 src, Vec3 dst, AABB box, float radius) {
 		for (Entity e : EntityStorageCache.get(level).foreach(box.inflate(1 + radius), self::canHitEntity)) {
 			if (e == self) continue;
-			AABB aabb = e.getBoundingBox().inflate(radius);
-			Optional<Vec3> optional = aabb.clip(src, dst);
-			optional.ifPresent(vec3 -> ans.add(new EntityHitResult(e, vec3)));
+			Vec3 hit = ProjectileHitHelper.checkHit(e, radius, src, dst);
+			if (hit != null) ans.add(new EntityHitResult(e, hit));
 		}
 	}
 
