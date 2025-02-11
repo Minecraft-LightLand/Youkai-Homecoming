@@ -1,3 +1,6 @@
+2.3.3
+- Add doremi
+
 2.3.2
 - Improve danmaku collision calculation to be able to hit hi-speed entities
 - Remove danmaku once it exits loading chunk
