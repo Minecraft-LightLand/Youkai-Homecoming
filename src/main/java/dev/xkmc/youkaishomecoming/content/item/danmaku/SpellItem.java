@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget {
+public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, ISpellItem {
 
 	private final Supplier<ItemSpell> spell;
 	private final boolean requireTarget;
@@ -41,21 +41,30 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
-		ItemStack ammo = player.getProjectile(stack);
-		boolean canUse = !ammo.isEmpty();
-		LivingEntity target = RayTraceUtil.serverGetTarget(player);
-		if (target == null && requireTarget)
+		boolean consume = !player.getAbilities().instabuild && !(player instanceof FakePlayer);
+		if (!castSpell(stack, player, consume, true)) {
 			return InteractionResultHolder.fail(stack);
-		if (!player.getAbilities().instabuild && !canUse)
-			return InteractionResultHolder.fail(stack);
-		if (player instanceof ServerPlayer sp) {
-			if (!player.getAbilities().instabuild && !(sp instanceof FakePlayer))
-				ammo.shrink(1);
-			SpellContainer.castSpell(sp, spell, target);
-			int cooldown = YHModConfig.COMMON.playerSpellCooldown.get();
-			sp.getCooldowns().addCooldown(this, cooldown);
 		}
 		return InteractionResultHolder.consume(stack);
+	}
+
+	public boolean castSpell(ItemStack stack, Player player, boolean consume, boolean cooldown) {
+		ItemStack ammo = !consume ? ItemStack.EMPTY : player.getProjectile(stack);
+		if (consume && !ammo.isEmpty())
+			return false;
+		LivingEntity target = RayTraceUtil.serverGetTarget(player);
+		if (target == null && requireTarget)
+			return false;
+		if (player instanceof ServerPlayer sp) {
+			if (consume)
+				ammo.shrink(1);
+			SpellContainer.castSpell(sp, spell, target);
+			if (cooldown) {
+				int cd = YHModConfig.COMMON.playerSpellCooldown.get();
+				sp.getCooldowns().addCooldown(this, cd);
+			}
+		}
+		return true;
 	}
 
 	@Override

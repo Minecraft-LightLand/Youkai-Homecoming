@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CustomSpellItem extends Item implements IGlowingTarget {
+public class CustomSpellItem extends Item implements IGlowingTarget, ISpellItem {
 
 	private ISpellFormData<?> getData(ItemStack stack) {
 		var tag = stack.getTag();
@@ -54,23 +54,37 @@ public class CustomSpellItem extends Item implements IGlowingTarget {
 				ClientCustomSpellHandler.open(data);
 			}
 		} else {
-			LivingEntity target = RayTraceUtil.serverGetTarget(player);
-			if (requireTarget && target == null)
+			boolean consume = !player.getAbilities().instabuild && !(player instanceof FakePlayer);
+			if (!castSpellImpl(data, player, consume, true)) {
 				return InteractionResultHolder.fail(stack);
-			if (!player.getAbilities().instabuild && !(player instanceof FakePlayer)) {
-				Item ammo = data.getAmmoCost();
-				int toCost = data.cost();
-				if (!consumeAmmo(ammo, toCost, player, false))
-					return InteractionResultHolder.fail(stack);
-				if (player instanceof ServerPlayer)
-					consumeAmmo(ammo, toCost, player, true);
-			}
-			if (player instanceof ServerPlayer sp) {
-				SpellContainer.castSpell(sp, data::createInstance, target);
-				player.getCooldowns().addCooldown(this, data.getDuration());
 			}
 		}
 		return InteractionResultHolder.success(stack);
+	}
+
+	public boolean castSpell(ItemStack stack, Player player, boolean consume, boolean cooldown) {
+		return castSpellImpl(getData(stack), player, consume, cooldown);
+	}
+
+	private boolean castSpellImpl(ISpellFormData<?> data, Player player, boolean consume, boolean cooldown) {
+		LivingEntity target = RayTraceUtil.serverGetTarget(player);
+		if (requireTarget && target == null)
+			return false;
+		if (consume) {
+			Item ammo = data.getAmmoCost();
+			int toCost = data.cost();
+			if (!consumeAmmo(ammo, toCost, player, false))
+				return false;
+			if (player instanceof ServerPlayer)
+				consumeAmmo(ammo, toCost, player, true);
+		}
+		if (player instanceof ServerPlayer sp) {
+			SpellContainer.castSpell(sp, data::createInstance, target);
+			if (cooldown) {
+				player.getCooldowns().addCooldown(this, data.getDuration());
+			}
+		}
+		return true;
 	}
 
 	@Override
