@@ -1,5 +1,6 @@
 2.3.3
 - Add Doremi Sweet spell card
+- Improve Youkai code
 
 2.3.2
 - Improve danmaku collision calculation to be able to hit hi-speed entities

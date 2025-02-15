@@ -20,6 +20,7 @@ import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
 import dev.xkmc.youkaishomecoming.content.capability.KoishiStartPacket;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.data.*;
@@ -66,7 +67,8 @@ public class YoukaisHomecoming {
 			loc("main"), 1,
 			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
 			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(SpellSetToServer.class, NetworkDirection.PLAY_TO_SERVER)
+			e -> e.create(SpellSetToServer.class, NetworkDirection.PLAY_TO_SERVER),
+			e -> e.create(CombatToClient.class, NetworkDirection.PLAY_TO_CLIENT)
 	);
 
 	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);

@@ -63,6 +63,16 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	}
 
 	@Override
+	public void tick() {
+		double maxSpeed = 0.5;
+		if (getDeltaMovement().length() > maxSpeed) {
+			setDeltaMovement(getDeltaMovement().normalize().scale(maxSpeed));
+		}
+		validateData();
+		super.tick();
+	}
+
+	@Override
 	public void aiStep() {
 		if (hurtCD < 1000) hurtCD++;
 		super.aiStep();
@@ -151,25 +161,28 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	protected void hurtFinal(DamageSource source, float amount) {
+		if (!Float.isFinite(amount)) return;
 		amount = clampDamage(source, amount);
+		if (amount <= 0) return;
 		super.hurtFinal(source, amount);
 	}
 
 	@Override
 	public void setHealth(float val) {
+		if (!Float.isFinite(val)) return;
 		if (level().isClientSide()) {
-			super.setHealth(val);
+			setCombatProgress(val);
 		}
-		float health = getHealth();
+		float health = getCombatProgress();
 		if (tickCount > 5 && val <= health) return;
-		super.setHealth(val);
+		setCombatProgress(val);
 	}
 
 	public void heal(float original) {
 		var heal = ForgeEventFactory.onLivingHeal(this, original);
 		heal = Math.max(original, heal);
 		if (heal <= 0) return;
-		float f = getHealth();
+		float f = getCombatProgress();
 		if (f > 0) {
 			setHealth(f + heal);
 		}
@@ -194,11 +207,11 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	@Override
 	protected void customServerAiStep() {
 		super.customServerAiStep();
-		bossEvent.setProgress(getHealth() / getMaxHealth());
+		bossEvent.setProgress(getCombatProgress() / getMaxHealth());
 		if (getTarget() == null || !getTarget().isAlive()) {
 			noTargetTime++;
 			boolean doHeal = noTargetTime >= 20 && tickCount % 20 == 0;
-			doHeal |= getHealth() < getMaxHealth();
+			doHeal |= getCombatProgress() < getMaxHealth();
 			if (doHeal && getLastHurtByMob() instanceof Player player && player.getAbilities().instabuild) {
 				if (tickCount - getLastHurtByMobTimestamp() < 100) {
 					doHeal = false;

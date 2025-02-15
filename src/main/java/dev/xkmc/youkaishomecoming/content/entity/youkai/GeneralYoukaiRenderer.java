@@ -29,6 +29,12 @@ public class GeneralYoukaiRenderer<T extends GeneralYoukaiEntity> extends MobRen
 	}
 
 	@Override
+	protected void setupRotations(T e, PoseStack p_115318_, float p_115319_, float p_115320_, float p_115321_) {
+		e.validateData();
+		super.setupRotations(e, p_115318_, p_115319_, p_115320_, p_115321_);
+	}
+
+	@Override
 	public ResourceLocation getTextureLocation(T pEntity) {
 		return TEX;
 	}

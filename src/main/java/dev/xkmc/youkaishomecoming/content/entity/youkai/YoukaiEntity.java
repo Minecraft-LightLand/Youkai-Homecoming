@@ -80,6 +80,9 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	@SerialClass.SerialField
 	public SpellCardWrapper spellCard;
 
+	@SerialClass.SerialField
+	private CombatProgress combatProgress = new CombatProgress();
+
 	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel) {
 		this(pEntityType, pLevel, 10);
 	}
@@ -91,6 +94,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		this.flyCtrl = new FlyingMoveControl(this, 10, false);
 		this.fltNav = new FlyingPathNavigation(this, level());
 		this.targets = new YoukaiTargetContainer(this, maxSize);
+		combatProgress.init(this);
 	}
 
 	protected SoundEvent getAmbientSound() {
@@ -123,6 +127,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
+		tag.putFloat("Health", this.getCombatProgress());
 		tag.putInt("Age", tickCount);
 		tag.put("auto-serial", Objects.requireNonNull(TagCodec.toTag(new CompoundTag(), this)));
 		data().write(tag, entityData);
@@ -156,10 +161,14 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 
 	// features
 
+	public boolean invalidTarget(LivingEntity e) {
+		return !e.isAlive() || !e.isAddedToWorld() || e.level() != level();
+	}
+
 	public boolean shouldIgnore(LivingEntity e) {
 		if (e.getType().is(YHTagGen.YOUKAI_IGNORE))
 			return true;
-		if (!e.isAddedToWorld())
+		if (invalidTarget(e))
 			return true;
 		var event = new YoukaiFightEvent(this, e);
 		return MinecraftForge.EVENT_BUS.post(event);
@@ -322,25 +331,95 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	}
 
 	protected void hurtFinal(DamageSource source, float amount) {
-		float f1 = Math.max(amount - getAbsorptionAmount(), 0.0F);
-		float f = amount - f1;
-		setAbsorptionAmount(getAbsorptionAmount() - f);
-		if (f > 0.0F && f < 3.4028235E37F) {
+		if (!Float.isFinite(amount)) return;
+		float abs = getAbsorptionAmount();
+		if (!Float.isFinite(abs)) return;
+		float actual = Math.max(amount - Math.max(0, abs), 0);
+		float absorb = amount - actual;
+		setAbsorptionAmount(Math.max(0, getAbsorptionAmount() - absorb));
+		if (absorb > 0.0F && absorb < 3.4028235E37F) {
 			Entity entity = source.getEntity();
 			if (entity instanceof ServerPlayer serverplayer) {
-				serverplayer.awardStat(Stats.DAMAGE_DEALT_ABSORBED, Math.round(f * 10.0F));
+				serverplayer.awardStat(Stats.DAMAGE_DEALT_ABSORBED, Math.round(absorb * 10.0F));
 			}
 		}
-		if (f1 != 0.0F) {
-			getCombatTracker().recordDamage(source, f1);
-			hurtFinalImpl(source, getHealth() - f1);
-			setAbsorptionAmount(getAbsorptionAmount() - f1);
+		if (actual != 0.0F) {
+			getCombatTracker().recordDamage(source, actual);
+			hurtFinalImpl(source, actual);
+			setAbsorptionAmount(Math.max(0, getAbsorptionAmount() - actual));
 			gameEvent(GameEvent.ENTITY_DAMAGE);
 		}
 	}
 
 	protected void hurtFinalImpl(DamageSource source, float amount) {
+		if (combatProgress == null) return;
+		setCombatProgress(getCombatProgress() - amount);
+	}
+
+	public void validateData() {
+		if (getCombatProgress() > 0) {
+			if (deathTime > 0) deathTime = 0;
+			if (dead) dead = false;
+		}
+	}
+
+	@Override
+	public void setHealth(float amount) {
+		if (!Float.isFinite(amount)) return;
+		setCombatProgress(amount);
+	}
+
+	@Override
+	protected boolean isImmobile() {
+		return this.getCombatProgress() <= 0.0F;
+	}
+
+	@Override
+	public boolean isDeadOrDying() {
+		return this.getCombatProgress() <= 0.0F;
+	}
+
+	public boolean isAlive() {
+		return !this.isRemoved() && this.getCombatProgress() > 0.0F;
+	}
+
+	public void setCombatProgress(float amount) {
 		super.setHealth(amount);
+		if (combatProgress == null) return;
+		if (amount > getMaxHealth()) {
+			combatProgress.setMax();
+		} else {
+			combatProgress.set(this, amount);
+		}
+	}
+
+	public float getCombatProgress() {
+		return combatProgress == null ? super.getHealth() : combatProgress.getProgress();
+	}
+
+	@Override
+	public float getHealth() {
+		return getCombatProgress();
+	}
+
+	@Override
+	protected void tickDeath() {
+		if (getCombatProgress() > 0) return;
+		super.tickDeath();
+	}
+
+	@Override
+	public void die(DamageSource source) {
+		if (getCombatProgress() > 0) return;
+		super.die(source);
+	}
+
+	@Nullable
+	@Override
+	public LivingEntity getTarget() {
+		LivingEntity ans = super.getTarget();
+		if (ans == null || invalidTarget(ans)) return null;
+		return ans;
 	}
 
 	protected void customServerAiStep() {

@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.events;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatProgress;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -51,4 +53,11 @@ public class ClientEventHandlers {
 		pose.mulPose(Axis.ZP.rotationDegrees(t * t * 45 * Mth.sin((float) (time / 60 * Math.PI * 2))));
 	}
 
+	public static void setProgress(int id, CombatProgress progress) {
+		var level = Minecraft.getInstance().level;
+		if (level == null) return;
+		if (level.getEntity(id) instanceof YoukaiEntity e) {
+			e.setCombatProgress(progress.getProgress());
+		}
+	}
 }
