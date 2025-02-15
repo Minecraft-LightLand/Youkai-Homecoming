@@ -1,14 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
-import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
-import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.content.spell.shooter.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.events.YoukaiFightEvent;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -27,7 +25,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -52,7 +49,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 @SerialClass
-public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleHolder, CardHolder {
+public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleHolder, LivingCardHolder {
 
 	private static final int GROUND_HEIGHT = 5, ATTEMPT_ABOVE = 3;
 
@@ -193,61 +190,19 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	}
 
 	@Override
-	public Vec3 center() {
-		return position().add(0, getBbHeight() / 2, 0);
+	public double getDamage() {
+		return getAttributeValue(Attributes.ATTACK_DAMAGE);
+	}
+
+	@Nullable
+	@Override
+	public LivingEntity targetEntity() {
+		return getTarget();
 	}
 
 	@Override
-	public Vec3 forward() {
-		var target = target();
-		if (target != null) {
-			return target.subtract(center()).normalize();
-		}
-		return getForward();
-	}
-
-	@Override
-	public @Nullable Vec3 target() {
-		var le = getTarget();
-		if (le == null) return null;
-		return le.position().add(0, le.getBbHeight() / 2, 0);
-	}
-
-	@Override
-	public @Nullable Vec3 targetVelocity() {
-		var le = getTarget();
-		if (le == null) return null;
-		return le.getDeltaMovement();
-	}
-
-	@Override
-	public RandomSource random() {
-		return random;
-	}
-
-	@Override
-	public ItemDanmakuEntity prepareDanmaku(int life, Vec3 vec, YHDanmaku.Bullet type, DyeColor color) {
-		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), this, level());
-		danmaku.setPos(center());
-		danmaku.setItem(type.get(color).asStack());
-		danmaku.setup((float) getAttributeValue(Attributes.ATTACK_DAMAGE),
-				life, true, true, vec);
-		return danmaku;
-	}
-
-	@Override
-	public ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, int len, YHDanmaku.Laser type, DyeColor color) {
-		ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), this, level());
-		danmaku.setItem(type.get(color).asStack());
-		danmaku.setup((float) getAttributeValue(Attributes.ATTACK_DAMAGE),
-				life, len, true, vec);
-		danmaku.setPos(pos);
-		return danmaku;
-	}
-
-	@Override
-	public void shoot(SimplifiedProjectile danmaku) {
-		level().addFreshEntity(danmaku);
+	public LivingEntity shooter() {
+		return this;
 	}
 
 	public void shoot(float dmg, int life, Vec3 vec, DyeColor color) {

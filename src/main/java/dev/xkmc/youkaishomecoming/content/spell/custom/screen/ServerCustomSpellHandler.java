@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.spell.custom.screen;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.youkaishomecoming.content.spell.custom.annotation.ArgGroup;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;

@@ -18,9 +18,7 @@ public interface IYHDanmaku {
 
 	float damage(Entity target);
 
-	default SimplifiedProjectile self() {
-		return (SimplifiedProjectile) this;
-	}
+	SimplifiedProjectile self();
 
 	default boolean shouldHurt(@Nullable Entity owner, Entity e) {
 		if (owner == null) return false;

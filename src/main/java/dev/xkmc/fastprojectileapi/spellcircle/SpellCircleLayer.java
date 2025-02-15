@@ -21,6 +21,11 @@ public class SpellCircleLayer<T extends Entity, M extends EntityModel<T>> extend
 	public void render(PoseStack pose, MultiBufferSource buffer, int light, T entity,
 					   float swing, float swingAmp, float pTick, float age,
 					   float yaw, float pitch) {
+		renderImpl(pose, buffer, light, entity, pTick);
+	}
+
+	public static <T extends Entity> void renderImpl(PoseStack pose, MultiBufferSource buffer, int light, T entity,
+													 float pTick) {
 		if (!(entity instanceof SpellCircleHolder e)) return;
 		ResourceLocation rl = e.getSpellCircle();
 		if (rl == null) return;

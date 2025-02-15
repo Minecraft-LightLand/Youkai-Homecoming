@@ -20,9 +20,12 @@ import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
+import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterEntity;
+import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.loot.EntityLootGen;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.WaterAnimal;
@@ -53,6 +56,7 @@ public class YHEntities {
 	public static final EntityEntry<ItemDanmakuEntity> ITEM_DANMAKU;
 	public static final EntityEntry<ItemLaserEntity> ITEM_LASER;
 	public static final EntityEntry<ChairEntity> CHAIR;
+	public static final EntityEntry<ShooterEntity> SHOOTER;
 
 	static {
 
@@ -197,6 +201,13 @@ public class YHEntities {
 					.<ItemDanmakuEntity>entity("item_danmaku", ItemDanmakuEntity::new, MobCategory.MISC)
 					.properties(e -> e.sized(0.4f, 0.4f).clientTrackingRange(4).updateInterval(1 << 16))
 					.renderer(() -> ItemDanmakuRenderer::new)
+					.register();
+
+			SHOOTER = YoukaisHomecoming.REGISTRATE
+					.entity("shooter", ShooterEntity::new, MobCategory.MISC)
+					.properties(e -> e.sized(0.4F, 0.4f).clientTrackingRange(10))
+					.attributes(LivingEntity::createLivingAttributes)
+					.renderer(() -> ShooterRenderer::new)
 					.register();
 
 			ITEM_LASER = YoukaisHomecoming.REGISTRATE

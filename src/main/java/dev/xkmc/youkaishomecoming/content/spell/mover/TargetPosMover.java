@@ -14,7 +14,7 @@ public abstract class TargetPosMover extends DanmakuMover {
 		if (ans.vec().lengthSqr() > 1e-4) {
 			return ans;
 		}
-		return new ProjectileMovement(ans.vec(), info.self().self().rot());
+		return new ProjectileMovement(ans.vec(), info.self().rot());
 	}
 
 }

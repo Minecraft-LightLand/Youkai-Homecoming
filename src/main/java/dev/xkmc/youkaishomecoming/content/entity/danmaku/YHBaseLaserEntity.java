@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import dev.xkmc.fastprojectileapi.collision.LaserHitHelper;
 import dev.xkmc.fastprojectileapi.entity.BaseLaser;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -68,6 +69,11 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 		setupTime(20, 20, life, 20);
 		setYRot(rY);
 		setXRot(rX);
+	}
+
+	@Override
+	public SimplifiedProjectile self() {
+		return this;
 	}
 
 	@Override

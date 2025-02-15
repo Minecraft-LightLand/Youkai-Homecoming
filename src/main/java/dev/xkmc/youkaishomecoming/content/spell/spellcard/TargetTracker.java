@@ -36,7 +36,7 @@ public class TargetTracker {
 		return t2.subtract(t2).scale(0.1);
 	}
 
-	public int flyTime(){
+	public int flyTime() {
 		return flyTime;
 	}
 

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import dev.xkmc.fastprojectileapi.entity.BaseProjectile;
 import dev.xkmc.fastprojectileapi.entity.ProjectileMovement;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -49,6 +50,11 @@ public class YHBaseDanmakuEntity extends BaseProjectile implements IYHDanmaku {
 		this.bypassEntity = bypassEntity;
 		setDeltaMovement(initVec);
 		updateRotation(ProjectileMovement.of(initVec).rot());
+	}
+
+	@Override
+	public SimplifiedProjectile self() {
+		return this;
 	}
 
 	@Override
