@@ -9,7 +9,9 @@ import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverOwner;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -33,9 +35,10 @@ public class ShooterEntity extends ProjectileHealthEntity implements LivingCardH
 	@Nullable
 	@SerialClass.SerialField
 	public DanmakuMover mover = null;
+
 	@Nullable
-	@SerialClass.SerialField
 	private LivingEntity target;
+
 	@Nullable
 	@SerialClass.SerialField
 	private SpellCard spellCard;
@@ -120,7 +123,7 @@ public class ShooterEntity extends ProjectileHealthEntity implements LivingCardH
 	}
 
 	@Override
-	public double getDamage() {
+	public float getDamage(YHDanmaku.IDanmakuType type) {
 		return data.damage();
 	}
 

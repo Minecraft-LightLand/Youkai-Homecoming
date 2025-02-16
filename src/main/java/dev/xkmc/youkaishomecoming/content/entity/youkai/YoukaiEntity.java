@@ -6,7 +6,7 @@ import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
-import dev.xkmc.youkaishomecoming.content.spell.shooter.LivingCardHolder;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.events.YoukaiFightEvent;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -190,8 +190,8 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	}
 
 	@Override
-	public double getDamage() {
-		return getAttributeValue(Attributes.ATTACK_DAMAGE);
+	public float getDamage(YHDanmaku.IDanmakuType type) {
+		return (float) getAttributeValue(Attributes.ATTACK_DAMAGE);
 	}
 
 	@Nullable

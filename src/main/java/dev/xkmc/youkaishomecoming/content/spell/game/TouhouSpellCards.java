@@ -41,6 +41,7 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:luna_child", LunaSpell::new);
 		registerSpell("touhou_little_maid:star_sapphire", StarSpell::new);
 		registerSpell("touhou_little_maid:doremy_sweet", DoremiSpell::new);
+		registerSpell("touhou_little_maid:kisin_sagume", KisinSpell::new);
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {

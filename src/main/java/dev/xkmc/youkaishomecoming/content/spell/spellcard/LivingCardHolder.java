@@ -1,12 +1,13 @@
-package dev.xkmc.youkaishomecoming.content.spell.shooter;
+package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
-import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterData;
+import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
@@ -17,11 +18,6 @@ public interface LivingCardHolder extends CardHolder {
 	LivingEntity self();
 
 	LivingEntity shooter();
-
-	@Nullable
-	LivingEntity targetEntity();
-
-	double getDamage();
 
 	@Override
 	default Vec3 center() {
@@ -61,7 +57,7 @@ public interface LivingCardHolder extends CardHolder {
 		ItemDanmakuEntity danmaku = new ItemDanmakuEntity(YHEntities.ITEM_DANMAKU.get(), shooter(), self().level());
 		danmaku.setPos(center());
 		danmaku.setItem(type.get(color).asStack());
-		danmaku.setup((float) getDamage(),
+		danmaku.setup(getDamage(type),
 				life, true, true, vec);
 		return danmaku;
 	}
@@ -70,14 +66,22 @@ public interface LivingCardHolder extends CardHolder {
 	default ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, int len, YHDanmaku.Laser type, DyeColor color) {
 		ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), shooter(), self().level());
 		danmaku.setItem(type.get(color).asStack());
-		danmaku.setup((float) getDamage(),
+		danmaku.setup(getDamage(type),
 				life, len, true, vec);
 		danmaku.setPos(pos);
 		return danmaku;
 	}
 
+
 	@Override
-	default void shoot(SimplifiedProjectile danmaku) {
+	default ShooterEntity prepareShooter(ShooterData data, SpellCard spell) {
+		ShooterEntity ans = new ShooterEntity(YHEntities.SHOOTER.get(), self().level());
+		ans.setup(shooter(), targetEntity(), data, spell);
+		return ans;
+	}
+
+	@Override
+	default void shoot(Entity danmaku) {
 		self().level().addFreshEntity(danmaku);
 	}
 

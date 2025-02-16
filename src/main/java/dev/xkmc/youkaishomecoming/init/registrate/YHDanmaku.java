@@ -17,7 +17,11 @@ import java.util.Locale;
 
 public class YHDanmaku {
 
-	public enum Bullet {
+	public interface IDanmakuType {
+		int damage();
+	}
+
+	public enum Bullet implements IDanmakuType {
 		CIRCLE(1, 4, DisplayType.SOLID),
 		BALL(1, 4, DisplayType.SOLID),
 		MENTOS(2, 6, DisplayType.SOLID),
@@ -64,7 +68,7 @@ public class YHDanmaku {
 
 	}
 
-	public enum Laser {
+	public enum Laser implements IDanmakuType {
 		LASER(1, 4);
 
 		public final String name;

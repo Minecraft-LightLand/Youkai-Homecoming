@@ -18,7 +18,7 @@ public class ShooterRenderer<T extends ShooterEntity> extends EntityRenderer<T> 
 
 	@Override
 	public void render(T e, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
-		SpellCircleLayer.renderImpl(pose, buffer, light, e, pTick);
+		SpellCircleLayer.renderImpl(pose, buffer, light, e, pTick, entityRenderDispatcher.cameraOrientation());
 		super.render(e, yaw, pTick, pose, buffer, light);
 	}
 
