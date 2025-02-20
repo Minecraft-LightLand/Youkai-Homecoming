@@ -29,7 +29,7 @@ public class CombatProgress {
 
 	public void set(LivingEntity e, float amount) {
 		progress = amount;
-		if (progress != oldProgress) {
+		if (progress != oldProgress && !e.level().isClientSide()) {
 			oldProgress = progress;
 			YoukaisHomecoming.HANDLER.toTrackingPlayers(new CombatToClient(e.getId(), this), e);
 		}

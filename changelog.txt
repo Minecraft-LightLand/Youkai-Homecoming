@@ -1,5 +1,6 @@
 2.3.3
 - Add Doremi Sweet spell card
+- Add Kisin Sagume spell card
 - Improve Youkai code
 
 2.3.2
@@ -14,6 +15,7 @@
 - Fix danmaku render flashing problem
 - Improve Reimu's Spell
 
+
 2.3.0
 - Fix scarlet mist brewing
 - Add 3 fairies, summoned randomly at chance when TLM is present and other fairies are killed with non-Danmaku damage
@@ -21,7 +23,6 @@
 - Add 2 customizable spell cards
 - Add more configs
 - Remake all danmaku textures
-
 
 2.2.18
 - Improve vertical slab placement
