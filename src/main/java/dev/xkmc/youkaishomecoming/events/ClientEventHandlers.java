@@ -2,8 +2,8 @@ package dev.xkmc.youkaishomecoming.events;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.youkaishomecoming.content.block.combined.CompositeBlockRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
@@ -11,16 +11,10 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.AddSectionGeometryEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ClientEventHandlers {
-
-	@SubscribeEvent
-	public static void addGeometry(AddSectionGeometryEvent event) {
-		event.addRenderer(ctx -> CompositeBlockRenderer.renderSection(event.getSectionOrigin().immutable(), ctx));
-	}
 
 	private static float oTilt, tilt;
 
@@ -45,7 +39,8 @@ public class ClientEventHandlers {
 		float t = Mth.lerp(pTick, oTilt, tilt);
 		if (t < 0.01) return;
 		float time = pTick + player.tickCount;
-		pose.mulPose(Axis.ZP.rotationDegrees(t * t * 45 * Mth.sin((float) (time / 60 * Math.PI * 2))));
+		int period = YHModConfig.CLIENT.drunkEffectInterval.getAsInt();
+		pose.mulPose(Axis.ZP.rotationDegrees(t * t * 45 * Mth.sin((float) (time / period * Math.PI * 2))));
 	}
 
 }

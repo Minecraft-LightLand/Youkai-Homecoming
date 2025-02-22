@@ -1,3 +1,8 @@
+3.0.5
+- Fix Drunk effect
+- Allow any composition for composite blocks
+- Add client config for drunk effect
+
 3.0.4
 - Composite blocks (slab + slab, stair to full block)
 - Improve vertical slab interaction
@@ -5,6 +10,7 @@
 3.0.3
 - clean up stale files
 - Use source fluid instead of flowing fluid for recipes
+
 
 3.0.2
 - Add 2 more sikkui set
@@ -14,19 +20,11 @@
 
 3.0.1
 - Optional tag fix
-
-3.0.0+10
 - Fix peach related recipes
-
-3.0.0+9
 - Migrate to standard JEI api without accessing non-api JEI code
 - Use NeoForge FluidIngredient for fermentation tank
-
-3.0.0+7
 - Fix JEI compat with JEI 19.18+
 - Fix enchantment description compat
-
-3.0.0+6
 - Add Thirst compat back
 - Fix sikkui block sounds
 - Fix warped wood chair recipe

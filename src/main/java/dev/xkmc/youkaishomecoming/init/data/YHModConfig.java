@@ -6,6 +6,17 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class YHModConfig {
 
+	public static class Client extends ConfigInit {
+
+		public final ModConfigSpec.IntValue drunkEffectInterval;
+
+		Client(Builder builder) {
+			markPlain();
+			drunkEffectInterval = builder.text("Drunk effect tilting period. Increase the number if you feel it to be sickening")
+					.defineInRange("drunkEffectInterval", 60, 10, 1000);
+		}
+
+	}
 	public static class Server extends ConfigInit {
 
 		public final ModConfigSpec.DoubleValue smoothingHealingFactor;
@@ -31,6 +42,7 @@ public class YHModConfig {
 
 	}
 
+	public static final Client CLIENT = YoukaisHomecoming.REGISTRATE.registerClient(Client::new);
 	public static final Server SERVER = YoukaisHomecoming.REGISTRATE.registerSynced(Server::new);
 
 	/**

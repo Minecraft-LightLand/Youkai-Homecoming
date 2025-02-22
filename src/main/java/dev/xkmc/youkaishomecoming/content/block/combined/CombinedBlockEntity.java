@@ -11,26 +11,26 @@ import org.jetbrains.annotations.Nullable;
 
 public class CombinedBlockEntity extends BlockEntity {
 
-	private static final String DEF = "oak";
-
-	private String a = DEF, b = DEF;
+	private String a = null, b = null;
 
 	public CombinedBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
 		super(type, pos, blockState);
 	}
 
-	public void set(String a, String b) {
+	public void set(@Nullable String a, @Nullable String b) {
 		this.a = a;
 		this.b = b;
 	}
 
 	@Nullable
 	public IBlockSet getA() {
+		if (a == null) return null;
 		return CombinedBlockSet.fetch(a);
 	}
 
 	@Nullable
 	public IBlockSet getB() {
+		if (b == null) return null;
 		return CombinedBlockSet.fetch(b);
 	}
 
@@ -46,8 +46,8 @@ public class CombinedBlockEntity extends BlockEntity {
 
 	public void saveAdditional(CompoundTag tag, HolderLookup.Provider pvd) {
 		super.saveAdditional(tag, pvd);
-		tag.putString("BlockA", a);
-		tag.putString("BlockB", b);
+		if (a != null) tag.putString("BlockA", a);
+		if (b != null) tag.putString("BlockB", b);
 	}
 
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -56,8 +56,8 @@ public class CombinedBlockEntity extends BlockEntity {
 
 	public CompoundTag getUpdateTag(HolderLookup.Provider pvd) {
 		CompoundTag ans = super.getUpdateTag(pvd);
-		ans.putString("BlockA", a);
-		ans.putString("BlockB", b);
+		if (a != null) ans.putString("BlockA", a);
+		if (b != null) ans.putString("BlockB", b);
 		return ans;
 	}
 
