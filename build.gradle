@@ -132,9 +132,9 @@ dependencies {
         jarJar.ranged(it, "[MC1.20-1.3.3,)")
     }
 
-    implementation fg.deobf(jarJar("dev.xkmc.l2harvester:l2harvester:0.0.4")) {
+    implementation fg.deobf(jarJar("dev.xkmc.l2harvester:l2harvester:0.1.0")) {
         transitive = false
-        jarJar.ranged(it, "[0.0.4,)")
+        jarJar.ranged(it, "[0.1.0,)")
     }
 
     implementation fg.deobf(jarJar("dev.xkmc.l2serial:l2serial:1.2.3")) {
@@ -159,7 +159,7 @@ dependencies {
 
 
     implementation fg.deobf("dev.xkmc.cuisinedelight:cuisinedelight:1.1.12-slim")
-    implementation fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.10-slim")
+    implementation fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.20-slim")
 
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
     //compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-api:${jei_version}")
@@ -170,7 +170,7 @@ dependencies {
     implementation fg.deobf("curse.maven:touhou-little-maid-355044:5406149")
 
     implementation fg.deobf("curse.maven:jade-324717:4654448")
-    implementation fg.deobf("curse.maven:create-328085:4835191")
+    implementation fg.deobf("curse.maven:create-328085:6247663")
     runtimeOnly fg.deobf("curse.maven:appleskin-248787:4605078")
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:4633797")
     runtimeOnly fg.deobf("curse.maven:spark-361579:4738952")
@@ -178,9 +178,9 @@ dependencies {
     implementation fg.deobf("curse.maven:bookshelf-228525:4808092")
     implementation fg.deobf("curse.maven:botany-trees-411357:4719845")
     implementation fg.deobf("curse.maven:botany-pots-353928:4793076")
-    implementation fg.deobf("curse.maven:serene-seasons-291874:4761603")
-    implementation fg.deobf("curse.maven:diet-443570:4813904")
-    implementation fg.deobf("curse.maven:thirst-was-taken-679270:5568703")
+    compileOnly fg.deobf("curse.maven:serene-seasons-291874:4761603")
+    compileOnly fg.deobf("curse.maven:diet-443570:4813904")
+    compileOnly fg.deobf("curse.maven:thirst-was-taken-679270:5568703")
 
     implementation fg.deobf("curse.maven:better-advancements-272515:4631253")
 

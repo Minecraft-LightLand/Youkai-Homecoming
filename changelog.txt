@@ -1,3 +1,6 @@
+2.3.4
+- Be compatible with Create 6.0
+
 2.3.3
 - Add Doremi Sweet spell card
 - Add Kisin Sagume spell card
