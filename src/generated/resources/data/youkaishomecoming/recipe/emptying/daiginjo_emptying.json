@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:daiginjo"
+    }
+  ],
+  "results": [
+    {
+      "item": {
+        "id": "minecraft:bowl"
+      }
+    },
+    {
+      "amount": 250,
+      "id": "youkaishomecoming:daiginjo"
+    }
+  ]
+}

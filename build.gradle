@@ -113,8 +113,12 @@ repositories {
     maven { // Registrate
         url "https://maven.ithundxr.dev/snapshots"
     }
+    maven { url = "https://maven.createmod.net" }
     maven {
         url = "https://maven.theillusivec4.top/"
+        content {
+            includeGroup "top.theillusivec4.curios"
+        }
     }
     maven {
         // Location of the maven for vazkii's mods
@@ -153,22 +157,28 @@ if (lljij.toBoolean()) {
 }
 
 dependencies {
-    implementation jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[${registrate_version},)")
+    compileOnly jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[${registrate_version},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${l2serial_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2modularblocks', version: "[${l2modularblocks_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2core', version: "[${l2core_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2itemselector', version: "[${l2itemselector_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${l2damagetracker_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'fast_projectile_api', version: "[${fast_projectile_api_ver},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'l2harvester', version: "[${l2harvester_ver},)")
 
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     implementation "curse.maven:farmers-delight-398521:5566383"
     implementation "curse.maven:better-advancements-272515:5511371"
     implementation "dev.xkmc:cuisinedelight:1.2.1-slim"
-    implementation "dev.xkmc:fruitsdelight:${fruitsdelight_ver}"
+    implementation "dev.xkmc:fruitsdelight:${fruitsdelight_ver}-slim"
+    compileOnly "curse.maven:thirst-was-taken-679270:5568715"
+    implementation "curse.maven:create-328085:6255497"
 
-    implementation "curse.maven:thirst-was-taken-679270:5568715"
+    compileOnly("com.simibubi.create:create-1.21.1:6.0.1-13") { transitive = false }
+    compileOnly("net.createmod.ponder:Ponder-NeoForge-1.21.1:1.0.39") { transitive = false }
+    compileOnly("dev.engine-room.flywheel:flywheel-neoforge-1.21.1:1.0.0-10")
 }
 
 

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:sparrow_sake"
+    }
+  ],
+  "results": [
+    {
+      "item": {
+        "id": "minecraft:bamboo"
+      }
+    },
+    {
+      "amount": 250,
+      "id": "youkaishomecoming:sparrow_sake"
+    }
+  ]
+}

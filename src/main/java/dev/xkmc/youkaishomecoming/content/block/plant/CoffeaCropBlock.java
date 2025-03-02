@@ -4,6 +4,8 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2core.serial.loot.LootHelper;
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.core.BlockPos;
@@ -32,10 +34,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
-public class CoffeaCropBlock extends DoubleCropBlock {
+public class CoffeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D),
@@ -88,6 +92,21 @@ public class CoffeaCropBlock extends DoubleCropBlock {
 		} else {
 			return super.useWithoutItem(state, level, pos, player, result);
 		}
+	}
+
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState state, BlockPos pos) {
+		BlockPos lower;
+		if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
+			lower = pos.below();
+			state = level.getBlockState(lower);
+			if (state.getBlock() != this) return null;
+		} else lower = pos;
+		if (state.getValue(AGE) < getMaxAge())
+			return null;
+		return new HarvestResult((l, p) -> setGrowth(l, lower, 8, 2), List.of(
+				new ItemStack(YHCrops.COFFEA.getFruits(), 1 + level.random.nextInt(2))
+		));
 	}
 
 	@Override

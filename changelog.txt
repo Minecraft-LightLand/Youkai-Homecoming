@@ -1,3 +1,6 @@
+3.0.6
+- Restore Create integration for harvester and recipes
+
 3.0.5
 - Fix Drunk effect
 - Allow any composition for composite blocks

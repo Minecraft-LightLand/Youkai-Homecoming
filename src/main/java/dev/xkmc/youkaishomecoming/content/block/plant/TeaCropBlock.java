@@ -4,6 +4,8 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2core.serial.loot.LootHelper;
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -32,10 +34,13 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
-public class TeaCropBlock extends DoubleCropBlock {
+public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 
 	private static final VoxelShape SMALL = Block.box(3, 0, 3, 13, 11, 13);
 
@@ -83,7 +88,7 @@ public class TeaCropBlock extends DoubleCropBlock {
 				int j = 1 + level.random.nextInt(2);
 				popResource(level, pos, new ItemStack(YHCrops.TEA.getFruits(), j));
 				if (level.random.nextInt(8) == 0) {
-					popResource(level, pos, new ItemStack(YHCrops.TEA.getSeed(), j));
+					popResource(level, pos, new ItemStack(YHCrops.TEA.getSeed(), 1));
 				}
 				level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
 						1.0F, 0.8F + level.random.nextFloat() * 0.4F);
@@ -95,6 +100,25 @@ public class TeaCropBlock extends DoubleCropBlock {
 		} else {
 			return super.useWithoutItem(state, level, pos, player, result);
 		}
+	}
+
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState state, BlockPos pos) {
+		BlockPos lower;
+		if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
+			lower = pos.below();
+			state = level.getBlockState(lower);
+			if (state.getBlock() != this) return null;
+		} else lower = pos;
+		if (state.getValue(AGE) < getMaxAge())
+			return null;
+		int j = 1 + level.random.nextInt(2);
+		List<ItemStack> list = new ArrayList<>();
+		list.add(new ItemStack(YHCrops.TEA.getFruits(), j));
+		if (level.random.nextInt(8) == 0) {
+			list.add(new ItemStack(YHCrops.TEA.getSeed(), 1));
+		}
+		return new HarvestResult((l, p) -> setGrowth(l, lower, 5, 2), list);
 	}
 
 	@Override

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:full_moons_eve"
+    }
+  ],
+  "results": [
+    {
+      "item": {
+        "id": "minecraft:bowl"
+      }
+    },
+    {
+      "amount": 250,
+      "id": "youkaishomecoming:full_moons_eve"
+    }
+  ]
+}

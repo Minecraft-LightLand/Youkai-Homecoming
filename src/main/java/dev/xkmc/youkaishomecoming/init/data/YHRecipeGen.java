@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
+import com.simibubi.create.Create;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -8,6 +9,7 @@ import dev.xkmc.fruitsdelight.init.food.FDFood;
 import dev.xkmc.fruitsdelight.init.food.FruitType;
 import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
 import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
+import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotOutput;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
@@ -757,6 +759,8 @@ public class YHRecipeGen {
 					.save(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
 
 		}
+
+		if (ModList.get().isLoaded(Create.ID)) CreateRecipeGen.onRecipeGen(pvd);
 
 	}
 
