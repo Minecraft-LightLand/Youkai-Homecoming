@@ -4,9 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
@@ -34,7 +32,14 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 			if (entity == null || entity == target) return false;
 			if (entity.isPassenger() || target.isPassenger()) {
 				if (entity.isPassengerOfSameVehicle(target)) {
-					return false;
+					boolean hostile = false;
+					if (target instanceof LivingEntity t && entity instanceof LivingEntity owner) {
+						hostile |= t.getLastHurtMob() == owner;
+						hostile |= owner.getLastHurtByMob() == t;
+						hostile |= t instanceof Mob tm && tm.getTarget() == owner;
+						hostile |= owner instanceof Mob om && om.getTarget() == t;
+					}
+					return hostile;
 				}
 			}
 			return !entity.isAlliedTo(target);
