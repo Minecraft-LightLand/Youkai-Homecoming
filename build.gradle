@@ -167,10 +167,10 @@ dependencies {
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:4599236")
 
-    implementation fg.deobf("curse.maven:touhou-little-maid-355044:5406149")
+    implementation fg.deobf("curse.maven:touhou-little-maid-355044:6266240")
 
     implementation fg.deobf("curse.maven:jade-324717:4654448")
-    implementation fg.deobf("curse.maven:create-328085:6247663")
+    implementation fg.deobf("curse.maven:create-328085:6255513")
     runtimeOnly fg.deobf("curse.maven:appleskin-248787:4605078")
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:4633797")
     runtimeOnly fg.deobf("curse.maven:spark-361579:4738952")

@@ -50,7 +50,7 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, I
 
 	public boolean castSpell(ItemStack stack, Player player, boolean consume, boolean cooldown) {
 		ItemStack ammo = !consume ? ItemStack.EMPTY : player.getProjectile(stack);
-		if (consume && !ammo.isEmpty())
+		if (consume && ammo.isEmpty())
 			return false;
 		LivingEntity target = RayTraceUtil.serverGetTarget(player);
 		if (target == null && requireTarget)
