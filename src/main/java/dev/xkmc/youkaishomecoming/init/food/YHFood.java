@@ -2,12 +2,14 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -63,8 +65,8 @@ public enum YHFood {
 	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
 			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
-	BUN(FoodType.SIMPLE, 8, 0.8f, DietTagGen.GRAINS.tag),
-	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	BUN(FoodType.SIMPLE, 8, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
+	OYAKI(FoodType.SIMPLE, 6, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
@@ -229,12 +231,12 @@ public enum YHFood {
 	;
 
 
-	public final ItemEntry<Item> item;
+	public final ItemEntry<Item> raw, item;
 
 	private final FoodType type;
 
 	@SafeVarargs
-	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+	YHFood(FoodType type, int nutrition, float sat, @Nullable String raw, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
 		String id = "food/simple/";
@@ -244,7 +246,28 @@ public enum YHFood {
 		if (ordinal() <= 16) id = "food/mochi/";
 		if (ordinal() <= 10) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
+		String rid = id + name;
+		if (raw == null) this.raw = null;
+		else this.raw = YoukaisHomecoming.REGISTRATE.item(raw, Item::new)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc(rid)))
+				.register();
 		item = type.build(id, name, nutrition, sat, tags, effs);
+	}
+
+	@SafeVarargs
+	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+		this(type, nutrition, sat, null, effs, tags);
+	}
+
+	@SafeVarargs
+	YHFood(FoodType type, int nutrition, float sat, EffectEntry eff, TagKey<Item>... tags) {
+		this(type, nutrition, sat, List.of(eff), tags);
+	}
+
+	@SafeVarargs
+	YHFood(FoodType type, int nutrition, float sat, String raw, TagKey<Item>... tags) {
+		this(type, nutrition, sat, raw, List.of(), tags);
+
 	}
 
 	@SafeVarargs
@@ -252,10 +275,6 @@ public enum YHFood {
 		this(type, nutrition, sat, List.of(), tags);
 	}
 
-	@SafeVarargs
-	YHFood(FoodType type, int nutrition, float sat, EffectEntry eff, TagKey<Item>... tags) {
-		this(type, nutrition, sat, List.of(eff), tags);
-	}
 
 	private boolean isFlesh() {
 		return type.isFlesh() || this == SCARLET_TEA;

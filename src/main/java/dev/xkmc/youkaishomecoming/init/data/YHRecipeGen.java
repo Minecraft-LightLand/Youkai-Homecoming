@@ -411,19 +411,19 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.KOISHI_MOUSSE.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.item.get(), 3, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.raw.get(), 3, 200, 0.1f)
 					.addIngredient(ForgeTags.DOUGH)
 					.addIngredient(ModTags.CABBAGE_ROLL_INGREDIENTS)
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.addIngredient(ForgeTags.VEGETABLES_ONION)
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.build(pvd, YHFood.BUN.item.getId());
+					.build(pvd, YHFood.BUN.raw.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OYAKI.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OYAKI.raw.get(), 1, 200, 0.1f)
 					.addIngredient(ForgeTags.DOUGH)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.addIngredient(Items.BROWN_MUSHROOM)
-					.build(pvd, YHFood.OYAKI.item.getId());
+					.build(pvd, YHFood.OYAKI.raw.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.PORK_RICE_BALL.item.get(), 1, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
@@ -879,6 +879,10 @@ public class YHRecipeGen {
 		// steam
 		{
 			steaming(pvd, DataIngredient.items(Items.POTATO), () -> Items.BAKED_POTATO);
+			steaming(pvd, DataIngredient.items(ModItems.CHICKEN_CUTS.get()), ModItems.COOKED_CHICKEN_CUTS);
+
+			steaming(pvd, DataIngredient.items(YHFood.BUN.raw.get()), YHFood.BUN.item);
+			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
 		}
 
 		// danmaku
