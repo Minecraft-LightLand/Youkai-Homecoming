@@ -1,3 +1,6 @@
+2.3.5
+- Fix Spell card item usage
+
 2.3.4
 - Be compatible with Create 6.0
 
@@ -5,6 +8,7 @@
 - Add Doremi Sweet spell card
 - Add Kisin Sagume spell card
 - Improve Youkai code
+
 
 2.3.2
 - Improve danmaku collision calculation to be able to hit hi-speed entities
@@ -17,7 +21,6 @@
 - Add wythers sakura forest to Shrine spawnable biome tag
 - Fix danmaku render flashing problem
 - Improve Reimu's Spell
-
 
 2.3.0
 - Fix scarlet mist brewing

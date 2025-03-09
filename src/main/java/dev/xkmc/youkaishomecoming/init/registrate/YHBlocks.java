@@ -29,6 +29,7 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -111,6 +112,12 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
+	public static final BlockEntry<DelegateBlock> STEAMER_POT;
+	public static final BlockEntry<DelegateBlock> STEAMER_RACK;
+	public static final BlockEntityEntry<SteamerBlockEntity> STEAMER_BE;
+	public static final RegistryEntry<RecipeType<SteamingRecipe>> STEAM_RT;
+	public static final RegistryEntry<RecipeSerializer<SteamingRecipe>> STEAM_RS;
+
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
 
@@ -165,6 +172,31 @@ public class YHBlocks {
 					.validBlock(FERMENT).renderer(() -> FermentationTankRenderer::new).register();
 			FERMENT_RT = YoukaisHomecoming.REGISTRATE.recipe("fermentation");
 			FERMENT_RS = reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
+
+		}
+
+		{
+			STEAMER_POT = YoukaisHomecoming.REGISTRATE.block("steamer_pot", p -> SteamerStates.createPotBlock())
+					.blockstate(SteamerBlockJsons::genPotModel)
+					.simpleItem()
+					.loot(SteamerBlockJsons::genPotLoot)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.register();
+
+			STEAMER_RACK = YoukaisHomecoming.REGISTRATE.block("steamer_rack", p -> SteamerStates.createRackBlock())
+					.blockstate(SteamerBlockJsons::genRackModel)
+					.simpleItem()
+					.loot(SteamerBlockJsons::genRackLoot)
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			STEAMER_BE = YoukaisHomecoming.REGISTRATE.blockEntity("steamer", SteamerBlockEntity::new)
+					.renderer(() -> SteamerBlockRenderer::new)
+					.validBlocks(STEAMER_POT, STEAMER_RACK)
+					.register();
+
+			STEAM_RT = YoukaisHomecoming.REGISTRATE.recipe("drying_rack");
+			STEAM_RS = reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
 
 		}
 
