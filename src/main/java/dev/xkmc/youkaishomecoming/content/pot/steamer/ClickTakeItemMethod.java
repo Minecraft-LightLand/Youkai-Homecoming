@@ -1,12 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
-import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,11 +20,11 @@ public class ClickTakeItemMethod implements OnClickBlockMethod {
 		if (!(level.getBlockEntity(pos) instanceof SteamerBlockEntity be)) return InteractionResult.PASS;
 		ItemStack stack = player.getItemInHand(hand);
 		if (!stack.isEmpty() && !player.isShiftKeyDown()) return InteractionResult.PASS;
-		int y = (int) ((hit.getLocation().y() + 128 - 1e-3) % 1 * 4);
+		int y = RackInfo.ofY(hit);
 		if (info.pot()) y -= 2;
 		if (y < 0 || y >= be.racks.size()) return InteractionResult.PASS;
 		var rack = be.racks.get(y);
-		if (hit.getDirection() == Direction.UP) {
+		if (hit.getDirection() == Direction.UP && !RackInfo.isCapped(level, pos)) {
 			if (rack.tryTakeItemAt(be, level, hit.getLocation(), player, hand)) {
 				return InteractionResult.SUCCESS;
 			}

@@ -6,6 +6,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-public record TileTooltip(List<ItemStack> items, List<FluidStack> fluids) implements TooltipComponent {
+public record TileTooltip(List<ItemStack> items, List<FluidStack> fluids, int w, int h) implements TooltipComponent {
 
 }

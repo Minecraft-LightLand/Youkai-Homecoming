@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.overlay;
 import dev.xkmc.l2library.base.overlay.OverlayUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTextTooltip;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -23,7 +24,7 @@ public class TileInfoDisplay implements IGuiOverlay {
 		if (!(hit instanceof BlockHitResult bhit)) return;
 		if (!(level.getBlockEntity(bhit.getBlockPos()) instanceof InfoTile tile)) return;
 		new ImageBox(g, (int) (sw * 0.7), (int) (sh * 0.5), 0)
-				.render(tile);
+				.render(tile, Screen.hasShiftDown(), bhit);
 	}
 
 	public static class ImageBox extends OverlayUtil {
@@ -32,10 +33,10 @@ public class TileInfoDisplay implements IGuiOverlay {
 			super(g, x0, y0, maxW);
 		}
 
-		public void render(InfoTile tile) {
+		public void render(InfoTile tile, boolean shift, BlockHitResult hit) {
 			List<ClientTooltipComponent> tooltip = new ArrayList<>();
-			tooltip.add(new TileClientTooltip(tile.getImage()));
-			for (var e : tile.lines()) {
+			tooltip.add(new TileClientTooltip(tile.getImage(shift, hit)));
+			for (var e : tile.lines(shift, hit)) {
 				tooltip.add(new ClientTextTooltip(e.getVisualOrderText()));
 			}
 			renderTooltipInternal(Minecraft.getInstance().font, tooltip);

@@ -11,10 +11,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 
-import static dev.xkmc.youkaishomecoming.content.pot.steamer.SteamerStates.POT_RACKS;
-import static dev.xkmc.youkaishomecoming.content.pot.steamer.SteamerStates.RACKS;
+import static dev.xkmc.youkaishomecoming.content.pot.steamer.SteamerStates.*;
 
 public class SteamerBlockJsons {
 
@@ -30,24 +30,41 @@ public class SteamerBlockJsons {
 				.texture("bottom", pvd.modLoc("block/steamer_pot_bottom"))
 				.renderType("cutout");
 
+		var r2 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_rack_2"));
+		var r3 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_rack_3"));
+		var c2 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_lid_2"));
+		var c3 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_lid_3"));
+
 		for (int d = 0; d < 4; d++) {
 			var dir = Direction.from2DDataValue(d);
 			builder.part().rotationY((int) dir.toYRot()).modelFile(pot).addModel()
 					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
-			var r2 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_rack_2"));
-			var r3 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_rack_3"));
 			builder.part().rotationY((int) dir.toYRot()).modelFile(r2).addModel()
 					.condition(POT_RACKS, 1, 2)
 					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
 			builder.part().rotationY((int) dir.toYRot()).modelFile(r3).addModel()
 					.condition(POT_RACKS, 2)
 					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+			builder.part().rotationY((int) dir.toYRot()).modelFile(c2).addModel()
+					.condition(POT_RACKS, 0).condition(CAPPED, true)
+					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+			builder.part().rotationY((int) dir.toYRot()).modelFile(c3).addModel()
+					.condition(POT_RACKS, 1).condition(CAPPED, true)
+					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
 		}
 	}
 
-
 	public static void genRackModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var builder = pvd.getMultipartBuilder(ctx.get());
+		BlockModelBuilder[] caps = new BlockModelBuilder[4];
+		for (int h = 0; h < 4; h++) {
+			String id = "steamer_lid" + (h == 0 ? "" : "_" + h);
+			caps[h] = pvd.models().getBuilder(id)
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/steamer_lid_" + h)))
+					.texture("lid", pvd.modLoc("block/steamer_lid"))
+					.texture("handle", pvd.modLoc("block/steamer_lid_handle"))
+					.renderType("cutout");
+		}
 		for (int h = 0; h < 4; h++) {
 			String id = "steamer_rack" + (h == 0 ? "" : "_" + h);
 			var rack = pvd.models().getBuilder(id)
@@ -66,6 +83,11 @@ public class SteamerBlockJsons {
 				builder.part().rotationY((int) dir.toYRot()).modelFile(rack).addModel()
 						.condition(RACKS, VALS[h])
 						.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+				if (h < 3) {
+					builder.part().rotationY((int) dir.toYRot()).modelFile(caps[h + 1]).addModel()
+							.condition(RACKS, h + 1).condition(CAPPED, true)
+							.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+				}
 			}
 		}
 	}
@@ -80,6 +102,9 @@ public class SteamerBlockJsons {
 				.withPool(LootPool.lootPool()
 						.add(LootTableTemplate.getItem(YHBlocks.STEAMER_RACK.asItem(), 2))
 						.when(LootTableTemplate.withBlockState(block, POT_RACKS, 2)))
+				.withPool(LootPool.lootPool()
+						.add(LootTableTemplate.getItem(YHBlocks.STEAMER_LID.asItem(), 1))
+						.when(LootTableTemplate.withBlockState(block, CAPPED, true)))
 		);
 	}
 
@@ -97,6 +122,15 @@ public class SteamerBlockJsons {
 				.withPool(LootPool.lootPool()
 						.add(LootTableTemplate.getItem(YHBlocks.STEAMER_RACK.asItem(), 4))
 						.when(LootTableTemplate.withBlockState(block, RACKS, 4)))
+				.withPool(LootPool.lootPool()
+						.add(LootTableTemplate.getItem(YHBlocks.STEAMER_LID.asItem(), 1))
+						.when(LootTableTemplate.withBlockState(block, CAPPED, true)))
 		);
 	}
+
+	public static void genLidModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
+		var cap = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_lid"));
+		pvd.horizontalBlock(ctx.get(), cap);
+	}
+
 }

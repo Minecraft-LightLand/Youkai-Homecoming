@@ -19,6 +19,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -134,8 +135,8 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 	}
 
 	@Override
-	public TileTooltip getImage() {
-		return new TileTooltip(items.getAsList(), fluids.getAsList());
+	public TileTooltip getImage(boolean shift, BlockHitResult hit) {
+		return new TileTooltip(items.getAsList(), fluids.getAsList(), 3, 3);
 	}
 
 	public float inProgress() {
@@ -143,7 +144,7 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 	}
 
 	@Override
-	public List<Component> lines() {
+	public List<Component> lines(boolean shift, BlockHitResult hit) {
 		float progress = inProgress();
 		if (totalTime <= 0) {
 			return List.of();

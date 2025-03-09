@@ -10,10 +10,12 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-public record TileClientTooltip(List<ItemStack> items, List<FluidStack> fluids) implements ClientTooltipComponent {
+public record TileClientTooltip(
+		List<ItemStack> items, List<FluidStack> fluids,
+		int width, int height) implements ClientTooltipComponent {
 
 	public TileClientTooltip(TileTooltip inv) {
-		this(inv.items(), inv.fluids());
+		this(inv.items(), inv.fluids(), inv.w(), inv.h());
 	}
 
 	private int size() {
@@ -21,15 +23,15 @@ public record TileClientTooltip(List<ItemStack> items, List<FluidStack> fluids) 
 	}
 
 	public int getHeight() {
-		return 3 * 18 + 2;
+		return height * 18 + 2;
 	}
 
 	public int getWidth(Font font) {
-		return 3 * 18 + 2;
+		return width * 18 + 2;
 	}
 
 	public void renderImage(Font font, int mx, int my, GuiGraphics g) {
-		int w = (int) Math.ceil(Math.sqrt(size()));
+		int w = width;
 		int n = 0;
 		for (ItemStack stack : items) {
 			if (stack.isEmpty()) continue;

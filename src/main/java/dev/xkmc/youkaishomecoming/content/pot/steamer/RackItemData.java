@@ -87,4 +87,8 @@ public class RackItemData {
 		}
 	}
 
+	public boolean mayExtract() {
+		return !stack.isEmpty() && id == null && !dirty;
+	}
+
 }

@@ -28,6 +28,26 @@
     },
     {
       "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2"
+      },
+      "when": {
+        "capped": "true",
+        "facing": "south",
+        "pot_racks": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3"
+      },
+      "when": {
+        "capped": "true",
+        "facing": "south",
+        "pot_racks": "1"
+      }
+    },
+    {
+      "apply": {
         "model": "youkaishomecoming:block/steamer_pot",
         "y": 90
       },
@@ -53,6 +73,28 @@
       "when": {
         "facing": "west",
         "pot_racks": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2",
+        "y": 90
+      },
+      "when": {
+        "capped": "true",
+        "facing": "west",
+        "pot_racks": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3",
+        "y": 90
+      },
+      "when": {
+        "capped": "true",
+        "facing": "west",
+        "pot_racks": "1"
       }
     },
     {
@@ -86,6 +128,28 @@
     },
     {
       "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2",
+        "y": 180
+      },
+      "when": {
+        "capped": "true",
+        "facing": "north",
+        "pot_racks": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3",
+        "y": 180
+      },
+      "when": {
+        "capped": "true",
+        "facing": "north",
+        "pot_racks": "1"
+      }
+    },
+    {
+      "apply": {
         "model": "youkaishomecoming:block/steamer_pot",
         "y": 270
       },
@@ -111,6 +175,28 @@
       "when": {
         "facing": "east",
         "pot_racks": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2",
+        "y": 270
+      },
+      "when": {
+        "capped": "true",
+        "facing": "east",
+        "pot_racks": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3",
+        "y": 270
+      },
+      "when": {
+        "capped": "true",
+        "facing": "east",
+        "pot_racks": "1"
       }
     }
   ]

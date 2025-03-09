@@ -876,6 +876,11 @@ public class YHRecipeGen {
 
 		}
 
+		// steam
+		{
+			steaming(pvd, DataIngredient.items(Items.POTATO), () -> Items.BAKED_POTATO);
+		}
+
 		// danmaku
 		{
 			for (var e : DyeColor.values()) {
@@ -1007,6 +1012,10 @@ public class YHRecipeGen {
 
 	private static void drying(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out) {
 		cooking(pvd, in, RecipeCategory.MISC, out, 0, 200, "drying", YHBlocks.RACK_RS.get());
+	}
+
+	private static void steaming(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out) {
+		cooking(pvd, in, RecipeCategory.MISC, out, 0, 200, "steaming", YHBlocks.STEAM_RS.get());
 	}
 
 	public static <T extends ItemLike> void cooking(RegistrateRecipeProvider pvd, DataIngredient source, RecipeCategory category, Supplier<? extends T> result, float experience, int cookingTime, String typeName, RecipeSerializer<? extends AbstractCookingRecipe> serializer) {

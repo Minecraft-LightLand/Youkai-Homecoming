@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import dev.xkmc.youkaishomecoming.util.FluidRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -21,6 +22,9 @@ public class SteamerBlockRenderer implements BlockEntityRenderer<SteamerBlockEnt
 	@Override
 	public void render(SteamerBlockEntity be, float pTick, PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
 		RackInfo info = RackInfo.getRackInfo(be.getBlockState());
+		if (info.pot() && be.getBlockState().getValue(SteamerStates.WATER)) {
+			FluidRenderer.renderWaterBox(4 / 16f, 1 / 16f, 4 / 16f, 12 / 16f, 8.01f / 16f, 12 / 16f, buffer, pose, light, 0);
+		}
 		if (info.racks() == 0 || be.racks.isEmpty() || info.racks() > be.racks.size()) return;
 		RackData rack = be.racks.get(info.racks() - 1);
 		int i = (int) be.getBlockPos().asLong();

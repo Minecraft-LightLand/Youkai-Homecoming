@@ -1,9 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -57,7 +59,7 @@ public class RackData {
 		return tryAddItemAt(be, level, stack, getIndex(hit));
 	}
 
-	private boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, int index) {
+	protected boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, int index) {
 		if (index < 0 || index >= 4) return false;
 		var item = list[index];
 		if (item != null && !item.stack.isEmpty()) return false;
@@ -70,7 +72,7 @@ public class RackData {
 	}
 
 	public boolean tryTakeItem(SteamerBlockEntity be, Level level, Player player, InteractionHand hand) {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 3; i >= 0; i--) {
 			if (tryTakeItemAt(be, level, i, player, hand))
 				return true;
 		}
@@ -81,8 +83,7 @@ public class RackData {
 		return tryTakeItemAt(be, level, getIndex(hit), player, hand);
 	}
 
-
-	public boolean tryTakeItemAt(SteamerBlockEntity be, Level level, int index, Player player, InteractionHand hand) {
+	protected boolean tryTakeItemAt(SteamerBlockEntity be, Level level, int index, Player player, InteractionHand hand) {
 		if (index < 0 || index >= 4) return false;
 		var item = list[index];
 		if (item == null || item.stack.isEmpty()) return false;
@@ -95,6 +96,13 @@ public class RackData {
 			item.setStack(be, ItemStack.EMPTY);
 		}
 		return true;
+	}
+
+	public static boolean isValid(Level level, ItemStack stack) {
+		if (stack.getFoodProperties(null) != null) return true;
+		var cont = new SimpleContainer(1);
+		cont.setItem(0, stack);
+		return level.getRecipeManager().getRecipeFor(YHBlocks.STEAM_RT.get(), cont, level).isPresent();
 	}
 
 	private static int getIndex(Vec3 hit) {

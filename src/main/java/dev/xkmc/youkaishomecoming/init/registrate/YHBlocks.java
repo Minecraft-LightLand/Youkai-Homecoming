@@ -114,6 +114,7 @@ public class YHBlocks {
 
 	public static final BlockEntry<DelegateBlock> STEAMER_POT;
 	public static final BlockEntry<DelegateBlock> STEAMER_RACK;
+	public static final BlockEntry<DelegateBlock> STEAMER_LID;
 	public static final BlockEntityEntry<SteamerBlockEntity> STEAMER_BE;
 	public static final RegistryEntry<RecipeType<SteamingRecipe>> STEAM_RT;
 	public static final RegistryEntry<RecipeSerializer<SteamingRecipe>> STEAM_RS;
@@ -187,6 +188,13 @@ public class YHBlocks {
 					.blockstate(SteamerBlockJsons::genRackModel)
 					.simpleItem()
 					.loot(SteamerBlockJsons::genRackLoot)
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			STEAMER_LID = YoukaisHomecoming.REGISTRATE.block("steamer_lid", p -> SteamerStates.createLidBlock())
+					.blockstate(SteamerBlockJsons::genLidModel)
+					.simpleItem()
+					.defaultLoot()
 					.tag(BlockTags.MINEABLE_WITH_AXE)
 					.register();
 
