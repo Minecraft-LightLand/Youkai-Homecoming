@@ -42,7 +42,7 @@ public class SteamerBlockJsons {
 			builder.part().rotationY((int) dir.toYRot()).modelFile(r2).addModel()
 					.condition(POT_RACKS, 1, 2)
 					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
-			builder.part().rotationY((int) dir.toYRot()).modelFile(r3).addModel()
+			builder.part().rotationY(((int) dir.toYRot() + 180) % 360).modelFile(r3).addModel()
 					.condition(POT_RACKS, 2)
 					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
 			builder.part().rotationY((int) dir.toYRot()).modelFile(c2).addModel()
@@ -80,7 +80,7 @@ public class SteamerBlockJsons {
 
 			for (int d = 0; d < 4; d++) {
 				var dir = Direction.from2DDataValue(d);
-				builder.part().rotationY((int) dir.toYRot()).modelFile(rack).addModel()
+				builder.part().rotationY(((int) dir.toYRot() + 180 * h) % 360).modelFile(rack).addModel()
 						.condition(RACKS, VALS[h])
 						.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
 				if (h < 3) {

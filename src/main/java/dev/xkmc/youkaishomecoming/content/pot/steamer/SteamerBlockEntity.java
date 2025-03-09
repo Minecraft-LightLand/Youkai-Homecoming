@@ -39,7 +39,8 @@ import java.util.List;
 public class SteamerBlockEntity extends BaseBlockEntity
 		implements BlockContainer, TickableBlockEntity, BaseContainerListener, HeatableBlockEntity, InfoTile {
 
-	private static final int MAX_STACK = 5;
+	public static final int OUTPUT_RATE = 20;
+	public static final int MAX_STACK = 5;
 
 	@SerialClass.SerialField
 	public final List<RackData> racks = new ArrayList<>();
@@ -106,6 +107,7 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		var last = allRacks.get(allRacks.size() - 1);
 		if (RackInfo.isCapped(level, last.getFirst().getBlockPos()))
 			last.getSecond().downwardHeat = last.getSecond().upwardHeat;
+		else last.getSecond().downwardHeat = 0;
 		for (int i = allRacks.size() - 1; i > 0; i--) {
 			var hi = allRacks.get(i);
 			var lo = allRacks.get(i - 1);
@@ -113,8 +115,8 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		}
 		var first = allRacks.get(0);
 		if (getBlockState().getValue(SteamerStates.WATER) && isHeated(level, getBlockPos())) {
-			first.getSecond().upwardHeat = 20;
-		}
+			first.getSecond().upwardHeat = OUTPUT_RATE;
+		} else first.getSecond().upwardHeat = 0;
 		for (var e : allRacks) {
 			e.getSecond().tick(e.getFirst(), level);
 		}

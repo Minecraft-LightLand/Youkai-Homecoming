@@ -16,6 +16,8 @@ import net.minecraft.world.phys.Vec3;
 @SerialClass
 public class RackData {
 
+	public static final double UPWARD_EFF = 0.01, DOWNWARD_EFF = 0.05;
+
 	@SerialClass.SerialField
 	public final RackItemData[] list = new RackItemData[4];
 
@@ -28,13 +30,13 @@ public class RackData {
 	public void tick(SteamerBlockEntity be, Level level) {
 		int count = 0;
 		for (var e : list) {
-			double heat = upwardHeat * 0.01 + downwardHeat * 0.05;
+			double heat = upwardHeat * UPWARD_EFF + downwardHeat * DOWNWARD_EFF;
 			if (e != null && e.tick(be, level, heat)) {
 				count++;
 			}
 		}
-		upwardHeat -= count * 0.01;
-		downwardHeat -= count * 0.05;
+		upwardHeat -= count * UPWARD_EFF;
+		downwardHeat -= count * DOWNWARD_EFF;
 	}
 
 	public void popItems(Level level, BlockPos pos, int height) {

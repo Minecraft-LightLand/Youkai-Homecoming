@@ -19,7 +19,8 @@
     },
     {
       "apply": {
-        "model": "youkaishomecoming:block/steamer_rack_3"
+        "model": "youkaishomecoming:block/steamer_rack_3",
+        "y": 180
       },
       "when": {
         "facing": "south",
@@ -68,7 +69,7 @@
     {
       "apply": {
         "model": "youkaishomecoming:block/steamer_rack_3",
-        "y": 90
+        "y": 270
       },
       "when": {
         "facing": "west",
@@ -118,8 +119,7 @@
     },
     {
       "apply": {
-        "model": "youkaishomecoming:block/steamer_rack_3",
-        "y": 180
+        "model": "youkaishomecoming:block/steamer_rack_3"
       },
       "when": {
         "facing": "north",
@@ -170,7 +170,7 @@
     {
       "apply": {
         "model": "youkaishomecoming:block/steamer_rack_3",
-        "y": 270
+        "y": 90
       },
       "when": {
         "facing": "east",
