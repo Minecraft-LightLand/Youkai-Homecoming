@@ -411,20 +411,6 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.KOISHI_MOUSSE.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUN.raw.get(), 3, 200, 0.1f)
-					.addIngredient(ForgeTags.DOUGH)
-					.addIngredient(ModTags.CABBAGE_ROLL_INGREDIENTS)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
-					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.build(pvd, YHFood.BUN.raw.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OYAKI.raw.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.DOUGH)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.build(pvd, YHFood.OYAKI.raw.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.PORK_RICE_BALL.item.get(), 1, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(ForgeTags.RAW_PORK)
@@ -881,7 +867,25 @@ public class YHRecipeGen {
 			steaming(pvd, DataIngredient.items(Items.POTATO), () -> Items.BAKED_POTATO);
 			steaming(pvd, DataIngredient.items(ModItems.CHICKEN_CUTS.get()), ModItems.COOKED_CHICKEN_CUTS);
 
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.BUN.raw.get(), 4)::unlockedBy, Items.WHEAT)
+					.requires(ForgeTags.DOUGH)
+					.requires(ForgeTags.DOUGH)
+					.requires(ModTags.CABBAGE_ROLL_INGREDIENTS)
+					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.requires(ForgeTags.VEGETABLES_ONION)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.save(pvd);
+
 			steaming(pvd, DataIngredient.items(YHFood.BUN.raw.get()), YHFood.BUN.item);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.OYAKI.raw.get(), 4)::unlockedBy, Items.WHEAT)
+					.requires(ForgeTags.DOUGH)
+					.requires(ForgeTags.DOUGH)
+					.requires(ForgeTags.VEGETABLES)
+					.requires(Items.BROWN_MUSHROOM)
+					.save(pvd);
+
 			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
 		}
 

@@ -1,8 +1,10 @@
 {
-  "type": "farmersdelight:cooking",
-  "cookingtime": 200,
-  "experience": 0.1,
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
+    {
+      "tag": "forge:dough"
+    },
     {
       "tag": "forge:dough"
     },
@@ -14,6 +16,7 @@
     }
   ],
   "result": {
-    "item": "youkaishomecoming:oyaki"
+    "count": 4,
+    "item": "youkaishomecoming:raw_oyaki"
   }
 }

@@ -246,7 +246,7 @@ public enum YHFood {
 		if (ordinal() <= 16) id = "food/mochi/";
 		if (ordinal() <= 10) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
-		String rid = id + name;
+		String rid = "item/" + id + name;
 		if (raw == null) this.raw = null;
 		else this.raw = YoukaisHomecoming.REGISTRATE.item(raw, Item::new)
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc(rid)))
