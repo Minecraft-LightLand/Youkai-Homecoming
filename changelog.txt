@@ -1,3 +1,6 @@
+3.0.7
+- Fix compatibility with mods bypassing NeoForge damage pipeline
+
 3.0.6
 - Restore Create integration for harvester and recipes
 
