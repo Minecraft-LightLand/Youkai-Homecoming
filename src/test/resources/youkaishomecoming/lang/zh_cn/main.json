@@ -8,14 +8,16 @@
 		"item_laser": "激光",
 		"frozen_frog": "冻青蛙",
 		"fairy_ice_crystal": "妖精冰晶",
-		"dining_chair": "板凳"
+		"dining_chair": "板凳",
+		"shooter": "子机"
 	},
 	"youkaishomecoming": {
 		"jei": {
 			"kettle": "泡茶",
 			"moka": "泡咖啡",
 			"rack": "晒干",
-			"ferment": "发酵"
+			"ferment": "发酵",
+			"steam": "蒸"
 		},
 		"tooltip": {
 			"chance": " %2$s%%概率获得%1$s",

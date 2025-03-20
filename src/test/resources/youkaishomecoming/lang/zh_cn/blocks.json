@@ -1,147 +1,150 @@
 {
-  "block.youkaishomecoming": {
-	"redbean": "红豆",
-	"soybean": "黄豆",
-	"wild_redbean": "野生红豆",
-	"wild_soybean": "野生黄豆",
-	"saucer": "碟子",
-	"pastitsio": "地中海千层面",
-	"stinky_tofu": "臭豆腐",
-	"sauce_grilled_fish": "酱烧鱼",
-	"bamboo_mizuyokan": "竹筒水羊羹",
-	"blood_curd": "毛血旺",
-	"dried_fish": "小鱼干",
-	"imitation_bear_paw": "赛熊掌",
-	"tofu_burger": "豆腐汉堡",
-	"flesh_feast": "%1$s宴",
-	"red_velvet_cake": "红丝绒蛋糕",
-	"redbean_bag": "袋装红豆",
-	"soybean_bag": "袋装黄豆",
-	"coffea": "咖啡树",
-	"coffee_bean_bag": "袋装咖啡豆",
-	"wild_coffea": "野生咖啡树",
-	"black_tea_bag": "袋装红茶",
-	"green_tea_bag": "袋装绿茶",
-	"oolong_tea_bag": "袋装乌龙茶",
-	"white_tea_bag": "袋装白茶",
-	"tea": "茶树",
-	"wild_tea": "野生茶树",
-	"tarte_lune": "月亮派",
-	"kettle": "茶壶",
-	"moka_pot": "摩卡壶",
-	"moka_kit": "摩卡壶套件",
-	"drying_rack": "晒干架",
-	"mandrake": "曼德拉草",
-	"seven_colored_yokan": "七色羊羹",
-	"udumbara": "幻昙华",
-	"wild_mandrake": "野生曼德拉草",
-	"wild_udumbara": "野生幻昙华",
-	"chest_of_heart_throbbing_surprise": "惊吓盒子",
-	"heart_throbbing_surprise": "惊吓大冒险",
-	"tea_leaf_bag": "茶叶袋",
-	"fermentation_tank": "发酵桶",
-	"donation_box": "赛钱箱",
-	"fine_grid_framed_shoji": "细木框日式障子门",
-	"moon_lantern": "幻月灯"
-  },
-  "-cartesian": {
-	"candles": {
-	  "path": "block.youkaishomecoming",
-	  "list": [
-		{
-		  "": "",
-		  "black": "黑色",
-		  "blue": "蓝色",
-		  "brown": "棕色",
-		  "cyan": "青色",
-		  "gray": "灰色",
-		  "green": "绿色",
-		  "light_blue": "淡蓝色",
-		  "light_gray": "淡灰色",
-		  "lime": "黄绿色",
-		  "magenta": "品红色",
-		  "orange": "橙色",
-		  "pink": "粉红色",
-		  "purple": "紫色",
-		  "red": "红色",
-		  "white": "白色",
-		  "yellow": "黄色"
-		},
-		{
-		  "red_velvet": "红丝绒"
-		},
-		{
-		  "candle_cake": "蜡烛蛋糕"
-		}
-	  ]
+	"block.youkaishomecoming": {
+		"redbean": "红豆",
+		"soybean": "黄豆",
+		"wild_redbean": "野生红豆",
+		"wild_soybean": "野生黄豆",
+		"saucer": "碟子",
+		"pastitsio": "地中海千层面",
+		"stinky_tofu": "臭豆腐",
+		"sauce_grilled_fish": "酱烧鱼",
+		"bamboo_mizuyokan": "竹筒水羊羹",
+		"blood_curd": "毛血旺",
+		"dried_fish": "小鱼干",
+		"imitation_bear_paw": "赛熊掌",
+		"tofu_burger": "豆腐汉堡",
+		"flesh_feast": "%1$s宴",
+		"red_velvet_cake": "红丝绒蛋糕",
+		"redbean_bag": "袋装红豆",
+		"soybean_bag": "袋装黄豆",
+		"coffea": "咖啡树",
+		"coffee_bean_bag": "袋装咖啡豆",
+		"wild_coffea": "野生咖啡树",
+		"black_tea_bag": "袋装红茶",
+		"green_tea_bag": "袋装绿茶",
+		"oolong_tea_bag": "袋装乌龙茶",
+		"white_tea_bag": "袋装白茶",
+		"tea": "茶树",
+		"wild_tea": "野生茶树",
+		"tarte_lune": "月亮派",
+		"kettle": "茶壶",
+		"moka_pot": "摩卡壶",
+		"moka_kit": "摩卡壶套件",
+		"drying_rack": "晒干架",
+		"mandrake": "曼德拉草",
+		"seven_colored_yokan": "七色羊羹",
+		"udumbara": "幻昙华",
+		"wild_mandrake": "野生曼德拉草",
+		"wild_udumbara": "野生幻昙华",
+		"chest_of_heart_throbbing_surprise": "惊吓盒子",
+		"heart_throbbing_surprise": "惊吓大冒险",
+		"tea_leaf_bag": "茶叶袋",
+		"fermentation_tank": "发酵桶",
+		"donation_box": "赛钱箱",
+		"fine_grid_framed_shoji": "细木框日式障子门",
+		"moon_lantern": "幻月灯",
+		"steamer_lid": "蒸笼盖",
+		"steamer_pot": "蒸锅",
+		"steamer_rack": "蒸笼"
 	},
-	"wood_type": {
-	  "path": "block.youkaishomecoming",
-	  "list": [
-		{
-		  "oak": "橡木",
-		  "spruce": "云杉",
-		  "birch": "白桦",
-		  "jungle": "丛林",
-		  "acacia": "金合欢",
-		  "dark_oak": "深色橡木",
-		  "cherry": "樱花",
-		  "mangrove": "红树",
-		  "bamboo": "竹",
-		  "crimson": "绯红木",
-		  "warped": "诡异手"
+	"-cartesian": {
+		"candles": {
+			"path": "block.youkaishomecoming",
+			"list": [
+				{
+					"": "",
+					"black": "黑色",
+					"blue": "蓝色",
+					"brown": "棕色",
+					"cyan": "青色",
+					"gray": "灰色",
+					"green": "绿色",
+					"light_blue": "淡蓝色",
+					"light_gray": "淡灰色",
+					"lime": "黄绿色",
+					"magenta": "品红色",
+					"orange": "橙色",
+					"pink": "粉红色",
+					"purple": "紫色",
+					"red": "红色",
+					"white": "白色",
+					"yellow": "黄色"
+				},
+				{
+					"red_velvet": "红丝绒"
+				},
+				{
+					"candle_cake": "蜡烛蛋糕"
+				}
+			]
 		},
-		{
-		  "handrail": "扶手",
-		  "dining_table": "餐桌",
-		  "dining_chair": "板凳"
-		}
-	  ]
-	},
-	"wood_set": {
-	  "path": "block.youkaishomecoming",
-	  "list": [
-		{
-		  "hay": "干草",
-		  "straw": "稻草"
+		"wood_type": {
+			"path": "block.youkaishomecoming",
+			"list": [
+				{
+					"oak": "橡木",
+					"spruce": "云杉",
+					"birch": "白桦",
+					"jungle": "丛林",
+					"acacia": "金合欢",
+					"dark_oak": "深色橡木",
+					"cherry": "樱花",
+					"mangrove": "红树",
+					"bamboo": "竹",
+					"crimson": "绯红木",
+					"warped": "诡异手"
+				},
+				{
+					"handrail": "扶手",
+					"dining_table": "餐桌",
+					"dining_chair": "板凳"
+				}
+			]
 		},
-		{
-		  "stairs": "楼梯",
-		  "slab": "台阶",
-		  "trap_door": "活板门",
-		  "vertical_slab": "墙"
-		}
-	  ]
-	},
-	"sikkui": {
-	  "path": "block.youkaishomecoming",
-	  "list": [
-		{
-		  "sikkui": "日式灰泥",
-		  "framed_sikkui": "木框日式灰泥",
-		  "cross_framed_sikkui": "十字木框日式灰泥",
-		  "grid_framed_sikkui": "井字木框日式灰泥",
-		  "fine_grid_framed_sikkui": "细木框日式灰泥"
+		"wood_set": {
+			"path": "block.youkaishomecoming",
+			"list": [
+				{
+					"hay": "干草",
+					"straw": "稻草"
+				},
+				{
+					"stairs": "楼梯",
+					"slab": "台阶",
+					"trap_door": "活板门",
+					"vertical_slab": "墙"
+				}
+			]
 		},
-		{
-		  "*": "",
-		  "*_trap_door": "活板门"
-		}
-	  ]
-	},
-	"sikkui_full": {
-	  "path": "block.youkaishomecoming",
-	  "list": [
-		{
-		  "sikkui": "日式灰泥",
-		  "cross_framed_sikkui": "十字木框日式灰泥"
+		"sikkui": {
+			"path": "block.youkaishomecoming",
+			"list": [
+				{
+					"sikkui": "日式灰泥",
+					"framed_sikkui": "木框日式灰泥",
+					"cross_framed_sikkui": "十字木框日式灰泥",
+					"grid_framed_sikkui": "井字木框日式灰泥",
+					"fine_grid_framed_sikkui": "细木框日式灰泥"
+				},
+				{
+					"*": "",
+					"*_trap_door": "活板门"
+				}
+			]
 		},
-		{
-		  "stairs": "楼梯",
-		  "slab": "台阶",
-		  "vertical_slab": "墙"
+		"sikkui_full": {
+			"path": "block.youkaishomecoming",
+			"list": [
+				{
+					"sikkui": "日式灰泥",
+					"cross_framed_sikkui": "十字木框日式灰泥"
+				},
+				{
+					"stairs": "楼梯",
+					"slab": "台阶",
+					"vertical_slab": "墙"
+				}
+			]
 		}
-	  ]
 	}
-  }
 }
