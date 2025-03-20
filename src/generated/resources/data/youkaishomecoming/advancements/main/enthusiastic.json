@@ -481,6 +481,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:mantou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mantou"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:mapo_tofu": {
       "conditions": {
         "item": {
@@ -1184,6 +1194,9 @@
     ],
     [
       "youkaishomecoming:koishi_mousse"
+    ],
+    [
+      "youkaishomecoming:mantou"
     ],
     [
       "youkaishomecoming:bun"

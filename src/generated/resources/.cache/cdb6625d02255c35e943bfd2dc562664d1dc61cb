@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-10T08:04:45.782917	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-03-12T15:17:30.244495	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -119,8 +119,8 @@ af5031e60c1b4c4666bfdceb02daf51a1b092320 assets/youkaishomecoming/blockstates/wi
 7e7833f6237c2b01c225fa7ea9561350cdf980ac assets/youkaishomecoming/blockstates/wild_tea.json
 8a2e2f2c22f137800a6c7802c573bd6cc6108c59 assets/youkaishomecoming/blockstates/wild_udumbara.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
-15c7171172362211c98de3d69d571d900fbf1c2e assets/youkaishomecoming/lang/en_ud.json
-8afb3894115e78b5aaa38e807c2e244280699119 assets/youkaishomecoming/lang/en_us.json
+fd52eff9bfdc4d896279df7c3e93c578f8348532 assets/youkaishomecoming/lang/en_ud.json
+e3029ba7c09cb7e25e01aa7990761141e3796704 assets/youkaishomecoming/lang/en_us.json
 f79043556d727f8513b4cc3398abb5193f3708f9 assets/youkaishomecoming/models/block/acacia_dining_chair.json
 812df7f3f94e9c37c5a19a1d90ce022fa6040f0d assets/youkaishomecoming/models/block/acacia_dining_table.json
 df4b9d00e00bd275d55ff3cd8d94930e42de8585 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
@@ -824,6 +824,7 @@ c3f7df3498797abccaad402c18986b0fe29cc9fd assets/youkaishomecoming/models/item/ma
 b0ef688801f54db20522978e191bcc20efdaf4a6 assets/youkaishomecoming/models/item/mangrove_dining_chair.json
 22b9cf8a27b98c1097810852f8b3ad617983c503 assets/youkaishomecoming/models/item/mangrove_dining_table.json
 c10965b5b73f6b788cd2bab9423cd606631289e5 assets/youkaishomecoming/models/item/mangrove_handrail.json
+2e7af6b34824aca712d9cf597656ed90651d5cb3 assets/youkaishomecoming/models/item/mantou.json
 a099b6e63fb2f67a7844e60d9d889354e906a570 assets/youkaishomecoming/models/item/mapo_tofu.json
 d221402fbb88c844cc837465b46b2dd9b8c9a57e assets/youkaishomecoming/models/item/matcha.json
 1f4d75e096718732e8ddb0c560ca29019a70be20 assets/youkaishomecoming/models/item/matcha_mochi.json
@@ -1003,7 +1004,7 @@ de4a2614b61f17199d476c60647cd9a5360e5dcf assets/youkaishomecoming/models/item/ye
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/yukari_spawn_egg.json
 c90b811672ed77454ab02ce25bbe794d6ac8c607 data/curios/tags/items/back.json
 0ce21b81c580f483b908baa0792ab7e3bfc39ac0 data/diet/tags/items/fruits.json
-848a5fd234ecbf2724ebfd0f22919ad431093622 data/diet/tags/items/grains.json
+a8bec32ccd07559b6a1060feceea6fe4b2e6486d data/diet/tags/items/grains.json
 7df5bd593cc76a1ea3dea6a068539f1151ac0a7c data/diet/tags/items/proteins.json
 0895706e95733e1e75c5445782716e839bde1eb0 data/diet/tags/items/sugars.json
 a801a271310e5830c90b3ec632cef90c8c1b6300 data/diet/tags/items/vegetables.json
@@ -1045,8 +1046,8 @@ d124226900688be754cf0a2551b99e9d0708d8d5 data/minecraft/tags/blocks/mineable/pic
 791cf569cf4f6eaa65e2a722646dd16d2070f97c data/youkaishomecoming/advancements/main/bloody.json
 57c75806e81adab9a8f3c32d5fad6b3dab002aa9 data/youkaishomecoming/advancements/main/coffea.json
 94657bd4dad5b6c62d8f35309eb1482241ad43b0 data/youkaishomecoming/advancements/main/coffee_era.json
-26938f5dda8f3a1ef430dac953939d3356ac933d data/youkaishomecoming/advancements/main/enthusiastic.json
-ddbd4574d1a6c330c3d114c5ccd8b6862f3e352f data/youkaishomecoming/advancements/main/feed_reimu.json
+45d59f3ac1266a8b37e2c8c54ca6dccad22a0558 data/youkaishomecoming/advancements/main/enthusiastic.json
+af958c2054acb86f622f9abf14beb03a6a9240bb data/youkaishomecoming/advancements/main/feed_reimu.json
 650f016505d857c3ceb1aeffbd4dc74b58a08877 data/youkaishomecoming/advancements/main/first_time.json
 82808fb224e2127bbd53cdf938729e13dee32b26 data/youkaishomecoming/advancements/main/flesh.json
 0734399822152aa177b5280cb424c8ae0e947b44 data/youkaishomecoming/advancements/main/fragrant.json
@@ -1390,6 +1391,7 @@ f3ae14ac71aab03734f09d3782bb556b0582fad7 data/youkaishomecoming/advancements/rec
 77267b2358a7125c89073d4744ceee2614c1d3d0 data/youkaishomecoming/advancements/recipes/misc/jungle_handrail_from_jungle_planks_stonecutting.json
 eb4524051ece45e0c030abf9a72f3cbe6c4bdc65 data/youkaishomecoming/advancements/recipes/misc/kettle.json
 302273a04acc26ea4cbc5e567f32c9b67eb4cbaa data/youkaishomecoming/advancements/recipes/misc/mangrove_handrail_from_mangrove_planks_stonecutting.json
+740f7548f76c7e728c2bf282ebded322273353c4 data/youkaishomecoming/advancements/recipes/misc/mantou_from_dough_wheat_steaming.json
 8c08a7a24815d12c0c0dec81451d15c2f47c35f5 data/youkaishomecoming/advancements/recipes/misc/moka_kit.json
 29d825235b7fb915970e7ff502e37034c7787957 data/youkaishomecoming/advancements/recipes/misc/moka_pot.json
 5a1c35b65f868b28ec5aa986da681ef4b87cf3c5 data/youkaishomecoming/advancements/recipes/misc/oak_handrail_from_oak_planks_stonecutting.json
@@ -1835,6 +1837,7 @@ d81dcfb9e948d60c46ebf219a98edcffffa77bea data/youkaishomecoming/recipes/mandrake
 3352b7aa83ca1adf3ef24e3d29c3d07225ef1f97 data/youkaishomecoming/recipes/mangrove_dining_chair.json
 eb4723bf69fa1db487176b6407fed5473ac712ae data/youkaishomecoming/recipes/mangrove_dining_table.json
 b69532d3f4829b8e5ca5361d2b94bc1f045010ca data/youkaishomecoming/recipes/mangrove_handrail_from_mangrove_planks_stonecutting.json
+6f7bf8e7112e04c3b44862ebb4a3f93054d51f1c data/youkaishomecoming/recipes/mantou_from_dough_wheat_steaming.json
 7fb5991fc51e7e619e460d98f8d39bb0af760dca data/youkaishomecoming/recipes/mapo_tofu.json
 1d20b6966e62e1b388c15947360e07b357aa2728 data/youkaishomecoming/recipes/matcha.json
 3a84768252e362b66cf17e2f84ad193ddd7c4d26 data/youkaishomecoming/recipes/matcha_mochi.json

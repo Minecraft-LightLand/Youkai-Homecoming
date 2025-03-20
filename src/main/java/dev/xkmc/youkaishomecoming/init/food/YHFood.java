@@ -65,6 +65,7 @@ public enum YHFood {
 	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
 			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
+	MANTOU(FoodType.SIMPLE, 6, 0.6f,  DietTagGen.GRAINS.tag),
 	BUN(FoodType.SIMPLE, 8, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),

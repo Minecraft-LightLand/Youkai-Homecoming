@@ -391,6 +391,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:mantou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:mantou"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:mapo_tofu": {
       "conditions": {
         "item": {
@@ -1027,6 +1037,9 @@
     ],
     [
       "youkaishomecoming:koishi_mousse"
+    ],
+    [
+      "youkaishomecoming:mantou"
     ],
     [
       "youkaishomecoming:bun"
