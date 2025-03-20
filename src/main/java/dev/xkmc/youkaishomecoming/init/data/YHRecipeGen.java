@@ -634,15 +634,6 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.RAW_FISHES)
 					.build(pvd, YHDish.DRIED_FISH.block.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.IMITATION_BEAR_PAW.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(Items.PUFFERFISH)
-					.addIngredient(Items.BAMBOO)
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
-					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.build(pvd, YHDish.IMITATION_BEAR_PAW.block.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.PASTITSIO.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(ForgeTags.PASTA)
 					.addIngredient(YHFood.BUTTER.item)
@@ -685,6 +676,18 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.MATCHA)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(Items.PUFFERFISH)
+					.requires(Items.BAMBOO)
+					.requires(ForgeTags.RAW_PORK)
+					.requires(ForgeTags.VEGETABLES_ONION)
+					.requires(YHTagGen.RAW_EEL)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.IMITATION_BEAR_PAW.raw.getId());
+
+			steaming(pvd, DataIngredient.items(YHDish.IMITATION_BEAR_PAW.raw.asItem()), YHDish.IMITATION_BEAR_PAW.block::asItem);
 
 		}
 
@@ -878,6 +881,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			steaming(pvd, DataIngredient.items(YHFood.BUN.raw.get()), YHFood.BUN.item);
+			steaming(pvd, DataIngredient.tag(ForgeTags.DOUGH_WHEAT), YHFood.MANTOU.item);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.OYAKI.raw.get(), 4)::unlockedBy, Items.WHEAT)
 					.requires(ForgeTags.DOUGH)

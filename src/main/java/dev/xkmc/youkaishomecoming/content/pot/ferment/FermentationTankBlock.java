@@ -142,7 +142,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 
 	public static void buildModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var nolid = pvd.models().getBuilder("block/fermentation_tank")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/fermentation_tank")))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/fermentation_tank")))
 				.texture("side", pvd.modLoc("block/fermentation_tank_side"))
 				.texture("top", pvd.modLoc("block/fermentation_tank_top"))
 				.texture("bottom", pvd.modLoc("block/fermentation_tank_bottom"))
@@ -150,7 +150,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 				.texture("lid", pvd.modLoc("block/fermentation_tank_lid"))
 				.renderType("cutout");
 		var lid = pvd.models().getBuilder("block/fermentation_tank_lid")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/fermentation_tank_lid")))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/fermentation_tank_lid")))
 				.texture("side", pvd.modLoc("block/fermentation_tank_side"))
 				.texture("top", pvd.modLoc("block/fermentation_tank_top"))
 				.texture("bottom", pvd.modLoc("block/fermentation_tank_bottom"))

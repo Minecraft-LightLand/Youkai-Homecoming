@@ -105,7 +105,7 @@ public class FleshFeastBlock extends FeastBlock {
 		public ModelFile build(RegistrateBlockstateProvider pvd) {
 			String name = name().toLowerCase(Locale.ROOT);
 			var ans = pvd.models().getBuilder("flesh_feast_" + name)
-					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/flesh_feast_" + name)));
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/flesh_feast_" + name)));
 			ans.texture("tray_top", pvd.modLoc("block/tray_top"));
 			ans.texture("particle", pvd.modLoc("block/tray_top"));
 			ans.texture("tray_bottom", pvd.modLoc("block/tray_bottom"));

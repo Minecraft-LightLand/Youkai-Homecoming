@@ -18,40 +18,46 @@ import vectorwing.farmersdelight.common.registry.ModEffects;
 import java.util.Locale;
 
 public enum YHDish {
-	BAMBOO_MIZUYOKAN(Saucer.SAUCER_1, 6, 0.6f, false, 6,
+	BAMBOO_MIZUYOKAN(Type.COOKED, 6, 0.6f, false, 4,
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	DRIED_FISH(Saucer.SAUCER_2, 8, 0.8f, true, 3,
+	DRIED_FISH(Type.COOKED, 8, 0.8f, true, 3,//?
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-	IMITATION_BEAR_PAW(Saucer.SAUCER_4, 12, 0.8f, true, 3,
+	IMITATION_BEAR_PAW(Type.STEAMED, 12, 0.8f, true, 3,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
-	PASTITSIO(Saucer.SAUCER_2, 12, 0.8f, true, 3,
+	PASTITSIO(Type.COOKED, 12, 0.8f, true, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SAUCE_GRILLED_FISH(Saucer.SAUCER_4, 12, 0.8f, true, 3,
+	SAUCE_GRILLED_FISH(Type.COOKED, 12, 0.8f, true, 3,//?
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	STINKY_TOFU(Saucer.SAUCER_1, 8, 0.6f, false, 6,
+	STINKY_TOFU(Type.COOKED, 8, 0.6f, false, 5,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-	TOFU_BURGER(Saucer.SAUCER_2, 8, 0.6f, false, 3,
+	TOFU_BURGER(Type.COOKED, 8, 0.6f, false, 3,
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	BLOOD_CURD(Saucer.SAUCER_3, 8, 0.8f, true, 4,
+	BLOOD_CURD(Type.COOKED, 8, 0.8f, true, 2,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SEVEN_COLORED_YOKAN(Saucer.SAUCER_1, 8, 0.8f, false, 6,
+	SEVEN_COLORED_YOKAN(Type.RAW, 8, 0.8f, false, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
+
+	//flesh 3
+	// cold tofu 4
+	// pork 2
+	// palm 2
+	// sauce fish 3
 	;
 
-	public final Saucer base;
+	public final Type base;
 	public final int height;
 
-	public final BlockEntry<FoodSaucerBlock> block;
+	public final BlockEntry<FoodSaucerBlock> raw, block;
 
-	YHDish(Saucer base, int nutrition, float sat, boolean meat, int height, EffectEntry... effs) {
+	YHDish(Type base, int nutrition, float sat, boolean meat, int height, EffectEntry... effs) {
 		this.base = base;
 		this.height = height;
 		var builder = new FoodProperties.Builder()
@@ -62,9 +68,17 @@ public enum YHDish {
 		if (meat)
 			builder.meat();
 		var food = builder.build();
+		if (base == Type.STEAMED) {
+			raw = YoukaisHomecoming.REGISTRATE
+					.block("raw_" + getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
+					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, false)))
+					.item((block, p) -> new FoodSaucerItem(block, p.craftRemainder(YHItems.SAUCER.asItem())))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()
+					.register();
+		} else raw = null;
 		block = YoukaisHomecoming.REGISTRATE
 				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
-				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd)))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, base != Type.RAW)))
 				.item((block, p) -> new FoodSaucerItem(block, p.food(food).craftRemainder(YHItems.SAUCER.asItem())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()
 				.register();
@@ -74,17 +88,15 @@ public enum YHDish {
 		return name().toLowerCase(Locale.ROOT);
 	}
 
-	private BlockModelBuilder build(RegistrateBlockstateProvider pvd) {
+	private BlockModelBuilder build(RegistrateBlockstateProvider pvd, boolean extra) {
 		String name = getName();
 		var builder = pvd.models().getBuilder("block/" + name)
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/saucer_" + name)));
-		builder.texture("base", "block/" + name);
-		builder.texture("particle", "block/" + name);
-		if (base.extra) {
-			builder.texture("extra", "block/" + name + "_extra");
-		}
-		for (var e : base.tex) {
-			builder.texture(e, "block/saucer_" + e);
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/dish/" + name)));
+		builder.texture("saucer", "block/saucer");
+		builder.texture("base", "block/dish/" + name + "_base");
+		builder.texture("particle", "block/dish/" + name + "_base");
+		if (extra) {
+			builder.texture("detail", "block/dish/" + name + "_detail");
 		}
 		builder.renderType("cutout");
 		return builder;
@@ -95,6 +107,10 @@ public enum YHDish {
 	}
 
 	public static void register() {
+	}
+
+	public enum Type {
+		COOKED, STEAMED, RAW
 	}
 
 }

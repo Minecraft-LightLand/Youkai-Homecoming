@@ -1,0 +1,53 @@
+{
+	"credit": "Made with Blockbench",
+	"parent":"block/block",
+	"textures": {
+		"0": "#saucer",
+		"1": "#base",
+		"2": "#detail",
+		"particle": "#base"
+	},
+	"elements": [
+		{
+			"name": "saucer",
+			"from": [3, 0, 4.5],
+			"to": [13, 1, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 9.5]},
+			"faces": {
+				"north": {"uv": [0, 14, 10, 15], "texture": "#0"},
+				"east": {"uv": [10, 0, 11, 7], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [0, 15, 10, 16], "texture": "#0"},
+				"west": {"uv": [10, 7, 11, 14], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [0, 0, 10, 7], "texture": "#0"},
+				"down": {"uv": [0, 7, 10, 14], "texture": "#0"}
+			}
+		},
+		{
+			"name": "tofu_burger",
+			"from": [5.5, 1, 6],
+			"to": [10.5, 3, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6.5, 1, 7]},
+			"faces": {
+				"north": {"uv": [5, 0, 10, 2], "texture": "#1"},
+				"east": {"uv": [0, 4, 4, 6], "texture": "#1"},
+				"south": {"uv": [5, 2, 10, 4], "texture": "#1"},
+				"west": {"uv": [0, 6, 4, 8], "texture": "#1"},
+				"up": {"uv": [5, 4, 0, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "detail",
+			"from": [2, 1, 3.5],
+			"to": [14, 1, 12.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 1, 3.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 12, 0], "texture": "#missing"},
+				"east": {"uv": [0, 0, 9, 0], "texture": "#missing"},
+				"south": {"uv": [0, 0, 12, 0], "texture": "#missing"},
+				"west": {"uv": [0, 0, 9, 0], "texture": "#missing"},
+				"up": {"uv": [0, 0, 12, 9], "texture": "#2"},
+				"down": {"uv": [0, 9, 12, 0], "texture": "#2"}
+			}
+		}
+	]
+}
