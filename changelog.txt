@@ -1,3 +1,7 @@
+2.3.6
+- Add Steamer
+
+
 2.3.5
 - Fix Spell card item usage
 
@@ -8,7 +12,6 @@
 - Add Doremi Sweet spell card
 - Add Kisin Sagume spell card
 - Improve Youkai code
-
 
 2.3.2
 - Improve danmaku collision calculation to be able to hit hi-speed entities

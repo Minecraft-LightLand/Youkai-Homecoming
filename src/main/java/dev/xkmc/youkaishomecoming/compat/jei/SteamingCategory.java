@@ -13,7 +13,7 @@ import net.minecraft.client.Minecraft;
 public class SteamingCategory extends AbstractCookingCategory<SteamingRecipe> {
 
 	public SteamingCategory(IGuiHelper guiHelper) {
-		super(guiHelper, YHJeiPlugin.STEAM, YHBlocks.STEAMER_RACK.get(), YHLangData.JEI_RACK.key(), 100, 82, 44);
+		super(guiHelper, YHJeiPlugin.STEAM, YHBlocks.STEAMER_RACK.get(), YHLangData.JEI_STEAM.key(), 100, 82, 44);
 	}
 
 	public void setRecipe(IRecipeLayoutBuilder builder, SteamingRecipe recipe, IFocusGroup focuses) {

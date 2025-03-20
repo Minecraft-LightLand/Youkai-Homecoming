@@ -134,7 +134,10 @@
 		"spell_yukari_butterfly": "魍魉「二重黑死蝶」",
 		"spell_yukari_laser": "结界「光与暗的网目」",
 		"custom_spell_ring": "自定义符卡 - 开花弹",
-		"custom_spell_homing": "自定义符卡 - 追踪弹"
+		"custom_spell_homing": "自定义符卡 - 追踪弹",
+		"mantou": "馒头",
+		"raw_bun": "生包子",
+		"raw_oyaki": "生御烧"
 	},
 	"-cartesian": {
 		"entity": {

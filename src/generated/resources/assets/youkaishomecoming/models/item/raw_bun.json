@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/simple/bun"
+    "layer0": "youkaishomecoming:item/food/simple/raw_bun"
   }
 }
