@@ -2,7 +2,7 @@
   "parent": "youkaishomecoming:custom/utensil/steamer_lid_3",
   "render_type": "minecraft:cutout",
   "textures": {
-    "handle": "youkaishomecoming:block/steamer_lid_handle",
-    "lid": "youkaishomecoming:block/steamer_lid"
+    "handle": "youkaishomecoming:block/utensil/steamer_lid_handle",
+    "lid": "youkaishomecoming:block/utensil/steamer_lid"
   }
 }

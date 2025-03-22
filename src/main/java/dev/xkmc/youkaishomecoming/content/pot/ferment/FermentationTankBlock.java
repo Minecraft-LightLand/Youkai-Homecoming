@@ -143,20 +143,20 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	public static void buildModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var nolid = pvd.models().getBuilder("block/fermentation_tank")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/fermentation_tank")))
-				.texture("side", pvd.modLoc("block/fermentation_tank_side"))
-				.texture("top", pvd.modLoc("block/fermentation_tank_top"))
-				.texture("bottom", pvd.modLoc("block/fermentation_tank_bottom"))
-				.texture("inside", pvd.modLoc("block/fermentation_tank_inside"))
-				.texture("lid", pvd.modLoc("block/fermentation_tank_lid"))
+				.texture("side", pvd.modLoc("block/utensil/fermentation_tank_side"))
+				.texture("top", pvd.modLoc("block/utensil/fermentation_tank_top"))
+				.texture("bottom", pvd.modLoc("block/utensil/fermentation_tank_bottom"))
+				.texture("inside", pvd.modLoc("block/utensil/fermentation_tank_inside"))
+				.texture("lid", pvd.modLoc("block/utensil/fermentation_tank_lid"))
 				.renderType("cutout");
 		var lid = pvd.models().getBuilder("block/fermentation_tank_lid")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/fermentation_tank_lid")))
-				.texture("side", pvd.modLoc("block/fermentation_tank_side"))
-				.texture("top", pvd.modLoc("block/fermentation_tank_top"))
-				.texture("bottom", pvd.modLoc("block/fermentation_tank_bottom"))
-				.texture("inside", pvd.modLoc("block/fermentation_tank_inside"))
-				.texture("lid", pvd.modLoc("block/fermentation_tank_lid"))
-				.texture("lid_handle", pvd.modLoc("block/fermentation_tank_lid_handle"))
+				.texture("side", pvd.modLoc("block/utensil/fermentation_tank_side"))
+				.texture("top", pvd.modLoc("block/utensil/fermentation_tank_top"))
+				.texture("bottom", pvd.modLoc("block/utensil/fermentation_tank_bottom"))
+				.texture("inside", pvd.modLoc("block/utensil/fermentation_tank_inside"))
+				.texture("lid", pvd.modLoc("block/utensil/fermentation_tank_lid"))
+				.texture("lid_handle", pvd.modLoc("block/utensil/fermentation_tank_lid_handle"))
 				.renderType("cutout");
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(state.getValue(OPEN) ? nolid : lid).build());
 	}

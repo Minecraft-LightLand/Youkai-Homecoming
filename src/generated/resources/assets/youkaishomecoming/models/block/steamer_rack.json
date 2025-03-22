@@ -2,12 +2,12 @@
   "parent": "youkaishomecoming:custom/utensil/steamer_rack_0",
   "render_type": "minecraft:cutout",
   "textures": {
-    "bottom": "youkaishomecoming:block/steamer_rack_bottom",
-    "inside": "youkaishomecoming:block/steamer_rack_inside",
-    "outside": "youkaishomecoming:block/steamer_rack_outside",
-    "particle": "youkaishomecoming:block/steamer_rack_top",
-    "rim": "youkaishomecoming:block/steamer_rack_rim",
-    "side": "youkaishomecoming:block/steamer_rack_side",
-    "top": "youkaishomecoming:block/steamer_rack_top"
+    "bottom": "youkaishomecoming:block/utensil/steamer_rack_bottom",
+    "inside": "youkaishomecoming:block/utensil/steamer_rack_inside",
+    "outside": "youkaishomecoming:block/utensil/steamer_rack_outside",
+    "particle": "youkaishomecoming:block/utensil/steamer_rack_top",
+    "rim": "youkaishomecoming:block/utensil/steamer_rack_rim",
+    "side": "youkaishomecoming:block/utensil/steamer_rack_side",
+    "top": "youkaishomecoming:block/utensil/steamer_rack_top"
   }
 }

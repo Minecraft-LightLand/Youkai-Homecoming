@@ -2,11 +2,11 @@
   "parent": "youkaishomecoming:custom/utensil/fermentation_tank_lid",
   "render_type": "minecraft:cutout",
   "textures": {
-    "bottom": "youkaishomecoming:block/fermentation_tank_bottom",
-    "inside": "youkaishomecoming:block/fermentation_tank_inside",
-    "lid": "youkaishomecoming:block/fermentation_tank_lid",
-    "lid_handle": "youkaishomecoming:block/fermentation_tank_lid_handle",
-    "side": "youkaishomecoming:block/fermentation_tank_side",
-    "top": "youkaishomecoming:block/fermentation_tank_top"
+    "bottom": "youkaishomecoming:block/utensil/fermentation_tank_bottom",
+    "inside": "youkaishomecoming:block/utensil/fermentation_tank_inside",
+    "lid": "youkaishomecoming:block/utensil/fermentation_tank_lid",
+    "lid_handle": "youkaishomecoming:block/utensil/fermentation_tank_lid_handle",
+    "side": "youkaishomecoming:block/utensil/fermentation_tank_side",
+    "top": "youkaishomecoming:block/utensil/fermentation_tank_top"
   }
 }

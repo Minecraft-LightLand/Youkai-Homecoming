@@ -24,10 +24,10 @@ public class SteamerBlockJsons {
 		var builder = pvd.getMultipartBuilder(ctx.get());
 		var pot = pvd.models().getBuilder("steamer_pot")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/steamer_pot")))
-				.texture("side", pvd.modLoc("block/steamer_pot_side"))
-				.texture("top", pvd.modLoc("block/steamer_pot_top"))
-				.texture("handle", pvd.modLoc("block/steamer_pot_handle"))
-				.texture("bottom", pvd.modLoc("block/steamer_pot_bottom"))
+				.texture("side", pvd.modLoc("block/utensil/steamer_pot_side"))
+				.texture("top", pvd.modLoc("block/utensil/steamer_pot_top"))
+				.texture("handle", pvd.modLoc("block/utensil/steamer_pot_handle"))
+				.texture("bottom", pvd.modLoc("block/utensil/steamer_pot_bottom"))
 				.renderType("cutout");
 
 		var r2 = new ModelFile.UncheckedModelFile(pvd.modLoc("block/steamer_rack_2"));
@@ -61,21 +61,21 @@ public class SteamerBlockJsons {
 			String id = "steamer_lid" + (h == 0 ? "" : "_" + h);
 			caps[h] = pvd.models().getBuilder(id)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/steamer_lid_" + h)))
-					.texture("lid", pvd.modLoc("block/steamer_lid"))
-					.texture("handle", pvd.modLoc("block/steamer_lid_handle"))
+					.texture("lid", pvd.modLoc("block/utensil/steamer_lid"))
+					.texture("handle", pvd.modLoc("block/utensil/steamer_lid_handle"))
 					.renderType("cutout");
 		}
 		for (int h = 0; h < 4; h++) {
 			String id = "steamer_rack" + (h == 0 ? "" : "_" + h);
 			var rack = pvd.models().getBuilder(id)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/steamer_rack_" + h)))
-					.texture("top", pvd.modLoc("block/steamer_rack_top"))
-					.texture("bottom", pvd.modLoc("block/steamer_rack_bottom"))
-					.texture("side", pvd.modLoc("block/steamer_rack_side"))
-					.texture("inside", pvd.modLoc("block/steamer_rack_inside"))
-					.texture("outside", pvd.modLoc("block/steamer_rack_outside"))
-					.texture("rim", pvd.modLoc("block/steamer_rack_rim"))
-					.texture("particle", pvd.modLoc("block/steamer_rack_top"))
+					.texture("top", pvd.modLoc("block/utensil/steamer_rack_top"))
+					.texture("bottom", pvd.modLoc("block/utensil/steamer_rack_bottom"))
+					.texture("side", pvd.modLoc("block/utensil/steamer_rack_side"))
+					.texture("inside", pvd.modLoc("block/utensil/steamer_rack_inside"))
+					.texture("outside", pvd.modLoc("block/utensil/steamer_rack_outside"))
+					.texture("rim", pvd.modLoc("block/utensil/steamer_rack_rim"))
+					.texture("particle", pvd.modLoc("block/utensil/steamer_rack_top"))
 					.renderType("cutout");
 
 			for (int d = 0; d < 4; d++) {
