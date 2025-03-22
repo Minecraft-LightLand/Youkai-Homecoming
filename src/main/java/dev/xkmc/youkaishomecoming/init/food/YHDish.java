@@ -45,7 +45,7 @@ public enum YHDish {
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
 
-	BLOODY_FLESH(Type.COOKED, 6, 0.8f, true, 3,//TODO flesh
+	BLOODY_FLESH(Type.COOKED, 6, 0.8f, true, 3,//TODO flesh, recipes
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 	COLD_TOFU(Type.COOKED, 8, 0.8f, false, 4,

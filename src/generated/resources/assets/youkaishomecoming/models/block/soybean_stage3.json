@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/soybean_stage3"
+    "cross": "youkaishomecoming:block/plants/soybean_stage3"
   }
 }

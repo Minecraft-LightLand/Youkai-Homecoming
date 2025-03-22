@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/udumbara_stage5"
+    "cross": "youkaishomecoming:block/plants/udumbara_stage5"
   }
 }

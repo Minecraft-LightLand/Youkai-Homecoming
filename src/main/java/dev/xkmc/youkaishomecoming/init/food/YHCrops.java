@@ -145,7 +145,7 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/plants/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),
@@ -157,7 +157,7 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/plants/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),
@@ -169,7 +169,7 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new WildCoffeaBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> WildCoffeaBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> WildCoffeaBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name + "_top"))).build()
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/plants/wild_" + name + "_top"))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),
@@ -183,7 +183,7 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> TeaCropBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/plants/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),
@@ -197,7 +197,7 @@ public enum YHCrops {
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((pvd, b) -> UdumbaraBlock.buildWildLoot(pvd, b, crop))
 						.item().tag(ModTags.WILD_CROPS_ITEM)
-						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/plants/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()),
 
@@ -209,7 +209,7 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new BushBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> MandrakeGen.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/plants/wild_" + name))).build()
 						.tag(ModTags.WILD_CROPS)
 						.register()
 		),

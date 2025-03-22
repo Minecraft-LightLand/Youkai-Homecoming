@@ -3,10 +3,10 @@
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "leaves": "youkaishomecoming:block/coffea_leaves",
-    "particle": "youkaishomecoming:block/coffea_trunk7",
-    "side": "youkaishomecoming:block/coffea_bush_side",
-    "top": "youkaishomecoming:block/coffea_bush_top",
-    "trunk": "youkaishomecoming:block/coffea_trunk7"
+    "leaves": "youkaishomecoming:block/plants/coffea_leaves",
+    "particle": "youkaishomecoming:block/plants/coffea_trunk7",
+    "side": "youkaishomecoming:block/plants/coffea_bush_side",
+    "top": "youkaishomecoming:block/plants/coffea_bush_top",
+    "trunk": "youkaishomecoming:block/plants/coffea_trunk7"
   }
 }
