@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    },
+    {
+      "item": "youkaishomecoming:ice_cube"
+    },
+    {
+      "item": "youkaishomecoming:saucer"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:cold_tofu"
+  }
+}

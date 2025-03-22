@@ -991,11 +991,11 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:tomato_sauce_horse_mackerel": {
+    "youkaishomecoming:tomato_sauce_cod": {
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:tomato_sauce_horse_mackerel"
+            "youkaishomecoming:tomato_sauce_cod"
           ]
         }
       },
@@ -1138,7 +1138,7 @@
       "youkaishomecoming:scholar_ginkgo"
     ],
     [
-      "youkaishomecoming:tomato_sauce_horse_mackerel"
+      "youkaishomecoming:tomato_sauce_cod"
     ],
     [
       "youkaishomecoming:mio"

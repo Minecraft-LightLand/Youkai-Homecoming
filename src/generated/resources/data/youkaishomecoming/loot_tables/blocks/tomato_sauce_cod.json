@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:tomato_sauce_horse_mackerel"
+          "name": "youkaishomecoming:tomato_sauce_cod"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaishomecoming:blocks/tomato_sauce_horse_mackerel"
+  "random_sequence": "youkaishomecoming:blocks/tomato_sauce_cod"
 }

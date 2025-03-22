@@ -45,7 +45,14 @@
 		"moon_lantern": "幻月灯",
 		"steamer_lid": "蒸笼盖",
 		"steamer_pot": "蒸锅",
-		"steamer_rack": "蒸笼"
+		"steamer_rack": "蒸笼",
+		"bloody_flesh": "人肉刺身",
+		"cold_tofu": "冷奴豆腐",
+		"cumberland_loin": "坎伯兰猪腰",
+		"raw_imitation_bear_paw": "生赛熊掌",
+		"raw_scholar_ginkgo": "生诗礼银杏",
+		"scholar_ginkgo": "诗礼银杏",
+		"tomato_sauce_cod": "茄汁鳕鱼"
 	},
 	"-cartesian": {
 		"candles": {

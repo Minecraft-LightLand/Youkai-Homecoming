@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "youkaishomecoming:block/green_tea_bag_bottom",
-    "east": "youkaishomecoming:block/green_tea_bag_side_tied",
-    "north": "youkaishomecoming:block/green_tea_bag_side",
-    "particle": "youkaishomecoming:block/green_tea_bag_top",
-    "south": "youkaishomecoming:block/green_tea_bag_side",
-    "up": "youkaishomecoming:block/green_tea_bag_top",
-    "west": "youkaishomecoming:block/green_tea_bag_side_tied"
+    "down": "youkaishomecoming:block/bags/green_tea_bag_bottom",
+    "east": "youkaishomecoming:block/bags/green_tea_bag_side_tied",
+    "north": "youkaishomecoming:block/bags/green_tea_bag_side",
+    "particle": "youkaishomecoming:block/bags/green_tea_bag_top",
+    "south": "youkaishomecoming:block/bags/green_tea_bag_side",
+    "up": "youkaishomecoming:block/bags/green_tea_bag_top",
+    "west": "youkaishomecoming:block/bags/green_tea_bag_side_tied"
   }
 }

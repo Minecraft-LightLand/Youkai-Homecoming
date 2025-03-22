@@ -698,6 +698,44 @@ public class YHRecipeGen {
 
 			steaming(pvd, DataIngredient.items(YHDish.IMITATION_BEAR_PAW.raw.asItem()), YHDish.IMITATION_BEAR_PAW.block::asItem);
 
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.COLD_TOFU.block.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(YHFood.TOFU.item)
+					.requires(YHFood.TOFU.item)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHItems.ICE_CUBE)
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.COLD_TOFU.block.getId());
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.SCHOLAR_GINKGO.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(Items.BIRCH_SAPLING)
+					.requires(Items.HONEY_BOTTLE)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.SCHOLAR_GINKGO.raw.getId());
+
+			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.CUMBERLAND_LOIN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(ModItems.TOMATO_SAUCE.get())
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
+					.build(pvd, YHDish.CUMBERLAND_LOIN.block.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOMATO_SAUCE_COD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(ModItems.TOMATO_SAUCE.get())
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
+					.build(pvd, YHDish.TOMATO_SAUCE_COD.block.getId());
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.BLOODY_FLESH.block.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(YHTagGen.RAW_FLESH)
+					.requires(YHTagGen.RAW_FLESH)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.BLOODY_FLESH.block.getId());
+
 		}
 
 		var tea = tea(pvd);

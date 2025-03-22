@@ -4,6 +4,7 @@ import dev.xkmc.youkaishomecoming.init.food.Saucer;
 import dev.xkmc.youkaishomecoming.init.food.YHDish;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -18,11 +19,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class FoodSaucerBlock extends BaseSaucerBlock {
 
-	private final VoxelShape shape;
+	private final VoxelShape shape_x, shape_z;
 
 	public FoodSaucerBlock(Properties pProperties, YHDish base) {
 		super(pProperties);
-		shape = Block.box(2.0D, 0.0D, 2.0D, 14.0D, base.height, 14.0D);
+		shape_x = Block.box(4, 0, 3, 12, base.height, 13);
+		shape_z = Block.box(3, 0, 4, 13, base.height, 12);
 	}
 
 	@Override
@@ -41,8 +43,9 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-		return shape;
+	public VoxelShape getShape(BlockState state, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+		boolean x = state.getValue(BlockStateProperties.HORIZONTAL_FACING).getAxis() == Direction.Axis.X;
+		return x ? shape_x : shape_z;
 	}
 
 }

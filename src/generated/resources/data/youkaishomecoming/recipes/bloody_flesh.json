@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "youkaishomecoming:raw_flesh"
+    },
+    {
+      "tag": "youkaishomecoming:raw_flesh"
+    },
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    },
+    {
+      "item": "youkaishomecoming:saucer"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:bloody_flesh"
+  }
+}

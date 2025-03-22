@@ -7,14 +7,15 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FleshFoodItem extends YHFoodItem implements IFleshFoodItem {
+public class FleshSaucerItem extends FoodSaucerItem implements IFleshFoodItem {
 
-	public FleshFoodItem(Properties props) {
-		super(props);
+	public FleshSaucerItem(Block pBlock, Properties pProperties) {
+		super(pBlock, pProperties);
 	}
 
 	@Override

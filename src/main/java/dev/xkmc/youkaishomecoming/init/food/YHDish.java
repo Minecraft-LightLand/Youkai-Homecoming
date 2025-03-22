@@ -2,63 +2,78 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
+import dev.xkmc.youkaishomecoming.content.item.food.FleshSaucerItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
+import java.util.List;
 import java.util.Locale;
 
 public enum YHDish {
-	BAMBOO_MIZUYOKAN(Type.COOKED, 6, 0.6f, false, 4,
+	BAMBOO_MIZUYOKAN(Type.COOKED, 6, 0.6f, false, 4, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	DRIED_FISH(Type.COOKED, 8, 0.8f, true, 4,
+			DietTagGen.VEGETABLES.tag, DietTagGen.SUGARS.tag),
+	DRIED_FISH(Type.COOKED, 8, 0.8f, true, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-	IMITATION_BEAR_PAW(Type.STEAMED, 12, 0.8f, true, 3,
+			DietTagGen.PROTEINS.tag),
+	IMITATION_BEAR_PAW(Type.STEAMED, 12, 0.8f, true, 3, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
-	PASTITSIO(Type.COOKED, 12, 0.8f, true, 4,
+			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+	PASTITSIO(Type.COOKED, 12, 0.8f, true, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SAUCE_GRILLED_FISH(Type.COOKED, 12, 0.8f, true, 4,
+			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	SAUCE_GRILLED_FISH(Type.COOKED, 12, 0.8f, true, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	STINKY_TOFU(Type.COOKED, 8, 0.6f, false, 5,
+			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+	STINKY_TOFU(Type.COOKED, 8, 0.6f, false, 5, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-	TOFU_BURGER(Type.COOKED, 8, 0.6f, false, 3,
+			DietTagGen.PROTEINS.tag),
+	TOFU_BURGER(Type.COOKED, 8, 0.6f, false, 3, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	BLOOD_CURD(Type.COOKED, 8, 0.8f, true, 2,
+			DietTagGen.PROTEINS.tag),
+	BLOOD_CURD(Type.COOKED, 8, 0.8f, true, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SEVEN_COLORED_YOKAN(Type.COOKED, 8, 0.8f, false, 4,
+			DietTagGen.PROTEINS.tag),
+	SEVEN_COLORED_YOKAN(Type.COOKED, 8, 0.8f, false, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
+			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 
-	BLOODY_FLESH(Type.COOKED, 6, 0.8f, true, 3,//TODO flesh, recipes
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+	BLOODY_FLESH(Type.FLESH, 6, 0.8f, true, 3, List.of(),
+			YHTagGen.FLESH_FOOD, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	COLD_TOFU(Type.COOKED, 8, 0.8f, false, 4, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	COLD_TOFU(Type.COOKED, 8, 0.8f, false, 4,
+			DietTagGen.PROTEINS.tag),
+	CUMBERLAND_LOIN(Type.COOKED, 10, 0.8f, true, 2, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+			DietTagGen.PROTEINS.tag),
+	SCHOLAR_GINKGO(Type.STEAMED, 6, 0.8f, false, 2, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	CUMBERLAND_LOIN(Type.COOKED, 12, 0.8f, true, 2,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SCHOLAR_GINKGO(Type.STEAMED, 10, 0.8f, false, 2,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	TOMATO_SAUCE_HORSE_MACKEREL(Type.COOKED, 12, 0.8f, true, 2,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			DietTagGen.VEGETABLES.tag),
+	TOMATO_SAUCE_COD(Type.COOKED, 10, 0.8f, true, 2, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+			DietTagGen.PROTEINS.tag),
 
 	;
 
@@ -67,9 +82,30 @@ public enum YHDish {
 
 	public final BlockEntry<FoodSaucerBlock> raw, block;
 
-	YHDish(Type base, int nutrition, float sat, boolean meat, int height, EffectEntry... effs) {
+	YHDish(Type base, int nutrition, float sat, boolean meat, int height, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.base = base;
 		this.height = height;
+		if (base == Type.STEAMED) {
+			raw = YoukaisHomecoming.REGISTRATE
+					.block("raw_" + getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
+					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, false)))
+					.item((block, p) -> new FoodSaucerItem(block, p.food(food(nutrition / 2, sat / 2, meat, List.of()))
+							.craftRemainder(YHItems.SAUCER.asItem())))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
+					.tag(tags).build()
+					.register();
+		} else raw = null;
+		block = YoukaisHomecoming.REGISTRATE
+				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, true)))
+				.item((block, p) -> base.create(block, p.food(food(nutrition, sat, meat, effs))
+						.craftRemainder(YHItems.SAUCER.asItem())))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
+				.tag(tags).build()
+				.register();
+	}
+
+	private static FoodProperties food(int nutrition, float sat, boolean meat, List<EffectEntry> effs) {
 		var builder = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		for (var e : effs) {
@@ -77,21 +113,7 @@ public enum YHDish {
 		}
 		if (meat)
 			builder.meat();
-		var food = builder.build();
-		if (base == Type.STEAMED) {
-			raw = YoukaisHomecoming.REGISTRATE
-					.block("raw_" + getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, false)))
-					.item((block, p) -> new FoodSaucerItem(block, p.craftRemainder(YHItems.SAUCER.asItem())))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()
-					.register();
-		} else raw = null;
-		block = YoukaisHomecoming.REGISTRATE
-				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
-				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, base != Type.RAW)))
-				.item((block, p) -> new FoodSaucerItem(block, p.food(food).craftRemainder(YHItems.SAUCER.asItem())))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName()))).build()
-				.register();
+		return builder.build();
 	}
 
 	private String getName() {
@@ -120,7 +142,12 @@ public enum YHDish {
 	}
 
 	public enum Type {
-		COOKED, STEAMED, RAW
+		COOKED, STEAMED, FLESH;
+
+		public Item create(FoodSaucerBlock block, Item.Properties properties) {
+			if (this == FLESH) return new FleshSaucerItem(block, properties);
+			else return new FoodSaucerItem(block, properties);
+		}
 	}
 
 }
