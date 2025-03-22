@@ -2,9 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent":"block/block",
 	"textures": {
-		"0": "saucer",
-		"1": "#base",
-		"particle": "#base"
+		"0": "ceramic",
+		"1": "#base"
 	},
 	"elements": [
 		{

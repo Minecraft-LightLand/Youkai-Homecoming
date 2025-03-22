@@ -3,8 +3,8 @@
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaishomecoming:block/dish/tomato_sauce_cod_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
     "detail": "youkaishomecoming:block/dish/tomato_sauce_cod_detail",
-    "particle": "youkaishomecoming:block/dish/tomato_sauce_cod_base",
-    "saucer": "youkaishomecoming:block/saucer"
+    "particle": "youkaishomecoming:block/dish/ceramic"
   }
 }

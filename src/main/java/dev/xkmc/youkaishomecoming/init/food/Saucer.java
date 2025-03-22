@@ -8,18 +8,21 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import java.util.Locale;
 
 public enum Saucer implements StringRepresentable {
-	SAUCER_0("saucer"),
-	SAUCER_1("saucer_plate", "saucer_sake"),
-	SAUCER_2("saucer_plate", "saucer_sake"),
-	SAUCER_3("saucer_plate", "saucer_sake", "saucer_bowl"),
-	SAUCER_4("saucer_large"),
+	SAUCER_1(2, 2, 6, "saucer_plate", "saucer_sake"),
+	SAUCER_2(2, 2, 3, "saucer_plate", "saucer_sake"),
+	SAUCER_3(2, 2, 3, "saucer_plate", "saucer_sake", "saucer_bowl"),
+	SAUCER_4(2, 2, 1, "saucer_large"),
+	CERAMIC(4, 3, 1, "ceramic"),
+	PORCELAIN(1, 1, 1, "porcelain_plate_top", "porcelain_plate_bottom"),
 	;
 
-	public final String base;
 	public final String[] tex;
+	public final int x, z, height;
 
-	Saucer(String base, String... tex) {
-		this.base = base;
+	Saucer(int x, int z, int height, String... tex) {
+		this.x = x;
+		this.z = z;
+		this.height = height;
 		this.tex = tex;
 	}
 
@@ -29,12 +32,11 @@ public enum Saucer implements StringRepresentable {
 
 	public BlockModelBuilder build(RegistrateBlockstateProvider pvd) {
 		var builder = pvd.models().getBuilder("block/" + getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/" + getName())));
-		builder.texture(base, "block/" + base);
-		builder.texture("particle", "block/" + base);
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/dish/" + getName())));
 		for (var e : tex) {
-			builder.texture(e, "block/" + e);
+			builder.texture(e, "block/dish/" + e);
 		}
+		builder.texture("particle", "block/dish/" + tex[0]);
 		builder.renderType("cutout");
 		return builder;
 	}

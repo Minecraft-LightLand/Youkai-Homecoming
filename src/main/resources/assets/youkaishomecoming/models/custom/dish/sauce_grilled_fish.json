@@ -5,8 +5,7 @@
 		"0": "#porcelain_plate_top",
 		"1": "#porcelain_plate_bottom",
 		"2": "#base",
-		"3": "#detail",
-		"particle": "#base"
+		"3": "#detail"
 	},
 	"elements": [
 		{
@@ -62,13 +61,9 @@
 		},
 		{
 			"name": "detail",
-			"from": [0, 1, 0],
-			"to": [16, 1, 16],
+			"from": [0, 1.01, 0],
+			"to": [16, 1.01, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 0], "texture": "#missing"},
-				"east": {"uv": [0, 0, 16, 0], "texture": "#missing"},
-				"south": {"uv": [0, 0, 16, 0], "texture": "#missing"},
-				"west": {"uv": [0, 0, 16, 0], "texture": "#missing"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#3"},
 				"down": {"uv": [0, 16, 16, 0], "texture": "#3"}
 			}

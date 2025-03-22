@@ -3,8 +3,7 @@
 	"parent":"block/block",
 	"textures": {
 		"0": "#base",
-		"1": "#saucer",
-		"particle": "#base"
+		"1": "#ceramic"
 	},
 	"elements": [
 		{

@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -62,6 +63,13 @@ public class RackData {
 	}
 
 	protected boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, int index) {
+		if (stack.getItem() instanceof FoodSaucerItem) {
+			if (index != 0) return false;
+			for (int i = 0; i < 4; i++) {
+				if (list[index] != null && !list[index].stack.isEmpty())
+					return false;
+			}
+		}
 		if (index < 0 || index >= 4) return false;
 		var item = list[index];
 		if (item != null && !item.stack.isEmpty()) return false;

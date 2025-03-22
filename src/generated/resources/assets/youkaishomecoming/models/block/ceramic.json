@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/dish/ceramic",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "particle": "youkaishomecoming:block/dish/ceramic"
+  }
+}
