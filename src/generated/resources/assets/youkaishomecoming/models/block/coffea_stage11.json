@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/coffea_stage11",
+  "parent": "youkaishomecoming:custom/plant/coffea_stage11",
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {

@@ -20,7 +20,7 @@ import java.util.Locale;
 public enum YHDish {
 	BAMBOO_MIZUYOKAN(Type.COOKED, 6, 0.6f, false, 4,
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	DRIED_FISH(Type.COOKED, 8, 0.8f, true, 3,//?
+	DRIED_FISH(Type.COOKED, 8, 0.8f, true, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 	IMITATION_BEAR_PAW(Type.STEAMED, 12, 0.8f, true, 3,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
@@ -30,7 +30,7 @@ public enum YHDish {
 	PASTITSIO(Type.COOKED, 12, 0.8f, true, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SAUCE_GRILLED_FISH(Type.COOKED, 12, 0.8f, true, 3,//?
+	SAUCE_GRILLED_FISH(Type.COOKED, 12, 0.8f, true, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 	STINKY_TOFU(Type.COOKED, 8, 0.6f, false, 5,
@@ -40,16 +40,26 @@ public enum YHDish {
 	BLOOD_CURD(Type.COOKED, 8, 0.8f, true, 2,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-	SEVEN_COLORED_YOKAN(Type.RAW, 8, 0.8f, false, 4,
+	SEVEN_COLORED_YOKAN(Type.COOKED, 8, 0.8f, false, 4,
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
 
-	//flesh 3
-	// cold tofu 4
-	// pork 2
-	// palm 2
-	// sauce fish 3
+	BLOODY_FLESH(Type.COOKED, 6, 0.8f, true, 3,//TODO flesh
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	COLD_TOFU(Type.COOKED, 8, 0.8f, false, 4,
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	CUMBERLAND_LOIN(Type.COOKED, 12, 0.8f, true, 2,
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	SCHOLAR_GINKGO(Type.STEAMED, 10, 0.8f, false, 2,
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+	TOMATO_SAUCE_HORSE_MACKEREL(Type.COOKED, 12, 0.8f, true, 2,
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+
 	;
 
 	public final Type base;

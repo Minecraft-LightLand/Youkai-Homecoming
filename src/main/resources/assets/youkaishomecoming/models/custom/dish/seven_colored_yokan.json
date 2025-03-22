@@ -4,6 +4,7 @@
 	"textures": {
 		"0": "#saucer",
 		"1": "#base",
+		"2": "#detail",
 		"particle": "#base"
 	},
 	"elements": [
@@ -22,6 +23,7 @@
 			}
 		},
 		{
+			"name": "seven_colored_yokan",
 			"from": [5.5, 1, 6],
 			"to": [10.5, 4, 10],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 1, 8]},
@@ -31,6 +33,20 @@
 				"south": {"uv": [5, 3, 10, 6], "texture": "#1"},
 				"west": {"uv": [0, 4, 4, 7], "texture": "#1"},
 				"up": {"uv": [5, 4, 0, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "detail",
+			"from": [2, 1, 3.5],
+			"to": [14, 1, 12.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 1, 3.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 12, 0], "texture": "#missing"},
+				"east": {"uv": [0, 0, 9, 0], "texture": "#missing"},
+				"south": {"uv": [0, 0, 12, 0], "texture": "#missing"},
+				"west": {"uv": [0, 0, 9, 0], "texture": "#missing"},
+				"up": {"uv": [0, 0, 12, 9], "texture": "#2"},
+				"down": {"uv": [0, 9, 12, 0], "texture": "#2"}
 			}
 		}
 	]

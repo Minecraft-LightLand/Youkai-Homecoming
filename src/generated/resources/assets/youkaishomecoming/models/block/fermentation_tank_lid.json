@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/fermentation_tank_lid",
+  "parent": "youkaishomecoming:custom/utensil/fermentation_tank_lid",
   "render_type": "minecraft:cutout",
   "textures": {
     "bottom": "youkaishomecoming:block/fermentation_tank_bottom",

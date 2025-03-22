@@ -1,0 +1,38 @@
+{
+	"credit": "Made with Blockbench",
+	"parent":"block/block",
+	"textures": {
+		"0": "saucer",
+		"1": "#base",
+		"particle": "#base"
+	},
+	"elements": [
+		{
+			"name": "saucer",
+			"from": [3, 0, 4.5],
+			"to": [13, 1, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 9.5]},
+			"faces": {
+				"north": {"uv": [0, 14, 10, 15], "texture": "#0"},
+				"east": {"uv": [10, 0, 11, 7], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [0, 15, 10, 16], "texture": "#0"},
+				"west": {"uv": [10, 7, 11, 14], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [0, 0, 10, 7], "texture": "#0"},
+				"down": {"uv": [0, 7, 10, 14], "texture": "#0"}
+			}
+		},
+		{
+			"name": "scholar_ginkgo",
+			"from": [5, 1, 6],
+			"to": [11, 2, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 1, 6]},
+			"faces": {
+				"north": {"uv": [6, 0, 12, 1], "texture": "#1"},
+				"east": {"uv": [6, 2, 10, 3], "texture": "#1"},
+				"south": {"uv": [6, 1, 12, 2], "texture": "#1"},
+				"west": {"uv": [6, 3, 10, 4], "texture": "#1"},
+				"up": {"uv": [6, 4, 0, 0], "texture": "#1"}
+			}
+		}
+	]
+}

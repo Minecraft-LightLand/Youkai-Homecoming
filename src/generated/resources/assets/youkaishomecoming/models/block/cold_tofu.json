@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/dish/cold_tofu",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/cold_tofu_base",
+    "detail": "youkaishomecoming:block/dish/cold_tofu_detail",
+    "particle": "youkaishomecoming:block/dish/cold_tofu_base",
+    "saucer": "youkaishomecoming:block/saucer"
+  }
+}

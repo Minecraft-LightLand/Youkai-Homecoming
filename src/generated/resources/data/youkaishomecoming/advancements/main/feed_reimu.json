@@ -91,6 +91,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:bloody_flesh": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bloody_flesh"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:bowl_of_heart_throbbing_surprise": {
       "conditions": {
         "item": {
@@ -151,6 +161,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:cold_tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cold_tofu"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:con_panna": {
       "conditions": {
         "item": {
@@ -176,6 +196,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cornflower_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:cumberland_loin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cumberland_loin"
           ]
         }
       },
@@ -661,6 +691,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:scholar_ginkgo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:scholar_ginkgo"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:seafood_miso_soup": {
       "conditions": {
         "item": {
@@ -811,6 +851,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:tomato_sauce_horse_mackerel": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tomato_sauce_horse_mackerel"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:tsukimi_dango": {
       "conditions": {
         "item": {
@@ -932,6 +982,21 @@
     ],
     [
       "youkaishomecoming:seven_colored_yokan"
+    ],
+    [
+      "youkaishomecoming:bloody_flesh"
+    ],
+    [
+      "youkaishomecoming:cold_tofu"
+    ],
+    [
+      "youkaishomecoming:cumberland_loin"
+    ],
+    [
+      "youkaishomecoming:scholar_ginkgo"
+    ],
+    [
+      "youkaishomecoming:tomato_sauce_horse_mackerel"
     ],
     [
       "youkaishomecoming:mio"

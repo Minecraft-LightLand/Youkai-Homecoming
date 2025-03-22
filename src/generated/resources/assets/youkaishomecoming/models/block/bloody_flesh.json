@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/dish/bloody_flesh",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/bloody_flesh_base",
+    "detail": "youkaishomecoming:block/dish/bloody_flesh_detail",
+    "particle": "youkaishomecoming:block/dish/bloody_flesh_base",
+    "saucer": "youkaishomecoming:block/saucer"
+  }
+}

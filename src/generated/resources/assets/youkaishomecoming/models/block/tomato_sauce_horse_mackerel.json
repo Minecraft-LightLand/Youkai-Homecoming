@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/dish/tomato_sauce_horse_mackerel",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/tomato_sauce_horse_mackerel_base",
+    "detail": "youkaishomecoming:block/dish/tomato_sauce_horse_mackerel_detail",
+    "particle": "youkaishomecoming:block/dish/tomato_sauce_horse_mackerel_base",
+    "saucer": "youkaishomecoming:block/saucer"
+  }
+}

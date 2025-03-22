@@ -1,10 +1,10 @@
 {
-  "parent": "youkaishomecoming:custom/saucer_seven_colored_yokan",
+  "parent": "youkaishomecoming:custom/dish/seven_colored_yokan",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/seven_colored_yokan",
-    "extra": "youkaishomecoming:block/seven_colored_yokan_extra",
-    "particle": "youkaishomecoming:block/seven_colored_yokan",
-    "sake": "youkaishomecoming:block/saucer_sake"
+    "base": "youkaishomecoming:block/dish/seven_colored_yokan_base",
+    "detail": "youkaishomecoming:block/dish/seven_colored_yokan_detail",
+    "particle": "youkaishomecoming:block/dish/seven_colored_yokan_base",
+    "saucer": "youkaishomecoming:block/saucer"
   }
 }

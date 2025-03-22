@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/steamer_lid_3",
+  "parent": "youkaishomecoming:custom/utensil/steamer_lid_3",
   "render_type": "minecraft:cutout",
   "textures": {
     "handle": "youkaishomecoming:block/steamer_lid_handle",

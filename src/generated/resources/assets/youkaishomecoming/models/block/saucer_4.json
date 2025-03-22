@@ -2,7 +2,7 @@
   "parent": "youkaishomecoming:custom/saucer_4",
   "render_type": "minecraft:cutout",
   "textures": {
-    "large": "youkaishomecoming:block/saucer_large",
-    "particle": "youkaishomecoming:block/saucer_large"
+    "particle": "youkaishomecoming:block/saucer_large",
+    "saucer_large": "youkaishomecoming:block/saucer_large"
   }
 }

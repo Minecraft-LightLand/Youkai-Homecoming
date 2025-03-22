@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/flesh_feast_stage3",
+  "parent": "youkaishomecoming:custom/feast/flesh_feast_stage3",
   "render_type": "minecraft:cutout",
   "textures": {
     "brain": "youkaishomecoming:block/flesh_brain_3",
