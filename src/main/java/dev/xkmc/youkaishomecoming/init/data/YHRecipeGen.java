@@ -641,6 +641,7 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.RAW_FISHES)
 					.addIngredient(ForgeTags.RAW_FISHES)
 					.addIngredient(ForgeTags.RAW_FISHES)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.DRIED_FISH.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.PASTITSIO.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
@@ -663,18 +664,21 @@ public class YHRecipeGen {
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.STINKY_TOFU.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOFU_BURGER.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(Items.SWEET_BERRIES)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.TOFU_BURGER.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.BLOOD_CURD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.BLOOD_CURD.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SEVEN_COLORED_YOKAN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
@@ -702,6 +706,8 @@ public class YHRecipeGen {
 					.requires(YHFood.TOFU.item)
 					.requires(YHFood.TOFU.item)
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.requires(YHItems.ICE_CUBE)
 					.requires(YHItems.SAUCER.get())
 					.save(pvd, YHDish.COLD_TOFU.block.getId());
@@ -720,6 +726,7 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.CUMBERLAND_LOIN.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOMATO_SAUCE_COD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
@@ -734,6 +741,7 @@ public class YHRecipeGen {
 					.requires(YHTagGen.RAW_FLESH)
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
 					.requires(YHItems.SAUCER.get())
+					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.save(pvd, YHDish.BLOODY_FLESH.block.getId());
 
 		}

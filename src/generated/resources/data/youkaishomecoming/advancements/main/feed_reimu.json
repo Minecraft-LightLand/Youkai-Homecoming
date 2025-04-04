@@ -91,16 +91,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:bloody_flesh": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:bloody_flesh"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:bowl_of_heart_throbbing_surprise": {
       "conditions": {
         "item": {
@@ -982,9 +972,6 @@
     ],
     [
       "youkaishomecoming:seven_colored_yokan"
-    ],
-    [
-      "youkaishomecoming:bloody_flesh"
     ],
     [
       "youkaishomecoming:cold_tofu"

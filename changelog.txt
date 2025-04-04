@@ -1,3 +1,11 @@
+2.3.8
+- Fix cold tofu model
+- Remove bloody dish from Reimu's favorites
+- Add more cabbage leaves to recipes
+
+2.3.7
+- Add more dishes
+
 2.3.6
 - Add Steamer
 

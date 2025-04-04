@@ -140,4 +140,6 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		}
 	}
 
+	public abstract boolean isValid();
+
 }

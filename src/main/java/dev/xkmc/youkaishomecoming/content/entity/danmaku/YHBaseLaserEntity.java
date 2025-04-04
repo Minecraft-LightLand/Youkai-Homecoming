@@ -176,4 +176,8 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 		PacketCodec.from(additionalData, getClass(), Wrappers.cast(this));
 	}
 
+	@Override
+	public boolean isValid() {
+		return tickCount < life;
+	}
 }

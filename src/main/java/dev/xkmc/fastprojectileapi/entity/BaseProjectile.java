@@ -99,4 +99,9 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 	protected void onHitBlock(BlockHitResult pResult) {
 	}
 
+	@Override
+	public boolean isValid() {
+		return tickCount < lifetime();
+	}
+
 }

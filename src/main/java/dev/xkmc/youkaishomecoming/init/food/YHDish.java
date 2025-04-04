@@ -139,7 +139,7 @@ public enum YHDish {
 	}
 
 	public boolean isFlesh() {
-		return this == BLOOD_CURD;
+		return this == BLOOD_CURD || this == BLOODY_FLESH;
 	}
 
 	public static void register() {

@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -46,6 +47,8 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @SerialClass
@@ -259,8 +262,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			if (spellCard != null) {
 				if (isAggressive() && shouldShowSpellCircle()) {
 					spellCard.tick(this);
+					tickDanmaku();
 				} else {
 					spellCard.reset();
+					allDanmakus.clear();
 				}
 			}
 		}
@@ -432,6 +437,24 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
 		if (spellCard != null) return spellCard.card.getDanmakuDamageSource(danmaku);
 		return YHDamageTypes.danmaku(danmaku);
+	}
+
+	private final List<SimplifiedProjectile> allDanmakus = new ArrayList<>();
+
+	public void shoot(Entity danmaku) {
+		self().level().addFreshEntity(danmaku);
+		if (danmaku instanceof SimplifiedProjectile proj)
+			allDanmakus.add(proj);
+	}
+
+	/** allow out-of-chunk danmaku to still be ticked */
+	private void tickDanmaku() {
+		for (var e : allDanmakus) {
+			if (e.isRemoved() && e.isValid()) {
+				e.tick();
+			}
+		}
+		allDanmakus.removeIf(e -> e.isRemoved() && !e.isValid());
 	}
 
 }
