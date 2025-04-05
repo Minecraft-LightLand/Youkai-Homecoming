@@ -1,3 +1,6 @@
+2.3.9
+- Add 4 kinds of sake
+
 2.3.8
 - Fix cold tofu model
 - Remove bloody dish from Reimu's favorites
