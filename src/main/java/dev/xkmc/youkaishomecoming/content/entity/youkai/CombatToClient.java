@@ -8,7 +8,9 @@ import net.minecraftforge.network.NetworkEvent;
 @SerialClass
 public class CombatToClient extends SerialPacketBase {
 
+	@SerialClass.SerialField
 	public int id;
+	@SerialClass.SerialField
 	public CombatProgress progress;
 
 	public CombatToClient() {

@@ -311,6 +311,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:hakutsuru": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:hakutsuru"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:higan_soup": {
       "conditions": {
         "item": {
@@ -346,6 +356,26 @@
         "item": {
           "items": [
             "youkaishomecoming:imitation_bear_paw"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:kappa_village": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_village"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:kiku": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kiku"
           ]
         }
       },
@@ -781,6 +811,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:suigei": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:suigei"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled": {
       "conditions": {
         "item": {
@@ -993,6 +1033,18 @@
     ],
     [
       "youkaishomecoming:sparrow_sake"
+    ],
+    [
+      "youkaishomecoming:kiku"
+    ],
+    [
+      "youkaishomecoming:hakutsuru"
+    ],
+    [
+      "youkaishomecoming:kappa_village"
+    ],
+    [
+      "youkaishomecoming:suigei"
     ],
     [
       "youkaishomecoming:daiginjo"

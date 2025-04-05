@@ -880,6 +880,26 @@ public class YHRecipeGen {
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd, YHSake.MEAD.item.getId());
 
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.BROWN_MUSHROOM)
+					.save(pvd, YHSake.KIKU.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.BROWN_MUSHROOM).addInput(ForgeTags.EGGS)
+					.save(pvd, YHSake.HAKUTSURU.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.BROWN_MUSHROOM).addInput(Items.SEAGRASS)
+					.save(pvd, YHSake.KAPPA_VILLAGE.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
+					.save(pvd, YHSake.SUIGEI.item.getId());
+
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
