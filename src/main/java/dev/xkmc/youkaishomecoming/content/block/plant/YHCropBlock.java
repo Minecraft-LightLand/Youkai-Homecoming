@@ -82,9 +82,9 @@ public class YHCropBlock extends CropBlock {
 			int age = state.getValue(CropBlock.AGE);
 			String tex = name + "_stage" + age;
 			return ConfiguredModel.builder().modelFile(pvd.models()
-					.getBuilder("block/plants/" + tex)
+					.getBuilder(tex)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cross_crop")))
-					.texture("cross", tex)
+					.texture("cross", "block/plants/" + tex)
 					.renderType("cutout")).build();
 		});
 	}
