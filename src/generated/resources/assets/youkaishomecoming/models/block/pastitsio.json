@@ -1,10 +1,10 @@
 {
-  "parent": "youkaishomecoming:custom/saucer_pastitsio",
+  "parent": "youkaishomecoming:custom/dish/pastitsio",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/pastitsio",
-    "extra": "youkaishomecoming:block/pastitsio_extra",
-    "particle": "youkaishomecoming:block/pastitsio",
-    "sake": "youkaishomecoming:block/saucer_sake"
+    "base": "youkaishomecoming:block/dish/pastitsio_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "detail": "youkaishomecoming:block/dish/pastitsio_detail",
+    "particle": "youkaishomecoming:block/dish/ceramic"
   }
 }

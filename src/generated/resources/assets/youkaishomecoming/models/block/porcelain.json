@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/dish/porcelain",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "youkaishomecoming:block/dish/porcelain_plate_top",
+    "porcelain_plate_bottom": "youkaishomecoming:block/dish/porcelain_plate_bottom",
+    "porcelain_plate_top": "youkaishomecoming:block/dish/porcelain_plate_top"
+  }
+}

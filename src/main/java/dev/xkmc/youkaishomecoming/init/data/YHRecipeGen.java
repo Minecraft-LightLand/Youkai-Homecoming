@@ -641,16 +641,8 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.RAW_FISHES)
 					.addIngredient(ForgeTags.RAW_FISHES)
 					.addIngredient(ForgeTags.RAW_FISHES)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.DRIED_FISH.block.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.IMITATION_BEAR_PAW.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(Items.PUFFERFISH)
-					.addIngredient(Items.BAMBOO)
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
-					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.build(pvd, YHDish.IMITATION_BEAR_PAW.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.PASTITSIO.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(ForgeTags.PASTA)
@@ -672,18 +664,21 @@ public class YHRecipeGen {
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.STINKY_TOFU.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOFU_BURGER.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(Items.SWEET_BERRIES)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.TOFU_BURGER.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.BLOOD_CURD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.BLOOD_CURD.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SEVEN_COLORED_YOKAN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
@@ -694,6 +689,60 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.MATCHA)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(Items.PUFFERFISH)
+					.requires(Items.BAMBOO)
+					.requires(ForgeTags.RAW_PORK)
+					.requires(ForgeTags.VEGETABLES_ONION)
+					.requires(YHTagGen.RAW_EEL)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.IMITATION_BEAR_PAW.raw.getId());
+
+			steaming(pvd, DataIngredient.items(YHDish.IMITATION_BEAR_PAW.raw.asItem()), YHDish.IMITATION_BEAR_PAW.block::asItem);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.COLD_TOFU.block.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(YHFood.TOFU.item)
+					.requires(YHFood.TOFU.item)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.requires(YHItems.ICE_CUBE)
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.COLD_TOFU.block.getId());
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.SCHOLAR_GINKGO.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(Items.BIRCH_SAPLING)
+					.requires(Items.HONEY_BOTTLE)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.SCHOLAR_GINKGO.raw.getId());
+
+			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.CUMBERLAND_LOIN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(ModItems.TOMATO_SAUCE.get())
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.build(pvd, YHDish.CUMBERLAND_LOIN.block.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOMATO_SAUCE_COD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(ModItems.TOMATO_SAUCE.get())
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
+					.build(pvd, YHDish.TOMATO_SAUCE_COD.block.getId());
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.BLOODY_FLESH.block.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(YHTagGen.RAW_FLESH)
+					.requires(YHTagGen.RAW_FLESH)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHItems.SAUCER.get())
+					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.save(pvd, YHDish.BLOODY_FLESH.block.getId());
 
 		}
 
@@ -830,6 +879,26 @@ public class YHRecipeGen {
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd, YHSake.MEAD.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.BROWN_MUSHROOM)
+					.save(pvd, YHSake.KIKU.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.BROWN_MUSHROOM).addInput(ForgeTags.EGGS)
+					.save(pvd, YHSake.HAKUTSURU.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.BROWN_MUSHROOM).addInput(Items.SEAGRASS)
+					.save(pvd, YHSake.KAPPA_VILLAGE.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
+					.save(pvd, YHSake.SUIGEI.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)

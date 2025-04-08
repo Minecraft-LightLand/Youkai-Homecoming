@@ -1,11 +1,10 @@
 {
-  "parent": "youkaishomecoming:custom/saucer_blood_curd",
+  "parent": "youkaishomecoming:custom/dish/blood_curd",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/blood_curd",
-    "bowl": "youkaishomecoming:block/saucer_bowl",
-    "extra": "youkaishomecoming:block/blood_curd_extra",
-    "particle": "youkaishomecoming:block/blood_curd",
-    "sake": "youkaishomecoming:block/saucer_sake"
+    "base": "youkaishomecoming:block/dish/blood_curd_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "detail": "youkaishomecoming:block/dish/blood_curd_detail",
+    "particle": "youkaishomecoming:block/dish/ceramic"
   }
 }

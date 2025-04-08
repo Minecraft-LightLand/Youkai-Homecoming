@@ -1,10 +1,10 @@
 {
-  "parent": "youkaishomecoming:custom/saucer_dried_fish",
+  "parent": "youkaishomecoming:custom/dish/dried_fish",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/dried_fish",
-    "extra": "youkaishomecoming:block/dried_fish_extra",
-    "particle": "youkaishomecoming:block/dried_fish",
-    "sake": "youkaishomecoming:block/saucer_sake"
+    "base": "youkaishomecoming:block/dish/dried_fish_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "detail": "youkaishomecoming:block/dish/dried_fish_detail",
+    "particle": "youkaishomecoming:block/dish/ceramic"
   }
 }

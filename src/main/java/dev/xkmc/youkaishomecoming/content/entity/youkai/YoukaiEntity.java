@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -9,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.events.YoukaiFightEvent;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -46,6 +48,8 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @SerialClass
@@ -78,7 +82,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public SpellCardWrapper spellCard;
 
 	@SerialClass.SerialField
-	private CombatProgress combatProgress = new CombatProgress();
+	public CombatProgress combatProgress = new CombatProgress();
 
 	public YoukaiEntity(EntityType<? extends YoukaiEntity> pEntityType, Level pLevel) {
 		this(pEntityType, pLevel, 10);
@@ -259,8 +263,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			if (spellCard != null) {
 				if (isAggressive() && shouldShowSpellCircle()) {
 					spellCard.tick(this);
+					tickDanmaku();
 				} else {
 					spellCard.reset();
+					allDanmakus.clear();
 				}
 			}
 		}
@@ -309,10 +315,11 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	protected void hurtFinalImpl(DamageSource source, float amount) {
 		if (combatProgress == null) return;
 		setCombatProgress(getCombatProgress() - amount);
+
 	}
 
 	public void validateData() {
-		if (getCombatProgress() > 0) {
+		if (combatProgress == null || getCombatProgress() != combatProgress.progress || getCombatProgress() > 0) {
 			if (deathTime > 0) deathTime = 0;
 			if (dead) dead = false;
 		}
@@ -326,16 +333,23 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 
 	@Override
 	protected boolean isImmobile() {
+		if (combatProgress == null || getCombatProgress() != combatProgress.progress)
+			return false;
 		return this.getCombatProgress() <= 0.0F;
 	}
 
 	@Override
 	public boolean isDeadOrDying() {
+		if (combatProgress == null || getCombatProgress() != combatProgress.progress)
+			return false;
 		return this.getCombatProgress() <= 0.0F;
 	}
 
 	public boolean isAlive() {
-		return !this.isRemoved() && this.getCombatProgress() > 0.0F;
+		if (isRemoved()) return false;
+		if (combatProgress == null || getCombatProgress() != combatProgress.progress)
+			return true;
+		return this.getCombatProgress() > 0.0F;
 	}
 
 	public void setCombatProgress(float amount) {
@@ -359,12 +373,16 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 
 	@Override
 	protected void tickDeath() {
+		if (combatProgress == null || getCombatProgress() != combatProgress.progress)
+			return;
 		if (getCombatProgress() > 0) return;
 		super.tickDeath();
 	}
 
 	@Override
 	public void die(DamageSource source) {
+		if (combatProgress == null || getCombatProgress() != combatProgress.progress)
+			return;
 		if (getCombatProgress() > 0) return;
 		super.die(source);
 	}
@@ -432,6 +450,26 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public DamageSource getDanmakuDamageSource(IYHDanmaku danmaku) {
 		if (spellCard != null) return spellCard.card.getDanmakuDamageSource(danmaku);
 		return YHDamageTypes.danmaku(danmaku);
+	}
+
+	private final List<SimplifiedProjectile> allDanmakus = new ArrayList<>();
+
+	public void shoot(Entity danmaku) {
+		self().level().addFreshEntity(danmaku);
+		if (danmaku instanceof SimplifiedProjectile proj)
+			allDanmakus.add(proj);
+	}
+
+	/**
+	 * allow out-of-chunk danmaku to still be ticked
+	 */
+	private void tickDanmaku() {
+		for (var e : allDanmakus) {
+			if (e.isRemoved() && e.isValid()) {
+				e.tick();
+			}
+		}
+		allDanmakus.removeIf(e -> e.isRemoved() && !e.isValid());
 	}
 
 }

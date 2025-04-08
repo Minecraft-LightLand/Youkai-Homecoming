@@ -111,16 +111,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:butter": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:butter"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:candy_apple": {
       "conditions": {
         "item": {
@@ -151,6 +141,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:cold_tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cold_tofu"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:con_panna": {
       "conditions": {
         "item": {
@@ -176,6 +176,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cornflower_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:cumberland_loin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cumberland_loin"
           ]
         }
       },
@@ -291,6 +301,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:hakutsuru": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:hakutsuru"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:higan_soup": {
       "conditions": {
         "item": {
@@ -326,6 +346,26 @@
         "item": {
           "items": [
             "youkaishomecoming:imitation_bear_paw"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:kappa_village": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_village"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:kiku": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kiku"
           ]
         }
       },
@@ -551,16 +591,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:poor_god_soup": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:poor_god_soup"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:pork_rice_ball": {
       "conditions": {
         "item": {
@@ -661,6 +691,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:scholar_ginkgo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:scholar_ginkgo"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:seafood_miso_soup": {
       "conditions": {
         "item": {
@@ -751,6 +791,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:suigei": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:suigei"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled": {
       "conditions": {
         "item": {
@@ -806,6 +856,16 @@
         "item": {
           "items": [
             "youkaishomecoming:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:tomato_sauce_cod": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tomato_sauce_cod"
           ]
         }
       },
@@ -934,6 +994,18 @@
       "youkaishomecoming:seven_colored_yokan"
     ],
     [
+      "youkaishomecoming:cold_tofu"
+    ],
+    [
+      "youkaishomecoming:cumberland_loin"
+    ],
+    [
+      "youkaishomecoming:scholar_ginkgo"
+    ],
+    [
+      "youkaishomecoming:tomato_sauce_cod"
+    ],
+    [
       "youkaishomecoming:mio"
     ],
     [
@@ -941,6 +1013,18 @@
     ],
     [
       "youkaishomecoming:sparrow_sake"
+    ],
+    [
+      "youkaishomecoming:kiku"
+    ],
+    [
+      "youkaishomecoming:hakutsuru"
+    ],
+    [
+      "youkaishomecoming:kappa_village"
+    ],
+    [
+      "youkaishomecoming:suigei"
     ],
     [
       "youkaishomecoming:daiginjo"
@@ -995,9 +1079,6 @@
     ],
     [
       "youkaishomecoming:roe"
-    ],
-    [
-      "youkaishomecoming:butter"
     ],
     [
       "youkaishomecoming:tofu"
@@ -1145,9 +1226,6 @@
     ],
     [
       "youkaishomecoming:seafood_miso_soup"
-    ],
-    [
-      "youkaishomecoming:poor_god_soup"
     ],
     [
       "youkaishomecoming:power_soup"

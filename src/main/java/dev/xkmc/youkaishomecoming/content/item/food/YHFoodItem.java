@@ -41,7 +41,7 @@ public class YHFoodItem extends Item {
 	}
 
 	public static void getFoodEffects(ItemStack stack, List<Component> list) {
-		var food = stack.getFoodProperties(FleshFoodItem.getPlayer());
+		var food = stack.getFoodProperties(IFleshFoodItem.getPlayer());
 		if (food == null) return;
 		getFoodEffects(food, list);
 	}

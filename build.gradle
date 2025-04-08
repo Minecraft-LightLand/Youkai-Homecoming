@@ -188,6 +188,10 @@ dependencies {
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
 
+    implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
+
+    implementation fg.deobf("curse.maven:composite-material-982540:6310307")
+
     //implementation fg.deobf("curse.maven:oculus-581495:5299671")
     //implementation fg.deobf("curse.maven:embeddium-908741:5681725")
 

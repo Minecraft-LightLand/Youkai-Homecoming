@@ -2,7 +2,7 @@
   "parent": "youkaishomecoming:custom/wooden_dining_chair",
   "render_type": "minecraft:cutout",
   "textures": {
-    "all": "youkaishomecoming:block/mangrove_dining_chair",
+    "all": "youkaishomecoming:block/wooden/mangrove_dining_chair",
     "particle": "minecraft:block/birch_planks"
   }
 }

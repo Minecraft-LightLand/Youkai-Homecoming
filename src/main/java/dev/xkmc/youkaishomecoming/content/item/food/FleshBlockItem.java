@@ -16,7 +16,7 @@ public class FleshBlockItem extends BlockItem {
 
 	@Override
 	public Component getName(ItemStack pStack) {
-		Player player = FleshFoodItem.getPlayer();
+		Player player = IFleshFoodItem.getPlayer();
 		Component name;
 		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();

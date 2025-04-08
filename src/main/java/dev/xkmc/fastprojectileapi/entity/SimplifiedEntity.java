@@ -20,6 +20,10 @@ public abstract class SimplifiedEntity extends Entity {
 		super(pEntityType, pLevel);
 	}
 
+	public void tick() {
+		baseTick();
+	}
+
 	@Override
 	public void baseTick() {
 		this.level().getProfiler().push("entityBaseTick");

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:block/wild_mandrake"
+    "layer0": "youkaishomecoming:block/plants/wild_mandrake"
   }
 }

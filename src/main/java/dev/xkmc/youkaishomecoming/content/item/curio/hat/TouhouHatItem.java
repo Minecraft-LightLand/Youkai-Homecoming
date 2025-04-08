@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
+import dev.xkmc.youkaishomecoming.content.item.food.IFleshFoodItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -21,7 +22,7 @@ import java.util.function.Consumer;
 public class TouhouHatItem extends ArmorItem {
 
 	public static boolean showTooltip() {
-		Player player = FleshFoodItem.getPlayer();
+		Player player = IFleshFoodItem.getPlayer();
 		if (player == null) return false;
 		if (player.getAbilities().instabuild)
 			return true;

@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.TrailAction;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.DyeColor;
@@ -101,11 +102,12 @@ public class SanaeSpell extends ActualSpellCard {
 		}
 	}
 
+
+	private static final DyeColor[] COLORS = {DyeColor.LIGHT_BLUE, DyeColor.CYAN, DyeColor.LIME, DyeColor.YELLOW, DyeColor.LIGHT_GRAY};
+
 	//神德「五谷丰穰米之浴」
 	@SerialClass
 	public static class ExplosiveGrains extends Ticker<SanaeSpell> {
-
-		private static final DyeColor[] COLORS = {DyeColor.LIGHT_BLUE, DyeColor.CYAN, DyeColor.LIME, DyeColor.YELLOW, DyeColor.LIGHT_GRAY};
 
 		@SerialClass.SerialField
 		private Vec3 pos, dir, target;
@@ -115,7 +117,7 @@ public class SanaeSpell extends ActualSpellCard {
 		public boolean tick(CardHolder holder, SanaeSpell card) {
 			step(holder);
 			super.tick(holder, card);
-			return tick >= 50;
+			return tick >= 10;
 		}
 
 		private void step(CardHolder holder) {
@@ -139,6 +141,7 @@ public class SanaeSpell extends ActualSpellCard {
 						var d1 = o1.rotateDegrees(j * 72 + i * off, ver).scale(spf);
 						var e = holder.prepareDanmaku(dur, d1, YHDanmaku.Bullet.CIRCLE, DyeColor.RED);
 						e.setPos(p0);
+						e.afterExpiry = new ExplodeTrail().setup(3, j);
 						holder.shoot(e);
 					}
 					var d1 = d0.scale(speed);
@@ -147,25 +150,30 @@ public class SanaeSpell extends ActualSpellCard {
 					holder.shoot(e);
 				}
 			}
-			if (tick - dur >= 0 && tick - dur < 10 && tick % 2 == 0) {
-				var r = holder.random();
-				var o0 = DanmakuHelper.getOrientation(dir).asNormal();
-				for (int i = 0; i < 5; i++) {
-					var p0 = pos.add(o0.rotateDegrees(i * 72).scale(dis));
-					var d0 = target.subtract(p0).normalize();
-					var o1 = DanmakuHelper.getOrientation(d0).asNormal();
-					for (int j = 0; j < 5; j++) {
-						var d1 = o1.rotateDegrees(j * 72 + i * off, ver);
-						var p1 = p0.add(d1.scale(spf * dur));
-						for (int k = 0; k < 3; k++) {
-							var d2 = new Vec3(r.nextGaussian(), r.nextGaussian(), r.nextGaussian()).normalize().scale(0.7);
-							int life = 60 + r.nextInt(40);
-							var e = holder.prepareDanmaku(life, d2, YHDanmaku.Bullet.BALL, COLORS[j]);
-							e.setPos(p1);
-							holder.shoot(e);
-						}
-					}
-				}
+		}
+	}
+
+	@SerialClass
+	public static class ExplodeTrail extends TrailAction {
+
+		@SerialClass.SerialField
+		private int count, index;
+
+		public ExplodeTrail setup(int count, int index) {
+			this.count = count;
+			this.index = index;
+			return this;
+		}
+
+		@Override
+		public void execute(CardHolder holder, Vec3 pos, Vec3 dir) {
+			var r = holder.random();
+			for (int k = 0; k < count; k++) {
+				var d2 = new Vec3(r.nextGaussian(), r.nextGaussian(), r.nextGaussian()).normalize().scale(0.7);
+				int life = 60 + r.nextInt(40);
+				var e = holder.prepareDanmaku(life, d2, YHDanmaku.Bullet.BALL, COLORS[index]);
+				e.setPos(pos);
+				holder.shoot(e);
 			}
 		}
 	}

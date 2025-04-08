@@ -101,6 +101,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:bloody_flesh": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:bloody_flesh"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:bowl_of_flesh_feast": {
       "conditions": {
         "item": {
@@ -181,6 +191,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:cold_tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cold_tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:con_panna": {
       "conditions": {
         "item": {
@@ -216,6 +236,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cornflower_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:cumberland_loin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cumberland_loin"
           ]
         }
       },
@@ -381,6 +411,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:hakutsuru": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:hakutsuru"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:higan_soup": {
       "conditions": {
         "item": {
@@ -416,6 +456,26 @@
         "item": {
           "items": [
             "youkaishomecoming:imitation_bear_paw"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:kappa_village": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_village"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:kiku": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kiku"
           ]
         }
       },
@@ -801,6 +861,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:scholar_ginkgo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:scholar_ginkgo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:seafood_miso_soup": {
       "conditions": {
         "item": {
@@ -891,6 +961,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:suigei": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:suigei"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled": {
       "conditions": {
         "item": {
@@ -946,6 +1026,16 @@
         "item": {
           "items": [
             "youkaishomecoming:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:tomato_sauce_cod": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tomato_sauce_cod"
           ]
         }
       },
@@ -1076,6 +1166,21 @@
       "youkaishomecoming:seven_colored_yokan"
     ],
     [
+      "youkaishomecoming:bloody_flesh"
+    ],
+    [
+      "youkaishomecoming:cold_tofu"
+    ],
+    [
+      "youkaishomecoming:cumberland_loin"
+    ],
+    [
+      "youkaishomecoming:scholar_ginkgo"
+    ],
+    [
+      "youkaishomecoming:tomato_sauce_cod"
+    ],
+    [
       "youkaishomecoming:mio"
     ],
     [
@@ -1083,6 +1188,18 @@
     ],
     [
       "youkaishomecoming:sparrow_sake"
+    ],
+    [
+      "youkaishomecoming:kiku"
+    ],
+    [
+      "youkaishomecoming:hakutsuru"
+    ],
+    [
+      "youkaishomecoming:kappa_village"
+    ],
+    [
+      "youkaishomecoming:suigei"
     ],
     [
       "youkaishomecoming:daiginjo"

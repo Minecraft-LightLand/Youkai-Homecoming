@@ -1,5 +1,13 @@
 {
   "variants": {
+    "facing=east,type=ceramic": {
+      "model": "youkaishomecoming:block/ceramic",
+      "y": 90
+    },
+    "facing=east,type=porcelain": {
+      "model": "youkaishomecoming:block/porcelain",
+      "y": 90
+    },
     "facing=east,type=saucer_1": {
       "model": "youkaishomecoming:block/saucer_1",
       "y": 90
@@ -16,6 +24,12 @@
       "model": "youkaishomecoming:block/saucer_4",
       "y": 90
     },
+    "facing=north,type=ceramic": {
+      "model": "youkaishomecoming:block/ceramic"
+    },
+    "facing=north,type=porcelain": {
+      "model": "youkaishomecoming:block/porcelain"
+    },
     "facing=north,type=saucer_1": {
       "model": "youkaishomecoming:block/saucer_1"
     },
@@ -27,6 +41,14 @@
     },
     "facing=north,type=saucer_4": {
       "model": "youkaishomecoming:block/saucer_4"
+    },
+    "facing=south,type=ceramic": {
+      "model": "youkaishomecoming:block/ceramic",
+      "y": 180
+    },
+    "facing=south,type=porcelain": {
+      "model": "youkaishomecoming:block/porcelain",
+      "y": 180
     },
     "facing=south,type=saucer_1": {
       "model": "youkaishomecoming:block/saucer_1",
@@ -43,6 +65,14 @@
     "facing=south,type=saucer_4": {
       "model": "youkaishomecoming:block/saucer_4",
       "y": 180
+    },
+    "facing=west,type=ceramic": {
+      "model": "youkaishomecoming:block/ceramic",
+      "y": 270
+    },
+    "facing=west,type=porcelain": {
+      "model": "youkaishomecoming:block/porcelain",
+      "y": 270
     },
     "facing=west,type=saucer_1": {
       "model": "youkaishomecoming:block/saucer_1",

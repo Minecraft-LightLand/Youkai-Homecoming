@@ -83,6 +83,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	private int hurtCD = 0;
 	private boolean hurtCall = false;
+	private boolean chaotic = false;
 
 	private int getCD(DamageSource source) {
 		if (!YHModConfig.COMMON.reimuExtraDamageCoolDown.get())
@@ -207,8 +208,13 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	@Override
 	protected void customServerAiStep() {
 		super.customServerAiStep();
+		if (combatProgress != null && getCombatProgress() != combatProgress.progress) {
+			bossEvent.setProgress(random().nextFloat());
+			return;
+		}
 		bossEvent.setProgress(getCombatProgress() / getMaxHealth());
 		if (getTarget() == null || !getTarget().isAlive()) {
+			chaotic = false;
 			noTargetTime++;
 			boolean doHeal = noTargetTime >= 20 && tickCount % 20 == 0;
 			doHeal |= getCombatProgress() < getMaxHealth();
@@ -223,6 +229,10 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		} else {
 			noTargetTime = 0;
 		}
+	}
+
+	public boolean isChaotic() {
+		return chaotic || combatProgress != null && getCombatProgress() != combatProgress.progress;
 	}
 
 	public void startSeenByPlayer(ServerPlayer pPlayer) {

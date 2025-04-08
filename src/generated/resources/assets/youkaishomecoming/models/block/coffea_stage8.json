@@ -1,11 +1,11 @@
 {
-  "parent": "youkaishomecoming:custom/coffea_stage8",
+  "parent": "youkaishomecoming:custom/plant/coffea_stage8",
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "particle": "youkaishomecoming:block/coffea_trunk8",
-    "side": "youkaishomecoming:block/coffea_bush_side",
-    "top": "youkaishomecoming:block/coffea_bush_top",
-    "trunk": "youkaishomecoming:block/coffea_trunk8"
+    "particle": "youkaishomecoming:block/plants/coffea_trunk8",
+    "side": "youkaishomecoming:block/plants/coffea_bush_side",
+    "top": "youkaishomecoming:block/plants/coffea_bush_top",
+    "trunk": "youkaishomecoming:block/plants/coffea_trunk8"
   }
 }

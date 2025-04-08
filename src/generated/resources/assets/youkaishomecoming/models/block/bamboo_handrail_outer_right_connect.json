@@ -1,6 +1,6 @@
 {
   "parent": "youkaishomecoming:custom/handrail_outer_right_connect",
   "textures": {
-    "all": "youkaishomecoming:block/bamboo_handrail"
+    "all": "youkaishomecoming:block/wooden/bamboo_handrail"
   }
 }

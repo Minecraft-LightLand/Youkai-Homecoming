@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 public class ReimuRenderer extends MobRenderer<MaidenEntity, ReimuModel<MaidenEntity>> {
 
 	public static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/entities/reimu.png");
+	public static final ResourceLocation BLUE = YoukaisHomecoming.loc("textures/entities/reimu_blue.png");
 
 	public ReimuRenderer(EntityRendererProvider.Context context) {
 		super(context, new ReimuModel<>(context.bakeLayer(ReimuModel.LAYER_LOCATION)), 0.2F);
@@ -18,6 +19,8 @@ public class ReimuRenderer extends MobRenderer<MaidenEntity, ReimuModel<MaidenEn
 	}
 
 	public ResourceLocation getTextureLocation(MaidenEntity entity) {
+		if (entity.isChaotic())
+			return entity.tickCount / 2 % 2 == 0 ? TEX : BLUE;
 		return TEX;
 	}
 

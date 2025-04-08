@@ -2,7 +2,7 @@
   "parent": "youkaishomecoming:custom/wooden_dining_table",
   "render_type": "minecraft:cutout",
   "textures": {
-    "all": "youkaishomecoming:block/jungle_dining_table",
+    "all": "youkaishomecoming:block/wooden/jungle_dining_table",
     "particle": "minecraft:block/birch_planks"
   }
 }

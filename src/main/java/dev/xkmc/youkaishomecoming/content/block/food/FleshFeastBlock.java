@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
+import dev.xkmc.youkaishomecoming.content.item.food.IFleshFoodItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -53,7 +54,7 @@ public class FleshFeastBlock extends FeastBlock {
 
 	@Override
 	public MutableComponent getName() {
-		Player player = FleshFoodItem.getPlayer();
+		Player player = IFleshFoodItem.getPlayer();
 		Component name;
 		if (player != null && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
 			name = YHLangData.FLESH_NAME_YOUKAI.get();
@@ -105,7 +106,7 @@ public class FleshFeastBlock extends FeastBlock {
 		public ModelFile build(RegistrateBlockstateProvider pvd) {
 			String name = name().toLowerCase(Locale.ROOT);
 			var ans = pvd.models().getBuilder("flesh_feast_" + name)
-					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/flesh_feast_" + name)));
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/flesh_feast_" + name)));
 			ans.texture("tray_top", pvd.modLoc("block/tray_top"));
 			ans.texture("particle", pvd.modLoc("block/tray_top"));
 			ans.texture("tray_bottom", pvd.modLoc("block/tray_bottom"));

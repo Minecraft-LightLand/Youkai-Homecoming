@@ -1,0 +1,96 @@
+{
+	"credit": "Made with Blockbench",
+	"parent":"block/block",
+	"textures": {
+		"0": "#ceramic",
+		"1": "#base",
+		"2": "#detail"
+	},
+	"elements": [
+		{
+			"name": "saucer",
+			"from": [3, 0, 4.5],
+			"to": [13, 1, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 9.5]},
+			"faces": {
+				"north": {"uv": [0, 14, 10, 15], "texture": "#0"},
+				"east": {"uv": [10, 0, 11, 7], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [0, 15, 10, 16], "texture": "#0"},
+				"west": {"uv": [10, 7, 11, 14], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [0, 0, 10, 7], "texture": "#0"},
+				"down": {"uv": [0, 7, 10, 14], "texture": "#0"}
+			}
+		},
+		{
+			"name": "tomato_sauce_horse_mackerel",
+			"from": [6, 1, 6.25],
+			"to": [10, 3, 9.25],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8.5, 1.5, 7.75]},
+			"faces": {
+				"north": {"uv": [0, 8, 4, 10], "texture": "#1"},
+				"east": {"uv": [8, 2, 11, 4], "texture": "#1"},
+				"south": {"uv": [8, 0, 12, 2], "texture": "#1"},
+				"west": {"uv": [8, 4, 11, 6], "texture": "#1"},
+				"up": {"uv": [8, 3, 4, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "tomato_sauce_horse_mackerel",
+			"from": [8.5, 1, 5.5],
+			"to": [11.5, 2, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [10, 1.5, 7]},
+			"faces": {
+				"north": {"uv": [10, 8, 13, 9], "texture": "#1"},
+				"east": {"uv": [10, 10, 13, 11], "texture": "#1"},
+				"south": {"uv": [0, 11, 3, 12], "texture": "#1"},
+				"west": {"uv": [11, 2, 14, 3], "texture": "#1"},
+				"up": {"uv": [7, 9, 4, 6], "texture": "#1"}
+			}
+		},
+		{
+			"name": "tomato_sauce_horse_mackerel",
+			"from": [8.5, 1, 8.5],
+			"to": [10.5, 2, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [10, 1.5, 9]},
+			"faces": {
+				"north": {"uv": [3, 11, 5, 12], "texture": "#1"},
+				"east": {"uv": [11, 3, 13, 4], "texture": "#1"},
+				"south": {"uv": [11, 4, 13, 5], "texture": "#1"},
+				"west": {"uv": [5, 11, 7, 12], "texture": "#1"},
+				"up": {"uv": [12, 8, 10, 6], "texture": "#1"}
+			}
+		},
+		{
+			"name": "tomato_sauce_horse_mackerel",
+			"from": [4.5, 1, 6],
+			"to": [8.5, 2, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 1.5, 7.5]},
+			"faces": {
+				"north": {"uv": [4, 9, 8, 10], "texture": "#1"},
+				"east": {"uv": [8, 9, 12, 10], "texture": "#1"},
+				"south": {"uv": [0, 10, 4, 11], "texture": "#1"},
+				"west": {"uv": [4, 10, 8, 11], "texture": "#1"},
+				"up": {"uv": [4, 4, 0, 0], "texture": "#1"}
+			}
+		},
+		{
+			"name": "detail",
+			"from": [2, 1.01, 3.5],
+			"to": [14, 1.01, 12.5],
+			"faces": {
+				"up": {"uv": [0, 0, 12, 9], "texture": "#2"},
+				"down": {"uv": [0, 9, 12, 0], "texture": "#2"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		{
+			"name": "tomato_sauce_horse_mackerel",
+			"origin": [7, 1.5, 7.5],
+			"color": 0,
+			"children": [1, 2, 3, 4]
+		},
+		5
+	]
+}

@@ -27,6 +27,7 @@ import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.common.Tags;
 
@@ -34,14 +35,14 @@ import java.util.function.Supplier;
 
 public class YHCropBlock extends CropBlock {
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+			Block.box(2, 0, 2, 14, 5, 14),
+			Block.box(2, 0, 2, 14, 7, 14),
+			Block.box(2, 0, 2, 14, 9, 14),
+			Block.box(2, 0, 2, 14, 11, 14),
+			Block.box(2, 0, 2, 14, 13, 14),
+			Block.box(2, 0, 2, 14, 14, 14),
+			Block.box(2, 0, 2, 14, 14, 14),
+			Block.box(2, 0, 2, 14, 14, 14)};
 
 	private final Supplier<Item> seed;
 
@@ -72,7 +73,7 @@ public class YHCropBlock extends CropBlock {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
 			String tex = name + "_stage" + age;
-			return ConfiguredModel.builder().modelFile(pvd.models().crop(tex, pvd.modLoc("block/" + tex)).renderType("cutout")).build();
+			return ConfiguredModel.builder().modelFile(pvd.models().crop(tex, pvd.modLoc("block/plants/" + tex)).renderType("cutout")).build();
 		});
 	}
 
@@ -80,7 +81,11 @@ public class YHCropBlock extends CropBlock {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
 			String tex = name + "_stage" + age;
-			return ConfiguredModel.builder().modelFile(pvd.models().cross(tex, pvd.modLoc("block/" + tex)).renderType("cutout")).build();
+			return ConfiguredModel.builder().modelFile(pvd.models()
+					.getBuilder(tex)
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cross_crop")))
+					.texture("cross", "block/plants/" + tex)
+					.renderType("cutout")).build();
 		});
 	}
 
@@ -117,7 +122,7 @@ public class YHCropBlock extends CropBlock {
 
 	public static void buildWildModel(DataGenContext<Block, ? extends BushBlock> ctx, RegistrateBlockstateProvider pvd, YHCrops crop) {
 		String tex = "wild_" + crop.getName();
-		pvd.simpleBlock(ctx.get(), pvd.models().cross(tex, pvd.modLoc("block/" + tex)).renderType("cutout"));
+		pvd.simpleBlock(ctx.get(), pvd.models().cross(tex, pvd.modLoc("block/plants/" + tex)).renderType("cutout"));
 	}
 
 }

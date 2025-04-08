@@ -20,24 +20,34 @@ import java.util.List;
 import java.util.Locale;
 
 public enum YHSake implements IYHSake {
-	MIO(FoodType.BOTTLE, 0xffffffff, List.of(
+	MIO(FoodType.BOTTLE, 0xff7890e5, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
-	MEAD(FoodType.BOTTLE, 0xffffffff, List.of(
+	MEAD(FoodType.BOTTLE, 0xfffbe8a6, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1))),
-	SPARROW_SAKE(FoodType.BAMBOO, 0xffffffff, List.of(
+	SPARROW_SAKE(FoodType.BAMBOO, 0xfffffacd, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(() -> MobEffects.LUCK, 1200, 0, 1))),
-	DAIGINJO(FoodType.SAKE, 0xffffffff, List.of(
+	KIKU(FoodType.SAKE, 0xffd5d6b8, List.of(
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
+	HAKUTSURU(FoodType.SAKE, 0xfff1ddbd, List.of(
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
+	KAPPA_VILLAGE(FoodType.SAKE, 0xffd5d6b8, List.of(
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
+			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 0.5f))),
+	SUIGEI(FoodType.SAKE, 0xffe3f9fb, List.of(
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
+			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 1))),
+	DAIGINJO(FoodType.SAKE, 0xffebc78b, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 1200, 2, 1))),
-	DASSAI(FoodType.SAKE, 0xffffffff, List.of(
+	DASSAI(FoodType.SAKE, 0xffa86f64, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(() -> MobEffects.DIG_SPEED, 1200, 2, 1))),
-	TENGU_TANGO(FoodType.SAKE, 0xffffffff, List.of(
+	TENGU_TANGO(FoodType.SAKE, 0xffad6843, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
-	FULL_MOONS_EVE(FoodType.SAKE, 0xffffffff, List.of(
+	FULL_MOONS_EVE(FoodType.SAKE, 0xfff3fafb, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1))),
 	SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(

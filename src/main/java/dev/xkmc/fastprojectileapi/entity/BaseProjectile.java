@@ -37,6 +37,8 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 		}
 		if (tickCount >= lifetime()) {
 			if (!level().isClientSide()) {
+				projectileMove();
+				terminate();
 				discard();
 			}
 		} else {
@@ -47,6 +49,10 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 				}
 			}
 		}
+	}
+
+	protected void terminate() {
+
 	}
 
 	protected void projectileMove() {
@@ -97,6 +103,11 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 	}
 
 	protected void onHitBlock(BlockHitResult pResult) {
+	}
+
+	@Override
+	public boolean isValid() {
+		return tickCount < lifetime();
 	}
 
 }

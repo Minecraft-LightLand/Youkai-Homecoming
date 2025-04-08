@@ -94,15 +94,22 @@ public class FairyEntity extends GeneralYoukaiEntity {
 	public void initSpellCard() {
 	}
 
+	private static long spawnTime = 0;
+
 	public static boolean checkFairySpawnRules(EntityType<? extends FairyEntity> e, ServerLevelAccessor level, MobSpawnType type, BlockPos pos, RandomSource rand) {
 		if (e != YHEntities.CIRNO.get() && !ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) return false;
 		if (!checkMobSpawnRules(e, level, type, pos, rand)) return false;
 		if (!YHModConfig.COMMON.cirnoSpawn.get()) return false;
-		var aabb = AABB.ofSize(pos.getCenter(), 48, 24, 48);
-		if (!level.getEntitiesOfClass(FairyEntity.class, aabb).isEmpty()) return false;
 		var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 128, false);
 		if (player == null) return false;
-		return !YHModConfig.COMMON.cirnoSpawnCheckEffect.get() || EffectEventHandlers.isCharacter(player);
+		if (spawnTime > player.level().getGameTime()) return false;
+		var aabb = AABB.ofSize(pos.getCenter(), 48, 24, 48);
+		if (!level.getEntitiesOfClass(FairyEntity.class, aabb).isEmpty()) return false;
+		if (!YHModConfig.COMMON.cirnoSpawnCheckEffect.get() || EffectEventHandlers.isCharacter(player)) {
+			spawnTime = player.level().getGameTime() + 200;
+			return true;
+		}
+		return false;
 	}
 
 }

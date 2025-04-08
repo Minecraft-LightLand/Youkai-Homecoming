@@ -2,16 +2,29 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.util.FluidRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.ModelBlockRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.client.model.data.ModelData;
 
 public class SteamerBlockRenderer implements BlockEntityRenderer<SteamerBlockEntity> {
+
+	private static final RandomSource RANDOM = RandomSource.create(42);
 
 	private final ItemRenderer itemRenderer;
 
@@ -27,6 +40,28 @@ public class SteamerBlockRenderer implements BlockEntityRenderer<SteamerBlockEnt
 		}
 		if (info.racks() == 0 || be.racks.isEmpty() || info.racks() > be.racks.size()) return;
 		RackData rack = be.racks.get(info.racks() - 1);
+		if (rack.list[0] != null && rack.list[0].stack.getItem() instanceof FoodSaucerItem item) {
+			pose.pushPose();
+			BlockState state = item.getBlock().defaultBlockState();
+			state = state.setValue(BlockStateProperties.HORIZONTAL_FACING, state.getValue(BlockStateProperties.HORIZONTAL_FACING));
+			BakedModel model = Minecraft.getInstance().getModelManager().getBlockModelShaper().getBlockModel(state);
+			pose.translate(.5f, (info.height() * 4 - 3) / 16f, .5f);
+			FoodSaucerBlock block = (FoodSaucerBlock) item.getBlock();
+			var saucer = block.dish.saucer;
+			int width = 16 - Math.min(saucer.x, saucer.z) * 2;
+			float s = 8f / width;
+			pose.scale(s, s, s);
+			pose.translate(-.5f, 0, -.5f);
+			ModelBlockRenderer renderer = Minecraft.getInstance().getBlockRenderer().getModelRenderer();
+			PoseStack.Pose mat = pose.last();
+			RANDOM.setSeed(42);
+			for (RenderType rt : model.getRenderTypes(state, RANDOM, ModelData.EMPTY)) {
+				renderer.renderModel(mat, buffer.getBuffer(ForgeHooksClient.getEntityRenderType(rt, false)),
+						state, model, 1F, 1F, 1F, light, overlay, ModelData.EMPTY, rt);
+			}
+			pose.popPose();
+			return;
+		}
 		int i = (int) be.getBlockPos().asLong();
 		for (int j = 0; j < rack.list.length; ++j) {
 			var data = rack.list[j];

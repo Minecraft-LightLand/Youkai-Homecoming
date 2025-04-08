@@ -6,6 +6,8 @@ import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverOwner;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.TrailAction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -25,6 +27,10 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	public int controlCode = 0;
 	@SerialClass.SerialField
 	public DanmakuMover mover = null;
+	@SerialClass.SerialField
+	public TrailAction afterExpiry = null;
+
+	private boolean isErased = false;
 
 	public ItemDanmakuEntity(EntityType<? extends ItemDanmakuEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -50,6 +56,16 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	@Override
 	public TraceableEntity asTraceable() {
 		return this;
+	}
+
+	@Override
+	protected void terminate() {
+		if (afterExpiry == null) return;
+		CardHolder holder = null;
+		Entity e = getOwner();
+		if (e instanceof CardHolder h) holder = h;
+		if (holder == null) return;
+		afterExpiry.execute(holder, position(), getDeltaMovement());
 	}
 
 	@Override
@@ -104,6 +120,17 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 
 	public boolean fullBright() {
 		return true;
+	}
+
+	public void erase(LivingEntity user) {
+		if (getOwner() == user) return;
+		isErased = true;
+		discard();
+	}
+
+	@Override
+	public boolean isValid() {
+		return !isErased && super.isValid();
 	}
 
 	private Float sizeCache = null;

@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/dish/cumberland_loin",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/cumberland_loin_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "detail": "youkaishomecoming:block/dish/cumberland_loin_detail",
+    "particle": "youkaishomecoming:block/dish/ceramic"
+  }
+}

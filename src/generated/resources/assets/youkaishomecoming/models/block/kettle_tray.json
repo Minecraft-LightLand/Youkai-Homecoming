@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/kettle_tray",
+  "parent": "youkaishomecoming:custom/utensil/kettle_tray",
   "render_type": "minecraft:cutout",
   "textures": {
     "kettle": "youkaishomecoming:block/kettle",

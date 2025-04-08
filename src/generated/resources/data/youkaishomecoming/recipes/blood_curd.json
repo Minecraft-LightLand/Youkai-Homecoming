@@ -14,6 +14,9 @@
     },
     {
       "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
     }
   ],
   "result": {
