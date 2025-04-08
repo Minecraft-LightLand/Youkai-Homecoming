@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.TrailAction;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.frog.Frog;
@@ -54,7 +55,7 @@ public class CirnoSpell extends ActualSpellCard {
 		public boolean tick(CardHolder holder, CirnoSpell card) {
 			step(holder);
 			super.tick(holder, card);
-			return false;
+			return tick > 0;
 		}
 
 		private void step(CardHolder holder) {
@@ -76,25 +77,42 @@ public class CirnoSpell extends ActualSpellCard {
 					var vec = front.scale(acc * t0);
 					var e = holder.prepareDanmaku(t0, vec, YHDanmaku.Bullet.MENTOS, DyeColor.LIGHT_BLUE);
 					e.mover = new RectMover(pos, vec, front.scale(-acc));
+					e.afterExpiry = new IcePopsicle().setup(m, t2 + r.nextInt(dt), dr, termSpeed);
 					holder.shoot(e);
 				}
 			}
-			if (tick == t0) {
-				var o0 = DanmakuHelper.getOrientation(init, normal);
-				for (int i = 0; i < n; i++) {
-					var f0 = o0.rotateDegrees(360.0 / n * i);
-					var p0 = pos.add(f0.scale(r0));
-					var f1 = le.subtract(p0).normalize();
-					var o1 = DanmakuHelper.getOrientation(f1);
-					for (int j = 0; j < m; j++) {
-						var vec = o1.rotateDegrees((j - (m - 1) * 0.5) * dr).scale(termSpeed);
-						int t = t2 + r.nextInt(dt);
-						var e = holder.prepareDanmaku(t, vec, YHDanmaku.Bullet.BALL, DyeColor.LIGHT_BLUE);
-						e.setPos(p0);
-						e.mover = new RectMover(p0, vec, Vec3.ZERO);
-						holder.shoot(e);
-					}
-				}
+		}
+
+	}
+
+	@SerialClass
+	public static class IcePopsicle extends TrailAction {
+
+		@SerialClass.SerialField
+		private int count, life;
+		@SerialClass.SerialField
+		private double dr, speed;
+
+		public IcePopsicle setup(int count, int life, double angle, double speed) {
+			this.count = count;
+			this.life = life;
+			this.dr = angle;
+			this.speed = speed;
+			return this;
+		}
+
+		@Override
+		public void execute(CardHolder holder, Vec3 pos, Vec3 dir) {
+			var le = holder.target();
+			if (le == null) return;
+			var f1 = le.subtract(pos).normalize();
+			var o1 = DanmakuHelper.getOrientation(f1);
+			for (int j = 0; j < count; j++) {
+				var vec = o1.rotateDegrees((j - (count - 1) * 0.5) * dr).scale(speed);
+				var e = holder.prepareDanmaku(life, vec, YHDanmaku.Bullet.BALL, DyeColor.LIGHT_BLUE);
+				e.setPos(pos);
+				e.mover = new RectMover(pos, vec, Vec3.ZERO);
+				holder.shoot(e);
 			}
 		}
 

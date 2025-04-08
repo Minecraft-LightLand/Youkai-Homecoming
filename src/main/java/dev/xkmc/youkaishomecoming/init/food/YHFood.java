@@ -65,7 +65,7 @@ public enum YHFood {
 	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
 			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
-	MANTOU(FoodType.SIMPLE, 6, 0.6f,  DietTagGen.GRAINS.tag),
+	MANTOU(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	BUN(FoodType.SIMPLE, 8, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 6, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
@@ -251,7 +251,7 @@ public enum YHFood {
 		else {
 			String rid = "item/" + id + raw;
 			this.raw = YoukaisHomecoming.REGISTRATE.item(raw, Item::new)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc(rid)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc(rid)))
 					.register();
 		}
 		item = type.build(id, name, nutrition, sat, tags, effs);
@@ -284,7 +284,7 @@ public enum YHFood {
 	}
 
 	private boolean isUnappealing() {
-		return this == RAW_LAMPREY || this == RAW_LAMPREY_FILLET;
+		return this == RAW_LAMPREY || this == RAW_LAMPREY_FILLET || this == POOR_GOD_SOUP || this == BUTTER;
 	}
 
 	public boolean isReimuFood() {

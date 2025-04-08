@@ -4,3 +4,4 @@ run/
 build/
 .DS_Store
 secrets.properties
+temp

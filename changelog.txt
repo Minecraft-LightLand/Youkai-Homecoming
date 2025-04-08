@@ -1,5 +1,7 @@
 2.3.9
 - Add 4 kinds of sake
+- Remove inappropriate items from reimu's favorite
+- Fix Saucer model
 
 2.3.8
 - Fix cold tofu model

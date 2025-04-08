@@ -111,16 +111,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:butter": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:butter"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:candy_apple": {
       "conditions": {
         "item": {
@@ -596,16 +586,6 @@
         "item": {
           "items": [
             "youkaishomecoming:pastitsio"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:poor_god_soup": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:poor_god_soup"
           ]
         }
       },
@@ -1101,9 +1081,6 @@
       "youkaishomecoming:roe"
     ],
     [
-      "youkaishomecoming:butter"
-    ],
-    [
       "youkaishomecoming:tofu"
     ],
     [
@@ -1249,9 +1226,6 @@
     ],
     [
       "youkaishomecoming:seafood_miso_soup"
-    ],
-    [
-      "youkaishomecoming:poor_god_soup"
     ],
     [
       "youkaishomecoming:power_soup"

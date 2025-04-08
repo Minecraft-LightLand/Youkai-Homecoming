@@ -3,7 +3,7 @@
   "render_type": "minecraft:cutout",
   "textures": {
     "particle": "youkaishomecoming:block/dish/saucer_plate",
-    "saucer_plate": "youkaishomecoming:block/dish/saucer_plate",
-    "saucer_sake": "youkaishomecoming:block/dish/saucer_sake"
+    "plate": "youkaishomecoming:block/dish/saucer_plate",
+    "sake": "youkaishomecoming:block/dish/saucer_sake"
   }
 }

@@ -7,10 +7,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.TargetTracker;
-import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
+import dev.xkmc.youkaishomecoming.content.spell.spellcard.*;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.sounds.SoundEvents;
@@ -237,7 +234,7 @@ public class ReimuSpell extends ActualSpellCard {
 		public boolean tick(CardHolder holder, ReimuSpell card) {
 			step(holder);
 			super.tick(holder, card);
-			return tick > t0 + t1 || holder.target() == null;
+			return tick > 0 || holder.target() == null;
 		}
 
 		private void step(CardHolder holder) {
@@ -259,40 +256,56 @@ public class ReimuSpell extends ActualSpellCard {
 					var vec = front.scale(acc * t0);
 					var e = holder.prepareDanmaku(t0, vec, bullet, DyeColor.LIGHT_GRAY);
 					e.mover = new RectMover(pos, vec, front.scale(-acc));
+					e.afterExpiry = new HomingTrail().setup(t1, acc * t1, 0, bullet, DyeColor.PURPLE)
+							.next(new HomingTrail().setup(t2 + r.nextInt(dt), termSpeed, termSpeed, bullet, color));
 					holder.shoot(e);
 				}
 			}
-			if (tick == t0) {
-				target1 = le;
-				DanmakuHelper.Orientation o0 = DanmakuHelper.getOrientation(init, normal);
-				double acc = r1 * 2d / t1 / t1;
-				for (int i = 0; i < n; i++) {
-					var f0 = o0.rotateDegrees(360.0 / n * i);
-					var p0 = pos.add(f0.scale(r0));
-					var f1 = target1.subtract(p0).normalize();
-					var vec = f1.scale(acc * t1);
-					var e = holder.prepareDanmaku(t1, vec, bullet, DyeColor.PURPLE);
-					e.setPos(p0);
-					e.mover = new RectMover(p0, vec, f1.scale(-acc));
-					holder.shoot(e);
-				}
-			}
-			if (tick == t0 + t1 && target1 != null) {
-				DanmakuHelper.Orientation o0 = DanmakuHelper.getOrientation(init, normal);
-				for (int i = 0; i < n; i++) {
-					var f0 = o0.rotateDegrees(360.0 / n * i);
-					var p0 = pos.add(f0.scale(r0));
-					var f1 = target1.subtract(p0).normalize();
-					var p1 = p0.add(f1.scale(r1));
-					var f2 = le.subtract(p1).normalize();
-					var vec = f2.scale(termSpeed);
-					int t = t2 + r.nextInt(dt);
-					var e = holder.prepareDanmaku(t, vec, bullet, color);
-					e.setPos(p1);
-					e.mover = new RectMover(p1, vec, Vec3.ZERO);
-					holder.shoot(e);
-				}
-			}
+		}
+
+	}
+
+	@SerialClass
+	public static class HomingTrail extends TrailAction {
+
+		@SerialClass.SerialField
+		private int life;
+		@SerialClass.SerialField
+		private double v0, v1;
+		@SerialClass.SerialField
+		private YHDanmaku.Bullet bullet;
+		@SerialClass.SerialField
+		private DyeColor color;
+		@SerialClass.SerialField
+		private TrailAction next;
+
+		public HomingTrail setup(int life, double v0, double v1, YHDanmaku.Bullet bullet, DyeColor color) {
+			this.life = life;
+			this.v0 = v0;
+			this.v1 = v1;
+			this.bullet = bullet;
+			this.color = color;
+			return this;
+		}
+
+		public HomingTrail next(TrailAction next) {
+			this.next = next;
+			return this;
+		}
+
+		@Override
+		public void execute(CardHolder holder, Vec3 pos, Vec3 dir) {
+			var le = holder.target();
+			if (le == null) return;
+			var f2 = le.subtract(pos).normalize();
+			var vec = f2.scale(v0);
+			var acc = f2.scale((v1 - v0) / life);
+			var e = holder.prepareDanmaku(life, vec, bullet, color);
+			e.setPos(pos);
+			e.mover = new RectMover(pos, vec, acc);
+			if (next != null)
+				e.afterExpiry = next;
+			holder.shoot(e);
 		}
 
 	}

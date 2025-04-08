@@ -34,7 +34,9 @@ public enum Saucer implements StringRepresentable {
 		var builder = pvd.models().getBuilder("block/" + getName())
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/dish/" + getName())));
 		for (var e : tex) {
-			builder.texture(e, "block/dish/" + e);
+			String key = e;
+			if (e.startsWith("saucer_")) key = e.substring(7);
+			builder.texture(key, "block/dish/" + e);
 		}
 		builder.texture("particle", "block/dish/" + tex[0]);
 		builder.renderType("cutout");
