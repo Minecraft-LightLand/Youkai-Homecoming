@@ -1,7 +1,9 @@
 2.3.9
 - Add 4 kinds of sake
+- Add colors to sake fluid
 - Remove inappropriate items from reimu's favorite
 - Fix Saucer model
+- No longer lags with Pehkui
 
 2.3.8
 - Fix cold tofu model
