@@ -60,6 +60,7 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.tag(ItemTags.PLANKS), RecipeCategory.MISC, YHBlocks.STEAMER_LID);
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
+			pvd.stonecutting(DataIngredient.items(Items.GLASS), RecipeCategory.MISC, YHItems.SAKE_BOTTLE);
 			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
 			for (var e : YHBlocks.WoodType.values()) {
 				pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, e.fence);

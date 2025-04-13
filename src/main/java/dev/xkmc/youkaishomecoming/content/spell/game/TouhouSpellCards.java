@@ -42,6 +42,7 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:star_sapphire", StarSpell::new);
 		registerSpell("touhou_little_maid:doremy_sweet", DoremiSpell::new);
 		registerSpell("touhou_little_maid:kisin_sagume", KisinSpell::new);
+		registerSpell("touhou_little_maid:remilia_scarlet", RemiliaSpell::new);
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
@@ -83,6 +84,10 @@ public class TouhouSpellCards {
 
 	public static void setKoishi(KoishiEntity e) {
 		setSpell(e, "touhou_little_maid:komeiji_koishi");
+	}
+
+	public static void setRemilia(RemiliaEntity e) {
+		setSpell(e, "touhou_little_maid:remilia_scarlet");
 	}
 
 	public static void setMystia(MystiaEntity e) {

@@ -1,9 +1,16 @@
+2.3.10
+- Add sake bottle that allows you to drink sake in slips
+- Add ways to summon Remilia and Mystia (requires TLM)
+- Remilia: right click bat with Scarlet Devil Cake
+- Mystia: right click parrot with raw lamprey
+
 2.3.9
 - Add 4 kinds of sake
 - Add colors to sake fluid
 - Remove inappropriate items from reimu's favorite
 - Fix Saucer model
 - No longer lags with Pehkui
+
 
 2.3.8
 - Fix cold tofu model
@@ -15,7 +22,6 @@
 
 2.3.6
 - Add Steamer
-
 
 2.3.5
 - Fix Spell card item usage

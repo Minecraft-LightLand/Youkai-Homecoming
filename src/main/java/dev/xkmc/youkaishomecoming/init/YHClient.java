@@ -8,16 +8,19 @@ import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.FrogRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,6 +45,10 @@ public class YHClient {
 		if (YoukaisHomecoming.ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			MinecraftForge.EVENT_BUS.register(TLMRenderHandler.class);
 		}
+		event.enqueueWork(() -> {
+			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("slip"),
+					(stack, level, user, index) -> SlipBottleItem.texture(stack));
+		});
 	}
 
 	@SubscribeEvent

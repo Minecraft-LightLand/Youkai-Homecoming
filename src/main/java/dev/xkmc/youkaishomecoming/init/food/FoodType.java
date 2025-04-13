@@ -16,34 +16,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public enum FoodType {
-	SIMPLE(YHFoodItem::new, false, false, false),
-	FAST(YHFoodItem::new, false, true, false),
-	MEAT(YHFoodItem::new, true, false, false),
-	MEAT_SLICE(YHFoodItem::new, true, true, false),
-	STICK(p -> new YHFoodItem(p.craftRemainder(Items.STICK).stacksTo(16)), false, true, false),
-	BOWL(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false, false),
-	SAKE(p -> new YHDrinkItem(p.craftRemainder(Items.BOWL).stacksTo(16)), false, false, true),
-	BOTTLE(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, false, true),
-	BAMBOO(p -> new YHDrinkItem(p.craftRemainder(Items.BAMBOO).stacksTo(16)), false, false, true),
-	BOTTLE_FAST(p -> new YHDrinkItem(p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), false, true, true),
-	BOWL_MEAT(p -> new YHFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, false),
-	FLESH(FleshFoodItem::new, true, false, false, YHTagGen.FLESH_FOOD),
-	FLESH_FAST(FleshFoodItem::new, true, true, false, YHTagGen.FLESH_FOOD),
-	BOWL_FLESH(p -> new FleshFoodItem(p.craftRemainder(Items.BOWL).stacksTo(16)), true, false, false, YHTagGen.FLESH_FOOD),
-	CAN_FLESH(p -> new FleshFoodItem(p.craftRemainder(YHItems.CAN.get()).stacksTo(64)), true, true, false, YHTagGen.FLESH_FOOD),
+	SIMPLE(YHFoodItem::new, UnaryOperator.identity(), false, false, false),
+	FAST(YHFoodItem::new, UnaryOperator.identity(), false, true, false),
+	MEAT(YHFoodItem::new, UnaryOperator.identity(), true, false, false),
+	MEAT_SLICE(YHFoodItem::new, UnaryOperator.identity(), true, true, false),
+	STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), false, true, false),
+	BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false, false),
+	SAKE(YHDrinkItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false, true),
+	BOTTLE(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, false, true),
+	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false, true),
+	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true, true),
+	BOWL_MEAT(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false),
+	FLESH(FleshFoodItem::new, UnaryOperator.identity(), true, false, false, YHTagGen.FLESH_FOOD),
+	FLESH_FAST(FleshFoodItem::new, UnaryOperator.identity(), true, true, false, YHTagGen.FLESH_FOOD),
+	BOWL_FLESH(FleshFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false, YHTagGen.FLESH_FOOD),
+	CAN_FLESH(FleshFoodItem::new, p -> p.craftRemainder(YHItems.CAN.get()).stacksTo(64), true, true, false, YHTagGen.FLESH_FOOD),
 	;
 
 	private final Function<Item.Properties, Item> factory;
+	private final UnaryOperator<Item.Properties> prop;
 	private final boolean meat, fast, alwaysEat;
 
 	private final TagKey<Item>[] tags;
 	private final EffectEntry[] effs;
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, boolean meat, boolean fast, boolean alwaysEat, EffectEntry[] effs, TagKey<Item>... tags) {
+	FoodType(Function<Item.Properties, Item> factory, UnaryOperator<Item.Properties> prop, boolean meat, boolean fast, boolean alwaysEat, EffectEntry[] effs, TagKey<Item>... tags) {
 		this.factory = factory;
+		this.prop = prop;
 		this.meat = meat;
 		this.fast = fast;
 		this.alwaysEat = alwaysEat;
@@ -52,11 +55,15 @@ public enum FoodType {
 	}
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, boolean meat, boolean fast, boolean alwaysEat, TagKey<Item>... tags) {
-		this(factory, meat, fast, alwaysEat, new EffectEntry[0], tags);
+	FoodType(Function<Item.Properties, Item> factory, UnaryOperator<Item.Properties> prop, boolean meat, boolean fast, boolean alwaysEat, TagKey<Item>... tags) {
+		this(factory, prop, meat, fast, alwaysEat, new EffectEntry[0], tags);
 	}
 
 	public ItemEntry<Item> build(String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+		return build(factory, folder, name, nutrition, sat, tags, effs);
+	}
+
+	public ItemEntry<Item> build(Function<Item.Properties, Item> factory, String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		if (meat) food.meat();
@@ -69,7 +76,7 @@ public enum FoodType {
 			food.effect(e::getEffect, e.chance());
 		}
 		return YoukaisHomecoming.REGISTRATE
-				.item(name, p -> factory.apply(p.food(food.build())))
+				.item(name, p -> factory.apply(prop.apply(p).food(food.build())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + folder + ctx.getName())))
 				.tag(getTags(this.tags, tags))
 				.lang(Item::getDescriptionId, makeLang(name))

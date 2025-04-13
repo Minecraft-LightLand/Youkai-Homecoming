@@ -2,10 +2,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.FluidEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
-import dev.xkmc.youkaishomecoming.content.item.fluid.IYHSake;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidType;
+import dev.xkmc.youkaishomecoming.content.item.fluid.*;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.resources.ResourceLocation;
@@ -71,7 +68,7 @@ public enum YHSake implements IYHSake {
 		String name = name().toLowerCase(Locale.ROOT);
 		fluid = BottledFluid.water(name, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
 				.defaultLang().register();
-		item = type.build("sake/", name, 0, 0, tags, effs);
+		item = type.build(p -> new SakeBottleItem(fluid, p), "sake/", name, 0, 0, tags, effs);
 	}
 
 	@Override

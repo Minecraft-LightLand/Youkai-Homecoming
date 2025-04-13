@@ -137,7 +137,9 @@
 		"custom_spell_homing": "自定义符卡 - 追踪弹",
 		"mantou": "馒头",
 		"raw_bun": "生包子",
-		"raw_oyaki": "生御烧"
+		"raw_oyaki": "生御烧",
+		"sake_bottle": "酒瓶",
+		"spell_remilia": "红符「绯红之主」"
 	},
 	"-cartesian": {
 		"entity": {
@@ -157,7 +159,8 @@
 					"mystia_lorelei": "米斯蒂亚",
 					"luna_child": "露娜",
 					"sunny_milk": "桑尼",
-					"star_sapphire": "斯塔"
+					"star_sapphire": "斯塔",
+					"remilia_scarlet": "蕾米莉亚斯卡雷特"
 				},
 				{
 					"entity.youkaishomecoming.*": "",
@@ -196,7 +199,11 @@
 					"sparrow_sake": "雀酒",
 					"tengu_tango": "天狗踊",
 					"scarlet_mist": "绯红迷雾",
-					"wind_priestesses": "风祝"
+					"wind_priestesses": "风祝",
+					"hakutsuru": "丹白鹤",
+					"kappa_village": "河童之里",
+					"kiku": "菊",
+					"suigei": "鲸息"
 				}
 			]
 		},

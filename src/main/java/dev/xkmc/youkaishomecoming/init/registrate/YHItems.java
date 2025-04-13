@@ -15,6 +15,7 @@ import dev.xkmc.youkaishomecoming.content.item.danmaku.CustomSpellItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
@@ -36,6 +37,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
@@ -71,6 +73,7 @@ public class YHItems {
 	public static final ItemEntry<Item> CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
 			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
+	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 	public static final ItemEntry<FairyIceItem> FAIRY_ICE_CRYSTAL;
 	public static final ItemEntry<FrozenFrogItem> FROZEN_FROG_COLD, FROZEN_FROG_WARM, FROZEN_FROG_TEMPERATE;
 
@@ -83,7 +86,7 @@ public class YHItems {
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
 	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL,
-			MYSTIA_SPELL, YUKARI_SPELL_LASER, YUKARI_SPELL_BUTTERFLY;
+			MYSTIA_SPELL, REMILIA_SPELL, YUKARI_SPELL_LASER, YUKARI_SPELL_BUTTERFLY;
 	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL_RING, CUSTOM_SPELL_HOMING;
 
 	static {
@@ -189,6 +192,15 @@ public class YHItems {
 					.lang("Night Sparrow \"Midnight Chorus Master\"")
 					.register();
 
+			REMILIA_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_remilia", p -> new SpellItem(
+							p.stacksTo(1), RemiliaItemSpell::new, false,
+							() -> YHDanmaku.Bullet.BUBBLE.get(DyeColor.RED).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Scarlet Sign \"Scarlet Meister\"")
+					.register();
+
 			YUKARI_SPELL_LASER = YoukaisHomecoming.REGISTRATE
 					.item("spell_yukari_laser", p -> new SpellItem(
 							p.stacksTo(1), YukariItemSpellLaser::new, false,
@@ -248,6 +260,18 @@ public class YHItems {
 		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
 
 		YHFood.register();
+
+		SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
+				.properties(p -> p.stacksTo(1))
+				.model((ctx, pvd) ->
+						pvd.generated(ctx, pvd.modLoc("item/sake_bottle"))
+								.override().predicate(YoukaisHomecoming.loc("slip"), 1 / 32f)
+								.model(pvd.getBuilder(ctx.getName() + "_overlay")
+										.parent(new ModelFile.UncheckedModelFile("item/generated"))
+										.texture("layer0", pvd.modLoc("item/sake_bottle"))
+										.texture("layer1", pvd.modLoc("item/sake_bottle_overlay"))))
+				.color(() -> () -> SlipBottleItem::color)
+				.register();
 
 		// feasts
 		{

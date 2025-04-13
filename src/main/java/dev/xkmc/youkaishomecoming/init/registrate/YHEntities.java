@@ -46,6 +46,7 @@ public class YHEntities {
 	public static final EntityEntry<SanaeEntity> SANAE;
 	public static final EntityEntry<MarisaEntity> MARISA;
 	public static final EntityEntry<KoishiEntity> KOISHI;
+	public static final EntityEntry<RemiliaEntity> REMILIA;
 	public static final EntityEntry<MystiaEntity> MYSTIA;
 	public static final EntityEntry<LunaEntity> LUNA;
 	public static final EntityEntry<SunnyEntity> SUNNY;
@@ -145,6 +146,14 @@ public class YHEntities {
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x88BA7F, 0x645856).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::noLoot).register();
+
+			REMILIA = YoukaisHomecoming.REGISTRATE
+					.entity("remilia_scarlet", RemiliaEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(BossYoukaiEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0xF3C1CC, 0x86B9F3).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::remilia).register();
 
 			MYSTIA = YoukaisHomecoming.REGISTRATE
 					.entity("mystia_lorelei", MystiaEntity::new, MobCategory.MONSTER)
