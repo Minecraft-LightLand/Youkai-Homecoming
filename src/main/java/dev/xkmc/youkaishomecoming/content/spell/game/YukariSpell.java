@@ -113,7 +113,8 @@ public class YukariSpell extends ActualSpellCard {
 
 		for (int i = 0; i < 6; i++) {
 			var vec = ori.rotateDegrees(60 * i);
-			var e = holder.prepareDanmaku(40, pos, YHDanmaku.Bullet.BUBBLE, DyeColor.PURPLE);
+			var e = holder.prepareDanmaku(40, Vec3.ZERO, YHDanmaku.Bullet.BUBBLE, DyeColor.PURPLE);
+			e.setPos(pos);
 			e.mover = new RectMover(pos, vec.scale(2), Vec3.ZERO);
 			holder.shoot(e);
 		}
@@ -122,7 +123,8 @@ public class YukariSpell extends ActualSpellCard {
 			for (int k = -2; k <= 2; k++) {
 				var vec = ori.rotateDegrees(10 * i, k * 10);
 				for (int j = 0; j < 3; j++) {
-					var e = holder.prepareDanmaku(40, pos, YHDanmaku.Bullet.BUTTERFLY, DyeColor.PURPLE);
+					var e = holder.prepareDanmaku(40, Vec3.ZERO, YHDanmaku.Bullet.BUTTERFLY, DyeColor.PURPLE);
+					e.setPos(pos);
 					e.mover = new RectMover(pos, vec.scale(1.4 + j * 0.2), Vec3.ZERO);
 					holder.shoot(e);
 				}
