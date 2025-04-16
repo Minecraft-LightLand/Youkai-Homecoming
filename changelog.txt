@@ -1,3 +1,7 @@
+2.3.11
+- Fix lag caused by Yukari
+- Add laser spell to Remilia
+
 2.3.10
 - Add sake bottle that allows you to drink sake in slips
 - Add ways to summon Remilia and Mystia (requires TLM)

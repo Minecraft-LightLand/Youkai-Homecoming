@@ -21,7 +21,7 @@ public class RemiliaSpell extends ActualSpellCard {
 		var target = holder.target();
 		if (target == null) return;
 		if (tick % 20 == 0) {
-			int step = tick / 10;
+			int step = tick / 20;
 			double dist = holder.center().distanceTo(target);
 			var rand = holder.random();
 			if (step % 5 < 3) {
@@ -35,31 +35,41 @@ public class RemiliaSpell extends ActualSpellCard {
 						20, (int) (15 * v), (int) Math.max(60, dist * 2)
 				));
 			}
+			if (step % 5 == 3) {
+				var vel = holder.targetVelocity();
+				if (vel != null && vel.length() > 1) {
+					addTicker(new Lasers().init(20, 4, 3, 25, 40, 200));
+				}
+			}
 			if (step % 5 == 4 && dist >= 40) {
-				var self = holder.self();
-				var tar = holder.center().lerp(target, 0.5);
-				var hit = self.level().clip(new ClipContext(holder.center(), tar, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, self));
-				if (hit.getType() == HitResult.Type.MISS) {
-					self.moveTo(tar);
-				} else {
-					self.moveTo(holder.center().lerp(hit.getLocation(), 0.9));
-				}
-				dist = holder.center().distanceTo(target);
-				int n = (int) Math.max(100, dist * 5);
-				var o = DanmakuHelper.getOrientation(dir).asNormal();
-				for (int i = 0; i < n; i++) {
-					double p = 1d * i / n;
-					double dr = rand.nextDouble() * p * (1 - p) * 4 * Math.max(1, dist / 20);
-					var pos = holder.center().lerp(target, p * 1.2)
-							.add(o.rotateDegrees(rand.nextDouble() * 360).scale(dr));
-					var e = holder.prepareDanmaku(30, dir.scale(3), YHDanmaku.Bullet.MENTOS, DyeColor.RED);
-					e.setPos(pos);
-					holder.shoot(e);
-				}
-
+				shootSpear(holder, target, dir);
 			}
 		}
 
+	}
+
+	private void shootSpear(CardHolder holder, Vec3 target, Vec3 dir) {
+		var rand = holder.random();
+		var self = holder.self();
+		var tar = holder.center().lerp(target, 0.5);
+		var hit = self.level().clip(new ClipContext(holder.center(), tar, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, self));
+		if (hit.getType() == HitResult.Type.MISS) {
+			self.moveTo(tar);
+		} else {
+			self.moveTo(holder.center().lerp(hit.getLocation(), 0.9));
+		}
+		double dist = holder.center().distanceTo(target);
+		int n = (int) Math.max(100, dist * 5);
+		var o = DanmakuHelper.getOrientation(dir).asNormal();
+		for (int i = 0; i < n; i++) {
+			double p = 1d * i / n;
+			double dr = rand.nextDouble() * p * (1 - p) * 4 * Math.max(1, dist / 20);
+			var pos = holder.center().lerp(target, p * 1.2)
+					.add(o.rotateDegrees(rand.nextDouble() * 360).scale(dr));
+			var e = holder.prepareDanmaku(30, dir.scale(3), YHDanmaku.Bullet.MENTOS, DyeColor.RED);
+			e.setPos(pos);
+			holder.shoot(e);
+		}
 	}
 
 	@SerialClass
@@ -118,5 +128,45 @@ public class RemiliaSpell extends ActualSpellCard {
 		}
 	}
 
+	@SerialClass
+	public static class Lasers extends Ticker<RemiliaSpell> {
+
+		@SerialClass.SerialField
+		public int duration, count, spread, minLen, maxLen, life;
+
+		public Lasers init(int duration, int count, int spread, int minLen, int maxLen, int life) {
+			this.duration = duration;
+			this.count = count;
+			this.spread = spread;
+			this.minLen = minLen;
+			this.maxLen = maxLen;
+			this.life = life;
+			return this;
+		}
+
+		@Override
+		public boolean tick(CardHolder holder, RemiliaSpell card) {
+			var rand = holder.random();
+			var cen = holder.center();
+			for (int i = 0; i < count; i++) {
+				Vec3 dir = new Vec3(rand.nextGaussian(), rand.nextGaussian(), rand.nextGaussian()).normalize();
+				int len = rand.nextInt(minLen, maxLen);
+				var l0 = holder.prepareLaser(life, cen, dir, len, YHDanmaku.Laser.LASER, DyeColor.LIGHT_BLUE);
+				l0.setupTime(10, 10, life, 10);
+				holder.shoot(l0);
+				var pos = cen.add(dir.scale(len));
+				var o = DanmakuHelper.getOrientation(dir).asNormal();
+				double angle = rand.nextDouble() * 360;
+				for (int j = 0; j < spread; j++) {
+					Vec3 dst = o.rotateDegrees(angle + j * 120, 45);
+					var l1 = holder.prepareLaser(life, pos, dst, 80, YHDanmaku.Laser.LASER, DyeColor.LIGHT_BLUE);
+					l0.setupTime(20, 10, life, 10);
+					holder.shoot(l1);
+				}
+			}
+			super.tick(holder, card);
+			return tick > duration;
+		}
+	}
 
 }
