@@ -93,6 +93,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	public FluidStack drain(FluidStack resource, FluidAction action) {
 		if (resource.isEmpty()) return FluidStack.EMPTY;
 		var current = getFluid();
+		if (current.isEmpty()) return FluidStack.EMPTY;
 		if (current.isFluidEqual(resource)) {
 			return drain(resource.getAmount(), action);
 		}
@@ -103,6 +104,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	@Override
 	public FluidStack drain(int maxDrain, FluidAction action) {
 		var current = getFluid();
+		if (current.isEmpty()) return FluidStack.EMPTY;
 		int toDrain = Math.min(current.getAmount(), maxDrain);
 		var ans = current.copy();
 		ans.setAmount(toDrain);

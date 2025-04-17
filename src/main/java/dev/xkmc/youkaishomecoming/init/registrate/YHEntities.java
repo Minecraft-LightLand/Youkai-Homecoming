@@ -145,7 +145,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x88BA7F, 0x645856).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::koishi).register();
 
 			REMILIA = YoukaisHomecoming.REGISTRATE
 					.entity("remilia_scarlet", RemiliaEntity::new, MobCategory.MONSTER)

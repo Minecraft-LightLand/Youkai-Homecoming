@@ -85,6 +85,14 @@ public class EntityLootGen {
 		);
 	}
 
+
+	public static void koishi(RegistrateEntityLootTables pvd, EntityType<KoishiEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.KOISHI_SPELL.get(), 1, 1))
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
+		);
+	}
+
 	public static void remilia(RegistrateEntityLootTables pvd, EntityType<RemiliaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MYSTIA_SPELL.get(), 1, 1))

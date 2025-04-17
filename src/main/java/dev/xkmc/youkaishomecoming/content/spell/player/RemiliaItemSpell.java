@@ -20,8 +20,8 @@ public class RemiliaItemSpell extends ItemSpell {
 	public void start(Player player, @Nullable LivingEntity target) {
 		super.start(player, target);
 		var nor = DanmakuHelper.getOrientation(dir).normal();
-		addTicker(new Sweep().init(dir, nor, 90,
-				15, 15, 1.6, 2.4,
+		addTicker(new Sweep().init(dir, nor, -90,
+				15, 8, 1.6, 2.4,
 				20, 15, 80
 		));
 	}

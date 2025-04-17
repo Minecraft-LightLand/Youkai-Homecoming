@@ -1,3 +1,8 @@
+2.3.12
+- Fix slip bottle breaking Create sequence assembly JEI
+- Improve Remilia item spell obtained by player
+- Add spell card for Koishi
+
 2.3.11
 - Fix lag caused by Yukari
 - Add laser spell to Remilia

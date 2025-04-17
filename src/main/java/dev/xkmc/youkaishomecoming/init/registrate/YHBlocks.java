@@ -203,7 +203,7 @@ public class YHBlocks {
 					.validBlocks(STEAMER_POT, STEAMER_RACK)
 					.register();
 
-			STEAM_RT = YoukaisHomecoming.REGISTRATE.recipe("drying_rack");
+			STEAM_RT = YoukaisHomecoming.REGISTRATE.recipe("steaming");
 			STEAM_RS = reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
 
 		}

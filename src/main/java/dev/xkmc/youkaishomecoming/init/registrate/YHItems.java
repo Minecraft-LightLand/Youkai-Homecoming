@@ -85,7 +85,7 @@ public class YHItems {
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
-	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL,
+	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL, KOISHI_SPELL,
 			MYSTIA_SPELL, REMILIA_SPELL, YUKARI_SPELL_LASER, YUKARI_SPELL_BUTTERFLY;
 	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL_RING, CUSTOM_SPELL_HOMING;
 
@@ -190,6 +190,15 @@ public class YHItems {
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
 					.tag(YHTagGen.PRESET_SPELL)
 					.lang("Night Sparrow \"Midnight Chorus Master\"")
+					.register();
+
+			KOISHI_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_koishi", p -> new SpellItem(
+							p.stacksTo(1), KoishiItemSpell::new, false,
+							() -> YHDanmaku.Laser.LASER.get(DyeColor.BLUE).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Response \"Youkai Polygraph\"")
 					.register();
 
 			REMILIA_SPELL = YoukaisHomecoming.REGISTRATE
