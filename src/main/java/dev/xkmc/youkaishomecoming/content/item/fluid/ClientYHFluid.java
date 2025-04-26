@@ -3,8 +3,9 @@ package dev.xkmc.youkaishomecoming.content.item.fluid;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 
-public record ClientFruitFluid(SakeFluidType type) implements IClientFluidTypeExtensions {
-	public ClientFruitFluid(SakeFluidType type) {
+public record ClientYHFluid(YHFluidType type) implements IClientFluidTypeExtensions {
+
+	public ClientYHFluid(YHFluidType type) {
 		this.type = type;
 	}
 
@@ -20,7 +21,7 @@ public record ClientFruitFluid(SakeFluidType type) implements IClientFluidTypeEx
 		return this.type.type.getColor();
 	}
 
-	public SakeFluidType type() {
+	public YHFluidType type() {
 		return this.type;
 	}
 }

@@ -30,7 +30,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	}
 
 	public boolean canFillFluidType(FluidStack fluid) {
-		return fluid.getFluid() instanceof SakeFluid;
+		return fluid.getFluid() instanceof YHFluid;
 	}
 
 	@NotNull
@@ -69,7 +69,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
-		return stack.isEmpty() || stack.getFluid() instanceof SakeFluid;
+		return stack.isEmpty() || stack.getFluid() instanceof YHFluid;
 	}
 
 	@Override

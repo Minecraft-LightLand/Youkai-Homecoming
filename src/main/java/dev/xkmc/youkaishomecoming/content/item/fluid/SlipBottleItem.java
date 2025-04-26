@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import dev.xkmc.l2library.base.effects.EffectBuilder;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
-import dev.xkmc.youkaishomecoming.init.food.YHSake;
+import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -47,7 +47,7 @@ public class SlipBottleItem extends YHDrinkItem {
 		if (handler.isEmpty()) return null;
 		var fluid = handler.get().getFluidInTank(0);
 		if (fluid.isEmpty()) return null;
-		if (fluid.getFluid() instanceof SakeFluid sake && sake.type instanceof YHSake type) {
+		if (fluid.getFluid() instanceof YHFluid sake && sake.type instanceof YHDrink type) {
 			var food = type.item.asStack().getFoodProperties(entity);
 			if (food == null) return null;
 			var builder = new FoodProperties.Builder();
@@ -101,7 +101,7 @@ public class SlipBottleItem extends YHDrinkItem {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		var fluid = getFluid(stack);
-		if (!fluid.isEmpty() && fluid.getFluid() instanceof SakeFluid sake && sake.type instanceof YHSake type) {
+		if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake && sake.type instanceof YHDrink type) {
 			list.add(type.item.get().getDescription());
 		}
 		super.appendHoverText(stack, level, list, flag);

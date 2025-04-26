@@ -1,0 +1,23 @@
+{
+  "type": "create:emptying",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:black_tea"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 250,
+      "fluid": "youkaishomecoming:black_tea"
+    }
+  ]
+}

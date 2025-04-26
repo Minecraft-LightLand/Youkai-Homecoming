@@ -327,7 +327,7 @@ public class YHItems {
 
 		YHDish.register();
 		YHCoffee.register();
-		YHSake.register();
+		YHDrink.register();
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
 			FruitsDelightCompatFood.register();

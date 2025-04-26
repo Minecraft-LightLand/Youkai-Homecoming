@@ -2,7 +2,6 @@
   "values": [
     "youkaishomecoming:flesh",
     "youkaishomecoming:cooked_flesh",
-    "youkaishomecoming:scarlet_tea",
     "youkaishomecoming:flesh_dumplings",
     "youkaishomecoming:flesh_roll",
     "youkaishomecoming:canned_flesh",
@@ -12,6 +11,7 @@
     "youkaishomecoming:scarlet_devil_cake",
     "youkaishomecoming:red_velvet_cake_slice",
     "youkaishomecoming:bloody_flesh",
+    "youkaishomecoming:scarlet_tea",
     "youkaishomecoming:scarlet_mist"
   ]
 }

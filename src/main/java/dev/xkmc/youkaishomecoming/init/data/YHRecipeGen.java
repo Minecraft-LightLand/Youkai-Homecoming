@@ -753,85 +753,85 @@ public class YHRecipeGen {
 		// drinks
 		{
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(YHTagGen.TEA_BLACK)
-					.build(tea, YHFood.BLACK_TEA.item.getId());
+					.build(tea, YHDrink.BLACK_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GREEN_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(YHTagGen.TEA_GREEN)
-					.build(tea, YHFood.GREEN_TEA.item.getId());
+					.build(tea, YHDrink.GREEN_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.OOLONG_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.OOLONG_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.OOLONG.leaves)
 					.addIngredient(YHTagGen.TEA_OOLONG)
 					.addIngredient(YHTagGen.TEA_OOLONG)
-					.build(tea, YHFood.OOLONG_TEA.item.getId());
+					.build(tea, YHDrink.OOLONG_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.WHITE_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.WHITE_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.WHITE.leaves)
 					.addIngredient(YHTagGen.TEA_WHITE)
 					.addIngredient(YHTagGen.TEA_WHITE)
-					.build(tea, YHFood.WHITE_TEA.item.getId());
+					.build(tea, YHDrink.WHITE_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CORNFLOWER_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.CORNFLOWER_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(Items.CORNFLOWER)
 					.addIngredient(Items.CORNFLOWER)
 					.addIngredient(Items.CORNFLOWER)
-					.build(tea, YHFood.CORNFLOWER_TEA.item.getId());
+					.build(tea, YHDrink.CORNFLOWER_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TEA_MOCHA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.TEA_MOCHA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(Items.COCOA_BEANS)
 					.addIngredient(ForgeTags.MILK_BOTTLE)
-					.build(tea, YHFood.TEA_MOCHA.item.getId());
+					.build(tea, YHDrink.TEA_MOCHA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAIDI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SAIDI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(Items.SUGAR)
 					.addIngredient(Items.SUGAR)
-					.build(tea, YHFood.SAIDI_TEA.item.getId());
+					.build(tea, YHDrink.SAIDI_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAKURA_HONEY_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SAKURA_HONEY_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(Items.CHERRY_LEAVES)
 					.addIngredient(Items.CHERRY_LEAVES)
 					.addIngredient(Items.HONEY_BOTTLE)
-					.build(tea, YHFood.SAKURA_HONEY_TEA.item.getId());
+					.build(tea, YHDrink.SAKURA_HONEY_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GENMAI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GENMAI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(ForgeTags.GRAIN_RICE)
-					.build(tea, YHFood.GENMAI_TEA.item.getId());
+					.build(tea, YHDrink.GENMAI_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SCARLET_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SCARLET_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(YHItems.BLOOD_BOTTLE.item)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(YHItems.BLOOD_BOTTLE.item)
-					.build(tea, YHFood.SCARLET_TEA.item.getId());
+					.build(tea, YHDrink.SCARLET_TEA.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(Items.GLASS_BOTTLE)
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.build(tea, YHFood.GREEN_WATER.item.getId());
+					.build(tea, YHDrink.GREEN_WATER.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
@@ -872,72 +872,72 @@ public class YHRecipeGen {
 					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
 					.save(pvd, YHItems.SOY_SAUCE_BOTTLE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MIO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.MIO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
-					.save(pvd, YHSake.MIO.item.getId());
+					.save(pvd, YHDrink.MIO.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.MEAD.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.MEAD.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.HONEY_BOTTLE)
-					.save(pvd, YHSake.MEAD.item.getId());
+					.save(pvd, YHDrink.MEAD.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.BROWN_MUSHROOM)
-					.save(pvd, YHSake.KIKU.item.getId());
+					.save(pvd, YHDrink.KIKU.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.BROWN_MUSHROOM).addInput(ForgeTags.EGGS)
-					.save(pvd, YHSake.HAKUTSURU.item.getId());
+					.save(pvd, YHDrink.HAKUTSURU.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.BROWN_MUSHROOM).addInput(Items.SEAGRASS)
-					.save(pvd, YHSake.KAPPA_VILLAGE.item.getId());
+					.save(pvd, YHDrink.KAPPA_VILLAGE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
-					.save(pvd, YHSake.SUIGEI.item.getId());
+					.save(pvd, YHDrink.SUIGEI.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
-					.save(pvd, YHSake.DAIGINJO.item.getId());
+					.save(pvd, YHDrink.DAIGINJO.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.DASSAI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DASSAI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.NAUTILUS_SHELL)
-					.save(pvd, YHSake.DASSAI.item.getId());
+					.save(pvd, YHDrink.DASSAI.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.TENGU_TANGO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.TENGU_TANGO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
-					.save(pvd, YHSake.TENGU_TANGO.item.getId());
+					.save(pvd, YHDrink.TENGU_TANGO.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.SPARROW_SAKE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SPARROW_SAKE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
-					.save(pvd, YHSake.SPARROW_SAKE.item.getId());
+					.save(pvd, YHDrink.SPARROW_SAKE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.FULL_MOONS_EVE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.FULL_MOONS_EVE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
-					.save(pvd, YHSake.FULL_MOONS_EVE.item.getId());
+					.save(pvd, YHDrink.FULL_MOONS_EVE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(YHItems.BLOOD_BOTTLE.fluid.getSource(), YHSake.SCARLET_MIST.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(YHItems.BLOOD_BOTTLE.fluid.getSource(), YHDrink.SCARLET_MIST.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
 					.addInput(Items.ROSE_BUSH).addInput(Items.ROSE_BUSH)
 					.addInput(Items.POPPY)
 					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED))
 					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED))
-					.save(pvd, YHSake.SCARLET_MIST.item.getId());
+					.save(pvd, YHDrink.SCARLET_MIST.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHSake.WIND_PRIESTESSES.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.WIND_PRIESTESSES.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
 					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
 					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.LIME))
 					.addInput(Items.DANDELION).addInput(YHTagGen.TEA_GREEN).addInput(YHItems.MATCHA)
-					.save(pvd, YHSake.WIND_PRIESTESSES.item.getId());
+					.save(pvd, YHDrink.WIND_PRIESTESSES.item.getId());
 
 		}
 

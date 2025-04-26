@@ -12,11 +12,60 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
+import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.List;
 import java.util.Locale;
 
-public enum YHSake implements IYHSake {
+public enum YHDrink implements IYHFluidHolder {
+	GREEN_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
+	)),
+	WHITE_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.REFRESHING::get, 1200, 0, 1)
+	)),
+	BLACK_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.THICK::get, 600, 0, 1)
+	)),
+	OOLONG_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
+	)),
+	CORNFLOWER_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
+	)),
+	TEA_MOCHA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+	)),
+	SAIDI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
+	)),
+	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 400, 0, 1),
+			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
+	)),
+	GENMAI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
+			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+	)),
+	SCARLET_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
+			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
+	), YHTagGen.FLESH_FOOD),
+	GREEN_WATER(FoodType.BOTTLE, 0xffffffff, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
+
 	MIO(FoodType.BOTTLE, 0xff7890e5, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
 	MEAD(FoodType.BOTTLE, 0xfffbe8a6, List.of(
@@ -59,16 +108,20 @@ public enum YHSake implements IYHSake {
 
 	public final int color;
 
-	public final FluidEntry<SakeFluid> fluid;
+	public final FluidEntry<YHFluid> fluid;
 	public final ItemEntry<Item> item;
 
 	@SafeVarargs
-	YHSake(FoodType type, int color, List<EffectEntry> effs, TagKey<Item>... tags) {
+	YHDrink(FoodType type, int color, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.color = color;
 		String name = name().toLowerCase(Locale.ROOT);
-		fluid = BottledFluid.water(name, (p, s, f) -> new SakeFluidType(p, s, f, this), p -> new SakeFluid(p, this))
+		fluid = BottledFluid.water(name,
+						(p, s, f) -> new YHFluidType(p, s, f, this),
+						p -> new YHFluid(p, this))
 				.defaultLang().register();
-		item = type.build(p -> new SakeBottleItem(fluid, p), "sake/", name, 0, 0, tags, effs);
+		boolean sake = !name.contains("tea") && !name.contains("water");
+		item = type.build(p -> new SakeBottleItem(fluid, p), sake ? "food/sake/" : "food/drink/",
+				name, 0, 0, tags, effs);
 	}
 
 	@Override
@@ -82,7 +135,7 @@ public enum YHSake implements IYHSake {
 	}
 
 	@Override
-	public FluidEntry<? extends SakeFluid> fluid() {
+	public FluidEntry<? extends YHFluid> fluid() {
 		return fluid;
 	}
 
@@ -102,7 +155,7 @@ public enum YHSake implements IYHSake {
 	}
 
 	public boolean isFlesh() {
-		return this == SCARLET_MIST;
+		return this == SCARLET_MIST || this == SCARLET_TEA;
 	}
 
 	public static void register() {

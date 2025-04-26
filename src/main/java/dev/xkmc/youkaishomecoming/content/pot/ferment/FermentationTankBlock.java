@@ -11,7 +11,7 @@ import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.compat.create.CreateFillingTest;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
@@ -95,7 +95,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	private static InteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.fluids.getFluidInTank(0);
 		boolean hasFluid = false;
-		if (fluid.getFluid() instanceof SakeFluid sake) {
+		if (fluid.getFluid() instanceof YHFluid sake) {
 			if (fluid.getAmount() >= sake.type.amount() && stack.is(sake.type.getContainer())) {
 				if (!level.isClientSide()) {
 					be.fluids.drain(sake.type.amount(), IFluidHandler.FluidAction.EXECUTE);

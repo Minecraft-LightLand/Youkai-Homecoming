@@ -9,8 +9,8 @@ import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.fluid.FluidIngredient;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
-import dev.xkmc.youkaishomecoming.content.item.fluid.IYHSake;
-import dev.xkmc.youkaishomecoming.init.food.YHSake;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
+import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -18,14 +18,14 @@ import net.minecraft.world.item.crafting.Ingredient;
 public class CreateRecipeGen {
 
 	public static void onRecipeGen(RegistrateRecipeProvider pvd) {
-		for (var e : YHSake.values()) {
+		for (var e : YHDrink.values()) {
 			bottles(pvd, e);
 		}
 		bottles(pvd, YHItems.SOY_SAUCE_BOTTLE);
 		bottles(pvd, YHItems.BLOOD_BOTTLE);
 	}
 
-	private static void bottles(RegistrateRecipeProvider pvd, IYHSake sake) {
+	private static void bottles(RegistrateRecipeProvider pvd, IYHFluidHolder sake) {
 		filling(sake.item().getId())
 				.withFluidIngredients(FluidIngredient.fromFluid(sake.fluid().get(), sake.amount()))
 				.withItemIngredients(Ingredient.of(sake.getContainer()))

@@ -93,9 +93,9 @@ public class YHAdvGen {
 										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
 								ItemPredicate.Builder.item().of(YHCrops.TEA.getSeed()))),
 						"Refreshing Hobby", "Plant Tea")
-				.create("tea_master", YHFood.OOLONG_TEA.item.asStack(),
+				.create("tea_master", YHDrink.OOLONG_TEA.item.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
-										YHFood.WHITE_TEA, YHFood.OOLONG_TEA, YHFood.GREEN_TEA, YHFood.BLACK_TEA
+										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.BLACK_TEA
 								).map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
 								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Tea Master", "Drink all kinds of tea in original flavor")
@@ -114,7 +114,7 @@ public class YHAdvGen {
 				CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 						MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
 				"Alcoholic", "Brew and drink an alcoholic drink and obtain Drunk effect");
-		root.create("passed_out", YHSake.DAIGINJO.item.asStack(),
+		root.create("passed_out", YHDrink.DAIGINJO.item.asStack(),
 				CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 						MobEffectsPredicate.effects().and(YHEffects.DRUNK.get(),
 								new MobEffectsPredicate.MobEffectInstancePredicate(
@@ -129,7 +129,7 @@ public class YHAdvGen {
 				.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
-										Arrays.stream(YHSake.values()).map(e -> e.item.get()),
+										Arrays.stream(YHDrink.values()).map(e -> e.item.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).map(e -> e.item.get()))
 								.map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
@@ -192,7 +192,7 @@ public class YHAdvGen {
 		danmaku.create("feed_reimu", YHItems.REIMU_HAIRBAND.get(),
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).filter(e -> !e.isFlesh()).map(e -> e.block.get()),
-										Arrays.stream(YHSake.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
+										Arrays.stream(YHDrink.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).filter(YHFood::isReimuFood).map(e -> e.item.get()))
 								.map(e -> Pair.of(e, FeedReimuTrigger.usedItem(e)))

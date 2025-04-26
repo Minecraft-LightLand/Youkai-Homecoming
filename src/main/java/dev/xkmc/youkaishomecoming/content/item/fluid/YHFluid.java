@@ -8,10 +8,10 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
-public class SakeFluid extends ForgeFlowingFluid {
-	public final IYHSake type;
+public class YHFluid extends ForgeFlowingFluid {
+	public final IYHFluidHolder type;
 
-	public SakeFluid(ForgeFlowingFluid.Properties properties, IYHSake type) {
+	public YHFluid(ForgeFlowingFluid.Properties properties, IYHFluidHolder type) {
 		super(properties);
 		this.type = type;
 	}

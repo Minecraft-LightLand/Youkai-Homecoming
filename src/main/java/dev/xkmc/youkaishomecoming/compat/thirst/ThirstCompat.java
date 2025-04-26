@@ -5,7 +5,7 @@ import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
-import dev.xkmc.youkaishomecoming.init.food.YHSake;
+import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -21,21 +21,9 @@ public class ThirstCompat {
 		for (var e : YHCoffee.values()) {
 			event.addDrink(e.item.get(), 8, 13);
 		}
-		for (var e : YHSake.values()) {
+		for (var e : YHDrink.values()) {
 			event.addDrink(e.item.get(), 8, 13);
 		}
-
-		event.addDrink(YHFood.BLACK_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.GREEN_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.OOLONG_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.WHITE_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.CORNFLOWER_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.SAIDI_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.SAKURA_HONEY_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.GENMAI_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.SCARLET_TEA.item.get(), 8, 13);
-		event.addDrink(YHFood.GREEN_WATER.item.get(), 8, 13);
-		event.addDrink(YHFood.TEA_MOCHA.item.get(), 6, 10);
 
 		event.addDrink(YHFood.MILK_POPSICLE.item.get(), 6, 10);
 		event.addDrink(YHFood.BIG_POPSICLE.item.get(), 6, 10);

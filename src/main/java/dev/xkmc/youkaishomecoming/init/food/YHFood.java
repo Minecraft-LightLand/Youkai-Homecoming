@@ -99,53 +99,6 @@ public enum YHFood {
 
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
-	GREEN_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
-	)),
-	WHITE_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.REFRESHING::get, 1200, 0, 1)
-	)),
-	BLACK_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK::get, 600, 0, 1)
-	)),
-	OOLONG_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
-	)),
-	CORNFLOWER_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
-	)),
-	TEA_MOCHA(FoodType.BOTTLE, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	)),
-	SAIDI_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
-	)),
-	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 400, 0, 1),
-			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
-	)),
-	GENMAI_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	)),
-	SCARLET_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
-			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
-	), YHTagGen.FLESH_FOOD),
-	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
 
 	// bowl
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
@@ -280,7 +233,7 @@ public enum YHFood {
 
 
 	private boolean isFlesh() {
-		return type.isFlesh() || this == SCARLET_TEA;
+		return type.isFlesh();
 	}
 
 	private boolean isUnappealing() {

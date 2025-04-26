@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.misc;
 
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 public class BloodBottleItem extends SakeBottleItem {
 
-	public BloodBottleItem(Supplier<SakeFluid> fluid, Properties pProperties) {
+	public BloodBottleItem(Supplier<YHFluid> fluid, Properties pProperties) {
 		super(fluid, pProperties);
 	}
 

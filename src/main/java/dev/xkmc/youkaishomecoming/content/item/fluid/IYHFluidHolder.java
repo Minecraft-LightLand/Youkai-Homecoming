@@ -5,7 +5,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public interface IYHSake {
+public interface IYHFluidHolder {
 
 	int getColor();
 
@@ -15,7 +15,7 @@ public interface IYHSake {
 
 	ItemEntry<?> item();
 
-	FluidEntry<? extends SakeFluid> fluid();
+	FluidEntry<? extends YHFluid> fluid();
 
 	default int count() {
 		return 4;

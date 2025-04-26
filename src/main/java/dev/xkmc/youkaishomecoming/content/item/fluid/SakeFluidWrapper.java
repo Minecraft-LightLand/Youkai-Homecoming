@@ -29,7 +29,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	}
 
 	public boolean canFillFluidType(FluidStack fluid) {
-		return fluid.getFluid() instanceof SakeFluid sake &&
+		return fluid.getFluid() instanceof YHFluid sake &&
 				sake.type.getContainer() == container.getItem();
 	}
 
@@ -44,7 +44,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	protected void setFluid(@NotNull FluidStack fluidStack) {
 		if (fluidStack.isEmpty()) {
 			container = container.getCraftingRemainingItem();
-		} else if (fluidStack.getFluid() instanceof SakeFluid sake) {
+		} else if (fluidStack.getFluid() instanceof YHFluid sake) {
 			container = sake.type.asStack(fluidStack.getAmount() / sake.type.amount());
 		}
 	}
@@ -67,7 +67,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
-		return stack.isEmpty() || stack.getFluid() instanceof SakeFluid sake && sake.type.getContainer() == container.getItem();
+		return stack.isEmpty() || stack.getFluid() instanceof YHFluid sake && sake.type.getContainer() == container.getItem();
 	}
 
 	@Override
