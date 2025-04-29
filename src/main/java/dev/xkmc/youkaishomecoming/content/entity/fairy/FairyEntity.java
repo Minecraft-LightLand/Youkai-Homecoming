@@ -80,8 +80,13 @@ public class FairyEntity extends GeneralYoukaiEntity {
 		if (!prev && dead && e instanceof LivingEntity le && !source.is(YHDamageTypes.DANMAKU_TYPE)) {
 			if (!e.isAlive() || !e.isAddedToWorld() || e.isRemoved())
 				return;
-			TouhouConditionalSpawns.triggetFairyReinforcement(this, le, position());
+			trySummonReinforcementOnDeath(le);
 		}
+	}
+
+	@Override
+	public void trySummonReinforcementOnDeath(LivingEntity le) {
+		TouhouConditionalSpawns.triggetFairyReinforcement(this, le, position());
 	}
 
 	@Nullable

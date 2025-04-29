@@ -21,6 +21,8 @@ public class ReimuRenderer extends MobRenderer<MaidenEntity, ReimuModel<MaidenEn
 	public ResourceLocation getTextureLocation(MaidenEntity entity) {
 		if (entity.isChaotic())
 			return entity.tickCount / 2 % 2 == 0 ? TEX : BLUE;
+		if (entity.getFlag(4))
+			return BLUE;
 		return TEX;
 	}
 

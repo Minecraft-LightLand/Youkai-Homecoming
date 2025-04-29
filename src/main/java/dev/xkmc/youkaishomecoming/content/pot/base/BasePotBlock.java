@@ -128,7 +128,6 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 	public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			if (level.getBlockEntity(pos) instanceof BasePotBlockEntity moka) {
-				Containers.dropContents(level, pos, moka.getDroppableInventory());
 				moka.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
 				level.updateNeighbourForOutputSignal(pos, this);
 			}

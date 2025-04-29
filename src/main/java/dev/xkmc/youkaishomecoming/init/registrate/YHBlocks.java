@@ -30,8 +30,10 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
+import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -46,10 +48,15 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.FarmersDelight;
@@ -118,6 +125,11 @@ public class YHBlocks {
 	public static final BlockEntityEntry<SteamerBlockEntity> STEAMER_BE;
 	public static final RegistryEntry<RecipeType<SteamingRecipe>> STEAM_RT;
 	public static final RegistryEntry<RecipeSerializer<SteamingRecipe>> STEAM_RS;
+
+	public static final BlockEntry<CopperTankBlock> COPPER_TANK;
+	public static final BlockEntityEntry<CopperTankBlockEntity> TANK_BE;
+	public static final BlockEntry<DelegateBlock> COPPER_FAUCET;
+	public static final BlockEntityEntry<CopperFaucetBlockEntity> FAUCET_BE;
 
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
@@ -205,6 +217,42 @@ public class YHBlocks {
 
 			STEAM_RT = YoukaisHomecoming.REGISTRATE.recipe("steaming");
 			STEAM_RS = reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
+
+		}
+
+		{
+			COPPER_TANK = YoukaisHomecoming.REGISTRATE.block("copper_tank", p -> new CopperTankBlock(
+							BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.COPPER)
+									.strength(2f).requiresCorrectToolForDrops(),
+							CopperTankBlock.INS, CopperTankBlock.TE))
+					.blockstate(CopperTankBlock::buildStates)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+					.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()
+							.withPool(LootPool.lootPool().add(LootItem.lootTableItem(block)
+									.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+											.setProperties(StatePropertiesPredicate.Builder.properties()
+													.hasProperty(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER)))))))
+					.register();
+
+			TANK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("copper_tank", CopperTankBlockEntity::new)
+					.validBlock(COPPER_TANK)
+					.register();
+
+			COPPER_FAUCET = YoukaisHomecoming.REGISTRATE.block("copper_faucet", p -> DelegateBlock.newBaseBlock(
+							BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.COPPER)
+									.strength(2f).requiresCorrectToolForDrops().noOcclusion(),
+							BlockProxy.HORIZONTAL, CopperFaucetBlock.INS, CopperFaucetBlock.TE))
+					.blockstate(CopperFaucetBlock::buildStates)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.simpleItem()
+					.defaultLoot()
+					.register();
+
+			FAUCET_BE = YoukaisHomecoming.REGISTRATE.blockEntity("copper_faucet", CopperFaucetBlockEntity::new)
+					.validBlock(COPPER_FAUCET)
+					.renderer(() -> CopperFaucetRenderer::new)
+					.register();
 
 		}
 

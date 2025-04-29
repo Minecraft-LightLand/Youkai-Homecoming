@@ -1,10 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
+import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,6 +23,20 @@ public class YukariEntity extends BossYoukaiEntity {
 	@Override
 	public void initSpellCard() {
 		TouhouSpellCards.setYukari(this);
+	}
+
+	@Override
+	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
+		// when taking >200 illegal damage
+		if (getFlag(4) && !(e instanceof Player)) {
+			e.setRemoved(RemovalReason.KILLED);
+			if (e.isAlive() && level() instanceof ServerLevel sl) {
+				EntityStorageHelper.clear(sl, e);
+				setTarget(null);
+				targets.remove(e.getUUID());
+				setLastHurtByMob(null);
+			}
+		}
 	}
 
 	@Override

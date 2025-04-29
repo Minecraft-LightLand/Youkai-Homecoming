@@ -138,8 +138,13 @@ public class ReimuEntity extends MaidenEntity {
 		if (!prev && dead && e instanceof LivingEntity le && !source.is(YHDamageTypes.DANMAKU_TYPE)) {
 			if (!e.isAlive() || !e.isAddedToWorld() || e.isRemoved())
 				return;
-			TouhouConditionalSpawns.triggetYukari(le, position());
+			trySummonReinforcementOnDeath(le);
 		}
+	}
+
+	@Override
+	public void trySummonReinforcementOnDeath(LivingEntity le) {
+		TouhouConditionalSpawns.triggetYukari(le, position());
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Nameable;
 import net.minecraft.world.entity.ExperienceOrb;
@@ -34,6 +35,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import vectorwing.farmersdelight.common.block.CookingPotBlock;
@@ -65,6 +67,8 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity
 	private final Object2IntOpenHashMap<ResourceLocation> usedRecipeTracker;
 	private ResourceLocation lastRecipeID;
 	private boolean checkNewRecipe;
+
+	private boolean wasHeated = false;
 
 	public BasePotBlockEntity(BlockEntityType<? extends BasePotBlockEntity> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
@@ -135,7 +139,7 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity
 		if (getMeal().isEmpty()) return compound;
 		ItemStackHandler drops = new ItemStackHandler(INVENTORY_SIZE);
 		for (int i = 0; i < INVENTORY_SIZE; ++i) {
-			drops.setStackInSlot(i, i == MEAL_DISPLAY_SLOT ? inventory.getStackInSlot(i) : ItemStack.EMPTY);
+			drops.setStackInSlot(i, inventory.getStackInSlot(i));
 		}
 		if (customName != null) {
 			compound.putString("CustomName", Serializer.toJson(customName));
@@ -146,25 +150,50 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity
 
 	}
 
-	public static void cookingTick(Level level, BlockPos pos, BlockState state, BasePotBlockEntity pot) {
-		pot.cookingTick();
+	public ItemStack addItem(ItemStack stack) {
+		var sim = level == null || level.isClientSide;
+		return ItemHandlerHelper.insertItem(inventory, stack, sim);
 	}
 
-	protected void cookingTick() {
+	public boolean isGridEmpty() {
+		for (int i = 0; i < MEAL_DISPLAY_SLOT; i++) {
+			var stack = inventory.getStackInSlot(i);
+			if (!stack.isEmpty()) return false;
+		}
+		return true;
+	}
+
+	public void popAll() {
+		if (level == null) return;
+		var pos = this.getBlockPos().above();
+		for (int i = 0; i < MEAL_DISPLAY_SLOT; i++) {
+			var stack = inventory.getStackInSlot(i);
+			inventory.setStackInSlot(i, ItemStack.EMPTY);
+			Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), stack);
+		}
+	}
+
+	public static void cookingTick(Level level, BlockPos pos, BlockState state, BasePotBlockEntity pot) {
+		pot.cookingTick(1, false);
+	}
+
+	public void cookingTick(int tick, boolean override) {
 		BlockPos pos = getBlockPos();
 		if (level == null) return;
-		boolean heated = isHeated(level, pos);
+		boolean heated = override || isHeated(level, pos);
+
 		boolean change = false;
 		if (heated && hasInput()) {
 			var recipe = getMatchingRecipe(new RecipeWrapper(inventory));
 			if (recipe.isPresent() && canCook(recipe.get())) {
-				change = processCooking(recipe.get());
+				change = processCooking(tick, recipe.get());
 			} else {
 				cookTime = 0;
 			}
-		} else if (cookTime > 0) {
+		} else if (cookTime > 0 && !wasHeated) {
 			cookTime = Mth.clamp(cookTime - 2, 0, cookTimeTotal);
 		}
+		wasHeated = override;
 
 		ItemStack meal = getMeal();
 		if (!meal.isEmpty()) {
@@ -268,9 +297,9 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity
 		return storedMealStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
 	}
 
-	protected boolean processCooking(BasePotRecipe recipe) {
+	protected boolean processCooking(int tick, BasePotRecipe recipe) {
 		if (level == null) return false;
-		++cookTime;
+		cookTime += tick;
 		cookTimeTotal = recipe.getCookTime();
 		if (cookTime < cookTimeTotal) return false;
 		cookTime = 0;
@@ -285,19 +314,22 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity
 
 		setRecipeUsed(recipe);
 
+		int[] consume = recipe.getConsumption(new RecipeWrapper(inventory));
 		for (int i = 0; i < MEAL_DISPLAY_SLOT; ++i) {
+			if (consume[i] == 0) continue;
 			ItemStack slotStack = inventory.getStackInSlot(i);
 			if (slotStack.hasCraftingRemainingItem()) {
 				Direction direction = getBlockState().getValue(CookingPotBlock.FACING).getCounterClockWise();
 				double x = worldPosition.getX() + 0.5 + direction.getStepX() * 0.25;
 				double y = worldPosition.getY() + 0.7;
 				double z = worldPosition.getZ() + 0.5 + direction.getStepZ() * 0.25;
-				ItemUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z,
+				var cont = inventory.getStackInSlot(i).getCraftingRemainingItem();
+				cont.setCount(consume[i]);
+				ItemUtils.spawnItemEntity(level, cont, x, y, z,
 						direction.getStepX() * 0.08F, 0.25, direction.getStepZ() * 0.08F);
 			}
-
 			if (!slotStack.isEmpty()) {
-				slotStack.shrink(1);
+				slotStack.shrink(consume[i]);
 			}
 		}
 

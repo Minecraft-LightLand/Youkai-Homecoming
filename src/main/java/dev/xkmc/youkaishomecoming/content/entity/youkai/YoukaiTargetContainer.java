@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
+import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -27,26 +28,37 @@ public class YoukaiTargetContainer {
 	public void tick() {
 		if (youkai.level().isClientSide()) return;
 		LivingEntity le = youkai.getLastHurtByMob();
-		if (le != null && le.isAlive() && le.canBeSeenAsEnemy() && !list.contains(le.getUUID())) {
+		if (le != null && isValid(le) && !list.contains(le.getUUID())) {
 			list.add(le.getUUID());
 		} else {
 			le = youkai.getTarget();
-			if (le != null && le.isAlive() && le.canBeSeenAsEnemy()) {
-				list.add(le.getUUID());
-			}
+			if (le != null)
+				if (isValid(le))
+					list.add(le.getUUID());
+				else youkai.setTarget(null);
 		}
 		list.removeIf(e -> !isValid(e));
 		if (list.size() > maxSize) {
 			var tmp = new ArrayList<>(list);
 			list.clear();
-			list.addAll(tmp.subList(list.size() - maxSize, list.size()));
+			list.addAll(tmp.subList(tmp.size() - maxSize, tmp.size()));
 		}
+	}
+
+	public void remove(UUID id) {
+		list.remove(id);
+	}
+
+	private boolean isValid(LivingEntity le) {
+		return le.isAlive() && le != youkai && le.canBeSeenAsEnemy() &&
+				le.isAddedToWorld() && le.level() == youkai.level() &&
+				EntityStorageHelper.isPresent(le);
 	}
 
 	private boolean isValid(UUID id) {
 		Entity e = ((ServerLevel) youkai.level()).getEntity(id);
-		if (e instanceof LivingEntity le && le.isAlive()) {
-			return le.canBeSeenAsEnemy();
+		if (e instanceof LivingEntity le) {
+			return isValid(le);
 		}
 		return false;
 	}
@@ -58,11 +70,11 @@ public class YoukaiTargetContainer {
 	public void checkTarget() {
 		if (!(youkai.level() instanceof ServerLevel sl)) return;
 		var last = youkai.getLastHurtByMob();
-		if ((last == null || !last.isAlive() || !last.canBeSeenAsEnemy()) && !list.isEmpty()) {
+		if ((last == null || !isValid(last)) && !list.isEmpty()) {
 			var tmp = new ArrayList<>(list);
 			var id = tmp.get(tmp.size() - 1);
 			Entity e = sl.getEntity(id);
-			if (e instanceof LivingEntity le && le.isAlive() && le.canBeSeenAsEnemy())
+			if (e instanceof LivingEntity le && isValid(le))
 				youkai.setLastHurtByMob(le);
 		}
 	}
@@ -72,7 +84,7 @@ public class YoukaiTargetContainer {
 		if (!(youkai.level() instanceof ServerLevel sl)) return ans;
 		for (var id : list) {
 			Entity e = sl.getEntity(id);
-			if (e instanceof LivingEntity le && le.isAlive() && le.canBeSeenAsEnemy())
+			if (e instanceof LivingEntity le && isValid(le))
 				ans.add(le);
 		}
 		return ans;

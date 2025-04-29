@@ -3,24 +3,32 @@ package dev.xkmc.youkaishomecoming.content.pot.kettle;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class KettleBlockEntity extends BasePotBlockEntity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class KettleBlockEntity extends BasePotBlockEntity implements InfoTile {
 
 	public static final int WATER_BOTTLE = 200, WATER_BUCKET = 600;
 
@@ -93,11 +101,11 @@ public class KettleBlockEntity extends BasePotBlockEntity {
 	}
 
 	@Override
-	protected boolean processCooking(BasePotRecipe recipe) {
+	protected boolean processCooking(int tick, BasePotRecipe recipe) {
 		if (level == null) return false;
-		if (getWater() == 0) return false;
-		addWater(-1);
-		return super.processCooking(recipe);
+		if (getWater() < tick) return false;
+		addWater(-tick);
+		return super.processCooking(tick, recipe);
 	}
 
 	@NotNull
@@ -109,4 +117,18 @@ public class KettleBlockEntity extends BasePotBlockEntity {
 		return super.getCapability(cap, side);
 	}
 
+	@Override
+	public TileTooltip getImage(boolean shift, BlockHitResult hit) {
+		List<ItemStack> stacks = new ArrayList<>();
+		var inv = getInventory();
+		for (int i = 0; i < inv.getSlots(); i++) {
+			stacks.add(inv.getStackInSlot(i));
+		}
+		return new TileTooltip(stacks, List.of(), 4, 2);
+	}
+
+	@Override
+	public List<Component> lines(boolean shift, BlockHitResult hit) {
+		return List.of();
+	}
 }

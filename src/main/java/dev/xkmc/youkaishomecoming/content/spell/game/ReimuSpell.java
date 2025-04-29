@@ -5,6 +5,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.*;
@@ -23,7 +24,7 @@ import net.minecraft.world.phys.Vec3;
 public class ReimuSpell extends ActualSpellCard {
 
 	@SerialClass.SerialField
-	private boolean border, abyss;
+	private boolean border;
 
 	@SerialClass.SerialField
 	private TargetTracker tracker = new TargetTracker();
@@ -33,7 +34,8 @@ public class ReimuSpell extends ActualSpellCard {
 		super.tick(holder);
 		int interval = 10;
 		if (tick > 2400) {
-			abyss = true;
+			if (holder.self() instanceof YoukaiEntity youkai)
+				youkai.setFlag(4, true);
 		}
 		var target = holder.target();
 		if (target == null) return;
@@ -45,7 +47,7 @@ public class ReimuSpell extends ActualSpellCard {
 				shoot(holder, dist);
 			} else if (dist > 40) {
 				intercept(holder, target);
-			} else if (step == 3 && abyss && tracker.flyTime() > 20) {
+			} else if (step == 3 && isAbyss(holder) && tracker.flyTime() > 20) {
 				var dir = target.subtract(holder.center()).normalize();
 				var ori = DanmakuHelper.getOrientation(dir).rotateDegrees(holder.random().nextDouble() * 120 + 30, 0);
 				var sec = DanmakuHelper.getOrientation(ori).rotateDegrees(90, holder.random().nextDouble() * 120 - 60);
@@ -60,8 +62,16 @@ public class ReimuSpell extends ActualSpellCard {
 	public void reset() {
 		super.reset();
 		border = false;
-		abyss = false;
 		tracker = new TargetTracker();
+	}
+
+	private void setAbyss(CardHolder holder) {
+		if (holder.self() instanceof YoukaiEntity youkai)
+			youkai.setFlag(4, true);
+	}
+
+	private boolean isAbyss(CardHolder holder) {
+		return holder.self() instanceof YoukaiEntity e && e.getFlag(4);
 	}
 
 	private void shoot(CardHolder holder, double dist) {
@@ -75,7 +85,7 @@ public class ReimuSpell extends ActualSpellCard {
 		ans.t0 = (int) Mth.lerp(perc, 20, 10);
 		ans.t1 = (int) Mth.lerp(perc, 20, 10);
 		ans.termSpeed = (int) Mth.lerp(perc, 1, 3);
-		if (abyss) ans.color = DyeColor.BLUE;
+		if (isAbyss(holder)) ans.color = DyeColor.BLUE;
 
 		var diff = target.subtract(holder.center());
 		var r = holder.random();
@@ -146,11 +156,11 @@ public class ReimuSpell extends ActualSpellCard {
 		if (source.getEntity() != null) border = true;
 		float hp = holder.self().getHealth(), mhp = holder.self().getMaxHealth();
 		if (hp < mhp / 2) {
-			abyss = true;
+			setAbyss(holder);
 		}
 		var target = holder.target();
 		if (target == null) return;
-		if (abyss) {
+		if (isAbyss(holder)) {
 			var dist = holder.center().distanceTo(target);
 			var dir = target.subtract(holder.center()).normalize();
 			Vec3 ori, sec;
@@ -193,7 +203,7 @@ public class ReimuSpell extends ActualSpellCard {
 			ans.init = DanmakuHelper.getOrientation(ori, normal).rotateDegrees(s * (i - 2) * angle);
 			ans.normal = normal;
 			ans.tick = -i * delay;
-			if (abyss) ans.color = DyeColor.BLUE;
+			if (isAbyss(holder)) ans.color = DyeColor.BLUE;
 			addTicker(ans);
 		}
 	}

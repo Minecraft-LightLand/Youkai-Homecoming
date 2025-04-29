@@ -3,11 +3,13 @@ package dev.xkmc.youkaishomecoming.content.pot.kettle;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -36,7 +38,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
-public class KettleBlock extends BasePotBlock {
+public class KettleBlock extends BasePotBlock implements LeftClickBlock {
 
 	protected static final VoxelShape SHAPE = box(3, 0, 3, 13, 7, 13);
 	protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
@@ -52,10 +54,10 @@ public class KettleBlock extends BasePotBlock {
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		ItemStack stack = player.getItemInHand(hand);
-		for (var e : MAP.get().entrySet()) {
-			if (e.getKey().test(stack)) {
-				if (!level.isClientSide()) {
-					if (level.getBlockEntity(pos) instanceof KettleBlockEntity kettle) {
+		if (level.getBlockEntity(pos) instanceof KettleBlockEntity kettle) {
+			for (var e : MAP.get().entrySet()) {
+				if (e.getKey().test(stack)) {
+					if (!level.isClientSide()) {
 						if (kettle.getWater() < KettleBlockEntity.WATER_BUCKET) {
 							kettle.addWater(e.getValue());
 							if (!player.getAbilities().instabuild) {
@@ -65,13 +67,51 @@ public class KettleBlock extends BasePotBlock {
 							}
 							return InteractionResult.SUCCESS;
 						}
+						return InteractionResult.FAIL;
 					}
-					return InteractionResult.FAIL;
+					return InteractionResult.CONSUME;
 				}
-				return InteractionResult.CONSUME;
+			}
+			if (!stack.isEmpty()) {
+				ItemStack toInsert = player.isShiftKeyDown() ? stack.copy() : stack.copyWithCount(1);
+				ItemStack remain = kettle.addItem(toInsert);
+				if (remain.getCount() < toInsert.getCount()) {
+					if (!level.isClientSide()) {
+						stack.shrink(toInsert.getCount() - remain.getCount());
+					}
+					return InteractionResult.SUCCESS;
+				}
+			} else if (player.isShiftKeyDown() && !kettle.isGridEmpty()) {
+				if (!level.isClientSide()) {
+					kettle.popAll();
+				}
+				return InteractionResult.SUCCESS;
 			}
 		}
 		return super.use(state, level, pos, player, hand, result);
+	}
+
+	@Override
+	public boolean leftClick(BlockState state, Level level, BlockPos pos, Player player) {
+		if (level.getBlockEntity(pos) instanceof KettleBlockEntity be) {
+			if (level.isClientSide) return true;
+			ItemStack stack = asItem().getDefaultInstance();
+			CompoundTag tag = be.writeMeal(new CompoundTag());
+			if (!tag.isEmpty()) {
+				stack.addTagElement("BlockEntityTag", tag);
+			}
+			if (be.hasCustomName()) {
+				stack.setHoverName(be.getDisplayName());
+			}
+			level.removeBlock(pos, false);
+			if (player.getMainHandItem().isEmpty()) {
+				player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+			} else {
+				popResource(level, pos, stack);
+			}
+			return true;
+		}
+		return false;
 	}
 
 	@Override

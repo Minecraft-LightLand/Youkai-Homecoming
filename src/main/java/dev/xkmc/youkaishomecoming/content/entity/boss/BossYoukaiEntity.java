@@ -16,10 +16,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Enemy;
@@ -41,6 +38,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	}
 
 	protected final ServerBossEvent bossEvent = new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.NOTCHED_20);
+	private boolean ticking = false;
 
 	public BossYoukaiEntity(EntityType<? extends BossYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -64,12 +62,14 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public void tick() {
+		ticking = true;
 		double maxSpeed = 0.5;
 		if (getDeltaMovement().length() > maxSpeed) {
 			setDeltaMovement(getDeltaMovement().normalize().scale(maxSpeed));
 		}
 		validateData();
 		super.tick();
+		ticking = false;
 	}
 
 	@Override
@@ -101,6 +101,21 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		if (ticking || source.getEntity() == this) {
+			if (!source.is(DamageTypes.GENERIC_KILL))
+				return false;
+			else {
+				var target = getTarget();
+				if (target != null && amount >= getCombatProgress() && !isRemoved()) {
+					trySummonReinforcementOnDeath(target);
+					discard();
+				}
+			}
+		}
+		if (source.getEntity() instanceof LivingEntity le) {
+			setLastHurtByMob(le);
+			targets.checkTarget();
+		}
 		if (!source.is(DamageTypes.GENERIC_KILL) || source.getEntity() != null) {
 			if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
 					!(source.getEntity() instanceof LivingEntity))
@@ -130,8 +145,20 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		return true;
 	}
 
+	private float illegalDamage = 0;
+
+	protected void notifyIllegalDamage(float amount, @Nullable Entity causer) {
+		illegalDamage += amount;
+		if (illegalDamage > 200) {
+			setFlag(4, true);
+		}
+	}
+
 	protected float clampDamage(DamageSource source, float amount) {
-		if (!hurtCall) return 0;
+		if (!hurtCall) {
+			notifyIllegalDamage(amount, source.getEntity());
+			return 0;
+		}
 		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
 			if (source.getEntity() instanceof LivingEntity le) {
 				if (le instanceof ServerPlayer sp) {
@@ -140,23 +167,33 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 					}
 				}
 			} else {
-				if (source.is(DamageTypes.FELL_OUT_OF_WORLD))
+				if (source.is(DamageTypes.FELL_OUT_OF_WORLD)) {
+					if (amount > 4) {
+						notifyIllegalDamage(amount - 4, source.getEntity());
+					}
 					return Math.min(4, amount);
+				}
 				if (source.is(DamageTypes.GENERIC_KILL)) {
 					return amount;
 				}
 			}
 		}
 		int reduction = 20;
-		amount = Math.min(getMaxHealth() / reduction, amount);
+		float ans = Math.min(getMaxHealth() / reduction, amount);
 		if (YHModConfig.COMMON.reimuDamageReduction.get() && !source.is(YHDamageTypes.DANMAKU_TYPE))
-			amount /= 5;
-		return amount;
+			ans /= 5;
+		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+			notifyIllegalDamage(amount - ans, source.getEntity());
+		}
+		return ans;
 	}
 
 	@Override
 	protected final void actuallyHurt(DamageSource source, float amount) {
-		if (!hurtCall) return;
+		if (!hurtCall) {
+			notifyIllegalDamage(amount, source.getEntity());
+			return;
+		}
 		super.actuallyHurt(source, amount);
 	}
 
@@ -175,8 +212,26 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 			setCombatProgress(val);
 		}
 		float health = getCombatProgress();
-		if (tickCount > 5 && val <= health) return;
+		if (tickCount > 5 && val <= health) {
+			notifyIllegalDamage(health - val, null);
+			return;
+		}
 		setCombatProgress(val);
+	}
+
+	@Override
+	public void setCombatProgress(float amount) {
+		if (combatProgress != null) {
+			float health = combatProgress.progress;
+			if (health > getVanillaProgress()) {
+				notifyIllegalDamage(health - getVanillaProgress(), null);
+			}
+			if (health > getCombatProgress()) {
+				notifyIllegalDamage(health - getCombatProgress(), null);
+				setFlag(4, true);
+			}
+		}
+		super.setCombatProgress(amount);
 	}
 
 	public void heal(float original) {
@@ -225,6 +280,9 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 			}
 			if (doHeal) {
 				setHealth(getMaxHealth());
+				if (getFlag(4)) {
+					setFlag(4, false);
+				}
 			}
 		} else {
 			noTargetTime = 0;

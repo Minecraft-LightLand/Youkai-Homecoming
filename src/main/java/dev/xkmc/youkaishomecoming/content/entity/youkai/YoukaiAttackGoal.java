@@ -42,6 +42,7 @@ public class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 	}
 
 	public void tick() {
+		youkai.setAggressive(true);
 		if (shootTime > 0) {
 			shootTime--;
 		}

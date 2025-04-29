@@ -1,16 +1,17 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
+import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.events.YoukaiFightEvent;
-import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -163,7 +164,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	// features
 
 	public boolean invalidTarget(LivingEntity e) {
-		return !e.isAlive() || !e.isAddedToWorld() || e.level() != level();
+		return !e.isAlive() || !e.isAddedToWorld() || e.level() != level() || e == this || !EntityStorageHelper.isPresent(e);
 	}
 
 	public boolean shouldIgnore(LivingEntity e) {
@@ -256,12 +257,12 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public void aiStep() {
 		if (!level().isClientSide()) {
 			if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
-				double fall = isAggressive() ? 0.6 : 0.8;
+				double fall = getTarget() != null ? 0.6 : 0.8;
 				this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, fall, 1.0D));
 			}
 			targets.tick();
 			if (spellCard != null) {
-				if (isAggressive() && shouldShowSpellCircle()) {
+				if (getTarget() != null && shouldShowSpellCircle()) {
 					spellCard.tick(this);
 					tickDanmaku();
 				} else {
@@ -271,6 +272,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			}
 		}
 		super.aiStep();
+	}
+
+	public void trySummonReinforcementOnDeath(LivingEntity le){
+		TouhouConditionalSpawns.triggetYukari(le, position());
 	}
 
 	@Override
@@ -352,6 +357,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		return this.getCombatProgress() > 0.0F;
 	}
 
+	protected float getVanillaProgress() {
+		return super.getHealth();
+	}
+
 	public void setCombatProgress(float amount) {
 		super.setHealth(amount);
 		if (combatProgress == null) return;
@@ -391,7 +400,13 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	@Override
 	public LivingEntity getTarget() {
 		LivingEntity ans = super.getTarget();
-		if (ans == null || invalidTarget(ans)) return null;
+		if (ans == null || invalidTarget(ans)) {
+			var candidates = targets.getTargets();
+			if (!candidates.isEmpty()) {
+				return candidates.get(0);
+			}
+			return null;
+		}
 		return ans;
 	}
 

@@ -92,7 +92,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 
 	@Override
 	public boolean shouldShowSpellCircle() {
-		return isAggressive();
+		return level().isClientSide() ? isAggressive() : getTarget() != null;
 	}
 
 	@Override
