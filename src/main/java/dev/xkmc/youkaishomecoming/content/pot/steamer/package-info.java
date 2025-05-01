@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.init;
+package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

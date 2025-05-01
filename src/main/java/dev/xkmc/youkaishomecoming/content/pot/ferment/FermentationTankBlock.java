@@ -11,7 +11,8 @@ import dev.xkmc.l2modularblock.mult.UseWithoutItemBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -100,7 +101,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, UseWi
 	private static ItemInteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.fluids.getFluidInTank(0);
 		boolean hasFluid = false;
-		if (fluid.getFluid() instanceof SakeFluid sake) {
+		if (fluid.getFluid() instanceof YHFluid sake) {
 			if (fluid.getAmount() >= sake.type.amount() && stack.is(sake.type.getContainer())) {
 				if (!level.isClientSide()) {
 					be.fluids.drain(sake.type.amount(), IFluidHandler.FluidAction.EXECUTE);
@@ -113,7 +114,7 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, UseWi
 			}
 			hasFluid = true;
 		}
-		if (!hasFluid || stack.getItem() instanceof SakeBottleItem) {
+		if (!hasFluid || stack.getItem() instanceof SakeBottleItem|| stack.getItem() instanceof SlipBottleItem) {
 			var cap = stack.getCapability(Capabilities.FluidHandler.ITEM);
 			if (cap != null) {
 				if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
@@ -139,21 +140,21 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, UseWi
 
 	public static void buildModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var nolid = pvd.models().getBuilder("block/fermentation_tank")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/fermentation_tank")))
-				.texture("side", pvd.modLoc("block/fermentation_tank_side"))
-				.texture("top", pvd.modLoc("block/fermentation_tank_top"))
-				.texture("bottom", pvd.modLoc("block/fermentation_tank_bottom"))
-				.texture("inside", pvd.modLoc("block/fermentation_tank_inside"))
-				.texture("lid", pvd.modLoc("block/fermentation_tank_lid"))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/fermentation_tank")))
+				.texture("side", pvd.modLoc("block/utensil/fermentation_tank_side"))
+				.texture("top", pvd.modLoc("block/utensil/fermentation_tank_top"))
+				.texture("bottom", pvd.modLoc("block/utensil/fermentation_tank_bottom"))
+				.texture("inside", pvd.modLoc("block/utensil/fermentation_tank_inside"))
+				.texture("lid", pvd.modLoc("block/utensil/fermentation_tank_lid"))
 				.renderType("cutout");
 		var lid = pvd.models().getBuilder("block/fermentation_tank_lid")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/fermentation_tank_lid")))
-				.texture("side", pvd.modLoc("block/fermentation_tank_side"))
-				.texture("top", pvd.modLoc("block/fermentation_tank_top"))
-				.texture("bottom", pvd.modLoc("block/fermentation_tank_bottom"))
-				.texture("inside", pvd.modLoc("block/fermentation_tank_inside"))
-				.texture("lid", pvd.modLoc("block/fermentation_tank_lid"))
-				.texture("lid_handle", pvd.modLoc("block/fermentation_tank_lid_handle"))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/fermentation_tank_lid")))
+				.texture("side", pvd.modLoc("block/utensil/fermentation_tank_side"))
+				.texture("top", pvd.modLoc("block/utensil/fermentation_tank_top"))
+				.texture("bottom", pvd.modLoc("block/utensil/fermentation_tank_bottom"))
+				.texture("inside", pvd.modLoc("block/utensil/fermentation_tank_inside"))
+				.texture("lid", pvd.modLoc("block/utensil/fermentation_tank_lid"))
+				.texture("lid_handle", pvd.modLoc("block/utensil/fermentation_tank_lid_handle"))
 				.renderType("cutout");
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(state.getValue(OPEN) ? nolid : lid).build());
 	}

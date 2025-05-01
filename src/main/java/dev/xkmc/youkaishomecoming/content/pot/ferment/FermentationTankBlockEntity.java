@@ -21,6 +21,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
@@ -131,8 +132,8 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 	}
 
 	@Override
-	public TileTooltip getImage() {
-		return new TileTooltip(items.getAsList(), fluids.getAsList());
+	public TileTooltip getImage(boolean shift, BlockHitResult hit) {
+		return new TileTooltip(items.getAsList(), fluids.getAsList(), 3, 3);
 	}
 
 	public float inProgress() {
@@ -140,7 +141,7 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 	}
 
 	@Override
-	public List<Component> lines() {
+	public List<Component> lines(boolean shift, BlockHitResult hit) {
 		float progress = inProgress();
 		if (totalTime <= 0) {
 			return List.of();

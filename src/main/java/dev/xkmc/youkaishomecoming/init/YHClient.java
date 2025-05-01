@@ -3,26 +3,33 @@ package dev.xkmc.youkaishomecoming.init;
 import dev.xkmc.youkaishomecoming.content.block.combined.CompositeModel;
 import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
-import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.client.renderer.block.BlockModelShaper;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.*;
-import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
+import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class YHClient {
-
 	@SubscribeEvent
-	public static void registerOverlay(RegisterGuiLayersEvent event) {
-		event.registerAbove(VanillaGuiLayers.CROSSHAIR, YoukaisHomecoming.loc("info_tile"), new TileInfoDisplay());
+	public static void clientSetup(FMLClientSetupEvent event) {
+		event.enqueueWork(() -> {
+			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("slip"),
+					(stack, level, user, index) -> SlipBottleItem.texture(stack));
+		});
 	}
 
 	@SubscribeEvent

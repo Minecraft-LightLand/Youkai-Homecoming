@@ -10,6 +10,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -60,8 +61,9 @@ public enum YHFood implements ItemLike {
 	SENBEI(FoodType.SIMPLE, 4, 0.6f, DietTagGen.GRAINS.tag),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	BUN(FoodType.SIMPLE, 8, 0.8f, DietTagGen.GRAINS.tag),
-	OYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	MANTOU(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
+	BUN(FoodType.SIMPLE, 8, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
+	OYAKI(FoodType.SIMPLE, 6, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
@@ -82,48 +84,6 @@ public enum YHFood implements ItemLike {
 
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
-	GREEN_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
-	)),
-	WHITE_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(YHEffects.REFRESHING, 1200, 0, 1)
-	)),
-	BLACK_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK, 600, 0, 1)
-	)),
-	OOLONG_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(YHEffects.SMOOTHING, 600, 0, 1)
-	)),
-	CORNFLOWER_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(MobEffects.REGENERATION, 200, 0, 1)
-	)),
-	TEA_MOCHA(FoodType.BOTTLE, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	)),
-	SAIDI_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
-	)),
-	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(MobEffects.MOVEMENT_SPEED, 400, 0, 1),
-			new EffectEntry(MobEffects.REGENERATION, 400, 0, 1)
-	)),
-	GENMAI_TEA(FoodType.BOTTLE, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 1, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	)),
-	GREEN_WATER(FoodType.BOTTLE, 0, 0, List.of(new EffectEntry(YHEffects.TEA, 600, 0, 0.1f))),
 
 	// bowl
 	APAKI(FoodType.BOWL_MEAT, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
@@ -191,12 +151,12 @@ public enum YHFood implements ItemLike {
 	;
 
 
-	public final ItemEntry<Item> item;
+	public final ItemEntry<Item> raw, item;
 
 	private final FoodType type;
 
 	@SafeVarargs
-	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+	YHFood(FoodType type, int nutrition, float sat, @Nullable String raw, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
 		String id = "food/simple/";
@@ -205,17 +165,34 @@ public enum YHFood implements ItemLike {
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
 		if (ordinal() <= 14) id = "food/mochi/";
 		if (ordinal() <= 8) id = "food/basic/";
+		if (raw == null) this.raw = null;
+		else {
+			String rid = "item/" + id + raw;
+			this.raw = YoukaisHomecoming.REGISTRATE.item(raw, Item::new)
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc(rid)))
+					.register();
+		}
 		item = type.build(YoukaisHomecoming.REGISTRATE, id, name, nutrition, sat, tags, effs);
 	}
 
 	@SafeVarargs
-	YHFood(FoodType type, int nutrition, float sat, TagKey<Item>... tags) {
-		this(type, nutrition, sat, List.of(), tags);
+	YHFood(FoodType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+		this(type, nutrition, sat, null, effs, tags);
 	}
 
 	@SafeVarargs
 	YHFood(FoodType type, int nutrition, float sat, EffectEntry eff, TagKey<Item>... tags) {
-		this(type, nutrition, sat, List.of(eff), tags);
+		this(type, nutrition, sat, null, List.of(eff), tags);
+	}
+
+	@SafeVarargs
+	YHFood(FoodType type, int nutrition, float sat, TagKey<Item>... tags) {
+		this(type, nutrition, sat, null, List.of(), tags);
+	}
+
+	@SafeVarargs
+	YHFood(FoodType type, int nutrition, float sat, String raw, TagKey<Item>... tags) {
+		this(type, nutrition, sat, raw, List.of(), tags);
 	}
 
 	public static void register() {

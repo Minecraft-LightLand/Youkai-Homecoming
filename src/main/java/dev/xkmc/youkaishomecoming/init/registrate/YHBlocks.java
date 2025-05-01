@@ -11,7 +11,9 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.l2core.init.reg.simple.SR;
 import dev.xkmc.l2core.init.reg.simple.Val;
+import dev.xkmc.l2core.serial.loot.LootHelper;
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.youkaishomecoming.content.block.combined.*;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
@@ -29,6 +31,8 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
+import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -51,9 +55,14 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
@@ -169,6 +178,18 @@ public class YHBlocks {
 	public static final Val<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
 	public static final Val<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
+	public static final BlockEntry<DelegateBlock> STEAMER_POT;
+	public static final BlockEntry<DelegateBlock> STEAMER_RACK;
+	public static final BlockEntry<DelegateBlock> STEAMER_LID;
+	public static final BlockEntityEntry<SteamerBlockEntity> STEAMER_BE;
+	public static final Val<RecipeType<SteamingRecipe>> STEAM_RT;
+	public static final Val<RecipeSerializer<SteamingRecipe>> STEAM_RS;
+
+	public static final BlockEntry<CopperTankBlock> COPPER_TANK;
+	public static final BlockEntityEntry<CopperTankBlockEntity> TANK_BE;
+	public static final BlockEntry<DelegateBlock> COPPER_FAUCET;
+	public static final BlockEntityEntry<CopperFaucetBlockEntity> FAUCET_BE;
+
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 	public static final BlockEntry<MoonLanternBlock> MOON_LANTERN;
 
@@ -221,6 +242,73 @@ public class YHBlocks {
 					.validBlock(FERMENT).renderer(() -> FermentationTankRenderer::new).register();
 			FERMENT_RT = RT.reg("fermentation", RecipeType::simple);
 			FERMENT_RS = RS.reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
+
+		}
+
+		{
+			STEAMER_POT = YoukaisHomecoming.REGISTRATE.block("steamer_pot", p -> SteamerStates.createPotBlock())
+					.blockstate(SteamerBlockJsons::genPotModel)
+					.simpleItem()
+					.loot(SteamerBlockJsons::genPotLoot)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.register();
+
+			STEAMER_RACK = YoukaisHomecoming.REGISTRATE.block("steamer_rack", p -> SteamerStates.createRackBlock())
+					.blockstate(SteamerBlockJsons::genRackModel)
+					.simpleItem()
+					.loot(SteamerBlockJsons::genRackLoot)
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			STEAMER_LID = YoukaisHomecoming.REGISTRATE.block("steamer_lid", p -> SteamerStates.createLidBlock())
+					.blockstate(SteamerBlockJsons::genLidModel)
+					.simpleItem()
+					.defaultLoot()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			STEAMER_BE = YoukaisHomecoming.REGISTRATE.blockEntity("steamer", SteamerBlockEntity::new)
+					.renderer(() -> SteamerBlockRenderer::new)
+					.validBlocks(STEAMER_POT, STEAMER_RACK)
+					.register();
+
+
+			STEAM_RT = RT.reg("steaming", RecipeType::simple);
+			STEAM_RS = RS.reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
+
+		}
+
+		{
+			COPPER_TANK = YoukaisHomecoming.REGISTRATE.block("copper_tank", p -> new CopperTankBlock(
+							BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.COPPER)
+									.strength(2f).requiresCorrectToolForDrops(),
+							CopperTankBlock.INS, CopperTankBlock.TE))
+					.blockstate(CopperTankBlock::buildStates)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+					.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()
+							.withPool(LootPool.lootPool().add(LootItem.lootTableItem(block)
+									.when(new LootHelper(pvd).enumState(block, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER))))))
+					.register();
+
+			TANK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("copper_tank", CopperTankBlockEntity::new)
+					.validBlock(COPPER_TANK)
+					.register();
+
+			COPPER_FAUCET = YoukaisHomecoming.REGISTRATE.block("copper_faucet", p -> DelegateBlock.newBaseBlock(
+							BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.COPPER)
+									.strength(2f).requiresCorrectToolForDrops().noOcclusion(),
+							BlockTemplates.HORIZONTAL, CopperFaucetBlock.INS, CopperFaucetBlock.TE))
+					.blockstate(CopperFaucetBlock::buildStates)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.simpleItem()
+					.defaultLoot()
+					.register();
+
+			FAUCET_BE = YoukaisHomecoming.REGISTRATE.blockEntity("copper_faucet", CopperFaucetBlockEntity::new)
+					.validBlock(COPPER_FAUCET)
+					.renderer(() -> CopperFaucetRenderer::new)
+					.register();
 
 		}
 

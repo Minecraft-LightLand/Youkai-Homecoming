@@ -12,19 +12,23 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.fluids.FluidStack;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -48,6 +52,7 @@ public class YHItems {
 	public static final ItemEntry<Item> CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
 			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, ICE_CUBE;
+	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
@@ -57,6 +62,8 @@ public class YHItems {
 
 	public static final DCReg DC = DCReg.of(YoukaisHomecoming.REG);
 	public static final DCVal<Integer> WATER = DC.intVal("water");
+	public static final DCVal<FluidStack> FLUID = DC.reg("fluid", FluidStack.OPTIONAL_CODEC, FluidStack.OPTIONAL_STREAM_CODEC, true);
+	public static final DCVal<ItemContainerContents> ITEMS = DC.reg("contents", ItemContainerContents.CODEC, ItemContainerContents.STREAM_CODEC, true);
 
 	static {
 		var reg = YoukaisHomecoming.REGISTRATE;
@@ -96,6 +103,18 @@ public class YHItems {
 
 		YHFood.register();
 
+		SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
+				.properties(p -> p.stacksTo(1))
+				.model((ctx, pvd) ->
+						pvd.generated(ctx, pvd.modLoc("item/sake_bottle"))
+								.override().predicate(YoukaisHomecoming.loc("slip"), 1 / 32f)
+								.model(pvd.getBuilder(ctx.getName() + "_overlay")
+										.parent(new ModelFile.UncheckedModelFile("item/generated"))
+										.texture("layer0", pvd.modLoc("item/sake_bottle"))
+										.texture("layer1", pvd.modLoc("item/sake_bottle_overlay"))))
+				.color(() -> () -> SlipBottleItem::color)
+				.register();
+
 		// feasts
 		{
 
@@ -126,7 +145,7 @@ public class YHItems {
 
 		YHDish.register();
 		YHCoffee.register();
-		YHSake.register();
+		YHDrink.register();
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
 			FruitsDelightCompatFood.register();

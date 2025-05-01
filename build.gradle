@@ -178,6 +178,9 @@ dependencies {
     compileOnly("com.simibubi.create:create-1.21.1:6.0.1-13") { transitive = false }
     compileOnly("net.createmod.ponder:Ponder-NeoForge-1.21.1:1.0.39") { transitive = false }
     compileOnly("dev.engine-room.flywheel:flywheel-neoforge-1.21.1:1.0.0-10")
+
+    testImplementation "com.mojang:datafixerupper:8.0.16"
+    testImplementation "com.google.guava:guava:32.1.2-jre"
 }
 
 

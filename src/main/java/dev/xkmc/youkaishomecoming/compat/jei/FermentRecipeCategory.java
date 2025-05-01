@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -61,7 +61,7 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 		if (!recipe.outputFluid.isEmpty()) {
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 91;
-			if (recipe.outputFluid.getFluid() instanceof SakeFluid sake) {
+			if (recipe.outputFluid.getFluid() instanceof YHFluid sake) {
 				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.type.asStack(sake.type.count()));
 				builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(new ItemStack(sake.type.getContainer(), sake.type.count()));
 			} else {

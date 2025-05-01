@@ -124,7 +124,6 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity tileEntity = level.getBlockEntity(pos);
 			if (tileEntity instanceof BasePotBlockEntity<?> cookingPotEntity) {
-				Containers.dropContents(level, pos, cookingPotEntity.getDroppableInventory());
 				cookingPotEntity.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
 				level.updateNeighbourForOutputSignal(pos, this);
 			}

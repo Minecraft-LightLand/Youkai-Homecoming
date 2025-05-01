@@ -49,7 +49,7 @@ public class YHDrinkItem extends YHFoodItem {
 			for (var e : food.effects()) {
 				if (e.effect().is(YHEffects.DRUNK)) {
 					var eff = new EffectBuilder(new MobEffectInstance(e.effect()));
-					eff.setDuration(eff.ins.getDuration() + ins.getDuration());
+					eff.setDuration(Math.min(eff.ins.getDuration(), ins.getDuration()));
 					int old = ins.getAmplifier();
 					int amp = eff.ins.getAmplifier() + 1;
 					eff.setAmplifier(Math.max(old, Math.min(4, amp + old)));

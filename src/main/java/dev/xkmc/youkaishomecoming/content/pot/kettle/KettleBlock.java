@@ -4,11 +4,16 @@ import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
+import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -34,12 +39,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.util.Lazy;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
+import vectorwing.farmersdelight.common.registry.ModDataComponents;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
-public class KettleBlock extends BasePotBlock {
+public class KettleBlock extends BasePotBlock implements LeftClickBlock {
 
 	protected static final VoxelShape SHAPE = box(3, 0, 3, 13, 7, 13);
 	protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
@@ -54,10 +60,10 @@ public class KettleBlock extends BasePotBlock {
 
 	@Override
 	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		for (var e : MAP.get().entrySet()) {
-			if (e.getKey().test(stack)) {
-				if (!level.isClientSide()) {
-					if (level.getBlockEntity(pos) instanceof KettleBlockEntity kettle) {
+		if (level.getBlockEntity(pos) instanceof KettleBlockEntity kettle) {
+			for (var e : MAP.get().entrySet()) {
+				if (e.getKey().test(stack)) {
+					if (!level.isClientSide()) {
 						if (kettle.getWater() < KettleBlockEntity.WATER_BUCKET) {
 							kettle.addWater(e.getValue());
 							if (!player.getAbilities().instabuild) {
@@ -67,13 +73,55 @@ public class KettleBlock extends BasePotBlock {
 							}
 							return ItemInteractionResult.SUCCESS;
 						}
+						return ItemInteractionResult.FAIL;
 					}
-					return ItemInteractionResult.FAIL;
+					return ItemInteractionResult.CONSUME;
 				}
-				return ItemInteractionResult.CONSUME;
+			}
+			if (!stack.isEmpty()) {
+				ItemStack toInsert = player.isShiftKeyDown() ? stack.copy() : stack.copyWithCount(1);
+				ItemStack remain = kettle.addItem(toInsert);
+				if (remain.getCount() < toInsert.getCount()) {
+					if (!level.isClientSide()) {
+						stack.shrink(toInsert.getCount() - remain.getCount());
+					}
+					return ItemInteractionResult.SUCCESS;
+				}
+			} else if (player.isShiftKeyDown() && !kettle.isGridEmpty()) {
+				if (!level.isClientSide()) {
+					kettle.popAll();
+				}
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
 		return super.useItemOn(stack, state, level, pos, player, hand, result);
+	}
+
+	private static <T> void copyTo(ItemStack stack, DataComponentMap comp, DataComponentType<T> type) {
+		if (comp.has(type)) {
+			stack.set(type, comp.get(type));
+		}
+	}
+
+	@Override
+	public boolean leftClick(BlockState state, Level level, BlockPos pos, Player player) {
+		if (level.getBlockEntity(pos) instanceof KettleBlockEntity be) {
+			if (level.isClientSide) return true;
+			ItemStack stack = asItem().getDefaultInstance();
+			var comp = be.collectComponents();
+			copyTo(stack, comp, ModDataComponents.MEAL.get());
+			copyTo(stack, comp, ModDataComponents.CONTAINER.get());
+			copyTo(stack, comp, DataComponents.CUSTOM_NAME);
+			copyTo(stack, comp, YHItems.ITEMS.get());
+			level.removeBlock(pos, false);
+			if (player.getMainHandItem().isEmpty()) {
+				player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+			} else {
+				popResource(level, pos, stack);
+			}
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -103,17 +151,17 @@ public class KettleBlock extends BasePotBlock {
 
 	public static void buildModel(DataGenContext<Block, KettleBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var kettle = pvd.models().getBuilder("block/kettle")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle")))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/kettle")))
 				.texture("kettle", pvd.modLoc("block/kettle"))
 				.renderType("cutout");
 		var handle = pvd.models().getBuilder("block/kettle_handle")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle_handle")))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/kettle_handle")))
 				.texture("kettle", pvd.modLoc("block/kettle"))
 				.texture("handle", pvd.modLoc("block/cooking_pot_handle"))
 				.texture("chain", pvd.modLoc("block/chain"))
 				.renderType("cutout");
 		var tray = pvd.models().getBuilder("block/kettle_tray")
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/kettle_tray")))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/kettle_tray")))
 				.texture("kettle", pvd.modLoc("block/kettle"))
 				.texture("tray_side", pvd.modLoc("block/cooking_pot_tray_side"))
 				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"))

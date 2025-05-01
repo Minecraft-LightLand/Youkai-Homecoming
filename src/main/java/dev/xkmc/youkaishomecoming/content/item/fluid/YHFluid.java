@@ -8,10 +8,10 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
-public class SakeFluid extends BaseFlowingFluid {
-	public final IYHSake type;
+public class YHFluid extends BaseFlowingFluid {
+	public final IYHFluidHolder type;
 
-	public SakeFluid(Properties properties, IYHSake type) {
+	public YHFluid(Properties properties, IYHFluidHolder type) {
 		super(properties);
 		this.type = type;
 	}

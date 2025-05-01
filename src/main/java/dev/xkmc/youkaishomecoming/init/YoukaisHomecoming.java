@@ -11,13 +11,16 @@ import dev.xkmc.l2serial.serialization.custom_handler.CodecHandler;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.content.block.combined.CombinedBlockSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipFluidWrapper;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.FermentationTankBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamerBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.tank.CopperTankBlockEntity;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
-import dev.xkmc.youkaishomecoming.init.food.YHSake;
+import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -80,17 +83,20 @@ public class YoukaisHomecoming {
 
 	@SubscribeEvent
 	public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		for (var e : YHSake.values()) {
+		for (var e : YHDrink.values()) {
 			event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new SakeFluidWrapper(stack), e.item().get());
 		}
 		event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new SakeFluidWrapper(stack), YHItems.SOY_SAUCE_BOTTLE.item().get());
+		event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new SlipFluidWrapper(stack), YHItems.SAKE_BOTTLE.get());
 
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.KETTLE_BE.get(), BasePotBlockEntity::getItemHandler);
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::getItemHandler);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, YHBlocks.KETTLE_BE.get(), KettleBlockEntity::getFluidHandler);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::getItemHandler);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.FERMENT_BE.get(), FermentationTankBlockEntity::getItemHandler);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, YHBlocks.FERMENT_BE.get(), FermentationTankBlockEntity::getFluidHandler);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.RACK_BE.get(), DryingRackBlockEntity::getItemHandler);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, YHBlocks.STEAMER_BE.get(), SteamerBlockEntity::getItemHandler);
+		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, YHBlocks.TANK_BE.get(), CopperTankBlockEntity::getFluidHandler);
 
 	}
 

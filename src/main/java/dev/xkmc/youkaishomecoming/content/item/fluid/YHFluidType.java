@@ -6,12 +6,12 @@ import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.function.Consumer;
 
-public class SakeFluidType extends FluidType {
+public class YHFluidType extends FluidType {
 	final ResourceLocation stillTexture;
 	final ResourceLocation flowingTexture;
-	final IYHSake type;
+	final IYHFluidHolder type;
 
-	public SakeFluidType(FluidType.Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture, IYHSake type) {
+	public YHFluidType(FluidType.Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture, IYHFluidHolder type) {
 		super(properties);
 		this.stillTexture = stillTexture;
 		this.flowingTexture = flowingTexture;
@@ -19,6 +19,6 @@ public class SakeFluidType extends FluidType {
 	}
 
 	public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
-		consumer.accept(new ClientFruitFluid(this));
+		consumer.accept(new ClientYHFluid(this));
 	}
 }

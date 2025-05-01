@@ -35,7 +35,7 @@ public class WildCoffeaBlock extends DoublePlantBlock {
 		pvd.getVariantBuilder(ctx.get()).forAllStatesExcept(state ->
 				ConfiguredModel.builder().modelFile(pvd.models()
 								.cross(tex + (state.getValue(HALF) == DoubleBlockHalf.UPPER ? "" : "_bottom"),
-										pvd.modLoc("block/wild_" + tex +
+										pvd.modLoc("block/plants/wild_" + tex +
 												(state.getValue(HALF) == DoubleBlockHalf.UPPER ? "_top" : "_bottom")))
 								.renderType("cutout"))
 						.build());

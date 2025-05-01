@@ -13,14 +13,14 @@ import java.util.function.Supplier;
 
 public class SakeBottleItem extends YHDrinkItem {
 
-	public SakeBottleItem(Supplier<SakeFluid> supplier, Item.Properties builder) {
+	public SakeBottleItem(Supplier<YHFluid> supplier, Item.Properties builder) {
 		super(builder);
 		this.fluidSupplier = supplier;
 	}
 
-	private final Supplier<SakeFluid> fluidSupplier;
+	private final Supplier<YHFluid> fluidSupplier;
 
-	public SakeFluid getFluid() {
+	public YHFluid getFluid() {
 		return fluidSupplier.get();
 	}
 
