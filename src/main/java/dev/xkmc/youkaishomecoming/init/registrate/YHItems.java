@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.FluidWrapper;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -62,7 +63,10 @@ public class YHItems {
 
 	public static final DCReg DC = DCReg.of(YoukaisHomecoming.REG);
 	public static final DCVal<Integer> WATER = DC.intVal("water");
-	public static final DCVal<FluidStack> FLUID = DC.reg("fluid", FluidStack.OPTIONAL_CODEC, FluidStack.OPTIONAL_STREAM_CODEC, true);
+	public static final DCVal<FluidWrapper> FLUID = DC.reg("fluid",
+			FluidStack.OPTIONAL_CODEC.xmap(FluidWrapper::new, FluidWrapper::fluid),
+			FluidStack.OPTIONAL_STREAM_CODEC.map(FluidWrapper::new, FluidWrapper::fluid),
+			true);
 	public static final DCVal<ItemContainerContents> ITEMS = DC.reg("contents", ItemContainerContents.CODEC, ItemContainerContents.STREAM_CODEC, true);
 
 	static {

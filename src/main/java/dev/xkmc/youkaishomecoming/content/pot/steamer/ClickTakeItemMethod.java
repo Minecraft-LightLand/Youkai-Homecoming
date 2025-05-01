@@ -19,8 +19,6 @@ public class ClickTakeItemMethod implements UseItemOnBlockMethod {
 		if (info.racks() == 0) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		if (!(level.getBlockEntity(pos) instanceof SteamerBlockEntity be))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-		if (!stack.isEmpty() && !player.isShiftKeyDown())
-			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		int y = RackInfo.ofY(hit);
 		if (info.pot()) y -= 2;
 		if (y < 0 || y >= be.racks.size()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

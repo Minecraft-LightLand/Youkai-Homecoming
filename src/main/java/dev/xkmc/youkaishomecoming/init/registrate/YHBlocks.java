@@ -680,7 +680,7 @@ public class YHBlocks {
 					.blockstate((ctx, pvd) -> pvd.slabBlock(ctx.get(),
 							pvd.models().slab(ctx.getName(), side, side, side),
 							pvd.models().slabTop(ctx.getName() + "_top", side, side, side),
-							new ModelFile.UncheckedModelFile(side)))
+							new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id))))
 					.tag(YHTagGen.SIKKUI, BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.SLABS)
 					.item().tag(ItemTags.SLABS).build()
 					.recipe((ctx, pvd) -> pvd.slab(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS, ctx, null, true))

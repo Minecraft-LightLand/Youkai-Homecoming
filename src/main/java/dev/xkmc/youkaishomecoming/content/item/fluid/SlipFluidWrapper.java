@@ -20,20 +20,18 @@ public class SlipFluidWrapper implements IFluidHandlerItem {
 		return container;
 	}
 
-	public boolean canFillFluidType(FluidStack fluid) {
-		return fluid.getFluid() instanceof YHFluid;
-	}
-
 	@NotNull
 	public FluidStack getFluid() {
-		return YHItems.FLUID.getOrDefault(container, FluidStack.EMPTY);
+		var ans = YHItems.FLUID.get(container);
+		if (ans == null) return FluidStack.EMPTY;
+		return ans.fluid().copy();
 	}
 
 	protected void setFluid(@NotNull FluidStack fluidStack) {
 		if (fluidStack.isEmpty()) {
 			container.remove(YHItems.FLUID);
 		} else {
-			YHItems.FLUID.set(container, fluidStack.copy());
+			YHItems.FLUID.set(container, new FluidWrapper(fluidStack));
 		}
 	}
 

@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaishomecoming:raw_bun"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:bun"
+  }
+}

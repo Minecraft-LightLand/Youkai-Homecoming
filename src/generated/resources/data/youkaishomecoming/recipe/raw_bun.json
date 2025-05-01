@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/dough"
+    },
+    {
+      "tag": "c:foods/dough"
+    },
+    {
+      "tag": "farmersdelight:cabbage_roll_ingredients"
+    },
+    {
+      "tag": "c:foods/cabbage"
+    },
+    {
+      "tag": "c:foods/onion"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "youkaishomecoming:raw_bun"
+  }
+}

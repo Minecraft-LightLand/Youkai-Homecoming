@@ -636,6 +636,36 @@ public class YHRecipeGen {
 
 		}
 
+		// steam
+		{
+			steaming(pvd, DataIngredient.items(Items.POTATO), () -> Items.BAKED_POTATO);
+			steaming(pvd, DataIngredient.items(ModItems.CHICKEN_CUTS.get()), ModItems.COOKED_CHICKEN_CUTS);
+			steaming(pvd, DataIngredient.items(ModItems.SALMON_SLICE.get()), ModItems.COOKED_SALMON_SLICE);
+			steaming(pvd, DataIngredient.items(ModItems.COD_SLICE.get()), ModItems.COOKED_COD_SLICE);
+
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.BUN.raw.get(), 4)::unlockedBy, Items.WHEAT)
+					.requires(CommonTags.FOODS_DOUGH)
+					.requires(CommonTags.FOODS_DOUGH)
+					.requires(ModTags.CABBAGE_ROLL_INGREDIENTS)
+					.requires(CommonTags.FOODS_CABBAGE)
+					.requires(CommonTags.FOODS_ONION)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.save(pvd);
+
+			steaming(pvd, DataIngredient.items(YHFood.BUN.raw.get()), YHFood.BUN.item);
+			steaming(pvd, DataIngredient.tag(CommonTags.FOODS_DOUGH), YHFood.MANTOU.item);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.OYAKI.raw.get(), 4)::unlockedBy, Items.WHEAT)
+					.requires(CommonTags.FOODS_DOUGH)
+					.requires(CommonTags.FOODS_DOUGH)
+					.requires(CommonTags.FOODS_LEAFY_GREEN)
+					.requires(Items.BROWN_MUSHROOM)
+					.save(pvd);
+
+			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
+		}
+
 		var tea = tea(pvd);
 		var coffee = coffee(pvd);
 
@@ -904,15 +934,15 @@ public class YHRecipeGen {
 			RecipeSerializer<R> ser, AbstractCookingRecipe.Factory<R> fac) {
 		new SimpleCookingRecipeBuilder(category, CookingBookCategory.MISC, result.get(), source.toVanilla(), experience, cookingTime, fac)
 				.unlockedBy("has_" + pvd.safeName(source), source.getCriterion(pvd))
-				.save(pvd, pvd.safeId(result.get()) + "_from_" + pvd.safeName(source) + "_" + typeName);
+				.save(pvd, pvd.safeId(result.get()).withPath(e -> typeName + "/" + e + "_from_" + pvd.safeName(source)));
 	}
 
 	private static RecipeOutput tea(RegistrateRecipeProvider pvd) {
-		return new BasePotOutput<>(YHBlocks.KETTLE_RS.get(), pvd);
+		return new BasePotOutput<>(YHBlocks.KETTLE_RS.get(), pvd, "kettle");
 	}
 
 	private static RecipeOutput coffee(RegistrateRecipeProvider pvd) {
-		return new BasePotOutput<>(YHBlocks.MOKA_RS.get(), pvd);
+		return new BasePotOutput<>(YHBlocks.MOKA_RS.get(), pvd, "moka");
 	}
 
 	private static void foodCut(RegistrateRecipeProvider pvd,

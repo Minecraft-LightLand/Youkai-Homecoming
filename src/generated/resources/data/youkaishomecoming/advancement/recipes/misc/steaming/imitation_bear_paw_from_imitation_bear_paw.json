@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_imitation_bear_paw": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:imitation_bear_paw"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:steaming/imitation_bear_paw_from_imitation_bear_paw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_imitation_bear_paw"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:steaming/imitation_bear_paw_from_imitation_bear_paw"
+    ]
+  }
+}

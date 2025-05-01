@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 
 public record BasePotOutput<T extends BasePotRecipe>(
-		BasePotSerializer<T> ser, RecipeOutput delegate
+		BasePotSerializer<T> ser, RecipeOutput delegate, String type
 ) implements RecipeOutput {
 
 	@Override
@@ -23,7 +23,10 @@ public record BasePotOutput<T extends BasePotRecipe>(
 		if (recipe instanceof CookingPotRecipe c) {
 			recipe = ser.wrap(c);
 		}
-		delegate().accept(id, recipe, adv, cond);
+		String path = id.getPath();
+		String[] strs = path.split("/");
+		path = strs[strs.length - 1];
+		delegate().accept(id.withPath(type + "/" + path), recipe, adv, cond);
 	}
 
 }

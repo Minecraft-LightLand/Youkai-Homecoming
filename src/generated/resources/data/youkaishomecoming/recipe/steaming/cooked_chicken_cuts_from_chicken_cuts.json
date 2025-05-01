@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "farmersdelight:chicken_cuts"
+  },
+  "result": {
+    "count": 1,
+    "id": "farmersdelight:cooked_chicken_cuts"
+  }
+}

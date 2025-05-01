@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_bun": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaishomecoming:raw_bun"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:steaming/bun_from_raw_bun"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_bun"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:steaming/bun_from_raw_bun"
+    ]
+  }
+}

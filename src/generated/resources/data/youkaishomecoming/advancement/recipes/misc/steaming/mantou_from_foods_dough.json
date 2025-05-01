@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_foods_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/dough"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:steaming/mantou_from_foods_dough"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_foods_dough"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:steaming/mantou_from_foods_dough"
+    ]
+  }
+}
