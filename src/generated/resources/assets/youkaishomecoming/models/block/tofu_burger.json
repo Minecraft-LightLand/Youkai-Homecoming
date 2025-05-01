@@ -1,10 +1,9 @@
 {
-  "parent": "youkaishomecoming:custom/saucer_tofu_burger",
+  "parent": "youkaishomecoming:custom/dish/tofu_burger",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/tofu_burger",
-    "extra": "youkaishomecoming:block/tofu_burger_extra",
-    "particle": "youkaishomecoming:block/tofu_burger",
-    "sake": "youkaishomecoming:block/saucer_sake"
+    "base": "youkaishomecoming:block/dish/tofu_burger_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "particle": "youkaishomecoming:block/dish/ceramic"
   }
 }

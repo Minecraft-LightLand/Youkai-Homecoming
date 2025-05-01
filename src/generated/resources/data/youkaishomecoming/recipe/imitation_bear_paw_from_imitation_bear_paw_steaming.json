@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaishomecoming:imitation_bear_paw"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:imitation_bear_paw"
+  }
+}

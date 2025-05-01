@@ -2,6 +2,9 @@
   "values": [
     "minecraft:clay",
     "minecraft:mud",
+    "minecraft:coarse_dirt",
+    "minecraft:clay",
+    "minecraft:mud",
     "minecraft:coarse_dirt"
   ]
 }

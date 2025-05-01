@@ -1,11 +1,11 @@
 {
-  "parent": "youkaishomecoming:custom/tea_stage6",
+  "parent": "youkaishomecoming:custom/plant/tea_stage6",
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "leaves": "youkaishomecoming:block/tea_bush_leaves",
-    "side": "youkaishomecoming:block/tea_bush_side",
-    "top": "youkaishomecoming:block/tea_bush_top",
-    "trunk": "youkaishomecoming:block/tea_bush_trunk"
+    "leaves": "youkaishomecoming:block/plants/tea_bush_leaves",
+    "side": "youkaishomecoming:block/plants/tea_bush_side",
+    "top": "youkaishomecoming:block/plants/tea_bush_top",
+    "trunk": "youkaishomecoming:block/plants/tea_bush_trunk"
   }
 }

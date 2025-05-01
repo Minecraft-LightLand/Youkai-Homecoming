@@ -420,7 +420,6 @@ public class YHBlocks {
 			VanillaBlockSet.values();
 		}
 
-
 		reg.buildModCreativeTab("composite_blocks", "Youkai's Homecoming - Composite Blocks",
 				e -> e.icon(CombinedBlockSet.any().slab::asStack));
 

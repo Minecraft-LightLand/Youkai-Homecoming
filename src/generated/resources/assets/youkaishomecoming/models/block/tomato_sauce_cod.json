@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/dish/tomato_sauce_cod",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/tomato_sauce_cod_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "particle": "youkaishomecoming:block/dish/ceramic"
+  }
+}

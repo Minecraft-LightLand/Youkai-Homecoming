@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
-import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
@@ -10,8 +9,6 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.List;
@@ -42,10 +39,6 @@ public enum YHDish implements IYHDish {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	TOFU_BURGER(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, 3, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-			DietTagGen.PROTEINS.tag),
-	BLOOD_CURD(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, 2, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, 4, List.of(

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:bamboo_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:steamer_rack"
+  }
+}

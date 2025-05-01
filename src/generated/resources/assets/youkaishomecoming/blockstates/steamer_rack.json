@@ -1,0 +1,289 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack"
+      },
+      "when": {
+        "facing": "south",
+        "racks": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_1"
+      },
+      "when": {
+        "capped": "true",
+        "facing": "south",
+        "racks": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "racks": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_1",
+        "y": 90
+      },
+      "when": {
+        "capped": "true",
+        "facing": "west",
+        "racks": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "racks": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_1",
+        "y": 180
+      },
+      "when": {
+        "capped": "true",
+        "facing": "north",
+        "racks": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "racks": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_1",
+        "y": 270
+      },
+      "when": {
+        "capped": "true",
+        "facing": "east",
+        "racks": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_1",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "racks": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2"
+      },
+      "when": {
+        "capped": "true",
+        "facing": "south",
+        "racks": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_1",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "racks": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2",
+        "y": 90
+      },
+      "when": {
+        "capped": "true",
+        "facing": "west",
+        "racks": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_1"
+      },
+      "when": {
+        "facing": "north",
+        "racks": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2",
+        "y": 180
+      },
+      "when": {
+        "capped": "true",
+        "facing": "north",
+        "racks": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_1",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "racks": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_2",
+        "y": 270
+      },
+      "when": {
+        "capped": "true",
+        "facing": "east",
+        "racks": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_2"
+      },
+      "when": {
+        "facing": "south",
+        "racks": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3"
+      },
+      "when": {
+        "capped": "true",
+        "facing": "south",
+        "racks": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_2",
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "racks": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3",
+        "y": 90
+      },
+      "when": {
+        "capped": "true",
+        "facing": "west",
+        "racks": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_2",
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "racks": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3",
+        "y": 180
+      },
+      "when": {
+        "capped": "true",
+        "facing": "north",
+        "racks": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_2",
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "racks": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_lid_3",
+        "y": 270
+      },
+      "when": {
+        "capped": "true",
+        "facing": "east",
+        "racks": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_3",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "racks": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_3",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "racks": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_3"
+      },
+      "when": {
+        "facing": "north",
+        "racks": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/steamer_rack_3",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "racks": "4"
+      }
+    }
+  ]
+}

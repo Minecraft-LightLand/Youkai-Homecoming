@@ -618,6 +618,7 @@ public class YHRecipeGen {
 			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.CUMBERLAND_LOIN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(CommonTags.FOODS_RAW_PORK)
 					.addIngredient(CommonTags.FOODS_RAW_PORK)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
@@ -626,6 +627,7 @@ public class YHRecipeGen {
 					.build(pvd);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOMATO_SAUCE_COD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(CommonTags.FOODS_RAW_COD)
 					.addIngredient(CommonTags.FOODS_RAW_COD)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
@@ -762,26 +764,26 @@ public class YHRecipeGen {
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.KIKU, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.BROWN_MUSHROOM)
-					.save(pvd, YHDrink.KIKU.item.getId());
+					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.HAKUTSURU, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.BROWN_MUSHROOM).addInput(Tags.Items.EGGS)
-					.save(pvd, YHDrink.HAKUTSURU.item.getId());
+					.save(pvd);
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.KAPPA_VILLAGE, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.BROWN_MUSHROOM).addInput(Items.SEAGRASS)
-					.save(pvd, YHDrink.KAPPA_VILLAGE.item.getId());
+					.save(pvd);
 
 
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
+			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.SUIGEI, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
-					.save(pvd, YHDrink.SUIGEI.item.getId());
+					.save(pvd);
 
 			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.DAIGINJO, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
@@ -802,12 +804,6 @@ public class YHRecipeGen {
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
 					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
 					.save(pvd);
-
-			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.FULL_MOONS_EVE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)
-					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
-					.save(pvd, YHDrink.FULL_MOONS_EVE.item.getId());
-
 
 			unlock(pvd, new SimpleFermentationBuilder(FluidTags.WATER, YHDrink.FULL_MOONS_EVE, 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE).addInput(CommonTags.CROPS_RICE)

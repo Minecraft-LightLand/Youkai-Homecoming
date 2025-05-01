@@ -10,6 +10,7 @@
     "youkaishomecoming:senbei",
     "youkaishomecoming:sekibankiyaki",
     "youkaishomecoming:yakumo_inari",
+    "youkaishomecoming:mantou",
     "youkaishomecoming:bun",
     "youkaishomecoming:oyaki",
     "youkaishomecoming:pork_rice_ball",
@@ -24,6 +25,8 @@
     "youkaishomecoming:grilled_eel_over_rice",
     "youkaishomecoming:longevity_noodles",
     "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled",
+    "youkaishomecoming:pastitsio",
+    "youkaishomecoming:seven_colored_yokan",
     {
       "id": "youkaishomecoming:peach_yatsuhashi",
       "required": false

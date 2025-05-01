@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "youkaishomecoming:custom/cross_crop",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/udumbara_stage2"
+    "cross": "youkaishomecoming:block/plants/udumbara_stage2"
   }
 }

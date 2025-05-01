@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "half=lower,open=false": {
+      "model": "youkaishomecoming:block/copper_tank_lower"
+    },
+    "half=lower,open=true": {
+      "model": "youkaishomecoming:block/copper_tank_lower_open"
+    },
+    "half=upper,open=false": {
+      "model": "youkaishomecoming:block/copper_tank"
+    },
+    "half=upper,open=true": {
+      "model": "youkaishomecoming:block/copper_tank_open"
+    }
+  }
+}

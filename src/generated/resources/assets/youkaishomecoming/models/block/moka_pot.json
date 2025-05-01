@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/moka_pot",
+  "parent": "youkaishomecoming:custom/utensil/moka_pot",
   "render_type": "minecraft:cutout",
   "textures": {
     "maker": "youkaishomecoming:block/moka_pot"

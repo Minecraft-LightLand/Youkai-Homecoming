@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/steamer_lid",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/steamer_lid"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/steamer_lid",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/steamer_lid",
+      "y": 270
+    }
+  }
+}
