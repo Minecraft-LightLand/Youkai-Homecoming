@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/dish/raw_scholar_ginkgo",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/raw_scholar_ginkgo_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "particle": "youkaishomecoming:block/dish/ceramic"
+  }
+}

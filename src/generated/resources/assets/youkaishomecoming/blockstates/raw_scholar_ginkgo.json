@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/raw_scholar_ginkgo",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/raw_scholar_ginkgo"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/raw_scholar_ginkgo",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/raw_scholar_ginkgo",
+      "y": 270
+    }
+  }
+}

@@ -72,9 +72,9 @@ public enum YHDish implements IYHDish {
 		this.base = type;
 		this.height = height;
 		if (type == Type.STEAMED) {
-			raw = buildBlock(YoukaisHomecoming.REGISTRATE, type, true, false, nutrition, sat, effs, tags);
+			raw = buildBlock(YoukaisHomecoming.REGISTRATE, "raw_" + getName(), type, true, false, nutrition, sat, effs, tags);
 		} else raw = null;
-		block = buildBlock(YoukaisHomecoming.REGISTRATE, type, false, false, nutrition, sat, effs, tags);
+		block = buildBlock(YoukaisHomecoming.REGISTRATE, getName(), type, false, true, nutrition, sat, effs, tags);
 	}
 
 	@Override

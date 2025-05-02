@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:scholar_ginkgo"
+        "recipe": "youkaishomecoming:raw_imitation_bear_paw"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:scholar_ginkgo"
+      "youkaishomecoming:raw_imitation_bear_paw"
     ]
   }
 }

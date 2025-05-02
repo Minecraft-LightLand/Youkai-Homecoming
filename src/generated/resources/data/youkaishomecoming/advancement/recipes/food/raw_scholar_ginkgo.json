@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "youkaishomecoming:doughnut"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_wheat_dough": {
+    "has_saucer": {
       "conditions": {
         "items": [
           {
-            "items": "farmersdelight:wheat_dough"
+            "items": "youkaishomecoming:saucer"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:raw_scholar_ginkgo"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_wheat_dough"
+      "has_saucer"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:doughnut"
+      "youkaishomecoming:raw_scholar_ginkgo"
     ]
   }
 }

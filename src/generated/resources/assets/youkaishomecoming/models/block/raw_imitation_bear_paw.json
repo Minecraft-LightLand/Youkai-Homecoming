@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/dish/raw_imitation_bear_paw",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/dish/raw_imitation_bear_paw_base",
+    "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "particle": "youkaishomecoming:block/dish/ceramic"
+  }
+}

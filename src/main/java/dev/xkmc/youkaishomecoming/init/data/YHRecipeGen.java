@@ -203,14 +203,6 @@ public class YHRecipeGen {
 					.define('C', YHItems.CREAM)
 					.define('E', ModItems.PIE_CRUST.get())
 					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.DOUGHNUT.item, 4)::unlockedBy, ModItems.WHEAT_DOUGH.get())
-					.pattern("CAC").pattern("ABA").pattern("CAC")
-					.define('A', CommonTags.FOODS_DOUGH)
-					.define('B', YHItems.CREAM)
-					.define('C', Items.SUGAR)
-					.save(pvd);
-
 		}
 
 		// food cooking

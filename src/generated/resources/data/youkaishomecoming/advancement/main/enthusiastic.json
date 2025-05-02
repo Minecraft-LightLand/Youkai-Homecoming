@@ -169,14 +169,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:doughnut": {
-      "conditions": {
-        "item": {
-          "items": "youkaishomecoming:doughnut"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:dried_fish": {
       "conditions": {
         "item": {
@@ -960,9 +952,6 @@
     ],
     [
       "youkaishomecoming:steamed_egg_in_bamboo"
-    ],
-    [
-      "youkaishomecoming:doughnut"
     ],
     [
       "youkaishomecoming:candy_apple"

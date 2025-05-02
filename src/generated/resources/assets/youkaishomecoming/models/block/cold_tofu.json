@@ -4,6 +4,7 @@
   "textures": {
     "base": "youkaishomecoming:block/dish/cold_tofu_base",
     "ceramic": "youkaishomecoming:block/dish/ceramic",
+    "detail": "youkaishomecoming:block/dish/cold_tofu_detail",
     "particle": "youkaishomecoming:block/dish/ceramic"
   }
 }

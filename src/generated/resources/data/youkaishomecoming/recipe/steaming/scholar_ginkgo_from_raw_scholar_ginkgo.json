@@ -4,10 +4,10 @@
   "cookingtime": 200,
   "experience": 0.0,
   "ingredient": {
-    "item": "youkaishomecoming:imitation_bear_paw"
+    "item": "youkaishomecoming:raw_scholar_ginkgo"
   },
   "result": {
     "count": 1,
-    "id": "youkaishomecoming:imitation_bear_paw"
+    "id": "youkaishomecoming:scholar_ginkgo"
   }
 }

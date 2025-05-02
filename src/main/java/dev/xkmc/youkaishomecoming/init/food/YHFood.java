@@ -70,7 +70,6 @@ public enum YHFood implements ItemLike {
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
-	DOUGHNUT(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 
 	// stick
 
