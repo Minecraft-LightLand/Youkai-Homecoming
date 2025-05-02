@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.init;
 
-import dev.xkmc.youkaishomecoming.content.block.combined.CompositeModel;
 import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
@@ -9,17 +8,18 @@ import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class YHClient {
@@ -54,18 +54,6 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
-	}
-
-	@SubscribeEvent
-	public static void addGeometry(ModelEvent.ModifyBakingResult event) {
-		for (var state : YHBlocks.COMPLEX_SLAB.get().getStateDefinition().getPossibleStates()) {
-			var loc = BlockModelShaper.stateToModelLocation(state);
-			event.getModels().computeIfPresent(loc, (k, model) -> new CompositeModel(model, new ConcurrentHashMap<>()));
-		}
-		for (var state : YHBlocks.COMPLEX_STAIRS.get().getStateDefinition().getPossibleStates()) {
-			var loc = BlockModelShaper.stateToModelLocation(state);
-			event.getModels().computeIfPresent(loc, (k, model) -> new CompositeModel(model, new ConcurrentHashMap<>()));
-		}
 	}
 
 }

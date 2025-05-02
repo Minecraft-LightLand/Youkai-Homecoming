@@ -15,7 +15,6 @@ import dev.xkmc.l2core.serial.loot.LootHelper;
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
-import dev.xkmc.youkaishomecoming.content.block.combined.*;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
@@ -68,8 +67,6 @@ import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
 
@@ -93,7 +90,6 @@ public class YHBlocks {
 		private final String name;
 		private final ResourceLocation tex;
 		public final ItemLike plank, strippedWood;
-		public BlockEntry<MultiFenceBlock> fence;
 		public BlockEntry<WoodTableBlock> table;
 		public BlockEntry<WoodChairBlock> seat;
 		public BlockEntry<VerticalSlabBlock> vertical;
@@ -196,10 +192,6 @@ public class YHBlocks {
 	public static SikkuiGroup SIKKUI, LIGHT_YELLOW_SIKKUI, BROWN_SIKKUI;
 
 	public static final WoodSet HAY, STRAW;
-
-	public static final BlockEntry<ComplexSlabBlock> COMPLEX_SLAB;
-	public static final BlockEntry<ComplexStairsBlock> COMPLEX_STAIRS;
-	public static final BlockEntityEntry<CombinedBlockEntity> BE_COMBINED;
 
 	static {
 		var reg = YoukaisHomecoming.REGISTRATE;
@@ -338,13 +330,6 @@ public class YHBlocks {
 
 			for (var e : WoodType.values()) {
 				String name = e.name().toLowerCase(Locale.ROOT);
-				e.fence = reg.block(name + "_handrail",
-								p -> new MultiFenceBlock(BlockBehaviour.Properties.ofFullCopy(e.fenceProp).noOcclusion()))
-						.blockstate(MultiFenceBlock::genModel)
-						.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/handrail/" + ctx.getName()))).build()
-						.tag(BlockTags.MINEABLE_WITH_AXE).defaultLoot()
-						.recipe((ctx, pvd) -> pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, ctx))
-						.register();
 
 				e.table = reg.block(name + "_dining_table", p -> new WoodTableBlock(
 								BlockBehaviour.Properties.ofFullCopy(e.plankProp)))
@@ -420,63 +405,6 @@ public class YHBlocks {
 			VanillaBlockSet.values();
 		}
 
-		reg.buildModCreativeTab("composite_blocks", "Youkai's Homecoming - Composite Blocks",
-				e -> e.icon(CombinedBlockSet.any().slab::asStack));
-
-		{
-
-			List<IBlockSet> wood = new ArrayList<>(List.of(WoodType.values()));
-			wood.add(VanillaStoneSet.BAMBOO_MOSAIC);
-			buildComposite(reg, wood);
-
-			buildComposite(reg, List.of(
-					SIKKUI.SIKKUI,
-					LIGHT_YELLOW_SIKKUI.SIKKUI,
-					BROWN_SIKKUI.SIKKUI,
-					SIKKUI.CROSS_SIKKUI,
-					LIGHT_YELLOW_SIKKUI.CROSS_SIKKUI,
-					BROWN_SIKKUI.CROSS_SIKKUI,
-					VanillaStoneSet.BRICK,
-					VanillaStoneSet.NETHER_BRICK,
-					VanillaStoneSet.RED_NETHER_BRICK,
-					VanillaStoneSet.DEEPSLATE_TILES
-			));
-
-			buildComposite(reg, List.of(
-					VanillaStoneSet.STONE_BRICK,
-					VanillaStoneSet.MOSSY_STONE_BRICK,
-					VanillaStoneSet.DEEPSLATE_BRICK,
-					VanillaStoneSet.POLISHED_BLACKSTONE_BRICK,
-					VanillaStoneSet.TUFF_BRICK,
-					VanillaStoneSet.END_STONE_BRICK,
-					VanillaStoneSet.PURPUR_BLOCK
-			));
-
-			buildComposite(reg, List.of(VanillaBlockSet.values()));
-
-			COMPLEX_SLAB = reg.block("complex_slab", ComplexSlabBlock::new)
-					.blockstate((ctx, pvd) -> CombinedSlabBlock.buildStates(ctx, pvd, WoodType.BIRCH, WoodType.OAK))
-					.loot((pvd, block) -> pvd.dropOther(block, Items.AIR)).register();
-			COMPLEX_STAIRS = reg.block("complex_stairs", ComplexStairsBlock::new)
-					.blockstate((ctx, pvd) -> CombinedStairsBlock.buildStates(ctx, pvd, WoodType.BIRCH, WoodType.OAK))
-					.loot((pvd, block) -> pvd.dropOther(block, Items.AIR)).register();
-			BE_COMBINED = reg.blockEntity("combined_block", CombinedBlockEntity::new)
-					.validBlocks(COMPLEX_SLAB, COMPLEX_STAIRS).register();
-
-			// COBBLESTONE,MOSSY_COBBLESTONE,COBBLED_DEEPSLATE
-			// STONE,BLACKSTONE,GRANITE,ANDESITE,DIORITE,TUFF
-			// POLISHED_DEEPSLATE,POLISHED_BLACKSTONE,POLISHED_BLACKSTONE,POLISHED_GRANITE,POLISHED_ANDESITE,POLISHED_DIORITE,POLISHED_TUFF
-
-		}
-
-	}
-
-	private static void buildComposite(L2Registrate reg, List<IBlockSet> list) {
-		for (var a : list) {
-			for (var b : list) {
-				CombinedBlockSet.add(reg, a, b);
-			}
-		}
 	}
 
 	private static BlockEntry<ThinTrapdoorBlock> thinTrapdoor(L2Registrate reg, String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side, Supplier<Block> base) {

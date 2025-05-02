@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.block.combined;
+package dev.xkmc.youkaishomecoming.content.block.variants;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;

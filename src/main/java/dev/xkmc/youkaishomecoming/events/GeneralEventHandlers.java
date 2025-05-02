@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.events;
 
-import dev.xkmc.youkaishomecoming.content.block.combined.CombinedBlockSet;
 import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -27,11 +26,6 @@ public class GeneralEventHandlers {
 				event.setCanceled(true);
 			}
 		}
-	}
-
-	@SubscribeEvent
-	public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		CombinedBlockSet.onRightClickBlock(event);
 	}
 
 	@SubscribeEvent
