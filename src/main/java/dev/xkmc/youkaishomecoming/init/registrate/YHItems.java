@@ -51,8 +51,7 @@ public class YHItems {
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE;
 	public static final ItemEntry<Item> CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
-			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, ICE_CUBE;
+			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, ICE_CUBE;
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
@@ -79,8 +78,6 @@ public class YHItems {
 			COFFEE_POWDER = crop("coffee_powder", Item::new);
 			YHTea.register();
 			MATCHA = crop("matcha", Item::new);
-			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
-			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);
 			SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 			REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 			COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");

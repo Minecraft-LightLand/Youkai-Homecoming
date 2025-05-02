@@ -54,14 +54,6 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x949537),
 			"Immune to poison, improves health regeneration");
 
-	public static final LegacyHolder<MobEffect> APHRODISIAC = genEffect("aphrodisiac",
-			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xE17A84),
-			"Animals will enter breeding state");
-
-	public static final LegacyHolder<MobEffect> HYPNOSIS = genEffect("hypnosis",
-			() -> new EmptyEffect(MobEffectCategory.NEUTRAL, 0xC6B3DF),
-			"Villagers will ignore your crimes");
-
 	public static final LegacyHolder<MobEffect> UDUMBARA = genEffect("phantom",
 			() -> new UdumbaraEffect(MobEffectCategory.BENEFICIAL, 0xFBDCFD),
 			"Prevents vibration from you and your projectiles. " +
@@ -73,30 +65,7 @@ public class YHEffects {
 		return new SimpleEntry<>(YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register());
 	}
 
-	private static final List<Consumer<PotionBrewing.Builder>> TEMP = new ArrayList<>();
-
-	public static void registerBrewingRecipe(RegisterBrewingRecipesEvent event) {
-		var builder = event.getBuilder();
-		TEMP.forEach(e -> e.accept(builder));
-	}
-
-	private static <T extends Potion> SimpleEntry<Potion> genPotion(String name, NonNullSupplier<T> sup) {
-		SimpleEntry<Potion> ans = YoukaisHomecoming.REGISTRATE.potion(name, sup);
-		return ans;
-	}
-
-	private static void regPotion2(String id, Holder<MobEffect> sup, Supplier<Item> item, int dur, int durLong, Holder<Potion> from) {
-		SimpleEntry<Potion> potion = genPotion(id, () -> new Potion(new MobEffectInstance(sup, dur)));
-		SimpleEntry<Potion> longPotion = genPotion("long_" + id, () -> new Potion(new MobEffectInstance(sup, durLong)));
-		TEMP.add((e) -> {
-			e.addMix(from, item.get(), potion.holder());
-			e.addMix(potion.holder(), Items.REDSTONE, longPotion.holder());
-		});
-	}
-
 	public static void register() {
-		regPotion2("aphrodisiac", APHRODISIAC, YHItems.DRIED_MANDRAKE_FLOWER, 3600, 9600, Potions.HEALING);
-		regPotion2("hypnosis", HYPNOSIS, YHItems.STRIPPED_MANDRAKE_ROOT, 3600, 9600, Potions.WEAKNESS);
 	}
 
 }

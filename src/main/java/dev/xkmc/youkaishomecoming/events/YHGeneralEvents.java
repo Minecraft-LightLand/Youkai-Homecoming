@@ -19,11 +19,6 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 public class YHGeneralEvents {
 
 	@SubscribeEvent
-	public static void onBrewingGen(RegisterBrewingRecipesEvent event) {
-		YHEffects.registerBrewingRecipe(event);
-	}
-
-	@SubscribeEvent
 	public static void onSleep(CanPlayerSleepEvent event) {
 		if (event.getEntity().hasEffect(YHEffects.SOBER)) {
 			event.setProblem(Player.BedSleepingProblem.OTHER_PROBLEM);

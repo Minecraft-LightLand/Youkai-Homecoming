@@ -137,14 +137,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:cooked_mandrake_root": {
-      "conditions": {
-        "item": {
-          "items": "youkaishomecoming:cooked_mandrake_root"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:cornflower_tea": {
       "conditions": {
         "item": {
@@ -905,9 +897,6 @@
     ],
     [
       "youkaishomecoming:roasted_lamprey_fillet"
-    ],
-    [
-      "youkaishomecoming:cooked_mandrake_root"
     ],
     [
       "youkaishomecoming:roe"

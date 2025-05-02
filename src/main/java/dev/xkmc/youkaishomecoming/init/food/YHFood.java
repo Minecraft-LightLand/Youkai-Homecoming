@@ -36,7 +36,6 @@ public enum YHFood implements ItemLike {
 			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 1),
 			DietTagGen.PROTEINS.tag
 	),
-	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
@@ -163,8 +162,8 @@ public enum YHFood implements ItemLike {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 14) id = "food/mochi/";
-		if (ordinal() <= 8) id = "food/basic/";
+		if (ordinal() <= 13) id = "food/mochi/";
+		if (ordinal() <= 7) id = "food/basic/";
 		if (raw == null) this.raw = null;
 		else {
 			String rid = "item/" + id + raw;
