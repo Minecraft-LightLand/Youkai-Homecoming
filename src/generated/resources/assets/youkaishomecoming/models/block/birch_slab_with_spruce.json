@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:block/combined_slabs",
-  "textures": {
-    "side_a": "minecraft:block/birch_planks",
-    "side_b": "minecraft:block/spruce_planks",
-    "top_a": "minecraft:block/birch_planks",
-    "top_b": "minecraft:block/spruce_planks"
-  }
-}

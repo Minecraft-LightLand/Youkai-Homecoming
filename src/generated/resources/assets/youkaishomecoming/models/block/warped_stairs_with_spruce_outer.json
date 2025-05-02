@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:block/combined_stairs_outer",
-  "textures": {
-    "side_a": "minecraft:block/warped_planks",
-    "side_b": "minecraft:block/spruce_planks",
-    "top_a": "minecraft:block/warped_planks",
-    "top_b": "minecraft:block/spruce_planks"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/handrail_inner_left_corner",
-  "textures": {
-    "all": "youkaishomecoming:block/wood/spruce_handrail"
-  }
-}

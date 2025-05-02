@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:block/combined_stairs_inner",
-  "textures": {
-    "side_a": "minecraft:block/polished_blackstone_bricks",
-    "side_b": "minecraft:block/mossy_stone_bricks",
-    "top_a": "minecraft:block/polished_blackstone_bricks",
-    "top_b": "minecraft:block/mossy_stone_bricks"
-  }
-}

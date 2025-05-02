@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:block/combined_stairs_outer",
-  "textures": {
-    "side_a": "minecraft:block/bricks",
-    "side_b": "youkaishomecoming:block/sikkui/sikkui",
-    "top_a": "minecraft:block/bricks",
-    "top_b": "youkaishomecoming:block/sikkui/sikkui"
-  }
-}

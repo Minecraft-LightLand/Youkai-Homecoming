@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:block/combined_stairs_outer",
-  "textures": {
-    "side_a": "minecraft:block/deepslate_tiles",
-    "side_b": "minecraft:block/red_nether_bricks",
-    "top_a": "minecraft:block/deepslate_tiles",
-    "top_b": "minecraft:block/red_nether_bricks"
-  }
-}

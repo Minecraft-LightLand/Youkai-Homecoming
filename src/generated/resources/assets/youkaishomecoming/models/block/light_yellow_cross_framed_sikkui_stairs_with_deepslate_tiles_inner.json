@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:block/combined_stairs_inner",
-  "textures": {
-    "side_a": "youkaishomecoming:block/sikkui/light_yellow_cross_framed_sikkui",
-    "side_b": "minecraft:block/deepslate_tiles",
-    "top_a": "youkaishomecoming:block/sikkui/light_yellow_cross_framed_sikkui",
-    "top_b": "minecraft:block/deepslate_tiles"
-  }
-}
