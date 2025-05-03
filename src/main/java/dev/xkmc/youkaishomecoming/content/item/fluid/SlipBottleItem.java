@@ -24,6 +24,8 @@ import java.util.List;
 
 public class SlipBottleItem extends YHDrinkItem {
 
+	private FoodProperties NONE = new FoodProperties.Builder().build();
+
 	public SlipBottleItem(Properties builder) {
 		super(builder);
 	}
@@ -36,7 +38,8 @@ public class SlipBottleItem extends YHDrinkItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
-		if (getFoodProperties(stack, player) == null)
+		var food = getFoodProperties(stack, player);
+		if (food == null || food == NONE || food.getEffects().isEmpty())
 			return InteractionResultHolder.pass(stack);
 		return super.use(level, player, hand);
 	}
@@ -44,12 +47,12 @@ public class SlipBottleItem extends YHDrinkItem {
 	@Override
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
 		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		if (handler.isEmpty()) return null;
+		if (handler.isEmpty()) return NONE;
 		var fluid = handler.get().getFluidInTank(0);
-		if (fluid.isEmpty()) return null;
+		if (fluid.isEmpty()) return NONE;
 		if (fluid.getFluid() instanceof YHFluid sake && sake.type instanceof YHDrink type) {
 			var food = type.item.asStack().getFoodProperties(entity);
-			if (food == null) return null;
+			if (food == null) return NONE;
 			var builder = new FoodProperties.Builder();
 			if (food.canAlwaysEat()) builder.alwaysEat();
 			for (var e : food.getEffects()) {
@@ -66,7 +69,7 @@ public class SlipBottleItem extends YHDrinkItem {
 			}
 			return builder.build();
 		}
-		return null;
+		return NONE;
 	}
 
 	@Override

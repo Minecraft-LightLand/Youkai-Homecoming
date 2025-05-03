@@ -87,7 +87,8 @@ public class CopperTankBlockEntity extends BaseBlockEntity implements TickableBl
 		var root = getRoot();
 		int heat = root.heatedWater;
 		int water = root.water.getFluidInTank(0).getAmount();
-		int perc = Mth.clamp( heat * 100 / water, 0, 100);
+		if (water == 0) return List.of();
+		int perc = Mth.clamp(heat * 100 / water, 0, 100);
 		return List.of(Component.literal(perc + "%"));
 	}
 

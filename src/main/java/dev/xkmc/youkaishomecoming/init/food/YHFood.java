@@ -55,31 +55,31 @@ public enum YHFood {
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1)
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
-	YASHOUMA_DANGO(FoodType.FAST, 6, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
+	YASHOUMA_DANGO(FoodType.FAST, 8, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 
 	// simple
 	ONIGILI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	SENBEI(FoodType.SIMPLE, 4, 0.6f, DietTagGen.GRAINS.tag),
+	SENBEI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	KOISHI_MOUSSE(FoodType.SIMPLE, 6, 0.6f,
+	KOISHI_MOUSSE(FoodType.SIMPLE, 8, 0.6f,
 			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
-	MANTOU(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	BUN(FoodType.SIMPLE, 8, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
-	OYAKI(FoodType.SIMPLE, 6, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
-	PORK_RICE_BALL(FoodType.MEAT, 8, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	TOBIKO_GUNKAN(FoodType.MEAT, 6, 0.8f, List.of(
+	MANTOU(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
+	BUN(FoodType.SIMPLE, 10, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
+	OYAKI(FoodType.SIMPLE, 8, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
+	PORK_RICE_BALL(FoodType.MEAT, 10, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	TOBIKO_GUNKAN(FoodType.MEAT, 8, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	TUTU_CONGEE(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 6, 0.6f, DietTagGen.PROTEINS.tag),
-	DOUGHNUT(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
-	HIGI_CHOCOLATE(FoodType.SIMPLE, 3, 0.8f, List.of(
+	TUTU_CONGEE(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
+	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 8, 0.6f, DietTagGen.PROTEINS.tag),
+	DOUGHNUT(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
+	HIGI_CHOCOLATE(FoodType.SIMPLE, 4, 0.8f, List.of(
 			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1)
 	), DietTagGen.SUGARS.tag),
-	HIGI_DOUGHNUT(FoodType.SIMPLE, 8, 0.8f, List.of(
+	HIGI_DOUGHNUT(FoodType.SIMPLE, 10, 0.8f, List.of(
 			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),

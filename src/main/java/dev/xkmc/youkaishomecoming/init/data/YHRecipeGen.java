@@ -57,6 +57,8 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.STEAMER_RACK);
+			pvd.stonecutting(DataIngredient.items(Items.COPPER_BLOCK), RecipeCategory.MISC, YHBlocks.COPPER_TANK);
+			pvd.stonecutting(DataIngredient.items(Items.COPPER_INGOT), RecipeCategory.MISC, YHBlocks.COPPER_FAUCET);
 			pvd.stonecutting(DataIngredient.tag(ItemTags.PLANKS), RecipeCategory.MISC, YHBlocks.STEAMER_LID);
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
@@ -95,6 +97,14 @@ public class YHRecipeGen {
 					.define('C', Items.CLAY_BALL)
 					.define('I', Items.IRON_INGOT)
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.REIMU_HAIRBAND)::unlockedBy, YHItems.RUMIA_HAIRBAND.get())
+					.pattern(" 1 ").pattern("2A2")
+					.define('A', YHItems.RUMIA_HAIRBAND)
+					.define('1', YHItems.REIMU_SPELL)
+					.define('2', YHTagGen.PRESET_SPELL)
+					.save(pvd);
+
 		}
 
 		// furniture
@@ -354,13 +364,13 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.build(pvd, YHFood.TOFU.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.addIngredient(Items.KELP)
 					.build(pvd, YHFood.ONIGILI.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHFood.BUTTER.item)

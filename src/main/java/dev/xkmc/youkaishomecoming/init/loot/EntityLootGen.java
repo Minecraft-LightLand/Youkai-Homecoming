@@ -95,7 +95,7 @@ public class EntityLootGen {
 
 	public static void remilia(RegistrateEntityLootTables pvd, EntityType<RemiliaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MYSTIA_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.REMILIA_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}

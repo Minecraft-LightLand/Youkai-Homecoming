@@ -136,7 +136,7 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		}
 		double x, y, z;
 		RandomSource random = level.random;
-		if (pot && random.nextFloat() < 0.5F || steam && random.nextFloat() < 0.2F) {
+		if (level.getGameTime() % 2 == 0 && (pot && random.nextFloat() < 0.5F || steam && random.nextFloat() < 0.2F)) {
 			x = (double) pos.getX() + 0.5 + (random.nextDouble() * 0.6 - 0.3);
 			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * 0.6 - 0.3);
 			double motionY = random.nextBoolean() ? 0.015 : 0.005;

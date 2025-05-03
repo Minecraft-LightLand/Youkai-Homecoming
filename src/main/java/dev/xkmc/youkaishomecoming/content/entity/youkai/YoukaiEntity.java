@@ -274,7 +274,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 		super.aiStep();
 	}
 
-	public void trySummonReinforcementOnDeath(LivingEntity le){
+	public void trySummonReinforcementOnDeath(LivingEntity le) {
 		TouhouConditionalSpawns.triggetYukari(le, position());
 	}
 
@@ -401,6 +401,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	public LivingEntity getTarget() {
 		LivingEntity ans = super.getTarget();
 		if (ans == null || invalidTarget(ans)) {
+			if (targets == null) return null;
 			var candidates = targets.getTargets();
 			if (!candidates.isEmpty()) {
 				return candidates.get(0);

@@ -98,11 +98,7 @@ public class RackData {
 		var item = list[index];
 		if (item == null || item.stack.isEmpty()) return false;
 		if (!level.isClientSide()) {
-			if (!player.isShiftKeyDown() && player.getItemInHand(hand).isEmpty()) {
-				player.setItemInHand(hand, item.stack);
-			} else {
-				player.getInventory().placeItemBackInInventory(item.stack);
-			}
+			player.getInventory().placeItemBackInInventory(item.stack);
 			item.setStack(be, ItemStack.EMPTY);
 		}
 		return true;

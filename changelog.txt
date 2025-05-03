@@ -1,7 +1,15 @@
+2.3.14
+- Fix not having recipes for copper tank and faucet
+- Improve Steamer Rack usability
+- Tweak food value of some food
+- Fix compat with Pekhui
+- Fix Remilia drop
+- Add renewable recipe for Reimu's Hairband
+- Make Sake Bottle fail safe
+
 2.3.13
 - Add Copper Tank and Copper Faucet
 - Add immersive Kettle interaction
-
 
 2.3.12
 - Fix slip bottle breaking Create sequence assembly JEI
