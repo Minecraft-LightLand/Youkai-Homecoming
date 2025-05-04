@@ -4,6 +4,7 @@ import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +19,8 @@ public class ClickTakeItemMethod implements UseItemOnBlockMethod {
 		RackInfo info = RackInfo.getRackInfo(state);
 		if (info.racks() == 0) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		if (!(level.getBlockEntity(pos) instanceof SteamerBlockEntity be))
+			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		if (!stack.isEmpty() && !player.isShiftKeyDown())
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		int y = RackInfo.ofY(hit);
 		if (info.pot()) y -= 2;

@@ -1,3 +1,8 @@
+3.0.8
+- Add Steamer, Copper Tank, Copper Faucet, more dishes, and more sake
+- Tweak food values
+- Remove composite blocks and vertical slab variant of vanilla blocks
+
 3.0.7
 - Fix compatibility with mods bypassing NeoForge damage pipeline
 

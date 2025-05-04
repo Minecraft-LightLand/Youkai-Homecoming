@@ -56,6 +56,8 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.STEAMER_RACK);
 			pvd.stonecutting(DataIngredient.tag(ItemTags.PLANKS), RecipeCategory.MISC, YHBlocks.STEAMER_LID);
+			pvd.stonecutting(DataIngredient.items(Items.COPPER_BLOCK), RecipeCategory.MISC, YHBlocks.COPPER_TANK);
+			pvd.stonecutting(DataIngredient.items(Items.COPPER_INGOT), RecipeCategory.MISC, YHBlocks.COPPER_FAUCET);
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 			pvd.stonecutting(DataIngredient.items(Items.GLASS), RecipeCategory.MISC, YHItems.SAKE_BOTTLE);
 
@@ -219,14 +221,14 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.build(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 2, 200, 0.1f)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(CommonTags.CROPS_RICE)
 					.addIngredient(Tags.Items.FOODS_VEGETABLE)
 					.addIngredient(Items.KELP)
 					.build(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 2, 200, 0.1f)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(CommonTags.CROPS_RICE)
 					.addIngredient(YHCrops.REDBEAN.getSeed())
