@@ -4,10 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.l2serial.util.Wrappers;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class ProjTypeHolder<T extends RenderableProjectileType<T, I>, I> implements Consumer<I> {
@@ -18,19 +15,26 @@ public class ProjTypeHolder<T extends RenderableProjectileType<T, I>, I> impleme
 	public static <T extends RenderableProjectileType<T, I>, I> ProjTypeHolder<T, I> wrap(T type) {
 		var ans = MAP.get(type);
 		if (ans == null) {
-			ans = new ProjTypeHolder<>(type, HOLDERS.size());
+			ans = new ProjTypeHolder<>(type);
 			HOLDERS.add(ans);
 			MAP.put(type, ans);
 		}
 		return Wrappers.cast(ans);
 	}
 
-	protected final RenderableProjectileType<T, I> type;
-	protected final int index;
+	public static void setup() {
+		HOLDERS.sort(Comparator.comparing(a -> a.type));
+		int n = HOLDERS.size();
+		for (int i = 0; i < n; i++) {
+			HOLDERS.get(i).index = i;
+		}
+	}
 
-	private ProjTypeHolder(RenderableProjectileType<T, I> type, int index) {
+	protected final RenderableProjectileType<T, I> type;
+	protected int index;
+
+	private ProjTypeHolder(RenderableProjectileType<T, I> type) {
 		this.type = type;
-		this.index = index;
 	}
 
 	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {

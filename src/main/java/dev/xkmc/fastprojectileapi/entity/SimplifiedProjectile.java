@@ -5,6 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
@@ -142,7 +143,6 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	public abstract boolean isValid();
 
-	/*
 	@Override
 	public boolean isInvisible() {
 		return false;
@@ -151,6 +151,6 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	@Override
 	public boolean isInvisibleTo(Player player) {
 		return true;
-	}TODO */
+	}
 
 }
