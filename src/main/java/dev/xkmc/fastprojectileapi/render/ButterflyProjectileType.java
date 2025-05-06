@@ -10,6 +10,8 @@ import net.minecraft.util.Mth;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
+import java.util.function.Consumer;
+
 public record ButterflyProjectileType(ResourceLocation overlay, DisplayType display, int period)
 		implements RenderableDanmakuType<ButterflyProjectileType, ButterflyProjectileType.Ins> {
 
@@ -23,7 +25,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 	}
 
 	@Override
-	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(Consumer<Ins> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		pose.mulPose(Axis.YP.rotationDegrees(-Mth.lerp(pTick, e.yRotO, e.getYRot())));
 		pose.mulPose(Axis.XP.rotationDegrees(Mth.lerp(pTick, e.xRotO, e.getXRot())));
 		float time = Math.abs((e.tickCount + pTick) / period % 1 * 4 - 2) - 1;
@@ -34,7 +36,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
 			Matrix3f m3 = new Matrix3f(mat.normal());
-			ProjectileRenderHelper.add(this, new Ins(m3, m4, false));
+			holder.accept(new Ins(m3, m4, false));
 			pose.popPose();
 		}
 		{
@@ -43,7 +45,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
 			Matrix3f m3 = new Matrix3f(mat.normal());
-			ProjectileRenderHelper.add(this, new Ins(m3, m4, true));
+			holder.accept(new Ins(m3, m4, true));
 			pose.popPose();
 		}
 	}

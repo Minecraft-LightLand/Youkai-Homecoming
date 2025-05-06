@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.fastprojectileapi.render.DoubleLayerLaserType;
+import dev.xkmc.fastprojectileapi.render.ProjTypeHolder;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
@@ -82,14 +83,14 @@ public class LaserItem extends Item {
 		list.add(YHLangData.DANMAKU_DAMAGE.get(type.damage()));
 	}
 
-	private DoubleLayerLaserType render;
+	private ProjTypeHolder<DoubleLayerLaserType, ?> render;
 
-	public DoubleLayerLaserType getTypeForRender() {
+	public ProjTypeHolder<DoubleLayerLaserType, ?> getTypeForRender() {
 		if (render == null) {
-			render = new DoubleLayerLaserType(
+			render = ProjTypeHolder.wrap(new DoubleLayerLaserType(
 					YoukaisHomecoming.loc("textures/entities/laser_inner.png"),
 					YoukaisHomecoming.loc("textures/entities/laser_outer.png"),
-					0xff000000 | color.getFireworkColor());
+					0xff000000 | color.getFireworkColor()));
 		}
 		return render;
 	}

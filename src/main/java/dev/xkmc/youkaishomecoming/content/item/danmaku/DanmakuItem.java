@@ -1,10 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.fastprojectileapi.render.ButterflyProjectileType;
-import dev.xkmc.fastprojectileapi.render.RenderableProjectileType;
-import dev.xkmc.fastprojectileapi.render.RotatingProjectileType;
-import dev.xkmc.fastprojectileapi.render.SimpleProjectileType;
+import dev.xkmc.fastprojectileapi.render.*;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
@@ -85,17 +83,18 @@ public class DanmakuItem extends Item {
 			list.add(YHLangData.DANMAKU_BYPASS.get());
 	}
 
-	private RenderableProjectileType<?, ?> render;
+	private ProjTypeHolder<? extends RenderableProjectileType<?, ?>, ?> render;
 
-	public RenderableProjectileType<?, ?> getTypeForRender() {
+	public ProjTypeHolder<? extends RenderableProjectileType<?, ?>, ?> getTypeForRender() {
 		if (render == null) {
 			var loc = YoukaisHomecoming.loc("textures/entities/bullet/" + type.getName() + "/" + color.getName() + ".png");
-			render = switch (type) {
+			RenderableProjectileType<?, ?> r = switch (type) {
 				case BUTTERFLY -> new ButterflyProjectileType(loc, type.display(), 20);
 				case SPARK -> new RotatingProjectileType(loc, type.display(), 20);
 				case STAR -> new RotatingProjectileType(loc, type.display(), 40);
 				default -> new SimpleProjectileType(loc, type.display());
 			};
+			render = ProjTypeHolder.wrap(Wrappers.cast(r));
 		}
 		return render;
 	}

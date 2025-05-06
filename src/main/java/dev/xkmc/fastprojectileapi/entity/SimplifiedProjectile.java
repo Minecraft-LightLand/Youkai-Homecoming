@@ -142,4 +142,15 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	public abstract boolean isValid();
 
+	/*
+	@Override
+	public boolean isInvisible() {
+		return false;
+	}
+
+	@Override
+	public boolean isInvisibleTo(Player player) {
+		return true;
+	}TODO */
+
 }

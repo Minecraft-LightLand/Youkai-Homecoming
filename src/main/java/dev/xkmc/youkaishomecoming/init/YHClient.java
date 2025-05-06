@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
+import dev.xkmc.fastprojectileapi.render.ProjectileRenderHelper;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
@@ -13,6 +14,7 @@ import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
@@ -25,6 +27,7 @@ import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
@@ -48,7 +51,15 @@ public class YHClient {
 		event.enqueueWork(() -> {
 			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("slip"),
 					(stack, level, user, index) -> SlipBottleItem.texture(stack));
+			for (var e : YHDanmaku.Bullet.values())
+				for (var d : DyeColor.values())
+					e.get(d).get().getTypeForRender();
+			for (var e : YHDanmaku.Laser.values())
+				for (var d : DyeColor.values())
+					e.get(d).get().getTypeForRender();
+			ProjectileRenderHelper.setup();
 		});
+
 	}
 
 	@SubscribeEvent

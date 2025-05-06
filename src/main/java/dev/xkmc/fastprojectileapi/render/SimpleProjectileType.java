@@ -9,6 +9,8 @@ import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
+import java.util.function.Consumer;
+
 public record SimpleProjectileType(ResourceLocation tex, DisplayType display)
 		implements RenderableDanmakuType<SimpleProjectileType, SimpleProjectileType.Ins> {
 
@@ -22,13 +24,13 @@ public record SimpleProjectileType(ResourceLocation tex, DisplayType display)
 	}
 
 	@Override
-	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(Consumer<Ins> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		pose.mulPose(r.cameraOrientation());
 		pose.mulPose(Axis.YP.rotationDegrees(180.0F));
 		PoseStack.Pose mat = pose.last();
 		Matrix4f m4 = new Matrix4f(mat.pose());
 		Matrix3f m3 = new Matrix3f(mat.normal());
-		ProjectileRenderHelper.add(this, new Ins(m3, m4));
+		holder.accept(new Ins(m3, m4));
 	}
 
 	public record Ins(Matrix3f m3, Matrix4f m4) {

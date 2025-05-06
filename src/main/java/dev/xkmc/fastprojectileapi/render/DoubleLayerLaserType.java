@@ -8,6 +8,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 
+import java.util.function.Consumer;
+
 public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation outer, int color)
 		implements RenderableProjectileType<DoubleLayerLaserType, DoubleLayerLaserType.Ins> {
 
@@ -17,14 +19,9 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 	}
 
 	@Override
-	public RenderLevelStageEvent.Stage stage() {
-		return RenderLevelStageEvent.Stage.AFTER_PARTICLES;
-	}
-
-	@Override
 	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
-		boolean ADDITIVE = YHModConfig.CLIENT.laserRenderAdditive.get();
-		boolean INVERT = YHModConfig.CLIENT.laserRenderInverted.get();
+		boolean additive = YHModConfig.CLIENT.laserRenderAdditive.get();
+		boolean invert = YHModConfig.CLIENT.laserRenderInverted.get();
 		double tran = YHModConfig.CLIENT.laserTransparency.get();
 		int col = (color & 0xffffff) | (((int) (tran * 255.9)) << 24);
 		int add = (int) ((color & 0xff) * tran) |
@@ -35,19 +32,19 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 		for (var e : list) {
 			e.texInner(vc, -1);
 		}
-		if (ADDITIVE) {
+		if (additive) {
 			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.ADDITIVE));
 			for (var e : list) {
 				e.texOuter(false, vc, add);
 			}
 		}
-		if (INVERT) {
+		if (invert) {
 			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT));
 			for (var e : list) {
 				e.texOuter(true, vc, col);
 			}
 		}
-		if (!ADDITIVE && !INVERT) {
+		if (!additive && !invert) {
 			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT));
 			for (var e : list) {
 				e.texOuter(false, vc, col);
@@ -56,9 +53,9 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 	}
 
 	@Override
-	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(Consumer<Ins> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		PoseStack.Pose mat = pose.last();
-		ProjectileRenderHelper.add(this, new Ins(mat));
+		holder.accept(new Ins(mat));
 	}
 
 	public record Ins(PoseStack.Pose pose) {

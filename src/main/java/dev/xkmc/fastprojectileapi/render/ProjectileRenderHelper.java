@@ -3,37 +3,62 @@ package dev.xkmc.fastprojectileapi.render;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ProjectileRenderHelper {
 
-	private static final Map<RenderLevelStageEvent.Stage, Map<RenderableProjectileType<?, ?>, Collection<?>>> MAP = new LinkedHashMap<>();
+	private static RenderQueue QUEUE;
 
-	public static <T extends RenderableProjectileType<T, I>, I> Collection<I> setOf(RenderableProjectileType<T, I> key) {
-		return Wrappers.cast(MAP.computeIfAbsent(key.stage(), k -> new TreeMap<>())
-				.computeIfAbsent(key, l -> new ArrayList<>()));
+	public static void setup() {
+		QUEUE = new RenderQueue();
 	}
 
-	public static <T extends RenderableProjectileType<T, I>, I> void add(RenderableProjectileType<T, I> key, I ins) {
+	public static <T extends RenderableProjectileType<T, I>, I> Collection<I> setOf(ProjTypeHolder<T, I> key) {
+		return QUEUE.setOf(key);
+	}
+
+	public static <T extends RenderableProjectileType<T, I>, I> void add(ProjTypeHolder<T, I> key, I ins) {
 		setOf(key).add(ins);
 	}
 
 	@SubscribeEvent
 	public static void renderLate(RenderLevelStageEvent event) {
-		var map = MAP.remove(event.getStage());
-		if (map == null || map.isEmpty()) return;
+		if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES) return;
 		var buffer = Minecraft.getInstance().renderBuffers().bufferSource();
-		for (var ent : map.entrySet()) {
-			ent.getKey().start(buffer, Wrappers.cast(ent.getValue()));
-		}
+		QUEUE.flush(buffer);
 		buffer.endLastBatch();
+	}
+
+	private static class RenderQueue {
+
+		private final ArrayList<?>[] lists = new ArrayList<?>[ProjTypeHolder.HOLDERS.size()];
+
+		public <I> ArrayList<I> setOf(ProjTypeHolder<?, I> key) {
+			if (lists[key.index] == null) {
+				lists[key.index] = new ArrayList<>();
+			}
+			return Wrappers.cast(lists[key.index]);
+		}
+
+		public void flush(MultiBufferSource.BufferSource buffer) {
+			int n = lists.length;
+			for (int i = 0; i < n; i++) {
+				var list = lists[i];
+				lists[i] = null;
+				if (list != null) {
+					ProjTypeHolder.HOLDERS.get(i).type.start(buffer, Wrappers.cast(list));
+				}
+			}
+		}
+
 	}
 
 }
