@@ -25,7 +25,7 @@ import java.util.Objects;
 public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpawnData, IYHDanmaku {
 
 	@SerialClass.SerialField
-	private int life = 0, prepare, start, end;
+	protected int life = 0, prepare, start, end;
 	@SerialClass.SerialField
 	private boolean bypassWall = false;
 	@SerialClass.SerialField

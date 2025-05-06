@@ -6,7 +6,6 @@ import com.mojang.math.Axis;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 import java.util.function.Consumer;
@@ -25,25 +24,23 @@ public record RotatingProjectileType(ResourceLocation tex, DisplayType display, 
 
 	@Override
 	public void create(Consumer<Ins> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
-		pose.mulPose(r.cameraOrientation());
-		pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-		pose.mulPose(Axis.ZP.rotationDegrees((e.tickCount + pTick) * 360f / (float) rot));
-		PoseStack.Pose mat = pose.last();
-		Matrix4f m4 = new Matrix4f(mat.pose());
-		Matrix3f m3 = new Matrix3f(mat.normal());
-		holder.accept(new Ins(m3, m4));
+		var sim4 = new Matrix4f(pose.last().pose());
+		sim4.set3x3(new Matrix4f().scale((float) Math.pow(sim4.determinant3x3(), 1 / 3d)));
+		var q4 = Axis.ZP.rotationDegrees((e.tickCount + pTick) * 360f / (float) rot);
+		sim4.rotate(q4);
+		holder.accept(new Ins(sim4));
 	}
 
-	public record Ins(Matrix3f m3, Matrix4f m4) {
+	public record Ins(Matrix4f m4) {
 
 		public void tex(VertexConsumer vc, int color) {
-			vertex(vc, m4, m3, 1, 1, 1, 0, color);
-			vertex(vc, m4, m3, 1, 0, 1, 1, color);
-			vertex(vc, m4, m3, 0, 0, 0, 1, color);
-			vertex(vc, m4, m3, 0, 1, 0, 0, color);
+			vertex(vc, m4, 1, 1, 1, 0, color);
+			vertex(vc, m4, 1, 0, 1, 1, color);
+			vertex(vc, m4, 0, 0, 0, 1, color);
+			vertex(vc, m4, 0, 1, 0, 0, color);
 		}
 
-		private static void vertex(VertexConsumer vc, Matrix4f m4, Matrix3f m3, float x, int y, int u, int v, int color) {
+		private static void vertex(VertexConsumer vc, Matrix4f m4, float x, int y, int u, int v, int color) {
 			vc.vertex(m4, x - 0.5F, y - 0.5F, 0.0F).uv(u, v).color(color).endVertex();
 		}
 
