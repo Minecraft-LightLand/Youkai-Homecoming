@@ -1,7 +1,9 @@
 package dev.xkmc.fastprojectileapi.entity;
 
+import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.fastprojectileapi.collision.ProjectileHitHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -36,15 +38,16 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 			onHit(hitresult);
 		}
 		if (tickCount >= lifetime()) {
-			if (!level().isClientSide()) {
+			if (level() instanceof ServerLevel sl) {
 				projectileMove();
 				terminate();
 				discard();
 			}
 		} else {
 			projectileMove();
-			if (!level().isClientSide()) {
-				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4)) {
+			if (level() instanceof ServerLevel sl) {
+				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4) ||
+						!EntityStorageHelper.isTicking(sl, this)) {
 					discard();
 				}
 			}

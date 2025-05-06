@@ -108,13 +108,13 @@ public class FairyEntity extends GeneralYoukaiEntity {
 		var player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 128, false);
 		if (player == null) return false;
 		if (spawnTime > player.level().getGameTime()) return false;
-		var aabb = AABB.ofSize(pos.getCenter(), 48, 24, 48);
+		if (YHModConfig.COMMON.cirnoSpawnCheckEffect.get() && !EffectEventHandlers.isCharacter(player))
+			return false;
+		spawnTime = player.level().getGameTime() + 200;
+		var aabb = AABB.ofSize(pos.getCenter(), 64, 32, 64);
 		if (!level.getEntitiesOfClass(FairyEntity.class, aabb).isEmpty()) return false;
-		if (!YHModConfig.COMMON.cirnoSpawnCheckEffect.get() || EffectEventHandlers.isCharacter(player)) {
-			spawnTime = player.level().getGameTime() + 200;
-			return true;
-		}
-		return false;
+		spawnTime = player.level().getGameTime() + 600;
+		return true;
 	}
 
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-04T00:05:44.296466	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-05-06T09:23:01.443676	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1050,10 +1050,12 @@ cb0c4a82188b84c4b13fb48f7ad5a8a848b1e92a data/diet/tags/items/vegetables.json
 503b5f0cb967ce77e688c6bf8b57ccdb95b18905 data/farmersdelight/tags/blocks/wild_crops.json
 103ecdd0c137bc44b4347e3785c467ca9d67d7a8 data/farmersdelight/tags/items/cabbage_roll_ingredients.json
 503b5f0cb967ce77e688c6bf8b57ccdb95b18905 data/farmersdelight/tags/items/wild_crops.json
+85699b330dce1b71ee3d3b0cb7bf1b643ef69bba data/forge/tags/blocks/storage_blocks.json
 214b9cb853f7f4216ae6d84adcc04e859a111b7c data/forge/tags/items/armors/helmets.json
 e069331e1bb2e22670844e0e1c0ab6fcb553f41d data/forge/tags/items/ice_cubes.json
 5c4135b878f03ac82d085d917ea7ef4be93285c1 data/forge/tags/items/matcha.json
 9641d615dd8bedf9f27b09a145e6fb7e33a78a0b data/forge/tags/items/seeds.json
+85699b330dce1b71ee3d3b0cb7bf1b643ef69bba data/forge/tags/items/storage_blocks.json
 a2e0eeddc357d62a1261ae2b90b22f5618d15cd5 data/forge/tags/items/tea_leaves.json
 40a66aa5ecd0a66260037412eaa7f7bf012e212f data/forge/tags/items/tea_leaves/black.json
 f7a56639b5f3110bbf7e580d932dfb8d970c1c61 data/forge/tags/items/tea_leaves/green.json

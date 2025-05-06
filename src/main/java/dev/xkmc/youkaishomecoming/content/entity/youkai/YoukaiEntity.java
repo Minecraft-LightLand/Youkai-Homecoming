@@ -260,7 +260,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 				double fall = getTarget() != null ? 0.6 : 0.8;
 				this.setDeltaMovement(this.getDeltaMovement().multiply(1.0D, fall, 1.0D));
 			}
-			targets.tick();
+			targets.tick(super.getTarget());
 			if (spellCard != null) {
 				if (getTarget() != null && shouldShowSpellCircle()) {
 					spellCard.tick(this);
@@ -399,16 +399,10 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	@Nullable
 	@Override
 	public LivingEntity getTarget() {
-		LivingEntity ans = super.getTarget();
-		if (ans == null || invalidTarget(ans)) {
-			if (targets == null) return null;
-			var candidates = targets.getTargets();
-			if (!candidates.isEmpty()) {
-				return candidates.get(0);
-			}
-			return null;
-		}
-		return ans;
+		if (targets == null) return null;
+		var candidates = targets.getTargets();
+		if (candidates.isEmpty()) return null;
+		return candidates.get(0);
 	}
 
 	protected void customServerAiStep() {

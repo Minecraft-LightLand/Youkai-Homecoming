@@ -47,7 +47,6 @@ public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer
 		pose.scale(e.getBbWidth() * scale, e.effectiveLength(), e.getBbWidth() * scale);
 		danmaku.getTypeForRender().create(this, e, pose, pTick);
 		pose.popPose();
-		super.render(e, yaw, pTick, pose, buffer, light);
 	}
 
 	public ResourceLocation getTextureLocation(T pEntity) {

@@ -150,7 +150,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	protected void notifyIllegalDamage(float amount, @Nullable Entity causer) {
 		illegalDamage += amount;
 		if (illegalDamage > 200) {
-			setFlag(4, true);
+			setFlag(32, true);
 		}
 	}
 
@@ -228,7 +228,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 			}
 			if (health > getCombatProgress()) {
 				notifyIllegalDamage(health - getCombatProgress(), null);
-				setFlag(4, true);
+				setFlag(32, true);
 			}
 		}
 		super.setCombatProgress(amount);
@@ -280,8 +280,8 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 			}
 			if (doHeal) {
 				setHealth(getMaxHealth());
-				if (getFlag(4)) {
-					setFlag(4, false);
+				if (getFlag(32)) {
+					setFlag(32, false);
 				}
 			}
 		} else {
@@ -290,7 +290,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	}
 
 	public boolean isChaotic() {
-		return chaotic || combatProgress != null && getCombatProgress() != combatProgress.progress;
+		return getFlag(32) || chaotic || combatProgress != null && getCombatProgress() != combatProgress.progress;
 	}
 
 	public void startSeenByPlayer(ServerPlayer pPlayer) {

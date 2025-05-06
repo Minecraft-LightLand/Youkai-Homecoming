@@ -5,6 +5,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
@@ -71,7 +72,7 @@ public class ReimuSpell extends ActualSpellCard {
 	}
 
 	private boolean isAbyss(CardHolder holder) {
-		return holder.self() instanceof YoukaiEntity e && e.getFlag(4);
+		return holder.self() instanceof ReimuEntity e && e.isAbyssal();
 	}
 
 	private void shoot(CardHolder holder, double dist) {

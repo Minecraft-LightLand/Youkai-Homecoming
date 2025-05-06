@@ -28,13 +28,11 @@ public class YukariEntity extends BossYoukaiEntity {
 	@Override
 	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
 		// when taking >200 illegal damage
-		if (getFlag(4) && !(e instanceof Player)) {
+		if (isChaotic() && !(e instanceof Player)) {
 			e.setRemoved(RemovalReason.KILLED);
 			if (e.isAlive() && level() instanceof ServerLevel sl) {
 				EntityStorageHelper.clear(sl, e);
-				setTarget(null);
 				targets.remove(e.getUUID());
-				setLastHurtByMob(null);
 			}
 		}
 	}
@@ -45,6 +43,8 @@ public class YukariEntity extends BossYoukaiEntity {
 			return;
 		if (e instanceof Player player && player.getAbilities().instabuild)
 			return;
+		if (!isAbyssal())
+			return;
 		double rate = e instanceof Player ?
 				YHModConfig.COMMON.danmakuPlayerPHPDamage.get() :
 				YHModConfig.COMMON.danmakuMinPHPDamage.get();
@@ -53,6 +53,10 @@ public class YukariEntity extends BossYoukaiEntity {
 		if (e.isDeadOrDying()) {
 			e.die(YHDamageTypes.abyssal(danmaku));
 		}
+	}
+
+	public boolean isAbyssal() {
+		return getFlag(4) || isChaotic();
 	}
 
 }

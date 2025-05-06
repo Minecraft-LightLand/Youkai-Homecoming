@@ -155,6 +155,8 @@ public class ReimuEntity extends MaidenEntity {
 			return;
 		if (!source.is(DamageTypeTags.BYPASSES_EFFECTS))
 			return;
+		if (!isAbyssal())
+			return;
 		double rate = e instanceof Player ?
 				YHModConfig.COMMON.danmakuPlayerPHPDamage.get() :
 				YHModConfig.COMMON.danmakuMinPHPDamage.get();
@@ -163,6 +165,10 @@ public class ReimuEntity extends MaidenEntity {
 		if (e.isDeadOrDying()) {
 			e.die(YHDamageTypes.abyssal(danmaku));
 		}
+	}
+
+	public boolean isAbyssal() {
+		return getFlag(4) || isChaotic();
 	}
 
 }

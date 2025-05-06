@@ -53,7 +53,10 @@ public interface IYHDanmaku {
 				}
 			}
 		}
+		float hp = e instanceof LivingEntity le ? le.getHealth() : 0;
 		boolean immune = !e.hurt(source, damage(e));
+		float ahp = e instanceof LivingEntity le ? le.getHealth() : 0;
+		if (ahp >= hp && ahp > 0) immune = true;
 		LivingEntity target = null;
 		while (e instanceof PartEntity<?> pe) {
 			e = pe.getParent();

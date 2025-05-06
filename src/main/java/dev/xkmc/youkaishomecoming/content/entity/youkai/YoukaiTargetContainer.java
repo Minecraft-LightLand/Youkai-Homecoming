@@ -5,6 +5,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -25,13 +26,13 @@ public class YoukaiTargetContainer {
 		this.maxSize = maxSize;
 	}
 
-	public void tick() {
+	public void tick(@Nullable LivingEntity vanillaTarget) {
 		if (youkai.level().isClientSide()) return;
 		LivingEntity le = youkai.getLastHurtByMob();
 		if (le != null && isValid(le) && !list.contains(le.getUUID())) {
 			list.add(le.getUUID());
 		} else {
-			le = youkai.getTarget();
+			le = vanillaTarget;
 			if (le != null)
 				if (isValid(le))
 					list.add(le.getUUID());
@@ -45,6 +46,12 @@ public class YoukaiTargetContainer {
 		}
 	}
 
+	public void add(LivingEntity le) {
+		if (isValid(le)) {
+			list.add(le.getUUID());
+		}
+	}
+
 	public void remove(UUID id) {
 		list.remove(id);
 	}
@@ -52,7 +59,7 @@ public class YoukaiTargetContainer {
 	private boolean isValid(LivingEntity le) {
 		return le.isAlive() && le != youkai && le.canBeSeenAsEnemy() &&
 				le.isAddedToWorld() && le.level() == youkai.level() &&
-				EntityStorageHelper.isPresent(le);
+				EntityStorageHelper.isPresent(le) && youkai.canAttack(le);
 	}
 
 	private boolean isValid(UUID id) {

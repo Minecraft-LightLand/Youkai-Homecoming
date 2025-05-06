@@ -86,8 +86,13 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		}
 	}
 
+	private ItemStack stackCache = null;
+
 	protected ItemStack getItemRaw() {
-		return this.getEntityData().get(DATA_ITEM_STACK);
+		if (stackCache == null || stackCache.isEmpty()) {
+			stackCache = this.getEntityData().get(DATA_ITEM_STACK);
+		}
+		return stackCache;
 	}
 
 	public ItemStack getItem() {

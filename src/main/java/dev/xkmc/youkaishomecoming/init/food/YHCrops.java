@@ -27,6 +27,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -129,7 +130,9 @@ public enum YHCrops {
 						pvd.modLoc("block/bags/" + ctx.getName() + "_side_tied"),
 						pvd.modLoc("block/bags/" + ctx.getName() + "_side_tied")
 				).texture("particle", pvd.modLoc("block/bags/" + ctx.getName() + "_top"))))
-				.simpleItem().register();
+				.tag(Tags.Blocks.STORAGE_BLOCKS)
+				.item().tag(Tags.Items.STORAGE_BLOCKS).build()
+				.register();
 	}
 
 	public static void register() {

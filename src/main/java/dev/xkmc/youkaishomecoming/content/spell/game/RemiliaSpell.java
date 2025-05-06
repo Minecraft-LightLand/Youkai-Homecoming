@@ -38,7 +38,7 @@ public class RemiliaSpell extends ActualSpellCard {
 			if (step % 5 == 3) {
 				var vel = holder.targetVelocity();
 				if (vel != null && vel.length() > 1) {
-					addTicker(new Lasers().init(20, 4, 3, 25, 40, 200));
+					addTicker(new Lasers().init(20, 4, 3, 25, 40, 140));
 				}
 			}
 			if (step % 5 == 4 && dist >= 40) {
