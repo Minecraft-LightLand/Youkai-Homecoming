@@ -29,7 +29,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 	}
 
 	@Override
-	public void create(Consumer<Ins> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(Consumer<Ins> holder, ProjectileRenderer<?> r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		pose.mulPose(Axis.YP.rotationDegrees(-Mth.lerp(pTick, e.yRotO, e.getYRot())));
 		pose.mulPose(Axis.XP.rotationDegrees(Mth.lerp(pTick, e.xRotO, e.getXRot())));
 		float time = Math.abs((e.tickCount + pTick) / period % 1 * 4 - 2) - 1;

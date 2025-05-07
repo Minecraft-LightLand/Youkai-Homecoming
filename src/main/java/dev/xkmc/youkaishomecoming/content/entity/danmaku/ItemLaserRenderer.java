@@ -11,12 +11,13 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Quaternionf;
 
 @OnlyIn(Dist.CLIENT)
-public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer<T> implements ProjectileRenderer {
+public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer<T> implements ProjectileRenderer<T> {
 
 	public ItemLaserRenderer(EntityRendererProvider.Context pContext) {
 		super(pContext);
@@ -36,12 +37,21 @@ public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer
 		return entityRenderDispatcher.cameraOrientation();
 	}
 
+	@Override
+	public Vec3 getRenderOffset(T e, float f) {
+		return new Vec3(0, e.getBbHeight() / 2, 0);
+	}
+
 	public void render(T e, float yaw, float pTick, PoseStack pose, MultiBufferSource buffer, int light) {
+		render(e, pTick, pose);
+	}
+
+	@Override
+	public void render(T e, float pTick, PoseStack pose) {
 		if (!(e.getItem().getItem() instanceof LaserItem danmaku)) return;
 		if (e.tickCount < 2) return;
 		pose.pushPose();
 		float scale = e.scale() * e.percentOpen(pTick);
-		pose.translate(0, e.getBbHeight() / 2, 0);
 		pose.mulPose(Axis.YP.rotationDegrees(-e.getViewYRot(pTick)));
 		pose.mulPose(Axis.XP.rotationDegrees(e.getViewXRot(pTick) + 90));
 		pose.scale(e.getBbWidth() * scale, e.effectiveLength(), e.getBbWidth() * scale);

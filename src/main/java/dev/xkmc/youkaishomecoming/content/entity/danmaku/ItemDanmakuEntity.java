@@ -10,9 +10,6 @@ import dev.xkmc.youkaishomecoming.content.spell.mover.MoverOwner;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.TrailAction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
@@ -23,14 +20,14 @@ import net.minecraft.world.phys.Vec3;
 @SerialClass
 public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSupplier, MoverOwner {
 
-	private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(ItemDanmakuEntity.class, EntityDataSerializers.ITEM_STACK);
-
 	@SerialClass.SerialField
 	public int controlCode = 0;
 	@SerialClass.SerialField
 	public DanmakuMover mover = null;
 	@SerialClass.SerialField
 	public TrailAction afterExpiry = null;
+	@SerialClass.SerialField
+	public ItemStack stack = ItemStack.EMPTY;
 
 	private boolean isErased = false;
 
@@ -47,7 +44,7 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	}
 
 	public void setItem(ItemStack pStack) {
-		this.getEntityData().set(DATA_ITEM_STACK, pStack.copyWithCount(1));
+		stack = pStack.copyWithCount(1);
 		refreshDimensions();
 	}
 
@@ -80,44 +77,13 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		return super.updateVelocity(vec, pos);
 	}
 
-	@Override
-	public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
-		super.onSyncedDataUpdated(key);
-		if (DATA_ITEM_STACK == key) {
-			refreshDimensions();
-		}
-	}
-
-	private ItemStack stackCache = null;
-
-	protected ItemStack getItemRaw() {
-		if (stackCache == null || stackCache.isEmpty()) {
-			stackCache = this.getEntityData().get(DATA_ITEM_STACK);
-		}
-		return stackCache;
-	}
-
 	public ItemStack getItem() {
-		return this.getItemRaw();
-	}
-
-	protected void defineSynchedData() {
-		this.getEntityData().define(DATA_ITEM_STACK, ItemStack.EMPTY);
-	}
-
-	public void addAdditionalSaveData(CompoundTag nbt) {
-		super.addAdditionalSaveData(nbt);
-		ItemStack itemstack = this.getItemRaw();
-		if (!itemstack.isEmpty()) {
-			nbt.put("Item", itemstack.save(new CompoundTag()));
-		}
-
+		return stack;
 	}
 
 	public void readAdditionalSaveData(CompoundTag nbt) {
 		super.readAdditionalSaveData(nbt);
-		ItemStack itemstack = ItemStack.of(nbt.getCompound("Item"));
-		this.setItem(itemstack);
+		refreshDimensions();
 	}
 
 	@Override
@@ -130,7 +96,7 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	}
 
 	public void markErased() {
-		if (!isErased)
+		if (!isErased && isAddedToWorld())
 			discard();
 		isErased = true;
 	}

@@ -38,7 +38,7 @@ public class ProjTypeHolder<T extends RenderableProjectileType<T, I>, I> impleme
 		this.type = type;
 	}
 
-	public void create(ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(ProjectileRenderer<?> r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		type.create(this, r, e, pose, pTick);
 	}
 

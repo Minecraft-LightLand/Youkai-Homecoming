@@ -63,7 +63,7 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 	}
 
 	@Override
-	public void create(Consumer<Ins> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick) {
+	public void create(Consumer<Ins> holder, ProjectileRenderer<?> r, SimplifiedProjectile e, PoseStack pose, float pTick) {
 		holder.accept(new Ins(Cache.vertex(pose.last().pose(), 0.167f, 0.5f)));
 	}
 

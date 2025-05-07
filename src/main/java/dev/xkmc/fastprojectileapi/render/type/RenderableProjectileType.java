@@ -13,7 +13,7 @@ public interface RenderableProjectileType<T extends RenderableProjectileType<T, 
 
 	void start(MultiBufferSource buffer, List<I> list);
 
-	void create(Consumer<I> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick);
+	void create(Consumer<I> holder, ProjectileRenderer<?> r, SimplifiedProjectile e, PoseStack pose, float pTick);
 
 	@Override
 	default int compareTo(@NotNull RenderableProjectileType<?, ?> o) {

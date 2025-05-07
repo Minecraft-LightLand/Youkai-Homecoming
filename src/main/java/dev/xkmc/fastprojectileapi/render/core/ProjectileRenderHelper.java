@@ -1,5 +1,6 @@
 package dev.xkmc.fastprojectileapi.render.core;
 
+import dev.xkmc.fastprojectileapi.render.standalone.ClientDanmakuCache;
 import dev.xkmc.fastprojectileapi.render.type.RenderableProjectileType;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -7,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -32,11 +34,29 @@ public class ProjectileRenderHelper {
 	}
 
 	@SubscribeEvent
+	public static void clientTick(TickEvent.LevelTickEvent event) {
+		var level = Minecraft.getInstance().level;
+		if (level != event.level || event.phase == TickEvent.Phase.START) return;
+		var cache = ClientDanmakuCache.get(level);
+		cache.tick();
+	}
+
+	@SubscribeEvent
 	public static void renderLate(RenderLevelStageEvent event) {
-		if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES) return;
-		var buffer = Minecraft.getInstance().renderBuffers().bufferSource();
-		QUEUE.flush(buffer);
-		buffer.endLastBatch();
+		var level = Minecraft.getInstance().level;
+		if (level == null) return;
+		if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_ENTITIES) {
+			var buffer = Minecraft.getInstance().renderBuffers().bufferSource();
+			var cache = ClientDanmakuCache.get(level);
+			cache.renderAll(event.getCamera(), event.getFrustum(), event.getPoseStack(), event.getPartialTick(), buffer);
+			QUEUE.flush(buffer);
+			buffer.endLastBatch();
+		}
+		if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
+			var buffer = Minecraft.getInstance().renderBuffers().bufferSource();
+			QUEUE.flush(buffer);
+			buffer.endLastBatch();
+		}
 	}
 
 	private static class RenderQueue {

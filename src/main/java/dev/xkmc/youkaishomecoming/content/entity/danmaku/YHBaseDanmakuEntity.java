@@ -86,9 +86,9 @@ public class YHBaseDanmakuEntity extends BaseProjectile implements IYHDanmaku {
 	}
 
 	@Override
-	public void readSpawnData(FriendlyByteBuf additionalData) {
-		super.readSpawnData(additionalData);
-		PacketCodec.from(additionalData, getClass(), Wrappers.cast(this));
+	public void readSpawnData(FriendlyByteBuf data) {
+		super.readSpawnData(data);
+		PacketCodec.from(data, getClass(), Wrappers.cast(this));
 	}
 
 	@Override

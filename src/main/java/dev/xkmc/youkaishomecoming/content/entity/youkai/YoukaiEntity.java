@@ -4,6 +4,7 @@ import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.fastprojectileapi.collision.UserCacheHolder;
 import dev.xkmc.fastprojectileapi.entity.EntityCachingUser;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
+import dev.xkmc.fastprojectileapi.render.standalone.DanmakuManager;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -468,9 +469,12 @@ public abstract class YoukaiEntity extends PathfinderMob
 	private final List<SimplifiedProjectile> allDanmakus = new ArrayList<>();
 
 	public void shoot(Entity danmaku) {
-		LivingCardHolder.super.shoot(danmaku);
-		if (danmaku instanceof SimplifiedProjectile proj)
+		if (danmaku instanceof SimplifiedProjectile proj) {
 			allDanmakus.add(proj);
+			DanmakuManager.send(this, proj);
+		} else {
+			LivingCardHolder.super.shoot(danmaku);
+		}
 	}
 
 	/**
