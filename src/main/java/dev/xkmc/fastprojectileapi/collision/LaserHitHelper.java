@@ -3,9 +3,13 @@ package dev.xkmc.fastprojectileapi.collision;
 import dev.xkmc.fastprojectileapi.entity.BaseLaser;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.*;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -31,18 +35,22 @@ public class LaserHitHelper {
 		}
 		List<EntityHitResult> ehit = new ArrayList<>();
 		if (checkEntity && level instanceof ServerLevel sl) {
-			getEntityHitResult(ehit, sl, e, src, dst,
-					e.getBoundingBox().expandTowards(v), e.getEffectiveHitRadius());
+			var radius = e.getEffectiveHitRadius();
+			var graze = e.grazeRange();
+			var box = e.getBoundingBox().expandTowards(v);
+			var list = EntityStorageCache.get(sl).foreach(box.inflate(1 + radius + graze), e::canHitEntity);
+			for (Entity x : list) {
+				if (x == e) continue;
+				Vec3 hit = ProjectileHitHelper.checkHit(x, radius, src, dst);
+				if (hit != null) ehit.add(new EntityHitResult(x, hit));
+				if (graze > 0 && x instanceof Player pl) {
+					Vec3 gr = ProjectileHitHelper.checkHit(x, radius + graze, src, dst);
+					if (gr != null) e.doGraze(pl);
+				}
+			}
 		}
 		return new LaserHitResult(dst, bhit, ehit);
 	}
 
-	public static void getEntityHitResult(List<EntityHitResult> ans, ServerLevel level, BaseLaser self, Vec3 src, Vec3 dst, AABB box, float radius) {
-		for (Entity e : EntityStorageCache.get(level).foreach(box.inflate(1 + radius), self::canHitEntity)) {
-			if (e == self) continue;
-			Vec3 hit = ProjectileHitHelper.checkHit(e, radius, src, dst);
-			if (hit != null) ans.add(new EntityHitResult(e, hit));
-		}
-	}
 
 }

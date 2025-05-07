@@ -36,7 +36,7 @@ public class EntityStorageCache {
 		map.put(x, y, z, new SectionCache(sl, x, y, z));
 	}
 
-	public Iterable<Entity> foreach(AABB aabb, Predicate<Entity> filter) {
+	public List<Entity> foreach(AABB aabb, Predicate<Entity> filter) {
 		int x0 = (((int) aabb.minX) >> 4) - 1;
 		int y0 = (((int) aabb.minY) >> 4) - 1;
 		int z0 = (((int) aabb.minZ) >> 4) - 1;

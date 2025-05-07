@@ -3,6 +3,7 @@ package dev.xkmc.fastprojectileapi.collision;
 import dev.xkmc.fastprojectileapi.entity.BaseProjectile;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -29,31 +30,31 @@ public class ProjectileHitHelper {
 			}
 		}
 		if (level instanceof ServerLevel sl) {
-			HitResult ehit = getEntityHitResult(sl, e, src, dst,
-					e.getBoundingBox().expandTowards(v), e.getBbWidth() / 2f);
-			if (ehit != null) {
-				hit = ehit;
+			var radius = e.getBbWidth() / 2f;
+			var graze = e.grazeRange();
+			var box = e.getBoundingBox().expandTowards(v);
+			var list = EntityStorageCache.get(sl).foreach(box.inflate(1 + radius + graze), e::canHitEntity);
+			double d0 = Double.MAX_VALUE;
+			Entity entity = null;
+			for (Entity x : list) {
+				if (x == e) continue;
+				var hpos = checkHit(x, radius, src, dst);
+				if (hpos != null) {
+					double d1 = src.distanceToSqr(hpos);
+					if (d1 < d0) {
+						entity = x;
+						d0 = d1;
+					}
+				} else if (graze > 0 && x instanceof Player pl) {
+					var gr = checkHit(x, radius + graze, src, dst);
+					if (gr != null) e.doGraze(pl);
+				}
+			}
+			if (entity != null) {
+				hit = new EntityHitResult(entity);
 			}
 		}
 		return hit;
-	}
-
-	@Nullable
-	public static EntityHitResult getEntityHitResult(ServerLevel level, BaseProjectile self, Vec3 src, Vec3 dst, AABB box, float radius) {
-		double d0 = Double.MAX_VALUE;
-		Entity entity = null;
-		for (Entity e : EntityStorageCache.get(level).foreach(box.inflate(1 + radius), self::canHitEntity)) {
-			if (e == self) continue;
-			var hit = checkHit(e, radius, src, dst);
-			if (hit != null) {
-				double d1 = src.distanceToSqr(hit);
-				if (d1 < d0) {
-					entity = e;
-					d0 = d1;
-				}
-			}
-		}
-		return entity == null ? null : new EntityHitResult(entity);
 	}
 
 	@Nullable

@@ -6,15 +6,18 @@ import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
 import dev.xkmc.youkaishomecoming.content.spell.mover.MoverOwner;
+import dev.xkmc.youkaishomecoming.events.DanmakuGrazeEvent;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.MinecraftForge;
 
 @SerialClass
 public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, MoverOwner {
@@ -142,6 +145,20 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, 
 	@Override
 	public boolean isValid() {
 		return !isErased && super.isValid();
+	}
+
+	private int lastGraze = 0;
+
+	@Override
+	public float grazeRange() {
+		return 1.5f;
+	}
+
+	@Override
+	public void doGraze(Player entity) {
+		if (tickCount < lastGraze) return;
+		lastGraze = tickCount + 5;
+		MinecraftForge.EVENT_BUS.post(new DanmakuGrazeEvent(entity, this));
 	}
 
 }
