@@ -14,10 +14,7 @@ import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
-import dev.xkmc.youkaishomecoming.content.capability.FrogGodCapability;
-import dev.xkmc.youkaishomecoming.content.capability.FrogSyncPacket;
-import dev.xkmc.youkaishomecoming.content.capability.KoishiAttackCapability;
-import dev.xkmc.youkaishomecoming.content.capability.KoishiStartPacket;
+import dev.xkmc.youkaishomecoming.content.capability.*;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
@@ -64,11 +61,12 @@ public class YoukaisHomecoming {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			loc("main"), 1,
+			loc("main"), 2,
 			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
 			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT),
 			e -> e.create(SpellSetToServer.class, NetworkDirection.PLAY_TO_SERVER),
-			e -> e.create(CombatToClient.class, NetworkDirection.PLAY_TO_CLIENT)
+			e -> e.create(CombatToClient.class, NetworkDirection.PLAY_TO_CLIENT),
+			e -> e.create(GrazeHelper.GrazeToClient.class, NetworkDirection.PLAY_TO_CLIENT)
 	);
 
 	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);

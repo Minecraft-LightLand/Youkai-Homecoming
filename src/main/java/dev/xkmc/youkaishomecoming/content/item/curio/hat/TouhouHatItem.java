@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
-import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.IFleshFoodItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import net.minecraft.world.damagesource.DamageSource;

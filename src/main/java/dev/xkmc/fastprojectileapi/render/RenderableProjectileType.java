@@ -3,7 +3,6 @@ package dev.xkmc.fastprojectileapi.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

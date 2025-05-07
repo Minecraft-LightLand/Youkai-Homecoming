@@ -34,10 +34,10 @@ public class ThinDoorBlock extends DoorBlock {
 		boolean close = !pState.getValue(OPEN);
 		boolean rightHinge = pState.getValue(HINGE) == DoorHingeSide.RIGHT;
 		return switch (direction) {
-			default -> close ? EAST_AABB : (rightHinge ? NORTH_AABB : SOUTH_AABB);
 			case SOUTH -> close ? SOUTH_AABB : (rightHinge ? EAST_AABB : WEST_AABB);
 			case WEST -> close ? WEST_AABB : (rightHinge ? SOUTH_AABB : NORTH_AABB);
 			case NORTH -> close ? NORTH_AABB : (rightHinge ? WEST_AABB : EAST_AABB);
+			default -> close ? EAST_AABB : (rightHinge ? NORTH_AABB : SOUTH_AABB);
 		};
 	}
 

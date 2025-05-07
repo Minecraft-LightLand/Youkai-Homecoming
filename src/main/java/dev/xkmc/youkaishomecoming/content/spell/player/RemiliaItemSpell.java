@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.spell.player;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
-import dev.xkmc.youkaishomecoming.content.spell.game.RemiliaSpell;
 import dev.xkmc.youkaishomecoming.content.spell.item.ItemSpell;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;

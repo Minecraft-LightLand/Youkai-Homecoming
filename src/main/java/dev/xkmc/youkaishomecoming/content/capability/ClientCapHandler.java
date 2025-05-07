@@ -44,4 +44,11 @@ public class ClientCapHandler {
 		player.level().addAlwaysVisibleParticle(DustColorTransitionOptions.SCULK_TO_REDSTONE, p.x, p.y, p.z, 0, 0, 0);
 	}
 
+	public static void playGraze() {
+		var player = Minecraft.getInstance().player;
+		if (player == null) return;
+		var r = player.getRandom();
+		player.playSound(YHSounds.GRAZE.get(), r.nextFloat() * 0.2f + 1, r.nextFloat() * 0.2f + 1f);
+	}
+
 }

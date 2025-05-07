@@ -39,7 +39,7 @@ public record SimpleProjectileType(ResourceLocation tex, DisplayType display)
 		}
 
 		private static void vertex(BulkDataWriter vc, Matrix4f m4, float x, int y, int u, int v, int color) {
-			vc.addVertex(m4, x - 0.5F, y - 0.5F, 0.0F,u, v,color);
+			vc.addVertex(m4, x - 0.5F, y - 0.5F, 0.0F, u, v, color);
 		}
 
 	}

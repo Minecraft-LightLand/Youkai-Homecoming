@@ -1,11 +1,20 @@
 {
-  "koishi_ring": {
-	"sounds": [
-	  {
-		"type": "file",
-		"name": "youkaishomecoming:koishi_ring"
-	  }
-	],
-	"subtitle": "youkaishomecoming.subtitle.koishi_ring"
-  }
+	"koishi_ring": {
+		"sounds": [
+			{
+				"type": "file",
+				"name": "youkaishomecoming:koishi_ring"
+			}
+		],
+		"subtitle": "youkaishomecoming.subtitle.koishi_ring"
+	},
+	"graze": {
+		"sounds": [
+			{
+				"type": "file",
+				"name": "youkaishomecoming:graze"
+			}
+		],
+		"subtitle": "youkaishomecoming.subtitle.graze"
+	}
 }

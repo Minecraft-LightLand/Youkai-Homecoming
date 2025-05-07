@@ -95,7 +95,7 @@ public class CopperFaucetBlockEntity extends BaseBlockEntity implements Tickable
 				}
 			}
 		} else {
-			 hdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
+			hdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
 		}
 		return true;
 	}

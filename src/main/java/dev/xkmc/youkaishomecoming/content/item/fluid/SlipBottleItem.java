@@ -24,7 +24,7 @@ import java.util.List;
 
 public class SlipBottleItem extends YHDrinkItem {
 
-	private FoodProperties NONE = new FoodProperties.Builder().build();
+	private final FoodProperties NONE = new FoodProperties.Builder().build();
 
 	public SlipBottleItem(Properties builder) {
 		super(builder);
