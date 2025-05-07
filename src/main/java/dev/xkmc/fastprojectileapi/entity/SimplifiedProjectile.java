@@ -1,5 +1,6 @@
 package dev.xkmc.fastprojectileapi.entity;
 
+import dev.xkmc.fastprojectileapi.render.virtual.DanmakuManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -144,7 +145,18 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	public abstract boolean isValid();
 
 	public void markErased() {
-		discard();
+		if (isAddedToWorld()) {
+			discard();
+		} else if (getOwner() instanceof LivingEntity le) {
+			if (level().isClientSide())
+				return;
+			DanmakuManager.erase(le, this);
+		}
+	}
+
+	public void erase(LivingEntity user) {
+		if (getOwner() == user) return;
+		markErased();
 	}
 
 	@Override

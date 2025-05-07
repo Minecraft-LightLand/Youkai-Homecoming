@@ -1,4 +1,4 @@
-package dev.xkmc.fastprojectileapi.render.standalone;
+package dev.xkmc.fastprojectileapi.render.virtual;
 
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -8,7 +8,10 @@ public class DanmakuManager {
 
 	public static void send(LivingEntity user, SimplifiedProjectile proj) {
 		YoukaisHomecoming.HANDLER.toTrackingPlayers(new DanmakuToClientPacket(proj), user);
-		//TODO erase marker
+	}
+
+	public static void erase(LivingEntity user, SimplifiedProjectile proj) {
+		YoukaisHomecoming.HANDLER.toTrackingPlayers(new EraseDanmakuToClient(proj), user);
 	}
 
 }

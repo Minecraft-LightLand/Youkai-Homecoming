@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.fastprojectileapi.render.standalone;
+package dev.xkmc.fastprojectileapi.render.virtual;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

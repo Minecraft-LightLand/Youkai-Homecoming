@@ -4,7 +4,7 @@ import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.fastprojectileapi.collision.UserCacheHolder;
 import dev.xkmc.fastprojectileapi.entity.EntityCachingUser;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
-import dev.xkmc.fastprojectileapi.render.standalone.DanmakuManager;
+import dev.xkmc.fastprojectileapi.render.virtual.DanmakuManager;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
@@ -483,6 +483,8 @@ public abstract class YoukaiEntity extends PathfinderMob
 	private void tickDanmaku() {
 		for (var e : allDanmakus) {
 			if ((!e.isAddedToWorld() || e.isRemoved()) && e.isValid()) {
+				e.setOldPosAndRot();
+				++e.tickCount;
 				e.tick();
 			}
 		}

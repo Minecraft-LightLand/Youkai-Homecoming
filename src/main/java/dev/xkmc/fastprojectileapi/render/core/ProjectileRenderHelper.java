@@ -1,7 +1,7 @@
 package dev.xkmc.fastprojectileapi.render.core;
 
-import dev.xkmc.fastprojectileapi.render.standalone.ClientDanmakuCache;
 import dev.xkmc.fastprojectileapi.render.type.RenderableProjectileType;
+import dev.xkmc.fastprojectileapi.render.virtual.ClientDanmakuCache;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.Minecraft;

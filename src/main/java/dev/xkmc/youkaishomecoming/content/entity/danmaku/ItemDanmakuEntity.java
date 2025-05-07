@@ -96,15 +96,8 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	}
 
 	public void markErased() {
-		if (!isErased && isAddedToWorld())
-			discard();
-		isErased = true;
-	}
-
-	public void erase(LivingEntity user) {
-		if (getOwner() == user) return;
 		if (!isErased)
-			discard();
+			super.markErased();
 		isErased = true;
 	}
 

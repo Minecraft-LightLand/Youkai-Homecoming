@@ -95,15 +95,8 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, 
 	private boolean isErased = false;
 
 	public void markErased() {
-		if (!isErased && isAddedToWorld())
-			discard();
-		isErased = true;
-	}
-
-	public void erase(LivingEntity user) {
-		if (getOwner() == user) return;
 		if (!isErased)
-			discard();
+			super.markErased();
 		isErased = true;
 	}
 

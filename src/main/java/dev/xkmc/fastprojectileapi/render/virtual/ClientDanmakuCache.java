@@ -1,4 +1,4 @@
-package dev.xkmc.fastprojectileapi.render.standalone;
+package dev.xkmc.fastprojectileapi.render.virtual;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -60,6 +60,8 @@ public class ClientDanmakuCache {
 		var itr = all.iterator();
 		while (itr.hasNext()) {
 			var e = itr.next();
+			e.setOldPosAndRot();
+			++e.tickCount;
 			e.tick();
 			if (!e.isValid()) {
 				itr.remove();

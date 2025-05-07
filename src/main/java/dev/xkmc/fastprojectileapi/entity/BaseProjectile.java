@@ -47,7 +47,7 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 			projectileMove();
 			if (level() instanceof ServerLevel sl) {
 				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4) ||
-						!EntityStorageHelper.isTicking(sl, this)) {
+						isAddedToWorld() && !EntityStorageHelper.isTicking(sl, this)) {
 					markErased();
 				}
 			}

@@ -1,4 +1,4 @@
-package dev.xkmc.fastprojectileapi.render.standalone;
+package dev.xkmc.fastprojectileapi.render.virtual;
 
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.l2serial.network.SerialPacketBase;
