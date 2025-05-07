@@ -10,16 +10,19 @@ public class EraseDanmakuToClient extends SerialPacketBase {
 
 	@SerialClass.SerialField
 	private int id;
+	@SerialClass.SerialField
+	private boolean kill;
 
 	public EraseDanmakuToClient() {
 	}
 
-	public EraseDanmakuToClient(SimplifiedProjectile e) {
+	public EraseDanmakuToClient(SimplifiedProjectile e, boolean kill) {
 		id = e.getId();
+		this.kill = kill;
 	}
 
 	@Override
 	public void handle(NetworkEvent.Context context) {
-		DanmakuClientHandler.erase(id);
+		DanmakuClientHandler.erase(id, kill);
 	}
 }

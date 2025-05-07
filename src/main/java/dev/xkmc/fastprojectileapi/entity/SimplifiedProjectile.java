@@ -1,6 +1,7 @@
 package dev.xkmc.fastprojectileapi.entity;
 
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuManager;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -144,19 +145,33 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	public abstract boolean isValid();
 
-	public void markErased() {
+	private boolean isErased = false;
+
+	public void markErased(boolean kill) {
+		if (isErased) return;
+		isErased = true;
 		if (isAddedToWorld()) {
 			discard();
 		} else if (getOwner() instanceof LivingEntity le) {
 			if (level().isClientSide())
 				return;
-			DanmakuManager.erase(le, this);
+			DanmakuManager.erase(le, this, kill);
 		}
 	}
 
 	public void erase(LivingEntity user) {
 		if (getOwner() == user) return;
-		markErased();
+		markErased(true);
+	}
+
+	@Override
+	public Vec3 position() {
+		return super.position();
+	}
+
+	@Override
+	public BlockPos blockPosition() {
+		return super.blockPosition();
 	}
 
 	@Override

@@ -41,14 +41,14 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 			if (level() instanceof ServerLevel sl) {
 				projectileMove();
 				terminate();
-				markErased();
+				markErased(false);
 			}
 		} else {
 			projectileMove();
 			if (level() instanceof ServerLevel sl) {
 				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4) ||
 						isAddedToWorld() && !EntityStorageHelper.isTicking(sl, this)) {
-					markErased();
+					markErased(false);
 				}
 			}
 		}
@@ -56,7 +56,7 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 
 	public void checkBelowWorld() {
 		if (this.getY() < (double) (this.level().getMinBuildHeight() - 64)) {
-			markErased();
+			markErased(false);
 		}
 	}
 

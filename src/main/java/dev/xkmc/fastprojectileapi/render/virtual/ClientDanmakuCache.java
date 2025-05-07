@@ -51,9 +51,9 @@ public class ClientDanmakuCache {
 		map.put(sp.getId(), sp);
 	}
 
-	public void erase(int id) {
+	public void erase(int id, boolean kill) {
 		var e = map.get(id);
-		e.markErased();
+		e.markErased(kill);
 	}
 
 	public void tick() {

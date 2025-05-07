@@ -20,10 +20,10 @@ class DanmakuClientHandler {
 		ClientDanmakuCache.get(level).add(sp);
 	}
 
-	public static void erase(int id) {
+	public static void erase(int id, boolean kill) {
 		var level = Minecraft.getInstance().level;
 		if (level == null) return;
-		ClientDanmakuCache.get(level).erase(id);
+		ClientDanmakuCache.get(level).erase(id, kill);
 	}
 
 }

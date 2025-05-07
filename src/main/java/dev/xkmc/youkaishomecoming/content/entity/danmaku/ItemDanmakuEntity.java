@@ -95,9 +95,9 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		return true;
 	}
 
-	public void markErased() {
+	public void markErased(boolean kill) {
 		if (!isErased)
-			super.markErased();
+			super.markErased(kill);
 		isErased = true;
 	}
 

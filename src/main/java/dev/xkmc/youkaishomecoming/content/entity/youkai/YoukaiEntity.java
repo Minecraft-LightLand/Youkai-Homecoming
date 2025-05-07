@@ -53,7 +53,7 @@ import net.minecraftforge.common.MinecraftForge;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Objects;
 
 @SerialClass
@@ -466,29 +466,36 @@ public abstract class YoukaiEntity extends PathfinderMob
 		return YHDamageTypes.danmaku(danmaku);
 	}
 
-	private final List<SimplifiedProjectile> allDanmakus = new ArrayList<>();
+	private final LinkedList<SimplifiedProjectile> allDanmakus = new LinkedList<>();
+	private ArrayList<SimplifiedProjectile> temp;
 
 	public void shoot(Entity danmaku) {
 		if (danmaku instanceof SimplifiedProjectile proj) {
-			allDanmakus.add(proj);
+			if (temp != null) temp.add(proj);
+			else allDanmakus.add(proj);
 			DanmakuManager.send(this, proj);
 		} else {
 			LivingCardHolder.super.shoot(danmaku);
 		}
 	}
 
-	/**
-	 * allow out-of-chunk danmaku to still be ticked
-	 */
 	private void tickDanmaku() {
-		for (var e : allDanmakus) {
-			if ((!e.isAddedToWorld() || e.isRemoved()) && e.isValid()) {
+		temp = new ArrayList<>();
+		var itr = allDanmakus.iterator();
+		while (itr.hasNext()) {
+			var e = itr.next();
+			if (e.isAddedToWorld() && !e.isRemoved()) continue;
+			if (e.isValid()) {
 				e.setOldPosAndRot();
 				++e.tickCount;
 				e.tick();
 			}
+			if (!e.isValid()) {
+				itr.remove();
+			}
 		}
-		allDanmakus.removeIf(e -> (!e.isAddedToWorld() || e.isRemoved()) && !e.isValid());
+		allDanmakus.addAll(temp);
+		temp = null;
 	}
 
 	private final UserCacheHolder cache = new UserCacheHolder();

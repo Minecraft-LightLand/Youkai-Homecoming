@@ -29,10 +29,11 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 
 	public boolean shouldRender(T e, Frustum frustum, double camx, double camy, double camz) {
 		Entity cam = this.entityRenderDispatcher.camera.getEntity();
+		if (e.getOwner() != cam || e.tickCount >= 40) return true;
 		double dh = e.getBbHeight() / 2;
 		double dist = cam.getEyePosition().distanceToSqr(e.position().add(0, dh, 0));
 		double dy = Math.abs(cam.getEyeY() - e.getY() - dh);
-		return e.getOwner() != cam || dist > 12 || dy > 0.1 + dh * 2 && dist > 2 || e.tickCount >= 40;
+		return dist > 12 || dy > 0.1 + dh * 2 && dist > 2;
 	}
 
 	@Override
