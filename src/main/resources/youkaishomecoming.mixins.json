@@ -21,6 +21,7 @@
 		"VillagerMixin"
 	],
 	"client": [
+		"BufferBuilderAccessor",
 		"CriterionGridMixin",
 		"GameRendererMixin"
 	],
