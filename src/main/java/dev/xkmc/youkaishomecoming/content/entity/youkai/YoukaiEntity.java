@@ -272,6 +272,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 				} else {
 					spellCard.reset();
 					allDanmakus.clear();
+					toBeSent.clear();
 				}
 			}
 		}
@@ -468,12 +469,13 @@ public abstract class YoukaiEntity extends PathfinderMob
 
 	private final LinkedList<SimplifiedProjectile> allDanmakus = new LinkedList<>();
 	private ArrayList<SimplifiedProjectile> temp;
+	private ArrayList<SimplifiedProjectile> toBeSent = new ArrayList<>();
 
 	public void shoot(Entity danmaku) {
 		if (danmaku instanceof SimplifiedProjectile proj) {
 			if (temp != null) temp.add(proj);
 			else allDanmakus.add(proj);
-			DanmakuManager.send(this, proj);
+			toBeSent.add(proj);
 		} else {
 			LivingCardHolder.super.shoot(danmaku);
 		}
@@ -496,6 +498,8 @@ public abstract class YoukaiEntity extends PathfinderMob
 		}
 		allDanmakus.addAll(temp);
 		temp = null;
+		DanmakuManager.send(this, toBeSent);
+		toBeSent.clear();
 	}
 
 	private final UserCacheHolder cache = new UserCacheHolder();

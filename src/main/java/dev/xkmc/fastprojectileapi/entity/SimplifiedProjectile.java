@@ -1,7 +1,6 @@
 package dev.xkmc.fastprojectileapi.entity;
 
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuManager;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -162,16 +161,6 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 	public void erase(LivingEntity user) {
 		if (getOwner() == user) return;
 		markErased(true);
-	}
-
-	@Override
-	public Vec3 position() {
-		return super.position();
-	}
-
-	@Override
-	public BlockPos blockPosition() {
-		return super.blockPosition();
 	}
 
 	@Override

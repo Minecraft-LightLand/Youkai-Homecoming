@@ -26,17 +26,11 @@ public abstract class SimplifiedEntity extends Entity {
 
 	@Override
 	public void baseTick() {
-		this.level().getProfiler().push("entityBaseTick");
-		if (this.boardingCooldown > 0) {
-			--this.boardingCooldown;
-		}
 		this.walkDistO = this.walkDist;
 		this.xRotO = this.getXRot();
 		this.yRotO = this.getYRot();
-		this.handleNetherPortal();
 		this.checkBelowWorld();
 		this.firstTick = false;
-		this.level().getProfiler().pop();
 	}
 
 	protected boolean updateInWaterStateAndDoFluidPushing() {

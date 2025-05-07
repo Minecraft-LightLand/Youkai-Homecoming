@@ -11,23 +11,35 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.Arrays;
-import java.util.UUID;
+import java.util.List;
 
 @SerialClass
 public class DanmakuToClientPacket extends SerialPacketBase {
 
+	@SerialClass
+	public static class Data {
+		@SerialClass.SerialField
+		private int typeId;
+		@SerialClass.SerialField
+		private int entityId;
+		@SerialClass.SerialField
+		private double posX, posY, posZ;
+		@SerialClass.SerialField
+		private float pitch, yaw;
+		@SerialClass.SerialField
+		private double velX, velY, velZ;
+
+		public void restore(Entity e) {
+			e.syncPacketPositionCodec(posX, posY, posZ);
+			e.absMoveTo(posX, posY, posZ, yaw, pitch);
+			e.setId(entityId);
+			e.lerpMotion(velX, velY, velZ);
+		}
+	}
+
 	@SerialClass.SerialField
-	private int typeId;
-	@SerialClass.SerialField
-	private int entityId;
-	@SerialClass.SerialField
-	private UUID uuid;
-	@SerialClass.SerialField
-	private double posX, posY, posZ;
-	@SerialClass.SerialField
-	private float pitch, yaw;
-	@SerialClass.SerialField
-	private double velX, velY, velZ;
+	private Data[] entities;
+
 	@SerialClass.SerialField
 	private byte[] data;
 
@@ -35,40 +47,44 @@ public class DanmakuToClientPacket extends SerialPacketBase {
 
 	}
 
-	public DanmakuToClientPacket(SimplifiedProjectile e) {
-		this.typeId = BuiltInRegistries.ENTITY_TYPE.getId(e.getType());
-		this.entityId = e.getId();
-		this.uuid = e.getUUID();
-		this.posX = e.getX();
-		this.posY = e.getY();
-		this.posZ = e.getZ();
-		this.pitch = e.getXRot();
-		this.yaw = e.getYRot();
-		Vec3 vec3d = e.getDeltaMovement();
-		this.velX = vec3d.x;
-		this.velY = vec3d.y;
-		this.velZ = vec3d.z;
+	public DanmakuToClientPacket(List<SimplifiedProjectile> list) {
 		var data = new FriendlyByteBuf(Unpooled.buffer());
-		e.writeSpawnData(data);
+		entities = new Data[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			var e = list.get(i);
+			var dat = new Data();
+			entities[i] = dat;
+			dat.typeId = BuiltInRegistries.ENTITY_TYPE.getId(e.getType());
+			dat.entityId = e.getId();
+			dat.posX = e.getX();
+			dat.posY = e.getY();
+			dat.posZ = e.getZ();
+			dat.pitch = e.getXRot();
+			dat.yaw = e.getYRot();
+			Vec3 vec3d = e.getDeltaMovement();
+			dat.velX = vec3d.x;
+			dat.velY = vec3d.y;
+			dat.velZ = vec3d.z;
+			e.writeSpawnData(data);
+
+		}
 		this.data = Arrays.copyOfRange(data.array(), 0, data.writerIndex());
 		data.release();
 	}
 
 	@Override
 	public void handle(NetworkEvent.Context ctx) {
-		var type = BuiltInRegistries.ENTITY_TYPE.getHolder(typeId);
-		if (type.isEmpty()) return;
-		Entity e = DanmakuClientHandler.create(type.get().value());
-		if (!(e instanceof SimplifiedProjectile sp)) return;
-		e.syncPacketPositionCodec(posX, posY, posZ);
-		e.absMoveTo(posX, posY, posZ, yaw, pitch);
-		e.setId(entityId);
-		e.setUUID(uuid);
-		e.lerpMotion(velX, velY, velZ);
 		var buffer = Unpooled.wrappedBuffer(data);
-		sp.readSpawnData(new FriendlyByteBuf(buffer));
+		for (var dat : entities) {
+			var type = BuiltInRegistries.ENTITY_TYPE.getHolder(dat.typeId);
+			if (type.isEmpty()) break;
+			Entity e = DanmakuClientHandler.create(type.get().value());
+			if (!(e instanceof SimplifiedProjectile sp)) break;
+			dat.restore(e);
+			sp.readSpawnData(new FriendlyByteBuf(buffer));
+			DanmakuClientHandler.add(sp);
+		}
 		buffer.release();
-		DanmakuClientHandler.add(sp);
 	}
 
 }
