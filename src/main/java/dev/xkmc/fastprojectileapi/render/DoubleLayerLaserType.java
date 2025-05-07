@@ -1,7 +1,6 @@
 package dev.xkmc.fastprojectileapi.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -9,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation outer, int color)
@@ -20,7 +20,7 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 	}
 
 	@Override
-	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
+	public void start(MultiBufferSource buffer, List<Ins> list) {
 		boolean additive = YHModConfig.CLIENT.laserRenderAdditive.get();
 		boolean invert = YHModConfig.CLIENT.laserRenderInverted.get();
 		double tran = YHModConfig.CLIENT.laserTransparency.get();
@@ -28,28 +28,33 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 		int add = (int) ((color & 0xff) * tran) |
 				(int) ((color >> 8 & 0xff) * tran) << 8 |
 				(int) ((color >> 16 & 0xff) * tran) << 16 | 0xff000000;
-		VertexConsumer vc;
-		vc = buffer.getBuffer(DanmakuRenderStates.laser(inner, DisplayType.SOLID));
+		int n = list.size() * 4;
+		BulkDataWriter vc;
+		vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(inner, DisplayType.SOLID)), n);
 		for (var e : list) {
 			e.texInner(vc, -1);
 		}
+		vc.flush();
 		if (additive) {
-			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.ADDITIVE));
+			vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.ADDITIVE)), n);
 			for (var e : list) {
 				e.texOuter(false, vc, add);
 			}
+			vc.flush();
 		}
 		if (invert) {
-			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT));
+			vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT)), n);
 			for (var e : list) {
 				e.texOuter(true, vc, col);
 			}
+			vc.flush();
 		}
 		if (!additive && !invert) {
-			vc = buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT));
+			vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT)), n);
 			for (var e : list) {
 				e.texOuter(false, vc, col);
 			}
+			vc.flush();
 		}
 	}
 
@@ -60,22 +65,22 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 
 	public record Ins(Cache cache) {
 
-		public void texInner(VertexConsumer vc, int color) {
+		public void texInner(BulkDataWriter vc, int color) {
 			renderPart(false, vc, color, cache.r0);
 		}
 
-		public void texOuter(boolean invert, VertexConsumer vc, int color) {
+		public void texOuter(boolean invert, BulkDataWriter vc, int color) {
 			renderPart(invert, vc, color, cache.r1);
 		}
 
-		private void renderPart(boolean invert, VertexConsumer vc, int color, float[][] arr) {
+		private void renderPart(boolean invert, BulkDataWriter vc, int color, float[][] arr) {
 			renderQuad(invert, vc, color, arr, 0, 2);
 			renderQuad(invert, vc, color, arr, 3, 1);
 			renderQuad(invert, vc, color, arr, 2, 3);
 			renderQuad(invert, vc, color, arr, 1, 0);
 		}
 
-		private void renderQuad(boolean invert, VertexConsumer vc, int col, float[][] arr, int i0, int i1) {
+		private void renderQuad(boolean invert, BulkDataWriter vc, int col, float[][] arr, int i0, int i1) {
 			if (invert) {
 				addVertex(vc, col, arr[i1 + 4], 0, 0);
 				addVertex(vc, col, arr[i1], 0, 1);
@@ -89,8 +94,8 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 			}
 		}
 
-		private void addVertex(VertexConsumer vc, int col, float[] arr, float u, float v) {
-			vc.vertex(arr[0], arr[1], arr[2]).uv(u, v).color(col).endVertex();
+		private void addVertex(BulkDataWriter vc, int col, float[] arr, float u, float v) {
+			vc.addVertex(arr[0], arr[1], arr[2], u, v, col);
 		}
 
 	}

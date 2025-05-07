@@ -1,27 +1,27 @@
 package dev.xkmc.fastprojectileapi.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public record ButterflyProjectileType(ResourceLocation overlay, DisplayType display, int period)
 		implements RenderableDanmakuType<ButterflyProjectileType, ButterflyProjectileType.Ins> {
 
 	@Override
-	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
-		VertexConsumer vc;
-		vc = buffer.getBuffer(DanmakuRenderStates.danmaku(overlay, display()));
+	public void start(MultiBufferSource buffer, List<Ins> list) {
+		BulkDataWriter vc;
+		vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.danmaku(overlay, display())), list.size());
 		for (var e : list) {
 			e.tex(vc, -1);
 		}
+		vc.flush();
 	}
 
 	@Override
@@ -35,8 +35,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 			pose.mulPose(Axis.ZP.rotationDegrees(time * angle));
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
-			Matrix3f m3 = new Matrix3f(mat.normal());
-			holder.accept(new Ins(m3, m4, false));
+			holder.accept(new Ins(m4, false));
 			pose.popPose();
 		}
 		{
@@ -44,29 +43,28 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 			pose.mulPose(Axis.ZP.rotationDegrees(time * -angle));
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
-			Matrix3f m3 = new Matrix3f(mat.normal());
-			holder.accept(new Ins(m3, m4, true));
+			holder.accept(new Ins(m4, true));
 			pose.popPose();
 		}
 	}
 
-	public record Ins(Matrix3f m3, Matrix4f m4, boolean right) {
+	public record Ins(Matrix4f m4, boolean right) {
 
-		public void tex(VertexConsumer vc, int color) {
+		public void tex(BulkDataWriter vc, int color) {
 			float x0 = 0;
 			float x1 = .5f;
 			if (right) {
 				x0 += 0.5f;
 				x1 += 0.5f;
 			}
-			vertex(vc, m4, m3, x1, 1, x1, 0, color);
-			vertex(vc, m4, m3, x1, 0, x1, 1, color);
-			vertex(vc, m4, m3, x0, 0, x0, 1, color);
-			vertex(vc, m4, m3, x0, 1, x0, 0, color);
+			vertex(vc, m4, x1, 1, x1, 0, color);
+			vertex(vc, m4, x1, 0, x1, 1, color);
+			vertex(vc, m4, x0, 0, x0, 1, color);
+			vertex(vc, m4, x0, 1, x0, 0, color);
 		}
 
-		private static void vertex(VertexConsumer vc, Matrix4f m4, Matrix3f m3, float x, float y, float u, float v, int color) {
-			vc.vertex(m4, x - 0.5F, 0.0F, y - 0.5F).uv(u, v).color(color).endVertex();
+		private static void vertex(BulkDataWriter vc, Matrix4f m4, float x, float y, float u, float v, int color) {
+			vc.addVertex(m4, x - 0.5F, 0.0F, y - 0.5F, u, v, color);
 		}
 
 	}

@@ -6,11 +6,12 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public interface RenderableProjectileType<T extends RenderableProjectileType<T, I>, I> extends Comparable<RenderableProjectileType<?, ?>> {
 
-	void start(MultiBufferSource buffer, Iterable<I> list);
+	void start(MultiBufferSource buffer, List<I> list);
 
 	void create(Consumer<I> holder, ProjectileRenderer r, SimplifiedProjectile e, PoseStack pose, float pTick);
 

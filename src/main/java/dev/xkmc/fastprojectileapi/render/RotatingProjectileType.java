@@ -1,25 +1,25 @@
 package dev.xkmc.fastprojectileapi.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public record RotatingProjectileType(ResourceLocation tex, DisplayType display, double rot)
 		implements RenderableDanmakuType<RotatingProjectileType, RotatingProjectileType.Ins> {
 
 	@Override
-	public void start(MultiBufferSource buffer, Iterable<Ins> list) {
-		VertexConsumer vc;
-		vc = buffer.getBuffer(DanmakuRenderStates.danmaku(tex, display()));
+	public void start(MultiBufferSource buffer, List<Ins> list) {
+		BulkDataWriter vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.danmaku(tex, display())), list.size());
 		for (var e : list) {
 			e.tex(vc, -1);
 		}
+		vc.flush();
 	}
 
 	@Override
@@ -33,15 +33,15 @@ public record RotatingProjectileType(ResourceLocation tex, DisplayType display, 
 
 	public record Ins(Matrix4f m4) {
 
-		public void tex(VertexConsumer vc, int color) {
+		public void tex(BulkDataWriter vc, int color) {
 			vertex(vc, m4, 1, 1, 1, 0, color);
 			vertex(vc, m4, 1, 0, 1, 1, color);
 			vertex(vc, m4, 0, 0, 0, 1, color);
 			vertex(vc, m4, 0, 1, 0, 0, color);
 		}
 
-		private static void vertex(VertexConsumer vc, Matrix4f m4, float x, int y, int u, int v, int color) {
-			vc.vertex(m4, x - 0.5F, y - 0.5F, 0.0F).uv(u, v).color(color).endVertex();
+		private static void vertex(BulkDataWriter vc, Matrix4f m4, float x, int y, int u, int v, int color) {
+			vc.addVertex(m4, x - 0.5F, y - 0.5F, 0.0F, u, v, color);
 		}
 
 	}
