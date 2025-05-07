@@ -1,7 +1,9 @@
 package dev.xkmc.fastprojectileapi.render;
 
+import com.mojang.blaze3d.platform.MemoryTracker;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.util.FastColor;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
@@ -15,8 +17,8 @@ public class BulkDataWriter {
 
 	public BulkDataWriter(VertexConsumer vc, int size) {
 		this.vc = vc;
-		direct = vc instanceof BufferBuilder buf && false ? buf : null;
-		buffer = direct == null ? null : ByteBuffer.allocate(size * 6 * 4 * 4);
+		direct = vc instanceof BufferBuilder buf ? buf : null;
+		buffer = direct == null ? null : MemoryTracker.create(size * 6 * 4 * 4);
 	}
 
 
@@ -27,20 +29,24 @@ public class BulkDataWriter {
 
 	public void addVertex(float x, float y, float z, float u, float v, int col) {
 		if (buffer == null) {
-			vc.vertex(x, y, z).uv(u, v).color(col).endVertex();
-		} else {
+			//vc.vertex(x, y, z).uv(u, v).color(col).endVertex();
+		} else if (true) {
 			buffer.putFloat(x);
 			buffer.putFloat(y);
 			buffer.putFloat(z);
 			buffer.putFloat(u);
 			buffer.putFloat(v);
-			buffer.putInt(col << 8 | col >>> 24);
+			buffer.put((byte) FastColor.ARGB32.red(col));
+			buffer.put((byte) FastColor.ARGB32.green(col));
+			buffer.put((byte) FastColor.ARGB32.blue(col));
+			buffer.put((byte) FastColor.ARGB32.alpha(col));
 		}
 	}
 
 
 	public void flush() {
 		if (direct != null && buffer != null) {
+			buffer.position(0);
 			direct.putBulkData(buffer);
 		}
 	}

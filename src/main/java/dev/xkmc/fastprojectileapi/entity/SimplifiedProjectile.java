@@ -153,4 +153,9 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		return true;
 	}
 
+	@Override
+	public boolean isCurrentlyGlowing() {
+		return false;
+	}
+
 }
