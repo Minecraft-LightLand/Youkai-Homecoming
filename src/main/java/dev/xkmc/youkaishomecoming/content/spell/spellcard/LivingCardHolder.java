@@ -1,11 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.spell.spellcard;
 
+import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterData;
 import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -82,7 +84,8 @@ public interface LivingCardHolder extends CardHolder {
 
 	@Override
 	default void shoot(Entity danmaku) {
-		self().level().addFreshEntity(danmaku);
+		if (self().level() instanceof ServerLevel sl)
+			EntityStorageHelper.fastAdd(sl, danmaku);
 	}
 
 

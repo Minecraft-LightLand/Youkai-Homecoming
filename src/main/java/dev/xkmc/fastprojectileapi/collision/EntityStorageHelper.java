@@ -21,6 +21,12 @@ public class EntityStorageHelper {
 		return e.isAlwaysTicking() || sect.getStatus().isTicking();
 	}
 
+	public static void fastAdd(ServerLevel sl, Entity e) {
+		var manager = ((ServerLevelAccessor) sl).getEntityManager();
+		manager.addNewEntityWithoutEvent(e);
+		e.onAddedToWorld();
+	}
+
 	public static void clear(ServerLevel sl, Entity e) {
 		var manager = ((ServerLevelAccessor) sl).getEntityManager();
 		var storage = ((PersistentEntitySectionManagerAccessor<Entity>) manager).getSectionStorage();

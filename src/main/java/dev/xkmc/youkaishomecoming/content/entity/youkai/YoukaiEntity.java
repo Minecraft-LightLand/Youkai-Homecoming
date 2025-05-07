@@ -465,7 +465,7 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	private final List<SimplifiedProjectile> allDanmakus = new ArrayList<>();
 
 	public void shoot(Entity danmaku) {
-		self().level().addFreshEntity(danmaku);
+		LivingCardHolder.super.shoot(danmaku);
 		if (danmaku instanceof SimplifiedProjectile proj)
 			allDanmakus.add(proj);
 	}
@@ -475,11 +475,11 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 	 */
 	private void tickDanmaku() {
 		for (var e : allDanmakus) {
-			if (e.isRemoved() && e.isValid()) {
+			if ((!e.isAddedToWorld() || e.isRemoved()) && e.isValid()) {
 				e.tick();
 			}
 		}
-		allDanmakus.removeIf(e -> e.isRemoved() && !e.isValid());
+		allDanmakus.removeIf(e -> (!e.isAddedToWorld() || e.isRemoved()) && !e.isValid());
 	}
 
 }

@@ -124,4 +124,24 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, 
 		return sizeCache == null ? 1 : sizeCache;
 	}
 
+	private boolean isErased = false;
+
+	public void markErased() {
+		if (!isErased)
+			discard();
+		isErased = true;
+	}
+
+	public void erase(LivingEntity user) {
+		if (getOwner() == user) return;
+		if (!isErased)
+			discard();
+		isErased = true;
+	}
+
+	@Override
+	public boolean isValid() {
+		return !isErased && super.isValid();
+	}
+
 }

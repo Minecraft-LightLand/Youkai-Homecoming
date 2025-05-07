@@ -143,6 +143,10 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	public abstract boolean isValid();
 
+	public void markErased() {
+		discard();
+	}
+
 	@Override
 	public boolean isInvisible() {
 		return false;

@@ -69,7 +69,7 @@ public class FastMapInit {
 
 	private static class LongFastMap<T> implements FastMap<T> {
 
-		private final Long2ObjectOpenHashMap<T> map = new Long2ObjectOpenHashMap<>();
+		private final Long2ObjectOpenHashMap<T> map = new Long2ObjectOpenHashMap<>(1024);
 
 		@Override
 		public boolean containsKey(int x, int y, int z) {
@@ -89,7 +89,7 @@ public class FastMapInit {
 
 	private static class HashFastMap<T> implements FastMap<T> {
 
-		private final HashMap<SectionPos, T> map = new HashMap<>();
+		private final HashMap<SectionPos, T> map = new HashMap<>(1024);
 
 		@Override
 		public boolean containsKey(int x, int y, int z) {

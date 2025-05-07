@@ -127,10 +127,17 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		return true;
 	}
 
+	public void markErased() {
+		if (!isErased)
+			discard();
+		isErased = true;
+	}
+
 	public void erase(LivingEntity user) {
 		if (getOwner() == user) return;
+		if (!isErased)
+			discard();
 		isErased = true;
-		discard();
 	}
 
 	@Override
