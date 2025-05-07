@@ -1,4 +1,4 @@
-package dev.xkmc.fastprojectileapi.render;
+package dev.xkmc.fastprojectileapi.render.core;
 
 import org.joml.Quaternionf;
 

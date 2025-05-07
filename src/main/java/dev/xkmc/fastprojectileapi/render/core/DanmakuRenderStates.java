@@ -1,4 +1,4 @@
-package dev.xkmc.fastprojectileapi.render;
+package dev.xkmc.fastprojectileapi.render.core;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;

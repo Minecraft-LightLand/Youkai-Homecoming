@@ -1,7 +1,8 @@
-package dev.xkmc.fastprojectileapi.render;
+package dev.xkmc.fastprojectileapi.render.core;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
+import dev.xkmc.fastprojectileapi.render.type.RenderableProjectileType;
 import dev.xkmc.l2serial.util.Wrappers;
 
 import java.util.*;

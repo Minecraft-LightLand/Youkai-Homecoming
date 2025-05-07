@@ -1,7 +1,11 @@
-package dev.xkmc.fastprojectileapi.render;
+package dev.xkmc.fastprojectileapi.render.type;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
+import dev.xkmc.fastprojectileapi.render.core.BulkDataWriter;
+import dev.xkmc.fastprojectileapi.render.core.DanmakuRenderStates;
+import dev.xkmc.fastprojectileapi.render.core.DisplayType;
+import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;

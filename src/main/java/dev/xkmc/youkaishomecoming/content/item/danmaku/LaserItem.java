@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.fastprojectileapi.render.DoubleLayerLaserType;
-import dev.xkmc.fastprojectileapi.render.ProjTypeHolder;
+import dev.xkmc.fastprojectileapi.render.core.ProjTypeHolder;
+import dev.xkmc.fastprojectileapi.render.type.DoubleLayerLaserType;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;

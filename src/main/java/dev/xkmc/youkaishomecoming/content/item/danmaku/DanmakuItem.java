@@ -1,6 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
-import dev.xkmc.fastprojectileapi.render.*;
+import dev.xkmc.fastprojectileapi.render.core.ProjTypeHolder;
+import dev.xkmc.fastprojectileapi.render.type.ButterflyProjectileType;
+import dev.xkmc.fastprojectileapi.render.type.RenderableProjectileType;
+import dev.xkmc.fastprojectileapi.render.type.RotatingProjectileType;
+import dev.xkmc.fastprojectileapi.render.type.SimpleProjectileType;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;

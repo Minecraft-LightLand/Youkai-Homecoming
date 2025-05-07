@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
-import dev.xkmc.fastprojectileapi.render.DisplayType;
+import dev.xkmc.fastprojectileapi.render.core.DisplayType;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;

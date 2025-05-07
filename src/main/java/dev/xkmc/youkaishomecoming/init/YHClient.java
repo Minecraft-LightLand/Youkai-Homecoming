@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
-import dev.xkmc.fastprojectileapi.render.ProjectileRenderHelper;
+import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderHelper;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
