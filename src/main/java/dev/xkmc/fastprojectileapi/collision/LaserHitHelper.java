@@ -1,6 +1,7 @@
 package dev.xkmc.fastprojectileapi.collision;
 
 import dev.xkmc.fastprojectileapi.entity.BaseLaser;
+import dev.xkmc.fastprojectileapi.entity.EntityCachingUser;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -38,7 +39,8 @@ public class LaserHitHelper {
 			var radius = e.getEffectiveHitRadius();
 			var graze = e.grazeRange();
 			var box = e.getBoundingBox().expandTowards(v);
-			var list = EntityStorageCache.get(sl).foreach(box.inflate(1 + radius + graze), e::canHitEntity);
+			IEntityCache cache = e.getOwner() instanceof EntityCachingUser user ? user.entityCache().get(sl, user.self()) : EntityStorageCache.get(sl);
+			var list = cache.foreach(box.inflate(1 + radius + graze), e::canHitEntity);
 			for (Entity x : list) {
 				if (x == e) continue;
 				Vec3 hit = ProjectileHitHelper.checkHit(x, radius, src, dst);

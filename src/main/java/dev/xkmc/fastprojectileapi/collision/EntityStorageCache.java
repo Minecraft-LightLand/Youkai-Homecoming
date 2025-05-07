@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class EntityStorageCache {
+public class EntityStorageCache implements IEntityCache {
 
 	private static EntityStorageCache CACHE = null;
 
@@ -24,14 +24,14 @@ public class EntityStorageCache {
 
 	private final ServerLevel sl;
 	private final long time;
-	private final FastMap<SectionCache> map = FastMapInit.createFastMap();
+	final FastMap<SectionCache> map = FastMapInit.createFastMap();
 
 	public EntityStorageCache(ServerLevel sl) {
 		this.sl = sl;
 		this.time = sl.getGameTime();
 	}
 
-	private void checkSection(int x, int y, int z) {
+	protected void checkSection(int x, int y, int z) {
 		if (map.containsKey(x, y, z)) return;
 		map.put(x, y, z, new SectionCache(sl, x, y, z));
 	}

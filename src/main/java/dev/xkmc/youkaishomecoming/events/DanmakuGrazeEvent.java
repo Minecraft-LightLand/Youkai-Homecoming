@@ -6,8 +6,15 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 public class DanmakuGrazeEvent extends PlayerEvent {
 
+	private final GrazingEntity e;
+
 	public DanmakuGrazeEvent(Player player, GrazingEntity e) {
 		super(player);
+		this.e = e;
+	}
+
+	public GrazingEntity getDanmaku() {
+		return e;
 	}
 
 }

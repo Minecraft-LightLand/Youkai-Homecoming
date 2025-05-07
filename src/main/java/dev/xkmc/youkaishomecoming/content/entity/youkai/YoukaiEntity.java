@@ -1,6 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
+import dev.xkmc.fastprojectileapi.collision.UserCacheHolder;
+import dev.xkmc.fastprojectileapi.entity.EntityCachingUser;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleHolder;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -54,7 +56,8 @@ import java.util.List;
 import java.util.Objects;
 
 @SerialClass
-public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleHolder, LivingCardHolder {
+public abstract class YoukaiEntity extends PathfinderMob
+		implements SpellCircleHolder, LivingCardHolder, EntityCachingUser {
 
 	private static final int GROUND_HEIGHT = 5, ATTEMPT_ABOVE = 3;
 
@@ -480,6 +483,13 @@ public abstract class YoukaiEntity extends PathfinderMob implements SpellCircleH
 			}
 		}
 		allDanmakus.removeIf(e -> (!e.isAddedToWorld() || e.isRemoved()) && !e.isValid());
+	}
+
+	private final UserCacheHolder cache = new UserCacheHolder();
+
+	@Override
+	public UserCacheHolder entityCache() {
+		return cache;
 	}
 
 }

@@ -1,6 +1,7 @@
 package dev.xkmc.fastprojectileapi.collision;
 
 import dev.xkmc.fastprojectileapi.entity.BaseProjectile;
+import dev.xkmc.fastprojectileapi.entity.EntityCachingUser;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -33,7 +34,8 @@ public class ProjectileHitHelper {
 			var radius = e.getBbWidth() / 2f;
 			var graze = e.grazeRange();
 			var box = e.getBoundingBox().expandTowards(v);
-			var list = EntityStorageCache.get(sl).foreach(box.inflate(1 + radius + graze), e::canHitEntity);
+			IEntityCache cache = e.getOwner() instanceof EntityCachingUser user ? user.entityCache().get(sl, user.self()) : EntityStorageCache.get(sl);
+			var list = cache.foreach(box.inflate(1 + radius + graze), e::canHitEntity);
 			double d0 = Double.MAX_VALUE;
 			Entity entity = null;
 			for (Entity x : list) {
