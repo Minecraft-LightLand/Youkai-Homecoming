@@ -150,17 +150,25 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 		if (isErased) return;
 		isErased = true;
 		if (isAddedToWorld()) {
+			if (kill) {
+				if (level().isClientSide()) poof();
+				else level().broadcastEntityEvent(this, EntityEvent.POOF);
+			}
 			discard();
 		} else if (getOwner() instanceof LivingEntity le) {
-			if (level().isClientSide())
-				return;
-			DanmakuManager.erase(le, this, kill);
+			if (!level().isClientSide()) DanmakuManager.erase(le, this, kill);
+			else if (kill) poof();
 		}
 	}
 
 	public void erase(LivingEntity user) {
 		if (getOwner() == user) return;
 		markErased(true);
+	}
+
+
+	public void poof() {
+
 	}
 
 	@Override

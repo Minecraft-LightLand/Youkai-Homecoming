@@ -10,7 +10,7 @@ import net.minecraft.world.phys.AABB;
 import java.util.ArrayList;
 import java.util.List;
 
-class SectionCache {
+public class SectionCache {
 
 	private final AABB aabb;
 	private final List<Entity> all = new ArrayList<>();

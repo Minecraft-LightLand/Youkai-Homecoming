@@ -131,4 +131,13 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		GrazeHelper.graze(entity, this);
 	}
 
+	@Override
+	public void poof() {
+		if (!level().isClientSide()) return;
+		if (!(getItem().getItem() instanceof DanmakuItem item)) return;
+		int col = item.color.getTextColor();
+		var pos = position().add(0, getBbHeight() / 2, 0);
+		DanmakuParticleHelper.ball(level(), pos, col, getBbWidth() / 2, random);
+	}
+
 }

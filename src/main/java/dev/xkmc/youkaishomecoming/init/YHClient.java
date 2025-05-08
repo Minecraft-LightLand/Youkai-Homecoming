@@ -4,6 +4,7 @@ import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderHelper;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.client.*;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticle;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
@@ -60,6 +61,11 @@ public class YHClient {
 			ProjectileRenderHelper.setup();
 		});
 
+	}
+
+	@SubscribeEvent
+	public static void registerParticle(RegisterParticleProvidersEvent event) {
+		event.registerSpriteSet(YHDanmaku.POOF.get(), DanmakuPoofParticle.Provider::new);
 	}
 
 	@SubscribeEvent

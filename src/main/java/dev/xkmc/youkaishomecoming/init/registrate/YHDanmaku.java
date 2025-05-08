@@ -1,17 +1,21 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
+import com.mojang.serialization.Codec;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.fastprojectileapi.render.core.DisplayType;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticleOptions;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
 
@@ -101,6 +105,8 @@ public class YHDanmaku {
 
 	private static final ItemEntry<LaserItem>[][] LASER;
 
+	public static final RegistryEntry<ParticleType<DanmakuPoofParticleOptions>> POOF;
+
 	static {
 		DANMAKU = new ItemEntry[Bullet.values().length][DyeColor.values().length];
 		for (var t : Bullet.values()) {
@@ -128,6 +134,16 @@ public class YHDanmaku {
 				LASER[t.ordinal()][e.ordinal()] = ent;
 			}
 		}
+
+		POOF = YoukaisHomecoming.REGISTRATE.simple("danmaku_poof",
+				ForgeRegistries.Keys.PARTICLE_TYPES,
+				() -> new ParticleType<>(false, DanmakuPoofParticleOptions.DESERIALIZER) {
+					@Override
+					public Codec<DanmakuPoofParticleOptions> codec() {
+						return DanmakuPoofParticleOptions.CODEC;
+					}
+				});
+
 	}
 
 	public static void register() {

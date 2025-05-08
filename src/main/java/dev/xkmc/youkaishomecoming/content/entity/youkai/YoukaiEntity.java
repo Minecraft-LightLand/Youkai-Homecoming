@@ -502,6 +502,12 @@ public abstract class YoukaiEntity extends PathfinderMob
 		toBeSent.clear();
 	}
 
+	public void eraseAllDanmaku(Player player) {
+		for (var e : allDanmakus) {
+			e.erase(player);
+		}
+	}
+
 	private final UserCacheHolder cache = new UserCacheHolder();
 
 	@Override

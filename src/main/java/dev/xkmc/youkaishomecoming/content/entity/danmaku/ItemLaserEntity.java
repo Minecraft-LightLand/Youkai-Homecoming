@@ -119,4 +119,13 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, 
 		GrazeHelper.graze(entity, this);
 	}
 
+	@Override
+	public void poof() {
+		if (!level().isClientSide()) return;
+		if (!(getItem().getItem() instanceof LaserItem item)) return;
+		int col = item.color.getTextColor();
+		var pos = position().add(0, getBbHeight() / 2, 0);
+		DanmakuParticleHelper.line(level(), pos, getForward(), col, length, getBbWidth() / 2, random);
+	}
+
 }

@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -67,6 +68,9 @@ public interface IYHDanmaku {
 				youkai.onDanmakuHit(target, this);
 				if (immune) {
 					youkai.onDanmakuImmune(target, this, source);
+				}
+				if (target instanceof Player player && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
+					youkai.eraseAllDanmaku(player);
 				}
 			}
 		}
