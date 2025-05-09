@@ -1,8 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -25,6 +27,20 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 
 	protected int getBlockLightLevel(T e, BlockPos pPos) {
 		return e.fullBright() ? 15 : super.getBlockLightLevel(e, pPos);
+	}
+
+	@Override
+	public double fading(SimplifiedProjectile e) {
+		if (entityRenderDispatcher.camera.getEntity() == e.getOwner()) {
+			return YHModConfig.CLIENT.selfDanmakuFading.get();
+		}
+		double fading = YHModConfig.CLIENT.farDanmakuFading.get();
+		if (fading == 0) return 0;
+		double dist = entityRenderDispatcher.camera.getPosition().distanceTo(e.position());
+		double start = YHModConfig.CLIENT.fadingStart.get();
+		double end = YHModConfig.CLIENT.fadingEnd.get();
+		if (dist < start) return 0;
+		return Math.min((dist - start) / (end - start), 1) * fading;
 	}
 
 	public boolean shouldRender(T e, Frustum frustum, double camx, double camy, double camz) {

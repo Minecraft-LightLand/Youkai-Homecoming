@@ -1,6 +1,7 @@
 package dev.xkmc.fastprojectileapi.entity;
 
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuManager;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -169,6 +170,22 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	public void poof() {
 
+	}
+
+	private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+
+	@Override
+	public BlockPos blockPosition() {
+		return mutablePos;
+	}
+
+	@Override
+	public void setPosRaw(double x, double y, double z) {
+		if (!isAddedToWorld() && mutablePos != null) {
+			position = new Vec3(x, y, z);
+			mutablePos.set(x, y, z);
+			blockPosition = mutablePos;
+		} else super.setPosRaw(x, y, z);
 	}
 
 	@Override

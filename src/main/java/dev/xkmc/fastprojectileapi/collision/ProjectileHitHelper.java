@@ -40,7 +40,7 @@ public class ProjectileHitHelper {
 			Entity entity = null;
 			for (Entity x : list) {
 				if (x == e) continue;
-				var hpos = checkHit(x, radius, src, dst);
+				var hpos = checkHit(x, e.reducedRadius(x, radius), src, dst);
 				if (hpos != null) {
 					double d1 = src.distanceToSqr(hpos);
 					if (d1 < d0) {

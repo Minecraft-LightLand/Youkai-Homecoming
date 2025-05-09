@@ -1,3 +1,9 @@
+2.3.16
+- Trade with Cirno in Youkaifying/ed/Fairy effect using frozen frogs.
+- Buy Cirno's Hairband with frogs
+- Craft Cirno's Wings with Fairy Ice Crystal
+- Add danmaku clearing when player with character effect is hit by danmaku
+
 2.3.15
 - Optimize danmaku rendering
 - Add grazing sound effect

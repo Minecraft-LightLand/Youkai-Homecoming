@@ -5,14 +5,15 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.IYoukaiMerchant;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.MultiHurtByTargetGoal;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
-import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
@@ -21,8 +22,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -44,7 +43,6 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.trading.Merchant;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
@@ -56,7 +54,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 @SerialClass
-public class RumiaEntity extends YoukaiEntity implements Merchant {
+public class RumiaEntity extends YoukaiEntity implements IYoukaiMerchant {
 
 	private static final EntityDimensions FALL = EntityDimensions.scalable(1.7f, 0.4f);
 	private static final UUID EXRUMIA = MathHelper.getUUIDFromString("ex_rumia");
@@ -71,14 +69,6 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		setPersistenceRequired();
-	}
-
-	@Override
-	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
-		if (isAggressive()) return InteractionResult.PASS;
-		if (!player.hasEffect(YHEffects.YOUKAIFIED.get())) return InteractionResult.PASS;
-		if (player instanceof ServerPlayer sp) openMenu(this, sp);
-		return InteractionResult.SUCCESS;
 	}
 
 	protected void registerGoals() {
@@ -296,7 +286,7 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	@Override
 	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
-		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
+		if (EffectEventHandlers.isFullCharacter(e)) return;
 		if (danmaku instanceof ItemDanmakuEntity d && d.getItem().getItem() instanceof DanmakuItem item) {
 			if (item.color == DyeColor.BLACK) {
 				e.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
@@ -343,6 +333,14 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 
 	// merchant
 
+	@Override
+	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+		if (isAggressive()) return InteractionResult.PASS;
+		if (!player.hasEffect(YHEffects.YOUKAIFIED.get())) return InteractionResult.PASS;
+		if (player instanceof ServerPlayer sp) openMenu(this, sp);
+		return InteractionResult.SUCCESS;
+	}
+
 	public void openMenu(RumiaEntity rumia, Player player) {
 		if (this.tradingPlayer != null && this.tradingPlayer.isAlive())
 			return;
@@ -368,10 +366,6 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	private MerchantOffers tradingOffers;
 	private Player tradingPlayer;
 
-	public void init(Player player) {
-		this.tradingPlayer = player;
-	}
-
 	@Override
 	public void setTradingPlayer(@Nullable Player player) {
 		this.tradingPlayer = player;
@@ -393,43 +387,6 @@ public class RumiaEntity extends YoukaiEntity implements Merchant {
 	@Override
 	public void overrideOffers(MerchantOffers offers) {
 		this.tradingOffers = offers;
-	}
-
-	@Override
-	public void notifyTrade(MerchantOffer offer) {
-		if (tradingPlayer instanceof ServerPlayer sp &&
-				offer.getCostA().is(YHFood.FLESH_CHOCOLATE_MOUSSE.item.get()))
-			YHCriteriaTriggers.TRADE.trigger(sp);
-	}
-
-	@Override
-	public void notifyTradeUpdated(ItemStack pStack) {
-
-	}
-
-	@Override
-	public int getVillagerXp() {
-		return 0;
-	}
-
-	@Override
-	public void overrideXp(int pXp) {
-
-	}
-
-	@Override
-	public boolean showProgressBar() {
-		return false;
-	}
-
-	@Override
-	public SoundEvent getNotifyTradeSound() {
-		return SoundEvents.CAT_AMBIENT;
-	}
-
-	@Override
-	public boolean isClientSide() {
-		return false;
 	}
 
 }

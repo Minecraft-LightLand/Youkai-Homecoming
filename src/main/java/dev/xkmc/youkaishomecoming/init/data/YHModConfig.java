@@ -12,11 +12,19 @@ public class YHModConfig {
 		public final ForgeConfigSpec.BooleanValue laserRenderAdditive;
 		public final ForgeConfigSpec.BooleanValue laserRenderInverted;
 		public final ForgeConfigSpec.DoubleValue laserTransparency;
+		public final ForgeConfigSpec.DoubleValue farDanmakuFading;
+		public final ForgeConfigSpec.DoubleValue selfDanmakuFading;
+		public final ForgeConfigSpec.DoubleValue fadingStart;
+		public final ForgeConfigSpec.DoubleValue fadingEnd;
 
 		Client(ForgeConfigSpec.Builder builder) {
 			laserRenderAdditive = builder.define("laserRenderAdditive", true);
 			laserRenderInverted = builder.define("laserRenderInverted", true);
 			laserTransparency = builder.defineInRange("laserTransparency", 0.5, 0, 1);
+			farDanmakuFading = builder.defineInRange("farDanmakuFading", 0.5d, 0, 1);
+			selfDanmakuFading = builder.defineInRange("selfDanmakuFading", 0.5d, 0, 1);
+			fadingStart = builder.defineInRange("fadingStart", 8d, 0, 128);
+			fadingEnd = builder.defineInRange("fadingEnd", 64d, 0, 128);
 		}
 
 	}

@@ -21,6 +21,9 @@ public class CirnoModel<T extends CirnoEntity> extends HierarchicalModel<T> {
 	private final ModelPart leftArm;
 	private final ModelPart rightLeg;
 	private final ModelPart leftLeg;
+	private final ModelPart rr;
+	private final ModelPart lr;
+	private final ModelPart tie;
 
 	public CirnoModel(ModelPart root) {
 		this.head = root.getChild("head");
@@ -29,6 +32,9 @@ public class CirnoModel<T extends CirnoEntity> extends HierarchicalModel<T> {
 		this.leftArm = root.getChild("leftArm");
 		this.rightLeg = root.getChild("rightLeg");
 		this.leftLeg = root.getChild("leftLeg");
+		rr = head.getChild("r_r");
+		lr = head.getChild("l_r");
+		tie = head.getChild("tie");
 	}
 
 
@@ -38,6 +44,7 @@ public class CirnoModel<T extends CirnoEntity> extends HierarchicalModel<T> {
 	}
 
 	public void setupAnim(T e, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+		tie.visible = rr.visible = lr.visible = !e.getFlag(4);
 		head.yRot = pNetHeadYaw * ((float) Math.PI / 180F);
 		head.xRot = pHeadPitch * ((float) Math.PI / 180F);
 
@@ -242,8 +249,11 @@ public class CirnoModel<T extends CirnoEntity> extends HierarchicalModel<T> {
 		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create()
 				.texOffs(0, 16).addBox(-3.5F, -7.0F, -3.5F, 7.0F, 7.0F, 7.0F, new CubeDeformation(0.0F))
 				.texOffs(46, 68).addBox(-3.0F, -7.0F, -3.51F, 6.0F, 7.0F, 0.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 0).addBox(-4.0F, -7.5F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(78, 40).addBox(-1.5F, -8.5F, 2.5F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 6.0F, 0.0F));
+				.texOffs(0, 0).addBox(-4.0F, -7.5F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 6.0F, 0.0F));
+
+		head.addOrReplaceChild("tie", CubeListBuilder.create()
+						.texOffs(78, 40).addBox(-1.5F, -8.5F, 2.5F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
+				PartPose.offset(0.0F, 0f, 0.0F));
 
 		PartDefinition r_r = head.addOrReplaceChild("r_r", CubeListBuilder.create().texOffs(71, 71).addBox(-5.0F, -2.0F, 0.0F, 6.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.75F, -6.5F, 3.0F));
 

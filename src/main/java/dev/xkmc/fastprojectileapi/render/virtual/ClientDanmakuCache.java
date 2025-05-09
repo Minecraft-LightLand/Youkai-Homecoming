@@ -28,7 +28,18 @@ import java.util.LinkedList;
 public class ClientDanmakuCache {
 
 	private static ClientDanmakuCache CACHE = null;
+	private static EntityRenderer[] RENDERERS;
 
+	private static <T extends SimplifiedProjectile> EntityRenderer<T> getRenderer(EntityRenderDispatcher disp, T e) {
+		int id = e.getTypeId();
+		if (RENDERERS == null || RENDERERS.length < id) {
+			RENDERERS = new EntityRenderer[id + 1];
+		}
+		if (RENDERERS[id] == null) {
+			RENDERERS[id] = disp.getRenderer(e);
+		}
+		return Wrappers.cast(RENDERERS[id]);
+	}
 
 	public static ClientDanmakuCache get(Level level) {
 		if (CACHE == null || CACHE.level != level) {
@@ -88,7 +99,7 @@ public class ClientDanmakuCache {
 			double camx, double camy, double camz, float pTick,
 			PoseStack pose, @Nullable VertexConsumer box
 	) {
-		EntityRenderer<? super E> er = disp.getRenderer(e);
+		EntityRenderer<E> er = getRenderer(disp, e);
 		if (!er.shouldRender(e, frustum, camx, camy, camz)) return;
 		double dx = Mth.lerp(pTick, e.xOld, e.getX());
 		double dy = Mth.lerp(pTick, e.yOld, e.getY());
@@ -97,7 +108,7 @@ public class ClientDanmakuCache {
 	}
 
 	public <E extends SimplifiedProjectile> void renderEntity(
-			E e, EntityRenderer<? super E> er,
+			E e, EntityRenderer<E> er,
 			double x, double y, double z, float pTick,
 			PoseStack pose, @Nullable VertexConsumer box
 	) {

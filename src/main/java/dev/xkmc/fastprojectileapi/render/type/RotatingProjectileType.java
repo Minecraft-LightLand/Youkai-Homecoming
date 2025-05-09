@@ -21,7 +21,7 @@ public record RotatingProjectileType(ResourceLocation tex, DisplayType display, 
 	public void start(MultiBufferSource buffer, List<Ins> list) {
 		BulkDataWriter vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.danmaku(tex, display())), list.size());
 		for (var e : list) {
-			e.tex(vc, -1);
+			e.tex(vc);
 		}
 		vc.flush();
 	}
@@ -32,12 +32,13 @@ public record RotatingProjectileType(ResourceLocation tex, DisplayType display, 
 		sim4.set3x3(new Matrix4f().scale((float) Math.pow(sim4.determinant3x3(), 1 / 3d)));
 		var q4 = Axis.ZP.rotationDegrees((e.tickCount + pTick) * 360f / (float) rot);
 		sim4.rotate(q4);
-		holder.accept(new Ins(sim4));
+		int col = DanmakuRenderStates.fading(-1, r, e);
+		holder.accept(new Ins(sim4, col));
 	}
 
-	public record Ins(Matrix4f m4) {
+	public record Ins(Matrix4f m4, int color) {
 
-		public void tex(BulkDataWriter vc, int color) {
+		public void tex(BulkDataWriter vc) {
 			vertex(vc, m4, 1, 1, 1, 0, color);
 			vertex(vc, m4, 1, 0, 1, 1, color);
 			vertex(vc, m4, 0, 0, 0, 1, color);

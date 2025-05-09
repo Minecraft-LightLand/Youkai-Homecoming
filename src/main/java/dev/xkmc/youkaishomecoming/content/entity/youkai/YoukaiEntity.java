@@ -14,12 +14,12 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.events.YoukaiFightEvent;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -222,7 +222,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 	}
 
 	public void onDanmakuHit(LivingEntity e, IYHDanmaku danmaku) {
-		if (e instanceof YoukaiEntity || e.hasEffect(YHEffects.YOUKAIFIED.get())) return;
+		if (EffectEventHandlers.isFullCharacter(e)) return;
 		if (targets.contains(e)) {
 			double heal = YHModConfig.COMMON.danmakuHealOnHitTarget.get();
 			heal(getMaxHealth() * (float) heal);

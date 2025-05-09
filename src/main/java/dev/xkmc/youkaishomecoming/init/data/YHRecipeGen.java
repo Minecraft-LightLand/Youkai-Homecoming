@@ -105,6 +105,11 @@ public class YHRecipeGen {
 					.define('2', YHTagGen.PRESET_SPELL)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.CIRNO_WINGS)::unlockedBy, YHItems.FAIRY_ICE_CRYSTAL.get())
+					.pattern("A A").pattern("A A").pattern("A A")
+					.define('A', YHItems.FAIRY_ICE_CRYSTAL)
+					.save(pvd);
+
 		}
 
 		// furniture

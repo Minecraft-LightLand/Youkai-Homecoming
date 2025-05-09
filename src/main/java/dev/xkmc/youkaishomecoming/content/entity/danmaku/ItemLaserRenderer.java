@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -30,6 +31,11 @@ public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer
 	@Override
 	public boolean shouldRender(T pLivingEntity, Frustum pCamera, double pCamX, double pCamY, double pCamZ) {
 		return true;
+	}
+
+	@Override
+	public double fading(SimplifiedProjectile e) {
+		return 0;
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class LaserHitHelper {
 			var list = cache.foreach(box.inflate(1 + radius + graze), e::canHitEntity);
 			for (Entity x : list) {
 				if (x == e) continue;
-				Vec3 hit = ProjectileHitHelper.checkHit(x, radius, src, dst);
+				Vec3 hit = ProjectileHitHelper.checkHit(x, e.reducedRadius(x, radius), src, dst);
 				if (hit != null) ehit.add(new EntityHitResult(x, hit));
 				if (graze > 0 && x instanceof Player pl) {
 					Vec3 gr = ProjectileHitHelper.checkHit(x, radius + graze, src, dst);

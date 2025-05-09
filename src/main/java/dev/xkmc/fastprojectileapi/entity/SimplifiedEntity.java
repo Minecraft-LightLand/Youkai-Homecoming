@@ -2,6 +2,7 @@ package dev.xkmc.fastprojectileapi.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.Entity;
@@ -93,4 +94,12 @@ public abstract class SimplifiedEntity extends Entity {
 		return LazyOptional.empty();
 	}
 
+	private int typeId = -1;
+
+	public int getTypeId() {
+		if (typeId < 0) {
+			typeId = BuiltInRegistries.ENTITY_TYPE.getId(getType());
+		}
+		return typeId;
+	}
 }

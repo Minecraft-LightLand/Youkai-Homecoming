@@ -3,8 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -94,8 +93,7 @@ public class RumiaStateMachine {
 	public void startChargeAttack(LivingEntity target) {
 		if (stage != RumiaStage.NONE) return;
 		if (ballDelay > 0) return;
-		if (target instanceof YoukaiEntity || target.hasEffect(YHEffects.YOUKAIFIED.get()))
-			return;
+		if (EffectEventHandlers.isFullCharacter(target)) return;
 		rumia.getNavigation().stop();
 		stage = RumiaStage.PREPARE;
 		time = PREPARE_TIME;

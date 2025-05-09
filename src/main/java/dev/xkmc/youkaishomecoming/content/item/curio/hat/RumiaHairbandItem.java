@@ -5,6 +5,7 @@ import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.content.client.RumiaHairbandModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -49,7 +50,7 @@ public class RumiaHairbandItem extends TouhouHatItem {
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {
-		if (player.hasEffect(YHEffects.YOUKAIFIED.get())) return;
+		if (EffectEventHandlers.isFullCharacter(player)) return;
 		if (player.hasEffect(YHEffects.SOBER.get())) return;
 		EffectUtil.refreshEffect(player, new MobEffectInstance(YHEffects.YOUKAIFYING.get(), 40, 0,
 				true, true), EffectUtil.AddReason.SELF, player);

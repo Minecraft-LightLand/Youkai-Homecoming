@@ -108,11 +108,6 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, 
 	private int lastGraze = 0;
 
 	@Override
-	public float grazeRange() {
-		return 1.5f;
-	}
-
-	@Override
 	public void doGraze(Player entity) {
 		if (tickCount < lastGraze) return;
 		lastGraze = tickCount + 5;

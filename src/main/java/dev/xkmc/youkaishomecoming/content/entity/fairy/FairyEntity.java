@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -53,6 +54,8 @@ public class FairyEntity extends GeneralYoukaiEntity {
 
 	protected boolean wouldAttack(LivingEntity entity) {
 		if (shouldIgnore(entity)) return false;
+		if (entity.hasEffect(YHEffects.FAIRY.get()))
+			return false;
 		return YHModConfig.COMMON.fairyAttackYoukaified.get() && EffectEventHandlers.isYoukai(entity);
 	}
 

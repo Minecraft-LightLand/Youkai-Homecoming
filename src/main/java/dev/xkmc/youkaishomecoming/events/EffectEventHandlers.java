@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.events;
 
 import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -21,18 +22,21 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EffectEventHandlers {
 
-	public static boolean isWeakCharacter(LivingEntity e) {
-		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
-				e.hasEffect(YHEffects.FAIRY.get());
-	}
-
 	public static boolean isYoukai(LivingEntity e) {
-		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+		return
+				e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
 				e.hasEffect(YHEffects.YOUKAIFIED.get());
 	}
 
 	public static boolean isCharacter(LivingEntity e) {
-		return e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+		return e instanceof YoukaiEntity ||
+				e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
+				e.hasEffect(YHEffects.YOUKAIFIED.get()) ||
+				e.hasEffect(YHEffects.FAIRY.get());
+	}
+
+	public static boolean isFullCharacter(LivingEntity e) {
+		return e instanceof YoukaiEntity ||
 				e.hasEffect(YHEffects.YOUKAIFIED.get()) ||
 				e.hasEffect(YHEffects.FAIRY.get());
 	}

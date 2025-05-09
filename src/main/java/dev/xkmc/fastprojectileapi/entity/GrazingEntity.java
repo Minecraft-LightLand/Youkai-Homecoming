@@ -1,5 +1,6 @@
 package dev.xkmc.fastprojectileapi.entity;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 public interface GrazingEntity {
@@ -11,6 +12,10 @@ public interface GrazingEntity {
 
 	default void doGraze(Player entity) {
 
+	}
+
+	default double reducedRadius(Entity x, float radius) {
+		return radius;
 	}
 
 }

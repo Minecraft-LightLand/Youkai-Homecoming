@@ -10,6 +10,7 @@ import dev.xkmc.fastprojectileapi.collision.FastMapInit;
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuToClientPacket;
 import dev.xkmc.fastprojectileapi.render.virtual.EraseDanmakuToClient;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleConfig;
+import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
@@ -22,6 +23,7 @@ import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
@@ -45,6 +47,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -93,7 +96,10 @@ public class YoukaisHomecoming {
 		YHCriteriaTriggers.register();
 		KoishiAttackCapability.register();
 		FrogGodCapability.register();
+		GrazeCapability.register();
 		YHModConfig.init();
+
+		AttackEventHandler.register(3943, new YHAttackListener());
 
 		if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
@@ -101,14 +107,6 @@ public class YoukaisHomecoming {
 		if (ModList.get().isLoaded(Gateways.MODID)) {
 			MinecraftForge.EVENT_BUS.register(GatewayEventHandlers.class);
 		}
-		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
-		REGISTRATE.addDataGenerator(YHTagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
-		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
-		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
-		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, YHAdvGen::genAdv);
 	}
 
 	@SubscribeEvent
@@ -149,8 +147,17 @@ public class YoukaisHomecoming {
 		FastMapInit.init();
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
+		REGISTRATE.addDataGenerator(YHTagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
+		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
+		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, YHAdvGen::genAdv);
+
 		boolean server = event.includeServer();
 		var gen = event.getGenerator();
 		PackOutput output = gen.getPackOutput();

@@ -2,6 +2,8 @@ package dev.xkmc.fastprojectileapi.render.core;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderType;
@@ -41,11 +43,22 @@ public abstract class DanmakuRenderStates extends RenderType {
 			Util.memoize((rl, type) -> create("laser_" + type.getName(), rl, true, type));
 
 	public static RenderType danmaku(ResourceLocation rl, DisplayType type) {
+		if (type == DisplayType.SOLID && (
+				YHModConfig.CLIENT.farDanmakuFading.get() > 0 ||
+						YHModConfig.CLIENT.selfDanmakuFading.get() > 0
+		)) type = DisplayType.TRANSPARENT;
 		return DANMAKU.apply(rl, type);
 	}
 
 	public static RenderType laser(ResourceLocation rl, DisplayType type) {
 		return LASER.apply(rl, type);
+	}
+
+	public static int fading(int col, ProjectileRenderer<?> r, SimplifiedProjectile e) {
+		double perc = r.fading(e);
+		if (perc == 0) return col;
+		int alpha = (int) ((col >>> 24) * (1 - perc));
+		return (alpha << 24) | col & 0xffffff;
 	}
 
 }

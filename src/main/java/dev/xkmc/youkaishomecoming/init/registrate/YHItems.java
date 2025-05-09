@@ -127,7 +127,6 @@ public class YHItems {
 					.item("cirno_hairband", p -> new CirnoHairbandItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
-					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 
 			var back = ItemTags.create(new ResourceLocation("curios", "back"));
@@ -136,7 +135,6 @@ public class YHItems {
 					.item("cirno_wings", p -> new CirnoWingsItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
 					.tag(back, YHTagGen.TOUHOU_WINGS)
-					.removeTab(YoukaisHomecoming.TAB.getKey())
 					.register();
 
 		}

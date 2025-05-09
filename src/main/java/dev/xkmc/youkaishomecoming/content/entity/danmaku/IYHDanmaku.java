@@ -1,8 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 
+import dev.xkmc.fastprojectileapi.entity.GrazingEntity;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
+import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -15,11 +18,24 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.PartEntity;
 import org.jetbrains.annotations.Nullable;
 
-public interface IYHDanmaku {
+public interface IYHDanmaku extends GrazingEntity {
 
 	float damage(Entity target);
 
 	SimplifiedProjectile self();
+
+	@Override
+	default float grazeRange() {
+		return 1.5f;
+	}
+
+	@Override
+	default double reducedRadius(Entity x, float radius) {
+		if (x instanceof Player player && player.hasEffect(YHEffects.FAIRY.get())) {
+			return radius - 0.2;
+		}
+		return radius;
+	}
 
 	default boolean shouldHurt(@Nullable Entity owner, Entity e) {
 		if (owner == null) return false;
@@ -65,11 +81,16 @@ public interface IYHDanmaku {
 		if (e instanceof LivingEntity le) target = le;
 		if (target != null) {
 			if (self().getOwner() instanceof YoukaiEntity youkai) {
+				if (target instanceof Player player) {
+					if (GrazeCapability.HOLDER.get(player).performErase()) {
+						youkai.eraseAllDanmaku(player);
+						return;
+					}
+				}
 				youkai.onDanmakuHit(target, this);
 				if (immune) {
 					youkai.onDanmakuImmune(target, this, source);
-				}
-				if (target instanceof Player player && player.hasEffect(YHEffects.YOUKAIFIED.get())) {
+				} else if (target instanceof Player player && EffectEventHandlers.isFullCharacter(target)) {
 					youkai.eraseAllDanmaku(player);
 				}
 			}

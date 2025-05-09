@@ -23,7 +23,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 		BulkDataWriter vc;
 		vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.danmaku(overlay, display())), list.size());
 		for (var e : list) {
-			e.tex(vc, -1);
+			e.tex(vc);
 		}
 		vc.flush();
 	}
@@ -34,12 +34,13 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 		pose.mulPose(Axis.XP.rotationDegrees(Mth.lerp(pTick, e.xRotO, e.getXRot())));
 		float time = Math.abs((e.tickCount + pTick) / period % 1 * 4 - 2) - 1;
 		float angle = 60f;
+		int col = DanmakuRenderStates.fading(-1, r, e);
 		{
 			pose.pushPose();
 			pose.mulPose(Axis.ZP.rotationDegrees(time * angle));
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
-			holder.accept(new Ins(m4, false));
+			holder.accept(new Ins(m4, col, false));
 			pose.popPose();
 		}
 		{
@@ -47,14 +48,14 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 			pose.mulPose(Axis.ZP.rotationDegrees(time * -angle));
 			PoseStack.Pose mat = pose.last();
 			Matrix4f m4 = new Matrix4f(mat.pose());
-			holder.accept(new Ins(m4, true));
+			holder.accept(new Ins(m4, col, true));
 			pose.popPose();
 		}
 	}
 
-	public record Ins(Matrix4f m4, boolean right) {
+	public record Ins(Matrix4f m4, int color, boolean right) {
 
-		public void tex(BulkDataWriter vc, int color) {
+		public void tex(BulkDataWriter vc) {
 			float x0 = 0;
 			float x1 = .5f;
 			if (right) {

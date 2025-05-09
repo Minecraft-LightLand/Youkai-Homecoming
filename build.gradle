@@ -267,7 +267,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
             "serene-seasons",
             "thirst-was-taken",
             "touhou-little-maid")
-    mainFile.releaseType = "release"
+    mainFile.releaseType = project.releaseType
     disableVersionDetection()
 }
 
@@ -276,7 +276,7 @@ modrinth {
     projectId = project.modrinth_project
     versionName = "Youkai's Homecoming ${project.ll_version}"
     versionNumber = project.ll_version
-    versionType = "release"
+    versionType = project.releaseType
     uploadFile = new File("./build/libs/${modid}-${ll_version}.jar")
     gameVersions = ["1.20.1"]
     loaders = ["forge", "neoforge"]

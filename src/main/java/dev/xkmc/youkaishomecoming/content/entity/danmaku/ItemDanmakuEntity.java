@@ -10,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.spell.mover.MoverOwner;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.TrailAction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
@@ -87,6 +88,12 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	}
 
 	@Override
+	public void readSpawnData(FriendlyByteBuf data) {
+		super.readSpawnData(data);
+		refreshDimensions();
+	}
+
+	@Override
 	public EntityDimensions getDimensions(Pose pPose) {
 		return super.getDimensions(pPose).scale(scale());
 	}
@@ -118,11 +125,6 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 	}
 
 	private int lastGraze = 0;
-
-	@Override
-	public float grazeRange() {
-		return 1.5f;
-	}
 
 	@Override
 	public void doGraze(Player entity) {

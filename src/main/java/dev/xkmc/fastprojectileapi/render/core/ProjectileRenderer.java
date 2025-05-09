@@ -10,4 +10,6 @@ public interface ProjectileRenderer<T extends SimplifiedProjectile> {
 
 	void render(T e, float pTick, PoseStack pose);
 
+	double fading(SimplifiedProjectile e);
+
 }

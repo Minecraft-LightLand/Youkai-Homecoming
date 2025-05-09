@@ -16,6 +16,7 @@ public class FairyEffect extends MobEffect {
 		super(category, color);
 		String uuid = MathHelper.getUUIDFromString("fairy").toString();
 		addAttributeModifier(Attributes.MAX_HEALTH, uuid, -0.5, AttributeModifier.Operation.MULTIPLY_TOTAL);
+		addAttributeModifier(Attributes.ATTACK_DAMAGE, uuid, -0.5, AttributeModifier.Operation.MULTIPLY_TOTAL);
 		addAttributeModifier(Attributes.MOVEMENT_SPEED, uuid, 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	}
 
