@@ -2,38 +2,46 @@ package dev.xkmc.youkaishomecoming.content.entity.fairy;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
+import dev.xkmc.youkaishomecoming.content.entity.rumia.MoveAroundNestGoal;
+import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.IYoukaiMerchant;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
@@ -47,6 +55,14 @@ public class CirnoEntity extends FairyEntity implements IYoukaiMerchant {
 
 	public CirnoEntity(EntityType<? extends CirnoEntity> type, Level level) {
 		super(type, level);
+	}
+
+	@Override
+	protected void registerGoals() {
+		super.registerGoals();
+		goalSelector.addGoal(6, new MoveAroundNestGoal(this, 1));
+		goalSelector.addGoal(5, new TemptGoal(this, 1,
+				Ingredient.of(YHTagGen.FROZEN_FROG), false));
 	}
 
 	@Override
@@ -92,13 +108,31 @@ public class CirnoEntity extends FairyEntity implements IYoukaiMerchant {
 		TouhouSpellCards.setCirno(this);
 	}
 
+	@Nullable
+	@Override
+	public SpawnGroupData finalizeSpawn(
+			ServerLevelAccessor level, DifficultyInstance diff, MobSpawnType reason,
+			@Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
+		if (reason == MobSpawnType.NATURAL || reason == MobSpawnType.STRUCTURE) {
+			restrictTo(blockPosition(), 8);
+		}
+		return super.finalizeSpawn(level, diff, reason, data, nbt);
+	}
+
+	public static boolean checkCirnoSpawnRules(EntityType<CirnoEntity> e, ServerLevelAccessor level, MobSpawnType type,
+											   BlockPos pos, RandomSource rand) {
+		return checkMobSpawnRules(e, level, type, pos, rand) && YHModConfig.COMMON.cirnoSpawn.get() &&
+				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty();
+	}
 
 	// merchant
 
 	@Override
 	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
 		if (isAggressive()) return InteractionResult.PASS;
-		if (!EffectEventHandlers.isCharacter(player)) return InteractionResult.PASS;
+		if (!EffectEventHandlers.isCharacter(player) &&
+				!player.getItemInHand(hand).is(YHTagGen.FROZEN_FROG))
+			return InteractionResult.PASS;
 		if (player instanceof ServerPlayer sp) openMenu(sp);
 		return InteractionResult.SUCCESS;
 	}
@@ -106,6 +140,7 @@ public class CirnoEntity extends FairyEntity implements IYoukaiMerchant {
 	public void openMenu(Player player) {
 		if (getTradingPlayer() != null && getTradingPlayer().isAlive())
 			return;
+		tradingOffers = null;
 		init(player);
 		openTradingScreen(player, getName(), 0);
 	}

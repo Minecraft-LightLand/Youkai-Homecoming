@@ -20,6 +20,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -58,7 +59,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 
 	private static final List<YHStructure> STRUCTURES = List.of(
 			new YHStructure(YoukaisHomecoming.loc("youkai_nest"),
-					YHBiomeTagsProvider.HAS_NEST, 24, 8,
+					YHBiomeTagsProvider.HAS_RUMIA_NEST, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
 							new RuleProcessor(List.of(
@@ -70,6 +71,23 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 							MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE,
 									WeightedRandomList.create(new MobSpawnSettings.SpawnerData(
 											YHEntities.RUMIA.get(), 1, 1, 1
+									)))
+					)),
+			new YHStructure(YoukaisHomecoming.loc("cirno_nest"),
+					YHBiomeTagsProvider.HAS_CIRNO_NEST, 24, 8,
+					List.of(
+							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
+							new RuleProcessor(List.of(
+									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.NORTH, YHLootGen.CIRNO_CABINET),
+									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.SOUTH, YHLootGen.CIRNO_CABINET),
+									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.EAST, YHLootGen.CIRNO_CABINET),
+									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.WEST, YHLootGen.CIRNO_CABINET)
+							))
+					),
+					Map.of(
+							MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE,
+									WeightedRandomList.create(new MobSpawnSettings.SpawnerData(
+											YHEntities.CIRNO.get(), 1, 1, 1
 									)))
 					)),
 			new YHStructure(YoukaisHomecoming.loc("hakurei_shrine"),
@@ -139,8 +157,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		var features = ctx.lookup(Registries.PLACED_FEATURE);
 		registerMobSpawn(ctx, YoukaisHomecoming.loc("lamprey"), YHBiomeTagsProvider.LAMPREY, biomes,
 				new MobSpawnSettings.SpawnerData(YHEntities.LAMPREY.get(), 5, 3, 5));
-		registerMobSpawn(ctx, YoukaisHomecoming.loc("cirno"), YHBiomeTagsProvider.CIRNO, biomes,
-				new MobSpawnSettings.SpawnerData(YHEntities.CIRNO.get(), 5, 1, 1));
 		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
 		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
@@ -178,6 +194,12 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	private static ProcessorRule injectData(Block block, ResourceLocation table) {
 		return new ProcessorRule(new BlockMatchTest(block), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
 				block.defaultBlockState(), new AppendLoot(table));
+	}
+
+	private static ProcessorRule injectData(Block block, Direction dir, ResourceLocation table) {
+		var state = block.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, dir);
+		return new ProcessorRule(new BlockStateMatchTest(state), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
+				state, new AppendLoot(table));
 	}
 
 	private static class SinglePiece extends SinglePoolElement {

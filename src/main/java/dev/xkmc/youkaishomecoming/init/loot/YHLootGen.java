@@ -23,6 +23,8 @@ public class YHLootGen {
 	public static final ResourceLocation SHRINE_BARREL = YoukaisHomecoming.loc("chests/hakurei_shrine/barrel");
 	public static final ResourceLocation SHRINE_CABINET = YoukaisHomecoming.loc("chests/hakurei_shrine/cabinet");
 
+	public static final ResourceLocation CIRNO_CABINET = YoukaisHomecoming.loc("chests/cirno_nest/cabinet");
+
 	public static final ResourceLocation UDUMBARA_LOOT = YoukaisHomecoming.loc("udumbara_chest_loot");
 
 	public static void genLoot(RegistrateLootTableProvider pvd) {
@@ -65,6 +67,21 @@ public class YHLootGen {
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(NEST_BARREL, LootTable.lootTable()
 					.withPool(bone).withPool(misc).withPool(dango).withPool(flesh)
+			));
+		}
+		{
+			var ice = LootTableTemplate.getPool(1, 0)
+					.add(LootTableTemplate.getItem(YHItems.ICE_CUBE.get(), 16));
+			var pop = LootTableTemplate.getPool(2, 0)
+					.add(LootTableTemplate.getItem(YHFood.BIG_POPSICLE.item.get(), 4))
+					.add(LootTableTemplate.getItem(YHFood.MILK_POPSICLE.item.get(), 2))
+					.add(LootTableTemplate.getItem(ModItems.MELON_POPSICLE.get(), 2));
+			var frog = LootTableTemplate.getPool(2, 1)
+					.add(LootTableTemplate.getItem(YHItems.FROZEN_FROG_COLD.get(), 1))
+					.add(LootTableTemplate.getItem(YHItems.FROZEN_FROG_TEMPERATE.get(), 1))
+					.add(LootTableTemplate.getItem(YHItems.FROZEN_FROG_WARM.get(), 1));
+			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(CIRNO_CABINET, LootTable.lootTable()
+					.withPool(ice).withPool(pop).withPool(frog)
 			));
 		}
 		{

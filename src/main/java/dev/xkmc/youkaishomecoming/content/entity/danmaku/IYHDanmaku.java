@@ -14,11 +14,14 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.PartEntity;
 import org.jetbrains.annotations.Nullable;
 
 public interface IYHDanmaku extends GrazingEntity {
+
+	float GRAZE_RANGE = 1.5f;
 
 	float damage(Entity target);
 
@@ -26,15 +29,12 @@ public interface IYHDanmaku extends GrazingEntity {
 
 	@Override
 	default float grazeRange() {
-		return 1.5f;
+		return GRAZE_RANGE;
 	}
 
 	@Override
-	default double reducedRadius(Entity x, float radius) {
-		if (x instanceof Player player && player.hasEffect(YHEffects.FAIRY.get())) {
-			return radius - 0.2;
-		}
-		return radius;
+	default AABB alterHitBox(Entity x, float radius, float graze) {
+		return alterEntityHitBox(x, radius, graze);
 	}
 
 	default boolean shouldHurt(@Nullable Entity owner, Entity e) {
@@ -95,6 +95,19 @@ public interface IYHDanmaku extends GrazingEntity {
 				}
 			}
 		}
+	}
+
+	static AABB alterEntityHitBox(Entity x, float radius, float graze) {
+		var box = x.getBoundingBox();
+		if (graze > 0) return box.inflate(radius + graze);
+		float shrink = 0;
+		if (x instanceof Player player && player.hasEffect(YHEffects.FAIRY.get())) {
+			shrink = 0.2f;
+		}
+		return new AABB(
+				box.minX + shrink - radius, box.minY + shrink * 2 - radius, box.minZ + shrink - radius,
+				box.maxX - shrink + radius, box.maxY + radius, box.maxZ - shrink + radius
+		);
 	}
 
 }

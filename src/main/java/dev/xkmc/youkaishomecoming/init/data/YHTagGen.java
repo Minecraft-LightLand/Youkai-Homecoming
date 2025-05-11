@@ -45,6 +45,7 @@ public class YHTagGen {
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
 	public static final TagKey<Item> PRESET_SPELL = item("preset_spell");
+	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
@@ -113,6 +114,7 @@ public class YHTagGen {
 		for (var e : OPTIONAL_TAGS) {
 			e.accept(pvd);
 		}
+		pvd.addTag(FROZEN_FROG).add(YHItems.FROZEN_FROG_COLD.get(), YHItems.FROZEN_FROG_WARM.get(), YHItems.FROZEN_FROG_TEMPERATE.get());
 
 	}
 

@@ -12,6 +12,7 @@ import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
+import dev.xkmc.youkaishomecoming.content.entity.rumia.RestrictData;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCardWrapper;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
@@ -137,6 +138,10 @@ public abstract class YoukaiEntity extends PathfinderMob
 		tag.putInt("Age", tickCount);
 		tag.put("auto-serial", Objects.requireNonNull(TagCodec.toTag(new CompoundTag(), this)));
 		data().write(tag, entityData);
+		if (hasRestriction()) {
+			var data = TagCodec.valueToTag(new RestrictData(getRestrictCenter(), getRestrictRadius()));
+			if (data != null) tag.put("Restrict", data);
+		}
 	}
 
 	public void readAdditionalSaveData(CompoundTag tag) {
@@ -148,6 +153,13 @@ public abstract class YoukaiEntity extends PathfinderMob
 		data().read(tag, entityData);
 		if (getTarget() == null) {
 			setWalking();
+		}
+		var data = tag.get("Restrict");
+		if (data != null) {
+			RestrictData res = TagCodec.valueFromTag(data, RestrictData.class);
+			if (res != null) {
+				restrictTo(res.center(), (int) res.radius());
+			}
 		}
 	}
 

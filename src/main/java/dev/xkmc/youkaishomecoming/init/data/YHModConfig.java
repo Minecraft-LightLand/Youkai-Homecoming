@@ -80,7 +80,6 @@ public class YHModConfig {
 
 		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
-		public final ForgeConfigSpec.BooleanValue cirnoSpawnCheckEffect;
 		public final ForgeConfigSpec.BooleanValue fairyAttackYoukaified;
 		public final ForgeConfigSpec.DoubleValue fairySummonReinforcement;
 
@@ -213,8 +212,6 @@ public class YHModConfig {
 						.define("cirnoSpawn", true);
 				cirnoFairyDrop = builder.comment("Chance for fairy ice crystal to drop")
 						.defineInRange("cirnoFairyDrop", 0.03, 0, 1);
-				cirnoSpawnCheckEffect = builder.comment("Cirno spawns naturally only when there are youkaifying/ed player nearby")
-						.define("cirnoSpawnCheckEffect", true);
 				fairyAttackYoukaified = builder.comment("Fairies will actively attack players with youkaifying/ed effects")
 						.define("fairyAttackYoukaified", true);
 				fairySummonReinforcement = builder.comment("Chance for fairies to summon other fairies when killed by non-danmaku damage")

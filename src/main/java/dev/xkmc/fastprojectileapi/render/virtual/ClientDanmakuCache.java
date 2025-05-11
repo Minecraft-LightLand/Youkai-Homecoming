@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -92,6 +94,10 @@ public class ClientDanmakuCache {
 		for (var e : all) {
 			this.maybeRenderEntity(disp, frustum, e, d0, d1, d2, pTick, pose, box);
 		}
+		if (box != null && cam.getEntity() instanceof Player pl && !all.isEmpty() &&
+				!Minecraft.getInstance().options.getCameraType().isFirstPerson()) {
+			renderPlayerHitbox(pose, box, pl, d0, d1, d2, pTick);
+		}
 	}
 
 	private <E extends SimplifiedProjectile> void maybeRenderEntity(
@@ -128,7 +134,7 @@ public class ClientDanmakuCache {
 		pose.popPose();
 	}
 
-	private static void renderHitbox(PoseStack pose, VertexConsumer vc, Entity e, float pTick) {
+	public static void renderHitbox(PoseStack pose, VertexConsumer vc, Entity e, float pTick) {
 		AABB aabb = e.getBoundingBox().move(-e.getX(), -e.getY(), -e.getZ());
 		LevelRenderer.renderLineBox(pose, vc, aabb, 1.0F, 1.0F, 1.0F, 1.0F);
 		Vec3 vec3 = e.getViewVector(pTick);
@@ -145,6 +151,22 @@ public class ClientDanmakuCache {
 				).color(0, 0, 255, 255)
 				.normal(mat3, (float) vec3.x, (float) vec3.y, (float) vec3.z)
 				.endVertex();
+	}
+
+	public static void renderPlayerHitbox(PoseStack pose, VertexConsumer vc, Player e, double camx, double camy, double camz, float pTick) {
+		double dx = Mth.lerp(pTick, e.xOld, e.getX()) - camx - e.getX();
+		double dy = Mth.lerp(pTick, e.yOld, e.getY()) - camy - e.getY();
+		double dz = Mth.lerp(pTick, e.zOld, e.getZ()) - camz - e.getZ();
+		if (e.isInvisible()) {
+			AABB base = e.getBoundingBox().move(dx, dy, dz);
+			AABB hit = IYHDanmaku.alterEntityHitBox(e, 0, 0).move(dx, dy, dz);
+			LevelRenderer.renderLineBox(pose, vc, base, 1, 1, 1, 1);
+			if (!base.equals(hit)) {
+				LevelRenderer.renderLineBox(pose, vc, hit, 1, 0.25f, 0.25f, 1);
+			}
+		}
+		AABB graze = IYHDanmaku.alterEntityHitBox(e, 0, IYHDanmaku.GRAZE_RANGE).move(dx, dy, dz);
+		LevelRenderer.renderLineBox(pose, vc, graze, 0.25F, 1, 0, 1);
 	}
 
 }

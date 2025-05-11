@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-09T17:32:41.571189	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-05-11T13:27:31.177583	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1632,6 +1632,7 @@ a1b46202b0fd88ea599a1feec8e37502dbf45cc0 data/youkaishomecoming/loot_tables/bloc
 d62a11f2285d074b5f1555524b9cfbfb12b5407a data/youkaishomecoming/loot_tables/blocks/wild_tea.json
 209167abff8b04105332068d55088fc4f22024cb data/youkaishomecoming/loot_tables/blocks/wild_udumbara.json
 b7b3464e99168a3c57048fbe27d742e371faea4e data/youkaishomecoming/loot_tables/blocks/yellow_red_velvet_candle_cake.json
+a93b1b11cd83deec26719959d42ff30df40fa33f data/youkaishomecoming/loot_tables/chests/cirno_nest/cabinet.json
 8833954325ab6007a615fbb2b344d26daa8f49b3 data/youkaishomecoming/loot_tables/chests/hakurei_shrine/barrel.json
 b6fdcb7f69021ec0c86bacd6b90ee062f784612e data/youkaishomecoming/loot_tables/chests/hakurei_shrine/cabinet.json
 e5d1fa45605f476a6681b77955f1f70a23fa616f data/youkaishomecoming/loot_tables/chests/hakurei_shrine/chest.json

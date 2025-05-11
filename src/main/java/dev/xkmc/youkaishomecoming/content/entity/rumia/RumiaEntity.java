@@ -96,27 +96,6 @@ public class RumiaEntity extends YoukaiEntity implements IYoukaiMerchant {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
-		super.addAdditionalSaveData(tag);
-		if (hasRestriction()) {
-			var data = TagCodec.valueToTag(new RestrictData(getRestrictCenter(), getRestrictRadius()));
-			if (data != null) tag.put("Restrict", data);
-		}
-	}
-
-
-	public void readAdditionalSaveData(CompoundTag tag) {
-		super.readAdditionalSaveData(tag);
-		var data = tag.get("Restrict");
-		if (data != null) {
-			RestrictData res = TagCodec.valueFromTag(data, RestrictData.class);
-			if (res != null) {
-				restrictTo(res.center(), (int) res.radius());
-			}
-		}
-	}
-
-	@Override
 	public boolean isInvulnerableTo(DamageSource source) {
 		if (isEx()) {
 			if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
