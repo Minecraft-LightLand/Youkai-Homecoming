@@ -1,3 +1,7 @@
+2.3.17
+- Add Cirno Nest spawning in snow plain and snow beach
+- Now Cirno will no longer spawn in the wild
+
 2.3.16
 - Trade with Cirno in Youkaifying/ed/Fairy effect using frozen frogs.
 - Buy Cirno's Hairband with frogs

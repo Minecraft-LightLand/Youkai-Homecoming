@@ -172,23 +172,13 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	}
 
-	private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-	@Override
-	public BlockPos blockPosition() {
-		return mutablePos;
-	}
-
 	@Override
 	public void setPosRaw(double x, double y, double z) {
-		if (!isAddedToWorld() && mutablePos != null && tickCount > 0) {
+		if (!isAddedToWorld() &&  tickCount > 0) {
 			position = new Vec3(x, y, z);
-			mutablePos.set(x, y, z);
-			blockPosition = mutablePos;
+			blockPosition = BlockPos.containing(position);
 		} else {
 			super.setPosRaw(x, y, z);
-			if (mutablePos != null)
-				mutablePos.set(blockPosition);
 		}
 	}
 
