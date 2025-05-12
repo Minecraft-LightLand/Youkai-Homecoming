@@ -59,6 +59,7 @@ public class TouhouConditionalSpawns {
 					YHEntities.SUNNY.get(), YHEntities.STAR.get(), YHEntities.LUNA.get(),
 					YHEntities.LARVA.get()
 			));
+			list.remove(self.getType());
 			if (le.level().dimension().equals(Level.NETHER)) {
 				list.add(YHEntities.CLOWN.get());
 			}

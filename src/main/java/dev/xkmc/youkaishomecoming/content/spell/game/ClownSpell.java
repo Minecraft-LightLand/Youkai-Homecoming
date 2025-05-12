@@ -21,7 +21,7 @@ public class ClownSpell extends ActualSpellCard {
 		var dir = holder.forward();
 		var rand = holder.random();
 		int dur = DUR;
-		if (holder.self() instanceof ClownEntity youkai && youkai.isAbyssal()) {
+		if (holder.self() instanceof ClownEntity youkai && youkai.isLunatic()) {
 			dur /= 2;
 		}
 		if (tick % dur == 0) {
@@ -184,7 +184,6 @@ public class ClownSpell extends ActualSpellCard {
 
 	}
 
-
 	@SerialClass
 	public static class HomingTrail extends TrailAction {
 
@@ -202,6 +201,5 @@ public class ClownSpell extends ActualSpellCard {
 		}
 
 	}
-
 
 }

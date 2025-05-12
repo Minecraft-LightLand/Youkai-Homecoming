@@ -17,7 +17,7 @@ public class ClownEntity extends BossYoukaiEntity {
 		TouhouSpellCards.setClown(this);
 	}
 
-	public boolean isAbyssal() {
+	public boolean isLunatic() {
 		return getFlag(4) || isChaotic() || combatProgress.progress < combatProgress.maxProgress / 2;
 	}
 
