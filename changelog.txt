@@ -1,3 +1,7 @@
+2.3.19
+- Add Larva and Clownpiece
+- Make fairy reinforcement spawn point randomized
+
 2.3.18
 - Replace TLM fairies
 

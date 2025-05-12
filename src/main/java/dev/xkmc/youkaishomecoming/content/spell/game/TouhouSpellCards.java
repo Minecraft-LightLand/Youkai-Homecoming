@@ -3,10 +3,7 @@ package dev.xkmc.youkaishomecoming.content.spell.game;
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import dev.xkmc.youkaishomecoming.content.entity.boss.*;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.LunaEntity;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.StarEntity;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.SunnyEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.*;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.SpellCard;
@@ -43,6 +40,8 @@ public class TouhouSpellCards {
 		registerSpell("touhou_little_maid:doremy_sweet", DoremiSpell::new);
 		registerSpell("touhou_little_maid:kisin_sagume", KisinSpell::new);
 		registerSpell("touhou_little_maid:remilia_scarlet", RemiliaSpell::new);
+		registerSpell("touhou_little_maid:eternity_larva", LarvaSpell::new);
+		registerSpell("touhou_little_maid:clownpiece", ClownSpell::new);
 	}
 
 	public static void setSpell(GeneralYoukaiEntity e, String id) {
@@ -104,6 +103,14 @@ public class TouhouSpellCards {
 
 	public static void setStar(StarEntity e) {
 		setSpell(e, "touhou_little_maid:star_sapphire");
+	}
+
+	public static void setLarva(LarvaEntity e) {
+		setSpell(e, "touhou_little_maid:eternity_larva");
+	}
+
+	public static void setClown(ClownEntity e) {
+		setSpell(e, "touhou_little_maid:clownpiece");
 	}
 
 }

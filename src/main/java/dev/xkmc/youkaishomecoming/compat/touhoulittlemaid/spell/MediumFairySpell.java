@@ -28,7 +28,7 @@ public class MediumFairySpell extends ActualSpellCard {
 			int round = step / 2 % 7;
 			if (step % 2 == 0 && (round == 0 || round == 3)) {
 				addTicker(new Round().init(primary, YHDanmaku.Bullet.BALL, holder.forward(),
-						round == 0 ? 9 : -9, 0, 0.5, 20));
+						round == 0 ? 9 : -9, 0.5, 20));
 			} else if (round == 1 || round == 4) {
 				var r = holder.random();
 				var o = DanmakuHelper.getOrientation(holder.forward());
@@ -58,20 +58,19 @@ public class MediumFairySpell extends ActualSpellCard {
 		private YHDanmaku.Bullet type = YHDanmaku.Bullet.BALL;
 
 		@SerialClass.SerialField
-		private double w = 3, a = 10, v = 0.5;
+		private double w = 3, v = 0.5;
 
 		@SerialClass.SerialField
-		private int duration, n, m;
+		private int duration;
 
 		@SerialClass.SerialField
 		private Vec3 dir = new Vec3(1, 0, 0);
 
-		public Round init(DyeColor color, YHDanmaku.Bullet type, Vec3 dir, double w, double a, double v, int duration) {
+		public Round init(DyeColor color, YHDanmaku.Bullet type, Vec3 dir, double w, double v, int duration) {
 			this.color = color;
 			this.type = type;
 			this.dir = dir;
 			this.w = w;
-			this.a = a;
 			this.v = v;
 			this.duration = duration;
 			return this;

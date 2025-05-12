@@ -4,6 +4,7 @@ import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
+import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHAdvGen;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -16,7 +17,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -121,13 +121,8 @@ public class ReimuEventHandlers {
 		BlockPos center = BlockPos.containing(le.position().add(le.getForward().scale(8)).add(0, y0, 0));
 		T e = type.create(sl);
 		if (e == null) return null;
-		BlockPos pos = getPosForSpawn(le, e, center, 16, 8, dy);
-		if (pos == null) {
-			center = le.blockPosition().above(5);
-			pos = getPosForSpawn(le, e, center, 16, 16, dy);
-		}
-		if (pos == null) return null;
-		e.moveTo(pos, 0, 0);
+		if (!setRandomizedPos(le, e, center, dy))
+			return null;
 		return e;
 	}
 
@@ -151,16 +146,27 @@ public class ReimuEventHandlers {
 		return true;
 	}
 
+	public static boolean setRandomizedPos(LivingEntity target, YoukaiEntity youkai, BlockPos center, int dy) {
+		BlockPos pos = getPosForSpawn(target, youkai, center, 16, 8, dy);
+		if (pos == null) {
+			center = target.blockPosition().above(5);
+			pos = getPosForSpawn(target, youkai, center, 16, 16, dy);
+		}
+		if (pos == null) return false;
+		youkai.moveTo(pos, 0, 0);
+		return true;
+	}
+
 	@Nullable
-	public static BlockPos getPosForSpawn(LivingEntity sp, Entity e, BlockPos center, int trial, int range, int dy) {
+	public static BlockPos getPosForSpawn(LivingEntity target, YoukaiEntity youkai, BlockPos center, int trial, int range, int dy) {
 		for (int i = 0; i < trial; i++) {
 			BlockPos pos = center.offset(
-					sp.getRandom().nextInt(-range, range),
-					sp.getRandom().nextInt(-dy, dy),
-					sp.getRandom().nextInt(-range, range)
+					target.getRandom().nextInt(-range, range),
+					target.getRandom().nextInt(-dy, dy),
+					target.getRandom().nextInt(-range, range)
 			);
-			e.moveTo(pos, 0, 0);
-			if (sp.level().noCollision(e)) {
+			youkai.moveTo(pos, 0, 0);
+			if (target.level().noCollision(youkai) && youkai.hasLineOfSight(target)) {
 				return pos;
 			}
 		}

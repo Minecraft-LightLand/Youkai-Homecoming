@@ -51,6 +51,8 @@ public class YHEntities {
 	public static final EntityEntry<LunaEntity> LUNA;
 	public static final EntityEntry<SunnyEntity> SUNNY;
 	public static final EntityEntry<StarEntity> STAR;
+	public static final EntityEntry<LarvaEntity> LARVA;
+	public static final EntityEntry<ClownEntity> CLOWN;
 
 	public static final EntityEntry<FrozenFrog> FROZEN_FROG;
 	public static final EntityEntry<FairyIce> FAIRY_ICE;
@@ -185,6 +187,22 @@ public class YHEntities {
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x353D95, 0x482E25).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+			LARVA = YoukaisHomecoming.REGISTRATE
+					.entity("eternity_larva", LarvaEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(LarvaEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0x92B445, 0x93C9E9).tab(YHDanmaku.TAB.getKey()).build()
+					.loot(EntityLootGen::noLoot).register();
+
+			CLOWN = YoukaisHomecoming.REGISTRATE
+					.entity("clownpiece", ClownEntity::new, MobCategory.MONSTER)
+					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
+					.attributes(BossYoukaiEntity::createAttributes)
+					.renderer(() -> GeneralYoukaiRenderer::new)
+					.spawnEgg(0x008CCA, 0xCB0000).tab(YHDanmaku.TAB.getKey()).build()
 					.loot(EntityLootGen::noLoot).register();
 
 
