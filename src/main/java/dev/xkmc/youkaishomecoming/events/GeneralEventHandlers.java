@@ -102,10 +102,9 @@ public class GeneralEventHandlers {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onDamage(LivingDamageEvent event) {
-		if (event.getSource().is(YHDamageTypes.DANMAKU) && event.getSource().getEntity() instanceof YoukaiEntity) {
-			double min = YHModConfig.COMMON.danmakuMinPHPDamage.get();
+		if (event.getSource().is(YHDamageTypes.DANMAKU) && event.getSource().getEntity() instanceof YoukaiEntity e) {
 			LivingEntity le = event.getEntity();
-			if (le instanceof Player) min = YHModConfig.COMMON.danmakuPlayerPHPDamage.get();
+			double min = e.percentageDamage(le);
 			if (event.getAmount() < le.getMaxHealth() * min) {
 				event.setAmount(le.getMaxHealth() * (float) min);
 			}

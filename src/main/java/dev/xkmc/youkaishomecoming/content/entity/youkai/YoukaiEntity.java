@@ -245,6 +245,12 @@ public abstract class YoukaiEntity extends PathfinderMob
 
 	}
 
+	public float percentageDamage(LivingEntity le) {
+		if (le instanceof Player)
+			return YHModConfig.COMMON.danmakuPlayerPHPDamage.get().floatValue();
+		else return YHModConfig.COMMON.danmakuMinPHPDamage.get().floatValue();
+	}
+
 	// flying
 
 	public final void setFlying() {

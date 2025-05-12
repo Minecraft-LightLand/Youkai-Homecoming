@@ -38,18 +38,23 @@ public abstract class BaseProjectile extends SimplifiedProjectile {
 			onHit(hitresult);
 		}
 		if (tickCount >= lifetime()) {
-			if (level() instanceof ServerLevel sl) {
+			if (level() instanceof ServerLevel) {
 				projectileMove();
 				terminate();
 				markErased(false);
+				return;
 			}
-		} else {
-			projectileMove();
-			if (level() instanceof ServerLevel sl) {
-				if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4) ||
-						isAddedToWorld() && !EntityStorageHelper.isTicking(sl, this)) {
-					markErased(false);
-				}
+			var owner = getOwner();
+			if (tickCount >= lifetime() + 10 || owner == null || !owner.isAlive()) {
+				markErased(false);
+			}
+			return;
+		}
+		projectileMove();
+		if (level() instanceof ServerLevel sl) {
+			if (!level().hasChunk(blockPosition().getX() >> 4, blockPosition().getZ() >> 4) ||
+					isAddedToWorld() && !EntityStorageHelper.isTicking(sl, this)) {
+				markErased(false);
 			}
 		}
 	}

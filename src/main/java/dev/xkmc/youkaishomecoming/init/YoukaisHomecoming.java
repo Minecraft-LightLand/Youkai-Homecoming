@@ -17,6 +17,8 @@ import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRegistries;
+import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.fairy.FairySpellCards;
 import dev.xkmc.youkaishomecoming.content.capability.*;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
@@ -102,6 +104,7 @@ public class YoukaisHomecoming {
 		AttackEventHandler.register(3943, new YHAttackListener());
 
 		if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+			TLMRegistries.init();
 			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
 		}
 		if (ModList.get().isLoaded(Gateways.MODID)) {
@@ -142,6 +145,10 @@ public class YoukaisHomecoming {
 					return new FairyIce(level, pos.x(), pos.y(), pos.z());
 				}
 			});
+
+			if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+				FairySpellCards.registerSpells();
+			}
 
 		});
 		FastMapInit.init();

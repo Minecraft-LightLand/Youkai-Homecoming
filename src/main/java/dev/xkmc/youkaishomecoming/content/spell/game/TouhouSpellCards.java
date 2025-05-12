@@ -51,7 +51,7 @@ public class TouhouSpellCards {
 		var sup = MAP.get(id);
 		if (sup != null) e.spellCard.card = sup.get();
 		e.syncModel();
-		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
+		if (ModList.get().isLoaded(TouhouLittleMaid.MOD_ID) && id.startsWith(TouhouLittleMaid.MOD_ID)) {
 			var rl = new ResourceLocation(id);
 			var name = Component.translatable(rl.toLanguageKey("model") + ".name");
 			var desc = Component.translatable(rl.toLanguageKey("model") + ".desc");

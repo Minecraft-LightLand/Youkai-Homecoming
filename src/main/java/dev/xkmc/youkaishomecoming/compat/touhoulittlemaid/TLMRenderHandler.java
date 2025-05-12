@@ -6,10 +6,16 @@ import com.github.tartaricacid.touhoulittlemaid.client.renderer.entity.EntityMai
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleLayer;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import java.util.function.Function;
 
 public class TLMRenderHandler {
 
@@ -19,7 +25,7 @@ public class TLMRenderHandler {
 		return true;
 	}
 
-	private static EntityMaidRenderer RENDERER;
+	private static LivingEntityRenderer<Mob, ?> RENDERER;
 
 	@SubscribeEvent
 	public static void onMaidConvert(ConvertMaidEvent event) {
@@ -29,7 +35,11 @@ public class TLMRenderHandler {
 
 	public static void addLayers(EntityRenderersEvent.AddLayers event) {
 		RENDERER = new EntityMaidRenderer(event.getContext());
-		RENDERER.addLayer(new SpellCircleLayer<>(RENDERER));
+		addCircle(RENDERER, SpellCircleLayer::new);
+	}
+
+	private static <T extends LivingEntity, M extends EntityModel<T>> void addCircle(LivingEntityRenderer<T, M> renderer, Function<LivingEntityRenderer<T, M>, RenderLayer<T, M>> factory) {
+		renderer.addLayer(factory.apply(renderer));
 	}
 
 	private record MaidWrapper(GeneralYoukaiEntity mob) implements IMaid {

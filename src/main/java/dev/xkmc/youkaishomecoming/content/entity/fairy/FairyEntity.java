@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.entity.fairy;
 
-import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
@@ -10,24 +9,16 @@ import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 
 @SerialClass
@@ -83,6 +74,11 @@ public class FairyEntity extends GeneralYoukaiEntity {
 				return;
 			trySummonReinforcementOnDeath(le);
 		}
+	}
+
+	@Override
+	public float percentageDamage(LivingEntity le) {
+		return super.percentageDamage(le) / 2;
 	}
 
 	@Override
