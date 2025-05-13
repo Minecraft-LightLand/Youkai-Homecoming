@@ -31,6 +31,7 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	public int power, hidden, step, bomb, life;
 
 	private boolean dirty = false;
+	private int tempGraze = 0;
 
 	@Override
 	public void onClone(boolean isWasDeath) {
@@ -46,6 +47,11 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 
 	@Override
 	public void tick() {
+		if (tempGraze > 0) {
+			tempGraze--;
+			consumeGraze();
+			dirty = true;
+		}
 		if (dirty)
 			sync();
 		dirty = false;
@@ -53,7 +59,11 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 
 	public void graze() {
 		if (!EffectEventHandlers.isFullCharacter(player)) return;
-		dirty = true;
+		if (tempGraze < 10)
+			tempGraze++;
+	}
+
+	private void consumeGraze() {
 		if (power < MAX_POWER) {
 			power++;
 			return;
