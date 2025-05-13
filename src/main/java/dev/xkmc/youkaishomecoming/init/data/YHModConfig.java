@@ -89,6 +89,7 @@ public class YHModConfig {
 
 		public final ForgeConfigSpec.BooleanValue smallFairyReplacement;
 		public final ForgeConfigSpec.DoubleValue smallFairySummonReinforcement;
+		public final ForgeConfigSpec.DoubleValue smallFairySummonStrongFairy;
 		public final ForgeConfigSpec.IntValue smallFairyStrength;
 
 		Common(ForgeConfigSpec.Builder builder) {
@@ -239,7 +240,9 @@ public class YHModConfig {
 				smallFairyReplacement = builder.comment("Replace Fairies from Touhou Little Maid with a neutral fairy")
 						.define("smallFairyReplacement", false);
 				smallFairySummonReinforcement = builder.comment("Chance for small fairies to summon other fairies when killed by non-danmaku damage")
-						.defineInRange("smallFairySummonReinforcement", 0.5, 0, 1);
+						.defineInRange("smallFairySummonReinforcement", 0.25, 0, 1);
+				smallFairySummonStrongFairy = builder.comment("Chance for small fairies to summon stronger fairies when they are set to summon reinforcements")
+						.defineInRange("smallFairySummonStrongFairy", 0.1, 0, 1);
 				smallFairyStrength = builder.comment("Small Fairy spellcard strength")
 						.defineInRange("smallFairyStrength", 2, 0, 4);
 			}

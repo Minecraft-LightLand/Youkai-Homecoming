@@ -85,4 +85,9 @@ public class FairyEntity extends GeneralYoukaiEntity {
 		TouhouConditionalSpawns.triggetFairyReinforcement(this, le, position());
 	}
 
+	@Override
+	public double getStopRange() {
+		return 12;
+	}
+
 }

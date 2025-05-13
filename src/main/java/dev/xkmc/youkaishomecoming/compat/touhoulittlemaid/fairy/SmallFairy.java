@@ -15,7 +15,7 @@ public class SmallFairy extends FairyEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return YoukaiEntity.createAttributes()
-				.add(Attributes.MAX_HEALTH, 20)
+				.add(Attributes.MAX_HEALTH, 10)
 				.add(Attributes.ATTACK_DAMAGE, 2);
 	}
 
@@ -31,6 +31,11 @@ public class SmallFairy extends FairyEntity {
 	@Override
 	public void initSpellCard() {
 		TouhouSpellCards.setSpell(this, "fairy:" + random().nextInt(18));
+	}
+
+	@Override
+	public double getStopRange() {
+		return 4;
 	}
 
 }

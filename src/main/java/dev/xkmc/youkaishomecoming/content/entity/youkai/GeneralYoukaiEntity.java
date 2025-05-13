@@ -62,7 +62,7 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 	}
 
 	protected void registerGoals() {
-		goalSelector.addGoal(4, new YoukaiAttackGoal<>(this, 16));
+		goalSelector.addGoal(4, new YoukaiAttackGoal<>(this));
 		goalSelector.addGoal(6, new FloatGoal(this));
 		goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.8));
 		goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 24));

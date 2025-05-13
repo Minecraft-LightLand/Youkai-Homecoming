@@ -12,13 +12,12 @@ import java.util.List;
 public class RumiaAttackGoal extends YoukaiAttackGoal<RumiaEntity> {
 
 	private static final int BALL_RANGE = 10;
-	private static final int APPROACH_RANGE = 16;
 	private static final int SHOOT_FREQUENCY = 40;
 	private static final int SEPARATION = 12, ANGLE = 3;
 	private static final float SPEED = 0.64f, SPEED_VAR = 0.08f;
 
 	public RumiaAttackGoal(RumiaEntity pBlaze) {
-		super(pBlaze, APPROACH_RANGE);
+		super(pBlaze);
 	}
 
 	@Override

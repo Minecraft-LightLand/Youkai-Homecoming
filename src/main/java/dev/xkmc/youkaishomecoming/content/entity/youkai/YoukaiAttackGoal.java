@@ -10,13 +10,11 @@ import java.util.List;
 public class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 
 	protected final T youkai;
-	private final int range;
 	private int meleeTime;
 	private int shootTime;
 
-	public YoukaiAttackGoal(T youkai, int range) {
+	public YoukaiAttackGoal(T youkai) {
 		this.youkai = youkai;
-		this.range = range;
 		setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
 	}
 
@@ -57,6 +55,7 @@ public class YoukaiAttackGoal<T extends YoukaiEntity> extends Goal {
 		boolean sight = youkai.getSensing().hasLineOfSight(target);
 		double dist = youkai.distanceToSqr(target);
 		double follow = getShootRange();
+		double range = Math.min(follow, youkai.getStopRange());
 		if (!sight) {
 			if (dist < follow * follow && youkai.getNavigation().isDone()) {
 				youkai.getNavigation().moveTo(target.getX(), target.getY(), target.getZ(), 1.0D);

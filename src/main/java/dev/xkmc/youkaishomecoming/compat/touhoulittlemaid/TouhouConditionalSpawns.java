@@ -55,7 +55,7 @@ public class TouhouConditionalSpawns {
 				return;
 		}
 		GeneralYoukaiEntity e;
-		if (self instanceof SmallFairy && self.getRandom().nextFloat() > 0.05f) {
+		if (self instanceof SmallFairy && self.getRandom().nextFloat() > YHModConfig.COMMON.smallFairySummonStrongFairy.get()) {
 			e = new SmallFairy(TLMRegistries.SMALL_FAIRY.get(), le.level());
 			TouhouSpellCards.setSpell(e, "fairy:" + self.random().nextInt(18));
 		} else {
