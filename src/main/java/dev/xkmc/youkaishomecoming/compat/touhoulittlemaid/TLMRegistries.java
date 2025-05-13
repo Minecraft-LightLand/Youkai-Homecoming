@@ -5,7 +5,6 @@ import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.fairy.SmallFairy;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.fairy.SmallFairyRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.world.entity.EntityType;
@@ -19,7 +18,7 @@ public class TLMRegistries {
 	public static final EntityEntry<SmallFairy> SMALL_FAIRY = YoukaisHomecoming.REGISTRATE
 			.entity("small_fairy", SmallFairy::new, MobCategory.MONSTER)
 			.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
-			.attributes(FairyEntity::createAttributes)
+			.attributes(SmallFairy::createAttributes)
 			.renderer(() -> SmallFairyRenderer::new)
 			.spawnEgg(0x7f4f5f, 0xffffff).tab(YHDanmaku.TAB.getKey()).build()
 			.loot(TLMRegistries::fairyLoot).register();

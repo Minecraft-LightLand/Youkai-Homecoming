@@ -47,8 +47,13 @@ public class TouhouConditionalSpawns {
 	public static void triggetFairyReinforcement(FairyEntity self, LivingEntity le, Vec3 pos) {
 		if (le.level().isClientSide()) return;
 		if (!ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) return;
-		if (le.getRandom().nextDouble() > YHModConfig.COMMON.fairySummonReinforcement.get())
-			return;
+		if (self instanceof SmallFairy) {
+			if (le.getRandom().nextDouble() > YHModConfig.COMMON.smallFairySummonReinforcement.get())
+				return;
+		} else {
+			if (le.getRandom().nextDouble() > YHModConfig.COMMON.fairySummonReinforcement.get())
+				return;
+		}
 		GeneralYoukaiEntity e;
 		if (self instanceof SmallFairy && self.getRandom().nextFloat() > 0.05f) {
 			e = new SmallFairy(TLMRegistries.SMALL_FAIRY.get(), le.level());

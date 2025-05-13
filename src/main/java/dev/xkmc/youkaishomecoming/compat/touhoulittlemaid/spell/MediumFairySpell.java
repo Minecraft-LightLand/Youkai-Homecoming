@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuHelper;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.ActualSpellCard;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.Ticker;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.phys.Vec3;
@@ -27,15 +28,19 @@ public class MediumFairySpell extends ActualSpellCard {
 			int step = tick / 10;
 			int round = step / 2 % 7;
 			if (step % 2 == 0 && (round == 0 || round == 3)) {
+				int n = YHModConfig.COMMON.smallFairyStrength.get();
+				int dur = 5 * (n + 2);
+				double angle = 180d / dur;
 				addTicker(new Round().init(primary, YHDanmaku.Bullet.BALL, holder.forward(),
-						round == 0 ? 9 : -9, 0.5, 20));
+						round == 0 ? angle : -angle, 0.3 + n * 0.1, dur));
 			} else if (round == 1 || round == 4) {
 				var r = holder.random();
 				var o = DanmakuHelper.getOrientation(holder.forward());
-				for (int i = -2; i <= 2; i++) {
-					for (int j = 0; j <= 2; j++) {
+				int n = YHModConfig.COMMON.smallFairyStrength.get();
+				for (int i = -n; i <= n; i++) {
+					for (int j = 0; j <= n; j++) {
 						var dir = o.rotateDegrees(i * 15, r.nextInt(-3, 3));
-						double v = 0.3 + j * 0.3;
+						double v = 0.5 + j * 0.3 - n * 0.1;
 						var vel = dir.scale(v);
 						int life = (int) (40 / v * (1 + r.nextDouble() * 0.5));
 						var e = holder.prepareDanmaku(life, vel,

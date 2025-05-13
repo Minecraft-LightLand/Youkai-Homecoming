@@ -7,6 +7,7 @@ import dev.xkmc.youkaishomecoming.content.entity.boss.MystiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.RemiliaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.world.InteractionResult;
@@ -21,7 +22,7 @@ public class TLMCompat {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
-		if (event.getEntity() instanceof EntityFairy old) {
+		if (event.getEntity() instanceof EntityFairy old && YHModConfig.COMMON.smallFairyReplacement.get()) {
 			event.setCanceled(true);
 			var replacement = new SmallFairy(TLMRegistries.SMALL_FAIRY.get(), old.level());
 			TouhouSpellCards.setSpell(replacement, "fairy:" + old.getFairyTypeOrdinal());

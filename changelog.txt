@@ -1,3 +1,6 @@
+2.3.20
+- Add more config regarding small fairies
+
 2.3.19
 - Add Larva and Clownpiece
 - Add Clownpiece spellcard
