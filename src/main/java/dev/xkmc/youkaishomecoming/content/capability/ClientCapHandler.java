@@ -49,7 +49,6 @@ public class ClientCapHandler {
 		if (player == null) return;
 		var r = player.getRandom();
 		player.playSound(YHSounds.GRAZE.get(), r.nextFloat() * 0.2f + 1, r.nextFloat() * 0.2f + 1f);
-		GrazeCapability.HOLDER.get(player).graze();
 	}
 
 }

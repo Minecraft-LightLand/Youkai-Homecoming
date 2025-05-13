@@ -20,8 +20,8 @@ public class GrazeHelper {
 			if (entity instanceof ServerPlayer sp) {
 				YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeToClient(), sp);
 			}
-			GrazeCapability.HOLDER.get(entity).graze();
 		}
+		GrazeCapability.HOLDER.get(entity).graze();
 	}
 
 	@SerialClass

@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init;
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderHelper;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
+import dev.xkmc.youkaishomecoming.content.capability.PowerInfoOverlay;
 import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticle;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
@@ -71,6 +72,7 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerOverlay(RegisterGuiOverlaysEvent event) {
 		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "info_tile", new TileInfoDisplay());
+		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "power_info", new PowerInfoOverlay());
 	}
 
 	@SubscribeEvent
