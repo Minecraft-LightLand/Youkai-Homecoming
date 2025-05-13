@@ -1,7 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.spell.item;
 
+import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -43,4 +45,13 @@ public record PlayerHolder(
 		return spell.targetPos;
 	}
 
+	@Override
+	public void shoot(Entity danmaku) {
+		if (danmaku instanceof ItemDanmakuEntity e) {
+			if (e.afterExpiry != null) {
+				e.afterExpiry.setup(this);
+			}
+		}
+		LivingCardHolder.super.shoot(danmaku);
+	}
 }

@@ -1,8 +1,6 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.EntityEntry;
-import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.*;
@@ -29,9 +27,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class YHEntities {
 
@@ -171,7 +167,7 @@ public class YHEntities {
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0xB14435, 0xFCF5D8).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::fairy).register();
 
 			LUNA = YoukaisHomecoming.REGISTRATE
 					.entity("luna_child", LunaEntity::new, MobCategory.MONSTER)
@@ -179,7 +175,7 @@ public class YHEntities {
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0xFFF9DA, 0xA26B4F).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::fairy).register();
 
 			STAR = YoukaisHomecoming.REGISTRATE
 					.entity("star_sapphire", StarEntity::new, MobCategory.MONSTER)
@@ -187,7 +183,7 @@ public class YHEntities {
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x353D95, 0x482E25).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::fairy).register();
 
 			LARVA = YoukaisHomecoming.REGISTRATE
 					.entity("eternity_larva", LarvaEntity::new, MobCategory.MONSTER)
@@ -195,7 +191,7 @@ public class YHEntities {
 					.attributes(LarvaEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x92B445, 0x93C9E9).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::fairy).register();
 
 			CLOWN = YoukaisHomecoming.REGISTRATE
 					.entity("clownpiece", ClownEntity::new, MobCategory.MONSTER)
@@ -203,7 +199,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x008CCA, 0xCB0000).tab(YHDanmaku.TAB.getKey()).build()
-					.loot(EntityLootGen::noLoot).register();
+					.loot(EntityLootGen::clownpiece).register();
 
 
 		}
@@ -247,10 +243,6 @@ public class YHEntities {
 					.register();
 		}
 
-	}
-
-	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {
-		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);
 	}
 
 	public static void register() {

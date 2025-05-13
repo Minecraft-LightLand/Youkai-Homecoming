@@ -64,8 +64,8 @@ public class ItemDanmakuEntity extends YHBaseDanmakuEntity implements ItemSuppli
 		CardHolder holder = null;
 		Entity e = getOwner();
 		if (e instanceof CardHolder h) holder = h;
-		if (holder == null) return;
-		afterExpiry.execute(holder, position(), getDeltaMovement());
+		if (holder == null) afterExpiry.execute(position(), getDeltaMovement());
+		else afterExpiry.execute(holder, position(), getDeltaMovement());
 	}
 
 	@Override

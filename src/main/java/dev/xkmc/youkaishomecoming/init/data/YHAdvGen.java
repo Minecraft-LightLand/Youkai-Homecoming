@@ -10,10 +10,7 @@ import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.FeedReimuTrigger;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
-import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import dev.xkmc.youkaishomecoming.init.registrate.*;
 import net.minecraft.Util;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
@@ -184,8 +181,8 @@ public class YHAdvGen {
 						"Lost Memories", "When Rumia takes more than 40 damage, she will convert to Ex. Rumia. Defeat Ex. Rumia with danmaku and obtain Rumia's Hairband.")
 				.type(FrameType.CHALLENGE);
 
-		danmaku.create("spellcard_power", YHItems.REIMU_SPELL.get(),
-						CriterionBuilder.item(YHItems.REIMU_SPELL.get()),
+		danmaku.create("spellcard_power", YHDanmaku.REIMU_SPELL.get(),
+						CriterionBuilder.item(YHDanmaku.REIMU_SPELL.get()),
 						"Spellcard Power", "When you eat flesh in front of villagers, Reimu will try to exterminate you. Defat Reimu and obtain her spellcard")
 				.type(FrameType.CHALLENGE);
 

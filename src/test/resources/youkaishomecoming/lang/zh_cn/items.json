@@ -129,7 +129,8 @@
 		"raw_bun": "生包子",
 		"raw_oyaki": "生御烧",
 		"sake_bottle": "酒瓶",
-		"spell_remilia": "红符「绯红之主」"
+		"spell_remilia": "红符「绯红之主」",
+		"spell_clownpiece": "狱符「星星与条纹」"
 	},
 	"-cartesian": {
 		"entity": {

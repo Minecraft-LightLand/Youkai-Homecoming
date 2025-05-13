@@ -101,7 +101,7 @@ public class YHRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.REIMU_HAIRBAND)::unlockedBy, YHItems.RUMIA_HAIRBAND.get())
 					.pattern(" 1 ").pattern("2A2")
 					.define('A', YHItems.RUMIA_HAIRBAND)
-					.define('1', YHItems.REIMU_SPELL)
+					.define('1', YHDanmaku.REIMU_SPELL)
 					.define('2', YHTagGen.PRESET_SPELL)
 					.save(pvd);
 
@@ -1025,11 +1025,11 @@ public class YHRecipeGen {
 						.save(pvd, YHDanmaku.Bullet.STAR.get(e).getId().withSuffix("_upgrade"));
 			}
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHItems.CUSTOM_SPELL_RING)::unlockedBy, Items.INK_SAC)
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.CUSTOM_SPELL_RING)::unlockedBy, Items.INK_SAC)
 					.requires(YHTagGen.PRESET_SPELL).requires(Items.PAPER).requires(Items.INK_SAC)
 					.save(pvd);
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHItems.CUSTOM_SPELL_HOMING)::unlockedBy, Items.GLOW_INK_SAC)
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.CUSTOM_SPELL_HOMING)::unlockedBy, Items.GLOW_INK_SAC)
 					.requires(YHTagGen.PRESET_SPELL).requires(Items.PAPER).requires(Items.GLOW_INK_SAC)
 					.save(pvd);
 		}

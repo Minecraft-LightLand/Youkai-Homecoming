@@ -11,8 +11,6 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
-import dev.xkmc.youkaishomecoming.content.item.danmaku.CustomSpellItem;
-import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
@@ -21,9 +19,6 @@ import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
-import dev.xkmc.youkaishomecoming.content.spell.custom.data.HomingSpellFormData;
-import dev.xkmc.youkaishomecoming.content.spell.custom.data.RingSpellFormData;
-import dev.xkmc.youkaishomecoming.content.spell.player.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
@@ -31,7 +26,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.FrogVariant;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -85,10 +83,6 @@ public class YHItems {
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 
-	public static final ItemEntry<SpellItem> REIMU_SPELL, MARISA_SPELL, SANAE_SPELL, KOISHI_SPELL,
-			MYSTIA_SPELL, REMILIA_SPELL, YUKARI_SPELL_LASER, YUKARI_SPELL_BUTTERFLY;
-	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL_RING, CUSTOM_SPELL_HOMING;
-
 	static {
 
 		// gears
@@ -122,7 +116,6 @@ public class YHItems {
 					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
 					.register();
 
-
 			CIRNO_HAIRBAND = YoukaisHomecoming.REGISTRATE
 					.item("cirno_hairband", p -> new CirnoHairbandItem(p.rarity(Rarity.EPIC)))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
@@ -137,94 +130,6 @@ public class YHItems {
 					.tag(back, YHTagGen.TOUHOU_WINGS)
 					.register();
 
-		}
-
-		// spell
-		{
-
-			CUSTOM_SPELL_RING = YoukaisHomecoming.REGISTRATE
-					.item("custom_spell_ring", p -> new CustomSpellItem(p.stacksTo(1), false, RingSpellFormData.FLOWER))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/custom_spell")))
-					.tag(YHTagGen.CUSTOM_SPELL)
-					.register();
-
-			CUSTOM_SPELL_HOMING = YoukaisHomecoming.REGISTRATE
-					.item("custom_spell_homing", p -> new CustomSpellItem(p.stacksTo(1), true, HomingSpellFormData.RING))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/custom_spell")))
-					.tag(YHTagGen.CUSTOM_SPELL)
-					.register();
-
-			REIMU_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("spell_reimu", p -> new SpellItem(
-							p.stacksTo(1), ReimuItemSpell::new, true,
-							() -> YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Reimu's Spellcard \"Innate Dream\"")
-					.register();
-
-			MARISA_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("spell_marisa", p -> new SpellItem(
-							p.stacksTo(1), MarisaItemSpell::new, false,
-							() -> YHDanmaku.Laser.LASER.get(DyeColor.WHITE).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Marisa's Spellcard \"Master Spark\"")
-					.register();
-
-			SANAE_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("spell_sanae", p -> new SpellItem(
-							p.stacksTo(1), SanaeItemSpell::new, false,
-							() -> YHDanmaku.Bullet.SPARK.get(DyeColor.GREEN).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Sanae's Spellcard \"Inherited Ritual\"")
-					.register();
-
-			MYSTIA_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("spell_mystia", p -> new SpellItem(
-							p.stacksTo(1), MystiaItemSpell::new, false,
-							() -> YHDanmaku.Bullet.MENTOS.get(DyeColor.GREEN).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Night Sparrow \"Midnight Chorus Master\"")
-					.register();
-
-			KOISHI_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("spell_koishi", p -> new SpellItem(
-							p.stacksTo(1), KoishiItemSpell::new, false,
-							() -> YHDanmaku.Laser.LASER.get(DyeColor.BLUE).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Response \"Youkai Polygraph\"")
-					.register();
-
-			REMILIA_SPELL = YoukaisHomecoming.REGISTRATE
-					.item("spell_remilia", p -> new SpellItem(
-							p.stacksTo(1), RemiliaItemSpell::new, false,
-							() -> YHDanmaku.Bullet.BUBBLE.get(DyeColor.RED).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Scarlet Sign \"Scarlet Meister\"")
-					.register();
-
-			YUKARI_SPELL_LASER = YoukaisHomecoming.REGISTRATE
-					.item("spell_yukari_laser", p -> new SpellItem(
-							p.stacksTo(1), YukariItemSpellLaser::new, false,
-							() -> YHDanmaku.Laser.LASER.get(DyeColor.RED).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Barrier \"Mesh of Light & Darkness\"")
-					.register();
-
-			YUKARI_SPELL_BUTTERFLY = YoukaisHomecoming.REGISTRATE
-					.item("spell_yukari_butterfly", p -> new SpellItem(
-							p.stacksTo(1), YukariItemSpellButterfly::new, false,
-							() -> YHDanmaku.Bullet.BUTTERFLY.get(DyeColor.MAGENTA).get()))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
-					.tag(YHTagGen.PRESET_SPELL)
-					.lang("Barrier \"Double Black Death Butterfly\"")
-					.register();
 		}
 
 		// plants

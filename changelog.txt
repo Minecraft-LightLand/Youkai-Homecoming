@@ -1,6 +1,9 @@
 2.3.19
 - Add Larva and Clownpiece
+- Add Clownpiece spellcard
 - Make fairy reinforcement spawn point randomized
+- Move spellcards to danmaku tab
+- Luna, Star, Sunny, Larva drops Fairy Candy
 
 2.3.18
 - Replace TLM fairies

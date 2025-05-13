@@ -1,4 +1,42 @@
 {
   "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "youkaishomecoming:fairy_candy"
+        }
+      ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 0.5,
+            "min": 0.25
+          },
+          "function": "minecraft:looting_enchant"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
   "random_sequence": "youkaishomecoming:entities/sunny_milk"
 }

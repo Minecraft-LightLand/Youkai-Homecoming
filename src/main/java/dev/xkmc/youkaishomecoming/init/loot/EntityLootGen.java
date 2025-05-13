@@ -4,6 +4,8 @@ import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.entity.boss.*;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.ClownEntity;
+import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
@@ -59,28 +61,28 @@ public class EntityLootGen {
 
 	public static void reimu(RegistrateEntityLootTables pvd, EntityType<ReimuEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.REIMU_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.REIMU_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void sanae(RegistrateEntityLootTables pvd, EntityType<SanaeEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.SANAE_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.SANAE_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void marisa(RegistrateEntityLootTables pvd, EntityType<MarisaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MARISA_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.MARISA_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void mystia(RegistrateEntityLootTables pvd, EntityType<MystiaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.MYSTIA_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.MYSTIA_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
@@ -88,14 +90,22 @@ public class EntityLootGen {
 
 	public static void koishi(RegistrateEntityLootTables pvd, EntityType<KoishiEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.KOISHI_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.KOISHI_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
 
 	public static void remilia(RegistrateEntityLootTables pvd, EntityType<RemiliaEntity> type) {
 		pvd.add(type, LootTable.lootTable()
-				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHItems.REMILIA_SPELL.get(), 1, 1))
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.REMILIA_SPELL.get(), 1, 1))
+						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
+		);
+	}
+
+
+	public static void clownpiece(RegistrateEntityLootTables pvd, EntityType<ClownEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootTableTemplate.getItem(YHDanmaku.CLOWNPIECE_SPELL.get(), 1, 1))
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill()))
 		);
 	}
@@ -104,15 +114,24 @@ public class EntityLootGen {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 						.when(LootTableTemplate.byPlayer()).when(danmakuKill())
-						.add(LootTableTemplate.getItem(YHItems.YUKARI_SPELL_LASER.get(), 1, 1))
-						.add(LootTableTemplate.getItem(YHItems.YUKARI_SPELL_BUTTERFLY.get(), 1, 1)))
+						.add(LootTableTemplate.getItem(YHDanmaku.YUKARI_SPELL_LASER.get(), 1, 1))
+						.add(LootTableTemplate.getItem(YHDanmaku.YUKARI_SPELL_BUTTERFLY.get(), 1, 1)))
+		);
+	}
+
+	public static void fairy(RegistrateEntityLootTables pvd, EntityType<? extends FairyEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootTableTemplate.getItem(YHFood.FAIRY_CANDY.item.get(), 1, 2))
+						.apply(lootCount(0.5f))
+						.when(LootTableTemplate.byPlayer()))
 		);
 	}
 
 	public static void cirno(RegistrateEntityLootTables pvd, EntityType<CirnoEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-						.add(LootTableTemplate.getItem(YHItems.FAIRY_ICE_CRYSTAL.get(), 2, 3))
+						.add(LootTableTemplate.getItem(YHItems.FAIRY_ICE_CRYSTAL.get(), 1, 2))
 						.apply(lootCount(0.5f))
 						.when(LootTableTemplate.byPlayer()))
 				.withPool(LootPool.lootPool()

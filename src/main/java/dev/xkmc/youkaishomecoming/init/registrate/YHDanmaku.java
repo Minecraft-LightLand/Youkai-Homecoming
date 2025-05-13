@@ -5,8 +5,13 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.fastprojectileapi.render.core.DisplayType;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticleOptions;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.CustomSpellItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
+import dev.xkmc.youkaishomecoming.content.spell.custom.data.HomingSpellFormData;
+import dev.xkmc.youkaishomecoming.content.spell.custom.data.RingSpellFormData;
+import dev.xkmc.youkaishomecoming.content.spell.player.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.core.particles.ParticleType;
@@ -107,7 +112,117 @@ public class YHDanmaku {
 
 	public static final RegistryEntry<ParticleType<DanmakuPoofParticleOptions>> POOF;
 
+	public static final ItemEntry<SpellItem> REIMU_SPELL;
+	public static final ItemEntry<SpellItem> MARISA_SPELL;
+	public static final ItemEntry<SpellItem> SANAE_SPELL;
+	public static final ItemEntry<SpellItem> KOISHI_SPELL;
+	public static final ItemEntry<SpellItem> MYSTIA_SPELL;
+	public static final ItemEntry<SpellItem> REMILIA_SPELL;
+	public static final ItemEntry<SpellItem> YUKARI_SPELL_LASER;
+	public static final ItemEntry<SpellItem> YUKARI_SPELL_BUTTERFLY;
+	public static final ItemEntry<SpellItem> CLOWNPIECE_SPELL;
+	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL_RING;
+	public static final ItemEntry<CustomSpellItem> CUSTOM_SPELL_HOMING;
+
 	static {
+
+		// spell
+		{
+
+			CUSTOM_SPELL_RING = YoukaisHomecoming.REGISTRATE
+					.item("custom_spell_ring", p -> new CustomSpellItem(p.stacksTo(1), false, RingSpellFormData.FLOWER))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/custom_spell")))
+					.tag(YHTagGen.CUSTOM_SPELL)
+					.register();
+
+			CUSTOM_SPELL_HOMING = YoukaisHomecoming.REGISTRATE
+					.item("custom_spell_homing", p -> new CustomSpellItem(p.stacksTo(1), true, HomingSpellFormData.RING))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/custom_spell")))
+					.tag(YHTagGen.CUSTOM_SPELL)
+					.register();
+
+			REIMU_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_reimu", p -> new SpellItem(
+							p.stacksTo(1), ReimuItemSpell::new, true,
+							() -> Bullet.CIRCLE.get(DyeColor.RED).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Reimu's Spellcard \"Innate Dream\"")
+					.register();
+
+			MARISA_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_marisa", p -> new SpellItem(
+							p.stacksTo(1), MarisaItemSpell::new, false,
+							() -> Laser.LASER.get(DyeColor.WHITE).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Marisa's Spellcard \"Master Spark\"")
+					.register();
+
+			SANAE_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_sanae", p -> new SpellItem(
+							p.stacksTo(1), SanaeItemSpell::new, false,
+							() -> Bullet.SPARK.get(DyeColor.GREEN).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Sanae's Spellcard \"Inherited Ritual\"")
+					.register();
+
+			MYSTIA_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_mystia", p -> new SpellItem(
+							p.stacksTo(1), MystiaItemSpell::new, false,
+							() -> Bullet.MENTOS.get(DyeColor.GREEN).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Night Sparrow \"Midnight Chorus Master\"")
+					.register();
+
+			KOISHI_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_koishi", p -> new SpellItem(
+							p.stacksTo(1), KoishiItemSpell::new, false,
+							() -> Laser.LASER.get(DyeColor.BLUE).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Response \"Youkai Polygraph\"")
+					.register();
+
+			REMILIA_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_remilia", p -> new SpellItem(
+							p.stacksTo(1), RemiliaItemSpell::new, false,
+							() -> Bullet.BUBBLE.get(DyeColor.RED).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/" + ctx.getName())))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Scarlet Sign \"Scarlet Meister\"")
+					.register();
+
+			YUKARI_SPELL_LASER = YoukaisHomecoming.REGISTRATE
+					.item("spell_yukari_laser", p -> new SpellItem(
+							p.stacksTo(1), YukariItemSpellLaser::new, false,
+							() -> Laser.LASER.get(DyeColor.RED).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Barrier \"Mesh of Light & Darkness\"")
+					.register();
+
+			YUKARI_SPELL_BUTTERFLY = YoukaisHomecoming.REGISTRATE
+					.item("spell_yukari_butterfly", p -> new SpellItem(
+							p.stacksTo(1), YukariItemSpellButterfly::new, false,
+							() -> Bullet.BUTTERFLY.get(DyeColor.MAGENTA).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_yukari")))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Barrier \"Double Black Death Butterfly\"")
+					.register();
+
+			CLOWNPIECE_SPELL = YoukaisHomecoming.REGISTRATE
+					.item("spell_clownpiece", p -> new SpellItem(
+							p.stacksTo(1), ClownItemSpell::new, true,
+							() -> Laser.LASER.get(DyeColor.RED).get()))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/spell/spell_clownpiece")))
+					.tag(YHTagGen.PRESET_SPELL)
+					.lang("Hell Sign \"Star and Stripe\"")
+					.register();
+		}
+
 		DANMAKU = new ItemEntry[Bullet.values().length][DyeColor.values().length];
 		for (var t : Bullet.values()) {
 			for (var e : DyeColor.values()) {
