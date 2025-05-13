@@ -2,6 +2,7 @@
 - Small Fairy replacement default off
 - Halves Small Fairy Health, Damage, and reinforcement rate
 - Small Fairy will keep approaching player until 3 blocks away
+- Increase Small Fairy drop
 
 2.3.20
 - Add more config regarding small fairies
