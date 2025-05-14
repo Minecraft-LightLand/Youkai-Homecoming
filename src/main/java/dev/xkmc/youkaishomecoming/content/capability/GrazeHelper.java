@@ -12,6 +12,8 @@ import net.minecraftforge.network.NetworkEvent;
 
 public class GrazeHelper {
 
+	public static int globalInvulTime = 0;
+
 	public static void graze(Player entity, GrazingEntity e) {
 		MinecraftForge.EVENT_BUS.post(new DanmakuGrazeEvent(entity, e));
 		var prev = entity.getPersistentData().getLong("GrazeTimeStamp");

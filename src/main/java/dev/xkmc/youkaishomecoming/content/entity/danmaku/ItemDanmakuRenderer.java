@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -35,12 +36,13 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 			return YHModConfig.CLIENT.selfDanmakuFading.get();
 		}
 		double fading = YHModConfig.CLIENT.farDanmakuFading.get();
-		if (fading == 0) return 0;
+		double global = GrazeHelper.globalInvulTime > 0 ? YHModConfig.CLIENT.selfDanmakuFading.get() : 1;
+		if (fading == 0) return global;
 		double dist = entityRenderDispatcher.camera.getPosition().distanceTo(e.position());
 		double start = YHModConfig.CLIENT.fadingStart.get();
 		double end = YHModConfig.CLIENT.fadingEnd.get();
-		if (dist < start) return 0;
-		return Math.min((dist - start) / (end - start), 1) * fading;
+		if (dist < start) return global;
+		return (1 - Math.min((dist - start) / (end - start), 1) * fading) * global;
 	}
 
 	public boolean shouldRender(T e, Frustum frustum, double camx, double camy, double camz) {

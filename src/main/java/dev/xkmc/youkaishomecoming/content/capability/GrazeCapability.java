@@ -25,10 +25,12 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 			GrazeCapability.class, GrazeCapability::new, PlayerCapabilityNetworkHandler::new
 	);
 
-	private static final int MAX_GRAZE = 100, MAX_POWER = 400, INIT_BOMB = 15, INIT_LIFE = 25, MAX = 50, CYCLE = 3;
+	private static final int MAX_GRAZE = 100, MAX_POWER = 4 * 100;
+	private static final int INIT_BOMB = 3 * 5, INIT_LIFE = 5 * 5, MAX = 5 * 10, CYCLE = 3;
+	private static final int INVUL = 60;
 
 	@SerialClass.SerialField
-	public int power, hidden, step, bomb, life;
+	public int power, hidden, step, bomb, life, invul;
 
 	private boolean dirty = false;
 	private int tempGraze = 0;
@@ -39,6 +41,7 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 			power = 0;
 			hidden = 0;
 			step = 0;
+			invul = 0;
 			life = INIT_LIFE;
 			bomb = INIT_BOMB;
 			dirty = true;
@@ -52,12 +55,18 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 			consumeGraze();
 			dirty = true;
 		}
+
+		if (invul > 0)
+			invul--;
 		if (dirty)
 			sync();
 		dirty = false;
+		if (player.level().isClientSide)
+			GrazeHelper.globalInvulTime = invul;
 	}
 
 	public void graze() {
+		if (invul > 0) return;
 		if (!EffectEventHandlers.isFullCharacter(player)) return;
 		if (tempGraze < 10)
 			tempGraze++;
@@ -84,29 +93,36 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		}
 	}
 
-	public boolean performErase() {
-		if (!EffectEventHandlers.isFullCharacter(player)) return false;
-		if (bomb < 5 && life < 5) return false;
+	public HitType performErase() {
+		if (!EffectEventHandlers.isFullCharacter(player)) return HitType.NONE;
+		if (invul > 0) return HitType.INVUL;
 		if (useBomb()) {
-			return true;
+			return HitType.BOMB;
+		}
+		int loss = Math.min(power / 2, MAX_GRAZE);
+		power -= loss;
+		dirty = true;
+		if (life < 5) {
+			return HitType.ERASE;
 		}
 		life -= 5;
 		bomb = INIT_BOMB;
-		power -= Math.min(power / 2, MAX_GRAZE);
-		dirty = true;
-		return true;
+		invul = INVUL;
+		return HitType.LIFE;
 	}
 
 	public boolean useBomb() {
 		if (bomb < 5) return false;
 		bomb -= 5;
+		invul = INVUL;
 		dirty = true;
 		return true;
 	}
 
 	public float powerBonus() {
 		if (!EffectEventHandlers.isFullCharacter(player)) return 0;
-		return power * 0.0025f;
+		int support = power / 100;
+		return support * 0.25f;
 	}
 
 	public List<InfoLine> getInfoLines() {
@@ -136,6 +152,20 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	}
 
 	public record InfoIcon(ResourceLocation loc, int w, int h) {
+
+	}
+
+	public enum HitType {
+		NONE, INVUL, BOMB, LIFE, ERASE;
+
+		public boolean skipDamage() {
+			return this == BOMB || this == LIFE || this == INVUL;
+		}
+
+		public boolean erase() {
+			return this == BOMB || this == LIFE;
+		}
+
 
 	}
 
