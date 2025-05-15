@@ -1,3 +1,9 @@
+2.3.24
+- Fix Small Fairies Despawn
+
+2.3.23
+- Fix potential client crash
+
 2.3.21
 - Small Fairy replacement default off
 - Halves Small Fairy Health, Damage, and reinforcement rate

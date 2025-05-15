@@ -40,7 +40,6 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 
 	public GeneralYoukaiEntity(EntityType<? extends GeneralYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
-		setPersistenceRequired();
 	}
 
 	@Override

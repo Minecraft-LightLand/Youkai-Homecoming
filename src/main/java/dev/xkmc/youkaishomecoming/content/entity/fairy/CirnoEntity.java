@@ -55,6 +55,7 @@ public class CirnoEntity extends FairyEntity implements IYoukaiMerchant {
 
 	public CirnoEntity(EntityType<? extends CirnoEntity> type, Level level) {
 		super(type, level);
+		setPersistenceRequired();
 	}
 
 	@Override
