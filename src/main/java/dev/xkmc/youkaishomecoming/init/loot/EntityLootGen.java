@@ -160,7 +160,7 @@ public class EntityLootGen {
 				.tag(TagPredicate.is(YHDamageTypes.DANMAKU_TYPE)));
 	}
 
-	private static LootItemFunction.Builder lootCount(float factor) {
+	public static LootItemFunction.Builder lootCount(float factor) {
 		return LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(factor * 0.5f, factor));
 	}
 

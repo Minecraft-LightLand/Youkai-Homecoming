@@ -87,6 +87,11 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue ringSpellDanmakuPerItemCost;
 		public final ForgeConfigSpec.IntValue homingSpellDanmakuPerItemCost;
 
+		public final ForgeConfigSpec.BooleanValue smallFairyReplacement;
+		public final ForgeConfigSpec.DoubleValue smallFairySummonReinforcement;
+		public final ForgeConfigSpec.DoubleValue smallFairySummonStrongFairy;
+		public final ForgeConfigSpec.IntValue smallFairyStrength;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			{
@@ -227,6 +232,19 @@ public class YHModConfig {
 						.defineInRange("ringSpellDanmakuPerItemCost", 32, 1, 1024);
 				homingSpellDanmakuPerItemCost = builder.comment("Homing Spell: Max number of bullet allowed per item cost")
 						.defineInRange("homingSpellDanmakuPerItemCost", 8, 1, 1024);
+			}
+			builder.pop();
+
+			builder.push("touhou_little_maid");
+			{
+				smallFairyReplacement = builder.comment("Replace Fairies from Touhou Little Maid with a neutral fairy")
+						.define("smallFairyReplacement", false);
+				smallFairySummonReinforcement = builder.comment("Chance for small fairies to summon other fairies when killed by non-danmaku damage")
+						.defineInRange("smallFairySummonReinforcement", 0.25, 0, 1);
+				smallFairySummonStrongFairy = builder.comment("Chance for small fairies to summon stronger fairies when they are set to summon reinforcements")
+						.defineInRange("smallFairySummonStrongFairy", 0.1, 0, 1);
+				smallFairyStrength = builder.comment("Small Fairy spellcard strength")
+						.defineInRange("smallFairyStrength", 2, 0, 4);
 			}
 			builder.pop();
 		}

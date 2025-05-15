@@ -215,6 +215,10 @@ public abstract class YoukaiEntity extends PathfinderMob
 		return (float) getAttributeValue(Attributes.ATTACK_DAMAGE);
 	}
 
+	public double getStopRange() {
+		return 16;
+	}
+
 	@Nullable
 	@Override
 	public LivingEntity targetEntity() {

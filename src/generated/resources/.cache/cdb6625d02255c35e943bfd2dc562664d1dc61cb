@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-13T10:21:24.912515	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-05-13T17:06:05.251494	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1655,7 +1655,7 @@ cbd19915a5bbf3a15db18f65d089c2306391ef38 data/youkaishomecoming/loot_tables/enti
 87298f8f381f767e2d7ef02ab0b16e68737ad1df data/youkaishomecoming/loot_tables/entities/remilia_scarlet.json
 ef2f4f528800044f354e954d4e5988dd331d8bbd data/youkaishomecoming/loot_tables/entities/rumia.json
 64b9441313acdf220fd1c2bafda469245c2fddf7 data/youkaishomecoming/loot_tables/entities/shrine_maiden.json
-5c4a456dd67559b6abc5e5a278bde273ef644eae data/youkaishomecoming/loot_tables/entities/small_fairy.json
+8f8fb4afe5fc41b9cb6209645c4f6ae3883b1c11 data/youkaishomecoming/loot_tables/entities/small_fairy.json
 6b82a66caacd72aa73b710d37006a15ab573c71b data/youkaishomecoming/loot_tables/entities/star_sapphire.json
 f2b07a7789b5f03ccf7de5615c9182c37a85d86f data/youkaishomecoming/loot_tables/entities/sunny_milk.json
 7a3a270dc277ab0b9bd13afde6a5d5a9d2e8a0d5 data/youkaishomecoming/loot_tables/entities/youkai.json

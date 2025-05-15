@@ -34,7 +34,7 @@ public class ClientDanmakuCache {
 
 	private static <T extends SimplifiedProjectile> EntityRenderer<T> getRenderer(EntityRenderDispatcher disp, T e) {
 		int id = e.getTypeId();
-		if (RENDERERS == null || RENDERERS.length < id) {
+		if (RENDERERS == null || RENDERERS.length <= id) {
 			RENDERERS = new EntityRenderer[id + 1];
 		}
 		if (RENDERERS[id] == null) {
