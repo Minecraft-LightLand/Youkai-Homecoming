@@ -42,6 +42,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	public BossYoukaiEntity(EntityType<? extends BossYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
+		setPersistenceRequired();
 	}
 
 	protected boolean wouldAttack(LivingEntity entity) {
