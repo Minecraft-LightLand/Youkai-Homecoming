@@ -68,7 +68,6 @@ public class RumiaEntity extends YoukaiEntity implements IYoukaiMerchant {
 
 	public RumiaEntity(EntityType<? extends RumiaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
-		setPersistenceRequired();
 	}
 
 	protected void registerGoals() {

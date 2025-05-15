@@ -38,4 +38,9 @@ public class SmallFairy extends FairyEntity {
 		return 4;
 	}
 
+	@Override
+	protected boolean shouldDespawnInPeaceful() {
+		return true;
+	}
+
 }
