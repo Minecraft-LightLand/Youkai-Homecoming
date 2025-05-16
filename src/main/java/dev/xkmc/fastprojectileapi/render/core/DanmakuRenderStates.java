@@ -50,10 +50,13 @@ public abstract class DanmakuRenderStates extends RenderType {
 		return LASER.apply(rl, type);
 	}
 
-	public static int fading(int col, ProjectileRenderer<?> r, SimplifiedProjectile e) {
+	public static int fading(DisplayType display, int col, ProjectileRenderer<?> r, SimplifiedProjectile e) {
 		double perc = r.fading(e);
 		if (perc == 0) return col;
 		int alpha = (int) ((col >>> 24) * perc);
+		if (display == DisplayType.ADDITIVE) {
+			return 0xff000000 | alpha << 16 | alpha << 8 | alpha;
+		}
 		return (alpha << 24) | col & 0xffffff;
 	}
 
