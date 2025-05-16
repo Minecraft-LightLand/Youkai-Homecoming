@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.pot.table;
+package dev.xkmc.youkaishomecoming.content.pot.table.block;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

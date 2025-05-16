@@ -1,0 +1,12 @@
+package dev.xkmc.youkaishomecoming.content.pot.table.item;
+
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+
+import java.util.Optional;
+
+public interface TableItem {
+
+	Optional<TableItem> find(Level level, ItemStack stack);
+
+}

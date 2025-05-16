@@ -30,6 +30,10 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineTableRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedCuisineTableRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.UnorderedCuisineTableRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
@@ -131,6 +135,10 @@ public class YHBlocks {
 	public static final BlockEntry<DelegateBlock> COPPER_FAUCET;
 	public static final BlockEntityEntry<CopperFaucetBlockEntity> FAUCET_BE;
 
+	public static final RegistryEntry<RecipeType<CuisineTableRecipe<?>>> TABLE_RT;
+	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineTableRecipe, CuisineTableRecipe<?>, CuisineInv>> TABLE_ORDER;
+	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineTableRecipe, CuisineTableRecipe<?>, CuisineInv>> TABLE_UNORDER;
+
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
 
@@ -188,6 +196,7 @@ public class YHBlocks {
 
 		}
 
+		// steamer
 		{
 			STEAMER_POT = YoukaisHomecoming.REGISTRATE.block("steamer_pot", p -> SteamerStates.createPotBlock())
 					.blockstate(SteamerBlockJsons::genPotModel)
@@ -220,6 +229,7 @@ public class YHBlocks {
 
 		}
 
+		// copper tank and faucet
 		{
 			COPPER_TANK = YoukaisHomecoming.REGISTRATE.block("copper_tank", p -> new CopperTankBlock(
 							BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.COPPER)
@@ -254,6 +264,13 @@ public class YHBlocks {
 					.renderer(() -> CopperFaucetRenderer::new)
 					.register();
 
+		}
+
+		// cuisine
+		{
+			TABLE_RT = YoukaisHomecoming.REGISTRATE.recipe("cuisine_table");
+			TABLE_ORDER = reg("cuisine_table_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineTableRecipe.class, TABLE_RT));
+			TABLE_UNORDER = reg("cuisine_table_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineTableRecipe.class, TABLE_RT));
 		}
 
 		{
@@ -377,7 +394,6 @@ public class YHBlocks {
 				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).build()
 				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b))).register();
 	}
-
 
 	public static void register() {
 
