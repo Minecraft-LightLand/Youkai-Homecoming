@@ -39,7 +39,8 @@ public class IngredientTableItem extends BaseTableItem {
 	@Override
 	public Optional<TableItem> find(Level level, ItemStack stack) {
 		var ans = super.find(level, stack);
-		if (ans.isPresent() || variant == null) return ans;
+		if (ans.isPresent()) return ans;
+		if (variant == null) return Optional.empty();
 		return variant.find(level, stack);
 	}
 

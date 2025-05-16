@@ -26,6 +26,11 @@ public class UnorderedCuisineTableRecipe extends CuisineTableRecipe<UnorderedCui
 	}
 
 	@Override
+	public List<Ingredient> getCustomIngredients() {
+		return input;
+	}
+
+	@Override
 	public boolean matches(CuisineInv inv, Level level) {
 		if (!inv.base().equals(base)) return false;
 		if (inv.getContainerSize() > input.size()) return false;

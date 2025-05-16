@@ -28,10 +28,18 @@ public class BaseTableItem implements TableItem {
 		return with(Ingredient.of(item));
 	}
 
+	public IngredientTableItem click() {
+		return with(Ingredient.EMPTY);
+	}
+
 	@Override
 	public Optional<TableItem> find(Level level, ItemStack stack) {
 		for (var e : children) {
-			if (e.ingredient().test(stack)) {
+			if (stack.isEmpty()) {
+				if (e.ingredient().isEmpty()) {
+					return Optional.of(e);
+				}
+			} else if (e.ingredient().test(stack)) {
 				return Optional.of(e);
 			}
 		}
@@ -40,6 +48,11 @@ public class BaseTableItem implements TableItem {
 
 	public int step() {
 		return 0;
+	}
+
+	@Override
+	public Optional<ItemStack> complete(Level level) {
+		return Optional.empty();
 	}
 
 }

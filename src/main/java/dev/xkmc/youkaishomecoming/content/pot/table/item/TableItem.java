@@ -9,4 +9,8 @@ public interface TableItem {
 
 	Optional<TableItem> find(Level level, ItemStack stack);
 
+	int step();
+
+	Optional<ItemStack> complete(Level level);
+
 }

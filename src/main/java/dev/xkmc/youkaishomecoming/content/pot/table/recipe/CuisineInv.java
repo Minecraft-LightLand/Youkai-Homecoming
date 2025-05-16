@@ -27,7 +27,7 @@ public record CuisineInv(ResourceLocation base, List<ItemStack> list, int start,
 
 	@Override
 	public ItemStack getItem(int i) {
-		return list.get(i);
+		return list.get(i + start);
 	}
 
 	@Override

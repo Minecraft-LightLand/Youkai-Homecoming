@@ -6,6 +6,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableModelManager;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,11 +31,32 @@ public class CuisineTableBlockEntity extends BaseBlockEntity {
 		var prev = getModel();
 		var ans = prev.find(level, stack);
 		if (ans.isPresent()) {
-			contents.add(stack.copyWithCount(1));
+			if (level.isClientSide()) return true;
+			contents.add(stack.isEmpty() ? ItemStack.EMPTY : stack.copyWithCount(1));
 			model = ans.get();
+			notifyTile();
 			return true;
 		}
 		return false;
+	}
+
+	public boolean addToPlayer(Player player) {
+		if (level == null) return false;
+		var opt = getModel().complete(level);
+		if (opt.isPresent()) {
+			if (level.isClientSide()) return true;
+			model = null;
+			contents.clear();
+
+			notifyTile();
+			return true;
+		}
+		return false;
+	}
+
+	public void notifyTile() {
+		sync();
+		setChanged();
 	}
 
 	public TableItem getModel() {
