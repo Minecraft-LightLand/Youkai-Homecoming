@@ -12,7 +12,6 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class CuisineTableBlock implements OnClickBlockMethod {
 
-
 	@Override
 	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);

@@ -45,9 +45,10 @@ public class CuisineTableBlockEntity extends BaseBlockEntity {
 		var opt = getModel().complete(level);
 		if (opt.isPresent()) {
 			if (level.isClientSide()) return true;
+			var ans = opt.get();
+			player.getInventory().placeItemBackInInventory(ans);
 			model = null;
 			contents.clear();
-
 			notifyTile();
 			return true;
 		}

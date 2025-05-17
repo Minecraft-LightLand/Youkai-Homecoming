@@ -16,18 +16,18 @@ public class VariantTableItemBase {
 
 	private static final Map<ResourceLocation, VariantTableItemBase> MAP = new LinkedHashMap<>();
 
-	public static synchronized VariantTableItemBase create(TableItem base, ResourceLocation id) {
+	public static synchronized VariantTableItemBase create(IngredientTableItem base, ResourceLocation id) {
 		var ans = new VariantTableItemBase(base, id);
 		MAP.put(id, ans);
 		return ans;
 	}
 
-	private final TableItem base;
+	private final IngredientTableItem base;
 	private final ResourceLocation id;
 	@Nullable
 	private FilledTableItemBase click;
 
-	public VariantTableItemBase(TableItem base, ResourceLocation id) {
+	public VariantTableItemBase(IngredientTableItem base, ResourceLocation id) {
 		this.base = base;
 		this.id = id;
 	}
@@ -40,7 +40,7 @@ public class VariantTableItemBase {
 		return id;
 	}
 
-	public FilledTableItemBase click() {
+	public FilledTableItemBase addNextStep() {
 		click = new FilledTableItemBase();
 		return click;
 	}

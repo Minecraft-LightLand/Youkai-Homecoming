@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -33,6 +34,11 @@ public class FilledTableItem implements TableItem {
 	@Override
 	public Optional<ItemStack> complete(Level level) {
 		return Optional.of(current.copy());
+	}
+
+	@Override
+	public List<ResourceLocation> getModels() {
+		return List.of();//TODO
 	}
 
 }

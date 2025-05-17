@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -45,6 +46,11 @@ public class VariantTableItem implements TableItem {
 		var cont = new CuisineInv(base.id(), contents, base.step(), true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.TABLE_RT.get(), cont, level)
 				.map(r -> r.assemble(cont, level.registryAccess()));
+	}
+
+	@Override
+	public List<ResourceLocation> getModels() {
+		return List.of();//TODO
 	}
 
 }
