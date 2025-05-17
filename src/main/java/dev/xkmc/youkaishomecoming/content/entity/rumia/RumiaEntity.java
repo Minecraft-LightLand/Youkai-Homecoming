@@ -193,9 +193,11 @@ public class RumiaEntity extends YoukaiEntity implements IYoukaiMerchant {
 		if (ex) {
 			hp.addPermanentModifier(new AttributeModifier(EXRUMIA, "ex_rumia", 4, AttributeModifier.Operation.MULTIPLY_TOTAL));
 			atk.addPermanentModifier(new AttributeModifier(EXRUMIA, "ex_rumia", 1, AttributeModifier.Operation.MULTIPLY_TOTAL));
+			combatProgress.maxProgress = 200;
 		} else {
 			hp.removeModifier(EXRUMIA);
 			atk.removeModifier(EXRUMIA);
+			combatProgress.maxProgress = 40;
 		}
 		setHealth(getMaxHealth());
 		setFlag(4, ex);

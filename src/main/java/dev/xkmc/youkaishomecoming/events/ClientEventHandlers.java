@@ -57,7 +57,7 @@ public class ClientEventHandlers {
 		var level = Minecraft.getInstance().level;
 		if (level == null) return;
 		if (level.getEntity(id) instanceof YoukaiEntity e) {
-			e.setCombatProgress(progress.getProgress());
+			e.combatProgress.loadFrom(progress);
 		}
 	}
 }

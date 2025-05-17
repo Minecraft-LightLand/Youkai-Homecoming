@@ -38,4 +38,10 @@ public class CombatProgress {
 	public void setMax() {
 		progress = maxProgress;
 	}
+
+	public void loadFrom(CombatProgress progress) {
+		this.maxProgress = progress.maxProgress;
+		this.progress = progress.progress;
+	}
+
 }
