@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.table.block;
+package dev.xkmc.youkaishomecoming.content.pot.table.board;
 
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2library.base.tile.BaseBlockEntity;
@@ -6,6 +6,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-public class CuisineTableBlockEntity extends BaseBlockEntity {
+public class CuisineBoardBlockEntity extends BaseBlockEntity {
 
 	@SerialClass.SerialField
 	private final List<ItemStack> contents = new ArrayList<>();
 
 	private TableItem model = null;
 
-	public CuisineTableBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+	public CuisineBoardBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
 	}
 
@@ -58,6 +59,12 @@ public class CuisineTableBlockEntity extends BaseBlockEntity {
 	public void notifyTile() {
 		sync();
 		setChanged();
+	}
+
+	@Override
+	public void load(CompoundTag tag) {
+		super.load(tag);
+		model = null;
 	}
 
 	public TableItem getModel() {

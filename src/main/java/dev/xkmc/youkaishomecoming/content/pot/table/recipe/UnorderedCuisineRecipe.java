@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-public class OrderedCuisineTableRecipe extends CuisineTableRecipe<OrderedCuisineTableRecipe> {
+public class UnorderedCuisineRecipe extends CuisineRecipe<UnorderedCuisineRecipe> {
 
 	@SerialClass.SerialField
 	public final List<Ingredient> input = new ArrayList<>();
@@ -21,8 +21,8 @@ public class OrderedCuisineTableRecipe extends CuisineTableRecipe<OrderedCuisine
 	@SerialClass.SerialField
 	public ItemStack result = ItemStack.EMPTY;
 
-	public OrderedCuisineTableRecipe(ResourceLocation id, RecType<OrderedCuisineTableRecipe, CuisineTableRecipe<?>, CuisineInv> fac) {
-		super(id, YHBlocks.TABLE_ORDER.get());
+	public UnorderedCuisineRecipe(ResourceLocation id) {
+		super(id, YHBlocks.CUISINE_UNORDER.get());
 	}
 
 	@Override
@@ -34,13 +34,22 @@ public class OrderedCuisineTableRecipe extends CuisineTableRecipe<OrderedCuisine
 	public boolean matches(CuisineInv inv, Level level) {
 		if (!inv.base().equals(base)) return false;
 		if (inv.getContainerSize() > input.size()) return false;
-		int n = Math.min(inv.getContainerSize(), input.size());
-		for (int i = 0; i < n; i++) {
-			if (!input.get(i).test(inv.getItem(i))) {
-				return false;
+		List<Ingredient> remain = new ArrayList<>(input);
+		for (int i = 0; i < inv.getContainerSize(); i++) {
+			ItemStack stack = inv.getItem(i);
+			var itr = remain.iterator();
+			boolean match = false;
+			while (itr.hasNext()) {
+				var ing = itr.next();
+				if (ing.test(stack)) {
+					itr.remove();
+					match = true;
+					break;
+				}
 			}
+			if (!match) return false;
 		}
-		return input.size() == inv.getContainerSize() || !inv.isComplete();
+		return !inv.isComplete() || remain.isEmpty();
 	}
 
 	@Override

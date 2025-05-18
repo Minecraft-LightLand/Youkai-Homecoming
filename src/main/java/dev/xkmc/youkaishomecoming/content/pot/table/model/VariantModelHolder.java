@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.model;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -37,6 +38,25 @@ public class VariantModelHolder extends FixedModelHolder {
 		super.build(pvd);
 		for (var ent : parts.entrySet()) {
 			ent.getValue().build(pvd);
+		}
+	}
+
+	public void buildContents(List<ResourceLocation> ans, List<ItemStack> list) {
+		var partList = new ArrayList<>(parts.entrySet());
+		int[] counter = new int[partList.size()];
+		for (var stack : list) {
+			for (int i = 0; i < partList.size(); i++) {
+				var part = partList.get(i).getValue();
+				var id = part.find(stack);
+				if (id != null) {
+					int index = counter[i];
+					counter[i]++;
+					if (index < part.max) {
+						ans.add(part.modelAt(id, index));
+					}
+					break;
+				}
+			}
 		}
 	}
 

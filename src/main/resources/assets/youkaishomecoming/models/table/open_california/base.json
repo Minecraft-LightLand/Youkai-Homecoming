@@ -1,9 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "ta_nori",
-		"2": "ta_sushi_rice",
-		"3": "ingredient"
+		"1": "#kelp",
+		"2": "#rice"
 	},
 	"elements": [
 		{
@@ -26,33 +25,6 @@
 				"south": {"uv": [2, 11, 13, 12], "texture": "#2"},
 				"west": {"uv": [5, 12, 13, 13], "texture": "#2"},
 				"up": {"uv": [2, 3, 13, 11], "texture": "#2"}
-			}
-		},
-		{
-			"name": "sauce",
-			"from": [2.5, 2, 6.5],
-			"to": [13.5, 2.01, 9.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2.5, 2, 6.5]},
-			"faces": {
-				"north": {"uv": [0, 0, 11, 0.01], "texture": "#missing"},
-				"east": {"uv": [0, 0, 3, 0.01], "texture": "#missing"},
-				"south": {"uv": [0, 0, 11, 0.01], "texture": "#missing"},
-				"west": {"uv": [0, 0, 3, 0.01], "texture": "#missing"},
-				"up": {"uv": [0, 6, 11, 9], "texture": "#3"},
-				"down": {"uv": [0, 0, 11, 3], "texture": "#missing"}
-			}
-		},
-		{
-			"name": "unfinished_ta_sushi_rice",
-			"from": [5, 1, 6],
-			"to": [11, 4, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 7]},
-			"faces": {
-				"north": {"uv": [6, 9, 12, 12], "texture": "#2"},
-				"east": {"uv": [2, 9, 6, 12], "texture": "#2"},
-				"south": {"uv": [6, 9, 12, 12], "texture": "#2"},
-				"west": {"uv": [2, 9, 6, 12], "texture": "#2"},
-				"up": {"uv": [5, 5, 11, 9], "texture": "#2"}
 			}
 		}
 	]

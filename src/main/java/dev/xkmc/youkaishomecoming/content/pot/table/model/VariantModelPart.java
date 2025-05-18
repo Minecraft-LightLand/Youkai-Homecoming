@@ -3,9 +3,11 @@ package dev.xkmc.youkaishomecoming.content.pot.table.model;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.util.Lazy;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.function.Supplier;
 public class VariantModelPart {
 
 	private final ResourceLocation path;
-	private final int max;
+	protected final int max;
 
 	private final Map<String, Entry> ingredients = new LinkedHashMap<>();
 
@@ -24,11 +26,15 @@ public class VariantModelPart {
 		this.max = max;
 	}
 
+	public ResourceLocation modelAt(String id, int index) {
+		return path.withSuffix("/" + id + "/" + index);
+	}
+
 	public void addModels(List<ResourceLocation> list) {
 		for (var ent : ingredients.entrySet()) {
 			String id = ent.getKey();
 			for (int i = 0; i < max; i++) {
-				list.add(path.withSuffix("/" + id + "/" + i));
+				list.add(modelAt(id, i));
 			}
 		}
 	}
@@ -37,8 +43,7 @@ public class VariantModelPart {
 		for (var ent : ingredients.entrySet()) {
 			String id = ent.getKey();
 			for (int i = 0; i < max; i++) {
-				pvd.create(path.withSuffix("/" + id + "/" + i), path)
-						.tex(id, ent.getValue().tex);
+				pvd.create(modelAt(id, i), path).tex(id, ent.getValue().tex);
 			}
 		}
 	}
@@ -55,6 +60,15 @@ public class VariantModelPart {
 
 	public Entry addMapping(String id, TagKey<Item> tag) {
 		return addMapping(id, () -> Ingredient.of(tag));
+	}
+
+	public @Nullable String find(ItemStack stack) {
+		for (var ent : ingredients.entrySet()) {
+			if (ent.getValue().ingredient.get().test(stack)) {
+				return ent.getKey();
+			}
+		}
+		return null;
 	}
 
 	public static class Entry {

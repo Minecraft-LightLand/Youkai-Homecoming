@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 
 public record CuisineInv(ResourceLocation base, List<ItemStack> list, int start, boolean isComplete)
-		implements BaseRecipe.RecInv<CuisineTableRecipe<?>> {
+		implements BaseRecipe.RecInv<CuisineRecipe<?>> {
 
 	@Override
 	public int getContainerSize() {

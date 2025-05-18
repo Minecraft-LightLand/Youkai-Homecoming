@@ -26,7 +26,7 @@ public class VariantTableItemBase {
 
 	private final IngredientTableItem base;
 	private final ResourceLocation id;
-	private final VariantModelHolder model;
+	protected final VariantModelHolder model;
 	@Nullable
 	private FilledTableItemBase click;
 
@@ -67,7 +67,7 @@ public class VariantTableItemBase {
 
 	public boolean isValid(Level level, List<ItemStack> stacks) {
 		var cont = new CuisineInv(id, stacks, base.step(), false);
-		return level.getRecipeManager().getRecipeFor(YHBlocks.TABLE_RT.get(), cont, level).isPresent();
+		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level).isPresent();
 	}
 
 }

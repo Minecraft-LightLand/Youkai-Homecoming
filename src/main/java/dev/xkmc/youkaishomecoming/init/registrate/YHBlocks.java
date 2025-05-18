@@ -30,10 +30,13 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
+import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlock;
+import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineTableRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedCuisineTableRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.UnorderedCuisineTableRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedCuisineRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.UnorderedCuisineRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
@@ -135,9 +138,11 @@ public class YHBlocks {
 	public static final BlockEntry<DelegateBlock> COPPER_FAUCET;
 	public static final BlockEntityEntry<CopperFaucetBlockEntity> FAUCET_BE;
 
-	public static final RegistryEntry<RecipeType<CuisineTableRecipe<?>>> TABLE_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineTableRecipe, CuisineTableRecipe<?>, CuisineInv>> TABLE_ORDER;
-	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineTableRecipe, CuisineTableRecipe<?>, CuisineInv>> TABLE_UNORDER;
+	public static final BlockEntry<DelegateBlock> CUISINE_BOARD;
+	public static final BlockEntityEntry<CuisineBoardBlockEntity> CUISINE_BOARD_BE;
+	public static final RegistryEntry<RecipeType<CuisineRecipe<?>>> CUISINE_RT;
+	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_ORDER;
+	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
 
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
@@ -155,6 +160,7 @@ public class YHBlocks {
 
 	static {
 
+		// moka kettle, ferment, rack
 		{
 			MOKA = YoukaisHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
@@ -268,9 +274,18 @@ public class YHBlocks {
 
 		// cuisine
 		{
-			TABLE_RT = YoukaisHomecoming.REGISTRATE.recipe("cuisine_table");
-			TABLE_ORDER = reg("cuisine_table_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineTableRecipe.class, TABLE_RT));
-			TABLE_UNORDER = reg("cuisine_table_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineTableRecipe.class, TABLE_RT));
+			CUISINE_BOARD = YoukaisHomecoming.REGISTRATE.block("cuisine_board", CuisineBoardBlock::create)
+					.blockstate(CuisineBoardBlock::buildState)
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.defaultLoot().simpleItem()
+					.register();
+			CUISINE_BOARD_BE = YoukaisHomecoming.REGISTRATE.blockEntity("cuisine_board", CuisineBoardBlockEntity::new)
+					.validBlock(CUISINE_BOARD)
+					.renderer(() -> CuisineBoardRenderer::new)
+					.register();
+			CUISINE_RT = YoukaisHomecoming.REGISTRATE.recipe("cuisine");
+			CUISINE_ORDER = reg("cuisine_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_UNORDER = reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
 		}
 
 		{

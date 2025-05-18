@@ -31,7 +31,7 @@ public class VariantTableItem implements TableItem {
 			var next = base.next();
 			if (next == null) return Optional.empty();
 			var cont = new CuisineInv(base.id(), contents, base.step(), true);
-			return level.getRecipeManager().getRecipeFor(YHBlocks.TABLE_RT.get(), cont, level)
+			return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
 					.map(r -> new FilledTableItem(next, contents,
 							r.assemble(cont, level.registryAccess()), step() + 1));
 		}
@@ -44,13 +44,16 @@ public class VariantTableItem implements TableItem {
 	@Override
 	public Optional<ItemStack> complete(Level level) {
 		var cont = new CuisineInv(base.id(), contents, base.step(), true);
-		return level.getRecipeManager().getRecipeFor(YHBlocks.TABLE_RT.get(), cont, level)
+		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
 				.map(r -> r.assemble(cont, level.registryAccess()));
 	}
 
 	@Override
 	public List<ResourceLocation> getModels() {
-		return List.of();//TODO
+		List<ResourceLocation> ans = new ArrayList<>();
+		ans.add(base.model.modelLoc());
+		base.model.buildContents(ans, contents);
+		return ans;
 	}
 
 }

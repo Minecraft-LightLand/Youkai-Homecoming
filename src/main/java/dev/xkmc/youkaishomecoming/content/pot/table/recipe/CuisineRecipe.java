@@ -8,9 +8,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 
 @SerialClass
-public abstract class CuisineTableRecipe<T extends CuisineTableRecipe<T>> extends BaseRecipe<T, CuisineTableRecipe<?>, CuisineInv> {
+public abstract class CuisineRecipe<T extends CuisineRecipe<T>> extends BaseRecipe<T, CuisineRecipe<?>, CuisineInv> {
 
-	public CuisineTableRecipe(ResourceLocation id, RecType<T, CuisineTableRecipe<?>, CuisineInv> fac) {
+	public CuisineRecipe(ResourceLocation id, RecType<T, CuisineRecipe<?>, CuisineInv> fac) {
 		super(id, fac);
 	}
 
