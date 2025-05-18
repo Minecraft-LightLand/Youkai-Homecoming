@@ -16,18 +16,20 @@ import java.util.function.Supplier;
 
 public class VariantModelPart {
 
+	private final VariantModelHolder parent;
 	private final ResourceLocation path;
 	protected final int max;
 
 	private final Map<String, Entry> ingredients = new LinkedHashMap<>();
 
-	public VariantModelPart(ResourceLocation path, int max) {
+	public VariantModelPart(VariantModelHolder parent, ResourceLocation path, int max) {
+		this.parent = parent;
 		this.path = path;
 		this.max = max;
 	}
 
 	public ResourceLocation modelAt(String id, int index) {
-		return path.withSuffix("/" + id + "/" + index);
+		return path.withPath(e -> "cuisine/" + e + "/" + id + "/" + index);
 	}
 
 	public void addModels(List<ResourceLocation> list) {
@@ -40,10 +42,11 @@ public class VariantModelPart {
 	}
 
 	public void build(TableModelProvider pvd) {
-		for (var ent : ingredients.entrySet()) {
-			String id = ent.getKey();
-			for (int i = 0; i < max; i++) {
-				pvd.create(modelAt(id, i), path).tex(id, ent.getValue().tex);
+		for (int i = 0; i < max; i++) {
+			var model = path.withPrefix("cuisine/").withSuffix("_" + i);
+			for (var ent : ingredients.entrySet()) {
+				String id = ent.getKey();
+				pvd.create(modelAt(id, i), model).tex(id, ent.getValue().tex);
 			}
 		}
 	}

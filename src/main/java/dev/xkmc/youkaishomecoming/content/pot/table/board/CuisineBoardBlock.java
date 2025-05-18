@@ -33,7 +33,7 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 
 	public static final BlockMethod INS = new CuisineBoardBlock();
 	public static final BlockMethod BE = new BlockEntityBlockMethodImpl<>(YHBlocks.CUISINE_BOARD_BE, CuisineBoardBlockEntity.class);
-	public static final VoxelShape SHAPE = Shapes.box(1, 0, 1, 15, 1, 15);
+	public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 1, 15);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
 		return DelegateBlock.newBaseBlock(p.mapColor(MapColor.WOOD).sound(SoundType.WOOD)

@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:cuisine/gunkan/top_0",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "salmon_roe": "youkaishomecoming:block/table/gunkan/top/salmon_roe"
+  }
+}

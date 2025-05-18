@@ -21,7 +21,7 @@ public class OrderedCuisineRecipe extends CuisineRecipe<OrderedCuisineRecipe> {
 	@SerialClass.SerialField
 	public ItemStack result = ItemStack.EMPTY;
 
-	public OrderedCuisineRecipe(ResourceLocation id, RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv> fac) {
+	public OrderedCuisineRecipe(ResourceLocation id) {
 		super(id, YHBlocks.CUISINE_ORDER.get());
 	}
 

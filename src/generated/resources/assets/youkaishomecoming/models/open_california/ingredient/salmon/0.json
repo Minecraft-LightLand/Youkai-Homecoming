@@ -1,7 +1,0 @@
-{
-  "parent": "youkaishomecoming:open_california/ingredient",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "salmon": "youkaishomecoming:block/table/ingredient/salmon"
-  }
-}

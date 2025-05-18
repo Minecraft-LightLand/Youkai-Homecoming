@@ -14,6 +14,8 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -987,6 +989,14 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
+		}
+
+		// cuisine
+		{
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI, ModItems.SALMON_ROLL.get(), 2
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.add(ForgeTags.RAW_FISHES_SALMON)
+					.save(pvd);
 		}
 
 		// danmaku

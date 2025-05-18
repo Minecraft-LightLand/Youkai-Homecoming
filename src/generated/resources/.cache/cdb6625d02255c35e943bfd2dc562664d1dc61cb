@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-18T16:18:00.677533	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-05-18T17:25:33.986306	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -621,10 +621,36 @@ fe6a8a87c62e14b8dc28f8cd7f5f034b7c4f9586 assets/youkaishomecoming/models/block/w
 403346820b7149d9ce8afa72c05e8a095e740eb5 assets/youkaishomecoming/models/cuisine/fixed/kelp.json
 a5ef46b5edf9cb8e43e2ee1c178eda3a32e090a5 assets/youkaishomecoming/models/cuisine/fixed/rice.json
 22d9e286d34fb427d5f618572d7736dbfbb0fe41 assets/youkaishomecoming/models/cuisine/fixed/rice_2.json
+7f332e79c1fb09cf7928fc9b7d9649fe07ca8d32 assets/youkaishomecoming/models/cuisine/gunkan/base.json
+76fa74adfa90fedc5f0fd7031bd062f22de60b96 assets/youkaishomecoming/models/cuisine/gunkan/top/salmon_roe/0.json
 53e61ae03a778b9ef40bf3920bf8b35b0e0415a2 assets/youkaishomecoming/models/cuisine/open_california/base.json
+e9f5824bb344a8624e4d6af667b0bdb85a6b9492 assets/youkaishomecoming/models/cuisine/open_california/ingredient/cabbage/0.json
+77f25f1c9cc484360ce7ec32a4a4409e5bd5c4a1 assets/youkaishomecoming/models/cuisine/open_california/ingredient/cabbage/1.json
+090ddd594b8ec59c9ee07834a7cb87948d8c6909 assets/youkaishomecoming/models/cuisine/open_california/ingredient/cabbage/2.json
+b4466af35e21982e8740f4ae244f2ca192a2e855 assets/youkaishomecoming/models/cuisine/open_california/ingredient/carrot/0.json
+a27ffe7b9900551d0a7a6dbac4c09b1bd9734518 assets/youkaishomecoming/models/cuisine/open_california/ingredient/carrot/1.json
+8830e71022554555e8a4ba07a0d6ca72ef12d514 assets/youkaishomecoming/models/cuisine/open_california/ingredient/carrot/2.json
+0c07b012b651251852973103c7a952becf03e443 assets/youkaishomecoming/models/cuisine/open_california/ingredient/salmon/0.json
+8389cc781f6850647562ff590e9796190b6689f7 assets/youkaishomecoming/models/cuisine/open_california/ingredient/salmon/1.json
+3bfe7fd9e057cfd4064da37bdb0230656e29be04 assets/youkaishomecoming/models/cuisine/open_california/ingredient/salmon/2.json
 9ee0306472dd7115c235050277a6a090ce24a3bd assets/youkaishomecoming/models/cuisine/open_futomaki/base.json
+4f6424ee6438da440f6a437c587172d0c2bcfc8d assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/cabbage/0.json
+c37b5adc903be4f4afb68f41647cb6201ab6e1b6 assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/cabbage/1.json
+be78dcd48e7361d970ebec87ad2e2154aac9538a assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/cabbage/2.json
+97672681e6b2b721defce0d891d1f53e083bc690 assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/carrot/0.json
+2b6843f5621ad618de27fd0d7abc980b6f10c6ae assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/carrot/1.json
+779576afe0131f4a9fb20a1aaef133405a2e038f assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/carrot/2.json
+0479284502cfa6ba03f50200b924a8734f35a639 assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/salmon/0.json
+04c8ff30f6210d66c2ddea4221e4a637a7cb1410 assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/salmon/1.json
+bda713c92709866169616fb476be61ad5dc21a69 assets/youkaishomecoming/models/cuisine/open_futomaki/ingredient/salmon/2.json
+d1934e6edc7bc1eca8d02e6c7c4d2ce6b2692f13 assets/youkaishomecoming/models/cuisine/open_futomaki/sauce/soy_sauce/0.json
 29f165fce99c4cba2113ad8308ea60052eadd3d6 assets/youkaishomecoming/models/cuisine/open_hosomaki/base.json
+10da8f954bec2848e430100ed0661bb58ddabc67 assets/youkaishomecoming/models/cuisine/open_hosomaki/ingredient/cabbage/0.json
+7c1080cdd22d38bd42f5b8274a8e0a82a39024a4 assets/youkaishomecoming/models/cuisine/open_hosomaki/ingredient/carrot/0.json
+fdc4ee52434e5b4d5bf15e93fa1cf472986255ff assets/youkaishomecoming/models/cuisine/open_hosomaki/ingredient/salmon/0.json
+3d172321d6a157282539cc6ef5c2a3105fce9f61 assets/youkaishomecoming/models/cuisine/open_hosomaki/sauce/soy_sauce/0.json
 4e5b883401086f19955844dd24cacd63630365a7 assets/youkaishomecoming/models/cuisine/sushi/base.json
+fb00cbe463efce18533330d7be408c44127b9265 assets/youkaishomecoming/models/cuisine/sushi/top/salmon/0.json
 ac00ae360cf8b52cad81ae33fe47156c02fb8b57 assets/youkaishomecoming/models/custom/handrail_inner_left_ccw.json
 4ea043ee086db25308bc4dff48732c88b961a140 assets/youkaishomecoming/models/custom/handrail_inner_left_connect.json
 03df8b20afcf2b01607f40f55d6db9734d7331c2 assets/youkaishomecoming/models/custom/handrail_inner_left_corner.json
@@ -1055,16 +1081,6 @@ de4a2614b61f17199d476c60647cd9a5360e5dcf assets/youkaishomecoming/models/item/ye
 45feb69c5789c8c8a892284221c1f04273c542fe assets/youkaishomecoming/models/item/yellow_star_danmaku.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/youkai_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/yukari_spawn_egg.json
-169c484cd5b22dc358467c9e18c4d1395a44b19e assets/youkaishomecoming/models/open_california/ingredient/salmon/0.json
-169c484cd5b22dc358467c9e18c4d1395a44b19e assets/youkaishomecoming/models/open_california/ingredient/salmon/1.json
-169c484cd5b22dc358467c9e18c4d1395a44b19e assets/youkaishomecoming/models/open_california/ingredient/salmon/2.json
-2e27e5bee42fb719fc4643820c62db188bbb8dfb assets/youkaishomecoming/models/open_futomaki/ingredient/salmon/0.json
-2e27e5bee42fb719fc4643820c62db188bbb8dfb assets/youkaishomecoming/models/open_futomaki/ingredient/salmon/1.json
-2e27e5bee42fb719fc4643820c62db188bbb8dfb assets/youkaishomecoming/models/open_futomaki/ingredient/salmon/2.json
-5e1fd9d091515235b92e31e7860afe790a0f39f6 assets/youkaishomecoming/models/open_futomaki/sauce/soy_sauce/0.json
-607835433ed1451bc308ff645060da8f665caa72 assets/youkaishomecoming/models/open_hosomaki/ingredient/salmon/0.json
-c57476c51517296cb758ffefbdd4dfe757f92f3a assets/youkaishomecoming/models/open_hosomaki/sauce/soy_sauce/0.json
-e9065cd7c8e46853ce6022e138c7a1bcde68c79c assets/youkaishomecoming/models/sushi/top/salmon/0.json
 c90b811672ed77454ab02ce25bbe794d6ac8c607 data/curios/tags/items/back.json
 0ce21b81c580f483b908baa0792ab7e3bfc39ac0 data/diet/tags/items/fruits.json
 135319cff98ed8167383b42744e89d24ab0461c5 data/diet/tags/items/grains.json
@@ -1387,6 +1403,7 @@ ae635c30efc25a05dbd72f14a1d40fdb4875c59f data/youkaishomecoming/advancements/rec
 d8aecea93dfb2b6f630a36b0a043e2ab9be47f01 data/youkaishomecoming/advancements/recipes/con_panna.json
 f45e91b80e300eff991a62e317dd29749b8e4f3c data/youkaishomecoming/advancements/recipes/con_panna_remix.json
 21e8e122dc74c2e7b7719f8321a2a26fff8c975b data/youkaishomecoming/advancements/recipes/cornflower_tea.json
+af44dc8f3c4efd5569720e96dce82a6d9748a130 data/youkaishomecoming/advancements/recipes/cuisine_ordered/salmon_roll.json
 e29aca8a6e5eab4d7021977d96bf44a52e3ee663 data/youkaishomecoming/advancements/recipes/espresso.json
 a7e1a320a8f3c5abc770fd19da8f4993bb0c48b0 data/youkaishomecoming/advancements/recipes/food/affogato_craft.json
 ece916c23d3c372b7b0bfcdd1fe4f08762460991 data/youkaishomecoming/advancements/recipes/food/assorted_dango.json
@@ -2097,6 +2114,7 @@ d17a5626a5ab19c637a6a502625f4b2e1fe27139 data/youkaishomecoming/recipes/saidi_te
 0332af46721a3b7b868ace0d75da2e0022af784e data/youkaishomecoming/recipes/sake_bottle_from_glass_stonecutting.json
 ec816e97e36d8405dad26d95fa12fa320b14157c data/youkaishomecoming/recipes/sakura_honey_tea.json
 c08286e4628866a5e66248c3139665fea2ca5a5f data/youkaishomecoming/recipes/sakura_mochi.json
+3b870008b2ccb4539d7a518e2c71d55f63b33bf0 data/youkaishomecoming/recipes/salmon_roll.json
 9c3640a2d94ab138d7ad0f052f5af3452fb1b5f7 data/youkaishomecoming/recipes/sauce_grilled_fish.json
 6bfdf34d00ab1fca7ebb571fa7e8d3f4936f0919 data/youkaishomecoming/recipes/saucer_from_clay_saucer_smelting.json
 d8fb88c44b66e7ec4635751401d3325239b841f9 data/youkaishomecoming/recipes/scarlet_devil_cake.json

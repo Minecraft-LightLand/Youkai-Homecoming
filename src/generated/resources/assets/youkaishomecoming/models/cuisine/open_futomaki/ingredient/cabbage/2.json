@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:cuisine/open_futomaki/ingredient_2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cabbage": "youkaishomecoming:block/table/ingredient/cabbage"
+  }
+}
