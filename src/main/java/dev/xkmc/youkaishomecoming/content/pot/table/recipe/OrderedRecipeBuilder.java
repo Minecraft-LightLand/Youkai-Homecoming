@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
@@ -24,6 +25,22 @@ public class OrderedRecipeBuilder extends BaseRecipeBuilder<
 	}
 
 	public OrderedRecipeBuilder(VariantTableItemBase base, ItemLike result) {
+		this(base, new ItemStack(result));
+	}
+
+	public OrderedRecipeBuilder(Item base, ItemStack result) {
+		super(YHBlocks.CUISINE_ORDER.get());
+		if (FoodModelHelper.find(base.getDefaultInstance()) == null)
+			throw new IllegalStateException("Base item must correspond to a model");
+		recipe.base = base.builtInRegistryHolder().unwrapKey().orElseThrow().location();
+		recipe.result = result;
+	}
+
+	public OrderedRecipeBuilder(Item base, ItemLike result, int count) {
+		this(base, new ItemStack(result, count));
+	}
+
+	public OrderedRecipeBuilder(Item base, ItemLike result) {
 		this(base, new ItemStack(result));
 	}
 

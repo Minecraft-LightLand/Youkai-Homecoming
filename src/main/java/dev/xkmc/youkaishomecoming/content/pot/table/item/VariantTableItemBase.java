@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
+import dev.xkmc.youkaishomecoming.content.pot.table.model.AdditionalModelHolder;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
@@ -29,7 +30,7 @@ public class VariantTableItemBase {
 	private final ResourceLocation id;
 	protected final VariantModelHolder model;
 	@Nullable
-	private FilledTableItemBase click;
+	private FoodTableItemBase click;
 
 	private VariantTableItemBase(IngredientTableItem base, ResourceLocation id, VariantModelHolder model) {
 		this.base = base;
@@ -45,8 +46,8 @@ public class VariantTableItemBase {
 		return id;
 	}
 
-	public FilledTableItemBase addNextStep() {
-		click = new FilledTableItemBase();
+	public FoodTableItemBase addNextStep(@Nullable AdditionalModelHolder model) {
+		click = new FoodTableItemBase(model);
 		return click;
 	}
 
@@ -55,7 +56,7 @@ public class VariantTableItemBase {
 	}
 
 	@Nullable
-	public FilledTableItemBase next() {
+	public FoodTableItemBase next() {
 		return click;
 	}
 

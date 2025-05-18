@@ -6,10 +6,6 @@ import java.util.List;
 
 public interface TableModelHolder {
 
-	ResourceLocation id();
-
-	ResourceLocation modelLoc();
-
 	List<ResourceLocation> allModels();
 
 	void build(TableModelProvider pvd);

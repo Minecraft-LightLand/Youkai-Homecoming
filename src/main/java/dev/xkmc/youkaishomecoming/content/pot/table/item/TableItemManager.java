@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.ModelHolderManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
@@ -20,6 +21,7 @@ import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TableItemManager extends BaseTableItem {
 
@@ -62,9 +64,9 @@ public class TableItemManager extends BaseTableItem {
 	public static final VariantModelPart FUTOMAKI_INGREDIENT = BASE_FUTOMAKI.addPart("ingredient", 3);
 	public static final VariantModelPart CAL_INGREDIENT = BASE_CAL.addPart("ingredient", 3);
 
-	public static final FilledTableItemBase COMPLETE_HOSOMAKI = BASE_HOSOMAKI.addNextStep();
-	public static final FilledTableItemBase COMPLETE_FUTOMAKI = BASE_FUTOMAKI.addNextStep();
-	public static final FilledTableItemBase COMPLETE_CAL = BASE_CAL.addNextStep();
+	public static final FoodTableItemBase COMPLETE_HOSOMAKI = BASE_HOSOMAKI.addNextStep(null);
+	public static final FoodTableItemBase COMPLETE_FUTOMAKI = BASE_FUTOMAKI.addNextStep(null);
+	public static final FoodTableItemBase COMPLETE_CAL = BASE_CAL.addNextStep(null);//TODO
 
 	static {
 		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON);
@@ -90,6 +92,15 @@ public class TableItemManager extends BaseTableItem {
 		for (var part : parts) {
 			part.addMapping(id, item).tex(YoukaisHomecoming.loc("block/table/" + path));
 		}
+	}
+
+	@Override
+	public Optional<TableItem> find(Level level, ItemStack stack) {
+		var ans = super.find(level, stack);
+		if (ans.isPresent()) return ans;
+		var preset = FoodModelHelper.find(stack);
+		if (preset != null) return Optional.of(new FoodTableItem(stack));
+		return Optional.empty();
 	}
 
 	public Either<TableItem, Pair<TableItem, List<ItemStack>>> find(Level level, List<ItemStack> list) {

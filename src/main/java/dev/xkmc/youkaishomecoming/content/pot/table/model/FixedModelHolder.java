@@ -15,12 +15,6 @@ public class FixedModelHolder implements TableModelHolder {
 		manager.register(this);
 	}
 
-	@Override
-	public ResourceLocation id() {
-		return model;
-	}
-
-	@Override
 	public ResourceLocation modelLoc() {
 		return model.withPrefix("cuisine/");
 	}
@@ -43,8 +37,8 @@ public class FixedModelHolder implements TableModelHolder {
 
 	@Override
 	public void build(TableModelProvider pvd) {
-		var builder = pvd.create(modelLoc(), id().withPrefix("table/"));
-		for (var ent : tex.entrySet()){
+		var builder = pvd.create(modelLoc(), model.withPrefix("table/"));
+		for (var ent : tex.entrySet()) {
 			builder.tex(ent.getKey(), ent.getValue());
 		}
 	}

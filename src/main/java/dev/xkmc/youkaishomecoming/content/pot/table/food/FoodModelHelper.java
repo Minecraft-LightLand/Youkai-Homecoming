@@ -4,7 +4,6 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
-import dev.xkmc.youkaishomecoming.content.pot.table.model.TableModelHolder;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -22,16 +21,16 @@ public class FoodModelHelper {
 		return new FixedModelHolder(TableItemManager.MANAGER, YoukaisHomecoming.loc("roll/" + id));
 	}
 
-	public static FixedModelHolder futomaki(String id) {
-		return roll("futomaki")
+	public static FoodTableItemHolder futomaki(String id) {
+		return new FoodTableItemHolder(TableItemManager.COMPLETE_FUTOMAKI, roll("futomaki")
 				.put("kelp", YoukaisHomecoming.loc("block/table/roll_kelp"))
-				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id));
+				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}
 
-	public static FixedModelHolder hosomaki(String id) {
-		return roll("hosomaki")
+	public static FoodTableItemHolder hosomaki(String id) {
+		return new FoodTableItemHolder(TableItemManager.COMPLETE_HOSOMAKI, roll("hosomaki")
 				.put("kelp", YoukaisHomecoming.loc("block/table/roll_kelp"))
-				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id));
+				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}
 
 	public static <T extends Item> void buildModel(
@@ -40,13 +39,13 @@ public class FoodModelHelper {
 		pvd.getBuilder("item/" + ctx.getName()).parent(new ModelFile.UncheckedModelFile(model.modelLoc()));
 	}
 
-	private static final Map<ResourceLocation, FixedModelHolder> MAP = new ConcurrentHashMap<>();
+	private static final Map<ResourceLocation, FoodTableItemHolder> MAP = new ConcurrentHashMap<>();
 
-	public static void map(ResourceLocation item, FixedModelHolder model) {
+	public static void map(ResourceLocation item, FoodTableItemHolder model) {
 		MAP.put(item, model);
 	}
 
-	public static @Nullable TableModelHolder find(ItemStack current) {
+	public static @Nullable FoodTableItemHolder find(ItemStack current) {
 		return MAP.get(current.getItemHolder().unwrapKey().orElseThrow().location());
 	}
 

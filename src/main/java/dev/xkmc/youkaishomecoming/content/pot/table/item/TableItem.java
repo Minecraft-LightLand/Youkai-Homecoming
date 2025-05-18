@@ -16,10 +16,14 @@ public interface TableItem {
 
 	Optional<ItemStack> complete(Level level);
 
+	default Optional<ItemStack> doTransform() {
+		return Optional.empty();
+	}
+
 	List<ResourceLocation> getModels();
 
 	default void collectIngredients(List<Ingredient> list) {
-		
+
 	}
 
 }

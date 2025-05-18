@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
 import dev.xkmc.youkaishomecoming.init.food.EffectEntry;
 import dev.xkmc.youkaishomecoming.init.food.FoodType;
 import net.minecraft.tags.TagKey;
@@ -17,18 +16,17 @@ public enum YHRolls implements ItemLike {
 	SALMON_FUTOMAKI(FoodType.MEAT, 16, 0.9f, FoodModelHelper::futomaki, List.of()),
 	;
 
-
-	public final FixedModelHolder model;
+	public final FoodTableItemHolder model;
 	public final ItemEntry<Item> item;
 
 	YHRolls(FoodType type, int nutrition, float sat,
-			Function<String, FixedModelHolder> modelFactory,
+			Function<String, FoodTableItemHolder> modelFactory,
 			List<EffectEntry> effs, TagKey<Item>... tags) {
 		String name = name().toLowerCase(Locale.ROOT);
 		this.model = modelFactory.apply(name);
 		item = type.build(name, nutrition, sat, tags, effs)
 				.model((ctx, pvd) ->
-						FoodModelHelper.buildModel(model, ctx, pvd))
+						FoodModelHelper.buildModel(model.model(), ctx, pvd))
 				.register();
 		FoodModelHelper.map(item.getId(), model);
 	}

@@ -35,6 +35,11 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity {
 			if (level.isClientSide()) return true;
 			contents.add(stack.isEmpty() ? ItemStack.EMPTY : stack.copyWithCount(1));
 			model = ans.get();
+			var transform = model.doTransform();
+			if (transform.isPresent()) {
+				contents.clear();
+				contents.add(transform.get());
+			}
 			notifyTile();
 			return true;
 		}

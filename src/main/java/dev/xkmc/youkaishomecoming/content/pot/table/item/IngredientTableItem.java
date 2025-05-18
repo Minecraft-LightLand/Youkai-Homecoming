@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
-import dev.xkmc.youkaishomecoming.content.pot.table.model.TableModelHolder;
+import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -17,12 +17,12 @@ public class IngredientTableItem extends BaseTableItem {
 
 	private final TableItem prev;
 	private final Lazy<Ingredient> ingredient;
-	private final TableModelHolder model;
+	private final FixedModelHolder model;
 	private final int step;
 	@Nullable
 	private VariantTableItemBase variant;
 
-	public IngredientTableItem(BaseTableItem prev, Supplier<Ingredient> ingredient, TableModelHolder model) {
+	public IngredientTableItem(BaseTableItem prev, Supplier<Ingredient> ingredient, FixedModelHolder model) {
 		this.prev = prev;
 		this.ingredient = Lazy.of(ingredient);
 		this.model = model;

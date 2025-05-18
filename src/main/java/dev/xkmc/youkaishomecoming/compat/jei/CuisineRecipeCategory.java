@@ -43,70 +43,57 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 	}
 
 	public void draw(CuisineRecipe<?> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-
-		List<Ingredient> listBase = new ArrayList<>();
-		List<Ingredient> listRecipe = new ArrayList<>(recipe.getCustomIngredients());
-		var base = VariantTableItemBase.MAP.get(recipe.base());
-		if (base != null)
-			base.collectIngredients(listBase, listRecipe);
-		int max = Math.min(5, Math.max(listBase.size(), listRecipe.size()));
-
-		int offset = (5 - max) * 9;
-		int index = 0;
-		int y = 1;
-		for (var ing : listBase) {
+		int max = doRecipe(recipe, (ing, x, y) -> {
 			if (ing.isEmpty()) {
-				int x = index * 18 + 1 + offset;
 				hand.draw(guiGraphics, x, y);
 			}
-			index++;
-		}
-		index = 0;
-		y = base == null ? 10 : 19;
-		for (var ing : listRecipe) {
-			if (ing.isEmpty()) {
-				int x = index * 18 + 1 + offset;
-				hand.draw(guiGraphics, x, y);
-			}
-			index++;
-		}
-
+		});
 		IDrawableStatic recipeArrow = this.guiHelper.getRecipeArrow();
 		recipeArrow.draw(guiGraphics, (max + 5) * 9 + 7, (36 - recipeArrow.getHeight()) / 2);
 	}
 
 	public void setRecipe(IRecipeLayoutBuilder builder, CuisineRecipe<?> recipe, IFocusGroup focuses) {
+		int max = doRecipe(recipe, (ing, x, y) -> {
+			if (!ing.isEmpty()) {
+				builder.addInputSlot(x, y).setStandardSlotBackground().addIngredients(ing);
+			}
+		});
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 86 + max * 9, 10)
+				.setOutputSlotBackground()
+				.addItemStack(recipe.getResult());
+	}
+
+	private int doRecipe(CuisineRecipe<?> recipe, IngredientHandler handler) {
 		List<Ingredient> listBase = new ArrayList<>();
 		List<Ingredient> listRecipe = new ArrayList<>(recipe.getCustomIngredients());
 		var base = VariantTableItemBase.MAP.get(recipe.base());
-		if (base != null)
+		if (base != null) {
 			base.collectIngredients(listBase, listRecipe);
-		int max = Math.min(5, Math.max(listBase.size(), listRecipe.size()));
+		}
 
-		int offset = (5 - max) * 9;
+		int offset = (5 - listBase.size()) * 9;
 		int index = 0;
 		int y = 1;
 		for (var ing : listBase) {
-			if (!ing.isEmpty()) {
-				int x = index * 18 + 1 + offset;
-				builder.addSlot(RecipeIngredientRole.INPUT, x, y)
-						.setStandardSlotBackground().addIngredients(ing);
-			}
+			int x = index * 18 + 1 + offset;
+			handler.draw(ing, x, y);
 			index++;
 		}
 		index = 0;
+		offset = (5 - listRecipe.size()) * 9;
 		y = base == null ? 10 : 19;
 		for (var ing : listRecipe) {
-			if (!ing.isEmpty()) {
-				int x = index * 18 + 1 + offset;
-				builder.addSlot(RecipeIngredientRole.INPUT, x, y)
-						.setStandardSlotBackground().addIngredients(ing);
-			}
+			int x = index * 18 + 1 + offset;
+			handler.draw(ing, x, y);
 			index++;
 		}
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 95 + 36 - offset, 10)
-				.setOutputSlotBackground()
-				.addItemStack(recipe.getResult());
+		return Math.max(listBase.size(), listRecipe.size());
+	}
+
+	private interface IngredientHandler {
+
+		void draw(Ingredient ing, int x, int y);
+
 	}
 
 }

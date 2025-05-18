@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
-import dev.xkmc.youkaishomecoming.content.pot.table.model.TableModelHolder;
+import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -18,21 +18,21 @@ public class BaseTableItem implements TableItem {
 
 	private final List<IngredientTableItem> children = new ArrayList<>();
 
-	public synchronized IngredientTableItem with(TableModelHolder id, Supplier<Ingredient> item) {
+	public synchronized IngredientTableItem with(FixedModelHolder id, Supplier<Ingredient> item) {
 		var ans = new IngredientTableItem(this, item, id);
 		children.add(ans);
 		return ans;
 	}
 
-	public IngredientTableItem with(TableModelHolder id, ItemLike item) {
+	public IngredientTableItem with(FixedModelHolder id, ItemLike item) {
 		return with(id, () -> Ingredient.of(item.asItem()));
 	}
 
-	public IngredientTableItem with(TableModelHolder id, TagKey<Item> item) {
+	public IngredientTableItem with(FixedModelHolder id, TagKey<Item> item) {
 		return with(id, () -> Ingredient.of(item));
 	}
 
-	public IngredientTableItem addNext(TableModelHolder id) {
+	public IngredientTableItem addNext(FixedModelHolder id) {
 		return with(id, () -> Ingredient.EMPTY);
 	}
 

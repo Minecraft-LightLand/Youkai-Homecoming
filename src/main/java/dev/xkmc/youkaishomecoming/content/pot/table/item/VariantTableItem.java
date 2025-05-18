@@ -32,8 +32,7 @@ public class VariantTableItem implements TableItem {
 			if (next == null) return Optional.empty();
 			var cont = new CuisineInv(base.id(), contents, 0, true);
 			return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
-					.map(r -> new FilledTableItem(next, contents,
-							r.assemble(cont, level.registryAccess()), step() + 1));
+					.map(r -> new FoodTableItem(r.assemble(cont, level.registryAccess())));
 		}
 		var ans = new ArrayList<>(contents);
 		ans.add(stack.copyWithCount(1));
