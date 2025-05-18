@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -16,5 +17,9 @@ public interface TableItem {
 	Optional<ItemStack> complete(Level level);
 
 	List<ResourceLocation> getModels();
+
+	default void collectIngredients(List<Ingredient> list) {
+		
+	}
 
 }

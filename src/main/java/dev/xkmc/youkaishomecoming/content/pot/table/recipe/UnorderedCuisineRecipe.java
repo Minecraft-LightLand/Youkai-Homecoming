@@ -67,4 +67,9 @@ public class UnorderedCuisineRecipe extends CuisineRecipe<UnorderedCuisineRecipe
 		return result;
 	}
 
+	@Override
+	public ItemStack getResult() {
+		return result;
+	}
+
 }

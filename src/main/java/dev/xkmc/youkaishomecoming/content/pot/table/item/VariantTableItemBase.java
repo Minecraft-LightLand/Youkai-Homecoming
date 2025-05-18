@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,7 +17,7 @@ import java.util.Optional;
 
 public class VariantTableItemBase {
 
-	private static final Map<ResourceLocation, VariantTableItemBase> MAP = new LinkedHashMap<>();
+	public static final Map<ResourceLocation, VariantTableItemBase> MAP = new LinkedHashMap<>();
 
 	public static synchronized VariantTableItemBase create(IngredientTableItem base, ResourceLocation id, VariantModelHolder model) {
 		var ans = new VariantTableItemBase(base, id, model);
@@ -30,7 +31,7 @@ public class VariantTableItemBase {
 	@Nullable
 	private FilledTableItemBase click;
 
-	public VariantTableItemBase(IngredientTableItem base, ResourceLocation id, VariantModelHolder model) {
+	private VariantTableItemBase(IngredientTableItem base, ResourceLocation id, VariantModelHolder model) {
 		this.base = base;
 		this.id = id;
 		this.model = model;
@@ -66,8 +67,15 @@ public class VariantTableItemBase {
 	}
 
 	public boolean isValid(Level level, List<ItemStack> stacks) {
-		var cont = new CuisineInv(id, stacks, base.step(), false);
+		var cont = new CuisineInv(id, stacks, 0, false);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level).isPresent();
+	}
+
+	public void collectIngredients(List<Ingredient> list, List<Ingredient> recipe) {
+		base.collectIngredients(list);
+		if (click != null) {
+			recipe.add(Ingredient.EMPTY);
+		}
 	}
 
 }

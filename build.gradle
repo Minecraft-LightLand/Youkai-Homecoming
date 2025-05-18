@@ -158,7 +158,7 @@ dependencies {
     }
 
 
-    implementation fg.deobf("dev.xkmc.cuisinedelight:cuisinedelight:1.1.12-slim")
+    implementation fg.deobf("dev.xkmc.cuisinedelight:cuisinedelight:1.1.16-slim")
     implementation fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.20-slim")
 
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
@@ -190,8 +190,8 @@ dependencies {
 
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
 
-    implementation fg.deobf("curse.maven:composite-material-982540:6310307")
-    implementation fg.deobf("curse.maven:framework-549225:6531428")
+    //implementation fg.deobf("curse.maven:composite-material-982540:6310307")
+    //implementation fg.deobf("curse.maven:framework-549225:6531428")
 
 }
 

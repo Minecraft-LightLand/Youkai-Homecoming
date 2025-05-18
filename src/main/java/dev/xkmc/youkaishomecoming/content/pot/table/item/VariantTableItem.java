@@ -30,7 +30,7 @@ public class VariantTableItem implements TableItem {
 		if (stack.isEmpty()) {
 			var next = base.next();
 			if (next == null) return Optional.empty();
-			var cont = new CuisineInv(base.id(), contents, base.step(), true);
+			var cont = new CuisineInv(base.id(), contents, 0, true);
 			return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
 					.map(r -> new FilledTableItem(next, contents,
 							r.assemble(cont, level.registryAccess()), step() + 1));
@@ -43,7 +43,7 @@ public class VariantTableItem implements TableItem {
 
 	@Override
 	public Optional<ItemStack> complete(Level level) {
-		var cont = new CuisineInv(base.id(), contents, base.step(), true);
+		var cont = new CuisineInv(base.id(), contents, 0, true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
 				.map(r -> r.assemble(cont, level.registryAccess()));
 	}

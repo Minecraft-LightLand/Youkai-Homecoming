@@ -23,7 +23,7 @@ import java.util.List;
 
 public class TableItemManager extends BaseTableItem {
 
-	private static final ModelHolderManager MANAGER = ModelHolderManager.createModelBuilderManager(YoukaisHomecoming.REGISTRATE);
+	public static final ModelHolderManager MANAGER = ModelHolderManager.createModelBuilderManager(YoukaisHomecoming.REGISTRATE);
 
 	private static FixedModelHolder fixed(String id) {
 		return new FixedModelHolder(MANAGER, YoukaisHomecoming.loc("fixed/" + id));

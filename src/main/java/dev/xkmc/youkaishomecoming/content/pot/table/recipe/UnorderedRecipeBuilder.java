@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -39,6 +40,12 @@ public class UnorderedRecipeBuilder extends BaseRecipeBuilder<
 	public UnorderedRecipeBuilder add(TagKey<Item> item) {
 		recipe.input.add(Ingredient.of(item));
 		return this;
+	}
+
+	public void save(RegistrateRecipeProvider pvd) {
+		var item = recipe.result.getItem();
+		var path = item.builtInRegistryHolder().unwrapKey().orElseThrow().location();
+		save(pvd, pvd.safeId(path));
 	}
 
 }

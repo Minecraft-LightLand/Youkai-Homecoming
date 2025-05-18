@@ -47,6 +47,11 @@ public class IngredientTableItem extends BaseTableItem {
 		return variant;
 	}
 
+	public void collectIngredients(List<Ingredient> list) {
+		prev.collectIngredients(list);
+		list.add(ingredient.get());
+	}
+
 	@Override
 	public Optional<TableItem> find(Level level, ItemStack stack) {
 		var ans = super.find(level, stack);

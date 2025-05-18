@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"3": "ingredient"
+		"3": "#ingredient"
 	},
 	"elements": [
 		{

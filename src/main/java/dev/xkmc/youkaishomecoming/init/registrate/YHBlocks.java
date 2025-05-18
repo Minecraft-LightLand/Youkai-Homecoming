@@ -33,10 +33,7 @@ import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlock;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardRenderer;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedCuisineRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.UnorderedCuisineRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.*;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
@@ -143,6 +140,7 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeType<CuisineRecipe<?>>> CUISINE_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_ORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
+	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
 
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
@@ -286,6 +284,7 @@ public class YHBlocks {
 			CUISINE_RT = YoukaisHomecoming.REGISTRATE.recipe("cuisine");
 			CUISINE_ORDER = reg("cuisine_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_UNORDER = reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
 		}
 
 		{

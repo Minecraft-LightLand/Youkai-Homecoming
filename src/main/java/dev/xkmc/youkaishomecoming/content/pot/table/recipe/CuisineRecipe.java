@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
@@ -23,4 +24,5 @@ public abstract class CuisineRecipe<T extends CuisineRecipe<T>> extends BaseReci
 		return false;
 	}
 
+	public abstract ItemStack getResult();
 }
