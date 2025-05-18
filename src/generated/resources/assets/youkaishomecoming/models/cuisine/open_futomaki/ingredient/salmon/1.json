@@ -1,7 +1,7 @@
 {
-  "parent": "youkaishomecoming:cuisine/open_futomaki/ingredient_1",
+  "parent": "youkaishomecoming:table/open_futomaki/ingredient_1",
   "render_type": "minecraft:cutout",
   "textures": {
-    "salmon": "youkaishomecoming:block/table/ingredient/salmon"
+    "ingredient": "youkaishomecoming:block/table/ingredient/salmon"
   }
 }

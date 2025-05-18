@@ -18,7 +18,7 @@ public class VariantModelHolder extends FixedModelHolder {
 	}
 
 	public VariantModelPart addPart(String name, int max) {
-		var ans = new VariantModelPart(this, path.withSuffix("/" + name), max);
+		var ans = new VariantModelPart(name, path.withSuffix("/" + name), max);
 		parts.put(name, ans);
 		return ans;
 	}

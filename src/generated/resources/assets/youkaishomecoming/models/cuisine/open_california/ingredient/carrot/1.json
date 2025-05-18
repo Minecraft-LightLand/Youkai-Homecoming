@@ -1,7 +1,7 @@
 {
-  "parent": "youkaishomecoming:cuisine/open_california/ingredient_1",
+  "parent": "youkaishomecoming:table/open_california/ingredient_1",
   "render_type": "minecraft:cutout",
   "textures": {
-    "carrot": "youkaishomecoming:block/table/ingredient/carrot"
+    "ingredient": "youkaishomecoming:block/table/ingredient/carrot"
   }
 }

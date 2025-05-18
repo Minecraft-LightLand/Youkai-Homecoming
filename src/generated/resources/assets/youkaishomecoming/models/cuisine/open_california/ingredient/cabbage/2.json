@@ -1,7 +1,7 @@
 {
-  "parent": "youkaishomecoming:cuisine/open_california/ingredient_2",
+  "parent": "youkaishomecoming:table/open_california/ingredient_2",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cabbage": "youkaishomecoming:block/table/ingredient/cabbage"
+    "ingredient": "youkaishomecoming:block/table/ingredient/cabbage"
   }
 }

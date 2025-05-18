@@ -1,7 +1,7 @@
 {
-  "parent": "youkaishomecoming:cuisine/open_hosomaki/sauce_0",
+  "parent": "youkaishomecoming:table/open_hosomaki/sauce_0",
   "render_type": "minecraft:cutout",
   "textures": {
-    "soy_sauce": "youkaishomecoming:block/table/sauce/soy_sauce"
+    "sauce": "youkaishomecoming:block/table/sauce/soy_sauce"
   }
 }

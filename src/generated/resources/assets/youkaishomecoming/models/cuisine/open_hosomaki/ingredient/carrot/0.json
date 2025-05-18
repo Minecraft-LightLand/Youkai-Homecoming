@@ -1,7 +1,7 @@
 {
-  "parent": "youkaishomecoming:cuisine/open_hosomaki/ingredient_0",
+  "parent": "youkaishomecoming:table/open_hosomaki/ingredient_0",
   "render_type": "minecraft:cutout",
   "textures": {
-    "carrot": "youkaishomecoming:block/table/ingredient/carrot"
+    "ingredient": "youkaishomecoming:block/table/ingredient/carrot"
   }
 }

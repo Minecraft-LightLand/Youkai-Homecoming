@@ -16,14 +16,14 @@ import java.util.function.Supplier;
 
 public class VariantModelPart {
 
-	private final VariantModelHolder parent;
+	private final String name;
 	private final ResourceLocation path;
 	protected final int max;
 
 	private final Map<String, Entry> ingredients = new LinkedHashMap<>();
 
-	public VariantModelPart(VariantModelHolder parent, ResourceLocation path, int max) {
-		this.parent = parent;
+	public VariantModelPart(String name, ResourceLocation path, int max) {
+		this.name = name;
 		this.path = path;
 		this.max = max;
 	}
@@ -43,10 +43,10 @@ public class VariantModelPart {
 
 	public void build(TableModelProvider pvd) {
 		for (int i = 0; i < max; i++) {
-			var model = path.withPrefix("cuisine/").withSuffix("_" + i);
+			var model = path.withPrefix("table/").withSuffix("_" + i);
 			for (var ent : ingredients.entrySet()) {
 				String id = ent.getKey();
-				pvd.create(modelAt(id, i), model).tex(id, ent.getValue().tex);
+				pvd.create(modelAt(id, i), model).tex(name, ent.getValue().tex);
 			}
 		}
 	}
