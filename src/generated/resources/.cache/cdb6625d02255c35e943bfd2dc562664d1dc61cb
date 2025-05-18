@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-17T14:26:39.275812	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-05-18T15:34:22.078188	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -616,6 +616,13 @@ d10c1966ab1de6615ba6329a149adc5213cd06d8 assets/youkaishomecoming/models/block/w
 fe6a8a87c62e14b8dc28f8cd7f5f034b7c4f9586 assets/youkaishomecoming/models/block/wild_udumbara.json
 02dd19cbd4c5b12b59a4991e00de4d38237364a1 assets/youkaishomecoming/models/block/yellow_red_velvet_candle_cake.json
 17dc057d4b5a2a277e18eff3e2b680c72042c137 assets/youkaishomecoming/models/block/yellow_red_velvet_candle_cake_lit.json
+403346820b7149d9ce8afa72c05e8a095e740eb5 assets/youkaishomecoming/models/cuisine/fixed/kelp.json
+a5ef46b5edf9cb8e43e2ee1c178eda3a32e090a5 assets/youkaishomecoming/models/cuisine/fixed/rice.json
+22d9e286d34fb427d5f618572d7736dbfbb0fe41 assets/youkaishomecoming/models/cuisine/fixed/rice_2.json
+53e61ae03a778b9ef40bf3920bf8b35b0e0415a2 assets/youkaishomecoming/models/cuisine/open_california/base.json
+9ee0306472dd7115c235050277a6a090ce24a3bd assets/youkaishomecoming/models/cuisine/open_futomaki/base.json
+29f165fce99c4cba2113ad8308ea60052eadd3d6 assets/youkaishomecoming/models/cuisine/open_hosomaki/base.json
+4e5b883401086f19955844dd24cacd63630365a7 assets/youkaishomecoming/models/cuisine/sushi/base.json
 ac00ae360cf8b52cad81ae33fe47156c02fb8b57 assets/youkaishomecoming/models/custom/handrail_inner_left_ccw.json
 4ea043ee086db25308bc4dff48732c88b961a140 assets/youkaishomecoming/models/custom/handrail_inner_left_connect.json
 03df8b20afcf2b01607f40f55d6db9734d7331c2 assets/youkaishomecoming/models/custom/handrail_inner_left_corner.json
@@ -1045,6 +1052,16 @@ de4a2614b61f17199d476c60647cd9a5360e5dcf assets/youkaishomecoming/models/item/ye
 45feb69c5789c8c8a892284221c1f04273c542fe assets/youkaishomecoming/models/item/yellow_star_danmaku.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/youkai_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/yukari_spawn_egg.json
+169c484cd5b22dc358467c9e18c4d1395a44b19e assets/youkaishomecoming/models/open_california/ingredient/salmon/0.json
+169c484cd5b22dc358467c9e18c4d1395a44b19e assets/youkaishomecoming/models/open_california/ingredient/salmon/1.json
+169c484cd5b22dc358467c9e18c4d1395a44b19e assets/youkaishomecoming/models/open_california/ingredient/salmon/2.json
+2e27e5bee42fb719fc4643820c62db188bbb8dfb assets/youkaishomecoming/models/open_futomaki/ingredient/salmon/0.json
+2e27e5bee42fb719fc4643820c62db188bbb8dfb assets/youkaishomecoming/models/open_futomaki/ingredient/salmon/1.json
+2e27e5bee42fb719fc4643820c62db188bbb8dfb assets/youkaishomecoming/models/open_futomaki/ingredient/salmon/2.json
+5e1fd9d091515235b92e31e7860afe790a0f39f6 assets/youkaishomecoming/models/open_futomaki/sauce/soy_sauce/0.json
+607835433ed1451bc308ff645060da8f665caa72 assets/youkaishomecoming/models/open_hosomaki/ingredient/salmon/0.json
+c57476c51517296cb758ffefbdd4dfe757f92f3a assets/youkaishomecoming/models/open_hosomaki/sauce/soy_sauce/0.json
+e9065cd7c8e46853ce6022e138c7a1bcde68c79c assets/youkaishomecoming/models/sushi/top/salmon/0.json
 c90b811672ed77454ab02ce25bbe794d6ac8c607 data/curios/tags/items/back.json
 0ce21b81c580f483b908baa0792ab7e3bfc39ac0 data/diet/tags/items/fruits.json
 135319cff98ed8167383b42744e89d24ab0461c5 data/diet/tags/items/grains.json

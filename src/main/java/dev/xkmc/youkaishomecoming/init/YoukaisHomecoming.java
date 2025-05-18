@@ -23,7 +23,7 @@ import dev.xkmc.youkaishomecoming.content.capability.*;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
-import dev.xkmc.youkaishomecoming.content.pot.table.item.TableModelManager;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
@@ -101,6 +101,7 @@ public class YoukaisHomecoming {
 		FrogGodCapability.register();
 		GrazeCapability.register();
 		YHModConfig.init();
+		TableItemManager.init();
 
 		AttackEventHandler.register(3943, new YHAttackListener());
 
@@ -116,7 +117,6 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			TableModelManager.init();
 			YHCrops.SOYBEAN.registerComposter();
 			YHCrops.REDBEAN.registerComposter();
 			YHCrops.COFFEA.registerComposter();

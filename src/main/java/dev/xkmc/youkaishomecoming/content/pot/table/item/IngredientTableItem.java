@@ -1,10 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
-import cpw.mods.util.Lazy;
+import dev.xkmc.youkaishomecoming.content.pot.table.model.TableModelHolder;
+import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -15,12 +17,12 @@ public class IngredientTableItem extends BaseTableItem {
 
 	private final TableItem prev;
 	private final Lazy<Ingredient> ingredient;
-	private final TableModelBuilder model;
+	private final TableModelHolder model;
 	private final int step;
 	@Nullable
 	private VariantTableItemBase variant;
 
-	public IngredientTableItem(BaseTableItem prev, Supplier<Ingredient> ingredient, TableModelBuilder model) {
+	public IngredientTableItem(BaseTableItem prev, Supplier<Ingredient> ingredient, TableModelHolder model) {
 		this.prev = prev;
 		this.ingredient = Lazy.of(ingredient);
 		this.model = model;
@@ -36,8 +38,12 @@ public class IngredientTableItem extends BaseTableItem {
 		return step;
 	}
 
-	public VariantTableItemBase asBase() {
-		variant = VariantTableItemBase.create(this, model.id());
+	public synchronized VariantTableItemBase asBase(ResourceLocation id) {
+		if (variant != null)
+			throw new IllegalStateException("Already has a base");
+		if (!(model instanceof VariantModelHolder holder))
+			throw new IllegalStateException("Variant item requires a variant model");
+		variant = VariantTableItemBase.create(this, id, holder);
 		return variant;
 	}
 
@@ -51,6 +57,6 @@ public class IngredientTableItem extends BaseTableItem {
 
 	@Override
 	public List<ResourceLocation> getModels() {
-		return List.of(model.id());
+		return List.of(model.modelLoc());
 	}
 }

@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
+import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
+import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
@@ -16,20 +18,22 @@ public class VariantTableItemBase {
 
 	private static final Map<ResourceLocation, VariantTableItemBase> MAP = new LinkedHashMap<>();
 
-	public static synchronized VariantTableItemBase create(IngredientTableItem base, ResourceLocation id) {
-		var ans = new VariantTableItemBase(base, id);
+	public static synchronized VariantTableItemBase create(IngredientTableItem base, ResourceLocation id, VariantModelHolder model) {
+		var ans = new VariantTableItemBase(base, id, model);
 		MAP.put(id, ans);
 		return ans;
 	}
 
 	private final IngredientTableItem base;
 	private final ResourceLocation id;
+	private final VariantModelHolder model;
 	@Nullable
 	private FilledTableItemBase click;
 
-	public VariantTableItemBase(IngredientTableItem base, ResourceLocation id) {
+	public VariantTableItemBase(IngredientTableItem base, ResourceLocation id, VariantModelHolder model) {
 		this.base = base;
 		this.id = id;
+		this.model = model;
 	}
 
 	public int step() {
@@ -43,6 +47,10 @@ public class VariantTableItemBase {
 	public FilledTableItemBase addNextStep() {
 		click = new FilledTableItemBase();
 		return click;
+	}
+
+	public VariantModelPart addPart(String name, int max) {
+		return model.addPart(name, max);
 	}
 
 	@Nullable

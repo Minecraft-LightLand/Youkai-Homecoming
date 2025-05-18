@@ -4,7 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2library.base.tile.BaseBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
-import dev.xkmc.youkaishomecoming.content.pot.table.item.TableModelManager;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -62,7 +62,7 @@ public class CuisineTableBlockEntity extends BaseBlockEntity {
 
 	public TableItem getModel() {
 		if (model != null) return model;
-		var ans = TableModelManager.find(level, contents);
+		var ans = TableItemManager.TABLE.find(level, contents);
 		if (ans.right().isPresent()) {
 			var pair = ans.right().get();
 			contents.clear();

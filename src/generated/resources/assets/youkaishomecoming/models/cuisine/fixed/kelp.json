@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:table/fixed/kelp",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kelp": "youkaishomecoming:block/table/kelp"
+  }
+}
