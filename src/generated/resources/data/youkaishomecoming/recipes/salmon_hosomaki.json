@@ -1,0 +1,15 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:hosomaki",
+  "input": [
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:salmon_hosomaki"
+  }
+}

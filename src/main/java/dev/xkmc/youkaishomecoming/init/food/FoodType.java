@@ -1,6 +1,8 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
@@ -64,6 +66,16 @@ public enum FoodType {
 	}
 
 	public ItemEntry<Item> build(Function<Item.Properties, Item> factory, String folder, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+		return build(factory, name, nutrition, sat, tags, effs)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + folder + ctx.getName())))
+				.register();
+	}
+
+	public ItemBuilder<Item, L2Registrate> build(String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+		return build(factory, name, nutrition, sat, tags, effs);
+	}
+
+	public ItemBuilder<Item, L2Registrate> build(Function<Item.Properties, Item> factory, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		if (meat) food.meat();
@@ -77,10 +89,8 @@ public enum FoodType {
 		}
 		return YoukaisHomecoming.REGISTRATE
 				.item(name, p -> factory.apply(prop.apply(p).food(food.build())))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + folder + ctx.getName())))
 				.tag(getTags(this.tags, tags))
-				.lang(Item::getDescriptionId, makeLang(name))
-				.register();
+				.lang(Item::getDescriptionId, makeLang(name));
 	}
 
 	public String makeLang(String id) {
