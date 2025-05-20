@@ -1,0 +1,10 @@
+{
+  "type": "youkaishomecoming:drying_rack",
+  "category": "misc",
+  "cookingtime": 18000,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "minecraft:rotten_flesh"
+  },
+  "result": "minecraft:leather"
+}
