@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
@@ -117,6 +118,15 @@ public class GeneralYoukaiEntity extends YoukaiEntity {
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
 		initSpellCard();
 		return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag tag) {
+		super.readAdditionalSaveData(tag);
+		String id = getModelId();
+		if (!id.isEmpty() && spellCard == null) {
+			TouhouSpellCards.setSpell(this, id);
+		}
 	}
 
 	public void initSpellCard() {
