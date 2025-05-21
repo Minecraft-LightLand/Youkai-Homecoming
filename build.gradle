@@ -191,6 +191,7 @@ dependencies {
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
 
     implementation fg.deobf("curse.maven:composite-material-982540:6310307")
+    implementation fg.deobf("curse.maven:framework-549225:6531428")
 
 }
 

@@ -1,3 +1,7 @@
+2.3.25
+- More drying recipes
+- Fix Ex Rumia bugged when framework is present
+
 2.3.24
 - Fix Small Fairies Despawn
 
