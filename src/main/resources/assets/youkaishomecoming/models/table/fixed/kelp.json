@@ -1,0 +1,17 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "#kelp"
+	},
+	"elements": [
+		{
+			"name": "ta_nori",
+			"from": [2, 1.01, 3],
+			"to": [14, 1.01, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 1, 7]},
+			"faces": {
+				"up": {"uv": [2, 3, 14, 13], "texture": "#1"}
+			}
+		}
+	]
+}

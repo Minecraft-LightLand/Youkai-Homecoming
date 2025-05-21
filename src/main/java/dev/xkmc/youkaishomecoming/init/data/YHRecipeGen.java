@@ -14,6 +14,10 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.MixedRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -987,6 +991,33 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
+		}
+
+		// cuisine
+		{
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI, ModItems.SALMON_ROLL.get(), 2
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.add(ForgeTags.RAW_FISHES_SALMON)
+					.save(pvd);
+
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI, YHRolls.SALMON_HOSOMAKI
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+					.add(ForgeTags.RAW_FISHES_SALMON)
+					.save(pvd);
+
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI, ModItems.KELP_ROLL.get()
+			)::unlockedBy, ModItems.COOKED_RICE.get())
+					.add(Items.CARROT)
+					.save(pvd);
+
+			unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI, YHRolls.SALMON_FUTOMAKI
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.addSauce(YHItems.SOY_SAUCE_BOTTLE.item.get())
+					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
+					.addIngredient(Items.CARROT)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.save(pvd);
 		}
 
 		// danmaku
