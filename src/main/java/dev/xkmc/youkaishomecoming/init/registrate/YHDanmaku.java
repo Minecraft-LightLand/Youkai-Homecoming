@@ -34,7 +34,7 @@ public class YHDanmaku {
 		CIRCLE(1, 4, DisplayType.SOLID),
 		BALL(1, 4, DisplayType.SOLID),
 		MENTOS(2, 6, DisplayType.SOLID),
-		BUBBLE(4, 8, DisplayType.ADDITIVE),
+		BUBBLE(4, 8, DisplayType.TRANSPARENT),
 		BUTTERFLY(1, 4, DisplayType.TRANSPARENT),
 		SPARK(1, 4, DisplayType.SOLID),
 		STAR(2, 6, DisplayType.TRANSPARENT),
@@ -78,7 +78,7 @@ public class YHDanmaku {
 	}
 
 	public enum Laser implements IDanmakuType {
-		LASER(1, 4, DisplayType.TRANSPARENT),;
+		LASER(1, 4);
 
 		public final String name;
 		public final TagKey<Item> tag;
