@@ -78,7 +78,7 @@ public class YHDanmaku {
 	}
 
 	public enum Laser implements IDanmakuType {
-		LASER(1, 4);
+		LASER(1, 4, DisplayType.TRANSPARENT),;
 
 		public final String name;
 		public final TagKey<Item> tag;
