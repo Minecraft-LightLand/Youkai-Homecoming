@@ -15,7 +15,11 @@ public class GrazeHelper {
 	public static int globalInvulTime = 0;
 
 	public static void graze(Player entity, GrazingEntity e) {
-		MinecraftForge.EVENT_BUS.post(new DanmakuGrazeEvent(entity, e));
+		var graze = GrazeCapability.HOLDER.get(entity);
+		if (graze.invul > 0) return;
+		if (MinecraftForge.EVENT_BUS.post(new DanmakuGrazeEvent(entity, e)))
+			return;
+		graze.graze();
 		var prev = entity.getPersistentData().getLong("GrazeTimeStamp");
 		if (entity.level().getGameTime() > prev) {
 			entity.getPersistentData().putLong("GrazeTimeStamp", entity.level().getGameTime());
@@ -23,7 +27,6 @@ public class GrazeHelper {
 				YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeToClient(), sp);
 			}
 		}
-		GrazeCapability.HOLDER.get(entity).graze();
 	}
 
 	@SerialClass
