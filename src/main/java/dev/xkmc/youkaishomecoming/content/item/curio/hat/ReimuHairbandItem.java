@@ -12,6 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -50,11 +51,18 @@ public class ReimuHairbandItem extends TouhouHatItem {
 		boolean obtain = showTooltip();
 		if (obtain) {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_REIMU_HAIRBAND.get()));
-			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_REIMU_HAIRBAND.get()));
+			list.add(YHLangData.USAGE.get());
+			list.add(YHLangData.USAGE_REIMU_HAIRBAND.get());
+			list.add(supportDesc(DyeColor.RED));
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));
 		}
+	}
+
+	@Override
+	public boolean support(DyeColor color) {
+		return color == DyeColor.RED;
 	}
 
 }

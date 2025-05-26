@@ -25,7 +25,7 @@ public class TouhouConditionalSpawns {
 		var e = YHEntities.KOISHI.create(le.level());
 		if (e == null) return;
 		e.setPos(pos);
-		e.setTarget(le);
+		e.setTargetAndInitSession(le);
 		e.initSpellCard();
 		ReimuEventHandlers.setRandomizedPos(le, e, le.blockPosition, 5);
 		le.level().addFreshEntity(e);
@@ -37,7 +37,7 @@ public class TouhouConditionalSpawns {
 		var e = YHEntities.YUKARI.create(le.level());
 		if (e == null) return;
 		e.setPos(pos);
-		e.setTarget(le);
+		e.setTargetAndInitSession(le);
 		e.initSpellCard();
 		ReimuEventHandlers.setRandomizedPos(le, e, e.blockPosition, 5);
 		le.level().addFreshEntity(e);
@@ -73,7 +73,7 @@ public class TouhouConditionalSpawns {
 			e.initSpellCard();
 		}
 		e.setPos(pos);
-		e.setTarget(le);
+		e.setTargetAndInitSession(le);
 		ReimuEventHandlers.setRandomizedPos(le, e, e.blockPosition, 5);
 		le.level().addFreshEntity(e);
 	}

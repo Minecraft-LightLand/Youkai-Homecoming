@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.l2library.util.raytrace.IGlowingTarget;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.spell.item.ItemSpell;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -41,6 +42,8 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, I
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
+		if (GrazeCapability.HOLDER.get(player).weak > 0)
+			return InteractionResultHolder.fail(stack);
 		boolean consume = !player.getAbilities().instabuild && !(player instanceof FakePlayer);
 		if (!castSpell(stack, player, consume, true)) {
 			return InteractionResultHolder.fail(stack);

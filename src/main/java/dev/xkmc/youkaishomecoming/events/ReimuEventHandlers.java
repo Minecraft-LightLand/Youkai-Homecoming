@@ -23,6 +23,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.sensing.GolemSensor;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fml.ModList;
@@ -42,6 +43,7 @@ public class ReimuEventHandlers {
 
 	public static void triggerReimuResponse(LivingEntity le, int range, boolean eatFlesh) {
 		if (!(le.level() instanceof ServerLevel sl)) return;
+		if (!le.level().dimension().equals(Level.OVERWORLD)) return;
 		var list = getWitness(le, range, eatFlesh);
 		if (!list.isEmpty()) {
 			if (le instanceof ServerPlayer sp && eatFlesh) {
@@ -88,6 +90,7 @@ public class ReimuEventHandlers {
 	}
 
 	public static void hurtWarn(ServerPlayer sp) {
+		if (!sp.level().dimension().equals(Level.OVERWORLD)) return;
 		if (getWitness(sp, 16, false).isEmpty()) return;
 		if (koishiBlockReimu(sp)) return;
 		var adv = sp.server.getAdvancements().getAdvancement(YHAdvGen.HURT_WARN);

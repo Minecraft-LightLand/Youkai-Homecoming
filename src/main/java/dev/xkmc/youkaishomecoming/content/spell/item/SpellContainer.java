@@ -18,6 +18,16 @@ public class SpellContainer extends ConditionalToken {
 
 	private static final Provider PVD = new Provider();
 
+	public static void clear(ServerPlayer sp) {
+		var data = ConditionalData.HOLDER.get(sp).getOrCreateData(PVD, PVD);
+		for (var spell : data.spells) {
+			for (var e : spell.cache) {
+				e.markErased(true);
+			}
+		}
+		data.spells.clear();
+	}
+
 	public static void castSpell(ServerPlayer sp, Supplier<? extends ItemSpell> sup, @Nullable LivingEntity target) {
 		ItemSpell spell = sup.get();
 		spell.start(sp, target);

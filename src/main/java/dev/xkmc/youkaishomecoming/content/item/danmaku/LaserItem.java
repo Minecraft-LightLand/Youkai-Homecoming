@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.fastprojectileapi.render.core.ProjTypeHolder;
 import dev.xkmc.fastprojectileapi.render.type.DoubleLayerLaserType;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
@@ -49,6 +50,8 @@ public class LaserItem extends Item {
 				!EffectEventHandlers.isCharacter(player)) {
 			return InteractionResultHolder.fail(stack);
 		}
+		if (GrazeCapability.HOLDER.get(player).weak > 0)
+			return InteractionResultHolder.fail(stack);
 		level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS,
 				0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 		if (!level.isClientSide) {

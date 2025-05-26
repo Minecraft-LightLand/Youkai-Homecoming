@@ -10,6 +10,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RestrictData;
@@ -280,6 +281,8 @@ public abstract class YoukaiEntity extends PathfinderMob
 		return moveControl == flyCtrl;
 	}
 
+	// combat
+
 	public void aiStep() {
 		if (!level().isClientSide()) {
 			if (!this.onGround() && this.getDeltaMovement().y < 0.0D) {
@@ -346,8 +349,14 @@ public abstract class YoukaiEntity extends PathfinderMob
 
 	protected void hurtFinalImpl(DamageSource source, float amount) {
 		if (combatProgress == null) return;
+		if (!source.is(YHDamageTypes.DANMAKU) && source.getEntity() instanceof Player player) {
+			var cap = GrazeCapability.HOLDER.get(player);
+			cap.sessions.remove(getUUID());
+		}
 		setCombatProgress(getCombatProgress() - amount);
-
+		if (combatProgress.progress <= 0) {
+			eraseAllDanmaku(null);
+		}
 	}
 
 	public void validateData() {
@@ -423,6 +432,12 @@ public abstract class YoukaiEntity extends PathfinderMob
 		super.die(source);
 	}
 
+	@Override
+	public void setTarget(@Nullable LivingEntity e) {
+		if (e != null && shouldIgnore(e)) return;
+		super.setTarget(e);
+	}
+
 	@Nullable
 	@Override
 	public LivingEntity getTarget() {
@@ -430,6 +445,17 @@ public abstract class YoukaiEntity extends PathfinderMob
 		var candidates = targets.getTargets();
 		if (candidates.isEmpty()) return null;
 		return candidates.get(0);
+	}
+
+	public void setTargetAndInitSession(LivingEntity le) {
+		if (le instanceof Player player) {
+			if (EffectEventHandlers.isFullCharacter(player)) {
+				var cap = GrazeCapability.HOLDER.get(player);
+				cap.initSession(this);
+				return;
+			}
+		}
+		setTarget(le);
 	}
 
 	protected void customServerAiStep() {
@@ -489,6 +515,33 @@ public abstract class YoukaiEntity extends PathfinderMob
 		return YHDamageTypes.danmaku(danmaku);
 	}
 
+	public void danmakuHitTarget(IYHDanmaku self, DamageSource source, LivingEntity target) {
+		if (target instanceof Player player) {
+			var graze = GrazeCapability.HOLDER.get(player);
+			var type = graze.performErase(this);
+			if (type.erase()) {
+				eraseAllDanmaku(player);
+			}
+			if (type.resetTarget()) {
+				targets.remove(target.getUUID());
+				setTarget(null);
+				setLastHurtByMob(null);
+				setCombatProgress(combatProgress.maxProgress);
+			}
+			if (type.skipDamage()) {
+				return;
+			}
+		}
+		float hp = target.getHealth();
+		boolean immune = !target.hurt(source, self.damage(target));
+		float ahp = target.getHealth();
+		if (ahp >= hp && ahp > 0) immune = true;
+		onDanmakuHit(target, self);
+		if (immune) {
+			onDanmakuImmune(target, self, source);
+		}
+	}
+
 	private final LinkedList<SimplifiedProjectile> allDanmakus = new LinkedList<>();
 	private ArrayList<SimplifiedProjectile> temp;
 	private ArrayList<SimplifiedProjectile> toBeSent = new ArrayList<>();
@@ -524,9 +577,10 @@ public abstract class YoukaiEntity extends PathfinderMob
 		toBeSent.clear();
 	}
 
-	public void eraseAllDanmaku(Player player) {
+	public void eraseAllDanmaku(@Nullable Player player) {
 		for (var e : allDanmakus) {
-			e.erase(player);
+			if (player == null) e.markErased(true);
+			else e.erase(player);
 		}
 	}
 

@@ -1,11 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
@@ -45,9 +45,15 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		setPersistenceRequired();
 	}
 
-	protected boolean wouldAttack(LivingEntity entity) {
-		if (shouldIgnore(entity)) return false;
-		return entity.hasEffect(YHEffects.YOUKAIFIED.get());
+	@Override
+	public boolean shouldIgnore(LivingEntity e) {
+		if (super.shouldIgnore(e)) return true;
+		if (e instanceof Player pl) {
+			var cap = GrazeCapability.HOLDER.get(pl);
+			return cap.weak > 0;
+		}
+		return getTarget() instanceof Player pl &&
+				GrazeCapability.HOLDER.get(pl).sessions.containsKey(getUUID());
 	}
 
 	@Override
