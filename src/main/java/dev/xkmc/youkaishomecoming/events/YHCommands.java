@@ -30,8 +30,7 @@ public class YHCommands {
 											var player = sel.findSinglePlayer(ctx.getSource());
 											int life = ctx.getArgument("life", Integer.class);
 											var cap = GrazeCapability.HOLDER.get(player);
-											cap.life = life * 5;
-											cap.sync();
+											cap.setLife(life * 5);
 											ctx.getSource().sendSystemMessage(Component.literal("Completed"));
 											return 0;
 										})))
@@ -43,8 +42,7 @@ public class YHCommands {
 											var player = sel.findSinglePlayer(ctx.getSource());
 											int bomb = ctx.getArgument("bomb", Integer.class);
 											var cap = GrazeCapability.HOLDER.get(player);
-											cap.bomb = bomb * 5;
-											cap.sync();
+											cap.setBomb(bomb * 5);
 											ctx.getSource().sendSystemMessage(Component.literal("Completed"));
 											return 0;
 										})))
@@ -56,8 +54,7 @@ public class YHCommands {
 											var player = sel.findSinglePlayer(ctx.getSource());
 											int power = ctx.getArgument("power", Integer.class);
 											var cap = GrazeCapability.HOLDER.get(player);
-											cap.power = power * 100;
-											cap.sync();
+											cap.setPower(power * 100);
 											ctx.getSource().sendSystemMessage(Component.literal("Completed"));
 											return 0;
 										})))

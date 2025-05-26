@@ -350,8 +350,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 	protected void hurtFinalImpl(DamageSource source, float amount) {
 		if (combatProgress == null) return;
 		if (!source.is(YHDamageTypes.DANMAKU_TYPE) && source.getEntity() instanceof Player player) {
-			var cap = GrazeCapability.HOLDER.get(player);
-			cap.sessions.remove(getUUID());
+			GrazeCapability.HOLDER.get(player).remove(getUUID());
 		}
 		setCombatProgress(getCombatProgress() - amount);
 		if (combatProgress.progress <= 0) {

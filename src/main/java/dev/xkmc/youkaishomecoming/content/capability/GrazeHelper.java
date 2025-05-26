@@ -6,27 +6,34 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.events.DanmakuGrazeEvent;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.network.NetworkEvent;
+import org.jetbrains.annotations.Nullable;
 
 public class GrazeHelper {
 
 	public static int globalInvulTime = 0;
+	public static int globalForbidTime = 0;
 
 	public static void graze(Player entity, GrazingEntity e) {
 		var graze = GrazeCapability.HOLDER.get(entity);
-		if (graze.invul > 0) return;
+		if (graze.isInvul()) return;
 		if (MinecraftForge.EVENT_BUS.post(new DanmakuGrazeEvent(entity, e)))
 			return;
-		graze.graze();
-		var prev = entity.getPersistentData().getLong("GrazeTimeStamp");
-		if (entity.level().getGameTime() > prev) {
-			entity.getPersistentData().putLong("GrazeTimeStamp", entity.level().getGameTime());
-			if (entity instanceof ServerPlayer sp) {
-				YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeToClient().set(0), sp);
-			}
+		if (graze.graze() && entity instanceof ServerPlayer sp) {
+			YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeToClient().set(0), sp);
 		}
+	}
+
+	@Nullable
+	public static LivingEntity getTarget(Player player) {
+		return GrazeCapability.HOLDER.get(player).findAny(player).orElse(null);
+	}
+
+	public static boolean forbidDanmaku(Player player) {
+		return GrazeCapability.HOLDER.get(player).forbidDanmaku();
 	}
 
 	@SerialClass

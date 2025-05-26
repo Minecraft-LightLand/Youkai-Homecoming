@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.danmaku;
 
 import dev.xkmc.l2library.util.raytrace.IGlowingTarget;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
-import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.spell.item.ItemSpell;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -22,11 +22,14 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, ISpellItem {
+
+	public static final List<SpellItem> LIST = new ArrayList<>();
 
 	private final Supplier<ItemSpell> spell;
 	private final boolean requireTarget;
@@ -37,12 +40,15 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, I
 		this.spell = spell;
 		this.requireTarget = requireTarget;
 		this.pred = pred;
+		synchronized (LIST) {
+			LIST.add(this);
+		}
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
-		if (GrazeCapability.HOLDER.get(player).weak > 0)
+		if (GrazeHelper.forbidDanmaku(player))
 			return InteractionResultHolder.fail(stack);
 		boolean consume = !player.getAbilities().instabuild && !(player instanceof FakePlayer);
 		if (!castSpell(stack, player, consume, true)) {
@@ -57,9 +63,7 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, I
 			return false;
 		LivingEntity target = RayTraceUtil.serverGetTarget(player);
 		if (target == null && requireTarget) {
-			var cap = GrazeCapability.HOLDER.get(player);
-			var one = cap.sessions.values().stream().findAny();
-			if (one.isPresent()) target = one.get().getTarget(player);
+			target = GrazeHelper.getTarget(player);
 			if (target == null) return false;
 		}
 		if (player instanceof ServerPlayer sp) {

@@ -49,8 +49,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	public boolean shouldIgnore(LivingEntity e) {
 		if (super.shouldIgnore(e)) return true;
 		if (e instanceof Player pl) {
-			var cap = GrazeCapability.HOLDER.get(pl);
-			return cap.weak > 0;
+			return GrazeCapability.HOLDER.get(pl).isWeak();
 		}
 		return false;
 	}

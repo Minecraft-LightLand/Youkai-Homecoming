@@ -42,12 +42,13 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	private static final int LIFE_INVUL = 60, BOMB_INVUL = 30, WEAK = 60;
 
 	@SerialClass.SerialField
-	public int power, hidden, step, bomb, life, invul, weak;
+	private int power, hidden, step, bomb, life, invul, weak;
 	@SerialClass.SerialField
-	public Map<UUID, CombatSession> sessions = new LinkedHashMap<>();
+	private Map<UUID, CombatSession> sessions = new LinkedHashMap<>();
 
 	private boolean dirty = false;
 	private int tempGraze = 0;
+	private int lastGraze = 0;
 
 	@Override
 	public void onClone(boolean isWasDeath) {
@@ -95,15 +96,20 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 				sync();
 		}
 		dirty = false;
-		if (player.level().isClientSide)
+		if (player.level().isClientSide) {
 			GrazeHelper.globalInvulTime = invul;
+			GrazeHelper.globalForbidTime = Math.max(invul, weak);
+		}
 	}
 
-	public void graze() {
-		if (invul > 0) return;
-		if (!EffectEventHandlers.isFullCharacter(player)) return;
+	public boolean graze() {
+		if (invul > 0) return false;
+		if (!EffectEventHandlers.isFullCharacter(player)) return false;
 		if (tempGraze < 10)
 			tempGraze++;
+		boolean ans = player.tickCount != lastGraze;
+		lastGraze = player.tickCount;
+		return ans;
 	}
 
 	private void consumeGraze() {
@@ -216,6 +222,41 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		return sessions.isEmpty() || le instanceof Mob mob && mob.getTarget() == player;
 	}
 
+	public Optional<LivingEntity> findAny(Player player) {
+		return sessions.values().stream().findAny().map(e -> e.getTarget(player));
+	}
+
+	public boolean forbidDanmaku() {
+		return weak > 0 || invul > 0;
+	}
+
+	public boolean isInvul() {
+		return invul > 0;
+	}
+
+	public boolean isWeak() {
+		return weak > 0;
+	}
+
+	public void remove(UUID uuid) {
+		sessions.remove(uuid);
+	}
+
+	public void setLife(int i) {
+		life = i;
+		dirty = true;
+	}
+
+	public void setBomb(int i) {
+		bomb = i;
+		dirty = true;
+	}
+
+	public void setPower(int i) {
+		power = i;
+		dirty = true;
+	}
+
 	public void sync() {
 		if (player instanceof ServerPlayer sp)
 			HOLDER.network.toClientSyncAll(sp);
@@ -228,9 +269,9 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	public static class CombatSession {
 
 		@SerialClass.SerialField
-		public UUID uuid;
+		private UUID uuid;
 		@SerialClass.SerialField
-		public int uid;
+		private int uid;
 
 		private YoukaiEntity youkai;
 

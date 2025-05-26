@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.item;
 
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.l2library.capability.conditionals.*;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -8,7 +9,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.function.Supplier;
 
 @SerialClass
@@ -25,6 +27,9 @@ public class SpellContainer extends ConditionalToken {
 				e.markErased(true);
 			}
 		}
+		for (var e : data.cache) {
+			e.markErased(true);
+		}
 		data.spells.clear();
 	}
 
@@ -35,11 +40,22 @@ public class SpellContainer extends ConditionalToken {
 	}
 
 	@SerialClass.SerialField
-	private final ArrayList<ItemSpell> spells = new ArrayList<>();
+	private final List<ItemSpell> spells = new LinkedList<>();
+
+	private final List<SimplifiedProjectile> cache = new LinkedList<>();
 
 	@Override
 	public boolean tick(Player player) {
-		spells.removeIf(e -> e.tick(player));
+		var itr = spells.iterator();
+		while (itr.hasNext()) {
+			var spell = itr.next();
+			boolean remove = spell.tick(player);
+			if (remove) {
+				itr.remove();
+				cache.addAll(spell.cache);
+			}
+		}
+		cache.removeIf(e -> !e.isValid());
 		return spells.isEmpty();
 	}
 

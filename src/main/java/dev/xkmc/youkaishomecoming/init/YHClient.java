@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init;
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderHelper;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
+import dev.xkmc.youkaishomecoming.content.capability.DanmakuItemDeco;
 import dev.xkmc.youkaishomecoming.content.capability.PowerInfoOverlay;
 import dev.xkmc.youkaishomecoming.content.client.*;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticle;
@@ -11,6 +12,7 @@ import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
+import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
@@ -62,6 +64,24 @@ public class YHClient {
 			ProjectileRenderHelper.setup();
 		});
 
+	}
+
+	@SubscribeEvent
+	public static void registerItemDeco(RegisterItemDecorationsEvent event) {
+		var deco = new DanmakuItemDeco();
+		for (var col : DyeColor.values()) {
+			for (var e : YHDanmaku.Bullet.values()) {
+				event.register(e.get(col), deco);
+			}
+			for (var e : YHDanmaku.Laser.values()) {
+				event.register(e.get(col), deco);
+			}
+		}
+		event.register(YHDanmaku.CUSTOM_SPELL_RING.get(), deco);
+		event.register(YHDanmaku.CUSTOM_SPELL_HOMING.get(), deco);
+		for (var e : SpellItem.LIST) {
+			event.register(e, deco);
+		}
 	}
 
 	@SubscribeEvent
