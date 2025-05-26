@@ -16,6 +16,10 @@ public class YHModConfig {
 		public final ForgeConfigSpec.DoubleValue selfDanmakuFading;
 		public final ForgeConfigSpec.DoubleValue fadingStart;
 		public final ForgeConfigSpec.DoubleValue fadingEnd;
+		public final ForgeConfigSpec.IntValue powerInfoXAnchor;
+		public final ForgeConfigSpec.IntValue powerInfoXOffset;
+		public final ForgeConfigSpec.IntValue powerInfoYAnchor;
+		public final ForgeConfigSpec.IntValue powerInfoYOffset;
 
 		Client(ForgeConfigSpec.Builder builder) {
 			laserRenderAdditive = builder.define("laserRenderAdditive", true);
@@ -25,6 +29,10 @@ public class YHModConfig {
 			selfDanmakuFading = builder.defineInRange("selfDanmakuFading", 0.5d, 0, 1);
 			fadingStart = builder.defineInRange("fadingStart", 8d, 0, 128);
 			fadingEnd = builder.defineInRange("fadingEnd", 64d, 0, 128);
+			powerInfoXAnchor = builder.defineInRange("powerInfoXAnchor", 1, -1, 1);
+			powerInfoXOffset = builder.defineInRange("powerInfoXOffset", -8, -1000, 1000);
+			powerInfoYAnchor = builder.defineInRange("powerInfoYAnchor", 0, -1, 1);
+			powerInfoYOffset = builder.defineInRange("powerInfoYOffset", 0, -1000, 1000);
 		}
 
 	}

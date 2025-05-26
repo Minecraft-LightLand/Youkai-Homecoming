@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -32,15 +33,18 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 	@Override
 	public double fading(SimplifiedProjectile e) {
 		if (entityRenderDispatcher.camera.getEntity() == e.getOwner()) {
-			return YHModConfig.CLIENT.selfDanmakuFading.get();
+			double dist = entityRenderDispatcher.camera.getPosition().distanceTo(e.position());
+			double fading = YHModConfig.CLIENT.selfDanmakuFading.get();
+			return Math.min((dist - 2) / 12, 1) * fading;
 		}
 		double fading = YHModConfig.CLIENT.farDanmakuFading.get();
-		if (fading == 0) return 0;
+		double global = GrazeHelper.globalInvulTime > 0 ? YHModConfig.CLIENT.selfDanmakuFading.get() : 1;
+		if (fading == 0) return global;
 		double dist = entityRenderDispatcher.camera.getPosition().distanceTo(e.position());
 		double start = YHModConfig.CLIENT.fadingStart.get();
 		double end = YHModConfig.CLIENT.fadingEnd.get();
-		if (dist < start) return 0;
-		return Math.min((dist - start) / (end - start), 1) * fading;
+		if (dist < start) return global;
+		return (1 - Math.min((dist - start) / (end - start), 1) * fading) * global;
 	}
 
 	public boolean shouldRender(T e, Frustum frustum, double camx, double camy, double camz) {
@@ -49,7 +53,7 @@ public class ItemDanmakuRenderer<T extends ItemDanmakuEntity> extends EntityRend
 		double dh = e.getBbHeight() / 2;
 		double dist = cam.getEyePosition().distanceToSqr(e.position().add(0, dh, 0));
 		double dy = Math.abs(cam.getEyeY() - e.getY() - dh);
-		return dist > 12 || dy > 0.1 + dh * 2 && dist > 2;
+		return dist > 12 || dy > 0.1 + dh * 2 && dist > 4;
 	}
 
 	@Override

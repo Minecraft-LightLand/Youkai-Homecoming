@@ -60,8 +60,10 @@ public class CirnoHairbandItem extends TouhouHatItem {
 		boolean obtain = showTooltip();
 		if (obtain) {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_CIRNO_HAIRBAND.get()));
-			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_CIRNO_HAIRBAND
-					.get(Component.translatable(YHEffects.FAIRY.get().getDescriptionId()))));
+			list.add(YHLangData.USAGE.get());
+			list.add(YHLangData.USAGE_CIRNO_HAIRBAND.get());
+			list.add(effectDesc(YHEffects.FAIRY.get()));
+			list.add(supportDesc(DyeColor.LIGHT_BLUE));
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));

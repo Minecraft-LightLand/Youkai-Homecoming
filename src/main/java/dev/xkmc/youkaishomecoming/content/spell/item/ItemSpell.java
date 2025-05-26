@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.item;
 
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.util.Wrappers;
@@ -13,6 +14,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @SerialClass
@@ -24,6 +27,8 @@ public class ItemSpell {
 	private UUID targetId;
 	@SerialClass.SerialField
 	public Vec3 dir = new Vec3(1, 0, 0), targetPos;
+
+	List<SimplifiedProjectile> cache = new LinkedList<>();
 
 	private LivingEntity targetCache;
 	protected CardHolder holder;
@@ -63,6 +68,7 @@ public class ItemSpell {
 		if (target != null) targetPos = target.position().add(0, target.getBbHeight() / 2, 0);
 		holder = new PlayerHolder(player, dir, this, target);
 		tickers.removeIf(e -> e.tick(holder, Wrappers.cast(this)));
+		cache.removeIf(e -> !e.isValid());
 		return tickers.isEmpty();
 	}
 

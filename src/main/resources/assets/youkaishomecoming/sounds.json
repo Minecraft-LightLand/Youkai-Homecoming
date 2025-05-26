@@ -16,5 +16,14 @@
 			}
 		],
 		"subtitle": "youkaishomecoming.subtitle.graze"
+	},
+	"miss": {
+		"sounds": [
+			{
+				"type": "file",
+				"name": "youkaishomecoming:miss"
+			}
+		],
+		"subtitle": "youkaishomecoming.subtitle.miss"
 	}
 }

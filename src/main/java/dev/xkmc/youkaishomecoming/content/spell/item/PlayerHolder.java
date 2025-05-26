@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.spell.item;
 
+import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.LivingCardHolder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -52,6 +53,8 @@ public record PlayerHolder(
 				e.afterExpiry.setup(this);
 			}
 		}
+		if (danmaku instanceof SimplifiedProjectile sp)
+			spell.cache.add(sp);
 		LivingCardHolder.super.shoot(danmaku);
 	}
 }

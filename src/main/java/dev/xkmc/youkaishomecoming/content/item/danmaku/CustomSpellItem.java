@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.item.danmaku;
 import dev.xkmc.l2library.util.raytrace.IGlowingTarget;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.spell.custom.data.ISpellFormData;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.ClientCustomSpellHandler;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
@@ -67,9 +68,13 @@ public class CustomSpellItem extends Item implements IGlowingTarget, ISpellItem 
 	}
 
 	private boolean castSpellImpl(ISpellFormData<?> data, Player player, boolean consume, boolean cooldown) {
-		LivingEntity target = RayTraceUtil.serverGetTarget(player);
-		if (requireTarget && target == null)
+		if (GrazeHelper.forbidDanmaku(player))
 			return false;
+		LivingEntity target = RayTraceUtil.serverGetTarget(player);
+		if (requireTarget && target == null) {
+			target = GrazeHelper.getTarget(player);
+			if (target == null) return false;
+		}
 		if (consume) {
 			Item ammo = data.getAmmoCost();
 			int toCost = data.cost();

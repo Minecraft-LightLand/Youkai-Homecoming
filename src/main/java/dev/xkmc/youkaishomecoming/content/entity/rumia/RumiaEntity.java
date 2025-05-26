@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.entity.rumia;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.IYoukaiMerchant;
@@ -193,9 +192,11 @@ public class RumiaEntity extends YoukaiEntity implements IYoukaiMerchant {
 		if (ex) {
 			hp.addPermanentModifier(new AttributeModifier(EXRUMIA, "ex_rumia", 4, AttributeModifier.Operation.MULTIPLY_TOTAL));
 			atk.addPermanentModifier(new AttributeModifier(EXRUMIA, "ex_rumia", 1, AttributeModifier.Operation.MULTIPLY_TOTAL));
+			combatProgress.maxProgress = 200;
 		} else {
 			hp.removeModifier(EXRUMIA);
 			atk.removeModifier(EXRUMIA);
+			combatProgress.maxProgress = 40;
 		}
 		setHealth(getMaxHealth());
 		setFlag(4, ex);

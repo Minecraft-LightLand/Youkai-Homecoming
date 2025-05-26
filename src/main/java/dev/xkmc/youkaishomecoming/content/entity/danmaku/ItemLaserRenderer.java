@@ -4,7 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderer;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -35,7 +37,10 @@ public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer
 
 	@Override
 	public double fading(SimplifiedProjectile e) {
-		return 0;
+		if (entityRenderDispatcher.camera.getEntity() == e.getOwner()) {
+			return YHModConfig.CLIENT.selfDanmakuFading.get();
+		}
+		return GrazeHelper.globalInvulTime > 0 ? YHModConfig.CLIENT.selfDanmakuFading.get() : 1;
 	}
 
 	@Override

@@ -27,36 +27,24 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 	public void start(MultiBufferSource buffer, List<Ins> list) {
 		boolean additive = YHModConfig.CLIENT.laserRenderAdditive.get();
 		boolean invert = YHModConfig.CLIENT.laserRenderInverted.get();
-		double tran = YHModConfig.CLIENT.laserTransparency.get();
-		int col = (color & 0xffffff) | (((int) (tran * 255.9)) << 24);
-		int add = (int) ((color & 0xff) * tran) |
-				(int) ((color >> 8 & 0xff) * tran) << 8 |
-				(int) ((color >> 16 & 0xff) * tran) << 16 | 0xff000000;
 		int n = list.size() * 4;
+		int count = 1;
+		if (invert || !additive) count++;
 		BulkDataWriter vc;
-		vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(inner, DisplayType.SOLID)), n);
+		vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(inner, DisplayType.TRANSPARENT)), n * count);
 		for (var e : list) {
-			e.texInner(vc, -1);
+			e.texInner(vc, e.core);
+		}
+		if (invert || !additive) {
+			for (var e : list) {
+				e.texOuter(invert, vc, e.tran);
+			}
 		}
 		vc.flush();
 		if (additive) {
 			vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.ADDITIVE)), n);
 			for (var e : list) {
-				e.texOuter(false, vc, add);
-			}
-			vc.flush();
-		}
-		if (invert) {
-			vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT)), n);
-			for (var e : list) {
-				e.texOuter(true, vc, col);
-			}
-			vc.flush();
-		}
-		if (!additive && !invert) {
-			vc = new BulkDataWriter(buffer.getBuffer(DanmakuRenderStates.laser(outer, DisplayType.TRANSPARENT)), n);
-			for (var e : list) {
-				e.texOuter(false, vc, col);
+				e.texOuter(false, vc, e.add);
 			}
 			vc.flush();
 		}
@@ -64,10 +52,18 @@ public record DoubleLayerLaserType(ResourceLocation inner, ResourceLocation oute
 
 	@Override
 	public void create(Consumer<Ins> holder, ProjectileRenderer<?> r, SimplifiedProjectile e, PoseStack pose, float pTick) {
-		holder.accept(new Ins(Cache.vertex(pose.last().pose(), 0.167f, 0.5f)));
+		double fade = r.fading(e);
+		double tran = fade * YHModConfig.CLIENT.laserTransparency.get();
+		int core = (int) (fade * 0xff) << 24 | 0xffffff;
+		int outer = (int) (tran * 0xff) << 24 | (color & 0xffffff);
+		int add = (int) ((color & 0xff) * tran) |
+				(int) ((color >> 8 & 0xff) * tran) << 8 |
+				(int) ((color >> 16 & 0xff) * tran) << 16 | 0xff000000;
+		var data = Cache.vertex(pose.last().pose(), 0.167f, 0.5f);
+		holder.accept(new Ins(data, core, outer, add));
 	}
 
-	public record Ins(Cache cache) {
+	public record Ins(Cache cache, int core, int tran, int add) {
 
 		public void texInner(BulkDataWriter vc, int color) {
 			renderPart(false, vc, color, cache.r0);

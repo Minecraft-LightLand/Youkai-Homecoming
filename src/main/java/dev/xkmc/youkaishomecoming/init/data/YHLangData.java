@@ -43,6 +43,7 @@ public enum YHLangData {
 	JEI_RACK("jei.rack", "Drying", 0, null),
 	JEI_FERMENT("jei.ferment", "Fermenting", 0, null),
 	JEI_STEAM("jei.steam", "Steaming", 0, null),
+	JEI_CUISINE("jei.cuisine", "Cuisine", 0, null),
 
 	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
 	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
@@ -58,16 +59,18 @@ public enum YHLangData {
 
 	USAGE_STRAW_HAT("usage_straw_hat", "While in %s or %s effect, you can equip it on frogs to allow them to eat raiders", 2, ChatFormatting.GRAY),
 	OBTAIN_SUWAKO_HAT("obtain_suwako_hat", "Drops when frog with hat eats %s different kinds of raiders in front of villagers", 1, ChatFormatting.GRAY),
-	USAGE_SUWAKO_HAT("usage_suwako_hat", "Grants constant %s. Allows using Cyan and Lime danmaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_KOISHI_HAT("obtain_koishi_hat", "Drops when blocking Koishi attacks %s times in a row", 1, ChatFormatting.GRAY),
-	USAGE_KOISHI_HAT("usage_koishi_hat", "Grants constant %s. Allows using Blue and Red danmaku without consumption.", 1, ChatFormatting.GRAY),
 	OBTAIN_RUMIA_HAIRBAND("obtain_rumia_hairband", "Drops when player defeat Ex. Rumia with Danmaku", 0, ChatFormatting.GRAY),
-	USAGE_RUMIA_HAIRBAND("usage_rumia_hairband", "Grants constant %s when applicable. Drops heads when killing mobs. Flesh and blood drops no longer require knife (bonus when still using knife).", 1, ChatFormatting.GRAY),
+	USAGE_RUMIA_HAIRBAND("usage_rumia_hairband", "Drops heads when killing mobs. Flesh and blood drops no longer require knife (bonus when still using knife).", 0, ChatFormatting.GRAY),
 	OBTAIN_REIMU_HAIRBAND("obtain_reimu_hairband", "Feed Reimu a variety of food", 0, ChatFormatting.GRAY),
 	USAGE_REIMU_HAIRBAND("usage_reimu_hairband", "Enables creative flight. Your danmaku damage bypasses magical protection.", 0, ChatFormatting.GRAY),
 	OBTAIN_CIRNO_HAIRBAND("obtain_cirno_hairband", "Trade with Cirno", 0, ChatFormatting.GRAY),
-	USAGE_CIRNO_HAIRBAND("usage_cirno_hairband", "Grants constant %s. Your magic damage freezes target (and frogs). Allows using Light Blue danmaku without consumption.", 1, ChatFormatting.GRAY),
+	USAGE_CIRNO_HAIRBAND("usage_cirno_hairband", "Your magic damage freezes target (and frogs).", 0, ChatFormatting.GRAY),
 	USAGE_FAIRY_WINGS("usage_fairy_wings", "When you have %s, enables creative flight.", 1, ChatFormatting.GRAY),
+
+	CONSTANT_EFFECT("constant_effect", "Grants constant %s when applicable.", 1, ChatFormatting.GRAY),
+	DANMAKU_SUPPORT_1("no_consume_1", "Allows using %s danmaku without consumption.", 1, ChatFormatting.GRAY),
+	DANMAKU_SUPPORT_2("no_consume_2", "Allows using %s and %s danmaku without consumption.", 2, ChatFormatting.GRAY),
 
 	REIMU_FLESH("reimu_flesh", "Reimu: You shall not eat it. Last warning.", 0, ChatFormatting.RED),
 	REIMU_WARN("reimu_warn", "Reimu: Drink some tea and keep your sanity. Last warning.", 0, ChatFormatting.RED),
@@ -112,6 +115,7 @@ public enum YHLangData {
 		}
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.koishi_ring", "Koishi Phone Call");
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.graze", "Danmaku Graze");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.miss", "Danmaku Hit Player");
 		pvd.add("death.attack.koishi_attack", "Koishi stabbed %s in the back");
 		pvd.add("death.attack.koishi_attack.player", "%2$s stabbed %1$s in the back");
 		pvd.add("death.attack.rumia_attack", "%s is eaten by Rumia");

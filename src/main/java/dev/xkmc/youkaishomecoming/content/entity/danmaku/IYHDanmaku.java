@@ -5,7 +5,6 @@ import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
-import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -34,6 +33,11 @@ public interface IYHDanmaku extends GrazingEntity {
 
 	@Override
 	default AABB alterHitBox(Entity x, float radius, float graze) {
+		if (self().getOwner() instanceof Player player &&
+				x instanceof YoukaiEntity youkai &&
+				youkai.targets.contains(player)) {
+			return youkai.getBoundingBox().inflate(GRAZE_RANGE);
+		}
 		return alterEntityHitBox(x, radius, graze);
 	}
 
@@ -70,31 +74,22 @@ public interface IYHDanmaku extends GrazingEntity {
 				}
 			}
 		}
-		float hp = e instanceof LivingEntity le ? le.getHealth() : 0;
-		boolean immune = !e.hurt(source, damage(e));
-		float ahp = e instanceof LivingEntity le ? le.getHealth() : 0;
-		if (ahp >= hp && ahp > 0) immune = true;
 		LivingEntity target = null;
 		while (e instanceof PartEntity<?> pe) {
 			e = pe.getParent();
 		}
 		if (e instanceof LivingEntity le) target = le;
-		if (target != null) {
-			if (self().getOwner() instanceof YoukaiEntity youkai) {
-				if (target instanceof Player player) {
-					if (GrazeCapability.HOLDER.get(player).performErase()) {
-						youkai.eraseAllDanmaku(player);
-						return;
-					}
-				}
-				youkai.onDanmakuHit(target, this);
-				if (immune) {
-					youkai.onDanmakuImmune(target, this, source);
-				} else if (target instanceof Player player && EffectEventHandlers.isFullCharacter(target)) {
-					youkai.eraseAllDanmaku(player);
-				}
+		var owner = self().getOwner();
+		if (target != null && owner instanceof YoukaiEntity youkai) {
+			youkai.danmakuHitTarget(this, source, target);
+			return;
+		}
+		if (owner instanceof Player player) {
+			if (e instanceof LivingEntity le) {
+				if (!GrazeCapability.HOLDER.get(player).shouldHurt(le)) return;
 			}
 		}
+		e.hurt(source, damage(e));
 	}
 
 	static AABB alterEntityHitBox(Entity x, float radius, float graze) {

@@ -32,7 +32,7 @@ public record RotatingProjectileType(ResourceLocation tex, DisplayType display, 
 		sim4.set3x3(new Matrix4f().scale((float) Math.pow(sim4.determinant3x3(), 1 / 3d)));
 		var q4 = Axis.ZP.rotationDegrees((e.tickCount + pTick) * 360f / (float) rot);
 		sim4.rotate(q4);
-		int col = DanmakuRenderStates.fading(-1, r, e);
+		int col = DanmakuRenderStates.fading(display, -1, r, e);
 		holder.accept(new Ins(sim4, col));
 	}
 

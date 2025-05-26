@@ -59,6 +59,7 @@ public class YoukaiTargetContainer {
 	private boolean isValid(LivingEntity le) {
 		return le.isAlive() && le != youkai && le.canBeSeenAsEnemy() &&
 				le.isAddedToWorld() && le.level() == youkai.level() &&
+				!youkai.shouldIgnore(le) &&
 				EntityStorageHelper.isPresent(le) && youkai.canAttack(le);
 	}
 

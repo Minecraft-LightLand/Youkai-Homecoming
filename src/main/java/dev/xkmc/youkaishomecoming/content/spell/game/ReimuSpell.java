@@ -81,8 +81,8 @@ public class ReimuSpell extends ActualSpellCard {
 		if (target == null) return;
 		var ans = new StateChange();
 		double perc = Mth.clamp((dist - 16) / 24, 0, 1);
-		ans.r0 = (int) Mth.lerp(perc, 8, 20);
-		ans.r1 = (int) Mth.lerp(perc, 6, 18);
+		ans.r0 = (int) Mth.lerp(perc, 6, 20);
+		ans.r1 = (int) Mth.lerp(perc, 6, 20);
 		ans.t0 = (int) Mth.lerp(perc, 20, 10);
 		ans.t1 = (int) Mth.lerp(perc, 20, 10);
 		ans.termSpeed = (int) Mth.lerp(perc, 1, 3);
@@ -154,6 +154,7 @@ public class ReimuSpell extends ActualSpellCard {
 	@Override
 	public void hurt(CardHolder holder, DamageSource source, float amount) {
 		super.hurt(holder, source, amount);
+		if (tick < 10) return;
 		if (source.getEntity() != null) border = true;
 		float hp = holder.self().getHealth(), mhp = holder.self().getMaxHealth();
 		if (hp < mhp / 2) {

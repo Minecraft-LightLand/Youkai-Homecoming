@@ -14,6 +14,10 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.MixedRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -218,6 +222,9 @@ public class YHRecipeGen {
 			pvd.storage(YHTea.WHITE.leaves, RecipeCategory.MISC, YHItems.WHITE_TEA_BAG);
 
 			drying(pvd, DataIngredient.items(Items.WHEAT), ModItems.STRAW);
+			drying(pvd, DataIngredient.items(Items.KELP), () -> Items.DRIED_KELP);
+			drying(pvd, DataIngredient.tag(ItemTags.SAPLINGS), () -> Items.DEAD_BUSH);
+			drying(pvd, DataIngredient.items(Items.ROTTEN_FLESH), () -> Items.LEATHER, 18000);
 			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
 			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
 			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
@@ -986,6 +993,33 @@ public class YHRecipeGen {
 			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
 		}
 
+		// cuisine
+		{
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI, ModItems.SALMON_ROLL.get(), 2
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.add(ForgeTags.RAW_FISHES_SALMON)
+					.save(pvd);
+
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI, YHRolls.SALMON_HOSOMAKI
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+					.add(ForgeTags.RAW_FISHES_SALMON)
+					.save(pvd);
+
+			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI, ModItems.KELP_ROLL.get()
+			)::unlockedBy, ModItems.COOKED_RICE.get())
+					.add(Items.CARROT)
+					.save(pvd);
+
+			unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI, YHRolls.SALMON_FUTOMAKI
+			)::unlockedBy, ModItems.SALMON_SLICE.get())
+					.addSauce(YHItems.SOY_SAUCE_BOTTLE.item.get())
+					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
+					.addIngredient(Items.CARROT)
+					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.save(pvd);
+		}
+
 		// danmaku
 		{
 			for (var e : DyeColor.values()) {
@@ -1116,7 +1150,11 @@ public class YHRecipeGen {
 	}
 
 	private static void drying(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out) {
-		cooking(pvd, in, RecipeCategory.MISC, out, 0, 200, "drying", YHBlocks.RACK_RS.get());
+		drying(pvd, in, out, 200);
+	}
+
+	private static void drying(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out, int time) {
+		cooking(pvd, in, RecipeCategory.MISC, out, 0, time, "drying", YHBlocks.RACK_RS.get());
 	}
 
 	private static void steaming(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out) {

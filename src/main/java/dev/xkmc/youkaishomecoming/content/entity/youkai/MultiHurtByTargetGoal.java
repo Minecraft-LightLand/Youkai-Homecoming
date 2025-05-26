@@ -16,4 +16,13 @@ public class MultiHurtByTargetGoal extends HurtByTargetGoal {
 		youkai.targets.checkTarget();
 		super.start();
 	}
+
+	@Override
+	public boolean canContinueToUse() {
+		targetMob = youkai.getTarget();
+		if (targetMob == null) {
+			youkai.setLastHurtByMob(null);
+		}
+		return super.canContinueToUse();
+	}
 }

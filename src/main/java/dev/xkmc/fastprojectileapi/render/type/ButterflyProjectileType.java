@@ -34,7 +34,7 @@ public record ButterflyProjectileType(ResourceLocation overlay, DisplayType disp
 		pose.mulPose(Axis.XP.rotationDegrees(Mth.lerp(pTick, e.xRotO, e.getXRot())));
 		float time = Math.abs((e.tickCount + pTick) / period % 1 * 4 - 2) - 1;
 		float angle = 60f;
-		int col = DanmakuRenderStates.fading(-1, r, e);
+		int col = DanmakuRenderStates.fading(display, -1, r, e);
 		{
 			pose.pushPose();
 			pose.mulPose(Axis.ZP.rotationDegrees(time * angle));

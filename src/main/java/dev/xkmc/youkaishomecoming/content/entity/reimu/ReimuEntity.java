@@ -45,6 +45,9 @@ public class ReimuEntity extends MaidenEntity {
 		super.customServerAiStep();
 		if (feedCD > 0) feedCD--;
 		setFlag(16, feedCD > 0);
+		if (!isChaotic() && getTarget() == null && combatProgress.progress == combatProgress.maxProgress) {
+			setFlag(4, false);
+		}
 	}
 
 	@Override
@@ -77,7 +80,7 @@ public class ReimuEntity extends MaidenEntity {
 			if (food != null) {
 				if (player instanceof ServerPlayer sp && feedCD == 0) {
 					if (stack.is(YHTagGen.FLESH_FOOD)) {
-						setTarget(player);
+						setTargetAndInitSession(player);
 						return InteractionResult.SUCCESS;
 					}
 					ItemStack remain = stack.getCraftingRemainingItem();
