@@ -257,6 +257,18 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		dirty = true;
 	}
 
+	public int getLife() {
+		return life;
+	}
+
+	public int getBomb() {
+		return bomb;
+	}
+
+	public int getPower() {
+		return power;
+	}
+
 	public void sync() {
 		if (player instanceof ServerPlayer sp)
 			HOLDER.network.toClientSyncAll(sp);

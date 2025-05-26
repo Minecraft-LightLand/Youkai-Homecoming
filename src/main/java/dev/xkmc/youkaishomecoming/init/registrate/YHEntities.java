@@ -21,6 +21,7 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiRenderer;
 import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterEntity;
 import dev.xkmc.youkaishomecoming.content.spell.shooter.ShooterRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.loot.EntityLootGen;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.entity.LivingEntity;
@@ -76,6 +77,7 @@ public class YHEntities {
 					.attributes(RumiaEntity::createAttributes)
 					.renderer(() -> RumiaRenderer::new)
 					.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::rumia).register();
 
 			REIMU = YoukaisHomecoming.REGISTRATE
@@ -84,6 +86,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> ReimuRenderer::new)
 					.spawnEgg(0xa93937, 0xfaf5f2).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::reimu).register();
 
 			CIRNO = YoukaisHomecoming.REGISTRATE
@@ -103,6 +106,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::noLoot).register();
 
 			FAIRY = YoukaisHomecoming.REGISTRATE
@@ -119,6 +123,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x4B1442, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::yukari).register();
 
 			SANAE = YoukaisHomecoming.REGISTRATE
@@ -127,6 +132,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x4eaff9, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::sanae).register();
 
 			MARISA = YoukaisHomecoming.REGISTRATE
@@ -135,6 +141,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x52403C, 0xFAF2EF).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::marisa).register();
 
 			KOISHI = YoukaisHomecoming.REGISTRATE
@@ -143,6 +150,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x88BA7F, 0x645856).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::koishi).register();
 
 			REMILIA = YoukaisHomecoming.REGISTRATE
@@ -151,6 +159,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0xF3C1CC, 0x86B9F3).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::remilia).register();
 
 			MYSTIA = YoukaisHomecoming.REGISTRATE
@@ -159,6 +168,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x9B6D79, 0xF4BDAE).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::mystia).register();
 
 			SUNNY = YoukaisHomecoming.REGISTRATE
@@ -199,6 +209,7 @@ public class YHEntities {
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
 					.spawnEgg(0x008CCA, 0xCB0000).tab(YHDanmaku.TAB.getKey()).build()
+					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::clownpiece).register();
 
 

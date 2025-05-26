@@ -1,4 +1,7 @@
-2.4.0
+2.4.1
+- Character hitbox for danmaku changed to 3.6x4.8x3.6
+- Reduce player danmaku visibility to avoid blocking view
+- Characters cannot be teleported across dimension now
 Danmaku Battle System:
 - Start danmaku battle by using danmaku to attack a character, when you are in youkaified or fairy state
 - Use life and bomb to combat, graze to gain power and life/bombs

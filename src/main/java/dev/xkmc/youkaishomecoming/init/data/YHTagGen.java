@@ -57,7 +57,7 @@ public class YHTagGen {
 	public static final TagKey<EntityType<?>> PIGLIN_SOURCE = entity("drops_piglin_head");
 
 	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
-
+	public static final TagKey<EntityType<?>> BOSS = entity("cannot_capture");
 
 	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
 	public static final TagKey<Item> ICE = ItemTags.create(new ResourceLocation("forge", "ice_cubes"));
@@ -87,6 +87,9 @@ public class YHTagGen {
 		pvd.addTag(PIGLIN_SOURCE).add(EntityType.PIGLIN, EntityType.PIGLIN_BRUTE);
 
 		pvd.addTag(YOUKAI_IGNORE).add(EntityType.ENDER_DRAGON);
+
+		pvd.addTag(entity("ars_nouveau", "jar_blacklist")).addTag(BOSS);
+		pvd.addTag(entity("ars_nouveau", "rewind_blacklist")).addTag(BOSS);
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
@@ -128,6 +131,10 @@ public class YHTagGen {
 
 	public static TagKey<EntityType<?>> entity(String id) {
 		return TagKey.create(Registries.ENTITY_TYPE, YoukaisHomecoming.loc(id));
+	}
+
+	public static TagKey<EntityType<?>> entity(String mod, String id) {
+		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(mod, id));
 	}
 
 }

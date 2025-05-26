@@ -47,30 +47,33 @@ public class TouhouConditionalSpawns {
 	public static void triggetFairyReinforcement(FairyEntity self, LivingEntity le, Vec3 pos) {
 		if (le.level().isClientSide()) return;
 		if (!ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) return;
-		if (self instanceof SmallFairy) {
-			if (le.getRandom().nextDouble() > YHModConfig.COMMON.smallFairySummonReinforcement.get())
-				return;
-		} else {
-			if (le.getRandom().nextDouble() > YHModConfig.COMMON.fairySummonReinforcement.get())
-				return;
-		}
 		GeneralYoukaiEntity e;
-		if (self instanceof SmallFairy && self.getRandom().nextFloat() > YHModConfig.COMMON.smallFairySummonStrongFairy.get()) {
-			e = new SmallFairy(TLMRegistries.SMALL_FAIRY.get(), le.level());
-			TouhouSpellCards.setSpell(e, "fairy:" + self.random().nextInt(18));
-		} else {
-			List<EntityType<? extends GeneralYoukaiEntity>> list = new ArrayList<>(List.of(
-					YHEntities.CIRNO.get(),
-					YHEntities.SUNNY.get(), YHEntities.STAR.get(), YHEntities.LUNA.get(),
-					YHEntities.LARVA.get()
-			));
-			list.remove(self.getType());
-			if (le.level().dimension().equals(Level.NETHER)) {
-				list.add(YHEntities.CLOWN.get());
-			}
-			e = list.get(self.random().nextInt(list.size())).create(le.level());
+		if (le.level().dimension().equals(Level.NETHER)) {
+			e = YHEntities.CLOWN.get().create(le.level());
 			if (e == null) return;
 			e.initSpellCard();
+		} else {
+			if (self instanceof SmallFairy) {
+				if (le.getRandom().nextDouble() > YHModConfig.COMMON.smallFairySummonReinforcement.get())
+					return;
+			} else {
+				if (le.getRandom().nextDouble() > YHModConfig.COMMON.fairySummonReinforcement.get())
+					return;
+			}
+			if (self instanceof SmallFairy && self.getRandom().nextFloat() > YHModConfig.COMMON.smallFairySummonStrongFairy.get()) {
+				e = new SmallFairy(TLMRegistries.SMALL_FAIRY.get(), le.level());
+				TouhouSpellCards.setSpell(e, "fairy:" + self.random().nextInt(18));
+			} else {
+				List<EntityType<? extends GeneralYoukaiEntity>> list = new ArrayList<>(List.of(
+						YHEntities.CIRNO.get(),
+						YHEntities.SUNNY.get(), YHEntities.STAR.get(), YHEntities.LUNA.get(),
+						YHEntities.LARVA.get()
+				));
+				list.remove(self.getType());
+				e = list.get(self.random().nextInt(list.size())).create(le.level());
+				if (e == null) return;
+				e.initSpellCard();
+			}
 		}
 		e.setPos(pos);
 		e.setTargetAndInitSession(le);

@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-26T15:49:05.41983	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-05-26T17:41:17.894161	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1085,6 +1085,8 @@ de4a2614b61f17199d476c60647cd9a5360e5dcf assets/youkaishomecoming/models/item/ye
 45feb69c5789c8c8a892284221c1f04273c542fe assets/youkaishomecoming/models/item/yellow_star_danmaku.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/youkai_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/yukari_spawn_egg.json
+4565d7122fcbe5fb8e8e0313ba5d5eaf98f8b481 data/ars_nouveau/tags/entity_types/jar_blacklist.json
+4565d7122fcbe5fb8e8e0313ba5d5eaf98f8b481 data/ars_nouveau/tags/entity_types/rewind_blacklist.json
 c90b811672ed77454ab02ce25bbe794d6ac8c607 data/curios/tags/items/back.json
 0ce21b81c580f483b908baa0792ab7e3bfc39ac0 data/diet/tags/items/fruits.json
 135319cff98ed8167383b42744e89d24ab0461c5 data/diet/tags/items/grains.json
@@ -2217,6 +2219,7 @@ d303ab4c8e5fbe319befe1c388bf89b3119d8e53 data/youkaishomecoming/recipes/yellow_l
 96c9184b997f56896b1259e5479076ea1b368522 data/youkaishomecoming/recipes/yellow_star_danmaku_upgrade.json
 af93eccd2e52c10c576062e6c8f5b4194221436b data/youkaishomecoming/tags/blocks/farmland_coffea.json
 8d97305cea4788fb7af2a6befaa4e85891f3c9de data/youkaishomecoming/tags/blocks/farmland_redbean.json
+1067e2c946230a60105e9d04673b64c685f86e3c data/youkaishomecoming/tags/entity_types/cannot_capture.json
 da9ec5f7ed64a0d225e00ee60b8e6d6408b431fb data/youkaishomecoming/tags/entity_types/drops_creeper_head.json
 9bbac7c10fca34d9d642425caaf4d832d44f0fd1 data/youkaishomecoming/tags/entity_types/drops_piglin_head.json
 52c5dc3bb3cd7549415d3f88963c61fcecbe268d data/youkaishomecoming/tags/entity_types/drops_skeleton_skull.json
