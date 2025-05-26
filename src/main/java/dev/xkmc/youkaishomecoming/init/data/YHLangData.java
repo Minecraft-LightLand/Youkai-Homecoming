@@ -115,6 +115,7 @@ public enum YHLangData {
 		}
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.koishi_ring", "Koishi Phone Call");
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.graze", "Danmaku Graze");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.miss", "Danmaku Hit Player");
 		pvd.add("death.attack.koishi_attack", "Koishi stabbed %s in the back");
 		pvd.add("death.attack.koishi_attack.player", "%2$s stabbed %1$s in the back");
 		pvd.add("death.attack.rumia_attack", "%s is eaten by Rumia");

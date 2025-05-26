@@ -22,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -78,11 +79,15 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		if (invul > 0) invul--;
 		if (weak > 0) weak = 0;
 		if (player.level() instanceof ServerLevel sl) {
-			if (!full) sessions.clear();
-			else {
+			if (!full) {
+				dirty = !sessions.isEmpty();
+				sessions.clear();
+			} else {
 				for (var ent : new ArrayList<>(sessions.entrySet())) {
+					if (ent.getValue().youkai == null) dirty = true;
 					if (ent.getValue().shouldRemove(sl, player)) {
 						sessions.remove(ent.getKey());
+						dirty = true;
 					}
 				}
 			}
@@ -135,6 +140,7 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		dirty = true;
 		invul = LIFE_INVUL;
 		if (player instanceof ServerPlayer sp) {
+			YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeHelper.GrazeToClient().set(1), sp);
 			SpellContainer.clear(sp);
 		}
 		if (life < 5) {
@@ -168,9 +174,12 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 				20, 20
 		);
 		if (sessions.isEmpty()) {
-			if (isDanmaku(player.getMainHandItem()) || isDanmaku(player.getOffhandItem()))
+			boolean holding = isDanmaku(player.getMainHandItem()) || isDanmaku(player.getOffhandItem());
+			boolean bypass = player.getAbilities().instabuild && player.isShiftKeyDown();
+			if (!holding) return List.of();
+			if (!bypass)
 				return List.of(new InfoLine("%.2f".formatted(power * 0.01), icon, 10, 10));
-			else return List.of();
+
 		}
 		return List.of(
 				new InfoLine("%.1f".formatted(life * 0.2), icon, 0, 10),
@@ -234,17 +243,21 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 
 		public boolean shouldRemove(ServerLevel sl, Player player) {
 			if (youkai == null) {
-				if (sl.getEntity(uuid) instanceof YoukaiEntity e)
+				if (sl.getEntity(uuid) instanceof YoukaiEntity e) {
 					youkai = e;
-				else return true;
+					uid = youkai.getId();
+				} else return true;
 			}
 			if (!youkai.isAlive() || !EntityStorageHelper.isPresent(youkai))
 				return true;
-			if (!youkai.targets.contains(player))
-				return true;
-			return false;
+			return !youkai.targets.contains(player);
 		}
 
+		@Nullable
+		public LivingEntity getTarget(Player player) {
+			if (youkai != null) return youkai;
+			return player.level().getEntity(uid) instanceof LivingEntity le ? le : null;
+		}
 	}
 
 	public record InfoLine(String text, InfoIcon icon, int x, int y) {

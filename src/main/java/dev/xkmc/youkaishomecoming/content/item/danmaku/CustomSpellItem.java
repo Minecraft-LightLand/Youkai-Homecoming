@@ -71,8 +71,12 @@ public class CustomSpellItem extends Item implements IGlowingTarget, ISpellItem 
 		if (GrazeCapability.HOLDER.get(player).weak > 0)
 			return false;
 		LivingEntity target = RayTraceUtil.serverGetTarget(player);
-		if (requireTarget && target == null)
-			return false;
+		if (requireTarget && target == null) {
+			var cap = GrazeCapability.HOLDER.get(player);
+			var one = cap.sessions.values().stream().findAny();
+			if (one.isPresent()) target = one.get().getTarget(player);
+			if (target == null) return false;
+		}
 		if (consume) {
 			Item ammo = data.getAmmoCost();
 			int toCost = data.cost();

@@ -51,4 +51,10 @@ public class ClientCapHandler {
 		player.playSound(YHSounds.GRAZE.get(), r.nextFloat() * 0.2f + 1, r.nextFloat() * 0.2f + 1f);
 	}
 
+	public static void playMiss() {
+		var player = Minecraft.getInstance().player;
+		if (player == null) return;
+		player.playSound(YHSounds.MISS.get(), 1, 1);
+	}
+
 }

@@ -349,7 +349,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 
 	protected void hurtFinalImpl(DamageSource source, float amount) {
 		if (combatProgress == null) return;
-		if (!source.is(YHDamageTypes.DANMAKU) && source.getEntity() instanceof Player player) {
+		if (!source.is(YHDamageTypes.DANMAKU_TYPE) && source.getEntity() instanceof Player player) {
 			var cap = GrazeCapability.HOLDER.get(player);
 			cap.sessions.remove(getUUID());
 		}
@@ -516,6 +516,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 	}
 
 	public void danmakuHitTarget(IYHDanmaku self, DamageSource source, LivingEntity target) {
+		if (combatProgress.progress <= 0) return;
 		if (target instanceof Player player) {
 			var graze = GrazeCapability.HOLDER.get(player);
 			var type = graze.performErase(this);
@@ -544,7 +545,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 
 	private final LinkedList<SimplifiedProjectile> allDanmakus = new LinkedList<>();
 	private ArrayList<SimplifiedProjectile> temp;
-	private ArrayList<SimplifiedProjectile> toBeSent = new ArrayList<>();
+	private final ArrayList<SimplifiedProjectile> toBeSent = new ArrayList<>();
 
 	public void shoot(Entity danmaku) {
 		if (danmaku instanceof SimplifiedProjectile proj) {

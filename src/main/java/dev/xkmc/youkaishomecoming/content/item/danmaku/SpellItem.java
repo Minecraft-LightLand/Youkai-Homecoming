@@ -56,8 +56,12 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, I
 		if (consume && ammo.isEmpty())
 			return false;
 		LivingEntity target = RayTraceUtil.serverGetTarget(player);
-		if (target == null && requireTarget)
-			return false;
+		if (target == null && requireTarget) {
+			var cap = GrazeCapability.HOLDER.get(player);
+			var one = cap.sessions.values().stream().findAny();
+			if (one.isPresent()) target = one.get().getTarget(player);
+			if (target == null) return false;
+		}
 		if (player instanceof ServerPlayer sp) {
 			if (consume)
 				ammo.shrink(1);

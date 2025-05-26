@@ -52,8 +52,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 			var cap = GrazeCapability.HOLDER.get(pl);
 			return cap.weak > 0;
 		}
-		return getTarget() instanceof Player pl &&
-				GrazeCapability.HOLDER.get(pl).sessions.containsKey(getUUID());
+		return false;
 	}
 
 	@Override
@@ -119,6 +118,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 				}
 			}
 		}
+		if (getTarget() instanceof Player && !(source.getEntity() instanceof Player)) return false;
 		if (source.getEntity() instanceof LivingEntity le) {
 			setLastHurtByMob(le);
 			targets.checkTarget();

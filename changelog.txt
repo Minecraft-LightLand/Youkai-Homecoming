@@ -1,3 +1,16 @@
+2.4.0
+Danmaku Battle System:
+- Start danmaku battle by using danmaku to attack a character, when you are in youkaified or fairy state
+- Use life and bomb to combat, graze to gain power and life/bombs
+- Power boosts danmaku damage by at most 2x
+- Now you won't die in danmaku battles you initiated. When you run out of life, both parties stop fighting.
+- Your danmaku damage during danmaku battle will not damage mobs that are not targeting you
+- Boss-level Character fighting with you will not be damaged by non-player: avoid unintended healing
+- When you take a hit from danmaku, you either lose a bomb and gain 1.5 seconds of immunity, or lose a life, gain 3 seconds immunity, and 2 bombs.
+- Graze to gain power. When power is full, graze to gain points. 100 graze = 0.2 bomb / 0.2 life.
+- When you initiated a danmaku battle, you may have 2 life and 2 bombs by default.
+- When character initiates fight with you whether it's a danmaku battle or not depends on whether the character wants to kill you
+
 2.3.25
 - More drying recipes
 - Fix Ex Rumia bugged when framework is present

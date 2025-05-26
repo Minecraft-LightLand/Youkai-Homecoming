@@ -24,7 +24,7 @@ public class GrazeHelper {
 		if (entity.level().getGameTime() > prev) {
 			entity.getPersistentData().putLong("GrazeTimeStamp", entity.level().getGameTime());
 			if (entity instanceof ServerPlayer sp) {
-				YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeToClient(), sp);
+				YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeToClient().set(0), sp);
 			}
 		}
 	}
@@ -32,11 +32,20 @@ public class GrazeHelper {
 	@SerialClass
 	public static class GrazeToClient extends SerialPacketBase {
 
+		@SerialClass.SerialField
+		public int type;
+
 		@Override
 		public void handle(NetworkEvent.Context context) {
-			ClientCapHandler.playGraze();
+			if (type == 0)
+				ClientCapHandler.playGraze();
+			else ClientCapHandler.playMiss();
 		}
 
+		public GrazeToClient set(int i) {
+			type = i;
+			return this;
+		}
 	}
 
 }
