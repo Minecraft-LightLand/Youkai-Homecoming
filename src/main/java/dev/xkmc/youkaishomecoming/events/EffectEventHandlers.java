@@ -25,7 +25,7 @@ public class EffectEventHandlers {
 	public static boolean isYoukai(LivingEntity e) {
 		return
 				e.hasEffect(YHEffects.YOUKAIFYING.get()) ||
-				e.hasEffect(YHEffects.YOUKAIFIED.get());
+						e.hasEffect(YHEffects.YOUKAIFIED.get());
 	}
 
 	public static boolean isCharacter(LivingEntity e) {

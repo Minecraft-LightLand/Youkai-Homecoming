@@ -1,13 +1,14 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -40,14 +41,21 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	protected final ServerBossEvent bossEvent = new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.NOTCHED_20);
 	private boolean ticking = false;
 
+	@SerialClass.SerialField
+	private ResourceLocation spawnDimension;
+
 	public BossYoukaiEntity(EntityType<? extends BossYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		setPersistenceRequired();
 	}
 
-	protected boolean wouldAttack(LivingEntity entity) {
-		if (shouldIgnore(entity)) return false;
-		return entity.hasEffect(YHEffects.YOUKAIFIED.get());
+	@Override
+	public boolean shouldIgnore(LivingEntity e) {
+		if (super.shouldIgnore(e)) return true;
+		if (e instanceof Player pl) {
+			return GrazeCapability.HOLDER.get(pl).isWeak();
+		}
+		return false;
 	}
 
 	@Override
@@ -63,6 +71,11 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public void tick() {
+		if (spawnDimension == null) {
+			spawnDimension = level().dimension().location();
+		} else if (!spawnDimension.equals(level().dimension().location())) {
+			discard();
+		}
 		ticking = true;
 		double maxSpeed = 0.5;
 		if (getDeltaMovement().length() > maxSpeed) {
@@ -113,6 +126,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 				}
 			}
 		}
+		if (getTarget() instanceof Player && !(source.getEntity() instanceof Player)) return false;
 		if (source.getEntity() instanceof LivingEntity le) {
 			setLastHurtByMob(le);
 			targets.checkTarget();
@@ -304,5 +318,9 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		this.bossEvent.removePlayer(pPlayer);
 	}
 
+	@Override
+	public boolean canChangeDimensions() {
+		return false;
+	}
 
 }

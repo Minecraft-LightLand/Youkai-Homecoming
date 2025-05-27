@@ -61,7 +61,10 @@ public class SuwakoHatItem extends TouhouHatItem {
 		boolean obtain = showTooltip();
 		if (obtain) {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_SUWAKO_HAT.get(Component.literal("" + YHModConfig.COMMON.frogEatCountForHat.get()))));
-			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_SUWAKO_HAT.get(Component.translatable(YHEffects.NATIVE.get().getDescriptionId()))));
+			list.add(YHLangData.USAGE.get());
+			list.add(effectDesc(YHEffects.NATIVE.get()));
+			list.add(supportDesc(DyeColor.CYAN, DyeColor.LIME));
+
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));
@@ -72,6 +75,5 @@ public class SuwakoHatItem extends TouhouHatItem {
 	public boolean support(DyeColor color) {
 		return color == DyeColor.CYAN || color == DyeColor.LIME;
 	}
-
 
 }

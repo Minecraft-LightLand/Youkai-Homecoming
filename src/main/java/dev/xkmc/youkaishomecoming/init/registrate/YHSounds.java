@@ -10,6 +10,7 @@ public class YHSounds {
 
 	public static final RegistryEntry<SoundEvent> KOISHI_RING = reg("koishi_ring");
 	public static final RegistryEntry<SoundEvent> GRAZE = reg("graze");
+	public static final RegistryEntry<SoundEvent> MISS = reg("miss");
 
 	private static RegistryEntry<SoundEvent> reg(String id) {
 		ResourceLocation rl = YoukaisHomecoming.loc(id);

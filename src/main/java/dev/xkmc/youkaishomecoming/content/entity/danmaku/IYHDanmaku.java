@@ -33,6 +33,11 @@ public interface IYHDanmaku extends GrazingEntity {
 
 	@Override
 	default AABB alterHitBox(Entity x, float radius, float graze) {
+		if (self().getOwner() instanceof Player player &&
+				x instanceof YoukaiEntity youkai &&
+				youkai.targets.contains(player)) {
+			return youkai.getBoundingBox().inflate(GRAZE_RANGE);
+		}
 		return alterEntityHitBox(x, radius, graze);
 	}
 
@@ -74,31 +79,17 @@ public interface IYHDanmaku extends GrazingEntity {
 			e = pe.getParent();
 		}
 		if (e instanceof LivingEntity le) target = le;
-		YoukaiEntity youkai = null;
-		if (target != null && self().getOwner() instanceof YoukaiEntity y) {
-			youkai = y;
-			if (target instanceof Player player) {
-				var graze = GrazeCapability.HOLDER.get(player);
-				var type = graze.performErase();
-				if (type.erase()) {
-					youkai.eraseAllDanmaku(player);
-				}
-				if (type.skipDamage()) {
-					return;
-				}
+		var owner = self().getOwner();
+		if (target != null && owner instanceof YoukaiEntity youkai) {
+			youkai.danmakuHitTarget(this, source, target);
+			return;
+		}
+		if (owner instanceof Player player) {
+			if (e instanceof LivingEntity le) {
+				if (!GrazeCapability.HOLDER.get(player).shouldHurt(le)) return;
 			}
 		}
-
-		float hp = e instanceof LivingEntity le ? le.getHealth() : 0;
-		boolean immune = !e.hurt(source, damage(e));
-		float ahp = e instanceof LivingEntity le ? le.getHealth() : 0;
-		if (ahp >= hp && ahp > 0) immune = true;
-		if (youkai != null) {
-			youkai.onDanmakuHit(target, this);
-			if (immune) {
-				youkai.onDanmakuImmune(target, this, source);
-			}
-		}
+		e.hurt(source, damage(e));
 	}
 
 	static AABB alterEntityHitBox(Entity x, float radius, float graze) {

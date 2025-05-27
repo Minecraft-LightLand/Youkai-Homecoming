@@ -48,7 +48,9 @@ public class KoishiHatItem extends TouhouHatItem {
 		boolean obtain = showTooltip();
 		if (obtain) {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.OBTAIN_KOISHI_HAT.get(Component.literal("" + YHModConfig.COMMON.koishiAttackBlockCount.get()))));
-			list.add(YHLangData.USAGE.get().append(YHLangData.USAGE_KOISHI_HAT.get(Component.translatable(YHEffects.UNCONSCIOUS.get().getDescriptionId()))));
+			list.add(YHLangData.USAGE.get());
+			list.add(effectDesc(YHEffects.UNCONSCIOUS.get()));
+			list.add(supportDesc(DyeColor.RED, DyeColor.BLUE));
 		} else {
 			list.add(YHLangData.OBTAIN.get().append(YHLangData.UNKNOWN.get()));
 			list.add(YHLangData.USAGE.get().append(YHLangData.UNKNOWN.get()));

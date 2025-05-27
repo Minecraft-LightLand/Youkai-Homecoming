@@ -7,6 +7,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 @SerialClass
@@ -18,7 +19,7 @@ public class RemiliaEntity extends BossYoukaiEntity {
 
 	@Override
 	public boolean shouldIgnore(LivingEntity e) {
-		return super.shouldIgnore(e) || e.getMobType() == MobType.UNDEAD || e.getMobType() == MobType.ILLAGER;
+		return super.shouldIgnore(e) || !(e instanceof Player) && (e.getMobType() == MobType.UNDEAD || e.getMobType() == MobType.ILLAGER);
 	}
 
 	@Override

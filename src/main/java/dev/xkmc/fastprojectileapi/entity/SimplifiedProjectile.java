@@ -174,7 +174,7 @@ public abstract class SimplifiedProjectile extends SimplifiedEntity implements T
 
 	@Override
 	public void setPosRaw(double x, double y, double z) {
-		if (!isAddedToWorld() &&  tickCount > 0) {
+		if (!isAddedToWorld() && tickCount > 0) {
 			position = new Vec3(x, y, z);
 			blockPosition = BlockPos.containing(position);
 		} else {

@@ -29,10 +29,10 @@ public class YHModConfig {
 			selfDanmakuFading = builder.defineInRange("selfDanmakuFading", 0.5d, 0, 1);
 			fadingStart = builder.defineInRange("fadingStart", 8d, 0, 128);
 			fadingEnd = builder.defineInRange("fadingEnd", 64d, 0, 128);
-			powerInfoXAnchor = builder.defineInRange("powerInfoXAnchor",1,-1,1);
-			powerInfoXOffset = builder.defineInRange("powerInfoXOffset",-8,-1000,1000);
-			powerInfoYAnchor = builder.defineInRange("powerInfoYAnchor",0,-1,1);
-			powerInfoYOffset = builder.defineInRange("powerInfoYOffset",0,-1000,1000);
+			powerInfoXAnchor = builder.defineInRange("powerInfoXAnchor", 1, -1, 1);
+			powerInfoXOffset = builder.defineInRange("powerInfoXOffset", -8, -1000, 1000);
+			powerInfoYAnchor = builder.defineInRange("powerInfoYAnchor", 0, -1, 1);
+			powerInfoYOffset = builder.defineInRange("powerInfoYOffset", 0, -1000, 1000);
 		}
 
 	}
