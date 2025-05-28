@@ -11,6 +11,7 @@ import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RestrictData;
@@ -355,6 +356,9 @@ public abstract class YoukaiEntity extends PathfinderMob
 		setCombatProgress(getCombatProgress() - amount);
 		if (combatProgress.progress <= 0) {
 			eraseAllDanmaku(null);
+			if (source.getEntity() instanceof Player player) {
+				GrazeHelper.onDanmakuKill(player, this);
+			}
 		}
 	}
 

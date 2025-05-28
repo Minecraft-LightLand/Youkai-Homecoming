@@ -210,8 +210,18 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	}
 
 	public void initSession(YoukaiEntity youkai) {
+		if (sessions.containsKey(youkai.getUUID())) return;
 		sessions.put(youkai.getUUID(), new CombatSession().init(youkai));
 		youkai.targets.add(player);
+		dirty = true;
+	}
+
+	public void stopSession(UUID uuid) {
+		if (!sessions.containsKey(uuid)) return;
+		sessions.remove(uuid);
+		if (sessions.isEmpty() && player instanceof ServerPlayer sp) {
+			SpellContainer.clear(sp);
+		}
 		dirty = true;
 	}
 

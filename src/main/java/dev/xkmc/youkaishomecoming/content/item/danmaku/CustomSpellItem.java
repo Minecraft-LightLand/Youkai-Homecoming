@@ -71,6 +71,7 @@ public class CustomSpellItem extends Item implements IGlowingTarget, ISpellItem 
 		if (GrazeHelper.forbidDanmaku(player))
 			return false;
 		LivingEntity target = RayTraceUtil.serverGetTarget(player);
+		if (target != null) GrazeHelper.addSession(player, target);
 		if (requireTarget && target == null) {
 			target = GrazeHelper.getTarget(player);
 			if (target == null) return false;
