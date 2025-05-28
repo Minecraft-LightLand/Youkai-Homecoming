@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaishomecoming:item/danmaku/pencil",
+    "layer1": "youkaishomecoming:item/danmaku/pencil_overlay"
+  }
+}

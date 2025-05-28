@@ -51,7 +51,7 @@ public class YHDanmaku {
 			this.damage = damage;
 			this.display = display;
 			name = name().toLowerCase(Locale.ROOT);
-			tag = YHTagGen.item(name + "_danmaku");
+			tag = YHTagGen.item("danmaku/" + name);
 		}
 
 
@@ -78,7 +78,7 @@ public class YHDanmaku {
 	}
 
 	public enum Laser implements IDanmakuType {
-		LASER(1, 4);
+		LASER(1, 4), PENCIL(1, 4);
 
 		public final String name;
 		public final TagKey<Item> tag;
@@ -89,7 +89,7 @@ public class YHDanmaku {
 			this.size = size;
 			this.damage = damage;
 			name = name().toLowerCase(Locale.ROOT);
-			tag = YHTagGen.item(name);
+			tag = YHTagGen.item("laser/" + name);
 		}
 
 		public ItemEntry<LaserItem> get(DyeColor color) {

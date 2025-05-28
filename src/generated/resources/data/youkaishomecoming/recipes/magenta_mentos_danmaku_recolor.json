@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "tag": "youkaishomecoming:mentos_danmaku"
+      "tag": "youkaishomecoming:danmaku/mentos"
     },
     "B": {
       "item": "minecraft:magenta_dye"

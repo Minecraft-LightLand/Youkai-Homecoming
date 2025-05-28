@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "tag": "youkaishomecoming:butterfly_danmaku"
+      "tag": "youkaishomecoming:danmaku/butterfly"
     },
     "B": {
       "item": "minecraft:gray_dye"
