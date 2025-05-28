@@ -85,6 +85,7 @@ public class YHModConfig {
 		public final ForgeConfigSpec.BooleanValue reimuHairbandFlightEnable;
 		public final ForgeConfigSpec.BooleanValue reimuExtraDamageCoolDown;
 		public final ForgeConfigSpec.BooleanValue reimuDamageReduction;
+		public final ForgeConfigSpec.BooleanValue canReimuTeleportToOtherDimension;
 
 		public final ForgeConfigSpec.BooleanValue cirnoSpawn;
 		public final ForgeConfigSpec.DoubleValue cirnoFairyDrop;
@@ -245,6 +246,8 @@ public class YHModConfig {
 						.define("reimuExtraDamageCoolDown", true);
 				reimuDamageReduction = builder.comment("Enable non-danmaku damage reduction on Reimu")
 						.define("reimuDamageReduction", true);
+				canReimuTeleportToOtherDimension = builder.comment("If Reimu can be teleported to other dimension")
+						.define("canReimuTeleportToOtherDimension", false);
 			}
 			builder.pop();
 

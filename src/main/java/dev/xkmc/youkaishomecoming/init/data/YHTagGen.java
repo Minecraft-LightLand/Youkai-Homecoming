@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import mezz.jei.api.constants.Tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -119,6 +120,8 @@ public class YHTagGen {
 			danmaku.addTag(e.tag);
 		}
 		pvd.addTag(DANMAKU_SHOOTER).addTags(DANMAKU, YHDanmaku.Laser.LASER.tag, CUSTOM_SPELL, PRESET_SPELL);
+		pvd.addTag(ItemTags.create(Tags.HIDDEN_FROM_RECIPE_VIEWERS))
+				.addTags(DANMAKU, YHDanmaku.Laser.LASER.tag);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
 		}

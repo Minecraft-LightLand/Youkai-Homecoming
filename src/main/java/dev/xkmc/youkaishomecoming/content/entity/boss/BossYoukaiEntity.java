@@ -64,7 +64,8 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		if (spawnDimension == null) {
 			spawnDimension = level().dimension().location();
 		} else if (!spawnDimension.equals(level().dimension().location())) {
-			discard();
+			if (!YHModConfig.COMMON.canReimuTeleportToOtherDimension.get())
+				discard();
 		}
 		ticking = true;
 		double maxSpeed = 0.5;
@@ -318,7 +319,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public boolean canChangeDimensions() {
-		return false;
+		return YHModConfig.COMMON.canReimuTeleportToOtherDimension.get();
 	}
 
 }
