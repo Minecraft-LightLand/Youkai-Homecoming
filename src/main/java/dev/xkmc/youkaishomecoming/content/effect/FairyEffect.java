@@ -20,7 +20,7 @@ public class FairyEffect extends MobEffect {
 		addAttributeModifier(Attributes.ATTACK_DAMAGE, uuid, -0.5, AttributeModifier.Operation.MULTIPLY_TOTAL);
 		addAttributeModifier(Attributes.MOVEMENT_SPEED, uuid, 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL);
 		addAttributeModifier(YHAttributes.MAX_POWER.get(), uuid, -1, AttributeModifier.Operation.ADDITION);
-		addAttributeModifier(YHAttributes.MAX_RESOURCE.get(), uuid, -5, AttributeModifier.Operation.ADDITION);
+		addAttributeModifier(YHAttributes.MAX_RESOURCE.get(), uuid, -4, AttributeModifier.Operation.ADDITION);
 		addAttributeModifier(YHAttributes.HITBOX.get(), uuid, -0.2, AttributeModifier.Operation.ADDITION);
 	}
 

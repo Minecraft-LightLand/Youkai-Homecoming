@@ -133,9 +133,15 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		step++;
 		int max = GrazeHelper.getMaxResource(player) * SHARD;
 		if (step == CYCLE) {
-			if (life < max) life++;
-			else if (bomb < max) bomb++;
-			step = 0;
+			if (life < max) {
+				life++;
+				step = 0;
+			} else if (bomb < max) {
+				bomb++;
+				step--;
+			} else {
+				step--;
+			}
 		} else {
 			if (bomb < max) bomb++;
 			else if (life < max) step++;
@@ -146,6 +152,9 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		if (!EffectEventHandlers.isFullCharacter(player)) return HitType.NONE;
 		if (!sessions.containsKey(e.getUUID())) return HitType.ERASE;
 		if (invul > 0) return HitType.INVUL;
+		for (var s : sessions.values()) {
+			s.eraseDanmaku(player);
+		}
 		if (useBomb()) {
 			return HitType.BOMB;
 		}
@@ -209,8 +218,13 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		);
 	}
 
+	public boolean isInSession(UUID uuid) {
+		return sessions.containsKey(uuid);
+	}
+
 	public void initSession(YoukaiEntity youkai) {
 		if (sessions.containsKey(youkai.getUUID())) return;
+		if (sessions.isEmpty()) initStatus();
 		sessions.put(youkai.getUUID(), new CombatSession().init(youkai));
 		youkai.targets.add(player);
 		dirty = true;
@@ -232,7 +246,6 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 			if (sessions.containsKey(youkai.getUUID())) return true;
 			if (youkai.targets.contains(player)) return true;
 			if (sessions.isEmpty()) {
-				initStatus();
 				initSession(youkai);
 				return true;
 			}
@@ -271,6 +284,7 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	public boolean isWeak() {
 		return weak > 0;
 	}
+
 	public int getLife() {
 		return life;
 	}
@@ -329,6 +343,12 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		protected void resetTarget(Player player) {
 			if (getTarget(player) instanceof YoukaiEntity e) {
 				e.resetTarget(player);
+			}
+		}
+
+		protected void eraseDanmaku(Player player) {
+			if (getTarget(player) instanceof YoukaiEntity e) {
+				e.eraseAllDanmaku(player);
 			}
 		}
 

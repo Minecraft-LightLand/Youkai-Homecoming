@@ -445,9 +445,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 	@Override
 	public LivingEntity getTarget() {
 		if (targets == null) return null;
-		var candidates = targets.getTargets();
-		if (candidates.isEmpty()) return null;
-		return candidates.get(0);
+		return targets.getTarget();
 	}
 
 	public void setTargetAndInitSession(LivingEntity le) {
@@ -561,7 +559,10 @@ public abstract class YoukaiEntity extends PathfinderMob
 		}
 	}
 
+	private boolean removeDanmaku = false;
+
 	private void tickDanmaku() {
+		removeDanmaku = false;
 		temp = new ArrayList<>();
 		var itr = allDanmakus.iterator();
 		while (itr.hasNext()) {
@@ -572,13 +573,16 @@ public abstract class YoukaiEntity extends PathfinderMob
 				++e.tickCount;
 				e.tick();
 			}
+			if (removeDanmaku) break;
 			if (!e.isValid()) {
 				itr.remove();
 			}
 		}
-		allDanmakus.addAll(temp);
+		if (!removeDanmaku) {
+			allDanmakus.addAll(temp);
+			DanmakuManager.send(this, toBeSent);
+		}
 		temp = null;
-		DanmakuManager.send(this, toBeSent);
 		toBeSent.clear();
 	}
 
@@ -587,6 +591,8 @@ public abstract class YoukaiEntity extends PathfinderMob
 			if (player == null) e.markErased(true);
 			else e.erase(player);
 		}
+		allDanmakus.clear();
+		removeDanmaku = true;
 	}
 
 	private final UserCacheHolder cache = new UserCacheHolder();

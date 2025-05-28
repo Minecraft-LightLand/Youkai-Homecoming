@@ -30,6 +30,7 @@ public class SpellContainer extends ConditionalToken {
 		for (var e : data.cache) {
 			e.markErased(true);
 		}
+		data.cache.clear();
 		data.spells.clear();
 	}
 
@@ -61,7 +62,7 @@ public class SpellContainer extends ConditionalToken {
 			}
 		}
 		cache.removeIf(e -> !e.isValid());
-		return spells.isEmpty();
+		return spells.isEmpty() && cache.isEmpty();
 	}
 
 	private record Provider() implements TokenProvider<SpellContainer, Provider>, Context {
