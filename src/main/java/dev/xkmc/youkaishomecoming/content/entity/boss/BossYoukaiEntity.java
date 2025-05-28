@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -50,15 +49,6 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	}
 
 	@Override
-	public boolean shouldIgnore(LivingEntity e) {
-		if (super.shouldIgnore(e)) return true;
-		if (e instanceof Player pl) {
-			return GrazeCapability.HOLDER.get(pl).isWeak();
-		}
-		return false;
-	}
-
-	@Override
 	public boolean shouldHurt(LivingEntity le) {
 		if (shouldIgnore(le)) return false;
 		return le instanceof Enemy || super.shouldHurt(le);
@@ -99,7 +89,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	private boolean hurtCall = false;
 	private boolean chaotic = false;
 
-	private int getCD(DamageSource source) {
+	protected int getCD(DamageSource source) {
 		if (!YHModConfig.COMMON.reimuExtraDamageCoolDown.get())
 			return 10;
 		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
@@ -109,8 +99,8 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		if (source.is(YHDamageTypes.DANMAKU))
 			return 20;
 		if (source.is(DamageTypeTags.BYPASSES_COOLDOWN))
-			return 40;
-		return 80;
+			return 30;
+		return 50;
 	}
 
 	@Override
@@ -193,14 +183,22 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 				}
 			}
 		}
-		int reduction = 20;
+		int reduction = damageLimit();
 		float ans = Math.min(getMaxHealth() / reduction, amount);
 		if (YHModConfig.COMMON.reimuDamageReduction.get() && !source.is(YHDamageTypes.DANMAKU_TYPE))
-			ans /= 5;
+			ans /= nonDanmakuReduction();
 		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
 			notifyIllegalDamage(amount - ans, source.getEntity());
 		}
 		return ans;
+	}
+
+	protected int damageLimit() {
+		return 20;
+	}
+
+	protected int nonDanmakuReduction() {
+		return 5;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.FlyingToken;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
@@ -78,8 +79,11 @@ public class GeneralEventHandlers {
 		}
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void collectBlood(LivingDeathEvent event) {
+		if (event.getEntity() instanceof ServerPlayer player) {
+			SpellContainer.clear(player);
+		}
 		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
 			if (le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES) &&

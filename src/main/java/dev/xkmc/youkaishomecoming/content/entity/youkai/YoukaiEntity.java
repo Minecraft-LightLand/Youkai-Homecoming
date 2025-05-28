@@ -514,6 +514,13 @@ public abstract class YoukaiEntity extends PathfinderMob
 		return YHDamageTypes.danmaku(danmaku);
 	}
 
+	public void resetTarget(Player target) {
+		targets.remove(target.getUUID());
+		setTarget(null);
+		setLastHurtByMob(null);
+		setCombatProgress(combatProgress.maxProgress);
+	}
+
 	public void danmakuHitTarget(IYHDanmaku self, DamageSource source, LivingEntity target) {
 		if (combatProgress.progress <= 0) return;
 		if (target instanceof Player player) {
@@ -521,12 +528,6 @@ public abstract class YoukaiEntity extends PathfinderMob
 			var type = graze.performErase(this);
 			if (type.erase()) {
 				eraseAllDanmaku(player);
-			}
-			if (type.resetTarget()) {
-				targets.remove(target.getUUID());
-				setTarget(null);
-				setLastHurtByMob(null);
-				setCombatProgress(combatProgress.maxProgress);
 			}
 			if (type.skipDamage()) {
 				return;

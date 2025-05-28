@@ -25,6 +25,16 @@ public class ClownEntity extends BossYoukaiEntity {
 		return super.shouldIgnore(e) || !(e instanceof Player) && e.getMobType() == MobType.UNDEAD;
 	}
 
+	@Override
+	protected int damageLimit() {
+		return 10;
+	}
+
+	@Override
+	protected int nonDanmakuReduction() {
+		return 2;
+	}
+
 	public boolean isLunatic() {
 		return getFlag(4) || isChaotic() || combatProgress.progress < combatProgress.maxProgress / 2;
 	}

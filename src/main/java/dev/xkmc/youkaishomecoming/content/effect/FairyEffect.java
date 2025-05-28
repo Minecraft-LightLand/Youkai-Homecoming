@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
 import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.youkaishomecoming.init.registrate.YHAttributes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,9 @@ public class FairyEffect extends MobEffect {
 		addAttributeModifier(Attributes.MAX_HEALTH, uuid, -0.5, AttributeModifier.Operation.MULTIPLY_TOTAL);
 		addAttributeModifier(Attributes.ATTACK_DAMAGE, uuid, -0.5, AttributeModifier.Operation.MULTIPLY_TOTAL);
 		addAttributeModifier(Attributes.MOVEMENT_SPEED, uuid, 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL);
+		addAttributeModifier(YHAttributes.MAX_POWER.get(), uuid, -1, AttributeModifier.Operation.ADDITION);
+		addAttributeModifier(YHAttributes.MAX_RESOURCE.get(), uuid, -5, AttributeModifier.Operation.ADDITION);
+		addAttributeModifier(YHAttributes.HITBOX.get(), uuid, -0.2, AttributeModifier.Operation.ADDITION);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
+import dev.shadowsoffire.attributeslib.impl.AttributeEvents;
 import dev.shadowsoffire.gateways.Gateways;
 import dev.xkmc.fastprojectileapi.collision.FastMapInit;
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuToClientPacket;
@@ -38,6 +39,7 @@ import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.RecipeBookType;
@@ -49,6 +51,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -94,6 +97,7 @@ public class YoukaisHomecoming {
 		YHEffects.register();
 		YHDanmaku.register();
 		YHEntities.register();
+		YHAttributes.register();
 		YHSounds.register();
 		YHGLMProvider.register();
 		YHCriteriaTriggers.register();
@@ -112,6 +116,16 @@ public class YoukaisHomecoming {
 		if (ModList.get().isLoaded(Gateways.MODID)) {
 			MinecraftForge.EVENT_BUS.register(GatewayEventHandlers.class);
 		}
+	}
+
+	@SubscribeEvent
+	public static void modifyAttributes(EntityAttributeModificationEvent event) {
+		event.add(EntityType.PLAYER, YHAttributes.INITIAL_POWER.get());
+		event.add(EntityType.PLAYER, YHAttributes.INITIAL_RESOURCE.get());
+		event.add(EntityType.PLAYER, YHAttributes.MAX_POWER.get());
+		event.add(EntityType.PLAYER, YHAttributes.MAX_RESOURCE.get());
+		event.add(EntityType.PLAYER, YHAttributes.GRAZE_EFFECTIVENESS.get());
+		event.add(EntityType.PLAYER, YHAttributes.HITBOX.get());
 	}
 
 	@SubscribeEvent

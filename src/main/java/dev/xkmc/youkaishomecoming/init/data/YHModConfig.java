@@ -100,6 +100,16 @@ public class YHModConfig {
 		public final ForgeConfigSpec.DoubleValue smallFairySummonStrongFairy;
 		public final ForgeConfigSpec.IntValue smallFairyStrength;
 
+		public final ForgeConfigSpec.IntValue danmakuMaxResource;
+		public final ForgeConfigSpec.IntValue danmakuMaxPower;
+		public final ForgeConfigSpec.DoubleValue danmakuPowerBonus;
+		public final ForgeConfigSpec.DoubleValue grazeEffectiveness;
+		public final ForgeConfigSpec.IntValue missInvulTime;
+		public final ForgeConfigSpec.IntValue bombInvulTime;
+		public final ForgeConfigSpec.DoubleValue maxPowerLossOnMiss;
+		public final ForgeConfigSpec.IntValue initialResource;
+		public final ForgeConfigSpec.IntValue initialPower;
+
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("youkaifying_effect");
 			{
@@ -182,6 +192,25 @@ public class YHModConfig {
 				invulFrameForDanmaku = builder.comment("Enable danmaku damage invulnerability frame against non-player non-youkai mobs.")
 						.comment("It's always enabled against player and youkais")
 						.define("invulFrameForDanmaku", true);
+				danmakuMaxResource = builder.comment("Max resource obtainable from danmaku battle")
+						.defineInRange("danmakuMaxResource", 10, 4, 20);
+				danmakuMaxPower = builder.comment("Max Power player can obtain from grazing")
+						.defineInRange("danmakuMaxPower", 4, 1, 20);
+				danmakuPowerBonus = builder.comment("Danmaku damage each level of power increase")
+						.defineInRange("danmakuPowerBonus", 0.25, 0, 1);
+				grazeEffectiveness = builder.comment("Multiplier for grazing")
+						.defineInRange("grazeEffectiveness", 1d, 0, 10);
+				missInvulTime = builder.comment("Danmaku invulnerability and disabled time when you take a hit")
+						.defineInRange("missInvulTime", 60, 10, 100);
+				bombInvulTime = builder.comment("Danmaku invulnerability and disabled time when you use a bomb")
+						.defineInRange("bombInvulTime", 30, 10, 100);
+				maxPowerLossOnMiss = builder.comment("Maximum loss of power when you take a hit")
+						.defineInRange("maxPowerLossOnMiss", 1d, 0, 10);
+				initialResource = builder.comment("Initial life and bomb when you initiate a danmaku battle")
+						.comment("Also is the amount of bomb you get when you lose a life")
+						.defineInRange("initialResource", 2, 0, 10);
+				initialPower = builder.comment("Initial power when you initiate a danmaku battle")
+						.defineInRange("initialPower", 1, 0, 10);
 			}
 			builder.pop();
 

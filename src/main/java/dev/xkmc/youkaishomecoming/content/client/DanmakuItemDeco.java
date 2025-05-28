@@ -1,5 +1,6 @@
-package dev.xkmc.youkaishomecoming.content.capability;
+package dev.xkmc.youkaishomecoming.content.client;
 
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;

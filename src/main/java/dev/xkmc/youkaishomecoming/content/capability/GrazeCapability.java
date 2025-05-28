@@ -6,19 +6,17 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.item.danmaku.DanmakuItem;
-import dev.xkmc.youkaishomecoming.content.item.danmaku.ISpellItem;
-import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -37,9 +35,8 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 			GrazeCapability.class, GrazeCapability::new, PlayerCapabilityNetworkHandler::new
 	);
 
-	private static final int MAX_GRAZE = 100, MAX_POWER = 4 * 100;
-	private static final int INIT_BOMB = 2 * 5, INIT_LIFE = 5 * 2, MAX = 5 * 10, CYCLE = 3;
-	private static final int LIFE_INVUL = 60, BOMB_INVUL = 30, WEAK = 60;
+	private static final int MAX_GRAZE = 100, SHARD = 5, CYCLE = 3;
+	private static final int WEAK = 60, GRAZE_CACHE = 10;
 
 	@SerialClass.SerialField
 	private int power, hidden, step, bomb, life, invul, weak;
@@ -65,8 +62,11 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	}
 
 	public void initStatus() {
-		life = Math.max(INIT_LIFE, life);
-		bomb = Math.max(INIT_BOMB, bomb);
+		int initResource = GrazeHelper.getInitialResource(player) * SHARD;
+		int initPower = GrazeHelper.getInitialPower(player) * MAX_GRAZE;
+		life = Math.max(initResource, life);
+		bomb = Math.max(initResource, bomb);
+		power = Math.max(initPower, power);
 	}
 
 	@Override
@@ -74,11 +74,20 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		boolean full = EffectEventHandlers.isFullCharacter(player);
 		if (tempGraze > 0) {
 			tempGraze--;
-			consumeGraze();
+			double val = GrazeHelper.getGrazeEffectiveness(player);
+			int count = (int) val;
+			if (player.getRandom().nextFloat() < val - count) count++;
+			for (int i = 0; i < count; i++)
+				consumeGraze();
 			dirty = true;
 		}
 		if (invul > 0) invul--;
-		if (weak > 0) weak = 0;
+		if (weak > 0) weak--;
+		int maxPower = GrazeHelper.getMaxPower(player) * MAX_GRAZE;
+		int maxResource = GrazeHelper.getMaxResource(player) * SHARD;
+		if (power > maxPower) power = maxPower;
+		if (life > maxResource) life = maxResource;
+		if (bomb > maxResource) bomb = maxResource;
 		if (player.level() instanceof ServerLevel sl) {
 			if (!full) {
 				dirty = !sessions.isEmpty();
@@ -105,7 +114,7 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	public boolean graze() {
 		if (invul > 0) return false;
 		if (!EffectEventHandlers.isFullCharacter(player)) return false;
-		if (tempGraze < 10)
+		if (tempGraze < GRAZE_CACHE)
 			tempGraze++;
 		boolean ans = player.tickCount != lastGraze;
 		lastGraze = player.tickCount;
@@ -113,7 +122,7 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 	}
 
 	private void consumeGraze() {
-		if (power < MAX_POWER) {
+		if (power < GrazeHelper.getMaxPower(player) * MAX_GRAZE) {
 			power++;
 			return;
 		}
@@ -122,15 +131,14 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		if (hidden < MAX_GRAZE) return;
 		hidden -= MAX_GRAZE;
 		step++;
+		int max = GrazeHelper.getMaxResource(player) * SHARD;
 		if (step == CYCLE) {
-			if (life < MAX)
-				life++;
-			else if (bomb < MAX)
-				bomb++;
+			if (life < max) life++;
+			else if (bomb < max) bomb++;
 			step = 0;
 		} else {
-			if (bomb < MAX)
-				bomb++;
+			if (bomb < max) bomb++;
+			else if (life < max) step++;
 		}
 	}
 
@@ -141,36 +149,40 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		if (useBomb()) {
 			return HitType.BOMB;
 		}
-		int loss = Math.min(power / 2, MAX_GRAZE);
+		int maxLoss = (int) (YHModConfig.COMMON.maxPowerLossOnMiss.get() * MAX_GRAZE);
+		int loss = Math.min(power / 2, maxLoss);
 		power -= loss;
 		dirty = true;
-		invul = LIFE_INVUL;
+		invul = YHModConfig.COMMON.missInvulTime.get();
 		if (player instanceof ServerPlayer sp) {
 			YoukaisHomecoming.HANDLER.toClientPlayer(new GrazeHelper.GrazeToClient().set(1), sp);
 			SpellContainer.clear(sp);
 		}
-		if (life < 5) {
+		if (life < SHARD) {
+			for (var s : sessions.values()) {
+				s.resetTarget(player);
+			}
 			sessions.clear();
 			weak = WEAK;
 			return HitType.LAST;
 		}
-		life -= 5;
-		bomb = INIT_BOMB;
+		life -= SHARD;
+		bomb = GrazeHelper.getInitialResource(player) * SHARD;
 		return HitType.LIFE;
 	}
 
 	public boolean useBomb() {
-		if (bomb < 5) return false;
-		bomb -= 5;
-		invul = BOMB_INVUL;
+		if (bomb < SHARD) return false;
+		bomb -= SHARD;
+		invul = YHModConfig.COMMON.bombInvulTime.get();
 		dirty = true;
 		return true;
 	}
 
 	public float powerBonus() {
 		if (!EffectEventHandlers.isFullCharacter(player)) return 0;
-		int support = power / 100;
-		return support * 0.25f;
+		int support = power / MAX_GRAZE;
+		return support * YHModConfig.COMMON.danmakuPowerBonus.get().floatValue();
 	}
 
 	public List<InfoLine> getInfoLines() {
@@ -180,24 +192,21 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 				20, 20
 		);
 		if (sessions.isEmpty()) {
-			boolean holding = isDanmaku(player.getMainHandItem()) || isDanmaku(player.getOffhandItem());
+			boolean holding = player.getMainHandItem().is(YHTagGen.DANMAKU_SHOOTER) ||
+					player.getOffhandItem().is(YHTagGen.DANMAKU_SHOOTER);
 			boolean bypass = player.getAbilities().instabuild && player.isShiftKeyDown();
 			if (!holding) return List.of();
-			if (!bypass)
+			if (!bypass) {
 				return List.of(new InfoLine("%.2f".formatted(power * 0.01), icon, 10, 10));
+			}
 
 		}
 		return List.of(
-				new InfoLine("%.1f".formatted(life * 0.2), icon, 0, 10),
-				new InfoLine("%.1f".formatted(bomb * 0.2), icon, 0, 0),
-				new InfoLine("%.2f".formatted(power * 0.01), icon, 10, 10),
-				new InfoLine("%.2f".formatted(hidden * 0.01), icon, 10, 0)
+				new InfoLine("%.1f".formatted(life * 1d / SHARD), icon, 0, 10),
+				new InfoLine("%.1f".formatted(bomb * 1d / SHARD), icon, 0, 0),
+				new InfoLine("%.2f".formatted(power * 1d / MAX_GRAZE), icon, 10, 10),
+				new InfoLine("%.2f".formatted(hidden * 1d / MAX_GRAZE), icon, 10, 0)
 		);
-	}
-
-	private static boolean isDanmaku(ItemStack stack) {
-		return stack.getItem() instanceof DanmakuItem || stack.getItem() instanceof LaserItem ||
-				stack.getItem() instanceof ISpellItem;
 	}
 
 	public void initSession(YoukaiEntity youkai) {
@@ -226,18 +235,6 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		return sessions.values().stream().findAny().map(e -> e.getTarget(player));
 	}
 
-	public boolean forbidDanmaku() {
-		return weak > 0 || invul > 0;
-	}
-
-	public boolean isInvul() {
-		return invul > 0;
-	}
-
-	public boolean isWeak() {
-		return weak > 0;
-	}
-
 	public void remove(UUID uuid) {
 		sessions.remove(uuid);
 	}
@@ -257,6 +254,13 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 		dirty = true;
 	}
 
+	public boolean isInvul() {
+		return invul > 0;
+	}
+
+	public boolean isWeak() {
+		return weak > 0;
+	}
 	public int getLife() {
 		return life;
 	}
@@ -311,6 +315,13 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 			if (youkai != null) return youkai;
 			return player.level().getEntity(uid) instanceof LivingEntity le ? le : null;
 		}
+
+		protected void resetTarget(Player player) {
+			if (getTarget(player) instanceof YoukaiEntity e) {
+				e.resetTarget(player);
+			}
+		}
+
 	}
 
 	public record InfoLine(String text, InfoIcon icon, int x, int y) {
@@ -330,10 +341,6 @@ public class GrazeCapability extends PlayerCapabilityTemplate<GrazeCapability> {
 
 		public boolean erase() {
 			return this == BOMB || this == LIFE || this == ERASE || this == LAST;
-		}
-
-		public boolean resetTarget() {
-			return this == LAST;
 		}
 
 	}
