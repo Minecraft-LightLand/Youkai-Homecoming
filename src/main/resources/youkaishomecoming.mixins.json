@@ -7,25 +7,26 @@
 	"mixins": [
 		"AddItemModifierAccessor",
 		"AddLootTableModifierAccessor",
-		"structure.BeardifierMixin",
-		"structure.BoundingBoxMixin",
 		"CookingPotRecipeAccessor",
 		"CopyMealFunctionMixin",
-		"effect.EntityMixin",
 		"FrogAttackablesSensorMixin",
 		"ItemAccessor",
-		"structure.JigsawStructureAccessor",
-		"effect.LivingEntityMixin",
+		"ShootTongueMixin",
 		"api.PersistentEntitySectionManagerAccessor",
+		"api.ServerLevelAccessor",
+		"effect.EntityMixin",
+		"effect.LivingEntityMixin",
 		"effect.PhantomSpawnerMixin",
 		"effect.RandomizableContainerBlockEntityMixin",
-		"api.ServerLevelAccessor",
-		"ShootTongueMixin",
-		"effect.VillagerMixin"
+		"effect.VillagerMixin",
+		"structure.BeardifierMixin",
+		"structure.BoundingBoxMixin",
+		"structure.JigsawStructureAccessor",
+		"structure.SinglePoolElementMixin"
 	],
 	"client": [
-		"api.BufferBuilderAccessor",
 		"CriterionGridMixin",
+		"api.BufferBuilderAccessor",
 		"effect.GameRendererMixin"
 	],
 	"injectors": {
