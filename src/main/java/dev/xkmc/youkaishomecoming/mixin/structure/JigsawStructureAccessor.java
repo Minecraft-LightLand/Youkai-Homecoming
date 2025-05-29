@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.structure;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;

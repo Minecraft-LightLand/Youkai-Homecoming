@@ -2,7 +2,7 @@ package dev.xkmc.fastprojectileapi.render.core;
 
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import dev.xkmc.youkaishomecoming.mixin.BufferBuilderAccessor;
+import dev.xkmc.youkaishomecoming.mixin.api.BufferBuilderAccessor;
 import net.minecraft.util.FastColor;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;

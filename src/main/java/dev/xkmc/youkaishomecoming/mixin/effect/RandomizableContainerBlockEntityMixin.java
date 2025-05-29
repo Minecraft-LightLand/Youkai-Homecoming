@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.effect;
 
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import net.minecraft.world.entity.player.Player;

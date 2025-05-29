@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.structure;
 
 import dev.xkmc.youkaishomecoming.events.StructureHandler;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;

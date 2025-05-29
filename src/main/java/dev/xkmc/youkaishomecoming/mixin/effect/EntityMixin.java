@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.effect;
 
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;

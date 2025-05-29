@@ -1,7 +1,7 @@
 package dev.xkmc.fastprojectileapi.collision;
 
-import dev.xkmc.youkaishomecoming.mixin.PersistentEntitySectionManagerAccessor;
-import dev.xkmc.youkaishomecoming.mixin.ServerLevelAccessor;
+import dev.xkmc.youkaishomecoming.mixin.api.PersistentEntitySectionManagerAccessor;
+import dev.xkmc.youkaishomecoming.mixin.api.ServerLevelAccessor;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
