@@ -10,6 +10,7 @@ import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -19,6 +20,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -66,6 +68,8 @@ public class DanmakuItem extends Item {
 			danmaku.setup(type.damage(), 40, false, type.bypass(),
 					RayTraceUtil.getRayTerm(Vec3.ZERO, player.getXRot(), player.getYRot(), 2));
 			level.addFreshEntity(danmaku);
+			if (player instanceof ServerPlayer sp)
+				SpellContainer.track(sp, danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
 		int cooldown = YHModConfig.COMMON.playerDanmakuCooldown.get();

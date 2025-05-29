@@ -62,6 +62,7 @@ public class SpellItem extends ProjectileWeaponItem implements IGlowingTarget, I
 		if (consume && ammo.isEmpty())
 			return false;
 		LivingEntity target = RayTraceUtil.serverGetTarget(player);
+		if (target != null) GrazeHelper.addSession(player, target);
 		if (target == null && requireTarget) {
 			target = GrazeHelper.getTarget(player);
 			if (target == null) return false;

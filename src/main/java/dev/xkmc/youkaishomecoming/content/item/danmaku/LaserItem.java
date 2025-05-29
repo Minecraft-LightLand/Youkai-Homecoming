@@ -5,6 +5,7 @@ import dev.xkmc.fastprojectileapi.render.type.DoubleLayerLaserType;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -14,6 +15,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -60,6 +62,8 @@ public class LaserItem extends Item {
 			int dur = YHModConfig.COMMON.playerLaserDuration.get();
 			danmaku.setup(type.damage(), dur, 40, false, player.getYRot(), player.getXRot());
 			level.addFreshEntity(danmaku);
+			if (player instanceof ServerPlayer sp)
+				SpellContainer.track(sp, danmaku);
 		}
 		player.awardStat(Stats.ITEM_USED.get(this));
 		int cooldown = YHModConfig.COMMON.playerLaserCooldown.get();

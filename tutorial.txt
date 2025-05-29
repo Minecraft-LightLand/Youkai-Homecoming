@@ -1,0 +1,48 @@
+Danmaku System:
+
+- You can enter danmaku battle only in youkaified or fairy mode
+- You can initiate danmaku battle by using danmaku to attack a character that is not targeting you
+- You can add characters not targeting you to danmaku battle with you by using spell targeting them
+- Some character will initiate danmaku battle with you when they are triggered to spawn
+- Once entering danmaku battle, you gain some "power", "life" and "bomb"
+  - You would not get this when you are already in danmaku battle with some characters
+- During danmaku battle, When you are about to get hit by danmaku from character involved in danmaku battle:
+  - You will not lose health form this hit
+  - All danmaku from all characters involved in danmaku battle will be removed
+  - If you have a bomb:
+    - a bomb will be consumed
+    - you are invulnerable to danmaku and not able to shoot danmaku for 1.5 seconds
+  - If you do not have bomb but have a life:
+    - a life will be consumed.
+    - you are invulernable to danmaku and not able to shoot danmaku for 3 seconds
+    - All your danmaku will be removed.
+    - You will lose some power and gain some bomb
+  - If you have neither:
+    - You lose the danmaku battle
+    - All your danmaku will be removed.
+    - All characters stop targeting you
+    - You are not able to shoot danmaku for 3 seconds
+- During danmaku battle, When a danmaku go pass you within 1.5 blocks (grazing):
+  - You can graze at most 10 times in half a second
+  - One danmaku can be grazed at most once per second
+  - One laser can be grazed at most once per 0.25 second
+  - When you graze, you gain 0.01 power if your power is not full
+  - When you graze, you gain 0.01 point if your power if full
+  - When you have 1 full point, you get either a life shard or a bomb shard
+  - 5 shards make a life / bomb
+  - Shards you get will be in the order of bomb - bomb - life
+  - If you are able to get a life shard but your life is full, you get a bomb shard instead
+  - If you are able to get a bomb shard but your bomb is full, you get nothing but you will get a life shard next time
+  - Maximum life / bomb can be changed by your equipments
+- Power can increase your danmaku damage by 25% per power level
+  - Many characters have a damage cap of 10, so at full power, damage from smaller danmaku will be close to larger danmaku
+  - Some equipments may increase / decrease maximum power
+- During danmaku battle, your danmaku will only able to danmage mobs targeting you
+- During danmaku battle, if you deal non-danmaku damage to characters involved in danmaku battle:
+  - that character is no longer in danmaku battle with you but will still target you.
+  - You will start to take damage from her danmaku
+  - You will not be able to engage her into danmaku battle, because she is targeting you.
+- When you defeat the last character in danmaku battle, erase all danmaku from player
+- If you are in character status but not in danmaku battle, or in danmaku battle but getting attacked by characters not in danmaku battle:
+  - You can still graze and gain power, but you cannot gain points or life / bomb shards
+  - When you get hit by danmaku, you take damage but you still gets to clear all danmaku from that character

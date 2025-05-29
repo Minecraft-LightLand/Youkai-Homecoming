@@ -7,7 +7,9 @@ import dev.xkmc.youkaishomecoming.compat.sereneseasons.SeasonCompat;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import mezz.jei.api.constants.Tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +47,8 @@ public class YHTagGen {
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
 	public static final TagKey<Item> PRESET_SPELL = item("preset_spell");
+	public static final TagKey<Item> DANMAKU = item("danmaku");
+	public static final TagKey<Item> DANMAKU_SHOOTER = item("danmaku_shooter");
 	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
@@ -111,6 +115,13 @@ public class YHTagGen {
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
+		var danmaku = pvd.addTag(DANMAKU);
+		for (var e : YHDanmaku.Bullet.values()) {
+			danmaku.addTag(e.tag);
+		}
+		pvd.addTag(DANMAKU_SHOOTER).addTags(DANMAKU, YHDanmaku.Laser.LASER.tag, CUSTOM_SPELL, PRESET_SPELL);
+		pvd.addTag(ItemTags.create(Tags.HIDDEN_FROM_RECIPE_VIEWERS))
+				.addTags(DANMAKU, YHDanmaku.Laser.LASER.tag);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
 		}

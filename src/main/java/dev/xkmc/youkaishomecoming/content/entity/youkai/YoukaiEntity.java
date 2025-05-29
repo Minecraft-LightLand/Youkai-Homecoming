@@ -11,6 +11,7 @@ import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TouhouConditionalSpawns;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RestrictData;
@@ -355,6 +356,9 @@ public abstract class YoukaiEntity extends PathfinderMob
 		setCombatProgress(getCombatProgress() - amount);
 		if (combatProgress.progress <= 0) {
 			eraseAllDanmaku(null);
+			if (source.getEntity() instanceof Player player) {
+				GrazeHelper.onDanmakuKill(player, this);
+			}
 		}
 	}
 
@@ -441,9 +445,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 	@Override
 	public LivingEntity getTarget() {
 		if (targets == null) return null;
-		var candidates = targets.getTargets();
-		if (candidates.isEmpty()) return null;
-		return candidates.get(0);
+		return targets.getTarget();
 	}
 
 	public void setTargetAndInitSession(LivingEntity le) {
@@ -514,6 +516,13 @@ public abstract class YoukaiEntity extends PathfinderMob
 		return YHDamageTypes.danmaku(danmaku);
 	}
 
+	public void resetTarget(Player target) {
+		targets.remove(target.getUUID());
+		setTarget(null);
+		setLastHurtByMob(null);
+		setCombatProgress(combatProgress.maxProgress);
+	}
+
 	public void danmakuHitTarget(IYHDanmaku self, DamageSource source, LivingEntity target) {
 		if (combatProgress.progress <= 0) return;
 		if (target instanceof Player player) {
@@ -521,12 +530,6 @@ public abstract class YoukaiEntity extends PathfinderMob
 			var type = graze.performErase(this);
 			if (type.erase()) {
 				eraseAllDanmaku(player);
-			}
-			if (type.resetTarget()) {
-				targets.remove(target.getUUID());
-				setTarget(null);
-				setLastHurtByMob(null);
-				setCombatProgress(combatProgress.maxProgress);
 			}
 			if (type.skipDamage()) {
 				return;
@@ -556,7 +559,10 @@ public abstract class YoukaiEntity extends PathfinderMob
 		}
 	}
 
+	private boolean removeDanmaku = false;
+
 	private void tickDanmaku() {
+		removeDanmaku = false;
 		temp = new ArrayList<>();
 		var itr = allDanmakus.iterator();
 		while (itr.hasNext()) {
@@ -567,13 +573,16 @@ public abstract class YoukaiEntity extends PathfinderMob
 				++e.tickCount;
 				e.tick();
 			}
+			if (removeDanmaku) break;
 			if (!e.isValid()) {
 				itr.remove();
 			}
 		}
-		allDanmakus.addAll(temp);
+		if (!removeDanmaku) {
+			allDanmakus.addAll(temp);
+			DanmakuManager.send(this, toBeSent);
+		}
 		temp = null;
-		DanmakuManager.send(this, toBeSent);
 		toBeSent.clear();
 	}
 
@@ -582,6 +591,8 @@ public abstract class YoukaiEntity extends PathfinderMob
 			if (player == null) e.markErased(true);
 			else e.erase(player);
 		}
+		allDanmakus.clear();
+		removeDanmaku = true;
 	}
 
 	private final UserCacheHolder cache = new UserCacheHolder();
