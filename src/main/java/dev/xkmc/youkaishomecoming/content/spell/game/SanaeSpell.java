@@ -94,7 +94,6 @@ public class SanaeSpell extends ActualSpellCard {
 		private void step(CardHolder holder) {
 			if (pos == null) pos = holder.center();
 			if (init == null) init = holder.forward();
-			if (tick % 2 != 0) return;
 			var type = YHDanmaku.Laser.PENCIL;
 			int delay = 10;
 			float v = 1;
