@@ -1057,6 +1057,12 @@ public class YHRecipeGen {
 						YHDanmaku.Bullet.SPARK.get(e).get())
 						.requires(YHDanmaku.Bullet.SPARK.get(e), 2)
 						.save(pvd, YHDanmaku.Bullet.STAR.get(e).getId().withSuffix("_upgrade"));
+
+				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Laser.PENCIL.get(e), 4)::unlockedBy,
+						YHDanmaku.Laser.LASER.get(e).get())
+						.requires(YHDanmaku.Bullet.BALL.get(e))
+						.requires(YHDanmaku.Laser.LASER.get(e))
+						.save(pvd, YHDanmaku.Laser.PENCIL.get(e).getId().withSuffix("_upgrade"));
 			}
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.CUSTOM_SPELL_RING)::unlockedBy, Items.INK_SAC)

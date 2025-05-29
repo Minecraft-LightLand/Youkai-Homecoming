@@ -4,9 +4,7 @@ import dev.xkmc.fastprojectileapi.entity.ProjectileMovement;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.LaserItem;
-import dev.xkmc.youkaishomecoming.content.spell.mover.DanmakuMover;
-import dev.xkmc.youkaishomecoming.content.spell.mover.MoverInfo;
-import dev.xkmc.youkaishomecoming.content.spell.mover.MoverOwner;
+import dev.xkmc.youkaishomecoming.content.spell.mover.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
@@ -33,6 +31,16 @@ public class ItemLaserEntity extends YHBaseLaserEntity implements ItemSupplier, 
 
 	public ItemLaserEntity(EntityType<? extends ItemLaserEntity> pEntityType, LivingEntity pShooter, Level pLevel) {
 		super(pEntityType, pShooter, pLevel);
+	}
+
+	public void setDelayedMover(float v0, float v1, int prepare, int setup) {
+		var dir = getForward();
+		var pos = position;
+		var m = new CompositeMover();
+		m.add(prepare, new ZeroMover(dir, dir, prepare));
+		m.add(setup, new RectMover(pos, dir.scale(v0), Vec3.ZERO));
+		m.add(life, new RectMover(pos.add(dir.scale(v0 * setup)), dir.scale(v1), Vec3.ZERO));
+		this.mover = m;
 	}
 
 	@Override

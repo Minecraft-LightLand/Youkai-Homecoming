@@ -59,7 +59,7 @@ public record PencilLayerLaserType(ResourceLocation inner, ResourceLocation oute
 		int add = (int) ((color & 0xff) * tran) |
 				(int) ((color >> 8 & 0xff) * tran) << 8 |
 				(int) ((color >> 16 & 0xff) * tran) << 16 | 0xff000000;
-		var data = Cache.vertex(pose.last().pose(), 0.167f, 0.5f);
+		var data = Cache.vertex(pose.last().pose());
 		holder.accept(new Ins(data, core, outer, add));
 	}
 
@@ -74,23 +74,62 @@ public record PencilLayerLaserType(ResourceLocation inner, ResourceLocation oute
 		}
 
 		private void renderPart(boolean invert, BulkDataWriter vc, int color, float[][] arr) {
-			renderQuad(invert, vc, color, arr, 0, 2);
-			renderQuad(invert, vc, color, arr, 3, 1);
-			renderQuad(invert, vc, color, arr, 2, 3);
-			renderQuad(invert, vc, color, arr, 1, 0);
+			renderConeStart(invert, vc, color, arr, 0, 12);
+			renderCube(invert, vc, color, arr, 0);
+			renderCube(invert, vc, color, arr, 4);
+			renderConeEnd(invert, vc, color, arr, 8, 13);
 		}
 
-		private void renderQuad(boolean invert, BulkDataWriter vc, int col, float[][] arr, int i0, int i1) {
+		private void renderCube(boolean invert, BulkDataWriter vc, int color, float[][] arr, int start) {
+			int i0 = start;
+			int i1 = start + 1;
+			int i2 = start + 2;
+			int i3 = start + 3;
+			int i4 = start + 4;
+			int i5 = start + 5;
+			int i6 = start + 6;
+			int i7 = start + 7;
+			renderQuad(invert, vc, color, arr, i0, i2, i4, i6);
+			renderQuad(invert, vc, color, arr, i3, i1, i7, i5);
+			renderQuad(invert, vc, color, arr, i2, i3, i6, i7);
+			renderQuad(invert, vc, color, arr, i1, i0, i5, i4);
+		}
+
+		private void renderConeStart(boolean invert, BulkDataWriter vc, int color, float[][] arr, int start, int vertex) {
+			int v = vertex;
+			int i4 = start;
+			int i5 = start + 1;
+			int i6 = start + 2;
+			int i7 = start + 3;
+			renderQuad(invert, vc, color, arr, v, v, i4, i6);
+			renderQuad(invert, vc, color, arr, v, v, i7, i5);
+			renderQuad(invert, vc, color, arr, v, v, i6, i7);
+			renderQuad(invert, vc, color, arr, v, v, i5, i4);
+		}
+
+		private void renderConeEnd(boolean invert, BulkDataWriter vc, int color, float[][] arr, int start, int vertex) {
+			int v = vertex;
+			int i0 = start;
+			int i1 = start + 1;
+			int i2 = start + 2;
+			int i3 = start + 3;
+			renderQuad(invert, vc, color, arr, i0, i2, v, v);
+			renderQuad(invert, vc, color, arr, i3, i1, v, v);
+			renderQuad(invert, vc, color, arr, i2, i3, v, v);
+			renderQuad(invert, vc, color, arr, i1, i0, v, v);
+		}
+
+		private void renderQuad(boolean invert, BulkDataWriter vc, int col, float[][] arr, int i0, int i1, int i2, int i3) {
 			if (invert) {
-				addVertex(vc, col, arr[i1 + 4], 0, 0);
+				addVertex(vc, col, arr[i3], 0, 0);
 				addVertex(vc, col, arr[i1], 0, 1);
 				addVertex(vc, col, arr[i0], 1, 1);
-				addVertex(vc, col, arr[i0 + 4], 1, 0);
+				addVertex(vc, col, arr[i2], 1, 0);
 			} else {
-				addVertex(vc, col, arr[i0 + 4], 1, 0);
+				addVertex(vc, col, arr[i2], 1, 0);
 				addVertex(vc, col, arr[i0], 1, 1);
 				addVertex(vc, col, arr[i1], 0, 1);
-				addVertex(vc, col, arr[i1 + 4], 0, 0);
+				addVertex(vc, col, arr[i3], 0, 0);
 			}
 		}
 
@@ -102,38 +141,42 @@ public record PencilLayerLaserType(ResourceLocation inner, ResourceLocation oute
 
 	public record Cache(float[][] r0, float[][] r1) {
 
-		private static Cache vertex(Matrix4f mat, float s0, float s1) {
+		private static Cache vertex(Matrix4f mat) {
 			var p0 = new Vector4f(0, 0, 0, 1).mul(mat);
 			var px = new Vector4f(1, 0, 0, 0).mul(mat);
 			var py = new Vector4f(0, 1, 0, 0).mul(mat);
 			var pz = new Vector4f(0, 0, 1, 0).mul(mat);
-			var ans = new Cache(new float[10][3], new float[10][3]);
-			fill(ans.r0, p0, px, py, pz, s0);
-			fill(ans.r1, p0, px, py, pz, s1);
+			var ans = new Cache(new float[14][3], new float[14][3]);
+			fill(ans.r0, p0, px, py, pz, 1f / 6, 1f / 8, 1f / 4, 1f / 2);
+			fill(ans.r1, p0, px, py, pz, 1f / 3, 1f / 4, 1f / 4, 7f / 8);
 			return ans;
 		}
 
-		private static void fill(float[][] arr, Vector4f p0, Vector4f px, Vector4f py, Vector4f pz, float scale) {
-			calc(arr[0], p0, px, pz, -scale, -scale);
-			calc(arr[1], p0, px, pz, scale, -scale);
-			calc(arr[2], p0, px, pz, -scale, scale);
-			calc(arr[3], p0, px, pz, scale, scale);
-			add(arr[4], arr[0], py);
-			add(arr[5], arr[1], py);
-			add(arr[6], arr[2], py);
-			add(arr[7], arr[3], py);
+		private static void fill(float[][] arr, Vector4f p0, Vector4f px, Vector4f py, Vector4f pz, float r0, float r1, float dy, float end) {
+			fill(0, arr, p0, px, py, pz, r1, 0.5f - dy);
+			fill(4, arr, p0, px, py, pz, r0, 0.5f);
+			fill(8, arr, p0, px, py, pz, r1, 0.5f + dy);
+			end(arr[12], p0, py, 0.5f - end);
+			end(arr[13], p0, py, 0.5f + end);
 		}
 
-		private static void calc(float[] arr, Vector4f p0, Vector4f px, Vector4f pz, float sx, float sz) {
-			arr[0] = p0.x + px.x * sx + pz.x * sz;
-			arr[1] = p0.y + px.y * sx + pz.y * sz;
-			arr[2] = p0.z + px.z * sx + pz.z * sz;
+		private static void fill(int offset, float[][] arr, Vector4f p0, Vector4f px, Vector4f py, Vector4f pz, float r0, float dy) {
+			calc(arr[offset], p0, px, pz, py, -r0, -r0, dy);
+			calc(arr[offset + 1], p0, px, pz, py, r0, -r0, dy);
+			calc(arr[offset + 2], p0, px, pz, py, -r0, r0, dy);
+			calc(arr[offset + 3], p0, px, pz, py, r0, r0, dy);
 		}
 
-		private static void add(float[] arr, float[] base, Vector4f p) {
-			arr[0] = base[0] + p.x;
-			arr[1] = base[1] + p.y;
-			arr[2] = base[2] + p.z;
+		private static void calc(float[] arr, Vector4f p0, Vector4f px, Vector4f pz, Vector4f py, float sx, float sz, float dy) {
+			arr[0] = p0.x + px.x * sx + pz.x * sz + py.x * dy;
+			arr[1] = p0.y + px.y * sx + pz.y * sz + py.y * dy;
+			arr[2] = p0.z + px.z * sx + pz.z * sz + py.z * dy;
+		}
+
+		private static void end(float[] arr, Vector4f p0, Vector4f py, float dy) {
+			arr[0] = p0.x + py.x * dy;
+			arr[1] = p0.y + py.y * dy;
+			arr[2] = p0.z + py.z * dy;
 		}
 
 	}

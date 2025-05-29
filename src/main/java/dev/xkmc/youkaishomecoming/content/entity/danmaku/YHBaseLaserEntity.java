@@ -7,6 +7,9 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.l2serial.serialization.codec.PacketCodec;
 import dev.xkmc.l2serial.serialization.codec.TagCodec;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.spell.mover.CompositeMover;
+import dev.xkmc.youkaishomecoming.content.spell.mover.RectMover;
+import dev.xkmc.youkaishomecoming.content.spell.mover.ZeroMover;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
@@ -30,6 +33,8 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 	private boolean bypassWall = false;
 	@SerialClass.SerialField
 	public float damage = 0, length = 0;
+	@SerialClass.SerialField
+	public boolean setupLength;
 
 	public double earlyTerminate = -1;
 
@@ -102,6 +107,10 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 	}
 
 	public float percentOpen(float pTick) {
+		return setupLength ? 1 : percentLoad(pTick);
+	}
+
+	public float percentLoad(float pTick) {
 		pTick += tickCount;
 		if (pTick < prepare) return 0.1f;
 		else if (pTick < start)
@@ -112,8 +121,13 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 		else return 0;
 	}
 
-	public float effectiveLength() {
-		return (float) (earlyTerminate >= 0 ? earlyTerminate : length);
+	public float effectiveLength(float pTick) {
+		if (setupLength) {
+			return percentLoad(pTick) * length;
+		}
+		if (earlyTerminate >= 0)
+			return (float) earlyTerminate;
+		return length;
 	}
 
 	@Override
@@ -180,4 +194,5 @@ public class YHBaseLaserEntity extends BaseLaser implements IEntityAdditionalSpa
 	public boolean isValid() {
 		return tickCount < life;
 	}
+
 }

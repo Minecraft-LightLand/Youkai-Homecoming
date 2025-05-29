@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:light_gray_ball_danmaku"
+    },
+    {
+      "item": "youkaishomecoming:light_gray_laser"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "youkaishomecoming:light_gray_pencil"
+  }
+}

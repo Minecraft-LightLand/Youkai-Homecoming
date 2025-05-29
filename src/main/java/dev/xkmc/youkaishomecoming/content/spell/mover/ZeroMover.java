@@ -32,7 +32,7 @@ public final class ZeroMover extends DanmakuMover {
 
 	public ZeroMover(Vec3 rot0, Vec3 rot1, int time) {
 		this.rot0 = ProjectileMovement.of(rot0).rot();
-		this.rot1 = closest(rot0, ProjectileMovement.of(rot1).rot());
+		this.rot1 = closest(this.rot0, ProjectileMovement.of(rot1).rot());
 		this.time = time;
 	}
 
