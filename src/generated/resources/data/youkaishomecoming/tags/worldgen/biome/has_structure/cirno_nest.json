@@ -1,6 +1,9 @@
 {
   "values": [
-    "minecraft:snowy_plains",
-    "minecraft:snowy_beach"
+    "#forge:is_snowy",
+    {
+      "id": "#c:is_snowy_plains",
+      "required": false
+    }
   ]
 }

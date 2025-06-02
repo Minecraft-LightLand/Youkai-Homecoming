@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Beardifier.class)
 public abstract class BeardifierMixin {
 
-	@WrapOperation(method = {"lambda$forStructuresInChunk$2", "m_223930_"}, at = @At(value = "INVOKE",
+	@WrapOperation(method = "lambda$forStructuresInChunk$2", at = @At(value = "INVOKE",
 			target = "Lit/unimi/dsi/fastutil/objects/ObjectList;add(Ljava/lang/Object;)Z", remap = false))
 	private static boolean youkaishomecoming$add(
 			ObjectList instance, Object obj, Operation<Boolean> original,

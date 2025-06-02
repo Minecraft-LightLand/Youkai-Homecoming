@@ -1,6 +1,6 @@
-// 1.20.1	2025-05-11T13:27:31.176914	Tags for minecraft:worldgen/biome mod id youkaishomecoming
-e77e4c05e81e9de450b25d3dc1ce93fc519c92c3 data/youkaishomecoming/tags/worldgen/biome/has_structure/cirno_nest.json
-5ea59b77801c2356c90c990c96beacc0dd05b909 data/youkaishomecoming/tags/worldgen/biome/has_structure/hakurei_shrine.json
+// 1.20.1	2025-06-02T21:59:26.157464	Tags for minecraft:worldgen/biome mod id youkaishomecoming
+bffd02152ab92ebbb46e2caaaddcced6c8f55740 data/youkaishomecoming/tags/worldgen/biome/has_structure/cirno_nest.json
+ce7e7f10517021590c3771b5d4befb6f00232756 data/youkaishomecoming/tags/worldgen/biome/has_structure/hakurei_shrine.json
 225e21410327ce0281c1cf01daebadaa6b9c56ce data/youkaishomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
 2e0be640fa6c0bc654c400bc1aabf5396af82c33 data/youkaishomecoming/tags/worldgen/biome/spawns/cirno.json
 c3d4e55bd4ed5d178abb10df76626eccdab7c209 data/youkaishomecoming/tags/worldgen/biome/spawns/coffea.json
