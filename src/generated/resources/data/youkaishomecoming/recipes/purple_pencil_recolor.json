@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "youkaishomecoming:laser/pencil"
+    },
+    "B": {
+      "item": "minecraft:purple_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "item": "youkaishomecoming:purple_pencil"
+  },
+  "show_notification": true
+}

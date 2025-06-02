@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blue_laser": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:blue_laser"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:blue_pencil_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_laser",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:blue_pencil_upgrade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

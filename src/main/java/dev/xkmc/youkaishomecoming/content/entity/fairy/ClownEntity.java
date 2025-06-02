@@ -4,6 +4,9 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.entity.boss.BossYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 @SerialClass
@@ -15,6 +18,21 @@ public class ClownEntity extends BossYoukaiEntity {
 
 	public void initSpellCard() {
 		TouhouSpellCards.setClown(this);
+	}
+
+	@Override
+	public boolean shouldIgnore(LivingEntity e) {
+		return super.shouldIgnore(e) || !(e instanceof Player) && e.getMobType() == MobType.UNDEAD;
+	}
+
+	@Override
+	protected int damageLimit() {
+		return 10;
+	}
+
+	@Override
+	protected int nonDanmakuReduction() {
+		return 2;
 	}
 
 	public boolean isLunatic() {

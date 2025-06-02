@@ -30,7 +30,13 @@ public class SpellContainer extends ConditionalToken {
 		for (var e : data.cache) {
 			e.markErased(true);
 		}
+		data.cache.clear();
 		data.spells.clear();
+	}
+
+	public static void track(ServerPlayer sp, SimplifiedProjectile e) {
+		var data = ConditionalData.HOLDER.get(sp).getOrCreateData(PVD, PVD);
+		data.cache.add(e);
 	}
 
 	public static void castSpell(ServerPlayer sp, Supplier<? extends ItemSpell> sup, @Nullable LivingEntity target) {
@@ -56,7 +62,7 @@ public class SpellContainer extends ConditionalToken {
 			}
 		}
 		cache.removeIf(e -> !e.isValid());
-		return spells.isEmpty();
+		return spells.isEmpty() && cache.isEmpty();
 	}
 
 	private record Provider() implements TokenProvider<SpellContainer, Provider>, Context {

@@ -3,12 +3,12 @@ package dev.xkmc.youkaishomecoming.content.entity.danmaku;
 import dev.xkmc.fastprojectileapi.entity.GrazingEntity;
 import dev.xkmc.fastprojectileapi.entity.SimplifiedProjectile;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeHelper;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.spell.spellcard.CardHolder;
 import dev.xkmc.youkaishomecoming.events.GeneralEventHandlers;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -95,10 +95,7 @@ public interface IYHDanmaku extends GrazingEntity {
 	static AABB alterEntityHitBox(Entity x, float radius, float graze) {
 		var box = x.getBoundingBox();
 		if (graze > 0) return box.inflate(radius + graze);
-		float shrink = 0;
-		if (x instanceof Player player && player.hasEffect(YHEffects.FAIRY.get())) {
-			shrink = 0.2f;
-		}
+		float shrink = x instanceof Player player ? GrazeHelper.getHitBoxShrink(player) : 0;
 		return new AABB(
 				box.minX + shrink - radius, box.minY + shrink * 2 - radius, box.minZ + shrink - radius,
 				box.maxX - shrink + radius, box.maxY + radius, box.maxZ - shrink + radius

@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "tag": "youkaishomecoming:circle_danmaku"
+      "tag": "youkaishomecoming:danmaku/circle"
     },
     "B": {
       "item": "minecraft:purple_dye"

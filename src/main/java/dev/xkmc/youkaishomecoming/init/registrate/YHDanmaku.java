@@ -51,7 +51,7 @@ public class YHDanmaku {
 			this.damage = damage;
 			this.display = display;
 			name = name().toLowerCase(Locale.ROOT);
-			tag = YHTagGen.item(name + "_danmaku");
+			tag = YHTagGen.item("danmaku/" + name);
 		}
 
 
@@ -78,18 +78,19 @@ public class YHDanmaku {
 	}
 
 	public enum Laser implements IDanmakuType {
-		LASER(1, 4);
+		LASER(1, 1, 4), PENCIL(1, 1.75f, 4);
 
 		public final String name;
 		public final TagKey<Item> tag;
-		public final float size;
+		public final float size, visualLength;
 		private final int damage;
 
-		Laser(float size, int damage) {
+		Laser(float size, float visualLength, int damage) {
 			this.size = size;
+			this.visualLength = visualLength;
 			this.damage = damage;
 			name = name().toLowerCase(Locale.ROOT);
-			tag = YHTagGen.item(name);
+			tag = YHTagGen.item("laser/" + name);
 		}
 
 		public ItemEntry<LaserItem> get(DyeColor color) {
@@ -100,6 +101,13 @@ public class YHDanmaku {
 			return damage;
 		}
 
+		public boolean setupLength() {
+			return this != LASER;
+		}
+
+		public float visualLength() {
+			return visualLength;
+		}
 	}
 
 	public static final RegistryEntry<CreativeModeTab> TAB = YoukaisHomecoming.REGISTRATE

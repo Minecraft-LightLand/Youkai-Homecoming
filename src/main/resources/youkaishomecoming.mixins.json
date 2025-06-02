@@ -9,21 +9,25 @@
 		"AddLootTableModifierAccessor",
 		"CookingPotRecipeAccessor",
 		"CopyMealFunctionMixin",
-		"EntityMixin",
 		"FrogAttackablesSensorMixin",
 		"ItemAccessor",
-		"LivingEntityMixin",
-		"PersistentEntitySectionManagerAccessor",
-		"PhantomSpawnerMixin",
-		"RandomizableContainerBlockEntityMixin",
-		"ServerLevelAccessor",
 		"ShootTongueMixin",
-		"VillagerMixin"
+		"api.PersistentEntitySectionManagerAccessor",
+		"api.ServerLevelAccessor",
+		"effect.EntityMixin",
+		"effect.LivingEntityMixin",
+		"effect.PhantomSpawnerMixin",
+		"effect.RandomizableContainerBlockEntityMixin",
+		"effect.VillagerMixin",
+		"structure.BeardifierMixin",
+		"structure.BoundingBoxMixin",
+		"structure.JigsawStructureAccessor",
+		"structure.SinglePoolElementMixin"
 	],
 	"client": [
-		"BufferBuilderAccessor",
 		"CriterionGridMixin",
-		"GameRendererMixin"
+		"api.BufferBuilderAccessor",
+		"effect.GameRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

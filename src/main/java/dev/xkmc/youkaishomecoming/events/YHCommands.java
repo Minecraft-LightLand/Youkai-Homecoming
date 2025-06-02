@@ -24,7 +24,7 @@ public class YHCommands {
 				.then(argument("player", EntityArgument.players())
 						.then(literal("setLife")
 								.requires(e -> e.hasPermission(2))
-								.then(argument("life", IntegerArgumentType.integer(0, 10))
+								.then(argument("life", IntegerArgumentType.integer(0, 100))
 										.executes(ctx -> {
 											EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
 											var player = sel.findSinglePlayer(ctx.getSource());
@@ -36,7 +36,7 @@ public class YHCommands {
 										})))
 						.then(literal("setBomb")
 								.requires(e -> e.hasPermission(2))
-								.then(argument("bomb", IntegerArgumentType.integer(0, 10))
+								.then(argument("bomb", IntegerArgumentType.integer(0, 100))
 										.executes(ctx -> {
 											EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
 											var player = sel.findSinglePlayer(ctx.getSource());
@@ -48,7 +48,7 @@ public class YHCommands {
 										})))
 						.then(literal("setPower")
 								.requires(e -> e.hasPermission(2))
-								.then(argument("power", IntegerArgumentType.integer(0, 4))
+								.then(argument("power", IntegerArgumentType.integer(0, 100))
 										.executes(ctx -> {
 											EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
 											var player = sel.findSinglePlayer(ctx.getSource());

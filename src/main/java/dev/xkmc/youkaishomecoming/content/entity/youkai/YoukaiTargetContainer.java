@@ -2,9 +2,11 @@ package dev.xkmc.youkaishomecoming.content.entity.youkai;
 
 import dev.xkmc.fastprojectileapi.collision.EntityStorageHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -96,5 +98,21 @@ public class YoukaiTargetContainer {
 				ans.add(le);
 		}
 		return ans;
+	}
+
+	public @Nullable LivingEntity getTarget() {
+		var targets = getTargets();
+		if (targets.isEmpty()) return null;
+		for (var e : targets) {
+			if (e instanceof Player player) {
+				var cap = GrazeCapability.HOLDER.get(player);
+				if (cap.isInSession(youkai.getUUID())) {
+					if (cap.isInvul())
+						continue;
+				}
+				return player;
+			}
+		}
+		return targets.get(0);
 	}
 }

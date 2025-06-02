@@ -12,12 +12,12 @@ import java.util.Locale;
 public class SmallFairyRenderer extends MobRenderer<SmallFairy, SmallFairyModel> {
 
 	private static final ResourceLocation[] TEXTURES;
-	private static final ResourceLocation TEXTURE_RICK = new ResourceLocation("touhou_little_maid", "textures/entity/new_maid_fairy/maid_fairy_rick.png");
+	private static final ResourceLocation TEXTURE_RICK = new ResourceLocation("touhou_little_maid", "textures/bedrock/entity/new_maid_fairy/maid_fairy_rick.png");
 
 	static {
 		TEXTURES = new ResourceLocation[18];
 		for (int i = 0; i < 18; i++) {
-			TEXTURES[i] = new ResourceLocation("touhou_little_maid", "textures/entity/new_maid_fairy/maid_fairy_" + i + ".png");
+			TEXTURES[i] = new ResourceLocation("touhou_little_maid", "textures/bedrock/entity/new_maid_fairy/maid_fairy_" + i + ".png");
 		}
 	}
 

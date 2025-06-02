@@ -65,7 +65,7 @@ public class ItemLaserRenderer<T extends ItemLaserEntity> extends EntityRenderer
 		float scale = e.scale() * e.percentOpen(pTick);
 		pose.mulPose(Axis.YP.rotationDegrees(-e.getViewYRot(pTick)));
 		pose.mulPose(Axis.XP.rotationDegrees(e.getViewXRot(pTick) + 90));
-		pose.scale(e.getBbWidth() * scale, e.effectiveLength(), e.getBbWidth() * scale);
+		pose.scale(e.getBbWidth() * scale, e.effectiveLength(pTick), e.getBbWidth() * scale);
 		danmaku.getTypeForRender().create(this, e, pose, pTick);
 		pose.popPose();
 	}

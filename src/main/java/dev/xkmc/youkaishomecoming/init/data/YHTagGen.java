@@ -7,7 +7,9 @@ import dev.xkmc.youkaishomecoming.compat.sereneseasons.SeasonCompat;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
+import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import mezz.jei.api.constants.Tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +47,9 @@ public class YHTagGen {
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
 	public static final TagKey<Item> PRESET_SPELL = item("preset_spell");
+	public static final TagKey<Item> DANMAKU = item("danmaku");
+	public static final TagKey<Item> LASER = item("laser");
+	public static final TagKey<Item> DANMAKU_SHOOTER = item("danmaku_shooter");
 	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
@@ -57,7 +62,7 @@ public class YHTagGen {
 	public static final TagKey<EntityType<?>> PIGLIN_SOURCE = entity("drops_piglin_head");
 
 	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
-
+	public static final TagKey<EntityType<?>> BOSS = entity("cannot_capture");
 
 	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
 	public static final TagKey<Item> ICE = ItemTags.create(new ResourceLocation("forge", "ice_cubes"));
@@ -87,6 +92,9 @@ public class YHTagGen {
 		pvd.addTag(PIGLIN_SOURCE).add(EntityType.PIGLIN, EntityType.PIGLIN_BRUTE);
 
 		pvd.addTag(YOUKAI_IGNORE).add(EntityType.ENDER_DRAGON);
+
+		pvd.addTag(entity("ars_nouveau", "jar_blacklist")).addTag(BOSS);
+		pvd.addTag(entity("ars_nouveau", "rewind_blacklist")).addTag(BOSS);
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
@@ -108,6 +116,17 @@ public class YHTagGen {
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
+		var danmaku = pvd.addTag(DANMAKU);
+		for (var e : YHDanmaku.Bullet.values()) {
+			danmaku.addTag(e.tag);
+		}
+		var laser = pvd.addTag(LASER);
+		for (var e : YHDanmaku.Laser.values()) {
+			laser.addTag(e.tag);
+		}
+		pvd.addTag(DANMAKU_SHOOTER).addTags(DANMAKU, LASER, CUSTOM_SPELL, PRESET_SPELL);
+		pvd.addTag(ItemTags.create(Tags.HIDDEN_FROM_RECIPE_VIEWERS))
+				.addTags(DANMAKU, LASER);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
 		}
@@ -128,6 +147,10 @@ public class YHTagGen {
 
 	public static TagKey<EntityType<?>> entity(String id) {
 		return TagKey.create(Registries.ENTITY_TYPE, YoukaisHomecoming.loc(id));
+	}
+
+	public static TagKey<EntityType<?>> entity(String mod, String id) {
+		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(mod, id));
 	}
 
 }

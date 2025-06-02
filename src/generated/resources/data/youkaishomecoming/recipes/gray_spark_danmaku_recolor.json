@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "tag": "youkaishomecoming:spark_danmaku"
+      "tag": "youkaishomecoming:danmaku/spark"
     },
     "B": {
       "item": "minecraft:gray_dye"

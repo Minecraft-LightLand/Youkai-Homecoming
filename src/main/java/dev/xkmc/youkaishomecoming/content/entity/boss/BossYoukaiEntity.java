@@ -1,13 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.entity.boss;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -40,18 +40,12 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	protected final ServerBossEvent bossEvent = new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.NOTCHED_20);
 	private boolean ticking = false;
 
+	@SerialClass.SerialField
+	private ResourceLocation spawnDimension;
+
 	public BossYoukaiEntity(EntityType<? extends BossYoukaiEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		setPersistenceRequired();
-	}
-
-	@Override
-	public boolean shouldIgnore(LivingEntity e) {
-		if (super.shouldIgnore(e)) return true;
-		if (e instanceof Player pl) {
-			return GrazeCapability.HOLDER.get(pl).isWeak();
-		}
-		return false;
 	}
 
 	@Override
@@ -67,6 +61,12 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public void tick() {
+		if (spawnDimension == null) {
+			spawnDimension = level().dimension().location();
+		} else if (!spawnDimension.equals(level().dimension().location())) {
+			if (!YHModConfig.COMMON.canReimuTeleportToOtherDimension.get())
+				discard();
+		}
 		ticking = true;
 		double maxSpeed = 0.5;
 		if (getDeltaMovement().length() > maxSpeed) {
@@ -90,7 +90,7 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	private boolean hurtCall = false;
 	private boolean chaotic = false;
 
-	private int getCD(DamageSource source) {
+	protected int getCD(DamageSource source) {
 		if (!YHModConfig.COMMON.reimuExtraDamageCoolDown.get())
 			return 10;
 		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
@@ -100,8 +100,8 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		if (source.is(YHDamageTypes.DANMAKU))
 			return 20;
 		if (source.is(DamageTypeTags.BYPASSES_COOLDOWN))
-			return 40;
-		return 80;
+			return 30;
+		return 50;
 	}
 
 	@Override
@@ -184,14 +184,22 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 				}
 			}
 		}
-		int reduction = 20;
+		int reduction = damageLimit();
 		float ans = Math.min(getMaxHealth() / reduction, amount);
 		if (YHModConfig.COMMON.reimuDamageReduction.get() && !source.is(YHDamageTypes.DANMAKU_TYPE))
-			ans /= 5;
+			ans /= nonDanmakuReduction();
 		if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
 			notifyIllegalDamage(amount - ans, source.getEntity());
 		}
 		return ans;
+	}
+
+	protected int damageLimit() {
+		return 20;
+	}
+
+	protected int nonDanmakuReduction() {
+		return 5;
 	}
 
 	@Override
@@ -309,5 +317,9 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 		this.bossEvent.removePlayer(pPlayer);
 	}
 
+	@Override
+	public boolean canChangeDimensions() {
+		return YHModConfig.COMMON.canReimuTeleportToOtherDimension.get();
+	}
 
 }

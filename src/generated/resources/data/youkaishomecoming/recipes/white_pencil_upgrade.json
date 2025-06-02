@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:white_ball_danmaku"
+    },
+    {
+      "item": "youkaishomecoming:white_laser"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "youkaishomecoming:white_pencil"
+  }
+}
