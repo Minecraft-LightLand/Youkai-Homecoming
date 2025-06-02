@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.api;
 
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import org.spongepowered.asm.mixin.Mixin;

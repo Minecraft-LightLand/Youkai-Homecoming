@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "tag": "youkaishomecoming:laser"
+      "tag": "youkaishomecoming:laser/laser"
     },
     "B": {
       "item": "minecraft:brown_dye"

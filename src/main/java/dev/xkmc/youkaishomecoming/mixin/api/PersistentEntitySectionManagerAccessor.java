@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.api;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.entity.EntityAccess;

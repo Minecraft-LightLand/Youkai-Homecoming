@@ -65,12 +65,13 @@ public interface LivingCardHolder extends CardHolder {
 	}
 
 	@Override
-	default ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, int len, YHDanmaku.Laser type, DyeColor color) {
+	default ItemLaserEntity prepareLaser(int life, Vec3 pos, Vec3 vec, float len, YHDanmaku.Laser type, DyeColor color) {
 		ItemLaserEntity danmaku = new ItemLaserEntity(YHEntities.ITEM_LASER.get(), shooter(), self().level());
 		danmaku.setItem(type.get(color).asStack());
 		danmaku.setup(getDamage(type),
 				life, len, true, vec);
 		danmaku.setPos(pos);
+		danmaku.setupLength = type.setupLength();
 		return danmaku;
 	}
 

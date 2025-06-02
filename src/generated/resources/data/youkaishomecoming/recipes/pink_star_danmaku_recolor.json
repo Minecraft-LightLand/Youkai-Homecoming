@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "tag": "youkaishomecoming:star_danmaku"
+      "tag": "youkaishomecoming:danmaku/star"
     },
     "B": {
       "item": "minecraft:pink_dye"

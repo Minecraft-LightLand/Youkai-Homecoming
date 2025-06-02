@@ -30,7 +30,7 @@ public class SanaeSpell extends ActualSpellCard {
 			}
 		}
 		if (tick % 20 == 0) {
-			if (groundTime < 40 && le.distanceTo(holder.center()) < 25) selection = 0;
+			if (groundTime < 40 && le.distanceTo(holder.center()) < 35) selection = 0;
 			else selection = 1;
 		}
 		if (selection == 0) near(holder, le);
@@ -94,10 +94,18 @@ public class SanaeSpell extends ActualSpellCard {
 		private void step(CardHolder holder) {
 			if (pos == null) pos = holder.center();
 			if (init == null) init = holder.forward();
-			if (tick % 2 != 0) return;
+			var type = YHDanmaku.Laser.PENCIL;
+			int delay = 10;
+			float v = 1;
+			float lenAll = v * delay;
+			float vl = type.visualLength();
+			float len = lenAll / vl;
+			float v0 = (vl - 1) / 2 * v;
+			int life = 40;
 			var dir = DanmakuHelper.getOrientation(init).rotateDegrees(9 * tick + start);
-			var e = holder.prepareLaser(40, pos, dir, 40, YHDanmaku.Laser.LASER, DyeColor.LIGHT_BLUE);
-			e.setupTime(10, 4, 12, 4);
+			var e = holder.prepareLaser(life, pos, dir, len, type, DyeColor.LIGHT_BLUE);
+			e.setupTime(1, delay, life, 1);
+			e.setDelayedMover(v0, v, 1, delay);
 			holder.shoot(e);
 		}
 	}

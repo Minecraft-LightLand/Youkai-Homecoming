@@ -22,6 +22,6 @@
   },
   "start_pool": "youkaishomecoming:cirno_nest",
   "step": "surface_structures",
-  "terrain_adaptation": "beard_thin",
+  "terrain_adaptation": "beard_box",
   "use_expansion_hack": false
 }

@@ -1,11 +1,11 @@
 {
   "values": [
-    "#youkaishomecoming:circle_danmaku",
-    "#youkaishomecoming:ball_danmaku",
-    "#youkaishomecoming:mentos_danmaku",
-    "#youkaishomecoming:bubble_danmaku",
-    "#youkaishomecoming:butterfly_danmaku",
-    "#youkaishomecoming:spark_danmaku",
-    "#youkaishomecoming:star_danmaku"
+    "#youkaishomecoming:danmaku/circle",
+    "#youkaishomecoming:danmaku/ball",
+    "#youkaishomecoming:danmaku/mentos",
+    "#youkaishomecoming:danmaku/bubble",
+    "#youkaishomecoming:danmaku/butterfly",
+    "#youkaishomecoming:danmaku/spark",
+    "#youkaishomecoming:danmaku/star"
   ]
 }

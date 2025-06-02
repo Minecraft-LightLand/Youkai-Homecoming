@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.mixin;
+package dev.xkmc.youkaishomecoming.mixin.effect;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.youkaishomecoming.events.ClientEventHandlers;

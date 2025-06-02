@@ -4,6 +4,14 @@
     {
       "id": "wythers:sakura_forest",
       "required": false
+    },
+    {
+      "id": "#c:is_cherry_forest",
+      "required": false
+    },
+    {
+      "id": "#c:is_sakura_forest",
+      "required": false
     }
   ]
 }

@@ -10,6 +10,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
@@ -45,8 +46,11 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(MANDRAKE).add(Biomes.DARK_FOREST);
 		tag(UDUMBARA).add(Biomes.SWAMP);
 		tag(HAS_RUMIA_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
-		tag(HAS_CIRNO_NEST).add(Biomes.SNOWY_PLAINS, Biomes.SNOWY_BEACH);
-		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"));
+		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
+				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
+		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"))
+				.addOptionalTag(new ResourceLocation("c:is_cherry_forest"))
+				.addOptionalTag(new ResourceLocation("c:is_sakura_forest"));
 	}
 
 	public static TagKey<Biome> asTag(String name) {
