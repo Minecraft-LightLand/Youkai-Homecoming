@@ -1,3 +1,8 @@
+2.4.4
+- Use tag for ice in cold tofu recipe
+- Fix BetterAdvancement compat
+
+
 2.4.3
 - Make cirno nest spawn in all snowy biomes
 - Make it configurable if characters can cross dimension

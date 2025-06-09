@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-29T09:33:11.639067	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
+// 1.20.1	2025-06-09T10:43:03.768147	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (mob_effects), Tags (enchantments)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1850,7 +1850,7 @@ e1e7ed3670c3390b770e0de112d21d5262623435 data/youkaishomecoming/recipes/coffee_b
 17e4ebb5b0f718d84f04655a5f593c52524c17a0 data/youkaishomecoming/recipes/coffee_berries_cutting.json
 074a50b1005a62b1e0451f842ef712f9a9e9432a data/youkaishomecoming/recipes/coffee_mochi.json
 40d3b3c4e099f328a1910bf5fc6c6abce4b4aa0f data/youkaishomecoming/recipes/coffee_powder.json
-91406e4362ec1e9199aea499eef8b16680fbe0c2 data/youkaishomecoming/recipes/cold_tofu.json
+f81736912feeaaa7fe03e4e002d3e34d4c34edad data/youkaishomecoming/recipes/cold_tofu.json
 17ed34a8535323f63a5883e574a7ff4d8e04db18 data/youkaishomecoming/recipes/con_panna.json
 236e732a2d00f3ca840e57d62a850caa785927a1 data/youkaishomecoming/recipes/con_panna_remix.json
 05a916e35800a85cd6855ab52430fdcbc580bed5 data/youkaishomecoming/recipes/cooked_chicken_cuts_from_chicken_cuts_steaming.json

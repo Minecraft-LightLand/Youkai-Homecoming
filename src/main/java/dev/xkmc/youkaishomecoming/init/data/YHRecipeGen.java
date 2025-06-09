@@ -731,7 +731,7 @@ public class YHRecipeGen {
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
 					.requires(YHCrops.SOYBEAN.getSeed())
 					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.requires(YHItems.ICE_CUBE)
+					.requires(YHTagGen.ICE)
 					.requires(YHItems.SAUCER.get())
 					.save(pvd, YHDish.COLD_TOFU.block.getId());
 
