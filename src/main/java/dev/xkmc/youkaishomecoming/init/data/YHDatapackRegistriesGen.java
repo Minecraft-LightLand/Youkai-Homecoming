@@ -104,6 +104,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	);
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+			.add(Registries.BIOME, YHBiomes::registerBiomes)
 			.add(Registries.CONFIGURED_FEATURE, ctx -> {
 				for (var e : YHCrops.values()) {
 					e.registerConfigs(ctx);
@@ -113,6 +114,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				for (var e : YHCrops.values()) {
 					e.registerPlacements(ctx);
 				}
+				YHBiomes.registerPlacements(ctx);
 			})
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers)
 

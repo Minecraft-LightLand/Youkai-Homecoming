@@ -48,13 +48,29 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(HAS_RUMIA_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
 		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
 				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
-		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"))
-				.addOptionalTag(new ResourceLocation("c:is_cherry_forest"))
-				.addOptionalTag(new ResourceLocation("c:is_sakura_forest"));
+
+		var cherry = cTag("is_cherry_forest");
+		var sakura = cTag("is_sakura_forest");
+
+		tag(BiomeTags.IS_FOREST).add(YHBiomes.SAKURA_FOREST);
+		tag(cherry).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST)
+				.addOptional(new ResourceLocation("wythers:sakura_forest"));
+		tag(sakura).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST)
+				.addOptional(new ResourceLocation("wythers:sakura_forest"));
+
+		tag(HAS_SHRINE).addTags(cherry, sakura);
 	}
 
 	public static TagKey<Biome> asTag(String name) {
 		return TagKey.create(Registries.BIOME, YoukaisHomecoming.loc(name));
+	}
+
+	public static TagKey<Biome> forgeTag(String name) {
+		return TagKey.create(Registries.BIOME, new ResourceLocation("forge", name));
+	}
+
+	public static TagKey<Biome> cTag(String name) {
+		return TagKey.create(Registries.BIOME, new ResourceLocation("c", name));
 	}
 
 }
