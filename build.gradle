@@ -182,7 +182,7 @@ dependencies {
     implementation fg.deobf("curse.maven:diet-443570:4813904")
     compileOnly fg.deobf("curse.maven:thirst-was-taken-679270:5568703")
 
-    implementation fg.deobf("curse.maven:better-advancements-272515:4631253")
+    implementation fg.deobf("curse.maven:better-advancements-272515:6010300")
 
     implementation fg.deobf("curse.maven:placebo-283644:5098182")
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
