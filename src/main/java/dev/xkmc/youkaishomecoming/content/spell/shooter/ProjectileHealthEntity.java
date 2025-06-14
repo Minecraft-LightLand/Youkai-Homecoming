@@ -19,7 +19,7 @@ public abstract class ProjectileHealthEntity extends BaseHealthEntity {
 		super.tick();
 		if (tickCount >= lifetime()) {
 			if (!level().isClientSide()) {
-				kill();
+				discard();
 			}
 		} else {
 			projectileMove();

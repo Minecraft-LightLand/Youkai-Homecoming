@@ -5,12 +5,17 @@ import dev.xkmc.youkaishomecoming.content.spell.custom.data.ISpellFormData;
 import dev.xkmc.youkaishomecoming.content.spell.custom.editor.SpellOptionInstances;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.OptionsList;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameType;
+
+import java.util.Objects;
 
 public class EditorScreen extends Screen {
 
@@ -24,8 +29,22 @@ public class EditorScreen extends Screen {
 		ins = SpellOptionInstances.create(Wrappers.cast(data));
 	}
 
+	private boolean isPlayerInCreativeMode() {
+        Player player = null;
+        if (minecraft != null) {
+            player = minecraft.player;
+        }
+        return player != null && Objects.requireNonNull(Minecraft.getInstance().gameMode).getPlayerMode() == GameType.CREATIVE;
+	}
+
 	@Override
 	protected void init() {
+		if (!isPlayerInCreativeMode()) {
+			// 如果玩家不是创造模式，关闭屏幕
+			onClose();
+			return;
+		}
+
 		super.init();
 		int w = width / 4;
 		int dw = w / 4;
@@ -46,8 +65,10 @@ public class EditorScreen extends Screen {
 	}
 
 	private void addOptions() {
-		list = new OptionsList(minecraft, width, height, 32, height - 32, 25);
-		list.setRenderBackground(false);
+        if (minecraft != null) {
+            list = new OptionsList(minecraft, width, height, 32, height - 32, 25);
+        }
+        list.setRenderBackground(false);
 		list.setRenderTopAndBottom(false);
 		ins.add(list, this::setChanged);
 		addRenderableWidget(list);
@@ -92,4 +113,7 @@ public class EditorScreen extends Screen {
 		super.render(g, mx, my, pTick);
 	}
 
+    public Button getCancel() {
+        return cancel;
+    }
 }

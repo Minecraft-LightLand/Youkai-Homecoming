@@ -42,9 +42,7 @@ public abstract class BasePotRecipeCategory<T extends BasePotRecipe> implements 
 
 	public abstract RecipeType<T> getRecipeType();
 
-	public IDrawable getBackground() {
-		return this.background;
-	}
+
 
 	public IDrawable getIcon() {
 		return this.icon;

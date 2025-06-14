@@ -49,6 +49,9 @@ public class YHClient {
 
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
+		// 直接在这里注册醉酒效果渲染器
+		MinecraftForge.EVENT_BUS.register(DrunkEffectRenderer.class);
+
 		if (YoukaisHomecoming.ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
 			MinecraftForge.EVENT_BUS.register(TLMRenderHandler.class);
 		}

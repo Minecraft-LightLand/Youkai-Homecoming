@@ -174,12 +174,20 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:appleskin-248787:4605078")
     runtimeOnly fg.deobf("curse.maven:patchouli-306770:4633797")
     runtimeOnly fg.deobf("curse.maven:spark-361579:4738952")
-
+    runtimeOnly fg.deobf("curse.maven:ftb-library-forge-404465:6164053")
+    runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:time-stop-clock-mod-690991:4733372")
+    implementation fg.deobf("curse.maven:yacl-667299:5963252")
+    implementation fg.deobf("curse.maven:emi-580555:6205514")
+    implementation fg.deobf("curse.maven:embeddium-908741:5681725")
+    implementation fg.deobf("curse.maven:kubejs-238086:5853326")
+    implementation fg.deobf("curse.maven:rhino-416294:6186971")
     implementation fg.deobf("curse.maven:bookshelf-228525:4808092")
     implementation fg.deobf("curse.maven:botany-trees-411357:4719845")
     implementation fg.deobf("curse.maven:botany-pots-353928:4793076")
-    implementation fg.deobf("curse.maven:serene-seasons-291874:4761603")
-    implementation fg.deobf("curse.maven:diet-443570:4813904")
+    compileOnly fg.deobf("curse.maven:serene-seasons-291874:4761603")
+    compileOnly fg.deobf("curse.maven:diet-443570:4813904")
+    implementation fg.deobf("curse.maven:forgery-434087:6522707")
     compileOnly fg.deobf("curse.maven:thirst-was-taken-679270:5568703")
 
     implementation fg.deobf("curse.maven:better-advancements-272515:6010300")
@@ -189,9 +197,10 @@ dependencies {
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
 
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
-
-    //implementation fg.deobf("curse.maven:composite-material-982540:6310307")
-    //implementation fg.deobf("curse.maven:framework-549225:6531428")
+    implementation fg.deobf("curse.maven:configured-457570:5180900")
+    implementation fg.deobf("curse.maven:composite-material-982540:6310307")
+    implementation fg.deobf("curse.maven:framework-549225:4590795")
+    implementation fg.deobf("curse.maven:slashblade-resharped-1022428:6548163")
 
 }
 

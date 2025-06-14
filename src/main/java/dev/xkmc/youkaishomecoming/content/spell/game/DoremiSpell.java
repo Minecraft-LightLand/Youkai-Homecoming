@@ -85,7 +85,7 @@ public class DoremiSpell extends ActualSpellCard {
 
 		private void laser(CardHolder holder, int n, int m, double dist) {
 			var o = DanmakuHelper.getOrientation(new Vec3(1, 0, 0));
-			for (int s = -1; s <= 1; s += 2) {
+			for (int s = -1; s <= 1; s += 10) {
 				var pz = pos.add(0, 2 * s, 0);
 				for (int i = 0; i < n; i++) {
 					var pi = pz.add(o.rotateDegrees(360d / n * i).scale(dist));
@@ -104,7 +104,7 @@ public class DoremiSpell extends ActualSpellCard {
 
 		private void add(CardHolder holder, Vec3 pos, int step, int n, double dist, double tilt) {
 			int t0 = 40, t1 = 20;
-			double v0 = 0.05, a0 = 0.1;
+			double v0 = 0.05, a0 = 0.07;
 			var o = DanmakuHelper.getOrientation(new Vec3(1, 0, 0));
 			double angle = init + tick * step;
 			var p = pos.add(o.rotateDegrees(angle, tilt).scale(dist));
@@ -130,7 +130,7 @@ public class DoremiSpell extends ActualSpellCard {
 				var e = holder.prepareDanmaku(2,
 						pos.subtract(target).normalize().scale(0.1),
 						YHDanmaku.Bullet.BALL, DyeColor.RED);
-				e.setPos(target.add(0, -0.3, 0));
+				e.setPos(target.add(0, -0, 0));
 				holder.shoot(e);
 			}
 		}
