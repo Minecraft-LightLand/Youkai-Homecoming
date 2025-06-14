@@ -368,8 +368,35 @@ public class YHRecipeGen {
 		{
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BUTTER.item.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(YHItems.CREAM)
+					.addIngredient(YHItems.CREAM)
 					.build(pvd, YHFood.BUTTER.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.MAYONNAISE.item.get(), 3, 200, 0.1f, Items.GLASS_BOTTLE)
+					.addIngredient(YHFood.BUTTER.item)
+					.addIngredient(YHFood.BUTTER.item)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(Items.SUGAR)
+					.build(pvd, YHItems.MAYONNAISE.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.IMITATION_CRAB.item.get(), 4, 200, 0.1f)
+					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(Items.WHEAT)
+					.addIngredient(Items.WHEAT)
+					.addIngredient(Items.SUGAR)
+					.build(pvd, YHFood.IMITATION_CRAB.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TAMAGOYAKI.item.get(), 1, 200, 0.1f)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(Items.SUGAR)
+					.build(pvd, YHFood.TAMAGOYAKI.item.getId());
+
+			cutting(pvd, YHFood.TAMAGOYAKI.item, YHFood.TAMAGOYAKI_SLICE.item, 3);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TOFU.item.get(), 1, 200, 0.1f)
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
@@ -379,7 +406,7 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 2, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(Items.KELP)
+					.addIngredient(Items.DRIED_KELP)
 					.build(pvd, YHFood.ONIGILI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 2, 200, 0.1f)
@@ -423,7 +450,7 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SENBEI.item.get(), 3, 200, 0.1f)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.addIngredient(YHFood.BUTTER.item)
-					.addIngredient(Items.KELP)
+					.addIngredient(Items.DRIED_KELP)
 					.build(pvd, YHFood.SENBEI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.YAKUMO_INARI.item.get(), 3, 200, 0.1f)
@@ -995,29 +1022,104 @@ public class YHRecipeGen {
 
 		// cuisine
 		{
-			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI, ModItems.SALMON_ROLL.get(), 2
-			)::unlockedBy, ModItems.SALMON_SLICE.get())
-					.add(ForgeTags.RAW_FISHES_SALMON)
-					.save(pvd);
 
-			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI, YHRolls.SALMON_HOSOMAKI
-			)::unlockedBy, ModItems.SALMON_SLICE.get())
-					.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
-					.add(ForgeTags.RAW_FISHES_SALMON)
-					.save(pvd);
+			for (var e : YHRolls.values()) {
+				var slice = e.sliceStack();
+				if (slice.isEmpty()) continue;
+				cutting(pvd, e.item, e.slice, slice.getCount());
+			}
 
-			unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI, ModItems.KELP_ROLL.get()
-			)::unlockedBy, ModItems.COOKED_RICE.get())
-					.add(Items.CARROT)
-					.save(pvd);
 
-			unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI, YHRolls.SALMON_FUTOMAKI
-			)::unlockedBy, ModItems.SALMON_SLICE.get())
-					.addSauce(YHItems.SOY_SAUCE_BOTTLE.item.get())
-					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
-					.addIngredient(Items.CARROT)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.save(pvd);
+			{
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, ModItems.SALMON_SLICE.get())
+						.result(ModItems.SALMON_ROLL.get(), 2)
+						.add(ForgeTags.RAW_FISHES_SALMON)
+						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, ModItems.COD_SLICE.get())
+						.result(ModItems.COD_ROLL.get(), 2)
+						.add(ForgeTags.RAW_FISHES_COD)
+						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.ROASTED_LAMPREY_FILLET.item.get())
+						.result(YHFood.LORELEI_NIGIRI.item.get(), 2)
+						.add(YHTagGen.COOKED_EEL)
+						.add(Items.DRIED_KELP)
+						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.TAMAGOYAKI.item.get())
+						.result(YHFood.EGG_NIGIRI.item.get(), 2)
+						.add(YHFood.TAMAGOYAKI.item.get())
+						.add(Items.DRIED_KELP)
+						.save(pvd);
+
+				/*
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.FLESH.item.get())
+						.result(YHFood.FLESH_ROLL.item.get(), 2)
+						.add(YHTagGen.RAW_FLESH)
+						.save(pvd);
+
+				 */
+
+			}
+
+			{
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
+						.result(ModItems.KELP_ROLL.get())
+						.add(Items.CARROT)
+						.save(pvd);
+
+				/*
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
+						.result(YHRolls.SALMON_MAKI)
+						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.add(ForgeTags.RAW_FISHES_SALMON)
+						.save(pvd);
+						TODO
+				 */
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, YHCrops.SOYBEAN.getSeed())
+						.result(YHRolls.NATTOU_MAKI)
+						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.add(YHCrops.SOYBEAN.getSeed())//TODO
+						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
+						.result(YHRolls.SHINNKO_MAKI)
+						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.add(Items.BEETROOT)
+						.save(pvd);
+			}
+
+			{
+				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, YHFood.TAMAGOYAKI_SLICE.item.get())
+						.result(YHRolls.EGG_FUTOMAKI)
+						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
+						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item.get())
+						.save(pvd);
+
+				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
+						.result(YHRolls.SALMON_FUTOMAKI)
+						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
+						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
+						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.save(pvd);
+
+				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
+						.result(YHRolls.RAINBOW_FUTOMAKI)
+						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
+						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item.get())
+						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
+						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.save(pvd);
+			}
 		}
 
 		// danmaku

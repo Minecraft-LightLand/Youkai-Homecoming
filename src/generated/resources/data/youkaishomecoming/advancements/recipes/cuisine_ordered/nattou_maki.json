@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_salmon_slice": {
+    "has_soybean": {
       "conditions": {
         "items": [
           {
             "items": [
-              "farmersdelight:salmon_slice"
+              "youkaishomecoming:soybean"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:salmon_hosomaki"
+        "recipe": "youkaishomecoming:nattou_maki"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_salmon_slice",
+      "has_soybean",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:salmon_hosomaki"
+      "youkaishomecoming:nattou_maki"
     ]
   },
   "sends_telemetry_event": true

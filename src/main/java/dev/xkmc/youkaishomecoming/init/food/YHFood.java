@@ -25,7 +25,7 @@ public enum YHFood {
 	),
 	ROASTED_LAMPREY(FoodType.MEAT, 10, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
-			DietTagGen.PROTEINS.tag
+			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
 	RAW_LAMPREY_FILLET(FoodType.MEAT_SLICE, 1, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
@@ -33,7 +33,7 @@ public enum YHFood {
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
-			DietTagGen.PROTEINS.tag
+			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
@@ -41,8 +41,11 @@ public enum YHFood {
 
 	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
-	TOFU(FoodType.SIMPLE, 4, 0.5f),
-	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f),
+	TOFU(FoodType.SIMPLE, 4, 0.5f, DietTagGen.PROTEINS.tag),
+	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f, DietTagGen.PROTEINS.tag),
+	IMITATION_CRAB(FoodType.SIMPLE, 6, 1f, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
+	TAMAGOYAKI(FoodType.SIMPLE, 12, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
+	TAMAGOYAKI_SLICE(FoodType.SIMPLE, 6, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
 
 	// mochi
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
@@ -72,7 +75,13 @@ public enum YHFood {
 	TOBIKO_GUNKAN(FoodType.MEAT, 8, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)),
+			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),//TODO recipe change
+	EGG_NIGIRI(FoodType.MEAT, 7, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	LORELEI_NIGIRI(FoodType.MEAT, 7, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)),
+			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	//TODO tuna nigiri
 	TUTU_CONGEE(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 8, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
@@ -197,8 +206,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 16) id = "food/mochi/";
-		if (ordinal() <= 10) id = "food/basic/";
+		if (ordinal() <= 19) id = "food/mochi/";
+		if (ordinal() <= 13) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {

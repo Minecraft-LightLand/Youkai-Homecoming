@@ -50,7 +50,7 @@ public class FoodModelHelper {
 	}
 
 	static {
-		map(ModItems.KELP_ROLL.getId(), hosomaki("carrot_hosomaki"));
+		map(ModItems.KELP_ROLL.getId(), hosomaki("carrot_maki"));
 	}
 
 }

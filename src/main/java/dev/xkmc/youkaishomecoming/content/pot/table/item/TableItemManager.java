@@ -8,6 +8,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.model.ModelHolderManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.TagKey;
@@ -57,12 +58,15 @@ public class TableItemManager extends BaseTableItem {
 	public static final VariantTableItemBase BASE_CAL = CAL.asBase(YoukaisHomecoming.loc("california"));
 
 	public static final VariantModelPart SUSHI_TOP = BASE_SUSHI.addPart("top", 1);
+	public static final VariantModelPart SUSHI_KELP = BASE_SUSHI.addPart("kelp", 1);
+	public static final VariantModelPart SUSHI_CURD = BASE_SUSHI.addPart("curd", 1);
+	public static final VariantModelPart SUSHI_SAUCE = BASE_SUSHI.addPart("sauce", 1);
 	public static final VariantModelPart GUNKAN_TOP = BASE_GUNKAN.addPart("top", 1);
 	public static final VariantModelPart HOSOMAKI_SAUCE = BASE_HOSOMAKI.addPart("sauce", 1);
 	public static final VariantModelPart HOSOMAKI_INGREDIENT = BASE_HOSOMAKI.addPart("ingredient", 1);
 	public static final VariantModelPart FUTOMAKI_SAUCE = BASE_FUTOMAKI.addPart("sauce", 1);
-	public static final VariantModelPart FUTOMAKI_INGREDIENT = BASE_FUTOMAKI.addPart("ingredient", 3);
-	public static final VariantModelPart CAL_INGREDIENT = BASE_CAL.addPart("ingredient", 3);
+	public static final VariantModelPart FUTOMAKI_INGREDIENT = BASE_FUTOMAKI.addPart("ingredient", 5);
+	public static final VariantModelPart CAL_INGREDIENT = BASE_CAL.addPart("ingredient", 5);
 
 	public static final FoodTableItemBase COMPLETE_HOSOMAKI = BASE_HOSOMAKI.addNextStep(null);
 	public static final FoodTableItemBase COMPLETE_FUTOMAKI = BASE_FUTOMAKI.addNextStep(null);
@@ -70,6 +74,12 @@ public class TableItemManager extends BaseTableItem {
 
 	static {
 		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON);
+		SUSHI_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
+		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
+		SUSHI_TOP.addMapping("lamprey", YHTagGen.COOKED_EEL);
+		// tuna
+		// flesh
+		SUSHI_KELP.addMapping("kelp", Items.DRIED_KELP);
 		GUNKAN_TOP.addMapping("salmon_roe", YHFood.ROE.item);
 
 		addBulk("soy_sauce", "sauce/soy_sauce", YHItems.SOY_SAUCE_BOTTLE.item, HOSOMAKI_SAUCE, FUTOMAKI_SAUCE);
@@ -77,9 +87,12 @@ public class TableItemManager extends BaseTableItem {
 		VariantModelPart[] rolls = {HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT};
 		addBulk("salmon", "ingredient/salmon", ForgeTags.RAW_FISHES_SALMON, rolls);
 		addBulk("carrot", "ingredient/carrot", Items.CARROT, rolls);
+		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);
+		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHFood.TAMAGOYAKI_SLICE.item, rolls);
 		addBulk("cabbage", "ingredient/cabbage", ForgeTags.SALAD_INGREDIENTS_CABBAGE, rolls);
-
-		//addBulk("tamagoyaki", "ingredient/tamagoyaki", ForgeTags.RAW_FISHES_SALMON, HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT);
+		// tuna
+		// mayonnaise
+		// kappa
 	}
 
 	private static void addBulk(String id, String path, ItemLike item, VariantModelPart... parts) {

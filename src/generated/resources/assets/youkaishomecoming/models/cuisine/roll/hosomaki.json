@@ -2,7 +2,7 @@
   "parent": "youkaishomecoming:table/roll/hosomaki",
   "render_type": "minecraft:cutout",
   "textures": {
-    "content": "youkaishomecoming:block/table/roll/salmon_hosomaki",
+    "content": "youkaishomecoming:block/table/roll/shinnko_maki",
     "kelp": "youkaishomecoming:block/table/roll_kelp"
   }
 }

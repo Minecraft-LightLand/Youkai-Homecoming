@@ -39,7 +39,7 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 	}
 
 	public Component getTitle() {
-		return YHLangData.JEI_FERMENT.get();
+		return YHLangData.JEI_CUISINE.get();
 	}
 
 	public void draw(CuisineRecipe<?> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
@@ -70,6 +70,7 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 		if (base != null) {
 			base.collectIngredients(listBase, listRecipe);
 		}
+		balance(listBase, listRecipe);
 
 		int offset = (5 - listBase.size()) * 9;
 		int index = 0;
@@ -88,6 +89,13 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 			index++;
 		}
 		return Math.max(listBase.size(), listRecipe.size());
+	}
+
+	private void balance(List<Ingredient> a, List<Ingredient> b) {
+		while (b.size() > 5 && a.size() < 5) {
+			a.add(b.get(0));
+			b.remove(0);
+		}
 	}
 
 	private interface IngredientHandler {

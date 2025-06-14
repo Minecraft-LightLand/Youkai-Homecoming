@@ -12,14 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-public class OrderedCuisineRecipe extends CuisineRecipe<OrderedCuisineRecipe> {
+public class OrderedCuisineRecipe extends BaseCuisineRecipe<OrderedCuisineRecipe> {
 
 	@SerialClass.SerialField
 	public final List<Ingredient> input = new ArrayList<>();
-	@SerialClass.SerialField
-	public ResourceLocation base;
-	@SerialClass.SerialField
-	public ItemStack result = ItemStack.EMPTY;
 
 	public OrderedCuisineRecipe(ResourceLocation id) {
 		super(id, YHBlocks.CUISINE_ORDER.get());
@@ -41,26 +37,6 @@ public class OrderedCuisineRecipe extends CuisineRecipe<OrderedCuisineRecipe> {
 			}
 		}
 		return input.size() == inv.getContainerSize() || !inv.isComplete();
-	}
-
-	@Override
-	public ResourceLocation base() {
-		return base;
-	}
-
-	@Override
-	public ItemStack assemble(CuisineInv inv, RegistryAccess access) {
-		return result.copy();
-	}
-
-	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
-		return result;
-	}
-
-	@Override
-	public ItemStack getResult() {
-		return result;
 	}
 
 }

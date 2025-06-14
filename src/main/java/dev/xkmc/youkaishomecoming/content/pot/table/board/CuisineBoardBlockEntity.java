@@ -27,6 +27,8 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity {
 		super(type, pos, state);
 	}
 
+	//TODO cut
+
 	public boolean addItem(ItemStack stack) {
 		if (level == null) return false;
 		var prev = getModel();

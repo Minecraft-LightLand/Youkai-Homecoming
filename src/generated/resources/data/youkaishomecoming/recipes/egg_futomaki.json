@@ -1,0 +1,28 @@
+{
+  "type": "youkaishomecoming:cuisine_mixed",
+  "base": "youkaishomecoming:futomaki",
+  "first": [
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:egg_futomaki"
+  },
+  "second": [
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
+    [
+      {
+        "item": "minecraft:carrot"
+      },
+      {
+        "item": "minecraft:beetroot"
+      }
+    ],
+    {
+      "item": "youkaishomecoming:tamagoyaki_slice"
+    }
+  ]
+}

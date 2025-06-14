@@ -2,7 +2,7 @@
   "parent": "youkaishomecoming:table/roll/futomaki",
   "render_type": "minecraft:cutout",
   "textures": {
-    "content": "youkaishomecoming:block/table/roll/salmon_futomaki",
+    "content": "youkaishomecoming:block/table/roll/rainbow_futomaki",
     "kelp": "youkaishomecoming:block/table/roll_kelp"
   }
 }

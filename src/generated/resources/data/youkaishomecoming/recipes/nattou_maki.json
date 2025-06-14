@@ -6,10 +6,10 @@
       "item": "youkaishomecoming:soy_sauce_bottle"
     },
     {
-      "tag": "forge:raw_fishes/salmon"
+      "item": "youkaishomecoming:soybean"
     }
   ],
   "result": {
-    "item": "youkaishomecoming:salmon_hosomaki"
+    "item": "youkaishomecoming:nattou_maki"
   }
 }

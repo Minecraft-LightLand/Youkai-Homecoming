@@ -231,6 +231,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:egg_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:egg_nigiri"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:espresso": {
       "conditions": {
         "item": {
@@ -351,6 +361,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:imitation_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:imitation_crab"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:kappa_village": {
       "conditions": {
         "item": {
@@ -416,6 +436,16 @@
         "item": {
           "items": [
             "youkaishomecoming:longevity_noodles"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:lorelei_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:lorelei_nigiri"
           ]
         }
       },
@@ -811,6 +841,26 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:tamagoyaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tamagoyaki"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:tamagoyaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tamagoyaki_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:tea_mocha": {
       "conditions": {
         "item": {
@@ -1117,6 +1167,15 @@
       "youkaishomecoming:oily_bean_curd"
     ],
     [
+      "youkaishomecoming:imitation_crab"
+    ],
+    [
+      "youkaishomecoming:tamagoyaki"
+    ],
+    [
+      "youkaishomecoming:tamagoyaki_slice"
+    ],
+    [
       "youkaishomecoming:mochi"
     ],
     [
@@ -1163,6 +1222,12 @@
     ],
     [
       "youkaishomecoming:tobiko_gunkan"
+    ],
+    [
+      "youkaishomecoming:egg_nigiri"
+    ],
+    [
+      "youkaishomecoming:lorelei_nigiri"
     ],
     [
       "youkaishomecoming:tutu_congee"
