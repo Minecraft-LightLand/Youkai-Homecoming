@@ -3,7 +3,7 @@
   "base": "youkaishomecoming:sushi",
   "input": [
     {
-      "tag": "youkaishomecoming:raw_eel"
+      "tag": "youkaishomecoming:cooked_eel"
     },
     {
       "item": "minecraft:dried_kelp"

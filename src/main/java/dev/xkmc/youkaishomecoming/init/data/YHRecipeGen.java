@@ -914,73 +914,76 @@ public class YHRecipeGen {
 		{
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHItems.SOY_SAUCE_BOTTLE.fluid.getSource(), 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
-					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
-					.addInput(YHCrops.SOYBEAN.getSeed()).addInput(YHCrops.SOYBEAN.getSeed())
+					.addInput(YHCrops.SOYBEAN.getSeed(), 4)
 					.save(pvd, YHItems.SOY_SAUCE_BOTTLE.item.getId());
 
+			unlock(pvd, new SimpleFermentationBuilder(YHItems.SOY_SAUCE_BOTTLE.fluid.getSource(), Fluids.EMPTY, 600)::unlockedBy, YHCrops.SOYBEAN.getSeed())
+					.addInput(YHCrops.SOYBEAN.getSeed(), 6)
+					.addOutput(YHFood.NATTOU.item, 6)
+					.save(pvd, YHFood.NATTOU.item.getId());
+
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.MIO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 4)
 					.save(pvd, YHDrink.MIO.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.MEAD.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 4)
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd, YHDrink.MEAD.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.BROWN_MUSHROOM)
 					.save(pvd, YHDrink.KIKU.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.BROWN_MUSHROOM).addInput(ForgeTags.EGGS)
 					.save(pvd, YHDrink.HAKUTSURU.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.BROWN_MUSHROOM).addInput(Items.SEAGRASS)
 					.save(pvd, YHDrink.KAPPA_VILLAGE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
 					.save(pvd, YHDrink.SUIGEI.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
 					.save(pvd, YHDrink.DAIGINJO.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DASSAI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.NAUTILUS_SHELL)
 					.save(pvd, YHDrink.DASSAI.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.TENGU_TANGO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
 					.save(pvd, YHDrink.TENGU_TANGO.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SPARROW_SAKE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
 					.save(pvd, YHDrink.SPARROW_SAKE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.FULL_MOONS_EVE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd, YHDrink.FULL_MOONS_EVE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(YHItems.BLOOD_BOTTLE.fluid.getSource(), YHDrink.SCARLET_MIST.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
-					.addInput(Items.ROSE_BUSH).addInput(Items.ROSE_BUSH)
+					.addInput(Items.ROSE_BUSH, 2)
 					.addInput(Items.POPPY)
-					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED))
-					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED))
+					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED), 2)
 					.save(pvd, YHDrink.SCARLET_MIST.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.WIND_PRIESTESSES.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE).addInput(ForgeTags.GRAIN_RICE)
+					.addInput(ForgeTags.GRAIN_RICE, 3)
 					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.LIME))
 					.addInput(Items.DANDELION).addInput(YHTagGen.TEA_GREEN).addInput(YHItems.MATCHA)
 					.save(pvd, YHDrink.WIND_PRIESTESSES.item.getId());
@@ -1086,14 +1089,15 @@ public class YHRecipeGen {
 						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
 						.add(ForgeTags.RAW_FISHES_SALMON)
 						.save(pvd);
-						TODO
-				 */
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, YHCrops.SOYBEAN.getSeed())
 						.result(YHRolls.NATTOU_MAKI)
 						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
 						.add(YHCrops.SOYBEAN.getSeed())//TODO
 						.save(pvd);
+
+						TODO
+				 */
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
 						.result(YHRolls.SHINNKO_MAKI)

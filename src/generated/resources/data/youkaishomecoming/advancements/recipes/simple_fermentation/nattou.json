@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:nattou_maki"
+        "recipe": "youkaishomecoming:nattou"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:nattou_maki"
+      "youkaishomecoming:nattou"
     ]
   },
   "sends_telemetry_event": true

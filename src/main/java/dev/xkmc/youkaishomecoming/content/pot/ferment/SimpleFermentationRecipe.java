@@ -90,10 +90,12 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 		for (var e : remain) {
 			cont.items().addItem(e);
 		}
-		FluidStack ans = outputFluid.copy();
-		ans.setAmount(cont.fluids().getFluidInTank(0).getAmount());
 		cont.fluids().clear();
-		cont.fluids().set(0, 0, ans);
+		if (!outputFluid.isEmpty()) {
+			FluidStack ans = outputFluid.copy();
+			ans.setAmount(cont.fluids().getFluidInTank(0).getAmount());
+			cont.fluids().set(0, 0, ans);
+		}
 		return ItemStack.EMPTY;
 	}
 

@@ -551,6 +551,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:nattou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:oily_bean_curd": {
       "conditions": {
         "item": {
@@ -1144,6 +1154,9 @@
     ],
     [
       "youkaishomecoming:tamagoyaki_slice"
+    ],
+    [
+      "youkaishomecoming:nattou"
     ],
     [
       "youkaishomecoming:mochi"

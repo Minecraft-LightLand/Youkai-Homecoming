@@ -661,6 +661,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:nattou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:oily_bean_curd": {
       "conditions": {
         "item": {
@@ -1340,6 +1350,9 @@
     ],
     [
       "youkaishomecoming:tamagoyaki_slice"
+    ],
+    [
+      "youkaishomecoming:nattou"
     ],
     [
       "youkaishomecoming:mochi"

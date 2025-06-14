@@ -1,0 +1,52 @@
+{
+  "type": "youkaishomecoming:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:soybean"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:soy_sauce"
+  },
+  "outputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "item": "youkaishomecoming:nattou"
+    },
+    {
+      "item": "youkaishomecoming:nattou"
+    },
+    {
+      "item": "youkaishomecoming:nattou"
+    },
+    {
+      "item": "youkaishomecoming:nattou"
+    },
+    {
+      "item": "youkaishomecoming:nattou"
+    },
+    {
+      "item": "youkaishomecoming:nattou"
+    }
+  ],
+  "time": 600
+}

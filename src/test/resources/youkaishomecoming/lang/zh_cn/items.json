@@ -133,7 +133,9 @@
 		"spell_clownpiece": "狱符「星星与条纹」",
 		"imitation_crab": "蟹肉棒",
 		"egg_nigiri": "玉子烧握寿司",
-		"lorelei_nigiri": "夜雀的手握"
+		"lorelei_nigiri": "夜雀的手握",
+		"nattou": "纳豆",
+		"seagrass_gunkan": "海草军舰"
 	},
 	"-cartesian": {
 		"entity": {
@@ -222,7 +224,6 @@
 			"list": [
 				{
 					"egg_futomaki": "玉子太卷",
-					"nattou_maki": "纳豆细卷",
 					"rainbow_futomaki": "缤纷太卷",
 					"salmon_futomaki": "三文鱼太卷",
 					"shinnko_maki": "新香细卷",

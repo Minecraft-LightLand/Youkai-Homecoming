@@ -46,6 +46,7 @@ public enum YHFood {
 	IMITATION_CRAB(FoodType.SIMPLE, 6, 1f, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	TAMAGOYAKI(FoodType.SIMPLE, 12, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
 	TAMAGOYAKI_SLICE(FoodType.SIMPLE, 6, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
+	NATTOU(FoodType.SIMPLE, 4, 0.6f, DietTagGen.PROTEINS.tag),
 
 	// mochi
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
@@ -196,8 +197,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 19) id = "food/mochi/";
-		if (ordinal() <= 13) id = "food/basic/";
+		if (ordinal() <= 20) id = "food/mochi/";
+		if (ordinal() <= 14) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {
