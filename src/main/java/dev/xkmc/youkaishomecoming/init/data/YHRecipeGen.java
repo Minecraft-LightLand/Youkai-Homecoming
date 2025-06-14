@@ -15,6 +15,7 @@ import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.MixedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
@@ -306,10 +307,6 @@ public class YHRecipeGen {
 					.define('C', YHItems.BLOOD_BOTTLE.item)
 					.define('D', YHFood.FLESH.item)
 					.define('E', Items.WHEAT)
-					.save(pvd);
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.TOBIKO_GUNKAN.item, 2)::unlockedBy, YHFood.ROE.item.get())
-					.requires(YHFood.ROE.item).requires(ModItems.COOKED_RICE.get()).requires(Items.DRIED_KELP)
 					.save(pvd);
 
 			cake(pvd, YHItems.RED_VELVET);
@@ -1043,13 +1040,13 @@ public class YHRecipeGen {
 						.save(pvd);
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.ROASTED_LAMPREY_FILLET.item.get())
-						.result(YHFood.LORELEI_NIGIRI.item.get(), 2)
+						.result(YHSushi.LORELEI_NIGIRI.item.get(), 2)
 						.add(YHTagGen.COOKED_EEL)
 						.add(Items.DRIED_KELP)
 						.save(pvd);
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.TAMAGOYAKI.item.get())
-						.result(YHFood.EGG_NIGIRI.item.get(), 2)
+						.result(YHSushi.EGG_NIGIRI.item.get(), 2)
 						.add(YHFood.TAMAGOYAKI.item.get())
 						.add(Items.DRIED_KELP)
 						.save(pvd);
@@ -1062,6 +1059,19 @@ public class YHRecipeGen {
 
 				 */
 
+			}
+
+			{
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_GUNKAN)::unlockedBy, YHFood.ROE.item.get())
+						.result(YHSushi.TOBIKO_GUNKAN, 2)
+						.add(YHFood.ROE.item.get())
+						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_GUNKAN)::unlockedBy, Items.SEAGRASS)
+						.result(YHSushi.SEAGRASS_GUNKAN, 2)
+						.add(Items.SEAGRASS)
+						.save(pvd);
 			}
 
 			{

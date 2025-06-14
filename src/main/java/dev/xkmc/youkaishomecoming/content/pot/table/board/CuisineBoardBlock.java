@@ -8,6 +8,7 @@ import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.SearHelper;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -27,6 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.registry.ModSounds;
 
 public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 
@@ -45,16 +47,33 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (level.getBlockEntity(pos) instanceof CuisineBoardBlockEntity be) {
-			if (be.addItem(stack)) {
+			if (be.performToolAction(stack)) {
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
+					if (stack.isDamageableItem()) {
+						stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+					}
+				}
+				player.playSound(ModSounds.BLOCK_CUTTING_BOARD_KNIFE.get(), 0.8F, 1.0F);
+				return InteractionResult.SUCCESS;
+			}
+			int cost = be.addItem(stack);
+			if (cost > 0) {
+				if (!level.isClientSide && !player.getAbilities().instabuild) {
+					if (SearHelper.isFireSource(stack)) {
+						if (stack.isDamageableItem()) {
+							stack.hurtAndBreak(cost, player, p -> p.broadcastBreakEvent(hand));
+							return InteractionResult.SUCCESS;
+						}
+					}
 					ItemStack cont = stack.getCraftingRemainingItem();
-					stack.shrink(1);
+					stack.shrink(cost);
 					if (!cont.isEmpty()) {
-						player.getInventory().placeItemBackInInventory(cont);
+						player.getInventory().placeItemBackInInventory(cont.copyWithCount(cost));
 					}
 				}
 				return InteractionResult.SUCCESS;
-			} else if (stack.isEmpty() && be.addToPlayer(player)) {
+			}
+			if (stack.isEmpty() && be.addToPlayer(player)) {
 				return InteractionResult.SUCCESS;
 			}
 		}

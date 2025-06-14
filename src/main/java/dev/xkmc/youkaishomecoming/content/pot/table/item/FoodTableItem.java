@@ -32,6 +32,13 @@ public class FoodTableItem implements TableItem {
 	}
 
 	@Override
+	public int getCost(TableItem prev) {
+		if (holder != null && prev instanceof TableItemManager)
+			return holder.count();
+		return 1;
+	}
+
+	@Override
 	public Optional<TableItem> find(Level level, ItemStack stack) {
 		return Optional.empty();//TODO
 	}

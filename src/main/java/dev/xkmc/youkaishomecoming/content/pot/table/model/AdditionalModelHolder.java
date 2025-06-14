@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.model;
 
+import dev.xkmc.youkaishomecoming.content.pot.table.item.SearHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -41,6 +42,9 @@ public class AdditionalModelHolder implements TableModelHolder {
 	}
 
 	public void buildContents(List<ResourceLocation> ans, List<ItemStack> list) {
+		boolean sear = false;
+		for (var stack : list)
+			sear |= SearHelper.isFireSource(stack);
 		var partList = new ArrayList<>(parts.entrySet());
 		int[] counter = new int[partList.size()];
 		for (var stack : list) {
@@ -51,7 +55,8 @@ public class AdditionalModelHolder implements TableModelHolder {
 					int index = counter[i];
 					counter[i]++;
 					if (index < part.max) {
-						ans.add(part.modelAt(id, index));
+						if (sear) ans.add(part.modelAt(id + "_seared", index));
+						else ans.add(part.modelAt(id, index));
 					}
 					break;
 				}

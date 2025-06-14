@@ -17,7 +17,7 @@ import java.util.function.Function;
 public enum YHRolls {
 	//TEKKA_MAKI(FoodType.MEAT, 10, 0.9f, FoodModelHelper::hosomaki, List.of()),
 	NATTOU_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
-	SHINNKO_MAKI(FoodType.SIMPLE, 6, 0.5f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
+	SHINNKO_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	//KAPPA_MAKI(FoodType.SIMPLE, 10, 0.9f, FoodModelHelper::hosomaki, List.of()),
 
 	EGG_FUTOMAKI(FoodType.MEAT, 8, 0.8f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),

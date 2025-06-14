@@ -43,7 +43,7 @@ public class TableItemManager extends BaseTableItem {
 
 	public static final IngredientTableItem RICE = TABLE.with(fixed("rice").putDefault("rice"), ModItems.COOKED_RICE::get);
 	public static final IngredientTableItem SUSHI = RICE.addNext(variant("sushi").putDefault("rice"));
-	public static final IngredientTableItem GUNKAN = SUSHI.with(variant("gunkan"), Items.DRIED_KELP);
+	public static final IngredientTableItem GUNKAN = SUSHI.with(variant("gunkan").putDefault("rice", "kelp"), Items.DRIED_KELP);
 	public static final IngredientTableItem RICE_2 = RICE.with(fixed("rice_2").putDefault("rice"), ModItems.COOKED_RICE::get);
 	public static final IngredientTableItem CAL = RICE_2.with(variant("open_california"), Items.DRIED_KELP);
 
@@ -73,14 +73,22 @@ public class TableItemManager extends BaseTableItem {
 	public static final FoodTableItemBase COMPLETE_CAL = BASE_CAL.addNextStep(null);//TODO
 
 	static {
-		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON);
+		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
 		SUSHI_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
 		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
 		SUSHI_TOP.addMapping("lamprey", YHTagGen.COOKED_EEL);
 		// tuna
 		// flesh
 		SUSHI_KELP.addMapping("kelp", Items.DRIED_KELP);
-		GUNKAN_TOP.addMapping("salmon_roe", YHFood.ROE.item);
+		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR);
+		SUSHI_SAUCE.addMapping("mayonnaise", YHItems.MAYONNAISE.item);
+		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR);
+		//TODO
+
+		GUNKAN_TOP.addMapping("roe", YHFood.ROE.item);
+		GUNKAN_TOP.addMapping("seagrass", Items.SEAGRASS);
+		//shirako
+
 
 		addBulk("soy_sauce", "sauce/soy_sauce", YHItems.SOY_SAUCE_BOTTLE.item, HOSOMAKI_SAUCE, FUTOMAKI_SAUCE);
 

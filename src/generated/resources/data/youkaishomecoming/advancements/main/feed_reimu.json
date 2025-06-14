@@ -231,16 +231,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:egg_nigiri": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:egg_nigiri"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:espresso": {
       "conditions": {
         "item": {
@@ -436,16 +426,6 @@
         "item": {
           "items": [
             "youkaishomecoming:longevity_noodles"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:lorelei_nigiri": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:lorelei_nigiri"
           ]
         }
       },
@@ -881,16 +861,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:tobiko_gunkan": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tobiko_gunkan"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:tofu": {
       "conditions": {
         "item": {
@@ -1219,15 +1189,6 @@
     ],
     [
       "youkaishomecoming:pork_rice_ball"
-    ],
-    [
-      "youkaishomecoming:tobiko_gunkan"
-    ],
-    [
-      "youkaishomecoming:egg_nigiri"
-    ],
-    [
-      "youkaishomecoming:lorelei_nigiri"
     ],
     [
       "youkaishomecoming:tutu_congee"

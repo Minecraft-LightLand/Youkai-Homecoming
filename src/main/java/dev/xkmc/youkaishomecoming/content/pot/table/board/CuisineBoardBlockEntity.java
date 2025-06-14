@@ -7,10 +7,17 @@ import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.wrapper.InvWrapper;
+import net.minecraftforge.items.wrapper.RecipeWrapper;
+import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
+import vectorwing.farmersdelight.common.registry.ModRecipeTypes;
+import vectorwing.farmersdelight.common.utility.ItemUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +34,45 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity {
 		super(type, pos, state);
 	}
 
-	//TODO cut
-
-	public boolean addItem(ItemStack stack) {
+	public boolean performToolAction(ItemStack stack) {
 		if (level == null) return false;
+		var current = getModel().complete(level);
+		if (current.isPresent()) {
+			var cont = new SimpleContainer(1);
+			cont.setItem(0, current.get());
+			var wrapper = new RecipeWrapper(new InvWrapper(cont));
+			List<CuttingBoardRecipe> list = level.getRecipeManager().getRecipesFor(ModRecipeTypes.CUTTING.get(), wrapper, level);
+			for (var recipe : list) {
+				if (recipe.getTool().test(stack)) {
+					if (!level.isClientSide()) {
+						int fortune = stack.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+						for (ItemStack drop : recipe.rollResults(level.random, fortune)) {
+							ItemUtils.spawnItemEntity(level, drop.copy(),
+									worldPosition.getX() + 0.5F,
+									worldPosition.getY() + 0.2,
+									worldPosition.getZ() + 0.5F,
+									0, 0, 0);
+						}
+						model = null;
+						contents.clear();
+						notifyTile();
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public int addItem(ItemStack stack) {
+		if (level == null) return 0;
 		var prev = getModel();
 		var ans = prev.find(level, stack);
 		if (ans.isPresent()) {
-			if (level.isClientSide()) return true;
-			contents.add(stack.isEmpty() ? ItemStack.EMPTY : stack.copyWithCount(1));
+			int count = ans.get().getCost(prev);
+			if (!stack.isEmpty() && count > stack.getCount()) return 0;
+			if (level.isClientSide()) return count;
+			contents.add(stack.isEmpty() ? ItemStack.EMPTY : stack.copyWithCount(count));
 			model = ans.get();
 			var transform = model.doTransform();
 			if (transform.isPresent()) {
@@ -43,9 +80,9 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity {
 				contents.add(transform.get());
 			}
 			notifyTile();
-			return true;
+			return count;
 		}
-		return false;
+		return 0;
 	}
 
 	public boolean addToPlayer(Player player) {

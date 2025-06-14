@@ -37,6 +37,9 @@ public class VariantModelPart {
 			String id = ent.getKey();
 			for (int i = 0; i < max; i++) {
 				list.add(modelAt(id, i));
+				if (ent.getValue().seared != null) {
+					list.add(modelAt(id + "_seared", i));
+				}
 			}
 		}
 	}
@@ -47,6 +50,9 @@ public class VariantModelPart {
 			for (var ent : ingredients.entrySet()) {
 				String id = ent.getKey();
 				pvd.create(modelAt(id, i), model).tex(name, ent.getValue().tex);
+				if (ent.getValue().seared != null) {
+					pvd.create(modelAt(id + "_seared", i), model).tex(name, ent.getValue().tex);
+				}
 			}
 		}
 	}
@@ -78,7 +84,7 @@ public class VariantModelPart {
 
 		private final String id;
 		private final Lazy<Ingredient> ingredient;
-		private ResourceLocation tex;
+		private ResourceLocation tex, seared;
 
 		public Entry(String id, Lazy<Ingredient> ingredient, ResourceLocation tex) {
 			this.id = id;
@@ -88,6 +94,10 @@ public class VariantModelPart {
 
 		public void tex(ResourceLocation tex) {
 			this.tex = tex;
+		}
+
+		public void seareable() {
+			this.seared = tex.withSuffix("_seared");
 		}
 
 	}

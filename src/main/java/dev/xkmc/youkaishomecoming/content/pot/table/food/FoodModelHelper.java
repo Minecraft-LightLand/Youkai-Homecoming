@@ -22,13 +22,13 @@ public class FoodModelHelper {
 	}
 
 	public static FoodTableItemHolder futomaki(String id) {
-		return new FoodTableItemHolder(TableItemManager.COMPLETE_FUTOMAKI, roll("futomaki")
+		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_FUTOMAKI, roll("futomaki")
 				.put("kelp", YoukaisHomecoming.loc("block/table/roll_kelp"))
 				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}
 
 	public static FoodTableItemHolder hosomaki(String id) {
-		return new FoodTableItemHolder(TableItemManager.COMPLETE_HOSOMAKI, roll("hosomaki")
+		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_HOSOMAKI, roll("hosomaki")
 				.put("kelp", YoukaisHomecoming.loc("block/table/roll_kelp"))
 				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}

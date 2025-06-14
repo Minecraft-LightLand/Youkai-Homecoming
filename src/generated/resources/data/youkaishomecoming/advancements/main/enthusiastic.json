@@ -291,16 +291,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:egg_nigiri": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:egg_nigiri"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:espresso": {
       "conditions": {
         "item": {
@@ -546,16 +536,6 @@
         "item": {
           "items": [
             "youkaishomecoming:longevity_noodles"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:lorelei_nigiri": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:lorelei_nigiri"
           ]
         }
       },
@@ -1051,16 +1031,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:tobiko_gunkan": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tobiko_gunkan"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:tofu": {
       "conditions": {
         "item": {
@@ -1415,15 +1385,6 @@
     ],
     [
       "youkaishomecoming:pork_rice_ball"
-    ],
-    [
-      "youkaishomecoming:tobiko_gunkan"
-    ],
-    [
-      "youkaishomecoming:egg_nigiri"
-    ],
-    [
-      "youkaishomecoming:lorelei_nigiri"
     ],
     [
       "youkaishomecoming:tutu_congee"

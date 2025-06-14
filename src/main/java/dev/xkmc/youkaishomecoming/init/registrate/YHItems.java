@@ -20,6 +20,7 @@ import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
@@ -174,6 +175,7 @@ public class YHItems {
 		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
 
 		YHFood.register();
+		YHSushi.register();
 		YHRolls.init();
 
 		SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)

@@ -3,11 +3,11 @@
   "base": "youkaishomecoming:gunkan",
   "input": [
     {
-      "item": "youkaishomecoming:roe"
+      "item": "minecraft:seagrass"
     }
   ],
   "result": {
     "count": 2,
-    "item": "youkaishomecoming:tobiko_gunkan"
+    "item": "youkaishomecoming:seagrass_gunkan"
   }
 }

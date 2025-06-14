@@ -42,6 +42,7 @@ public class VariantTableItem implements TableItem {
 
 	@Override
 	public Optional<ItemStack> complete(Level level) {
+		if (base.next() != null) return Optional.empty();
 		var cont = new CuisineInv(base.id(), contents, 0, true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
 				.map(r -> r.assemble(cont, level.registryAccess()));

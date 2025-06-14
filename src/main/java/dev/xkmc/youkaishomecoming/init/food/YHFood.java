@@ -72,16 +72,6 @@ public enum YHFood {
 	BUN(FoodType.SIMPLE, 10, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 8, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.MEAT, 10, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	TOBIKO_GUNKAN(FoodType.MEAT, 8, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)),
-			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),//TODO recipe change
-	EGG_NIGIRI(FoodType.MEAT, 7, 0.6f, List.of(),
-			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	LORELEI_NIGIRI(FoodType.MEAT, 7, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)),
-			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	//TODO tuna nigiri
 	TUTU_CONGEE(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 8, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
