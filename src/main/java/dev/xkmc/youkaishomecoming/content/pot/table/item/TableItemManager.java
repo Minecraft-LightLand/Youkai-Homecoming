@@ -80,13 +80,12 @@ public class TableItemManager extends BaseTableItem {
 		// tuna
 		// flesh
 		SUSHI_KELP.addMapping("kelp", Items.DRIED_KELP);
-		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR);
+		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR).seareable();
 		SUSHI_SAUCE.addMapping("mayonnaise", YHItems.MAYONNAISE.item);
-		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR);
-		//TODO
 
 		GUNKAN_TOP.addMapping("roe", YHFood.ROE.item);
 		GUNKAN_TOP.addMapping("seagrass", Items.SEAGRASS);
+		GUNKAN_TOP.addMapping("nattou", YHFood.NATTOU.item);
 		//shirako
 
 

@@ -18,11 +18,14 @@
     },
     {
       "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
     }
   ],
   "inputFluid": {
-    "amount": 1000,
-    "fluid": "youkaishomecoming:soy_sauce"
+    "amount": 0,
+    "fluid": "minecraft:empty"
   },
   "outputFluid": {
     "amount": 0,
@@ -48,5 +51,5 @@
       "item": "youkaishomecoming:nattou"
     }
   ],
-  "time": 600
+  "time": 1800
 }

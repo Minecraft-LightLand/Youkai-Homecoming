@@ -917,8 +917,9 @@ public class YHRecipeGen {
 					.addInput(YHCrops.SOYBEAN.getSeed(), 4)
 					.save(pvd, YHItems.SOY_SAUCE_BOTTLE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(YHItems.SOY_SAUCE_BOTTLE.fluid.getSource(), Fluids.EMPTY, 600)::unlockedBy, YHCrops.SOYBEAN.getSeed())
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
 					.addInput(YHCrops.SOYBEAN.getSeed(), 6)
+					.addInput(Items.BROWN_MUSHROOM)
 					.addOutput(YHFood.NATTOU.item, 6)
 					.save(pvd, YHFood.NATTOU.item.getId());
 
