@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.lampery;
+package dev.xkmc.youkaishomecoming.content.entity.animal.lampery;
 
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.model.HierarchicalModel;

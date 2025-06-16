@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.init.food.EffectEntry;
 import dev.xkmc.youkaishomecoming.init.food.FoodType;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
@@ -16,17 +17,22 @@ import java.util.Locale;
 public enum YHSushi implements ItemLike {
 
 	TOBIKO_GUNKAN(FoodType.MEAT_SLICE, 8, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)),
-			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),//TODO recipe change
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
+			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),//TODO recipe change
 	SEAGRASS_GUNKAN(FoodType.FAST, 6, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	//shirako
 	EGG_NIGIRI(FoodType.MEAT_SLICE, 7, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	LORELEI_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	TUNA_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
+			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	//TODO tuna nigiri
 	;
 

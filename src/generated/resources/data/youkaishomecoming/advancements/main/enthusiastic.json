@@ -771,6 +771,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:raw_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:ristretto": {
       "conditions": {
         "item": {
@@ -896,6 +916,26 @@
         "item": {
           "items": [
             "youkaishomecoming:seafood_miso_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:seared_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:seared_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna_slice"
           ]
         }
       },
@@ -1320,6 +1360,18 @@
     ],
     [
       "youkaishomecoming:roasted_lamprey_fillet"
+    ],
+    [
+      "youkaishomecoming:raw_tuna"
+    ],
+    [
+      "youkaishomecoming:seared_tuna"
+    ],
+    [
+      "youkaishomecoming:raw_tuna_slice"
+    ],
+    [
+      "youkaishomecoming:seared_tuna_slice"
     ],
     [
       "youkaishomecoming:flesh"

@@ -1,12 +1,12 @@
-// 1.20.1	2025-06-02T21:59:26.157464	Tags for minecraft:worldgen/biome mod id youkaishomecoming
+// 1.20.1	2025-06-15T22:01:09.209502	Tags for minecraft:worldgen/biome mod id youkaishomecoming
 bffd02152ab92ebbb46e2caaaddcced6c8f55740 data/youkaishomecoming/tags/worldgen/biome/has_structure/cirno_nest.json
 ce7e7f10517021590c3771b5d4befb6f00232756 data/youkaishomecoming/tags/worldgen/biome/has_structure/hakurei_shrine.json
 225e21410327ce0281c1cf01daebadaa6b9c56ce data/youkaishomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
-2e0be640fa6c0bc654c400bc1aabf5396af82c33 data/youkaishomecoming/tags/worldgen/biome/spawns/cirno.json
 c3d4e55bd4ed5d178abb10df76626eccdab7c209 data/youkaishomecoming/tags/worldgen/biome/spawns/coffea.json
-6bb189b4d089245f10ed57568f46257be67f98b2 data/youkaishomecoming/tags/worldgen/biome/spawns/lamprey.json
+18af7656d96433e406a1aebdcb462fecebcf251e data/youkaishomecoming/tags/worldgen/biome/spawns/lamprey.json
 5f176659fa27569cc678ddae4a306c2055a89a16 data/youkaishomecoming/tags/worldgen/biome/spawns/mandrake.json
 835c35de6c87a4e2d9653dceb5578a32f082873f data/youkaishomecoming/tags/worldgen/biome/spawns/redbean.json
 e32aca61ae28f8eac0810d5b86f0fee1aec56d94 data/youkaishomecoming/tags/worldgen/biome/spawns/soybean.json
 7fd551cf71e3c6126b6085263f468d30914b2191 data/youkaishomecoming/tags/worldgen/biome/spawns/tea.json
+ec7bbb0c9b5fc5378f8716f54862806404f04360 data/youkaishomecoming/tags/worldgen/biome/spawns/tuna.json
 a2c17e9189d16e11b26ac0a0c170a0bc41bf1093 data/youkaishomecoming/tags/worldgen/biome/spawns/udumbara.json

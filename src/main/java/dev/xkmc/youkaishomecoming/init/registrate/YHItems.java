@@ -84,6 +84,7 @@ public class YHItems {
 	public static final CakeEntry RED_VELVET, TARTE_LUNE;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
+	public static final ItemEntry<MobBucketItem> TUNA_BUCKET;
 
 	static {
 
@@ -244,6 +245,13 @@ public class YHItems {
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(
 						YHEntities.LAMPREY, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
+						p.stacksTo(1).craftRemainder(Items.BUCKET)))
+				.defaultLang()
+				.register();
+
+		TUNA_BUCKET = YoukaisHomecoming.REGISTRATE
+				.item("tuna_bucket", p -> new MobBucketItem(
+						YHEntities.TUNA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();

@@ -56,7 +56,8 @@ public class YHRecipeGen {
 
 	public static void genRecipes(RegistrateRecipeProvider pvd) {
 		{
-			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET);
+			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET, 2);
+			foodCut(pvd, YHFood.RAW_TUNA, YHFood.SEARED_TUNA, YHFood.RAW_TUNA_SLICE, YHFood.SEARED_TUNA_SLICE, 3);
 			food(pvd, YHFood.FLESH, YHFood.COOKED_FLESH);
 			food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
@@ -1043,6 +1044,11 @@ public class YHRecipeGen {
 						.add(ForgeTags.RAW_FISHES_COD)
 						.save(pvd);
 
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
+						.result(YHSushi.TUNA_NIGIRI.item.get(), 2)
+						.add(YHTagGen.RAW_TUNA)
+						.save(pvd);
+
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.ROASTED_LAMPREY_FILLET.item.get())
 						.result(YHSushi.LORELEI_NIGIRI.item.get(), 2)
 						.add(YHTagGen.COOKED_EEL)
@@ -1055,7 +1061,7 @@ public class YHRecipeGen {
 						.add(Items.DRIED_KELP)
 						.save(pvd);
 
-				/*
+				/* TODO
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.FLESH.item.get())
 						.result(YHFood.FLESH_ROLL.item.get(), 2)
 						.add(YHTagGen.RAW_FLESH)
@@ -1084,21 +1090,11 @@ public class YHRecipeGen {
 						.add(Items.CARROT)
 						.save(pvd);
 
-				/*
-				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
-						.result(YHRolls.SALMON_MAKI)
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
+						.result(YHRolls.TEKKA_MAKI)
 						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.add(ForgeTags.RAW_FISHES_SALMON)
+						.add(YHTagGen.RAW_TUNA)
 						.save(pvd);
-
-				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, YHCrops.SOYBEAN.getSeed())
-						.result(YHRolls.NATTOU_MAKI)
-						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.add(YHCrops.SOYBEAN.getSeed())//TODO
-						.save(pvd);
-
-						TODO
-				 */
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
 						.result(YHRolls.SHINNKO_MAKI)
@@ -1300,10 +1296,10 @@ public class YHRecipeGen {
 
 	private static void foodCut(RegistrateRecipeProvider pvd,
 								YHFood raw, YHFood cooked,
-								YHFood raw_cut, YHFood cooked_cut) {
+								YHFood raw_cut, YHFood cooked_cut, int count) {
 		food(pvd, raw, cooked);
 		food(pvd, raw_cut, cooked_cut);
-		cutting(pvd, raw.item, raw_cut.item, 2);
+		cutting(pvd, raw.item, raw_cut.item, count);
 	}
 
 	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {

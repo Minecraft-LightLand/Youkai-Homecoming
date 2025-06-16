@@ -38,7 +38,6 @@ public class TableItemManager extends BaseTableItem {
 
 	public static final TableItemManager TABLE = new TableItemManager();
 
-	//TODO shokan
 	//TODO cali
 
 	public static final IngredientTableItem RICE = TABLE.with(fixed("rice").putDefault("rice"), ModItems.COOKED_RICE::get);
@@ -77,7 +76,7 @@ public class TableItemManager extends BaseTableItem {
 		SUSHI_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
 		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
 		SUSHI_TOP.addMapping("lamprey", YHTagGen.COOKED_EEL);
-		// tuna
+		SUSHI_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
 		// flesh
 		SUSHI_KELP.addMapping("kelp", Items.DRIED_KELP);
 		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR).seareable();
@@ -93,11 +92,11 @@ public class TableItemManager extends BaseTableItem {
 
 		VariantModelPart[] rolls = {HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT};
 		addBulk("salmon", "ingredient/salmon", ForgeTags.RAW_FISHES_SALMON, rolls);
+		addBulk("tuna", "ingredient/tuna", YHTagGen.RAW_TUNA, rolls);
 		addBulk("carrot", "ingredient/carrot", Items.CARROT, rolls);
 		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);
 		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHFood.TAMAGOYAKI_SLICE.item, rolls);
 		addBulk("cabbage", "ingredient/cabbage", ForgeTags.SALAD_INGREDIENTS_CABBAGE, rolls);
-		// tuna
 		// mayonnaise
 		// kappa
 	}

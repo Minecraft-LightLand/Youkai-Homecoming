@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.lampery;
+package dev.xkmc.youkaishomecoming.content.entity.animal.lampery;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

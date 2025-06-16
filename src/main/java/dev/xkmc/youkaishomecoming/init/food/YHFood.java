@@ -29,17 +29,36 @@ public enum YHFood {
 	),
 	RAW_LAMPREY_FILLET(FoodType.MEAT_SLICE, 1, 0.3f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
-			YHTagGen.RAW_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
+			YHTagGen.RAW_EEL, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.MEAT_SLICE, 6, 0.8f,
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
-			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
+			YHTagGen.COOKED_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
+	),
+
+	RAW_TUNA(FoodType.MEAT, 9, 0.3f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
+			YHTagGen.RAW_TUNA, DietTagGen.PROTEINS.tag
+	),
+	SEARED_TUNA(FoodType.MEAT, 12, 0.8f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),
+			YHTagGen.COOKED_TUNA, DietTagGen.PROTEINS.tag
+	),
+	RAW_TUNA_SLICE(FoodType.MEAT_SLICE, 4, 0.3f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
+			YHTagGen.RAW_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
+	),
+	SEARED_TUNA_SLICE(FoodType.MEAT_SLICE, 5, 0.8f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.4f),
+			YHTagGen.COOKED_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
-	ROE(FoodType.MEAT, 1, 0.6f, DietTagGen.PROTEINS.tag),
+	ROE(FoodType.MEAT, 1, 0.6f,
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
+			DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f),
 	TOFU(FoodType.SIMPLE, 4, 0.5f, DietTagGen.PROTEINS.tag),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f, DietTagGen.PROTEINS.tag),
@@ -197,8 +216,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 20) id = "food/mochi/";
-		if (ordinal() <= 14) id = "food/basic/";
+		if (ordinal() <= 24) id = "food/mochi/";
+		if (ordinal() <= 18) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {

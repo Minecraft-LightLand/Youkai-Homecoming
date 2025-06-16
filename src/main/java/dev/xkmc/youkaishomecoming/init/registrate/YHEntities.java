@@ -3,14 +3,16 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boss.*;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemDanmakuRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserEntity;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.ItemLaserRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.*;
-import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
-import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
@@ -33,6 +35,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 public class YHEntities {
 
 	public static final EntityEntry<LampreyEntity> LAMPREY;
+	public static final EntityEntry<TunaEntity> TUNA;
 	public static final EntityEntry<RumiaEntity> RUMIA;
 	public static final EntityEntry<ReimuEntity> REIMU;
 	public static final EntityEntry<CirnoEntity> CIRNO;
@@ -61,22 +64,33 @@ public class YHEntities {
 	static {
 
 		{
+			YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
 			LAMPREY = YoukaisHomecoming.REGISTRATE
 					.entity("lamprey", LampreyEntity::new, MobCategory.WATER_AMBIENT)
 					.properties(e -> e.sized(0.5F, 0.4F).clientTrackingRange(4))
 					.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
 					.attributes(LampreyEntity::createAttributes)
 					.renderer(() -> LampreyRenderer::new)
-					.spawnEgg(-3814463, -6646165).tab(YoukaisHomecoming.TAB.getKey()).build()
+					.spawnEgg(-3814463, -6646165).build()
 					.loot(EntityLootGen::lamprey).register();
 
+			TUNA = YoukaisHomecoming.REGISTRATE
+					.entity("tuna", TunaEntity::new, MobCategory.WATER_AMBIENT)
+					.properties(e -> e.sized(3F, 1.2F).clientTrackingRange(4))
+					.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
+					.attributes(TunaEntity::createAttributes)
+					.renderer(() -> TunaRenderer::new)
+					.spawnEgg(0x424F75, 0xE08E46).build()
+					.loot(EntityLootGen::tuna).register();
+
+			YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YHDanmaku.TAB.getKey());
 			RUMIA = YoukaisHomecoming.REGISTRATE
 					.entity("rumia", RumiaEntity::new, MobCategory.MONSTER)
 					.properties(e -> e.sized(0.4F, 1.7f).clientTrackingRange(10))
 					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RumiaEntity::checkRumiaSpawnRules)
 					.attributes(RumiaEntity::createAttributes)
 					.renderer(() -> RumiaRenderer::new)
-					.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x000000, 0x000000).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::rumia).register();
 
@@ -85,7 +99,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> ReimuRenderer::new)
-					.spawnEgg(0xa93937, 0xfaf5f2).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0xa93937, 0xfaf5f2).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::reimu).register();
 
@@ -95,7 +109,7 @@ public class YHEntities {
 					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CirnoEntity::checkCirnoSpawnRules)
 					.attributes(CirnoEntity::createAttributes)
 					.renderer(() -> CirnoRenderer::new)
-					.spawnEgg(0x5676af, 0xb6ecf1).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x5676af, 0xb6ecf1).build()
 					.loot(EntityLootGen::cirno).register();
 		}
 
@@ -105,7 +119,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x000000, 0x000000).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::noLoot).register();
 
@@ -114,7 +128,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x000000, 0x000000).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x000000, 0x000000).build()
 					.loot(EntityLootGen::noLoot).register();
 
 			YUKARI = YoukaisHomecoming.REGISTRATE
@@ -122,7 +136,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x4B1442, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x4B1442, 0xFFFFFF).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::yukari).register();
 
@@ -131,7 +145,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x4eaff9, 0xFFFFFF).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x4eaff9, 0xFFFFFF).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::sanae).register();
 
@@ -140,7 +154,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x52403C, 0xFAF2EF).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x52403C, 0xFAF2EF).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::marisa).register();
 
@@ -149,7 +163,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x88BA7F, 0x645856).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x88BA7F, 0x645856).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::koishi).register();
 
@@ -158,7 +172,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0xF3C1CC, 0x86B9F3).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0xF3C1CC, 0x86B9F3).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::remilia).register();
 
@@ -167,7 +181,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x9B6D79, 0xF4BDAE).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x9B6D79, 0xF4BDAE).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::mystia).register();
 
@@ -176,7 +190,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0xB14435, 0xFCF5D8).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0xB14435, 0xFCF5D8).build()
 					.loot(EntityLootGen::fairy).register();
 
 			LUNA = YoukaisHomecoming.REGISTRATE
@@ -184,7 +198,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0xFFF9DA, 0xA26B4F).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0xFFF9DA, 0xA26B4F).build()
 					.loot(EntityLootGen::fairy).register();
 
 			STAR = YoukaisHomecoming.REGISTRATE
@@ -192,7 +206,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(FairyEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x353D95, 0x482E25).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x353D95, 0x482E25).build()
 					.loot(EntityLootGen::fairy).register();
 
 			LARVA = YoukaisHomecoming.REGISTRATE
@@ -200,7 +214,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(LarvaEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x92B445, 0x93C9E9).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x92B445, 0x93C9E9).build()
 					.loot(EntityLootGen::fairy).register();
 
 			CLOWN = YoukaisHomecoming.REGISTRATE
@@ -208,7 +222,7 @@ public class YHEntities {
 					.properties(e -> e.sized(0.4F, 1.8f).clientTrackingRange(10))
 					.attributes(BossYoukaiEntity::createAttributes)
 					.renderer(() -> GeneralYoukaiRenderer::new)
-					.spawnEgg(0x008CCA, 0xCB0000).tab(YHDanmaku.TAB.getKey()).build()
+					.spawnEgg(0x008CCA, 0xCB0000).build()
 					.tag(YHTagGen.BOSS)
 					.loot(EntityLootGen::clownpiece).register();
 

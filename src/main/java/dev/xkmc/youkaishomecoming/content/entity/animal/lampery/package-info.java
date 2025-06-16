@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.entity.lampery;
+package dev.xkmc.youkaishomecoming.content.entity.animal.lampery;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

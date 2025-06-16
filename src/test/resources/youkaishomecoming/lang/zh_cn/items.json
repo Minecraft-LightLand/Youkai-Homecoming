@@ -135,7 +135,13 @@
 		"egg_nigiri": "玉子烧握寿司",
 		"lorelei_nigiri": "夜雀的手握",
 		"nattou": "纳豆",
-		"seagrass_gunkan": "海草军舰"
+		"seagrass_gunkan": "海草军舰",
+		"raw_tuna": "生金枪鱼排",
+		"raw_tuna_slice": "生金枪鱼排片",
+		"seared_tuna": "炙烤金枪鱼排",
+		"seared_tuna_slice": "炙烤金枪鱼片",
+		"tuna_bucket": "金枪鱼桶",
+		"tuna_nigiri": "金枪鱼握寿司"
 	},
 	"-cartesian": {
 		"entity": {
@@ -143,6 +149,7 @@
 			"list": [
 				{
 					"lamprey": "八目鳗",
+					"tuna": "金枪鱼",
 					"rumia": "露米娅",
 					"youkai": "妖怪",
 					"shrine_maiden": "博丽灵梦",
@@ -227,7 +234,8 @@
 					"rainbow_futomaki": "缤纷太卷",
 					"salmon_futomaki": "三文鱼太卷",
 					"shinnko_maki": "新香细卷",
-					"tamagoyaki": "玉子烧"
+					"tamagoyaki": "玉子烧",
+					"tekka_maki": "铁火细卷"
 				},
 				{
 					"*": "",

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.lampery;
+package dev.xkmc.youkaishomecoming.content.entity.animal.lampery;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.network.protocol.Packet;

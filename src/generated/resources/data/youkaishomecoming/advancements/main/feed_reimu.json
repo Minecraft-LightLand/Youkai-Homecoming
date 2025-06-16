@@ -631,6 +631,26 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:raw_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:raw_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:ristretto": {
       "conditions": {
         "item": {
@@ -726,6 +746,26 @@
         "item": {
           "items": [
             "youkaishomecoming:seafood_miso_soup"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:seared_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:seared_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna_slice"
           ]
         }
       },
@@ -1133,6 +1173,18 @@
     ],
     [
       "youkaishomecoming:roasted_lamprey_fillet"
+    ],
+    [
+      "youkaishomecoming:raw_tuna"
+    ],
+    [
+      "youkaishomecoming:seared_tuna"
+    ],
+    [
+      "youkaishomecoming:raw_tuna_slice"
+    ],
+    [
+      "youkaishomecoming:seared_tuna_slice"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"

@@ -2,11 +2,12 @@ package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.*;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.ClownEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
-import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -27,8 +28,10 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class EntityLootGen {
@@ -41,6 +44,20 @@ public class EntityLootGen {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(YHFood.RAW_LAMPREY.item.get()))
+						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
+						.apply(onFire()))
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(Items.BONE_MEAL))
+						.when(LootItemRandomChanceCondition.randomChance(0.05F)))
+		);
+	}
+
+	public static void tuna(RegistrateEntityLootTables pvd, EntityType<TunaEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.RAW_TUNA.item.get()))
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))
+						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire()))
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(Items.BONE_MEAL))

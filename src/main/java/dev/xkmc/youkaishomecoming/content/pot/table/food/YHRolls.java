@@ -15,15 +15,15 @@ import java.util.Locale;
 import java.util.function.Function;
 
 public enum YHRolls {
-	//TEKKA_MAKI(FoodType.MEAT, 10, 0.9f, FoodModelHelper::hosomaki, List.of()),
-	//NATTOU_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	SHINNKO_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	//KAPPA_MAKI(FoodType.SIMPLE, 10, 0.9f, FoodModelHelper::hosomaki, List.of()),
+	TEKKA_MAKI(FoodType.MEAT, 7, 1f, FoodModelHelper::futomaki, List.of(
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.2f)
+	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 
 	EGG_FUTOMAKI(FoodType.MEAT, 8, 0.8f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	SALMON_FUTOMAKI(FoodType.MEAT, 9, 1f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	RAINBOW_FUTOMAKI(FoodType.MEAT, 10, 1f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
-	//TEKKA_FUTOMAKI(FoodType.MEAT, 16, 0.9f, FoodModelHelper::futomaki, List.of()),
 
 	//CALIFORNIA_ROLL(FoodType.SIMPLE, 16, 0.9f, FoodModelHelper::cali, List.of()),
 	//ROE_CALIFORNIA_ROLL(FoodType.SIMPLE, 16, 0.9f, FoodModelHelper::cali, List.of()),
