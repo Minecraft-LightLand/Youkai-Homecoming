@@ -11,16 +11,11 @@
   },
   "second": [
     {
-      "tag": "forge:salad_ingredients/cabbage"
+      "item": "youkaishomecoming:tamagoyaki_slice"
     },
-    [
-      {
-        "item": "minecraft:carrot"
-      },
-      {
-        "item": "minecraft:beetroot"
-      }
-    ],
+    {
+      "item": "youkaishomecoming:tamagoyaki_slice"
+    },
     {
       "item": "youkaishomecoming:tamagoyaki_slice"
     }

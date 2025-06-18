@@ -18,14 +18,16 @@ public class TunaModel<T extends Entity> extends HierarchicalModel<T> {
 
 	public final ModelPart root;
 	public final ModelPart back;
+	public final ModelPart left;
+	public final ModelPart right;
 
 	public TunaModel(ModelPart root) {
 		this.root = root;
 		this.back = root.getChild("body_back");
 
-		//this.body = root.getChild("body");
-		//this.fin_left = this.body.getChild("fin_left");
-		//this.fin_right = this.body.getChild("fin_right");
+		var body = root.getChild("body");
+		this.left = body.getChild("fin_left");
+		this.right = body.getChild("fin_right");
 		//this.head = this.body.getChild("head");
 		//this.mouth = this.head.getChild("mouth");
 		//this.caudal_fin = this.body_back.getChild("caudal_fin");
@@ -36,12 +38,23 @@ public class TunaModel<T extends Entity> extends HierarchicalModel<T> {
 		return root;
 	}
 
-	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float tick, float pNetHeadYaw, float pHeadPitch) {
+		root.resetPose();
 		float f = 1.0F;
 		if (!pEntity.isInWater()) {
 			f = 1.5F;
 		}
-		this.back.yRot = -f * 0.45F * Mth.sin(0.6F * pAgeInTicks);
+		this.back.yRot = -f * 0.45F * Mth.sin(0.6F * tick);
+
+		float t = 0.9f * tick;
+		float x0 = 82.5f, z0 = 93.5f;
+		float sx = 2.5f, sz = 3.5f;
+
+		this.left.xRot = (x0 + f * sx * Mth.cos(t)) * Mth.DEG_TO_RAD;
+		this.right.xRot = (x0 + f * sx * Mth.cos(t)) * Mth.DEG_TO_RAD;
+		this.left.zRot = (z0 + f * sz * Mth.sin(t)) * Mth.DEG_TO_RAD;
+		this.right.zRot = -(z0 + f * sz * Mth.sin(t)) * Mth.DEG_TO_RAD;
+
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -57,7 +70,7 @@ public class TunaModel<T extends Entity> extends HierarchicalModel<T> {
 
 		PartDefinition fin_left = body.addOrReplaceChild("fin_left", CubeListBuilder.create().texOffs(28, 15).addBox(0.01F, -2.0F, 0.0F, 0.0F, 7.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(7.0F, 0.5F, -24.0F));
 
-		PartDefinition fin_right = body.addOrReplaceChild("fin_right", CubeListBuilder.create().texOffs(28, 8).addBox(0.0F, -2.0F, 0.0F, 0.0F, 7.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(-7.01F, 0.5F, -24.0F));
+		PartDefinition fin_right = body.addOrReplaceChild("fin_right", CubeListBuilder.create().texOffs(28, 8).addBox(0.01F, -2.0F, 0.0F, 0.0F, 7.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(-7.01F, 0.5F, -24.0F));
 
 		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(28, 0).addBox(-5.0F, -7.0F, -8.0F, 10.0F, 14.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.5F, -30.0F));
 

@@ -21,7 +21,7 @@ public enum YHRolls {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.2f)
 	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 
-	EGG_FUTOMAKI(FoodType.MEAT, 8, 0.8f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
+	EGG_FUTOMAKI(FoodType.MEAT, 8, 0.8f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	SALMON_FUTOMAKI(FoodType.MEAT, 9, 1f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	RAINBOW_FUTOMAKI(FoodType.MEAT, 10, 1f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 

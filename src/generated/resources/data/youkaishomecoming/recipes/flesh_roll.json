@@ -1,24 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "key": {
-    "F": {
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:sushi",
+  "input": [
+    {
       "tag": "youkaishomecoming:raw_flesh"
     },
-    "K": {
+    {
       "item": "minecraft:dried_kelp"
-    },
-    "R": {
-      "item": "farmersdelight:cooked_rice"
     }
-  },
-  "pattern": [
-    "FF",
-    "KR"
   ],
   "result": {
     "count": 2,
     "item": "youkaishomecoming:flesh_roll"
-  },
-  "show_notification": true
+  }
 }

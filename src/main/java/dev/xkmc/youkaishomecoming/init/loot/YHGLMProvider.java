@@ -33,11 +33,14 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 public class YHGLMProvider extends GlobalLootModifierProvider {
 
 	public static final RegistryEntry<Codec<ReplaceItemModifier>> REPLACE_ITEM;
+	public static final RegistryEntry<Codec<RemoveItemModifier>> REMOVE_ITEM;
 
 
 	static {
 		REPLACE_ITEM = YoukaisHomecoming.REGISTRATE.simple("replace_item",
 				ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, () -> ReplaceItemModifier.CODEC);
+		REMOVE_ITEM = YoukaisHomecoming.REGISTRATE.simple("remove_item",
+				ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, () -> RemoveItemModifier.CODEC);
 	}
 
 	public static void register() {
@@ -50,6 +53,14 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 
 	@Override
 	protected void start() {
+
+		add("tuna_hunt", new RemoveItemModifier(
+				LootItemEntityPropertyCondition.hasProperties(
+						LootContext.EntityTarget.KILLER,
+						EntityPredicate.Builder.entity().entityType(
+								EntityTypePredicate.of(YHEntities.TUNA.get()))).build()
+		));
+
 		add("fishing_lamprey", new ReplaceItemModifier(0.1f, YHFood.RAW_LAMPREY.item.asStack(),
 				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build()
 		));

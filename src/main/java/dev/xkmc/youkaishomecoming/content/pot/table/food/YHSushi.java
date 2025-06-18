@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.EffectEntry;
 import dev.xkmc.youkaishomecoming.init.food.FoodType;
 import net.minecraft.tags.TagKey;
@@ -27,13 +28,16 @@ public enum YHSushi implements ItemLike {
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	LORELEI_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
-			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 1800, 0, 1)),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TUNA_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	//TODO tuna nigiri
+
+	FLESH_ROLL(FoodType.FLESH, 3, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	;
 
 	public final ItemEntry<Item> item;

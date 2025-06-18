@@ -10,24 +10,23 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.AbstractSchoolingFish;
+import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class TunaEntity extends AbstractSchoolingFish {
+public class TunaEntity extends AbstractFish {
 
 	public TunaEntity(EntityType<? extends TunaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -59,19 +58,23 @@ public class TunaEntity extends AbstractSchoolingFish {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.7);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 1.5);
 		builder = builder.add(Attributes.MAX_HEALTH, 40);
 		builder = builder.add(Attributes.ARMOR, 4);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 8);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 0.7);
+		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 1.5);
 		return builder;
+	}
+
+	public float getSwimSpeed() {
+		return (float) getAttributeValue(ForgeMod.SWIM_SPEED.get()) * 0.02f;
 	}
 
 	@Override
 	protected void registerGoals() {
-		super.registerGoals();
-		goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, false));
+		goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5, false));
+		goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1, 3));
 		targetSelector.addGoal(0, new HurtByTargetGoal(this));
 		targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, WaterAnimal.class, true,
 				this::wouldAttack));
@@ -83,22 +86,21 @@ public class TunaEntity extends AbstractSchoolingFish {
 			if (fish.getType() == getType()) {
 				return false;
 			}
-			if (fish.getBoundingBox().getSize() > 0.2) {
-				return false;
-			}
+			var box = fish.getBoundingBox();
+			return box.getXsize() * box.getYsize() * box.getZsize() <= 0.2;
 		}
 		return false;
 	}
 
 	protected void handleAirSupply(int del) {
-		if (this.isAlive() && !this.isInWaterOrBubble()) {
-			this.setAirSupply(del - 1);
-			if (this.getAirSupply() <= -15) {
-				this.setAirSupply(0);
-				this.hurt(this.damageSources().drown(), 4);
+		if (isAlive() && !isInWaterOrBubble()) {
+			setAirSupply(del - 1);
+			if (getAirSupply() <= -15) {
+				setAirSupply(0);
+				hurt(damageSources().drown(), 4);
 			}
 		} else {
-			this.setAirSupply(60);
+			setAirSupply(60);
 		}
 
 	}
@@ -114,7 +116,7 @@ public class TunaEntity extends AbstractSchoolingFish {
 		boolean ans = super.doHurtTarget(e);
 		if (ans && !e.isAlive()) {
 			if (e instanceof WaterAnimal le) {
-				int time = (int) (le.getMaxHealth() * 20);
+				int time = (int) (le.getMaxHealth() * 200);
 				addEffect(new MobEffectInstance(MobEffects.SATURATION, time));
 			}
 			e.remove(Entity.RemovalReason.KILLED);
@@ -126,6 +128,20 @@ public class TunaEntity extends AbstractSchoolingFish {
 	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
 		if (!player.getAbilities().instabuild) return InteractionResult.PASS;
 		return super.mobInteract(player, hand);
+	}
+
+	public void travel(Vec3 vec) {
+		if (isEffectiveAi() && isInWater()) {
+			moveRelative(getSwimSpeed(), vec);
+			move(MoverType.SELF, getDeltaMovement());
+			setDeltaMovement(getDeltaMovement().scale(0.9D));
+			if (getTarget() == null) {
+				setDeltaMovement(getDeltaMovement().add(0.0D, -0.005D, 0.0D));
+			}
+		} else {
+			super.travel(vec);
+		}
+
 	}
 
 }

@@ -26,6 +26,7 @@ public enum FoodType {
 	MEAT(YHFoodItem::new, UnaryOperator.identity(), true, false, false),
 	MEAT_SLICE(YHFoodItem::new, UnaryOperator.identity(), true, true, false),
 	STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), false, true, false),
+	MEAT_STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), true, true, false),
 	BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false, false),
 	SAKE(YHDrinkItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false, true),
 	BOTTLE(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, false, true),

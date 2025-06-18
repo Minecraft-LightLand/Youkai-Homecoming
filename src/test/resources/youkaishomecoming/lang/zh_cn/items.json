@@ -2,6 +2,8 @@
 	"item.youkaishomecoming": {
 		"cooked_flesh": "烤%1$s",
 		"flesh": "%1$s",
+		"cooked_flesh_slice": "烤%1$s片",
+		"flesh_slice": "%1$s片",
 		"lamprey_bucket": "八目鳗桶",
 		"raw_lamprey": "生八目鳗",
 		"raw_lamprey_fillet": "生八目鳗片",
@@ -54,9 +56,9 @@
 		"coffee_berries": "咖啡果",
 		"green_coffee_bean": "生咖啡豆",
 		"coffee_mochi": "咖啡麻薯",
-		"roe": "三文鱼籽",
+		"roe": "鲑鱼籽",
 		"tobiko_gunkan": "鱼籽军舰",
-		"tuscan_salmon": "蔬菜奶油三文鱼",
+		"tuscan_salmon": "蔬菜奶油鲑鱼",
 		"bowl_of_cream": "碗装奶油",
 		"affogato": "阿芙佳朵",
 		"americano": "美式",
@@ -141,7 +143,9 @@
 		"seared_tuna": "炙烤金枪鱼排",
 		"seared_tuna_slice": "炙烤金枪鱼片",
 		"tuna_bucket": "金枪鱼桶",
-		"tuna_nigiri": "金枪鱼握寿司"
+		"tuna_nigiri": "金枪鱼握寿司",
+		"kabayaki": "蒲烧鳗鱼",
+		"lamprey_skewer": "蒲烧鳗鱼烤串"
 	},
 	"-cartesian": {
 		"entity": {
@@ -232,7 +236,7 @@
 				{
 					"egg_futomaki": "玉子太卷",
 					"rainbow_futomaki": "缤纷太卷",
-					"salmon_futomaki": "三文鱼太卷",
+					"salmon_futomaki": "鲑鱼太卷",
 					"shinnko_maki": "新香细卷",
 					"tamagoyaki": "玉子烧",
 					"tekka_maki": "铁火细卷"

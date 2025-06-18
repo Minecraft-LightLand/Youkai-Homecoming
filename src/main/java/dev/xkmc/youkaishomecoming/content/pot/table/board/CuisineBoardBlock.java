@@ -48,6 +48,11 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (level.getBlockEntity(pos) instanceof CuisineBoardBlockEntity be) {
+			if (player.isShiftKeyDown()) {
+				be.clear();
+				player.playSound(SoundEvents.COMPOSTER_FILL, 1, 1);
+				return InteractionResult.SUCCESS;
+			}
 			if (be.performToolAction(stack)) {
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
 					if (stack.isDamageableItem()) {

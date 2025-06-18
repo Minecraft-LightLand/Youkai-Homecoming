@@ -77,7 +77,7 @@ public class TableItemManager extends BaseTableItem {
 		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
 		SUSHI_TOP.addMapping("lamprey", YHTagGen.COOKED_EEL);
 		SUSHI_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
-		// flesh
+		SUSHI_TOP.addMapping("flesh", YHTagGen.RAW_FLESH);
 		SUSHI_KELP.addMapping("kelp", Items.DRIED_KELP);
 		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR).seareable();
 		SUSHI_SAUCE.addMapping("mayonnaise", YHItems.MAYONNAISE.item);
@@ -96,6 +96,7 @@ public class TableItemManager extends BaseTableItem {
 		addBulk("carrot", "ingredient/carrot", Items.CARROT, rolls);
 		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);
 		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHFood.TAMAGOYAKI_SLICE.item, rolls);
+		addBulk("imitation_crab", "ingredient/imitation_crab", YHFood.IMITATION_CRAB.item, rolls);
 		addBulk("cabbage", "ingredient/cabbage", ForgeTags.SALAD_INGREDIENTS_CABBAGE, rolls);
 		// mayonnaise
 		// kappa

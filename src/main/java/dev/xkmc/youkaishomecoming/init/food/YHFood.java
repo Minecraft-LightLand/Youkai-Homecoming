@@ -52,14 +52,12 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.4f),
 			YHTagGen.COOKED_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
-	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f,
 			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
 			DietTagGen.PROTEINS.tag),
-	BUTTER(FoodType.SIMPLE, 3, 0.3f),
+	BUTTER(FoodType.SIMPLE, 3, 0.3f, YHTagGen.BUTTER),
 	TOFU(FoodType.SIMPLE, 4, 0.5f, DietTagGen.PROTEINS.tag),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f, DietTagGen.PROTEINS.tag),
 	IMITATION_CRAB(FoodType.SIMPLE, 6, 1f, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
@@ -95,6 +93,11 @@ public enum YHFood {
 	TUTU_CONGEE(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.MEAT, 8, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
+	KABAYAKI(FoodType.MEAT_SLICE, 8, 0.8f, List.of(
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
+			DietTagGen.PROTEINS.tag
+	),
 	HIGI_CHOCOLATE(FoodType.SIMPLE, 4, 0.8f, List.of(
 			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1)
 	), DietTagGen.SUGARS.tag),
@@ -116,6 +119,12 @@ public enum YHFood {
 	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 
+	LAMPREY_SKEWER(FoodType.MEAT_STICK, 14, 0.8f, List.of(
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 4800, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 4800, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 4800, 0, 1)),
+			DietTagGen.PROTEINS.tag
+	),
 	// bottle
 	SHAVED_ICE_OVER_RICE(FoodType.BOTTLE, 10, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 
@@ -183,13 +192,15 @@ public enum YHFood {
 			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
 	// flesh
+
+	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	FLESH_SLICE(FoodType.FLESH_FAST, 1, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
+	COOKED_FLESH_SLICE(FoodType.FLESH_FAST, 2, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
-	FLESH_ROLL(FoodType.FLESH, 3, 0.8f,
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	CANNED_FLESH(FoodType.CAN_FLESH, 4, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
@@ -214,10 +225,10 @@ public enum YHFood {
 		String name = name().toLowerCase(Locale.ROOT);
 		String id = "food/simple/";
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
-		if (type == FoodType.STICK) id = "food/stick/";
+		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 24) id = "food/mochi/";
-		if (ordinal() <= 18) id = "food/basic/";
+		if (ordinal() <= 22) id = "food/mochi/";
+		if (ordinal() <= 16) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {

@@ -1,4 +1,7 @@
-
+2.4.5
+- Add Tuna
+- Add imitation crab, tamagoyaki, nattou, mayonnaise, lampery skewer
+- Add Cuisine Board, 5 kinds of rolls, and 4 kinds of sushi
 
 2.4.4
 - Use tag for ice in cold tofu recipe

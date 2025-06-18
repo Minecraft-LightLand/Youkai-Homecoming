@@ -124,4 +124,10 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity {
 		return model;
 	}
 
+	public void clear() {
+		model = null;
+		contents.clear();
+		notifyTile();
+	}
+
 }
