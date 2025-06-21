@@ -1,3 +1,9 @@
+2.4.6
+- Add Otoro
+- Add 5 California rolls
+- Add Otoro Nigiri, Nattou Gunkan
+- Cirno will not spawn naturally when there are other Cirno within 24 blocks
+
 2.4.5
 - Add Tuna
 - Add imitation crab, tamagoyaki, nattou, mayonnaise, lampery skewer

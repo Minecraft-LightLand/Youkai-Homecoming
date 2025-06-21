@@ -54,7 +54,7 @@ public enum YHFood {
 	),
 	OTORO(FoodType.MEAT, 9, 0.3f,
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.5f),
-			YHTagGen.RAW_TUNA, DietTagGen.PROTEINS.tag
+			DietTagGen.PROTEINS.tag
 	),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 

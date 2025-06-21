@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-21T21:55:57.669373	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-06-21T22:33:45.992327	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1249,7 +1249,7 @@ b0aa2983110a8e13363e47ecc13a92932b2560ab data/forge/tags/items/cooked_fishes/eel
 e069331e1bb2e22670844e0e1c0ab6fcb553f41d data/forge/tags/items/ice_cubes.json
 5c4135b878f03ac82d085d917ea7ef4be93285c1 data/forge/tags/items/matcha.json
 40343eaeafa358240c2ed0206ca567f00dd3f0a9 data/forge/tags/items/raw_fishes/eel.json
-95d48369e5e60cb74eab7a10dfcc984067a45175 data/forge/tags/items/raw_fishes/tuna.json
+9d074f45082e01605120096cafcce167b39f6833 data/forge/tags/items/raw_fishes/tuna.json
 9641d615dd8bedf9f27b09a145e6fb7e33a78a0b data/forge/tags/items/seeds.json
 85699b330dce1b71ee3d3b0cb7bf1b643ef69bba data/forge/tags/items/storage_blocks.json
 a2e0eeddc357d62a1261ae2b90b22f5618d15cd5 data/forge/tags/items/tea_leaves.json
@@ -2346,7 +2346,7 @@ ce36d62c76e27a6dce3167c59a97a3aa397fb27c data/youkaishomecoming/recipes/purple_s
 a428aad2094947f7decc05917d55f795065c950e data/youkaishomecoming/recipes/purple_star_danmaku_upgrade.json
 fe78fc9178f08e0b27bb091797c94516959db27b data/youkaishomecoming/recipes/rainbow_futomaki.json
 5f9a96b7f8458baa7e6c1aec6eeff3980da88254 data/youkaishomecoming/recipes/rainbow_futomaki_cutting.json
-f896c1153c1ec5ce0d1b49e7d2738135f4d63a38 data/youkaishomecoming/recipes/rainbow_roll.json
+4fa48171071b853a4f2493b23d0c127d567f05dc data/youkaishomecoming/recipes/rainbow_roll.json
 87de78a933a158361ae7e8e97eeff2bb78433d55 data/youkaishomecoming/recipes/rainbow_roll_cutting.json
 0f34323b6b31878e0cf4301cf5d31c9569f7f91f data/youkaishomecoming/recipes/raw_bun.json
 7b2ba5c0a9131ce0890c9ec43e6293da0369e71b data/youkaishomecoming/recipes/raw_flesh_feast.json

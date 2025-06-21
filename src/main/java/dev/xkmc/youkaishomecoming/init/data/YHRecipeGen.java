@@ -1184,7 +1184,7 @@ public class YHRecipeGen {
 						.addOrdered(YHFood.ROE.item)
 						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
 						.addUnordered(ForgeTags.RAW_FISHES_COD)
-						.addUnordered(YHFood.OTORO.item)
+						.addUnordered(YHTagGen.RAW_TUNA)
 						.save(pvd);
 
 			}
