@@ -1,3 +1,8 @@
+2.4.7
+- Now Rolls and Futomaki can be cut into 6 slices
+- Fix rolls model texture
+- Fix sushi / gunkan dupe
+
 2.4.6
 - Add Otoro
 - Add 5 California rolls

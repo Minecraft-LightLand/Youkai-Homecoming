@@ -4,6 +4,7 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
+import dev.xkmc.youkaishomecoming.content.pot.table.model.FoodModelHolder;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -21,14 +22,20 @@ public class FoodModelHelper {
 		return new FixedModelHolder(TableItemManager.MANAGER, YoukaisHomecoming.loc("roll/" + id));
 	}
 
+	private static FoodModelHolder roll(String model, String id) {
+		return new FoodModelHolder(TableItemManager.MANAGER,
+				YoukaisHomecoming.loc("roll/" + model),
+				YoukaisHomecoming.loc("roll/" + id));
+	}
+
 	public static FoodTableItemHolder futomaki(String id) {
-		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_FUTOMAKI, roll("futomaki")
+		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_FUTOMAKI, roll("futomaki", id)
 				.put("kelp", YoukaisHomecoming.loc("block/table/roll_kelp"))
 				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}
 
 	public static FoodTableItemHolder hosomaki(String id) {
-		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_HOSOMAKI, roll("hosomaki")
+		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_HOSOMAKI, roll("hosomaki", id)
 				.put("kelp", YoukaisHomecoming.loc("block/table/roll_kelp"))
 				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}

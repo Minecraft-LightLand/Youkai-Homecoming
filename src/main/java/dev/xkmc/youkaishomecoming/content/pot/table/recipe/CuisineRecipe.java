@@ -42,7 +42,7 @@ public abstract class CuisineRecipe<T extends CuisineRecipe<T>> extends BaseReci
 		}
 		var base = VariantTableItemBase.MAP.get(base());
 		if (base != null) {
-			return Optional.of(new VariantTableItem(base, list));
+			return Optional.of(new VariantTableItem(base, list, getResult().getCount()));
 		} else {
 			var item = ForgeRegistries.ITEMS.getValue(base());
 			if (item == null || item == Items.AIR) return Optional.empty();

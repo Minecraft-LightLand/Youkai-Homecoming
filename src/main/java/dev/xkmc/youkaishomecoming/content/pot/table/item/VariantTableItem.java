@@ -14,10 +14,23 @@ public class VariantTableItem implements TableItem {
 
 	private final VariantTableItemBase base;
 	private final List<ItemStack> contents;
+	private final int count;
 
-	public VariantTableItem(VariantTableItemBase base, List<ItemStack> contents) {
+	public VariantTableItem(VariantTableItemBase base, List<ItemStack> contents, int count) {
 		this.base = base;
 		this.contents = contents;
+		this.count = count;
+	}
+
+	public VariantTableItem(VariantTableItemBase base, List<ItemStack> contents) {
+		this(base, contents, 1);
+	}
+
+	@Override
+	public int getCost(TableItem prev) {
+		if (prev instanceof TableItemManager)
+			return count;
+		return 1;
 	}
 
 	@Override
