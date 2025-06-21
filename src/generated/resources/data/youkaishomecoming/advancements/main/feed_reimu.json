@@ -621,6 +621,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:nattou_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou_gunkan"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:oily_bean_curd": {
       "conditions": {
         "item": {
@@ -1549,6 +1559,9 @@
     ],
     [
       "youkaishomecoming:seagrass_gunkan"
+    ],
+    [
+      "youkaishomecoming:nattou_gunkan"
     ],
     [
       "youkaishomecoming:egg_nigiri"

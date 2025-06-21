@@ -7,6 +7,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.model.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -129,6 +130,12 @@ public class TableItemManager extends BaseTableItem {
 		if (ans.isPresent()) return ans;
 		var preset = FoodModelHelper.find(stack);
 		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
+		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
+		for (var e : rec) {
+			if (ItemStack.isSameItemSameTags(e.getResult(), stack)) {
+				return e.recreate();
+			}
+		}
 		return Optional.empty();
 	}
 

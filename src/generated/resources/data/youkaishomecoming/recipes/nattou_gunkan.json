@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:gunkan",
+  "input": [
+    {
+      "item": "youkaishomecoming:nattou"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "youkaishomecoming:nattou_gunkan"
+  }
+}

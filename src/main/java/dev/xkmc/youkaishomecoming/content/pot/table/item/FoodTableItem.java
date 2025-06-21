@@ -31,7 +31,7 @@ public class FoodTableItem implements TableItem {
 		baseId = this.current.getItemHolder().unwrapKey().orElseThrow().location();
 	}
 
-	private FoodTableItem(FoodTableItemBase base, ItemStack current, FoodTableItemHolder holder, List<ItemStack> contents) {
+	public FoodTableItem(FoodTableItemBase base, ItemStack current, FoodTableItemHolder holder, List<ItemStack> contents) {
 		this.base = base;
 		this.contents = contents;
 		this.current = current;

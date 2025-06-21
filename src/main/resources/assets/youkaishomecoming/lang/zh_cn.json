@@ -168,6 +168,9 @@
   "item.youkaishomecoming.tuna_nigiri": "金枪鱼握寿司",
   "item.youkaishomecoming.kabayaki": "蒲烧鳗鱼",
   "item.youkaishomecoming.lamprey_skewer": "蒲烧鳗鱼烤串",
+  "item.youkaishomecoming.otoro": "金枪鱼大腹",
+  "item.youkaishomecoming.otoro_nigiri": "金枪鱼大腹握寿司",
+  "item.youkaishomecoming.nattou_gunkan": "纳豆军舰",
   "entity.youkaishomecoming.lamprey": "八目鳗",
   "item.youkaishomecoming.lamprey_spawn_egg": "八目鳗生成蛋",
   "entity.youkaishomecoming.tuna": "金枪鱼",
@@ -768,7 +771,5 @@
   "advancements.youkaishomecoming.advancements.main.passed_out.description": "不断喝酒直到醉酒效果堆叠到最高级",
   "advancements.youkaishomecoming.advancements.main.passed_out.title": "烂醉如泥",
   "advancements.youkaishomecoming.advancements.main.feed_reimu.description": "投喂灵梦妖怪归家中所有正常的食物，灵梦会给你她的大蝴蝶结作为谢礼",
-  "advancements.youkaishomecoming.advancements.main.feed_reimu.title": "满足的灵梦",
-  "item.youkaishomecoming.otoro": "Otoro",
-  "item.youkaishomecoming.otoro_nigiri": "Otoro Nigiri"
+  "advancements.youkaishomecoming.advancements.main.feed_reimu.title": "满足的灵梦"
 }

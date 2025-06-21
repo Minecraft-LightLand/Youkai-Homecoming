@@ -751,6 +751,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:nattou_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:oily_bean_curd": {
       "conditions": {
         "item": {
@@ -1792,6 +1802,9 @@
     ],
     [
       "youkaishomecoming:seagrass_gunkan"
+    ],
+    [
+      "youkaishomecoming:nattou_gunkan"
     ],
     [
       "youkaishomecoming:egg_nigiri"

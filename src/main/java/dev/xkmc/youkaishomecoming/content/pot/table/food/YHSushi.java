@@ -23,8 +23,10 @@ public enum YHSushi implements ItemLike {
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	SEAGRASS_GUNKAN(FoodType.FAST, 6, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
+	NATTOU_GUNKAN(FoodType.FAST, 7, 0.6f, List.of(),
+			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	//shirako
-	EGG_NIGIRI(FoodType.MEAT_SLICE, 7, 0.6f, List.of(),
+	EGG_NIGIRI(FoodType.FAST, 7, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	LORELEI_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
@@ -34,7 +36,7 @@ public enum YHSushi implements ItemLike {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	OTORO_NIGIRI(FoodType.MEAT_SLICE, 8, 1f, List.of(
+	OTORO_NIGIRI(FoodType.MEAT_SLICE, 10, 1f, List.of(
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 300, 0, 0.5f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),

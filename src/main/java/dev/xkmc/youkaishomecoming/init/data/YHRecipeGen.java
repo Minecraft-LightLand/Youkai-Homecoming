@@ -1089,6 +1089,11 @@ public class YHRecipeGen {
 						.add(YHFood.ROE.item.get())
 						.save(pvd);
 
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_GUNKAN)::unlockedBy, YHFood.NATTOU.item.get())
+						.result(YHSushi.NATTOU_GUNKAN, 2)
+						.add(YHFood.NATTOU.item.get())
+						.save(pvd);
+
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_GUNKAN)::unlockedBy, Items.SEAGRASS)
 						.result(YHSushi.SEAGRASS_GUNKAN, 2)
 						.add(Items.SEAGRASS)
