@@ -651,6 +651,26 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:otoro": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:otoro_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro_nigiri"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:oyaki": {
       "conditions": {
         "item": {
@@ -1357,6 +1377,9 @@
       "youkaishomecoming:seared_tuna_slice"
     ],
     [
+      "youkaishomecoming:otoro"
+    ],
+    [
       "youkaishomecoming:cooked_mandrake_root"
     ],
     [
@@ -1535,6 +1558,9 @@
     ],
     [
       "youkaishomecoming:tuna_nigiri"
+    ],
+    [
+      "youkaishomecoming:otoro_nigiri"
     ],
     [
       "youkaishomecoming:shinnko_maki_slice"

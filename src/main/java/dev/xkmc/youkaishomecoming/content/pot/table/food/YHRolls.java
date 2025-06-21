@@ -29,8 +29,10 @@ public enum YHRolls {
 
 	CALIFORNIA_ROLL(FoodType.SIMPLE, 8, 0.9f, FoodModelHelper::cali, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	ROE_CALIFORNIA_ROLL(FoodType.SIMPLE, 10, 1f, null, List.of(),
-			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	ROE_CALIFORNIA_ROLL(FoodType.SIMPLE, 10, 1f, null, List.of(
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.35f),
+			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SALMON_LOVER_ROLL(FoodType.SIMPLE, 12, 1f, null, List.of(
 			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.35f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1800, 0, 1)
@@ -44,12 +46,7 @@ public enum YHRolls {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.35f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1800, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	/*
-	ROE_CALIFORNIA_ROLL(FoodType.SIMPLE, 10, 1, FoodModelHelper::cali, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
-			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
-	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	 */;
+	;
 
 	@Nullable
 	public final FoodTableItemHolder model;

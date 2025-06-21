@@ -55,6 +55,35 @@
         }
       ],
       "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "killer",
+          "predicate": {
+            "equipment": {
+              "mainhand": {
+                "tag": "farmersdelight:tools/knives"
+              }
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "youkaishomecoming:otoro"
+        }
+      ],
+      "functions": [
+        {
+          "count": 0.5,
+          "function": "minecraft:looting_enchant"
+        }
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "youkaishomecoming:entities/tuna"

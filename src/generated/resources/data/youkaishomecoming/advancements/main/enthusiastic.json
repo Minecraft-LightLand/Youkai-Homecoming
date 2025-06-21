@@ -781,6 +781,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:otoro": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:otoro_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro_nigiri"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:oyaki": {
       "conditions": {
         "item": {
@@ -1564,6 +1584,9 @@
       "youkaishomecoming:seared_tuna_slice"
     ],
     [
+      "youkaishomecoming:otoro"
+    ],
+    [
       "youkaishomecoming:cooked_mandrake_root"
     ],
     [
@@ -1778,6 +1801,9 @@
     ],
     [
       "youkaishomecoming:tuna_nigiri"
+    ],
+    [
+      "youkaishomecoming:otoro_nigiri"
     ],
     [
       "youkaishomecoming:flesh_roll"

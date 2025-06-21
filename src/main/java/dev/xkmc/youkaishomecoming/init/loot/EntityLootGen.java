@@ -14,10 +14,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.advancements.critereon.DamageSourcePredicate;
-import net.minecraft.advancements.critereon.EntityFlagsPredicate;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.TagPredicate;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
@@ -33,6 +30,7 @@ import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class EntityLootGen {
 
@@ -62,7 +60,16 @@ public class EntityLootGen {
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(Items.BONE_MEAL))
 						.when(LootItemRandomChanceCondition.randomChance(0.05F)))
-		);
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.OTORO.item.get()))
+						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
+						.when(LootItemEntityPropertyCondition.hasProperties(
+								LootContext.EntityTarget.KILLER,
+								EntityPredicate.Builder.entity().equipment(
+										EntityEquipmentPredicate.Builder.equipment().mainhand(
+														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+												.build()).build()))
+				));
 	}
 
 	public static void rumia(RegistrateEntityLootTables pvd, EntityType<RumiaEntity> type) {

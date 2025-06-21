@@ -145,7 +145,9 @@
 		"tuna_bucket": "金枪鱼桶",
 		"tuna_nigiri": "金枪鱼握寿司",
 		"kabayaki": "蒲烧鳗鱼",
-		"lamprey_skewer": "蒲烧鳗鱼烤串"
+		"lamprey_skewer": "蒲烧鳗鱼烤串",
+		"otoro": "金枪鱼大腹",
+		"otoro_nigiri": "金枪鱼大腹握寿司"
 	},
 	"-cartesian": {
 		"entity": {
@@ -213,7 +215,6 @@
 					"tea_mocha": "摩卡茶",
 					"green_water": "青汁",
 					"scarlet_tea": "红魔馆红茶",
-
 					"daiginjo": "大吟酿",
 					"dassai": "水獭祭",
 					"full_moons_eve": "十四夜",
@@ -239,7 +240,12 @@
 					"salmon_futomaki": "鲑鱼太卷",
 					"shinnko_maki": "新香细卷",
 					"tamagoyaki": "玉子烧",
-					"tekka_maki": "铁火细卷"
+					"tekka_maki": "铁火卷",
+					"california_roll": "加州卷",
+					"rainbow_roll": "彩虹加州卷",
+					"roe_california_roll": "鱼卵加州卷",
+					"salmon_lover_roll": "三文鱼加州卷",
+					"volcano_roll": "铁火加州卷"
 				},
 				{
 					"*": "",

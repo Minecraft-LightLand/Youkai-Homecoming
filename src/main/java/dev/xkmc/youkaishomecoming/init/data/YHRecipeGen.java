@@ -1057,6 +1057,11 @@ public class YHRecipeGen {
 						.add(YHTagGen.RAW_TUNA)
 						.save(pvd);
 
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.OTORO.item.get())
+						.result(YHSushi.OTORO_NIGIRI.item.get(), 2)
+						.add(YHFood.OTORO.item)
+						.save(pvd);
+
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.ROASTED_LAMPREY_FILLET.item.get())
 						.result(YHSushi.LORELEI_NIGIRI.item.get(), 2)
 						.add(YHFood.KABAYAKI.item.get())
@@ -1165,8 +1170,16 @@ public class YHRecipeGen {
 						.result(YHRolls.VOLCANO_ROLL)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
 						.addUnordered(YHTagGen.RAW_TUNA)
+						.addUnordered(YHFood.OTORO.item)
 						.addUnordered(YHTagGen.RAW_TUNA)
-						.addUnordered(YHTagGen.RAW_TUNA)
+						.save(pvd);
+
+				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
+						.result(YHRolls.RAINBOW_ROLL)
+						.addOrdered(YHFood.ROE.item)
+						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.addUnordered(ForgeTags.RAW_FISHES_COD)
+						.addUnordered(YHFood.OTORO.item)
 						.save(pvd);
 
 			}

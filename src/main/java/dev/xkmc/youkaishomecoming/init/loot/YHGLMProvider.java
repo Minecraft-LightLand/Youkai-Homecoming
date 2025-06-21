@@ -139,7 +139,7 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 						EntityTypePredicate.of(tag))).build();
 	}
 
-	private static LootItemCondition killedByKnife() {
+	public static LootItemCondition killedByKnife() {
 		return LootItemEntityPropertyCondition.hasProperties(
 				LootContext.EntityTarget.KILLER,
 				EntityPredicate.Builder.entity().equipment(

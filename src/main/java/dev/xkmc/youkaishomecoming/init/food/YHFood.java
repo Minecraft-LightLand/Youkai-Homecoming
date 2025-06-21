@@ -52,6 +52,10 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.4f),
 			YHTagGen.COOKED_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
+	OTORO(FoodType.MEAT, 9, 0.3f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.5f),
+			YHTagGen.RAW_TUNA, DietTagGen.PROTEINS.tag
+	),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f,
@@ -227,8 +231,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 22) id = "food/mochi/";
-		if (ordinal() <= 16) id = "food/basic/";
+		if (ordinal() <= 23) id = "food/mochi/";
+		if (ordinal() <= 17) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {

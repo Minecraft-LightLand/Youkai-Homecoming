@@ -34,6 +34,10 @@ public enum YHSushi implements ItemLike {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	OTORO_NIGIRI(FoodType.MEAT_SLICE, 8, 1f, List.of(
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 300, 0, 0.5f),
+			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 
 	FLESH_ROLL(FoodType.FLESH, 3, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
