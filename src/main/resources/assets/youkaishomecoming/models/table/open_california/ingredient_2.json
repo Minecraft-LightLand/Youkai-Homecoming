@@ -6,9 +6,8 @@
 	"elements": [
 		{
 			"name": "ingredient_2",
-			"from": [2.5, 2, 5.75],
-			"to": [13.5, 3, 6.75],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 2, 5.75]},
+			"from": [2.5, 2, 6],
+			"to": [13.5, 3, 7],
 			"faces": {
 				"north": {"uv": [0, 0, 11, 1], "texture": "#3"},
 				"east": {"uv": [0, 0, 1, 1], "texture": "#3"},

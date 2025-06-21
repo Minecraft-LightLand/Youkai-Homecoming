@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tekka_maki"
+    }
+  ],
+  "result": [
+    {
+      "count": 3,
+      "item": "youkaishomecoming:tekka_maki_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

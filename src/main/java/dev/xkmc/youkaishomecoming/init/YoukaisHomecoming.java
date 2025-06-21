@@ -92,7 +92,6 @@ public class YoukaisHomecoming {
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaisHomecoming() {
-		YHItems.register();
 		YHBlocks.register();
 		YHEffects.register();
 		YHDanmaku.register();

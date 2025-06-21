@@ -4,7 +4,10 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "tag": "forge:milk/milk_bottle"
+      "item": "youkaishomecoming:bowl_of_cream"
+    },
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
     }
   ],
   "result": {

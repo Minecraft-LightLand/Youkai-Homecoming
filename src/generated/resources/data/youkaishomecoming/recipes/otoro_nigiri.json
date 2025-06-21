@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:sushi",
+  "input": [
+    {
+      "item": "youkaishomecoming:otoro"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "youkaishomecoming:otoro_nigiri"
+  }
+}

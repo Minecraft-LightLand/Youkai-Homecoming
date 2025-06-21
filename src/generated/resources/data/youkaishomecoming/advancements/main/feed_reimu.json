@@ -111,6 +111,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:candy_apple": {
       "conditions": {
         "item": {
@@ -226,6 +236,26 @@
         "item": {
           "items": [
             "youkaishomecoming:dried_fish"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:egg_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:egg_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:egg_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:egg_nigiri"
           ]
         }
       },
@@ -351,6 +381,26 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:imitation_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:imitation_crab"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:kabayaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kabayaki"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:kappa_village": {
       "conditions": {
         "item": {
@@ -391,6 +441,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:lamprey_skewer": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:lamprey_skewer"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:latte": {
       "conditions": {
         "item": {
@@ -416,6 +476,16 @@
         "item": {
           "items": [
             "youkaishomecoming:longevity_noodles"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:lorelei_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:lorelei_nigiri"
           ]
         }
       },
@@ -541,6 +611,26 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:nattou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:nattou_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou_gunkan"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:oily_bean_curd": {
       "conditions": {
         "item": {
@@ -566,6 +656,26 @@
         "item": {
           "items": [
             "youkaishomecoming:oolong_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:otoro": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:otoro_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro_nigiri"
           ]
         }
       },
@@ -611,6 +721,46 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:rainbow_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rainbow_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:rainbow_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rainbow_roll_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:raw_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:raw_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:ristretto": {
       "conditions": {
         "item": {
@@ -651,6 +801,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:roe_california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:roe_california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:saidi_tea": {
       "conditions": {
         "item": {
@@ -681,6 +841,26 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:salmon_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:salmon_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:salmon_lover_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:salmon_lover_roll_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:sauce_grilled_fish": {
       "conditions": {
         "item": {
@@ -706,6 +886,36 @@
         "item": {
           "items": [
             "youkaishomecoming:seafood_miso_soup"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:seagrass_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seagrass_gunkan"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:seared_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:seared_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna_slice"
           ]
         }
       },
@@ -746,6 +956,16 @@
         "item": {
           "items": [
             "youkaishomecoming:shaved_ice_over_rice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:shinnko_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:shinnko_maki_slice"
           ]
         }
       },
@@ -811,11 +1031,41 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:tamagoyaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tamagoyaki"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:tamagoyaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tamagoyaki_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:tea_mocha": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:tea_mocha"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:tekka_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tekka_maki_slice"
           ]
         }
       },
@@ -881,6 +1131,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:tuna_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tuna_nigiri"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:tuscan_salmon": {
       "conditions": {
         "item": {
@@ -906,6 +1166,16 @@
         "item": {
           "items": [
             "youkaishomecoming:udumbara_cake"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:volcano_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:volcano_roll_slice"
           ]
         }
       },
@@ -1105,6 +1375,21 @@
       "youkaishomecoming:roasted_lamprey_fillet"
     ],
     [
+      "youkaishomecoming:raw_tuna"
+    ],
+    [
+      "youkaishomecoming:seared_tuna"
+    ],
+    [
+      "youkaishomecoming:raw_tuna_slice"
+    ],
+    [
+      "youkaishomecoming:seared_tuna_slice"
+    ],
+    [
+      "youkaishomecoming:otoro"
+    ],
+    [
       "youkaishomecoming:cooked_mandrake_root"
     ],
     [
@@ -1115,6 +1400,18 @@
     ],
     [
       "youkaishomecoming:oily_bean_curd"
+    ],
+    [
+      "youkaishomecoming:imitation_crab"
+    ],
+    [
+      "youkaishomecoming:tamagoyaki"
+    ],
+    [
+      "youkaishomecoming:tamagoyaki_slice"
+    ],
+    [
+      "youkaishomecoming:nattou"
     ],
     [
       "youkaishomecoming:mochi"
@@ -1162,9 +1459,6 @@
       "youkaishomecoming:pork_rice_ball"
     ],
     [
-      "youkaishomecoming:tobiko_gunkan"
-    ],
-    [
       "youkaishomecoming:tutu_congee"
     ],
     [
@@ -1172,6 +1466,9 @@
     ],
     [
       "youkaishomecoming:doughnut"
+    ],
+    [
+      "youkaishomecoming:kabayaki"
     ],
     [
       "youkaishomecoming:higi_chocolate"
@@ -1199,6 +1496,9 @@
     ],
     [
       "youkaishomecoming:assorted_dango"
+    ],
+    [
+      "youkaishomecoming:lamprey_skewer"
     ],
     [
       "youkaishomecoming:shaved_ice_over_rice"
@@ -1253,6 +1553,57 @@
     ],
     [
       "youkaishomecoming:bowl_of_heart_throbbing_surprise"
+    ],
+    [
+      "youkaishomecoming:tobiko_gunkan"
+    ],
+    [
+      "youkaishomecoming:seagrass_gunkan"
+    ],
+    [
+      "youkaishomecoming:nattou_gunkan"
+    ],
+    [
+      "youkaishomecoming:egg_nigiri"
+    ],
+    [
+      "youkaishomecoming:lorelei_nigiri"
+    ],
+    [
+      "youkaishomecoming:tuna_nigiri"
+    ],
+    [
+      "youkaishomecoming:otoro_nigiri"
+    ],
+    [
+      "youkaishomecoming:shinnko_maki_slice"
+    ],
+    [
+      "youkaishomecoming:tekka_maki_slice"
+    ],
+    [
+      "youkaishomecoming:egg_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:salmon_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:rainbow_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:california_roll_slice"
+    ],
+    [
+      "youkaishomecoming:roe_california_roll_slice"
+    ],
+    [
+      "youkaishomecoming:salmon_lover_roll_slice"
+    ],
+    [
+      "youkaishomecoming:volcano_roll_slice"
+    ],
+    [
+      "youkaishomecoming:rainbow_roll_slice"
     ]
   ],
   "rewards": {

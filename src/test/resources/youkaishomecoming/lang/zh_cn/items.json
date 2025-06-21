@@ -2,6 +2,8 @@
 	"item.youkaishomecoming": {
 		"cooked_flesh": "烤%1$s",
 		"flesh": "%1$s",
+		"cooked_flesh_slice": "烤%1$s片",
+		"flesh_slice": "%1$s片",
 		"lamprey_bucket": "八目鳗桶",
 		"raw_lamprey": "生八目鳗",
 		"raw_lamprey_fillet": "生八目鳗片",
@@ -54,9 +56,9 @@
 		"coffee_berries": "咖啡果",
 		"green_coffee_bean": "生咖啡豆",
 		"coffee_mochi": "咖啡麻薯",
-		"roe": "三文鱼籽",
+		"roe": "鲑鱼籽",
 		"tobiko_gunkan": "鱼籽军舰",
-		"tuscan_salmon": "蔬菜奶油三文鱼",
+		"tuscan_salmon": "蔬菜奶油鲑鱼",
 		"bowl_of_cream": "碗装奶油",
 		"affogato": "阿芙佳朵",
 		"americano": "美式",
@@ -130,7 +132,23 @@
 		"raw_oyaki": "生御烧",
 		"sake_bottle": "酒瓶",
 		"spell_remilia": "红符「绯红之主」",
-		"spell_clownpiece": "狱符「星星与条纹」"
+		"spell_clownpiece": "狱符「星星与条纹」",
+		"imitation_crab": "蟹肉棒",
+		"egg_nigiri": "玉子烧握寿司",
+		"lorelei_nigiri": "夜雀的手握",
+		"nattou": "纳豆",
+		"seagrass_gunkan": "海草军舰",
+		"raw_tuna": "生金枪鱼排",
+		"raw_tuna_slice": "生金枪鱼排片",
+		"seared_tuna": "炙烤金枪鱼排",
+		"seared_tuna_slice": "炙烤金枪鱼片",
+		"tuna_bucket": "金枪鱼桶",
+		"tuna_nigiri": "金枪鱼握寿司",
+		"kabayaki": "蒲烧鳗鱼",
+		"lamprey_skewer": "蒲烧鳗鱼烤串",
+		"otoro": "金枪鱼大腹",
+		"otoro_nigiri": "金枪鱼大腹握寿司",
+		"nattou_gunkan": "纳豆军舰"
 	},
 	"-cartesian": {
 		"entity": {
@@ -138,6 +156,7 @@
 			"list": [
 				{
 					"lamprey": "八目鳗",
+					"tuna": "金枪鱼",
 					"rumia": "露米娅",
 					"youkai": "妖怪",
 					"shrine_maiden": "博丽灵梦",
@@ -168,7 +187,8 @@
 			"list": [
 				{
 					"soy_sauce": "酱油",
-					"blood": "血液"
+					"blood": "血液",
+					"mayonnaise": "蛋黄酱"
 				},
 				{
 					"fluid.youkaishomecoming.*": "",
@@ -196,7 +216,6 @@
 					"tea_mocha": "摩卡茶",
 					"green_water": "青汁",
 					"scarlet_tea": "红魔馆红茶",
-
 					"daiginjo": "大吟酿",
 					"dassai": "水獭祭",
 					"full_moons_eve": "十四夜",
@@ -210,6 +229,28 @@
 					"kappa_village": "河童之里",
 					"kiku": "菊",
 					"suigei": "鲸息"
+				}
+			]
+		},
+		"slicable": {
+			"path": "item.youkaishomecoming",
+			"list": [
+				{
+					"egg_futomaki": "玉子太卷",
+					"rainbow_futomaki": "缤纷太卷",
+					"salmon_futomaki": "鲑鱼太卷",
+					"shinnko_maki": "新香细卷",
+					"tamagoyaki": "玉子烧",
+					"tekka_maki": "铁火卷",
+					"california_roll": "加州卷",
+					"rainbow_roll": "彩虹加州卷",
+					"roe_california_roll": "鱼卵加州卷",
+					"salmon_lover_roll": "若鹭卷",
+					"volcano_roll": "铁火加州卷"
+				},
+				{
+					"*": "",
+					"*_slice": "切片"
 				}
 			]
 		},

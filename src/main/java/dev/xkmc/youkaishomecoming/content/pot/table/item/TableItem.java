@@ -26,4 +26,8 @@ public interface TableItem {
 
 	}
 
+	default int getCost(TableItem prev) {
+		return 1;
+	}
+
 }

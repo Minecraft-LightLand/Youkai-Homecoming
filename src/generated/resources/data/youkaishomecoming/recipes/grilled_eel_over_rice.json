@@ -7,10 +7,10 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "tag": "youkaishomecoming:raw_eel"
+      "tag": "forge:raw_fishes/eel"
     },
     {
-      "tag": "youkaishomecoming:raw_eel"
+      "tag": "forge:raw_fishes/eel"
     },
     {
       "tag": "forge:grain/rice"

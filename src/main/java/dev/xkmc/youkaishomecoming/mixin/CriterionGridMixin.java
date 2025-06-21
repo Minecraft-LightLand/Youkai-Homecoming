@@ -11,17 +11,17 @@ import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Pseudo
-@Mixin(targets = "betteradvancements.util.CriterionGrid")
+@Mixin(targets = "betteradvancements.common.util.CriterionGrid")
 public class CriterionGridMixin {
 
 	@WrapOperation(remap = false, method = "findOptimalCriterionGrid", at = @At(value = "INVOKE", remap = true,
-			target = "Lnet/minecraft/network/chat/Component;literal(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;"))
-	private static MutableComponent youkaishomecoming$useTranslatable(String text, Operation<MutableComponent> original) {
-		if (text.startsWith("youkaishomecoming:")) {
-			var item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(text));
+			target = "Lnet/minecraft/network/chat/Component;translatableWithFallback(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;"))
+	private static MutableComponent youkaishomecoming$useTranslatable(String key, String alt, Operation<MutableComponent> original) {
+		if (alt.startsWith("youkaishomecoming:")) {
+			var item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(alt));
 			if (item != null) return Component.translatable(item.getDescriptionId());
 		}
-		return original.call(text);
+		return original.call(key, alt);
 	}
 
 }

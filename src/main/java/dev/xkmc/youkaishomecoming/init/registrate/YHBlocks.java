@@ -287,6 +287,8 @@ public class YHBlocks {
 			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
 		}
 
+		YHItems.register();
+
 		{
 			DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
 							BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)

@@ -20,6 +20,7 @@ import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FairyIceItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.FrozenFrogItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
@@ -67,7 +68,7 @@ public class YHItems {
 	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 
-	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE;
+	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
 	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> CLAY_SAUCER,
 			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
@@ -83,55 +84,9 @@ public class YHItems {
 	public static final CakeEntry RED_VELVET, TARTE_LUNE;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
+	public static final ItemEntry<MobBucketItem> TUNA_BUCKET;
 
 	static {
-
-		// gears
-		{
-			STRAW_HAT = YoukaisHomecoming.REGISTRATE
-					.item("straw_hat", p -> new StrawHatItem(p.rarity(Rarity.UNCOMMON)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.register();
-
-			SUWAKO_HAT = YoukaisHomecoming.REGISTRATE
-					.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
-					.register();
-
-			KOISHI_HAT = YoukaisHomecoming.REGISTRATE
-					.item("koishi_hat", p -> new KoishiHatItem(p.rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
-					.register();
-
-			RUMIA_HAIRBAND = YoukaisHomecoming.REGISTRATE
-					.item("rumia_hairband", p -> new RumiaHairbandItem(p.rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
-					.register();
-
-			REIMU_HAIRBAND = YoukaisHomecoming.REGISTRATE
-					.item("reimu_hairband", p -> new ReimuHairbandItem(p.rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
-					.register();
-
-			CIRNO_HAIRBAND = YoukaisHomecoming.REGISTRATE
-					.item("cirno_hairband", p -> new CirnoHairbandItem(p.rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
-					.register();
-
-			var back = ItemTags.create(new ResourceLocation("curios", "back"));
-
-			CIRNO_WINGS = YoukaisHomecoming.REGISTRATE
-					.item("cirno_wings", p -> new CirnoWingsItem(p.rarity(Rarity.EPIC)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
-					.tag(back, YHTagGen.TOUHOU_WINGS)
-					.register();
-
-		}
 
 		// plants
 		{
@@ -155,6 +110,7 @@ public class YHItems {
 		// ingredients
 		{
 			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
+			MAYONNAISE = new BottledFluid<>("mayonnaise", 0xffffffff, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
 			BLOOD_BOTTLE = new BottledFluid<>("blood", 0xff772221, () -> Items.GLASS_BOTTLE, "ingredient", BloodBottleItem::new);
 
 			CREAM = YoukaisHomecoming.REGISTRATE
@@ -164,28 +120,13 @@ public class YHItems {
 					.register();
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);
-			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", FairyIceItem::new);
-			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.COLD));
-			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.WARM));
-			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.TEMPERATE));
 		}
 
 		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
 
 		YHFood.register();
+		YHSushi.register();
 		YHRolls.init();
-
-		SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
-				.properties(p -> p.stacksTo(1))
-				.model((ctx, pvd) ->
-						pvd.generated(ctx, pvd.modLoc("item/sake_bottle"))
-								.override().predicate(YoukaisHomecoming.loc("slip"), 1 / 32f)
-								.model(pvd.getBuilder(ctx.getName() + "_overlay")
-										.parent(new ModelFile.UncheckedModelFile("item/generated"))
-										.texture("layer0", pvd.modLoc("item/sake_bottle"))
-										.texture("layer1", pvd.modLoc("item/sake_bottle_overlay"))))
-				.color(() -> () -> SlipBottleItem::color)
-				.register();
 
 		// feasts
 		{
@@ -234,6 +175,18 @@ public class YHItems {
 		YHCoffee.register();
 		YHDrink.register();
 
+		SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
+				.properties(p -> p.stacksTo(1))
+				.model((ctx, pvd) ->
+						pvd.generated(ctx, pvd.modLoc("item/sake_bottle"))
+								.override().predicate(YoukaisHomecoming.loc("slip"), 1 / 32f)
+								.model(pvd.getBuilder(ctx.getName() + "_overlay")
+										.parent(new ModelFile.UncheckedModelFile("item/generated"))
+										.texture("layer0", pvd.modLoc("item/sake_bottle"))
+										.texture("layer1", pvd.modLoc("item/sake_bottle_overlay"))))
+				.color(() -> () -> SlipBottleItem::color)
+				.register();
+
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
 			FruitsDelightCompatFood.register();
 		}
@@ -244,6 +197,66 @@ public class YHItems {
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();
+
+		TUNA_BUCKET = YoukaisHomecoming.REGISTRATE
+				.item("tuna_bucket", p -> new MobBucketItem(
+						YHEntities.TUNA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
+						p.stacksTo(1).craftRemainder(Items.BUCKET)))
+				.defaultLang()
+				.register();
+
+		// gears
+		{
+			STRAW_HAT = YoukaisHomecoming.REGISTRATE
+					.item("straw_hat", p -> new StrawHatItem(p.rarity(Rarity.UNCOMMON)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.register();
+
+			SUWAKO_HAT = YoukaisHomecoming.REGISTRATE
+					.item("suwako_hat", p -> new SuwakoHatItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+			KOISHI_HAT = YoukaisHomecoming.REGISTRATE
+					.item("koishi_hat", p -> new KoishiHatItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+			RUMIA_HAIRBAND = YoukaisHomecoming.REGISTRATE
+					.item("rumia_hairband", p -> new RumiaHairbandItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+			REIMU_HAIRBAND = YoukaisHomecoming.REGISTRATE
+					.item("reimu_hairband", p -> new ReimuHairbandItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+			CIRNO_HAIRBAND = YoukaisHomecoming.REGISTRATE
+					.item("cirno_hairband", p -> new CirnoHairbandItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(Tags.Items.ARMORS_HELMETS, YHTagGen.TOUHOU_HAT)
+					.register();
+
+			var back = ItemTags.create(new ResourceLocation("curios", "back"));
+
+			CIRNO_WINGS = YoukaisHomecoming.REGISTRATE
+					.item("cirno_wings", p -> new CirnoWingsItem(p.rarity(Rarity.EPIC)))
+					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/curio/" + ctx.getName())))
+					.tag(back, YHTagGen.TOUHOU_WINGS)
+					.register();
+
+			FAIRY_ICE_CRYSTAL = ingredient("fairy_ice_crystal", FairyIceItem::new);
+			FROZEN_FROG_COLD = ingredient("frozen_frog_cold", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.COLD));
+			FROZEN_FROG_WARM = ingredient("frozen_frog_warm", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.WARM));
+			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.TEMPERATE));
+
+		}
+
 	}
 
 	public static <T extends Item> ItemEntry<T> seed(String id, NonNullFunction<Item.Properties, T> factory) {

@@ -1,0 +1,13 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:gunkan",
+  "input": [
+    {
+      "item": "minecraft:seagrass"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "youkaishomecoming:seagrass_gunkan"
+  }
+}

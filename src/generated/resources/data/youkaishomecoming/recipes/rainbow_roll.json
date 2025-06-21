@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:cuisine_mixed",
+  "base": "youkaishomecoming:california_roll",
+  "first": [
+    {
+      "item": "youkaishomecoming:roe"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:rainbow_roll"
+  },
+  "second": [
+    {
+      "tag": "forge:raw_fishes/salmon"
+    },
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "tag": "forge:raw_fishes/tuna"
+    }
+  ]
+}

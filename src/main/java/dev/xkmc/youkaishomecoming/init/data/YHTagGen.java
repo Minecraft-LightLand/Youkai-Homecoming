@@ -40,8 +40,13 @@ public class YHTagGen {
 									ForgeRegistries.MOB_EFFECTS.getKey(ench)),
 							e.getExistingFileHelper()));
 
-	public static final TagKey<Item> RAW_EEL = item("raw_eel");
+	public static final TagKey<Item> RAW_EEL = forgeItem("raw_fishes/eel");
+	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
+	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
+	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
+	public static final TagKey<Item> BUTTER = forgeItem("butter");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
+	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> DANGO = item("dango");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
@@ -139,6 +144,10 @@ public class YHTagGen {
 
 	public static TagKey<Item> item(String id) {
 		return ItemTags.create(YoukaisHomecoming.loc(id));
+	}
+
+	public static TagKey<Item> forgeItem(String id) {
+		return ItemTags.create(new ResourceLocation("forge", id));
 	}
 
 	public static TagKey<Block> block(String id) {

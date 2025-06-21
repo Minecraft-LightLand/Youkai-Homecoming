@@ -14,10 +14,23 @@ public class VariantTableItem implements TableItem {
 
 	private final VariantTableItemBase base;
 	private final List<ItemStack> contents;
+	private final int count;
 
-	public VariantTableItem(VariantTableItemBase base, List<ItemStack> contents) {
+	public VariantTableItem(VariantTableItemBase base, List<ItemStack> contents, int count) {
 		this.base = base;
 		this.contents = contents;
+		this.count = count;
+	}
+
+	public VariantTableItem(VariantTableItemBase base, List<ItemStack> contents) {
+		this(base, contents, 1);
+	}
+
+	@Override
+	public int getCost(TableItem prev) {
+		if (prev instanceof TableItemManager)
+			return count;
+		return 1;
 	}
 
 	@Override
@@ -32,7 +45,7 @@ public class VariantTableItem implements TableItem {
 			if (next == null) return Optional.empty();
 			var cont = new CuisineInv(base.id(), contents, 0, true);
 			return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
-					.map(r -> new FoodTableItem(r.assemble(cont, level.registryAccess())));
+					.map(r -> new FoodTableItem(next, r.assemble(cont, level.registryAccess())));
 		}
 		var ans = new ArrayList<>(contents);
 		ans.add(stack.copyWithCount(1));
@@ -42,6 +55,7 @@ public class VariantTableItem implements TableItem {
 
 	@Override
 	public Optional<ItemStack> complete(Level level) {
+		if (base.next() != null) return Optional.empty();
 		var cont = new CuisineInv(base.id(), contents, 0, true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
 				.map(r -> r.assemble(cont, level.registryAccess()));

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -58,7 +59,7 @@ public class YHLootGen {
 			var flesh = LootTableTemplate.getPool(1, 1)
 					.add(LootTableTemplate.getItem(YHFood.FLESH.item.get(), 4).setWeight(100))
 					.add(LootTableTemplate.getItem(YHFood.COOKED_FLESH.item.get(), 2).setWeight(50))
-					.add(LootTableTemplate.getItem(YHFood.FLESH_ROLL.item.get(), 2).setWeight(20))
+					.add(LootTableTemplate.getItem(YHSushi.FLESH_ROLL.item.get(), 2).setWeight(20))
 					.add(LootTableTemplate.getItem(YHFood.FLESH_STEW.item.get(), 1).setWeight(20));
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(NEST_CHEST, LootTable.lootTable()
