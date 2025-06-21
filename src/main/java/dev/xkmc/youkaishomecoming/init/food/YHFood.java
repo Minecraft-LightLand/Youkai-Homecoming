@@ -96,7 +96,7 @@ public enum YHFood {
 	KABAYAKI(FoodType.MEAT_SLICE, 8, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
-			DietTagGen.PROTEINS.tag
+			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
 	HIGI_CHOCOLATE(FoodType.SIMPLE, 4, 0.8f, List.of(
 			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1)

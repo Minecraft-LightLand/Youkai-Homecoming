@@ -151,6 +151,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:candy_apple": {
       "conditions": {
         "item": {
@@ -831,6 +841,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:rainbow_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rainbow_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:raw_lamprey": {
       "conditions": {
         "item": {
@@ -911,6 +931,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:roe_california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:roe_california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:saidi_tea": {
       "conditions": {
         "item": {
@@ -946,6 +976,16 @@
         "item": {
           "items": [
             "youkaishomecoming:salmon_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:salmon_lover_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:salmon_lover_roll_slice"
           ]
         }
       },
@@ -1286,6 +1326,16 @@
         "item": {
           "items": [
             "youkaishomecoming:udumbara_cake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:volcano_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:volcano_roll_slice"
           ]
         }
       },
@@ -1746,6 +1796,21 @@
     ],
     [
       "youkaishomecoming:rainbow_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:california_roll_slice"
+    ],
+    [
+      "youkaishomecoming:roe_california_roll_slice"
+    ],
+    [
+      "youkaishomecoming:salmon_lover_roll_slice"
+    ],
+    [
+      "youkaishomecoming:volcano_roll_slice"
+    ],
+    [
+      "youkaishomecoming:rainbow_roll_slice"
     ]
   ],
   "sends_telemetry_event": true

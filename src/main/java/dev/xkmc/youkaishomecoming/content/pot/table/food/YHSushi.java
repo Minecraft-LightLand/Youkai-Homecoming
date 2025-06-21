@@ -20,7 +20,7 @@ public enum YHSushi implements ItemLike {
 	TOBIKO_GUNKAN(FoodType.MEAT_SLICE, 8, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
-	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),//TODO recipe change
+	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	SEAGRASS_GUNKAN(FoodType.FAST, 6, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	//shirako

@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
 public class MixedRecipeBuilder extends CuisineRecipeBuilder<MixedCuisineRecipe, MixedRecipeBuilder> {
 
@@ -21,7 +22,7 @@ public class MixedRecipeBuilder extends CuisineRecipeBuilder<MixedCuisineRecipe,
 		return this;
 	}
 
-	public MixedRecipeBuilder addOrdered(Item item) {
+	public MixedRecipeBuilder addOrdered(ItemLike item) {
 		recipe.first.add(Ingredient.of(item));
 		return this;
 	}
@@ -36,7 +37,7 @@ public class MixedRecipeBuilder extends CuisineRecipeBuilder<MixedCuisineRecipe,
 		return this;
 	}
 
-	public MixedRecipeBuilder addUnordered(Item item) {
+	public MixedRecipeBuilder addUnordered(ItemLike item) {
 		recipe.second.add(Ingredient.of(item));
 		return this;
 	}

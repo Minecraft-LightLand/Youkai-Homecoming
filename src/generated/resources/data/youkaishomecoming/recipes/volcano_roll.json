@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:cuisine_mixed",
+  "base": "youkaishomecoming:california_roll",
+  "first": [
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:volcano_roll"
+  },
+  "second": [
+    {
+      "tag": "forge:raw_fishes/tuna"
+    },
+    {
+      "tag": "forge:raw_fishes/tuna"
+    },
+    {
+      "tag": "forge:raw_fishes/tuna"
+    }
+  ]
+}

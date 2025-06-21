@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
 public class OrderedRecipeBuilder extends CuisineRecipeBuilder<
 		OrderedCuisineRecipe, OrderedRecipeBuilder> {
@@ -22,7 +23,7 @@ public class OrderedRecipeBuilder extends CuisineRecipeBuilder<
 		return this;
 	}
 
-	public OrderedRecipeBuilder add(Item item) {
+	public OrderedRecipeBuilder add(ItemLike item) {
 		recipe.input.add(Ingredient.of(item));
 		return this;
 	}

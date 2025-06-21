@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:rainbow_roll"
+    }
+  ],
+  "result": [
+    {
+      "count": 3,
+      "item": "youkaishomecoming:rainbow_roll_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

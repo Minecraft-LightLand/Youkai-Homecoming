@@ -1137,6 +1137,39 @@ public class YHRecipeGen {
 						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
 						.save(pvd);
 			}
+
+			{
+
+				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_CAL)::unlockedBy, YHFood.IMITATION_CRAB.item.get())
+						.result(YHRolls.CALIFORNIA_ROLL)
+						.addOrdered(YHItems.MAYONNAISE.item)
+						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item)
+						.addUnordered(YHFood.IMITATION_CRAB.item)
+						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.ROE.item.get())
+						.result(YHRolls.ROE_CALIFORNIA_ROLL)
+						.add(YHFood.ROE.item)
+						.save(pvd);
+
+				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, ModItems.SALMON_SLICE.get())
+						.result(YHRolls.SALMON_LOVER_ROLL)
+						.addOrdered(YHFood.ROE.item)
+						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.save(pvd);
+
+				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
+						.result(YHRolls.VOLCANO_ROLL)
+						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.addUnordered(YHTagGen.RAW_TUNA)
+						.addUnordered(YHTagGen.RAW_TUNA)
+						.addUnordered(YHTagGen.RAW_TUNA)
+						.save(pvd);
+
+			}
 		}
 
 		// danmaku

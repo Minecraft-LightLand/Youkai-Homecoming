@@ -33,6 +33,12 @@ public class FoodModelHelper {
 				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
 	}
 
+	public static FoodTableItemHolder cali(String id) {
+		return new FoodTableItemHolder(1, TableItemManager.COMPLETE_CALI, roll("california")
+				.put("rice", YoukaisHomecoming.loc("block/table/roll_rice"))
+				.put("content", YoukaisHomecoming.loc("block/table/roll/" + id)));
+	}
+
 	public static <T extends Item> void buildModel(
 			FixedModelHolder model, DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd
 	) {

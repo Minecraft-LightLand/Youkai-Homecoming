@@ -17,6 +17,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,9 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 		var base = VariantTableItemBase.MAP.get(recipe.base());
 		if (base != null) {
 			base.collectIngredients(listBase, listRecipe);
+		} else {
+			var item = ForgeRegistries.ITEMS.getValue(recipe.base());
+			listBase.add(Ingredient.of(item));
 		}
 		balance(listBase, listRecipe);
 
@@ -82,7 +86,7 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 		}
 		index = 0;
 		offset = (5 - listRecipe.size()) * 9;
-		y = base == null ? 10 : 19;
+		y = listBase.isEmpty() ? 10 : 19;
 		for (var ing : listRecipe) {
 			int x = index * 18 + 1 + offset;
 			handler.draw(ing, x, y);
@@ -92,6 +96,10 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 	}
 
 	private void balance(List<Ingredient> a, List<Ingredient> b) {
+		if (a.size() + b.size() <= 5) {
+			for (var e : a) b.add(0, e);
+			a.clear();
+		}
 		while (b.size() > 5 && a.size() < 5) {
 			a.add(b.get(0));
 			b.remove(0);
