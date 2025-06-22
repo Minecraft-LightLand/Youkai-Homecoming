@@ -72,7 +72,7 @@ public class YHCropBlock extends CropBlock {
 	public static void buildCropModel(DataGenContext<Block, ? extends YHCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
-			String tex = name + "_stage" + age;
+			String tex = name + "/" + name + "_stage" + age;
 			return ConfiguredModel.builder().modelFile(pvd.models().crop(tex, pvd.modLoc("block/plants/" + tex)).renderType("cutout")).build();
 		});
 	}
@@ -80,7 +80,7 @@ public class YHCropBlock extends CropBlock {
 	public static void buildCrossModel(DataGenContext<Block, ? extends YHCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
-			String tex = name + "_stage" + age;
+			String tex = name + "/" +name + "_stage" + age;
 			return ConfiguredModel.builder().modelFile(pvd.models()
 					.getBuilder(tex)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cross_crop")))
