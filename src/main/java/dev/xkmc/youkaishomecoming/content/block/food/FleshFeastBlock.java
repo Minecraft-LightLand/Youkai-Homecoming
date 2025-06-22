@@ -106,13 +106,13 @@ public class FleshFeastBlock extends FeastBlock {
 			String name = name().toLowerCase(Locale.ROOT);
 			var ans = pvd.models().getBuilder("flesh_feast_" + name)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/flesh_feast_" + name)));
-			ans.texture("tray_top", pvd.modLoc("block/tray_top"));
-			ans.texture("particle", pvd.modLoc("block/tray_top"));
-			ans.texture("tray_bottom", pvd.modLoc("block/tray_bottom"));
-			if (skeleton > 0) ans.texture("skeleton", pvd.modLoc("block/flesh_skeleton_" + skeleton));
-			if (brain > 0) ans.texture("brain", pvd.modLoc("block/flesh_brain_" + brain));
-			if (misc > 0) ans.texture("misc", pvd.modLoc("block/flesh_misc_" + misc));
-			if (meat > 0) ans.texture("meat", pvd.modLoc("block/flesh_meat_" + meat));
+			ans.texture("tray_top", pvd.modLoc("block/feast/tray_top"));
+			ans.texture("particle", pvd.modLoc("block/feast/tray_top"));
+			ans.texture("tray_bottom", pvd.modLoc("block/feast/tray_bottom"));
+			if (skeleton > 0) ans.texture("skeleton", pvd.modLoc("block/feast/flesh_skeleton_" + skeleton));
+			if (brain > 0) ans.texture("brain", pvd.modLoc("block/feast/flesh_brain_" + brain));
+			if (misc > 0) ans.texture("misc", pvd.modLoc("block/feast/flesh_misc_" + misc));
+			if (meat > 0) ans.texture("meat", pvd.modLoc("block/feast/flesh_meat_" + meat));
 			ans.renderType("cutout");
 			return ans;
 		}

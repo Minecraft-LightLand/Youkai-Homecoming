@@ -40,10 +40,10 @@ public class SurpriseFeastBlock extends FeastBlock {
 			String id = ctx.getName() + suffix;
 			var ans = pvd.models().getBuilder("block/" + id)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/" + id)));
-			ans.texture("base", pvd.modLoc("block/surprise_chest"));
-			ans.texture("umbrella", pvd.modLoc("block/surprise_umbrella"));
+			ans.texture("base", pvd.modLoc("block/feast/surprise_chest"));
+			ans.texture("umbrella", pvd.modLoc("block/feast/surprise_umbrella"));
 			if (serve > 0) {
-				ans.texture("soup", pvd.modLoc("block/surprise_soup"));
+				ans.texture("soup", pvd.modLoc("block/feast/surprise_soup"));
 			}
 			ans.renderType("cutout");
 			return ans;

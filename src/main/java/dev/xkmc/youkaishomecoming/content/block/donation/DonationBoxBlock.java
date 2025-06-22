@@ -14,13 +14,13 @@ public class DonationBoxBlock {
 
 	public static void buildStates(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), pvd.models().cube("block/" + ctx.getName(),
-				pvd.modLoc("block/" + ctx.getName() + "_down"),
-				pvd.modLoc("block/" + ctx.getName() + "_up"),
-				pvd.modLoc("block/" + ctx.getName() + "_end"),
-				pvd.modLoc("block/" + ctx.getName() + "_empty"),
-				pvd.modLoc("block/" + ctx.getName() + "_side"),
-				pvd.modLoc("block/" + ctx.getName() + "_side")
-		).texture("particle", pvd.modLoc("block/" + ctx.getName() + "_down")));
+				pvd.modLoc("block/deco/" + ctx.getName() + "_down"),
+				pvd.modLoc("block/deco/" + ctx.getName() + "_up"),
+				pvd.modLoc("block/deco/" + ctx.getName() + "_end"),
+				pvd.modLoc("block/deco/" + ctx.getName() + "_empty"),
+				pvd.modLoc("block/deco/" + ctx.getName() + "_side"),
+				pvd.modLoc("block/deco/" + ctx.getName() + "_side")
+		).texture("particle", pvd.modLoc("block/deco/" + ctx.getName() + "_down")));
 	}
 
 }
