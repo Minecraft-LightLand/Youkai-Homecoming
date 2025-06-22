@@ -97,7 +97,9 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 
 	private void balance(List<Ingredient> a, List<Ingredient> b) {
 		if (a.size() + b.size() <= 5) {
-			for (var e : a) b.add(0, e);
+			a.addAll(b);
+			b.clear();
+			b.addAll(a);
 			a.clear();
 		}
 		while (b.size() > 5 && a.size() < 5) {
