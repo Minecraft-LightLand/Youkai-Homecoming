@@ -6,6 +6,7 @@
     "youkaishomecoming:tea_seeds",
     "youkaishomecoming:udumbara_seeds",
     "youkaishomecoming:mandrake_root",
-    "youkaishomecoming:cucumber"
+    "youkaishomecoming:cucumber_seeds",
+    "#forge:seeds/cucumber"
   ]
 }

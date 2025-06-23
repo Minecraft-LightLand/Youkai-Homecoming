@@ -44,7 +44,7 @@ public enum YHCrops {
 	TEA(PlantType.TEA, 6, "tea_seeds", "tea_leaves"),
 	UDUMBARA(PlantType.UDUMBARA, 6, "udumbara_seeds", "udumbara_flower"),
 	MANDRAKE(PlantType.MANDRAKE, 6, "mandrake_root", "mandrake_flower"),
-	CUCUMBER(PlantType.CUCUMBER, 8, null, null),
+	CUCUMBER(PlantType.CUCUMBER, 8, "cucumber_seeds", "cucumber"),
 	;
 
 	private final BlockEntry<? extends BushBlock> PLANT;
