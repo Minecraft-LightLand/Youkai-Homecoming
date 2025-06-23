@@ -148,7 +148,8 @@
 		"lamprey_skewer": "蒲烧鳗鱼烤串",
 		"otoro": "金枪鱼大腹",
 		"otoro_nigiri": "金枪鱼大腹握寿司",
-		"nattou_gunkan": "纳豆军舰"
+		"nattou_gunkan": "纳豆军舰",
+		"cucumber": "黄瓜"
 	},
 	"-cartesian": {
 		"entity": {
@@ -246,7 +247,8 @@
 					"rainbow_roll": "彩虹加州卷",
 					"roe_california_roll": "鱼卵加州卷",
 					"salmon_lover_roll": "若鹭卷",
-					"volcano_roll": "铁火加州卷"
+					"volcano_roll": "铁火加州卷",
+					"kappa_maki": "河童细卷"
 				},
 				{
 					"*": "",

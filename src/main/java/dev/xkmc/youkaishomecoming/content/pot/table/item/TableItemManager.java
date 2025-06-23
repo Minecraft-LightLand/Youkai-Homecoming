@@ -108,7 +108,7 @@ public class TableItemManager extends BaseTableItem {
 		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);
 		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHFood.TAMAGOYAKI_SLICE.item, rolls);
 		addBulk("imitation_crab", "ingredient/imitation_crab", YHFood.IMITATION_CRAB.item, rolls);
-		addBulk("cabbage", "ingredient/cabbage", ForgeTags.SALAD_INGREDIENTS_CABBAGE, rolls);
+		addBulk("cucumber", "ingredient/cucumber", YHTagGen.CUCUMBER, rolls);
 		// kappa
 	}
 

@@ -531,6 +531,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:kappa_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_maki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:kappa_village": {
       "conditions": {
         "item": {
@@ -1823,6 +1833,9 @@
     ],
     [
       "youkaishomecoming:shinnko_maki_slice"
+    ],
+    [
+      "youkaishomecoming:kappa_maki_slice"
     ],
     [
       "youkaishomecoming:tekka_maki_slice"

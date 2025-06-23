@@ -45,6 +45,8 @@ public class YHTagGen {
 	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
 	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
 	public static final TagKey<Item> BUTTER = forgeItem("butter");
+	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
+	public static final TagKey<Item> VEGE = forgeItem("vegetables");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> DANGO = item("dango");
@@ -113,6 +115,9 @@ public class YHTagGen {
 
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
+		pvd.addTag(VEGE).addTag(CUCUMBER);
+		pvd.addTag(CUCUMBER).add(YHCrops.CUCUMBER.getFruits());
+
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());
 		pvd.addTag(TEA_GREEN).add(YHTea.GREEN.leaves.get());

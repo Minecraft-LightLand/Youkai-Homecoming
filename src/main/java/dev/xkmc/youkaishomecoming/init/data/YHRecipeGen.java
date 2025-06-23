@@ -1117,6 +1117,12 @@ public class YHRecipeGen {
 						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
 						.add(Items.BEETROOT)
 						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
+						.result(YHRolls.KAPPA_MAKI)
+						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.add(YHTagGen.CUCUMBER)
+						.save(pvd);
 			}
 
 			{
@@ -1131,7 +1137,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.SALMON_FUTOMAKI)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHTagGen.CUCUMBER)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
 						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
@@ -1140,7 +1146,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.RAINBOW_FUTOMAKI)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHTagGen.CUCUMBER)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item.get())
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
@@ -1153,7 +1159,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_CAL)::unlockedBy, YHFood.IMITATION_CRAB.item.get())
 						.result(YHRolls.CALIFORNIA_ROLL)
 						.addOrdered(YHItems.MAYONNAISE.item)
-						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHTagGen.CUCUMBER)
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item)
 						.addUnordered(YHFood.IMITATION_CRAB.item)
 						.save(pvd);

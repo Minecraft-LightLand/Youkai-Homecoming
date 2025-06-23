@@ -401,6 +401,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:kappa_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_maki_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:kappa_village": {
       "conditions": {
         "item": {
@@ -1577,6 +1587,9 @@
     ],
     [
       "youkaishomecoming:shinnko_maki_slice"
+    ],
+    [
+      "youkaishomecoming:kappa_maki_slice"
     ],
     [
       "youkaishomecoming:tekka_maki_slice"
