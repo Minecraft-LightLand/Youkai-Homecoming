@@ -221,6 +221,7 @@ public class YHRecipeGen {
 			drying(pvd, DataIngredient.items(YHCrops.MANDRAKE.getFruits()), YHItems.DRIED_MANDRAKE_FLOWER);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
+			pvd.storage(YHCrops.CUCUMBER::getSeed, RecipeCategory.MISC, YHItems.CUCUMBER_BAG);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
 			pvd.storage(YHCrops.TEA::getFruits, RecipeCategory.MISC, YHItems.TEA_BAG);
 			pvd.storage(YHTea.BLACK.leaves, RecipeCategory.MISC, YHItems.BLACK_TEA_BAG);
@@ -657,6 +658,14 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.MUSHROOM_SOUP.item.getId());
 
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(YHTagGen.CUCUMBER)
+					.addIngredient(YHTagGen.CUCUMBER)
+					.addIngredient(YHTagGen.CUCUMBER)
+					.addIngredient(ForgeTags.RAW_PORK)//change to deer in the future
+					.addIngredient(Items.HONEY_BOTTLE)
+					.build(pvd, YHFood.HONEY_GLAZED_CUCUMBER.item.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LIONS_HEAD.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(ForgeTags.RAW_PORK)
@@ -751,9 +760,9 @@ public class YHRecipeGen {
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
-					.requires(Items.PUFFERFISH)
 					.requires(Items.BAMBOO)
 					.requires(ForgeTags.RAW_PORK)
+					.requires(ForgeTags.RAW_BEEF)
 					.requires(ForgeTags.VEGETABLES_ONION)
 					.requires(YHTagGen.RAW_EEL)
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)

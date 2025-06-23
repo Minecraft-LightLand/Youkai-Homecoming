@@ -65,7 +65,7 @@ public class YHItems {
 	public static final ItemEntry<ReimuHairbandItem> REIMU_HAIRBAND;
 	public static final ItemEntry<CirnoHairbandItem> CIRNO_HAIRBAND;
 	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
-	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG,
+	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
@@ -97,6 +97,7 @@ public class YHItems {
 			MATCHA = crop("matcha", Item::new);
 			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
 			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);
+			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
 			SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 			REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 			COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");

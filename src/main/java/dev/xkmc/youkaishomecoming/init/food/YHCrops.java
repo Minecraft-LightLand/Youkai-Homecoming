@@ -114,12 +114,31 @@ public enum YHCrops {
 		return createBag(getName());
 	}
 
+
+	public BlockEntry<Block> createCrate() {
+		return createCrate(getName());
+	}
+
 	public String getName() {
 		return name().toLowerCase(Locale.ROOT);
 	}
 
 	public ResourceKey<PlacedFeature> getPlacementKey() {
 		return placementKey;
+	}
+
+	public static BlockEntry<Block> createCrate(String id) {
+		return YoukaisHomecoming.REGISTRATE
+				.block(id + "_crate", p -> new Block(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)))
+				.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cubeBottomTop(
+						ctx.getName(),
+						pvd.modLoc("block/bags/" + ctx.getName() + "_side"),
+						pvd.modLoc("block/bags/" + ctx.getName() + "_bottom"),
+						pvd.modLoc("block/bags/" + ctx.getName() + "_top")
+				).texture("particle", pvd.modLoc("block/bags/" + ctx.getName() + "_top"))))
+				.tag(Tags.Blocks.STORAGE_BLOCKS, BlockTags.MINEABLE_WITH_AXE)
+				.item().tag(Tags.Items.STORAGE_BLOCKS).build()
+				.register();
 	}
 
 	public static BlockEntry<Block> createBag(String id) {

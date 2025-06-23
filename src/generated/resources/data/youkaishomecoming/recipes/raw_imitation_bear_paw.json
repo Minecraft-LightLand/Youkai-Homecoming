@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:pufferfish"
-    },
-    {
       "item": "minecraft:bamboo"
     },
     {
       "tag": "forge:raw_pork"
+    },
+    {
+      "tag": "forge:raw_beef"
     },
     {
       "tag": "forge:vegetables/onion"

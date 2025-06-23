@@ -116,7 +116,7 @@ public class TunaEntity extends AbstractFish {
 		boolean ans = super.doHurtTarget(e);
 		if (ans && !e.isAlive()) {
 			if (e instanceof WaterAnimal le) {
-				int time = (int) (le.getMaxHealth() * 200);
+				int time = (int) (le.getMaxHealth() * 600);
 				addEffect(new MobEffectInstance(MobEffects.SATURATION, time));
 			}
 			e.remove(Entity.RemovalReason.KILLED);

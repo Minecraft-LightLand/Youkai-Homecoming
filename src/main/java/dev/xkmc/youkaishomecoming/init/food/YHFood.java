@@ -177,6 +177,10 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag),
+	HONEY_GLAZED_CUCUMBER(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
+	), DietTagGen.VEGETABLES.tag),
 	LIONS_HEAD(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),

@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.*;
@@ -50,20 +51,40 @@ public abstract class RopeClimbingCropBlock extends CropBlock {
 
 	protected abstract ItemLike getFruit();
 
+
+	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		int age = state.getValue(getAgeProperty());
-		boolean isMature = age == getMaxAge();
-		if (!isMature && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
-			return InteractionResult.PASS;
-		} else if (isMature) {
-			int quantity = 1 + level.random.nextInt(2);
-			popResource(level, pos, new ItemStack(getFruit(), quantity));
-			level.playSound(null, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-			level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
-			return InteractionResult.SUCCESS;
-		} else {
-			return super.use(state, level, pos, player, hand, hit);
+		ItemStack stack = player.getItemInHand(hand);
+		boolean isRope = false;
+		if (stack.getItem() instanceof BlockItem item) {
+			var rstate = item.getBlock().defaultBlockState();
+			isRope = Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? rstate.is(ModTags.ROPES) : rstate.is(ModBlocks.ROPE.get());
 		}
+		if (!isRope) {
+			int age = state.getValue(getAgeProperty());
+			boolean isMature = age == getMaxAge();
+			if (!isMature && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
+				return InteractionResult.PASS;
+			} else if (isMature) {
+				int quantity = 1 + level.random.nextInt(2);
+				popResource(level, pos, new ItemStack(getFruit(), quantity));
+				level.playSound(null, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+				level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
+				return InteractionResult.SUCCESS;
+			} else {
+				return super.use(state, level, pos, player, hand, hit);
+			}
+		}
+		if (!state.getValue(ROPELOGGED)) {
+			if (!level.isClientSide()) {
+				level.setBlock(pos, state.setValue(ROPELOGGED, true), 2);
+				if (!player.getAbilities().instabuild) {
+					stack.shrink(1);
+				}
+			}
+			return InteractionResult.SUCCESS;
+		}
+		return InteractionResult.PASS;
 	}
 
 	public abstract int getBaseAge();
@@ -72,9 +93,13 @@ public abstract class RopeClimbingCropBlock extends CropBlock {
 		return true;
 	}
 
+	protected boolean mayGrow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		return level.getRawBrightness(pos, 0) >= 9;
+	}
+
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (!level.isAreaLoaded(pos, 1)) return;
-		if (level.getRawBrightness(pos, 0) < 9) return;
+		if (!mayGrow(state, level, pos, random)) return;
 		int age = getAge(state);
 		if (age < getMaxAge()) {
 			float speed = getGrowthSpeed(this, level, pos);

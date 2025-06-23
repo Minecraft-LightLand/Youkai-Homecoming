@@ -371,6 +371,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:honey_glazed_cucumber": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:honey_glazed_cucumber"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:imitation_bear_paw": {
       "conditions": {
         "item": {
@@ -1551,6 +1561,9 @@
     ],
     [
       "youkaishomecoming:mushroom_soup"
+    ],
+    [
+      "youkaishomecoming:honey_glazed_cucumber"
     ],
     [
       "youkaishomecoming:lions_head"

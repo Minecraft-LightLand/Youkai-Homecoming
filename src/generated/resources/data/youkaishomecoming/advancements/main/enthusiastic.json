@@ -501,6 +501,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:honey_glazed_cucumber": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:honey_glazed_cucumber"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:imitation_bear_paw": {
       "conditions": {
         "item": {
@@ -1764,6 +1774,9 @@
     ],
     [
       "youkaishomecoming:mushroom_soup"
+    ],
+    [
+      "youkaishomecoming:honey_glazed_cucumber"
     ],
     [
       "youkaishomecoming:lions_head"
