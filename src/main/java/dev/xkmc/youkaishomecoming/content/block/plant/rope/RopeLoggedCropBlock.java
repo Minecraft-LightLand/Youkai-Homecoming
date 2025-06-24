@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.block.plant;
+package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -34,12 +34,13 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
 
-public abstract class RopeClimbingCropBlock extends CropBlock {
+public abstract class RopeLoggedCropBlock extends CropBlock {
 
 	public static final BooleanProperty ROPELOGGED = BooleanProperty.create("ropelogged");
+
 	private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
 
-	public RopeClimbingCropBlock(BlockBehaviour.Properties properties) {
+	public RopeLoggedCropBlock(BlockBehaviour.Properties properties) {
 		super(properties);
 		registerDefaultState(stateDefinition.any()
 				.setValue(getAgeProperty(), 0)
@@ -51,6 +52,53 @@ public abstract class RopeClimbingCropBlock extends CropBlock {
 
 	protected abstract ItemLike getFruit();
 
+	public abstract int getBaseAge();
+
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		if (!level.isAreaLoaded(pos, 1)) return;
+		if (!mayGrow(state, level, pos, random)) return;
+		int age = getAge(state);
+		if (mayGrowTo(state, level, pos, age + 1)) {
+			float speed = getGrowthSpeed(this, level, pos);
+			if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / speed) + 1) == 0)) {
+				growTo(state, level, pos, age + 1);
+				ForgeHooks.onCropsGrowPost(level, pos, state);
+			}
+		}
+		postGrowth(level, pos, random);
+	}
+
+	protected boolean mayGrowTo(BlockState state, ServerLevel level, BlockPos pos, int age) {
+		return age <= getMaxAge();
+	}
+
+	protected void growTo(BlockState state, ServerLevel level, BlockPos pos, int age) {
+		level.setBlock(pos, state.setValue(getAgeProperty(), age), 2);
+	}
+
+	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+		int newAge = getAge(state) + getBonemealAgeIncrease(level);
+		int maxAge = getMaxAge();
+		if (newAge > maxAge) {
+			newAge = maxAge;
+		}
+		if (mayGrowTo(state, level, pos, newAge)) {
+			growTo(state, level, pos, newAge);
+		}
+		postGrowth(level, pos, random);
+	}
+
+	public void postGrowth(ServerLevel level, BlockPos pos, RandomSource random) {
+
+	}
+
+	protected int getBonemealAgeIncrease(Level level) {
+		return super.getBonemealAgeIncrease(level) / 2;
+	}
+
+	protected boolean mayGrow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		return level.getRawBrightness(pos, 0) >= 9;
+	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -87,59 +135,8 @@ public abstract class RopeClimbingCropBlock extends CropBlock {
 		return InteractionResult.PASS;
 	}
 
-	public abstract int getBaseAge();
-
 	public boolean isRandomlyTicking(BlockState state) {
 		return true;
-	}
-
-	protected boolean mayGrow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		return level.getRawBrightness(pos, 0) >= 9;
-	}
-
-	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		if (!level.isAreaLoaded(pos, 1)) return;
-		if (!mayGrow(state, level, pos, random)) return;
-		int age = getAge(state);
-		if (age < getMaxAge()) {
-			float speed = getGrowthSpeed(this, level, pos);
-			if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / speed) + 1) == 0)) {
-				level.setBlock(pos, state.setValue(getAgeProperty(), age + 1), 2);
-				ForgeHooks.onCropsGrowPost(level, pos, state);
-			}
-		}
-		attemptRopeClimb(level, pos, random);
-	}
-
-	public void attemptRopeClimb(ServerLevel level, BlockPos pos, RandomSource random) {
-		for (var dir : getClimbDirections()) {
-			BlockPos cpos = pos.relative(dir);
-			if (!mayClimb(level, pos, random, cpos)) return;
-			level.setBlockAndUpdate(cpos, climbingVine().setValue(ROPELOGGED, true));
-		}
-
-	}
-
-	protected Direction[] getClimbDirections() {
-		return new Direction[]{Direction.UP};
-	}
-
-	protected boolean mayClimb(ServerLevel level, BlockPos pos, RandomSource random, BlockPos cpos) {
-		if (random.nextFloat() > 0.3F) return false;
-		BlockState cstate = level.getBlockState(cpos);
-		boolean canClimb = Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? cstate.is(ModTags.ROPES) : cstate.is(ModBlocks.ROPE.get());
-		if (!canClimb) return false;
-		int h;
-		for (h = 1; level.getBlockState(pos.below(h)).is(this); ++h) ;
-		return h < 3;
-	}
-
-	protected BlockState climbingVine() {
-		return defaultBlockState();
-	}
-
-	public BlockState getStateForAge(int age) {
-		return climbingVine().setValue(getAgeProperty(), age);
 	}
 
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -148,21 +145,6 @@ public abstract class RopeClimbingCropBlock extends CropBlock {
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(AGE, ROPELOGGED);
-	}
-
-	protected int getBonemealAgeIncrease(Level level) {
-		return super.getBonemealAgeIncrease(level) / 2;
-	}
-
-	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-		int newAge = getAge(state) + getBonemealAgeIncrease(level);
-		int maxAge = getMaxAge();
-		if (newAge > maxAge) {
-			newAge = maxAge;
-		}
-
-		level.setBlockAndUpdate(pos, state.setValue(getAgeProperty(), newAge));
-		attemptRopeClimb(level, pos, random);
 	}
 
 	public boolean isLadder(BlockState state, LevelReader level, BlockPos pos, LivingEntity entity) {

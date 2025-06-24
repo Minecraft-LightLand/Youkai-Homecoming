@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.block.plant;
+package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.block.plant;
+package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -21,8 +21,8 @@ public class RopeClimbingSeedItem extends ItemNameBlockItem {
 
 	@Override
 	public InteractionResult useOn(UseOnContext ctx) {
-		if (getBlock() instanceof RopeClimbingCropBlock block) {
-			var result = block.defaultBlockState().setValue(RopeClimbingCropBlock.ROPELOGGED, true);
+		if (getBlock() instanceof RopeLoggedCropBlock block) {
+			var result = block.defaultBlockState().setValue(RopeLoggedCropBlock.ROPELOGGED, true);
 			var level = ctx.getLevel();
 			var clickPos = ctx.getClickedPos();
 			var clickState = level.getBlockState(clickPos);

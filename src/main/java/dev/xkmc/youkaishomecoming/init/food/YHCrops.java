@@ -5,6 +5,11 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.plant.*;
+import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeCropBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeJsonGen;
+import dev.xkmc.youkaishomecoming.content.block.plant.rope.RootedClimbingCropBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeClimbingSeedItem;
+import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeCropJsonGen;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
@@ -45,6 +50,9 @@ public enum YHCrops {
 	UDUMBARA(PlantType.UDUMBARA, 6, "udumbara_seeds", "udumbara_flower"),
 	MANDRAKE(PlantType.MANDRAKE, 6, "mandrake_root", "mandrake_flower"),
 	CUCUMBER(PlantType.CUCUMBER, 8, "cucumber_seeds", "cucumber"),
+	RED_GRAPE(PlantType.GRAPE, 6, null, null),
+	BLACK_GRAPE(PlantType.GRAPE, 6, null, null),
+	WHITE_GRAPE(PlantType.GRAPE, 6, null, null),
 	;
 
 	private final BlockEntry<? extends BushBlock> PLANT;
@@ -232,8 +240,15 @@ public enum YHCrops {
 				YHCrops::wildCropDropSeed, ItemNameBlockItem::new),
 		CUCUMBER((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
 						new RootedClimbingCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
-				.blockstate((ctx, pvd) -> CucumberGen.buildModel(ctx, pvd, name))
+				.blockstate((ctx, pvd) -> RopeCropJsonGen.buildRootedModel(ctx, pvd, name))
 				.loot((pvd, block) -> PlantJsonGen.buildPlantLoot(pvd, block, crop))
+				.tag(BlockTags.CLIMBABLE)
+				.register(),
+				YHCrops::wildCropDropFruit, RopeClimbingSeedItem::new),
+		GRAPE((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
+						new GrapeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
+				.blockstate((ctx, pvd) -> GrapeJsonGen.buildPlantModel(ctx, pvd, name))
+				.loot((pvd, block) -> GrapeJsonGen.buildPlantLoot(pvd, block, crop))
 				.tag(BlockTags.CLIMBABLE)
 				.register(),
 				YHCrops::wildCropDropFruit, RopeClimbingSeedItem::new),

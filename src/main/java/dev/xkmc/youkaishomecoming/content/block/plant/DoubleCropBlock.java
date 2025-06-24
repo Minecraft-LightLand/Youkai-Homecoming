@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nullable;
 
@@ -43,9 +44,9 @@ public abstract class DoubleCropBlock extends CropBlock {
 			int i = this.getAge(pState);
 			if (i < this.getMaxAge()) {
 				float f = getGrowthSpeed(this, pLevel, pPos);
-				if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+				if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
 					setGrowth(pLevel, pPos, i + 1, 2);
-					net.minecraftforge.common.ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+					ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
 				}
 			}
 		}
