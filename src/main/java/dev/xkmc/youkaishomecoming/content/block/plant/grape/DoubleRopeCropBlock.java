@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,8 +21,10 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluids;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock {
+public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements HarvestableBlock {
 
 	public static final BooleanProperty ROOT = BooleanProperty.create("rooted");
 
@@ -83,10 +87,13 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock {
 			var lower = level.getBlockState(pos.below());
 			if (!lower.is(this)) return;
 			pickup(lower, level, pos.below());
-			level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
 			return;
 		}
 		super.pickup(state, level, pos);
+		var up = level.getBlockState(pos.above());
+		if (up.is(this)) {
+			level.setBlock(pos.above(), up.setValue(getAgeProperty(), getBaseAge()), 2);
+		}
 	}
 
 	@Override
@@ -153,6 +160,25 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock {
 				level.levelEvent(player, 2001, low, Block.getId(lowState));
 			}
 		}
+	}
+
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState state, BlockPos pos) {
+		BlockPos lower;
+		if (!state.getValue(ROOT)) {
+			lower = pos.below();
+			state = level.getBlockState(lower);
+			if (!state.is(this)) return null;
+		} else lower = pos;
+		if (state.getValue(AGE) < getMaxAge())
+			return null;
+		int j = 1 + level.random.nextInt(2);
+		List<ItemStack> list = new ArrayList<>();
+		list.add(new ItemStack(getFruit(), j));
+		return new HarvestResult((l, p) -> {
+			l.setBlock(lower, l.getBlockState(lower).setValue(getAgeProperty(), getBaseAge()), 2);
+			l.setBlock(lower.above(), l.getBlockState(lower.above()).setValue(getAgeProperty(), getBaseAge()), 2);
+		}, list);
 	}
 
 }

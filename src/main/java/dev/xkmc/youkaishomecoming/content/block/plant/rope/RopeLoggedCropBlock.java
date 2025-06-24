@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -33,8 +35,9 @@ import vectorwing.farmersdelight.common.registry.ModSounds;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class RopeLoggedCropBlock extends CropBlock {
+public abstract class RopeLoggedCropBlock extends CropBlock implements HarvestableBlock {
 
 	public static boolean isRope(BlockState state) {
 		return Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? state.is(ModTags.ROPES) : state.is(ModBlocks.ROPE.get());
@@ -151,7 +154,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock {
 	}
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(AGE, ROPELOGGED);
+		builder.add(getAgeProperty(), ROPELOGGED);
 	}
 
 	public boolean isLadder(BlockState state, LevelReader level, BlockPos pos, LivingEntity entity) {
@@ -190,6 +193,14 @@ public abstract class RopeLoggedCropBlock extends CropBlock {
 		Block rope = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Configuration.DEFAULT_TOMATO_VINE_ROPE.get()));
 		Block block = rope != null ? rope : ModBlocks.ROPE.get();
 		level.setBlockAndUpdate(pos, block.defaultBlockState());
+	}
+
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState state, BlockPos blockPos) {
+		if (state.getValue(getAgeProperty()) < getMaxAge()) return null;
+		int quantity = 1 + level.random.nextInt(2);
+		return new HarvestResult(state.setValue(getAgeProperty(), getBaseAge()),
+				List.of(new ItemStack(getFruit(), quantity)));
 	}
 
 }
