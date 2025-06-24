@@ -43,13 +43,13 @@ import java.util.Locale;
 import java.util.function.BiFunction;
 
 public enum YHCrops {
-	SOYBEAN(PlantType.CROSS, 8, null, "pods"),
-	REDBEAN(PlantType.CROSS, 8, null, null),
-	COFFEA(PlantType.COFFEA, 6, "green_coffee_bean", "coffee_berries"),
-	TEA(PlantType.TEA, 6, "tea_seeds", "tea_leaves"),
-	UDUMBARA(PlantType.UDUMBARA, 6, "udumbara_seeds", "udumbara_flower"),
-	MANDRAKE(PlantType.MANDRAKE, 6, "mandrake_root", "mandrake_flower"),
-	CUCUMBER(PlantType.CUCUMBER, 8, "cucumber_seeds", "cucumber"),
+	SOYBEAN(PlantType.CROSS, 8, 12, null, "pods"),
+	REDBEAN(PlantType.CROSS, 8, 12, null, null),
+	COFFEA(PlantType.COFFEA, 6, 12, "green_coffee_bean", "coffee_berries"),
+	TEA(PlantType.TEA, 6, 12, "tea_seeds", "tea_leaves"),
+	UDUMBARA(PlantType.UDUMBARA, 6, 12, "udumbara_seeds", "udumbara_flower"),
+	MANDRAKE(PlantType.MANDRAKE, 6, 12, "mandrake_root", "mandrake_flower"),
+	CUCUMBER(PlantType.CUCUMBER, 8, 24, "cucumber_seeds", "cucumber"),
 	RED_GRAPE(PlantType.GRAPE, 6, null, null),
 	BLACK_GRAPE(PlantType.GRAPE, 6, null, null),
 	WHITE_GRAPE(PlantType.GRAPE, 6, null, null),
@@ -63,11 +63,12 @@ public enum YHCrops {
 	public final ResourceKey<ConfiguredFeature<?, ?>> configKey;
 	public final ResourceKey<PlacedFeature> placementKey;
 
-	private final int rarity;
+	private final int rarity, density;
 
-	YHCrops(PlantType type, int rarity, @Nullable String seedName, @Nullable String fruit) {
+	YHCrops(PlantType type, int rarity, int density, @Nullable String seedName, @Nullable String fruit) {
 		String name = name().toLowerCase(Locale.ROOT);
 		this.rarity = rarity;
+		this.density = density;
 		if (seedName == null) seedName = name;
 		this.configKey = ResourceKey.create(Registries.CONFIGURED_FEATURE, YoukaisHomecoming.loc(name));
 		this.placementKey = ResourceKey.create(Registries.PLACED_FEATURE, YoukaisHomecoming.loc(name));

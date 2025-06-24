@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-24T13:37:29.5665	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-06-24T15:13:00.518713	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1952,11 +1952,11 @@ d62a11f2285d074b5f1555524b9cfbfb12b5407a data/youkaishomecoming/loot_tables/bloc
 3a01da029c8d10e181a68397347c9aa6ee8bba05 data/youkaishomecoming/loot_tables/blocks/wild_udumbara.json
 b7b3464e99168a3c57048fbe27d742e371faea4e data/youkaishomecoming/loot_tables/blocks/yellow_red_velvet_candle_cake.json
 a93b1b11cd83deec26719959d42ff30df40fa33f data/youkaishomecoming/loot_tables/chests/cirno_nest/cabinet.json
-8833954325ab6007a615fbb2b344d26daa8f49b3 data/youkaishomecoming/loot_tables/chests/hakurei_shrine/barrel.json
+3cfa8aff2c297ecde43b17a1ed11cf5837e4b7de data/youkaishomecoming/loot_tables/chests/hakurei_shrine/barrel.json
 b6fdcb7f69021ec0c86bacd6b90ee062f784612e data/youkaishomecoming/loot_tables/chests/hakurei_shrine/cabinet.json
 e5d1fa45605f476a6681b77955f1f70a23fa616f data/youkaishomecoming/loot_tables/chests/hakurei_shrine/chest.json
-c009206aac6b6d6762740edcf11e8b133d98bcad data/youkaishomecoming/loot_tables/chests/youkai_nest/barrel.json
-8cd8758836804e49be17fd445295d16d0d7230c3 data/youkaishomecoming/loot_tables/chests/youkai_nest/chest.json
+cfdda650ee6552d2fcad3ff0e6c5cf4dce801725 data/youkaishomecoming/loot_tables/chests/youkai_nest/barrel.json
+3f645bf34f6a41ab847e129a6a0345d8e48293c3 data/youkaishomecoming/loot_tables/chests/youkai_nest/chest.json
 2d60bcfd15ed968c17bd373e8a5407550c99511c data/youkaishomecoming/loot_tables/entities/cirno.json
 86e480df85b508d0a0b644837e28edabcc1e05ff data/youkaishomecoming/loot_tables/entities/clownpiece.json
 685c0247a623c6c3d7cb15814154f3f937f95db4 data/youkaishomecoming/loot_tables/entities/eternity_larva.json
