@@ -1,3 +1,15 @@
+2.4.12
+- Add Cucumber spawns
+- Add cucumber to Rumia and Reimu structure loot
+- Change plant spawns:
+  - Soybean: dark forest, any jungle, any swamp
+  - Redbean: sunflower plains, bamboo jungle, birch forest, old growth bitch forest
+  - Coffea: any jungle
+  - Tea: flower forest, meadow, cherry grove, grove, any mountain
+  - Mandrake: dark forest, any magical biomes
+  - Udumbara: any swamp
+  - Cucumber: any coniferous biomes (biomes with spruce)
+
 2.4.11
 - Add Cucumber, Honey Glazed Cucumber, Kappa Maki
 - Fixing Moka Recipes

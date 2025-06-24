@@ -1,12 +1,14 @@
-// 1.20.1	2025-06-15T22:01:09.209502	Tags for minecraft:worldgen/biome mod id youkaishomecoming
+// 1.20.1	2025-06-24T15:27:06.100647	Tags for minecraft:worldgen/biome mod id youkaishomecoming
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/worldgen/biome/is_magical.json
 bffd02152ab92ebbb46e2caaaddcced6c8f55740 data/youkaishomecoming/tags/worldgen/biome/has_structure/cirno_nest.json
 ce7e7f10517021590c3771b5d4befb6f00232756 data/youkaishomecoming/tags/worldgen/biome/has_structure/hakurei_shrine.json
-225e21410327ce0281c1cf01daebadaa6b9c56ce data/youkaishomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
+5c0d6417dc8d9501750754f0547746a8f45239a0 data/youkaishomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
 c3d4e55bd4ed5d178abb10df76626eccdab7c209 data/youkaishomecoming/tags/worldgen/biome/spawns/coffea.json
+841f627f93601e3b436168727e7a9480102f6439 data/youkaishomecoming/tags/worldgen/biome/spawns/cucumber.json
 18af7656d96433e406a1aebdcb462fecebcf251e data/youkaishomecoming/tags/worldgen/biome/spawns/lamprey.json
-5f176659fa27569cc678ddae4a306c2055a89a16 data/youkaishomecoming/tags/worldgen/biome/spawns/mandrake.json
+55bdbf5a031f9542dd5dcd034d674105dc7740be data/youkaishomecoming/tags/worldgen/biome/spawns/mandrake.json
 835c35de6c87a4e2d9653dceb5578a32f082873f data/youkaishomecoming/tags/worldgen/biome/spawns/redbean.json
-e32aca61ae28f8eac0810d5b86f0fee1aec56d94 data/youkaishomecoming/tags/worldgen/biome/spawns/soybean.json
-7fd551cf71e3c6126b6085263f468d30914b2191 data/youkaishomecoming/tags/worldgen/biome/spawns/tea.json
+854d0d5f0d5c5f2d74fe91a6b19e5a939e73794b data/youkaishomecoming/tags/worldgen/biome/spawns/soybean.json
+8a5e7b85849e84f2f20240eb0df4b58fd42f4d28 data/youkaishomecoming/tags/worldgen/biome/spawns/tea.json
 ec7bbb0c9b5fc5378f8716f54862806404f04360 data/youkaishomecoming/tags/worldgen/biome/spawns/tuna.json
-a2c17e9189d16e11b26ac0a0c170a0bc41bf1093 data/youkaishomecoming/tags/worldgen/biome/spawns/udumbara.json
+2baf25447b6e6be292fa28c96583cdcde3854de8 data/youkaishomecoming/tags/worldgen/biome/spawns/udumbara.json

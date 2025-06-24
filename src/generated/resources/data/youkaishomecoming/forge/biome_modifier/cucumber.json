@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaishomecoming:spawns/cucumber",
+  "features": "youkaishomecoming:cucumber",
+  "step": "vegetal_decoration"
+}
