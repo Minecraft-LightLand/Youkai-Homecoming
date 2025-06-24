@@ -1,3 +1,8 @@
+2.4.13
+- Fix Tea model
+- Improve cucumber hitbox
+- Make cucumber compatible with Create
+
 2.4.12
 - Add Cucumber spawns
 - Add cucumber to Rumia and Reimu structure loot

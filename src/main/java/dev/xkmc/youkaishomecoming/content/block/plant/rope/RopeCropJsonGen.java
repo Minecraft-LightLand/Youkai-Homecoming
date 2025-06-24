@@ -18,7 +18,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class RopeCropJsonGen {
 
-	public static void buildRootedModel(DataGenContext<Block, RootedClimbingCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
+	public static void buildRootedModel(DataGenContext<Block, ? extends RootedClimbingCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			boolean rope = state.getValue(RopeLoggedCropBlock.ROPELOGGED);
 			boolean base = state.getValue(RootedClimbingCropBlock.BASE);

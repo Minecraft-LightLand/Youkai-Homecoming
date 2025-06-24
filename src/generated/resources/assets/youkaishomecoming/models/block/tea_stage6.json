@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/plant/tea/tea_stage6",
+  "parent": "youkaishomecoming:custom/plant/tea_stage6",
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {

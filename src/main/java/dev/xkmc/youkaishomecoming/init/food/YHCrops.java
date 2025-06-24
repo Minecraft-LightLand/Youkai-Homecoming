@@ -254,7 +254,7 @@ public enum YHCrops {
 				.register(),
 				YHCrops::wildCropDropSeed, ItemNameBlockItem::new),
 		CUCUMBER((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new RootedClimbingCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
+						new CucumberCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
 				.blockstate((ctx, pvd) -> RopeCropJsonGen.buildRootedModel(ctx, pvd, name))
 				.loot((pvd, block) -> PlantJsonGen.buildPlantLoot(pvd, block, crop))
 				.tag(BlockTags.CLIMBABLE)
