@@ -43,7 +43,14 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 		return Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? state.is(ModTags.ROPES) : state.is(ModBlocks.ROPE.get());
 	}
 
+	public static BlockState getRopeBlock() {
+		Block rope = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Configuration.DEFAULT_TOMATO_VINE_ROPE.get()));
+		Block block = rope != null ? rope : ModBlocks.ROPE.get();
+		return block.defaultBlockState();
+	}
+
 	public static final BooleanProperty ROPELOGGED = BooleanProperty.create("ropelogged");
+
 
 	private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
 
@@ -167,10 +174,14 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 
 	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {
 		boolean rope = state.getValue(ROPELOGGED);
-		super.playerDestroy(level, player, pos, state, be, stack);
+		doPlayerDestroy(level, player, pos, state, be, stack);
 		if (rope) {
 			destroyAndPlaceRope(level, pos);
 		}
+	}
+
+	public void doPlayerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {
+		super.playerDestroy(level, player, pos, state, be, stack);
 	}
 
 	public BlockState updateShape(BlockState state, Direction facing, BlockState fstate, LevelAccessor level, BlockPos cpos, BlockPos fpos) {
@@ -181,18 +192,14 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 	}
 
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		if (!state.canSurvive(level, pos)) {
-			level.destroyBlock(pos, true);
-			if (state.getValue(ROPELOGGED)) {
-				destroyAndPlaceRope(level, pos);
-			}
+		level.destroyBlock(pos, true);
+		if (state.getValue(ROPELOGGED)) {
+			destroyAndPlaceRope(level, pos);
 		}
 	}
 
 	public static void destroyAndPlaceRope(Level level, BlockPos pos) {
-		Block rope = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Configuration.DEFAULT_TOMATO_VINE_ROPE.get()));
-		Block block = rope != null ? rope : ModBlocks.ROPE.get();
-		level.setBlockAndUpdate(pos, block.defaultBlockState());
+		level.setBlockAndUpdate(pos, getRopeBlock());
 	}
 
 	@Override

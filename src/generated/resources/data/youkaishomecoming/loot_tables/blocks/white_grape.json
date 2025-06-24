@@ -10,6 +10,16 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
+          "condition": "minecraft:inverted",
+          "term": {
+            "block": "youkaishomecoming:white_grape",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "age": "9"
+            }
+          }
+        },
+        {
           "block": "youkaishomecoming:white_grape",
           "condition": "minecraft:block_state_property",
           "properties": {
@@ -32,7 +42,7 @@
           "block": "youkaishomecoming:white_grape",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "11"
+            "age": "9"
           }
         },
         {

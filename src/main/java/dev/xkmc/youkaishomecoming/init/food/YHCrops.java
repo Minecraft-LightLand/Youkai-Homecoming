@@ -7,7 +7,7 @@ import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.plant.*;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeJsonGen;
-import dev.xkmc.youkaishomecoming.content.block.plant.rope.RootedClimbingCropBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.rope.CucumberCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeClimbingSeedItem;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeCropJsonGen;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;

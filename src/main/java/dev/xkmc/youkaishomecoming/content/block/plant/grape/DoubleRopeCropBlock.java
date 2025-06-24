@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Fluids;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -118,16 +118,21 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 
 	public BlockState updateShape(BlockState state, Direction dir, BlockState sourceState, LevelAccessor level, BlockPos pos, BlockPos sourcePos) {
 		boolean root = state.getValue(ROOT);
-		if (root && dir == Direction.DOWN && !state.canSurvive(level, pos))
-			return Blocks.AIR.defaultBlockState();
+		if (root && dir == Direction.DOWN && !state.canSurvive(level, pos)) {
+			level.scheduleTick(pos, this, 1);
+			return state;
+		}
 		if (dir.getAxis() == Direction.Axis.Y) {
 			boolean illegal = !sourceState.is(this) || sourceState.getValue(ROOT) == root;
 			if (!root && dir == Direction.DOWN && illegal) {
-				return Blocks.AIR.defaultBlockState();
+				level.scheduleTick(pos, this, 1);
+				return state;
 			}
 			if (root && dir == Direction.UP && illegal) {
-				if (state.getValue(getAgeProperty()) >= getDoubleBlockStart())
-					return Blocks.AIR.defaultBlockState();
+				if (state.getValue(getAgeProperty()) >= getDoubleBlockStart()){
+					level.scheduleTick(pos, this, 1);
+					return state;
+				}
 			}
 		}
 		return super.updateShape(state, dir, sourceState, level, pos, sourcePos);
@@ -144,8 +149,8 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 		super.playerWillDestroy(level, pos, state, player);
 	}
 
-	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {
-		super.playerDestroy(level, player, pos, Blocks.AIR.defaultBlockState(), be, stack);
+	public void doPlayerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {
+		super.doPlayerDestroy(level, player, pos, Blocks.AIR.defaultBlockState(), be, stack);
 	}
 
 	public static void preventCreativeDropFromBottomPart(Level level, BlockPos pos, BlockState state, Player player) {
@@ -154,9 +159,8 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 			BlockPos low = pos.below();
 			BlockState lowState = level.getBlockState(low);
 			if (lowState.is(state.getBlock()) && lowState.getValue(ROOT)) {
-				BlockState next = lowState.getFluidState().is(Fluids.WATER) ?
-						Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-				level.setBlock(low, next, 35);
+				var empty = state.getValue(ROPELOGGED) ? getRopeBlock() : Blocks.AIR.defaultBlockState();
+				level.setBlock(low, empty, 35);
 				level.levelEvent(player, 2001, low, Block.getId(lowState));
 			}
 		}
