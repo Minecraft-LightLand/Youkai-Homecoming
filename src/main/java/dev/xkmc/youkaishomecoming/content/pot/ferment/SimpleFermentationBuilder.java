@@ -37,8 +37,20 @@ public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 		return addInput(Ingredient.of(item));
 	}
 
+	public SimpleFermentationBuilder addInput(ItemLike item, int count) {
+		for (int i = 0; i < count; i++)
+			addInput(item);
+		return this;
+	}
+
 	public SimpleFermentationBuilder addInput(TagKey<Item> item) {
 		return addInput(Ingredient.of(item));
+	}
+
+	public SimpleFermentationBuilder addInput(TagKey<Item> item, int count) {
+		for (int i = 0; i < count; i++)
+			addInput(item);
+		return this;
 	}
 
 	public SimpleFermentationBuilder addInput(Ingredient ing) {
@@ -48,6 +60,12 @@ public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 
 	public SimpleFermentationBuilder addOutput(ItemLike stack) {
 		return addOutput(stack.asItem().getDefaultInstance());
+	}
+
+	public SimpleFermentationBuilder addOutput(ItemLike item, int count) {
+		for (int i = 0; i < count; i++)
+			addOutput(item);
+		return this;
 	}
 
 	public SimpleFermentationBuilder addOutput(ItemStack stack) {

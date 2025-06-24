@@ -3,8 +3,8 @@
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/plants/tea_stage5",
-    "side": "youkaishomecoming:block/plants/tea_bush_side",
-    "top": "youkaishomecoming:block/plants/tea_bush_top"
+    "base": "youkaishomecoming:block/plants/tea/tea_stage5",
+    "side": "youkaishomecoming:block/plants/tea/tea_bush_side",
+    "top": "youkaishomecoming:block/plants/tea/tea_bush_top"
   }
 }

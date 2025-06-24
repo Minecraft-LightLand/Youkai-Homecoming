@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "youkaishomecoming:block/donation_box_down",
-    "east": "youkaishomecoming:block/donation_box_side",
-    "north": "youkaishomecoming:block/donation_box_end",
-    "particle": "youkaishomecoming:block/donation_box_down",
-    "south": "youkaishomecoming:block/donation_box_empty",
-    "up": "youkaishomecoming:block/donation_box_up",
-    "west": "youkaishomecoming:block/donation_box_side"
+    "down": "youkaishomecoming:block/deco/donation_box_down",
+    "east": "youkaishomecoming:block/deco/donation_box_side",
+    "north": "youkaishomecoming:block/deco/donation_box_end",
+    "particle": "youkaishomecoming:block/deco/donation_box_down",
+    "south": "youkaishomecoming:block/deco/donation_box_empty",
+    "up": "youkaishomecoming:block/deco/donation_box_up",
+    "west": "youkaishomecoming:block/deco/donation_box_side"
   }
 }

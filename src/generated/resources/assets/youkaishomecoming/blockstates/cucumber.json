@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "age=0,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine0"
+    },
+    "age=0,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine0"
+    },
+    "age=0,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base0"
+    },
+    "age=0,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base0"
+    },
+    "age=1,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine1"
+    },
+    "age=1,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine1"
+    },
+    "age=1,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base1"
+    },
+    "age=1,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base1"
+    },
+    "age=2,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine2"
+    },
+    "age=2,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine2"
+    },
+    "age=2,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base2"
+    },
+    "age=2,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base2"
+    },
+    "age=3,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine3"
+    },
+    "age=3,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine3"
+    },
+    "age=3,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base3"
+    },
+    "age=3,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base3"
+    },
+    "age=4,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine4"
+    },
+    "age=4,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine4"
+    },
+    "age=4,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base4"
+    },
+    "age=4,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base4"
+    },
+    "age=5,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine5"
+    },
+    "age=5,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine5"
+    },
+    "age=5,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base5"
+    },
+    "age=5,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base5"
+    },
+    "age=6,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine6"
+    },
+    "age=6,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine6"
+    },
+    "age=6,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base6"
+    },
+    "age=6,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base6"
+    },
+    "age=7,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_vine7"
+    },
+    "age=7,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_vine7"
+    },
+    "age=7,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/bare_cucumber_base7"
+    },
+    "age=7,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/rope_cucumber_base7"
+    }
+  }
+}

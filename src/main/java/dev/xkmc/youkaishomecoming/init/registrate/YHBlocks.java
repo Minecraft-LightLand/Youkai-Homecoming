@@ -287,6 +287,8 @@ public class YHBlocks {
 			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
 		}
 
+		YHItems.register();
+
 		{
 			DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
 							BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
@@ -306,9 +308,9 @@ public class YHBlocks {
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
 							.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_kit")))
-							.texture("maker", pvd.modLoc("block/moka_pot"))
-							.texture("cup", pvd.modLoc("block/moka_cup"))
-							.texture("foamer", pvd.modLoc("block/moka_foamer"))
+							.texture("maker", pvd.modLoc("block/deco/moka_pot"))
+							.texture("cup", pvd.modLoc("block/deco/moka_cup"))
+							.texture("foamer", pvd.modLoc("block/deco/moka_foamer"))
 							.renderType("cutout")))
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 
@@ -337,12 +339,12 @@ public class YHBlocks {
 			FINE_GRID_SIKKUI = YoukaisHomecoming.REGISTRATE.block("fine_grid_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
 					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(),
 							pvd.models().cubeColumn("block/" + ctx.getName(),
-									pvd.modLoc("block/" + ctx.getName() + "_side"),
-									pvd.modLoc("block/" + ctx.getName() + "_top"))))
+									pvd.modLoc("block/sikkui/" + ctx.getName() + "_side"),
+									pvd.modLoc("block/sikkui/" + ctx.getName() + "_top"))))
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE)
 					.simpleItem().register();
 
-			FINE_GRID_SIKKUI_TD = thinTrapdoor("fine_grid_framed_sikkui", sikkuiProp, set, YoukaisHomecoming.loc("block/fine_grid_framed_sikkui_side"));
+			FINE_GRID_SIKKUI_TD = thinTrapdoor("fine_grid_framed_sikkui", sikkuiProp, set, YoukaisHomecoming.loc("block/sikkui/fine_grid_framed_sikkui_side"));
 
 			var doorProp = BlockBehaviour.Properties.copy(Blocks.CLAY)
 					.noOcclusion().pushReaction(PushReaction.DESTROY);
@@ -402,8 +404,8 @@ public class YHBlocks {
 	private static BlockEntry<ThinDoorBlock> thinDoor(String id, BlockBehaviour.Properties prop, BlockSetType set) {
 		return YoukaisHomecoming.REGISTRATE.block(id, p -> new ThinDoorBlock(prop, set))
 				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(),
-						pvd.modLoc("block/" + id + "_bottom"),
-						pvd.modLoc("block/" + id + "_top")))
+						pvd.modLoc("block/sikkui/" + id + "_bottom"),
+						pvd.modLoc("block/sikkui/" + id + "_top")))
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
 				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).build()
 				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b))).register();
@@ -488,10 +490,12 @@ public class YHBlocks {
 					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
 					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
 			BASE = YoukaisHomecoming.REGISTRATE.block(id, p -> new Block(prop))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get()))
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().cubeAll(ctx.getName(),
+									pvd.modLoc("block/sikkui/" + ctx.getName()))))
 					.tag(BlockTags.MINEABLE_WITH_SHOVEL)
 					.simpleItem().register();
-			TRAP_DOOR = thinTrapdoor(id, prop, set, YoukaisHomecoming.loc("block/" + id));
+			TRAP_DOOR = thinTrapdoor(id, prop, set, YoukaisHomecoming.loc("block/sikkui/" + id));
 		}
 
 		public void genRecipe(RegistrateRecipeProvider pvd) {
@@ -508,7 +512,7 @@ public class YHBlocks {
 
 		public FullSikkuiSet(String id, BlockBehaviour.Properties prop) {
 			super(id, prop);
-			ResourceLocation side = YoukaisHomecoming.loc("block/" + id);
+			ResourceLocation side = YoukaisHomecoming.loc("block/sikkui/" + id);
 			STAIR = YoukaisHomecoming.REGISTRATE.block(id + "_stairs", p ->
 							new StairBlock(() -> BASE.get().defaultBlockState(), prop))
 					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side))

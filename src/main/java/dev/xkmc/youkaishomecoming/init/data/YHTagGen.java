@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import sereneseasons.core.SereneSeasons;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,17 @@ public class YHTagGen {
 									ForgeRegistries.MOB_EFFECTS.getKey(ench)),
 							e.getExistingFileHelper()));
 
-	public static final TagKey<Item> RAW_EEL = item("raw_eel");
+	public static final TagKey<Item> RAW_EEL = forgeItem("raw_fishes/eel");
+	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
+	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
+	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
+	public static final TagKey<Item> BUTTER = forgeItem("butter");
+	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
+	public static final TagKey<Item> CUCUMBER_SEED = forgeItem("seeds/cucumber");
+	public static final TagKey<Item> VEGE = forgeItem("vegetables");
+	public static final TagKey<Item> SEED = forgeItem("seeds");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
+	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> DANGO = item("dango");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
@@ -51,6 +61,7 @@ public class YHTagGen {
 	public static final TagKey<Item> LASER = item("laser");
 	public static final TagKey<Item> DANMAKU_SHOOTER = item("danmaku_shooter");
 	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
+	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
@@ -98,7 +109,8 @@ public class YHTagGen {
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
-		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT);
+		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
+		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
@@ -108,6 +120,11 @@ public class YHTagGen {
 
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
+		pvd.addTag(VEGE).addTag(CUCUMBER);
+		pvd.addTag(CUCUMBER).add(YHCrops.CUCUMBER.getFruits());
+		pvd.addTag(SEED).addTag(CUCUMBER_SEED);
+		pvd.addTag(CUCUMBER_SEED).add(YHCrops.CUCUMBER.getSeed());
+
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());
 		pvd.addTag(TEA_GREEN).add(YHTea.GREEN.leaves.get());
@@ -139,6 +156,10 @@ public class YHTagGen {
 
 	public static TagKey<Item> item(String id) {
 		return ItemTags.create(YoukaisHomecoming.loc(id));
+	}
+
+	public static TagKey<Item> forgeItem(String id) {
+		return ItemTags.create(new ResourceLocation("forge", id));
 	}
 
 	public static TagKey<Block> block(String id) {

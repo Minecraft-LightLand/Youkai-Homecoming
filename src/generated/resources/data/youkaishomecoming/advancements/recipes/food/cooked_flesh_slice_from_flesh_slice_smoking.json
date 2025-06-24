@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flesh_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:flesh_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:cooked_flesh_slice_from_flesh_slice_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_flesh_slice",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:cooked_flesh_slice_from_flesh_slice_smoking"
+    ]
+  },
+  "sends_telemetry_event": false
+}

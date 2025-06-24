@@ -9,7 +9,7 @@
       "item": "youkaishomecoming:blood_bottle"
     },
     "D": {
-      "item": "youkaishomecoming:flesh"
+      "tag": "youkaishomecoming:raw_flesh"
     },
     "E": {
       "item": "minecraft:wheat"

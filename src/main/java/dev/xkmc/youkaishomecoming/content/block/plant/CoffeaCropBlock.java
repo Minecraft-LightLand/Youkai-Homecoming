@@ -150,16 +150,16 @@ public class CoffeaCropBlock extends DoubleCropBlock implements HarvestableBlock
 	public static void buildPlantModel(DataGenContext<Block, CoffeaCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(AGE);
-			String tex = name + "_stage" + age;
+			String tex =  name + "_stage" + age;
 			if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
 				return ConfiguredModel.builder().modelFile(pvd.models()
 						.withExistingParent(tex + "_upper", pvd.mcLoc("block/air"))
-						.texture("particle", pvd.modLoc("block/plants/" + name + "_leaves"))
+						.texture("particle", pvd.modLoc("block/plants/" + name + "/" +  name + "_leaves"))
 				).build();
 			}
 			if (age <= 5) {
 				return ConfiguredModel.builder().modelFile(pvd.models()
-						.cross(tex, pvd.modLoc("block/plants/" + tex)).renderType("cutout")).build();
+						.cross(tex, pvd.modLoc("block/plants/" + name + "/" +tex)).renderType("cutout")).build();
 			} else {
 				var file = pvd.models()
 						.getBuilder("block/" + tex)
@@ -167,12 +167,12 @@ public class CoffeaCropBlock extends DoubleCropBlock implements HarvestableBlock
 				file.ao(false);
 				file.renderType("cutout");
 				if (age == 6 || age == 7) {
-					file.texture("leaves", pvd.modLoc("block/plants/" + name + "_leaves"));
+					file.texture("leaves", pvd.modLoc("block/plants/" +  name + "/" + name + "_leaves"));
 				}
-				file.texture("top", pvd.modLoc("block/plants/" + name + "_bush_top"));
-				file.texture("side", pvd.modLoc("block/plants/" + name + "_bush_side"));
-				file.texture("trunk", pvd.modLoc("block/plants/" + name + "_trunk" + age));
-				file.texture("particle", pvd.modLoc("block/plants/" + name + "_trunk" + age));
+				file.texture("top", pvd.modLoc("block/plants/" +  name + "/" + name + "_bush_top"));
+				file.texture("side", pvd.modLoc("block/plants/" + name + "/" +  name + "_bush_side"));
+				file.texture("trunk", pvd.modLoc("block/plants/" +  name + "/" + name + "_trunk" + age));
+				file.texture("particle", pvd.modLoc("block/plants/" + name + "/" +  name + "_trunk" + age));
 				return ConfiguredModel.builder().modelFile(file).build();
 			}
 		});

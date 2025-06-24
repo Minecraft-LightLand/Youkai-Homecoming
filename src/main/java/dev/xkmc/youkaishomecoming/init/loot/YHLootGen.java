@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -37,6 +38,7 @@ public class YHLootGen {
 					.add(LootTableTemplate.getItem(Items.BAMBOO, 8))
 					.add(LootTableTemplate.getItem(Items.POTATO, 8))
 					.add(LootTableTemplate.getItem(Items.CARROT, 8))
+					.add(LootTableTemplate.getItem(YHCrops.CUCUMBER.getFruits(), 4))
 					.add(LootTableTemplate.getItem(Items.COAL, 8));
 			var dango = LootTableTemplate.getPool(3, 1)
 					.add(LootTableTemplate.getItem(YHFood.MOCHI.item.get(), 8).setWeight(100))
@@ -58,7 +60,7 @@ public class YHLootGen {
 			var flesh = LootTableTemplate.getPool(1, 1)
 					.add(LootTableTemplate.getItem(YHFood.FLESH.item.get(), 4).setWeight(100))
 					.add(LootTableTemplate.getItem(YHFood.COOKED_FLESH.item.get(), 2).setWeight(50))
-					.add(LootTableTemplate.getItem(YHFood.FLESH_ROLL.item.get(), 2).setWeight(20))
+					.add(LootTableTemplate.getItem(YHSushi.FLESH_ROLL.item.get(), 2).setWeight(20))
 					.add(LootTableTemplate.getItem(YHFood.FLESH_STEW.item.get(), 1).setWeight(20));
 
 			pvd.addLootAction(LootContextParamSets.CHEST, cons -> cons.accept(NEST_CHEST, LootTable.lootTable()
@@ -95,11 +97,13 @@ public class YHLootGen {
 					.add(LootTableTemplate.getItem(Items.IRON_INGOT, 2))
 					.add(LootTableTemplate.getItem(Items.GOLD_NUGGET, 2));
 
-			var crops = LootTableTemplate.getPool(2, 1)
+			var crops = LootTableTemplate.getPool(3, 1)
 					.add(LootTableTemplate.getItem(YHCrops.TEA.getSeed(), 4).setWeight(4))
+					.add(LootTableTemplate.getItem(YHCrops.CUCUMBER.getFruits(), 2).setWeight(4))
 					.add(LootTableTemplate.getItem(YHCrops.SOYBEAN.getSeed(), 4).setWeight(4))
 					.add(LootTableTemplate.getItem(YHCrops.REDBEAN.getSeed(), 4).setWeight(4))
 					.add(LootTableTemplate.getItem(YHCrops.COFFEA.getSeed(), 4).setWeight(2))
+					.add(LootTableTemplate.getItem(YHCrops.MANDRAKE.getSeed(), 1).setWeight(1))
 					.add(LootTableTemplate.getItem(YHCrops.UDUMBARA.getSeed(), 1).setWeight(1))
 					.add(LootTableTemplate.getItem(ModItems.RICE.get(), 2).setWeight(8))
 					.add(LootTableTemplate.getItem(ModItems.CABBAGE.get(), 2).setWeight(4))

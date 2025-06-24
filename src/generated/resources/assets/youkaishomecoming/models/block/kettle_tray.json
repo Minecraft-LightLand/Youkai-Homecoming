@@ -2,8 +2,8 @@
   "parent": "youkaishomecoming:custom/utensil/kettle_tray",
   "render_type": "minecraft:cutout",
   "textures": {
-    "kettle": "youkaishomecoming:block/kettle",
-    "tray_side": "youkaishomecoming:block/cooking_pot_tray_side",
-    "tray_top": "youkaishomecoming:block/cooking_pot_tray_top"
+    "kettle": "youkaishomecoming:block/utensil/kettle",
+    "tray_side": "youkaishomecoming:block/utensil/cooking_pot_tray_side",
+    "tray_top": "youkaishomecoming:block/utensil/cooking_pot_tray_top"
   }
 }

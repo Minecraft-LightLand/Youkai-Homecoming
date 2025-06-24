@@ -1,7 +1,7 @@
 {
   "parent": "youkaishomecoming:template/door_bottom_left",
   "textures": {
-    "bottom": "youkaishomecoming:block/fine_grid_framed_shoji_bottom",
-    "top": "youkaishomecoming:block/fine_grid_framed_shoji_top"
+    "bottom": "youkaishomecoming:block/sikkui/fine_grid_framed_shoji_bottom",
+    "top": "youkaishomecoming:block/sikkui/fine_grid_framed_shoji_top"
   }
 }

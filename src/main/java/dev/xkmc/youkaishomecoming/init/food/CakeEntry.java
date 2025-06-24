@@ -81,11 +81,11 @@ public class CakeEntry {
 			String suffix = stage == 0 ? "" : "_slice" + stage;
 			return pvd.models().getBuilder(ctx.getName() + suffix)
 					.parent(new ModelFile.UncheckedModelFile("farmersdelight:block/pie" + suffix))
-					.texture("particle", pvd.modLoc("block/" + ctx.getName() + "_top"))
-					.texture("top", pvd.modLoc("block/" + ctx.getName() + "_top"))
-					.texture("inner", pvd.modLoc("block/" + ctx.getName() + "_inner"))
-					.texture("side", pvd.modLoc("block/pie_side"))
-					.texture("bottom", pvd.modLoc("block/pie_bottom"));
+					.texture("particle", pvd.modLoc("block/cake/" + ctx.getName() + "_top"))
+					.texture("top", pvd.modLoc("block/cake/" + ctx.getName() + "_top"))
+					.texture("inner", pvd.modLoc("block/cake/" + ctx.getName() + "_inner"))
+					.texture("side", pvd.modLoc("block/cake/pie_side"))
+					.texture("bottom", pvd.modLoc("block/cake/pie_bottom"));
 		});
 	}
 
@@ -108,11 +108,11 @@ public class CakeEntry {
 
 	private BlockModelBuilder genCakeModel(RegistrateBlockstateProvider pvd, String model) {
 		return pvd.models().withExistingParent(base + "_" + model, new ResourceLocation("block/" + model))
-				.texture("particle", pvd.modLoc("block/" + base + "_cake_side"))
-				.texture("bottom", pvd.modLoc("block/" + base + "_cake_bottom"))
-				.texture("top", pvd.modLoc("block/" + base + "_cake_top"))
-				.texture("side", pvd.modLoc("block/" + base + "_cake_side"))
-				.texture("inside", pvd.modLoc("block/" + base + "_cake_inner"));
+				.texture("particle", pvd.modLoc("block/cake/" + base + "_cake_side"))
+				.texture("bottom", pvd.modLoc("block/cake/" + base + "_cake_bottom"))
+				.texture("top", pvd.modLoc("block/cake/" + base + "_cake_top"))
+				.texture("side", pvd.modLoc("block/cake/" + base + "_cake_side"))
+				.texture("inside", pvd.modLoc("block/cake/" + base + "_cake_inner"));
 	}
 
 	private BlockModelBuilder genCandleCakeModel(DataGenContext<Block, YHCandleCakeBlock> ctx, RegistrateBlockstateProvider pvd, String candle, boolean lit) {
@@ -122,10 +122,10 @@ public class CakeEntry {
 			candle += "_lit";
 		}
 		return pvd.models().withExistingParent(name, new ResourceLocation("block/template_cake_with_candle"))
-				.texture("particle", pvd.modLoc("block/" + base + "_cake_side"))
-				.texture("bottom", pvd.modLoc("block/" + base + "_cake_bottom"))
-				.texture("top", pvd.modLoc("block/" + base + "_cake_top"))
-				.texture("side", pvd.modLoc("block/" + base + "_cake_side"))
+				.texture("particle", pvd.modLoc("block/cake/" + base + "_cake_side"))
+				.texture("bottom", pvd.modLoc("block/cake/" + base + "_cake_bottom"))
+				.texture("top", pvd.modLoc("block/cake/" + base + "_cake_top"))
+				.texture("side", pvd.modLoc("block/cake/" + base + "_cake_side"))
 				.texture("candle", pvd.mcLoc("block/" + candle));
 	}
 

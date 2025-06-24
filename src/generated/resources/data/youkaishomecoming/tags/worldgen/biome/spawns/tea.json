@@ -3,6 +3,7 @@
     "minecraft:flower_forest",
     "minecraft:meadow",
     "minecraft:cherry_grove",
-    "minecraft:grove"
+    "minecraft:grove",
+    "#minecraft:is_mountain"
   ]
 }

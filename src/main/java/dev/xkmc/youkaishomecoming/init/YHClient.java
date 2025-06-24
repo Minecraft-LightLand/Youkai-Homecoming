@@ -6,9 +6,10 @@ import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.client.DanmakuItemDeco;
 import dev.xkmc.youkaishomecoming.content.capability.PowerInfoOverlay;
 import dev.xkmc.youkaishomecoming.content.client.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaModel;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticle;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
-import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
+import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
@@ -106,6 +107,7 @@ public class YHClient {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
+		event.registerLayerDefinition(TunaModel.LAYER_LOCATION, TunaModel::createBodyLayer);
 		event.registerLayerDefinition(SuwakoHatModel.SUWAKO, SuwakoHatModel::createSuwakoHat);
 		event.registerLayerDefinition(SuwakoHatModel.STRAW, SuwakoHatModel::createStrawHat);
 		event.registerLayerDefinition(FrogStrawHatModel.STRAW, FrogStrawHatModel::createHat);

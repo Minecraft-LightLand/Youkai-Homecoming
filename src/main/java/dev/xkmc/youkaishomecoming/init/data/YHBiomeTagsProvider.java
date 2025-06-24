@@ -18,13 +18,14 @@ import java.util.concurrent.CompletableFuture;
 public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
 	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
-	public static final TagKey<Biome> CIRNO = asTag("spawns/cirno");
+	public static final TagKey<Biome> TUNA = asTag("spawns/tuna");
 	public static final TagKey<Biome> SOYBEAN = asTag("spawns/soybean");
 	public static final TagKey<Biome> REDBEAN = asTag("spawns/redbean");
 	public static final TagKey<Biome> COFFEA = asTag("spawns/coffea");
 	public static final TagKey<Biome> TEA = asTag("spawns/tea");
 	public static final TagKey<Biome> MANDRAKE = asTag("spawns/mandrake");
 	public static final TagKey<Biome> UDUMBARA = asTag("spawns/udumbara");
+	public static final TagKey<Biome> CUCUMBER = asTag("spawns/cucumber");
 	public static final TagKey<Biome> HAS_RUMIA_NEST = asTag("has_structure/youkai_nest");
 	public static final TagKey<Biome> HAS_CIRNO_NEST = asTag("has_structure/cirno_nest");
 	public static final TagKey<Biome> HAS_SHRINE = asTag("has_structure/hakurei_shrine");
@@ -35,17 +36,17 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
 	@Override
 	protected void addTags(HolderLookup.Provider pvd) {
-		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER,
-				Biomes.OCEAN, Biomes.COLD_OCEAN, Biomes.FROZEN_OCEAN,
-				Biomes.DEEP_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN);
-		tag(CIRNO).add(Biomes.RIVER, Biomes.FROZEN_RIVER, Biomes.SNOWY_BEACH);
-		tag(SOYBEAN).add(Biomes.JUNGLE, Biomes.DARK_FOREST, Biomes.SWAMP);
+		tag(Tags.Biomes.IS_MAGICAL);
+		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
+		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
+		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
-		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE);
-		tag(MANDRAKE).add(Biomes.DARK_FOREST);
-		tag(UDUMBARA).add(Biomes.SWAMP);
-		tag(HAS_RUMIA_NEST).add(Biomes.PLAINS).addTag(BiomeTags.IS_FOREST);
+		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
+		tag(MANDRAKE).add(Biomes.DARK_FOREST).addTag(Tags.Biomes.IS_MAGICAL);
+		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
+		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS);
+		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST);
 		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
 				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
 		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"))

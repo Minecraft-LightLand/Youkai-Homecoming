@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:rainbow_futomaki"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "youkaishomecoming:rainbow_futomaki_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

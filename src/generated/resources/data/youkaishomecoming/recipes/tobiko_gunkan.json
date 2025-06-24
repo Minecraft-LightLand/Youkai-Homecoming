@@ -1,15 +1,9 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:gunkan",
+  "input": [
     {
       "item": "youkaishomecoming:roe"
-    },
-    {
-      "item": "farmersdelight:cooked_rice"
-    },
-    {
-      "item": "minecraft:dried_kelp"
     }
   ],
   "result": {

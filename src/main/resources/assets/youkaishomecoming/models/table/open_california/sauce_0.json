@@ -1,0 +1,17 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"3": "#sauce"
+	},
+	"elements": [
+		{
+			"name": "sauce",
+			"from": [2.5, 2.02, 6.5],
+			"to": [13.5, 2.02, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2.5, 2, 7.5]},
+			"faces": {
+				"up": {"uv": [0, 0, 11, 3], "texture": "#3"}
+			}
+		}
+	]
+}

@@ -1,6 +1,6 @@
 {
   "parent": "youkaishomecoming:template/template_orientable_trapdoor_open",
   "textures": {
-    "texture": "youkaishomecoming:block/sikkui"
+    "texture": "youkaishomecoming:block/sikkui/sikkui"
   }
 }

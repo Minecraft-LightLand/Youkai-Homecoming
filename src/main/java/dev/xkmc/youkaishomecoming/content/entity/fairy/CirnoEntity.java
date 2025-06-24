@@ -123,7 +123,7 @@ public class CirnoEntity extends FairyEntity implements IYoukaiMerchant {
 	public static boolean checkCirnoSpawnRules(EntityType<CirnoEntity> e, ServerLevelAccessor level, MobSpawnType type,
 											   BlockPos pos, RandomSource rand) {
 		return checkMobSpawnRules(e, level, type, pos, rand) && YHModConfig.COMMON.cirnoSpawn.get() &&
-				level.getEntitiesOfClass(RumiaEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty();
+				level.getEntitiesOfClass(CirnoEntity.class, AABB.ofSize(pos.getCenter(), 48, 24, 48)).isEmpty();
 	}
 
 	// merchant

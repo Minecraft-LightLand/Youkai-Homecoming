@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:salmon_futomaki"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "youkaishomecoming:salmon_futomaki_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

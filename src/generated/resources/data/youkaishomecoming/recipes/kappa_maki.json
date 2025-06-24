@@ -1,0 +1,15 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:hosomaki",
+  "input": [
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    },
+    {
+      "tag": "forge:vegetables/cucumber"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:kappa_maki"
+  }
+}
