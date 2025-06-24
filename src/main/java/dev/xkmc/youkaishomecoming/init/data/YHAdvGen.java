@@ -59,7 +59,7 @@ public class YHAdvGen {
 		var redbean = root.create("soybean", YHCrops.SOYBEAN.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
+										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
 								ItemPredicate.Builder.item().of(YHCrops.SOYBEAN.getSeed()))),
 						"The Essential Harvest", "Plant Soybean")
 				.create("redbean", YHCrops.REDBEAN.getSeed(),
@@ -194,7 +194,7 @@ public class YHAdvGen {
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).filter(e -> !e.isFlesh()).map(e -> e.block.get()),
 										Arrays.stream(YHDrink.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
-										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
+										//Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).filter(YHFood::isReimuFood).map(e -> e.item.get()),
 										Arrays.stream(YHSushi.values()).filter(YHSushi::isReimuFood).map(e -> e.item.get()),
 										Arrays.stream(YHRolls.values()).map(e -> e.slice.get()))

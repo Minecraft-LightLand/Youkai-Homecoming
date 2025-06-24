@@ -1,26 +1,6 @@
 {
   "parent": "youkaishomecoming:main/trade_danmaku",
   "criteria": {
-    "youkaishomecoming:affogato": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:affogato"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:americano": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:americano"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:apaki": {
       "conditions": {
         "item": {
@@ -131,16 +111,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:cappuccino": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:cappuccino"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:coffee_mochi": {
       "conditions": {
         "item": {
@@ -156,16 +126,6 @@
         "item": {
           "items": [
             "youkaishomecoming:cold_tofu"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:con_panna": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:con_panna"
           ]
         }
       },
@@ -256,16 +216,6 @@
         "item": {
           "items": [
             "youkaishomecoming:egg_nigiri"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:espresso": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:espresso"
           ]
         }
       },
@@ -471,16 +421,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:latte": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:latte"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:lions_head": {
       "conditions": {
         "item": {
@@ -506,16 +446,6 @@
         "item": {
           "items": [
             "youkaishomecoming:lorelei_nigiri"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:macchiato": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:macchiato"
           ]
         }
       },
@@ -596,16 +526,6 @@
         "item": {
           "items": [
             "youkaishomecoming:mitarashi_dango"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:mocha": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:mocha"
           ]
         }
       },
@@ -776,16 +696,6 @@
         "item": {
           "items": [
             "youkaishomecoming:raw_tuna_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:ristretto": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:ristretto"
           ]
         }
       },
@@ -1360,33 +1270,6 @@
     ],
     [
       "youkaishomecoming:wind_priestesses"
-    ],
-    [
-      "youkaishomecoming:espresso"
-    ],
-    [
-      "youkaishomecoming:americano"
-    ],
-    [
-      "youkaishomecoming:ristretto"
-    ],
-    [
-      "youkaishomecoming:latte"
-    ],
-    [
-      "youkaishomecoming:affogato"
-    ],
-    [
-      "youkaishomecoming:con_panna"
-    ],
-    [
-      "youkaishomecoming:cappuccino"
-    ],
-    [
-      "youkaishomecoming:macchiato"
-    ],
-    [
-      "youkaishomecoming:mocha"
     ],
     [
       "youkaishomecoming:roasted_lamprey"

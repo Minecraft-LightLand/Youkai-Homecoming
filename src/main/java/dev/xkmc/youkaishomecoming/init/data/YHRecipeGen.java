@@ -1314,14 +1314,7 @@ public class YHRecipeGen {
 	}
 
 	private static void coffee(Consumer<FinishedRecipe> cons, YHCoffee coffee, UnaryOperator<CookingPotRecipeBuilder> func) {
-		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-						.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-						.unlockedByAnyIngredient(YHItems.COFFEE_POWDER)
-						.addIngredient(YHItems.COFFEE_POWDER)
-						.addIngredient(new PotionIngredient(Potions.WATER)))
-				.build(cons, coffee.item.getId());
-
-		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 60, 0.1f, Items.GLASS_BOTTLE)
 						.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 						.unlockedByAnyIngredient(YHCoffee.ESPRESSO.item)
 						.addIngredient(YHCoffee.ESPRESSO.item))

@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import sereneseasons.core.SereneSeasons;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,7 @@ public class YHTagGen {
 	public static final TagKey<Item> LASER = item("laser");
 	public static final TagKey<Item> DANMAKU_SHOOTER = item("danmaku_shooter");
 	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
+	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
@@ -107,7 +109,8 @@ public class YHTagGen {
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
-		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT);
+		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
+		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
