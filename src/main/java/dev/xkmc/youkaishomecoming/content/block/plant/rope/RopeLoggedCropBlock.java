@@ -36,6 +36,10 @@ import javax.annotation.Nullable;
 
 public abstract class RopeLoggedCropBlock extends CropBlock {
 
+	public static boolean isRope(BlockState state) {
+		return Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? state.is(ModTags.ROPES) : state.is(ModBlocks.ROPE.get());
+	}
+
 	public static final BooleanProperty ROPELOGGED = BooleanProperty.create("ropelogged");
 
 	private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
@@ -68,7 +72,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock {
 		postGrowth(level, pos, random);
 	}
 
-	protected boolean mayGrowTo(BlockState state, ServerLevel level, BlockPos pos, int age) {
+	protected boolean mayGrowTo(BlockState state, LevelReader level, BlockPos pos, int age) {
 		return age <= getMaxAge();
 	}
 
@@ -100,13 +104,19 @@ public abstract class RopeLoggedCropBlock extends CropBlock {
 		return level.getRawBrightness(pos, 0) >= 9;
 	}
 
+	protected void pickup(BlockState state, Level level, BlockPos pos) {
+		int quantity = 1 + level.random.nextInt(2);
+		popResource(level, pos, new ItemStack(getFruit(), quantity));
+		level.playSound(null, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+		level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
+	}
+
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);
 		boolean isRope = false;
 		if (stack.getItem() instanceof BlockItem item) {
-			var rstate = item.getBlock().defaultBlockState();
-			isRope = Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? rstate.is(ModTags.ROPES) : rstate.is(ModBlocks.ROPE.get());
+			isRope = isRope(item.getBlock().defaultBlockState());
 		}
 		if (!isRope) {
 			int age = state.getValue(getAgeProperty());
@@ -114,10 +124,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock {
 			if (!isMature && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
 				return InteractionResult.PASS;
 			} else if (isMature) {
-				int quantity = 1 + level.random.nextInt(2);
-				popResource(level, pos, new ItemStack(getFruit(), quantity));
-				level.playSound(null, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-				level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
+				pickup(state, level, pos);
 				return InteractionResult.SUCCESS;
 			} else {
 				return super.use(state, level, pos, player, hand, hit);

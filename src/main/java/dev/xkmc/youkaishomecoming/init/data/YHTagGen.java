@@ -49,6 +49,8 @@ public class YHTagGen {
 	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
 	public static final TagKey<Item> CUCUMBER_SEED = forgeItem("seeds/cucumber");
 	public static final TagKey<Item> VEGE = forgeItem("vegetables");
+	public static final TagKey<Item> GRAPE = forgeItem("fruits/grape");
+	public static final TagKey<Item> FRUIT = forgeItem("fruits");
 	public static final TagKey<Item> SEED = forgeItem("seeds");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
@@ -124,6 +126,8 @@ public class YHTagGen {
 		pvd.addTag(CUCUMBER).add(YHCrops.CUCUMBER.getFruits());
 		pvd.addTag(SEED).addTag(CUCUMBER_SEED);
 		pvd.addTag(CUCUMBER_SEED).add(YHCrops.CUCUMBER.getSeed());
+		pvd.addTag(GRAPE).add(YHCrops.RED_GRAPE.getFruits(), YHCrops.BLACK_GRAPE.getFruits(), YHCrops.WHITE_GRAPE.getFruits());
+		pvd.addTag(FRUIT).addTag(GRAPE);
 
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());

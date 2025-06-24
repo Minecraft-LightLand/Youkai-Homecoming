@@ -30,7 +30,63 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock {
 
 	@Override
 	protected boolean mayGrow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		return !state.getValue(ROOT) && super.mayGrow(state, level, pos, random);
+		return state.getValue(ROOT) &&
+				super.mayGrow(state, level, pos, random) &&
+				mayGrowTo(state, level, pos, state.getValue(getAgeProperty()) + 1);
+	}
+
+	@Override
+	protected boolean mayGrowTo(BlockState state, LevelReader level, BlockPos pos, int age) {
+		if (age >= getDoubleBlockStart()) {
+			BlockState upper = level.getBlockState(pos.above());
+			if (!upper.isAir() && !upper.is(this) && !isRope(upper))
+				return false;
+		}
+		return super.mayGrowTo(state, level, pos, age);
+	}
+
+	@Override
+	protected void growTo(BlockState state, ServerLevel level, BlockPos pos, int age) {
+		super.growTo(state, level, pos, age);
+		if (age >= getDoubleBlockStart()) {
+			var upper = level.getBlockState(pos.above());
+			boolean ropped = isRope(upper) || upper.is(this) && upper.getValue(ROPELOGGED);
+			var next = state
+					.setValue(getAgeProperty(), age)
+					.setValue(ROOT, false)
+					.setValue(ROPELOGGED, ropped);
+			level.setBlock(pos.above(), next, 2);
+		}
+	}
+
+	@Override
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean client) {
+		if (!mayGrowTo(state, level, pos, state.getValue(getAgeProperty()) + 1))
+			return false;
+		return super.isValidBonemealTarget(level, pos, state, client);
+	}
+
+	@Override
+	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+		if (!state.getValue(ROOT)) {
+			var lower = level.getBlockState(pos.below());
+			if (!lower.is(this)) return;
+			performBonemeal(level, random, pos.below(), lower);
+			return;
+		}
+		super.performBonemeal(level, random, pos, state);
+	}
+
+	@Override
+	protected void pickup(BlockState state, Level level, BlockPos pos) {
+		if (!state.getValue(ROOT)) {
+			var lower = level.getBlockState(pos.below());
+			if (!lower.is(this)) return;
+			pickup(lower, level, pos.below());
+			level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
+			return;
+		}
+		super.pickup(state, level, pos);
 	}
 
 	@Override

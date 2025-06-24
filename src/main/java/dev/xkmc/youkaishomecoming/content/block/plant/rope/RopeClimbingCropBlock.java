@@ -5,9 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
-import vectorwing.farmersdelight.common.Configuration;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 public abstract class RopeClimbingCropBlock extends RopeLoggedCropBlock {
 
@@ -28,8 +25,7 @@ public abstract class RopeClimbingCropBlock extends RopeLoggedCropBlock {
 	protected boolean mayClimb(ServerLevel level, BlockPos pos, RandomSource random, BlockPos cpos) {
 		if (random.nextFloat() > 0.3F) return false;
 		BlockState cstate = level.getBlockState(cpos);
-		boolean canClimb = Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? cstate.is(ModTags.ROPES) : cstate.is(ModBlocks.ROPE.get());
-		if (!canClimb) return false;
+		if (!isRope(cstate)) return false;
 		int h;
 		for (h = 1; level.getBlockState(pos.below(h)).is(this); ++h) ;
 		return h < 3;

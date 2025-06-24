@@ -1,12 +1,17 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class GrapeCropBlock extends DoubleRopeCropBlock {
+
+	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 9);
 
 	private final ItemLike seed, fruit;
 
@@ -27,13 +32,18 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 	}
 
 	@Override
+	protected IntegerProperty getAgeProperty() {
+		return AGE;
+	}
+
+	@Override
 	public int getDoubleBlockStart() {
 		return 4;
 	}
 
 	@Override
 	public int getBaseAge() {
-		return 5;
+		return 6;
 	}
 
 	@Override
@@ -47,25 +57,17 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 	}
 
 	@Override
-	protected boolean mayGrowTo(BlockState state, ServerLevel level, BlockPos pos, int age) {
-		if (age >= 2) {
-			if (!state.getValue(ROPELOGGED))
-				return false;
-		}
-		if (age >= getDoubleBlockStart()) {
-			BlockState upper = level.getBlockState(pos.above());
-			if (!upper.isAir() && !upper.is(this))
-				return false;
-		}
-		return super.mayGrowTo(state, level, pos, age);
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(AGE, ROPELOGGED, ROOT);
 	}
 
 	@Override
-	protected void growTo(BlockState state, ServerLevel level, BlockPos pos, int age) {
-		super.growTo(state, level, pos, age);
-		if (age >= getDoubleBlockStart()) {
-			level.setBlock(pos.above(), state.setValue(getAgeProperty(), age).setValue(ROOT, false), 2);
+	protected boolean mayGrowTo(BlockState state, LevelReader level, BlockPos pos, int age) {
+		if (state.getValue(ROOT) && age >= 2) {
+			if (!state.getValue(ROPELOGGED))
+				return false;
 		}
+		return super.mayGrowTo(state, level, pos, age);
 	}
 
 }

@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "age=0,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=0,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=0,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower0"
+    },
+    "age=0,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower0"
+    },
+    "age=1,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=1,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=1,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower1"
+    },
+    "age=1,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower1"
+    },
+    "age=2,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=2,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=2,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower2"
+    },
+    "age=2,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower2"
+    },
+    "age=3,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=3,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_white_grape_upper_empty"
+    },
+    "age=3,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower3"
+    },
+    "age=3,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower3"
+    },
+    "age=4,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_upper4"
+    },
+    "age=4,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_upper4"
+    },
+    "age=4,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower4"
+    },
+    "age=4,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower4"
+    },
+    "age=5,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_upper5"
+    },
+    "age=5,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_upper5"
+    },
+    "age=5,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower5"
+    },
+    "age=5,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower5"
+    },
+    "age=6,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_upper6"
+    },
+    "age=6,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_upper6"
+    },
+    "age=6,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower6"
+    },
+    "age=6,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower6"
+    },
+    "age=7,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_upper7"
+    },
+    "age=7,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_upper7"
+    },
+    "age=7,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower7"
+    },
+    "age=7,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower7"
+    },
+    "age=8,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_upper8"
+    },
+    "age=8,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_upper8"
+    },
+    "age=8,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower8"
+    },
+    "age=8,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower8"
+    },
+    "age=9,rooted=false,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_upper9"
+    },
+    "age=9,rooted=false,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_upper9"
+    },
+    "age=9,rooted=true,ropelogged=false": {
+      "model": "youkaishomecoming:block/small_bare_white_grape_lower9"
+    },
+    "age=9,rooted=true,ropelogged=true": {
+      "model": "youkaishomecoming:block/small_rope_white_grape_lower9"
+    }
+  }
+}

@@ -11,10 +11,6 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class RopeClimbingSeedItem extends ItemNameBlockItem {
 
-	private static boolean isRope(BlockState state) {
-		return Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? state.is(ModTags.ROPES) : state.is(ModBlocks.ROPE.get());
-	}
-
 	public RopeClimbingSeedItem(Block block, Properties prop) {
 		super(block, prop);
 	}
@@ -26,14 +22,14 @@ public class RopeClimbingSeedItem extends ItemNameBlockItem {
 			var level = ctx.getLevel();
 			var clickPos = ctx.getClickedPos();
 			var clickState = level.getBlockState(clickPos);
-			if (isRope(clickState)) {
+			if (RopeLoggedCropBlock.isRope(clickState)) {
 				if (result.canSurvive(level, clickPos)) {
 					level.setBlockAndUpdate(clickPos, result);
 					return InteractionResult.SUCCESS;
 				}
 			} else if (result.canSurvive(level, clickPos.above())) {
 				var upPos = clickPos.above();
-				if (isRope(level.getBlockState(upPos))) {
+				if (RopeLoggedCropBlock.isRope(level.getBlockState(upPos))) {
 					level.setBlockAndUpdate(upPos, result);
 					return InteractionResult.SUCCESS;
 				}

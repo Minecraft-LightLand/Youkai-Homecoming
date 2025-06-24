@@ -9,9 +9,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import vectorwing.farmersdelight.common.Configuration;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class RootedClimbingCropBlock extends RopeClimbingCropBlock {
 
@@ -62,8 +59,7 @@ public class RootedClimbingCropBlock extends RopeClimbingCropBlock {
 			return false;
 		if (random.nextFloat() > 0.3F) return false;
 		BlockState cstate = level.getBlockState(cpos);
-		boolean canClimb = Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? cstate.is(ModTags.ROPES) : cstate.is(ModBlocks.ROPE.get());
-		if (!canClimb) return false;
+		if (!isRope(cstate)) return false;
 		BlockState self = level.getBlockState(pos);
 		if (!self.is(this) || !self.getValue(ROPELOGGED)) return false;
 		if (self.is(this) && self.getValue(BASE)) return true;

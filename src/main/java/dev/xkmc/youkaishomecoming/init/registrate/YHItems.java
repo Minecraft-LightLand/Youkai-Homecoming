@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
@@ -260,11 +261,9 @@ public class YHItems {
 
 	}
 
-	public static <T extends Item> ItemEntry<T> seed(String id, NonNullFunction<Item.Properties, T> factory) {
+	public static <T extends Item> ItemBuilder<T,?> seed(String id, NonNullFunction<Item.Properties, T> factory) {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
-				.tag(ForgeTags.SEEDS)
-				.register();
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())));
 	}
 
 	public static <T extends Item> ItemEntry<T> crop(String id, NonNullFunction<Item.Properties, T> factory) {
