@@ -1,3 +1,10 @@
+2.4.11
+- Add Cucumber, Honey Glazed Cucumber, Kappa Maki
+- Fixing Moka Recipes
+- Now Reimu no longer wants to drink coffee
+- Fix advancement triggering when planting redbean / soybean on rich soil farmland
+- Fix texture for Otoro Nigiri
+
 2.4.10
 - Fix Fermentation output item in JEI
 - Fix fermentation tank

@@ -116,9 +116,9 @@ public enum YHFood {
 
 	// stick
 
-	CANDY_APPLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
-	MILK_POPSICLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag),
-	BIG_POPSICLE(FoodType.STICK, 2, 0.1f, DietTagGen.SUGARS.tag),
+	CANDY_APPLE(FoodType.STICK, 6, 0.5f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
+	MILK_POPSICLE(FoodType.STICK, 6, 0.5f, DietTagGen.SUGARS.tag),
+	BIG_POPSICLE(FoodType.STICK, 3, 0.1f, DietTagGen.SUGARS.tag),
 	KINAKO_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1), DietTagGen.GRAINS.tag),
 	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),

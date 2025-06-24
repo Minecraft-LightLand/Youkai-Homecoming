@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-24T10:31:41.128882	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-06-24T13:37:29.5665	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -747,6 +747,7 @@ af4d6d0a46ee75ac881dfbd02c06e73e08e0db6e assets/youkaishomecoming/models/cuisine
 5a1955ee760895459cb5e9003ceaeb1db6651bf9 assets/youkaishomecoming/models/cuisine/sushi/top/cod/0.json
 dd7da9f2e46387baa299ee0b0b8cdc6365576264 assets/youkaishomecoming/models/cuisine/sushi/top/flesh/0.json
 7e2dd78ae68734d83f02d51ac459076a0e6425f5 assets/youkaishomecoming/models/cuisine/sushi/top/lamprey/0.json
+3db3dd701d5ac85eca800718d880ab157b1df8c1 assets/youkaishomecoming/models/cuisine/sushi/top/otoro/0.json
 afcc0e2d6c9028fcb613306a3fdf2fc077d7137e assets/youkaishomecoming/models/cuisine/sushi/top/salmon/0.json
 afcc0e2d6c9028fcb613306a3fdf2fc077d7137e assets/youkaishomecoming/models/cuisine/sushi/top/salmon_seared/0.json
 9eed997b951722771c1b56aff65c168da88e58d4 assets/youkaishomecoming/models/cuisine/sushi/top/tamagoyaki/0.json
