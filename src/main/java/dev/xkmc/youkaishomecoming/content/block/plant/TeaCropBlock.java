@@ -187,7 +187,7 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 			} else {
 				var file = pvd.models()
 						.getBuilder("block/" + tex)
-						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/" + name + "/" + tex)));
+						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/" + tex)));
 				file.ao(false);
 				file.renderType("cutout");
 				if (age == 5) {

@@ -9,7 +9,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class CucumberGen {
 
-	public static void buildModel(DataGenContext<Block, RootedClimbingCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
+	public static void buildModel(DataGenContext<Block, ? extends RootedClimbingCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			boolean rope = state.getValue(RopeClimbingCropBlock.ROPELOGGED);
 			boolean base = state.getValue(RootedClimbingCropBlock.BASE);
