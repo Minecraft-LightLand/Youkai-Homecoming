@@ -93,17 +93,9 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		if (z) {
 			setter.setBlock(up, topState = getTop().defaultBlockState()
 					.setValue(CenterCropVineBlock.AXIS, Direction.Axis.Z), 2);
-			setter.setBlock(up.north(), getTop().getSide().defaultBlockState()
-					.setValue(BranchCropVineBlock.FACING, Direction.SOUTH), 2);
-			setter.setBlock(up.south(), getTop().getSide().defaultBlockState()
-					.setValue(BranchCropVineBlock.FACING, Direction.NORTH), 2);
 		} else {
 			setter.setBlock(up, topState = getTop().defaultBlockState()
 					.setValue(CenterCropVineBlock.AXIS, Direction.Axis.X), 2);
-			setter.setBlock(up.west(), getTop().getSide().defaultBlockState()
-					.setValue(BranchCropVineBlock.FACING, Direction.EAST), 2);
-			setter.setBlock(up.east(), getTop().getSide().defaultBlockState()
-					.setValue(BranchCropVineBlock.FACING, Direction.WEST), 2);
 		}
 		if (natural) {
 			ForgeHooks.onCropsGrowPost(setter, up, topState);

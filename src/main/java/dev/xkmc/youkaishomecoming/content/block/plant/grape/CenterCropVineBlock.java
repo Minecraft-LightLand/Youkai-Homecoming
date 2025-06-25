@@ -105,8 +105,11 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		boolean updateSelf = false;
 		if (!state.is(getSide())) {
 			if (!isRope(state)) return false;
+			var next = level.getBlockState(pos.relative(dir));
+			boolean ext = next.getBlock() instanceof BranchCropVineBlock;
 			state = getSide().defaultBlockState()
 					.setValue(BranchCropVineBlock.FACING, dir.getOpposite())
+					.setValue(BranchCropVineBlock.EXTENDED, ext)
 					.setValue(TOP, center.getValue(TOP));
 			updateSelf = true;
 		} else {

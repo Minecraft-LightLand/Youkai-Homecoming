@@ -304,13 +304,14 @@ public class GrapeVineSet {
 		pvd.horizontalBlock(ctx.get(), state -> {
 			int age = state.getValue(GrapeCropBlock.AGE);
 			boolean top = state.getValue(BaseCropVineBlock.TOP);
+			boolean ext = state.getValue(BranchCropVineBlock.EXTENDED);
 			String suffix = "";
 			if (age == ctx.get().getMaxAge()) {
 				suffix = "_" + col;
 			}
 			String coil = "block/plants/" + type + "/branch/coil" + age + suffix;
 			String vine = "block/plants/" + type + "/branch/vine" + age + suffix;
-			var builder = pvd.models().getBuilder("tree_" + name + "_branch" + age + (top ? "_top" : ""));
+			var builder = pvd.models().getBuilder("tree_" + name + "_branch" + age + (top ? "_top" : "") + (ext ? "_extended" : ""));
 			if (age >= 5) {
 				if (top) {
 					builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_mature_top")));
@@ -325,7 +326,7 @@ public class GrapeVineSet {
 				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch")));
 			}
 			builder.texture("coil", pvd.modLoc(coil))
-					.texture("vine", pvd.modLoc(vine))
+					.texture("vine", pvd.modLoc(ext ? coil : vine))
 					.texture("rope_top", pvd.modLoc("block/plants/rope_top"))
 					.renderType("cutout");
 			return builder;

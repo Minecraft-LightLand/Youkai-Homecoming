@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -26,10 +28,12 @@ import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModSounds;
 
+import java.util.List;
+
 import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock.getRopeBlock;
 
 @SuppressWarnings("deprecation")
-public abstract class BaseCropVineBlock extends BushBlock {
+public abstract class BaseCropVineBlock extends BushBlock implements HarvestableBlock {
 
 	public static final BooleanProperty TOP = BooleanProperty.create("top");
 
@@ -122,6 +126,13 @@ public abstract class BaseCropVineBlock extends BushBlock {
 		super.entityInside(state, level, pos, e);
 	}
 
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState state, BlockPos pos) {
+		if (state.getValue(getAgeProperty()) < getMaxAge()) return null;
+		int quantity = 1 + level.random.nextInt(2);
+		return new HarvestResult(state.setValue(getAgeProperty(), getBaseAge()),
+				List.of(new ItemStack(getFruit(), quantity)));
+	}
 
 	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @javax.annotation.Nullable BlockEntity be, ItemStack stack) {
 		doPlayerDestroy(level, player, pos, state, be, stack);
