@@ -35,8 +35,6 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 
 	protected abstract BranchCropVineBlock getSide();
 
-	protected abstract int getFirstAge();
-
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
@@ -48,6 +46,7 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		if (attemptGrowthImpl(state, level, pos, random, simulate, natural, speed, true))
 			return true;
 		int age = state.getValue(getAgeProperty());
+		if (age < getMaxAge() && simulate) return true;
 		if (age >= getBaseAge()) {
 			if (!state.getValue(TOP)) {
 				var up = pos.above();
@@ -60,7 +59,14 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 						return true;
 				} else if (top.is(this)) {
 					int prevAge = top.getValue(getAgeProperty());
-					if (prevAge < age || age == getMaxAge()) {
+					boolean pass = prevAge < age || age == getMaxAge();
+					if (pass && prevAge >= getBaseAge() && !simulate && random != null) {
+						if (age < getMaxAge() ||
+								attemptGrowthImpl(state, level, pos, random, true, natural, speed, false) ||
+								super.attemptGrowth(state, level, pos, random, true, natural, speed))
+							pass = random.nextBoolean();
+					}
+					if (pass) {
 						if (attemptGrowth(top, level, up, random, simulate, natural, speed))
 							return true;
 					}
@@ -77,6 +83,10 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		var firstDir = Direction.get(Direction.AxisDirection.NEGATIVE, axis);
 		var secondDir = Direction.get(Direction.AxisDirection.POSITIVE, axis);
 		int age = state.getValue(getAgeProperty());
+		if (!simulate && random != null && random.nextBoolean()) {
+			firstDir = firstDir.getOpposite();
+			secondDir = secondDir.getOpposite();
+		}
 		if (attemptGrowthBranch(firstDir, age, level, pos.relative(firstDir), pos, state, random, simulate, natural, speed, first))
 			return true;
 		if (attemptGrowthBranch(secondDir, age, level, pos.relative(secondDir), pos, state, random, simulate, natural, speed, first))
@@ -101,6 +111,9 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 			Direction dir, int age, LevelReader level, BlockPos pos,
 			BlockPos source, BlockState center,
 			@Nullable RandomSource random, boolean simulate, boolean natural, float speed, boolean first) {
+		var down = level.getBlockState(pos.below());
+		if (down.is(getSide()) && down.getValue(getSide().getAgeProperty()) < getSide().getBaseAge())
+			return false;
 		var state = level.getBlockState(pos);
 		boolean updateSelf = false;
 		if (!state.is(getSide())) {
@@ -117,7 +130,7 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		} else {
 			int prevAge = state.is(getSide()) ? state.getValue(getSide().getAgeProperty()) : -1;
 			if (prevAge >= age) return false;
-			if (first && prevAge >= getFirstAge()) return false;
+			if (first && prevAge >= getBaseAge()) return false;
 		}
 		if (simulate) return true;
 		assert random != null;

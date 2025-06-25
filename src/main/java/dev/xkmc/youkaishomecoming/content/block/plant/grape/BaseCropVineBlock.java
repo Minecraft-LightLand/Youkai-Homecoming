@@ -125,7 +125,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
 		if (!level.isAreaLoaded(pos, 1)) return;
-		float f = getGrowthSpeed(state, level, pos) * 0.04f;
+		float f = getGrowthSpeed(state, level, pos) * 0.02f;
 		if (!mayGrow(state, level, pos)) return;
 		attemptGrowth(state, level, pos, rand, false, true, f);
 	}
@@ -145,12 +145,12 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 				List.of(new ItemStack(getFruit(), quantity)));
 	}
 
-	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @javax.annotation.Nullable BlockEntity be, ItemStack stack) {
+	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {
 		doPlayerDestroy(level, player, pos, state, be, stack);
 		destroyAndPlaceRope(level, pos);
 	}
 
-	public void doPlayerDestroy(Level level, Player player, BlockPos pos, BlockState state, @javax.annotation.Nullable BlockEntity be, ItemStack stack) {
+	public void doPlayerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {
 		super.playerDestroy(level, player, pos, state, be, stack);
 	}
 

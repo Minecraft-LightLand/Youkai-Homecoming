@@ -42,6 +42,18 @@ public abstract class BranchCropVineBlock extends BaseCropVineBlock {
 		builder.add(FACING, EXTENDED);
 	}
 
+	@Override
+	protected void pickup(BlockState state, Level level, BlockPos pos) {
+		super.pickup(state, level, pos);
+		var hanging = getHanging();
+		if (hanging == null) return;
+		var down = pos.below();
+		var hang = level.getBlockState(down);
+		if (hang.is(hanging) && hang.getValue(hanging.getAgeProperty()) == hanging.getMaxAge()) {
+			hanging.pickup(hang, level, down);
+		}
+	}
+
 	@Nullable
 	protected BlockPos getTrunk(BlockState state, BlockGetter level, BlockPos pos) {
 		var dir = state.getValue(FACING);

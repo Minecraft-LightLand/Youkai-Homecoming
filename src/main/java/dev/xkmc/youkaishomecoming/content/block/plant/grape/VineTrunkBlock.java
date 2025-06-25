@@ -17,7 +17,9 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock.getRopeBlock;
 import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock.isRope;
@@ -87,8 +89,8 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		BlockState sth = level.getBlockState(up.south());
 		BlockState wst = level.getBlockState(up.west());
 		BlockState est = level.getBlockState(up.east());
-		boolean z = isRope(nor) && isRope(sth);
-		boolean x = isRope(wst) && isRope(est);
+		boolean z = isRope(nor) || isRope(sth);
+		boolean x = isRope(wst) || isRope(est);
 		if (!z && !x) return false;
 		if (simulate) return true;
 		assert random != null;
@@ -127,23 +129,28 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		attemptGrowth(state, level, pos, random, false, false, 1);
 	}
 
+	@Override
+	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
+		return PlantType.PLAINS;
+	}
+
 	protected float getGrowthSpeed(BlockGetter level, BlockPos pos) {
-		float f = 1.0F;
+		float f = 1;
 		BlockPos blockpos = pos.below();
 
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j <= 1; ++j) {
-				float f1 = 0.0F;
+				float f1 = 0;
 				BlockState blockstate = level.getBlockState(blockpos.offset(i, 0, j));
 				if (blockstate.canSustainPlant(level, blockpos.offset(i, 0, j), net.minecraft.core.Direction.UP, this)) {
-					f1 = 1.0F;
-					if (blockstate.isFertile(level, pos.offset(i, 0, j))) {
-						f1 = 3.0F;
+					f1 = 1;
+					if (blockstate.is(ModBlocks.RICH_SOIL.get()) || blockstate.is(ModBlocks.RICH_SOIL_FARMLAND.get())) {
+						f1 = 3;
 					}
 				}
 
 				if (i != 0 || j != 0) {
-					f1 /= 4.0F;
+					f1 /= 4;
 				}
 
 				f += f1;

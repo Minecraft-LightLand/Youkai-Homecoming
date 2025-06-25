@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/plant/grape_vine_mature_top",
+  "parent": "youkaishomecoming:custom/plant/grape_vine_top",
   "render_type": "minecraft:cutout",
   "textures": {
     "coil": "youkaishomecoming:block/plants/grape/vine/coil9_black",

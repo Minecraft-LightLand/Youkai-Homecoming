@@ -1,8 +1,9 @@
 {
-  "parent": "youkaishomecoming:custom/plant/grape_branch",
+  "parent": "youkaishomecoming:custom/plant/grape_branch_top",
   "render_type": "minecraft:cutout",
   "textures": {
     "coil": "youkaishomecoming:block/plants/grape/branch/coil2",
+    "leaves": "youkaishomecoming:block/plants/grape/leaves/leaves2",
     "rope_top": "youkaishomecoming:block/plants/rope_top",
     "vine": "youkaishomecoming:block/plants/grape/branch/vine2"
   }

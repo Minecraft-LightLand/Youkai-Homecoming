@@ -145,11 +145,6 @@ public class GrapeVineSet {
 			return 6;
 		}
 
-		@Override
-		protected int getFirstAge() {
-			return 3;
-		}
-
 	}
 
 	public class GrapeBranch extends BranchCropVineBlock {
@@ -173,7 +168,7 @@ public class GrapeVineSet {
 
 		@Override
 		public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-			return (state.getValue(getAgeProperty()) >= 5 ? LARGE : SMALL)[state.getValue(FACING).get2DDataValue()];
+			return (state.getValue(getAgeProperty()) >= 5 || state.getValue(TOP) ? LARGE : SMALL)[state.getValue(FACING).get2DDataValue()];
 		}
 
 		@Override
@@ -383,16 +378,15 @@ public class GrapeVineSet {
 			}
 			String coil = "block/plants/" + type + "/vine/coil" + age + suffix;
 			String vine = "block/plants/" + type + "/vine/vine" + age + suffix;
+			String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
 			var builder = pvd.models().getBuilder("tree_" + name + "_vine" + age + (l ? "l" : "") + (r ? "r" : "") + (top ? "_top" : ""));
-			if (age >= 5) {
-				if (top) {
-					builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_mature_top")));
-				} else {
-					String bottom = "block/plants/" + type + "/vine/bottom" + age + suffix;
-					builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_mature")));
-					builder.texture("bottom", pvd.modLoc(bottom));
-				}
-				String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
+			if (top) {
+				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_top")));
+				builder.texture("leaves", pvd.modLoc(leaves));
+			} else if (age >= 5) {
+				String bottom = "block/plants/" + type + "/vine/bottom" + age + suffix;
+				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_mature")));
+				builder.texture("bottom", pvd.modLoc(bottom));
 				builder.texture("leaves", pvd.modLoc(leaves));
 			} else {
 				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine")));
@@ -423,16 +417,15 @@ public class GrapeVineSet {
 			}
 			String coil = "block/plants/" + type + "/branch/coil" + age + suffix;
 			String vine = "block/plants/" + type + "/branch/vine" + age + suffix;
+			String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
 			var builder = pvd.models().getBuilder("tree_" + name + "_branch" + age + (top ? "_top" : "") + (ext ? "_extended" : ""));
-			if (age >= 5) {
-				if (top) {
-					builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_mature_top")));
-				} else {
-					String bottom = "block/plants/" + type + "/branch/bottom" + age + suffix;
-					builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_mature")));
-					builder.texture("bottom", pvd.modLoc(bottom));
-				}
-				String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
+			if (top) {
+				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_top")));
+				builder.texture("leaves", pvd.modLoc(leaves));
+			} else if (age >= 5) {
+				String bottom = "block/plants/" + type + "/branch/bottom" + age + suffix;
+				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_mature")));
+				builder.texture("bottom", pvd.modLoc(bottom));
 				builder.texture("leaves", pvd.modLoc(leaves));
 			} else {
 				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch")));

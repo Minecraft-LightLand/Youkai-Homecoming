@@ -1,10 +1,11 @@
 {
-  "parent": "youkaishomecoming:custom/plant/grape_vine",
+  "parent": "youkaishomecoming:custom/plant/grape_vine_top",
   "render_type": "minecraft:cutout",
   "textures": {
     "coil": "youkaishomecoming:block/plants/grape/vine/coil3",
     "coil_left": "youkaishomecoming:block/plants/grape/vine/vine3",
     "coil_right": "youkaishomecoming:block/plants/grape/vine/vine3",
+    "leaves": "youkaishomecoming:block/plants/grape/leaves/leaves3",
     "rope_top": "youkaishomecoming:block/plants/rope_top"
   }
 }

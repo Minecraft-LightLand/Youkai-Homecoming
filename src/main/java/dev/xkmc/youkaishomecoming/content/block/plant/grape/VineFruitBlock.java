@@ -56,11 +56,12 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (state.getValue(getAgeProperty()) == getMaxAge()) {
 			if (!level.isClientSide()) {
-				pickup(state, level, pos);
 				var up = pos.above();
 				var branch = level.getBlockState(up);
 				if (branch.is(getHanger()) && branch.getValue(getHanger().getAgeProperty()) == getHanger().getMaxAge()) {
 					getHanger().pickup(branch, level, up);
+				} else {
+					pickup(state, level, pos);
 				}
 			}
 			level.playSound(player, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);

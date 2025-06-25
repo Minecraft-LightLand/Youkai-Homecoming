@@ -1,13 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import vectorwing.farmersdelight.common.Configuration;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class RopeClimbingSeedItem extends ItemNameBlockItem {
 
