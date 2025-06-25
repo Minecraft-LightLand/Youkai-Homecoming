@@ -2,7 +2,16 @@
   "values": [
     "youkaishomecoming:cucumber",
     "youkaishomecoming:red_grape",
+    "youkaishomecoming:red_grape_trunk",
+    "youkaishomecoming:red_grape_vines",
+    "youkaishomecoming:red_grape_branches",
     "youkaishomecoming:black_grape",
-    "youkaishomecoming:white_grape"
+    "youkaishomecoming:black_grape_trunk",
+    "youkaishomecoming:black_grape_vines",
+    "youkaishomecoming:black_grape_branches",
+    "youkaishomecoming:white_grape",
+    "youkaishomecoming:white_grape_trunk",
+    "youkaishomecoming:white_grape_vines",
+    "youkaishomecoming:white_grape_branches"
   ]
 }

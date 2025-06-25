@@ -6,7 +6,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.plant.*;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeCropBlock;
-import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeJsonGen;
+import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeVineSet;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.CucumberCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeClimbingSeedItem;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeCropJsonGen;
@@ -67,6 +67,7 @@ public enum YHCrops {
 	public final ResourceKey<PlacedFeature> placementKey;
 
 	private final int rarity, density;
+	public final GrapeVineSet set;
 
 	YHCrops(PlantType type, int rarity, int density, @Nullable String seedName, @Nullable String fruit) {
 		this.type = type;
@@ -85,6 +86,10 @@ public enum YHCrops {
 		seed = seedBuilder.register();
 
 		fruits = fruit == null ? seed : YHItems.crop(fruit, Item::new);
+
+		if (type == PlantType.GRAPE) {
+			set = new GrapeVineSet(this);
+		} else set = null;
 
 	}
 
@@ -261,9 +266,9 @@ public enum YHCrops {
 				.register(),
 				YHCrops::wildCropDropFruit, RopeClimbingSeedItem::new),
 		GRAPE((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new GrapeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
-				.blockstate((ctx, pvd) -> GrapeJsonGen.buildPlantModel(ctx, pvd, name))
-				.loot((pvd, block) -> GrapeJsonGen.buildPlantLoot(pvd, block, crop))
+						new GrapeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop))
+				.blockstate((ctx, pvd) -> GrapeVineSet.buildPlantModel(ctx, pvd, name))
+				.loot((pvd, block) -> GrapeVineSet.buildPlantLoot(pvd, block, crop))
 				.tag(BlockTags.CLIMBABLE)
 				.register(),
 				YHCrops::wildCropDropFruit, RopeClimbingSeedItem::new),

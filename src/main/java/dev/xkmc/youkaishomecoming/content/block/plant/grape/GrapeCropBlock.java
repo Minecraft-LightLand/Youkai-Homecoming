@@ -1,15 +1,23 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ToolActions;
 
 public class GrapeCropBlock extends DoubleRopeCropBlock {
 
@@ -48,22 +56,21 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 		}
 	}
 
-	private final ItemLike seed, fruit;
+	private final YHCrops crop;
 
-	public GrapeCropBlock(Properties properties, ItemLike seed, ItemLike fruit) {
+	public GrapeCropBlock(Properties properties, YHCrops crop) {
 		super(properties);
-		this.seed = seed;
-		this.fruit = fruit;
+		this.crop = crop;
 	}
 
 	@Override
 	protected ItemLike getBaseSeedId() {
-		return seed;
+		return crop.getSeed();
 	}
 
 	@Override
 	protected ItemLike getFruit() {
-		return fruit;
+		return crop.getFruits();
 	}
 
 	@Override
@@ -108,4 +115,26 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 		return (rope ? base ? ROPE_LOWER : ROPE_UPPER : base ? LOWER : UPPER)[age];
 	}
 
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		ItemStack stack = player.getItemInHand(hand);
+		if (stack.canPerformAction(ToolActions.SHEARS_HARVEST)) {
+			if (state.getValue(getAgeProperty()) >= getBaseAge()) {
+				if (!level.isClientSide()) {
+					if (!state.getValue(ROOT)) {
+						pos = pos.below();
+					}
+					var up = level.getBlockState(pos.above());
+					var empty = up.getValue(ROPELOGGED) ? getRopeBlock() : Blocks.AIR.defaultBlockState();
+					level.setBlock(pos, crop.set.trunk.getDefaultState(), 2);
+					level.setBlock(pos.above(), empty, 35);
+					if (!player.getAbilities().instabuild) {
+						stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(hand));
+					}
+				}
+				return InteractionResult.SUCCESS;
+			}
+		}
+		return super.use(state, level, pos, player, hand, hit);
+	}
 }

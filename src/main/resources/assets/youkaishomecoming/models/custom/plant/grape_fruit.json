@@ -1,0 +1,26 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"11": "grape_vine_bottom_stage8"
+	},
+	"elements": [
+		{
+			"from": [-4, 0, 7.89429],
+			"to": [16, 16, 7.89429],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8.06282, -8, 7.89429]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#11"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#11"}
+			}
+		},
+		{
+			"from": [-4, 0, 7.89429],
+			"to": [16, 16, 7.89429],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.06282, -8, 7.89429]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#11"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#11"}
+			}
+		}
+	]
+}
