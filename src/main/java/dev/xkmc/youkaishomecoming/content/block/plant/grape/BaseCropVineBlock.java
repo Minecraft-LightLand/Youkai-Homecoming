@@ -38,7 +38,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 	public static final BooleanProperty TOP = BooleanProperty.create("top");
 
 	public BaseCropVineBlock(BlockBehaviour.Properties prop) {
-		super(prop.randomTicks());
+		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
 				.setValue(this.getAgeProperty(), 0)
 				.setValue(TOP, false)
@@ -68,14 +68,18 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (state.getValue(getAgeProperty()) == getMaxAge()) {
 			if (!level.isClientSide()) {
-				int quantity = 1 + level.random.nextInt(2);
-				popResource(level, pos, new ItemStack(getFruit(), quantity));
-				level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
+				pickup(state, level, pos);
 			}
 			level.playSound(player, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;
+	}
+
+	protected void pickup(BlockState state, Level level, BlockPos pos){
+		int quantity = 1 + level.random.nextInt(2);
+		popResource(level, pos, new ItemStack(getFruit(), quantity));
+		level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
 	}
 
 	@Override
@@ -101,7 +105,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 			assert random != null;
 			Level setter = (Level) level;
 			if (!natural) {
-				setter.setBlock(pos, state.setValue(getAgeProperty(), age + 1), 2);
+				doGrowth(state, setter, pos, random);
 				return true;
 			} else if (ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed)) {
 				setter.setBlock(pos, state.setValue(getAgeProperty(), age + 1), 2);
@@ -110,6 +114,13 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 			}
 		}
 		return false;
+	}
+
+	protected void doGrowth(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		int age = state.getValue(getAgeProperty());
+		if (age < getMaxAge()) {
+			level.setBlock(pos, state.setValue(getAgeProperty(), age + 1), 2);
+		}
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {

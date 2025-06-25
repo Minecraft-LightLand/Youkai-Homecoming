@@ -1,9 +1,20 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"11": "grape_vine_bottom_stage8"
+		"11": "#fruit",
+		"8": "#bottom",
+		"particle": "#fruit"
 	},
 	"elements": [
+		{
+			"from": [0, 0, 8],
+			"to": [16, 16, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, -8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#8"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#8"}
+			}
+		},
 		{
 			"from": [-4, 0, 7.89429],
 			"to": [16, 16, 7.89429],

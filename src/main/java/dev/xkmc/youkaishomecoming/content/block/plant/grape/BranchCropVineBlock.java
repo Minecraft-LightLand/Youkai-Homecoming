@@ -2,7 +2,9 @@ package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,6 +25,11 @@ public abstract class BranchCropVineBlock extends BaseCropVineBlock {
 	}
 
 	protected abstract CenterCropVineBlock getCenter();
+
+	@Nullable
+	protected abstract VineFruitBlock getHanging();
+
+	protected abstract int getFruitChance();
 
 	@Override
 	protected VineTrunkBlock getTrunk() {
@@ -55,8 +62,30 @@ public abstract class BranchCropVineBlock extends BaseCropVineBlock {
 					state = state.setValue(EXTENDED, true);
 				}
 			}
+		} else if (facing == Direction.DOWN) {
+			state = state.setValue(TOP,
+					(fstate.is(this) || fstate.getBlock() == getHanging()) &&
+							fstate.getValue(FACING).getAxis() == state.getValue(FACING).getAxis());
 		}
 		return super.updateShape(state, facing, fstate, level, cpos, fpos);
+	}
+
+	@Override
+	protected void doGrowth(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		super.doGrowth(state, level, pos, random);
+		int age = state.getValue(getAgeProperty());
+		var hanging = getHanging();
+		if (hanging == null) return;
+		BlockState fruit = level.getBlockState(pos.below());
+		if (fruit.is(hanging)) {
+			int fruitAge = fruit.getValue(hanging.getAgeProperty());
+			if (fruitAge == hanging.getMaxAge()) return;
+			if (fruitAge == age || fruitAge < hanging.getBaseAge() && random.nextInt(getFruitChance()) == 0) {
+				level.setBlock(pos.below(), fruit.setValue(hanging.getAgeProperty(), fruitAge + 1), 2);
+			}
+		} else if (age == getMaxAge() - 1 && fruit.isAir() && random.nextInt(getFruitChance()) == 0) {
+			level.setBlock(pos.below(), hanging.defaultBlockState().setValue(FACING, state.getValue(FACING)), 2);
+		}
 	}
 
 }

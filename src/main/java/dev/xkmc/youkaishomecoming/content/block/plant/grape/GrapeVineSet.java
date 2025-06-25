@@ -34,15 +34,20 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import org.jetbrains.annotations.Nullable;
 
 public class GrapeVineSet {
 
+	private static final int FRUIT_CHANCE = 5;
+
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 9);
+	public static final IntegerProperty FRUIT_AGE = IntegerProperty.create("age", 5, 9);
 
 	public final YHCrops crop;
 	public final BlockEntry<GrapeTrunk> trunk;
 	public final BlockEntry<GrapeVine> center;
 	public final BlockEntry<GrapeBranch> side;
+	public final BlockEntry<GrapeFruit> hanging;
 
 	public GrapeVineSet(YHCrops crop) {
 		this.crop = crop;
@@ -66,6 +71,12 @@ public class GrapeVineSet {
 				.blockstate(this::buildBranchModel)
 				.loot(this::buildVineLoot)
 				.tag(BlockTags.CLIMBABLE)
+				.register();
+		this.hanging = YoukaisHomecoming.REGISTRATE.block(name + "_fruits", GrapeFruit::new)
+				.properties(p -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
+						.noCollission().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY))
+				.blockstate(this::buildFruitModel)
+				.loot(this::buildFruitLoot)
 				.register();
 	}
 
@@ -171,6 +182,11 @@ public class GrapeVineSet {
 		}
 
 		@Override
+		protected @Nullable VineFruitBlock getHanging() {
+			return hanging.get();
+		}
+
+		@Override
 		public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
 			return crop.getSeed().getDefaultInstance();
 		}
@@ -194,6 +210,53 @@ public class GrapeVineSet {
 		protected int getBaseAge() {
 			return 6;
 		}
+
+		@Override
+		protected int getFruitChance() {
+			return FRUIT_CHANCE;
+		}
+	}
+
+	public class GrapeFruit extends VineFruitBlock {
+
+		public static final VoxelShape SMALL = box(6, 12, 6, 10, 16, 10);
+		public static final VoxelShape SHAPE = box(4, 6, 4, 12, 16, 12);
+
+		public GrapeFruit(Properties prop) {
+			super(prop);
+			registerDefaultState(defaultBlockState().setValue(FRUIT_AGE, 5));
+		}
+
+		@Override
+		public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+			return state.getValue(getAgeProperty()) == 5 ? SMALL : SHAPE;
+		}
+
+		@Override
+		protected ItemLike getFruit(BlockState state) {
+			return crop.getFruits();
+		}
+
+		@Override
+		protected BranchCropVineBlock getHanger() {
+			return side.get();
+		}
+
+		@Override
+		protected IntegerProperty getAgeProperty() {
+			return FRUIT_AGE;
+		}
+
+		@Override
+		public int getMaxAge() {
+			return 9;
+		}
+
+		@Override
+		protected int getBaseAge() {
+			return 6;
+		}
+
 
 	}
 
@@ -253,6 +316,33 @@ public class GrapeVineSet {
 						)));
 	}
 
+	protected void buildTrunkLoot(RegistrateBlockLootTables pvd, VineTrunkBlock block) {
+		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
+				.add(LootItem.lootTableItem(block.seed))
+				.add(LootItem.lootTableItem(Items.STICK))
+		));
+	}
+
+	protected void buildVineLoot(RegistrateBlockLootTables pvd, BaseCropVineBlock block) {
+		pvd.add(block, pvd.applyExplosionDecay(block,
+				LootTable.lootTable().withPool(LootPool.lootPool()
+						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+								.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge())))
+						.add(LootItem.lootTableItem(crop.getFruits())
+								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+				)));
+	}
+
+	protected void buildFruitLoot(RegistrateBlockLootTables pvd, VineFruitBlock block) {
+		pvd.add(block, pvd.applyExplosionDecay(block,
+				LootTable.lootTable().withPool(LootPool.lootPool()
+						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+								.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge())))
+						.add(LootItem.lootTableItem(crop.getFruits())
+								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+				)));
+	}
+
 	protected void buildTrunkModel(DataGenContext<Block, GrapeTrunk> ctx, RegistrateBlockstateProvider pvd) {
 		String name = crop.getName();
 		String type = crop.getTypeName();
@@ -277,30 +367,13 @@ public class GrapeVineSet {
 		});
 	}
 
-	protected void buildTrunkLoot(RegistrateBlockLootTables pvd, VineTrunkBlock block) {
-		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
-				.add(LootItem.lootTableItem(block.seed))
-				.add(LootItem.lootTableItem(Items.STICK))
-		));
-	}
-
-	protected void buildVineLoot(RegistrateBlockLootTables pvd, BaseCropVineBlock block) {
-		pvd.add(block, pvd.applyExplosionDecay(block,
-				LootTable.lootTable().withPool(LootPool.lootPool()
-						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-								.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge())))
-						.add(LootItem.lootTableItem(crop.getFruits())
-								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
-				)));
-	}
-
 	protected void buildVineModel(DataGenContext<Block, GrapeVine> ctx, RegistrateBlockstateProvider pvd) {
 		String name = crop.getName();
 		String[] strs = name.split("_");
 		String col = strs[0];
 		String type = strs[1];
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
-			int age = state.getValue(GrapeCropBlock.AGE);
+			int age = state.getValue(AGE);
 			boolean l = state.getValue(CenterCropVineBlock.LEFT);
 			boolean r = state.getValue(CenterCropVineBlock.RIGHT);
 			boolean top = state.getValue(BaseCropVineBlock.TOP);
@@ -341,7 +414,7 @@ public class GrapeVineSet {
 		String col = strs[0];
 		String type = strs[1];
 		pvd.horizontalBlock(ctx.get(), state -> {
-			int age = state.getValue(GrapeCropBlock.AGE);
+			int age = state.getValue(AGE);
 			boolean top = state.getValue(BaseCropVineBlock.TOP);
 			boolean ext = state.getValue(BranchCropVineBlock.EXTENDED);
 			String suffix = "";
@@ -369,6 +442,27 @@ public class GrapeVineSet {
 					.texture("rope_top", pvd.modLoc("block/plants/rope_top"))
 					.renderType("cutout");
 			return builder;
+		}, -90);
+	}
+
+	protected void buildFruitModel(DataGenContext<Block, GrapeFruit> ctx, RegistrateBlockstateProvider pvd) {
+		String name = crop.getName();
+		String[] strs = name.split("_");
+		String col = strs[0];
+		String type = strs[1];
+		pvd.horizontalBlock(ctx.get(), state -> {
+			int age = state.getValue(FRUIT_AGE);
+			String suffix = "";
+			if (age == ctx.get().getMaxAge()) {
+				suffix = "_" + col;
+			}
+			String fruit = "block/plants/" + type + "/fruit/fruit" + age + suffix;
+			String bottom = "block/plants/" + type + "/branch/bottom" + age + suffix;
+			return pvd.models().getBuilder("tree_" + name + "_fruit" + age)
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_fruit")))
+					.texture("fruit", pvd.modLoc(fruit))
+					.texture("bottom", pvd.modLoc(bottom))
+					.renderType("cutout");
 		}, -90);
 	}
 

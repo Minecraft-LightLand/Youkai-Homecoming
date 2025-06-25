@@ -107,26 +107,29 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 			if (!isRope(state)) return false;
 			var next = level.getBlockState(pos.relative(dir));
 			boolean ext = next.getBlock() instanceof BranchCropVineBlock;
+			var low = level.getBlockState(pos.below());
+			boolean top = low.is(getSide()) && low.getValue(BranchCropVineBlock.FACING).getAxis() == dir.getAxis();
 			state = getSide().defaultBlockState()
 					.setValue(BranchCropVineBlock.FACING, dir.getOpposite())
 					.setValue(BranchCropVineBlock.EXTENDED, ext)
-					.setValue(TOP, center.getValue(TOP));
+					.setValue(TOP, top);
 			updateSelf = true;
 		} else {
 			int prevAge = state.is(getSide()) ? state.getValue(getSide().getAgeProperty()) : -1;
 			if (prevAge >= age) return false;
 			if (first && prevAge >= getFirstAge()) return false;
-			state = state.setValue(getSide().getAgeProperty(), prevAge + 1);
 		}
 		if (simulate) return true;
 		assert random != null;
 		Level setter = (Level) level;
 		if (natural && !ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed))
 			return false;
-		setter.setBlock(pos, state, 2);
 		if (updateSelf) {
+			setter.setBlock(pos, state, 2);
 			var prop = dir.getAxisDirection() == Direction.AxisDirection.NEGATIVE ? LEFT : RIGHT;
 			setter.setBlock(source, center.setValue(prop, true), 2);
+		} else {
+			getSide().doGrowth(state, setter, pos, random);
 		}
 		if (natural) {
 			ForgeHooks.onCropsGrowPost(setter, pos, state);
