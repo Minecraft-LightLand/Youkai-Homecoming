@@ -18,6 +18,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ToolActions;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 public class GrapeCropBlock extends DoubleRopeCropBlock {
 
@@ -128,6 +129,12 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 					var empty = up.getValue(ROPELOGGED) ? getRopeBlock() : Blocks.AIR.defaultBlockState();
 					level.setBlock(pos, crop.set.trunk.getDefaultState(), 2);
 					level.setBlock(pos.above(), empty, 35);
+					var down = level.getBlockState(pos.below());
+					if (down.is(Blocks.FARMLAND)) {
+						level.setBlock(pos.below(), Blocks.DIRT.defaultBlockState(), 2);
+					} else if (down.is(ModBlocks.RICH_SOIL_FARMLAND.get())) {
+						level.setBlock(pos.below(), ModBlocks.RICH_SOIL.get().defaultBlockState(), 2);
+					}
 					if (!player.getAbilities().instabuild) {
 						stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(hand));
 					}

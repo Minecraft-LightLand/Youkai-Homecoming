@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.util.VoxelBuilder;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,13 +19,19 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 
@@ -34,25 +41,27 @@ public class GrapeVineSet {
 
 	public final YHCrops crop;
 	public final BlockEntry<GrapeTrunk> trunk;
-	public final BlockEntry<GrapeCenterVine> center;
-	public final BlockEntry<GrapeSideVine> side;
+	public final BlockEntry<GrapeVine> center;
+	public final BlockEntry<GrapeBranch> side;
 
 	public GrapeVineSet(YHCrops crop) {
 		this.crop = crop;
 		String name = crop.getName();
 		this.trunk = YoukaisHomecoming.REGISTRATE.block(name + "_trunk", p -> new GrapeTrunk(p, crop::getSeed))
-				.initialProperties(() -> Blocks.WHEAT)
+				.properties(p -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
+						.noCollission().randomTicks().strength(1)
+						.sound(SoundType.CROP).pushReaction(PushReaction.DESTROY))
 				.blockstate(this::buildTrunkModel)
 				.loot(this::buildTrunkLoot)
 				.tag(BlockTags.CLIMBABLE)
 				.register();
-		this.center = YoukaisHomecoming.REGISTRATE.block(name + "_vines", GrapeCenterVine::new)
+		this.center = YoukaisHomecoming.REGISTRATE.block(name + "_vines", GrapeVine::new)
 				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate(this::buildVineModel)
 				.loot(this::buildVineLoot)
 				.tag(BlockTags.CLIMBABLE)
 				.register();
-		this.side = YoukaisHomecoming.REGISTRATE.block(name + "_branches", GrapeSideVine::new)
+		this.side = YoukaisHomecoming.REGISTRATE.block(name + "_branches", GrapeBranch::new)
 				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate(this::buildBranchModel)
 				.loot(this::buildVineLoot)
@@ -72,10 +81,22 @@ public class GrapeVineSet {
 		}
 	}
 
-	public class GrapeCenterVine extends CenterCropVineBlock {
+	public class GrapeVine extends CenterCropVineBlock {
 
-		public GrapeCenterVine(Properties prop) {
+		public static final VoxelShape SMALL_X = box(0, 0, 7, 16, 16, 9);
+		public static final VoxelShape SMALL_Z = box(7, 0, 0, 9, 16, 16);
+		public static final VoxelShape LARGE_X = box(0, 0, 4, 16, 16, 12);
+		public static final VoxelShape LARGE_Z = box(4, 0, 0, 12, 16, 16);
+
+		public GrapeVine(Properties prop) {
 			super(prop);
+		}
+
+		@Override
+		public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+			return state.getValue(AXIS) == Direction.Axis.X ?
+					state.getValue(getAgeProperty()) >= 5 ? LARGE_X : SMALL_X :
+					state.getValue(getAgeProperty()) >= 5 ? LARGE_Z : SMALL_Z;
 		}
 
 		@Override
@@ -120,10 +141,28 @@ public class GrapeVineSet {
 
 	}
 
-	public class GrapeSideVine extends BranchCropVineBlock {
+	public class GrapeBranch extends BranchCropVineBlock {
 
-		public GrapeSideVine(Properties prop) {
+		public static final VoxelShape[] SMALL, LARGE;
+
+		static {
+			SMALL = new VoxelShape[4];
+			LARGE = new VoxelShape[4];
+			for (int i = 0; i < 4; i++) {
+				SMALL[i] = new VoxelBuilder(7, 0, 0, 9, 16, 16)
+						.rotateFromNorth(Direction.from2DDataValue(i));
+				LARGE[i] = new VoxelBuilder(4, 0, 0, 12, 16, 16)
+						.rotateFromNorth(Direction.from2DDataValue(i));
+			}
+		}
+
+		public GrapeBranch(Properties prop) {
 			super(prop);
+		}
+
+		@Override
+		public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+			return (state.getValue(getAgeProperty()) >= 5 ? LARGE : SMALL)[state.getValue(FACING).get2DDataValue()];
 		}
 
 		@Override
@@ -255,7 +294,7 @@ public class GrapeVineSet {
 				)));
 	}
 
-	protected void buildVineModel(DataGenContext<Block, GrapeCenterVine> ctx, RegistrateBlockstateProvider pvd) {
+	protected void buildVineModel(DataGenContext<Block, GrapeVine> ctx, RegistrateBlockstateProvider pvd) {
 		String name = crop.getName();
 		String[] strs = name.split("_");
 		String col = strs[0];
@@ -271,7 +310,7 @@ public class GrapeVineSet {
 			}
 			String coil = "block/plants/" + type + "/vine/coil" + age + suffix;
 			String vine = "block/plants/" + type + "/vine/vine" + age + suffix;
-			var builder = pvd.models().getBuilder("tree_" + name + "_vine" + age + (l ? "l" : "") + (r ? "r" : ""));
+			var builder = pvd.models().getBuilder("tree_" + name + "_vine" + age + (l ? "l" : "") + (r ? "r" : "") + (top ? "_top" : ""));
 			if (age >= 5) {
 				if (top) {
 					builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_mature_top")));
@@ -296,7 +335,7 @@ public class GrapeVineSet {
 		});
 	}
 
-	protected void buildBranchModel(DataGenContext<Block, GrapeSideVine> ctx, RegistrateBlockstateProvider pvd) {
+	protected void buildBranchModel(DataGenContext<Block, GrapeBranch> ctx, RegistrateBlockstateProvider pvd) {
 		String name = crop.getName();
 		String[] strs = name.split("_");
 		String col = strs[0];

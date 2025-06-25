@@ -14,6 +14,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,6 +26,8 @@ import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCrop
 public abstract class VineTrunkBlock extends BushBlock implements BonemealableBlock {
 
 	public static final BooleanProperty MERGED = BooleanProperty.create("merged");
+
+	public static final VoxelShape SHAPE = box(6, 0, 6, 10, 16, 10);
 
 	protected ItemLike seed;
 
@@ -36,6 +40,11 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(MERGED);
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+		return SHAPE;
 	}
 
 	@Override
