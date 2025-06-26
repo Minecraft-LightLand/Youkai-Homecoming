@@ -100,14 +100,33 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		}
 		if (natural && !ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed))
 			return false;
-		BlockState topState;
+		BlockState topState = getTop().defaultBlockState();
 		if (z) {
-			setter.setBlock(up, topState = getTop().defaultBlockState()
-					.setValue(CenterCropVineBlock.AXIS, Direction.Axis.Z), 2);
+			topState = topState.setValue(CenterCropVineBlock.AXIS, Direction.Axis.Z);
+			if (isRope(nor)) {
+				topState = topState.setValue(CenterCropVineBlock.LEFT, true);
+				setter.setBlock(up.north(), getTop().getSide().defaultBlockState()
+						.setValue(BranchCropVineBlock.FACING, Direction.SOUTH), 2);
+			}
+			if (isRope(sth)) {
+				topState = topState.setValue(CenterCropVineBlock.RIGHT, true);
+				setter.setBlock(up.south(), getTop().getSide().defaultBlockState()
+						.setValue(BranchCropVineBlock.FACING, Direction.NORTH), 2);
+			}
 		} else {
-			setter.setBlock(up, topState = getTop().defaultBlockState()
-					.setValue(CenterCropVineBlock.AXIS, Direction.Axis.X), 2);
+			topState = topState.setValue(CenterCropVineBlock.AXIS, Direction.Axis.X);
+			if (isRope(wst)) {
+				topState = topState.setValue(CenterCropVineBlock.LEFT, true);
+				setter.setBlock(up.west(), getTop().getSide().defaultBlockState()
+						.setValue(BranchCropVineBlock.FACING, Direction.EAST), 2);
+			}
+			if (isRope(est)) {
+				topState = topState.setValue(CenterCropVineBlock.RIGHT, true);
+				setter.setBlock(up.east(), getTop().getSide().defaultBlockState()
+						.setValue(BranchCropVineBlock.FACING, Direction.WEST), 2);
+			}
 		}
+		setter.setBlock(up, topState, 2);
 		if (natural) {
 			ForgeHooks.onCropsGrowPost(setter, up, topState);
 		}

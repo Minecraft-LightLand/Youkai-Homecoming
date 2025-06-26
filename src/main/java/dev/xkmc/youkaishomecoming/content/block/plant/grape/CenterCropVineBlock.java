@@ -28,8 +28,8 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		super(prop.randomTicks());
 		registerDefaultState(defaultBlockState()
 				.setValue(AXIS, Direction.Axis.Z)
-				.setValue(LEFT, true)
-				.setValue(RIGHT, true)
+				.setValue(LEFT, false)
+				.setValue(RIGHT, false)
 		);
 	}
 

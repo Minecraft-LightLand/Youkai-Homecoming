@@ -2,9 +2,9 @@
   "parent": "youkaishomecoming:custom/plant/grape_vine_top",
   "render_type": "minecraft:cutout",
   "textures": {
-    "coil": "youkaishomecoming:block/plants/grape/vine/coil8",
-    "coil_left": "youkaishomecoming:block/plants/grape/vine/coil8",
-    "coil_right": "youkaishomecoming:block/plants/grape/vine/coil8",
+    "coil": "youkaishomecoming:block/plants/grape/top/coil8",
+    "coil_left": "youkaishomecoming:block/plants/grape/top/coil8",
+    "coil_right": "youkaishomecoming:block/plants/grape/top/coil8",
     "leaves": "youkaishomecoming:block/plants/grape/leaves/leaves8",
     "rope_top": "youkaishomecoming:block/plants/rope_top"
   }

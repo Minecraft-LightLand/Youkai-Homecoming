@@ -32,6 +32,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
@@ -367,39 +368,9 @@ public class GrapeVineSet {
 		String[] strs = name.split("_");
 		String col = strs[0];
 		String type = strs[1];
-		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
-			int age = state.getValue(AGE);
-			boolean l = state.getValue(CenterCropVineBlock.LEFT);
-			boolean r = state.getValue(CenterCropVineBlock.RIGHT);
-			boolean top = state.getValue(BaseCropVineBlock.TOP);
-			String suffix = "";
-			if (age == ctx.get().getMaxAge()) {
-				suffix = "_" + col;
-			}
-			String coil = "block/plants/" + type + "/vine/coil" + age + suffix;
-			String vine = "block/plants/" + type + "/vine/vine" + age + suffix;
-			String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
-			var builder = pvd.models().getBuilder("tree_" + name + "_vine" + age + (l ? "l" : "") + (r ? "r" : "") + (top ? "_top" : ""));
-			if (top) {
-				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_top")));
-				builder.texture("leaves", pvd.modLoc(leaves));
-			} else if (age >= 5) {
-				String bottom = "block/plants/" + type + "/vine/bottom" + age + suffix;
-				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine_mature")));
-				builder.texture("bottom", pvd.modLoc(bottom));
-				builder.texture("leaves", pvd.modLoc(leaves));
-			} else {
-				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_vine")));
-			}
-			builder.texture("coil", pvd.modLoc(coil))
-					.texture("coil_left", pvd.modLoc(l ? coil : vine))
-					.texture("coil_right", pvd.modLoc(r ? coil : vine))
-					.texture("rope_top", pvd.modLoc("block/plants/rope_top"))
-					.renderType("cutout");
-			return ConfiguredModel.builder().modelFile(builder).rotationY(
-					state.getValue(CenterCropVineBlock.AXIS) == Direction.Axis.X ? 0 : 90
-			).build();
-		});
+		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> ConfiguredModel.builder().modelFile(
+				getVine(state, name, type, col, "vine", ctx, pvd)
+		).rotationY(state.getValue(CenterCropVineBlock.AXIS) == Direction.Axis.X ? 0 : 90).build());
 	}
 
 	protected void buildBranchModel(DataGenContext<Block, GrapeBranch> ctx, RegistrateBlockstateProvider pvd) {
@@ -407,35 +378,52 @@ public class GrapeVineSet {
 		String[] strs = name.split("_");
 		String col = strs[0];
 		String type = strs[1];
-		pvd.horizontalBlock(ctx.get(), state -> {
-			int age = state.getValue(AGE);
-			boolean top = state.getValue(BaseCropVineBlock.TOP);
+		pvd.horizontalBlock(ctx.get(), state -> getVine(state, name, type, col, "branch", ctx, pvd), -90);
+	}
+
+	protected BlockModelBuilder getVine(
+			BlockState state, String name, String type, String col, String folder,
+			DataGenContext<Block, ? extends BaseCropVineBlock> ctx, RegistrateBlockstateProvider pvd
+	) {
+		int age = state.getValue(AGE);
+		boolean top = state.getValue(BaseCropVineBlock.TOP);
+		String suffix = "";
+		if (age == ctx.get().getMaxAge()) {
+			suffix = "_" + col;
+		}
+		String set = top ? "top" : folder;
+		String coil = "block/plants/" + type + "/" + set + "/coil" + age + suffix;
+		String vine = "block/plants/" + type + "/" + set + "/vine" + age + suffix;
+		String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
+		String model = "tree_" + name + "_" + folder + age;
+		BlockModelBuilder builder;
+		if (ctx.get() instanceof BranchCropVineBlock) {
 			boolean ext = state.getValue(BranchCropVineBlock.EXTENDED);
-			String suffix = "";
-			if (age == ctx.get().getMaxAge()) {
-				suffix = "_" + col;
-			}
-			String coil = "block/plants/" + type + "/branch/coil" + age + suffix;
-			String vine = "block/plants/" + type + "/branch/vine" + age + suffix;
-			String leaves = "block/plants/" + type + "/leaves/leaves" + age + suffix;
-			var builder = pvd.models().getBuilder("tree_" + name + "_branch" + age + (top ? "_top" : "") + (ext ? "_extended" : ""));
-			if (top) {
-				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_top")));
-				builder.texture("leaves", pvd.modLoc(leaves));
-			} else if (age >= 5) {
-				String bottom = "block/plants/" + type + "/branch/bottom" + age + suffix;
-				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch_mature")));
-				builder.texture("bottom", pvd.modLoc(bottom));
-				builder.texture("leaves", pvd.modLoc(leaves));
-			} else {
-				builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_branch")));
-			}
-			builder.texture("coil", pvd.modLoc(coil))
-					.texture("vine", pvd.modLoc(ext ? coil : vine))
-					.texture("rope_top", pvd.modLoc("block/plants/rope_top"))
-					.renderType("cutout");
-			return builder;
-		}, -90);
+			builder = pvd.models().getBuilder(model + (top ? "_top" : "") + (ext ? "_extended" : ""));
+			builder.texture("vine", pvd.modLoc(ext ? coil : vine));
+		} else {
+			boolean l = state.getValue(CenterCropVineBlock.LEFT);
+			boolean r = state.getValue(CenterCropVineBlock.RIGHT);
+			builder = pvd.models().getBuilder(model + (l ? "l" : "") + (r ? "r" : "") + (top ? "_top" : ""));
+			builder.texture("coil_left", pvd.modLoc(l ? coil : vine))
+					.texture("coil_right", pvd.modLoc(r ? coil : vine));
+		}
+
+		if (top) {
+			builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_" + folder + "_top")));
+			builder.texture("leaves", pvd.modLoc(leaves));
+		} else if (age >= 5) {
+			String bottom = "block/plants/" + type + "/" + folder + "/bottom" + age + suffix;
+			builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_" + folder + "_mature")));
+			builder.texture("bottom", pvd.modLoc(bottom));
+			builder.texture("leaves", pvd.modLoc(leaves));
+		} else {
+			builder.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/plant/grape_" + folder)));
+		}
+		builder.texture("coil", pvd.modLoc(coil))
+				.texture("rope_top", pvd.modLoc("block/plants/rope_top"))
+				.renderType("cutout");
+		return builder;
 	}
 
 	protected void buildFruitModel(DataGenContext<Block, GrapeFruit> ctx, RegistrateBlockstateProvider pvd) {
