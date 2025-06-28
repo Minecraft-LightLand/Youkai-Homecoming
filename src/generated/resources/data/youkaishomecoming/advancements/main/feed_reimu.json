@@ -51,6 +51,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:black_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:black_grape_juice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:black_tea": {
       "conditions": {
         "item": {
@@ -246,6 +256,16 @@
         "item": {
           "items": [
             "youkaishomecoming:genmai_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:grape_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grape_wine"
           ]
         }
       },
@@ -701,6 +721,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:red_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_grape_juice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:roasted_lamprey": {
       "conditions": {
         "item": {
@@ -1111,6 +1141,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:white_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_grape_juice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:white_tea": {
       "conditions": {
         "item": {
@@ -1270,6 +1310,18 @@
     ],
     [
       "youkaishomecoming:wind_priestesses"
+    ],
+    [
+      "youkaishomecoming:black_grape_juice"
+    ],
+    [
+      "youkaishomecoming:red_grape_juice"
+    ],
+    [
+      "youkaishomecoming:white_grape_juice"
+    ],
+    [
+      "youkaishomecoming:grape_wine"
     ],
     [
       "youkaishomecoming:roasted_lamprey"

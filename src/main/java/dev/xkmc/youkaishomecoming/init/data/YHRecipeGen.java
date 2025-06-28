@@ -13,6 +13,7 @@ import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
@@ -930,6 +931,42 @@ public class YHRecipeGen {
 					.requires(YHTagGen.ICE).requires(YHItems.CREAM)
 					.save(coffee, YHCoffee.AFFOGATO.item.getId().withSuffix("_craft"));
 
+		}
+
+		{
+
+			unlock(pvd, new SimpleBasinBuilder(YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
+					YHCrops.BLACK_GRAPE.getFruits())
+					.setInput(YHCrops.BLACK_GRAPE.getFruits())
+					.save(pvd, YHDrink.BLACK_GRAPE_JUICE.item.getId());
+
+			unlock(pvd, new SimpleBasinBuilder(YHDrink.RED_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
+					YHCrops.RED_GRAPE.getFruits())
+					.setInput(YHCrops.RED_GRAPE.getFruits())
+					.save(pvd, YHDrink.RED_GRAPE_JUICE.item.getId());
+
+			unlock(pvd, new SimpleBasinBuilder(YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
+					YHCrops.WHITE_GRAPE.getFruits())
+					.setInput(YHCrops.WHITE_GRAPE.getFruits())
+					.save(pvd, YHDrink.WHITE_GRAPE_JUICE.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.GRAPE_WINE.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.WHITE_GRAPE.getFruits())
+					.save(pvd, YHDrink.GRAPE_WINE.item.getId().withSuffix("_from_white_grape"));
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.RED_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.GRAPE_WINE.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.RED_GRAPE.getFruits())
+					.save(pvd, YHDrink.GRAPE_WINE.item.getId().withSuffix("_from_red_grape"));
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.GRAPE_WINE.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.BLACK_GRAPE.getFruits())
+					.save(pvd, YHDrink.GRAPE_WINE.item.getId().withSuffix("_from_black_grape"));
 		}
 
 		// sake

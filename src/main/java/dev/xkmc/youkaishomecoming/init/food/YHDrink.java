@@ -104,6 +104,11 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
 	)),
+
+	BLACK_GRAPE_JUICE(FoodType.BOTTLE, 0xffffffff, List.of()),
+	RED_GRAPE_JUICE(FoodType.BOTTLE, 0xffffffff, List.of()),
+	WHITE_GRAPE_JUICE(FoodType.BOTTLE, 0xffffffff, List.of()),
+	GRAPE_WINE(FoodType.BOTTLE, 0xffffffff, List.of()),
 	;
 
 	public final int color;
@@ -119,8 +124,9 @@ public enum YHDrink implements IYHFluidHolder {
 						(p, s, f) -> new YHFluidType(p, s, f, this),
 						p -> new YHFluid(p, this))
 				.defaultLang().register();
-		boolean sake = !name.contains("tea") && !name.contains("water");
-		item = type.build(p -> new SakeBottleItem(fluid, p), sake ? "food/sake/" : "food/drink/",
+		String folder = name.contains("tea") || name.contains("water") ? "drink" :
+				name.contains("juice") || name.contains("wine") ? "wine" : "sake";
+		item = type.build(p -> new SakeBottleItem(fluid, p), "food/" + folder + "/",
 				name, 0, 0, tags, effs);
 	}
 

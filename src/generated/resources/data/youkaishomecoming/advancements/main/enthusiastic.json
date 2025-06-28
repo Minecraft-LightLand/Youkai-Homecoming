@@ -71,6 +71,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:black_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:black_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:black_tea": {
       "conditions": {
         "item": {
@@ -426,6 +436,16 @@
         "item": {
           "items": [
             "youkaishomecoming:genmai_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:grape_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grape_wine"
           ]
         }
       },
@@ -941,6 +961,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:red_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:ristretto": {
       "conditions": {
         "item": {
@@ -1391,6 +1421,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:white_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:white_tea": {
       "conditions": {
         "item": {
@@ -1561,6 +1601,18 @@
     ],
     [
       "youkaishomecoming:wind_priestesses"
+    ],
+    [
+      "youkaishomecoming:black_grape_juice"
+    ],
+    [
+      "youkaishomecoming:red_grape_juice"
+    ],
+    [
+      "youkaishomecoming:white_grape_juice"
+    ],
+    [
+      "youkaishomecoming:grape_wine"
     ],
     [
       "youkaishomecoming:espresso"
