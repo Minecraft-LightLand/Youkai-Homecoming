@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/wood_basin",
+  "textures": {
+    "bottom": "youkaishomecoming:block/utensil/wood_basin_bottom",
+    "inside": "youkaishomecoming:block/utensil/wood_basin_inside",
+    "side": "youkaishomecoming:block/utensil/wood_basin_side",
+    "top": "youkaishomecoming:block/utensil/wood_basin_top"
+  }
+}
