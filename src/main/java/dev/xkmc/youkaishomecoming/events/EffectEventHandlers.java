@@ -1,18 +1,21 @@
 package dev.xkmc.youkaishomecoming.events;
 
-import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
+import dev.xkmc.l2library.base.effects.EffectBuilder;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.MaidenEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -69,38 +72,6 @@ public class EffectEventHandlers {
 			if (le instanceof Player player) {
 				disableKoishi(player);
 			}
-		}
-		if (event.getSource().is(DamageTypeTags.IS_FIRE)) {
-			if (event.getEntity().hasEffect(YHEffects.REFRESHING.get())) {
-				event.setCanceled(true);
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void onDamage(LivingDamageEvent event) {
-		var source = event.getSource();
-		if (source.is(DamageTypeTags.BYPASSES_EFFECTS) ||
-				source.is(DamageTypeTags.BYPASSES_RESISTANCE) ||
-				source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
-			return;
-		int reduction = 0;
-		var e = event.getEntity();
-		if (e.hasEffect(YHEffects.THICK.get())) {
-			reduction += 1;
-		}
-		var udu = e.getEffect(YHEffects.UDUMBARA.get());
-		if (udu != null) {
-			var level = e.level();
-			if (level.isNight()) {
-				if (level.canSeeSky(e.blockPosition().above()) &&
-						level.getMoonBrightness() > 0.8f ||
-						UdumbaraEffect.hasLantern(e))
-					reduction += YHModConfig.COMMON.udumbaraFullMoonReduction.get() << udu.getAmplifier();
-			}
-		}
-		if (reduction > 0) {
-			event.setAmount(Math.max(0, event.getAmount() - reduction));
 		}
 	}
 
@@ -178,6 +149,17 @@ public class EffectEventHandlers {
 				event.setResult(Event.Result.DENY);
 			}
 		}
+	}
+
+	public static MobEffectInstance onEat(LivingEntity user, MobEffectInstance ins) {
+		var builder = new EffectBuilder(ins);
+		int dur = ins.getDuration();
+		var enjoy = user.getEffect(YHEffects.ENJOYALE.get());
+		if (enjoy != null && ins.getEffect().isBeneficial()) {
+			int lv = enjoy.getAmplifier() + 1;
+			builder.setDuration((int) (dur * (1 + 0.2 * lv)));
+		}
+		return ins;
 	}
 
 }

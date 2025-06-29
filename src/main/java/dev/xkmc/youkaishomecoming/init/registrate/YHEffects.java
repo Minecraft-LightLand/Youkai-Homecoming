@@ -3,11 +3,14 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.builders.NoConfigBuilder;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
+import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.content.effect.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -90,6 +93,21 @@ public class YHEffects {
 	public static final RegistryEntry<FairyEffect> FAIRY = genEffect("fairy",
 			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
 			"Reduce max HP and melee attack damage. Gives speed and healing boost. Enables danmaku. Reduce player hitbox for Danmaku");
+
+	public static final RegistryEntry<MobEffect> CONFIDENT = genEffect("confident",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"Increase invulnerability time after being attacked");
+
+	public static final RegistryEntry<MobEffect> ENJOYALE = genEffect("enjoyable",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"Increase beneficial food effect duration");
+
+	public static final RegistryEntry<MobEffect> FLAMING = genEffect("flaming",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff)
+					.addAttributeModifier(L2DamageTracker.FIRE_FACTOR.get(),
+							MathHelper.getUUIDFromString(YoukaisHomecoming.MODID + ":flaming").toString(),
+							0.25, AttributeModifier.Operation.ADDITION),
+			"Increase fire damage you dealt");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();
