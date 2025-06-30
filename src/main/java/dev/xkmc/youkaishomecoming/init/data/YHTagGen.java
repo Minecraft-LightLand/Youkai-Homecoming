@@ -55,6 +55,8 @@ public class YHTagGen {
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> DANGO = item("dango");
+	public static final TagKey<Item> TEA_DRINK = item("tea");
+	public static final TagKey<Item> SAKE = item("sake");
 	public static final TagKey<Item> WINE = item("wine");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");

@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-30T15:28:36.536054	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-06-30T16:23:06.481723	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -3160,7 +3160,9 @@ f30cf5b5edc56eca38e3c44402371c6a762222e2 data/youkaishomecoming/tags/items/danma
 450b22465c6ce1d3974c406ed20257cea7986200 data/youkaishomecoming/tags/items/laser/pencil.json
 d5be29c37bb6d735f5ca4be69f644ce058d1fd7b data/youkaishomecoming/tags/items/preset_spell.json
 a74abf7f4c9598e1a4958f776a35b0de48b4539d data/youkaishomecoming/tags/items/raw_flesh.json
+c04beb7d7ecb0c91a8db263fc1744f4f87216f46 data/youkaishomecoming/tags/items/sake.json
 120423252f44f7e5c04099686a30ef52de030d4a data/youkaishomecoming/tags/items/tamagoyaki.json
+8368d9f2eff520014144fabf332c2534170b05e5 data/youkaishomecoming/tags/items/tea.json
 214b9cb853f7f4216ae6d84adcc04e859a111b7c data/youkaishomecoming/tags/items/touhou_hat.json
 c90b811672ed77454ab02ce25bbe794d6ac8c607 data/youkaishomecoming/tags/items/touhou_wings.json
 9215d45d1149feab39c35c3ddcf6a54f0dcc5a53 data/youkaishomecoming/tags/items/wine.json

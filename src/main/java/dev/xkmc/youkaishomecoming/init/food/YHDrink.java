@@ -21,81 +21,94 @@ public enum YHDrink implements IYHFluidHolder {
 	GREEN_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	WHITE_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.REFRESHING::get, 1200, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	BLACK_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.THICK::get, 600, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	OOLONG_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SMOOTHING::get, 600, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	CORNFLOWER_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	TEA_MOCHA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	SAIDI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 400, 0, 1),
 			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	GENMAI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 1, 1),
 			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	)),
+	), YHTagGen.TEA_DRINK),
 	SCARLET_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.THICK::get, 600, 0, 1),
 			new EffectEntry(YHEffects.YOUKAIFYING::get, 1200, 0, 1)
-	), YHTagGen.FLESH_FOOD),
-	GREEN_WATER(FoodType.BOTTLE, 0xffffffff, List.of(new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f))),
+	), YHTagGen.TEA_DRINK, YHTagGen.FLESH_FOOD),
+	GREEN_WATER(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.TEA::get, 600, 0, 0.1f)
+	), YHTagGen.TEA_DRINK),
 
 	MIO(FoodType.BOTTLE, 0xff7890e5, List.of(
-			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1)
+	), YHTagGen.SAKE),
 	MEAD(FoodType.BOTTLE, 0xfffbe8a6, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1))),
+			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
+	), YHTagGen.SAKE),
 	SPARROW_SAKE(FoodType.BAMBOO, 0xfffffacd, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.LUCK, 1200, 0, 1))),
+			new EffectEntry(() -> MobEffects.LUCK, 1200, 0, 1)
+	), YHTagGen.SAKE),
 	KIKU(FoodType.SAKE, 0xffd5d6b8, List.of(
-			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1)
+	), YHTagGen.SAKE),
 	HAKUTSURU(FoodType.SAKE, 0xfff1ddbd, List.of(
-			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1))),
+			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1)
+	), YHTagGen.SAKE),
 	KAPPA_VILLAGE(FoodType.SAKE, 0xffd5d6b8, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 0.5f))),
+			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 0.5f)
+	), YHTagGen.SAKE),
 	SUIGEI(FoodType.SAKE, 0xffe3f9fb, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 1))),
+			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 1)
+	), YHTagGen.SAKE),
 	DAIGINJO(FoodType.SAKE, 0xffebc78b, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 1200, 2, 1))),
+			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 1200, 2, 1)
+	), YHTagGen.SAKE),
 	DASSAI(FoodType.SAKE, 0xffa86f64, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
-			new EffectEntry(() -> MobEffects.DIG_SPEED, 1200, 2, 1))),
+			new EffectEntry(() -> MobEffects.DIG_SPEED, 1200, 2, 1)
+	), YHTagGen.SAKE),
 	TENGU_TANGO(FoodType.SAKE, 0xffad6843, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 2, 1))),
+			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 2, 1)
+	), YHTagGen.SAKE),
 	FULL_MOONS_EVE(FoodType.SAKE, 0xfff3fafb, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1))),
+			new EffectEntry(YHEffects.UDUMBARA::get, 1200, 1, 1)
+	), YHTagGen.SAKE),
 	SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 1, 1),
 			new EffectEntry(YHEffects.YOUKAIFIED::get, 1200, 0, 1)
@@ -103,7 +116,7 @@ public enum YHDrink implements IYHFluidHolder {
 	WIND_PRIESTESSES(FoodType.BOTTLE, 0xFF79E1CA, List.of(
 			new EffectEntry(YHEffects.DRUNK::get, 1200, 0, 1),
 			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
-	)),
+	), YHTagGen.SAKE),
 
 	BLACK_GRAPE_JUICE(FoodType.BOTTLE, 0xff54263c, List.of()),
 	RED_GRAPE_JUICE(FoodType.BOTTLE, 0xff9e2359, List.of()),
