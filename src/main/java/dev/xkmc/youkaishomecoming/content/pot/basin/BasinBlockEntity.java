@@ -5,11 +5,13 @@ import dev.xkmc.l2library.base.tile.BaseContainerListener;
 import dev.xkmc.l2library.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -24,18 +26,29 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 @SerialClass
-public class BasinBlockEntity extends BaseBlockEntity implements BlockContainer, BaseContainerListener {
+public class BasinBlockEntity extends BaseBlockEntity implements
+		BlockContainer, BaseContainerListener, FluidItemTile {
 
 	@SerialClass.SerialField
 	public final BasinItemContainer items = new BasinItemContainer().add(this);
 	@SerialClass.SerialField
-	public final BaseTank fluids = new BaseTank(1, 1000).add(this);
+	public final BaseTank fluids = new BaseTank(1, 500).add(this);
 
 	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
 	private final LazyOptional<IFluidHandler> fluidHandler = LazyOptional.of(() -> fluids);
 
 	public BasinBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
+	}
+
+	@Override
+	public BaseTank getFluidHandler() {
+		return fluids;
+	}
+
+	@Override
+	public SimpleContainer getItemHandler() {
+		return items;
 	}
 
 	public void process() {

@@ -8,7 +8,7 @@
   ],
   "ingredients": [
     {
-      "item": "youkaishomecoming:grape_wine"
+      "item": "youkaishomecoming:van_allen"
     }
   ],
   "results": [
@@ -17,7 +17,7 @@
     },
     {
       "amount": 250,
-      "fluid": "youkaishomecoming:grape_wine"
+      "fluid": "youkaishomecoming:van_allen"
     }
   ]
 }

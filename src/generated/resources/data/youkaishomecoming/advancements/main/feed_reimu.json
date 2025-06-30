@@ -101,6 +101,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:burgundy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:burgundy"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:california_roll_slice": {
       "conditions": {
         "item": {
@@ -116,6 +126,16 @@
         "item": {
           "items": [
             "youkaishomecoming:candy_apple"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:champagne": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:champagne"
           ]
         }
       },
@@ -256,16 +276,6 @@
         "item": {
           "items": [
             "youkaishomecoming:genmai_tea"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:grape_wine": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:grape_wine"
           ]
         }
       },
@@ -731,6 +741,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:red_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_wine"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:roasted_lamprey": {
       "conditions": {
         "item": {
@@ -1131,6 +1151,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:van_allen": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:van_allen"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:volcano_roll_slice": {
       "conditions": {
         "item": {
@@ -1156,6 +1186,16 @@
         "item": {
           "items": [
             "youkaishomecoming:white_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:white_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_wine"
           ]
         }
       },
@@ -1321,7 +1361,19 @@
       "youkaishomecoming:white_grape_juice"
     ],
     [
-      "youkaishomecoming:grape_wine"
+      "youkaishomecoming:red_wine"
+    ],
+    [
+      "youkaishomecoming:white_wine"
+    ],
+    [
+      "youkaishomecoming:burgundy"
+    ],
+    [
+      "youkaishomecoming:champagne"
+    ],
+    [
+      "youkaishomecoming:van_allen"
     ],
     [
       "youkaishomecoming:roasted_lamprey"

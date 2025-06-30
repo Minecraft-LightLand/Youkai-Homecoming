@@ -933,6 +933,7 @@ public class YHRecipeGen {
 
 		}
 
+		// wine
 		{
 
 			unlock(pvd, new SimpleBasinBuilder(YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
@@ -952,21 +953,39 @@ public class YHRecipeGen {
 
 			unlock(pvd, new SimpleFermentationBuilder(
 							YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(),
-							YHDrink.GRAPE_WINE.fluid.getSource(), 1800)::unlockedBy,
+							YHDrink.WHITE_WINE.fluid.getSource(), 1800)::unlockedBy,
 					YHCrops.WHITE_GRAPE.getFruits())
-					.save(pvd, YHDrink.GRAPE_WINE.item.getId().withSuffix("_from_white_grape"));
+					.save(pvd, YHDrink.WHITE_WINE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(
 							YHDrink.RED_GRAPE_JUICE.fluid.getSource(),
-							YHDrink.GRAPE_WINE.fluid.getSource(), 1800)::unlockedBy,
+							YHDrink.RED_WINE.fluid.getSource(), 1800)::unlockedBy,
 					YHCrops.RED_GRAPE.getFruits())
-					.save(pvd, YHDrink.GRAPE_WINE.item.getId().withSuffix("_from_red_grape"));
+					.save(pvd, YHDrink.RED_WINE.item.getId());
+
+
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.RED_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.VAN_ALLEN.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.RED_GRAPE.getFruits())
+					.addInput(Items.SWEET_BERRIES)
+					.save(pvd, YHDrink.VAN_ALLEN.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(
 							YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(),
-							YHDrink.GRAPE_WINE.fluid.getSource(), 1800)::unlockedBy,
+							YHDrink.BURGUNDY.fluid.getSource(), 1800)::unlockedBy,
 					YHCrops.BLACK_GRAPE.getFruits())
-					.save(pvd, YHDrink.GRAPE_WINE.item.getId().withSuffix("_from_black_grape"));
+					.addInput(Items.SWEET_BERRIES)
+					.save(pvd, YHDrink.BURGUNDY.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.CHAMPAGNE.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.WHITE_GRAPE.getFruits())
+					.addInput(Items.SWEET_BERRIES)
+					.addInput(Items.SUGAR)
+					.save(pvd, YHDrink.CHAMPAGNE.item.getId());
 		}
 
 		// sake

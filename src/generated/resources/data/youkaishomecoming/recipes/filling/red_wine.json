@@ -12,13 +12,13 @@
     },
     {
       "amount": 250,
-      "fluid": "youkaishomecoming:grape_wine",
+      "fluid": "youkaishomecoming:red_wine",
       "nbt": {}
     }
   ],
   "results": [
     {
-      "item": "youkaishomecoming:grape_wine"
+      "item": "youkaishomecoming:red_wine"
     }
   ]
 }

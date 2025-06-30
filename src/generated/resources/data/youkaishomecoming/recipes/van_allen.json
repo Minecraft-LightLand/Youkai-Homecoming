@@ -1,0 +1,18 @@
+{
+  "type": "youkaishomecoming:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:red_grape_juice"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:van_allen"
+  },
+  "results": [],
+  "time": 1800
+}

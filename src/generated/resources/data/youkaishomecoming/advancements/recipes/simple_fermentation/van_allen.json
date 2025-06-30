@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:grape_wine_from_red_grape"
+        "recipe": "youkaishomecoming:van_allen"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:grape_wine_from_red_grape"
+      "youkaishomecoming:van_allen"
     ]
   },
   "sends_telemetry_event": true

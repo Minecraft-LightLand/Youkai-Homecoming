@@ -11,8 +11,6 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.List;
-
 public class BasinRenderer implements BlockEntityRenderer<BasinBlockEntity> {
 
 	private final ItemRenderer itemRenderer;
@@ -23,28 +21,28 @@ public class BasinRenderer implements BlockEntityRenderer<BasinBlockEntity> {
 
 	@Override
 	public void render(BasinBlockEntity be, float pTick, PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
-		List<ItemStack> list = be.items.getAsList();
+		ItemStack stack = be.items.getItem(0);
 		int i = (int) be.getBlockPos().asLong();
-		//TODO
-		for (int j = 0; j < list.size(); ++j) {
-			ItemStack stack = list.get(j);
-			if (!stack.isEmpty()) {
+		int n = Math.min(8, stack.getCount());
+		for (int j = 0; j < n; ++j) {
+			ItemStack item = stack.copyWithCount(stack.getCount() / n);
+			if (!item.isEmpty()) {
 				pose.pushPose();
 				pose.translate(0.5F, 3f / 16, 0.5F);
 				pose.mulPose(Axis.YP.rotationDegrees(j * 45));
 				pose.mulPose(Axis.XP.rotationDegrees(70.0F));
-				float dist = 2f / 16;
+				float dist = 3f / 16;
 				pose.translate(-dist, -dist, 0.0F);
 				pose.scale(0.375F, 0.375F, 0.375F);
-				this.itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, pose, buffer, be.getLevel(), i + j);
+				this.itemRenderer.renderStatic(item, ItemDisplayContext.FIXED, light, overlay, pose, buffer, be.getLevel(), i + j);
 				pose.popPose();
 			}
 		}
 		FluidStack fluid = be.fluids.getFluidInTank(0);
 		if (!fluid.isEmpty()) {
-			float h = 12f / 16 * fluid.getAmount() / 1000;
-			FluidRenderer.renderFluidBox(fluid, 3f / 16, 2f / 16, 3f / 16,
-					13f / 16, 2f / 16 + h, 13f / 16,
+			float h = 8f / 16 * fluid.getAmount() / be.fluids.getTankCapacity(0);
+			FluidRenderer.renderFluidBox(fluid, 1f / 16, 1f / 16, 1f / 16,
+					15f / 16, 1f / 16 + h, 15f / 16,
 					buffer, pose, light, false, 0);
 		}
 	}

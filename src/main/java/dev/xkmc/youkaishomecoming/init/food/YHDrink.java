@@ -105,10 +105,14 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(YHEffects.NATIVE::get, 600, 0, 1)
 	)),
 
-	BLACK_GRAPE_JUICE(FoodType.BOTTLE, 0xffffffff, List.of()),
-	RED_GRAPE_JUICE(FoodType.BOTTLE, 0xffffffff, List.of()),
-	WHITE_GRAPE_JUICE(FoodType.BOTTLE, 0xffffffff, List.of()),
-	GRAPE_WINE(FoodType.BOTTLE, 0xffffffff, List.of()),
+	BLACK_GRAPE_JUICE(FoodType.BOTTLE, 0xff54263c, List.of()),
+	RED_GRAPE_JUICE(FoodType.BOTTLE, 0xff9e2359, List.of()),
+	WHITE_GRAPE_JUICE(FoodType.BOTTLE, 0xffa7a772, List.of()),
+	RED_WINE(FoodType.BOTTLE, 0xff932c39, List.of(), YHTagGen.WINE),
+	WHITE_WINE(FoodType.BOTTLE, 0xffe6dbb9, List.of(), YHTagGen.WINE),
+	BURGUNDY(FoodType.BOTTLE, 0xff7a1c2c, List.of(), YHTagGen.WINE),
+	CHAMPAGNE(FoodType.BOTTLE, 0xffe2d7b1, List.of(), YHTagGen.WINE),
+	VAN_ALLEN(FoodType.BOTTLE, 0xff991a5e, List.of(), YHTagGen.WINE),
 	;
 
 	public final int color;
@@ -125,7 +129,7 @@ public enum YHDrink implements IYHFluidHolder {
 						p -> new YHFluid(p, this))
 				.defaultLang().register();
 		String folder = name.contains("tea") || name.contains("water") ? "drink" :
-				name.contains("juice") || name.contains("wine") ? "wine" : "sake";
+				name.contains("juice") || tags.length > 0 && tags[0] == YHTagGen.WINE ? "wine" : "sake";
 		item = type.build(p -> new SakeBottleItem(fluid, p), "food/" + folder + "/",
 				name, 0, 0, tags, effs);
 	}

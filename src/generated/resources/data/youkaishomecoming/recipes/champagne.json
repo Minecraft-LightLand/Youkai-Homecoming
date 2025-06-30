@@ -1,13 +1,20 @@
 {
   "type": "youkaishomecoming:simple_fermentation",
-  "ingredients": [],
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
   "inputFluid": {
     "amount": 1000,
     "fluid": "youkaishomecoming:white_grape_juice"
   },
   "outputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:grape_wine"
+    "fluid": "youkaishomecoming:champagne"
   },
   "results": [],
   "time": 1800

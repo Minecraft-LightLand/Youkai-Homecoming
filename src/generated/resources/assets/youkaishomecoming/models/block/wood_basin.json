@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/wood_basin",
+  "parent": "youkaishomecoming:custom/utensil/wood_basin",
   "textures": {
     "bottom": "youkaishomecoming:block/utensil/wood_basin_bottom",
     "inside": "youkaishomecoming:block/utensil/wood_basin_inside",

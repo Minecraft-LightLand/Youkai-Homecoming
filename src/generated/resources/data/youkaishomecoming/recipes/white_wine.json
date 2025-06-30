@@ -3,11 +3,11 @@
   "ingredients": [],
   "inputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:red_grape_juice"
+    "fluid": "youkaishomecoming:white_grape_juice"
   },
   "outputFluid": {
     "amount": 1000,
-    "fluid": "youkaishomecoming:grape_wine"
+    "fluid": "youkaishomecoming:white_wine"
   },
   "results": [],
   "time": 1800

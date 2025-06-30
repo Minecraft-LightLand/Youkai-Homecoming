@@ -151,6 +151,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:burgundy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:burgundy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:butter": {
       "conditions": {
         "item": {
@@ -196,6 +206,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cappuccino"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:champagne": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:champagne"
           ]
         }
       },
@@ -436,16 +456,6 @@
         "item": {
           "items": [
             "youkaishomecoming:genmai_tea"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:grape_wine": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:grape_wine"
           ]
         }
       },
@@ -971,6 +981,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:red_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_wine"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:ristretto": {
       "conditions": {
         "item": {
@@ -1411,6 +1431,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:van_allen": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:van_allen"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:volcano_roll_slice": {
       "conditions": {
         "item": {
@@ -1436,6 +1466,16 @@
         "item": {
           "items": [
             "youkaishomecoming:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:white_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_wine"
           ]
         }
       },
@@ -1612,7 +1652,19 @@
       "youkaishomecoming:white_grape_juice"
     ],
     [
-      "youkaishomecoming:grape_wine"
+      "youkaishomecoming:red_wine"
+    ],
+    [
+      "youkaishomecoming:white_wine"
+    ],
+    [
+      "youkaishomecoming:burgundy"
+    ],
+    [
+      "youkaishomecoming:champagne"
+    ],
+    [
+      "youkaishomecoming:van_allen"
     ],
     [
       "youkaishomecoming:espresso"
