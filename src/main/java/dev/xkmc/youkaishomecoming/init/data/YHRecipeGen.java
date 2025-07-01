@@ -156,6 +156,13 @@ public class YHRecipeGen {
 					.define('C', Items.BUCKET)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.BASIN)::unlockedBy, Items.IRON_NUGGET)
+					.pattern("C C").pattern("BAB")
+					.define('A', ItemTags.WOODEN_SLABS)
+					.define('B', ItemTags.WOODEN_STAIRS)
+					.define('C', Items.IRON_NUGGET)
+					.save(pvd);
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI.BASE)::unlockedBy, ModItems.STRAW.get())
 					.pattern("ABA").pattern("DCD").pattern("ABA")
 					.define('A', Items.CLAY_BALL)
@@ -213,6 +220,9 @@ public class YHRecipeGen {
 			pvd.singleItem(DataIngredient.items(YHCrops.SOYBEAN.fruits.get()), RecipeCategory.MISC, YHCrops.SOYBEAN.seed, 1, 1);
 			pvd.singleItem(DataIngredient.items(YHCrops.COFFEA.fruits.get()), RecipeCategory.MISC, YHCrops.COFFEA.seed, 1, 1);
 			pvd.singleItem(DataIngredient.items(YHCrops.CUCUMBER.fruits.get()), RecipeCategory.MISC, YHCrops.CUCUMBER.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.RED_GRAPE.fruits.get()), RecipeCategory.MISC, YHCrops.RED_GRAPE.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.BLACK_GRAPE.fruits.get()), RecipeCategory.MISC, YHCrops.BLACK_GRAPE.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.WHITE_GRAPE.fruits.get()), RecipeCategory.MISC, YHCrops.WHITE_GRAPE.seed, 1, 1);
 
 			pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
@@ -962,7 +972,6 @@ public class YHRecipeGen {
 							YHDrink.RED_WINE.fluid.getSource(), 1800)::unlockedBy,
 					YHCrops.RED_GRAPE.getFruits())
 					.save(pvd, YHDrink.RED_WINE.item.getId());
-
 
 
 			unlock(pvd, new SimpleFermentationBuilder(

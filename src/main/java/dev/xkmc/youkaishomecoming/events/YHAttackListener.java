@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.events;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2library.base.effects.EffectBuilder;
 import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
 import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import vectorwing.farmersdelight.common.registry.ModEffects;
 
 public class YHAttackListener implements AttackListener {
 
@@ -70,6 +72,17 @@ public class YHAttackListener implements AttackListener {
 		}
 		if (reduction > 0) {
 			cache.addDealtModifier(DamageModifier.add(-reduction));
+		}
+		var mature = e.getEffect(YHEffects.MATURE.get());
+		var nourishment = e.getEffect(ModEffects.NOURISHMENT.get());
+		if (mature != null && nourishment != null) {
+			cache.addDealtModifier(DamageModifier.nonlinearMiddle(182, f -> {
+				int max = Math.min((int) (f * 0.2f * (mature.getAmplifier() + 1)), nourishment.getDuration() / 100);
+				e.removeEffect(ModEffects.NOURISHMENT.get());
+				new EffectBuilder(nourishment).setDuration(nourishment.getDuration() - max * 100);
+				e.addEffect(nourishment);
+				return f - max;
+			}));
 		}
 	}
 

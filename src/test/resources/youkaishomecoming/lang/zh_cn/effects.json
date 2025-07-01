@@ -1,64 +1,74 @@
 {
-  "effect.youkaishomecoming": {
-	"youkaified": "妖怪化",
-	"youkaified.description": "现在你是妖怪了",
-	"youkaifying": "半妖怪化",
-	"youkaifying.description": "你在向妖怪转化中",
-	"caffeinated": "咖啡因",
-	"caffeinated.description": "提高攻击伤害",
-	"tea_polyphenols": "茶多酚",
-	"tea_polyphenols.description": "提高攻击速度，阳光下每3秒回血",
-	"higi": "生命力",
-	"higi.description": "提高攻击伤害和移动速度，缓慢回血",
-	"sober": "清醒",
-	"sober.description": "阻止幻翼生成，阻止睡觉，阻止妖怪化，防止反胃。清醒状态下无法再喝酒精或清醒饮品",
-	"drunk": "醉酒",
-	"drunk.description": "提升攻击伤害，但是摇晃屏幕。醉酒状态下无法再喝清醒饮品。醉酒可叠加至多5层",
-	"native_god_bless": "土著神的祝福",
-	"native_god_bless.description": "提升触及距离和移动速度",
-	"unconscious": "无意识",
-	"unconscious.description": "你不会成为攻击目标。进行攻击或者打开战利品箱后效果消失",
-	"refreshing": "清爽",
-	"refreshing.description": "免疫火焰伤害，熄灭身上火焰",
-	"smoothing": "抚慰",
-	"smoothing.description": "免疫中毒，提升回血效率",
-	"thick": "醇厚",
-	"thick.description": "免疫凋零，减少1点收到的伤害",
-	"phantom": "幻昙华",
-	"phantom.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少",
-	"aphrodisiac": "催情",
-	"aphrodisiac.description": "让动物进入繁殖状态",
-	"hypnosis": "催眠",
-	"hypnosis.description": "让村民无视你的罪行",
-	"fairy": "妖精化",
-	"fairy.description": "减半血量，提升速度和回血效率，让玩家能使用弹幕"
-  },
-  "item.minecraft.tipped_arrow.effect": {
-	"aphrodisiac": "催情之箭",
-	"long_aphrodisiac": "催情之箭",
-	"hypnosis": "催眠之箭",
-	"long_hypnosis": "催眠之箭"
-  },
-  "-cartesian": {
-	"potion": {
-	  "path": "item.minecraft",
-	  "use_dot": true,
-	  "list": [
-		{
-		  "lingering_potion": "滞留型",
-		  "potion": "",
-		  "splash_potion": "喷溅型"
-		},
-		{
-		  "effect": ""
-		},
-		{
-		  "aphrodisiac": "催情药水",
-		  "long_aphrodisiac": "催情药水",
-		  "hypnosis": "催眠药水",
-		  "long_hypnosis": "催眠药水"
+	"effect.youkaishomecoming": {
+		"youkaified": "妖怪化",
+		"youkaified.description": "现在你是妖怪了",
+		"youkaifying": "半妖怪化",
+		"youkaifying.description": "你在向妖怪转化中",
+		"caffeinated": "咖啡因",
+		"caffeinated.description": "提高攻击伤害",
+		"tea_polyphenols": "茶多酚",
+		"tea_polyphenols.description": "提高攻击速度，阳光下每3秒回血",
+		"higi": "生命力",
+		"higi.description": "提高攻击伤害和移动速度，缓慢回血",
+		"sober": "清醒",
+		"sober.description": "阻止幻翼生成，阻止睡觉，阻止妖怪化，防止反胃。清醒状态下无法再喝酒精或清醒饮品",
+		"drunk": "醉酒",
+		"drunk.description": "提升攻击伤害，但是摇晃屏幕。醉酒状态下无法再喝清醒饮品。醉酒可叠加至多5层",
+		"native_god_bless": "土著神的祝福",
+		"native_god_bless.description": "提升触及距离和移动速度",
+		"unconscious": "无意识",
+		"unconscious.description": "你不会成为攻击目标。进行攻击或者打开战利品箱后效果消失",
+		"refreshing": "清爽",
+		"refreshing.description": "免疫火焰伤害，熄灭身上火焰",
+		"smoothing": "抚慰",
+		"smoothing.description": "免疫中毒，提升回血效率",
+		"thick": "醇厚",
+		"thick.description": "免疫凋零，减少1点收到的伤害",
+		"phantom": "幻昙华",
+		"phantom.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少",
+		"aphrodisiac": "催情",
+		"aphrodisiac.description": "让动物进入繁殖状态",
+		"hypnosis": "催眠",
+		"hypnosis.description": "让村民无视你的罪行",
+		"fairy": "妖精化",
+		"fairy.description": "减半血量，提升速度和回血效率，让玩家能使用弹幕",
+		"confident": "从容",
+		"confident.description": "延长受到伤害后的免疫时间",
+		"earthy": "醇厚",
+		"earthy.description": "玩家吃饱时消耗饱食度回血",
+		"enjoyable": "清亮",
+		"enjoyable.description": "提升食物的正面效果时长",
+		"flaming": "浓烈",
+		"flaming.description": "提升玩家造成的火焰伤害",
+		"mature": "熟成",
+		"mature.description": "消耗滋养效果时长来抵御一部分伤害"
+	},
+	"item.minecraft.tipped_arrow.effect": {
+		"aphrodisiac": "催情之箭",
+		"long_aphrodisiac": "催情之箭",
+		"hypnosis": "催眠之箭",
+		"long_hypnosis": "催眠之箭"
+	},
+	"-cartesian": {
+		"potion": {
+			"path": "item.minecraft",
+			"use_dot": true,
+			"list": [
+				{
+					"lingering_potion": "滞留型",
+					"potion": "",
+					"splash_potion": "喷溅型"
+				},
+				{
+					"effect": ""
+				},
+				{
+					"aphrodisiac": "催情药水",
+					"long_aphrodisiac": "催情药水",
+					"hypnosis": "催眠药水",
+					"long_hypnosis": "催眠药水"
+				}
+			]
 		}
-	  ]
 	}
-  }
 }

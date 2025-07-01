@@ -19,6 +19,7 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.*;
@@ -52,9 +53,9 @@ public enum YHCrops {
 	UDUMBARA(PlantType.UDUMBARA, 6, 12, "udumbara_seeds", "udumbara_flower"),
 	MANDRAKE(PlantType.MANDRAKE, 6, 12, "mandrake_root", "mandrake_flower"),
 	CUCUMBER(PlantType.CUCUMBER, 8, 24, "cucumber_seeds", "cucumber"),
-	RED_GRAPE(PlantType.GRAPE, 8, 12, null, null),
-	BLACK_GRAPE(PlantType.GRAPE, 8, 12, null, null),
-	WHITE_GRAPE(PlantType.GRAPE, 8, 12, null, null),
+	RED_GRAPE(PlantType.GRAPE, 8, 12, "red_grape_seeds", "red_grape"),
+	BLACK_GRAPE(PlantType.GRAPE, 8, 12, "black_grape_seeds", "black_grape"),
+	WHITE_GRAPE(PlantType.GRAPE, 8, 12, "white_grape_seeds", "white_grape"),
 	;
 
 	private final PlantType type;
@@ -85,7 +86,10 @@ public enum YHCrops {
 		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(ForgeTags.SEEDS);
 		seed = seedBuilder.register();
 
-		fruits = fruit == null ? seed : YHItems.crop(fruit, Item::new);
+		fruits = fruit == null ? seed :
+				type.eatable() ? YHItems.crop(fruit, p -> new Item(p.food(
+						new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).build()
+				))) : YHItems.crop(fruit, Item::new);
 
 		if (type == PlantType.GRAPE) {
 			set = new GrapeVineSet(this);
@@ -298,6 +302,11 @@ public enum YHCrops {
 		public ItemNameBlockItem item(Block plant, Item.Properties p) {
 			return item.apply(plant, p);
 		}
+
+		public boolean eatable() {
+			return this == CUCUMBER || this == GRAPE;
+		}
+
 	}
 
 }
