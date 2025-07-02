@@ -3,11 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "youkaishomecoming:cucumber_crate"
+      "item": "youkaishomecoming:red_grape"
     }
   ],
   "result": {
-    "count": 9,
-    "item": "youkaishomecoming:cucumber_seeds"
+    "item": "youkaishomecoming:red_grape_seeds"
   }
 }

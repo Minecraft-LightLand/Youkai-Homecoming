@@ -68,6 +68,8 @@ public enum YHFood {
 	TAMAGOYAKI(FoodType.SIMPLE, 12, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
 	TAMAGOYAKI_SLICE(FoodType.SIMPLE, 6, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
 	NATTOU(FoodType.SIMPLE, 4, 0.6f, DietTagGen.PROTEINS.tag),
+	CUCUMBER_SLICE(FoodType.FAST, 1, 0.3f, YHTagGen.CUCUMBER_SLICE, DietTagGen.VEGETABLES.tag),
+	RAISIN(FoodType.FAST, 3, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	// mochi
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
@@ -235,8 +237,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 23) id = "food/mochi/";
-		if (ordinal() <= 17) id = "food/basic/";
+		if (ordinal() <= 25) id = "food/mochi/";
+		if (ordinal() <= 19) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {

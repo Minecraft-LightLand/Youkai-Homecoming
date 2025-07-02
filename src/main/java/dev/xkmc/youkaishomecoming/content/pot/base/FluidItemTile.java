@@ -6,6 +6,9 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleContainer;
@@ -27,12 +30,13 @@ public interface FluidItemTile {
 		boolean hasFluid = false;
 		if (fluid.getFluid() instanceof YHFluid sake) {
 			if (fluid.getAmount() >= sake.type.amount() && stack.is(sake.type.getContainer())) {
-				if (!level.isClientSide()) {
+				if (level instanceof ServerLevel sl) {
 					be.getFluidHandler().drain(sake.type.amount(), IFluidHandler.FluidAction.EXECUTE);
 					player.getInventory().placeItemBackInInventory(sake.type.asStack(1));
 					if (!player.isCreative()) {
 						stack.shrink(1);
 					}
+					sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
 				}
 				return InteractionResult.SUCCESS;
 			}
@@ -40,9 +44,10 @@ public interface FluidItemTile {
 		}
 		var fillOpt = CreateFillingTest.test(level, fluid, stack);
 		if (fillOpt.isPresent()) {
-			if (!level.isClientSide()) {
+			if (level instanceof ServerLevel sl) {
 				ItemStack ans = fillOpt.get().result().get();
 				player.getInventory().placeItemBackInInventory(ans);
+				sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
 				be.notifyTile();
 			}
 			return InteractionResult.SUCCESS;
@@ -50,8 +55,9 @@ public interface FluidItemTile {
 		if (!hasFluid || stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof SakeBottleItem) {
 			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
 			if (opt.resolve().isPresent()) {
-				if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
+				if ((level instanceof ServerLevel sl) && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
 					be.notifyTile();
+					sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
 					return InteractionResult.SUCCESS;
 				} else {
 					return InteractionResult.CONSUME;
@@ -61,12 +67,15 @@ public interface FluidItemTile {
 		ItemStack copy = stack.copy();
 		copy.setCount(1);
 		if (be.getItemHandler().canAddItem(copy)) {
-			ItemStack remain = be.getItemHandler().addItem(copy);
-			if (remain.isEmpty()) {
-				stack.shrink(1);
-				be.notifyTile();
-				return InteractionResult.SUCCESS;
+			if (level instanceof ServerLevel sl) {
+				ItemStack remain = be.getItemHandler().addItem(copy);
+				if (remain.isEmpty()) {
+					stack.shrink(1);
+					be.notifyTile();
+					sl.playSound(null, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 0.7f, 1);
+				}
 			}
+			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.CONSUME;
 	}

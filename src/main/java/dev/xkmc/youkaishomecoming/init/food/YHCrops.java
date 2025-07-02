@@ -54,13 +54,13 @@ public enum YHCrops {
 	MANDRAKE(PlantType.MANDRAKE, 6, 12, "mandrake_root", "mandrake_flower"),
 	CUCUMBER(PlantType.CUCUMBER, 8, 24, "cucumber_seeds", "cucumber"),
 	RED_GRAPE(PlantType.GRAPE, 8, 12, "red_grape_seeds", "red_grape"),
-	BLACK_GRAPE(PlantType.GRAPE, 8, 12, "black_grape_seeds", "black_grape"),
+	BLACK_GRAPE(PlantType.GRAPE, 8, 48, "black_grape_seeds", "black_grape"),
 	WHITE_GRAPE(PlantType.GRAPE, 8, 12, "white_grape_seeds", "white_grape"),
 	;
 
 	private final PlantType type;
 	private final BlockEntry<? extends BushBlock> PLANT;
-	private final BlockEntry<? extends BushBlock> WILD;
+	private final BlockEntry<? extends Block> WILD;
 	public final ItemEntry<ItemNameBlockItem> seed;
 	public final ItemEntry<? extends Item> fruits;
 
@@ -129,6 +129,15 @@ public enum YHCrops {
 	}
 
 	public void registerConfigs(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
+		if (this == BLACK_GRAPE){
+			FeatureUtils.register(ctx, configKey, Feature.RANDOM_PATCH,
+					new RandomPatchConfiguration(density, 5, 5,
+							PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+											BlockStateProvider.simple(getWildPlant())),
+									BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.noFluid(),
+											BlockPredicate.matchesTag(Direction.UP.getNormal(), BlockTags.LEAVES)))));
+			return;
+		}
 		FeatureUtils.register(ctx, configKey, Feature.RANDOM_PATCH,
 				new RandomPatchConfiguration(density, 5, 3,
 						PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -165,7 +174,7 @@ public enum YHCrops {
 				.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cubeBottomTop(
 						ctx.getName(),
 						pvd.modLoc("block/bags/" + ctx.getName() + "_side"),
-						pvd.modLoc("block/bags/" + ctx.getName() + "_bottom"),
+						pvd.modLoc("block/bags/crate_bottom"),
 						pvd.modLoc("block/bags/" + ctx.getName() + "_top")
 				).texture("particle", pvd.modLoc("block/bags/" + ctx.getName() + "_top"))))
 				.tag(Tags.Blocks.STORAGE_BLOCKS, BlockTags.MINEABLE_WITH_AXE)
@@ -275,16 +284,16 @@ public enum YHCrops {
 				.loot((pvd, block) -> GrapeVineSet.buildPlantLoot(pvd, block, crop))
 				.tag(BlockTags.CLIMBABLE)
 				.register(),
-				YHCrops::wildCropDropFruit, RopeClimbingSeedItem::new),
+				GrapeVineSet::wildBush, RopeClimbingSeedItem::new),
 
 		;
 
 		private final BiFunction<YHCrops, String, BlockEntry<? extends BushBlock>> plant;
-		private final Function<YHCrops, BlockEntry<? extends BushBlock>> wild;
+		private final Function<YHCrops, BlockEntry<? extends Block>> wild;
 		private final BiFunction<Block, Item.Properties, ItemNameBlockItem> item;
 
 		PlantType(BiFunction<YHCrops, String, BlockEntry<? extends BushBlock>> plant,
-				  Function<YHCrops, BlockEntry<? extends BushBlock>> wild,
+				  Function<YHCrops, BlockEntry<? extends Block>> wild,
 				  BiFunction<Block, Item.Properties, ItemNameBlockItem> item) {
 			this.plant = plant;
 			this.wild = wild;
@@ -295,7 +304,7 @@ public enum YHCrops {
 			return plant.apply(crop, crop.getName());
 		}
 
-		public BlockEntry<? extends BushBlock> wild(YHCrops crop) {
+		public BlockEntry<? extends Block> wild(YHCrops crop) {
 			return wild.apply(crop);
 		}
 

@@ -98,7 +98,7 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Increase invulnerability time after being attacked");
 
-	public static final RegistryEntry<MobEffect> ENJOYALE = genEffect("enjoyable",
+	public static final RegistryEntry<MobEffect> ENJOYABLE = genEffect("enjoyable",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Increase beneficial food effect duration");
 
@@ -107,7 +107,7 @@ public class YHEffects {
 			"Consume Nourishment effect duration to reduce incoming damage");
 
 	public static final RegistryEntry<MobEffect> EARTHY = genEffect("earthy",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			() -> new EarthyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Digest and heal when player is full");
 
 	public static final RegistryEntry<MobEffect> FLAMING = genEffect("flaming",

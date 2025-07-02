@@ -27,21 +27,21 @@
                 "fluids": "minecraft:empty"
               },
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:grass_block",
+                "type": "minecraft:matching_block_tag",
                 "offset": [
                   0,
-                  -1,
+                  1,
                   0
-                ]
+                ],
+                "tag": "minecraft:leaves"
               }
             ]
           }
         }
       ]
     },
-    "tries": 12,
+    "tries": 48,
     "xz_spread": 5,
-    "y_spread": 3
+    "y_spread": 5
   }
 }

@@ -1,8 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -49,4 +53,13 @@ public class CucumberCropBlock extends RootedClimbingCropBlock {
 		return (rope ? base ? ROPE_LOWER : ROPE_UPPER : base ? LOWER : UPPER)[age];
 	}
 
+	@Override
+	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
+		super.pickup(state, level, pos, player);
+		if (player instanceof ServerPlayer sp &&
+				level.getBlockState(pos.below()).is(this) &&
+				level.getBlockState(pos.below().below()).is(this)) {
+			YHCriteriaTriggers.CUCUMBER.trigger(sp);
+		}
+	}
 }

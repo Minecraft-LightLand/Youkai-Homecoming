@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "youkaishomecoming:custom/large_cross_bush",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/plants/grape/wild_white_grape"
+    "cross": "youkaishomecoming:block/plants/grape/wild_white_grape_bush"
   }
 }

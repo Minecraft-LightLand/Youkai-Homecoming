@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cucumber_crate": {
+    "has_pods": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:cucumber_crate"
+              "youkaishomecoming:pods"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:cucumber_seeds_from_cucumber_crate"
+        "recipe": "youkaishomecoming:pod_crate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cucumber_crate",
+      "has_pods",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:cucumber_seeds_from_cucumber_crate"
+      "youkaishomecoming:pod_crate"
     ]
   },
   "sends_telemetry_event": false

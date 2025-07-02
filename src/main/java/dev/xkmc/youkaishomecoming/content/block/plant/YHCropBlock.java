@@ -54,7 +54,7 @@ public class YHCropBlock extends CropBlock {
 		return SHAPE_BY_AGE[this.getAge(pState)];
 	}
 
-	public static void buildWildModel(DataGenContext<Block, ? extends BushBlock> ctx, RegistrateBlockstateProvider pvd, YHCrops crop) {
+	public static void buildWildModel(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd, YHCrops crop) {
 		String tex = "wild_" + crop.getName();
 		pvd.simpleBlock(ctx.get(), pvd.models().cross(tex, pvd.modLoc("block/plants/" + crop.getTypeName() + "/" + tex)).renderType("cutout"));
 	}

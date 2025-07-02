@@ -1,7 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -137,6 +139,9 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 					}
 					if (!player.getAbilities().instabuild) {
 						stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(hand));
+					}
+					if (player instanceof ServerPlayer sp) {
+						YHCriteriaTriggers.GRAPE_CUT.trigger(sp);
 					}
 				}
 				return InteractionResult.SUCCESS;

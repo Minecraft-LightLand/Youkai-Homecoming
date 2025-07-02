@@ -150,8 +150,10 @@
 		"otoro_nigiri": "金枪鱼大腹握寿司",
 		"nattou_gunkan": "纳豆军舰",
 		"cucumber": "黄瓜",
+		"cucumber_slice": "黄瓜丝",
 		"cucumber_seeds": "黄瓜种子",
-		"honey_glazed_cucumber": "蜜渍黄瓜"
+		"honey_glazed_cucumber": "蜜渍黄瓜",
+		"raisin": "葡萄干"
 	},
 	"-cartesian": {
 		"entity": {
@@ -280,7 +282,8 @@
 					"block.youkaishomecoming.*_fruits": "枝条",
 					"block.youkaishomecoming.*_trunk": "木质茎",
 					"block.youkaishomecoming.*_vines": "茎",
-					"block.youkaishomecoming.wild_*": "野生*"
+					"block.youkaishomecoming.wild_*": "野生*",
+					"block.youkaishomecoming.*_crate": "箱装*"
 				}
 			]
 		},

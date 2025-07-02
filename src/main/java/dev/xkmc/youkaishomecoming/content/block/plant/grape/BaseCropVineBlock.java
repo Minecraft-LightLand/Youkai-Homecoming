@@ -68,7 +68,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (state.getValue(getAgeProperty()) == getMaxAge()) {
 			if (!level.isClientSide()) {
-				pickup(state, level, pos);
+				pickup(state, level, pos, player);
 			}
 			level.playSound(player, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 			return InteractionResult.SUCCESS;
@@ -76,7 +76,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 		return InteractionResult.PASS;
 	}
 
-	protected void pickup(BlockState state, Level level, BlockPos pos){
+	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
 		int quantity = 1 + level.random.nextInt(2);
 		popResource(level, pos, new ItemStack(getFruit(), quantity));
 		level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);

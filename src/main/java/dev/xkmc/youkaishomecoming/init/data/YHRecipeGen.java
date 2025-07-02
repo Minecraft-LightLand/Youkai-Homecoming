@@ -217,6 +217,7 @@ public class YHRecipeGen {
 		{
 			cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 2);
 			cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 2);
+			cutting(pvd, YHCrops.CUCUMBER.fruits, YHFood.CUCUMBER_SLICE.item, 2);
 			pvd.singleItem(DataIngredient.items(YHCrops.SOYBEAN.fruits.get()), RecipeCategory.MISC, YHCrops.SOYBEAN.seed, 1, 1);
 			pvd.singleItem(DataIngredient.items(YHCrops.COFFEA.fruits.get()), RecipeCategory.MISC, YHCrops.COFFEA.seed, 1, 1);
 			pvd.singleItem(DataIngredient.items(YHCrops.CUCUMBER.fruits.get()), RecipeCategory.MISC, YHCrops.CUCUMBER.seed, 1, 1);
@@ -230,9 +231,14 @@ public class YHRecipeGen {
 			pvd.smoking(DataIngredient.items(YHItems.STRIPPED_MANDRAKE_ROOT.get()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
 			cutting(pvd, YHCrops.MANDRAKE.seed, YHItems.STRIPPED_MANDRAKE_ROOT, 1);
 			drying(pvd, DataIngredient.items(YHCrops.MANDRAKE.getFruits()), YHItems.DRIED_MANDRAKE_FLOWER);
+			drying(pvd, DataIngredient.tag(YHTagGen.GRAPE), YHFood.RAISIN.item);
+			pvd.storage(YHCrops.SOYBEAN::getFruits, RecipeCategory.MISC, YHItems.PODS_CRATE);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
-			pvd.storage(YHCrops.CUCUMBER::getSeed, RecipeCategory.MISC, YHItems.CUCUMBER_BAG);
+			pvd.storage(YHCrops.CUCUMBER::getFruits, RecipeCategory.MISC, YHItems.CUCUMBER_BAG);
+			pvd.storage(YHCrops.RED_GRAPE::getFruits, RecipeCategory.MISC, YHItems.RED_GRAPE_CRATE);
+			pvd.storage(YHCrops.BLACK_GRAPE::getFruits, RecipeCategory.MISC, YHItems.BLACK_GRAPE_CRATE);
+			pvd.storage(YHCrops.WHITE_GRAPE::getFruits, RecipeCategory.MISC, YHItems.WHITE_GRAPE_CRATE);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
 			pvd.storage(YHCrops.TEA::getFruits, RecipeCategory.MISC, YHItems.TEA_BAG);
 			pvd.storage(YHTea.BLACK.leaves, RecipeCategory.MISC, YHItems.BLACK_TEA_BAG);
@@ -976,21 +982,21 @@ public class YHRecipeGen {
 
 			unlock(pvd, new SimpleFermentationBuilder(
 							YHDrink.RED_GRAPE_JUICE.fluid.getSource(),
-							YHDrink.VAN_ALLEN.fluid.getSource(), 1800)::unlockedBy,
+							YHDrink.VAN_ALLEN.fluid.getSource(), 2400)::unlockedBy,
 					YHCrops.RED_GRAPE.getFruits())
 					.addInput(Items.SWEET_BERRIES)
 					.save(pvd, YHDrink.VAN_ALLEN.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(
 							YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(),
-							YHDrink.BURGUNDY.fluid.getSource(), 1800)::unlockedBy,
+							YHDrink.BURGUNDY.fluid.getSource(), 2400)::unlockedBy,
 					YHCrops.BLACK_GRAPE.getFruits())
 					.addInput(Items.SWEET_BERRIES)
 					.save(pvd, YHDrink.BURGUNDY.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(
 							YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(),
-							YHDrink.CHAMPAGNE.fluid.getSource(), 1800)::unlockedBy,
+							YHDrink.CHAMPAGNE.fluid.getSource(), 2400)::unlockedBy,
 					YHCrops.WHITE_GRAPE.getFruits())
 					.addInput(Items.SWEET_BERRIES)
 					.addInput(Items.SUGAR)
@@ -1199,7 +1205,7 @@ public class YHRecipeGen {
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
 						.result(YHRolls.KAPPA_MAKI)
 						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.add(YHTagGen.CUCUMBER)
+						.add(YHTagGen.CUCUMBER_SLICE)
 						.save(pvd);
 			}
 
@@ -1215,7 +1221,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.SALMON_FUTOMAKI)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.addUnordered(YHTagGen.CUCUMBER)
+						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
 						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
@@ -1224,7 +1230,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.RAINBOW_FUTOMAKI)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.addUnordered(YHTagGen.CUCUMBER)
+						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item.get())
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
@@ -1237,7 +1243,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_CAL)::unlockedBy, YHFood.IMITATION_CRAB.item.get())
 						.result(YHRolls.CALIFORNIA_ROLL)
 						.addOrdered(YHItems.MAYONNAISE.item)
-						.addUnordered(YHTagGen.CUCUMBER)
+						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item)
 						.addUnordered(YHFood.IMITATION_CRAB.item)
 						.save(pvd);

@@ -43,7 +43,6 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
 import vectorwing.farmersdelight.common.block.FeastBlock;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -66,8 +65,10 @@ public class YHItems {
 	public static final ItemEntry<ReimuHairbandItem> REIMU_HAIRBAND;
 	public static final ItemEntry<CirnoHairbandItem> CIRNO_HAIRBAND;
 	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
-	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
-			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
+	public static final BlockEntry<Block> SOYBEAN_BAG, PODS_CRATE,
+			REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
+			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG,
+			RED_GRAPE_CRATE, BLACK_GRAPE_CRATE, WHITE_GRAPE_CRATE;
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
 	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
@@ -99,6 +100,10 @@ public class YHItems {
 			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
 			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);
 			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
+			RED_GRAPE_CRATE = YHCrops.RED_GRAPE.createCrate();
+			BLACK_GRAPE_CRATE = YHCrops.BLACK_GRAPE.createCrate();
+			WHITE_GRAPE_CRATE = YHCrops.WHITE_GRAPE.createCrate();
+			PODS_CRATE = YHCrops.createCrate("pod");
 			SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 			REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 			COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");
@@ -261,7 +266,7 @@ public class YHItems {
 
 	}
 
-	public static <T extends Item> ItemBuilder<T,?> seed(String id, NonNullFunction<Item.Properties, T> factory) {
+	public static <T extends Item> ItemBuilder<T, ?> seed(String id, NonNullFunction<Item.Properties, T> factory) {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())));
 	}

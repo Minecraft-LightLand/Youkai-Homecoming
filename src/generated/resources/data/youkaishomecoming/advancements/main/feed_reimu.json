@@ -181,6 +181,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:cucumber_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cucumber_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:cumberland_loin": {
       "conditions": {
         "item": {
@@ -706,6 +716,16 @@
         "item": {
           "items": [
             "youkaishomecoming:rainbow_roll_slice"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:raisin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raisin"
           ]
         }
       },
@@ -1419,6 +1439,12 @@
     ],
     [
       "youkaishomecoming:nattou"
+    ],
+    [
+      "youkaishomecoming:cucumber_slice"
+    ],
+    [
+      "youkaishomecoming:raisin"
     ],
     [
       "youkaishomecoming:mochi"

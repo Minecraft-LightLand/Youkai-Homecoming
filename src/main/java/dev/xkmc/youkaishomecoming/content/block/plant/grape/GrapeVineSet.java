@@ -1,9 +1,14 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.youkaishomecoming.content.block.plant.PlantJsonGen;
+import dev.xkmc.youkaishomecoming.content.block.plant.WildVineBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
@@ -19,6 +24,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -36,6 +42,7 @@ import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class GrapeVineSet {
 
@@ -445,6 +452,30 @@ public class GrapeVineSet {
 					.texture("bottom", pvd.modLoc(bottom))
 					.renderType("cutout");
 		}, -90);
+	}
+
+	public static BlockEntry<? extends Block> wildBush(YHCrops crop) {
+		BlockBuilder<? extends Block, L2Registrate> builder;
+		if (crop.getName().equals("black_grape")) {
+			builder = YoukaisHomecoming.REGISTRATE.block("wild_" + crop.getName(), WildVineBlock::new)
+					.properties(p -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission()
+							.instabreak().sound(SoundType.CAVE_VINES).pushReaction(PushReaction.DESTROY))
+					.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop));
+
+		} else {
+			builder = YoukaisHomecoming.REGISTRATE.block("wild_" + crop.getName(), BushBlock::new)
+					.initialProperties(() -> Blocks.DANDELION)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())
+									.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/large_cross_bush")))
+									.texture("cross", pvd.modLoc("block/plants/" + crop.getTypeName() + "/" + ctx.getName() + "_bush"))
+									.renderType("cutout")));
+		}
+		return builder
+				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
+						pvd.generated(ctx, pvd.modLoc("block/plants/" + crop.getTypeName() + "/" + ctx.getName()))).build()
+				.tag(ModTags.WILD_CROPS)
+				.loot((ctx, pvd) -> PlantJsonGen.wildDropFruit(ctx, pvd, crop)).register();
 	}
 
 }

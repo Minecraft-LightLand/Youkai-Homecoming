@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import dev.xkmc.l2harvester.api.HarvestResult;
+import dev.xkmc.l2harvester.api.HarvestableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +27,7 @@ import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCrop
 import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock.isRope;
 
 @SuppressWarnings("deprecation")
-public abstract class VineTrunkBlock extends BushBlock implements BonemealableBlock {
+public abstract class VineTrunkBlock extends BushBlock implements BonemealableBlock, HarvestableBlock {
 
 	public static final BooleanProperty MERGED = BooleanProperty.create("merged");
 
@@ -219,6 +221,11 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 
 	public static void destroyAndPlaceRope(Level level, BlockPos pos) {
 		level.setBlockAndUpdate(pos, getRopeBlock());
+	}
+
+	@Override
+	public @Nullable HarvestResult getHarvestResult(Level level, BlockState blockState, BlockPos blockPos) {
+		return null;
 	}
 
 }

@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -43,14 +44,14 @@ public abstract class BranchCropVineBlock extends BaseCropVineBlock {
 	}
 
 	@Override
-	protected void pickup(BlockState state, Level level, BlockPos pos) {
-		super.pickup(state, level, pos);
+	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
+		super.pickup(state, level, pos, player);
 		var hanging = getHanging();
 		if (hanging == null) return;
 		var down = pos.below();
 		var hang = level.getBlockState(down);
 		if (hang.is(hanging) && hang.getValue(hanging.getAgeProperty()) == hanging.getMaxAge()) {
-			hanging.pickup(hang, level, down);
+			hanging.pickup(hang, level, down, player);
 		}
 	}
 

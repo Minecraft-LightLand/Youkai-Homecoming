@@ -10,7 +10,9 @@ import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -36,8 +38,8 @@ public class BasinBlock implements FallOnBlockMethod, ShapeBlockMethod, OnClickB
 
 	static {
 		var out = Block.box(0, 0, 0, 16, 9, 16);
-		var in = Block.box(1, 1, 1, 15, 9, 15);
-		SHAPE = Shapes.join(out, in, BooleanOp.FIRST);
+		var in = Block.box(1, 4, 1, 15, 10, 15);
+		SHAPE = Shapes.join(out, in, BooleanOp.ONLY_FIRST);
 	}
 
 	@Override
@@ -49,6 +51,9 @@ public class BasinBlock implements FallOnBlockMethod, ShapeBlockMethod, OnClickB
 	public boolean fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float v) {
 		if (level.getBlockEntity(pos) instanceof BasinBlockEntity be) {
 			be.process();
+			if (entity instanceof ServerPlayer sp) {
+				YHCriteriaTriggers.BASIN.trigger(sp);
+			}
 		}
 		return false;
 	}

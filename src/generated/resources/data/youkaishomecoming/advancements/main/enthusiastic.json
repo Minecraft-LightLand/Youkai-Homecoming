@@ -291,6 +291,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:cucumber_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cucumber_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:cumberland_loin": {
       "conditions": {
         "item": {
@@ -926,6 +936,16 @@
         "item": {
           "items": [
             "youkaishomecoming:rainbow_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raisin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raisin"
           ]
         }
       },
@@ -1746,6 +1766,12 @@
     ],
     [
       "youkaishomecoming:nattou"
+    ],
+    [
+      "youkaishomecoming:cucumber_slice"
+    ],
+    [
+      "youkaishomecoming:raisin"
     ],
     [
       "youkaishomecoming:mochi"

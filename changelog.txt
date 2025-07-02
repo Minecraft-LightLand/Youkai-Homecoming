@@ -1,7 +1,6 @@
-/--- ---\
-|ooo ooo|
-A       A
-
+2.4.14
+- Add grapes, basin, wine
+- Add cucumber crate and cucumber slices, make cucumber edible
 
 2.4.13
 - Fix Tea model

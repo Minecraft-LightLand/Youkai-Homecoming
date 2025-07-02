@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -82,14 +81,14 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 	}
 
 	@Override
-	protected void pickup(BlockState state, Level level, BlockPos pos) {
+	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
 		if (!state.getValue(ROOT)) {
 			var lower = level.getBlockState(pos.below());
 			if (!lower.is(this)) return;
-			pickup(lower, level, pos.below());
+			pickup(lower, level, pos.below(), player);
 			return;
 		}
-		super.pickup(state, level, pos);
+		super.pickup(state, level, pos, player);
 		var up = level.getBlockState(pos.above());
 		if (up.is(this)) {
 			level.setBlock(pos.above(), up.setValue(getAgeProperty(), getBaseAge()), 2);
@@ -129,7 +128,7 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 				return state;
 			}
 			if (root && dir == Direction.UP && illegal) {
-				if (state.getValue(getAgeProperty()) >= getDoubleBlockStart()){
+				if (state.getValue(getAgeProperty()) >= getDoubleBlockStart()) {
 					level.scheduleTick(pos, this, 1);
 					return state;
 				}
@@ -174,7 +173,7 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 			state = level.getBlockState(lower);
 			if (!state.is(this)) return null;
 		} else lower = pos;
-		if (state.getValue(AGE) < getMaxAge())
+		if (state.getValue(getAgeProperty()) < getMaxAge())
 			return null;
 		int j = 1 + level.random.nextInt(2);
 		List<ItemStack> list = new ArrayList<>();

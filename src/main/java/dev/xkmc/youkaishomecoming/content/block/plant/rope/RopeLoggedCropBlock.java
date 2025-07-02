@@ -114,7 +114,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 		return level.getRawBrightness(pos, 0) >= 9;
 	}
 
-	protected void pickup(BlockState state, Level level, BlockPos pos) {
+	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
 		int quantity = 1 + level.random.nextInt(2);
 		popResource(level, pos, new ItemStack(getFruit(), quantity));
 		level.playSound(null, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
@@ -134,7 +134,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 			if (!isMature && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
 				return InteractionResult.PASS;
 			} else if (isMature) {
-				pickup(state, level, pos);
+				pickup(state, level, pos, player);
 				return InteractionResult.SUCCESS;
 			} else {
 				return super.use(state, level, pos, player, hand, hit);

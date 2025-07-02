@@ -154,7 +154,7 @@ public class EffectEventHandlers {
 	public static MobEffectInstance onEat(LivingEntity user, MobEffectInstance ins) {
 		var builder = new EffectBuilder(ins);
 		int dur = ins.getDuration();
-		var enjoy = user.getEffect(YHEffects.ENJOYALE.get());
+		var enjoy = user.getEffect(YHEffects.ENJOYABLE.get());
 		if (enjoy != null && ins.getEffect().isBeneficial()) {
 			int lv = enjoy.getAmplifier() + 1;
 			builder.setDuration((int) (dur * (1 + 0.2 * lv)));

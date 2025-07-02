@@ -122,24 +122,24 @@ public enum YHDrink implements IYHFluidHolder {
 	RED_GRAPE_JUICE(FoodType.BOTTLE, 0xff9e2359, List.of()),
 	WHITE_GRAPE_JUICE(FoodType.BOTTLE, 0xffa7a772, List.of()),
 	RED_WINE(FoodType.BOTTLE, 0xff932c39, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.ENJOYALE, 1200, 0, 1)
+			new EffectEntry(YHEffects.DRUNK, 2000, 0, 1),
+			new EffectEntry(YHEffects.EARTHY, 1000, 0, 1)
 	), YHTagGen.WINE),
 	WHITE_WINE(FoodType.BOTTLE, 0xffe6dbb9, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.FLAMING, 1200, 0, 1)
+			new EffectEntry(YHEffects.DRUNK, 2000, 0, 1),
+			new EffectEntry(YHEffects.ENJOYABLE, 1000, 0, 1)
 	), YHTagGen.WINE),
 	BURGUNDY(FoodType.BOTTLE, 0xff7a1c2c, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.MATURE, 1200, 0, 1)
+			new EffectEntry(YHEffects.DRUNK, 3000, 0, 1),
+			new EffectEntry(YHEffects.EARTHY, 1500, 1, 1)
 	), YHTagGen.WINE),
 	CHAMPAGNE(FoodType.BOTTLE, 0xffe2d7b1, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.EARTHY, 1200, 0, 1)
+			new EffectEntry(YHEffects.DRUNK, 3000, 0, 1),
+			new EffectEntry(YHEffects.ENJOYABLE, 3000, 0, 1)
 	), YHTagGen.WINE),
 	VAN_ALLEN(FoodType.BOTTLE, 0xff991a5e, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.CONFIDENT, 1200, 0, 1)
+			new EffectEntry(YHEffects.DRUNK, 3000, 0, 1),
+			new EffectEntry(YHEffects.EARTHY, 3000, 0, 1)
 	), YHTagGen.WINE),
 	;
 

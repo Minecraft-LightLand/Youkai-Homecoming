@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cucumber_seeds": {
+    "has_cucumber": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:cucumber_seeds"
+              "youkaishomecoming:cucumber"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_cucumber_seeds",
+      "has_cucumber",
       "has_the_recipe"
     ]
   ],

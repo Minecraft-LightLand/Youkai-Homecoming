@@ -2,8 +2,10 @@ package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
 import dev.xkmc.l2harvester.api.HarvestResult;
 import dev.xkmc.l2harvester.api.HarvestableBlock;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -59,9 +61,9 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 				var up = pos.above();
 				var branch = level.getBlockState(up);
 				if (branch.is(getHanger()) && branch.getValue(getHanger().getAgeProperty()) == getHanger().getMaxAge()) {
-					getHanger().pickup(branch, level, up);
+					getHanger().pickup(branch, level, up, player);
 				} else {
-					pickup(state, level, pos);
+					pickup(state, level, pos, player);
 				}
 			}
 			level.playSound(player, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
@@ -70,10 +72,13 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 		return InteractionResult.PASS;
 	}
 
-	protected void pickup(BlockState state, Level level, BlockPos pos) {
+	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
 		int quantity = 1 + level.random.nextInt(2);
 		popResource(level, pos, new ItemStack(getFruit(state), quantity));
 		level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
+		if (player instanceof ServerPlayer sp) {
+			YHCriteriaTriggers.GRAPE_HARVEST.trigger(sp);
+		}
 	}
 
 

@@ -9,9 +9,15 @@ import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -63,9 +69,21 @@ public class BasinBlockEntity extends BaseBlockEntity implements
 			if (!ans.isFluidEqual(old)) return;
 			if (old.getAmount() + ans.getAmount() > fluids.getTankCapacity(0)) return;
 		}
-		items.getItem(0).shrink(1);
+		ItemStack in = items.getItem(0);
+		ItemStack copy = in.copy();
+		in.shrink(1);
 		fluids.fill(ans, IFluidHandler.FluidAction.EXECUTE);
 		notifyTile();
+		if (level instanceof ServerLevel sl) {
+			var h = fluids.getFluidInTank(0).getAmount() / 1000;
+			var pos = getBlockPos().getCenter();
+			sl.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, copy),
+					pos.x + level.random.nextFloat() * 0.2f - 0.1f,
+					pos.y + Math.max(0.25f, h),
+					pos.z + level.random.nextFloat() * 0.2f - 0.1f,
+					10, 0, 0, 0, 0.05);
+			sl.playSound(null, getBlockPos(), SoundEvents.SLIME_SQUISH, SoundSource.BLOCKS, 0.7f, 2);
+		}
 	}
 
 	@Override
