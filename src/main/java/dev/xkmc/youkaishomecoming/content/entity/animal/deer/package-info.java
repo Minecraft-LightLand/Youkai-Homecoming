@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.entity.deer;
+package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

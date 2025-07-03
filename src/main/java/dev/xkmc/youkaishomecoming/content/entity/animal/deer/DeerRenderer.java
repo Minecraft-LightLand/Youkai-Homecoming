@@ -1,6 +1,5 @@
-package dev.xkmc.youkaishomecoming.content.entity.deer;
+package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
-import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiAttackGoal;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
