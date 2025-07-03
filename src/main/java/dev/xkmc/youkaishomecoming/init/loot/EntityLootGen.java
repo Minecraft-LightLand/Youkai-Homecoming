@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
-import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
-import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
+import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaEntity;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;

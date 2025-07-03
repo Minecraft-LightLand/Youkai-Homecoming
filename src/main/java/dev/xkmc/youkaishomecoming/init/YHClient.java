@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
-import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyModel;
-import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaModel;
+import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
+import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaModel;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;

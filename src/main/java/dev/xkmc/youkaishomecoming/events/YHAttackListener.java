@@ -5,7 +5,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
 import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
-import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
+import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.DamageTypeTags;

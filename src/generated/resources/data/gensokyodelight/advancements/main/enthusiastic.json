@@ -211,16 +211,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "gensokyodelight:cooked_mandrake_root": {
-      "conditions": {
-        "item": {
-          "items": [
-            "gensokyodelight:cooked_mandrake_root"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "gensokyodelight:cornflower_tea": {
       "conditions": {
         "item": {
@@ -1544,9 +1534,6 @@
     ],
     [
       "gensokyodelight:otoro"
-    ],
-    [
-      "gensokyodelight:cooked_mandrake_root"
     ],
     [
       "gensokyodelight:roe"

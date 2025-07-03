@@ -55,14 +55,6 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x949537),
 			"Immune to poison, improves health regeneration");
 
-	public static final RegistryEntry<MobEffect> APHRODISIAC = genEffect("aphrodisiac",
-			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xE17A84),
-			"Animals will enter breeding state");
-
-	public static final RegistryEntry<MobEffect> HYPNOSIS = genEffect("hypnosis",
-			() -> new EmptyEffect(MobEffectCategory.NEUTRAL, 0xC6B3DF),
-			"Villagers will ignore your crimes");
-
 	public static final RegistryEntry<MobEffect> UDUMBARA = genEffect("phantom",
 			() -> new UdumbaraEffect(MobEffectCategory.BENEFICIAL, 0xFBDCFD),
 			"Prevents vibration from you and your projectiles. " +
@@ -125,8 +117,6 @@ public class YHEffects {
 	}
 
 	public static void register() {
-		regPotion2("aphrodisiac", APHRODISIAC::get, YHItems.DRIED_MANDRAKE_FLOWER, 3600, 9600, () -> Potions.HEALING);
-		regPotion2("hypnosis", HYPNOSIS::get, YHItems.STRIPPED_MANDRAKE_ROOT, 3600, 9600, () -> Potions.WEAKNESS);
 	}
 
 }

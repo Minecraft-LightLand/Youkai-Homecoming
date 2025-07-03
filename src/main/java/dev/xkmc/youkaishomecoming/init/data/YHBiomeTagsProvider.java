@@ -23,7 +23,6 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> REDBEAN = asTag("spawns/redbean");
 	public static final TagKey<Biome> COFFEA = asTag("spawns/coffea");
 	public static final TagKey<Biome> TEA = asTag("spawns/tea");
-	public static final TagKey<Biome> MANDRAKE = asTag("spawns/mandrake");
 	public static final TagKey<Biome> UDUMBARA = asTag("spawns/udumbara");
 	public static final TagKey<Biome> CUCUMBER = asTag("spawns/cucumber");
 	public static final TagKey<Biome> GRAPE = asTag("spawns/grape");
@@ -44,7 +43,6 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
 		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
-		tag(MANDRAKE).add(Biomes.DARK_FOREST).addTag(Tags.Biomes.IS_MAGICAL);
 		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
 		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS);
 		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);

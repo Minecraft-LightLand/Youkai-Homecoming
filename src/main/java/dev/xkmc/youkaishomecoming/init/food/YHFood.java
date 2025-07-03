@@ -56,7 +56,6 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
-	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f,
 			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
@@ -209,8 +208,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 25) id = "food/mochi/";
-		if (ordinal() <= 19) id = "food/basic/";
+		if (ordinal() <= 24) id = "food/mochi/";
+		if (ordinal() <= 18) id = "food/basic/";
 		if (raw == null) this.raw = null;
 		else {
 			String rid = "item/" + id + raw;

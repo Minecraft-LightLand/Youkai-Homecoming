@@ -1,7 +1,5 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
-import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.MenuEntry;
@@ -14,7 +12,6 @@ import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodTableBlock;
-import dev.xkmc.youkaishomecoming.content.block.variants.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
@@ -33,38 +30,28 @@ import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.*;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SimpleCookingSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.registries.ForgeRegistries;
-import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.Locale;
-import java.util.function.Supplier;
 
 public class YHBlocks {
 
@@ -336,163 +323,7 @@ public class YHBlocks {
 		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);
 	}
 
-	private static BlockEntry<ThinTrapdoorBlock> thinTrapdoor(String id, BlockBehaviour.Properties prop, BlockSetType set, ResourceLocation side) {
-		return YoukaisHomecoming.REGISTRATE.block(id + "_trap_door", p ->
-						new ThinTrapdoorBlock(prop, set))
-				.blockstate((ctx, pvd) -> ThinTrapdoorBlock.buildModels(pvd, ctx.get(), ctx.getName(), side))
-				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.TRAPDOORS)
-				.item().model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(
-						new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id + "_trap_door_bottom"))))
-				.tag(ItemTags.TRAPDOORS).build()
-				.register();
-	}
-
-	private static BlockEntry<ThinDoorBlock> thinDoor(String id, BlockBehaviour.Properties prop, BlockSetType set) {
-		return YoukaisHomecoming.REGISTRATE.block(id, p -> new ThinDoorBlock(prop, set))
-				.blockstate((ctx, pvd) -> ThinDoorBlock.buildModels(pvd, ctx.get(), ctx.getName(),
-						pvd.modLoc("block/sikkui/" + id + "_bottom"),
-						pvd.modLoc("block/sikkui/" + id + "_top")))
-				.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE, BlockTags.DOORS)
-				.item().model((ctx, pvd) -> pvd.generated(ctx)).tag(ItemTags.DOORS).build()
-				.loot((pvd, b) -> pvd.add(b, pvd.createDoorTable(b))).register();
-	}
-
 	public static void register() {
-
-	}
-
-	public static class WoodSet {
-
-		private final Supplier<Block> base;
-
-		public final BlockEntry<HayStairBlock> STAIR;
-		public final BlockEntry<HaySlabBlock> SLAB;
-		public final BlockEntry<HayTrapDoorBlock> TRAP_DOOR;
-		public final BlockEntry<HayVerticalSlabBlock> VERTICAL;
-
-		public WoodSet(String id, Supplier<Block> base, BlockBehaviour.Properties prop,
-					   ResourceLocation top, ResourceLocation side, ResourceLocation original) {
-			this.base = base;
-			var set = new BlockSetType(id, true, SoundType.GRASS,
-					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
-					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
-					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
-					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-			STAIR = YoukaisHomecoming.REGISTRATE.block(id + "_stairs", p ->
-							new HayStairBlock(() -> base.get().defaultBlockState(), prop))
-					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side, top, top))
-					.tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.WOODEN_STAIRS)
-					.item().tag(ItemTags.WOODEN_STAIRS).build()
-					.register();
-			SLAB = YoukaisHomecoming.REGISTRATE.block(id + "_slab", p ->
-							new HaySlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.slabBlock(ctx.get(),
-							pvd.models().slab(ctx.getName(), side, top, top),
-							pvd.models().slabTop(ctx.getName() + "_top", side, top, top),
-							new ModelFile.UncheckedModelFile(original)))
-					.tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.WOODEN_SLABS)
-					.item().tag(ItemTags.WOODEN_SLABS).build()
-					.register();
-			TRAP_DOOR = YoukaisHomecoming.REGISTRATE.block(id + "_trap_door", p ->
-							new HayTrapDoorBlock(prop, set))
-					.blockstate((ctx, pvd) -> pvd.trapdoorBlock(ctx.get(), side, true))
-					.tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.WOODEN_TRAPDOORS)
-					.item().model((ctx, pvd) -> pvd.getBuilder(ctx.getName()).parent(
-							new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id + "_trap_door_bottom"))))
-					.tag(ItemTags.WOODEN_TRAPDOORS).build()
-					.register();
-			VERTICAL = YoukaisHomecoming.REGISTRATE.block(id + "_vertical_slab", p ->
-							new HayVerticalSlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
-							.texture("top", top).texture("side", side)))
-					.tag(BlockTags.MINEABLE_WITH_AXE).item().build().register();
-		}
-
-		public void genRecipe(RegistrateRecipeProvider pvd) {
-			pvd.stairs(DataIngredient.items(base.get()), RecipeCategory.BUILDING_BLOCKS,
-					STAIR, null, true);
-			pvd.slab(DataIngredient.items(base.get()), RecipeCategory.BUILDING_BLOCKS,
-					SLAB, null, true);
-			pvd.trapDoor(DataIngredient.items(base.get()), RecipeCategory.BUILDING_BLOCKS,
-					TRAP_DOOR, null);
-			YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, VERTICAL.get(), 6)::unlockedBy, base.get().asItem())
-					.pattern("X").pattern("X").pattern("X")
-					.define('X', base.get())
-					.save(pvd);
-			pvd.stonecutting(DataIngredient.items(base.get()), RecipeCategory.BUILDING_BLOCKS, VERTICAL, 2);
-		}
-
-	}
-
-	public static class SikkuiSet {
-
-		public final BlockEntry<Block> BASE;
-		public final BlockEntry<ThinTrapdoorBlock> TRAP_DOOR;
-
-		public SikkuiSet(String id, BlockBehaviour.Properties prop) {
-			var set = new BlockSetType(id, true, SoundType.GRASS,
-					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
-					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
-					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
-					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-			BASE = YoukaisHomecoming.REGISTRATE.block(id, p -> new Block(prop))
-					.blockstate((ctx, pvd) ->
-							pvd.simpleBlock(ctx.get(), pvd.models().cubeAll(ctx.getName(),
-									pvd.modLoc("block/sikkui/" + ctx.getName()))))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL)
-					.simpleItem().register();
-			TRAP_DOOR = thinTrapdoor(id, prop, set, YoukaisHomecoming.loc("block/sikkui/" + id));
-		}
-
-		public void genRecipe(RegistrateRecipeProvider pvd) {
-			pvd.stonecutting(DataIngredient.items(BASE.get()), RecipeCategory.MISC, TRAP_DOOR, 6);
-		}
-
-	}
-
-	public static class FullSikkuiSet extends SikkuiSet {
-
-		public final BlockEntry<StairBlock> STAIR;
-		public final BlockEntry<SlabBlock> SLAB;
-		public final BlockEntry<VerticalSlabBlock> VERTICAL;
-
-		public FullSikkuiSet(String id, BlockBehaviour.Properties prop) {
-			super(id, prop);
-			ResourceLocation side = YoukaisHomecoming.loc("block/sikkui/" + id);
-			STAIR = YoukaisHomecoming.REGISTRATE.block(id + "_stairs", p ->
-							new StairBlock(() -> BASE.get().defaultBlockState(), prop))
-					.blockstate((ctx, pvd) -> pvd.stairsBlock(ctx.get(), id, side))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.STAIRS)
-					.item().tag(ItemTags.STAIRS).build()
-					.register();
-			SLAB = YoukaisHomecoming.REGISTRATE.block(id + "_slab", p ->
-							new SlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.slabBlock(ctx.get(),
-							pvd.models().slab(ctx.getName(), side, side, side),
-							pvd.models().slabTop(ctx.getName() + "_top", side, side, side),
-							new ModelFile.UncheckedModelFile(side)))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.SLABS)
-					.item().tag(ItemTags.SLABS).build()
-					.register();
-			VERTICAL = YoukaisHomecoming.REGISTRATE.block(id + "_vertical_slab", p ->
-							new VerticalSlabBlock(prop))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), VerticalSlabBlock.buildModel(ctx, pvd)
-							.texture("top", side).texture("side", side)))
-					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE).item().build().register();
-		}
-
-		public void genRecipe(RegistrateRecipeProvider pvd) {
-			super.genRecipe(pvd);
-			pvd.stairs(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS,
-					STAIR, null, true);
-			pvd.slab(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS,
-					SLAB, null, true);
-			YHRecipeGen.unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, VERTICAL.get(), 6)::unlockedBy, BASE.get().asItem())
-					.pattern("X").pattern("X").pattern("X")
-					.define('X', BASE.get())
-					.save(pvd);
-			pvd.stonecutting(DataIngredient.items(BASE.get()), RecipeCategory.BUILDING_BLOCKS, VERTICAL, 2);
-		}
 
 	}
 

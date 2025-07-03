@@ -76,7 +76,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
 		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
 		registerCropBiome(ctx, YHCrops.TEA, biomes.getOrThrow(YHBiomeTagsProvider.TEA), features);
-		registerCropBiome(ctx, YHCrops.MANDRAKE, biomes.getOrThrow(YHBiomeTagsProvider.MANDRAKE), features);
 		registerCropBiome(ctx, YHCrops.UDUMBARA, biomes.getOrThrow(YHBiomeTagsProvider.UDUMBARA), features);
 		registerCropBiome(ctx, YHCrops.CUCUMBER, biomes.getOrThrow(YHBiomeTagsProvider.CUCUMBER), features);
 		{

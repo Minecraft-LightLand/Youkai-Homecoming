@@ -50,8 +50,7 @@ public class YHItems {
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
 	public static final ItemEntry<Item> CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
-			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
+			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, ICE_CUBE;
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
@@ -69,8 +68,6 @@ public class YHItems {
 			COFFEE_POWDER = crop("coffee_powder", Item::new);
 			YHTea.register();
 			MATCHA = crop("matcha", Item::new);
-			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
-			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);
 			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
 			RED_GRAPE_CRATE = YHCrops.RED_GRAPE.createCrate();
 			BLACK_GRAPE_CRATE = YHCrops.BLACK_GRAPE.createCrate();
@@ -99,8 +96,6 @@ public class YHItems {
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);
 		}
-
-		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
 
 		YHFood.register();
 		YHSushi.register();

@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.events;
 
-import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.server.level.ServerPlayer;

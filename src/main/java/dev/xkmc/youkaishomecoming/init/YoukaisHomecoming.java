@@ -54,7 +54,6 @@ public class YoukaisHomecoming {
 		YHBlocks.register();
 		YHEffects.register();
 		YHEntities.register();
-		YHSounds.register();
 		YHGLMProvider.register();
 		YHCriteriaTriggers.register();
 		YHModConfig.init();

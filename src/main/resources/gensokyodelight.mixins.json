@@ -10,15 +10,11 @@
 		"CookingPotRecipeAccessor",
 		"CopyMealFunctionMixin",
 		"ItemAccessor",
-		"api.PersistentEntitySectionManagerAccessor",
-		"api.ServerLevelAccessor",
 		"effect.EntityMixin",
 		"effect.LivingEntityMixin",
-		"effect.PhantomSpawnerMixin",
-		"effect.VillagerMixin"
+		"effect.PhantomSpawnerMixin"
 	],
 	"client": [
-		"api.BufferBuilderAccessor",
 		"effect.GameRendererMixin"
 	],
 	"injectors": {
