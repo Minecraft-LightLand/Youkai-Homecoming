@@ -9,7 +9,6 @@ public class FoodRegistryHelper {
 	private static boolean mochi = false;
 
 	public static String getId(FoodType type, TagKey<Item>[] tags) {
-		if (type.isFlesh()) return "food/flesh/";
 		if (type == FoodType.BOTTLE) return "food/bottle/";
 		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) return "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) return "food/bowl/";
