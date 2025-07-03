@@ -59,6 +59,7 @@ public class YHRecipeGen {
 		{
 			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET, 2);
 			foodCut(pvd, YHFood.RAW_TUNA, YHFood.SEARED_TUNA, YHFood.RAW_TUNA_SLICE, YHFood.SEARED_TUNA_SLICE, 3);
+			foodCut(pvd, YHFood.RAW_VENISON, YHFood.GRILLED_VENISON, YHFood.RAW_VENISON_SLICE, YHFood.GRILLED_VENISON_SLICE, 2);
 			foodCut(pvd, YHFood.FLESH, YHFood.COOKED_FLESH, YHFood.FLESH_SLICE, YHFood.COOKED_FLESH_SLICE, 3);
 			food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
@@ -679,7 +680,7 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.CUCUMBER)
 					.addIngredient(YHTagGen.CUCUMBER)
 					.addIngredient(YHTagGen.CUCUMBER)
-					.addIngredient(ForgeTags.RAW_PORK)//change to deer in the future
+					.addIngredient(YHTagGen.RAW_VENISON)
 					.addIngredient(Items.HONEY_BOTTLE)
 					.build(pvd, YHFood.HONEY_GLAZED_CUCUMBER.item.getId());
 

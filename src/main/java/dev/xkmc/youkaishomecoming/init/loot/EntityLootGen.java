@@ -74,7 +74,11 @@ public class EntityLootGen {
 	}
 
 	public static void deer(RegistrateEntityLootTables pvd, EntityType<DeerEntity> type) {
-		pvd.add(type, LootTable.lootTable());//TODO
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.RAW_VENISON.item.get()))
+						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
+						.apply(onFire())));
 	}
 
 	public static void rumia(RegistrateEntityLootTables pvd, EntityType<RumiaEntity> type) {

@@ -45,6 +45,8 @@ public class YHTagGen {
 	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
 	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
 	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
+	public static final TagKey<Item> RAW_VENISON = forgeItem("raw_venison");
+	public static final TagKey<Item> COOKED_VENISON = forgeItem("cooked_venison");
 	public static final TagKey<Item> BUTTER = forgeItem("butter");
 	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
 	public static final TagKey<Item> CUCUMBER_SLICE = forgeItem("slices/cucumber");

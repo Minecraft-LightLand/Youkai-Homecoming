@@ -56,6 +56,18 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
+	RAW_VENISON(FoodType.MEAT, 4, 0.3f,
+			 YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
+	),
+	GRILLED_VENISON(FoodType.MEAT, 10, 0.8f,
+			YHTagGen.COOKED_VENISON, DietTagGen.PROTEINS.tag
+	),
+	RAW_VENISON_SLICE(FoodType.MEAT_SLICE, 2, 0.3f,
+			YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
+	),
+	GRILLED_VENISON_SLICE(FoodType.MEAT_SLICE, 6, 0.8f,
+			YHTagGen.COOKED_VENISON, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
+	),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f,

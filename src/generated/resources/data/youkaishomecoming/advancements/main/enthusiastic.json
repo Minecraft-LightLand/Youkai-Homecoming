@@ -501,6 +501,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:grilled_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:grilled_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_venison_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:hakutsuru": {
       "conditions": {
         "item": {
@@ -986,6 +1006,26 @@
         "item": {
           "items": [
             "youkaishomecoming:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_venison_slice"
           ]
         }
       },
@@ -1739,6 +1779,18 @@
     ],
     [
       "youkaishomecoming:otoro"
+    ],
+    [
+      "youkaishomecoming:raw_venison"
+    ],
+    [
+      "youkaishomecoming:grilled_venison"
+    ],
+    [
+      "youkaishomecoming:raw_venison_slice"
+    ],
+    [
+      "youkaishomecoming:grilled_venison_slice"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"
