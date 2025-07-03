@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "gensokyodelight:block/straw_bale_end",
+    "side": "gensokyodelight:block/straw_bale_side",
+    "top": "gensokyodelight:block/straw_bale_end"
+  }
+}

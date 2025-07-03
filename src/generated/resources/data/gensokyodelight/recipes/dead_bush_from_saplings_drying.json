@@ -1,0 +1,10 @@
+{
+  "type": "gensokyodelight:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "minecraft:saplings"
+  },
+  "result": "minecraft:dead_bush"
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "youkaishomecoming:table/sushi/kelp_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "kelp": "youkaishomecoming:block/table/sushi/kelp/kelp"
-  }
-}

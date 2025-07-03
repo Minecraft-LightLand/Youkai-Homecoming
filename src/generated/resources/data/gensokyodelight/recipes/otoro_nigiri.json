@@ -1,0 +1,13 @@
+{
+  "type": "gensokyodelight:cuisine_ordered",
+  "base": "gensokyodelight:sushi",
+  "input": [
+    {
+      "item": "gensokyodelight:otoro"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "gensokyodelight:otoro_nigiri"
+  }
+}

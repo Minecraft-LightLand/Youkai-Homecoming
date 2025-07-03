@@ -1,0 +1,10 @@
+{
+  "type": "gensokyodelight:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "gensokyodelight:raw_imitation_bear_paw"
+  },
+  "result": "gensokyodelight:imitation_bear_paw"
+}

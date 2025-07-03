@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "gensokyodelight:block/fermentation_tank_lid"
+    },
+    "open=true": {
+      "model": "gensokyodelight:block/fermentation_tank"
+    }
+  }
+}

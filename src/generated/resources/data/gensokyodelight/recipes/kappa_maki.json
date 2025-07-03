@@ -1,0 +1,15 @@
+{
+  "type": "gensokyodelight:cuisine_ordered",
+  "base": "gensokyodelight:hosomaki",
+  "input": [
+    {
+      "item": "gensokyodelight:soy_sauce_bottle"
+    },
+    {
+      "tag": "forge:slices/cucumber"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:kappa_maki"
+  }
+}

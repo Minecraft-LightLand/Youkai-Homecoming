@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/chest_of_heart_throbbing_surprise",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/chest_of_heart_throbbing_surprise"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/chest_of_heart_throbbing_surprise",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/chest_of_heart_throbbing_surprise",
+      "y": 270
+    }
+  }
+}

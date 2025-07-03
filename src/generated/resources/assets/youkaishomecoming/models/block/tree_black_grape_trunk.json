@@ -1,8 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/plant/grape_trunk",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "youkaishomecoming:block/plants/grape/trunk_cross",
-    "post": "youkaishomecoming:block/plants/grape/trunk_post"
-  }
-}

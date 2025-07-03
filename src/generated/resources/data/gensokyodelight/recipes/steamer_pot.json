@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bamboo"
+    },
+    "C": {
+      "item": "minecraft:clay_ball"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "B B",
+    "I I",
+    "CIC"
+  ],
+  "result": {
+    "item": "gensokyodelight:steamer_pot"
+  },
+  "show_notification": true
+}

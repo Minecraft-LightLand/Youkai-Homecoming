@@ -1,0 +1,12 @@
+{
+  "parent": "gensokyodelight:custom/plant/grape_vine_mature",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "gensokyodelight:block/plants/grape/vine/bottom7",
+    "coil": "gensokyodelight:block/plants/grape/vine/coil7",
+    "coil_left": "gensokyodelight:block/plants/grape/vine/vine7",
+    "coil_right": "gensokyodelight:block/plants/grape/vine/coil7",
+    "leaves": "gensokyodelight:block/plants/grape/leaves/leaves7",
+    "rope_top": "gensokyodelight:block/plants/rope_top"
+  }
+}

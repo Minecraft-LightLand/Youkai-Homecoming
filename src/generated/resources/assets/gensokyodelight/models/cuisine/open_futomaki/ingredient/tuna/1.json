@@ -1,0 +1,7 @@
+{
+  "parent": "gensokyodelight:table/open_futomaki/ingredient_1",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "ingredient": "gensokyodelight:block/table/ingredient/tuna"
+  }
+}

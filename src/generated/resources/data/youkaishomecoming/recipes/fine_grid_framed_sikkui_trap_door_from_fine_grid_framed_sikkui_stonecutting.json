@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 6,
-  "ingredient": {
-    "item": "youkaishomecoming:fine_grid_framed_sikkui"
-  },
-  "result": "youkaishomecoming:fine_grid_framed_sikkui_trap_door"
-}

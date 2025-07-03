@@ -1,0 +1,21 @@
+{
+  "type": "gensokyodelight:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "gensokyodelight:white_grape_juice"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "gensokyodelight:champagne"
+  },
+  "results": [],
+  "time": 2400
+}

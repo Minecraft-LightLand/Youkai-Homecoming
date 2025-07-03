@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gensokyodelight:item/sake_bottle",
+    "layer1": "gensokyodelight:item/sake_bottle_overlay"
+  }
+}

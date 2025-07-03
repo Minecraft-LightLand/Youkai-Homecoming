@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:table/roll/hosomaki",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "content": "gensokyodelight:block/table/roll/carrot_maki",
+    "kelp": "gensokyodelight:block/table/roll_kelp"
+  }
+}

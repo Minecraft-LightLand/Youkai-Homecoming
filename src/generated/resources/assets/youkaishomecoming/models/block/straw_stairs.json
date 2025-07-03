@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "youkaishomecoming:block/straw_bale_end",
-    "side": "youkaishomecoming:block/straw_bale_side",
-    "top": "youkaishomecoming:block/straw_bale_end"
-  }
-}

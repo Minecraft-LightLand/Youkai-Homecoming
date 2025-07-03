@@ -1,0 +1,12 @@
+{
+  "type": "gensokyodelight:cuisine_ordered",
+  "base": "gensokyodelight:california_roll",
+  "input": [
+    {
+      "item": "gensokyodelight:roe"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:roe_california_roll"
+  }
+}

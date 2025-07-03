@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gensokyodelight:block/sikkui/cross_framed_sikkui"
+  }
+}

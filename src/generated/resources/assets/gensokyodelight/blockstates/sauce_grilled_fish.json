@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/sauce_grilled_fish",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/sauce_grilled_fish"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/sauce_grilled_fish",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/sauce_grilled_fish",
+      "y": 270
+    }
+  }
+}

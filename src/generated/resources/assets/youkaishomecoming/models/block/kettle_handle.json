@@ -1,9 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/utensil/kettle_handle",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "chain": "youkaishomecoming:block/utensil/chain",
-    "handle": "youkaishomecoming:block/utensil/cooking_pot_handle",
-    "kettle": "youkaishomecoming:block/utensil/kettle"
-  }
-}

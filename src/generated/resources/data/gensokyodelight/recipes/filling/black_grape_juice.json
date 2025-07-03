@@ -1,0 +1,24 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 250,
+      "fluid": "gensokyodelight:black_grape_juice",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "gensokyodelight:black_grape_juice"
+    }
+  ]
+}

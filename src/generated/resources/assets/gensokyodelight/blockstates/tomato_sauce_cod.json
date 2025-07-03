@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/tomato_sauce_cod",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/tomato_sauce_cod"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/tomato_sauce_cod",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/tomato_sauce_cod",
+      "y": 270
+    }
+  }
+}

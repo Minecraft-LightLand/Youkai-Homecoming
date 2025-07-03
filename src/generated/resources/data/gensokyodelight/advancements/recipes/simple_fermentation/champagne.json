@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gensokyodelight:champagne"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_grape": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gensokyodelight:white_grape"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_white_grape",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gensokyodelight:champagne"
+    ]
+  },
+  "sends_telemetry_event": true
+}

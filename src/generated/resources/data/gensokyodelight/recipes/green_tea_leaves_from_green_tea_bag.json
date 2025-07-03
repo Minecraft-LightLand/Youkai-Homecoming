@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:green_tea_bag"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "gensokyodelight:green_tea_leaves"
+  }
+}

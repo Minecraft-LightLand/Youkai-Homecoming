@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/feast/heart_throbbing_surprise_leftover",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/feast/surprise_chest",
+    "umbrella": "gensokyodelight:block/feast/surprise_umbrella"
+  }
+}

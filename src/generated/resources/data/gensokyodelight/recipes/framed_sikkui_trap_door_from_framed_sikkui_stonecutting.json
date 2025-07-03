@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 6,
+  "ingredient": {
+    "item": "gensokyodelight:framed_sikkui"
+  },
+  "result": "gensokyodelight:framed_sikkui_trap_door"
+}

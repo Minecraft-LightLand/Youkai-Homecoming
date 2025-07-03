@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/scholar_ginkgo",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/scholar_ginkgo"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/scholar_ginkgo",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/scholar_ginkgo",
+      "y": 270
+    }
+  }
+}

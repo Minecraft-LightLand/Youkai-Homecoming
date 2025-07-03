@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:coffee_berries"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "gensokyodelight:green_coffee_bean"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

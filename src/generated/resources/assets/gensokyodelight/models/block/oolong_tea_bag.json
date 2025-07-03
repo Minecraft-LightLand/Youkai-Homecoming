@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "gensokyodelight:block/bags/oolong_tea_bag_bottom",
+    "east": "gensokyodelight:block/bags/oolong_tea_bag_side_tied",
+    "north": "gensokyodelight:block/bags/oolong_tea_bag_side",
+    "particle": "gensokyodelight:block/bags/oolong_tea_bag_top",
+    "south": "gensokyodelight:block/bags/oolong_tea_bag_side",
+    "up": "gensokyodelight:block/bags/oolong_tea_bag_top",
+    "west": "gensokyodelight:block/bags/oolong_tea_bag_side_tied"
+  }
+}

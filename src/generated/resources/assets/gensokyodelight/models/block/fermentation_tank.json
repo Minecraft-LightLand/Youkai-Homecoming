@@ -1,0 +1,11 @@
+{
+  "parent": "gensokyodelight:custom/utensil/fermentation_tank",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "gensokyodelight:block/utensil/fermentation_tank_bottom",
+    "inside": "gensokyodelight:block/utensil/fermentation_tank_inside",
+    "lid": "gensokyodelight:block/utensil/fermentation_tank_lid",
+    "side": "gensokyodelight:block/utensil/fermentation_tank_side",
+    "top": "gensokyodelight:block/utensil/fermentation_tank_top"
+  }
+}

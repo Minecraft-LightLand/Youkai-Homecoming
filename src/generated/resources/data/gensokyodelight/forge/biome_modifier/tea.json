@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#gensokyodelight:spawns/tea",
+  "features": "gensokyodelight:tea",
+  "step": "vegetal_decoration"
+}

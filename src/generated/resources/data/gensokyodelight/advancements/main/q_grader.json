@@ -1,0 +1,140 @@
+{
+  "parent": "gensokyodelight:main/fragrant",
+  "criteria": {
+    "gensokyodelight:affogato": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:affogato"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:americano": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:americano"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cappuccino": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cappuccino"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:con_panna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:con_panna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:espresso": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:espresso"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:latte": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:latte"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:macchiato": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:macchiato"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mocha": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:ristretto": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:ristretto"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.gensokyodelight.advancements.main.q_grader.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "gensokyodelight:espresso"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.gensokyodelight.advancements.main.q_grader.title"
+    }
+  },
+  "requirements": [
+    [
+      "gensokyodelight:espresso"
+    ],
+    [
+      "gensokyodelight:americano"
+    ],
+    [
+      "gensokyodelight:ristretto"
+    ],
+    [
+      "gensokyodelight:latte"
+    ],
+    [
+      "gensokyodelight:affogato"
+    ],
+    [
+      "gensokyodelight:con_panna"
+    ],
+    [
+      "gensokyodelight:cappuccino"
+    ],
+    [
+      "gensokyodelight:macchiato"
+    ],
+    [
+      "gensokyodelight:mocha"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

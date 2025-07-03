@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "gensokyodelight:sikkui"
+  },
+  "result": "gensokyodelight:sikkui_stairs"
+}

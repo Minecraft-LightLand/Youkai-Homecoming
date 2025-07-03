@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "gensokyodelight:green_tea_leaves"
+  },
+  "result": "gensokyodelight:oolong_tea_leaves"
+}

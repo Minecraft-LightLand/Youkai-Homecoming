@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "facing=east,support=handle,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_handle",
+      "y": 90
+    },
+    "facing=east,support=handle,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_handle",
+      "y": 90
+    },
+    "facing=east,support=none,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle",
+      "y": 90
+    },
+    "facing=east,support=none,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle",
+      "y": 90
+    },
+    "facing=east,support=tray,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_tray",
+      "y": 90
+    },
+    "facing=east,support=tray,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_tray",
+      "y": 90
+    },
+    "facing=north,support=handle,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_handle"
+    },
+    "facing=north,support=handle,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_handle"
+    },
+    "facing=north,support=none,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle"
+    },
+    "facing=north,support=none,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle"
+    },
+    "facing=north,support=tray,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_tray"
+    },
+    "facing=north,support=tray,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_tray"
+    },
+    "facing=south,support=handle,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_handle",
+      "y": 180
+    },
+    "facing=south,support=handle,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_handle",
+      "y": 180
+    },
+    "facing=south,support=none,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle",
+      "y": 180
+    },
+    "facing=south,support=none,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle",
+      "y": 180
+    },
+    "facing=south,support=tray,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_tray",
+      "y": 180
+    },
+    "facing=south,support=tray,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_tray",
+      "y": 180
+    },
+    "facing=west,support=handle,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_handle",
+      "y": 270
+    },
+    "facing=west,support=handle,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_handle",
+      "y": 270
+    },
+    "facing=west,support=none,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle",
+      "y": 270
+    },
+    "facing=west,support=none,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle",
+      "y": 270
+    },
+    "facing=west,support=tray,waterlogged=false": {
+      "model": "gensokyodelight:block/kettle_tray",
+      "y": 270
+    },
+    "facing=west,support=tray,waterlogged=true": {
+      "model": "gensokyodelight:block/kettle_tray",
+      "y": 270
+    }
+  }
+}

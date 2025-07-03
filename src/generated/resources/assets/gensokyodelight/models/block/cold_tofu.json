@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/dish/cold_tofu",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/dish/cold_tofu_base",
+    "ceramic": "gensokyodelight:block/dish/ceramic",
+    "detail": "gensokyodelight:block/dish/cold_tofu_detail",
+    "particle": "gensokyodelight:block/dish/ceramic"
+  }
+}

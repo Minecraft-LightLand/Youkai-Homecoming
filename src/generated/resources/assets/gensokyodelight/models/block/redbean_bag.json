@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "gensokyodelight:block/bags/redbean_bag_bottom",
+    "east": "gensokyodelight:block/bags/redbean_bag_side_tied",
+    "north": "gensokyodelight:block/bags/redbean_bag_side",
+    "particle": "gensokyodelight:block/bags/redbean_bag_top",
+    "south": "gensokyodelight:block/bags/redbean_bag_side",
+    "up": "gensokyodelight:block/bags/redbean_bag_top",
+    "west": "gensokyodelight:block/bags/redbean_bag_side_tied"
+  }
+}

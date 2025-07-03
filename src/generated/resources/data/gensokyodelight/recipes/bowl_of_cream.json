@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:milk/milk_bottle"
+    },
+    {
+      "tag": "forge:milk/milk_bottle"
+    },
+    {
+      "tag": "forge:milk/milk_bottle"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:bowl_of_cream"
+  }
+}

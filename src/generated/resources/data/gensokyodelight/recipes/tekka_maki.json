@@ -1,0 +1,15 @@
+{
+  "type": "gensokyodelight:cuisine_ordered",
+  "base": "gensokyodelight:hosomaki",
+  "input": [
+    {
+      "item": "gensokyodelight:soy_sauce_bottle"
+    },
+    {
+      "tag": "forge:raw_fishes/tuna"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:tekka_maki"
+  }
+}

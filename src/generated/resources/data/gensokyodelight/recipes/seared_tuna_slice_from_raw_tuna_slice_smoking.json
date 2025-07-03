@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "gensokyodelight:raw_tuna_slice"
+  },
+  "result": "gensokyodelight:seared_tuna_slice"
+}

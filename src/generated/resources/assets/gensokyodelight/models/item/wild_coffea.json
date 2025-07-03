@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gensokyodelight:block/plants/coffea/wild_coffea_top"
+  }
+}

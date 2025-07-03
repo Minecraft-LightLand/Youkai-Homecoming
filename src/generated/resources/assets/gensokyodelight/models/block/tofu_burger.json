@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/dish/tofu_burger",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/dish/tofu_burger_base",
+    "ceramic": "gensokyodelight:block/dish/ceramic",
+    "detail": "gensokyodelight:block/dish/tofu_burger_detail",
+    "particle": "gensokyodelight:block/dish/ceramic"
+  }
+}

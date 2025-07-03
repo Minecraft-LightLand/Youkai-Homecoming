@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "gensokyodelight:block/sikkui/sikkui",
+    "side": "gensokyodelight:block/sikkui/sikkui",
+    "top": "gensokyodelight:block/sikkui/sikkui"
+  }
+}

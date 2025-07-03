@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:green_tea_leaves"
+    }
+  ],
+  "result": [
+    {
+      "item": "gensokyodelight:matcha"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/shovels"
+  }
+}

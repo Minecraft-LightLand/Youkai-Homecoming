@@ -1,0 +1,11 @@
+{
+  "parent": "gensokyodelight:custom/plant/coffea_stage11",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "gensokyodelight:block/plants/coffea/coffea_trunk11",
+    "side": "gensokyodelight:block/plants/coffea/coffea_bush_side",
+    "top": "gensokyodelight:block/plants/coffea/coffea_bush_top",
+    "trunk": "gensokyodelight:block/plants/coffea/coffea_trunk11"
+  }
+}

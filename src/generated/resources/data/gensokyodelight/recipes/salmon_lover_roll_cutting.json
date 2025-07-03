@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:salmon_lover_roll"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "gensokyodelight:salmon_lover_roll_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

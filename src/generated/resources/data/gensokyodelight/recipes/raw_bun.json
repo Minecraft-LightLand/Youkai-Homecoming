@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:dough"
+    },
+    {
+      "tag": "forge:dough"
+    },
+    {
+      "tag": "farmersdelight:cabbage_roll_ingredients"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "item": "gensokyodelight:soybean"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "gensokyodelight:raw_bun"
+  }
+}

@@ -1,15 +1,15 @@
 {
   "values": [
-    "youkaishomecoming:soybean",
-    "youkaishomecoming:redbean",
-    "youkaishomecoming:green_coffee_bean",
-    "youkaishomecoming:tea_seeds",
-    "youkaishomecoming:udumbara_seeds",
-    "youkaishomecoming:mandrake_root",
-    "youkaishomecoming:cucumber_seeds",
-    "youkaishomecoming:red_grape_seeds",
-    "youkaishomecoming:black_grape_seeds",
-    "youkaishomecoming:white_grape_seeds",
+    "gensokyodelight:soybean",
+    "gensokyodelight:redbean",
+    "gensokyodelight:green_coffee_bean",
+    "gensokyodelight:tea_seeds",
+    "gensokyodelight:udumbara_seeds",
+    "gensokyodelight:mandrake_root",
+    "gensokyodelight:cucumber_seeds",
+    "gensokyodelight:red_grape_seeds",
+    "gensokyodelight:black_grape_seeds",
+    "gensokyodelight:white_grape_seeds",
     "#forge:seeds/cucumber"
   ]
 }

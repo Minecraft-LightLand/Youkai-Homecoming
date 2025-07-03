@@ -1,0 +1,7 @@
+{
+  "parent": "gensokyodelight:custom/rope_crop_bare",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "gensokyodelight:block/plants/grape/small/lower5"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#gensokyodelight:spawns/lamprey",
+  "spawners": {
+    "type": "gensokyodelight:lamprey",
+    "maxCount": 5,
+    "minCount": 3,
+    "weight": 5
+  }
+}

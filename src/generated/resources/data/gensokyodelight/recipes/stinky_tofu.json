@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "gensokyodelight:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "gensokyodelight:tofu"
+    },
+    {
+      "item": "gensokyodelight:tofu"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:stinky_tofu"
+  }
+}

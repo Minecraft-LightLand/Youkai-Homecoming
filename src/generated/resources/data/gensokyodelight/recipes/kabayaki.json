@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "gensokyodelight:raw_lamprey_fillet"
+    },
+    {
+      "item": "gensokyodelight:soy_sauce_bottle"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:kabayaki"
+  }
+}

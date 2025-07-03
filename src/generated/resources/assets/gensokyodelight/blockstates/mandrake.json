@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "gensokyodelight:mandrake/mandrake_stage0"
+    },
+    "age=1": {
+      "model": "gensokyodelight:mandrake/mandrake_stage1"
+    },
+    "age=2": {
+      "model": "gensokyodelight:mandrake/mandrake_stage2"
+    },
+    "age=3": {
+      "model": "gensokyodelight:mandrake/mandrake_stage3"
+    },
+    "age=4": {
+      "model": "gensokyodelight:mandrake/mandrake_stage4"
+    },
+    "age=5": {
+      "model": "gensokyodelight:mandrake/mandrake_stage5"
+    },
+    "age=6": {
+      "model": "gensokyodelight:mandrake/mandrake_stage6"
+    },
+    "age=7": {
+      "model": "gensokyodelight:mandrake/mandrake_stage7"
+    }
+  }
+}

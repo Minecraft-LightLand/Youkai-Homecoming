@@ -1,8 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/utensil/faucet",
-  "textures": {
-    "base": "youkaishomecoming:block/utensil/copper_faucet",
-    "particle": "youkaishomecoming:block/utensil/copper_faucet",
-    "valve": "youkaishomecoming:block/utensil/copper_faucet_valve"
-  }
-}

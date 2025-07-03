@@ -6,7 +6,6 @@ import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.TagKey;
@@ -47,10 +46,6 @@ public enum YHDish {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	TOFU_BURGER(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, false, 3, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-			DietTagGen.PROTEINS.tag),
-	BLOOD_CURD(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, true, 2, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, false, 4, List.of(

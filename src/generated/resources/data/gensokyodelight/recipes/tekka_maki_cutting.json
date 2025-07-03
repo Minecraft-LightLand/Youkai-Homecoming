@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:tekka_maki"
+    }
+  ],
+  "result": [
+    {
+      "count": 3,
+      "item": "gensokyodelight:tekka_maki_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

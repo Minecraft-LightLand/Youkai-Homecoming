@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#youkaishomecoming:spawns/soybean",
-  "features": "youkaishomecoming:soybean",
-  "step": "vegetal_decoration"
-}

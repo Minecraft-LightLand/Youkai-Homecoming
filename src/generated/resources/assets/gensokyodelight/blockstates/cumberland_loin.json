@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/cumberland_loin",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/cumberland_loin"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/cumberland_loin",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/cumberland_loin",
+      "y": 270
+    }
+  }
+}

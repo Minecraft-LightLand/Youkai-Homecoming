@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:mandrake_root"
+    }
+  ],
+  "result": [
+    {
+      "item": "gensokyodelight:stripped_mandrake_root"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

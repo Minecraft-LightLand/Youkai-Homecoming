@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "gensokyodelight:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "item": "farmersdelight:tomato_sauce"
+    },
+    {
+      "item": "gensokyodelight:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:tomato_sauce_cod"
+  }
+}

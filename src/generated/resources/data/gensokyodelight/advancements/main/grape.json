@@ -1,0 +1,47 @@
+{
+  "parent": "gensokyodelight:main/soybean",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "tag": "gensokyodelight:farmland_soybean"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "tag": "gensokyodelight:grape_seed"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.gensokyodelight.advancements.main.grape.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "gensokyodelight:red_grape_seeds"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.gensokyodelight.advancements.main.grape.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

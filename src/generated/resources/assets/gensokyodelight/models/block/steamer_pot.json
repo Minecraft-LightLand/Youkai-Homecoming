@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/utensil/steamer_pot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "gensokyodelight:block/utensil/steamer_pot_bottom",
+    "handle": "gensokyodelight:block/utensil/steamer_pot_handle",
+    "side": "gensokyodelight:block/utensil/steamer_pot_side",
+    "top": "gensokyodelight:block/utensil/steamer_pot_top"
+  }
+}

@@ -1,0 +1,604 @@
+{
+  "variants": {
+    "age=0,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0",
+      "y": 180
+    },
+    "age=0,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top",
+      "y": 180
+    },
+    "age=0,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0",
+      "y": 90
+    },
+    "age=0,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top",
+      "y": 90
+    },
+    "age=0,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0",
+      "y": -90
+    },
+    "age=0,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top",
+      "y": -90
+    },
+    "age=0,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0"
+    },
+    "age=0,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top"
+    },
+    "age=0,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_extended",
+      "y": 180
+    },
+    "age=0,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top_extended",
+      "y": 180
+    },
+    "age=0,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_extended",
+      "y": 90
+    },
+    "age=0,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top_extended",
+      "y": 90
+    },
+    "age=0,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_extended",
+      "y": -90
+    },
+    "age=0,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top_extended",
+      "y": -90
+    },
+    "age=0,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_extended"
+    },
+    "age=0,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch0_top_extended"
+    },
+    "age=1,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1",
+      "y": 180
+    },
+    "age=1,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top",
+      "y": 180
+    },
+    "age=1,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1",
+      "y": 90
+    },
+    "age=1,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top",
+      "y": 90
+    },
+    "age=1,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1",
+      "y": -90
+    },
+    "age=1,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top",
+      "y": -90
+    },
+    "age=1,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1"
+    },
+    "age=1,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top"
+    },
+    "age=1,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_extended",
+      "y": 180
+    },
+    "age=1,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top_extended",
+      "y": 180
+    },
+    "age=1,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_extended",
+      "y": 90
+    },
+    "age=1,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top_extended",
+      "y": 90
+    },
+    "age=1,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_extended",
+      "y": -90
+    },
+    "age=1,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top_extended",
+      "y": -90
+    },
+    "age=1,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_extended"
+    },
+    "age=1,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch1_top_extended"
+    },
+    "age=2,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2",
+      "y": 180
+    },
+    "age=2,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top",
+      "y": 180
+    },
+    "age=2,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2",
+      "y": 90
+    },
+    "age=2,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top",
+      "y": 90
+    },
+    "age=2,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2",
+      "y": -90
+    },
+    "age=2,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top",
+      "y": -90
+    },
+    "age=2,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2"
+    },
+    "age=2,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top"
+    },
+    "age=2,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_extended",
+      "y": 180
+    },
+    "age=2,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top_extended",
+      "y": 180
+    },
+    "age=2,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_extended",
+      "y": 90
+    },
+    "age=2,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top_extended",
+      "y": 90
+    },
+    "age=2,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_extended",
+      "y": -90
+    },
+    "age=2,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top_extended",
+      "y": -90
+    },
+    "age=2,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_extended"
+    },
+    "age=2,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch2_top_extended"
+    },
+    "age=3,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3",
+      "y": 180
+    },
+    "age=3,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top",
+      "y": 180
+    },
+    "age=3,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3",
+      "y": 90
+    },
+    "age=3,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top",
+      "y": 90
+    },
+    "age=3,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3",
+      "y": -90
+    },
+    "age=3,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top",
+      "y": -90
+    },
+    "age=3,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3"
+    },
+    "age=3,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top"
+    },
+    "age=3,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_extended",
+      "y": 180
+    },
+    "age=3,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top_extended",
+      "y": 180
+    },
+    "age=3,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_extended",
+      "y": 90
+    },
+    "age=3,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top_extended",
+      "y": 90
+    },
+    "age=3,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_extended",
+      "y": -90
+    },
+    "age=3,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top_extended",
+      "y": -90
+    },
+    "age=3,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_extended"
+    },
+    "age=3,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch3_top_extended"
+    },
+    "age=4,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4",
+      "y": 180
+    },
+    "age=4,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top",
+      "y": 180
+    },
+    "age=4,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4",
+      "y": 90
+    },
+    "age=4,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top",
+      "y": 90
+    },
+    "age=4,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4",
+      "y": -90
+    },
+    "age=4,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top",
+      "y": -90
+    },
+    "age=4,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4"
+    },
+    "age=4,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top"
+    },
+    "age=4,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_extended",
+      "y": 180
+    },
+    "age=4,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top_extended",
+      "y": 180
+    },
+    "age=4,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_extended",
+      "y": 90
+    },
+    "age=4,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top_extended",
+      "y": 90
+    },
+    "age=4,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_extended",
+      "y": -90
+    },
+    "age=4,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top_extended",
+      "y": -90
+    },
+    "age=4,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_extended"
+    },
+    "age=4,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch4_top_extended"
+    },
+    "age=5,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5",
+      "y": 180
+    },
+    "age=5,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top",
+      "y": 180
+    },
+    "age=5,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5",
+      "y": 90
+    },
+    "age=5,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top",
+      "y": 90
+    },
+    "age=5,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5",
+      "y": -90
+    },
+    "age=5,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top",
+      "y": -90
+    },
+    "age=5,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5"
+    },
+    "age=5,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top"
+    },
+    "age=5,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_extended",
+      "y": 180
+    },
+    "age=5,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top_extended",
+      "y": 180
+    },
+    "age=5,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_extended",
+      "y": 90
+    },
+    "age=5,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top_extended",
+      "y": 90
+    },
+    "age=5,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_extended",
+      "y": -90
+    },
+    "age=5,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top_extended",
+      "y": -90
+    },
+    "age=5,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_extended"
+    },
+    "age=5,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch5_top_extended"
+    },
+    "age=6,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6",
+      "y": 180
+    },
+    "age=6,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top",
+      "y": 180
+    },
+    "age=6,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6",
+      "y": 90
+    },
+    "age=6,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top",
+      "y": 90
+    },
+    "age=6,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6",
+      "y": -90
+    },
+    "age=6,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top",
+      "y": -90
+    },
+    "age=6,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6"
+    },
+    "age=6,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top"
+    },
+    "age=6,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_extended",
+      "y": 180
+    },
+    "age=6,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top_extended",
+      "y": 180
+    },
+    "age=6,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_extended",
+      "y": 90
+    },
+    "age=6,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top_extended",
+      "y": 90
+    },
+    "age=6,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_extended",
+      "y": -90
+    },
+    "age=6,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top_extended",
+      "y": -90
+    },
+    "age=6,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_extended"
+    },
+    "age=6,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch6_top_extended"
+    },
+    "age=7,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7",
+      "y": 180
+    },
+    "age=7,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top",
+      "y": 180
+    },
+    "age=7,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7",
+      "y": 90
+    },
+    "age=7,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top",
+      "y": 90
+    },
+    "age=7,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7",
+      "y": -90
+    },
+    "age=7,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top",
+      "y": -90
+    },
+    "age=7,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7"
+    },
+    "age=7,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top"
+    },
+    "age=7,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_extended",
+      "y": 180
+    },
+    "age=7,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top_extended",
+      "y": 180
+    },
+    "age=7,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_extended",
+      "y": 90
+    },
+    "age=7,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top_extended",
+      "y": 90
+    },
+    "age=7,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_extended",
+      "y": -90
+    },
+    "age=7,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top_extended",
+      "y": -90
+    },
+    "age=7,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_extended"
+    },
+    "age=7,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch7_top_extended"
+    },
+    "age=8,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8",
+      "y": 180
+    },
+    "age=8,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top",
+      "y": 180
+    },
+    "age=8,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8",
+      "y": 90
+    },
+    "age=8,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top",
+      "y": 90
+    },
+    "age=8,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8",
+      "y": -90
+    },
+    "age=8,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top",
+      "y": -90
+    },
+    "age=8,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8"
+    },
+    "age=8,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top"
+    },
+    "age=8,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_extended",
+      "y": 180
+    },
+    "age=8,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top_extended",
+      "y": 180
+    },
+    "age=8,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_extended",
+      "y": 90
+    },
+    "age=8,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top_extended",
+      "y": 90
+    },
+    "age=8,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_extended",
+      "y": -90
+    },
+    "age=8,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top_extended",
+      "y": -90
+    },
+    "age=8,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_extended"
+    },
+    "age=8,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch8_top_extended"
+    },
+    "age=9,extended=false,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9",
+      "y": 180
+    },
+    "age=9,extended=false,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top",
+      "y": 180
+    },
+    "age=9,extended=false,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9",
+      "y": 90
+    },
+    "age=9,extended=false,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top",
+      "y": 90
+    },
+    "age=9,extended=false,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9",
+      "y": -90
+    },
+    "age=9,extended=false,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top",
+      "y": -90
+    },
+    "age=9,extended=false,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9"
+    },
+    "age=9,extended=false,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top"
+    },
+    "age=9,extended=true,facing=east,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_extended",
+      "y": 180
+    },
+    "age=9,extended=true,facing=east,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top_extended",
+      "y": 180
+    },
+    "age=9,extended=true,facing=north,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_extended",
+      "y": 90
+    },
+    "age=9,extended=true,facing=north,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top_extended",
+      "y": 90
+    },
+    "age=9,extended=true,facing=south,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_extended",
+      "y": -90
+    },
+    "age=9,extended=true,facing=south,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top_extended",
+      "y": -90
+    },
+    "age=9,extended=true,facing=west,top=false": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_extended"
+    },
+    "age=9,extended=true,facing=west,top=true": {
+      "model": "gensokyodelight:block/tree_black_grape_branch9_top_extended"
+    }
+  }
+}

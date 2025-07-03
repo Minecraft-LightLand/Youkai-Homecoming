@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:coffee_beans"
+    }
+  ],
+  "result": [
+    {
+      "item": "gensokyodelight:coffee_powder"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/shovels"
+  }
+}

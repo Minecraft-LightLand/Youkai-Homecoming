@@ -1,0 +1,7 @@
+{
+  "parent": "gensokyodelight:custom/cross_crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "gensokyodelight:block/plants/mandrake/mandrake_stage1"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "farmersdelight:canvas"
+    },
+    "P": {
+      "item": "minecraft:mangrove_planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "PCP",
+    "PSP"
+  ],
+  "result": {
+    "count": 4,
+    "item": "gensokyodelight:mangrove_dining_chair"
+  },
+  "show_notification": true
+}

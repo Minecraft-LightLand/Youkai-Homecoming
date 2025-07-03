@@ -1,0 +1,9 @@
+{
+  "parent": "gensokyodelight:custom/utensil/kettle_tray",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kettle": "gensokyodelight:block/utensil/kettle",
+    "tray_side": "gensokyodelight:block/utensil/cooking_pot_tray_side",
+    "tray_top": "gensokyodelight:block/utensil/cooking_pot_tray_top"
+  }
+}

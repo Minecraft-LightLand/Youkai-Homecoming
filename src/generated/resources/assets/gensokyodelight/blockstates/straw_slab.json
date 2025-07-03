@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gensokyodelight:block/straw_slab"
+    },
+    "type=double": {
+      "model": "farmersdelight:block/straw_bale"
+    },
+    "type=top": {
+      "model": "gensokyodelight:block/straw_slab_top"
+    }
+  }
+}

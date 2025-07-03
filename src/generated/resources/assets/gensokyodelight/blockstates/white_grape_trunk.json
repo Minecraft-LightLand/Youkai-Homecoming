@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "merged=false": {
+      "model": "gensokyodelight:block/tree_white_grape_trunk_rope"
+    },
+    "merged=true": {
+      "model": "gensokyodelight:block/tree_white_grape_trunk"
+    }
+  }
+}

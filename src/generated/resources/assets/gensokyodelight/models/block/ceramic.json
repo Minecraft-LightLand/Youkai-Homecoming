@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/dish/ceramic",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "ceramic": "gensokyodelight:block/dish/ceramic",
+    "particle": "gensokyodelight:block/dish/ceramic"
+  }
+}

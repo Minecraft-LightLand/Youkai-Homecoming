@@ -1,0 +1,14 @@
+{
+  "type": "gensokyodelight:simple_fermentation",
+  "ingredients": [],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "gensokyodelight:red_grape_juice"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "gensokyodelight:red_wine"
+  },
+  "results": [],
+  "time": 1800
+}

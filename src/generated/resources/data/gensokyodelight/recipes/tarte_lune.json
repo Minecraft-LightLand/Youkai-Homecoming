@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:allium"
+    },
+    "C": {
+      "item": "gensokyodelight:bowl_of_cream"
+    },
+    "D": {
+      "item": "minecraft:cornflower"
+    },
+    "E": {
+      "item": "farmersdelight:pie_crust"
+    },
+    "F": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "FBF",
+    "DCD",
+    "AEA"
+  ],
+  "result": {
+    "item": "gensokyodelight:tarte_lune"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/dish/dried_fish",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/dish/dried_fish_base",
+    "ceramic": "gensokyodelight:block/dish/ceramic",
+    "detail": "gensokyodelight:block/dish/dried_fish_detail",
+    "particle": "gensokyodelight:block/dish/ceramic"
+  }
+}

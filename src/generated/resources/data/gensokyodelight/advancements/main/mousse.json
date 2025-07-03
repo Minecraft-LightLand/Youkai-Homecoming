@@ -1,0 +1,36 @@
+{
+  "parent": "gensokyodelight:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:koishi_mousse"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.gensokyodelight.advancements.main.mousse.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "gensokyodelight:koishi_mousse"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.gensokyodelight.advancements.main.mousse.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#gensokyodelight:spawns/mandrake",
+  "features": "gensokyodelight:mandrake",
+  "step": "vegetal_decoration"
+}

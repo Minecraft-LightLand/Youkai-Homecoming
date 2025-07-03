@@ -1,0 +1,1791 @@
+{
+  "parent": "gensokyodelight:main/mousse",
+  "criteria": {
+    "gensokyodelight:affogato": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:affogato"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:americano": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:americano"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:apaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:apaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:assorted_dango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:assorted_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:avgolemono": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:avgolemono"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:bamboo_mizuyokan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:bamboo_mizuyokan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:big_popsicle": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:big_popsicle"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:black_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:black_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:black_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:black_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:blazing_red_curry": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:blazing_red_curry"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:bowl_of_heart_throbbing_surprise": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:bowl_of_heart_throbbing_surprise"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:bun": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:bun"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:burgundy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:burgundy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:butter": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:butter"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:candy_apple": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:candy_apple"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cappuccino": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cappuccino"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:champagne": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:champagne"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:coffee_mochi": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:coffee_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cold_tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cold_tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:con_panna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:con_panna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cooked_mandrake_root": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cooked_mandrake_root"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cornflower_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cornflower_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cucumber_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cucumber_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:cumberland_loin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:cumberland_loin"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:daiginjo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:daiginjo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:dassai": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:dassai"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:doughnut": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:doughnut"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:dried_fish": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:dried_fish"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:egg_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:egg_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:egg_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:egg_nigiri"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:espresso": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:espresso"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:full_moons_eve": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:full_moons_eve"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:genmai_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:genmai_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:green_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:green_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:green_water": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:green_water"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:grilled_eel_over_rice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:grilled_eel_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:hakutsuru": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:hakutsuru"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:higan_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:higan_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:higi_chocolate": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:higi_chocolate"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:higi_doughnut": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:higi_doughnut"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:honey_glazed_cucumber": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:honey_glazed_cucumber"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:imitation_bear_paw": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:imitation_bear_paw"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:imitation_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:imitation_crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:kabayaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:kabayaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:kappa_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:kappa_maki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:kappa_village": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:kappa_village"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:kiku": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:kiku"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:kinako_dango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:kinako_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:koishi_mousse": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:koishi_mousse"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:lamprey_skewer": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:lamprey_skewer"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:latte": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:latte"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:lions_head": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:lions_head"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:longevity_noodles": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:longevity_noodles"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:lorelei_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:lorelei_nigiri"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:macchiato": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:macchiato"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mantou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mantou"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mapo_tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mapo_tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:matcha_mochi": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:matcha_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mead": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mead"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:milk_popsicle": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:milk_popsicle"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mio": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mio"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:miso_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:miso_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mitarashi_dango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mitarashi_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mocha": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mochi": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:mushroom_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:mushroom_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:nattou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:nattou"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:nattou_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:nattou_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:oily_bean_curd": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:oily_bean_curd"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:onigili": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:onigili"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:oolong_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:oolong_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:otoro": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:otoro"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:otoro_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:otoro_nigiri"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:oyaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:oyaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:pastitsio": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:pastitsio"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:poor_god_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:poor_god_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:pork_rice_ball": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:pork_rice_ball"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:power_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:power_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:rainbow_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:rainbow_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:rainbow_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:rainbow_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:raisin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raisin"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:raw_lamprey": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raw_lamprey"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:raw_lamprey_fillet": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raw_lamprey_fillet"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:raw_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raw_tuna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:raw_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:red_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:red_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:red_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:red_wine"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:ristretto": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:ristretto"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:roasted_lamprey": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:roasted_lamprey"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:roasted_lamprey_fillet": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:roasted_lamprey_fillet"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:roe": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:roe"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:roe_california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:roe_california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:saidi_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:saidi_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:sakura_honey_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:sakura_honey_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:sakura_mochi": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:sakura_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:salmon_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:salmon_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:salmon_lover_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:salmon_lover_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:sauce_grilled_fish": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:sauce_grilled_fish"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:scholar_ginkgo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:scholar_ginkgo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:seafood_miso_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:seafood_miso_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:seagrass_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:seagrass_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:seared_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:seared_tuna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:seared_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:seared_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:sekibankiyaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:sekibankiyaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:senbei": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:senbei"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:seven_colored_yokan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:seven_colored_yokan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:shaved_ice_over_rice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:shaved_ice_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:shinnko_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:shinnko_maki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:shirayuki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:shirayuki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:sparrow_sake": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:sparrow_sake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:steamed_egg_in_bamboo": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:steamed_egg_in_bamboo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:stinky_tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:stinky_tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:suigei": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:suigei"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:sweet_ormosia_mochi_mixed_boiled": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:sweet_ormosia_mochi_mixed_boiled"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tamagoyaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tamagoyaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tamagoyaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tamagoyaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tea_mocha": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tea_mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tekka_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tekka_maki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tengu_tango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tengu_tango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tobiko_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tobiko_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tofu": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tofu"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tofu_burger": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tomato_sauce_cod": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tomato_sauce_cod"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tsukimi_dango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tsukimi_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tuna_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tuna_nigiri"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tuscan_salmon": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tuscan_salmon"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:tutu_congee": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:tutu_congee"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:udumbara_cake": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:udumbara_cake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:van_allen": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:van_allen"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:volcano_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:volcano_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:white_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:white_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:white_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:white_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:white_wine"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:yakumo_inari": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:yakumo_inari"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:yashouma_dango": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:yashouma_dango"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.gensokyodelight.advancements.main.enthusiastic.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "gensokyodelight:imitation_bear_paw"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.gensokyodelight.advancements.main.enthusiastic.title"
+    }
+  },
+  "requirements": [
+    [
+      "gensokyodelight:bamboo_mizuyokan"
+    ],
+    [
+      "gensokyodelight:dried_fish"
+    ],
+    [
+      "gensokyodelight:imitation_bear_paw"
+    ],
+    [
+      "gensokyodelight:pastitsio"
+    ],
+    [
+      "gensokyodelight:sauce_grilled_fish"
+    ],
+    [
+      "gensokyodelight:stinky_tofu"
+    ],
+    [
+      "gensokyodelight:tofu_burger"
+    ],
+    [
+      "gensokyodelight:seven_colored_yokan"
+    ],
+    [
+      "gensokyodelight:cold_tofu"
+    ],
+    [
+      "gensokyodelight:cumberland_loin"
+    ],
+    [
+      "gensokyodelight:scholar_ginkgo"
+    ],
+    [
+      "gensokyodelight:tomato_sauce_cod"
+    ],
+    [
+      "gensokyodelight:green_tea"
+    ],
+    [
+      "gensokyodelight:white_tea"
+    ],
+    [
+      "gensokyodelight:black_tea"
+    ],
+    [
+      "gensokyodelight:oolong_tea"
+    ],
+    [
+      "gensokyodelight:cornflower_tea"
+    ],
+    [
+      "gensokyodelight:tea_mocha"
+    ],
+    [
+      "gensokyodelight:saidi_tea"
+    ],
+    [
+      "gensokyodelight:sakura_honey_tea"
+    ],
+    [
+      "gensokyodelight:genmai_tea"
+    ],
+    [
+      "gensokyodelight:green_water"
+    ],
+    [
+      "gensokyodelight:mio"
+    ],
+    [
+      "gensokyodelight:mead"
+    ],
+    [
+      "gensokyodelight:sparrow_sake"
+    ],
+    [
+      "gensokyodelight:kiku"
+    ],
+    [
+      "gensokyodelight:hakutsuru"
+    ],
+    [
+      "gensokyodelight:kappa_village"
+    ],
+    [
+      "gensokyodelight:suigei"
+    ],
+    [
+      "gensokyodelight:daiginjo"
+    ],
+    [
+      "gensokyodelight:dassai"
+    ],
+    [
+      "gensokyodelight:tengu_tango"
+    ],
+    [
+      "gensokyodelight:full_moons_eve"
+    ],
+    [
+      "gensokyodelight:black_grape_juice"
+    ],
+    [
+      "gensokyodelight:red_grape_juice"
+    ],
+    [
+      "gensokyodelight:white_grape_juice"
+    ],
+    [
+      "gensokyodelight:red_wine"
+    ],
+    [
+      "gensokyodelight:white_wine"
+    ],
+    [
+      "gensokyodelight:burgundy"
+    ],
+    [
+      "gensokyodelight:champagne"
+    ],
+    [
+      "gensokyodelight:van_allen"
+    ],
+    [
+      "gensokyodelight:espresso"
+    ],
+    [
+      "gensokyodelight:americano"
+    ],
+    [
+      "gensokyodelight:ristretto"
+    ],
+    [
+      "gensokyodelight:latte"
+    ],
+    [
+      "gensokyodelight:affogato"
+    ],
+    [
+      "gensokyodelight:con_panna"
+    ],
+    [
+      "gensokyodelight:cappuccino"
+    ],
+    [
+      "gensokyodelight:macchiato"
+    ],
+    [
+      "gensokyodelight:mocha"
+    ],
+    [
+      "gensokyodelight:raw_lamprey"
+    ],
+    [
+      "gensokyodelight:roasted_lamprey"
+    ],
+    [
+      "gensokyodelight:raw_lamprey_fillet"
+    ],
+    [
+      "gensokyodelight:roasted_lamprey_fillet"
+    ],
+    [
+      "gensokyodelight:raw_tuna"
+    ],
+    [
+      "gensokyodelight:seared_tuna"
+    ],
+    [
+      "gensokyodelight:raw_tuna_slice"
+    ],
+    [
+      "gensokyodelight:seared_tuna_slice"
+    ],
+    [
+      "gensokyodelight:otoro"
+    ],
+    [
+      "gensokyodelight:cooked_mandrake_root"
+    ],
+    [
+      "gensokyodelight:roe"
+    ],
+    [
+      "gensokyodelight:butter"
+    ],
+    [
+      "gensokyodelight:tofu"
+    ],
+    [
+      "gensokyodelight:oily_bean_curd"
+    ],
+    [
+      "gensokyodelight:imitation_crab"
+    ],
+    [
+      "gensokyodelight:tamagoyaki"
+    ],
+    [
+      "gensokyodelight:tamagoyaki_slice"
+    ],
+    [
+      "gensokyodelight:nattou"
+    ],
+    [
+      "gensokyodelight:cucumber_slice"
+    ],
+    [
+      "gensokyodelight:raisin"
+    ],
+    [
+      "gensokyodelight:mochi"
+    ],
+    [
+      "gensokyodelight:tsukimi_dango"
+    ],
+    [
+      "gensokyodelight:coffee_mochi"
+    ],
+    [
+      "gensokyodelight:matcha_mochi"
+    ],
+    [
+      "gensokyodelight:sakura_mochi"
+    ],
+    [
+      "gensokyodelight:yashouma_dango"
+    ],
+    [
+      "gensokyodelight:onigili"
+    ],
+    [
+      "gensokyodelight:senbei"
+    ],
+    [
+      "gensokyodelight:sekibankiyaki"
+    ],
+    [
+      "gensokyodelight:yakumo_inari"
+    ],
+    [
+      "gensokyodelight:koishi_mousse"
+    ],
+    [
+      "gensokyodelight:mantou"
+    ],
+    [
+      "gensokyodelight:bun"
+    ],
+    [
+      "gensokyodelight:oyaki"
+    ],
+    [
+      "gensokyodelight:pork_rice_ball"
+    ],
+    [
+      "gensokyodelight:tutu_congee"
+    ],
+    [
+      "gensokyodelight:steamed_egg_in_bamboo"
+    ],
+    [
+      "gensokyodelight:doughnut"
+    ],
+    [
+      "gensokyodelight:kabayaki"
+    ],
+    [
+      "gensokyodelight:higi_chocolate"
+    ],
+    [
+      "gensokyodelight:higi_doughnut"
+    ],
+    [
+      "gensokyodelight:candy_apple"
+    ],
+    [
+      "gensokyodelight:milk_popsicle"
+    ],
+    [
+      "gensokyodelight:big_popsicle"
+    ],
+    [
+      "gensokyodelight:kinako_dango"
+    ],
+    [
+      "gensokyodelight:mitarashi_dango"
+    ],
+    [
+      "gensokyodelight:assorted_dango"
+    ],
+    [
+      "gensokyodelight:lamprey_skewer"
+    ],
+    [
+      "gensokyodelight:shaved_ice_over_rice"
+    ],
+    [
+      "gensokyodelight:apaki"
+    ],
+    [
+      "gensokyodelight:avgolemono"
+    ],
+    [
+      "gensokyodelight:blazing_red_curry"
+    ],
+    [
+      "gensokyodelight:grilled_eel_over_rice"
+    ],
+    [
+      "gensokyodelight:higan_soup"
+    ],
+    [
+      "gensokyodelight:longevity_noodles"
+    ],
+    [
+      "gensokyodelight:miso_soup"
+    ],
+    [
+      "gensokyodelight:seafood_miso_soup"
+    ],
+    [
+      "gensokyodelight:poor_god_soup"
+    ],
+    [
+      "gensokyodelight:power_soup"
+    ],
+    [
+      "gensokyodelight:shirayuki"
+    ],
+    [
+      "gensokyodelight:sweet_ormosia_mochi_mixed_boiled"
+    ],
+    [
+      "gensokyodelight:tuscan_salmon"
+    ],
+    [
+      "gensokyodelight:mushroom_soup"
+    ],
+    [
+      "gensokyodelight:honey_glazed_cucumber"
+    ],
+    [
+      "gensokyodelight:lions_head"
+    ],
+    [
+      "gensokyodelight:mapo_tofu"
+    ],
+    [
+      "gensokyodelight:udumbara_cake"
+    ],
+    [
+      "gensokyodelight:bowl_of_heart_throbbing_surprise"
+    ],
+    [
+      "gensokyodelight:tobiko_gunkan"
+    ],
+    [
+      "gensokyodelight:seagrass_gunkan"
+    ],
+    [
+      "gensokyodelight:nattou_gunkan"
+    ],
+    [
+      "gensokyodelight:egg_nigiri"
+    ],
+    [
+      "gensokyodelight:lorelei_nigiri"
+    ],
+    [
+      "gensokyodelight:tuna_nigiri"
+    ],
+    [
+      "gensokyodelight:otoro_nigiri"
+    ],
+    [
+      "gensokyodelight:shinnko_maki_slice"
+    ],
+    [
+      "gensokyodelight:kappa_maki_slice"
+    ],
+    [
+      "gensokyodelight:tekka_maki_slice"
+    ],
+    [
+      "gensokyodelight:egg_futomaki_slice"
+    ],
+    [
+      "gensokyodelight:salmon_futomaki_slice"
+    ],
+    [
+      "gensokyodelight:rainbow_futomaki_slice"
+    ],
+    [
+      "gensokyodelight:california_roll_slice"
+    ],
+    [
+      "gensokyodelight:roe_california_roll_slice"
+    ],
+    [
+      "gensokyodelight:salmon_lover_roll_slice"
+    ],
+    [
+      "gensokyodelight:volcano_roll_slice"
+    ],
+    [
+      "gensokyodelight:rainbow_roll_slice"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

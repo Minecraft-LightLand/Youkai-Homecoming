@@ -1,0 +1,15 @@
+// 1.20.1	2025-07-03T09:36:15.829058	Tags for minecraft:worldgen/biome mod id gensokyodelight
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/worldgen/biome/is_magical.json
+20754fe41b3ff66a968225b79e15572159b074dd data/gensokyodelight/tags/worldgen/biome/spawns/black_grape.json
+c3d4e55bd4ed5d178abb10df76626eccdab7c209 data/gensokyodelight/tags/worldgen/biome/spawns/coffea.json
+841f627f93601e3b436168727e7a9480102f6439 data/gensokyodelight/tags/worldgen/biome/spawns/cucumber.json
+d2004e1816decf4dd7540a34a60e430f94103be1 data/gensokyodelight/tags/worldgen/biome/spawns/grape.json
+18af7656d96433e406a1aebdcb462fecebcf251e data/gensokyodelight/tags/worldgen/biome/spawns/lamprey.json
+55bdbf5a031f9542dd5dcd034d674105dc7740be data/gensokyodelight/tags/worldgen/biome/spawns/mandrake.json
+3c404a782d6ccbceaf153a04d5ce101db7d85ded data/gensokyodelight/tags/worldgen/biome/spawns/no_grape.json
+835c35de6c87a4e2d9653dceb5578a32f082873f data/gensokyodelight/tags/worldgen/biome/spawns/redbean.json
+854d0d5f0d5c5f2d74fe91a6b19e5a939e73794b data/gensokyodelight/tags/worldgen/biome/spawns/soybean.json
+8a5e7b85849e84f2f20240eb0df4b58fd42f4d28 data/gensokyodelight/tags/worldgen/biome/spawns/tea.json
+ec7bbb0c9b5fc5378f8716f54862806404f04360 data/gensokyodelight/tags/worldgen/biome/spawns/tuna.json
+2baf25447b6e6be292fa28c96583cdcde3854de8 data/gensokyodelight/tags/worldgen/biome/spawns/udumbara.json
+4056b352d9ba8390ea8c597cfe2a608642950e41 data/gensokyodelight/tags/worldgen/biome/spawns/white_grape.json

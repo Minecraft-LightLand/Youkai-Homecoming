@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "gensokyodelight:block/utensil/copper_tank_bottom",
+    "side": "gensokyodelight:block/utensil/copper_tank_side_down",
+    "top": "gensokyodelight:block/utensil/copper_tank_top_open"
+  }
+}

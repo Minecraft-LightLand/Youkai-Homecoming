@@ -1,6 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/utensil/cuisine_board",
-  "textures": {
-    "all": "youkaishomecoming:block/utensil/cuisine_board"
-  }
-}

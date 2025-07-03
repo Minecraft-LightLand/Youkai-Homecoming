@@ -1,0 +1,13 @@
+{
+  "type": "gensokyodelight:cuisine_ordered",
+  "base": "gensokyodelight:gunkan",
+  "input": [
+    {
+      "item": "gensokyodelight:roe"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "gensokyodelight:tobiko_gunkan"
+  }
+}

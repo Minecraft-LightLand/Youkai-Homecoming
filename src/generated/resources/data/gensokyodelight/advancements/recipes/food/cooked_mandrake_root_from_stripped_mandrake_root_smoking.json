@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_mandrake_root": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gensokyodelight:stripped_mandrake_root"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gensokyodelight:cooked_mandrake_root_from_stripped_mandrake_root_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_stripped_mandrake_root",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gensokyodelight:cooked_mandrake_root_from_stripped_mandrake_root_smoking"
+    ]
+  },
+  "sends_telemetry_event": false
+}

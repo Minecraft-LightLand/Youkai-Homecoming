@@ -36,9 +36,7 @@ import org.slf4j.Logger;
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class YoukaisHomecoming {
 
-	static final boolean ENABLE_TLM = true;
-
-	public static final String MODID = "youkaishomecoming";
+	public static final String MODID = "gensokyodelight";
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
@@ -46,7 +44,7 @@ public class YoukaisHomecoming {
 			loc("main"), 2);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
+			REGISTRATE.buildModCreativeTab("gensokyo_delight", "Gensokyo Delight",
 					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
 
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");

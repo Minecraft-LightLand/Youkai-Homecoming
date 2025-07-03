@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cod_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersdelight:cod_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gensokyodelight:cooked_cod_slice_from_cod_slice_steaming"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cod_slice",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gensokyodelight:cooked_cod_slice_from_cod_slice_steaming"
+    ]
+  },
+  "sends_telemetry_event": false
+}

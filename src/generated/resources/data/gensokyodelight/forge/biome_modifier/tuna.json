@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#gensokyodelight:spawns/tuna",
+  "spawners": {
+    "type": "gensokyodelight:tuna",
+    "maxCount": 1,
+    "minCount": 1,
+    "weight": 5
+  }
+}

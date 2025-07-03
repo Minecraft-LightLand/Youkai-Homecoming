@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:bamboo_block"
+  },
+  "result": "gensokyodelight:drying_rack"
+}

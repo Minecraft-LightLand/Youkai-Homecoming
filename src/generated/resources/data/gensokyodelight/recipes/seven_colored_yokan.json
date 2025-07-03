@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "gensokyodelight:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "gensokyodelight:redbean"
+    },
+    {
+      "item": "gensokyodelight:soybean"
+    },
+    {
+      "item": "minecraft:cherry_leaves"
+    },
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "tag": "forge:matcha"
+    },
+    {
+      "item": "gensokyodelight:udumbara_flower"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:seven_colored_yokan"
+  }
+}

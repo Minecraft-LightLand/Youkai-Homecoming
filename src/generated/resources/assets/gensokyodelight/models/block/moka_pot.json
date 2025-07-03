@@ -1,0 +1,7 @@
+{
+  "parent": "gensokyodelight:custom/utensil/moka_pot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "maker": "gensokyodelight:block/utensil/moka_pot"
+  }
+}

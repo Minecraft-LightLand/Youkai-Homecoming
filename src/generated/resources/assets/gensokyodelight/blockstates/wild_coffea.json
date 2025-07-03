@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "gensokyodelight:block/coffea_bottom"
+    },
+    "half=upper": {
+      "model": "gensokyodelight:block/coffea"
+    }
+  }
+}

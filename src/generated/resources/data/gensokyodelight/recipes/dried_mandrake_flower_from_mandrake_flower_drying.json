@@ -1,0 +1,10 @@
+{
+  "type": "gensokyodelight:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "gensokyodelight:mandrake_flower"
+  },
+  "result": "gensokyodelight:dried_mandrake_flower"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "gensokyodelight:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "farmersdelight:chicken_cuts"
+  },
+  "result": "farmersdelight:cooked_chicken_cuts"
+}

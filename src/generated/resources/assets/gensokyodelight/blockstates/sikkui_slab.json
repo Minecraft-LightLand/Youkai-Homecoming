@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gensokyodelight:block/sikkui_slab"
+    },
+    "type=double": {
+      "model": "gensokyodelight:block/sikkui/sikkui"
+    },
+    "type=top": {
+      "model": "gensokyodelight:block/sikkui_slab_top"
+    }
+  }
+}

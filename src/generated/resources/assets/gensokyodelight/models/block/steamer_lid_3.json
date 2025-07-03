@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/utensil/steamer_lid_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "handle": "gensokyodelight:block/utensil/steamer_lid_handle",
+    "lid": "gensokyodelight:block/utensil/steamer_lid"
+  }
+}

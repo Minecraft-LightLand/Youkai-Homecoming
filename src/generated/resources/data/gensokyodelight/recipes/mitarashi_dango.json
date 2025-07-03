@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:stick"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "gensokyodelight:dango"
+    },
+    {
+      "tag": "gensokyodelight:dango"
+    },
+    {
+      "tag": "gensokyodelight:dango"
+    },
+    {
+      "item": "gensokyodelight:soybean"
+    },
+    {
+      "item": "gensokyodelight:soy_sauce_bottle"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:mitarashi_dango"
+  }
+}

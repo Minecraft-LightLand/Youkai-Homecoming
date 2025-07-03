@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "gensokyodelight:block/sikkui/cross_framed_sikkui",
+    "side": "gensokyodelight:block/sikkui/cross_framed_sikkui",
+    "top": "gensokyodelight:block/sikkui/cross_framed_sikkui"
+  }
+}

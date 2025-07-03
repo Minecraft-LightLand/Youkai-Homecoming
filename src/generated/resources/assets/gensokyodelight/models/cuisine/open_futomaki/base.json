@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:table/open_futomaki/base",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kelp": "gensokyodelight:block/table/kelp",
+    "rice": "gensokyodelight:block/table/rice"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "gensokyodelight:tofu"
+    },
+    {
+      "item": "gensokyodelight:soybean"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:seafood_miso_soup"
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#youkaishomecoming:spawns/udumbara",
-  "features": "youkaishomecoming:udumbara",
-  "step": "vegetal_decoration"
-}

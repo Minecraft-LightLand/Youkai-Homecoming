@@ -1,0 +1,38 @@
+{
+  "parent": "gensokyodelight:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "effects": {
+          "gensokyodelight:drunk": {
+            "amplifier": {
+              "min": 4
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.gensokyodelight.advancements.main.passed_out.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "gensokyodelight:daiginjo"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.gensokyodelight.advancements.main.passed_out.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

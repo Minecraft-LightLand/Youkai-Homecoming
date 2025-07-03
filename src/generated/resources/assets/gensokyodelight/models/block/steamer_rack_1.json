@@ -1,0 +1,13 @@
+{
+  "parent": "gensokyodelight:custom/utensil/steamer_rack_1",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "gensokyodelight:block/utensil/steamer_rack_bottom",
+    "inside": "gensokyodelight:block/utensil/steamer_rack_inside",
+    "outside": "gensokyodelight:block/utensil/steamer_rack_outside",
+    "particle": "gensokyodelight:block/utensil/steamer_rack_top",
+    "rim": "gensokyodelight:block/utensil/steamer_rack_rim",
+    "side": "gensokyodelight:block/utensil/steamer_rack_side",
+    "top": "gensokyodelight:block/utensil/steamer_rack_top"
+  }
+}

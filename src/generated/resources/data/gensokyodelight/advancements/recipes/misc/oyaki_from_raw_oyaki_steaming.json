@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_oyaki": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gensokyodelight:raw_oyaki"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gensokyodelight:oyaki_from_raw_oyaki_steaming"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_oyaki",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gensokyodelight:oyaki_from_raw_oyaki_steaming"
+    ]
+  },
+  "sends_telemetry_event": false
+}

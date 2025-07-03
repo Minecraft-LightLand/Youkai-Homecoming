@@ -1,0 +1,23 @@
+{
+  "type": "create:emptying",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "gensokyodelight:sparrow_sake"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "amount": 250,
+      "fluid": "gensokyodelight:sparrow_sake"
+    }
+  ]
+}

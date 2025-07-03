@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#gensokyodelight:spawns/redbean",
+  "features": "gensokyodelight:redbean",
+  "step": "vegetal_decoration"
+}

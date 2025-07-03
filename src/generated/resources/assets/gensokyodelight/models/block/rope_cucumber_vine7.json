@@ -1,0 +1,9 @@
+{
+  "parent": "gensokyodelight:custom/rope_crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "gensokyodelight:block/plants/cucumber/vine7",
+    "rope_side": "gensokyodelight:block/plants/rope",
+    "rope_top": "gensokyodelight:block/plants/rope_top"
+  }
+}

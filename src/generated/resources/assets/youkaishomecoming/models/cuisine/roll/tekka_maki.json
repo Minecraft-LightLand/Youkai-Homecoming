@@ -1,8 +1,0 @@
-{
-  "parent": "youkaishomecoming:table/roll/hosomaki",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "content": "youkaishomecoming:block/table/roll/tekka_maki",
-    "kelp": "youkaishomecoming:block/table/roll_kelp"
-  }
-}

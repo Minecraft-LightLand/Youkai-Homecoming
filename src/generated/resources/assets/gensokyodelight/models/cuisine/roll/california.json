@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:table/roll/california",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "content": "gensokyodelight:block/table/roll/california_roll",
+    "rice": "gensokyodelight:block/table/roll_rice"
+  }
+}

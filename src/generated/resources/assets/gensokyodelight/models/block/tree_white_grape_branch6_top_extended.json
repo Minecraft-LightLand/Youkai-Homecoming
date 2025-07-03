@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/plant/grape_branch_top",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "coil": "gensokyodelight:block/plants/grape/top/coil6",
+    "leaves": "gensokyodelight:block/plants/grape/leaves/leaves6",
+    "rope_top": "gensokyodelight:block/plants/rope_top",
+    "vine": "gensokyodelight:block/plants/grape/top/coil6"
+  }
+}

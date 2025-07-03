@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "minecraft:planks"
-  },
-  "result": "youkaishomecoming:steamer_lid"
-}

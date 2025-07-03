@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "gensokyodelight:item/sake_bottle_overlay",
+      "predicate": {
+        "gensokyodelight:slip": 0.03125
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "gensokyodelight:item/sake_bottle"
+  }
+}

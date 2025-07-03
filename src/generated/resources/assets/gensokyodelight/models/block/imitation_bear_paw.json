@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/dish/imitation_bear_paw",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/dish/imitation_bear_paw_base",
+    "ceramic": "gensokyodelight:block/dish/ceramic",
+    "detail": "gensokyodelight:block/dish/imitation_bear_paw_detail",
+    "particle": "gensokyodelight:block/dish/ceramic"
+  }
+}

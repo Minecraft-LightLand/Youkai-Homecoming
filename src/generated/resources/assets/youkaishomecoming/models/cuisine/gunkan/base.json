@@ -1,8 +1,0 @@
-{
-  "parent": "youkaishomecoming:table/gunkan/base",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "kelp": "youkaishomecoming:block/table/kelp",
-    "rice": "youkaishomecoming:block/table/rice"
-  }
-}

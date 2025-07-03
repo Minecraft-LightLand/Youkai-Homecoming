@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gensokyodelight:doughnut"
+    },
+    {
+      "item": "gensokyodelight:higi_chocolate"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:higi_doughnut"
+  }
+}

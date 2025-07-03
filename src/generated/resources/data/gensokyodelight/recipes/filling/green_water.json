@@ -1,0 +1,24 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 250,
+      "fluid": "gensokyodelight:green_water",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "gensokyodelight:green_water"
+    }
+  ]
+}

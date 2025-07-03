@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/wooden_dining_table",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "gensokyodelight:block/wooden/acacia_dining_table",
+    "particle": "minecraft:block/birch_planks"
+  }
+}

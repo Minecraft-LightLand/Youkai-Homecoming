@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "youkaishomecoming:sikkui"
-  },
-  "result": "youkaishomecoming:sikkui_vertical_slab"
-}

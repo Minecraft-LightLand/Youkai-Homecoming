@@ -1,7 +1,0 @@
-{
-  "parent": "youkaishomecoming:table/sushi/base",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "rice": "youkaishomecoming:block/table/rice"
-  }
-}

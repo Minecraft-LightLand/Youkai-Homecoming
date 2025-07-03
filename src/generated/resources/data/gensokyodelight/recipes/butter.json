@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "gensokyodelight:bowl_of_cream"
+    },
+    {
+      "item": "gensokyodelight:bowl_of_cream"
+    }
+  ],
+  "result": {
+    "item": "gensokyodelight:butter"
+  }
+}

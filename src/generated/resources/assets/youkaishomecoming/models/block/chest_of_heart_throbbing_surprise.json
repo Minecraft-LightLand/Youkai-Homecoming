@@ -1,7 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/feast/heart_throbbing_surprise_chest",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "youkaishomecoming:block/feast/surprise_chest"
-  }
-}

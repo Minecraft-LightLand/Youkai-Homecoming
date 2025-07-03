@@ -1,0 +1,21 @@
+{
+  "type": "gensokyodelight:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 60,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "gensokyodelight:espresso"
+    },
+    {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "gensokyodelight:americano"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "gensokyodelight:textures/gui/advancements/backgrounds/main.png",
+    "description": {
+      "translate": "advancements.gensokyodelight.advancements.main.welcome_to_youkais_homecoming.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "gensokyodelight:black_tea_bag"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.gensokyodelight.advancements.main.welcome_to_youkais_homecoming.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

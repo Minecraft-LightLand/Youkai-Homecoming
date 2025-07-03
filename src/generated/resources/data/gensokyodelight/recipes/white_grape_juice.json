@@ -1,0 +1,10 @@
+{
+  "type": "gensokyodelight:simple_basin",
+  "input": {
+    "item": "gensokyodelight:white_grape"
+  },
+  "output": {
+    "amount": 50,
+    "fluid": "gensokyodelight:white_grape_juice"
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "minecraft:copper_block"
-  },
-  "result": "youkaishomecoming:copper_tank"
-}

@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_features",
+  "biomes": {
+    "type": "gensokyodelight:filter",
+    "values": [
+      "#gensokyodelight:spawns/grape",
+      "#gensokyodelight:spawns/no_grape",
+      "#gensokyodelight:spawns/black_grape",
+      "#gensokyodelight:spawns/white_grape"
+    ]
+  },
+  "features": "gensokyodelight:red_grape",
+  "step": "vegetal_decoration"
+}

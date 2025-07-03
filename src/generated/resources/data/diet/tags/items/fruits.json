@@ -1,13 +1,13 @@
 {
   "values": [
-    "youkaishomecoming:candy_apple",
-    "youkaishomecoming:avgolemono",
+    "gensokyodelight:candy_apple",
+    "gensokyodelight:avgolemono",
     {
-      "id": "youkaishomecoming:peach_tapioca",
+      "id": "gensokyodelight:peach_tapioca",
       "required": false
     },
     {
-      "id": "youkaishomecoming:peach_yatsuhashi",
+      "id": "gensokyodelight:peach_yatsuhashi",
       "required": false
     }
   ]

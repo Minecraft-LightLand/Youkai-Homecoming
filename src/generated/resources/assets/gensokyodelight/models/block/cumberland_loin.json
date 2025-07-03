@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/dish/cumberland_loin",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/dish/cumberland_loin_base",
+    "ceramic": "gensokyodelight:block/dish/ceramic",
+    "detail": "gensokyodelight:block/dish/cumberland_loin_detail",
+    "particle": "gensokyodelight:block/dish/ceramic"
+  }
+}
