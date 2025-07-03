@@ -39,7 +39,6 @@ import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fml.ModList;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
@@ -183,22 +182,22 @@ public class YHRecipeGen {
 			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
-							Ingredient.of(ForgeTags.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
+							Ingredient.of(TagRef.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
 					.addResult(ModItems.SALMON_SLICE.get(), 2)
 					.addResult(Items.BONE_MEAL)
 					.addResultWithChance(YHFood.ROE.item.get(), 0.5f, 1)
 					.build(pvd, YHFood.ROE.item.getId());
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.COFFEE_BEAN),
-							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
+							Ingredient.of(TagRef.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
 					.build(pvd, YHItems.COFFEE_POWDER.getId());
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHTea.GREEN.leaves),
-							Ingredient.of(ForgeTags.TOOLS_SHOVELS), YHItems.MATCHA, 1)
+							Ingredient.of(TagRef.TOOLS_SHOVELS), YHItems.MATCHA, 1)
 					.build(pvd, YHItems.MATCHA.getId());
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.ICE),
-							Ingredient.of(ForgeTags.TOOLS_PICKAXES), YHItems.ICE_CUBE, 8)
+							Ingredient.of(TagRef.TOOLS_PICKAXES), YHItems.ICE_CUBE, 8)
 					.build(pvd, YHItems.ICE_CUBE.getId());
 
 			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.WHITE.leaves);
@@ -208,7 +207,7 @@ public class YHRecipeGen {
 		{
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.MILK_POPSICLE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
 					.pattern(" MM").pattern("SIM").pattern("TS ")
-					.define('M', ForgeTags.MILK_BOTTLE)
+					.define('M', TagRef.MILK_BOTTLE)
 					.define('S', Items.SUGAR)
 					.define('I', YHTagGen.ICE)
 					.define('T', Items.STICK)
@@ -231,7 +230,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.SHAVED_ICE_OVER_RICE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
-					.requires(ForgeTags.GRAIN_RICE).requires(YHTagGen.ICE).requires(YHCrops.REDBEAN.getSeed())
+					.requires(TagRef.GRAIN_RICE).requires(YHTagGen.ICE).requires(YHCrops.REDBEAN.getSeed())
 					.requires(ModItems.COD_ROLL.get())
 					.save(pvd);
 
@@ -250,7 +249,7 @@ public class YHRecipeGen {
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.DOUGHNUT.item, 4)::unlockedBy, ModItems.WHEAT_DOUGH.get())
 					.pattern("CAC").pattern("ABA").pattern("CAC")
-					.define('A', ForgeTags.DOUGH_WHEAT)
+					.define('A', TagRef.DOUGH_WHEAT)
 					.define('B', YHItems.CREAM)
 					.define('C', Items.SUGAR)
 					.save(pvd);
@@ -278,24 +277,24 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.MAYONNAISE.item.get(), 3, 200, 0.1f, Items.GLASS_BOTTLE)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(YHFood.BUTTER.item)
-					.addIngredient(ForgeTags.EGGS)
-					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(TagRef.EGGS)
+					.addIngredient(TagRef.EGGS)
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHItems.MAYONNAISE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.IMITATION_CRAB.item.get(), 4, 200, 0.1f)
-					.addIngredient(ForgeTags.RAW_FISHES_COD)
-					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(TagRef.RAW_FISHES_COD)
+					.addIngredient(TagRef.RAW_FISHES_COD)
 					.addIngredient(Items.WHEAT)
 					.addIngredient(Items.WHEAT)
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.IMITATION_CRAB.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TAMAGOYAKI.item.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.EGGS)
-					.addIngredient(ForgeTags.EGGS)
-					.addIngredient(ForgeTags.EGGS)
-					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(TagRef.EGGS)
+					.addIngredient(TagRef.EGGS)
+					.addIngredient(TagRef.EGGS)
+					.addIngredient(TagRef.MILK_BOTTLE)
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.TAMAGOYAKI.item.getId());
 
@@ -321,58 +320,58 @@ public class YHRecipeGen {
 					.build(pvd, YHFood.TOFU.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.ONIGILI.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
-					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(TagRef.GRAIN_RICE)
+					.addIngredient(TagRef.VEGETABLES)
 					.addIngredient(Items.DRIED_KELP)
 					.build(pvd, YHFood.ONIGILI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEKIBANKIYAKI.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHFood.BUTTER.item)
 					.build(pvd, YHFood.SEKIBANKIYAKI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MOCHI.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.build(pvd, YHFood.MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TSUKIMI_DANGO.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.build(pvd, YHFood.TSUKIMI_DANGO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.YASHOUMA_DANGO.item.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(Items.PINK_DYE)
 					.addIngredient(Items.GREEN_DYE)
 					.build(pvd, YHFood.YASHOUMA_DANGO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SAKURA_MOCHI.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(Items.CHERRY_LEAVES)
 					.build(pvd, YHFood.SAKURA_MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.COFFEE_MOCHI.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHItems.COFFEE_POWDER)
 					.build(pvd, YHFood.COFFEE_MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MATCHA_MOCHI.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHTagGen.MATCHA)
 					.build(pvd, YHFood.MATCHA_MOCHI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SENBEI.item.get(), 3, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(Items.DRIED_KELP)
 					.build(pvd, YHFood.SENBEI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.YAKUMO_INARI.item.get(), 3, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
-					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(TagRef.GRAIN_RICE)
+					.addIngredient(TagRef.EGGS)
 					.addIngredient(Items.CARROT)
 					.addIngredient(YHFood.OILY_BEAN_CURD.item.get())
 					.addIngredient(YHFood.OILY_BEAN_CURD.item.get())
@@ -380,17 +379,17 @@ public class YHRecipeGen {
 					.build(pvd, YHFood.YAKUMO_INARI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.PORK_RICE_BALL.item.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
-					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(TagRef.GRAIN_RICE)
+					.addIngredient(TagRef.RAW_PORK)
 					.build(pvd, YHFood.PORK_RICE_BALL.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUTU_CONGEE.item.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(Items.BAMBOO)
 					.build(pvd, YHFood.TUTU_CONGEE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.STEAMED_EGG_IN_BAMBOO.item.get(), 1, 200, 0.1f)
-					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(TagRef.EGGS)
 					.addIngredient(Items.BAMBOO)
 					.build(pvd, YHFood.STEAMED_EGG_IN_BAMBOO.item.getId());
 
@@ -416,44 +415,44 @@ public class YHRecipeGen {
 		// food cooking bowl
 		{
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.APAKI.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(Items.PINK_PETALS)
 					.build(pvd, YHFood.APAKI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.AVGOLEMONO.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.EGGS)
+					.addIngredient(TagRef.EGGS)
 					.addIngredient(Items.GLOW_BERRIES)
 					.addIngredient(Items.GLOW_BERRIES)
 					.build(pvd, YHFood.AVGOLEMONO.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.BLAZING_RED_CURRY.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(Items.CRIMSON_FUNGUS)
 					.addIngredient(Items.CRIMSON_FUNGUS)
 					.addIngredient(Items.BLAZE_POWDER)
-					.addIngredient(ForgeTags.VEGETABLES_POTATO)
-					.addIngredient(ForgeTags.RAW_CHICKEN)
+					.addIngredient(TagRef.VEGETABLES_POTATO)
+					.addIngredient(TagRef.RAW_CHICKEN)
 					.build(pvd, YHFood.BLAZING_RED_CURRY.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.GRILLED_EEL_OVER_RICE.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHFood.GRILLED_EEL_OVER_RICE.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HIGAN_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(Items.SOUL_SAND)
 					.addIngredient(Items.SOUL_SAND)
-					.addIngredient(ForgeTags.CROPS)
+					.addIngredient(TagRef.CROPS)
 					.build(pvd, YHFood.HIGAN_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LONGEVITY_NOODLES.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.PASTA)
-					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(TagRef.PASTA)
+					.addIngredient(TagRef.VEGETABLES)
 					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
 					.build(pvd, YHFood.LONGEVITY_NOODLES.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
@@ -468,23 +467,23 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.DRIED_KELP)
 					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
-					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
+					.addIngredient(TagRef.RAW_FISHES_SALMON)
+					.addIngredient(TagRef.RAW_FISHES_SALMON)
 					.build(pvd, YHFood.SEAFOOD_MISO_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.SEEDS)
-					.addIngredient(ForgeTags.CROPS)
+					.addIngredient(TagRef.SEEDS)
+					.addIngredient(TagRef.CROPS)
 					.addIngredient(ItemTags.FLOWERS)
 					.addIngredient(Items.BONE_MEAL)
 					.build(pvd, YHFood.POOR_GOD_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POWER_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(Items.KELP)
 					.addIngredient(Items.KELP)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(TagRef.VEGETABLES_ONION)
 					.build(pvd, YHFood.POWER_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SHIRAYUKI.item.get(), 1, 200, 0.1f, Items.BOWL)
@@ -492,25 +491,25 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.RAW_EEL)
 					.addIngredient(Items.KELP)
 					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(TagRef.VEGETABLES)
 					.build(pvd, YHFood.SHIRAYUKI.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHTagGen.DANGO)
 					.addIngredient(Items.CARROT)
-					.addIngredient(ForgeTags.VEGETABLES)
+					.addIngredient(TagRef.VEGETABLES)
 					.build(pvd, YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.MILK_BOTTLE)
-					.addIngredient(ForgeTags.MILK_BOTTLE)
-					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
 					.build(pvd, YHItems.CREAM.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUSCAN_SALMON.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.RAW_FISHES_SALMON)
-					.addIngredient(ForgeTags.VEGETABLES_TOMATO)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.RAW_FISHES_SALMON)
+					.addIngredient(TagRef.VEGETABLES_TOMATO)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.TUSCAN_SALMON.item.getId());
 
@@ -518,7 +517,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(TagRef.VEGETABLES_ONION)
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.MUSHROOM_SOUP.item.getId());
 
@@ -526,27 +525,27 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.CUCUMBER)
 					.addIngredient(YHTagGen.CUCUMBER)
 					.addIngredient(YHTagGen.CUCUMBER)
-					.addIngredient(ForgeTags.RAW_PORK)//change to deer in the future
+					.addIngredient(TagRef.RAW_PORK)//change to deer in the future
 					.addIngredient(Items.HONEY_BOTTLE)
 					.build(pvd, YHFood.HONEY_GLAZED_CUCUMBER.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LIONS_HEAD.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.VEGETABLES_CARROT)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(TagRef.VEGETABLES_CARROT)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.build(pvd, YHFood.LIONS_HEAD.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MAPO_TOFU.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.TOFU.item)
-					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(Items.BLAZE_POWDER)
 					.build(pvd, YHFood.MAPO_TOFU.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.UDUMBARA_CAKE.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(ForgeTags.DOUGH_WHEAT)
+					.addIngredient(TagRef.DOUGH_WHEAT)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHFood.UDUMBARA_CAKE.item.getId());
 
@@ -571,40 +570,40 @@ public class YHRecipeGen {
 					.build(pvd, YHDish.BAMBOO_MIZUYOKAN.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.DRIED_FISH.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(ForgeTags.RAW_FISHES)
-					.addIngredient(ForgeTags.RAW_FISHES)
-					.addIngredient(ForgeTags.RAW_FISHES)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.RAW_FISHES)
+					.addIngredient(TagRef.RAW_FISHES)
+					.addIngredient(TagRef.RAW_FISHES)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.build(pvd, YHDish.DRIED_FISH.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.PASTITSIO.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(ForgeTags.PASTA)
+					.addIngredient(TagRef.PASTA)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
-					.addIngredient(ForgeTags.RAW_BEEF)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(TagRef.RAW_BEEF)
+					.addIngredient(TagRef.VEGETABLES_ONION)
 					.build(pvd, YHDish.PASTITSIO.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SAUCE_GRILLED_FISH.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(ForgeTags.RAW_FISHES)
+					.addIngredient(TagRef.RAW_FISHES)
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
+					.addIngredient(TagRef.VEGETABLES)
+					.addIngredient(TagRef.VEGETABLES)
+					.addIngredient(TagRef.VEGETABLES_ONION)
 					.build(pvd, YHDish.SAUCE_GRILLED_FISH.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.STINKY_TOFU.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.build(pvd, YHDish.STINKY_TOFU.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOFU_BURGER.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHFood.TOFU.item)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(Items.SWEET_BERRIES)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.build(pvd, YHDish.TOFU_BURGER.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SEVEN_COLORED_YOKAN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
@@ -618,9 +617,9 @@ public class YHRecipeGen {
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
 					.requires(Items.BAMBOO)
-					.requires(ForgeTags.RAW_PORK)
-					.requires(ForgeTags.RAW_BEEF)
-					.requires(ForgeTags.VEGETABLES_ONION)
+					.requires(TagRef.RAW_PORK)
+					.requires(TagRef.RAW_BEEF)
+					.requires(TagRef.VEGETABLES_ONION)
 					.requires(YHTagGen.RAW_EEL)
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
 					.requires(YHItems.SAUCER.get())
@@ -633,7 +632,7 @@ public class YHRecipeGen {
 					.requires(YHFood.TOFU.item)
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
 					.requires(YHCrops.SOYBEAN.getSeed())
-					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.requires(TagRef.FOOD_CABBAGE)
 					.requires(YHTagGen.ICE)
 					.requires(YHItems.SAUCER.get())
 					.save(pvd, YHDish.COLD_TOFU.block.getId());
@@ -648,16 +647,16 @@ public class YHRecipeGen {
 			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.CUMBERLAND_LOIN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(ForgeTags.RAW_PORK)
-					.addIngredient(ForgeTags.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.build(pvd, YHDish.CUMBERLAND_LOIN.block.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.TOMATO_SAUCE_COD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(ForgeTags.RAW_FISHES_COD)
-					.addIngredient(ForgeTags.RAW_FISHES_COD)
+					.addIngredient(TagRef.RAW_FISHES_COD)
+					.addIngredient(TagRef.RAW_FISHES_COD)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHDish.TOMATO_SAUCE_COD.block.getId());
@@ -711,7 +710,7 @@ public class YHRecipeGen {
 					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(Items.COCOA_BEANS)
-					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
 					.build(tea, YHDrink.TEA_MOCHA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SAIDI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
@@ -734,14 +733,14 @@ public class YHRecipeGen {
 					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(YHTagGen.TEA_GREEN)
-					.addIngredient(ForgeTags.GRAIN_RICE)
+					.addIngredient(TagRef.GRAIN_RICE)
 					.build(tea, YHDrink.GENMAI_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.unlockedByAnyIngredient(Items.GLASS_BOTTLE)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+					.addIngredient(TagRef.FOOD_CABBAGE)
+					.addIngredient(TagRef.FOOD_CABBAGE)
 					.build(tea, YHDrink.GREEN_WATER.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHCoffee.ESPRESSO.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
@@ -753,12 +752,12 @@ public class YHRecipeGen {
 
 			coffee(coffee, YHCoffee.RISTRETTO, e -> e.addIngredient(YHItems.COFFEE_POWDER));
 			coffee(coffee, YHCoffee.AMERICANO, e -> e.addIngredient(new PotionIngredient(Potions.WATER)));
-			coffee(coffee, YHCoffee.LATTE, e -> e.addIngredient(ForgeTags.MILK_BOTTLE));
+			coffee(coffee, YHCoffee.LATTE, e -> e.addIngredient(TagRef.MILK_BOTTLE));
 			coffee(coffee, YHCoffee.MOCHA, e -> e
-					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
 					.addIngredient(Items.COCOA_BEANS));
 			coffee(coffee, YHCoffee.CAPPUCCINO, e -> e
-					.addIngredient(ForgeTags.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
 					.addIngredient(YHItems.CREAM));
 			coffee(coffee, YHCoffee.MACCHIATO, e -> e.addIngredient(YHItems.CREAM));
 			coffee(coffee, YHCoffee.CON_PANNA, e -> e
@@ -843,56 +842,56 @@ public class YHRecipeGen {
 					.save(pvd, YHFood.NATTOU.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.MIO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 4)
+					.addInput(TagRef.GRAIN_RICE, 4)
 					.save(pvd, YHDrink.MIO.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.MEAD.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 4)
+					.addInput(TagRef.GRAIN_RICE, 4)
 					.addInput(Items.HONEY_BOTTLE)
 					.save(pvd, YHDrink.MEAD.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.KIKU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.BROWN_MUSHROOM)
 					.save(pvd, YHDrink.KIKU.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.HAKUTSURU.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
-					.addInput(Items.BROWN_MUSHROOM).addInput(ForgeTags.EGGS)
+					.addInput(TagRef.GRAIN_RICE, 3)
+					.addInput(Items.BROWN_MUSHROOM).addInput(TagRef.EGGS)
 					.save(pvd, YHDrink.HAKUTSURU.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.KAPPA_VILLAGE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.BROWN_MUSHROOM).addInput(Items.SEAGRASS)
 					.save(pvd, YHDrink.KAPPA_VILLAGE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SUIGEI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
 					.save(pvd, YHDrink.SUIGEI.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
 					.save(pvd, YHDrink.DAIGINJO.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DASSAI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.NAUTILUS_SHELL)
 					.save(pvd, YHDrink.DASSAI.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.TENGU_TANGO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
 					.save(pvd, YHDrink.TENGU_TANGO.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SPARROW_SAKE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
 					.save(pvd, YHDrink.SPARROW_SAKE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.FULL_MOONS_EVE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
+					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd, YHDrink.FULL_MOONS_EVE.item.getId());
 
@@ -907,21 +906,21 @@ public class YHRecipeGen {
 
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.BUN.raw.get(), 4)::unlockedBy, Items.WHEAT)
-					.requires(ForgeTags.DOUGH)
-					.requires(ForgeTags.DOUGH)
+					.requires(TagRef.DOUGH)
+					.requires(TagRef.DOUGH)
 					.requires(ModTags.CABBAGE_ROLL_INGREDIENTS)
-					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.requires(ForgeTags.VEGETABLES_ONION)
+					.requires(TagRef.FOOD_CABBAGE)
+					.requires(TagRef.VEGETABLES_ONION)
 					.requires(YHCrops.SOYBEAN.getSeed())
 					.save(pvd);
 
 			steaming(pvd, DataIngredient.items(YHFood.BUN.raw.get()), YHFood.BUN.item);
-			steaming(pvd, DataIngredient.tag(ForgeTags.DOUGH_WHEAT), YHFood.MANTOU.item);
+			steaming(pvd, DataIngredient.tag(TagRef.DOUGH_WHEAT), YHFood.MANTOU.item);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.OYAKI.raw.get(), 4)::unlockedBy, Items.WHEAT)
-					.requires(ForgeTags.DOUGH)
-					.requires(ForgeTags.DOUGH)
-					.requires(ForgeTags.VEGETABLES)
+					.requires(TagRef.DOUGH)
+					.requires(TagRef.DOUGH)
+					.requires(TagRef.VEGETABLES)
 					.requires(Items.BROWN_MUSHROOM)
 					.save(pvd);
 
@@ -942,12 +941,12 @@ public class YHRecipeGen {
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(ModItems.SALMON_ROLL.get(), 2)
-						.add(ForgeTags.RAW_FISHES_SALMON)
+						.add(TagRef.RAW_FISHES_SALMON)
 						.save(pvd);
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, ModItems.COD_SLICE.get())
 						.result(ModItems.COD_ROLL.get(), 2)
-						.add(ForgeTags.RAW_FISHES_COD)
+						.add(TagRef.RAW_FISHES_COD)
 						.save(pvd);
 
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
@@ -1032,7 +1031,7 @@ public class YHRecipeGen {
 						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
-						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.save(pvd);
 
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
@@ -1042,7 +1041,7 @@ public class YHRecipeGen {
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item.get())
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
-						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.save(pvd);
 			}
 
@@ -1064,9 +1063,9 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.SALMON_LOVER_ROLL)
 						.addOrdered(YHFood.ROE.item)
-						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
-						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
-						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
+						.addUnordered(TagRef.RAW_FISHES_SALMON)
+						.addUnordered(TagRef.RAW_FISHES_SALMON)
+						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.save(pvd);
 
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
@@ -1080,8 +1079,8 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
 						.result(YHRolls.RAINBOW_ROLL)
 						.addOrdered(YHFood.ROE.item)
-						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
-						.addUnordered(ForgeTags.RAW_FISHES_COD)
+						.addUnordered(TagRef.RAW_FISHES_SALMON)
+						.addUnordered(TagRef.RAW_FISHES_COD)
 						.addUnordered(YHTagGen.RAW_TUNA)
 						.save(pvd);
 
@@ -1134,7 +1133,7 @@ public class YHRecipeGen {
 
 	private static void cutting(RegistrateRecipeProvider pvd, ItemEntry<?> in, ItemEntry<?> out, int count) {
 		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(in),
-						Ingredient.of(ForgeTags.TOOLS_KNIVES), out, count, 1)
+						Ingredient.of(TagRef.TOOLS_KNIVES), out, count, 1)
 				.build(pvd, in.getId().withSuffix("_cutting"));
 	}
 
@@ -1148,7 +1147,7 @@ public class YHRecipeGen {
 
 	private static void cake(RegistrateRecipeProvider pvd, CakeEntry cake) {
 		CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(cake.block.get()),
-						Ingredient.of(ForgeTags.TOOLS_KNIVES), cake.item.get(), cake.isCake ? 7 : 4)
+						Ingredient.of(TagRef.TOOLS_KNIVES), cake.item.get(), cake.isCake ? 7 : 4)
 				.build(pvd, cake.item.getId());
 		if (cake.isCake) {
 			unlock(pvd, new ShapelessRecipeBuilder(RecipeCategory.FOOD, cake.block.get(), 1)::unlockedBy, cake.item.get())
