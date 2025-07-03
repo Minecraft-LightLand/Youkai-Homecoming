@@ -204,12 +204,7 @@ public enum YHFood {
 	YHFood(FoodType type, int nutrition, float sat, @Nullable String raw, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
-		String id = "food/simple/";
-		if (type == FoodType.BOTTLE) id = "food/bottle/";
-		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) id = "food/stick/";
-		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 24) id = "food/mochi/";
-		if (ordinal() <= 18) id = "food/basic/";
+		String id = FoodRegistryHelper.getId(type, tags);
 		if (raw == null) this.raw = null;
 		else {
 			String rid = "item/" + id + raw;
