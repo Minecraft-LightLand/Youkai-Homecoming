@@ -25,10 +25,10 @@ public class DeerEatBlockGoal extends Goal {
 	}
 
 	public boolean canUse() {
-		if (mob.getRandom().nextInt(mob.isBaby() ? 50 : 1000) != 0) {
+		if (mob.getRandom().nextInt(mob.eatWillingness()) != 0) {
 			return false;
 		} else {
-			BlockPos blockpos = mob.blockPosition();
+			BlockPos blockpos = BlockPos.containing(mob.position().add(mob.getForward()));
 			if (IS_TALL_GRASS.test(level.getBlockState(blockpos))) {
 				return true;
 			} else {
@@ -61,7 +61,7 @@ public class DeerEatBlockGoal extends Goal {
 	public void tick() {
 		eatAnimationTick = Math.max(0, eatAnimationTick - 1);
 		if (eatAnimationTick == finishTick) {
-			BlockPos pos = mob.blockPosition();
+			BlockPos pos = BlockPos.containing(mob.position().add(mob.getForward()));
 			if (IS_TALL_GRASS.test(level.getBlockState(pos))) {
 				if (ForgeEventFactory.getMobGriefingEvent(level, mob)) {
 					level.destroyBlock(pos, false);

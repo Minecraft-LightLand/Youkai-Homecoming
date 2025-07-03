@@ -9,7 +9,10 @@ import org.jetbrains.annotations.Nullable;
 
 public class DeerRenderer extends MobRenderer<DeerEntity, DeerModel> {
 
-	public static final ResourceLocation TEX = YoukaisHomecoming.loc("textures/entity/deer.png");
+	public static final ResourceLocation NORMAL = YoukaisHomecoming.loc("textures/entities/deer/deer.png");
+	public static final ResourceLocation FALLOW = YoukaisHomecoming.loc("textures/entities/deer/fallow_deer.png");
+	public static final ResourceLocation SAKURA = YoukaisHomecoming.loc("textures/entities/deer/sakura_deer.png");
+	public static final ResourceLocation WHITELIPPED = YoukaisHomecoming.loc("textures/entities/deer/whitelipped_deer.png");
 
 	public DeerRenderer(EntityRendererProvider.Context ctx) {
 		super(ctx, new DeerModel(ctx.bakeLayer(DeerModel.LAYER_LOCATION)), 0.5f);
@@ -17,12 +20,12 @@ public class DeerRenderer extends MobRenderer<DeerEntity, DeerModel> {
 
 	@Override
 	protected @Nullable RenderType getRenderType(DeerEntity entity, boolean visible, boolean translucent, boolean outline) {
-		return super.getRenderType(entity, visible, true, outline);
+		return super.getRenderType(entity, visible, translucent, outline);
 	}
 
 	@Override
 	public ResourceLocation getTextureLocation(DeerEntity e) {
-		return TEX;
+		return NORMAL;
 	}
 
 }

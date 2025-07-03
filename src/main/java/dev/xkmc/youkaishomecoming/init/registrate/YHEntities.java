@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
@@ -29,6 +31,7 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
 
@@ -36,6 +39,7 @@ public class YHEntities {
 
 	public static final EntityEntry<LampreyEntity> LAMPREY;
 	public static final EntityEntry<TunaEntity> TUNA;
+	public static final EntityEntry<DeerEntity> DEER;
 	public static final EntityEntry<RumiaEntity> RUMIA;
 	public static final EntityEntry<ReimuEntity> REIMU;
 	public static final EntityEntry<CirnoEntity> CIRNO;
@@ -82,6 +86,15 @@ public class YHEntities {
 					.renderer(() -> TunaRenderer::new)
 					.spawnEgg(0x424F75, 0xE08E46).build()
 					.loot(EntityLootGen::tuna).register();
+
+			DEER = YoukaisHomecoming.REGISTRATE
+					.entity("deer", DeerEntity::new, MobCategory.CREATURE)
+					.properties(e -> e.sized(1f, 2f).clientTrackingRange(10))
+					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules)
+					.attributes(DeerEntity::createAttributes)
+					.renderer(() -> DeerRenderer::new)
+					.spawnEgg(0x424F75, 0xE08E46).build()//TODO
+					.loot(EntityLootGen::deer).register();
 
 			YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YHDanmaku.TAB.getKey());
 			RUMIA = YoukaisHomecoming.REGISTRATE
