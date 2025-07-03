@@ -1,3 +1,47 @@
+2.4.14
+- Add grapes, basin, wine
+- Add cucumber crate and cucumber slices, make cucumber edible
+
+2.4.13
+- Fix Tea model
+- Improve cucumber hitbox
+- Make cucumber compatible with Create
+
+2.4.12
+- Add Cucumber spawns
+- Add cucumber to Rumia and Reimu structure loot
+- Change plant spawns:
+  - Soybean: dark forest, any jungle, any swamp
+  - Redbean: sunflower plains, bamboo jungle, birch forest, old growth bitch forest
+  - Coffea: any jungle
+  - Tea: flower forest, meadow, cherry grove, grove, any mountain
+  - Mandrake: dark forest, any magical biomes
+  - Udumbara: any swamp
+  - Cucumber: any coniferous biomes (biomes with spruce)
+
+2.4.11
+- Add Cucumber, Honey Glazed Cucumber, Kappa Maki
+- Fixing Moka Recipes
+- Now Reimu no longer wants to drink coffee
+- Fix advancement triggering when planting redbean / soybean on rich soil farmland
+- Fix texture for Otoro Nigiri
+
+2.4.10
+- Fix Fermentation output item in JEI
+- Fix fermentation tank
+
+2.4.8
+- Add Otoro
+- Add 5 California rolls
+- Add Otoro Nigiri, Nattou Gunkan
+- Now Rolls and Futomaki can be cut into 6 slices
+- Cirno will not spawn naturally when there are other Cirno within 24 blocks
+
+2.4.5
+- Add Tuna
+- Add imitation crab, tamagoyaki, nattou, mayonnaise, lamprey skewer
+- Add Cuisine Board, 5 kinds of rolls, and 4 kinds of sushi
+
 2.4.4
 - Use tag for ice in cold tofu recipe
 - Fix BetterAdvancement compat

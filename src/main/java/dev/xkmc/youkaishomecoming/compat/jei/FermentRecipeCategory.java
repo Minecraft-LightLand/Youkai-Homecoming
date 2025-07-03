@@ -54,7 +54,7 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 			if (stack.isEmpty()) continue;
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 91;
-			builder.addSlot(RecipeIngredientRole.INPUT, x, y).addItemStack(stack);
+			builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(stack);
 			n++;
 		}
 		if (!recipe.outputFluid.isEmpty()) {

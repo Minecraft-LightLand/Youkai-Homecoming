@@ -1,0 +1,12 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:california_roll",
+  "input": [
+    {
+      "item": "youkaishomecoming:roe"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:roe_california_roll"
+  }
+}

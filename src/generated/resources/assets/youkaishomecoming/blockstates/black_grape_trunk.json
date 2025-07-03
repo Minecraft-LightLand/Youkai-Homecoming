@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "merged=false": {
+      "model": "youkaishomecoming:block/tree_black_grape_trunk_rope"
+    },
+    "merged=true": {
+      "model": "youkaishomecoming:block/tree_black_grape_trunk"
+    }
+  }
+}

@@ -41,7 +41,7 @@ public class MoonLanternBlock extends LanternBlock {
 	public static void buildStates(DataGenContext<Block, MoonLanternBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.simpleBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/" + ctx.getName())))
-				.texture("all", pvd.modLoc("block/" + ctx.getName()))
+				.texture("all", pvd.modLoc("block/deco/" + ctx.getName()))
 				.texture("particle", pvd.mcLoc("block/mangrove_planks"))
 				.renderType("cutout"));
 	}

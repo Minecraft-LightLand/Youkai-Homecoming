@@ -1,83 +1,50 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
-import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
-import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
-public class MixedRecipeBuilder extends BaseRecipeBuilder<
-		MixedRecipeBuilder, MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv> {
+public class MixedRecipeBuilder extends CuisineRecipeBuilder<MixedCuisineRecipe, MixedRecipeBuilder> {
 
-	public MixedRecipeBuilder(VariantTableItemBase base, ItemStack result) {
-		super(YHBlocks.CUISINE_MIXED.get());
-		recipe.base = base.id();
-		recipe.result = result;
+	public MixedRecipeBuilder(VariantTableItemBase base) {
+		super(YHBlocks.CUISINE_MIXED.get(), base);
 	}
 
-	public MixedRecipeBuilder(VariantTableItemBase base, ItemLike result, int count) {
-		this(base, new ItemStack(result, count));
+	public MixedRecipeBuilder(Item base) {
+		super(YHBlocks.CUISINE_MIXED.get(), base);
 	}
 
-	public MixedRecipeBuilder(VariantTableItemBase base, ItemLike result) {
-		this(base, new ItemStack(result));
-	}
-
-	public MixedRecipeBuilder(Item base, ItemStack result) {
-		super(YHBlocks.CUISINE_MIXED.get());
-		if (FoodModelHelper.find(base.getDefaultInstance()) == null)
-			throw new IllegalStateException("Base item must correspond to a model");
-		recipe.base = base.builtInRegistryHolder().unwrapKey().orElseThrow().location();
-		recipe.result = result;
-	}
-
-	public MixedRecipeBuilder(Item base, ItemLike result, int count) {
-		this(base, new ItemStack(result, count));
-	}
-
-	public MixedRecipeBuilder(Item base, ItemLike result) {
-		this(base, new ItemStack(result));
-	}
-
-	public MixedRecipeBuilder addSauce(Ingredient item) {
-		recipe.sauce.add(item);
+	public MixedRecipeBuilder addOrdered(Ingredient item) {
+		recipe.first.add(item);
 		return this;
 	}
 
-	public MixedRecipeBuilder addSauce(Item item) {
-		recipe.sauce.add(Ingredient.of(item));
+	public MixedRecipeBuilder addOrdered(ItemLike item) {
+		recipe.first.add(Ingredient.of(item));
 		return this;
 	}
 
-	public MixedRecipeBuilder addSauce(TagKey<Item> item) {
-		recipe.sauce.add(Ingredient.of(item));
+	public MixedRecipeBuilder addOrdered(TagKey<Item> item) {
+		recipe.first.add(Ingredient.of(item));
 		return this;
 	}
 
-	public MixedRecipeBuilder addIngredient(Ingredient item) {
-		recipe.ingredient.add(item);
+	public MixedRecipeBuilder addUnordered(Ingredient item) {
+		recipe.second.add(item);
 		return this;
 	}
 
-	public MixedRecipeBuilder addIngredient(Item item) {
-		recipe.ingredient.add(Ingredient.of(item));
+	public MixedRecipeBuilder addUnordered(ItemLike item) {
+		recipe.second.add(Ingredient.of(item));
 		return this;
 	}
 
-	public MixedRecipeBuilder addIngredient(TagKey<Item> item) {
-		recipe.ingredient.add(Ingredient.of(item));
+	public MixedRecipeBuilder addUnordered(TagKey<Item> item) {
+		recipe.second.add(Ingredient.of(item));
 		return this;
-	}
-
-	public void save(RegistrateRecipeProvider pvd) {
-		var item = recipe.result.getItem();
-		var path = item.builtInRegistryHolder().unwrapKey().orElseThrow().location();
-		save(pvd, pvd.safeId(path));
 	}
 
 }

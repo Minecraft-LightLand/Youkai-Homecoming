@@ -61,7 +61,7 @@ public class SurpriseChestBlock extends HorizontalDirectionalBlock {
 	public static void buildModel(DataGenContext<Block, SurpriseChestBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), state -> pvd.models().getBuilder("block/" + ctx.getName())
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/heart_throbbing_surprise_chest")))
-				.texture("base", pvd.modLoc("block/surprise_chest")).renderType("cutout"));
+				.texture("base", pvd.modLoc("block/feast/surprise_chest")).renderType("cutout"));
 	}
 
 }

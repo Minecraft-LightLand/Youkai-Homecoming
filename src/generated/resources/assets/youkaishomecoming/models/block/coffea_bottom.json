@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/plants/wild_coffea_bottom"
+    "cross": "youkaishomecoming:block/plants/coffea/wild_coffea_bottom"
   }
 }

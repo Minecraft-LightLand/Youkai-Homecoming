@@ -41,6 +41,7 @@ import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.holdersets.AndHolderSet;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
@@ -117,7 +118,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				YHBiomes.registerPlacements(ctx);
 			})
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers)
-
 			.add(Registries.PROCESSOR_LIST, ctx -> {
 				for (var e : STRUCTURES) {
 					ctx.register(ResourceKey.create(Registries.PROCESSOR_LIST, e.id),
@@ -159,12 +159,27 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		var features = ctx.lookup(Registries.PLACED_FEATURE);
 		registerMobSpawn(ctx, YoukaisHomecoming.loc("lamprey"), YHBiomeTagsProvider.LAMPREY, biomes,
 				new MobSpawnSettings.SpawnerData(YHEntities.LAMPREY.get(), 5, 3, 5));
+		registerMobSpawn(ctx, YoukaisHomecoming.loc("tuna"), YHBiomeTagsProvider.TUNA, biomes,
+				new MobSpawnSettings.SpawnerData(YHEntities.TUNA.get(), 5, 1, 1));
 		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
 		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
 		registerCropBiome(ctx, YHCrops.TEA, biomes.getOrThrow(YHBiomeTagsProvider.TEA), features);
 		registerCropBiome(ctx, YHCrops.MANDRAKE, biomes.getOrThrow(YHBiomeTagsProvider.MANDRAKE), features);
 		registerCropBiome(ctx, YHCrops.UDUMBARA, biomes.getOrThrow(YHBiomeTagsProvider.UDUMBARA), features);
+		registerCropBiome(ctx, YHCrops.CUCUMBER, biomes.getOrThrow(YHBiomeTagsProvider.CUCUMBER), features);
+		{
+			var grape = biomes.getOrThrow(YHBiomeTagsProvider.GRAPE);
+			var noGrape = biomes.getOrThrow(YHBiomeTagsProvider.NO_GRAPE);
+			var black = biomes.getOrThrow(YHBiomeTagsProvider.BLACK_GRAPE);
+			var white = biomes.getOrThrow(YHBiomeTagsProvider.WHITE_GRAPE);
+			var holderWhite = new FilterHolderSet<>(List.of(new AndHolderSet<>(List.of(grape, white)), noGrape));
+			var holderBlack = new FilterHolderSet<>(List.of(new AndHolderSet<>(List.of(grape, black)), noGrape));
+			var holderRed = new FilterHolderSet<>(List.of(grape, noGrape, black, white));
+			registerCropBiome(ctx, YHCrops.RED_GRAPE, holderRed, features);
+			registerCropBiome(ctx, YHCrops.BLACK_GRAPE, holderBlack, features);
+			registerCropBiome(ctx, YHCrops.WHITE_GRAPE, holderWhite, features);
+		}
 	}
 
 	private static void registerCropBiome(BootstapContext<BiomeModifier> ctx,

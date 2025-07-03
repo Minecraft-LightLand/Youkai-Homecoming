@@ -8,7 +8,7 @@
 	},
 	"elements": [
 		{
-			"name": "futomaki",
+			"name": "california",
 			"from": [2, 1, 6],
 			"to": [14, 5, 10],
 			"rotation": {"angle": 0, "axis": "y", "origin": [2, 1, 6]},

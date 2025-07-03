@@ -178,12 +178,12 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 			if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
 				return ConfiguredModel.builder().modelFile(pvd.models()
 						.withExistingParent(tex + "_upper", pvd.mcLoc("block/air"))
-						.texture("particle", pvd.modLoc("block/plants/" + name + "_bush_leaves"))
+						.texture("particle", pvd.modLoc("block/plants/" + name + "/" + name + "_bush_leaves"))
 				).build();
 			}
 			if (age <= 4) {
 				return ConfiguredModel.builder().modelFile(pvd.models()
-						.cross(tex, pvd.modLoc("block/plants/" + tex)).renderType("cutout")).build();
+						.cross(tex, pvd.modLoc("block/plants/" + name + "/" + tex)).renderType("cutout")).build();
 			} else {
 				var file = pvd.models()
 						.getBuilder("block/" + tex)
@@ -191,13 +191,13 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 				file.ao(false);
 				file.renderType("cutout");
 				if (age == 5) {
-					file.texture("base", pvd.modLoc("block/plants/" + name + "_stage5"));
+					file.texture("base", pvd.modLoc("block/plants/" + name + "/" + name + "_stage5"));
 				} else {
-					file.texture("leaves", pvd.modLoc("block/plants/" + name + "_bush_leaves"));
-					file.texture("trunk", pvd.modLoc("block/plants/" + name + "_bush_trunk"));
+					file.texture("leaves", pvd.modLoc("block/plants/" + name + "/" + name + "_bush_leaves"));
+					file.texture("trunk", pvd.modLoc("block/plants/" + name + "/" + name + "_bush_trunk"));
 				}
-				file.texture("top", pvd.modLoc("block/plants/" + name + "_bush_top"));
-				file.texture("side", pvd.modLoc("block/plants/" + name + "_bush_side"));
+				file.texture("top", pvd.modLoc("block/plants/" + name + "/" + name + "_bush_top"));
+				file.texture("side", pvd.modLoc("block/plants/" + name + "/" + name + "_bush_side"));
 				return ConfiguredModel.builder().modelFile(file).build();
 			}
 		});
@@ -217,19 +217,6 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HALF, DoubleBlockHalf.LOWER)))
 						)));
-	}
-
-	public static void buildWildLoot(RegistrateBlockLootTables pvd, BushBlock block, YHCrops crop) {
-		var silk = MatchTool.toolMatches(ItemPredicate.Builder.item()
-				.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
-						MinMaxBounds.Ints.atLeast(1)))).or(
-				MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS)));
-		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
-				.add(LootItem.lootTableItem(block.asItem())
-						.when(silk)
-						.otherwise(pvd.applyExplosionDecay(block, LootItem.lootTableItem(crop.getSeed())
-								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))
-				)));
 	}
 
 }

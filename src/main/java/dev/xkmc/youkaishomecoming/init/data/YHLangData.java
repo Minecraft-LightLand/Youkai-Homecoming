@@ -42,6 +42,7 @@ public enum YHLangData {
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
 	JEI_RACK("jei.rack", "Drying", 0, null),
 	JEI_FERMENT("jei.ferment", "Fermenting", 0, null),
+	JEI_BASIN("jei.basin", "Basin", 0, null),
 	JEI_STEAM("jei.steam", "Steaming", 0, null),
 	JEI_CUISINE("jei.cuisine", "Cuisine", 0, null),
 

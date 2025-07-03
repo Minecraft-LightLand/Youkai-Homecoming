@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tamagoyaki"
+    }
+  ],
+  "result": [
+    {
+      "count": 3,
+      "item": "youkaishomecoming:tamagoyaki_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

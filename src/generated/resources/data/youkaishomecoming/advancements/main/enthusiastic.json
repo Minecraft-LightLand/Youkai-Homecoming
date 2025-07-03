@@ -71,6 +71,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:black_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:black_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:black_tea": {
       "conditions": {
         "item": {
@@ -141,11 +151,31 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:burgundy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:burgundy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:butter": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:butter"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:california_roll_slice"
           ]
         }
       },
@@ -176,6 +206,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cappuccino"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:champagne": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:champagne"
           ]
         }
       },
@@ -221,6 +261,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:cooked_flesh_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cooked_flesh_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:cooked_mandrake_root": {
       "conditions": {
         "item": {
@@ -236,6 +286,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cornflower_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:cucumber_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cucumber_slice"
           ]
         }
       },
@@ -286,6 +346,26 @@
         "item": {
           "items": [
             "youkaishomecoming:dried_fish"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:egg_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:egg_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:egg_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:egg_nigiri"
           ]
         }
       },
@@ -346,6 +426,16 @@
         "item": {
           "items": [
             "youkaishomecoming:flesh_roll"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:flesh_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:flesh_slice"
           ]
         }
       },
@@ -451,11 +541,51 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:honey_glazed_cucumber": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:honey_glazed_cucumber"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:imitation_bear_paw": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:imitation_bear_paw"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:imitation_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:imitation_crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:kabayaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kabayaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:kappa_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_maki_slice"
           ]
         }
       },
@@ -501,6 +631,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:lamprey_skewer": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:lamprey_skewer"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:latte": {
       "conditions": {
         "item": {
@@ -526,6 +666,16 @@
         "item": {
           "items": [
             "youkaishomecoming:longevity_noodles"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:lorelei_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:lorelei_nigiri"
           ]
         }
       },
@@ -651,6 +801,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:nattou": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:nattou_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:nattou_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:oily_bean_curd": {
       "conditions": {
         "item": {
@@ -676,6 +846,26 @@
         "item": {
           "items": [
             "youkaishomecoming:oolong_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:otoro": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:otoro_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:otoro_nigiri"
           ]
         }
       },
@@ -731,6 +921,36 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:rainbow_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rainbow_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:rainbow_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rainbow_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raisin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raisin"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:raw_lamprey": {
       "conditions": {
         "item": {
@@ -746,6 +966,46 @@
         "item": {
           "items": [
             "youkaishomecoming:raw_lamprey_fillet"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:red_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:red_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_wine"
           ]
         }
       },
@@ -791,6 +1051,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:roe_california_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:roe_california_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:saidi_tea": {
       "conditions": {
         "item": {
@@ -816,6 +1086,26 @@
         "item": {
           "items": [
             "youkaishomecoming:sakura_mochi"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:salmon_futomaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:salmon_futomaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:salmon_lover_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:salmon_lover_roll_slice"
           ]
         }
       },
@@ -881,6 +1171,36 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:seagrass_gunkan": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seagrass_gunkan"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:seared_tuna": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:seared_tuna_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:seared_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:sekibankiyaki": {
       "conditions": {
         "item": {
@@ -916,6 +1236,16 @@
         "item": {
           "items": [
             "youkaishomecoming:shaved_ice_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:shinnko_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:shinnko_maki_slice"
           ]
         }
       },
@@ -981,11 +1311,41 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:tamagoyaki": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tamagoyaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:tamagoyaki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tamagoyaki_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:tea_mocha": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:tea_mocha"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:tekka_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tekka_maki_slice"
           ]
         }
       },
@@ -1051,6 +1411,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:tuna_nigiri": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tuna_nigiri"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:tuscan_salmon": {
       "conditions": {
         "item": {
@@ -1081,11 +1451,51 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:van_allen": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:van_allen"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:volcano_roll_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:volcano_roll_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:white_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:white_tea": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:white_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_wine"
           ]
         }
       },
@@ -1253,6 +1663,30 @@
       "youkaishomecoming:wind_priestesses"
     ],
     [
+      "youkaishomecoming:black_grape_juice"
+    ],
+    [
+      "youkaishomecoming:red_grape_juice"
+    ],
+    [
+      "youkaishomecoming:white_grape_juice"
+    ],
+    [
+      "youkaishomecoming:red_wine"
+    ],
+    [
+      "youkaishomecoming:white_wine"
+    ],
+    [
+      "youkaishomecoming:burgundy"
+    ],
+    [
+      "youkaishomecoming:champagne"
+    ],
+    [
+      "youkaishomecoming:van_allen"
+    ],
+    [
       "youkaishomecoming:espresso"
     ],
     [
@@ -1292,10 +1726,19 @@
       "youkaishomecoming:roasted_lamprey_fillet"
     ],
     [
-      "youkaishomecoming:flesh"
+      "youkaishomecoming:raw_tuna"
     ],
     [
-      "youkaishomecoming:cooked_flesh"
+      "youkaishomecoming:seared_tuna"
+    ],
+    [
+      "youkaishomecoming:raw_tuna_slice"
+    ],
+    [
+      "youkaishomecoming:seared_tuna_slice"
+    ],
+    [
+      "youkaishomecoming:otoro"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"
@@ -1311,6 +1754,24 @@
     ],
     [
       "youkaishomecoming:oily_bean_curd"
+    ],
+    [
+      "youkaishomecoming:imitation_crab"
+    ],
+    [
+      "youkaishomecoming:tamagoyaki"
+    ],
+    [
+      "youkaishomecoming:tamagoyaki_slice"
+    ],
+    [
+      "youkaishomecoming:nattou"
+    ],
+    [
+      "youkaishomecoming:cucumber_slice"
+    ],
+    [
+      "youkaishomecoming:raisin"
     ],
     [
       "youkaishomecoming:mochi"
@@ -1358,9 +1819,6 @@
       "youkaishomecoming:pork_rice_ball"
     ],
     [
-      "youkaishomecoming:tobiko_gunkan"
-    ],
-    [
       "youkaishomecoming:tutu_congee"
     ],
     [
@@ -1368,6 +1826,9 @@
     ],
     [
       "youkaishomecoming:doughnut"
+    ],
+    [
+      "youkaishomecoming:kabayaki"
     ],
     [
       "youkaishomecoming:higi_chocolate"
@@ -1395,6 +1856,9 @@
     ],
     [
       "youkaishomecoming:assorted_dango"
+    ],
+    [
+      "youkaishomecoming:lamprey_skewer"
     ],
     [
       "youkaishomecoming:shaved_ice_over_rice"
@@ -1442,6 +1906,9 @@
       "youkaishomecoming:mushroom_soup"
     ],
     [
+      "youkaishomecoming:honey_glazed_cucumber"
+    ],
+    [
       "youkaishomecoming:lions_head"
     ],
     [
@@ -1454,10 +1921,19 @@
       "youkaishomecoming:bowl_of_heart_throbbing_surprise"
     ],
     [
-      "youkaishomecoming:flesh_dumplings"
+      "youkaishomecoming:flesh"
     ],
     [
-      "youkaishomecoming:flesh_roll"
+      "youkaishomecoming:cooked_flesh"
+    ],
+    [
+      "youkaishomecoming:flesh_slice"
+    ],
+    [
+      "youkaishomecoming:cooked_flesh_slice"
+    ],
+    [
+      "youkaishomecoming:flesh_dumplings"
     ],
     [
       "youkaishomecoming:canned_flesh"
@@ -1473,6 +1949,63 @@
     ],
     [
       "youkaishomecoming:scarlet_devil_cake"
+    ],
+    [
+      "youkaishomecoming:tobiko_gunkan"
+    ],
+    [
+      "youkaishomecoming:seagrass_gunkan"
+    ],
+    [
+      "youkaishomecoming:nattou_gunkan"
+    ],
+    [
+      "youkaishomecoming:egg_nigiri"
+    ],
+    [
+      "youkaishomecoming:lorelei_nigiri"
+    ],
+    [
+      "youkaishomecoming:tuna_nigiri"
+    ],
+    [
+      "youkaishomecoming:otoro_nigiri"
+    ],
+    [
+      "youkaishomecoming:flesh_roll"
+    ],
+    [
+      "youkaishomecoming:shinnko_maki_slice"
+    ],
+    [
+      "youkaishomecoming:kappa_maki_slice"
+    ],
+    [
+      "youkaishomecoming:tekka_maki_slice"
+    ],
+    [
+      "youkaishomecoming:egg_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:salmon_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:rainbow_futomaki_slice"
+    ],
+    [
+      "youkaishomecoming:california_roll_slice"
+    ],
+    [
+      "youkaishomecoming:roe_california_roll_slice"
+    ],
+    [
+      "youkaishomecoming:salmon_lover_roll_slice"
+    ],
+    [
+      "youkaishomecoming:volcano_roll_slice"
+    ],
+    [
+      "youkaishomecoming:rainbow_roll_slice"
     ]
   ],
   "sends_telemetry_event": true

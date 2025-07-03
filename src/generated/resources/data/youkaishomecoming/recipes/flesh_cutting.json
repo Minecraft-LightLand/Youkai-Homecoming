@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:flesh"
+    }
+  ],
+  "result": [
+    {
+      "count": 3,
+      "item": "youkaishomecoming:flesh_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

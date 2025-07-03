@@ -93,7 +93,6 @@ public class YoukaisHomecoming {
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaisHomecoming() {
-		YHItems.register();
 		YHBlocks.register();
 		YHEffects.register();
 		YHDanmaku.register();
@@ -107,6 +106,7 @@ public class YoukaisHomecoming {
 		GrazeCapability.register();
 		YHModConfig.init();
 		TableItemManager.init();
+		FilterHolderSet.register();
 
 		AttackEventHandler.register(3943, new YHAttackListener());
 

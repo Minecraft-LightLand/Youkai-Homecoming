@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:pods"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:soybean"
+  }
+}

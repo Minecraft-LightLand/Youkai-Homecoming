@@ -2,10 +2,10 @@
   "parent": "youkaishomecoming:custom/feast/flesh_feast_leftover",
   "render_type": "minecraft:cutout",
   "textures": {
-    "brain": "youkaishomecoming:block/flesh_brain_4",
-    "particle": "youkaishomecoming:block/tray_top",
-    "skeleton": "youkaishomecoming:block/flesh_skeleton_2",
-    "tray_bottom": "youkaishomecoming:block/tray_bottom",
-    "tray_top": "youkaishomecoming:block/tray_top"
+    "brain": "youkaishomecoming:block/feast/flesh_brain_4",
+    "particle": "youkaishomecoming:block/feast/tray_top",
+    "skeleton": "youkaishomecoming:block/feast/flesh_skeleton_2",
+    "tray_bottom": "youkaishomecoming:block/feast/tray_bottom",
+    "tray_top": "youkaishomecoming:block/feast/tray_top"
   }
 }

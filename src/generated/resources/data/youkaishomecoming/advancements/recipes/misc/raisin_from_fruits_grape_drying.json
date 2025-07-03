@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fruits_grape": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:fruits/grape"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:raisin_from_fruits_grape_drying"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_fruits_grape",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:raisin_from_fruits_grape_drying"
+    ]
+  },
+  "sends_telemetry_event": false
+}

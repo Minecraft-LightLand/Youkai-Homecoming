@@ -1,0 +1,23 @@
+{
+  "type": "youkaishomecoming:cuisine_mixed",
+  "base": "youkaishomecoming:futomaki",
+  "first": [
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:egg_futomaki"
+  },
+  "second": [
+    {
+      "item": "youkaishomecoming:tamagoyaki_slice"
+    },
+    {
+      "item": "youkaishomecoming:tamagoyaki_slice"
+    },
+    {
+      "item": "youkaishomecoming:tamagoyaki_slice"
+    }
+  ]
+}

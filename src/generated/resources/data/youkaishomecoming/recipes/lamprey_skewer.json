@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:stick"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:raw_lamprey_fillet"
+    },
+    {
+      "item": "youkaishomecoming:raw_lamprey_fillet"
+    },
+    {
+      "item": "youkaishomecoming:raw_lamprey_fillet"
+    },
+    {
+      "item": "youkaishomecoming:soy_sauce_bottle"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:lamprey_skewer"
+  }
+}

@@ -3,9 +3,9 @@
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "particle": "youkaishomecoming:block/plants/coffea_trunk11",
-    "side": "youkaishomecoming:block/plants/coffea_bush_side",
-    "top": "youkaishomecoming:block/plants/coffea_bush_top",
-    "trunk": "youkaishomecoming:block/plants/coffea_trunk11"
+    "particle": "youkaishomecoming:block/plants/coffea/coffea_trunk11",
+    "side": "youkaishomecoming:block/plants/coffea/coffea_bush_side",
+    "top": "youkaishomecoming:block/plants/coffea/coffea_bush_top",
+    "trunk": "youkaishomecoming:block/plants/coffea/coffea_trunk11"
   }
 }

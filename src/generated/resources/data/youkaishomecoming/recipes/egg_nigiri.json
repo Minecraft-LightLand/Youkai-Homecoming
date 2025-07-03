@@ -1,0 +1,16 @@
+{
+  "type": "youkaishomecoming:cuisine_ordered",
+  "base": "youkaishomecoming:sushi",
+  "input": [
+    {
+      "item": "youkaishomecoming:tamagoyaki"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "youkaishomecoming:egg_nigiri"
+  }
+}
