@@ -82,14 +82,14 @@ public class YHTagGen {
 	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
 	public static final TagKey<EntityType<?>> BOSS = entity("cannot_capture");
 
-	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
-	public static final TagKey<Item> ICE = ItemTags.create(new ResourceLocation("forge", "ice_cubes"));
+	public static final TagKey<Item> MATCHA = forgeItem("matcha");
+	public static final TagKey<Item> ICE = forgeItem("ice_cubes");
 
-	public static final TagKey<Item> TEA_GREEN = ItemTags.create(new ResourceLocation("forge", "tea_leaves/green"));
-	public static final TagKey<Item> TEA_BLACK = ItemTags.create(new ResourceLocation("forge", "tea_leaves/black"));
-	public static final TagKey<Item> TEA_WHITE = ItemTags.create(new ResourceLocation("forge", "tea_leaves/white"));
-	public static final TagKey<Item> TEA_OOLONG = ItemTags.create(new ResourceLocation("forge", "tea_leaves/oolong"));
-	public static final TagKey<Item> TEA = ItemTags.create(new ResourceLocation("forge", "tea_leaves"));
+	public static final TagKey<Item> TEA_GREEN = forgeItem("tea_leaves/green");
+	public static final TagKey<Item> TEA_BLACK = forgeItem("tea_leaves/black");
+	public static final TagKey<Item> TEA_WHITE = forgeItem("tea_leaves/white");
+	public static final TagKey<Item> TEA_OOLONG = forgeItem("tea_leaves/oolong");
+	public static final TagKey<Item> TEA = forgeItem("tea_leaves");
 
 	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
 	public static final TagKey<Item> TOUHOU_WINGS = item("touhou_wings");
