@@ -28,9 +28,9 @@ public class YHAdvGen {
 	public static void genAdv(RegistrateAdvancementProvider pvd) {
 		var gen = new AdvancementGenerator(pvd, YoukaisHomecoming.MODID);
 		var b = gen.new TabBuilder("main");
-		var root = b.root("welcome_to_youkais_homecoming", YHItems.BLACK_TEA_BAG.asStack(),
+		var root = b.root("welcome_to_gensokyo", YHItems.BLACK_TEA_BAG.asStack(),
 				CriterionBuilder.one(PlayerTrigger.TriggerInstance.tick()),
-				"Youkai's Homecoming", "Welcome To Youkai's Homecoming");
+				"Gensokyo Delight", "Welcome To Gensokyo");
 		root.create("sweet", YHFood.MOCHI.item.asStack(),
 						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
 								ItemPredicate.Builder.item().of(YHTagGen.DANGO).build())),
@@ -127,12 +127,7 @@ public class YHAdvGen {
 										MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
 										null, null)))),
 				"Passed Out", "Drink until you have maximum Drunk effect");
-		root.create("mousse", YHFood.KOISHI_MOUSSE.item.asStack(),
-						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
-								ItemPredicate.Builder.item().of(YHFood.KOISHI_MOUSSE.item.get()).build())),
-						"Well... Yes? What's Just Happened?", "Eat a Koishi Mousse")
-				.type(FrameType.GOAL, true, true, true)
-				.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
+		root.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
 										Arrays.stream(YHDrink.values()).map(e -> e.item.get()),

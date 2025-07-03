@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "gensokyodelight:block/sikkui/sikkui",
-    "side": "gensokyodelight:block/sikkui/sikkui",
-    "top": "gensokyodelight:block/sikkui/sikkui"
-  }
-}

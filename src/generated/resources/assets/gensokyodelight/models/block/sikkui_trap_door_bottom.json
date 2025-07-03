@@ -1,6 +1,0 @@
-{
-  "parent": "gensokyodelight:template/template_orientable_trapdoor_bottom",
-  "textures": {
-    "texture": "gensokyodelight:block/sikkui/sikkui"
-  }
-}

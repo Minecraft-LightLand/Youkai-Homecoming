@@ -1,5 +1,5 @@
 {
-  "parent": "gensokyodelight:main/mousse",
+  "parent": "gensokyodelight:main/welcome_to_gensokyo",
   "criteria": {
     "gensokyodelight:affogato": {
       "conditions": {
@@ -486,16 +486,6 @@
         "item": {
           "items": [
             "gensokyodelight:kinako_dango"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "gensokyodelight:koishi_mousse": {
-      "conditions": {
-        "item": {
-          "items": [
-            "gensokyodelight:koishi_mousse"
           ]
         }
       },
@@ -1617,9 +1607,6 @@
     ],
     [
       "gensokyodelight:yakumo_inari"
-    ],
-    [
-      "gensokyodelight:koishi_mousse"
     ],
     [
       "gensokyodelight:mantou"

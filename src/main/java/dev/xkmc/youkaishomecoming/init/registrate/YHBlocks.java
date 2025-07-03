@@ -146,13 +146,6 @@ public class YHBlocks {
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 	public static final BlockEntry<MoonLanternBlock> MOON_LANTERN;
 
-	public static FullSikkuiSet SIKKUI, CROSS_SIKKUI;
-	public static SikkuiSet FRAMED_SIKKUI, GRID_SIKKUI;
-	public static final BlockEntry<Block> FINE_GRID_SIKKUI;
-	public static final BlockEntry<ThinTrapdoorBlock> FINE_GRID_SIKKUI_TD;
-	public static final BlockEntry<ThinDoorBlock> FINE_GRID_SHOJI;
-
-	public static final WoodSet HAY, STRAW;
 
 	static {
 
@@ -322,47 +315,6 @@ public class YHBlocks {
 		}
 
 		{
-
-			var set = new BlockSetType("sikkui", true, SoundType.WOOD,
-					SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN,
-					SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
-					SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
-					SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-
-			var sikkuiProp = BlockBehaviour.Properties.copy(Blocks.CLAY);
-
-			SIKKUI = new FullSikkuiSet("sikkui", sikkuiProp);
-			FRAMED_SIKKUI = new SikkuiSet("framed_sikkui", sikkuiProp);
-			CROSS_SIKKUI = new FullSikkuiSet("cross_framed_sikkui", sikkuiProp);
-			GRID_SIKKUI = new SikkuiSet("grid_framed_sikkui", sikkuiProp);
-
-			FINE_GRID_SIKKUI = YoukaisHomecoming.REGISTRATE.block("fine_grid_framed_sikkui", p -> new Block(BlockBehaviour.Properties.copy(Blocks.CLAY)))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(),
-							pvd.models().cubeColumn("block/" + ctx.getName(),
-									pvd.modLoc("block/sikkui/" + ctx.getName() + "_side"),
-									pvd.modLoc("block/sikkui/" + ctx.getName() + "_top"))))
-					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_AXE)
-					.simpleItem().register();
-
-			FINE_GRID_SIKKUI_TD = thinTrapdoor("fine_grid_framed_sikkui", sikkuiProp, set, YoukaisHomecoming.loc("block/sikkui/fine_grid_framed_sikkui_side"));
-
-			var doorProp = BlockBehaviour.Properties.copy(Blocks.CLAY)
-					.noOcclusion().pushReaction(PushReaction.DESTROY);
-
-			FINE_GRID_SHOJI = thinDoor("fine_grid_framed_shoji", doorProp, set);
-
-			var prop = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
-					.instrument(NoteBlockInstrument.BANJO).strength(0.5F).sound(SoundType.GRASS);
-			HAY = new WoodSet("hay", () -> Blocks.HAY_BLOCK, prop,
-					new ResourceLocation("block/hay_block_top"),
-					new ResourceLocation("block/hay_block_side"),
-					new ResourceLocation("block/hay_block")
-			);
-			STRAW = new WoodSet("straw", ModBlocks.STRAW_BALE, prop,
-					YoukaisHomecoming.loc("block/straw_bale_end"),
-					YoukaisHomecoming.loc("block/straw_bale_side"),
-					new ResourceLocation(FarmersDelight.MODID, "block/straw_bale")
-			);
 
 			for (var e : WoodType.values()) {
 				String name = e.name().toLowerCase(Locale.ROOT);

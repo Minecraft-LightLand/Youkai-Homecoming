@@ -6,13 +6,6 @@
     "gensokyodelight:steamer_pot",
     "gensokyodelight:copper_tank",
     "gensokyodelight:copper_faucet",
-    "gensokyodelight:moka_kit",
-    "gensokyodelight:sikkui_trap_door",
-    "gensokyodelight:framed_sikkui_trap_door",
-    "gensokyodelight:cross_framed_sikkui_trap_door",
-    "gensokyodelight:grid_framed_sikkui_trap_door",
-    "gensokyodelight:fine_grid_framed_sikkui",
-    "gensokyodelight:fine_grid_framed_sikkui_trap_door",
-    "gensokyodelight:fine_grid_framed_shoji"
+    "gensokyodelight:moka_kit"
   ]
 }

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "minecraft:hay_block"
-  },
-  "result": "gensokyodelight:hay_stairs"
-}

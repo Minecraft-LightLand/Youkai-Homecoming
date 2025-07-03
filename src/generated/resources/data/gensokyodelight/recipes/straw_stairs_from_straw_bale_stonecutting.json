@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "farmersdelight:straw_bale"
-  },
-  "result": "gensokyodelight:straw_stairs"
-}

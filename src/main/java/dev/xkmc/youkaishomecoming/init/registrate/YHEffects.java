@@ -55,14 +55,6 @@ public class YHEffects {
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x949537),
 			"Immune to poison, improves health regeneration");
 
-	public static final RegistryEntry<MobEffect> NATIVE = genEffect("native_god_bless",
-			() -> new NativeGodBlessEffect(MobEffectCategory.BENEFICIAL, -5727850),
-			"Increase movement speed and reach");
-
-	public static final RegistryEntry<MobEffect> UNCONSCIOUS = genEffect("unconscious",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, -5522492),
-			"You won't be targeted by mobs. Terminates when you attack or open loot chests.");
-
 	public static final RegistryEntry<MobEffect> APHRODISIAC = genEffect("aphrodisiac",
 			() -> new MandrakeEffect(MobEffectCategory.NEUTRAL, 0xE17A84),
 			"Animals will enter breeding state");

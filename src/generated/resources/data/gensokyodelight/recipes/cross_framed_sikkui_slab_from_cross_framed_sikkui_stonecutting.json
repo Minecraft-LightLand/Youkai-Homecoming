@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "gensokyodelight:cross_framed_sikkui"
-  },
-  "result": "gensokyodelight:cross_framed_sikkui_slab"
-}

@@ -1,0 +1,234 @@
+{
+	"item.gensokyodelight": {
+		"lamprey_bucket": "八目鳗桶",
+		"raw_lamprey": "生八目鳗",
+		"raw_lamprey_fillet": "生八目鳗片",
+		"roasted_lamprey": "烤八目鳗",
+		"roasted_lamprey_fillet": "烤八目鳗片",
+		"pods": "豆荚",
+		"redbean": "红豆",
+		"soybean": "黄豆",
+		"poor_god_soup": "穷神汤",
+		"apaki": "拜占庭香草熏猪肉",
+		"butter": "黄油",
+		"sakura_mochi": "樱饼",
+		"sekibankiyaki": "生首烧",
+		"longevity_noodles": "长寿面",
+		"senbei": "仙贝",
+		"mochi": "麻薯",
+		"miso_soup": "味噌汤",
+		"sweet_ormosia_mochi_mixed_boiled": "甜豆沙麻薯杂煮",
+		"blazing_red_curry": "烈焰红咖喱",
+		"higan_soup": "彼岸汤",
+		"power_soup": "力量汤",
+		"grilled_eel_over_rice": "鳗鱼饭",
+		"shirayuki": "白雪",
+		"onigili": "饭团",
+		"oily_bean_curd": "油豆腐",
+		"tofu": "豆腐",
+		"yakumo_inari": "八云豆包饭",
+		"mitarashi_dango": "御手洗团子",
+		"clay_saucer": "粘土碟",
+		"oyaki": "御烧",
+		"kinako_dango": "黄豆粉团子",
+		"bun": "包子",
+		"assorted_dango": "三色团子",
+		"candy_apple": "苹果糖",
+		"koishi_mousse": "恋恋慕斯",
+		"milk_popsicle": "牛奶冰棍",
+		"tutu_congee": "筒粥",
+		"avgolemono": "鸡蛋柠檬汤",
+		"big_popsicle": "大冰棍儿",
+		"shaved_ice_over_rice": "儿童刨冰盖饭",
+		"coffee_beans": "咖啡豆",
+		"coffee_powder": "咖啡粉",
+		"coffee_berries": "咖啡果",
+		"green_coffee_bean": "生咖啡豆",
+		"coffee_mochi": "咖啡麻薯",
+		"roe": "鲑鱼籽",
+		"tobiko_gunkan": "鱼籽军舰",
+		"tuscan_salmon": "蔬菜奶油鲑鱼",
+		"bowl_of_cream": "碗装奶油",
+		"affogato": "阿芙佳朵",
+		"americano": "美式",
+		"cappuccino": "卡布奇诺",
+		"con_panna": "康宝蓝",
+		"espresso": "意式浓缩",
+		"latte": "拿铁",
+		"macchiato": "玛琪雅朵",
+		"mocha": "摩卡",
+		"ristretto": "芮斯崔朵",
+		"black_tea_leaves": "红茶叶",
+		"green_tea_leaves": "绿茶叶",
+		"oolong_tea_leaves": "乌龙茶叶",
+		"white_tea_leaves": "白茶叶",
+		"tea_leaves": "生茶叶",
+		"tea_seeds": "茶籽",
+		"matcha": "抹茶",
+		"matcha_mochi": "抹茶麻薯",
+		"pork_rice_ball": "猪肉饭团",
+		"steamed_egg_in_bamboo": "竹筒蒸蛋",
+		"tsukimi_dango": "月见团子",
+		"yashouma_dango": "信州瘦马",
+		"tarte_lune_slice": "月亮派切片",
+		"cooked_mandrake_root": "烤曼德拉根",
+		"lions_head": "狮子头",
+		"mandrake_root": "曼德拉根",
+		"mapo_tofu": "麻婆豆腐",
+		"mushroom_soup": "奶油蘑菇浓汤",
+		"udumbara_cake": "幻昙花羹",
+		"udumbara_flower": "幻昙花",
+		"udumbara_seeds": "幻昙华种子",
+		"bowl_of_heart_throbbing_surprise": "碗装惊吓大冒险",
+		"seafood_miso_soup": "海鲜味增汤",
+		"doughnut": "甜甜圈",
+		"higi_chocolate": "秘仪巧克力",
+		"higi_doughnut": "秘仪甜甜圈",
+		"can": "空罐头",
+		"lemon_black_tea": "柠檬红茶",
+		"moon_rocket": "月面火箭",
+		"peach_tapioca": "桃花羹",
+		"peach_yatsuhashi": "桃子八桥",
+		"dried_mandrake_flower": "干燥的曼德拉花",
+		"ice_cube": "冰块",
+		"stripped_mandrake_root": "去皮曼德拉根",
+		"mandrake_flower": "曼德拉花",
+		"mantou": "馒头",
+		"raw_bun": "生包子",
+		"raw_oyaki": "生御烧",
+		"sake_bottle": "酒瓶",
+		"imitation_crab": "蟹肉棒",
+		"egg_nigiri": "玉子烧握寿司",
+		"lorelei_nigiri": "夜雀的手握",
+		"nattou": "纳豆",
+		"seagrass_gunkan": "海草军舰",
+		"raw_tuna": "生金枪鱼排",
+		"raw_tuna_slice": "生金枪鱼排片",
+		"seared_tuna": "炙烤金枪鱼排",
+		"seared_tuna_slice": "炙烤金枪鱼片",
+		"tuna_bucket": "金枪鱼桶",
+		"tuna_nigiri": "金枪鱼握寿司",
+		"kabayaki": "蒲烧鳗鱼",
+		"lamprey_skewer": "蒲烧鳗鱼烤串",
+		"otoro": "金枪鱼大腹",
+		"otoro_nigiri": "金枪鱼大腹握寿司",
+		"nattou_gunkan": "纳豆军舰",
+		"cucumber": "黄瓜",
+		"cucumber_slice": "黄瓜丝",
+		"cucumber_seeds": "黄瓜种子",
+		"honey_glazed_cucumber": "蜜渍黄瓜",
+		"raisin": "葡萄干"
+	},
+	"-cartesian": {
+		"entity": {
+			"path": "",
+			"list": [
+				{
+					"lamprey": "八目鳗",
+					"tuna": "金枪鱼"
+				},
+				{
+					"entity.gensokyodelight.*": "",
+					"item.gensokyodelight.*_spawn_egg": "生成蛋"
+				}
+			]
+		},
+		"bottle": {
+			"path": "",
+			"reverse": true,
+			"list": [
+				{
+					"soy_sauce": "酱油",
+					"mayonnaise": "蛋黄酱"
+				},
+				{
+					"fluid.gensokyodelight.*": "",
+					"item.gensokyodelight.*_bottle": "瓶装"
+				}
+			]
+		},
+		"sake": {
+			"path": "",
+			"use_dot": true,
+			"list": [
+				{
+					"fluid.gensokyodelight": "",
+					"item.gensokyodelight": ""
+				},
+				{
+					"black_tea": "红茶",
+					"green_tea": "绿茶",
+					"oolong_tea": "乌龙茶",
+					"white_tea": "白茶",
+					"cornflower_tea": "矢车菊茶",
+					"genmai_tea": "玄米茶",
+					"saidi_tea": "埃及糖茶",
+					"sakura_honey_tea": "樱花蜜茶",
+					"tea_mocha": "摩卡茶",
+					"green_water": "青汁",
+					"daiginjo": "大吟酿",
+					"dassai": "水獭祭",
+					"full_moons_eve": "十四夜",
+					"mead": "蜜酒",
+					"mio": "淇酒",
+					"sparrow_sake": "雀酒",
+					"tengu_tango": "天狗踊",
+					"hakutsuru": "丹白鹤",
+					"kappa_village": "河童之里",
+					"kiku": "菊",
+					"suigei": "鲸息",
+					"burgundy": "勃艮第干红葡萄酒",
+					"champagne": "香槟气泡甜白葡萄酒",
+					"red_wine": "经典红葡萄酒",
+					"van_allen": "范艾伦干红葡萄酒",
+					"white_wine": "白桦森林半干白葡萄酒"
+				}
+			]
+		},
+		"slicable": {
+			"path": "item.gensokyodelight",
+			"list": [
+				{
+					"egg_futomaki": "玉子太卷",
+					"rainbow_futomaki": "缤纷太卷",
+					"salmon_futomaki": "鲑鱼太卷",
+					"shinnko_maki": "新香细卷",
+					"tamagoyaki": "玉子烧",
+					"tekka_maki": "铁火卷",
+					"california_roll": "加州卷",
+					"rainbow_roll": "彩虹加州卷",
+					"roe_california_roll": "鱼卵加州卷",
+					"salmon_lover_roll": "若鹭卷",
+					"volcano_roll": "铁火加州卷",
+					"kappa_maki": "河童细卷"
+				},
+				{
+					"*": "",
+					"*_slice": "切片"
+				}
+			]
+		},
+		"grape": {
+			"path": "",
+			"list": [
+				{
+					"black_grape": "黑葡萄",
+					"red_grape": "红葡萄",
+					"white_grape": "白葡萄"
+				},{
+					"block.gensokyodelight.*": "",
+					"item.gensokyodelight.*": "",
+					"item.gensokyodelight.*_seeds": "种子",
+					"fluid.gensokyodelight.*_juice": "汁",
+					"item.gensokyodelight.*_juice": "汁",
+					"block.gensokyodelight.*_branches": "枝条",
+					"block.gensokyodelight.*_fruits": "枝条",
+					"block.gensokyodelight.*_trunk": "木质茎",
+					"block.gensokyodelight.*_vines": "茎",
+					"block.gensokyodelight.wild_*": "野生*",
+					"block.gensokyodelight.*_crate": "箱装*"
+				}
+			]
+		}
+	}
+}

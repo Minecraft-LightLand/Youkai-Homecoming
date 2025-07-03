@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:template/door_top_left",
-  "textures": {
-    "bottom": "gensokyodelight:block/sikkui/fine_grid_framed_shoji_bottom",
-    "top": "gensokyodelight:block/sikkui/fine_grid_framed_shoji_top"
-  }
-}

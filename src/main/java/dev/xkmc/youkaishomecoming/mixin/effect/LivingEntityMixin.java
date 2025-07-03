@@ -16,16 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-	@Shadow
-	public abstract boolean hasEffect(MobEffect pEffect);
-
-	@Inject(at = @At("HEAD"), method = "canBeSeenAsEnemy", cancellable = true)
-	public void youkaishomecoming$canBeSeenAsEnemy$unconscious(CallbackInfoReturnable<Boolean> cir) {
-		if (hasEffect(YHEffects.UNCONSCIOUS.get())) {
-			cir.setReturnValue(false);
-		}
-	}
-
 	@WrapOperation(method = "addEatEffect", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;addEffect(Lnet/minecraft/world/effect/MobEffectInstance;)Z"))
 	public boolean youkaishomecoming$addEffect(LivingEntity user, MobEffectInstance ins, Operation<Boolean> original) {
 		return original.call(user, EffectEventHandlers.onEat(user, ins));
