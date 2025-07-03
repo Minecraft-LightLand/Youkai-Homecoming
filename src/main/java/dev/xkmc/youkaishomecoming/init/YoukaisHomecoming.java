@@ -5,7 +5,6 @@ import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
-import dev.shadowsoffire.attributeslib.impl.AttributeEvents;
 import dev.shadowsoffire.gateways.Gateways;
 import dev.xkmc.fastprojectileapi.collision.FastMapInit;
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuToClientPacket;
@@ -131,10 +130,8 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			YHCrops.SOYBEAN.registerComposter();
-			YHCrops.REDBEAN.registerComposter();
-			YHCrops.COFFEA.registerComposter();
-			YHCrops.TEA.registerComposter();
+			for (var e : YHCrops.values())
+				e.registerComposter();
 
 			if (ModList.get().isLoaded(Thirst.ID)) {
 				ThirstCompat.init();
