@@ -25,6 +25,6 @@ public class EarthyEffect extends MobEffect {
 
 	@Override
 	public boolean isDurationEffectTick(int tick, int amp) {
-		return tick % Math.max(1, 10 / amp) == 0;
+		return tick % Math.max(1, 10 / (amp + 1)) == 0;
 	}
 }
