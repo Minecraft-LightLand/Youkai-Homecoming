@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.plant;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +17,7 @@ public class WildVineBlock extends Block {
 
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-		return level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN);
+		return level.getBlockState(pos.above()).is(BlockTags.LEAVES);
 	}
 
 	public BlockState updateShape(BlockState state, Direction facing, BlockState fstate, LevelAccessor level, BlockPos cpos, BlockPos fpos) {

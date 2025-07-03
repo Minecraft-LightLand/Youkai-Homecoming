@@ -54,7 +54,7 @@ public enum YHCrops {
 	MANDRAKE(PlantType.MANDRAKE, 6, 12, "mandrake_root", "mandrake_flower"),
 	CUCUMBER(PlantType.CUCUMBER, 8, 24, "cucumber_seeds", "cucumber"),
 	RED_GRAPE(PlantType.GRAPE, 8, 12, "red_grape_seeds", "red_grape"),
-	BLACK_GRAPE(PlantType.GRAPE, 8, 48, "black_grape_seeds", "black_grape"),
+	BLACK_GRAPE(PlantType.GRAPE, 4, 48, "black_grape_seeds", "black_grape"),
 	WHITE_GRAPE(PlantType.GRAPE, 8, 12, "white_grape_seeds", "white_grape"),
 	;
 
@@ -129,7 +129,7 @@ public enum YHCrops {
 	}
 
 	public void registerConfigs(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
-		if (this == BLACK_GRAPE){
+		if (this == BLACK_GRAPE) {
 			FeatureUtils.register(ctx, configKey, Feature.RANDOM_PATCH,
 					new RandomPatchConfiguration(density, 5, 5,
 							PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(

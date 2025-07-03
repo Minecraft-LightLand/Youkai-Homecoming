@@ -50,9 +50,9 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(MANDRAKE).add(Biomes.DARK_FOREST).addTag(Tags.Biomes.IS_MAGICAL);
 		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
 		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS);
-		tag(GRAPE).addTag(BiomeTags.IS_FOREST);
+		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);
 		tag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
-		tag(BLACK_GRAPE).addTag(Tags.Biomes.IS_CONIFEROUS);
+		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);
 		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST);
 		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST);
 		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
