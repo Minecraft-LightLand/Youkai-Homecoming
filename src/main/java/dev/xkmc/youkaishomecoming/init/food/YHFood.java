@@ -87,11 +87,11 @@ public enum YHFood {
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	COFFEE_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.CAFFEINATED::get, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.CAFFEINATED, 1200, 0, 1),
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	MATCHA_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.TEA::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1)
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	SAKURA_MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	YASHOUMA_DANGO(FoodType.FAST, 8, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
@@ -102,7 +102,7 @@ public enum YHFood {
 	SEKIBANKIYAKI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	YAKUMO_INARI(FoodType.SIMPLE, 6, 0.6f, DietTagGen.GRAINS.tag),
 	KOISHI_MOUSSE(FoodType.SIMPLE, 8, 0.6f,
-			new EffectEntry(YHEffects.UNCONSCIOUS::get, 400, 0, 1),
+			new EffectEntry(YHEffects.UNCONSCIOUS, 400, 0, 1),
 			DietTagGen.SUGARS.tag),
 	MANTOU(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	BUN(FoodType.SIMPLE, 10, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
@@ -117,15 +117,15 @@ public enum YHFood {
 			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
 	HIGI_CHOCOLATE(FoodType.SIMPLE, 4, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.HIGI, 1200, 0, 1)
 	), DietTagGen.SUGARS.tag),
 	HIGI_DOUGHNUT(FoodType.SIMPLE, 10, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI::get, 1200, 0, 1),
+			new EffectEntry(YHEffects.HIGI, 1200, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
 	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(
-			new EffectEntry(YHEffects.FAIRY::get, 1200, 0, 1)
+			new EffectEntry(YHEffects.FAIRY, 1200, 0, 1)
 	), DietTagGen.SUGARS.tag),
 
 	// stick
@@ -207,11 +207,11 @@ public enum YHFood {
 	), DietTagGen.PROTEINS.tag),
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 0, 1)), DietTagGen.VEGETABLES.tag),
+			new EffectEntry(YHEffects.UDUMBARA, 3600, 0, 1)), DietTagGen.VEGETABLES.tag),
 	BOWL_OF_HEART_THROBBING_SURPRISE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
+			new EffectEntry(YHEffects.UDUMBARA, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
 	// flesh
 
