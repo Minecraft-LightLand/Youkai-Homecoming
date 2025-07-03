@@ -1,3 +1,7 @@
+2.4.15
+- Texture overhaul
+- Fix Earthy Effect
+
 2.4.14
 - Add grapes, basin, wine
 - Add cucumber crate and cucumber slices, make cucumber edible
