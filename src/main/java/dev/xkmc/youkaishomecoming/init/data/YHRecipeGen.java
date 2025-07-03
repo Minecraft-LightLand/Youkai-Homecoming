@@ -22,13 +22,10 @@ import dev.xkmc.youkaishomecoming.content.pot.table.recipe.MixedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -40,7 +37,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
@@ -59,7 +55,6 @@ public class YHRecipeGen {
 		{
 			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET, 2);
 			foodCut(pvd, YHFood.RAW_TUNA, YHFood.SEARED_TUNA, YHFood.RAW_TUNA_SLICE, YHFood.SEARED_TUNA_SLICE, 3);
-			foodCut(pvd, YHFood.FLESH, YHFood.COOKED_FLESH, YHFood.FLESH_SLICE, YHFood.COOKED_FLESH_SLICE, 3);
 			food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
@@ -73,7 +68,6 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(Items.GLASS), RecipeCategory.MISC, YHItems.SAKE_BOTTLE);
 			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
 			for (var e : YHBlocks.WoodType.values()) {
-				pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, e.fence);
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.seat, 4)::unlockedBy, ModItems.CANVAS.get())
 						.pattern("PCP").pattern("PSP")
@@ -93,29 +87,11 @@ public class YHRecipeGen {
 			YHBlocks.HAY.genRecipe(pvd);
 			YHBlocks.STRAW.genRecipe(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.STRAW_HAT)::unlockedBy, ModItems.CANVAS.get())
-					.pattern(" A ").pattern("ASA")
-					.define('A', ModItems.CANVAS.get())
-					.define('S', Items.STRING)
-					.save(pvd);
-
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.STEAMER_POT)::unlockedBy, Items.IRON_INGOT)
 					.pattern("B B").pattern("I I").pattern("CIC")
 					.define('B', Items.BAMBOO)
 					.define('C', Items.CLAY_BALL)
 					.define('I', Items.IRON_INGOT)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.REIMU_HAIRBAND)::unlockedBy, YHItems.RUMIA_HAIRBAND.get())
-					.pattern(" 1 ").pattern("2A2")
-					.define('A', YHItems.RUMIA_HAIRBAND)
-					.define('1', YHDanmaku.REIMU_SPELL)
-					.define('2', YHTagGen.PRESET_SPELL)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHItems.CIRNO_WINGS)::unlockedBy, YHItems.FAIRY_ICE_CRYSTAL.get())
-					.pattern("A A").pattern("A A").pattern("A A")
-					.define('A', YHItems.FAIRY_ICE_CRYSTAL)
 					.save(pvd);
 
 		}
@@ -307,26 +283,6 @@ public class YHRecipeGen {
 					.requires(ModItems.COD_ROLL.get())
 					.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.RAW_FLESH_FEAST, 1)::unlockedBy, YHFood.FLESH.item.get())
-					.pattern("FFF").pattern("1F2").pattern("3S4")
-					.define('F', YHTagGen.RAW_FLESH)
-					.define('S', Items.SKELETON_SKULL)
-					.define('1', Items.CARROT)
-					.define('2', Items.BROWN_MUSHROOM)
-					.define('3', ForgeTags.VEGETABLES_ONION)
-					.define('4', ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.RED_VELVET.block, 1)::unlockedBy, YHFood.FLESH.item.get())
-					.pattern("ABA").pattern("CDC").pattern("EEE")
-					.define('A', Items.SUGAR)
-					.define('B', Items.MILK_BUCKET)
-					.define('C', YHItems.BLOOD_BOTTLE.item)
-					.define('D', YHTagGen.RAW_FLESH)
-					.define('E', Items.WHEAT)
-					.save(pvd);
-
-			cake(pvd, YHItems.RED_VELVET);
 			cake(pvd, YHItems.TARTE_LUNE);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.TARTE_LUNE.block, 1)::unlockedBy, ModItems.PIE_CRUST.get())
@@ -339,25 +295,6 @@ public class YHRecipeGen {
 					.define('E', ModItems.PIE_CRUST.get())
 					.save(pvd);
 
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.FLESH_CHOCOLATE_MOUSSE.item, 4)::unlockedBy, YHFood.FLESH.item.get())
-					.pattern(" B ").pattern("FDF").pattern("ECE")
-					.define('B', ForgeTags.MILK)
-					.define('C', YHItems.BLOOD_BOTTLE.item)
-					.define('D', YHTagGen.RAW_FLESH)
-					.define('E', Items.WHEAT)
-					.define('F', Items.COCOA_BEANS)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.SCARLET_DEVIL_CAKE.item, 4)::unlockedBy, YHFood.FLESH.item.get())
-					.pattern("FBF").pattern("ADA").pattern("ECE")
-					.define('A', Items.HONEY_BOTTLE)
-					.define('B', ForgeTags.MILK)
-					.define('C', YHItems.BLOOD_BOTTLE.item)
-					.define('D', YHTagGen.RAW_FLESH)
-					.define('E', Items.WHEAT)
-					.define('F', Items.PINK_PETALS)
-					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.DOUGHNUT.item, 4)::unlockedBy, ModItems.WHEAT_DOUGH.get())
 					.pattern("CAC").pattern("ABA").pattern("CAC")
@@ -529,23 +466,6 @@ public class YHRecipeGen {
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.MITARASHI_DANGO.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_DUMPLINGS.item.get(), 2, 200, 0.1f)
-					.addIngredient(ForgeTags.DOUGH)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.build(pvd, YHFood.FLESH_DUMPLINGS.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.CANNED_FLESH.item.get(), 2, 200, 0.1f, YHItems.CAN)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(ForgeTags.VEGETABLES_ONION)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.build(pvd, YHFood.CANNED_FLESH.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FAIRY_CANDY.item.get(), 3, 200, 0.1f)
-					.addIngredient(YHItems.FAIRY_ICE_CRYSTAL)
-					.addIngredient(Items.SUGAR)
-					.addIngredient(Items.HONEY_BOTTLE)
-					.build(pvd, YHFood.FAIRY_CANDY.item.getId());
 
 		}
 
@@ -636,23 +556,6 @@ public class YHRecipeGen {
 					.addIngredient(Items.CARROT)
 					.addIngredient(ForgeTags.VEGETABLES)
 					.build(pvd, YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.FLESH_STEW.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.build(pvd, YHFood.FLESH_STEW.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.FLESH_FEAST.get(), 1, 200, 0.1f, Items.BOWL)
-					.addIngredient(YHItems.RAW_FLESH_FEAST)
-					.addIngredient(YHTagGen.RAW_FLESH)
-					.addIngredient(YHItems.BLOOD_BOTTLE.item)
-					.addIngredient(YHItems.BLOOD_BOTTLE.item)
-					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
-					.build(pvd, YHItems.FLESH_FEAST.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.MILK_BOTTLE)
@@ -760,13 +663,6 @@ public class YHRecipeGen {
 					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
 					.build(pvd, YHDish.TOFU_BURGER.block.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.BLOOD_CURD.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
-					.addIngredient(YHItems.BLOOD_BOTTLE.item)
-					.addIngredient(YHItems.BLOOD_BOTTLE.item)
-					.addIngredient(ForgeTags.VEGETABLES)
-					.addIngredient(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.build(pvd, YHDish.BLOOD_CURD.block.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.SEVEN_COLORED_YOKAN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
@@ -822,13 +718,6 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHDish.TOMATO_SAUCE_COD.block.getId());
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.BLOODY_FLESH.block.get())::unlockedBy, YHItems.SAUCER.asItem())
-					.requires(YHTagGen.RAW_FLESH)
-					.requires(YHTagGen.RAW_FLESH)
-					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
-					.requires(YHItems.SAUCER.get())
-					.requires(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
-					.save(pvd, YHDish.BLOODY_FLESH.block.getId());
 
 		}
 
@@ -903,13 +792,6 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(ForgeTags.GRAIN_RICE)
 					.build(tea, YHDrink.GENMAI_TEA.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SCARLET_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHItems.BLOOD_BOTTLE.item)
-					.addIngredient(YHTagGen.TEA_BLACK)
-					.addIngredient(YHItems.BLOOD_BOTTLE.item)
-					.build(tea, YHDrink.SCARLET_TEA.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
@@ -1070,18 +952,6 @@ public class YHRecipeGen {
 					.addInput(Items.NETHER_WART).addInput(YHCrops.UDUMBARA.getFruits())
 					.save(pvd, YHDrink.FULL_MOONS_EVE.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(YHItems.BLOOD_BOTTLE.fluid.getSource(), YHDrink.SCARLET_MIST.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
-					.addInput(Items.ROSE_BUSH, 2)
-					.addInput(Items.POPPY)
-					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.RED), 2)
-					.save(pvd, YHDrink.SCARLET_MIST.item.getId());
-
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.WIND_PRIESTESSES.fluid.getSource(), 3600)::unlockedBy, ModItems.RICE.get())
-					.addInput(ForgeTags.GRAIN_RICE, 3)
-					.addInput(YHDanmaku.Bullet.CIRCLE.get(DyeColor.LIME))
-					.addInput(Items.DANDELION).addInput(YHTagGen.TEA_GREEN).addInput(YHItems.MATCHA)
-					.save(pvd, YHDrink.WIND_PRIESTESSES.item.getId());
-
 		}
 
 		// steam
@@ -1155,12 +1025,6 @@ public class YHRecipeGen {
 				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.TAMAGOYAKI.item.get())
 						.result(YHSushi.EGG_NIGIRI.item.get(), 2)
 						.add(YHFood.TAMAGOYAKI.item.get())
-						.add(Items.DRIED_KELP)
-						.save(pvd);
-
-				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_SUSHI)::unlockedBy, YHFood.FLESH.item.get())
-						.result(YHSushi.FLESH_ROLL.item.get(), 2)
-						.add(YHTagGen.RAW_FLESH)
 						.add(Items.DRIED_KELP)
 						.save(pvd);
 
@@ -1278,60 +1142,6 @@ public class YHRecipeGen {
 						.save(pvd);
 
 			}
-		}
-
-		// danmaku
-		{
-			for (var e : DyeColor.values()) {
-				Item dye = ForgeRegistries.ITEMS.getValue(new ResourceLocation(e.getName() + "_dye"));
-				assert dye != null;
-				for (var t : YHDanmaku.Bullet.values()) {
-					var danmaku = t.get(e).get();
-					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
-							.pattern("AAA").pattern("ABA").pattern("AAA")
-							.define('A', t.tag)
-							.define('B', dye)
-							.save(pvd, t.get(e).getId().withSuffix("_recolor"));
-
-				}
-				for (var t : YHDanmaku.Laser.values()) {
-					var danmaku = t.get(e).get();
-					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, danmaku, 8)::unlockedBy, danmaku)
-							.pattern("AAA").pattern("ABA").pattern("AAA")
-							.define('A', t.tag)
-							.define('B', dye)
-							.save(pvd, t.get(e).getId().withSuffix("_recolor"));
-				}
-
-				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Bullet.MENTOS.get(e), 1)::unlockedBy,
-						YHDanmaku.Bullet.BALL.get(e).get())
-						.requires(YHDanmaku.Bullet.BALL.get(e), 2)
-						.save(pvd, YHDanmaku.Bullet.MENTOS.get(e).getId().withSuffix("_upgrade"));
-
-				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Bullet.BUBBLE.get(e), 1)::unlockedBy,
-						YHDanmaku.Bullet.MENTOS.get(e).get())
-						.requires(YHDanmaku.Bullet.MENTOS.get(e), 2)
-						.save(pvd, YHDanmaku.Bullet.BUBBLE.get(e).getId().withSuffix("_upgrade"));
-
-				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Bullet.STAR.get(e), 1)::unlockedBy,
-						YHDanmaku.Bullet.SPARK.get(e).get())
-						.requires(YHDanmaku.Bullet.SPARK.get(e), 2)
-						.save(pvd, YHDanmaku.Bullet.STAR.get(e).getId().withSuffix("_upgrade"));
-
-				unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.Laser.PENCIL.get(e), 4)::unlockedBy,
-						YHDanmaku.Laser.LASER.get(e).get())
-						.requires(YHDanmaku.Bullet.BALL.get(e))
-						.requires(YHDanmaku.Laser.LASER.get(e))
-						.save(pvd, YHDanmaku.Laser.PENCIL.get(e).getId().withSuffix("_upgrade"));
-			}
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.CUSTOM_SPELL_RING)::unlockedBy, Items.INK_SAC)
-					.requires(YHTagGen.PRESET_SPELL).requires(Items.PAPER).requires(Items.INK_SAC)
-					.save(pvd);
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, YHDanmaku.CUSTOM_SPELL_HOMING)::unlockedBy, Items.GLOW_INK_SAC)
-					.requires(YHTagGen.PRESET_SPELL).requires(Items.PAPER).requires(Items.GLOW_INK_SAC)
-					.save(pvd);
 		}
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {

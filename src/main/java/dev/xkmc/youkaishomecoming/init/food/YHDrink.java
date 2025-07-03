@@ -59,11 +59,6 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
-	SCARLET_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK, 600, 0, 1),
-			new EffectEntry(YHEffects.YOUKAIFYING, 1200, 0, 1)
-	), YHTagGen.TEA_DRINK, YHTagGen.FLESH_FOOD),
 	GREEN_WATER(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA, 600, 0, 0.1f)
 	), YHTagGen.TEA_DRINK),
@@ -108,14 +103,6 @@ public enum YHDrink implements IYHFluidHolder {
 	FULL_MOONS_EVE(FoodType.SAKE, 0xfff3fafb, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA, 1200, 1, 1)
-	), YHTagGen.SAKE),
-	SCARLET_MIST(FoodType.BOTTLE, 0xFFEA6B88, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(YHEffects.YOUKAIFIED, 1200, 0, 1)
-	), YHTagGen.FLESH_FOOD),
-	WIND_PRIESTESSES(FoodType.BOTTLE, 0xFF79E1CA, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(YHEffects.NATIVE, 600, 0, 1)
 	), YHTagGen.SAKE),
 
 	BLACK_GRAPE_JUICE(FoodType.BOTTLE, 0xff54263c, List.of()),
@@ -190,10 +177,6 @@ public enum YHDrink implements IYHFluidHolder {
 	@Override
 	public ItemStack asStack(int count) {
 		return item.asStack(count);
-	}
-
-	public boolean isFlesh() {
-		return this == SCARLET_MIST || this == SCARLET_TEA;
 	}
 
 	public static void register() {

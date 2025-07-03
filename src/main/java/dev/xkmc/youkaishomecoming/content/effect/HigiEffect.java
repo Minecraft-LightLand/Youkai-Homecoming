@@ -23,7 +23,6 @@ public class HigiEffect extends MobEffect {
 		if (!e.level().isClientSide) {
 			float amount = 1;
 			int period = YHModConfig.COMMON.higiHealingPeriod.get() >> lv;
-			if (e.hasEffect(YHEffects.FAIRY.get())) period /= 3;
 			if (period < 10) period = 10;
 			if (e.tickCount % period == 0)
 				e.heal(amount);

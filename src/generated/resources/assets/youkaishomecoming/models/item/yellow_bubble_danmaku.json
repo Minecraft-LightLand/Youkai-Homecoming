@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "youkaishomecoming:item/bullet/bubble/yellow"
-  }
-}

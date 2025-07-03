@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "youkaishomecoming:item/danmaku/laser",
-    "layer1": "youkaishomecoming:item/danmaku/laser_overlay"
-  }
-}

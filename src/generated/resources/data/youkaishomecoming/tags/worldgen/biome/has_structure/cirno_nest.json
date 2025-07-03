@@ -1,9 +1,0 @@
-{
-  "values": [
-    "#forge:is_snowy",
-    {
-      "id": "#c:is_snowy_plains",
-      "required": false
-    }
-  ]
-}

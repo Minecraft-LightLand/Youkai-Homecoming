@@ -2,10 +2,6 @@ package dev.xkmc.youkaishomecoming.events;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatProgress;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
-import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;
@@ -13,7 +9,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -27,13 +22,6 @@ public class ClientEventHandlers {
 		oTilt = tilt;
 		float lv = drunkLevel();
 		tilt = Mth.lerp(0.03f, tilt, lv);
-	}
-
-	@SubscribeEvent
-	public static void onTooltip(ItemTooltipEvent event) {
-		if (event.getItemStack().getItem() instanceof TouhouHatItem hat) {
-			AttrTooltip.modifyTooltip(event.getToolTip(), hat.getAttributeModifiersForDisplay(), false);
-		}
 	}
 
 	private static float drunkLevel() {
@@ -53,11 +41,4 @@ public class ClientEventHandlers {
 		pose.mulPose(Axis.ZP.rotationDegrees(t * t * 45 * Mth.sin((float) (time / 60 * Math.PI * 2))));
 	}
 
-	public static void setProgress(int id, CombatProgress progress) {
-		var level = Minecraft.getInstance().level;
-		if (level == null) return;
-		if (level.getEntity(id) instanceof YoukaiEntity e) {
-			e.combatProgress.loadFrom(progress);
-		}
-	}
 }

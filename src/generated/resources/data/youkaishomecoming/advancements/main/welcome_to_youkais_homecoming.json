@@ -14,8 +14,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaishomecoming:suwako_hat",
-      "nbt": "{Damage:0}"
+      "item": "youkaishomecoming:black_tea_bag"
     },
     "show_toast": false,
     "title": {

@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -88,9 +87,6 @@ public class YHCakeBlock extends CakeBlock {
 			player.awardStat(Stats.EAT_CAKE_SLICE);
 			if (!level.isClientSide()) {
 				player.eat(level, food.get().getDefaultInstance());
-				if (food.get() instanceof FleshFoodItem flesh) {
-					flesh.consume(player);
-				}
 			}
 
 			int i = state.getValue(BITES);

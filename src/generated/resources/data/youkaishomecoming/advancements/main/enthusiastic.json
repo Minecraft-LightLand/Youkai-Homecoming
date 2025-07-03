@@ -111,26 +111,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:bloody_flesh": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:bloody_flesh"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:bowl_of_flesh_feast": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:bowl_of_flesh_feast"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:bowl_of_heart_throbbing_surprise": {
       "conditions": {
         "item": {
@@ -191,16 +171,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:canned_flesh": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:canned_flesh"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:cappuccino": {
       "conditions": {
         "item": {
@@ -246,26 +216,6 @@
         "item": {
           "items": [
             "youkaishomecoming:con_panna"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:cooked_flesh": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:cooked_flesh"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:cooked_flesh_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:cooked_flesh_slice"
           ]
         }
       },
@@ -376,76 +326,6 @@
         "item": {
           "items": [
             "youkaishomecoming:espresso"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:fairy_candy": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:fairy_candy"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:flesh": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:flesh"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:flesh_chocolate_mousse": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:flesh_chocolate_mousse"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:flesh_dumplings": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:flesh_dumplings"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:flesh_roll": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:flesh_roll"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:flesh_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:flesh_slice"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:flesh_stew": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:flesh_stew"
           ]
         }
       },
@@ -1121,36 +1001,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:scarlet_devil_cake": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:scarlet_devil_cake"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:scarlet_mist": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:scarlet_mist"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaishomecoming:scarlet_tea": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:scarlet_tea"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:scholar_ginkgo": {
       "conditions": {
         "item": {
@@ -1501,16 +1351,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:wind_priestesses": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:wind_priestesses"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:yakumo_inari": {
       "conditions": {
         "item": {
@@ -1576,9 +1416,6 @@
       "youkaishomecoming:seven_colored_yokan"
     ],
     [
-      "youkaishomecoming:bloody_flesh"
-    ],
-    [
       "youkaishomecoming:cold_tofu"
     ],
     [
@@ -1618,9 +1455,6 @@
       "youkaishomecoming:genmai_tea"
     ],
     [
-      "youkaishomecoming:scarlet_tea"
-    ],
-    [
       "youkaishomecoming:green_water"
     ],
     [
@@ -1655,12 +1489,6 @@
     ],
     [
       "youkaishomecoming:full_moons_eve"
-    ],
-    [
-      "youkaishomecoming:scarlet_mist"
-    ],
-    [
-      "youkaishomecoming:wind_priestesses"
     ],
     [
       "youkaishomecoming:black_grape_juice"
@@ -1837,9 +1665,6 @@
       "youkaishomecoming:higi_doughnut"
     ],
     [
-      "youkaishomecoming:fairy_candy"
-    ],
-    [
       "youkaishomecoming:candy_apple"
     ],
     [
@@ -1921,36 +1746,6 @@
       "youkaishomecoming:bowl_of_heart_throbbing_surprise"
     ],
     [
-      "youkaishomecoming:flesh"
-    ],
-    [
-      "youkaishomecoming:cooked_flesh"
-    ],
-    [
-      "youkaishomecoming:flesh_slice"
-    ],
-    [
-      "youkaishomecoming:cooked_flesh_slice"
-    ],
-    [
-      "youkaishomecoming:flesh_dumplings"
-    ],
-    [
-      "youkaishomecoming:canned_flesh"
-    ],
-    [
-      "youkaishomecoming:flesh_stew"
-    ],
-    [
-      "youkaishomecoming:bowl_of_flesh_feast"
-    ],
-    [
-      "youkaishomecoming:flesh_chocolate_mousse"
-    ],
-    [
-      "youkaishomecoming:scarlet_devil_cake"
-    ],
-    [
       "youkaishomecoming:tobiko_gunkan"
     ],
     [
@@ -1970,9 +1765,6 @@
     ],
     [
       "youkaishomecoming:otoro_nigiri"
-    ],
-    [
-      "youkaishomecoming:flesh_roll"
     ],
     [
       "youkaishomecoming:shinnko_maki_slice"

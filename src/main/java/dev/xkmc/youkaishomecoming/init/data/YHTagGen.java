@@ -7,9 +7,7 @@ import dev.xkmc.youkaishomecoming.compat.sereneseasons.SeasonCompat;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
-import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import mezz.jei.api.constants.Tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -54,33 +52,15 @@ public class YHTagGen {
 	public static final TagKey<Item> FRUIT = forgeItem("fruits");
 	public static final TagKey<Item> SEED = forgeItem("seeds");
 	public static final TagKey<Item> GRAPE_SEED = item("grape_seed");
-	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> DANGO = item("dango");
 	public static final TagKey<Item> TEA_DRINK = item("tea");
 	public static final TagKey<Item> SAKE = item("sake");
 	public static final TagKey<Item> WINE = item("wine");
-	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
-	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
-	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
-	public static final TagKey<Item> PRESET_SPELL = item("preset_spell");
-	public static final TagKey<Item> DANMAKU = item("danmaku");
-	public static final TagKey<Item> LASER = item("laser");
-	public static final TagKey<Item> DANMAKU_SHOOTER = item("danmaku_shooter");
-	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
 	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
-	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
-	public static final TagKey<EntityType<?>> SKULL_SOURCE = entity("drops_skeleton_skull");
-	public static final TagKey<EntityType<?>> WITHER_SOURCE = entity("drops_wither_skull");
-	public static final TagKey<EntityType<?>> ZOMBIE_SOURCE = entity("drops_zombie_head");
-	public static final TagKey<EntityType<?>> CREEPER_SOURCE = entity("drops_creeper_head");
-	public static final TagKey<EntityType<?>> PIGLIN_SOURCE = entity("drops_piglin_head");
-
-	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
-	public static final TagKey<EntityType<?>> BOSS = entity("cannot_capture");
 
 	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
 	public static final TagKey<Item> ICE = ItemTags.create(new ResourceLocation("forge", "ice_cubes"));
@@ -91,28 +71,13 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA_OOLONG = ItemTags.create(new ResourceLocation("forge", "tea_leaves/oolong"));
 	public static final TagKey<Item> TEA = ItemTags.create(new ResourceLocation("forge", "tea_leaves"));
 
-	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
-	public static final TagKey<Item> TOUHOU_WINGS = item("touhou_wings");
-
 	public static final List<Consumer<RegistrateItemTagsProvider>> OPTIONAL_TAGS = new ArrayList<>();
 
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
 	}
 
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
-		pvd.addTag(FLESH_SOURCE).add(EntityType.EVOKER, EntityType.PILLAGER, EntityType.VINDICATOR, EntityType.ILLUSIONER, EntityType.WITCH,
-				EntityType.VILLAGER, EntityType.WANDERING_TRADER, EntityType.PLAYER);
 
-		pvd.addTag(SKULL_SOURCE).add(EntityType.SKELETON, EntityType.STRAY);
-		pvd.addTag(WITHER_SOURCE).add(EntityType.WITHER_SKELETON, EntityType.WITHER);
-		pvd.addTag(ZOMBIE_SOURCE).add(EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.HUSK, EntityType.DROWNED);
-		pvd.addTag(CREEPER_SOURCE).add(EntityType.CREEPER);
-		pvd.addTag(PIGLIN_SOURCE).add(EntityType.PIGLIN, EntityType.PIGLIN_BRUTE);
-
-		pvd.addTag(YOUKAI_IGNORE).add(EntityType.ENDER_DRAGON);
-
-		pvd.addTag(entity("ars_nouveau", "jar_blacklist")).addTag(BOSS);
-		pvd.addTag(entity("ars_nouveau", "rewind_blacklist")).addTag(BOSS);
 	}
 
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
@@ -143,24 +108,12 @@ public class YHTagGen {
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
-		var danmaku = pvd.addTag(DANMAKU);
-		for (var e : YHDanmaku.Bullet.values()) {
-			danmaku.addTag(e.tag);
-		}
-		var laser = pvd.addTag(LASER);
-		for (var e : YHDanmaku.Laser.values()) {
-			laser.addTag(e.tag);
-		}
-		pvd.addTag(DANMAKU_SHOOTER).addTags(DANMAKU, LASER, CUSTOM_SPELL, PRESET_SPELL);
-		pvd.addTag(ItemTags.create(Tags.HIDDEN_FROM_RECIPE_VIEWERS))
-				.addTags(DANMAKU, LASER);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
 		}
 		for (var e : OPTIONAL_TAGS) {
 			e.accept(pvd);
 		}
-		pvd.addTag(FROZEN_FROG).add(YHItems.FROZEN_FROG_COLD.get(), YHItems.FROZEN_FROG_WARM.get(), YHItems.FROZEN_FROG_TEMPERATE.get());
 
 	}
 

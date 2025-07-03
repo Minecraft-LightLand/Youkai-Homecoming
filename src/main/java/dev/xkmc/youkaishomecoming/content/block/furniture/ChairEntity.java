@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.block.furniture;
 
-import dev.xkmc.fastprojectileapi.entity.SimplifiedEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

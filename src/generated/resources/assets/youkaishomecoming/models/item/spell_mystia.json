@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "youkaishomecoming:item/spell/spell_mystia"
-  }
-}

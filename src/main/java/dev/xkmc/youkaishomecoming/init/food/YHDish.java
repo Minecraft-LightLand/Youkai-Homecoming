@@ -4,7 +4,6 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
-import dev.xkmc.youkaishomecoming.content.item.food.FleshSaucerItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -60,8 +59,6 @@ public enum YHDish {
 			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 
-	BLOODY_FLESH(Saucer.CERAMIC, Type.FLESH, 6, 0.8f, true, 3, List.of(),
-			YHTagGen.FLESH_FOOD, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
 	COLD_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, false, 4, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
@@ -138,10 +135,6 @@ public enum YHDish {
 		return builder;
 	}
 
-	public boolean isFlesh() {
-		return this == BLOOD_CURD || this == BLOODY_FLESH;
-	}
-
 	public static void register() {
 	}
 
@@ -149,8 +142,7 @@ public enum YHDish {
 		COOKED, STEAMED, FLESH;
 
 		public Item create(FoodSaucerBlock block, Item.Properties properties) {
-			if (this == FLESH) return new FleshSaucerItem(block, properties);
-			else return new FoodSaucerItem(block, properties);
+			return new FoodSaucerItem(block, properties);
 		}
 	}
 

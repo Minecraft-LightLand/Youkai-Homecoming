@@ -4,17 +4,12 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
-import dev.xkmc.youkaishomecoming.content.capability.GrazeCapability;
 import dev.xkmc.youkaishomecoming.content.effect.UdumbaraEffect;
 import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
-import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
-import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
@@ -37,10 +32,6 @@ public class YHAttackListener implements AttackListener {
 		var event = cache.getLivingHurtEvent();
 		assert event != null;
 		var source = event.getSource();
-		if (source.is(YHDamageTypes.DANMAKU_TYPE) && source.getEntity() instanceof Player player) {
-			var graze = GrazeCapability.HOLDER.get(player);
-			cache.addHurtModifier(DamageModifier.multTotal(1 + graze.powerBonus()));
-		}
 		if (source.getEntity() instanceof TunaEntity && cache.getAttackTarget() instanceof WaterAnimal) {
 			cache.addHurtModifier(DamageModifier.multTotal(2));
 		}
@@ -92,10 +83,6 @@ public class YHAttackListener implements AttackListener {
 		if (attacker == null) return;
 		var damageEvent = cache.getLivingDamageEvent();
 		assert damageEvent != null;
-		ItemStack head = attacker.getItemBySlot(EquipmentSlot.HEAD);
-		if (head.getItem() instanceof TouhouHatItem hat) {
-			hat.onHurtTarget(head, damageEvent.getSource(), cache.getAttackTarget());
-		}
 		var target = cache.getAttackTarget();
 		var ins = target.getEffect(YHEffects.CONFIDENT.get());
 		if (ins != null) {

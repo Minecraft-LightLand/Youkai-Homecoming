@@ -22,7 +22,6 @@ public class CreateRecipeGen {
 			bottles(pvd, e);
 		}
 		bottles(pvd, YHItems.SOY_SAUCE_BOTTLE);
-		bottles(pvd, YHItems.BLOOD_BOTTLE);
 	}
 
 	private static void bottles(RegistrateRecipeProvider pvd, IYHFluidHolder sake) {

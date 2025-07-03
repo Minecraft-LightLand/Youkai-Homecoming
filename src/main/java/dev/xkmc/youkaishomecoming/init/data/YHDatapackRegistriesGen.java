@@ -52,58 +52,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 
-	private record YHStructure(
-			ResourceLocation id, TagKey<Biome> biomes, int spacing, int separation,
-			List<StructureProcessor> processors,
-			Map<MobCategory, StructureSpawnOverride> spawns) {
-	}
-
-	private static final List<YHStructure> STRUCTURES = List.of(
-			new YHStructure(YoukaisHomecoming.loc("youkai_nest"),
-					YHBiomeTagsProvider.HAS_RUMIA_NEST, 24, 8,
-					List.of(
-							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
-									injectData(Blocks.CHEST, YHLootGen.NEST_CHEST),
-									injectData(Blocks.BARREL, YHLootGen.NEST_BARREL)
-							))
-					),
-					Map.of(
-							MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE,
-									WeightedRandomList.create(new MobSpawnSettings.SpawnerData(
-											YHEntities.RUMIA.get(), 1, 1, 1
-									)))
-					)),
-			new YHStructure(YoukaisHomecoming.loc("cirno_nest"),
-					YHBiomeTagsProvider.HAS_CIRNO_NEST, 24, 8,
-					List.of(
-							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.NORTH, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.SOUTH, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.EAST, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.WEST, YHLootGen.CIRNO_CABINET)
-							))
-					),
-					Map.of(
-							MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE,
-									WeightedRandomList.create(new MobSpawnSettings.SpawnerData(
-											YHEntities.CIRNO.get(), 1, 1, 1
-									)))
-					)),
-			new YHStructure(YoukaisHomecoming.loc("hakurei_shrine"),
-					YHBiomeTagsProvider.HAS_SHRINE, 24, 8,
-					List.of(
-							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
-									injectData(Blocks.CHEST, YHLootGen.SHRINE_CHEST),
-									injectData(Blocks.BARREL, YHLootGen.SHRINE_BARREL),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), YHLootGen.SHRINE_CABINET)
-							))
-					),
-					Map.of())
-	);
-
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(Registries.CONFIGURED_FEATURE, ctx -> {
 				for (var e : YHCrops.values()) {
@@ -115,42 +63,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					e.registerPlacements(ctx);
 				}
 			})
-			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers)
-			.add(Registries.PROCESSOR_LIST, ctx -> {
-				for (var e : STRUCTURES) {
-					ctx.register(ResourceKey.create(Registries.PROCESSOR_LIST, e.id),
-							new StructureProcessorList(e.processors()));
-				}
-			})
-			.add(Registries.TEMPLATE_POOL, ctx -> {
-				var empty = ctx.lookup(Registries.TEMPLATE_POOL)
-						.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation("empty")));
-				for (var e : STRUCTURES) {
-					var list = ctx.lookup(Registries.PROCESSOR_LIST)
-							.getOrThrow(ResourceKey.create(Registries.PROCESSOR_LIST, e.id()));
-					ctx.register(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()), new StructureTemplatePool(empty, List.of(
-							Pair.of(new SinglePiece(e.id(), list, StructureTemplatePool.Projection.RIGID), 1)
-					)));
-				}
-			})
-			.add(Registries.STRUCTURE, ctx -> {
-				for (var e : STRUCTURES) {
-					var biome = ctx.lookup(Registries.BIOME).getOrThrow(e.biomes());
-					var pool = ctx.lookup(Registries.TEMPLATE_POOL)
-							.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()));
-					ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new JigsawStructure(
-							new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX),
-							pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG)
-					);
-				}
-			})
-			.add(Registries.STRUCTURE_SET, ctx -> {
-				for (var e : STRUCTURES) {
-					var str = ctx.lookup(Registries.STRUCTURE).getOrThrow(ResourceKey.create(Registries.STRUCTURE, e.id));
-					ctx.register(ResourceKey.create(Registries.STRUCTURE_SET, e.id), new StructureSet(
-							str, new RandomSpreadStructurePlacement(e.spacing(), e.separation(), RandomSpreadType.LINEAR, e.id.hashCode() & 0x7fffffff)));
-				}
-			});
+			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers);
 
 	private static void registerBiomeModifiers(BootstapContext<BiomeModifier> ctx) {
 		var biomes = ctx.lookup(Registries.BIOME);

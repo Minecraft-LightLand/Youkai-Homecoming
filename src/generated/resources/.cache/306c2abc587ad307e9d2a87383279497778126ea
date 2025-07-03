@@ -1,8 +1,5 @@
-// 1.20.1	2025-07-02T22:14:55.319864	Tags for minecraft:worldgen/biome mod id youkaishomecoming
+// 1.20.1	2025-07-03T09:24:18.1687	Tags for minecraft:worldgen/biome mod id youkaishomecoming
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/worldgen/biome/is_magical.json
-bffd02152ab92ebbb46e2caaaddcced6c8f55740 data/youkaishomecoming/tags/worldgen/biome/has_structure/cirno_nest.json
-ce7e7f10517021590c3771b5d4befb6f00232756 data/youkaishomecoming/tags/worldgen/biome/has_structure/hakurei_shrine.json
-5c0d6417dc8d9501750754f0547746a8f45239a0 data/youkaishomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
 20754fe41b3ff66a968225b79e15572159b074dd data/youkaishomecoming/tags/worldgen/biome/spawns/black_grape.json
 c3d4e55bd4ed5d178abb10df76626eccdab7c209 data/youkaishomecoming/tags/worldgen/biome/spawns/coffea.json
 841f627f93601e3b436168727e7a9480102f6439 data/youkaishomecoming/tags/worldgen/biome/spawns/cucumber.json

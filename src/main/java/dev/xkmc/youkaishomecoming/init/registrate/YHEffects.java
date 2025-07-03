@@ -24,14 +24,6 @@ import java.util.function.Supplier;
 
 public class YHEffects {
 
-	public static final RegistryEntry<MobEffect> YOUKAIFIED = genEffect("youkaified",
-			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
-			"You are a Youkai now");
-
-	public static final RegistryEntry<MobEffect> YOUKAIFYING = genEffect("youkaifying",
-			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
-			"You are becoming a Youkai");
-
 	public static final RegistryEntry<MobEffect> CAFFEINATED = genEffect("caffeinated",
 			() -> new CaffeinatedEffect(MobEffectCategory.BENEFICIAL, -10667225),
 			"Boost attack damage");
@@ -89,10 +81,6 @@ public class YHEffects {
 	public static final RegistryEntry<MobEffect> HIGI = genEffect("higi",
 			() -> new HigiEffect(MobEffectCategory.BENEFICIAL, 0x6CA16E),
 			"Boost attack damage and movement speed, heal slowly");
-
-	public static final RegistryEntry<MobEffect> FAIRY = genEffect("fairy",
-			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
-			"Reduce max HP and melee attack damage. Gives speed and healing boost. Enables danmaku. Reduce player hitbox for Danmaku");
 
 	public static final RegistryEntry<MobEffect> CONFIDENT = genEffect("confident",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),

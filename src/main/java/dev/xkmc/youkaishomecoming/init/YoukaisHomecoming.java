@@ -1,32 +1,14 @@
 package dev.xkmc.youkaishomecoming.init;
 
-import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
-import dev.shadowsoffire.attributeslib.impl.AttributeEvents;
-import dev.shadowsoffire.gateways.Gateways;
-import dev.xkmc.fastprojectileapi.collision.FastMapInit;
-import dev.xkmc.fastprojectileapi.render.virtual.DanmakuToClientPacket;
-import dev.xkmc.fastprojectileapi.render.virtual.EraseDanmakuToClient;
-import dev.xkmc.fastprojectileapi.spellcircle.SpellCircleConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
-import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
-import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
-import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRegistries;
-import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.fairy.FairySpellCards;
-import dev.xkmc.youkaishomecoming.content.capability.*;
-import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
-import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
-import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
-import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
@@ -34,31 +16,20 @@ import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.*;
 import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
-import net.minecraft.Util;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.network.NetworkDirection;
 import org.slf4j.Logger;
 
 @Mod(YoukaisHomecoming.MODID)
@@ -72,21 +43,11 @@ public class YoukaisHomecoming {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			loc("main"), 2,
-			e -> e.create(FrogSyncPacket.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(KoishiStartPacket.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(SpellSetToServer.class, NetworkDirection.PLAY_TO_SERVER),
-			e -> e.create(CombatToClient.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(GrazeHelper.GrazeToClient.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(DanmakuToClientPacket.class, NetworkDirection.PLAY_TO_CLIENT),
-			e -> e.create(EraseDanmakuToClient.class, NetworkDirection.PLAY_TO_CLIENT)
-	);
-
-	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
+			loc("main"), 2);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
-					e -> e.icon(YHItems.SUWAKO_HAT::asStack));
+					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
 
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
@@ -94,38 +55,15 @@ public class YoukaisHomecoming {
 	public YoukaisHomecoming() {
 		YHBlocks.register();
 		YHEffects.register();
-		YHDanmaku.register();
 		YHEntities.register();
-		YHAttributes.register();
 		YHSounds.register();
 		YHGLMProvider.register();
 		YHCriteriaTriggers.register();
-		KoishiAttackCapability.register();
-		FrogGodCapability.register();
-		GrazeCapability.register();
 		YHModConfig.init();
 		TableItemManager.init();
 		FilterHolderSet.register();
 
 		AttackEventHandler.register(3943, new YHAttackListener());
-
-		if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-			TLMRegistries.init();
-			MinecraftForge.EVENT_BUS.register(TLMCompat.class);
-		}
-		if (ModList.get().isLoaded(Gateways.MODID)) {
-			MinecraftForge.EVENT_BUS.register(GatewayEventHandlers.class);
-		}
-	}
-
-	@SubscribeEvent
-	public static void modifyAttributes(EntityAttributeModificationEvent event) {
-		event.add(EntityType.PLAYER, YHAttributes.INITIAL_POWER.get());
-		event.add(EntityType.PLAYER, YHAttributes.INITIAL_RESOURCE.get());
-		event.add(EntityType.PLAYER, YHAttributes.MAX_POWER.get());
-		event.add(EntityType.PLAYER, YHAttributes.MAX_RESOURCE.get());
-		event.add(EntityType.PLAYER, YHAttributes.GRAZE_EFFECTIVENESS.get());
-		event.add(EntityType.PLAYER, YHAttributes.HITBOX.get());
 	}
 
 	@SubscribeEvent
@@ -144,30 +82,7 @@ public class YoukaisHomecoming {
 
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 
-			TouhouSpellCards.registerSpells();
-
-			var thrower = new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
-					return Util.make(new FrozenFrog(level, pos.x(), pos.y(), pos.z()), e -> e.setItem(stack));
-				}
-			};
-
-			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_COLD.get(), thrower);
-			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_WARM.get(), thrower);
-			DispenserBlock.registerBehavior(YHItems.FROZEN_FROG_TEMPERATE.get(), thrower);
-
-			DispenserBlock.registerBehavior(YHItems.FAIRY_ICE_CRYSTAL.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
-					return new FairyIce(level, pos.x(), pos.y(), pos.z());
-				}
-			});
-
-			if (ENABLE_TLM && ModList.get().isLoaded(TouhouLittleMaid.MOD_ID)) {
-				FairySpellCards.registerSpells();
-			}
-
 		});
-		FastMapInit.init();
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
@@ -192,7 +107,6 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
 		gen.addProvider(server, new YHGLMProvider(gen));
 		gen.addProvider(server, new SlotGen(gen));
-		new YHDamageTypes(output, pvd, helper).generate(server, gen);
 	}
 
 	@SubscribeEvent

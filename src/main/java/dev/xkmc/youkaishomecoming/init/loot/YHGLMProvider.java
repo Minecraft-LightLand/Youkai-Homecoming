@@ -65,33 +65,6 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build()
 		));
 
-		add("scavenging_flesh", create(YHFood.FLESH.item.get(), 1,
-				killedByKnife(), fire(false), isFleshSource(), killedByYoukai()));
-		add("scavenging_flesh_cooked", create(YHFood.COOKED_FLESH.item.get(), 1,
-				killedByKnife(), fire(true), isFleshSource(), killedByYoukai()));
-
-		add("rumia_scavenging_flesh", create(YHFood.FLESH.item.get(), 1,
-				killedByRumia(), fire(false), isFleshSource()));
-		add("rumia_scavenging_flesh_cooked", create(YHFood.COOKED_FLESH.item.get(), 1,
-				killedByRumia(), fire(true), isFleshSource()));
-		add("rumia_scavenging_skeleton_skull", create(Items.SKELETON_SKULL, 1,
-				killedByRumia(), entity(YHTagGen.SKULL_SOURCE)));
-		add("rumia_scavenging_wither_skeleton_skull", create(Items.WITHER_SKELETON_SKULL, 1,
-				killedByRumia(), entity(YHTagGen.WITHER_SOURCE)));
-		add("rumia_scavenging_zombie_head", create(Items.ZOMBIE_HEAD, 1,
-				killedByRumia(), entity(YHTagGen.ZOMBIE_SOURCE)));
-		add("rumia_scavenging_creeper_head", create(Items.CREEPER_HEAD, 1,
-				killedByRumia(), entity(YHTagGen.CREEPER_SOURCE)));
-		add("rumia_scavenging_piglin_head", create(Items.PIGLIN_HEAD, 1,
-				killedByRumia(), entity(YHTagGen.PIGLIN_SOURCE)));
-
-		add("cirno_frozen_frog_cold", create(YHItems.FROZEN_FROG_COLD.get(), 1,
-				killedByCirno(), frog(FrogVariant.COLD)));
-		add("cirno_frozen_frog_warm", create(YHItems.FROZEN_FROG_WARM.get(), 1,
-				killedByCirno(), frog(FrogVariant.WARM)));
-		add("cirno_frozen_frog_temperate", create(YHItems.FROZEN_FROG_TEMPERATE.get(), 1,
-				killedByCirno(), frog(FrogVariant.TEMPERATE)));
-
 		add("udumbara_ancient_city_loot", loot(YHLootGen.UDUMBARA_LOOT,
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY).build()));
 		add("udumbara_ancient_city_ice_box_loot", loot(YHLootGen.UDUMBARA_LOOT,
@@ -100,13 +73,6 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 
 	private static LootModifier loot(ResourceLocation id, LootItemCondition... cond) {
 		return AddLootTableModifierAccessor.createAddLootTableModifier(cond, id);
-	}
-
-	private static LootItemCondition isFleshSource() {
-		return LootItemEntityPropertyCondition.hasProperties(
-				LootContext.EntityTarget.THIS,
-				EntityPredicate.Builder.entity().entityType(
-						EntityTypePredicate.of(YHTagGen.FLESH_SOURCE))).build();
 	}
 
 	private static LootItemCondition killer(EntityType<?> type) {
@@ -146,39 +112,6 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 						EntityEquipmentPredicate.Builder.equipment().mainhand(
 										ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
 								.build()).build()).build();
-	}
-
-	private static LootItemCondition killedByRumia() {
-		return LootItemEntityPropertyCondition.hasProperties(
-				LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().equipment(
-						EntityEquipmentPredicate.Builder.equipment().head(
-										ItemPredicate.Builder.item().of(YHItems.RUMIA_HAIRBAND).build())
-								.build()).build()).build();
-	}
-
-	private static LootItemCondition killedByCirno() {
-		return LootItemEntityPropertyCondition.hasProperties(
-						LootContext.EntityTarget.KILLER,
-						EntityPredicate.Builder.entity().entityType(
-								EntityTypePredicate.of(YHEntities.CIRNO.get())))
-				.or(LootItemEntityPropertyCondition.hasProperties(
-						LootContext.EntityTarget.KILLER,
-						EntityPredicate.Builder.entity().equipment(
-								EntityEquipmentPredicate.Builder.equipment()
-										.head(ItemPredicate.Builder.item()
-												.of(YHItems.CIRNO_HAIRBAND.get())
-												.build()).build()).build())).build();
-	}
-
-	private static LootItemCondition killedByYoukai() {
-		return LootItemEntityPropertyCondition.hasProperties(
-				LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().effects(MobEffectsPredicate.effects().and(YHEffects.YOUKAIFYING.get()))
-		).or(LootItemEntityPropertyCondition.hasProperties(
-				LootContext.EntityTarget.KILLER,
-				EntityPredicate.Builder.entity().effects(MobEffectsPredicate.effects().and(YHEffects.YOUKAIFIED.get()))
-		)).build();
 	}
 
 	private static LootItemCondition fire(boolean fire) {

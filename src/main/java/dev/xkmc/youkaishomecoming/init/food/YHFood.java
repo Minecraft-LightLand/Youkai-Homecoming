@@ -112,10 +112,6 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
-	FAIRY_CANDY(FoodType.FAST, 2, 0.6f, List.of(
-			new EffectEntry(YHEffects.FAIRY::get, 1200, 0, 1)
-	), DietTagGen.SUGARS.tag),
-
 	// stick
 
 	CANDY_APPLE(FoodType.STICK, 6, 0.5f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
@@ -201,27 +197,6 @@ public enum YHFood {
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
-	// flesh
-
-	FLESH(FoodType.FLESH, 2, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COOKED_FLESH(FoodType.FLESH, 5, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	FLESH_SLICE(FoodType.FLESH_FAST, 1, 0.3f, YHTagGen.RAW_FLESH, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COOKED_FLESH_SLICE(FoodType.FLESH_FAST, 2, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	FLESH_DUMPLINGS(FoodType.FLESH, 2, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 2400, 0, 1)
-	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
-	CANNED_FLESH(FoodType.CAN_FLESH, 4, 0.8f, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	FLESH_STEW(FoodType.BOWL_FLESH, 7, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	BOWL_OF_FLESH_FEAST(FoodType.BOWL_FLESH, 5, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	FLESH_CHOCOLATE_MOUSSE(FoodType.FLESH_FAST, 3, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
-	SCARLET_DEVIL_CAKE(FoodType.FLESH_FAST, 4, 0.5f, DietTagGen.PROTEINS.tag, DietTagGen.SUGARS.tag),
 	;
 
 
@@ -239,7 +214,6 @@ public enum YHFood {
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
 		if (ordinal() <= 25) id = "food/mochi/";
 		if (ordinal() <= 19) id = "food/basic/";
-		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {
 			String rid = "item/" + id + raw;
@@ -271,17 +245,8 @@ public enum YHFood {
 		this(type, nutrition, sat, List.of(), tags);
 	}
 
-
-	private boolean isFlesh() {
-		return type.isFlesh();
-	}
-
 	private boolean isUnappealing() {
 		return this == RAW_LAMPREY || this == RAW_LAMPREY_FILLET || this == POOR_GOD_SOUP || this == BUTTER;
-	}
-
-	public boolean isReimuFood() {
-		return !isFlesh() && !isUnappealing();
 	}
 
 	public static void register() {

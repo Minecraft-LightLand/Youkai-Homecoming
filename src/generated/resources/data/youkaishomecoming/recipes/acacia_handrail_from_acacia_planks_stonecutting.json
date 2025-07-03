@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "minecraft:acacia_planks"
-  },
-  "result": "youkaishomecoming:acacia_handrail"
-}

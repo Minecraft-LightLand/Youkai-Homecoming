@@ -3,11 +3,9 @@ package dev.xkmc.youkaishomecoming.init.food;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
@@ -33,10 +31,6 @@ public enum FoodType {
 	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false, true),
 	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true, true),
 	BOWL_MEAT(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false),
-	FLESH(FleshFoodItem::new, UnaryOperator.identity(), true, false, false, YHTagGen.FLESH_FOOD),
-	FLESH_FAST(FleshFoodItem::new, UnaryOperator.identity(), true, true, false, YHTagGen.FLESH_FOOD),
-	BOWL_FLESH(FleshFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false, YHTagGen.FLESH_FOOD),
-	CAN_FLESH(FleshFoodItem::new, p -> p.craftRemainder(YHItems.CAN.get()).stacksTo(64), true, true, false, YHTagGen.FLESH_FOOD),
 	;
 
 	private final Function<Item.Properties, Item> factory;
@@ -96,14 +90,7 @@ public enum FoodType {
 
 	public String makeLang(String id) {
 		String name = YHItems.toEnglishName(id.toLowerCase(Locale.ROOT));
-		if (isFlesh()) {
-			name = name.replaceFirst("Flesh", "%1\\$s");
-		}
 		return YHItems.toEnglishName(name);
-	}
-
-	public boolean isFlesh() {
-		return this == FLESH || this == BOWL_FLESH || this == FLESH_FAST || this == CAN_FLESH;
 	}
 
 	@SuppressWarnings({"unsafe", "unchecked"})

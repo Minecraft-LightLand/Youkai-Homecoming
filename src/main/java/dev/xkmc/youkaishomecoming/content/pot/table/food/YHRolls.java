@@ -65,7 +65,6 @@ public enum YHRolls {
 		type = switch (type) {
 			case MEAT -> FoodType.MEAT_SLICE;
 			case SIMPLE -> FoodType.FAST;
-			case FLESH -> FoodType.FLESH_FAST;
 			default -> throw new IllegalArgumentException("State should have fast variant");
 		};
 		slice = type.build(name + "_slice", nutrition, sat, tags, effs)

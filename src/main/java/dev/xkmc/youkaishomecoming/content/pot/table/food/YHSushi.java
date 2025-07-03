@@ -40,10 +40,6 @@ public enum YHSushi implements ItemLike {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 300, 0, 0.5f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-
-	FLESH_ROLL(FoodType.FLESH, 3, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
-			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	;
 
 	public final ItemEntry<Item> item;
@@ -65,18 +61,6 @@ public enum YHSushi implements ItemLike {
 	@Override
 	public Item asItem() {
 		return item.asItem();
-	}
-
-	private boolean isFlesh() {
-		return type.isFlesh();
-	}
-
-	private boolean isUnappealing() {
-		return false;
-	}
-
-	public boolean isReimuFood() {
-		return !isFlesh() && !isUnappealing();
 	}
 
 	public static void register() {

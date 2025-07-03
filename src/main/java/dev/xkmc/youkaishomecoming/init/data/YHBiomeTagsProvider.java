@@ -30,9 +30,6 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> NO_GRAPE = asTag("spawns/no_grape");
 	public static final TagKey<Biome> BLACK_GRAPE = asTag("spawns/black_grape");
 	public static final TagKey<Biome> WHITE_GRAPE = asTag("spawns/white_grape");
-	public static final TagKey<Biome> HAS_RUMIA_NEST = asTag("has_structure/youkai_nest");
-	public static final TagKey<Biome> HAS_CIRNO_NEST = asTag("has_structure/cirno_nest");
-	public static final TagKey<Biome> HAS_SHRINE = asTag("has_structure/hakurei_shrine");
 
 	public YHBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, YoukaisHomecoming.MODID, helper);
@@ -54,12 +51,6 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
 		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);
 		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST);
-		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST);
-		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
-				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
-		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"))
-				.addOptionalTag(new ResourceLocation("c:is_cherry_forest"))
-				.addOptionalTag(new ResourceLocation("c:is_sakura_forest"));
 	}
 
 	public static TagKey<Biome> asTag(String name) {

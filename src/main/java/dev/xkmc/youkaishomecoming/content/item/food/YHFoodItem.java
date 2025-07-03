@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.item.food;
 
+import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -41,7 +42,7 @@ public class YHFoodItem extends Item {
 	}
 
 	public static void getFoodEffects(ItemStack stack, List<Component> list) {
-		var food = stack.getFoodProperties(IFleshFoodItem.getPlayer());
+		var food = stack.getFoodProperties(Proxy.getPlayer());
 		if (food == null) return;
 		getFoodEffects(food, list);
 	}
@@ -62,13 +63,7 @@ public class YHFoodItem extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
 		ItemStack itemStack = getCraftingRemainingItem(stack);
-		boolean youkai = consumer.hasEffect(YHEffects.YOUKAIFYING.get());
 		super.finishUsingItem(stack, worldIn, consumer);
-		if (!youkai && consumer.hasEffect(YHEffects.YOUKAIFYING.get())) {
-			int dur = YHModConfig.COMMON.youkaifyingConfusionTime.get();
-			consumer.addEffect(new MobEffectInstance(MobEffects.CONFUSION,
-					dur, 0, false, false, true));
-		}
 		if (itemStack.isEmpty()) {
 			return stack;
 		}

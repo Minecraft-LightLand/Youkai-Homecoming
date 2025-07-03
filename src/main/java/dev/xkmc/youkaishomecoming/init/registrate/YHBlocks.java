@@ -10,10 +10,6 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
-import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlock;
-import dev.xkmc.youkaishomecoming.content.block.donation.DonationBoxBlockEntity;
-import dev.xkmc.youkaishomecoming.content.block.donation.DonationShape;
-import dev.xkmc.youkaishomecoming.content.block.donation.DoubleBlockHorizontal;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
@@ -88,7 +84,6 @@ public class YHBlocks {
 
 		private final Block plankProp, fenceProp;
 		public final ItemLike plank, strippedWood, slab;
-		public BlockEntry<MultiFenceBlock> fence;
 		public BlockEntry<WoodTableBlock> table;
 		public BlockEntry<WoodChairBlock> seat;
 
@@ -147,9 +142,6 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_ORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
-
-	public static final BlockEntry<DelegateBlock> DONATION_BOX;
-	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
 
 	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 	public static final BlockEntry<MoonLanternBlock> MOON_LANTERN;
@@ -312,20 +304,6 @@ public class YHBlocks {
 		YHItems.register();
 
 		{
-			DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
-							BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)
-									.mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASS),
-							BlockProxy.HORIZONTAL, new DoubleBlockHorizontal(),
-							new DonationShape(), DonationBoxBlock.TE
-					)).blockstate(DonationBoxBlock::buildStates)
-					.simpleItem()
-					.loot((pvd, block) -> pvd.add(block, LootTable.lootTable()))
-					.register();
-
-			DONATION_BOX_BE = YoukaisHomecoming.REGISTRATE.blockEntity("donation_box", DonationBoxBlockEntity::new)
-					.validBlock(DONATION_BOX)
-					.register();
-
 			MOKA_KIT = YoukaisHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
@@ -388,12 +366,6 @@ public class YHBlocks {
 
 			for (var e : WoodType.values()) {
 				String name = e.name().toLowerCase(Locale.ROOT);
-				e.fence = YoukaisHomecoming.REGISTRATE.block(name + "_handrail",
-								p -> new MultiFenceBlock(BlockBehaviour.Properties.copy(e.fenceProp).noOcclusion()))
-						.blockstate(MultiFenceBlock::genModel)
-						.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/handrail/" + ctx.getName()))).build()
-						.tag(BlockTags.MINEABLE_WITH_AXE).defaultLoot()
-						.register();
 				e.table = YoukaisHomecoming.REGISTRATE.block(name + "_dining_table", p -> new WoodTableBlock(
 								BlockBehaviour.Properties.copy(e.plankProp)))
 						.blockstate(WoodTableBlock::buildStates)
