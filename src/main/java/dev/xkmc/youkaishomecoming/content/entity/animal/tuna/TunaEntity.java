@@ -61,19 +61,19 @@ public class TunaEntity extends AbstractFish {
 		builder = builder.add(Attributes.MOVEMENT_SPEED, 1.5);
 		builder = builder.add(Attributes.MAX_HEALTH, 40);
 		builder = builder.add(Attributes.ARMOR, 4);
-		builder = builder.add(Attributes.ATTACK_DAMAGE, 8);
+		builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
 		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 1.5);
 		return builder;
 	}
 
 	public float getSwimSpeed() {
-		return (float) getAttributeValue(ForgeMod.SWIM_SPEED.get()) * 0.02f;
+		return (float) getAttributeValue(ForgeMod.SWIM_SPEED.get()) * (isAggressive() ? 0.03f : 0.02f);
 	}
 
 	@Override
 	protected void registerGoals() {
-		goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5, false));
+		goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, false));
 		goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1, 3));
 		targetSelector.addGoal(0, new HurtByTargetGoal(this));
 		targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, WaterAnimal.class, true,
@@ -116,7 +116,7 @@ public class TunaEntity extends AbstractFish {
 		boolean ans = super.doHurtTarget(e);
 		if (ans && !e.isAlive()) {
 			if (e instanceof WaterAnimal le) {
-				int time = (int) (le.getMaxHealth() * 200);
+				int time = (int) (le.getMaxHealth() * 600);
 				addEffect(new MobEffectInstance(MobEffects.SATURATION, time));
 			}
 			e.remove(Entity.RemovalReason.KILLED);
@@ -142,6 +142,11 @@ public class TunaEntity extends AbstractFish {
 			super.travel(vec);
 		}
 
+	}
+
+	@Override
+	public double getMeleeAttackRangeSqr(LivingEntity e) {
+		return this.getBbWidth() * this.getBbWidth() / 2 + e.getBbWidth();
 	}
 
 }

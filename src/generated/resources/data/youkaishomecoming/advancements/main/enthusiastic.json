@@ -71,6 +71,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:black_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:black_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:black_tea": {
       "conditions": {
         "item": {
@@ -141,6 +151,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:burgundy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:burgundy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:butter": {
       "conditions": {
         "item": {
@@ -186,6 +206,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cappuccino"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:champagne": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:champagne"
           ]
         }
       },
@@ -256,6 +286,16 @@
         "item": {
           "items": [
             "youkaishomecoming:cornflower_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:cucumber_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:cucumber_slice"
           ]
         }
       },
@@ -501,6 +541,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:honey_glazed_cucumber": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:honey_glazed_cucumber"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:imitation_bear_paw": {
       "conditions": {
         "item": {
@@ -526,6 +576,16 @@
         "item": {
           "items": [
             "youkaishomecoming:kabayaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:kappa_maki_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kappa_maki_slice"
           ]
         }
       },
@@ -881,6 +941,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:raisin": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raisin"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:raw_lamprey": {
       "conditions": {
         "item": {
@@ -916,6 +986,26 @@
         "item": {
           "items": [
             "youkaishomecoming:raw_tuna_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:red_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:red_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:red_wine"
           ]
         }
       },
@@ -1361,6 +1451,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:van_allen": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:van_allen"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:volcano_roll_slice": {
       "conditions": {
         "item": {
@@ -1371,11 +1471,31 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:white_grape_juice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_grape_juice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:white_tea": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:white_wine": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:white_wine"
           ]
         }
       },
@@ -1543,6 +1663,30 @@
       "youkaishomecoming:wind_priestesses"
     ],
     [
+      "youkaishomecoming:black_grape_juice"
+    ],
+    [
+      "youkaishomecoming:red_grape_juice"
+    ],
+    [
+      "youkaishomecoming:white_grape_juice"
+    ],
+    [
+      "youkaishomecoming:red_wine"
+    ],
+    [
+      "youkaishomecoming:white_wine"
+    ],
+    [
+      "youkaishomecoming:burgundy"
+    ],
+    [
+      "youkaishomecoming:champagne"
+    ],
+    [
+      "youkaishomecoming:van_allen"
+    ],
+    [
       "youkaishomecoming:espresso"
     ],
     [
@@ -1622,6 +1766,12 @@
     ],
     [
       "youkaishomecoming:nattou"
+    ],
+    [
+      "youkaishomecoming:cucumber_slice"
+    ],
+    [
+      "youkaishomecoming:raisin"
     ],
     [
       "youkaishomecoming:mochi"
@@ -1756,6 +1906,9 @@
       "youkaishomecoming:mushroom_soup"
     ],
     [
+      "youkaishomecoming:honey_glazed_cucumber"
+    ],
+    [
       "youkaishomecoming:lions_head"
     ],
     [
@@ -1823,6 +1976,9 @@
     ],
     [
       "youkaishomecoming:shinnko_maki_slice"
+    ],
+    [
+      "youkaishomecoming:kappa_maki_slice"
     ],
     [
       "youkaishomecoming:tekka_maki_slice"

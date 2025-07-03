@@ -26,7 +26,8 @@
 			"rack": "晒干",
 			"ferment": "发酵",
 			"steam": "蒸",
-			"cuisine": "料理"
+			"cuisine": "料理",
+			"basin": "踩踏"
 		},
 		"tooltip": {
 			"chance": " %2$s%%概率获得%1$s",

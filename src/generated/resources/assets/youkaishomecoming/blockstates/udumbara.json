@@ -1,28 +1,28 @@
 {
   "variants": {
     "age=0": {
-      "model": "youkaishomecoming:block/udumbara_stage0"
+      "model": "youkaishomecoming:udumbara/udumbara_stage0"
     },
     "age=1": {
-      "model": "youkaishomecoming:block/udumbara_stage1"
+      "model": "youkaishomecoming:udumbara/udumbara_stage1"
     },
     "age=2": {
-      "model": "youkaishomecoming:block/udumbara_stage2"
+      "model": "youkaishomecoming:udumbara/udumbara_stage2"
     },
     "age=3": {
-      "model": "youkaishomecoming:block/udumbara_stage3"
+      "model": "youkaishomecoming:udumbara/udumbara_stage3"
     },
     "age=4": {
-      "model": "youkaishomecoming:block/udumbara_stage4"
+      "model": "youkaishomecoming:udumbara/udumbara_stage4"
     },
     "age=5": {
-      "model": "youkaishomecoming:block/udumbara_stage5"
+      "model": "youkaishomecoming:udumbara/udumbara_stage5"
     },
     "age=6": {
-      "model": "youkaishomecoming:block/udumbara_stage6"
+      "model": "youkaishomecoming:udumbara/udumbara_stage6"
     },
     "age=7": {
-      "model": "youkaishomecoming:block/udumbara_stage7"
+      "model": "youkaishomecoming:udumbara/udumbara_stage7"
     }
   }
 }

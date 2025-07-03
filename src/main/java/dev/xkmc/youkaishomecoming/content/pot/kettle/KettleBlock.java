@@ -142,19 +142,19 @@ public class KettleBlock extends BasePotBlock implements LeftClickBlock {
 	public static void buildModel(DataGenContext<Block, KettleBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var kettle = pvd.models().getBuilder("block/kettle")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/kettle")))
-				.texture("kettle", pvd.modLoc("block/kettle"))
+				.texture("kettle", pvd.modLoc("block/utensil/kettle"))
 				.renderType("cutout");
 		var handle = pvd.models().getBuilder("block/kettle_handle")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/kettle_handle")))
-				.texture("kettle", pvd.modLoc("block/kettle"))
-				.texture("handle", pvd.modLoc("block/cooking_pot_handle"))
-				.texture("chain", pvd.modLoc("block/chain"))
+				.texture("kettle", pvd.modLoc("block/utensil/kettle"))
+				.texture("handle", pvd.modLoc("block/utensil/cooking_pot_handle"))
+				.texture("chain", pvd.modLoc("block/utensil/chain"))
 				.renderType("cutout");
 		var tray = pvd.models().getBuilder("block/kettle_tray")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/kettle_tray")))
-				.texture("kettle", pvd.modLoc("block/kettle"))
-				.texture("tray_side", pvd.modLoc("block/cooking_pot_tray_side"))
-				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"))
+				.texture("kettle", pvd.modLoc("block/utensil/kettle"))
+				.texture("tray_side", pvd.modLoc("block/utensil/cooking_pot_tray_side"))
+				.texture("tray_top", pvd.modLoc("block/utensil/cooking_pot_tray_top"))
 				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), state -> switch (state.getValue(SUPPORT)) {
 			case NONE -> kettle;

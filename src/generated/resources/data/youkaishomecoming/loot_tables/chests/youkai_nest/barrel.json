@@ -81,6 +81,17 @@
           "functions": [
             {
               "add": false,
+              "count": 4.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "youkaishomecoming:cucumber"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 8.0,
               "function": "minecraft:set_count"
             }

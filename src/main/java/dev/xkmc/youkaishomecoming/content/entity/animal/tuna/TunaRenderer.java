@@ -2,8 +2,6 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.tuna;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
-import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -23,6 +21,7 @@ public class TunaRenderer extends MobRenderer<TunaEntity, TunaModel<TunaEntity>>
 	}
 
 	protected void setupRotations(TunaEntity e, PoseStack pos, float age, float yaw, float pTick) {
+		if (e.isAggressive()) age *= 1.5f;
 		super.setupRotations(e, pos, age, yaw, pTick);
 		float f = 4.3F * Mth.sin(0.6F * age);
 		pos.mulPose(Axis.YP.rotationDegrees(f));

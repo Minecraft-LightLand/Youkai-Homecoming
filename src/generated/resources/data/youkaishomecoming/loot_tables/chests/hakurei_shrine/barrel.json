@@ -21,6 +21,18 @@
           "functions": [
             {
               "add": false,
+              "count": 2.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "youkaishomecoming:cucumber",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 4.0,
               "function": "minecraft:set_count"
             }
@@ -51,6 +63,17 @@
           ],
           "name": "youkaishomecoming:green_coffee_bean",
           "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "youkaishomecoming:mandrake_root"
         },
         {
           "type": "minecraft:item",
@@ -124,7 +147,7 @@
           "weight": 4
         }
       ],
-      "rolls": 2.0
+      "rolls": 3.0
     },
     {
       "bonus_rolls": 0.0,

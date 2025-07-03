@@ -15,6 +15,10 @@ public class YHCriteriaTriggers {
 	public static final PlayerTrigger FLESH_WARN = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("flesh_warn")));
 	public static final PlayerTrigger HURT_WARN = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("hurt_warn")));
 	public static final PlayerTrigger KOISHI_FIRST = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("koishi_first")));
+	public static final PlayerTrigger CUCUMBER = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("cucumber")));
+	public static final PlayerTrigger GRAPE_CUT = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("grape_cut")));
+	public static final PlayerTrigger GRAPE_HARVEST = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("grape_harvest")));
+	public static final PlayerTrigger BASIN = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("basin")));
 
 
 	private static PlayerTrigger reg(String id) {

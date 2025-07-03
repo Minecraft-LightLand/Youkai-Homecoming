@@ -53,13 +53,13 @@ public class MokaMakerBlock extends BasePotBlock {
 	public static void buildModel(DataGenContext<Block, MokaMakerBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var pot = pvd.models().getBuilder("block/moka_pot")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/moka_pot")))
-				.texture("maker", pvd.modLoc("block/moka_pot"))
+				.texture("maker", pvd.modLoc("block/utensil/moka_pot"))
 				.renderType("cutout");
 		var tray = pvd.models().getBuilder("block/moka_tray")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/moka_pot_tray")))
-				.texture("maker", pvd.modLoc("block/moka_pot"))
-				.texture("tray_side", pvd.modLoc("block/cooking_pot_tray_side"))
-				.texture("tray_top", pvd.modLoc("block/cooking_pot_tray_top"))
+				.texture("maker", pvd.modLoc("block/utensil/moka_pot"))
+				.texture("tray_side", pvd.modLoc("block/utensil/cooking_pot_tray_side"))
+				.texture("tray_top", pvd.modLoc("block/utensil/cooking_pot_tray_top"))
 				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), state -> switch (state.getValue(SUPPORT)) {
 			case NONE, HANDLE -> pot;

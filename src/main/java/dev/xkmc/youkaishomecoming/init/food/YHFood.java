@@ -68,6 +68,8 @@ public enum YHFood {
 	TAMAGOYAKI(FoodType.SIMPLE, 12, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
 	TAMAGOYAKI_SLICE(FoodType.SIMPLE, 6, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
 	NATTOU(FoodType.SIMPLE, 4, 0.6f, DietTagGen.PROTEINS.tag),
+	CUCUMBER_SLICE(FoodType.FAST, 1, 0.3f, YHTagGen.CUCUMBER_SLICE, DietTagGen.VEGETABLES.tag),
+	RAISIN(FoodType.FAST, 3, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	// mochi
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
@@ -116,9 +118,9 @@ public enum YHFood {
 
 	// stick
 
-	CANDY_APPLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
-	MILK_POPSICLE(FoodType.STICK, 4, 0.3f, DietTagGen.SUGARS.tag),
-	BIG_POPSICLE(FoodType.STICK, 2, 0.1f, DietTagGen.SUGARS.tag),
+	CANDY_APPLE(FoodType.STICK, 6, 0.5f, DietTagGen.SUGARS.tag, DietTagGen.FRUITS.tag),
+	MILK_POPSICLE(FoodType.STICK, 6, 0.5f, DietTagGen.SUGARS.tag),
+	BIG_POPSICLE(FoodType.STICK, 3, 0.1f, DietTagGen.SUGARS.tag),
 	KINAKO_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1), DietTagGen.GRAINS.tag),
 	MITARASHI_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
@@ -177,6 +179,10 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag),
+	HONEY_GLAZED_CUCUMBER(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
+	), DietTagGen.VEGETABLES.tag),
 	LIONS_HEAD(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
@@ -231,8 +237,8 @@ public enum YHFood {
 		if (type == FoodType.BOTTLE) id = "food/bottle/";
 		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) id = "food/stick/";
 		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) id = "food/bowl/";
-		if (ordinal() <= 23) id = "food/mochi/";
-		if (ordinal() <= 17) id = "food/basic/";
+		if (ordinal() <= 25) id = "food/mochi/";
+		if (ordinal() <= 19) id = "food/basic/";
 		if (type.isFlesh()) id = "food/flesh/";
 		if (raw == null) this.raw = null;
 		else {

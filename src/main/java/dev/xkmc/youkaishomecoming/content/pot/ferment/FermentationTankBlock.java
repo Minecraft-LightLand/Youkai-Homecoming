@@ -13,6 +13,7 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateFillingTest;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -86,59 +87,10 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 				}
 				return InteractionResult.SUCCESS;
 			} else {
-				return addItem(be, stack, level, pos, player, hand, hit);
+				return FluidItemTile.addItem(be, stack, level, pos, player, hand, hit);
 			}
 		}
 		return InteractionResult.PASS;
-	}
-
-	private static InteractionResult addItem(FermentationTankBlockEntity be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		FluidStack fluid = be.fluids.getFluidInTank(0);
-		boolean hasFluid = false;
-		if (fluid.getFluid() instanceof YHFluid sake) {
-			if (fluid.getAmount() >= sake.type.amount() && stack.is(sake.type.getContainer())) {
-				if (!level.isClientSide()) {
-					be.fluids.drain(sake.type.amount(), IFluidHandler.FluidAction.EXECUTE);
-					player.getInventory().placeItemBackInInventory(sake.type.asStack(1));
-					if (!player.isCreative()) {
-						stack.shrink(1);
-					}
-				}
-				return InteractionResult.SUCCESS;
-			}
-			hasFluid = true;
-		}
-		var fillOpt = CreateFillingTest.test(level, fluid, stack);
-		if (fillOpt.isPresent()) {
-			if (!level.isClientSide()) {
-				ItemStack ans = fillOpt.get().result().get();
-				player.getInventory().placeItemBackInInventory(ans);
-				be.notifyTile();
-			}
-			return InteractionResult.SUCCESS;
-		}
-		if (!hasFluid || stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof SakeBottleItem) {
-			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
-			if (opt.resolve().isPresent()) {
-				if (!level.isClientSide() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
-					be.notifyTile();
-					return InteractionResult.SUCCESS;
-				} else {
-					return InteractionResult.CONSUME;
-				}
-			}
-		}
-		ItemStack copy = stack.copy();
-		copy.setCount(1);
-		if (be.items.canAddItem(copy)) {
-			ItemStack remain = be.items.addItem(copy);
-			if (remain.isEmpty()) {
-				stack.shrink(1);
-				be.notifyTile();
-				return InteractionResult.SUCCESS;
-			}
-		}
-		return InteractionResult.CONSUME;
 	}
 
 	public static void buildModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {

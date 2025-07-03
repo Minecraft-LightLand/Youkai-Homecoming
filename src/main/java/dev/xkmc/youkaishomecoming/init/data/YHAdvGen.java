@@ -18,6 +18,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -56,18 +57,43 @@ public class YHAdvGen {
 				.create("hmm", YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.asStack(),
 						CriterionBuilder.item(YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.get()),
 						"Hmm... Is it right?", "Get a Sweet Ormosia Mochi Mixed Boiled");
-		var redbean = root.create("soybean", YHCrops.SOYBEAN.getSeed(),
+		var soybean = root.create("soybean", YHCrops.SOYBEAN.getSeed(),
+				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+						LocationPredicate.Builder.location().setBlock(
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
+						ItemPredicate.Builder.item().of(YHCrops.SOYBEAN.getSeed()))),
+				"The Essential Harvest", "Plant Soybean");
+		soybean.create("cucumber", YHCrops.CUCUMBER.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
-								ItemPredicate.Builder.item().of(YHCrops.SOYBEAN.getSeed()))),
-						"The Essential Harvest", "Plant Soybean")
-				.create("redbean", YHCrops.REDBEAN.getSeed(),
-						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
-								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN).build()),
-								ItemPredicate.Builder.item().of(YHCrops.REDBEAN.getSeed()))),
-						"Leanness Resistant Red Bean", "Plant Red Bean on Coarse Dirt, Mud, or Clay");
+										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
+								ItemPredicate.Builder.item().of(YHCrops.CUCUMBER.getSeed()))),
+						"Rope Climber", "Plant Cucumber")
+				.create("cucumber_top", YHCrops.CUCUMBER.getFruits(),
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CUCUMBER.getId(), ContextAwarePredicate.ANY)),
+						"Pinnacle Kappa", "Let cucumber climb ropes and harvest the top cucumber of a 3-block tall cucumber crop");
+		var grape = soybean.create("grape", YHCrops.RED_GRAPE.getSeed(),
+				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+						LocationPredicate.Builder.location().setBlock(
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
+						ItemPredicate.Builder.item().of(YHTagGen.GRAPE_SEED))),
+				"Sweet Vines", "Plant Grape");
+		grape.create("grape_cut", Items.SHEARS,
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.GRAPE_CUT.getId(), ContextAwarePredicate.ANY)),
+						"Niwaki", "Cut the leaves off a mature grape crop so that it can grow larger. Make sure it has 3 ropes in a row to climb onto.")
+				.create("grape_harvest", Items.SHEARS,
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.GRAPE_HARVEST.getId(), ContextAwarePredicate.ANY)),
+						"The Best Bunch", "Harvest grape hanging under a grape branch");
+		grape.create("squeeze", YHBlocks.BASIN.asItem(),
+				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.BASIN.getId(), ContextAwarePredicate.ANY)),
+				"Squeeze!", "Jump in the basin to squeeze juice out of grapes");
+
+		var redbean = soybean.create("redbean", YHCrops.REDBEAN.getSeed(),
+				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+						LocationPredicate.Builder.location().setBlock(
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN).build()),
+						ItemPredicate.Builder.item().of(YHCrops.REDBEAN.getSeed()))),
+				"Leanness Resistant Red Bean", "Plant Red Bean on Coarse Dirt, Mud, or Clay");
 		redbean.create("coffea", YHCrops.COFFEA.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
@@ -194,7 +220,7 @@ public class YHAdvGen {
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).filter(e -> !e.isFlesh()).map(e -> e.block.get()),
 										Arrays.stream(YHDrink.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
-										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
+										//Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).filter(YHFood::isReimuFood).map(e -> e.item.get()),
 										Arrays.stream(YHSushi.values()).filter(YHSushi::isReimuFood).map(e -> e.item.get()),
 										Arrays.stream(YHRolls.values()).map(e -> e.slice.get()))

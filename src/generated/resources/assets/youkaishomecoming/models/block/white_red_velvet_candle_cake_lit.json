@@ -1,10 +1,10 @@
 {
   "parent": "minecraft:block/template_cake_with_candle",
   "textures": {
-    "bottom": "youkaishomecoming:block/red_velvet_cake_bottom",
+    "bottom": "youkaishomecoming:block/cake/red_velvet_cake_bottom",
     "candle": "minecraft:block/white_candle_lit",
-    "particle": "youkaishomecoming:block/red_velvet_cake_side",
-    "side": "youkaishomecoming:block/red_velvet_cake_side",
-    "top": "youkaishomecoming:block/red_velvet_cake_top"
+    "particle": "youkaishomecoming:block/cake/red_velvet_cake_side",
+    "side": "youkaishomecoming:block/cake/red_velvet_cake_side",
+    "top": "youkaishomecoming:block/cake/red_velvet_cake_top"
   }
 }

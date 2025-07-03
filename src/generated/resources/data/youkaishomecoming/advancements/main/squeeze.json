@@ -1,0 +1,30 @@
+{
+  "parent": "youkaishomecoming:main/grape",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaishomecoming:basin"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.squeeze.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:wood_basin"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.squeeze.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

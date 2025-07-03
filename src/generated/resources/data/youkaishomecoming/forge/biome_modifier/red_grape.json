@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_features",
+  "biomes": {
+    "type": "youkaishomecoming:filter",
+    "values": [
+      "#youkaishomecoming:spawns/grape",
+      "#youkaishomecoming:spawns/no_grape",
+      "#youkaishomecoming:spawns/black_grape",
+      "#youkaishomecoming:spawns/white_grape"
+    ]
+  },
+  "features": "youkaishomecoming:red_grape",
+  "step": "vegetal_decoration"
+}

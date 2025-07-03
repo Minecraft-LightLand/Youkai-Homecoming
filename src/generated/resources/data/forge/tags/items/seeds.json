@@ -5,6 +5,11 @@
     "youkaishomecoming:green_coffee_bean",
     "youkaishomecoming:tea_seeds",
     "youkaishomecoming:udumbara_seeds",
-    "youkaishomecoming:mandrake_root"
+    "youkaishomecoming:mandrake_root",
+    "youkaishomecoming:cucumber_seeds",
+    "youkaishomecoming:red_grape_seeds",
+    "youkaishomecoming:black_grape_seeds",
+    "youkaishomecoming:white_grape_seeds",
+    "#forge:seeds/cucumber"
   ]
 }

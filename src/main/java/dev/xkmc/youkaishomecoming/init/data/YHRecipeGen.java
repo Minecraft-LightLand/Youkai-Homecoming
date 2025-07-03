@@ -13,6 +13,7 @@ import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
@@ -155,6 +156,13 @@ public class YHRecipeGen {
 					.define('C', Items.BUCKET)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.BASIN)::unlockedBy, Items.IRON_NUGGET)
+					.pattern("C C").pattern("BAB")
+					.define('A', ItemTags.WOODEN_SLABS)
+					.define('B', ItemTags.WOODEN_STAIRS)
+					.define('C', Items.IRON_NUGGET)
+					.save(pvd);
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SIKKUI.BASE)::unlockedBy, ModItems.STRAW.get())
 					.pattern("ABA").pattern("DCD").pattern("ABA")
 					.define('A', Items.CLAY_BALL)
@@ -207,16 +215,30 @@ public class YHRecipeGen {
 
 		// plants
 		{
-			cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 1);
-			cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 1);
+			cutting(pvd, YHCrops.SOYBEAN.fruits, YHCrops.SOYBEAN.seed, 2);
+			cutting(pvd, YHCrops.COFFEA.fruits, YHCrops.COFFEA.seed, 2);
+			cutting(pvd, YHCrops.CUCUMBER.fruits, YHFood.CUCUMBER_SLICE.item, 2);
+			pvd.singleItem(DataIngredient.items(YHCrops.SOYBEAN.fruits.get()), RecipeCategory.MISC, YHCrops.SOYBEAN.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.COFFEA.fruits.get()), RecipeCategory.MISC, YHCrops.COFFEA.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.CUCUMBER.fruits.get()), RecipeCategory.MISC, YHCrops.CUCUMBER.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.RED_GRAPE.fruits.get()), RecipeCategory.MISC, YHCrops.RED_GRAPE.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.BLACK_GRAPE.fruits.get()), RecipeCategory.MISC, YHCrops.BLACK_GRAPE.seed, 1, 1);
+			pvd.singleItem(DataIngredient.items(YHCrops.WHITE_GRAPE.fruits.get()), RecipeCategory.MISC, YHCrops.WHITE_GRAPE.seed, 1, 1);
+
 			pvd.smelting(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHCrops.COFFEA.getSeed()), RecipeCategory.MISC, YHItems.COFFEE_BEAN, 0.1f, 200);
 			pvd.smelting(DataIngredient.items(YHItems.STRIPPED_MANDRAKE_ROOT.get()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
 			pvd.smoking(DataIngredient.items(YHItems.STRIPPED_MANDRAKE_ROOT.get()), RecipeCategory.FOOD, YHFood.COOKED_MANDRAKE_ROOT.item, 0.1f, 200);
 			cutting(pvd, YHCrops.MANDRAKE.seed, YHItems.STRIPPED_MANDRAKE_ROOT, 1);
 			drying(pvd, DataIngredient.items(YHCrops.MANDRAKE.getFruits()), YHItems.DRIED_MANDRAKE_FLOWER);
+			drying(pvd, DataIngredient.tag(YHTagGen.GRAPE), YHFood.RAISIN.item);
+			pvd.storage(YHCrops.SOYBEAN::getFruits, RecipeCategory.MISC, YHItems.PODS_CRATE);
 			pvd.storage(YHCrops.SOYBEAN::getSeed, RecipeCategory.MISC, YHItems.SOYBEAN_BAG);
 			pvd.storage(YHCrops.REDBEAN::getSeed, RecipeCategory.MISC, YHItems.REDBEAN_BAG);
+			pvd.storage(YHCrops.CUCUMBER::getFruits, RecipeCategory.MISC, YHItems.CUCUMBER_BAG);
+			pvd.storage(YHCrops.RED_GRAPE::getFruits, RecipeCategory.MISC, YHItems.RED_GRAPE_CRATE);
+			pvd.storage(YHCrops.BLACK_GRAPE::getFruits, RecipeCategory.MISC, YHItems.BLACK_GRAPE_CRATE);
+			pvd.storage(YHCrops.WHITE_GRAPE::getFruits, RecipeCategory.MISC, YHItems.WHITE_GRAPE_CRATE);
 			pvd.storage(YHItems.COFFEE_BEAN, RecipeCategory.MISC, YHItems.COFFEE_BEAN_BAG);
 			pvd.storage(YHCrops.TEA::getFruits, RecipeCategory.MISC, YHItems.TEA_BAG);
 			pvd.storage(YHTea.BLACK.leaves, RecipeCategory.MISC, YHItems.BLACK_TEA_BAG);
@@ -653,6 +675,14 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.MUSHROOM_SOUP.item.getId());
 
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.addIngredient(YHTagGen.CUCUMBER)
+					.addIngredient(YHTagGen.CUCUMBER)
+					.addIngredient(YHTagGen.CUCUMBER)
+					.addIngredient(ForgeTags.RAW_PORK)//change to deer in the future
+					.addIngredient(Items.HONEY_BOTTLE)
+					.build(pvd, YHFood.HONEY_GLAZED_CUCUMBER.item.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LIONS_HEAD.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(ForgeTags.RAW_PORK)
 					.addIngredient(ForgeTags.RAW_PORK)
@@ -747,9 +777,9 @@ public class YHRecipeGen {
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
-					.requires(Items.PUFFERFISH)
 					.requires(Items.BAMBOO)
 					.requires(ForgeTags.RAW_PORK)
+					.requires(ForgeTags.RAW_BEEF)
 					.requires(ForgeTags.VEGETABLES_ONION)
 					.requires(YHTagGen.RAW_EEL)
 					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
@@ -917,6 +947,60 @@ public class YHRecipeGen {
 					.requires(YHTagGen.ICE).requires(YHItems.CREAM)
 					.save(coffee, YHCoffee.AFFOGATO.item.getId().withSuffix("_craft"));
 
+		}
+
+		// wine
+		{
+
+			unlock(pvd, new SimpleBasinBuilder(YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
+					YHCrops.BLACK_GRAPE.getFruits())
+					.setInput(YHCrops.BLACK_GRAPE.getFruits())
+					.save(pvd, YHDrink.BLACK_GRAPE_JUICE.item.getId());
+
+			unlock(pvd, new SimpleBasinBuilder(YHDrink.RED_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
+					YHCrops.RED_GRAPE.getFruits())
+					.setInput(YHCrops.RED_GRAPE.getFruits())
+					.save(pvd, YHDrink.RED_GRAPE_JUICE.item.getId());
+
+			unlock(pvd, new SimpleBasinBuilder(YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(), 50)::unlockedBy,
+					YHCrops.WHITE_GRAPE.getFruits())
+					.setInput(YHCrops.WHITE_GRAPE.getFruits())
+					.save(pvd, YHDrink.WHITE_GRAPE_JUICE.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.WHITE_WINE.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.WHITE_GRAPE.getFruits())
+					.save(pvd, YHDrink.WHITE_WINE.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.RED_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.RED_WINE.fluid.getSource(), 1800)::unlockedBy,
+					YHCrops.RED_GRAPE.getFruits())
+					.save(pvd, YHDrink.RED_WINE.item.getId());
+
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.RED_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.VAN_ALLEN.fluid.getSource(), 2400)::unlockedBy,
+					YHCrops.RED_GRAPE.getFruits())
+					.addInput(Items.SWEET_BERRIES)
+					.save(pvd, YHDrink.VAN_ALLEN.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.BLACK_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.BURGUNDY.fluid.getSource(), 2400)::unlockedBy,
+					YHCrops.BLACK_GRAPE.getFruits())
+					.addInput(Items.SWEET_BERRIES)
+					.save(pvd, YHDrink.BURGUNDY.item.getId());
+
+			unlock(pvd, new SimpleFermentationBuilder(
+							YHDrink.WHITE_GRAPE_JUICE.fluid.getSource(),
+							YHDrink.CHAMPAGNE.fluid.getSource(), 2400)::unlockedBy,
+					YHCrops.WHITE_GRAPE.getFruits())
+					.addInput(Items.SWEET_BERRIES)
+					.addInput(Items.SUGAR)
+					.save(pvd, YHDrink.CHAMPAGNE.item.getId());
 		}
 
 		// sake
@@ -1117,6 +1201,12 @@ public class YHRecipeGen {
 						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
 						.add(Items.BEETROOT)
 						.save(pvd);
+
+				unlock(pvd, new OrderedRecipeBuilder(TableItemManager.BASE_HOSOMAKI)::unlockedBy, ModItems.COOKED_RICE.get())
+						.result(YHRolls.KAPPA_MAKI)
+						.add(YHItems.SOY_SAUCE_BOTTLE.item.get())
+						.add(YHTagGen.CUCUMBER_SLICE)
+						.save(pvd);
 			}
 
 			{
@@ -1131,7 +1221,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.SALMON_FUTOMAKI)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
 						.addUnordered(ForgeTags.RAW_FISHES_SALMON)
@@ -1140,7 +1230,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_FUTOMAKI)::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.RAINBOW_FUTOMAKI)
 						.addOrdered(YHItems.SOY_SAUCE_BOTTLE.item.get())
-						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(Ingredient.of(Items.CARROT, Items.BEETROOT))
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item.get())
 						.addUnordered(YHFood.IMITATION_CRAB.item.asItem())
@@ -1153,7 +1243,7 @@ public class YHRecipeGen {
 				unlock(pvd, new MixedRecipeBuilder(TableItemManager.BASE_CAL)::unlockedBy, YHFood.IMITATION_CRAB.item.get())
 						.result(YHRolls.CALIFORNIA_ROLL)
 						.addOrdered(YHItems.MAYONNAISE.item)
-						.addUnordered(ForgeTags.SALAD_INGREDIENTS_CABBAGE)
+						.addUnordered(YHTagGen.CUCUMBER_SLICE)
 						.addUnordered(YHFood.TAMAGOYAKI_SLICE.item)
 						.addUnordered(YHFood.IMITATION_CRAB.item)
 						.save(pvd);
@@ -1295,14 +1385,7 @@ public class YHRecipeGen {
 	}
 
 	private static void coffee(Consumer<FinishedRecipe> cons, YHCoffee coffee, UnaryOperator<CookingPotRecipeBuilder> func) {
-		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-						.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-						.unlockedByAnyIngredient(YHItems.COFFEE_POWDER)
-						.addIngredient(YHItems.COFFEE_POWDER)
-						.addIngredient(new PotionIngredient(Potions.WATER)))
-				.build(cons, coffee.item.getId());
-
-		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
+		func.apply(CookingPotRecipeBuilder.cookingPotRecipe(coffee.item.get(), 1, 60, 0.1f, Items.GLASS_BOTTLE)
 						.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 						.unlockedByAnyIngredient(YHCoffee.ESPRESSO.item)
 						.addIngredient(YHCoffee.ESPRESSO.item))

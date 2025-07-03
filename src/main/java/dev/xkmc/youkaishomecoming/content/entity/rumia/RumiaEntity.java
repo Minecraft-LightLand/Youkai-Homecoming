@@ -288,7 +288,7 @@ public class RumiaEntity extends YoukaiEntity implements IYoukaiMerchant {
 		super.dropEquipment();
 		if (dropHairband && YHModConfig.COMMON.rumiaHairbandDrop.get()) {
 			ItemStack stack = YHItems.RUMIA_HAIRBAND.asStack();
-			stack.setDamageValue(stack.getMaxDamage());
+			stack.setDamageValue(stack.getMaxDamage() - 1);
 			spawnAtLocation(stack);
 		}
 	}

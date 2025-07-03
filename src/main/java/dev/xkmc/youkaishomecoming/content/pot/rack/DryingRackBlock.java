@@ -124,7 +124,7 @@ public class DryingRackBlock extends BaseEntityBlock {
 	public static void buildModel(DataGenContext<Block, DryingRackBlock> ctx, RegistrateBlockstateProvider pvd) {
 		var pot = pvd.models().getBuilder("block/drying_rack")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/drying_rack")))
-				.texture("rack", pvd.modLoc("block/drying_rack"))
+				.texture("rack", pvd.modLoc("block/utensil/drying_rack"))
 				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), state -> pot);
 	}

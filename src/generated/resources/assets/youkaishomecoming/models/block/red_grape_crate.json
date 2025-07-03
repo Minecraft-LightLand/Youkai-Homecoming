@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "youkaishomecoming:block/bags/crate_bottom",
+    "particle": "youkaishomecoming:block/bags/red_grape_crate_top",
+    "side": "youkaishomecoming:block/bags/red_grape_crate_side",
+    "top": "youkaishomecoming:block/bags/red_grape_crate_top"
+  }
+}

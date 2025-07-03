@@ -136,15 +136,4 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
 	}
 
-	public static void buildWildLoot(RegistrateBlockLootTables pvd, BushBlock block, YHCrops crop) {
-		var silk = MatchTool.toolMatches(ItemPredicate.Builder.item()
-				.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH,
-						MinMaxBounds.Ints.atLeast(1)))).or(
-				MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.SHEARS)));
-		pvd.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
-				.add(LootItem.lootTableItem(block.asItem()).when(silk)
-						.otherwise(pvd.applyExplosionDecay(block, LootItem.lootTableItem(crop.getSeed()))))));
-	}
-
-
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:block/plants/wild_coffea_top"
+    "layer0": "youkaishomecoming:block/plants/coffea/wild_coffea_top"
   }
 }

@@ -2,8 +2,8 @@
   "parent": "youkaishomecoming:custom/feast/heart_throbbing_surprise_stage0",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/surprise_chest",
-    "soup": "youkaishomecoming:block/surprise_soup",
-    "umbrella": "youkaishomecoming:block/surprise_umbrella"
+    "base": "youkaishomecoming:block/feast/surprise_chest",
+    "soup": "youkaishomecoming:block/feast/surprise_soup",
+    "umbrella": "youkaishomecoming:block/feast/surprise_umbrella"
   }
 }

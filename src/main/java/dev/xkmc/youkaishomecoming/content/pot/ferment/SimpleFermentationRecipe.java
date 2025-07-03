@@ -45,6 +45,8 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	public boolean matches(FermentationDummyContainer cont, Level level) {
 		FluidStack fluid = cont.fluids().getFluidInTank(0);
 		if (!inputFluid.isEmpty()) {
+			if (fluid.getAmount() < inputFluid.getAmount())
+				return false;
 			if (inputFluid.getFluid() == Fluids.WATER) {
 				if (!fluid.getFluid().is(FluidTags.WATER)) {
 					return false;
@@ -52,6 +54,9 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 			} else if (inputFluid.getFluid().getFluidType() != fluid.getFluid().getFluidType()) {
 				return false;
 			}
+		} else {
+			if (!fluid.isEmpty())
+				return false;
 		}
 		Set<ItemStack> available = new LinkedHashSet<>();
 		for (var e : cont.items().getAsList()) {
@@ -90,10 +95,11 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 		for (var e : remain) {
 			cont.items().addItem(e);
 		}
+		int amount = cont.fluids().getFluidInTank(0).getAmount();
 		cont.fluids().clear();
 		if (!outputFluid.isEmpty()) {
 			FluidStack ans = outputFluid.copy();
-			ans.setAmount(cont.fluids().getFluidInTank(0).getAmount());
+			ans.setAmount(amount);
 			cont.fluids().set(0, 0, ans);
 		}
 		return ItemStack.EMPTY;
