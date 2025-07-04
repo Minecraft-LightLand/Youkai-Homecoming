@@ -25,7 +25,12 @@ public class DeerRenderer extends MobRenderer<DeerEntity, DeerModel> {
 
 	@Override
 	public ResourceLocation getTextureLocation(DeerEntity e) {
-		return NORMAL;
+		return switch (e.prop.getVariant()) {
+			case FALLOW -> FALLOW;
+			case SAKURA -> SAKURA;
+			case WHITELIPPED -> WHITELIPPED;
+			default -> NORMAL;
+		};
 	}
 
 }

@@ -25,22 +25,25 @@ public class DeerEatBlockGoal extends Goal {
 	}
 
 	public boolean canUse() {
-		if (mob.getRandom().nextInt(mob.eatWillingness()) != 0) {
+		if (!mob.states.canEat()) return false;
+		if (mob.getRandom().nextInt(mob.prop.eatWillingness()) != 0)
 			return false;
+		else return canEat();
+	}
+
+	protected boolean canEat() {
+		BlockPos blockpos = BlockPos.containing(mob.position().add(mob.getForward()));
+		if (IS_TALL_GRASS.test(level.getBlockState(blockpos))) {
+			return true;
 		} else {
-			BlockPos blockpos = BlockPos.containing(mob.position().add(mob.getForward()));
-			if (IS_TALL_GRASS.test(level.getBlockState(blockpos))) {
-				return true;
-			} else {
-				return level.getBlockState(blockpos.below()).is(Blocks.GRASS_BLOCK);
-			}
+			return level.getBlockState(blockpos.below()).is(Blocks.GRASS_BLOCK);
 		}
 	}
 
 	public void start() {
 		mob.states.startEating(mob);
-		eatAnimationTick = adjustedTickDelay(eatAnimationTick);
-		finishTick = adjustedTickDelay(finishTick);
+		eatAnimationTick = adjustedTickDelay(25);
+		finishTick = adjustedTickDelay(4);
 		level.broadcastEntityEvent(mob, (byte) 10);
 		mob.getNavigation().stop();
 	}
@@ -52,10 +55,6 @@ public class DeerEatBlockGoal extends Goal {
 
 	public boolean canContinueToUse() {
 		return eatAnimationTick > 0;
-	}
-
-	public int getEatAnimationTick() {
-		return eatAnimationTick;
 	}
 
 	public void tick() {

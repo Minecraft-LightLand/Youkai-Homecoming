@@ -40,11 +40,15 @@ public class DeerEntity extends Animal {
 	}
 
 	private static final SyncedData DATA = new SyncedData(DeerEntity::defineId);
-	private static final EntityDataAccessor<Integer> TRANSIENT_DATA = DATA.define(SyncedData.INT, 0, null);
-	private static final EntityDataAccessor<Integer> FLAGS = DATA.define(SyncedData.INT, 0, "flags");
 	private static final Lazy<Ingredient> FOOD_ITEMS = Lazy.of(() -> Ingredient.of(YHFood.SAKURA_MOCHI.item));//TODO
 
+	static final EntityDataAccessor<Integer> TRANSIENT_DATA = DATA.define(SyncedData.INT, 0, null);
+	static final EntityDataAccessor<Integer> FLAGS = DATA.define(SyncedData.INT, 0, "flags");
+	static final EntityDataAccessor<Integer> EAT_STAGE = DATA.define(SyncedData.INT, 0, "eat_stage");
+	static final EntityDataAccessor<Integer> VARIANT = DATA.define(SyncedData.INT, 0, "variant");
+
 	public final DeerStateMachine states = new DeerStateMachine();
+	public final DeerProperties prop = new DeerProperties(this);
 
 	protected DeerPanicGoal panic;
 	protected DeerEatBlockGoal eat;
@@ -63,15 +67,20 @@ public class DeerEntity extends Animal {
 		goalSelector.addGoal(4, new TemptGoal(this, 1.2D, FOOD_ITEMS.get(), false));
 		goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
 		goalSelector.addGoal(6, eat);
-		goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-		goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 6.0F));
-		goalSelector.addGoal(9, new RandomLookAroundGoal(this));
+		goalSelector.addGoal(7, new DeerRelaxGoal(this));
+		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
+		goalSelector.addGoal(13, new RandomLookAroundGoal(this));
 	}
 
 	// core
 
 	protected SyncedData data() {
 		return DATA;
+	}
+
+	protected SynchedEntityData entityData() {
+		return entityData;
 	}
 
 	protected void defineSynchedData() {
@@ -91,7 +100,7 @@ public class DeerEntity extends Animal {
 
 	@Override
 	public void handleEntityEvent(byte data) {
-		if (states.handleEntityEvent(data)) {
+		if (states.transitionTo(this, data)) {
 			return;
 		}
 		super.handleEntityEvent(data);
@@ -111,55 +120,35 @@ public class DeerEntity extends Animal {
 
 	// states
 
-	public void setPanic(boolean b) {
-		int b0 = entityData.get(TRANSIENT_DATA);
-		entityData.set(TRANSIENT_DATA, b ? (b0 | 1) : (b0 & ~1));
-	}
-
-	public boolean isPanic() {
-		return (entityData.get(TRANSIENT_DATA) & 1) != 0;
-	}
-
-	public void setMale(boolean b) {
-		int b0 = entityData.get(FLAGS);
-		entityData.set(FLAGS, b ? (b0 | 1) : (b0 & ~1));
-	}
-
-	public boolean isMale() {
-		return (entityData.get(FLAGS) & 1) != 0;
-	}
-
-	public void setHorned(boolean b) {
-		int b0 = entityData.get(FLAGS);
-		entityData.set(FLAGS, b ? (b0 | 2) : (b0 & ~2));
-	}
-
-	public boolean isHorned() {
-		return (entityData.get(FLAGS) & 2) != 0;
-	}
-
 	protected void ageBoundaryReached() {
-		if (this.isBaby()) {
-			this.setHorned(false);
+		if (isBaby()) {
+			prop.setHorned(false);
 		} else {
-			setHorned(isMale());
+			prop.setHorned(prop.isMale());
 		}
 	}
 
-	public float relaxChance() {
-		return 0.3f;
-	}
-
-	public int eatWillingness() {
-		return isBaby() ? 50 : 1000;
+	public void ate() {
+		super.ate();
+		if (isBaby()) {
+			ageUp(60);
+		} else if (!prop.isHorned() && prop.isMale()) {
+			int stage = prop.getEatAge();
+			if (stage >= 3) {
+				prop.setHorned(true);
+				prop.setEatAge(0);
+			} else {
+				prop.setEatAge(stage + 1);
+			}
+		}
 	}
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group, @Nullable CompoundTag data) {
 		var ans = super.finalizeSpawn(level, ins, type, group, data);
-		setMale(level.getRandom().nextBoolean());
+		prop.setMale(level.getRandom().nextBoolean());
 		if (!isBaby()) {
-			setHorned(isMale());
+			prop.setHorned(prop.isMale());
 		}
 		return ans;
 	}

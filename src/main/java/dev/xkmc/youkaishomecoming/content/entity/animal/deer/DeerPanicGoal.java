@@ -14,13 +14,13 @@ public class DeerPanicGoal extends PanicGoal {
 	@Override
 	public void start() {
 		super.start();
-		deer.setPanic(true);
+		deer.prop.setPanic(true);
 	}
 
 	@Override
 	public void stop() {
 		super.stop();
-		deer.setPanic(false);
+		deer.prop.setPanic(false);
 	}
 
 }

@@ -2,9 +2,11 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
 import net.minecraft.world.entity.AnimationState;
 
+import static dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerStateMachine.ActionState.*;
+
 public class DeerStateMachine {
 
-	public static final byte RESET = 80, EAT = 81, RELAX = 82;
+	private static final byte OFFSET = 80;
 
 	public final AnimationState walk = new AnimationState();
 	public final AnimationState run = new AnimationState();
@@ -19,66 +21,68 @@ public class DeerStateMachine {
 	private int tick;
 
 	public void tick(DeerEntity e) {
-		if (e.level().isClientSide()) {
-			tickAnimation(e);
+		tickState(e, run, e.prop.isPanic());
+		tickState(e, walk, !e.prop.isPanic() && state.mobile());
+		tickState(e, ActionState.EAT, eat, ActionState.IDLE);
+		tickState(e, ActionState.RELAX_START, relaxStart, ActionState.RELAX);
+		tickState(e, relaxDur, state == ActionState.RELAX || state == ActionState.RELAX_EAT);
+		tickState(e, ActionState.RELAX_EAT, eat, ActionState.RELAX);
+		tickState(e, RELAX_END, relaxEnd, ActionState.IDLE);
+	}
+
+	private void tickState(DeerEntity e, AnimationState state, boolean pred) {
+		if (pred) state.startIfStopped(e.tickCount);
+		else state.stop();
+	}
+
+	private void tickState(DeerEntity e, ActionState current, AnimationState anim, ActionState next) {
+		if (state != current) return;
+		if (tick > 0) {
+			anim.startIfStopped(e.tickCount);
+			tick--;
+		} else {
+			anim.stop();
+			state = next;
 		}
 	}
 
-	public void tickAnimation(DeerEntity e) {
-		if (e.isPanic()) {
-			run.startIfStopped(e.tickCount);
-			walk.stop();
-		} else {
-			walk.startIfStopped(e.tickCount);
-			run.stop();
+	public boolean isRelaxed() {
+		return state.isRelaxed();
+	}
+
+	public boolean canRelax() {
+		return state == ActionState.IDLE || state.isRelaxed();
+	}
+
+	public void startRelax(DeerEntity mob) {
+		if (state == ActionState.IDLE) {
+			transitionTo(mob, RELAX_START);
 		}
-		if (state == ActionState.EAT) {
-			if (tick > 0) {
-				eat.startIfStopped(e.tickCount);
-				tick--;
-				if (tick <= 0) {
-					eat.stop();
-					state = ActionState.IDLE;
-				}
-			}
-		}
-		if (state == ActionState.RELAX) {
-			if (tick > 24 + 25) {
-				relaxStart.startIfStopped(e.tickCount);
-			} else if (tick > 25) {
-				relaxStart.stop();
-				relaxDur.startIfStopped(e.tickCount);
-				eat.startIfStopped(e.tickCount);
-			} else {
-				relaxDur.stop();
-				eat.stop();
-				relaxEnd.startIfStopped(e.tickCount);
-			}
-			if (tick > 0) {
-				tick--;
-				if (tick <= 0) {
-					relaxEnd.stop();
-					state = ActionState.IDLE;
-				}
-			}
-		}
+	}
+
+	public boolean mayStopRelax() {
+		return state == RELAX;
+	}
+
+	public void stopRelax(DeerEntity mob) {
+		transitionTo(mob, RELAX_END);
+	}
+
+	public boolean canEat() {
+		return state == ActionState.IDLE || state == ActionState.RELAX;
 	}
 
 	public void startEating(DeerEntity mob) {
-		if (mob.getRandom().nextFloat() < mob.relaxChance()) {
-			mob.eat.eatAnimationTick = 22 + 24 + 25;
-			mob.eat.finishTick = 24;
-			mob.level().broadcastEntityEvent(mob, RELAX);
+		if (state.isRelaxed()) {
+			transitionTo(mob, RELAX_EAT);
 		} else {
-			mob.eat.eatAnimationTick = 25;
-			mob.eat.finishTick = 4;
-			mob.level().broadcastEntityEvent(mob, EAT);
+			transitionTo(mob, EAT);
 		}
 	}
 
 	public void onHurt(DeerEntity mob) {
 		mob.eat.stop();
-		mob.level().broadcastEntityEvent(mob, RESET);
+		transitionTo(mob, IDLE);
 	}
 
 	private void stopAll() {
@@ -88,28 +92,52 @@ public class DeerStateMachine {
 		eat.stop();
 	}
 
-	public boolean handleEntityEvent(byte data) {
-		if (data == RESET) {
-			state = ActionState.IDLE;
-			tick = 0;
-			stopAll();
-			return true;
-		}
-		if (data == EAT) {
-			state = ActionState.EAT;
-			tick = 25;
-			return true;
-		}
-		if (data == RELAX) {
-			state = ActionState.RELAX;
-			tick = 22 + 24 + 25;
-			return true;
+	public boolean transitionTo(DeerEntity mob, byte id) {
+		if (id >= OFFSET && id - OFFSET < values().length) {
+			return transitionTo(mob, values()[id - OFFSET]);
 		}
 		return false;
 	}
 
+	public boolean transitionTo(DeerEntity mob, ActionState data) {
+		if (!mob.level().isClientSide()) {
+			mob.level().broadcastEntityEvent(mob, data.id());
+		}
+		if (data == IDLE) {
+			stopAll();
+		}
+		state = data;
+		tick = data.tick;
+		return true;
+	}
+
 	public enum ActionState {
-		IDLE, EAT, RELAX, ATTACK, SMELL
+		IDLE(0),
+		EAT(25),
+		RELAX_START(22),
+		RELAX(0),
+		RELAX_EAT(25),
+		RELAX_END(24),
+		ATTACK(0),
+		SMELL(0);
+
+		final int tick;
+
+		ActionState(int tick) {
+			this.tick = tick;
+		}
+
+		public boolean mobile() {
+			return this == IDLE;
+		}
+
+		public boolean isRelaxed() {
+			return this == RELAX_START || this == RELAX || this == RELAX_EAT || this == RELAX_END;
+		}
+
+		public byte id() {
+			return (byte) (OFFSET + ordinal());
+		}
 	}
 
 }

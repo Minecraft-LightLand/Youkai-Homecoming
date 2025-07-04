@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.client.DanmakuItemDeco;
 import dev.xkmc.youkaishomecoming.content.capability.PowerInfoOverlay;
 import dev.xkmc.youkaishomecoming.content.client.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerModelData;
 import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerModel;
 import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaModel;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.DanmakuPoofParticle;
@@ -106,7 +107,7 @@ public class YHClient {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
 		event.registerLayerDefinition(TunaModel.LAYER_LOCATION, TunaModel::createBodyLayer);
-		event.registerLayerDefinition(DeerModel.LAYER_LOCATION, DeerModel::createBodyLayer);
+		event.registerLayerDefinition(DeerModel.LAYER_LOCATION, DeerModelData::createBodyLayer);
 		event.registerLayerDefinition(SuwakoHatModel.SUWAKO, SuwakoHatModel::createSuwakoHat);
 		event.registerLayerDefinition(SuwakoHatModel.STRAW, SuwakoHatModel::createStrawHat);
 		event.registerLayerDefinition(FrogStrawHatModel.STRAW, FrogStrawHatModel::createHat);
