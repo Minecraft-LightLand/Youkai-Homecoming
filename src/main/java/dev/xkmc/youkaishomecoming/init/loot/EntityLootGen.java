@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabEntity;
 import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
 import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
@@ -79,6 +80,10 @@ public class EntityLootGen {
 						.add(LootItem.lootTableItem(YHFood.RAW_VENISON.item.get()))
 						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire())));
+	}
+
+	public static void crab(RegistrateEntityLootTables pvd, EntityType<CrabEntity> type) {
+		pvd.add(type, LootTable.lootTable());//TODO
 	}
 
 	public static void rumia(RegistrateEntityLootTables pvd, EntityType<RumiaEntity> type) {
