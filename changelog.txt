@@ -1,7 +1,9 @@
 2.4.16
 - Fix cucumber and grape seed not consuming when planting on rope
 - Add composter support for cucumber and grapes
--
+- Fix custom spell tooltip
+- Change Nattou recipe
+- Update JP translation
 
 2.4.15
 - Texture overhaul
