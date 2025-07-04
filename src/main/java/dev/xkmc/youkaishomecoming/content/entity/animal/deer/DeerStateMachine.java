@@ -113,10 +113,10 @@ public class DeerStateMachine {
 
 	public enum ActionState {
 		IDLE(0),
-		EAT(25),
+		EAT(34),
 		RELAX_START(22),
 		RELAX(0),
-		RELAX_EAT(25),
+		RELAX_EAT(34),
 		RELAX_END(24),
 		ATTACK(0),
 		SMELL(0);
