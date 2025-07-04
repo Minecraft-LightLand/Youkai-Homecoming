@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-02T20:30:14.885369	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-04T16:45:01.493752	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -2949,7 +2949,7 @@ d7240528e91ec3a505304a8f0ca988602955ce3c data/youkaishomecoming/recipes/moka_pot
 d5eb1268ff752859d4aa2075cd98b642271a5694 data/youkaishomecoming/recipes/moon_lantern.json
 db9b632687a2461ac19cffe5b35b1bd1ce257026 data/youkaishomecoming/recipes/moon_rocket.json
 edf56d3ebac619e26aa29507fa4d0ef7233ecb58 data/youkaishomecoming/recipes/mushroom_soup.json
-500fbaabf4e995c305fea7b7371d1c0e8e4e31e7 data/youkaishomecoming/recipes/nattou.json
+7c1e249af7e51fb8719e7a581220a84c939cb3ad data/youkaishomecoming/recipes/nattou.json
 37330533d99aee7c9dd0f6390c4b48dfc876df91 data/youkaishomecoming/recipes/nattou_gunkan.json
 19523a92a71bc2f5108c408edd3fdf64a0472f2d data/youkaishomecoming/recipes/oak_dining_chair.json
 afd1396139fa8dd3582f0baa38061dbe80ca9496 data/youkaishomecoming/recipes/oak_dining_table.json

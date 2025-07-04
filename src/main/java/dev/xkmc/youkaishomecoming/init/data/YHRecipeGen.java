@@ -1011,7 +1011,7 @@ public class YHRecipeGen {
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHCrops.SOYBEAN.getSeed())
 					.addInput(YHCrops.SOYBEAN.getSeed(), 6)
-					.addInput(Items.BROWN_MUSHROOM)
+					.addInput(ModItems.STRAW.get())
 					.addOutput(YHFood.NATTOU.item, 6)
 					.save(pvd, YHFood.NATTOU.item.getId());
 
