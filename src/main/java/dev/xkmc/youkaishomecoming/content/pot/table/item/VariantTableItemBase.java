@@ -11,10 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class VariantTableItemBase {
 
@@ -77,6 +74,16 @@ public class VariantTableItemBase {
 		if (click != null) {
 			recipe.add(Ingredient.EMPTY);
 		}
+	}
+
+	public List<Ingredient> getHints(Level level) {
+		List<Ingredient> ans = new ArrayList<>();
+		var cont = new CuisineInv(id, List.of(), 0, false);
+		var list = level.getRecipeManager().getRecipesFor(YHBlocks.CUISINE_RT.get(), cont, level);
+		for (var r : list) {
+			ans.addAll(r.getHints(level, cont));
+		}
+		return ans;
 	}
 
 }

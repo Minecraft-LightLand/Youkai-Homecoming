@@ -4,6 +4,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
@@ -51,6 +52,23 @@ public class VariantTableItem implements TableItem {
 		ans.add(stack.copyWithCount(1));
 		if (!base.isValid(level, ans)) return Optional.empty();
 		return Optional.of(new VariantTableItem(base, ans));
+	}
+
+	@Override
+	public List<Ingredient> getHints(Level level) {
+		var isComplete = level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(),
+				new CuisineInv(base.id(), contents, 0, true), level).isPresent();
+		if (isComplete) {
+			if (base.next() == null) return List.of();
+			else return List.of(Ingredient.EMPTY);
+		}
+		List<Ingredient> ans = new ArrayList<>();
+		var cont = new CuisineInv(base.id(), contents, 0, false);
+		var list = level.getRecipeManager().getRecipesFor(YHBlocks.CUISINE_RT.get(), cont, level);
+		for (var r : list) {
+			ans.addAll(r.getHints(level, cont));
+		}
+		return ans;
 	}
 
 	@Override
