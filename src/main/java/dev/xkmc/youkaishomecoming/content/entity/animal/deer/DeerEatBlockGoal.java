@@ -42,8 +42,8 @@ public class DeerEatBlockGoal extends Goal {
 
 	public void start() {
 		mob.states.startEating(mob);
-		eatAnimationTick = adjustedTickDelay(25);
-		finishTick = adjustedTickDelay(4);
+		eatAnimationTick = adjustedTickDelay(34);
+		finishTick = adjustedTickDelay(10);
 		level.broadcastEntityEvent(mob, (byte) 10);
 		mob.getNavigation().stop();
 	}
