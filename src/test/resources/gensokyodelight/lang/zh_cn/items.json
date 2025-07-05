@@ -111,7 +111,8 @@
 		"cucumber_slice": "黄瓜丝",
 		"cucumber_seeds": "黄瓜种子",
 		"honey_glazed_cucumber": "蜜渍黄瓜",
-		"raisin": "葡萄干"
+		"raisin": "葡萄干",
+		"empty_hand_icon": "空手图标"
 	},
 	"-cartesian": {
 		"entity": {

@@ -59,6 +59,8 @@ public class YHItems {
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 	public static final ItemEntry<MobBucketItem> TUNA_BUCKET;
 
+	public static final ItemEntry<Item> EMPTY_HAND_ICON;
+
 	static {
 
 		// plants
@@ -161,6 +163,9 @@ public class YHItems {
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();
+
+		EMPTY_HAND_ICON = YoukaisHomecoming.REGISTRATE.item("empty_hand_icon", Item::new)
+				.removeTab(YoukaisHomecoming.TAB.getKey()).register();
 
 	}
 

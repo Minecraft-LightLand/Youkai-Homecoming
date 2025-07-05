@@ -25,6 +25,8 @@ public enum YHLangData {
 	MOON_LANTERN_HOLD("tooltip.moon_lantern_hold", "When holding in hand, Udumbara effect will always trigger at night regardless if player can see full moons", 0, ChatFormatting.GRAY),
 
 	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
+	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
+	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
 
 	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),

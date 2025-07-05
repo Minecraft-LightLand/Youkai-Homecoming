@@ -94,6 +94,7 @@ public class TableItemManager extends BaseTableItem {
 		CAL_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
 		CAL_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
 		CAL_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
+		CAL_TOP.addMapping("otoro", YHFood.OTORO.item);
 		CAL_COVER.addMapping("roe", YHFood.ROE.item);
 
 		VariantModelPart[] rolls = {HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT};

@@ -66,10 +66,8 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			YHCrops.SOYBEAN.registerComposter();
-			YHCrops.REDBEAN.registerComposter();
-			YHCrops.COFFEA.registerComposter();
-			YHCrops.TEA.registerComposter();
+			for (var e : YHCrops.values())
+				e.registerComposter();
 
 			if (ModList.get().isLoaded(Thirst.ID)) {
 				ThirstCompat.init();
