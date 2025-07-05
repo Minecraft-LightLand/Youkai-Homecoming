@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.crab;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.world.effect.MobEffects;
 
 public class CrabProperties {
 
@@ -41,11 +42,13 @@ public class CrabProperties {
 	}
 
 	public int digWillingness() {
-		return 1000;
+		var ins = e.getEffect(MobEffects.DIG_SPEED);
+		if (ins == null) return 1000;
+		return Math.max((int) (1000 / (ins.getAmplifier() * 0.3 + 1.3)), 50);
 	}
 
 	public int flipPower() {
-		return 300;
+		return 100;
 	}
 
 }

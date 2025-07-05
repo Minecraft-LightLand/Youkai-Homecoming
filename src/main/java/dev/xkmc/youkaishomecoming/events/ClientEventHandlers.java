@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,6 +28,13 @@ public class ClientEventHandlers {
 		oTilt = tilt;
 		float lv = drunkLevel();
 		tilt = Mth.lerp(0.03f, tilt, lv);
+	}
+
+	@SubscribeEvent
+	public static void onInput(MovementInputUpdateEvent event) {
+		var ins = event.getEntity().getEffect(YHEffects.CRABY.get());
+		if (ins == null) return;
+		event.getInput().leftImpulse *= 1 + (1 + ins.getAmplifier()) * 0.5f;
 	}
 
 	@SubscribeEvent

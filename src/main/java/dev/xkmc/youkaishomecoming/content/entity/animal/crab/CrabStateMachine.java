@@ -19,7 +19,8 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 
 	public void onHurt() {
 		if (state() != FLIP) {
-			transitionTo(CrabState.FLIP);
+			if (mob.getHealth() < mob.getMaxHealth() * 0.5f || mob.getRandom().nextFloat() < 0.3f)
+				transitionTo(CrabState.FLIP);
 			var stack = mob.getMainHandItem();
 			if (!stack.isEmpty()) {
 				mob.spawnAtLocation(stack);

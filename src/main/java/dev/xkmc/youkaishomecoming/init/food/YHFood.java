@@ -37,39 +37,39 @@ public enum YHFood {
 	),
 
 	RAW_TUNA(FoodType.MEAT, 9, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.3f),
 			YHTagGen.RAW_TUNA, DietTagGen.PROTEINS.tag
 	),
 	SEARED_TUNA(FoodType.MEAT, 12, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.4f),
 			YHTagGen.COOKED_TUNA, DietTagGen.PROTEINS.tag
 	),
 	RAW_TUNA_SLICE(FoodType.MEAT_SLICE, 4, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
 			YHTagGen.RAW_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	SEARED_TUNA_SLICE(FoodType.MEAT_SLICE, 5, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.4f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),
 			YHTagGen.COOKED_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	OTORO(FoodType.MEAT, 9, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.5f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
 	CRAB(FoodType.MEAT, 2, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),//TODO
+			new EffectEntry(YHEffects.CRABY, 600, 0, 0.2f),
 			YHTagGen.RAW_CRAB, DietTagGen.PROTEINS.tag
 	),
 	STEAMED_CRAB(FoodType.MEAT, 6, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),//TODO
+			new EffectEntry(YHEffects.CRABY, 600, 0, 0.3f),
 			YHTagGen.COOKED_CRAB, DietTagGen.PROTEINS.tag
 	),
 	CRAB_MEAT(FoodType.MEAT, 6, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),//TODO
+			new EffectEntry(YHEffects.CRABY, 600, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
 	CRAB_ROE(FoodType.MEAT, 6, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),//TODO
+			new EffectEntry(YHEffects.CRABY, 600, 1, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
 	RAW_VENISON(FoodType.MEAT, 4, 0.3f,
@@ -87,7 +87,7 @@ public enum YHFood {
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.MEAT, 1, 0.6f,
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
 			DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f, YHTagGen.BUTTER),
 	TOFU(FoodType.SIMPLE, 4, 0.5f, DietTagGen.PROTEINS.tag),

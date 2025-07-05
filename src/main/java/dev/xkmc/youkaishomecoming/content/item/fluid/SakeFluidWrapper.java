@@ -62,7 +62,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public int getTankCapacity(int tank) {
-		return 250;//TODO
+		return 250;
 	}
 
 	@Override

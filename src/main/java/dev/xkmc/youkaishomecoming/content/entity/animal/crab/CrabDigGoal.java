@@ -64,7 +64,7 @@ public class CrabDigGoal extends Goal {
 							Vec3.directionFromRotation(new Vec2(0, mob.getYRot()))
 									.scale(mob.getBbWidth() / 2));
 					sl.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, down),
-							vec.x, vec.y, vec.z, 10, 0, 0, 0, 0.05);
+							vec.x, vec.y + 0.1f, vec.z, 10, 0, 0, 0, 0.05);
 					if (eatAnimationTick % finishTick == 0) {
 						sl.playSound(mob, mob.blockPosition(), SoundEvents.BRUSH_SAND,
 								SoundSource.AMBIENT, 1, 1);

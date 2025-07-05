@@ -1,4 +1,16 @@
 {
   "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "youkaishomecoming:crab"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
   "random_sequence": "youkaishomecoming:entities/crab"
 }

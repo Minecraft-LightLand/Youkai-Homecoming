@@ -44,7 +44,6 @@ public class EntityLootGen {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(YHFood.RAW_LAMPREY.item.get()))
-						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire()))
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(Items.BONE_MEAL))
@@ -83,7 +82,9 @@ public class EntityLootGen {
 	}
 
 	public static void crab(RegistrateEntityLootTables pvd, EntityType<CrabEntity> type) {
-		pvd.add(type, LootTable.lootTable());//TODO
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.CRAB.item.get()))));
 	}
 
 	public static void rumia(RegistrateEntityLootTables pvd, EntityType<RumiaEntity> type) {

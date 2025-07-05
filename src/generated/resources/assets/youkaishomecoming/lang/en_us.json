@@ -247,6 +247,8 @@
   "effect.youkaishomecoming.caffeinated.description": "Boost attack damage",
   "effect.youkaishomecoming.confident": "Confident",
   "effect.youkaishomecoming.confident.description": "Increase invulnerability time after being attacked",
+  "effect.youkaishomecoming.craby": "Craby",
+  "effect.youkaishomecoming.craby.description": "Makes your horizontal movement faster",
   "effect.youkaishomecoming.drunk": "Drunk",
   "effect.youkaishomecoming.drunk.description": "Increase attack damage, but you feel drunk. You can't have sobering drink while having this effect. Drunk effect can stack up to 5 layers.",
   "effect.youkaishomecoming.earthy": "Earthy",

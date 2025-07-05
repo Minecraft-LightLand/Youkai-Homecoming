@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.init.food.EffectEntry;
 import dev.xkmc.youkaishomecoming.init.food.FoodType;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
@@ -20,7 +21,7 @@ public enum YHRolls {
 	SHINNKO_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	KAPPA_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	TEKKA_MAKI(FoodType.MEAT, 7, 1f, FoodModelHelper::hosomaki, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.2f)
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.2f)
 	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 
 	EGG_FUTOMAKI(FoodType.SIMPLE, 4, 0.8f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
@@ -30,20 +31,20 @@ public enum YHRolls {
 	CALIFORNIA_ROLL(FoodType.MEAT, 5, 0.9f, FoodModelHelper::cali, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	ROE_CALIFORNIA_ROLL(FoodType.MEAT, 6, 1f, null, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.35f),
+			new EffectEntry(YHEffects.CRABY, 600, 1, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SALMON_LOVER_ROLL(FoodType.MEAT, 7, 1.2f, null, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.6f),
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.6f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	VOLCANO_ROLL(FoodType.MEAT, 7, 1.2f, null, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.6f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.6f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	RAINBOW_ROLL(FoodType.MEAT, 8, 1.2f, null, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.35f),
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.35f),
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.35f),
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.35f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	;
