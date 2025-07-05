@@ -28,33 +28,5 @@
 		"flaming.description": "提升玩家造成的火焰伤害",
 		"mature": "熟成",
 		"mature.description": "消耗滋养效果时长来抵御一部分伤害"
-	},
-	"item.minecraft.tipped_arrow.effect": {
-		"aphrodisiac": "催情之箭",
-		"long_aphrodisiac": "催情之箭",
-		"hypnosis": "催眠之箭",
-		"long_hypnosis": "催眠之箭"
-	},
-	"-cartesian": {
-		"potion": {
-			"path": "item.minecraft",
-			"use_dot": true,
-			"list": [
-				{
-					"lingering_potion": "滞留型",
-					"potion": "",
-					"splash_potion": "喷溅型"
-				},
-				{
-					"effect": ""
-				},
-				{
-					"aphrodisiac": "催情药水",
-					"long_aphrodisiac": "催情药水",
-					"hypnosis": "催眠药水",
-					"long_hypnosis": "催眠药水"
-				}
-			]
-		}
 	}
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-03T11:22:19.952009	Registrate Provider for gensokyodelight [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-05T15:46:21.441867	Registrate Provider for gensokyodelight [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 8bd7ffd5ac836e7c1995148472dd785605ed0c26 assets/gensokyodelight/blockstates/acacia_dining_chair.json
 ea4ec367baa7671857765bb826e9f089947e9fb0 assets/gensokyodelight/blockstates/acacia_dining_table.json
 ddb38e4109872800d49bb33a9cfa50e964ae165d assets/gensokyodelight/blockstates/bamboo_dining_chair.json
@@ -95,8 +95,8 @@ de1eb33e33c08d14d07dc6b4b7872cde6cb2034d assets/gensokyodelight/blockstates/wild
 41c9e4d5466ce834ff1a49ed2ffc46e4d24cb115 assets/gensokyodelight/blockstates/wild_udumbara.json
 e009d12f9b395a4dd48743d43f6144ea0c16b3b2 assets/gensokyodelight/blockstates/wild_white_grape.json
 05331e16a7c36020f3a1668822fcdb530618da6f assets/gensokyodelight/blockstates/wood_basin.json
-8841f19268d82fafa508ed1a9869b18449b266ba assets/gensokyodelight/lang/en_ud.json
-98bf35ecdd9b697b0d95c32c7662a6b5711484f0 assets/gensokyodelight/lang/en_us.json
+1e67e9ae4cd086b1f35a5cd33e7cdd62836c55d4 assets/gensokyodelight/lang/en_ud.json
+6a21c80c12b74ded9661c51ed63f40a7dc134b5f assets/gensokyodelight/lang/en_us.json
 ca1b10517df02e9384c8f4c7de24c243ae5eb92e assets/gensokyodelight/models/block/acacia_dining_chair.json
 33b64a2332130268f485e9ccfc883aba7cafff40 assets/gensokyodelight/models/block/acacia_dining_table.json
 d445b248ef919b22b8b6dd633faafce00c16510d assets/gensokyodelight/models/block/bamboo_dining_chair.json
@@ -752,6 +752,9 @@ e70297d95b3292e05b405517f95a14a557b6f81d assets/gensokyodelight/models/cuisine/c
 b7f2aa32f4046e2b08b515dd311cc5415df8033a assets/gensokyodelight/models/cuisine/california/top/cod/0.json
 fd4ea345e0ab285e2d179c95248c3305f446ff8d assets/gensokyodelight/models/cuisine/california/top/cod/1.json
 7a1997384c99987a06b5e0d830043a34be1fe509 assets/gensokyodelight/models/cuisine/california/top/cod/2.json
+0baaf2e808742c2df9ce26a3f9f7dcb67d42934a assets/gensokyodelight/models/cuisine/california/top/otoro/0.json
+61be82274491aefa4599c2b3c4a8974c15c172ad assets/gensokyodelight/models/cuisine/california/top/otoro/1.json
+9e165c5e588f6e5b75374cb96c2bd1ed215d2ce5 assets/gensokyodelight/models/cuisine/california/top/otoro/2.json
 eff892d561fcd66678e2a66f79c8b659a88e842c assets/gensokyodelight/models/cuisine/california/top/salmon/0.json
 b54c079d18276d068bc4e3ea5c1663f8406a9861 assets/gensokyodelight/models/cuisine/california/top/salmon/1.json
 2ecb842adaf71c59a0e0b6066f674e5f53365b1a assets/gensokyodelight/models/cuisine/california/top/salmon/2.json
@@ -937,6 +940,7 @@ b0a66626726290602d536dc4f6406e876b7347db assets/gensokyodelight/models/item/dryi
 cf4f8fd735375b636193a00c342963014b358fac assets/gensokyodelight/models/item/egg_futomaki.json
 8a658afa2ab3f33beab35aacd5c015b03ff0d2cb assets/gensokyodelight/models/item/egg_futomaki_slice.json
 2f5743ff4c485304341a1d8bb692bdf555b7b292 assets/gensokyodelight/models/item/egg_nigiri.json
+553ea7c25e623a30d41a829e4552e46e131f8561 assets/gensokyodelight/models/item/empty_hand_icon.json
 4824fd0ee0b8f067c07fab1eaae3709098db9f55 assets/gensokyodelight/models/item/espresso.json
 919c4b2424b9541b1d07f13eb339a31e20b01b36 assets/gensokyodelight/models/item/fermentation_tank.json
 431aa5ca2580db9661aaa4c43e0eb8fd54819652 assets/gensokyodelight/models/item/full_moons_eve.json
@@ -1671,7 +1675,7 @@ db324db2cc862a8240579046d819ff61750fd36e data/gensokyodelight/recipes/moka_pot.j
 4179ccab2a5bdf54bf2f301208eacc1e7fdde4ea data/gensokyodelight/recipes/moon_lantern.json
 c2d7c89b1393791a535dba517ac871e569d715ec data/gensokyodelight/recipes/moon_rocket.json
 15b7cb01d0b58590bf7627e17f021b72378440ca data/gensokyodelight/recipes/mushroom_soup.json
-31dad251281c33b600536fcb9a538ae3960795fb data/gensokyodelight/recipes/nattou.json
+d865472f5f7a9391f74817b4ef78d95490fb8114 data/gensokyodelight/recipes/nattou.json
 b32accbbea03d427d70100dc16a64ed31719c859 data/gensokyodelight/recipes/nattou_gunkan.json
 f74c24e629d25b2b7fabe76e07af3c51bd88b1d5 data/gensokyodelight/recipes/oak_dining_chair.json
 7cd8c2e010fbddd2cde8e382de73aaf55a812a55 data/gensokyodelight/recipes/oak_dining_table.json
