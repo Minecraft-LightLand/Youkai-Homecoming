@@ -141,7 +141,7 @@ public class YHItems {
 		{
 			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
 							new SurpriseChestBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
-					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
+					.item().properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.blockstate(SurpriseChestBlock::buildModel)
 					.register();
 
@@ -153,6 +153,7 @@ public class YHItems {
 					.register();
 
 			RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
+					.properties(p->p.stacksTo(1))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName())))
 					.lang("Raw %1$s Feast")
 					.register();
@@ -163,7 +164,7 @@ public class YHItems {
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
 							FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
 					.lang("%1$s Feast")
-					.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
+					.item(FleshBlockItem::new).properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.loot(FleshFeastBlock::builtLoot)
 					.register();
 
