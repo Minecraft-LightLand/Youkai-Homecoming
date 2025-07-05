@@ -291,6 +291,36 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:crab_meat": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab_meat"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:crab_roe": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab_roe"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:cucumber_slice": {
       "conditions": {
         "item": {
@@ -1311,6 +1341,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:steamed_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:steamed_crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:steamed_egg_in_bamboo": {
       "conditions": {
         "item": {
@@ -1779,6 +1819,18 @@
     ],
     [
       "youkaishomecoming:otoro"
+    ],
+    [
+      "youkaishomecoming:crab"
+    ],
+    [
+      "youkaishomecoming:steamed_crab"
+    ],
+    [
+      "youkaishomecoming:crab_meat"
+    ],
+    [
+      "youkaishomecoming:crab_roe"
     ],
     [
       "youkaishomecoming:raw_venison"

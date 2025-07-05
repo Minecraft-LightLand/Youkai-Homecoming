@@ -56,8 +56,24 @@ public enum YHFood {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
+	CRAB(FoodType.MEAT, 2, 0.3f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),//TODO
+			YHTagGen.RAW_CRAB, DietTagGen.PROTEINS.tag
+	),
+	STEAMED_CRAB(FoodType.MEAT, 6, 0.8f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),//TODO
+			YHTagGen.COOKED_CRAB, DietTagGen.PROTEINS.tag
+	),
+	CRAB_MEAT(FoodType.MEAT, 6, 0.8f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),//TODO
+			DietTagGen.PROTEINS.tag
+	),
+	CRAB_ROE(FoodType.MEAT, 6, 0.8f,
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),//TODO
+			DietTagGen.PROTEINS.tag
+	),
 	RAW_VENISON(FoodType.MEAT, 4, 0.3f,
-			 YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
+			YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
 	),
 	GRILLED_VENISON(FoodType.MEAT, 10, 0.8f,
 			YHTagGen.COOKED_VENISON, DietTagGen.PROTEINS.tag
@@ -283,7 +299,11 @@ public enum YHFood {
 	}
 
 	private boolean isUnappealing() {
-		return this == RAW_LAMPREY || this == RAW_LAMPREY_FILLET || this == POOR_GOD_SOUP || this == BUTTER;
+		return switch (this) {
+			case RAW_LAMPREY, RAW_LAMPREY_FILLET, RAW_VENISON, RAW_VENISON_SLICE,
+				 CRAB, CRAB_MEAT, CRAB_ROE, ROE, CUCUMBER_SLICE, RAISIN, POOR_GOD_SOUP, BUTTER -> true;
+			default -> false;
+		};
 	}
 
 	public boolean isReimuFood() {

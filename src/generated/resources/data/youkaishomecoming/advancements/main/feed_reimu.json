@@ -181,16 +181,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:cucumber_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:cucumber_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:cumberland_loin": {
       "conditions": {
         "item": {
@@ -741,16 +731,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:raisin": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:raisin"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:raw_tuna": {
       "conditions": {
         "item": {
@@ -766,26 +746,6 @@
         "item": {
           "items": [
             "youkaishomecoming:raw_tuna_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:raw_venison": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:raw_venison"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:raw_venison_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:raw_venison_slice"
           ]
         }
       },
@@ -826,16 +786,6 @@
         "item": {
           "items": [
             "youkaishomecoming:roasted_lamprey_fillet"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:roe": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:roe"
           ]
         }
       },
@@ -1026,6 +976,16 @@
         "item": {
           "items": [
             "youkaishomecoming:sparrow_sake"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:steamed_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:steamed_crab"
           ]
         }
       },
@@ -1457,22 +1417,16 @@
       "youkaishomecoming:otoro"
     ],
     [
-      "youkaishomecoming:raw_venison"
+      "youkaishomecoming:steamed_crab"
     ],
     [
       "youkaishomecoming:grilled_venison"
-    ],
-    [
-      "youkaishomecoming:raw_venison_slice"
     ],
     [
       "youkaishomecoming:grilled_venison_slice"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"
-    ],
-    [
-      "youkaishomecoming:roe"
     ],
     [
       "youkaishomecoming:tofu"
@@ -1491,12 +1445,6 @@
     ],
     [
       "youkaishomecoming:nattou"
-    ],
-    [
-      "youkaishomecoming:cucumber_slice"
-    ],
-    [
-      "youkaishomecoming:raisin"
     ],
     [
       "youkaishomecoming:mochi"

@@ -253,6 +253,7 @@ public class YHRecipeGen {
 			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
 			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
 			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
+			steaming(pvd, DataIngredient.items(YHFood.CRAB.item.get()), YHFood.STEAMED_CRAB.item);
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
 							Ingredient.of(TagRef.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
@@ -260,6 +261,16 @@ public class YHRecipeGen {
 					.addResult(Items.BONE_MEAL)
 					.addResultWithChance(YHFood.ROE.item.get(), 0.5f, 1)
 					.build(pvd, YHFood.ROE.item.getId());
+
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHFood.STEAMED_CRAB.item),
+							Ingredient.of(TagRef.TOOLS_KNIVES), YHFood.CRAB_MEAT.item, 1)
+					.build(pvd, YHFood.CRAB_MEAT.item.getId());
+
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.CRAB_BUCKET),
+							Ingredient.of(TagRef.TOOLS_KNIVES),Items.BUCKET, 1)
+					.addResultWithChance(YHFood.CRAB.item.get(), 1, 1)
+					.addResultWithChance(YHFood.CRAB_ROE.item.get(), 0.5f, 1)
+					.build(pvd, YHFood.CRAB_ROE.item.getId());
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.COFFEE_BEAN),
 							Ingredient.of(TagRef.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
@@ -1250,12 +1261,12 @@ public class YHRecipeGen {
 
 				unlock(pvd, new OrderedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.ROE.item.get())
 						.result(YHRolls.ROE_CALIFORNIA_ROLL)
-						.add(YHFood.ROE.item)
+						.add(YHFood.CRAB_ROE.item)
 						.save(pvd);
 
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.SALMON_LOVER_ROLL)
-						.addOrdered(YHFood.ROE.item)
+						.addOrdered(YHFood.CRAB_ROE.item)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)

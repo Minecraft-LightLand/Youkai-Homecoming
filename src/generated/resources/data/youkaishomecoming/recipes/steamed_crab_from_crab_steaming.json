@@ -1,0 +1,10 @@
+{
+  "type": "youkaishomecoming:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaishomecoming:crab"
+  },
+  "result": "youkaishomecoming:steamed_crab"
+}

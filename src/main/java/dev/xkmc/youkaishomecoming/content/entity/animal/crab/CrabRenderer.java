@@ -16,7 +16,10 @@ public class CrabRenderer extends MobRenderer<CrabEntity, CrabModel> {
 
 	@Override
 	public ResourceLocation getTextureLocation(CrabEntity e) {
-		return NORMAL;//TODO
+		return switch (e.prop.getVariant()) {
+			case MUD -> MUD;
+			default -> NORMAL;
+		};
 	}
 
 }
