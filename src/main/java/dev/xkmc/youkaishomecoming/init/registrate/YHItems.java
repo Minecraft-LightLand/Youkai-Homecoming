@@ -88,6 +88,8 @@ public class YHItems {
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 	public static final ItemEntry<MobBucketItem> TUNA_BUCKET;
 
+	public static final ItemEntry<Item> EMPTY_HAND_ICON;
+
 	static {
 
 		// plants
@@ -263,6 +265,9 @@ public class YHItems {
 			FROZEN_FROG_TEMPERATE = ingredient("frozen_frog_temperate", p -> new FrozenFrogItem(p.stacksTo(16), FrogVariant.TEMPERATE));
 
 		}
+
+		EMPTY_HAND_ICON = YoukaisHomecoming.REGISTRATE.item("empty_hand_icon", Item::new)
+				.removeTab(YoukaisHomecoming.TAB.getKey()).register();
 
 	}
 
