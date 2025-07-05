@@ -253,6 +253,7 @@ public enum YHFood {
 	;
 
 
+	private final String id;
 	public final ItemEntry<Item> raw, item;
 
 	private final FoodType type;
@@ -261,7 +262,7 @@ public enum YHFood {
 	YHFood(FoodType type, int nutrition, float sat, @Nullable String raw, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
-		String id = FoodRegistryHelper.getId(type, tags);
+		id = FoodRegistryHelper.getId(type, tags);
 		if (raw == null) this.raw = null;
 		else {
 			String rid = "item/" + id + raw;
@@ -299,9 +300,9 @@ public enum YHFood {
 	}
 
 	private boolean isUnappealing() {
+		if (id.equals("food/basic/")) return true;
 		return switch (this) {
-			case RAW_LAMPREY, RAW_LAMPREY_FILLET, RAW_VENISON, RAW_VENISON_SLICE,
-				 CRAB, CRAB_MEAT, CRAB_ROE, ROE, CUCUMBER_SLICE, RAISIN, POOR_GOD_SOUP, BUTTER -> true;
+			case POOR_GOD_SOUP, HIGAN_SOUP, MANTOU -> true;
 			default -> false;
 		};
 	}
