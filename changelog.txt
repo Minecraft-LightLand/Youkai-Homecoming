@@ -1,3 +1,6 @@
+2.4.17
+- make cake and feast non-stackable
+
 2.4.16
 - Add cuisine hint
 - Fix cucumber and grape seed not consuming when planting on rope
