@@ -52,7 +52,7 @@ public class CakeEntry {
 			item = type.build("feast/", base + "_cake_slice", nut, sat, new TagKey[0], List.of(effects));
 			var b = YoukaisHomecoming.REGISTRATE.block(base + "_cake", p -> new YHCakeBlock(item::get, props))
 					.blockstate(this::genCakeModels).loot((pvd, block) -> pvd.dropOther(block, item.get()))
-					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build().register();
+					.item().properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build().register();
 			block = b;
 			YoukaisHomecoming.REGISTRATE.block(base + "_candle_cake",
 							p -> new YHCandleCakeBlock(b, Blocks.CANDLE, props))
