@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-05T15:01:58.975186	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-05T22:21:13.505767	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1909,7 +1909,7 @@ f13e3f74fca61b398fad5a51330bc8d89beeb0ed data/sereneseasons/tags/items/summer_cr
 b3e5b1286bd65f12deb9a10a33d6e58ee78d6f0c data/youkaishomecoming/advancements/main/cucumber.json
 08df6b315adfb171256c6db77b8755e0e23ae553 data/youkaishomecoming/advancements/main/cucumber_top.json
 cea40a902e7d4fbd4091c3b01ac140527375d9e2 data/youkaishomecoming/advancements/main/enthusiastic.json
-66b077bd998655942401c0e25865d9e9f55cb822 data/youkaishomecoming/advancements/main/feed_reimu.json
+08b9f0ace4416f3f8f9cad828c3b02f9d99ace13 data/youkaishomecoming/advancements/main/feed_reimu.json
 650f016505d857c3ceb1aeffbd4dc74b58a08877 data/youkaishomecoming/advancements/main/first_time.json
 82808fb224e2127bbd53cdf938729e13dee32b26 data/youkaishomecoming/advancements/main/flesh.json
 0734399822152aa177b5280cb424c8ae0e947b44 data/youkaishomecoming/advancements/main/fragrant.json
@@ -2223,7 +2223,7 @@ c4cfbcb439ba965c866aa0d0401165241ba1af3e data/youkaishomecoming/advancements/rec
 dff61aea4bf301f4085e50810d51ac1a90540114 data/youkaishomecoming/advancements/recipes/cuisine_ordered/lorelei_nigiri.json
 3cbc65d57c45b5e27097ca628f61610e415cf8ad data/youkaishomecoming/advancements/recipes/cuisine_ordered/nattou_gunkan.json
 d62d712b84eb9dffc708d0af66db22bf2ae9c00d data/youkaishomecoming/advancements/recipes/cuisine_ordered/otoro_nigiri.json
-4348ff1b9414482a1b4ccbacff7895ea8f5d905e data/youkaishomecoming/advancements/recipes/cuisine_ordered/roe_california_roll.json
+dd5ab33b6a49b7ad61afecbb1414a407d21965bb data/youkaishomecoming/advancements/recipes/cuisine_ordered/roe_california_roll.json
 af44dc8f3c4efd5569720e96dce82a6d9748a130 data/youkaishomecoming/advancements/recipes/cuisine_ordered/salmon_roll.json
 cbc28e10efc18e994b737bb1545d990b2c6b9524 data/youkaishomecoming/advancements/recipes/cuisine_ordered/seagrass_gunkan.json
 0c9e0495252475253ecdf8ae815b06cac0b5f0ac data/youkaishomecoming/advancements/recipes/cuisine_ordered/shinnko_maki.json
@@ -3052,7 +3052,7 @@ ce36d62c76e27a6dce3167c59a97a3aa397fb27c data/youkaishomecoming/recipes/purple_s
 a428aad2094947f7decc05917d55f795065c950e data/youkaishomecoming/recipes/purple_star_danmaku_upgrade.json
 611a07337823d517c651128e4a536e67e4cb971f data/youkaishomecoming/recipes/rainbow_futomaki.json
 06aa962c5f4e3c2e572f6922727cc6a02829d9ec data/youkaishomecoming/recipes/rainbow_futomaki_cutting.json
-4fa48171071b853a4f2493b23d0c127d567f05dc data/youkaishomecoming/recipes/rainbow_roll.json
+9283042fcf0855d6de4b261e0b8668d44734464e data/youkaishomecoming/recipes/rainbow_roll.json
 e39baa0d6dd4a9e8a2db95d52e158bb46d6c8163 data/youkaishomecoming/recipes/rainbow_roll_cutting.json
 d31361d9f071b06113c3730210ca1c75f7c3610f data/youkaishomecoming/recipes/raisin_from_fruits_grape_drying.json
 0f34323b6b31878e0cf4301cf5d31c9569f7f91f data/youkaishomecoming/recipes/raw_bun.json
@@ -3225,6 +3225,7 @@ f3fa24bbbd34173bb63c459266b3f6dbd8f98f17 data/youkaishomecoming/recipes/yellow_p
 1bbf615a825bc733ba9d7b5b5509b1a34ee45a80 data/youkaishomecoming/recipes/yellow_spark_danmaku_recolor.json
 eec79327b811ce6daf7bc25200b58ca7345f8f7d data/youkaishomecoming/recipes/yellow_star_danmaku_recolor.json
 96c9184b997f56896b1259e5479076ea1b368522 data/youkaishomecoming/recipes/yellow_star_danmaku_upgrade.json
+f0b0e246b9546b0fab51083062ee694428efdb50 data/youkaishomecoming/tags/blocks/crab_digable.json
 af93eccd2e52c10c576062e6c8f5b4194221436b data/youkaishomecoming/tags/blocks/farmland_coffea.json
 2f4f8108be72ce57019dc5b5cd0e54ad643da258 data/youkaishomecoming/tags/blocks/farmland_redbean.json
 f648df024104552d1abe9766e973665c92a73ef7 data/youkaishomecoming/tags/blocks/farmland_soybean.json

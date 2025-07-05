@@ -1259,7 +1259,7 @@ public class YHRecipeGen {
 						.addUnordered(YHFood.IMITATION_CRAB.item)
 						.save(pvd);
 
-				unlock(pvd, new OrderedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.ROE.item.get())
+				unlock(pvd, new OrderedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.CRAB_ROE.item.get())
 						.result(YHRolls.ROE_CALIFORNIA_ROLL)
 						.add(YHFood.CRAB_ROE.item)
 						.save(pvd);
@@ -1282,7 +1282,7 @@ public class YHRecipeGen {
 
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
 						.result(YHRolls.RAINBOW_ROLL)
-						.addOrdered(YHFood.ROE.item)
+						.addOrdered(YHFood.CRAB_ROE.item)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.addUnordered(TagRef.RAW_FISHES_COD)
 						.addUnordered(YHTagGen.RAW_TUNA)

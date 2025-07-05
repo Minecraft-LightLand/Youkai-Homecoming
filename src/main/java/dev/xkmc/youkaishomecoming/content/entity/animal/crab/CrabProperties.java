@@ -21,14 +21,6 @@ public class CrabProperties {
 		return (e.entityData().get(data) & mask) != 0;
 	}
 
-	public void setPanic(boolean b) {
-		setFlag(CrabEntity.TRANSIENT_DATA, 0, b);
-	}
-
-	public boolean isPanic() {
-		return getFlag(CrabEntity.TRANSIENT_DATA, 0);
-	}
-
 	public void setFromBucket(boolean b) {
 		setFlag(CrabEntity.FLAGS, 0, b);
 	}
@@ -46,6 +38,10 @@ public class CrabProperties {
 		CrabVariant[] all = CrabVariant.values();
 		if (ans < 0 || ans >= all.length) return all[0];
 		return all[ans];
+	}
+
+	public int digWillingness() {
+		return 1000;
 	}
 
 }

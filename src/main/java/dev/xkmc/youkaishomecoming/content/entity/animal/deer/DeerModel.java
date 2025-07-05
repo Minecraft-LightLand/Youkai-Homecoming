@@ -31,7 +31,7 @@ public class DeerModel extends AgeableHierarchicalModel<DeerEntity> {
 		this.head.xRot = xrot * (float) (Math.PI / 180.0);
 		if (e.prop.isPanic()) {
 			this.animateWalk(DeerModelData.RUN, limbSw, limbSA, 2f, 2.5f);
-		} else {
+		} else if (e.states.isMobile()) {
 			this.animateWalk(DeerModelData.WALK, limbSw, limbSA, 2f, 2.5f);
 		}
 		this.animate(e.states.relaxStart, DeerModelData.RELAX_START, tick);

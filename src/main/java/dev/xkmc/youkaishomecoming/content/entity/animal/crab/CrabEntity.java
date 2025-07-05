@@ -1,32 +1,39 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.crab;
 
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-public class CrabEntity extends WaterAnimal implements Bucketable {
+public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineMob {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return Mob.createMobAttributes()
@@ -44,11 +51,32 @@ public class CrabEntity extends WaterAnimal implements Bucketable {
 	static final EntityDataAccessor<Integer> FLAGS = DATA.define(SyncedData.INT, 0, "flags");
 	static final EntityDataAccessor<Integer> VARIANT = DATA.define(SyncedData.INT, 0, "variant");
 
+	public final CrabStateMachine states = new CrabStateMachine(this);
 	public final CrabProperties prop = new CrabProperties(this);
 
 	public CrabEntity(EntityType<? extends WaterAnimal> type, Level level) {
 		super(type, level);
 		moveControl = new CrabMoveControl(this);
+	}
+
+	@Override
+	public HumanoidArm getMainArm() {
+		return HumanoidArm.LEFT;
+	}
+
+	// core
+
+	protected void registerGoals() {
+		super.registerGoals();
+		this.goalSelector.addGoal(1, new CrabFlipGoal(this));
+		this.goalSelector.addGoal(2, new CrabPanicGoal(this, 1.25D));
+		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(4, new CrabDigGoal(this));
+		this.goalSelector.addGoal(10, new CrabRandomWalkGoal(this, 1, 40));
+	}
+
+	protected PathNavigation createNavigation(Level level) {
+		return new AmphibiousPathNavigation(this, level);
 	}
 
 	protected SyncedData data() {
@@ -59,6 +87,10 @@ public class CrabEntity extends WaterAnimal implements Bucketable {
 		return entityData;
 	}
 
+	public CrabStateMachine states() {
+		return states;
+	}
+
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		data().register(entityData);
@@ -67,16 +99,51 @@ public class CrabEntity extends WaterAnimal implements Bucketable {
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		data().write(tag, entityData);
+		states.write(tag);
 	}
 
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
 		data().read(tag, entityData);
+		states.read(tag);
 	}
+
+	@Override
+	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
+	@Override
+	public void handleEntityEvent(byte data) {
+		if (states.transitionTo(data)) {
+			return;
+		}
+		super.handleEntityEvent(data);
+	}
+
+	@Override
+	protected void actuallyHurt(DamageSource source, float val) {
+		super.actuallyHurt(source, val);
+		states.onHurt();
+	}
+
+	@Override
+	public void aiStep() {
+		super.aiStep();
+		states.tick();
+	}
+
+	// entity properties
 
 	@Override
 	protected void handleAirSupply(int air) {
 		setAirSupply(300);
+	}
+
+	public void dig() {
+		setItemInHand(InteractionHand.MAIN_HAND, Items.NAUTILUS_SHELL.getDefaultInstance());
+		setDropChance(EquipmentSlot.MAINHAND, 1);
+		//TODO
 	}
 
 	@Override
@@ -86,15 +153,19 @@ public class CrabEntity extends WaterAnimal implements Bucketable {
 		else super.setZza(val);
 	}
 
-	protected void registerGoals() {
-		super.registerGoals();
-		this.goalSelector.addGoal(0, new PanicGoal(this, 1.25D));
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(4, new CrabRandomWalkGoal(this, 1, 40));
-	}
-
-	protected PathNavigation createNavigation(Level level) {
-		return new AmphibiousPathNavigation(this, level);
+	@Override
+	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+		if (!player.getItemInHand(hand).isEmpty() && getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && states.canGrab()) {
+			if (!level().isClientSide()) {
+				setItemInHand(InteractionHand.MAIN_HAND, player.getItemInHand(hand).split(1));
+				setDropChance(EquipmentSlot.MAINHAND, 1);
+				states.transitionTo(CrabState.SWING);
+			}
+			return InteractionResult.SUCCESS;
+		}
+		var ans = Bucketable.bucketMobPickup(player, hand, this);
+		if (ans.isPresent()) return ans.get();
+		return super.mobInteract(player, hand);
 	}
 
 	@Override
@@ -105,6 +176,8 @@ public class CrabEntity extends WaterAnimal implements Bucketable {
 		}
 		return super.finalizeSpawn(level, ins, type, group, data);
 	}
+
+	// bucket
 
 	public void saveToBucketTag(ItemStack stack) {
 		Bucketable.saveDefaultDataToBucketTag(this, stack);

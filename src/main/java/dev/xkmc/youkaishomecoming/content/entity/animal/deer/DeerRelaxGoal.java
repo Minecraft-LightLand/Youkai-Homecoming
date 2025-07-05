@@ -30,7 +30,7 @@ public class DeerRelaxGoal extends Goal {
 
 	public void start() {
 		mob.getNavigation().stop();
-		mob.states.startRelax(mob);
+		mob.states.startRelax();
 		relaxTick = 0;
 	}
 
@@ -41,7 +41,7 @@ public class DeerRelaxGoal extends Goal {
 		if (relaxTick < adjustedTickDelay(100)) return;
 		int chance = adjustedTickDelay(mob.prop.relaxTime()) - relaxTick;
 		if (chance <= 1 || mob.getRandom().nextInt(chance) == 0) {
-			mob.states.stopRelax(mob);
+			mob.states.stopRelax();
 		}
 	}
 

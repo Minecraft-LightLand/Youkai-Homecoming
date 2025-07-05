@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.crab;
 
-import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -25,7 +24,6 @@ public class CrabMoveControl extends MoveControl {
 			double dy = wantedY - mob.getY();
 			double hr2 = dx * dx + dz * dz;
 			double r2 = dx * dx + dy * dy + dz * dz;
-			YoukaisHomecoming.LOGGER.info("R2 = "+r2);
 			if (r2 < (double) 2.5E-7F) {
 				mob.setZza(0);
 				mob.setXxa(0);

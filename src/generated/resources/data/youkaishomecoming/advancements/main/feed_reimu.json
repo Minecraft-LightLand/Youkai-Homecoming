@@ -161,16 +161,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:cooked_mandrake_root": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:cooked_mandrake_root"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:cornflower_tea": {
       "conditions": {
         "item": {
@@ -311,41 +301,11 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:grilled_venison": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:grilled_venison"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:grilled_venison_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:grilled_venison_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:hakutsuru": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:hakutsuru"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:higan_soup": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:higan_soup"
           ]
         }
       },
@@ -386,16 +346,6 @@
         "item": {
           "items": [
             "youkaishomecoming:imitation_bear_paw"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:imitation_crab": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:imitation_crab"
           ]
         }
       },
@@ -501,16 +451,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:mantou": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:mantou"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:mapo_tofu": {
       "conditions": {
         "item": {
@@ -601,31 +541,11 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:nattou": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:nattou"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:nattou_gunkan": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:nattou_gunkan"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:oily_bean_curd": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:oily_bean_curd"
           ]
         }
       },
@@ -646,16 +566,6 @@
         "item": {
           "items": [
             "youkaishomecoming:oolong_tea"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:otoro": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:otoro"
           ]
         }
       },
@@ -731,26 +641,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:raw_tuna": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:raw_tuna"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:raw_tuna_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:raw_tuna_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:red_grape_juice": {
       "conditions": {
         "item": {
@@ -766,26 +656,6 @@
         "item": {
           "items": [
             "youkaishomecoming:red_wine"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:roasted_lamprey": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:roasted_lamprey"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:roasted_lamprey_fillet": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:roasted_lamprey_fillet"
           ]
         }
       },
@@ -891,26 +761,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:seared_tuna": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:seared_tuna"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:seared_tuna_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:seared_tuna_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:sekibankiyaki": {
       "conditions": {
         "item": {
@@ -981,16 +831,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:steamed_crab": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:steamed_crab"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:steamed_egg_in_bamboo": {
       "conditions": {
         "item": {
@@ -1031,26 +871,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:tamagoyaki": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tamagoyaki"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:tamagoyaki_slice": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tamagoyaki_slice"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:tea_mocha": {
       "conditions": {
         "item": {
@@ -1086,16 +906,6 @@
         "item": {
           "items": [
             "youkaishomecoming:tobiko_gunkan"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
-    "youkaishomecoming:tofu": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tofu"
           ]
         }
       },
@@ -1396,57 +1206,6 @@
       "youkaishomecoming:van_allen"
     ],
     [
-      "youkaishomecoming:roasted_lamprey"
-    ],
-    [
-      "youkaishomecoming:roasted_lamprey_fillet"
-    ],
-    [
-      "youkaishomecoming:raw_tuna"
-    ],
-    [
-      "youkaishomecoming:seared_tuna"
-    ],
-    [
-      "youkaishomecoming:raw_tuna_slice"
-    ],
-    [
-      "youkaishomecoming:seared_tuna_slice"
-    ],
-    [
-      "youkaishomecoming:otoro"
-    ],
-    [
-      "youkaishomecoming:steamed_crab"
-    ],
-    [
-      "youkaishomecoming:grilled_venison"
-    ],
-    [
-      "youkaishomecoming:grilled_venison_slice"
-    ],
-    [
-      "youkaishomecoming:cooked_mandrake_root"
-    ],
-    [
-      "youkaishomecoming:tofu"
-    ],
-    [
-      "youkaishomecoming:oily_bean_curd"
-    ],
-    [
-      "youkaishomecoming:imitation_crab"
-    ],
-    [
-      "youkaishomecoming:tamagoyaki"
-    ],
-    [
-      "youkaishomecoming:tamagoyaki_slice"
-    ],
-    [
-      "youkaishomecoming:nattou"
-    ],
-    [
       "youkaishomecoming:mochi"
     ],
     [
@@ -1478,9 +1237,6 @@
     ],
     [
       "youkaishomecoming:koishi_mousse"
-    ],
-    [
-      "youkaishomecoming:mantou"
     ],
     [
       "youkaishomecoming:bun"
@@ -1547,9 +1303,6 @@
     ],
     [
       "youkaishomecoming:grilled_eel_over_rice"
-    ],
-    [
-      "youkaishomecoming:higan_soup"
     ],
     [
       "youkaishomecoming:longevity_noodles"

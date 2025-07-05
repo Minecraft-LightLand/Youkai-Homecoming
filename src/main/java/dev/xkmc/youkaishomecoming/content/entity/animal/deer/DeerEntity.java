@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
@@ -29,7 +30,7 @@ import net.minecraftforge.common.util.Lazy;
 
 import javax.annotation.Nullable;
 
-public class DeerEntity extends Animal {
+public class DeerEntity extends Animal implements StateMachineMob {
 
 	private static <T> EntityDataAccessor<T> defineId(EntityDataSerializer<T> ser) {
 		return SynchedEntityData.defineId(DeerEntity.class, ser);
@@ -47,7 +48,7 @@ public class DeerEntity extends Animal {
 	static final EntityDataAccessor<Integer> EAT_STAGE = DATA.define(SyncedData.INT, 0, "eat_stage");
 	static final EntityDataAccessor<Integer> VARIANT = DATA.define(SyncedData.INT, 0, "variant");
 
-	public final DeerStateMachine states = new DeerStateMachine();
+	public final DeerStateMachine states = new DeerStateMachine(this);
 	public final DeerProperties prop = new DeerProperties(this);
 
 	protected DeerPanicGoal panic;
@@ -83,6 +84,10 @@ public class DeerEntity extends Animal {
 		return entityData;
 	}
 
+	public DeerStateMachine states() {
+		return states;
+	}
+
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		data().register(entityData);
@@ -100,7 +105,7 @@ public class DeerEntity extends Animal {
 
 	@Override
 	public void handleEntityEvent(byte data) {
-		if (states.transitionTo(this, data)) {
+		if (states.transitionTo(data)) {
 			return;
 		}
 		super.handleEntityEvent(data);
@@ -109,13 +114,13 @@ public class DeerEntity extends Animal {
 	@Override
 	protected void actuallyHurt(DamageSource source, float val) {
 		super.actuallyHurt(source, val);
-		states.onHurt(this);
+		states.onHurt();
 	}
 
 	@Override
 	public void aiStep() {
 		super.aiStep();
-		states.tick(this);
+		states.tick();
 	}
 
 	// states
