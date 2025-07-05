@@ -12,6 +12,8 @@ public interface TableItem {
 
 	Optional<TableItem> find(Level level, ItemStack stack);
 
+	List<Ingredient> getHints(Level level);
+
 	int step();
 
 	Optional<ItemStack> complete(Level level);
