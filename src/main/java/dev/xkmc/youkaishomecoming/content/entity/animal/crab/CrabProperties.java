@@ -44,4 +44,8 @@ public class CrabProperties {
 		return 1000;
 	}
 
+	public int flipPower() {
+		return 300;
+	}
+
 }

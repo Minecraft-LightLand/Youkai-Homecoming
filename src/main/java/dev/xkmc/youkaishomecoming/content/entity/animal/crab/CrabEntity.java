@@ -10,8 +10,10 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -143,7 +145,10 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 	public void dig() {
 		setItemInHand(InteractionHand.MAIN_HAND, Items.NAUTILUS_SHELL.getDefaultInstance());
 		setDropChance(EquipmentSlot.MAINHAND, 1);
-		//TODO
+		if (level() instanceof ServerLevel sl) {
+			sl.playSound(null, blockPosition, SoundEvents.ITEM_PICKUP,
+					SoundSource.AMBIENT, 0.7f, 1);
+		}
 	}
 
 	@Override
@@ -155,11 +160,22 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 
 	@Override
 	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
-		if (!player.getItemInHand(hand).isEmpty() && getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && states.canGrab()) {
-			if (!level().isClientSide()) {
-				setItemInHand(InteractionHand.MAIN_HAND, player.getItemInHand(hand).split(1));
+		ItemStack stack = player.getItemInHand(hand);
+		if (stack.isEmpty() && states().isFlipped()) {
+			if (level() instanceof ServerLevel sl) {
+				states().flipBack();
+				sl.playSound(null, blockPosition, SoundEvents.ITEM_PICKUP,
+						SoundSource.AMBIENT, 0.7f, 1);
+			}
+			return InteractionResult.SUCCESS;
+		}
+		if (!stack.isEmpty() && getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && states.canGrab()) {
+			if (level() instanceof ServerLevel sl) {
+				setItemInHand(InteractionHand.MAIN_HAND, stack.split(1));
 				setDropChance(EquipmentSlot.MAINHAND, 1);
 				states.transitionTo(CrabState.SWING);
+				sl.playSound(this, blockPosition, SoundEvents.ITEM_BREAK,
+						SoundSource.AMBIENT, 0.7f, 1);
 			}
 			return InteractionResult.SUCCESS;
 		}

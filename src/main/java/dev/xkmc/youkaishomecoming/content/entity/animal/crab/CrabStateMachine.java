@@ -46,4 +46,8 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 		return mob.getHealth() == mob.getMaxHealth() && state() == IDLE && mob.getMainHandItem().isEmpty();
 	}
 
+	public void flipBack() {
+		transitionTo(IDLE);
+	}
+
 }

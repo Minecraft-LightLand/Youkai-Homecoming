@@ -2,8 +2,15 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.crab;
 
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 
@@ -48,12 +55,27 @@ public class CrabDigGoal extends Goal {
 
 	public void tick() {
 		eatAnimationTick = Math.max(0, eatAnimationTick - 1);
-		if (eatAnimationTick == finishTick) {
-			BlockPos pos = BlockPos.containing(mob.position());
-			BlockPos down = pos.below();
-			if (level.getBlockState(down).is(YHTagGen.CRAB_DIGABLE)) {
+		BlockPos pos = BlockPos.containing(mob.position());
+		var down = level.getBlockState(pos.below());
+		if (down.is(YHTagGen.CRAB_DIGABLE)) {
+			if (eatAnimationTick > finishTick) {
+				if (mob.level() instanceof ServerLevel sl) {
+					var vec = mob.position().add(
+							Vec3.directionFromRotation(new Vec2(0, mob.getYRot()))
+									.scale(mob.getBbWidth() / 2));
+					sl.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, down),
+							vec.x, vec.y, vec.z, 10, 0, 0, 0, 0.05);
+					if (eatAnimationTick % finishTick == 0) {
+						sl.playSound(mob, mob.blockPosition(), SoundEvents.BRUSH_SAND,
+								SoundSource.AMBIENT, 1, 1);
+					}
+				}
+			} else if (eatAnimationTick == finishTick) {
 				mob.dig();
 			}
 		}
+
+
 	}
+
 }
