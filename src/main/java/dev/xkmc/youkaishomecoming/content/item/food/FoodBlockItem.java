@@ -16,9 +16,9 @@ import vectorwing.farmersdelight.common.Configuration;
 
 import java.util.List;
 
-public class FoodSaucerItem extends BlockItem {
+public class FoodBlockItem extends BlockItem {
 
-	public FoodSaucerItem(Block pBlock, Properties pProperties) {
+	public FoodBlockItem(Block pBlock, Properties pProperties) {
 		super(pBlock, pProperties);
 	}
 

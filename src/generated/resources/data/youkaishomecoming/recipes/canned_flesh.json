@@ -16,6 +16,7 @@
       "item": "youkaishomecoming:soy_sauce_bottle"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "count": 2,
     "item": "youkaishomecoming:canned_flesh"

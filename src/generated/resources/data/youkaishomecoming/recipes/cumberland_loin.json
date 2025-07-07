@@ -22,6 +22,7 @@
       "tag": "forge:salad_ingredients/cabbage"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:cumberland_loin"
   }

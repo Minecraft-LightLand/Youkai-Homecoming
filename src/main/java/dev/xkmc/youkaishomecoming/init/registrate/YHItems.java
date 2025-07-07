@@ -1,15 +1,16 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
+import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
+import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
-import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
-import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
-import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
-import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
@@ -27,6 +28,7 @@ import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.Item;
@@ -35,6 +37,7 @@ import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
@@ -85,6 +88,7 @@ public class YHItems {
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
 	public static final CakeEntry RED_VELVET, TARTE_LUNE;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
+	public static final BlockEntry<DelegateBlock> IRON_BOWL, WOOD_BOWL;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET, TUNA_BUCKET, CRAB_BUCKET;
 
 	public static final ItemEntry<Item> EMPTY_HAND_ICON;
@@ -130,9 +134,29 @@ public class YHItems {
 			ICE_CUBE = ingredient("ice_cube", Item::new);
 		}
 
-		CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
+		{
+			CAN = YoukaisHomecoming.REGISTRATE.item("can", Item::new).register();
+
+			CLAY_SAUCER = YoukaisHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
+
+			SAUCER = YoukaisHomecoming.REGISTRATE.block("saucer", p -> new EmptySaucerBlock(
+							BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL)))
+					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+							state -> state.getValue(EmptySaucerBlock.TYPE).build(pvd)))
+					.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+					.register();
+
+			IRON_BOWL = ironBowl("iron_bowl")
+					.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+					.register();
+
+			WOOD_BOWL = woodBowl("wood_bowl")
+					.loot((pvd, block) -> pvd.dropOther(block, Items.BOWL))
+					.register();
+		}
 
 		YHFood.register();
+		YHBowl.register();
 		YHSushi.register();
 		YHRolls.init();
 
@@ -140,7 +164,7 @@ public class YHItems {
 		{
 			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
 							new SurpriseChestBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
-					.item().properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
+					.item().properties(p -> p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.blockstate(SurpriseChestBlock::buildModel)
 					.register();
 
@@ -152,7 +176,7 @@ public class YHItems {
 					.register();
 
 			RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
-					.properties(p->p.stacksTo(1))
+					.properties(p -> p.stacksTo(1))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName())))
 					.lang("Raw %1$s Feast")
 					.register();
@@ -163,22 +187,13 @@ public class YHItems {
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
 							FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
 					.lang("%1$s Feast")
-					.item(FleshBlockItem::new).properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
+					.item(FleshBlockItem::new).properties(p -> p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.loot(FleshFeastBlock::builtLoot)
 					.register();
 
 			RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f, true);
 			TARTE_LUNE = new CakeEntry("tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 4, 0.6f, false);
 		}
-
-		CLAY_SAUCER = YoukaisHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
-
-		SAUCER = YoukaisHomecoming.REGISTRATE.block("saucer", p -> new EmptySaucerBlock(
-						BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL)))
-				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
-						state -> state.getValue(EmptySaucerBlock.TYPE).build(pvd)))
-				.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
-				.register();
 
 		YHDish.register();
 		YHCoffee.register();
@@ -293,6 +308,32 @@ public class YHItems {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
 				.register();
+	}
+
+	public static BlockBuilder<DelegateBlock, L2Registrate> ironBowl(String id) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> DelegateBlock.newBaseBlock(p,
+						BlockProxy.HORIZONTAL, new BowlBlock(BowlBlock.IRON_SHAPE)))
+				.properties(p -> p.mapColor(MapColor.METAL).strength(0.5F, 6.0F).sound(SoundType.LANTERN))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+						pvd.models().getBuilder("block/" + ctx.getName())
+								.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/iron/" + ctx.getName())))
+								.texture("bowl", pvd.modLoc("block/bowl/iron/iron_bowl"))
+								.texture("base", pvd.modLoc("block/bowl/iron/" + ctx.getName()))
+								.renderType("cutout")))
+				.tag(BlockTags.MINEABLE_WITH_PICKAXE);
+	}
+
+	public static BlockBuilder<DelegateBlock, L2Registrate> woodBowl(String id) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> DelegateBlock.newBaseBlock(p,
+						BlockProxy.HORIZONTAL, new BowlBlock(BowlBlock.WOOD_SHAPE)))
+				.properties(p -> p.mapColor(MapColor.WOOD).strength(0.5F, 1.0F).sound(SoundType.WOOD))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+						pvd.models().getBuilder("block/" + ctx.getName())
+								.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/wood/" + ctx.getName())))
+								.texture("bowl", pvd.modLoc("block/bowl/wood/wood_bowl"))
+								.texture("base", pvd.modLoc("block/bowl/wood/" + ctx.getName()))
+								.renderType("cutout")))
+				.tag(BlockTags.MINEABLE_WITH_AXE);
 	}
 
 	public static void register() {

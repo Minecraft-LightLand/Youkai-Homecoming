@@ -9,6 +9,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 import vectorwing.farmersdelight.common.tag.ModTags;
@@ -16,7 +17,7 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import java.util.List;
 import java.util.Locale;
 
-public enum YHFood {
+public enum YHFood implements ItemLike {
 
 	// basic
 	RAW_LAMPREY(FoodType.MEAT, 2, 0.3f,
@@ -176,22 +177,10 @@ public enum YHFood {
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	HIGAN_SOUP(FoodType.BOWL, 6, 0.5f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1), DietTagGen.VEGETABLES.tag),
 	LONGEVITY_NOODLES(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	MISO_SOUP(FoodType.BOWL, 8, 0.5f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1), DietTagGen.VEGETABLES.tag),
-	SEAFOOD_MISO_SOUP(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
-			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
-	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
-	), DietTagGen.VEGETABLES.tag),
-	POWER_SOUP(FoodType.BOWL_MEAT, 16, 0.6f, new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SHIRAYUKI(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
@@ -203,10 +192,6 @@ public enum YHFood {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	MUSHROOM_SOUP(FoodType.BOWL, 8, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), DietTagGen.VEGETABLES.tag),
 	HONEY_GLAZED_CUCUMBER(FoodType.BOWL_MEAT, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
@@ -294,6 +279,10 @@ public enum YHFood {
 		this(type, nutrition, sat, List.of(), tags);
 	}
 
+	@Override
+	public Item asItem() {
+		return item.asItem();
+	}
 
 	private boolean isFlesh() {
 		return type.isFlesh();
@@ -301,10 +290,7 @@ public enum YHFood {
 
 	private boolean isUnappealing() {
 		if (id.equals("food/basic/")) return true;
-		return switch (this) {
-			case POOR_GOD_SOUP, HIGAN_SOUP, MANTOU -> true;
-			default -> false;
-		};
+		return this == MANTOU;
 	}
 
 	public boolean isReimuFood() {

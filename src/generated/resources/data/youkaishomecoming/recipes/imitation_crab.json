@@ -19,6 +19,7 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
     "count": 4,
     "item": "youkaishomecoming:imitation_crab"

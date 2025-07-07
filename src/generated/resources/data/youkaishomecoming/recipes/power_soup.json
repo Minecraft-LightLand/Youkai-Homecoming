@@ -1,7 +1,7 @@
 {
   "type": "farmersdelight:cooking",
   "container": {
-    "item": "minecraft:bowl"
+    "item": "youkaishomecoming:iron_bowl"
   },
   "cookingtime": 200,
   "experience": 0.1,
@@ -22,6 +22,7 @@
       "tag": "forge:vegetables/onion"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:power_soup"
   }

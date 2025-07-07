@@ -546,7 +546,7 @@ public class YHBlocks {
 					.blockstate((ctx, pvd) -> pvd.slabBlock(ctx.get(),
 							pvd.models().slab(ctx.getName(), side, side, side),
 							pvd.models().slabTop(ctx.getName() + "_top", side, side, side),
-							new ModelFile.UncheckedModelFile(side)))
+							new ModelFile.UncheckedModelFile(YoukaisHomecoming.loc("block/" + id))))
 					.tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.MINEABLE_WITH_AXE, BlockTags.SLABS)
 					.item().tag(ItemTags.SLABS).build()
 					.register();

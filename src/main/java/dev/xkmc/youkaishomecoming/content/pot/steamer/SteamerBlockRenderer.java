@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
-import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.util.FluidRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -40,7 +40,7 @@ public class SteamerBlockRenderer implements BlockEntityRenderer<SteamerBlockEnt
 		}
 		if (info.racks() == 0 || be.racks.isEmpty() || info.racks() > be.racks.size()) return;
 		RackData rack = be.racks.get(info.racks() - 1);
-		if (rack.list[0] != null && rack.list[0].stack.getItem() instanceof FoodSaucerItem item) {
+		if (rack.list[0] != null && rack.list[0].stack.getItem() instanceof FoodBlockItem item) {
 			pose.pushPose();
 			BlockState state = item.getBlock().defaultBlockState();
 			state = state.setValue(BlockStateProperties.HORIZONTAL_FACING, state.getValue(BlockStateProperties.HORIZONTAL_FACING));

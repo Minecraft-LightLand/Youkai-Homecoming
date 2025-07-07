@@ -22,6 +22,7 @@
       "item": "minecraft:honey_bottle"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:honey_glazed_cucumber"
   }

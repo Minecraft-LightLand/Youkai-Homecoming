@@ -25,6 +25,7 @@
       "item": "minecraft:purple_banner"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:chest_of_heart_throbbing_surprise"
   }

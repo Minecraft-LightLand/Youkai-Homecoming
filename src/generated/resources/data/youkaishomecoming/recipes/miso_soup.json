@@ -19,6 +19,7 @@
       "item": "minecraft:brown_mushroom"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:miso_soup"
   }
