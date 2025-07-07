@@ -10,6 +10,7 @@
       "item": "gensokyodelight:soybean"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "count": 2,
     "item": "gensokyodelight:tsukimi_dango"

@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -33,7 +33,7 @@ public record SteamerItemHandler(
 	@Override
 	public @NotNull ItemStack insertItem(int index, @NotNull ItemStack stack, boolean simulate) {
 		if (index < 0 || index >= 4) return stack;
-		if (stack.getItem() instanceof FoodSaucerItem) {
+		if (stack.getItem() instanceof FoodBlockItem) {
 			if (index != 0) return stack;
 			for (int i = 0; i < 4; i++) {
 				if (rack.list[index] != null && !rack.list[index].stack.isEmpty())

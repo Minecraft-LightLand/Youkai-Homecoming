@@ -19,6 +19,7 @@
       "item": "minecraft:bone_meal"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:poor_god_soup"
   }

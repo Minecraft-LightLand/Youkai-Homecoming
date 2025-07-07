@@ -1,8 +1,11 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
+import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -31,6 +34,8 @@ public enum FoodType {
 	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false, true),
 	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true, true),
 	BOWL_MEAT(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false),
+	IRON_BOWL(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), false, false, false),//TODO
+	IRON_BOWL_MEAT(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), true, false, false),//TODO
 	;
 
 	private final Function<Item.Properties, Item> factory;
@@ -71,6 +76,13 @@ public enum FoodType {
 	}
 
 	public ItemBuilder<Item, L2Registrate> build(Function<Item.Properties, Item> factory, String name, int nutrition, float sat, TagKey<Item>[] tags, List<EffectEntry> effs) {
+		return YoukaisHomecoming.REGISTRATE
+				.item(name, p -> factory.apply(food(p, nutrition, sat, effs)))
+				.tag(getTags(this.tags, tags))
+				.lang(Item::getDescriptionId, makeLang(name));
+	}
+
+	public Item.Properties food(Item.Properties prop, int nutrition, float sat, List<EffectEntry> effs) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		if (meat) food.meat();
@@ -82,10 +94,13 @@ public enum FoodType {
 		for (var e : effs) {
 			food.effect(e::getEffect, e.chance());
 		}
-		return YoukaisHomecoming.REGISTRATE
-				.item(name, p -> factory.apply(prop.apply(p).food(food.build())))
-				.tag(getTags(this.tags, tags))
-				.lang(Item::getDescriptionId, makeLang(name));
+		return this.prop.apply(prop).food(food.build());
+	}
+
+	public BlockBuilder<DelegateBlock, L2Registrate> bowl(String name) {
+		if (this == IRON_BOWL || this == IRON_BOWL_MEAT)
+			return YHItems.ironBowl(name);
+		else return YHItems.woodBowl(name);
 	}
 
 	public String makeLang(String id) {
@@ -99,4 +114,5 @@ public enum FoodType {
 		ans.addAll(List.of(b));
 		return ans.toArray(TagKey[]::new);
 	}
+
 }

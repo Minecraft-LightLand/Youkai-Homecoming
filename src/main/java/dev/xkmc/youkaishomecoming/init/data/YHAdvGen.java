@@ -132,6 +132,7 @@ public class YHAdvGen {
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
 										Arrays.stream(YHDrink.values()).map(e -> e.item.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
+										Arrays.stream(YHBowl.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).map(e -> e.item.get()),
 										Arrays.stream(YHSushi.values()).map(e -> e.item.get()),
 										Arrays.stream(YHRolls.values()).map(e -> e.slice.get()))

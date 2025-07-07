@@ -1,7 +1,7 @@
 {
   "type": "farmersdelight:cooking",
   "container": {
-    "item": "minecraft:bowl"
+    "item": "youkaishomecoming:iron_bowl"
   },
   "cookingtime": 200,
   "experience": 0.1,
@@ -16,6 +16,7 @@
       "tag": "forge:crops"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:higan_soup"
   }

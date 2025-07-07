@@ -22,6 +22,7 @@
       "item": "minecraft:blaze_powder"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:mapo_tofu"
   }

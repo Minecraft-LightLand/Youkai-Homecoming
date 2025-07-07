@@ -13,6 +13,7 @@
       "item": "minecraft:green_dye"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:yashouma_dango"
   }

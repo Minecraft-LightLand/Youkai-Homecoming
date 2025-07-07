@@ -25,6 +25,7 @@
       "tag": "forge:raw_chicken"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:blazing_red_curry"
   }

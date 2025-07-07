@@ -16,6 +16,7 @@
       "item": "minecraft:pink_petals"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:apaki"
   }

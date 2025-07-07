@@ -22,6 +22,7 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
     "count": 3,
     "item": "gensokyodelight:mayonnaise_bottle"

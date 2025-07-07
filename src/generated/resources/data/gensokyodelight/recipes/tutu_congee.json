@@ -10,6 +10,7 @@
       "item": "minecraft:bamboo"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:tutu_congee"
   }

@@ -19,6 +19,7 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
     "item": "gensokyodelight:tamagoyaki"
   }

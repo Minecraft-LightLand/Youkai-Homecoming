@@ -19,6 +19,7 @@
       "item": "gensokyodelight:soy_sauce_bottle"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:tomato_sauce_cod"
   }

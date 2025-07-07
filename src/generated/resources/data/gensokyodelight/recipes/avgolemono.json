@@ -16,6 +16,7 @@
       "item": "minecraft:glow_berries"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:avgolemono"
   }

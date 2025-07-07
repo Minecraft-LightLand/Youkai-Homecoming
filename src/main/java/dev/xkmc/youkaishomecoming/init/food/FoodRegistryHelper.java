@@ -9,9 +9,14 @@ public class FoodRegistryHelper {
 	private static boolean mochi = false;
 
 	public static String getId(FoodType type, TagKey<Item>[] tags) {
-		if (type == FoodType.BOTTLE) return "food/bottle/";
-		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) return "food/stick/";
-		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) return "food/bowl/";
+		switch (type) {
+			case BOTTLE:
+				return "food/bottle/";
+			case STICK, MEAT_STICK:
+				return "food/stick/";
+			case BOWL, BOWL_MEAT, IRON_BOWL, IRON_BOWL_MEAT:
+				return "food/bowl/";
+		}
 		if (tags.length > 0 && tags[0] == YHTagGen.DANGO) {
 			mochi = true;
 			return "food/mochi/";

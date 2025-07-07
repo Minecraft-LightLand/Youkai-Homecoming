@@ -25,6 +25,7 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:mitarashi_dango"
   }
