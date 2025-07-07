@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:tofu_fish_soup"
+          "name": "youkaishomecoming:hokkaido_salmon_hotpot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaishomecoming:blocks/tofu_fish_soup"
+  "random_sequence": "youkaishomecoming:blocks/hokkaido_salmon_hotpot"
 }

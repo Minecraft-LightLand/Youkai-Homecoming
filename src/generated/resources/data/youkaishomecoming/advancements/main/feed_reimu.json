@@ -341,6 +341,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:hokkaido_salmon_hotpot": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:hokkaido_salmon_hotpot"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:honey_glazed_cucumber": {
       "conditions": {
         "item": {
@@ -951,16 +961,6 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
-    "youkaishomecoming:tofu_fish_soup": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tofu_fish_soup"
-          ]
-        }
-      },
-      "trigger": "youkaishomecoming:feed_reimu"
-    },
     "youkaishomecoming:tomato_sauce_cod": {
       "conditions": {
         "item": {
@@ -1393,7 +1393,7 @@
       "youkaishomecoming:signature_mushroom_stew"
     ],
     [
-      "youkaishomecoming:tofu_fish_soup"
+      "youkaishomecoming:hokkaido_salmon_hotpot"
     ],
     [
       "youkaishomecoming:tobiko_gunkan"

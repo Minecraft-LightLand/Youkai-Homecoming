@@ -748,12 +748,15 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHBowl.BORSCHT.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.TOFU_FISH_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.HOKKAIDO_SALMON_HOTPOT.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(YHFood.TOFU)
-					.addIngredient(Items.DRIED_KELP)
-					.addIngredient(TagRef.RAW_FISHES)
-					.build(pvd, YHBowl.TOFU_FISH_SOUP.item.getId());
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(TagRef.FOOD_CABBAGE)
+					.addIngredient(TagRef.VEGETABLES_ONION)
+					.addIngredient(TagRef.RAW_FISHES_SALMON)
+					.addIngredient(TagRef.RAW_FISHES_SALMON)
+					.build(pvd, YHBowl.HOKKAIDO_SALMON_HOTPOT.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)

@@ -50,7 +50,7 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(ModEffects.NOURISHMENT, 2000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3000, 0, 1)
 	), DietTagGen.VEGETABLES.tag),
-	TOFU_FISH_SOUP(FoodType.IRON_BOWL, 10, 0.8f, List.of(
+	HOKKAIDO_SALMON_HOTPOT(FoodType.IRON_BOWL, 14, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
