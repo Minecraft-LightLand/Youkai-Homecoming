@@ -71,7 +71,7 @@ public class CrabDigGoal extends Goal {
 					}
 				}
 			} else if (eatAnimationTick == finishTick) {
-				mob.dig();
+				mob.dig(down);
 			}
 		}
 

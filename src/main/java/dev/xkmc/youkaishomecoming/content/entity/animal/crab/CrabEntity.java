@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.crab;
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
+import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -10,10 +11,13 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,10 +32,14 @@ import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -142,10 +150,26 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		setAirSupply(300);
 	}
 
-	public void dig() {
-		setItemInHand(InteractionHand.MAIN_HAND, Items.NAUTILUS_SHELL.getDefaultInstance());
-		setDropChance(EquipmentSlot.MAINHAND, 1);
+	public void dig(BlockState down) {
 		if (level() instanceof ServerLevel sl) {
+			var biome = sl.getBiome(blockPosition);
+			boolean sand = false;
+			if (down.is(BlockTags.SAND)) sand = true;
+			else if (!down.is(Tags.Blocks.GRAVEL)) return;
+			ResourceLocation table = sand ? YHLootGen.CRAB_SAND_BASE : YHLootGen.CRAB_GRAVEL_BASE;
+			if (biome.is(YHBiomeTagsProvider.CRAB_MUD)) {
+				table = sand ? YHLootGen.CRAB_SAND_RIVER : YHLootGen.CRAB_GRAVEL_RIVER;
+			} else if (biome.is(BiomeTags.IS_BEACH) || biome.is(BiomeTags.IS_OCEAN)) {
+				table = sand ? YHLootGen.CRAB_SAND_BEACH : YHLootGen.CRAB_GRAVEL_BEACH;
+			}
+			var list = sl.getServer().getLootData().getLootTable(table).getRandomItems(new LootParams.Builder(sl)
+					.withParameter(LootContextParams.ORIGIN, position())
+					.withParameter(LootContextParams.THIS_ENTITY, this)
+					.create(LootContextParamSets.GIFT));
+			if (list.isEmpty()) return;
+			var stack = list.get(random.nextInt(list.size())).copyWithCount(1);
+			setItemInHand(InteractionHand.MAIN_HAND, stack);
+			setDropChance(EquipmentSlot.MAINHAND, 1);
 			sl.playSound(null, blockPosition, SoundEvents.ITEM_PICKUP,
 					SoundSource.AMBIENT, 0.7f, 1);
 		}

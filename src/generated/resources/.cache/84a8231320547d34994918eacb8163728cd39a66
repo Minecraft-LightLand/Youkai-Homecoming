@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-06T00:46:21.929723	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-06T11:36:55.824405	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -2573,6 +2573,12 @@ b6fdcb7f69021ec0c86bacd6b90ee062f784612e data/youkaishomecoming/loot_tables/ches
 e5d1fa45605f476a6681b77955f1f70a23fa616f data/youkaishomecoming/loot_tables/chests/hakurei_shrine/chest.json
 cfdda650ee6552d2fcad3ff0e6c5cf4dce801725 data/youkaishomecoming/loot_tables/chests/youkai_nest/barrel.json
 3f645bf34f6a41ab847e129a6a0345d8e48293c3 data/youkaishomecoming/loot_tables/chests/youkai_nest/chest.json
+6d09bbe8a14f5679e40283d18d82bc6b61d176a0 data/youkaishomecoming/loot_tables/crab_digging/gravel_base.json
+e9ec1b53901b5c5bdc38f8c768d496e1d6e28fb5 data/youkaishomecoming/loot_tables/crab_digging/gravel_beach.json
+afb0c120696bb8ef79842b6001c1545dc96dd856 data/youkaishomecoming/loot_tables/crab_digging/gravel_river.json
+141e06469998de8d780c780cf9eb22bf9e49c468 data/youkaishomecoming/loot_tables/crab_digging/sand_base.json
+224f7f6864b4f0d5395d86c885ac620464d95229 data/youkaishomecoming/loot_tables/crab_digging/sand_beach.json
+63a043dca8de940b56b70b746d377f90bdeba27c data/youkaishomecoming/loot_tables/crab_digging/sand_river.json
 2d60bcfd15ed968c17bd373e8a5407550c99511c data/youkaishomecoming/loot_tables/entities/cirno.json
 86e480df85b508d0a0b644837e28edabcc1e05ff data/youkaishomecoming/loot_tables/entities/clownpiece.json
 e10aa8de3669721fd85b074d817a413008bcd5dc data/youkaishomecoming/loot_tables/entities/crab.json
