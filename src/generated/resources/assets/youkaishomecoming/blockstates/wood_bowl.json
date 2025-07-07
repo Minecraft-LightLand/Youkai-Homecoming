@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/wood_bowl",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/wood_bowl"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/wood_bowl",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/wood_bowl",
+      "y": 270
+    }
+  }
+}

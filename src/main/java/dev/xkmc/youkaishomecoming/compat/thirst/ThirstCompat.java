@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.compat.thirst;
 import dev.ghen.thirst.foundation.common.event.RegisterThirstValueEvent;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
+import dev.xkmc.youkaishomecoming.init.food.YHBowl;
 import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -31,11 +32,11 @@ public class ThirstCompat {
 		event.addDrink(YHFood.AVGOLEMONO.item.get(), 6, 10);
 		event.addDrink(YHFood.SHIRAYUKI.item.get(), 6, 10);
 
-		event.addDrink(YHFood.HIGAN_SOUP.item.get(), 8, 13);
-		event.addDrink(YHFood.POOR_GOD_SOUP.item.get(), 8, 13);
-		event.addDrink(YHFood.POWER_SOUP.item.get(), 8, 13);
-		event.addDrink(YHFood.MUSHROOM_SOUP.item.get(), 8, 13);
-		event.addDrink(YHFood.MISO_SOUP.item.get(), 8, 13);
+		event.addDrink(YHBowl.HIGAN_SOUP.asItem(), 8, 13);
+		event.addDrink(YHBowl.POOR_GOD_SOUP.asItem(), 8, 13);
+		event.addDrink(YHBowl.POWER_SOUP.asItem(), 8, 13);
+		event.addDrink(YHBowl.MUSHROOM_SOUP.asItem(), 8, 13);
+		event.addDrink(YHBowl.MISO_SOUP.asItem(), 8, 13);
 		event.addDrink(YHFood.SEAFOOD_MISO_SOUP.item.get(), 8, 13);
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {

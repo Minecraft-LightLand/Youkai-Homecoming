@@ -156,6 +156,7 @@ public class YHAdvGen {
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
 										Arrays.stream(YHDrink.values()).map(e -> e.item.get()),
 										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
+										Arrays.stream(YHBowl.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).map(e -> e.item.get()),
 										Arrays.stream(YHSushi.values()).map(e -> e.item.get()),
 										Arrays.stream(YHRolls.values()).map(e -> e.slice.get()))
@@ -222,6 +223,7 @@ public class YHAdvGen {
 										Arrays.stream(YHDrink.values()).filter(e -> !e.isFlesh()).map(e -> e.item.get()),
 										//Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).filter(YHFood::isReimuFood).map(e -> e.item.get()),
+										Arrays.stream(YHBowl.values()).filter(YHBowl::isReimuFood).map(e -> e.item.get()),
 										Arrays.stream(YHSushi.values()).filter(YHSushi::isReimuFood).map(e -> e.item.get()),
 										Arrays.stream(YHRolls.values()).map(e -> e.slice.get()))
 								.map(e -> Pair.of(e, FeedReimuTrigger.usedItem(e)))

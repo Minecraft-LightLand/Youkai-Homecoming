@@ -5,7 +5,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSaucerItem;
-import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -91,7 +91,7 @@ public enum YHDish {
 			raw = YoukaisHomecoming.REGISTRATE
 					.block("raw_" + getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, false)))
-					.item((block, p) -> new FoodSaucerItem(block, p.food(food(nutrition / 2, sat / 2, meat, List.of()))
+					.item((block, p) -> new FoodBlockItem(block, p.food(food(nutrition / 2, sat / 2, meat, List.of()))
 							.craftRemainder(YHItems.SAUCER.asItem())))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
 					.tag(tags).build()
@@ -150,7 +150,7 @@ public enum YHDish {
 
 		public Item create(FoodSaucerBlock block, Item.Properties properties) {
 			if (this == FLESH) return new FleshSaucerItem(block, properties);
-			else return new FoodSaucerItem(block, properties);
+			else return new FoodBlockItem(block, properties);
 		}
 	}
 

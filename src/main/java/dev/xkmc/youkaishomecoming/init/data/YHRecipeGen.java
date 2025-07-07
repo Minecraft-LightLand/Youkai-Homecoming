@@ -69,8 +69,10 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.tag(ItemTags.PLANKS), RecipeCategory.MISC, YHBlocks.STEAMER_LID);
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
 			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.CAN);
+			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.IRON_BOWL);
 			pvd.stonecutting(DataIngredient.items(Items.GLASS), RecipeCategory.MISC, YHItems.SAKE_BOTTLE);
 			pvd.smelting(DataIngredient.items(YHItems.CAN.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
+			pvd.smelting(DataIngredient.items(YHItems.IRON_BOWL.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
 			for (var e : YHBlocks.WoodType.values()) {
 				pvd.stonecutting(DataIngredient.items(e.plank), RecipeCategory.MISC, e.fence);
 
@@ -578,11 +580,11 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHFood.GRILLED_EEL_OVER_RICE.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HIGAN_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.HIGAN_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
 					.addIngredient(Items.SOUL_SAND)
 					.addIngredient(Items.SOUL_SAND)
 					.addIngredient(TagRef.CROPS)
-					.build(pvd, YHFood.HIGAN_SOUP.item.getId());
+					.build(pvd, YHBowl.HIGAN_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LONGEVITY_NOODLES.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(TagRef.PASTA)
@@ -591,12 +593,12 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_PORK)
 					.build(pvd, YHFood.LONGEVITY_NOODLES.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHFood.TOFU.item.get())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.DRIED_KELP)
 					.addIngredient(Items.BROWN_MUSHROOM)
-					.build(pvd, YHFood.MISO_SOUP.item.getId());
+					.build(pvd, YHBowl.MISO_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEAFOOD_MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHFood.TOFU.item.get())
@@ -607,20 +609,20 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_FISHES_SALMON)
 					.build(pvd, YHFood.SEAFOOD_MISO_SOUP.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(TagRef.SEEDS)
 					.addIngredient(TagRef.CROPS)
 					.addIngredient(ItemTags.FLOWERS)
 					.addIngredient(Items.BONE_MEAL)
-					.build(pvd, YHFood.POOR_GOD_SOUP.item.getId());
+					.build(pvd, YHBowl.POOR_GOD_SOUP.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.POWER_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POWER_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
 					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(Items.KELP)
 					.addIngredient(Items.KELP)
 					.addIngredient(TagRef.VEGETABLES_ONION)
-					.build(pvd, YHFood.POWER_SOUP.item.getId());
+					.build(pvd, YHBowl.POWER_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SHIRAYUKI.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(Items.PUFFERFISH)
@@ -666,13 +668,13 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.TUSCAN_SALMON.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MUSHROOM_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.MUSHROOM_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.addIngredient(TagRef.VEGETABLES_ONION)
 					.addIngredient(YHItems.CREAM.get())
-					.build(pvd, YHFood.MUSHROOM_SOUP.item.getId());
+					.build(pvd, YHBowl.MUSHROOM_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(YHTagGen.CUCUMBER)
