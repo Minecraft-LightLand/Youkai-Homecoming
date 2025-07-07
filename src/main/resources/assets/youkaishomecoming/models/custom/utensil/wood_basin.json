@@ -10,7 +10,7 @@
 	},
 	"elements": [
 		{
-			"name": "wood_basin",
+			"name": "basin",
 			"from": [1, 0, 1],
 			"to": [15, 1, 15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0.5, 8]},
@@ -20,68 +20,54 @@
 			}
 		},
 		{
-			"name": "wood_basin",
+			"name": "basin",
 			"from": [0, 0, 0],
-			"to": [15, 9, 1],
+			"to": [15, 8, 1],
 			"faces": {
 				"north": {"uv": [0, 0, 15, 9], "texture": "#1"},
-				"south": {"uv": [0, 0, 15, 9], "texture": "#3"},
+				"south": {"uv": [0, 0, 15, 8], "texture": "#3"},
 				"west": {"uv": [15, 0, 16, 9], "texture": "#1"},
 				"up": {"uv": [0, 0, 15, 1], "texture": "#1"},
 				"down": {"uv": [0, 9, 15, 10], "texture": "#1"}
 			}
 		},
 		{
-			"name": "wood_basin",
+			"name": "basin",
 			"from": [1, 0, 15],
-			"to": [16, 9, 16],
+			"to": [16, 8, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 15]},
 			"faces": {
-				"north": {"uv": [0, 0, 15, 9], "texture": "#3"},
+				"north": {"uv": [0, 0, 15, 8], "texture": "#3"},
 				"east": {"uv": [15, 0, 16, 9], "texture": "#1"},
 				"south": {"uv": [0, 0, 15, 9], "texture": "#1"},
-				"up": {"uv": [0, 0, 15, 1], "texture": "#1"},
+				"up": {"uv": [15, 0, 0, 1], "texture": "#1"},
 				"down": {"uv": [0, 9, 15, 10], "texture": "#1"}
 			}
 		},
 		{
-			"name": "wood_basin",
+			"name": "basin",
 			"from": [0, 0, 1],
-			"to": [1, 9, 16],
+			"to": [1, 8, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
 			"faces": {
 				"east": {"uv": [0, 0, 15, 8], "texture": "#3"},
 				"south": {"uv": [16, 0, 15, 9], "texture": "#1"},
 				"west": {"uv": [0, 0, 15, 9], "texture": "#1"},
-				"up": {"uv": [0, 1, 15, 0], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [15, 1, 0, 0], "rotation": 90, "texture": "#1"},
 				"down": {"uv": [0, 10, 15, 9], "rotation": 270, "texture": "#1"}
 			}
 		},
 		{
-			"name": "wood_basin",
+			"name": "basin",
 			"from": [15, 0, 0],
-			"to": [16, 9, 15],
+			"to": [16, 8, 15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [15, 0, 0]},
 			"faces": {
 				"north": {"uv": [16, 0, 15, 9], "texture": "#1"},
 				"east": {"uv": [0, 0, 15, 9], "texture": "#1"},
-				"west": {"uv": [0, 0, 15, 9], "texture": "#3"},
+				"west": {"uv": [0, 0, 15, 8], "texture": "#3"},
 				"up": {"uv": [0, 1, 15, 0], "rotation": 90, "texture": "#1"},
-				"down": {"uv": [0, 10, 15, 9], "rotation": 270, "texture": "#1"}
-			}
-		},
-		{
-			"name": "wood_basin",
-			"from": [0, 0, 1],
-			"to": [1, 9, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
-			"faces": {
-				"north": {"uv": [1, 0, 0, 9], "texture": "#1"},
-				"east": {"uv": [0, 0, 15, 9], "texture": "#3"},
-				"south": {"uv": [1, 0, 0, 9], "texture": "#1"},
-				"west": {"uv": [0, 0, 15, 9], "texture": "#1"},
-				"up": {"uv": [0, 1, 15, 0], "rotation": 90, "texture": "#1"},
-				"down": {"uv": [0, 10, 15, 9], "rotation": 270, "texture": "#1"}
+				"down": {"uv": [15, 10, 0, 9], "rotation": 270, "texture": "#1"}
 			}
 		}
 	]
