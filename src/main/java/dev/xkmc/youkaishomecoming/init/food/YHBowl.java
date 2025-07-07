@@ -19,6 +19,10 @@ public enum YHBowl implements ItemLike {
 	MISO_SOUP(FoodType.BOWL, 8, 0.5f,
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			DietTagGen.VEGETABLES.tag),
+	SEAFOOD_MISO_SOUP(FoodType.BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
+			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)

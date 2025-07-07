@@ -633,7 +633,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.build(pvd, YHBowl.MISO_SOUP.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SEAFOOD_MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.SEAFOOD_MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(YHFood.TOFU.item.get())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
@@ -641,7 +641,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.BROWN_MUSHROOM)
 					.addIngredient(TagRef.RAW_FISHES_SALMON)
 					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.build(pvd, YHFood.SEAFOOD_MISO_SOUP.item.getId());
+					.build(pvd, YHBowl.SEAFOOD_MISO_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)

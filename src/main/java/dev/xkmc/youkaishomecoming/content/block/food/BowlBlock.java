@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -33,10 +34,14 @@ public record BowlBlock(VoxelShape shape) implements ShapeBlockMethod, OnClickBl
 		var stack = state.getBlock().asItem().getDefaultInstance();
 		if (stack.getFoodProperties(player) != null && player.canEat(false)) {
 			if (!level.isClientSide()) {
-				player.eat(level, stack);
+				player.eat(level, stack.copy());
 				var cont = stack.getCraftingRemainingItem();
 				if (cont.getItem() instanceof BlockItem block) {
 					level.setBlockAndUpdate(pos, block.getBlock().defaultBlockState()
+							.setValue(BlockStateProperties.HORIZONTAL_FACING,
+									state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
+				} else {
+					level.setBlockAndUpdate(pos, YHItems.WOOD_BOWL.getDefaultState()
 							.setValue(BlockStateProperties.HORIZONTAL_FACING,
 									state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
 				}

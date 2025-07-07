@@ -153,10 +153,6 @@ public enum YHFood implements ItemLike {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	SEAFOOD_MISO_SOUP(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)),
-			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	SHIRAYUKI(FoodType.BOWL_MEAT, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),

@@ -37,7 +37,7 @@ public class ThirstCompat {
 		event.addDrink(YHBowl.POWER_SOUP.asItem(), 8, 13);
 		event.addDrink(YHBowl.MUSHROOM_SOUP.asItem(), 8, 13);
 		event.addDrink(YHBowl.MISO_SOUP.asItem(), 8, 13);
-		event.addDrink(YHFood.SEAFOOD_MISO_SOUP.item.get(), 8, 13);
+		event.addDrink(YHBowl.SEAFOOD_MISO_SOUP.asItem(), 8, 13);
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
 			event.addDrink(FruitsDelightCompatFood.LEMON_BLACK_TEA.item.get(), 8, 13);
