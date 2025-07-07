@@ -81,6 +81,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:borscht": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:borscht"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:bowl_of_heart_throbbing_surprise": {
       "conditions": {
         "item": {
@@ -611,6 +621,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:potato_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:potato_soup"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:power_soup": {
       "conditions": {
         "item": {
@@ -821,6 +841,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:signature_mushroom_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:signature_mushroom_stew"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:sparrow_sake": {
       "conditions": {
         "item": {
@@ -916,6 +946,16 @@
         "item": {
           "items": [
             "youkaishomecoming:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:tofu_fish_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tofu_fish_soup"
           ]
         }
       },
@@ -1342,6 +1382,18 @@
     ],
     [
       "youkaishomecoming:power_soup"
+    ],
+    [
+      "youkaishomecoming:potato_soup"
+    ],
+    [
+      "youkaishomecoming:borscht"
+    ],
+    [
+      "youkaishomecoming:signature_mushroom_stew"
+    ],
+    [
+      "youkaishomecoming:tofu_fish_soup"
     ],
     [
       "youkaishomecoming:tobiko_gunkan"

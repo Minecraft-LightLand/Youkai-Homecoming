@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/borscht",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/borscht"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/borscht",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/borscht",
+      "y": 270
+    }
+  }
+}
