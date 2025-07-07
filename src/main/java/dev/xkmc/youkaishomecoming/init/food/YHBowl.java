@@ -38,6 +38,22 @@ public enum YHBowl implements ItemLike {
 	POWER_SOUP(FoodType.IRON_BOWL_MEAT, 16, 0.6f,
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	POTATO_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+	BORSCHT(FoodType.IRON_BOWL, 8, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	), DietTagGen.VEGETABLES.tag),
+	SIGNATURE_MUSHROOM_STEW(FoodType.IRON_BOWL, 6, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 2000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 3000, 0, 1)
+	), DietTagGen.VEGETABLES.tag),
+	TOFU_FISH_SOUP(FoodType.IRON_BOWL, 10, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	;
 
 	private final String id;

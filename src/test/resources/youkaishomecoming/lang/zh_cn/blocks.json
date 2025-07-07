@@ -67,7 +67,11 @@
 		"poor_god_soup": "穷神汤",
 		"higan_soup": "彼岸汤",
 		"power_soup": "力量汤",
-		"mushroom_soup": "奶油蘑菇浓汤"
+		"mushroom_soup": "奶油蘑菇浓汤",
+		"borscht": "罗宋汤",
+		"potato_soup": "奶油马铃薯浓汤",
+		"signature_mushroom_stew": "秘制鲜菌煲",
+		"tofu_fish_soup": "豆腐鱼汤"
 	},
 	"-cartesian": {
 		"candles": {

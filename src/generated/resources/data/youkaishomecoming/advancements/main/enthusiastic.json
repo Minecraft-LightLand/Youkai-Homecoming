@@ -121,6 +121,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:borscht": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:borscht"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:bowl_of_flesh_feast": {
       "conditions": {
         "item": {
@@ -911,6 +921,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:potato_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:potato_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:power_soup": {
       "conditions": {
         "item": {
@@ -1261,6 +1281,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:signature_mushroom_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:signature_mushroom_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:sparrow_sake": {
       "conditions": {
         "item": {
@@ -1386,6 +1416,16 @@
         "item": {
           "items": [
             "youkaishomecoming:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:tofu_fish_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tofu_fish_soup"
           ]
         }
       },
@@ -1730,6 +1770,18 @@
     ],
     [
       "youkaishomecoming:power_soup"
+    ],
+    [
+      "youkaishomecoming:potato_soup"
+    ],
+    [
+      "youkaishomecoming:borscht"
+    ],
+    [
+      "youkaishomecoming:signature_mushroom_stew"
+    ],
+    [
+      "youkaishomecoming:tofu_fish_soup"
     ],
     [
       "youkaishomecoming:raw_lamprey"

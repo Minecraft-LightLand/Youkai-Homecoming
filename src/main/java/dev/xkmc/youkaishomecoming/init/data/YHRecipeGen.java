@@ -38,6 +38,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -718,6 +719,41 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.VEGETABLES_ONION)
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHBowl.MUSHROOM_SOUP.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POTATO_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+					.addIngredient(Items.POTATO)
+					.addIngredient(Items.POTATO)
+					.addIngredient(Items.POTATO)
+					.addIngredient(TagRef.VEGETABLES_ONION)
+					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(YHItems.CREAM.get())
+					.build(pvd, YHBowl.POTATO_SOUP.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.SIGNATURE_MUSHROOM_STEW.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+					.addIngredient(Items.RED_MUSHROOM)
+					.addIngredient(Items.BROWN_MUSHROOM)
+					.addIngredient(Tags.Items.MUSHROOMS)
+					.addIngredient(Tags.Items.MUSHROOMS)
+					.build(pvd, YHBowl.SIGNATURE_MUSHROOM_STEW.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.BORSCHT.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+					.addIngredient(Items.BEETROOT)
+					.addIngredient(Items.BEETROOT)
+					.addIngredient(Items.POTATO)
+					.addIngredient(TagRef.VEGETABLES_TOMATO)
+					.addIngredient(TagRef.VEGETABLES_ONION)
+					.addIngredient(YHItems.CREAM.get())
+					.build(pvd, YHBowl.BORSCHT.item.getId());
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.TOFU_FISH_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
+					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+					.addIngredient(YHFood.TOFU)
+					.addIngredient(Items.DRIED_KELP)
+					.addIngredient(TagRef.RAW_FISHES)
+					.build(pvd, YHBowl.TOFU_FISH_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
