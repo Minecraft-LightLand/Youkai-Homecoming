@@ -25,6 +25,7 @@
       "tag": "forge:raw_fishes/salmon"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:seafood_miso_soup"
   }

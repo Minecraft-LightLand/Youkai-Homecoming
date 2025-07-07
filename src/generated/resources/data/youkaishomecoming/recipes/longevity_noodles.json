@@ -19,6 +19,7 @@
       "tag": "forge:raw_pork"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:longevity_noodles"
   }

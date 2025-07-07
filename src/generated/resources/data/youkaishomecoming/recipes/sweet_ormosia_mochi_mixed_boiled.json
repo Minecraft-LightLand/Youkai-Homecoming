@@ -16,6 +16,7 @@
       "tag": "forge:vegetables"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
   }

@@ -25,6 +25,7 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:mitarashi_dango"
   }
