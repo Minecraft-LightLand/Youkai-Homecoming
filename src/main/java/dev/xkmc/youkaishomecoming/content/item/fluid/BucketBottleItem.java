@@ -53,11 +53,13 @@ public class BucketBottleItem extends BlockItem {
 		slip.setFluid(fluid);
 		slip.drain(50, IFluidHandler.FluidAction.EXECUTE);
 		if (!other.isEmpty()) {
+			stack.getOrCreateTag().putString("BottleMarker", "DISCARD");
 			if (user instanceof Player player) {
 				player.getInventory().placeItemBackInInventory(other);
 			} else {
 				user.spawnAtLocation(other);
 			}
+			stack.setCount(0);
 		}
 		return slip.getContainer();
 	}

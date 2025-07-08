@@ -46,11 +46,12 @@ public class SteamerBlockRenderer implements BlockEntityRenderer<SteamerBlockEnt
 			state = state.setValue(BlockStateProperties.HORIZONTAL_FACING, state.getValue(BlockStateProperties.HORIZONTAL_FACING));
 			BakedModel model = Minecraft.getInstance().getModelManager().getBlockModelShaper().getBlockModel(state);
 			pose.translate(.5f, (info.height() * 4 - 3) / 16f, .5f);
-			FoodSaucerBlock block = (FoodSaucerBlock) item.getBlock();
-			var saucer = block.dish.saucer;
-			int width = 16 - Math.min(saucer.x, saucer.z) * 2;
-			float s = 8f / width;
-			pose.scale(s, s, s);
+			if (item.getBlock() instanceof FoodSaucerBlock block) {
+				var saucer = block.dish.saucer;
+				int width = 16 - Math.min(saucer.x, saucer.z) * 2;
+				float s = 8f / width;
+				pose.scale(s, s, s);
+			}
 			pose.translate(-.5f, 0, -.5f);
 			ModelBlockRenderer renderer = Minecraft.getInstance().getBlockRenderer().getModelRenderer();
 			PoseStack.Pose mat = pose.last();

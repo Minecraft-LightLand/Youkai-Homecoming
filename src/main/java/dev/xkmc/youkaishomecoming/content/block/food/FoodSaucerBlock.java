@@ -39,7 +39,7 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 						.setValue(BlockStateProperties.HORIZONTAL_FACING,
 								state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
 			}
-			return InteractionResult.CONSUME;
+			return InteractionResult.SUCCESS;
 		}
 		return super.use(state, level, pos, player, hand, hit);
 	}

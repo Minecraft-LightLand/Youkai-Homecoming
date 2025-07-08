@@ -14,6 +14,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
@@ -124,6 +125,13 @@ public class YHItems {
 			WOOD_BOWL = woodBowl("wood_bowl")
 					.loot((pvd, block) -> pvd.dropOther(block, Items.BOWL))
 					.register();
+
+
+			SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
+					.properties(p -> p.stacksTo(1))
+					.model(BottledDrinkSet::buildBottleModel)
+					.color(() -> () -> SlipBottleItem::color)
+					.register();
 		}
 
 		YHFood.register();
@@ -152,18 +160,6 @@ public class YHItems {
 		YHDish.register();
 		YHCoffee.register();
 		YHDrink.register();
-
-		SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
-				.properties(p -> p.stacksTo(1))
-				.model((ctx, pvd) ->
-						pvd.generated(ctx, pvd.modLoc("item/sake_bottle"))
-								.override().predicate(YoukaisHomecoming.loc("slip"), 1 / 32f)
-								.model(pvd.getBuilder(ctx.getName() + "_overlay")
-										.parent(new ModelFile.UncheckedModelFile("item/generated"))
-										.texture("layer0", pvd.modLoc("item/sake_bottle"))
-										.texture("layer1", pvd.modLoc("item/sake_bottle_overlay"))))
-				.color(() -> () -> SlipBottleItem::color)
-				.register();
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
 			FruitsDelightCompatFood.register();
