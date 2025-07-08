@@ -25,18 +25,13 @@ import java.util.function.UnaryOperator;
 public enum FoodType {
 	SIMPLE(YHFoodItem::new, UnaryOperator.identity(), false, false, false),
 	FAST(YHFoodItem::new, UnaryOperator.identity(), false, true, false),
-	MEAT(YHFoodItem::new, UnaryOperator.identity(), true, false, false),
-	MEAT_SLICE(YHFoodItem::new, UnaryOperator.identity(), true, true, false),
 	STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), false, true, false),
-	MEAT_STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), true, true, false),
 	BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false, false),
 	SAKE(YHDrinkItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false, true),
 	BOTTLE(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, false, true),
 	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false, true),
 	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true, true),
-	BOWL_MEAT(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false),
-	IRON_BOWL(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), false, false, false),//TODO
-	IRON_BOWL_MEAT(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), true, false, false),//TODO
+	IRON_BOWL(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), false, false, false),
 	FLESH(FleshFoodItem::new, UnaryOperator.identity(), true, false, false, YHTagGen.FLESH_FOOD),
 	FLESH_FAST(FleshFoodItem::new, UnaryOperator.identity(), true, true, false, YHTagGen.FLESH_FOOD),
 	BOWL_FLESH(FleshFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), true, false, false, YHTagGen.FLESH_FOOD),
@@ -45,7 +40,7 @@ public enum FoodType {
 
 	private final Function<Item.Properties, Item> factory;
 	private final UnaryOperator<Item.Properties> prop;
-	private final boolean meat, fast, alwaysEat;
+	private final boolean fast, alwaysEat;
 
 	private final TagKey<Item>[] tags;
 	private final EffectEntry[] effs;
@@ -54,7 +49,6 @@ public enum FoodType {
 	FoodType(Function<Item.Properties, Item> factory, UnaryOperator<Item.Properties> prop, boolean meat, boolean fast, boolean alwaysEat, EffectEntry[] effs, TagKey<Item>... tags) {
 		this.factory = factory;
 		this.prop = prop;
-		this.meat = meat;
 		this.fast = fast;
 		this.alwaysEat = alwaysEat;
 		this.tags = tags;
@@ -90,7 +84,6 @@ public enum FoodType {
 	public Item.Properties food(Item.Properties prop, int nutrition, float sat, List<EffectEntry> effs) {
 		var food = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
-		if (meat) food.meat();
 		if (fast) food.fast();
 		if (alwaysEat) food.alwaysEat();
 		for (var e : this.effs) {
@@ -103,7 +96,7 @@ public enum FoodType {
 	}
 
 	public BlockBuilder<DelegateBlock, L2Registrate> bowl(String name) {
-		if (this == IRON_BOWL || this == IRON_BOWL_MEAT)
+		if (this == IRON_BOWL)
 			return YHItems.ironBowl(name);
 		else return YHItems.woodBowl(name);
 	}
