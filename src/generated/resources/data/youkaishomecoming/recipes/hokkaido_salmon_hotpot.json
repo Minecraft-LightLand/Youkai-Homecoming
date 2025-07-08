@@ -1,0 +1,32 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaishomecoming:iron_bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaishomecoming:hokkaido_salmon_hotpot"
+  }
+}

@@ -601,6 +601,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:hokkaido_salmon_hotpot": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:hokkaido_salmon_hotpot"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:honey_glazed_cucumber": {
       "conditions": {
         "item": {
@@ -1501,16 +1511,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaishomecoming:tofu_fish_soup": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaishomecoming:tofu_fish_soup"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaishomecoming:tomato_sauce_cod": {
       "conditions": {
         "item": {
@@ -1861,7 +1861,7 @@
       "youkaishomecoming:signature_mushroom_stew"
     ],
     [
-      "youkaishomecoming:tofu_fish_soup"
+      "youkaishomecoming:hokkaido_salmon_hotpot"
     ],
     [
       "youkaishomecoming:raw_lamprey"

@@ -13,9 +13,9 @@ public class FoodRegistryHelper {
 		switch (type) {
 			case BOTTLE:
 				return "food/bottle/";
-			case STICK, MEAT_STICK:
+			case STICK:
 				return "food/stick/";
-			case BOWL, BOWL_MEAT, IRON_BOWL, IRON_BOWL_MEAT:
+			case BOWL, IRON_BOWL:
 				return "food/bowl/";
 		}
 		if (tags.length > 0 && tags[0] == YHTagGen.DANGO) {

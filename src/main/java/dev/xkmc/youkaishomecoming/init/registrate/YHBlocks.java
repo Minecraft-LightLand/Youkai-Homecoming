@@ -30,6 +30,9 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.shelf.ShelfRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.shelf.WineShelfBlock;
+import dev.xkmc.youkaishomecoming.content.pot.shelf.WineShelfBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlock;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlockEntity;
@@ -148,6 +151,9 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
 
+	public static final BlockEntry<DelegateBlock> SPRUCE_WINE_SHELF;
+	public static final BlockEntityEntry<WineShelfBlockEntity> WINE_SHELF_BE;
+
 	public static final BlockEntry<DelegateBlock> DONATION_BOX;
 	public static final BlockEntityEntry<DonationBoxBlockEntity> DONATION_BOX_BE;
 
@@ -219,6 +225,19 @@ public class YHBlocks {
 
 			BASIN_RT = YoukaisHomecoming.REGISTRATE.recipe("basin");
 			BASIN_RS = reg("simple_basin", () -> new BaseRecipe.RecType<>(SimpleBasinRecipe.class, BASIN_RT));
+
+			SPRUCE_WINE_SHELF = YoukaisHomecoming.REGISTRATE.block("spruce_wine_shelf", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
+					.blockstate(WineShelfBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			WINE_SHELF_BE = YoukaisHomecoming.REGISTRATE.blockEntity("wine_shelf", WineShelfBlockEntity::new)
+					.renderer(() -> ShelfRenderer::new)
+					.validBlock(SPRUCE_WINE_SHELF)
+					.register();
 
 		}
 

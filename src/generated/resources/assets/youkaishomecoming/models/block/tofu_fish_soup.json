@@ -1,8 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/bowl/iron/tofu_fish_soup",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "youkaishomecoming:block/bowl/iron/tofu_fish_soup",
-    "bowl": "youkaishomecoming:block/bowl/iron/iron_bowl"
-  }
-}

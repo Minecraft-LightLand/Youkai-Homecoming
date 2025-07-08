@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/hokkaido_salmon_hotpot",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/hokkaido_salmon_hotpot"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/hokkaido_salmon_hotpot",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/hokkaido_salmon_hotpot",
+      "y": 270
+    }
+  }
+}
