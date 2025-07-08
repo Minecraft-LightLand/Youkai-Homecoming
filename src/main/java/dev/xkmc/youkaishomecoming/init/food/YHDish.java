@@ -118,8 +118,7 @@ public enum YHDish {
 
 	public enum DishType {
 		COOKED(FoodType.SAUCER),
-		STEAMED(FoodType.SAUCER),
-		FLESH(FoodType.SAUCER_FLESH);
+		STEAMED(FoodType.SAUCER);
 
 		private final FoodType type;
 
