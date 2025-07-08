@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_roe": {
+    "has_crab_roe": {
       "conditions": {
         "items": [
           {
             "items": [
-              "gensokyodelight:roe"
+              "gensokyodelight:crab_roe"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_roe",
+      "has_crab_roe",
       "has_the_recipe"
     ]
   ],

@@ -1,0 +1,7 @@
+{
+  "parent": "gensokyodelight:table/gunkan/top_0",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "top": "gensokyodelight:block/table/gunkan/top/crab_roe"
+  }
+}

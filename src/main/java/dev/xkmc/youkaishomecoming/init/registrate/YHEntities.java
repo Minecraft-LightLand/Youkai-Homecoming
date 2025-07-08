@@ -3,10 +3,10 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabEntity;
-import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabRenderer;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.crab.CrabEntity;
+import dev.xkmc.youkaishomecoming.content.entity.crab.CrabRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
+import dev.xkmc.youkaishomecoming.content.entity.deer.DeerRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaEntity;
@@ -66,8 +66,6 @@ public class YHEntities {
 				.spawnEgg(0x424F75, 0xE08E46).build()//TODO
 				.loot(EntityLootGen::crab).register();
 
-
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YHDanmaku.TAB.getKey());
 		CHAIR = YoukaisHomecoming.REGISTRATE
 				.<ChairEntity>entity("dining_chair", ChairEntity::new, MobCategory.MISC)
 				.properties(e -> e.sized(0.25f, 0.5f))

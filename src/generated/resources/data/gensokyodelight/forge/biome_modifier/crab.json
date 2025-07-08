@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#gensokyodelight:spawns/crab",
+  "spawners": {
+    "type": "gensokyodelight:crab",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 10
+  }
+}

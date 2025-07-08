@@ -1,7 +1,0 @@
-{
-  "parent": "youkaishomecoming:table/california/cover_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cover": "youkaishomecoming:block/table/california/cover/crab_roe"
-  }
-}

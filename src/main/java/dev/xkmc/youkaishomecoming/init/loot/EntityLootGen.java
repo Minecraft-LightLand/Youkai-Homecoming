@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
-import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabEntity;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
+import dev.xkmc.youkaishomecoming.content.entity.crab.CrabEntity;
+import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaEntity;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;

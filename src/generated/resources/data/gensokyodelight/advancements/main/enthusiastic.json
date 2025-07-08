@@ -231,6 +231,36 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "gensokyodelight:crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:crab_meat": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:crab_meat"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:crab_roe": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:crab_roe"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "gensokyodelight:cucumber_slice": {
       "conditions": {
         "item": {
@@ -366,6 +396,26 @@
         "item": {
           "items": [
             "gensokyodelight:grilled_eel_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:grilled_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:grilled_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:grilled_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:grilled_venison_slice"
           ]
         }
       },
@@ -871,6 +921,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "gensokyodelight:raw_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raw_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:raw_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:raw_venison_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "gensokyodelight:red_grape_juice": {
       "conditions": {
         "item": {
@@ -1126,6 +1196,16 @@
         "item": {
           "items": [
             "gensokyodelight:sparrow_sake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:steamed_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:steamed_crab"
           ]
         }
       },
@@ -1604,6 +1684,30 @@
     ],
     [
       "gensokyodelight:otoro"
+    ],
+    [
+      "gensokyodelight:crab"
+    ],
+    [
+      "gensokyodelight:steamed_crab"
+    ],
+    [
+      "gensokyodelight:crab_meat"
+    ],
+    [
+      "gensokyodelight:crab_roe"
+    ],
+    [
+      "gensokyodelight:raw_venison"
+    ],
+    [
+      "gensokyodelight:grilled_venison"
+    ],
+    [
+      "gensokyodelight:raw_venison_slice"
+    ],
+    [
+      "gensokyodelight:grilled_venison_slice"
     ],
     [
       "gensokyodelight:roe"
