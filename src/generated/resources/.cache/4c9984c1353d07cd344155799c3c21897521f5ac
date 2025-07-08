@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-08T13:20:53.950789	Registrate Provider for gensokyodelight [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-08T19:31:26.860583	Registrate Provider for gensokyodelight [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 8bd7ffd5ac836e7c1995148472dd785605ed0c26 assets/gensokyodelight/blockstates/acacia_dining_chair.json
 ea4ec367baa7671857765bb826e9f089947e9fb0 assets/gensokyodelight/blockstates/acacia_dining_table.json
 ddb38e4109872800d49bb33a9cfa50e964ae165d assets/gensokyodelight/blockstates/bamboo_dining_chair.json
@@ -1098,7 +1098,7 @@ e69a6e59357452a97eb0cf44c4114dc2156be5ec assets/gensokyodelight/models/item/redb
 f9549dd60a3f4d8f5e67fc320d259f9b3593ffe8 assets/gensokyodelight/models/item/roe_california_roll.json
 9106026a93fe15c829c174ab5aa13c56a91e88c9 assets/gensokyodelight/models/item/roe_california_roll_slice.json
 cd620caac6f5c9f94ae3da405b0c93c99131c707 assets/gensokyodelight/models/item/saidi_tea.json
-48b03e9244f49095ad47480ce40dd9eebe2088ee assets/gensokyodelight/models/item/sake_bottle.json
+70bc18994c7b3704674ac422ff1fdb9afd4c754a assets/gensokyodelight/models/item/sake_bottle.json
 8a4ef19e7a07b6f4718d16c4148c1815c7855f08 assets/gensokyodelight/models/item/sake_bottle_overlay.json
 e94e130e0e2d1ff0370c9afa51f92b33974b4098 assets/gensokyodelight/models/item/sakura_honey_tea.json
 51dc93879c346566ee0c359c3252bb07869adf4f assets/gensokyodelight/models/item/sakura_mochi.json

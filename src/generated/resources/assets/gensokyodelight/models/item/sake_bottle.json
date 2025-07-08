@@ -6,6 +6,36 @@
       "predicate": {
         "gensokyodelight:slip": 0.03125
       }
+    },
+    {
+      "model": "gensokyodelight:item/red_wine_bottle",
+      "predicate": {
+        "gensokyodelight:bottle": 0.1
+      }
+    },
+    {
+      "model": "gensokyodelight:item/white_wine_bottle",
+      "predicate": {
+        "gensokyodelight:bottle": 0.3
+      }
+    },
+    {
+      "model": "gensokyodelight:item/burgundy_bottle",
+      "predicate": {
+        "gensokyodelight:bottle": 0.5
+      }
+    },
+    {
+      "model": "gensokyodelight:item/champagne_bottle",
+      "predicate": {
+        "gensokyodelight:bottle": 0.7
+      }
+    },
+    {
+      "model": "gensokyodelight:item/van_allen_bottle",
+      "predicate": {
+        "gensokyodelight:bottle": 0.9
+      }
     }
   ],
   "textures": {
