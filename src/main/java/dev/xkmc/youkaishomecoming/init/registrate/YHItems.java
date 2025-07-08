@@ -10,9 +10,7 @@ import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
-import dev.xkmc.youkaishomecoming.content.block.food.*;
-import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
-import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
+import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
@@ -25,8 +23,6 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
@@ -65,7 +61,7 @@ public class YHItems {
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
-	public static final CakeEntry  TARTE_LUNE;
+	public static final CakeEntry TARTE_LUNE;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
 	public static final BlockEntry<DelegateBlock> IRON_BOWL, WOOD_BOWL;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
@@ -151,23 +147,6 @@ public class YHItems {
 					.loot(SurpriseFeastBlock::builtLoot)
 					.register();
 
-			RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
-					.properties(p -> p.stacksTo(1))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName())))
-					.lang("Raw %1$s Feast")
-					.register();
-
-			FLESH_FEAST = YoukaisHomecoming.REGISTRATE.block("flesh_feast", p ->
-							new FleshFeastBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL),
-									YHFood.BOWL_OF_FLESH_FEAST.item))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
-							FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
-					.lang("%1$s Feast")
-					.item(FleshBlockItem::new).properties(p -> p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
-					.loot(FleshFeastBlock::builtLoot)
-					.register();
-
-			RED_VELVET = new CakeEntry("red_velvet", MapColor.COLOR_RED, FoodType.FLESH, 1, 0.8f, true);
 			TARTE_LUNE = new CakeEntry("tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 4, 0.6f, false);
 		}
 

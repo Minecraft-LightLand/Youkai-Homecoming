@@ -1,7 +1,7 @@
 {
   "type": "farmersdelight:cooking",
   "container": {
-    "item": "youkaishomecoming:iron_bowl"
+    "item": "gensokyodelight:iron_bowl"
   },
   "cookingtime": 200,
   "experience": 0.1,

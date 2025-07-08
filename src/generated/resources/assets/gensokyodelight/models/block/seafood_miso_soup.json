@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/bowl/wood/seafood_miso_soup",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/bowl/wood/seafood_miso_soup",
+    "bowl": "gensokyodelight:block/bowl/wood/wood_bowl"
+  }
+}

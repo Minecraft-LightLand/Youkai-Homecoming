@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/potato_soup",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/potato_soup"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/potato_soup",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/potato_soup",
+      "y": 270
+    }
+  }
+}

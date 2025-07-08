@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/iron_bowl",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/iron_bowl"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/iron_bowl",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/iron_bowl",
+      "y": 270
+    }
+  }
+}

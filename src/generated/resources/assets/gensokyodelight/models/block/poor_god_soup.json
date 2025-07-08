@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/bowl/wood/poor_god_soup",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/bowl/wood/poor_god_soup",
+    "bowl": "gensokyodelight:block/bowl/wood/wood_bowl"
+  }
+}

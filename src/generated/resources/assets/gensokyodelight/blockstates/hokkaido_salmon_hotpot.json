@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/hokkaido_salmon_hotpot",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/hokkaido_salmon_hotpot"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/hokkaido_salmon_hotpot",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/hokkaido_salmon_hotpot",
+      "y": 270
+    }
+  }
+}

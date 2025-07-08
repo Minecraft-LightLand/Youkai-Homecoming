@@ -1,0 +1,8 @@
+{
+  "parent": "gensokyodelight:custom/bowl/iron/signature_mushroom_stew",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/bowl/iron/signature_mushroom_stew",
+    "bowl": "gensokyodelight:block/bowl/iron/iron_bowl"
+  }
+}

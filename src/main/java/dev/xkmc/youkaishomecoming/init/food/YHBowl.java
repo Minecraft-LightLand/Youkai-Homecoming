@@ -83,19 +83,11 @@ public enum YHBowl implements ItemLike {
 		return item.asItem();
 	}
 
-	private boolean isFlesh() {
-		return type.isFlesh();
-	}
-
 	private boolean isUnappealing() {
 		return switch (this) {
 			case POOR_GOD_SOUP, HIGAN_SOUP -> true;
 			default -> false;
 		};
-	}
-
-	public boolean isReimuFood() {
-		return !isFlesh() && !isUnappealing();
 	}
 
 	public static void register() {

@@ -101,6 +101,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "gensokyodelight:borscht": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:borscht"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "gensokyodelight:bowl_of_heart_throbbing_surprise": {
       "conditions": {
         "item": {
@@ -396,6 +406,16 @@
         "item": {
           "items": [
             "gensokyodelight:higi_doughnut"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:hokkaido_salmon_hotpot": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:hokkaido_salmon_hotpot"
           ]
         }
       },
@@ -761,6 +781,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "gensokyodelight:potato_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:potato_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "gensokyodelight:power_soup": {
       "conditions": {
         "item": {
@@ -1076,6 +1106,16 @@
         "item": {
           "items": [
             "gensokyodelight:shirayuki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:signature_mushroom_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:signature_mushroom_stew"
           ]
         }
       },
@@ -1509,6 +1549,36 @@
       "gensokyodelight:mocha"
     ],
     [
+      "gensokyodelight:miso_soup"
+    ],
+    [
+      "gensokyodelight:seafood_miso_soup"
+    ],
+    [
+      "gensokyodelight:poor_god_soup"
+    ],
+    [
+      "gensokyodelight:higan_soup"
+    ],
+    [
+      "gensokyodelight:mushroom_soup"
+    ],
+    [
+      "gensokyodelight:power_soup"
+    ],
+    [
+      "gensokyodelight:potato_soup"
+    ],
+    [
+      "gensokyodelight:borscht"
+    ],
+    [
+      "gensokyodelight:signature_mushroom_stew"
+    ],
+    [
+      "gensokyodelight:hokkaido_salmon_hotpot"
+    ],
+    [
       "gensokyodelight:raw_lamprey"
     ],
     [
@@ -1662,22 +1732,7 @@
       "gensokyodelight:grilled_eel_over_rice"
     ],
     [
-      "gensokyodelight:higan_soup"
-    ],
-    [
       "gensokyodelight:longevity_noodles"
-    ],
-    [
-      "gensokyodelight:miso_soup"
-    ],
-    [
-      "gensokyodelight:seafood_miso_soup"
-    ],
-    [
-      "gensokyodelight:poor_god_soup"
-    ],
-    [
-      "gensokyodelight:power_soup"
     ],
     [
       "gensokyodelight:shirayuki"
@@ -1687,9 +1742,6 @@
     ],
     [
       "gensokyodelight:tuscan_salmon"
-    ],
-    [
-      "gensokyodelight:mushroom_soup"
     ],
     [
       "gensokyodelight:honey_glazed_cucumber"

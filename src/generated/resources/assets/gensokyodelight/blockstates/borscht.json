@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/borscht",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/borscht"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/borscht",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/borscht",
+      "y": 270
+    }
+  }
+}
