@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-08T10:53:22.814428	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-08T19:03:44.168383	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1693,7 +1693,7 @@ cb5e6d79d9969a90898ed10935b833601080e072 assets/youkaishomecoming/models/item/ro
 a7e2f6fb15b9bbd0b5d40d9a17c8c98ee3a0d961 assets/youkaishomecoming/models/item/rumia_hairband.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/rumia_spawn_egg.json
 90dfa43e14582ce451fb3d531411de31e2121453 assets/youkaishomecoming/models/item/saidi_tea.json
-f19111ffccd9db2d6b1e376660ef46ce5570052b assets/youkaishomecoming/models/item/sake_bottle.json
+2483dcf7cb3ff0725f54e085fdb532d8c67953fa assets/youkaishomecoming/models/item/sake_bottle.json
 ee3e53e64918fd18d8a40e93fa3deee0c96ed423 assets/youkaishomecoming/models/item/sake_bottle_overlay.json
 af6e4ba971c898f965d8d610d7d8e721b47b3406 assets/youkaishomecoming/models/item/sakura_honey_tea.json
 f49f6bebebaa8a8fb50f419dc50d5a70cd050cf2 assets/youkaishomecoming/models/item/sakura_mochi.json
