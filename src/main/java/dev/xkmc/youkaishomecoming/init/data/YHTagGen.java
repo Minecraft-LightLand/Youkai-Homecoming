@@ -60,6 +60,7 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA_DRINK = item("tea");
 	public static final TagKey<Item> SAKE = item("sake");
 	public static final TagKey<Item> WINE = item("wine");
+	public static final TagKey<Item> BOTTLED = item("bottled");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
