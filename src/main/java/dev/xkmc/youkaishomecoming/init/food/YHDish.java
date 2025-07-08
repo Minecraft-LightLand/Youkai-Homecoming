@@ -86,20 +86,20 @@ public enum YHDish {
 		this.base = type;
 		this.height = height;
 		if (type == DishType.STEAMED) {
-			raw = buildBlock("raw_" + getName(), true, type, nutrition, sat, effs, tags);
+			raw = buildBlock("raw_" + getName(), true, nutrition, sat, effs, tags);
 		} else raw = null;
-		block = buildBlock(getName(), false, type, nutrition, sat, effs, tags);
+		block = buildBlock(getName(), false, nutrition, sat, effs, tags);
 	}
 
 	private String getName() {
 		return name().toLowerCase(Locale.ROOT);
 	}
 
-	private BlockEntry<FoodSaucerBlock> buildBlock(String name, boolean raw, DishType type, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+	private BlockEntry<FoodSaucerBlock> buildBlock(String name, boolean raw, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		return YoukaisHomecoming.REGISTRATE
 				.block(name, p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), buildModel(pvd, !raw)))
-				.item((block, p) -> type.create(block, p, raw, nutrition, sat, effs))
+				.item((block, p) -> base.create(block, p, raw, nutrition, sat, effs))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
 				.tag(tags).build()
 				.register();
