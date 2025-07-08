@@ -19,6 +19,9 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
 	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
 	public static final TagKey<Biome> TUNA = asTag("spawns/tuna");
+	public static final TagKey<Biome> DEER = asTag("spawns/deer");
+	public static final TagKey<Biome> CRAB = asTag("spawns/crab");
+	public static final TagKey<Biome> CRAB_MUD = asTag("spawns/crab_mud");
 	public static final TagKey<Biome> SOYBEAN = asTag("spawns/soybean");
 	public static final TagKey<Biome> REDBEAN = asTag("spawns/redbean");
 	public static final TagKey<Biome> COFFEA = asTag("spawns/coffea");
@@ -39,6 +42,9 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(Tags.Biomes.IS_MAGICAL);
 		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
 		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
+		tag(DEER).add(YHBiomes.SAKURA_FOREST);
+		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
+		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
 		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
@@ -49,10 +55,20 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
 		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);
 		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST);
+
+		tag(BiomeTags.IS_FOREST).add(YHBiomes.SAKURA_FOREST);
 	}
 
 	public static TagKey<Biome> asTag(String name) {
 		return TagKey.create(Registries.BIOME, YoukaisHomecoming.loc(name));
+	}
+
+	public static TagKey<Biome> forgeTag(String name) {
+		return TagKey.create(Registries.BIOME, new ResourceLocation("forge", name));
+	}
+
+	public static TagKey<Biome> cTag(String name) {
+		return TagKey.create(Registries.BIOME, new ResourceLocation("c", name));
 	}
 
 }

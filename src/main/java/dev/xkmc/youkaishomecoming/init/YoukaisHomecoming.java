@@ -7,6 +7,8 @@ import dev.ghen.thirst.Thirst;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
+import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
@@ -66,6 +68,7 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			Terrablender.registerBiomes();
 			for (var e : YHCrops.values())
 				e.registerComposter();
 
@@ -99,7 +102,7 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, new YHConfigGen(gen));
 		var reg = new YHDatapackRegistriesGen(output, pvd);
 		gen.addProvider(server, reg);
-		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
+		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));
 		gen.addProvider(server, new YHGLMProvider(gen));
 		gen.addProvider(server, new SlotGen(gen));
 	}

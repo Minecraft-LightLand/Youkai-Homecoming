@@ -55,6 +55,7 @@ public class YHRecipeGen {
 		{
 			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET, 2);
 			foodCut(pvd, YHFood.RAW_TUNA, YHFood.SEARED_TUNA, YHFood.RAW_TUNA_SLICE, YHFood.SEARED_TUNA_SLICE, 3);
+			foodCut(pvd, YHFood.RAW_VENISON, YHFood.GRILLED_VENISON, YHFood.RAW_VENISON_SLICE, YHFood.GRILLED_VENISON_SLICE, 2);
 			food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
@@ -183,6 +184,7 @@ public class YHRecipeGen {
 			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
 			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
 			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
+			steaming(pvd, DataIngredient.items(YHFood.CRAB.item.get()), YHFood.STEAMED_CRAB.item);
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
 							Ingredient.of(TagRef.TOOLS_KNIVES), Items.WATER_BUCKET, 1)
@@ -190,6 +192,16 @@ public class YHRecipeGen {
 					.addResult(Items.BONE_MEAL)
 					.addResultWithChance(YHFood.ROE.item.get(), 0.5f, 1)
 					.build(pvd, YHFood.ROE.item.getId());
+
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHFood.STEAMED_CRAB.item),
+							Ingredient.of(TagRef.TOOLS_KNIVES), YHFood.CRAB_MEAT.item, 1)
+					.build(pvd, YHFood.CRAB_MEAT.item.getId());
+
+			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.CRAB_BUCKET),
+							Ingredient.of(TagRef.TOOLS_KNIVES),Items.BUCKET, 1)
+					.addResultWithChance(YHFood.CRAB.item.get(), 1, 1)
+					.addResultWithChance(YHFood.CRAB_ROE.item.get(), 0.5f, 1)
+					.build(pvd, YHFood.CRAB_ROE.item.getId());
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.COFFEE_BEAN),
 							Ingredient.of(TagRef.TOOLS_SHOVELS), YHItems.COFFEE_POWDER, 1)
@@ -604,7 +616,7 @@ public class YHRecipeGen {
 					.addIngredient(YHTagGen.CUCUMBER)
 					.addIngredient(YHTagGen.CUCUMBER)
 					.addIngredient(YHTagGen.CUCUMBER)
-					.addIngredient(TagRef.RAW_PORK)//change to deer in the future
+					.addIngredient(YHTagGen.RAW_VENISON)
 					.addIngredient(Items.HONEY_BOTTLE)
 					.build(pvd, YHFood.HONEY_GLAZED_CUCUMBER.item.getId());
 
@@ -1147,14 +1159,14 @@ public class YHRecipeGen {
 						.addUnordered(YHFood.IMITATION_CRAB.item)
 						.save(pvd);
 
-				unlock(pvd, new OrderedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.ROE.item.get())
+				unlock(pvd, new OrderedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.CRAB_ROE.item.get())
 						.result(YHRolls.ROE_CALIFORNIA_ROLL)
-						.add(YHFood.ROE.item)
+						.add(YHFood.CRAB_ROE.item)
 						.save(pvd);
 
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, ModItems.SALMON_SLICE.get())
 						.result(YHRolls.SALMON_LOVER_ROLL)
-						.addOrdered(YHFood.ROE.item)
+						.addOrdered(YHFood.CRAB_ROE.item)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
@@ -1170,7 +1182,7 @@ public class YHRecipeGen {
 
 				unlock(pvd, new MixedRecipeBuilder(YHRolls.CALIFORNIA_ROLL.item.get())::unlockedBy, YHFood.RAW_TUNA_SLICE.item.get())
 						.result(YHRolls.RAINBOW_ROLL)
-						.addOrdered(YHFood.ROE.item)
+						.addOrdered(YHFood.CRAB_ROE.item)
 						.addUnordered(TagRef.RAW_FISHES_SALMON)
 						.addUnordered(TagRef.RAW_FISHES_COD)
 						.addUnordered(YHTagGen.RAW_TUNA)

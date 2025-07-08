@@ -66,6 +66,10 @@ public class YHEffects {
 			() -> new HigiEffect(MobEffectCategory.BENEFICIAL, 0x6CA16E),
 			"Boost attack damage and movement speed, heal slowly");
 
+	public static final RegistryEntry<MobEffect> CRABY = genEffect("craby",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"Makes your horizontal movement faster");//TODO
+
 	public static final RegistryEntry<MobEffect> CONFIDENT = genEffect("confident",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Increase invulnerability time after being attacked");

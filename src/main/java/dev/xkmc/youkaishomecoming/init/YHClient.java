@@ -1,6 +1,10 @@
 package dev.xkmc.youkaishomecoming.init;
 
 import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
+import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabModel;
+import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabModelData;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerModelData;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerModel;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaModel;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
@@ -50,6 +54,8 @@ public class YHClient {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
 		event.registerLayerDefinition(TunaModel.LAYER_LOCATION, TunaModel::createBodyLayer);
+		event.registerLayerDefinition(DeerModel.LAYER_LOCATION, DeerModelData::createBodyLayer);
+		event.registerLayerDefinition(CrabModel.LAYER_LOCATION, CrabModelData::createBodyLayer);
 	}
 
 	@SubscribeEvent

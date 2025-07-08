@@ -11,10 +11,6 @@
       ],
       "functions": [
         {
-          "count": 0.5,
-          "function": "minecraft:looting_enchant"
-        },
-        {
           "conditions": [
             {
               "condition": "minecraft:entity_properties",
