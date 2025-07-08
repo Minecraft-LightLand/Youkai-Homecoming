@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
+import dev.xkmc.youkaishomecoming.init.food.YHDrink;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -35,18 +37,32 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@NotNull
 	public FluidStack getFluid() {
+		if (container.getItem() instanceof BucketBottleItem bucket) {
+			return new FluidStack(bucket.fluid.fluid().getSource(), getTankCapacity(0));
+		}
 		var root = container.getTag();
 		if (root == null || !root.contains("SakeFluid", Tag.TAG_COMPOUND)) return FluidStack.EMPTY;
 		return FluidStack.loadFluidStackFromNBT(root.getCompound("SakeFluid"));
 	}
 
 	protected void setFluid(@NotNull FluidStack fluidStack) {
+		if (fluidStack.getAmount() == getTankCapacity(0)) {
+			if (fluidStack.getFluid() instanceof YHFluid fluid) {
+				if (fluid.type instanceof YHDrink drink && drink.set != null) {
+					container = drink.set.bottle.asStack();
+					return;
+				}
+			}
+		}
 		if (fluidStack.isEmpty()) {
 			if (container.getTag() == null) return;
 			container.getOrCreateTag().remove("SakeFluid");
 			if (container.getOrCreateTag().isEmpty()) {
 				container.setTag(null);
 			}
+		}
+		if (!container.is(YHItems.SAKE_BOTTLE.get())) {
+			container = YHItems.SAKE_BOTTLE.asStack();
 		}
 		container.getOrCreateTag().put("SakeFluid", fluidStack.writeToNBT(new CompoundTag()));
 	}

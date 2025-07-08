@@ -92,6 +92,19 @@
 			}
 		},
 		{
+			"name": "fish",
+			"from": [6.46732, 2, 8.71732],
+			"to": [7.46732, 3, 9.71732],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6.96732, 2.5, 9.21732]},
+			"faces": {
+				"north": {"uv": [11, 2, 12, 1], "texture": "#1"},
+				"east": {"uv": [11, 2, 12, 1], "texture": "#1"},
+				"south": {"uv": [11, 2, 12, 1], "texture": "#1"},
+				"west": {"uv": [11, 2, 12, 1], "texture": "#1"},
+				"up": {"uv": [11, 0, 12, 1], "texture": "#1"}
+			}
+		},
+		{
 			"name": "spices",
 			"from": [8, 3, 9],
 			"to": [10, 3, 11],
@@ -123,7 +136,7 @@
 			"name": "miso_soup",
 			"origin": [8, 8, 8],
 			"color": 0,
-			"children": [5, 6, 7, 8]
+			"children": [5, 6, 7, 8, 9]
 		}
 	]
 }

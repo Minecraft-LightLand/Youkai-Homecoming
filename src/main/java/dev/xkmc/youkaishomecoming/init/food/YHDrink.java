@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.List;
@@ -131,9 +132,13 @@ public enum YHDrink implements IYHFluidHolder {
 	;
 
 	public final int color;
+	public final String folder;
 
 	public final FluidEntry<YHFluid> fluid;
 	public final ItemEntry<Item> item;
+
+	@Nullable
+	public final BottledDrinkSet set;
 
 	@SafeVarargs
 	YHDrink(FoodType type, int color, List<EffectEntry> effs, TagKey<Item>... tags) {
@@ -143,10 +148,14 @@ public enum YHDrink implements IYHFluidHolder {
 						(p, s, f) -> new YHFluidType(p, s, f, this),
 						p -> new YHFluid(p, this))
 				.defaultLang().register();
-		String folder = name.contains("tea") || name.contains("water") ? "drink" :
+		folder = name.contains("tea") || name.contains("water") ? "drink" :
 				name.contains("juice") || tags.length > 0 && tags[0] == YHTagGen.WINE ? "wine" : "sake";
 		item = type.build(p -> new SakeBottleItem(fluid, p), "food/" + folder + "/",
 				name, 0, 0, tags, effs);
+
+		if (tags.length > 0 && tags[0] == YHTagGen.WINE) {
+			set = new BottledDrinkSet(this);
+		} else set = null;//TODO
 	}
 
 	@Override
@@ -174,6 +183,10 @@ public enum YHDrink implements IYHFluidHolder {
 		return ans;
 	}
 
+	public String getName() {
+		return name().toLowerCase(Locale.ROOT);
+	}
+
 	@Override
 	public ItemStack asStack(int count) {
 		return item.asStack(count);
@@ -182,5 +195,6 @@ public enum YHDrink implements IYHFluidHolder {
 	public static void register() {
 
 	}
+
 
 }

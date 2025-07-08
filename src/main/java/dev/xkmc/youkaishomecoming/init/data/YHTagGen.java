@@ -57,6 +57,7 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA_DRINK = item("tea");
 	public static final TagKey<Item> SAKE = item("sake");
 	public static final TagKey<Item> WINE = item("wine");
+	public static final TagKey<Item> BOTTLED = item("bottled");
 	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");

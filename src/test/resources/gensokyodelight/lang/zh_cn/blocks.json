@@ -52,7 +52,18 @@
 		"cuisine_board": "料理台",
 		"cucumber": "黄瓜",
 		"wild_cucumber": "野生黄瓜",
-		"wood_basin": "木盆"
+		"wood_basin": "木盆",
+		"iron_bowl": "铁碗",
+		"miso_soup": "味噌汤",
+		"seafood_miso_soup": "海鲜味增汤",
+		"poor_god_soup": "穷神汤",
+		"higan_soup": "彼岸汤",
+		"power_soup": "力量汤",
+		"mushroom_soup": "奶油蘑菇浓汤",
+		"borscht": "罗宋汤",
+		"potato_soup": "奶油马铃薯浓汤",
+		"signature_mushroom_stew": "秘制鲜菌煲",
+		"hokkaido_salmon_hotpot": "石狩锅"
 	},
 	"-cartesian": {
 		"wood_type": {
