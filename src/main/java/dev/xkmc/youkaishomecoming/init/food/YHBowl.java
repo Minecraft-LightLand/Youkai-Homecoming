@@ -66,16 +66,20 @@ public enum YHBowl implements ItemLike {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
 		id = FoodRegistryHelper.getId(type, tags);
-		item = type.bowl(name)
-				.item((block, p) -> new FoodBlockItem(block, type.food(p, nutrition, sat, effs)))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + id + ctx.getName())))
-				.tag(tags).build()
-				.register();
+		item = buildBlock(name, false, nutrition, sat, effs, tags);
 	}
 
 	@SafeVarargs
 	YHBowl(FoodType type, int nutrition, float sat, EffectEntry eff, TagKey<Item>... tags) {
 		this(type, nutrition, sat, List.of(eff), tags);
+	}
+
+	private BlockEntry<DelegateBlock> buildBlock(String name, boolean raw, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+		return type.bowl(name)
+				.item((block, p) -> new FoodBlockItem(block, type.food(p, raw ? 0 : 1, nutrition, sat, effs)))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + id + ctx.getName())))
+				.tag(tags).build()
+				.register();
 	}
 
 	@Override
