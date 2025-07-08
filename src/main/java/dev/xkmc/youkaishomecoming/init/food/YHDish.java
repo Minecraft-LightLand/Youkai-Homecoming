@@ -24,54 +24,54 @@ import java.util.List;
 import java.util.Locale;
 
 public enum YHDish {
-	BAMBOO_MIZUYOKAN(Saucer.CERAMIC, Type.COOKED, 6, 0.6f, false, 4, List.of(
+	BAMBOO_MIZUYOKAN(Saucer.CERAMIC, Type.COOKED, 6, 0.6f, 4, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.SUGARS.tag),
-	DRIED_FISH(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, true, 4, List.of(
+	DRIED_FISH(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	IMITATION_BEAR_PAW(Saucer.CERAMIC, Type.STEAMED, 12, 0.8f, true, 3, List.of(
+	IMITATION_BEAR_PAW(Saucer.CERAMIC, Type.STEAMED, 12, 0.8f, 3, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
-	PASTITSIO(Saucer.CERAMIC, Type.COOKED, 12, 0.8f, true, 4, List.of(
+	PASTITSIO(Saucer.CERAMIC, Type.COOKED, 12, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	SAUCE_GRILLED_FISH(Saucer.PORCELAIN, Type.COOKED, 12, 0.8f, true, 4, List.of(
+	SAUCE_GRILLED_FISH(Saucer.PORCELAIN, Type.COOKED, 12, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
-	STINKY_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, false, 5, List.of(
+	STINKY_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, 5, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	TOFU_BURGER(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, false, 3, List.of(
+	TOFU_BURGER(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, 3, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	BLOOD_CURD(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, true, 2, List.of(
+	BLOOD_CURD(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, false, 4, List.of(
+	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 
-	BLOODY_FLESH(Saucer.CERAMIC, Type.FLESH, 6, 0.8f, true, 3, List.of(),
+	BLOODY_FLESH(Saucer.CERAMIC, Type.FLESH, 6, 0.8f, 3, List.of(),
 			YHTagGen.FLESH_FOOD, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COLD_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, false, 4, List.of(
+	COLD_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	CUMBERLAND_LOIN(Saucer.CERAMIC, Type.COOKED, 10, 0.8f, true, 2, List.of(
+	CUMBERLAND_LOIN(Saucer.CERAMIC, Type.COOKED, 10, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	SCHOLAR_GINKGO(Saucer.CERAMIC, Type.STEAMED, 6, 0.8f, false, 2, List.of(
+	SCHOLAR_GINKGO(Saucer.CERAMIC, Type.STEAMED, 6, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag),
-	TOMATO_SAUCE_COD(Saucer.CERAMIC, Type.COOKED, 10, 0.8f, true, 2, List.of(
+	TOMATO_SAUCE_COD(Saucer.CERAMIC, Type.COOKED, 10, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 
@@ -83,7 +83,7 @@ public enum YHDish {
 
 	public final BlockEntry<FoodSaucerBlock> raw, block;
 
-	YHDish(Saucer saucer, Type type, int nutrition, float sat, boolean meat, int height, List<EffectEntry> effs, TagKey<Item>... tags) {
+	YHDish(Saucer saucer, Type type, int nutrition, float sat, int height, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.saucer = saucer;
 		this.base = type;
 		this.height = height;
@@ -91,7 +91,7 @@ public enum YHDish {
 			raw = YoukaisHomecoming.REGISTRATE
 					.block("raw_" + getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, false)))
-					.item((block, p) -> new FoodBlockItem(block, p.food(food(nutrition / 2, sat / 2, meat, List.of()))
+					.item((block, p) -> new FoodBlockItem(block, p.food(food(nutrition / 2, sat / 2, List.of()))
 							.craftRemainder(YHItems.SAUCER.asItem())))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
 					.tag(tags).build()
@@ -100,21 +100,19 @@ public enum YHDish {
 		block = YoukaisHomecoming.REGISTRATE
 				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, true)))
-				.item((block, p) -> type.create(block, p.food(food(nutrition, sat, meat, effs))
+				.item((block, p) -> type.create(block, p.food(food(nutrition, sat, effs))
 						.craftRemainder(YHItems.SAUCER.asItem())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
 				.tag(tags).build()
 				.register();
 	}
 
-	private static FoodProperties food(int nutrition, float sat, boolean meat, List<EffectEntry> effs) {
+	private static FoodProperties food(int nutrition, float sat, List<EffectEntry> effs) {
 		var builder = new FoodProperties.Builder()
 				.nutrition(nutrition).saturationMod(sat);
 		for (var e : effs) {
 			builder.effect(e::getEffect, e.chance());
 		}
-		if (meat)
-			builder.meat();
 		return builder.build();
 	}
 
