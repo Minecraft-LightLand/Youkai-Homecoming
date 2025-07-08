@@ -57,32 +57,32 @@ public enum YHFood implements ItemLike {
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
-	CRAB(FoodType.MEAT, 2, 0.3f,
+	CRAB(FoodType.SIMPLE, 2, 0.3f,
 			new EffectEntry(YHEffects.CRABY, 600, 0, 0.2f),
 			YHTagGen.RAW_CRAB, DietTagGen.PROTEINS.tag
 	),
-	STEAMED_CRAB(FoodType.MEAT, 6, 0.8f,
+	STEAMED_CRAB(FoodType.SIMPLE, 6, 0.8f,
 			new EffectEntry(YHEffects.CRABY, 600, 0, 0.3f),
 			YHTagGen.COOKED_CRAB, DietTagGen.PROTEINS.tag
 	),
-	CRAB_MEAT(FoodType.MEAT, 6, 0.8f,
+	CRAB_MEAT(FoodType.SIMPLE, 6, 0.8f,
 			new EffectEntry(YHEffects.CRABY, 600, 0, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
-	CRAB_ROE(FoodType.MEAT, 6, 0.8f,
+	CRAB_ROE(FoodType.SIMPLE, 6, 0.8f,
 			new EffectEntry(YHEffects.CRABY, 600, 1, 0.5f),
 			DietTagGen.PROTEINS.tag
 	),
-	RAW_VENISON(FoodType.MEAT, 4, 0.3f,
+	RAW_VENISON(FoodType.SIMPLE, 4, 0.3f,
 			YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
 	),
-	GRILLED_VENISON(FoodType.MEAT, 10, 0.8f,
+	GRILLED_VENISON(FoodType.SIMPLE, 10, 0.8f,
 			YHTagGen.COOKED_VENISON, DietTagGen.PROTEINS.tag
 	),
-	RAW_VENISON_SLICE(FoodType.MEAT_SLICE, 2, 0.3f,
+	RAW_VENISON_SLICE(FoodType.FAST, 2, 0.3f,
 			YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
 	),
-	GRILLED_VENISON_SLICE(FoodType.MEAT_SLICE, 6, 0.8f,
+	GRILLED_VENISON_SLICE(FoodType.FAST, 6, 0.8f,
 			YHTagGen.COOKED_VENISON, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 
