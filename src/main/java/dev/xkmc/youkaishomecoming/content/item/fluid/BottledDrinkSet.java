@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.item.fluid;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.content.block.food.BottleBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 
 public class BottledDrinkSet {
@@ -18,6 +19,7 @@ public class BottledDrinkSet {
 				.item((block, prop) -> new BucketBottleItem(block, prop, drink))
 				.model((ctx, pvd) ->
 						pvd.generated(ctx, pvd.modLoc("item/bottle/" + folder + "/" + ctx.getName())))
+				.tag(YHTagGen.BOTTLED)
 				.build()
 				.register();
 	}
