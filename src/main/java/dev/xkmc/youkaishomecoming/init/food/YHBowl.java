@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
+import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
@@ -54,10 +55,24 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+
+	TUTU_CONGEE(FoodType.BAMBOO_BOWL, 8, 0.6f, List.of(
+			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+	), DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
+	RICE_POWDER_PORK(FoodType.BAMBOO_BOWL, 14, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	), DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	KAGUYA_HIME(FoodType.BAMBOO_BOWL, 14, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+
+
 	;
 
 	private final String id;
-	public final BlockEntry<DelegateBlock> item;
+	public final BlockEntry<BowlBlock> raw, item;
 
 	private final FoodType type;
 
@@ -66,6 +81,9 @@ public enum YHBowl implements ItemLike {
 		this.type = type;
 		String name = name().toLowerCase(Locale.ROOT);
 		id = FoodRegistryHelper.getId(type, tags);
+		if (type == FoodType.BAMBOO_BOWL) {
+			raw = buildBlock("raw_" + name, true, nutrition, sat, effs, tags);
+		} else raw = null;
 		item = buildBlock(name, false, nutrition, sat, effs, tags);
 	}
 
@@ -74,8 +92,8 @@ public enum YHBowl implements ItemLike {
 		this(type, nutrition, sat, List.of(eff), tags);
 	}
 
-	private BlockEntry<DelegateBlock> buildBlock(String name, boolean raw, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
-		return type.bowl(name)
+	private BlockEntry<BowlBlock> buildBlock(String name, boolean raw, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+		return type.bowl(name, raw)
 				.item((block, p) -> new FoodBlockItem(block, type.food(p, raw ? 0 : 1, nutrition, sat, effs)))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + id + ctx.getName())))
 				.tag(tags).build()

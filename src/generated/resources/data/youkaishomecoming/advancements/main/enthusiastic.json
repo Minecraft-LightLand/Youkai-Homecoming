@@ -601,6 +601,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:kaguya_hime": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kaguya_hime"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:kappa_maki_slice": {
       "conditions": {
         "item": {
@@ -1036,6 +1046,16 @@
         "item": {
           "items": [
             "youkaishomecoming:red_wine"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:rice_powder_pork": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rice_powder_pork"
           ]
         }
       },
@@ -1784,6 +1804,15 @@
       "youkaishomecoming:hokkaido_salmon_hotpot"
     ],
     [
+      "youkaishomecoming:tutu_congee"
+    ],
+    [
+      "youkaishomecoming:rice_powder_pork"
+    ],
+    [
+      "youkaishomecoming:kaguya_hime"
+    ],
+    [
       "youkaishomecoming:raw_lamprey"
     ],
     [
@@ -1887,9 +1916,6 @@
     ],
     [
       "youkaishomecoming:pork_rice_ball"
-    ],
-    [
-      "youkaishomecoming:tutu_congee"
     ],
     [
       "youkaishomecoming:steamed_egg_in_bamboo"

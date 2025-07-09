@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "youkaishomecoming:item/food/bowl/borscht"
+    "layer0": "youkaishomecoming:item/bowl/iron/borscht"
   }
 }

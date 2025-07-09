@@ -381,6 +381,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:kaguya_hime": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kaguya_hime"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:kappa_maki_slice": {
       "conditions": {
         "item": {
@@ -686,6 +696,16 @@
         "item": {
           "items": [
             "youkaishomecoming:red_wine"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:rice_powder_pork": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rice_powder_pork"
           ]
         }
       },
@@ -1288,9 +1308,6 @@
       "youkaishomecoming:pork_rice_ball"
     ],
     [
-      "youkaishomecoming:tutu_congee"
-    ],
-    [
       "youkaishomecoming:steamed_egg_in_bamboo"
     ],
     [
@@ -1394,6 +1411,15 @@
     ],
     [
       "youkaishomecoming:hokkaido_salmon_hotpot"
+    ],
+    [
+      "youkaishomecoming:tutu_congee"
+    ],
+    [
+      "youkaishomecoming:rice_powder_pork"
+    ],
+    [
+      "youkaishomecoming:kaguya_hime"
     ],
     [
       "youkaishomecoming:tobiko_gunkan"
