@@ -47,6 +47,7 @@ public enum YHLangData {
 	JEI_BASIN("jei.basin", "Basin", 0, null),
 	JEI_STEAM("jei.steam", "Steaming", 0, null),
 	JEI_CUISINE("jei.cuisine", "Cuisine", 0, null),
+	JEI_COOKING("jei.cooking", "Cooking", 0, null),
 
 	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
 	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),

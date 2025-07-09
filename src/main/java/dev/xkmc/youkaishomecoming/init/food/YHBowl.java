@@ -29,7 +29,7 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
 	), DietTagGen.VEGETABLES.tag),
 
-	HIGAN_SOUP(FoodType.IRON_BOWL, 6, 0.5f,
+	HIGAN_SOUP(FoodType.IRON_BOWL, 8, 0.5f,
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			DietTagGen.VEGETABLES.tag),
 	MUSHROOM_SOUP(FoodType.IRON_BOWL, 8, 0.8f, List.of(
@@ -63,7 +63,7 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	KAGUYA_HIME(FoodType.BAMBOO_BOWL, 14, 0.8f, List.of(
+	KAGUYA_HIME(FoodType.BAMBOO_BOWL, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),

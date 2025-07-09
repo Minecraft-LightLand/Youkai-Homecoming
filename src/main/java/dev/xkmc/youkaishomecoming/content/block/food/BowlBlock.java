@@ -1,6 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -20,7 +23,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerContentBlock {
 
@@ -47,9 +51,13 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 		builder.add(FACING);
 	}
 
+	public BlockState getStateForPlacement(BlockState def, BlockPlaceContext context) {
+		return def.setValue(FACING, context.getHorizontalDirection().getOpposite());
+	}
+
 	@Override
-	public @Nullable VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		return state.getValue(BlockProxy.HORIZONTAL_FACING).getAxis() == Direction.Axis.X ? shape_x : shape_z;
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+		return state.getValue(FACING).getAxis() == Direction.Axis.X ? shape_x : shape_z;
 	}
 
 	@Override
@@ -70,6 +78,16 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 		}
 		if (state.is(YHItems.IRON_BOWL.get())) {
 			if (!level.isClientSide()) {
+				var stack = player.getItemInHand(hand);
+				if (!stack.isEmpty() && CookingBlockEntity.isHeatedPos(level, pos)) {
+					var recipe = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(),
+							new CookingInv(List.of(), false), level);
+					if (recipe.isPresent()) {
+						var pot = YHBlocks.SMALL_POT.getDefaultState().setValue(FACING, state.getValue(FACING));
+						level.setBlockAndUpdate(pos, pot);
+						return pot.use(level, player, hand, hit);
+					}
+				}
 				level.removeBlock(pos, false);
 				player.getInventory().placeItemBackInInventory(YHItems.IRON_BOWL.asStack());
 			}

@@ -1,11 +1,6 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "youkaishomecoming:iron_bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
     {
       "item": "minecraft:red_mushroom"
     },
@@ -14,13 +9,10 @@
     },
     {
       "tag": "forge:mushrooms"
-    },
-    {
-      "tag": "forge:mushrooms"
     }
   ],
-  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:signature_mushroom_stew"
-  }
+  },
+  "time": 200
 }

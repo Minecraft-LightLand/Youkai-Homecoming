@@ -23,6 +23,12 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedCookingRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlock;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.*;
 import dev.xkmc.youkaishomecoming.content.pot.moka.*;
@@ -151,6 +157,11 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
 
+	public static final BlockEntry<DelegateBlock> SMALL_POT;
+	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
+	public static final RegistryEntry<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
+	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
+
 	public static final BlockEntry<DelegateBlock> SPRUCE_WINE_SHELF;
 	public static final BlockEntityEntry<WineShelfBlockEntity> WINE_SHELF_BE;
 
@@ -271,6 +282,25 @@ public class YHBlocks {
 
 			STEAM_RT = YoukaisHomecoming.REGISTRATE.recipe("steaming");
 			STEAM_RS = reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
+
+		}
+
+		// pot
+		{
+			SMALL_POT = YoukaisHomecoming.REGISTRATE.block("small_iron_pot", SmallCookingPotBlock::create)
+					.initialProperties(() -> Blocks.CAULDRON)
+					.properties(p -> p.sound(SoundType.METAL))
+					.blockstate(SmallCookingPotBlock::buildState)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.loot((pvd, b) -> pvd.dropOther(b, YHItems.IRON_BOWL.get()))
+					.register();
+			SMALL_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("small_iron_pot", SmallCookingPotBlockEntity::new)
+					.validBlock(SMALL_POT)
+					.renderer(() -> SmallCookingPotRenderer::new)
+					.register();
+
+			COOKING_RT = YoukaisHomecoming.REGISTRATE.recipe("pot_cooking");
+			COOKING_UNORDER = reg("unordered_cooking", () -> new BaseRecipe.RecType<>(UnorderedCookingRecipe.class, COOKING_RT));
 
 		}
 
