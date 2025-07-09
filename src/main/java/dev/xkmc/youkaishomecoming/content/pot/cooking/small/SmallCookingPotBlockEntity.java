@@ -19,7 +19,6 @@ public class SmallCookingPotBlockEntity extends CookingBlockEntity {
 
 	protected void animationTick(Level level) {
 		BlockPos pos = getBlockPos();
-		BlockState state = getBlockState();
 		double x, y, z;
 		RandomSource random = level.random;
 		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.5F) {
