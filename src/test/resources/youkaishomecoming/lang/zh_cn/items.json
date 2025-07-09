@@ -37,7 +37,6 @@
 		"candy_apple": "苹果糖",
 		"koishi_mousse": "恋恋慕斯",
 		"milk_popsicle": "牛奶冰棍",
-		"tutu_congee": "筒粥",
 		"avgolemono": "鸡蛋柠檬汤",
 		"big_popsicle": "大冰棍儿",
 		"shaved_ice_over_rice": "儿童刨冰盖饭",
@@ -237,6 +236,23 @@
 				}
 			]
 		},
+		"bottled": {
+			"path": "",
+			"list": [
+				{
+					"burgundy": "勃艮第干红葡萄酒",
+					"champagne": "香槟气泡甜白葡萄酒",
+					"red_wine": "经典红葡萄酒",
+					"van_allen": "范艾伦干红葡萄酒",
+					"white_wine": "白桦森林半干白葡萄酒"
+				},
+				{
+					"fluid.youkaishomecoming.*": "",
+					"item.youkaishomecoming.*": "",
+					"block.youkaishomecoming.*_bottle": "瓶装*"
+				}
+			]
+		},
 		"slicable": {
 			"path": "item.youkaishomecoming",
 			"list": [
@@ -267,7 +283,8 @@
 					"black_grape": "黑葡萄",
 					"red_grape": "红葡萄",
 					"white_grape": "白葡萄"
-				},{
+				},
+				{
 					"block.youkaishomecoming.*": "",
 					"item.youkaishomecoming.*": "",
 					"item.youkaishomecoming.*_seeds": "种子",

@@ -71,9 +71,27 @@
 		"borscht": "罗宋汤",
 		"potato_soup": "奶油马铃薯浓汤",
 		"signature_mushroom_stew": "秘制鲜菌煲",
-		"hokkaido_salmon_hotpot": "石狩锅"
+		"hokkaido_salmon_hotpot": "石狩锅",
+		"bamboo_bowl": "竹碗",
+		"small_iron_pot": "小铁锅",
+		"wood_bowl": "木碗",
+		"spruce_wine_shelf": "酒柜"
 	},
 	"-cartesian": {
+		"raw": {
+			"path": "block.youkaishomecoming",
+			"list": [
+				{
+					"": "",
+					"raw": "生*"
+				},
+				{
+					"kaguya_hime": "竹取物语",
+					"rice_powder_pork": "粉蒸肉",
+					"tutu_congee": "竹筒粥"
+				}
+			]
+		},
 		"candles": {
 			"path": "block.youkaishomecoming",
 			"list": [
