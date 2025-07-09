@@ -22,11 +22,11 @@ public class CrabRandomWalkGoal extends RandomSwimmingGoal {
 	@Nullable
 	public Vec3 getRandomSwimmablePos(PathfinderMob mob, int hor, int ver) {
 		Vec3 vec3 = DefaultRandomPos.getPos(mob, hor, ver);
-		if (!mob.isInWater()) return vec3;
+		if (!mob.isInWater() || mob.getRandom().nextFloat() < CrabProperties.getOnLandChance()) return vec3;
 		int i = 0;
 		while (true) {
 			if (vec3 == null) return null;
-			if (i++ >= 10) return vec3;
+			if (i++ >= 5) return vec3;
 			var pos = BlockPos.containing(vec3);
 			var state = mob.level().getBlockState(pos);
 			var low = mob.level().getBlockState(pos.below());
