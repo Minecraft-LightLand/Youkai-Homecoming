@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_bowl"
+              "gensokyodelight:iron_bowl"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:higan_soup"
+        "recipe": "gensokyodelight:borscht"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:higan_soup"
+      "gensokyodelight:borscht"
     ]
   },
   "sends_telemetry_event": true

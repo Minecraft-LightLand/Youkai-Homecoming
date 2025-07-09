@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gensokyodelight:item/food/simple/tutu_congee"
+    "layer0": "gensokyodelight:item/bowl/bamboo/tutu_congee"
   }
 }

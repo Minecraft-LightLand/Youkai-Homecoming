@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_bowl"
+              "gensokyodelight:iron_bowl"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:mushroom_soup"
+        "recipe": "gensokyodelight:power_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:mushroom_soup"
+      "gensokyodelight:power_soup"
     ]
   },
   "sends_telemetry_event": true

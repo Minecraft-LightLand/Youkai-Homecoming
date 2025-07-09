@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_bowl": {
+    "has_raw_kaguya_hime": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_bowl"
+              "gensokyodelight:raw_kaguya_hime"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:hokkaido_salmon_hotpot"
+        "recipe": "gensokyodelight:kaguya_hime_from_raw_kaguya_hime_steaming"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_bowl",
+      "has_raw_kaguya_hime",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:hokkaido_salmon_hotpot"
+      "gensokyodelight:kaguya_hime_from_raw_kaguya_hime_steaming"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gensokyodelight:item/food/bowl/power_soup"
+    "layer0": "gensokyodelight:item/bowl/iron/power_soup"
   }
 }

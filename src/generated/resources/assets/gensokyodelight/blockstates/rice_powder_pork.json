@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/rice_powder_pork",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/rice_powder_pork"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/rice_powder_pork",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/rice_powder_pork",
+      "y": 270
+    }
+  }
+}

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_bowl": {
+    "has_bamboo": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_bowl"
+              "minecraft:bamboo"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:signature_mushroom_stew"
+        "recipe": "gensokyodelight:raw_kaguya_hime"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_bowl",
+      "has_bamboo",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:signature_mushroom_stew"
+      "gensokyodelight:raw_kaguya_hime"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

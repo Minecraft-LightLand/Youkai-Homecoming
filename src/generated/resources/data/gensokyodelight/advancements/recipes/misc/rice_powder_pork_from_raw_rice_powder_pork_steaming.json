@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_bowl": {
+    "has_raw_rice_powder_pork": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_bowl"
+              "gensokyodelight:raw_rice_powder_pork"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:potato_soup"
+        "recipe": "gensokyodelight:rice_powder_pork_from_raw_rice_powder_pork_steaming"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_bowl",
+      "has_raw_rice_powder_pork",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:potato_soup"
+      "gensokyodelight:rice_powder_pork_from_raw_rice_powder_pork_steaming"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

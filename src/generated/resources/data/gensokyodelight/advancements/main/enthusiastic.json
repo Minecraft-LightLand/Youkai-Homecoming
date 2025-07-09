@@ -511,6 +511,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "gensokyodelight:kaguya_hime": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:kaguya_hime"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "gensokyodelight:kappa_maki_slice": {
       "conditions": {
         "item": {
@@ -956,6 +966,16 @@
         "item": {
           "items": [
             "gensokyodelight:red_wine"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "gensokyodelight:rice_powder_pork": {
+      "conditions": {
+        "item": {
+          "items": [
+            "gensokyodelight:rice_powder_pork"
           ]
         }
       },
@@ -1659,6 +1679,15 @@
       "gensokyodelight:hokkaido_salmon_hotpot"
     ],
     [
+      "gensokyodelight:tutu_congee"
+    ],
+    [
+      "gensokyodelight:rice_powder_pork"
+    ],
+    [
+      "gensokyodelight:kaguya_hime"
+    ],
+    [
       "gensokyodelight:raw_lamprey"
     ],
     [
@@ -1780,9 +1809,6 @@
     ],
     [
       "gensokyodelight:pork_rice_ball"
-    ],
-    [
-      "gensokyodelight:tutu_congee"
     ],
     [
       "gensokyodelight:steamed_egg_in_bamboo"

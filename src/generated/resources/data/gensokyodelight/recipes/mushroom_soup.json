@@ -1,29 +1,18 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "gensokyodelight:iron_bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "type": "gensokyodelight:unordered_cooking",
+  "input": [
     {
-      "item": "minecraft:brown_mushroom"
-    },
-    {
-      "item": "minecraft:brown_mushroom"
+      "item": "gensokyodelight:bowl_of_cream"
     },
     {
       "item": "minecraft:brown_mushroom"
     },
     {
       "tag": "forge:vegetables/onion"
-    },
-    {
-      "item": "gensokyodelight:bowl_of_cream"
     }
   ],
-  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:mushroom_soup"
-  }
+  },
+  "time": 200
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/raw_tutu_congee",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/raw_tutu_congee"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/raw_tutu_congee",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/raw_tutu_congee",
+      "y": 270
+    }
+  }
+}

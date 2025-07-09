@@ -1,19 +1,17 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "gensokyodelight:iron_bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "type": "gensokyodelight:unordered_cooking",
+  "input": [
     {
-      "tag": "forge:raw_pork"
+      "item": "gensokyodelight:soybean"
     },
     {
       "tag": "forge:raw_pork"
     },
     {
-      "item": "minecraft:kelp"
+      "tag": "forge:raw_beef"
+    },
+    {
+      "tag": "forge:raw_mutton"
     },
     {
       "item": "minecraft:kelp"
@@ -22,8 +20,8 @@
       "tag": "forge:vegetables/onion"
     }
   ],
-  "recipe_book_tab": "meals",
   "result": {
     "item": "gensokyodelight:power_soup"
-  }
+  },
+  "time": 200
 }

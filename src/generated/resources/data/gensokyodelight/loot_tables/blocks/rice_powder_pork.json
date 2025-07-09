@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gensokyodelight:rice_powder_pork"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gensokyodelight:blocks/rice_powder_pork"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gensokyodelight:block/kaguya_hime",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gensokyodelight:block/kaguya_hime"
+    },
+    "facing=south": {
+      "model": "gensokyodelight:block/kaguya_hime",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gensokyodelight:block/kaguya_hime",
+      "y": 270
+    }
+  }
+}

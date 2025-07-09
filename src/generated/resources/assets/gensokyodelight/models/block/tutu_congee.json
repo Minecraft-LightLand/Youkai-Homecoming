@@ -1,0 +1,10 @@
+{
+  "parent": "gensokyodelight:custom/bowl/bamboo/tutu_congee",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "gensokyodelight:block/bowl/bamboo/tutu_congee",
+    "in": "gensokyodelight:block/bowl/bamboo/bamboo_inside",
+    "leaf": "gensokyodelight:block/bowl/bamboo/bamboo_leaf",
+    "out": "gensokyodelight:block/bowl/bamboo/bamboo_bowl"
+  }
+}
