@@ -1,32 +1,21 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "youkaishomecoming:iron_bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
     {
-      "item": "minecraft:potato"
+      "item": "youkaishomecoming:bowl_of_cream"
     },
     {
       "item": "minecraft:potato"
-    },
-    {
-      "item": "minecraft:potato"
-    },
-    {
-      "tag": "forge:vegetables/onion"
     },
     {
       "tag": "forge:raw_pork"
     },
     {
-      "item": "youkaishomecoming:bowl_of_cream"
+      "tag": "forge:vegetables/onion"
     }
   ],
-  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:potato_soup"
-  }
+  },
+  "time": 200
 }

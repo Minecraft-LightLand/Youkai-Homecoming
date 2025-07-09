@@ -15,8 +15,12 @@ public class FoodRegistryHelper {
 				return "food/bottle/";
 			case STICK:
 				return "food/stick/";
-			case BOWL, IRON_BOWL:
+			case BOWL:
 				return "food/bowl/";
+			case IRON_BOWL:
+				return "bowl/iron/";
+			case BAMBOO_BOWL:
+				return "bowl/bamboo/";
 		}
 		if (tags.length > 0 && tags[0] == YHTagGen.DANGO) {
 			mochi = true;

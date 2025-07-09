@@ -1,13 +1,17 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "youkaishomecoming:iron_bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaishomecoming:soybean"
+    },
     {
       "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
     },
     {
       "item": "minecraft:brown_mushroom"
@@ -20,13 +24,10 @@
     },
     {
       "tag": "forge:raw_fishes/salmon"
-    },
-    {
-      "tag": "forge:raw_fishes/salmon"
     }
   ],
-  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:hokkaido_salmon_hotpot"
-  }
+  },
+  "time": 200
 }

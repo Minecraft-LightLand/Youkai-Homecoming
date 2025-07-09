@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/bamboo/raw_bamboo",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bamboo": "youkaishomecoming:block/bowl/bamboo/raw_bamboo"
+  }
+}

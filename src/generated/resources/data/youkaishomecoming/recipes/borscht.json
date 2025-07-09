@@ -1,13 +1,8 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "youkaishomecoming:iron_bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
     {
-      "item": "minecraft:beetroot"
+      "item": "youkaishomecoming:bowl_of_cream"
     },
     {
       "item": "minecraft:beetroot"
@@ -20,13 +15,10 @@
     },
     {
       "tag": "forge:vegetables/onion"
-    },
-    {
-      "item": "youkaishomecoming:bowl_of_cream"
     }
   ],
-  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:borscht"
-  }
+  },
+  "time": 200
 }

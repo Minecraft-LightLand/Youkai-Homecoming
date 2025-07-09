@@ -1,37 +1,67 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
-import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
-import static net.minecraft.world.level.block.Block.box;
+import java.util.List;
 
-public record BowlBlock(VoxelShape shape) implements ShapeBlockMethod, OnClickBlockMethod {
+public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerContentBlock {
 
-	public static final VoxelShape IRON_SHAPE = box(4, 0, 4, 12, 4, 12);
-	public static final VoxelShape WOOD_SHAPE = box(5, 0, 5, 11, 3, 11);
+	public static final Vec3 IRON_SHAPE = new Vec3(4, 4, 4);
+	public static final Vec3 WOOD_SHAPE = new Vec3(5, 3, 5);
+	public static final Vec3 BAMBOO_SHAPE = new Vec3(2, 3, 5.5);
+	public static final Vec3 RAW_BAMBOO_SHAPE = new Vec3(2, 5, 5.5);
 
-	@Override
-	public @Nullable VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		return shape;
+	private final VoxelShape shape_x, shape_z;
+
+	public BowlBlock(Properties prop, Vec3 saucer) {
+		super(prop);
+		shape_x = Block.box(saucer.x, 0, saucer.z, 16 - saucer.x, saucer.y, 16 - saucer.z);
+		shape_z = Block.box(saucer.z, 0, saucer.x, 16 - saucer.z, saucer.y, 16 - saucer.x);
 	}
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public float clearance() {
+		return 2;
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(FACING);
+	}
+
+	public BlockState getStateForPlacement(BlockState def, BlockPlaceContext context) {
+		return def.setValue(FACING, context.getHorizontalDirection().getOpposite());
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+		return state.getValue(FACING).getAxis() == Direction.Axis.X ? shape_x : shape_z;
+	}
+
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (state.is(YHItems.WOOD_BOWL.get())) {
 			if (!level.isClientSide()) {
 				level.removeBlock(pos, false);
@@ -39,8 +69,25 @@ public record BowlBlock(VoxelShape shape) implements ShapeBlockMethod, OnClickBl
 			}
 			return InteractionResult.SUCCESS;
 		}
+		if (state.is(YHItems.BAMBOO_BOWL.get())) {
+			if (!level.isClientSide()) {
+				level.removeBlock(pos, false);
+				player.getInventory().placeItemBackInInventory(Items.BAMBOO.getDefaultInstance());
+			}
+			return InteractionResult.SUCCESS;
+		}
 		if (state.is(YHItems.IRON_BOWL.get())) {
 			if (!level.isClientSide()) {
+				var stack = player.getItemInHand(hand);
+				if (!stack.isEmpty() && CookingBlockEntity.isHeatedPos(level, pos)) {
+					var recipe = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(),
+							new CookingInv(List.of(), false), level);
+					if (recipe.isPresent()) {
+						var pot = YHBlocks.SMALL_POT.getDefaultState().setValue(FACING, state.getValue(FACING));
+						level.setBlockAndUpdate(pos, pot);
+						return pot.use(level, player, hand, hit);
+					}
+				}
 				level.removeBlock(pos, false);
 				player.getInventory().placeItemBackInInventory(YHItems.IRON_BOWL.asStack());
 			}

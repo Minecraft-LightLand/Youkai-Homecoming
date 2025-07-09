@@ -14,6 +14,7 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
@@ -536,12 +537,6 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_PORK)
 					.build(pvd, YHFood.PORK_RICE_BALL.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUTU_CONGEE.item.get(), 1, 200, 0.1f)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(TagRef.GRAIN_RICE)
-					.addIngredient(Items.BAMBOO)
-					.build(pvd, YHFood.TUTU_CONGEE.item.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.STEAMED_EGG_IN_BAMBOO.item.get(), 1, 200, 0.1f)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.EGGS)
@@ -591,6 +586,14 @@ public class YHRecipeGen {
 
 		// food cooking bowl
 		{
+
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
+					.setRecipeBookTab(CookingPotRecipeBookTab.MISC)
+					.addIngredient(TagRef.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
+					.addIngredient(TagRef.MILK_BOTTLE)
+					.build(pvd, YHItems.CREAM.getId());
+
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.APAKI.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.RAW_PORK)
@@ -622,13 +625,6 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHFood.GRILLED_EEL_OVER_RICE.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.HIGAN_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.SOUL_SAND)
-					.addIngredient(Items.SOUL_SAND)
-					.addIngredient(TagRef.CROPS)
-					.build(pvd, YHBowl.HIGAN_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.LONGEVITY_NOODLES.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -663,15 +659,6 @@ public class YHRecipeGen {
 					.addIngredient(ItemTags.FLOWERS)
 					.addIngredient(Items.BONE_MEAL)
 					.build(pvd, YHBowl.POOR_GOD_SOUP.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POWER_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(TagRef.RAW_PORK)
-					.addIngredient(TagRef.RAW_PORK)
-					.addIngredient(Items.KELP)
-					.addIngredient(Items.KELP)
-					.addIngredient(TagRef.VEGETABLES_ONION)
-					.build(pvd, YHBowl.POWER_SOUP.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SHIRAYUKI.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -708,13 +695,6 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.build(pvd, YHItems.FLESH_FEAST.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MISC)
-					.addIngredient(TagRef.MILK_BOTTLE)
-					.addIngredient(TagRef.MILK_BOTTLE)
-					.addIngredient(TagRef.MILK_BOTTLE)
-					.build(pvd, YHItems.CREAM.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TUSCAN_SALMON.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.RAW_FISHES_SALMON)
@@ -722,53 +702,6 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.FOOD_CABBAGE)
 					.addIngredient(YHItems.CREAM.get())
 					.build(pvd, YHFood.TUSCAN_SALMON.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.MUSHROOM_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(TagRef.VEGETABLES_ONION)
-					.addIngredient(YHItems.CREAM.get())
-					.build(pvd, YHBowl.MUSHROOM_SOUP.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POTATO_SOUP.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.POTATO)
-					.addIngredient(Items.POTATO)
-					.addIngredient(Items.POTATO)
-					.addIngredient(TagRef.VEGETABLES_ONION)
-					.addIngredient(TagRef.RAW_PORK)
-					.addIngredient(YHItems.CREAM.get())
-					.build(pvd, YHBowl.POTATO_SOUP.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.SIGNATURE_MUSHROOM_STEW.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.RED_MUSHROOM)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(Tags.Items.MUSHROOMS)
-					.addIngredient(Tags.Items.MUSHROOMS)
-					.build(pvd, YHBowl.SIGNATURE_MUSHROOM_STEW.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.BORSCHT.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.BEETROOT)
-					.addIngredient(Items.BEETROOT)
-					.addIngredient(Items.POTATO)
-					.addIngredient(TagRef.VEGETABLES_TOMATO)
-					.addIngredient(TagRef.VEGETABLES_ONION)
-					.addIngredient(YHItems.CREAM.get())
-					.build(pvd, YHBowl.BORSCHT.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.HOKKAIDO_SALMON_HOTPOT.item.get(), 1, 200, 0.1f, YHItems.IRON_BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(YHFood.TOFU)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(TagRef.FOOD_CABBAGE)
-					.addIngredient(TagRef.VEGETABLES_ONION)
-					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.build(pvd, YHBowl.HOKKAIDO_SALMON_HOTPOT.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -802,7 +735,6 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHFood.UDUMBARA_CAKE.item.getId());
 
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.SURP_CHEST.get(), 1, 200, 0.1f, Items.CHEST)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(Items.RED_MUSHROOM)
@@ -812,6 +744,64 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.addIngredient(Items.PURPLE_BANNER)
 					.build(pvd, YHItems.SURP_CHEST.getId());
+
+		}
+
+		// iron bowl
+		{
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HIGAN_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(Items.SOUL_SAND)
+					.add(TagRef.CROPS)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POWER_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(TagRef.RAW_PORK)
+					.add(TagRef.RAW_BEEF)
+					.add(TagRef.RAW_MUTTON)
+					.add(Items.KELP)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.MUSHROOM_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(YHItems.CREAM.get())
+					.add(Items.BROWN_MUSHROOM)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POTATO_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(YHItems.CREAM.get())
+					.add(Items.POTATO)
+					.add(TagRef.RAW_PORK)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(Items.RED_MUSHROOM)
+					.add(Items.BROWN_MUSHROOM)
+					.add(Tags.Items.MUSHROOMS)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.BORSCHT, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(YHItems.CREAM.get())
+					.add(Items.BEETROOT)
+					.add(Items.POTATO)
+					.add(TagRef.VEGETABLES_TOMATO)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(YHFood.TOFU)
+					.add(Items.CARROT)
+					.add(Items.POTATO)
+					.add(Items.BROWN_MUSHROOM)
+					.add(TagRef.FOOD_CABBAGE)
+					.add(TagRef.VEGETABLES_ONION)
+					.add(TagRef.RAW_FISHES_SALMON)
+					.save(pvd);
+
 		}
 
 		// food cooking saucer
@@ -884,18 +874,6 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
-					.requires(Items.BAMBOO)
-					.requires(TagRef.RAW_PORK)
-					.requires(TagRef.RAW_BEEF)
-					.requires(TagRef.VEGETABLES_ONION)
-					.requires(YHTagGen.RAW_EEL)
-					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
-					.requires(YHItems.SAUCER.get())
-					.save(pvd, YHDish.IMITATION_BEAR_PAW.raw.getId());
-
-			steaming(pvd, DataIngredient.items(YHDish.IMITATION_BEAR_PAW.raw.asItem()), YHDish.IMITATION_BEAR_PAW.block::asItem);
-
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.COLD_TOFU.block.get())::unlockedBy, YHItems.SAUCER.asItem())
 					.requires(YHFood.TOFU.item)
 					.requires(YHFood.TOFU.item)
@@ -905,15 +883,6 @@ public class YHRecipeGen {
 					.requires(YHTagGen.ICE)
 					.requires(YHItems.SAUCER.get())
 					.save(pvd, YHDish.COLD_TOFU.block.getId());
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.SCHOLAR_GINKGO.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
-					.requires(Items.BIRCH_SAPLING)
-					.requires(Items.HONEY_BOTTLE)
-					.requires(YHCrops.SOYBEAN.getSeed())
-					.requires(YHItems.SAUCER.get())
-					.save(pvd, YHDish.SCHOLAR_GINKGO.raw.getId());
-
-			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.CUMBERLAND_LOIN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -1222,6 +1191,50 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			steaming(pvd, DataIngredient.items(YHFood.OYAKI.raw.get()), YHFood.OYAKI.item);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.IMITATION_BEAR_PAW.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(Items.BAMBOO)
+					.requires(TagRef.RAW_PORK)
+					.requires(TagRef.RAW_BEEF)
+					.requires(TagRef.VEGETABLES_ONION)
+					.requires(YHTagGen.RAW_EEL)
+					.requires(YHItems.SOY_SAUCE_BOTTLE.item)
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.IMITATION_BEAR_PAW.raw.getId());
+
+			steaming(pvd, DataIngredient.items(YHDish.IMITATION_BEAR_PAW.raw.asItem()), YHDish.IMITATION_BEAR_PAW.block::asItem);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHDish.SCHOLAR_GINKGO.raw.get())::unlockedBy, YHItems.SAUCER.asItem())
+					.requires(Items.BIRCH_SAPLING)
+					.requires(Items.HONEY_BOTTLE)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.requires(YHItems.SAUCER.get())
+					.save(pvd, YHDish.SCHOLAR_GINKGO.raw.getId());
+
+			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBowl.TUTU_CONGEE.raw.get())::unlockedBy, Items.BAMBOO)
+					.requires(TagRef.GRAIN_RICE)
+					.requires(Items.BAMBOO)
+					.save(pvd);
+
+			steaming(pvd, DataIngredient.items(YHBowl.TUTU_CONGEE.raw.asItem()), YHBowl.TUTU_CONGEE.item::asItem);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBowl.RICE_POWDER_PORK.raw.get())::unlockedBy, Items.BAMBOO)
+					.requires(YHCrops.SOYBEAN.getSeed())
+					.requires(TagRef.GRAIN_RICE)
+					.requires(TagRef.RAW_PORK)
+					.save(pvd);
+
+			steaming(pvd, DataIngredient.items(YHBowl.RICE_POWDER_PORK.raw.asItem()), YHBowl.RICE_POWDER_PORK.item::asItem);
+
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBowl.KAGUYA_HIME.raw.get())::unlockedBy, Items.BAMBOO)
+					.requires(Items.BROWN_MUSHROOM)
+					.requires(Items.CARROT)
+					.requires(TagRef.RAW_PORK)
+					.save(pvd);
+
+			steaming(pvd, DataIngredient.items(YHBowl.KAGUYA_HIME.raw.asItem()), YHBowl.KAGUYA_HIME.item::asItem);
 		}
 
 		// cuisine

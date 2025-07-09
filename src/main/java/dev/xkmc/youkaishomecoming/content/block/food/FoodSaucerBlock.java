@@ -16,7 +16,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class FoodSaucerBlock extends BaseSaucerBlock {
+public class FoodSaucerBlock extends BaseSaucerBlock implements ISteamerContentBlock {
 
 	public final YHDish dish;
 	private final VoxelShape shape_x, shape_z;
@@ -27,6 +27,12 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 		var saucer = dish.saucer;
 		shape_x = Block.box(saucer.x, 0, saucer.z, 16 - saucer.x, dish.height, 16 - saucer.z);
 		shape_z = Block.box(saucer.z, 0, saucer.x, 16 - saucer.z, dish.height, 16 - saucer.x);
+	}
+
+	@Override
+	public float clearance() {
+		var saucer = dish.saucer;
+		return Math.min(saucer.x, saucer.z);
 	}
 
 	@Override

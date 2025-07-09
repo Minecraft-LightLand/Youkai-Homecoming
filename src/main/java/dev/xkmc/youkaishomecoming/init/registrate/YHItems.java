@@ -7,7 +7,6 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.food.*;
@@ -89,7 +88,7 @@ public class YHItems {
 	public static final BlockEntry<FleshFeastBlock> FLESH_FEAST;
 	public static final CakeEntry RED_VELVET, TARTE_LUNE;
 	public static final BlockEntry<EmptySaucerBlock> SAUCER;
-	public static final BlockEntry<DelegateBlock> IRON_BOWL, WOOD_BOWL;
+	public static final BlockEntry<BowlBlock> IRON_BOWL, WOOD_BOWL, BAMBOO_BOWL;
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET, TUNA_BUCKET, CRAB_BUCKET;
 
 	public static final ItemEntry<Item> EMPTY_HAND_ICON;
@@ -153,6 +152,10 @@ public class YHItems {
 
 			WOOD_BOWL = woodBowl("wood_bowl")
 					.loot((pvd, block) -> pvd.dropOther(block, Items.BOWL))
+					.register();
+
+			BAMBOO_BOWL = bambooBowl("bamboo_bowl")
+					.loot((pvd, block) -> pvd.dropOther(block, Items.BAMBOO))
 					.register();
 
 
@@ -306,9 +309,8 @@ public class YHItems {
 				.register();
 	}
 
-	public static BlockBuilder<DelegateBlock, L2Registrate> ironBowl(String id) {
-		return YoukaisHomecoming.REGISTRATE.block(id, p -> DelegateBlock.newBaseBlock(p,
-						BlockProxy.HORIZONTAL, new BowlBlock(BowlBlock.IRON_SHAPE)))
+	public static BlockBuilder<BowlBlock, L2Registrate> ironBowl(String id) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> new BowlBlock(p, BowlBlock.IRON_SHAPE))
 				.properties(p -> p.mapColor(MapColor.METAL).strength(0.5F, 6.0F).sound(SoundType.LANTERN))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
 						pvd.models().getBuilder("block/" + ctx.getName())
@@ -319,15 +321,39 @@ public class YHItems {
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE);
 	}
 
-	public static BlockBuilder<DelegateBlock, L2Registrate> woodBowl(String id) {
-		return YoukaisHomecoming.REGISTRATE.block(id, p -> DelegateBlock.newBaseBlock(p,
-						BlockProxy.HORIZONTAL, new BowlBlock(BowlBlock.WOOD_SHAPE)))
+	public static BlockBuilder<BowlBlock, L2Registrate> woodBowl(String id) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> new BowlBlock(p, BowlBlock.WOOD_SHAPE))
 				.properties(p -> p.mapColor(MapColor.WOOD).strength(0.5F, 1.0F).sound(SoundType.WOOD))
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
 						pvd.models().getBuilder("block/" + ctx.getName())
 								.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/wood/" + ctx.getName())))
 								.texture("bowl", pvd.modLoc("block/bowl/wood/wood_bowl"))
 								.texture("base", pvd.modLoc("block/bowl/wood/" + ctx.getName()))
+								.renderType("cutout")))
+				.tag(BlockTags.MINEABLE_WITH_AXE);
+	}
+
+	public static BlockBuilder<BowlBlock, L2Registrate> rawBambooBowl(String id) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> new BowlBlock(p, BowlBlock.RAW_BAMBOO_SHAPE))
+				.properties(p -> p.mapColor(MapColor.PLANT).strength(0.2F, 0.5F).sound(SoundType.WOOD))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+						pvd.models().getBuilder("block/" + ctx.getName())
+								.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/bamboo/raw_bamboo")))
+								.texture("bamboo", pvd.modLoc("block/bowl/bamboo/raw_bamboo"))
+								.renderType("cutout")))
+				.tag(BlockTags.MINEABLE_WITH_AXE);
+	}
+
+	public static BlockBuilder<BowlBlock, L2Registrate> bambooBowl(String id) {
+		return YoukaisHomecoming.REGISTRATE.block(id, p -> new BowlBlock(p, BowlBlock.BAMBOO_SHAPE))
+				.properties(p -> p.mapColor(MapColor.PLANT).strength(0.2F, 0.5F).sound(SoundType.WOOD))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+						pvd.models().getBuilder("block/" + ctx.getName())
+								.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/bamboo/" + ctx.getName())))
+								.texture("out", pvd.modLoc("block/bowl/bamboo/bamboo_bowl"))
+								.texture("in", pvd.modLoc("block/bowl/bamboo/bamboo_inside"))
+								.texture("leaf", pvd.modLoc("block/bowl/bamboo/bamboo_leaf"))
+								.texture("base", pvd.modLoc("block/bowl/bamboo/" + ctx.getName()))
 								.renderType("cutout")))
 				.tag(BlockTags.MINEABLE_WITH_AXE);
 	}

@@ -106,7 +106,7 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	}
 
 	@Override
-	public int getFermentationTime() {
+	public int getProcessTime() {
 		return time;
 	}
 }

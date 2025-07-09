@@ -1,11 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipe;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extends BaseRecipe<T, FermentationRecipe<?>, FermentationDummyContainer> {
+public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extends BaseRecipe<T, FermentationRecipe<?>, FermentationDummyContainer>
+		implements TimedRecipe {
 
 	public FermentationRecipe(ResourceLocation id, RecType<T, FermentationRecipe<?>, FermentationDummyContainer> fac) {
 		super(id, fac);
@@ -21,5 +23,4 @@ public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extend
 		return ItemStack.EMPTY;
 	}
 
-	public abstract int getFermentationTime();
 }
