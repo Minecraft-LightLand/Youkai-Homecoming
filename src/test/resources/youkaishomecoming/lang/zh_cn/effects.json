@@ -41,7 +41,9 @@
 		"flaming": "浓烈",
 		"flaming.description": "提升玩家造成的火焰伤害",
 		"mature": "熟成",
-		"mature.description": "消耗滋养效果时长来抵御一部分伤害"
+		"mature.description": "消耗滋养效果时长来抵御一部分伤害",
+		"craby": "横行霸道",
+		"craby.description": "M让你的横向移动速度更快"
 	},
 	"item.minecraft.tipped_arrow.effect": {
 		"aphrodisiac": "催情之箭",
