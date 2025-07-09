@@ -21,17 +21,19 @@ public class SmallCookingPotBlockEntity extends CookingBlockEntity {
 		BlockPos pos = getBlockPos();
 		double x, y, z;
 		RandomSource random = level.random;
-		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.5F) {
-			x = (double) pos.getX() + 0.5 + (random.nextDouble() * 0.6 - 0.3);
-			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * 0.6 - 0.3);
+		double r = 0.1;
+		double h = 0.32;
+		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.3F) {
+			x = (double) pos.getX() + 0.5 + (random.nextDouble() * r * 2 - r);
+			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * r * 2 - r);
 			double motionY = random.nextBoolean() ? 0.015 : 0.005;
-			level.addParticle(ModParticleTypes.STEAM.get(), x, pos.getY() + 0.5, z, 0.0, motionY, 0.0);
+			level.addParticle(ModParticleTypes.STEAM.get(), x, pos.getY() + h, z, 0.0, motionY, 0.0);
 
 		}
-		if (random.nextFloat() < 0.2F) {
-			x = (double) pos.getX() + 0.5 + (random.nextDouble() * 0.6 - 0.3);
-			y = (double) pos.getY() + 0.7;
-			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * 0.6 - 0.3);
+		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.3F) {
+			x = (double) pos.getX() + 0.5 + (random.nextDouble() * r * 2 - r);
+			y = (double) pos.getY() + h;
+			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * r * 2 - r);
 			level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.0, 0.0);
 		}
 	}
