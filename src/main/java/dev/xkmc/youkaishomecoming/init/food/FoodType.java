@@ -4,7 +4,7 @@ import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -30,6 +30,7 @@ public enum FoodType {
 	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, true),
 	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), true, true),
 	IRON_BOWL(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), false, false),
+	BAMBOO_BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false),
 	SAUCER(YHFoodItem::new, p -> p.craftRemainder(YHItems.SAUCER.asItem()).stacksTo(16), false, false),
 	;
 
@@ -87,10 +88,12 @@ public enum FoodType {
 		return this.prop.apply(prop).food(food.build());
 	}
 
-	public BlockBuilder<DelegateBlock, L2Registrate> bowl(String name) {
+	public BlockBuilder<BowlBlock, L2Registrate> bowl(String name, boolean raw) {
 		if (this == IRON_BOWL)
 			return YHItems.ironBowl(name);
-		else return YHItems.woodBowl(name);
+		if (this == BAMBOO_BOWL)
+			return raw ? YHItems.rawBambooBowl(name) : YHItems.bambooBowl(name);
+		return YHItems.woodBowl(name);
 	}
 
 	public String makeLang(String id) {

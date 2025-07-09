@@ -90,6 +90,9 @@ public class RackData {
 	}
 
 	public boolean tryTakeItemAt(SteamerBlockEntity be, Level level, Vec3 hit, Player player, InteractionHand hand) {
+		if (list[0].stack.getItem() instanceof FoodBlockItem) {
+			return tryTakeItem(be, level, player, hand);
+		}
 		return tryTakeItemAt(be, level, getIndex(hit), player, hand);
 	}
 

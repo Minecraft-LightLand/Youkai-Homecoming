@@ -31,7 +31,6 @@
 		"assorted_dango": "三色团子",
 		"candy_apple": "苹果糖",
 		"milk_popsicle": "牛奶冰棍",
-		"tutu_congee": "筒粥",
 		"avgolemono": "鸡蛋柠檬汤",
 		"big_popsicle": "大冰棍儿",
 		"shaved_ice_over_rice": "儿童刨冰盖饭",
@@ -105,7 +104,16 @@
 		"cucumber_seeds": "黄瓜种子",
 		"honey_glazed_cucumber": "蜜渍黄瓜",
 		"raisin": "葡萄干",
-		"empty_hand_icon": "空手图标"
+		"empty_hand_icon": "空手图标",
+		"crab": "螃蟹",
+		"crab_bucket": "螃蟹桶",
+		"crab_meat": "蟹粉",
+		"crab_roe": "蟹籽",
+		"raw_venison": "生鹿排",
+		"raw_venison_slice": "生鹿片",
+		"grilled_venison": "烤鹿排",
+		"grilled_venison_slice": "烤鹿片",
+		"steamed_crab": "清蒸螃蟹"
 	},
 	"-cartesian": {
 		"entity": {
@@ -113,7 +121,9 @@
 			"list": [
 				{
 					"lamprey": "八目鳗",
-					"tuna": "金枪鱼"
+					"tuna": "金枪鱼",
+					"deer": "梅花鹿",
+					"crab": "螃蟹"
 				},
 				{
 					"entity.gensokyodelight.*": "",
@@ -173,6 +183,23 @@
 				}
 			]
 		},
+		"bottled": {
+			"path": "",
+			"list": [
+				{
+					"burgundy": "勃艮第干红葡萄酒",
+					"champagne": "香槟气泡甜白葡萄酒",
+					"red_wine": "经典红葡萄酒",
+					"van_allen": "范艾伦干红葡萄酒",
+					"white_wine": "白桦森林半干白葡萄酒"
+				},
+				{
+					"fluid.youkaishomecoming.*": "",
+					"item.youkaishomecoming.*": "",
+					"block.youkaishomecoming.*_bottle": "瓶装*"
+				}
+			]
+		},
 		"slicable": {
 			"path": "item.gensokyodelight",
 			"list": [
@@ -203,7 +230,8 @@
 					"black_grape": "黑葡萄",
 					"red_grape": "红葡萄",
 					"white_grape": "白葡萄"
-				},{
+				},
+				{
 					"block.gensokyodelight.*": "",
 					"item.gensokyodelight.*": "",
 					"item.gensokyodelight.*_seeds": "种子",

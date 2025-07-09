@@ -121,7 +121,6 @@ public enum YHFood implements ItemLike {
 	BUN(FoodType.SIMPLE, 10, 0.8f, "raw_bun", DietTagGen.GRAINS.tag),
 	OYAKI(FoodType.SIMPLE, 8, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.SIMPLE, 10, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	TUTU_CONGEE(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.SIMPLE, 8, 0.6f, DietTagGen.PROTEINS.tag),
 	DOUGHNUT(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	KABAYAKI(FoodType.FAST, 8, 0.8f, List.of(
