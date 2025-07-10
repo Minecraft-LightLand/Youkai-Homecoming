@@ -1,0 +1,10 @@
+{
+  "type": "youkaishomecoming:simple_basin",
+  "input": {
+    "item": "youkaishomecoming:black_grape"
+  },
+  "output": {
+    "amount": 50,
+    "fluid": "youkaishomecoming:black_grape_juice"
+  }
+}

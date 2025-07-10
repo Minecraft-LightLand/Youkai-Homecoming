@@ -41,7 +41,7 @@ public class ClientEventHandlers {
 		if (!(cam instanceof Player player)) return 0;
 		var ins = player.getEffect(YHEffects.DRUNK.get());
 		if (ins == null) return 0;
-		return Mth.clamp((ins.getAmplifier() + 1) * 0.2f, 0, 1);
+		return Mth.clamp(ins.getAmplifier() * 0.25f, 0, 1);
 	}
 
 	public static void drunkView(PoseStack pose, float pTick) {

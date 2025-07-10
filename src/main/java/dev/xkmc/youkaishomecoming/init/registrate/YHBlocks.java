@@ -22,6 +22,7 @@ import dev.xkmc.youkaishomecoming.content.block.variants.*;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
+import dev.xkmc.youkaishomecoming.content.pot.basin.*;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.*;
 import dev.xkmc.youkaishomecoming.content.pot.moka.*;
@@ -123,6 +124,11 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
+	public static final BlockEntry<DelegateBlock> BASIN;
+	public static final BlockEntityEntry<BasinBlockEntity> BASIN_BE;
+	public static final RegistryEntry<RecipeType<BasinRecipe<?>>> BASIN_RT;
+	public static final RegistryEntry<BaseRecipe.RecType<SimpleBasinRecipe, BasinRecipe<?>, BasinInput>> BASIN_RS;
+
 	public static final BlockEntry<DelegateBlock> STEAMER_POT;
 	public static final BlockEntry<DelegateBlock> STEAMER_RACK;
 	public static final BlockEntry<DelegateBlock> STEAMER_LID;
@@ -158,7 +164,7 @@ public class YHBlocks {
 
 	static {
 
-		// moka kettle, ferment, rack
+		// moka kettle, rack
 		{
 			MOKA = YoukaisHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
@@ -186,17 +192,33 @@ public class YHBlocks {
 					.validBlock(RACK).renderer(() -> DryingRackRenderer::new).register();
 			RACK_RT = YoukaisHomecoming.REGISTRATE.recipe("drying_rack");
 			RACK_RS = reg("drying_rack", () -> new SimpleCookingSerializer<>(DryingRackRecipe::new, 100));
+		}
 
+		//ferment, basin
+		{
 			FERMENT = YoukaisHomecoming.REGISTRATE.block("fermentation_tank", p ->
 							DelegateBlock.newBaseBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS),
 									new FermentationTankBlock(), FermentationTankBlock.TE))
 					.blockstate(FermentationTankBlock::buildModel)
-					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE)
+					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_PICKAXE)
 					.register();
 			FERMENT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("fermentation_tank", FermentationTankBlockEntity::new)
 					.validBlock(FERMENT).renderer(() -> FermentationTankRenderer::new).register();
 			FERMENT_RT = YoukaisHomecoming.REGISTRATE.recipe("fermentation");
 			FERMENT_RS = reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
+
+			BASIN = YoukaisHomecoming.REGISTRATE.block("wood_basin", p ->
+							DelegateBlock.newBaseBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS),
+									new BasinBlock(), BasinBlock.TE))
+					.blockstate(BasinBlock::buildModel)
+					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			BASIN_BE = YoukaisHomecoming.REGISTRATE.blockEntity("basin", BasinBlockEntity::new)
+					.validBlock(BASIN).renderer(() -> BasinRenderer::new).register();
+
+			BASIN_RT = YoukaisHomecoming.REGISTRATE.recipe("basin");
+			BASIN_RS = reg("simple_basin", () -> new BaseRecipe.RecType<>(SimpleBasinRecipe.class, BASIN_RT));
 
 		}
 

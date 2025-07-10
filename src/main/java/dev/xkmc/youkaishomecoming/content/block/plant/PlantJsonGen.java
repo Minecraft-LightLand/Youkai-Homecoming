@@ -10,7 +10,6 @@ import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -32,10 +31,10 @@ public class PlantJsonGen {
 		});
 	}
 
-	public static void buildCrossModel(DataGenContext<Block, ? extends YHCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {
+	public static void buildCrossModel(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd, String name) {
 		pvd.getVariantBuilder(ctx.get()).forAllStates(state -> {
 			int age = state.getValue(CropBlock.AGE);
-			String tex = name + "/" +name + "_stage" + age;
+			String tex = name + "/" + name + "_stage" + age;
 			return ConfiguredModel.builder().modelFile(pvd.models()
 					.getBuilder(tex)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/cross_crop")))
@@ -44,20 +43,20 @@ public class PlantJsonGen {
 		});
 	}
 
-	public static void buildPlantLoot(RegistrateBlockLootTables pvd, Block block, YHCrops crop) {
+	public static void buildPlantLoot(RegistrateBlockLootTables pvd, CropBlock block, YHCrops crop) {
 		pvd.add(block, pvd.applyExplosionDecay(block,
 				LootTable.lootTable().withPool(LootPool.lootPool()
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7))
+										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, block.getMaxAge()))
 										.invert())
 								.add(LootItem.lootTableItem(crop.getSeed())))
 						.withPool(LootPool.lootPool()
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7)))
+										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, block.getMaxAge())))
 								.add(LootItem.lootTableItem(crop.getFruits())))
 						.withPool(LootPool.lootPool()
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7)))
+										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, block.getMaxAge())))
 								.add(LootItem.lootTableItem(crop.getFruits())
 										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
 	}

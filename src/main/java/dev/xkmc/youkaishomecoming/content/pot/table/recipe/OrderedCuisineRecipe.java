@@ -37,4 +37,17 @@ public class OrderedCuisineRecipe extends BaseCuisineRecipe<OrderedCuisineRecipe
 		return input.size() == inv.getContainerSize() || !inv.isComplete();
 	}
 
+	@Override
+	public List<Ingredient> getHints(Level level, CuisineInv inv) {
+		int n = Math.min(inv.getContainerSize(), input.size());
+		for (int i = 0; i < n; i++) {
+			if (!input.get(i).test(inv.getItem(i))) {
+				return List.of(input.get(i));
+			}
+		}
+		if (n < input.size())
+			return List.of(input.get(n));
+		return List.of();
+	}
+
 }

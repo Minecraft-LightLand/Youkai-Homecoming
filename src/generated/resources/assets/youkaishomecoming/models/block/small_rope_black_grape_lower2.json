@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/rope_crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "youkaishomecoming:block/plants/grape/small/lower2",
+    "rope_side": "youkaishomecoming:block/plants/rope",
+    "rope_top": "youkaishomecoming:block/plants/rope_top"
+  }
+}

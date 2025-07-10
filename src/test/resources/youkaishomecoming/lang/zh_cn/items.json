@@ -150,8 +150,11 @@
 		"otoro_nigiri": "金枪鱼大腹握寿司",
 		"nattou_gunkan": "纳豆军舰",
 		"cucumber": "黄瓜",
+		"cucumber_slice": "黄瓜丝",
 		"cucumber_seeds": "黄瓜种子",
-		"honey_glazed_cucumber": "蜜渍黄瓜"
+		"honey_glazed_cucumber": "蜜渍黄瓜",
+		"raisin": "葡萄干",
+		"empty_hand_icon": "空手图标"
 	},
 	"-cartesian": {
 		"entity": {
@@ -231,7 +234,12 @@
 					"hakutsuru": "丹白鹤",
 					"kappa_village": "河童之里",
 					"kiku": "菊",
-					"suigei": "鲸息"
+					"suigei": "鲸息",
+					"burgundy": "勃艮第干红葡萄酒",
+					"champagne": "香槟气泡甜白葡萄酒",
+					"red_wine": "经典红葡萄酒",
+					"van_allen": "范艾伦干红葡萄酒",
+					"white_wine": "白桦森林半干白葡萄酒"
 				}
 			]
 		},
@@ -255,6 +263,28 @@
 				{
 					"*": "",
 					"*_slice": "切片"
+				}
+			]
+		},
+		"grape": {
+			"path": "",
+			"list": [
+				{
+					"black_grape": "黑葡萄",
+					"red_grape": "红葡萄",
+					"white_grape": "白葡萄"
+				},{
+					"block.youkaishomecoming.*": "",
+					"item.youkaishomecoming.*": "",
+					"item.youkaishomecoming.*_seeds": "种子",
+					"fluid.youkaishomecoming.*_juice": "汁",
+					"item.youkaishomecoming.*_juice": "汁",
+					"block.youkaishomecoming.*_branches": "枝条",
+					"block.youkaishomecoming.*_fruits": "枝条",
+					"block.youkaishomecoming.*_trunk": "木质茎",
+					"block.youkaishomecoming.*_vines": "茎",
+					"block.youkaishomecoming.wild_*": "野生*",
+					"block.youkaishomecoming.*_crate": "箱装*"
 				}
 			]
 		},

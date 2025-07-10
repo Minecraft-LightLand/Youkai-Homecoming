@@ -10,9 +10,8 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 
-public class TunaModel<T extends Entity> extends HierarchicalModel<T> {
+public class TunaModel<T extends TunaEntity> extends HierarchicalModel<T> {
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(YoukaisHomecoming.loc("tuna"), "main");
 
@@ -38,12 +37,13 @@ public class TunaModel<T extends Entity> extends HierarchicalModel<T> {
 		return root;
 	}
 
-	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float tick, float pNetHeadYaw, float pHeadPitch) {
+	public void setupAnim(T e, float pLimbSwing, float pLimbSwingAmount, float tick, float pNetHeadYaw, float pHeadPitch) {
 		root.resetPose();
 		float f = 1.0F;
-		if (!pEntity.isInWater()) {
+		if (!e.isInWater()) {
 			f = 1.5F;
 		}
+		if (e.isAggressive()) tick *= 1.5f;
 		this.back.yRot = -f * 0.45F * Mth.sin(0.6F * tick);
 
 		float t = 0.9f * tick;

@@ -26,7 +26,8 @@
 			"rack": "晒干",
 			"ferment": "发酵",
 			"steam": "蒸",
-			"cuisine": "料理"
+			"cuisine": "料理",
+			"basin": "踩踏"
 		},
 		"tooltip": {
 			"chance": " %2$s%%概率获得%1$s",
@@ -107,6 +108,8 @@
 		"flesh_human": "怪肉",
 		"flesh_youkai": "人肉",
 		"fermenting_progress": "发酵进度：%s",
+		"cuisine_allow": "下一步:",
+		"cuisine_extra": "还有%s种选择",
 		"koishi_reimu": "灵梦：谁在那？",
 		"reimu_flesh": "灵梦：别吃这个。最后警告",
 		"reimu_warn": "灵梦：喝点茶清醒一下。最后警告"

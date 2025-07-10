@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleMenu;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
@@ -34,6 +35,7 @@ public class YHJeiPlugin implements IModPlugin {
 	public static final RecipeType<SteamingRecipe> STEAM = RecipeType.create(YoukaisHomecoming.MODID, "steaming", SteamingRecipe.class);
 	public static final RecipeType<SimpleFermentationRecipe> FERMENT = RecipeType.create(YoukaisHomecoming.MODID, "ferment", SimpleFermentationRecipe.class);
 	public static final RecipeType<CuisineRecipe<?>> CUISINE = RecipeType.create(YoukaisHomecoming.MODID, "cuisine", Wrappers.cast(CuisineRecipe.class));
+	public static final RecipeType<SimpleBasinRecipe> BASIN = RecipeType.create(YoukaisHomecoming.MODID, "basin", SimpleBasinRecipe.class);
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -47,6 +49,7 @@ public class YHJeiPlugin implements IModPlugin {
 		registry.addRecipeCategories(new DryingRackCategory(helper));
 		registry.addRecipeCategories(new SteamingCategory(helper));
 		registry.addRecipeCategories(new FermentRecipeCategory().init(helper));
+		registry.addRecipeCategories(new BasinRecipeCategory().init(helper));
 		registry.addRecipeCategories(new CuisineRecipeCategory().init(helper));
 	}
 
@@ -60,6 +63,8 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipes(STEAM, m.getAllRecipesFor(YHBlocks.STEAM_RT.get()));
 		registration.addRecipes(FERMENT, m.getAllRecipesFor(YHBlocks.FERMENT_RT.get())
 				.stream().map(e -> e instanceof SimpleFermentationRecipe x ? x : null).filter(Objects::nonNull).toList());
+		registration.addRecipes(BASIN, m.getAllRecipesFor(YHBlocks.BASIN_RT.get())
+				.stream().map(e -> e instanceof SimpleBasinRecipe x ? x : null).filter(Objects::nonNull).toList());
 		registration.addRecipes(CUISINE, m.getAllRecipesFor(YHBlocks.CUISINE_RT.get()));
 	}
 
@@ -68,6 +73,7 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHBlocks.KETTLE.asStack(), KETTLE);
 		registration.addRecipeCatalyst(YHBlocks.RACK.asStack(), RACK);
 		registration.addRecipeCatalyst(YHBlocks.FERMENT.asStack(), FERMENT);
+		registration.addRecipeCatalyst(YHBlocks.BASIN.asStack(), BASIN);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_LID.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_RACK.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_POT.asStack(), STEAM);

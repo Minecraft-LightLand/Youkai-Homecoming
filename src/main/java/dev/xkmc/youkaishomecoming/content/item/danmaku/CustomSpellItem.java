@@ -96,7 +96,8 @@ public class CustomSpellItem extends Item implements IGlowingTarget, ISpellItem 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		ISpellFormData<?> data = getData(stack);
-		list.add(YHLangData.SPELL_COST.get(data.cost(), data.getAmmoCost()));
+		var item = data.getAmmoCost();
+		list.add(YHLangData.SPELL_COST.get(data.cost(), item.getName(item.getDefaultInstance())));
 		if (requireTarget) {
 			list.add(YHLangData.SPELL_TARGET.get());
 		}

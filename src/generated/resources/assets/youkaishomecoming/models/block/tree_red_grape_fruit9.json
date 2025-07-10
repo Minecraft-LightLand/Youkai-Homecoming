@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/plant/grape_fruit",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaishomecoming:block/plants/grape/branch/bottom9_red",
+    "fruit": "youkaishomecoming:block/plants/grape/fruit/fruit9_red"
+  }
+}

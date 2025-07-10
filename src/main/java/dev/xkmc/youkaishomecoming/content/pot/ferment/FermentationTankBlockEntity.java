@@ -6,6 +6,7 @@ import dev.xkmc.l2library.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -17,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -33,7 +35,7 @@ import java.util.List;
 
 @SerialClass
 public class FermentationTankBlockEntity extends BaseBlockEntity
-		implements BlockContainer, BaseContainerListener, TickableBlockEntity, InfoTile {
+		implements BlockContainer, BaseContainerListener, TickableBlockEntity, InfoTile, FluidItemTile {
 
 	@SerialClass.SerialField
 	public final FermentationItemContainer items = new FermentationItemContainer().setMax(1).add(this);
@@ -54,6 +56,16 @@ public class FermentationTankBlockEntity extends BaseBlockEntity
 
 	public FermentationTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
+	}
+
+	@Override
+	public BaseTank getFluidHandler() {
+		return fluids;
+	}
+
+	@Override
+	public SimpleContainer getItemHandler() {
+		return items;
 	}
 
 	@Override

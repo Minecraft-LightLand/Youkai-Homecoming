@@ -95,6 +95,7 @@ public class TableItemManager extends BaseTableItem {
 		CAL_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
 		CAL_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
 		CAL_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
+		CAL_TOP.addMapping("otoro", YHFood.OTORO.item);
 		CAL_COVER.addMapping("roe", YHFood.ROE.item);
 
 		VariantModelPart[] rolls = {HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT};
@@ -109,7 +110,7 @@ public class TableItemManager extends BaseTableItem {
 		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);
 		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHFood.TAMAGOYAKI_SLICE.item, rolls);
 		addBulk("imitation_crab", "ingredient/imitation_crab", YHFood.IMITATION_CRAB.item, rolls);
-		addBulk("cucumber", "ingredient/cucumber", YHTagGen.CUCUMBER, rolls);
+		addBulk("cucumber", "ingredient/cucumber", YHTagGen.CUCUMBER_SLICE, rolls);
 		// kappa
 	}
 

@@ -47,12 +47,19 @@ public class YHTagGen {
 	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
 	public static final TagKey<Item> BUTTER = forgeItem("butter");
 	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
+	public static final TagKey<Item> CUCUMBER_SLICE = forgeItem("slices/cucumber");
 	public static final TagKey<Item> CUCUMBER_SEED = forgeItem("seeds/cucumber");
 	public static final TagKey<Item> VEGE = forgeItem("vegetables");
+	public static final TagKey<Item> GRAPE = forgeItem("fruits/grape");
+	public static final TagKey<Item> FRUIT = forgeItem("fruits");
 	public static final TagKey<Item> SEED = forgeItem("seeds");
+	public static final TagKey<Item> GRAPE_SEED = item("grape_seed");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> DANGO = item("dango");
+	public static final TagKey<Item> TEA_DRINK = item("tea");
+	public static final TagKey<Item> SAKE = item("sake");
+	public static final TagKey<Item> WINE = item("wine");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
@@ -75,14 +82,14 @@ public class YHTagGen {
 	public static final TagKey<EntityType<?>> YOUKAI_IGNORE = entity("youkai_ignore");
 	public static final TagKey<EntityType<?>> BOSS = entity("cannot_capture");
 
-	public static final TagKey<Item> MATCHA = ItemTags.create(new ResourceLocation("forge", "matcha"));
-	public static final TagKey<Item> ICE = ItemTags.create(new ResourceLocation("forge", "ice_cubes"));
+	public static final TagKey<Item> MATCHA = forgeItem("matcha");
+	public static final TagKey<Item> ICE = forgeItem("ice_cubes");
 
-	public static final TagKey<Item> TEA_GREEN = ItemTags.create(new ResourceLocation("forge", "tea_leaves/green"));
-	public static final TagKey<Item> TEA_BLACK = ItemTags.create(new ResourceLocation("forge", "tea_leaves/black"));
-	public static final TagKey<Item> TEA_WHITE = ItemTags.create(new ResourceLocation("forge", "tea_leaves/white"));
-	public static final TagKey<Item> TEA_OOLONG = ItemTags.create(new ResourceLocation("forge", "tea_leaves/oolong"));
-	public static final TagKey<Item> TEA = ItemTags.create(new ResourceLocation("forge", "tea_leaves"));
+	public static final TagKey<Item> TEA_GREEN = forgeItem("tea_leaves/green");
+	public static final TagKey<Item> TEA_BLACK = forgeItem("tea_leaves/black");
+	public static final TagKey<Item> TEA_WHITE = forgeItem("tea_leaves/white");
+	public static final TagKey<Item> TEA_OOLONG = forgeItem("tea_leaves/oolong");
+	public static final TagKey<Item> TEA = forgeItem("tea_leaves");
 
 	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
 	public static final TagKey<Item> TOUHOU_WINGS = item("touhou_wings");
@@ -124,6 +131,9 @@ public class YHTagGen {
 		pvd.addTag(CUCUMBER).add(YHCrops.CUCUMBER.getFruits());
 		pvd.addTag(SEED).addTag(CUCUMBER_SEED);
 		pvd.addTag(CUCUMBER_SEED).add(YHCrops.CUCUMBER.getSeed());
+		pvd.addTag(GRAPE).add(YHCrops.RED_GRAPE.getFruits(), YHCrops.BLACK_GRAPE.getFruits(), YHCrops.WHITE_GRAPE.getFruits());
+		pvd.addTag(FRUIT).addTag(GRAPE);
+		pvd.addTag(GRAPE_SEED).add(YHCrops.RED_GRAPE.getSeed(), YHCrops.BLACK_GRAPE.getSeed(), YHCrops.WHITE_GRAPE.getSeed());
 
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());

@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
@@ -42,7 +43,6 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
 import vectorwing.farmersdelight.common.block.FeastBlock;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -65,8 +65,10 @@ public class YHItems {
 	public static final ItemEntry<ReimuHairbandItem> REIMU_HAIRBAND;
 	public static final ItemEntry<CirnoHairbandItem> CIRNO_HAIRBAND;
 	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
-	public static final BlockEntry<Block> SOYBEAN_BAG, REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
-			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG;
+	public static final BlockEntry<Block> SOYBEAN_BAG, PODS_CRATE,
+			REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
+			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG,
+			RED_GRAPE_CRATE, BLACK_GRAPE_CRATE, WHITE_GRAPE_CRATE;
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
 	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
@@ -86,6 +88,8 @@ public class YHItems {
 	public static final ItemEntry<MobBucketItem> LAMPREY_BUCKET;
 	public static final ItemEntry<MobBucketItem> TUNA_BUCKET;
 
+	public static final ItemEntry<Item> EMPTY_HAND_ICON;
+
 	static {
 
 		// plants
@@ -98,6 +102,10 @@ public class YHItems {
 			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
 			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);
 			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
+			RED_GRAPE_CRATE = YHCrops.RED_GRAPE.createCrate();
+			BLACK_GRAPE_CRATE = YHCrops.BLACK_GRAPE.createCrate();
+			WHITE_GRAPE_CRATE = YHCrops.WHITE_GRAPE.createCrate();
+			PODS_CRATE = YHCrops.createCrate("pod");
 			SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 			REDBEAN_BAG = YHCrops.REDBEAN.createBag();
 			COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");
@@ -133,7 +141,7 @@ public class YHItems {
 		{
 			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
 							new SurpriseChestBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
-					.item().model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
+					.item().properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.blockstate(SurpriseChestBlock::buildModel)
 					.register();
 
@@ -145,6 +153,7 @@ public class YHItems {
 					.register();
 
 			RAW_FLESH_FEAST = YoukaisHomecoming.REGISTRATE.item("raw_flesh_feast", FleshSimpleItem::new)
+					.properties(p->p.stacksTo(1))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName())))
 					.lang("Raw %1$s Feast")
 					.register();
@@ -155,7 +164,7 @@ public class YHItems {
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), state ->
 							FleshFeastBlock.Model.values()[state.getValue(FeastBlock.SERVINGS)].build(pvd)))
 					.lang("%1$s Feast")
-					.item(FleshBlockItem::new).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
+					.item(FleshBlockItem::new).properties(p->p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.loot(FleshFeastBlock::builtLoot)
 					.register();
 
@@ -258,13 +267,14 @@ public class YHItems {
 
 		}
 
+		EMPTY_HAND_ICON = YoukaisHomecoming.REGISTRATE.item("empty_hand_icon", Item::new)
+				.removeTab(YoukaisHomecoming.TAB.getKey()).register();
+
 	}
 
-	public static <T extends Item> ItemEntry<T> seed(String id, NonNullFunction<Item.Properties, T> factory) {
+	public static <T extends Item> ItemBuilder<T, ?> seed(String id, NonNullFunction<Item.Properties, T> factory) {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
-				.tag(ForgeTags.SEEDS)
-				.register();
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())));
 	}
 
 	public static <T extends Item> ItemEntry<T> crop(String id, NonNullFunction<Item.Properties, T> factory) {

@@ -61,6 +61,15 @@ public class IngredientTableItem extends BaseTableItem {
 	}
 
 	@Override
+	public List<Ingredient> getHints(Level level) {
+		List<Ingredient> ans = super.getHints(level);
+		if (variant != null) {
+			ans.addAll(variant.getHints(level));
+		}
+		return ans;
+	}
+
+	@Override
 	public List<ResourceLocation> getModels() {
 		return List.of(model.modelLoc());
 	}

@@ -37,11 +37,14 @@ public enum YHLangData {
 	FLESH_NAME_YOUKAI("flesh_youkai", "Flesh", 0, null),
 
 	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
+	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
+	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
 
 	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
 	JEI_RACK("jei.rack", "Drying", 0, null),
 	JEI_FERMENT("jei.ferment", "Fermenting", 0, null),
+	JEI_BASIN("jei.basin", "Basin", 0, null),
 	JEI_STEAM("jei.steam", "Steaming", 0, null),
 	JEI_CUISINE("jei.cuisine", "Cuisine", 0, null),
 
