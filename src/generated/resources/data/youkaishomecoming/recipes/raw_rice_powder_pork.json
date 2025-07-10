@@ -1,17 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "youkaishomecoming:soybean"
-    },
-    {
-      "tag": "forge:grain/rice"
-    },
-    {
-      "tag": "forge:raw_pork"
-    }
-  ],
+  "type": "youkaishomecoming:cuisine_fixed",
+  "base": "youkaishomecoming:rice_powder_pork",
   "result": {
     "item": "youkaishomecoming:raw_rice_powder_pork"
   }

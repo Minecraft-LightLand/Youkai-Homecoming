@@ -7,12 +7,18 @@ import java.util.List;
 
 public class FixedModelHolder implements TableModelHolder {
 
-	protected final ResourceLocation model;
+	protected final ResourceLocation model, parent, texture;
 	protected final LinkedHashMap<String, ResourceLocation> tex = new LinkedHashMap<>();
 
-	public FixedModelHolder(ModelHolderManager manager, ResourceLocation model) {
+	public FixedModelHolder(ModelHolderManager manager, ResourceLocation model, ResourceLocation parent, ResourceLocation tex) {
 		this.model = model;
+		this.parent = parent;
+		this.texture = tex;
 		manager.register(this);
+	}
+
+	public FixedModelHolder(ModelHolderManager manager, ResourceLocation model) {
+		this(manager, model, model.withPrefix("table/"), model.withPath("block/table/"));
 	}
 
 	public ResourceLocation modelLoc() {
@@ -24,9 +30,14 @@ public class FixedModelHolder implements TableModelHolder {
 		return this;
 	}
 
+	public FixedModelHolder put(String layer, String path) {
+		tex.put(layer, texture.withSuffix(path));
+		return this;
+	}
+
 	public FixedModelHolder putDefault(String... layers) {
 		for (var layer : layers)
-			tex.put(layer, model.withPath("block/table/" + layer));
+			tex.put(layer, texture.withSuffix(layer));
 		return this;
 	}
 
@@ -37,7 +48,7 @@ public class FixedModelHolder implements TableModelHolder {
 
 	@Override
 	public void build(TableModelProvider pvd) {
-		var builder = pvd.create(modelLoc(), model.withPrefix("table/"));
+		var builder = pvd.create(modelLoc(), parent);
 		for (var ent : tex.entrySet()) {
 			builder.tex(ent.getKey(), ent.getValue());
 		}
