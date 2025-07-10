@@ -7,12 +7,18 @@ import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
 public abstract class CuisineRecipeBuilder<T extends BaseCuisineRecipe<T>, B extends CuisineRecipeBuilder<T, B>>
 		extends BaseRecipeBuilder<B, T, CuisineRecipe<?>, CuisineInv> {
+
+	CuisineRecipeBuilder(BaseRecipe.RecType<T, CuisineRecipe<?>, CuisineInv> type, ResourceLocation base) {
+		super(type);
+		recipe.base = base;
+	}
 
 	public CuisineRecipeBuilder(BaseRecipe.RecType<T, CuisineRecipe<?>, CuisineInv> type, VariantTableItemBase base) {
 		super(type);

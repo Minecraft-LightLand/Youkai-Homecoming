@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:raw_kaguya_hime"
+        "recipe": "youkaishomecoming:raw_rice_powder_pork"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:raw_kaguya_hime"
+      "youkaishomecoming:raw_rice_powder_pork"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

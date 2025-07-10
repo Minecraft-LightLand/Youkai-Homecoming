@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:table/bamboo/filled_1",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/table/bamboo/carrot",
+    "in": "youkaishomecoming:block/table/bamboo/in",
+    "out": "youkaishomecoming:block/table/bamboo/out"
+  }
+}
