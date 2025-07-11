@@ -28,7 +28,6 @@ public enum YHLangData {
 	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
 	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
 
-	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
 	JEI_RACK("jei.rack", "Drying", 0, null),
 	JEI_FERMENT("jei.ferment", "Fermenting", 0, null),

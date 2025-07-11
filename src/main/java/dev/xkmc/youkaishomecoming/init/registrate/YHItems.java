@@ -50,13 +50,12 @@ public class YHItems {
 	}
 
 	public static final BlockEntry<Block> SOYBEAN_BAG, PODS_CRATE,
-			REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
+			REDBEAN_BAG, CUCUMBER_BAG,
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG,
 			RED_GRAPE_CRATE, BLACK_GRAPE_CRATE, WHITE_GRAPE_CRATE;
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
-	public static final ItemEntry<Item> CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, ICE_CUBE;
+	public static final ItemEntry<Item> CLAY_SAUCER, CREAM, MATCHA, ICE_CUBE;
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
@@ -73,8 +72,6 @@ public class YHItems {
 		// plants
 		{
 			YHCrops.register();
-			COFFEE_BEAN = crop("coffee_beans", Item::new);
-			COFFEE_POWDER = crop("coffee_powder", Item::new);
 			YHTea.register();
 			MATCHA = crop("matcha", Item::new);
 			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
@@ -84,7 +81,6 @@ public class YHItems {
 			PODS_CRATE = YHCrops.createCrate("pod");
 			SOYBEAN_BAG = YHCrops.SOYBEAN.createBag();
 			REDBEAN_BAG = YHCrops.REDBEAN.createBag();
-			COFFEE_BEAN_BAG = YHCrops.createBag("coffee_bean");
 			TEA_BAG = YHCrops.createBag("tea_leaf");
 			BLACK_TEA_BAG = YHTea.BLACK.createBags();
 			GREEN_TEA_BAG = YHTea.GREEN.createBags();
@@ -163,7 +159,6 @@ public class YHItems {
 		}
 
 		YHDish.register();
-		YHCoffee.register();
 		YHDrink.register();
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {

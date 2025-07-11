@@ -48,7 +48,6 @@ import java.util.function.Function;
 public enum YHCrops {
 	SOYBEAN(PlantType.CROSS, 8, 12, null, "pods"),
 	REDBEAN(PlantType.CROSS, 8, 12, null, null),
-	COFFEA(PlantType.COFFEA, 6, 12, "green_coffee_bean", "coffee_berries"),
 	TEA(PlantType.TEA, 6, 12, "tea_seeds", "tea_leaves"),
 	UDUMBARA(PlantType.UDUMBARA, 6, 12, "udumbara_seeds", "udumbara_flower"),
 	CUCUMBER(PlantType.CUCUMBER, 8, 24, "cucumber_seeds", "cucumber"),
@@ -236,20 +235,6 @@ public enum YHCrops {
 				.loot((pvd, block) -> PlantJsonGen.buildPlantLoot(pvd, block, crop))
 				.register(),
 				YHCrops::wildCropDropFruit, ItemNameBlockItem::new),
-		COFFEA((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new CoffeaCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
-				.blockstate((ctx, pvd) -> CoffeaCropBlock.buildPlantModel(ctx, pvd, name))
-				.loot((pvd, block) -> CoffeaCropBlock.buildPlantLoot(pvd, block, crop))
-				.register(),
-				(crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + crop.getName(), p ->
-								new WildCoffeaBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)))
-						.blockstate((ctx, pvd) -> WildCoffeaBlock.buildWildModel(ctx, pvd, crop))
-						.loot((ctx, pvd) -> WildCoffeaBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
-								pvd.generated(ctx, pvd.modLoc("block/plants/" + crop.getTypeName() + "/wild_" + crop.getName() + "_top"))).build()
-						.tag(ModTags.WILD_CROPS)
-						.register(),
-				ItemNameBlockItem::new),
 		TEA((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
 						new TeaCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().forceSolidOff()
 								.randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY),

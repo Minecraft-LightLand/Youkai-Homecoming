@@ -102,10 +102,6 @@ public enum YHFood implements ItemLike {
 	// mochi
 	MOCHI(FoodType.FAST, 4, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	TSUKIMI_DANGO(FoodType.FAST, 3, 0.6f, YHTagGen.DANGO, DietTagGen.GRAINS.tag),
-	COFFEE_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
-			new EffectEntry(YHEffects.CAFFEINATED, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
-	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),
 	MATCHA_MOCHI(FoodType.FAST, 4, 0.6f, List.of(
 			new EffectEntry(YHEffects.TEA, 1200, 0, 1)
 	), YHTagGen.DANGO, DietTagGen.GRAINS.tag),

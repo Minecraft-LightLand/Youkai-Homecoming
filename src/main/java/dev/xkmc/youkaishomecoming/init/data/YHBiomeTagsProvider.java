@@ -24,7 +24,6 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> CRAB_MUD = asTag("spawns/crab_mud");
 	public static final TagKey<Biome> SOYBEAN = asTag("spawns/soybean");
 	public static final TagKey<Biome> REDBEAN = asTag("spawns/redbean");
-	public static final TagKey<Biome> COFFEA = asTag("spawns/coffea");
 	public static final TagKey<Biome> TEA = asTag("spawns/tea");
 	public static final TagKey<Biome> UDUMBARA = asTag("spawns/udumbara");
 	public static final TagKey<Biome> CUCUMBER = asTag("spawns/cucumber");
@@ -47,7 +46,6 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
 		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
-		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
 		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
 		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
 		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS);

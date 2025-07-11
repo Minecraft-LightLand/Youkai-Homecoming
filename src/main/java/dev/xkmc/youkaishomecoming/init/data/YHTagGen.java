@@ -30,15 +30,6 @@ import java.util.function.Consumer;
 
 public class YHTagGen {
 
-
-	public static final ProviderType<RegistrateTagsProvider.IntrinsicImpl<MobEffect>> EFF_TAGS =
-			ProviderType.register("tags/mob_effect",
-					type -> (p, e) -> new RegistrateTagsProvider.IntrinsicImpl<>(p, type, "mob_effects",
-							e.getGenerator().getPackOutput(), Registries.MOB_EFFECT, e.getLookupProvider(),
-							ench -> ResourceKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
-									ForgeRegistries.MOB_EFFECTS.getKey(ench)),
-							e.getExistingFileHelper()));
-
 	public static final TagKey<Item> RAW_EEL = forgeItem("raw_fishes/eel");
 	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
 	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
@@ -64,7 +55,6 @@ public class YHTagGen {
 	public static final TagKey<Item> BOTTLED = item("bottled");
 	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
-	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<Block> CRAB_DIGABLE = block("crab_digable");
 
 
@@ -79,9 +69,6 @@ public class YHTagGen {
 
 	public static final List<Consumer<RegistrateItemTagsProvider>> OPTIONAL_TAGS = new ArrayList<>();
 
-	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {
-	}
-
 	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
 
 	}
@@ -89,7 +76,6 @@ public class YHTagGen {
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
-		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 		pvd.addTag(CRAB_DIGABLE).add(Blocks.SAND, Blocks.GRAVEL);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genBlock(pvd);

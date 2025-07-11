@@ -8,7 +8,6 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
-import dev.xkmc.youkaishomecoming.content.block.furniture.MokaKitBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodTableBlock;
@@ -24,7 +23,6 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlock
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.*;
-import dev.xkmc.youkaishomecoming.content.pot.moka.*;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
@@ -39,7 +37,6 @@ import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.*;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
 import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.tags.BlockTags;
@@ -59,7 +56,6 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
@@ -94,12 +90,6 @@ public class YHBlocks {
 		}
 
 	}
-
-	public static final BlockEntry<MokaMakerBlock> MOKA;
-	public static final BlockEntityEntry<MokaMakerBlockEntity> MOKA_BE;
-	public static final RegistryEntry<RecipeType<MokaRecipe>> MOKA_RT;
-	public static final RegistryEntry<RecipeSerializer<MokaRecipe>> MOKA_RS;
-	public static final MenuEntry<MokaMenu> MOKA_MT;
 
 	public static final BlockEntry<KettleBlock> KETTLE;
 	public static final BlockEntityEntry<KettleBlockEntity> KETTLE_BE;
@@ -150,7 +140,6 @@ public class YHBlocks {
 	public static final BlockEntry<DelegateBlock> SPRUCE_WINE_SHELF;
 	public static final BlockEntityEntry<WineShelfBlockEntity> WINE_SHELF_BE;
 
-	public static final BlockEntry<MokaKitBlock> MOKA_KIT;
 	public static final BlockEntry<MoonLanternBlock> MOON_LANTERN;
 
 
@@ -159,15 +148,6 @@ public class YHBlocks {
 
 		// moka kettle, rack
 		{
-			MOKA = YoukaisHomecoming.REGISTRATE.block("moka_pot", p -> new MokaMakerBlock(
-							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
-					.blockstate(MokaMakerBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
-					.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
-			MOKA_BE = YoukaisHomecoming.REGISTRATE.blockEntity("moka_pot", MokaMakerBlockEntity::new).validBlock(MOKA).register();
-			MOKA_RT = YoukaisHomecoming.REGISTRATE.recipe("moka_pot");
-			MOKA_RS = reg("moka_pot", () -> new BasePotSerializer<>(MokaRecipe::new));
-			MOKA_MT = YoukaisHomecoming.REGISTRATE.menu("moka_pot", MokaMenu::new, () -> MokaScreen::new).register();
-
 			KETTLE = YoukaisHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
 					.blockstate(KettleBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
@@ -339,16 +319,6 @@ public class YHBlocks {
 		YHItems.register();
 
 		{
-			MOKA_KIT = YoukaisHomecoming.REGISTRATE.block("moka_kit", p -> new MokaKitBlock(
-							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/moka_kit")
-							.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/moka_kit")))
-							.texture("maker", pvd.modLoc("block/deco/moka_pot"))
-							.texture("cup", pvd.modLoc("block/deco/moka_cup"))
-							.texture("foamer", pvd.modLoc("block/deco/moka_foamer"))
-							.renderType("cutout")))
-					.simpleItem().tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
-
 			MOON_LANTERN = YoukaisHomecoming.REGISTRATE.block("moon_lantern", p -> new MoonLanternBlock(
 							BlockBehaviour.Properties.copy(Blocks.LANTERN)))
 					.blockstate(MoonLanternBlock::buildStates)

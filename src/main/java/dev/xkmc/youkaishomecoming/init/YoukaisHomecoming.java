@@ -49,7 +49,6 @@ public class YoukaisHomecoming {
 			REGISTRATE.buildModCreativeTab("youkais_feasts", "Youkais' Feasts",
 					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
 
-	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaisHomecoming() {
@@ -105,7 +104,6 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, reg);
 		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));
 		gen.addProvider(server, new YHGLMProvider(gen));
-		gen.addProvider(server, new SlotGen(gen));
 	}
 
 	@SubscribeEvent

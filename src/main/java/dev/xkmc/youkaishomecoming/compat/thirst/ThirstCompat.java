@@ -4,7 +4,6 @@ import dev.ghen.thirst.foundation.common.event.RegisterThirstValueEvent;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.init.food.YHBowl;
-import dev.xkmc.youkaishomecoming.init.food.YHCoffee;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,9 +18,6 @@ public class ThirstCompat {
 
 	@SubscribeEvent
 	public static void compat(RegisterThirstValueEvent event) {
-		for (var e : YHCoffee.values()) {
-			event.addDrink(e.item.get(), 8, 13);
-		}
 		for (var e : YHDrink.values()) {
 			event.addDrink(e.item.get(), 8, 13);
 		}

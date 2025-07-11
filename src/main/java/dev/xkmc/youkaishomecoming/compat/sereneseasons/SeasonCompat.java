@@ -11,7 +11,7 @@ public class SeasonCompat {
 
 	private static final Multimap<Seasons, YHCrops> CROP = new ImmutableMultimap.Builder<Seasons, YHCrops>()
 			.putAll(Seasons.SPRING, YHCrops.TEA)
-			.putAll(Seasons.SUMMER, YHCrops.COFFEA)
+			//.putAll(Seasons.SUMMER, YHCrops.COFFEA)
 			.putAll(Seasons.AUTUMN, YHCrops.SOYBEAN)
 			.putAll(Seasons.WINTER, YHCrops.REDBEAN)
 			.build();

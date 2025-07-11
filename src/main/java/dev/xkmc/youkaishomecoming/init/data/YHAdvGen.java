@@ -75,24 +75,6 @@ public class YHAdvGen {
 								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN).build()),
 						ItemPredicate.Builder.item().of(YHCrops.REDBEAN.getSeed()))),
 				"Leanness Resistant Red Bean", "Plant Red Bean on Coarse Dirt, Mud, or Clay");
-		redbean.create("coffea", YHCrops.COFFEA.getSeed(),
-						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
-								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_COFFEA).build()),
-								ItemPredicate.Builder.item().of(YHCrops.COFFEA.getSeed()))),
-						"Needs Nutrition Coffea", "Plant Coffea on Podzol, Mud, or Soul Soil")
-				.create("coffee_era", YHItems.COFFEE_POWDER.asStack(),
-						CriterionBuilder.item(YHItems.COFFEE_POWDER.get()),
-						"Coffee Era", "Get Coffee Powder")
-				.create("fragrant", YHCoffee.ESPRESSO.item.asStack(),
-						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(YHCoffee.ESPRESSO.item.get())),
-						"Fragrant!", "Drink Espresso")
-				.create("q_grader", YHCoffee.ESPRESSO.item.asStack(),
-						Util.make(CriterionBuilder.and(), c -> Arrays.stream(YHCoffee.values())
-								.map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
-								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
-						"Q Grader", "Drink Espresso")
-				.type(FrameType.CHALLENGE, true, true, false);
 		redbean.create("tea", YHCrops.TEA.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
@@ -131,7 +113,6 @@ public class YHAdvGen {
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
 										Arrays.stream(YHDrink.values()).map(e -> e.item.get()),
-										Arrays.stream(YHCoffee.values()).map(e -> e.item.get()),
 										Arrays.stream(YHBowl.values()).map(e -> e.item.get()),
 										Arrays.stream(YHFood.values()).map(e -> e.item.get()),
 										Arrays.stream(YHSushi.values()).map(e -> e.item.get()),
