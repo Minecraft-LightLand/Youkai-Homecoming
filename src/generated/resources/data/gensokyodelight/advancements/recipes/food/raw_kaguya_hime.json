@@ -31,5 +31,5 @@
       "gensokyodelight:raw_kaguya_hime"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
 import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelHolder;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -10,10 +12,14 @@ import net.minecraftforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 
 public class IngredientTableItem extends BaseTableItem {
+
+	public static final Map<ResourceLocation, IngredientTableItem> FIXED = new ConcurrentHashMap<>();
 
 	private final TableItem prev;
 	private final Lazy<Ingredient> ingredient;
@@ -21,6 +27,8 @@ public class IngredientTableItem extends BaseTableItem {
 	private final int step;
 	@Nullable
 	private VariantTableItemBase variant;
+	@Nullable
+	private ResourceLocation id;
 
 	public IngredientTableItem(BaseTableItem prev, Supplier<Ingredient> ingredient, FixedModelHolder model) {
 		this.prev = prev;
@@ -47,6 +55,20 @@ public class IngredientTableItem extends BaseTableItem {
 		return variant;
 	}
 
+	public ResourceLocation getId() {
+		if (id == null) {
+			throw new IllegalStateException("Not an exported model");
+		}
+		return id;
+	}
+
+	public ResourceLocation register() {
+		var strs = model.modelLoc().getPath().split("/");
+		id = model.modelLoc().withPath(strs[strs.length - 1]);
+		FIXED.put(id, this);
+		return id;
+	}
+
 	public void collectIngredients(List<Ingredient> list) {
 		prev.collectIngredients(list);
 		list.add(ingredient.get());
@@ -59,6 +81,15 @@ public class IngredientTableItem extends BaseTableItem {
 		if (variant == null) return Optional.empty();
 		return variant.find(level, stack);
 	}
+
+	@Override
+	public Optional<ItemStack> complete(Level level) {
+		if (id == null) return Optional.empty();
+		var cont = new CuisineInv(id, List.of(), 0, true);
+		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
+				.map(r -> r.assemble(cont, level.registryAccess()));
+	}
+
 
 	@Override
 	public List<Ingredient> getHints(Level level) {

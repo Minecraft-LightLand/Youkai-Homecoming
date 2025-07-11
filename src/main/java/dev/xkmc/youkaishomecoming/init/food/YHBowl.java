@@ -1,10 +1,10 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
-import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
@@ -36,9 +36,11 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag),
-	POWER_SOUP(FoodType.IRON_BOWL, 16, 0.6f,
+	POWER_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 6000, 0, 1)
+	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	POTATO_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
@@ -52,9 +54,10 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(ModEffects.COMFORT, 3000, 0, 1)
 	), DietTagGen.VEGETABLES.tag),
 	HOKKAIDO_SALMON_HOTPOT(FoodType.IRON_BOWL, 14, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(() -> MobEffects.DIG_SPEED, 6000, 0, 1)
+	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 
 	TUTU_CONGEE(FoodType.BAMBOO_BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
@@ -63,9 +66,9 @@ public enum YHBowl implements ItemLike {
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
 	), DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	KAGUYA_HIME(FoodType.BAMBOO_BOWL, 10, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
+	KAGUYA_HIME(FoodType.BAMBOO_BOWL, 14, 0.8f, List.of(
+			new EffectEntry(ModEffects.COMFORT, 3000, 0, 1),
+			new EffectEntry(YHEffects.SMOOTHING, 3000, 0, 1)
 	), DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 
 

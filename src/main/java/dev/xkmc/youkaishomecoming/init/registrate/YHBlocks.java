@@ -39,6 +39,8 @@ import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.*;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
+import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
@@ -138,6 +140,7 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_ORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
 	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
+	public static final RegistryEntry<BaseRecipe.RecType<FixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_FIXED;
 
 	public static final BlockEntry<DelegateBlock> SMALL_POT;
 	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
@@ -152,6 +155,7 @@ public class YHBlocks {
 
 
 	static {
+		InitializationMarker.expectAndAdvance(1);
 
 		// moka kettle, rack
 		{
@@ -328,8 +332,10 @@ public class YHBlocks {
 			CUISINE_ORDER = reg("cuisine_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_UNORDER = reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_FIXED = reg("cuisine_fixed", () -> new BaseRecipe.RecType<>(FixedCuisineRecipe.class, CUISINE_RT));
 		}
 
+		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
 		{
@@ -373,7 +379,6 @@ public class YHBlocks {
 	}
 
 	public static void register() {
-
 	}
 
 }

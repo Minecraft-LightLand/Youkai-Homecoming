@@ -1,14 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "tag": "forge:grain/rice"
-    },
-    {
-      "item": "minecraft:bamboo"
-    }
-  ],
+  "type": "youkaishomecoming:cuisine_fixed",
+  "base": "youkaishomecoming:tutu_congee",
   "result": {
     "item": "gensokyodelight:raw_tutu_congee"
   }

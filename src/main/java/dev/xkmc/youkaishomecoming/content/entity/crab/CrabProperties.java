@@ -51,4 +51,8 @@ public class CrabProperties {
 		return 100;
 	}
 
+	public static float getOnLandChance() {
+		return 0.2f;
+	}
+
 }

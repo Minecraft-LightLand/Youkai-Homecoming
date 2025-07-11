@@ -32,6 +32,8 @@ import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -175,6 +177,12 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		}
 	}
 
+	protected boolean isValidItemToGrab(ItemStack stack) {
+		if (!stack.getItem().canFitInsideContainerItems()) return false;
+		if (stack.getItem() instanceof MobBucketItem) return false;
+		return !stack.is(Items.NAME_TAG);
+	}
+
 	@Override
 	public void setZza(float val) {
 		if (onGround())
@@ -193,7 +201,7 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 			}
 			return InteractionResult.SUCCESS;
 		}
-		if (!stack.isEmpty() && getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && states.canGrab()) {
+		if (!stack.isEmpty() && getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && states.canGrab() && isValidItemToGrab(stack)) {
 			if (level() instanceof ServerLevel sl) {
 				setItemInHand(InteractionHand.MAIN_HAND, stack.split(1));
 				setDropChance(EquipmentSlot.MAINHAND, 1);

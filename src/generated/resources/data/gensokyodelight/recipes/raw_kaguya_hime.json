@@ -1,17 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "minecraft:brown_mushroom"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "tag": "forge:raw_pork"
-    }
-  ],
+  "type": "youkaishomecoming:cuisine_fixed",
+  "base": "youkaishomecoming:kaguya_hime",
   "result": {
     "item": "gensokyodelight:raw_kaguya_hime"
   }

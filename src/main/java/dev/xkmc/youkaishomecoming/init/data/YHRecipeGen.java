@@ -16,9 +16,11 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
+import dev.xkmc.youkaishomecoming.content.pot.table.recipe.FixedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.MixedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.food.*;
@@ -1020,26 +1022,9 @@ public class YHRecipeGen {
 
 			steaming(pvd, DataIngredient.items(YHDish.SCHOLAR_GINKGO.raw.asItem()), YHDish.SCHOLAR_GINKGO.block::asItem);
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBowl.TUTU_CONGEE.raw.get())::unlockedBy, Items.BAMBOO)
-					.requires(TagRef.GRAIN_RICE)
-					.requires(Items.BAMBOO)
-					.save(pvd);
-
 			steaming(pvd, DataIngredient.items(YHBowl.TUTU_CONGEE.raw.asItem()), YHBowl.TUTU_CONGEE.item::asItem);
 
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBowl.RICE_POWDER_PORK.raw.get())::unlockedBy, Items.BAMBOO)
-					.requires(YHCrops.SOYBEAN.getSeed())
-					.requires(TagRef.GRAIN_RICE)
-					.requires(TagRef.RAW_PORK)
-					.save(pvd);
-
 			steaming(pvd, DataIngredient.items(YHBowl.RICE_POWDER_PORK.raw.asItem()), YHBowl.RICE_POWDER_PORK.item::asItem);
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBowl.KAGUYA_HIME.raw.get())::unlockedBy, Items.BAMBOO)
-					.requires(Items.BROWN_MUSHROOM)
-					.requires(Items.CARROT)
-					.requires(TagRef.RAW_PORK)
-					.save(pvd);
 
 			steaming(pvd, DataIngredient.items(YHBowl.KAGUYA_HIME.raw.asItem()), YHBowl.KAGUYA_HIME.item::asItem);
 		}
@@ -1201,6 +1186,18 @@ public class YHRecipeGen {
 						.addUnordered(YHTagGen.RAW_TUNA)
 						.save(pvd);
 
+			}
+
+			{
+
+				unlock(pvd, new FixedRecipeBuilder(TableBambooBowls.TUTU_CONGEE)::unlockedBy, Items.BAMBOO)
+						.result(YHBowl.TUTU_CONGEE.raw).save(pvd);
+
+				unlock(pvd, new FixedRecipeBuilder(TableBambooBowls.RICE_POWDER_PORK)::unlockedBy, Items.BAMBOO)
+						.result(YHBowl.RICE_POWDER_PORK.raw).save(pvd);
+
+				unlock(pvd, new FixedRecipeBuilder(TableBambooBowls.KAGUYA_HIME)::unlockedBy, Items.BAMBOO)
+						.result(YHBowl.KAGUYA_HIME.raw).save(pvd);
 			}
 		}
 

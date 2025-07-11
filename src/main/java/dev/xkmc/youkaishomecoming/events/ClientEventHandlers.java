@@ -27,9 +27,20 @@ public class ClientEventHandlers {
 
 	@SubscribeEvent
 	public static void onInput(MovementInputUpdateEvent event) {
-		var ins = event.getEntity().getEffect(YHEffects.CRABY.get());
-		if (ins == null) return;
-		event.getInput().leftImpulse *= 1 + (1 + ins.getAmplifier()) * 0.5f;
+		{
+			var ins = event.getEntity().getEffect(YHEffects.CRABY.get());
+			if (ins != null)
+				event.getInput().leftImpulse *= 1 + (1 + ins.getAmplifier()) * 0.5f;
+		}
+		if (oTilt > 0.01) {
+			float t = oTilt;
+			float time = event.getEntity().tickCount;
+			float movement = t * t * Mth.sin((float) (time / 60 * Math.PI * 2));
+			float opt = Minecraft.getInstance().options.fovEffectScale().get().floatValue();
+			float scale = Math.abs(event.getInput().forwardImpulse) + 0.3f;
+			float val = event.getInput().leftImpulse + (1.5f - opt) * movement * scale * 2;
+			event.getInput().leftImpulse = Mth.clamp(val, -1, 1);
+		}
 	}
 
 	private static float drunkLevel() {
@@ -46,7 +57,9 @@ public class ClientEventHandlers {
 		float t = Mth.lerp(pTick, oTilt, tilt);
 		if (t < 0.01) return;
 		float time = pTick + player.tickCount;
-		pose.mulPose(Axis.ZP.rotationDegrees(t * t * 45 * Mth.sin((float) (time / 60 * Math.PI * 2))));
+		float angle = t * t * 45 * Mth.sin((float) (time / 60 * Math.PI * 2));
+		float opt = Minecraft.getInstance().options.fovEffectScale().get().floatValue();
+		pose.mulPose(Axis.ZP.rotationDegrees(angle * opt));
 	}
 
 }

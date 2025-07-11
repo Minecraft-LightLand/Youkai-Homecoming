@@ -31,5 +31,5 @@
       "gensokyodelight:raw_tutu_congee"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

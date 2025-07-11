@@ -9,6 +9,8 @@ import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.client.model.generators.ModelFile;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class BottledDrinkSet {
 	private static List<BottledDrinkSet> LIST = new ArrayList<>();
 
 	public final BlockEntry<BottleBlock> bottle;
-	public final YHDrink drink;
+	public final IYHFluidHolder drink;
 	public final int index;
 
 	public BottledDrinkSet(YHDrink drink) {
@@ -28,9 +30,11 @@ public class BottledDrinkSet {
 		LIST.add(this);
 		String folder = drink.folder;
 		bottle = YoukaisHomecoming.REGISTRATE.block(drink.getName() + "_bottle", BottleBlock::new)
+				.initialProperties(() -> Blocks.GLASS_PANE)
+				.properties(p -> p.pushReaction(PushReaction.DESTROY))
 				.blockstate((ctx, pvd) ->
 						BottleBlock.buildModel(ctx, pvd, drink))
-				.loot((pvd, block) -> BottleBlock.buildLoot(pvd, block, drink))
+				.loot(BottleBlock::buildLoot)
 				.item((block, prop) -> new BucketBottleItem(block, prop, drink))
 				.model((ctx, pvd) ->
 						pvd.generated(ctx, pvd.modLoc("item/bottle/" + folder + "/" + ctx.getName())))
@@ -62,9 +66,10 @@ public class BottledDrinkSet {
 	public static float texture(ItemStack stack) {
 		var fluid = SlipBottleItem.getFluid(stack);
 		if (fluid.isEmpty()) return 0;
-		if (fluid.getFluid() instanceof YHFluid liquid && liquid.type instanceof YHDrink drink && drink.set != null)
-			return (drink.set.index + 1) * 1f / LIST.size();
-		return 0;
+		if (!(fluid.getFluid() instanceof YHFluid liquid)) return 0;
+		var set = liquid.type.bottleSet();
+		if (set == null) return 0;
+		return (set.index + 1) * 1f / LIST.size();
 	}
 
 }
