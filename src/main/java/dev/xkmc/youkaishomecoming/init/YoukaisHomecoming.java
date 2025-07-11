@@ -88,7 +88,6 @@ public class YoukaisHomecoming {
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
-		REGISTRATE.addDataGenerator(YHTagGen.EFF_TAGS, YHTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, YHRecipeGen::genRecipes);
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);

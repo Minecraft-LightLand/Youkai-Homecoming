@@ -1,6 +1,5 @@
 {
   "values": [
-    "youkaisfeasts:moka_pot",
     "youkaisfeasts:kettle",
     "youkaisfeasts:fermentation_tank",
     "youkaisfeasts:steamer_pot",
@@ -14,7 +13,6 @@
     "youkaisfeasts:potato_soup",
     "youkaisfeasts:borscht",
     "youkaisfeasts:signature_mushroom_stew",
-    "youkaisfeasts:hokkaido_salmon_hotpot",
-    "youkaisfeasts:moka_kit"
+    "youkaisfeasts:hokkaido_salmon_hotpot"
   ]
 }

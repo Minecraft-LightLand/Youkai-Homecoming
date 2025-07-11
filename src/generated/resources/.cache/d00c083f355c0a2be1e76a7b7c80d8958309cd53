@@ -1,6 +1,5 @@
-// 1.20.1	2025-07-11T11:41:29.153348	Youkai's Homecoming Data
+// 1.20.1	2025-07-11T16:45:35.040076	Youkai's Homecoming Data
 3b0ab16b91134b4c3c1af5c700a25e7a19620c7f data/youkaisfeasts/forge/biome_modifier/black_grape.json
-1e4fc8d810493d57102cdcaa344551bcebed5ee3 data/youkaisfeasts/forge/biome_modifier/coffea.json
 916358c00baf709be57f515a29e904c1d1e9cc19 data/youkaisfeasts/forge/biome_modifier/crab.json
 a8b879ff9d54c425fbcf6b502ea2fe9a34bb8c00 data/youkaisfeasts/forge/biome_modifier/cucumber.json
 5956a4e58902f7351c6c4bf03359fa640b5e9f29 data/youkaisfeasts/forge/biome_modifier/deer.json
@@ -14,7 +13,6 @@ e8cf7389df3f580c40ccec7fb6b95245cd7b80ff data/youkaisfeasts/forge/biome_modifier
 cffc3f5329e130844f8fc399a5a9cb6ccc2dbb49 data/youkaisfeasts/forge/biome_modifier/white_grape.json
 d07231f3f31a0bcbab80e0f3a191e01c84bf7cf4 data/youkaisfeasts/worldgen/biome/sakura_forest.json
 1b38d2cce21e83e7e1c18782f258a92e26d44ccc data/youkaisfeasts/worldgen/configured_feature/black_grape.json
-abbbf402fd6c5a33d680632835690f71fcb1bdab data/youkaisfeasts/worldgen/configured_feature/coffea.json
 49ce0ba5d8db6877eb8c2e3b6a70058ba66fc15e data/youkaisfeasts/worldgen/configured_feature/cucumber.json
 f690a5d4652f861d9d5c5a28b2142bfcd1b389dc data/youkaisfeasts/worldgen/configured_feature/red_grape.json
 520b9c62d287dbdca5e8e78c0b8b8fed7106f07f data/youkaisfeasts/worldgen/configured_feature/redbean.json
@@ -23,7 +21,6 @@ f690a5d4652f861d9d5c5a28b2142bfcd1b389dc data/youkaisfeasts/worldgen/configured_
 22d7c955245a2b66964ae8f6387fc88ce21d2b6e data/youkaisfeasts/worldgen/configured_feature/udumbara.json
 e6e7aa58f461efc3ff3e5f73d0852d27c3d9ddca data/youkaisfeasts/worldgen/configured_feature/white_grape.json
 60c6b8b38e92239c98fd64fcd29e465a3802a28e data/youkaisfeasts/worldgen/placed_feature/black_grape.json
-2697b8dd715b9ee062d107ca478a5f4e81513681 data/youkaisfeasts/worldgen/placed_feature/coffea.json
 c565d45b3f12b0673ee0e9b1bf77edf927be7df1 data/youkaisfeasts/worldgen/placed_feature/cucumber.json
 d478f659e015e582076e9c047de2a9b127e4f893 data/youkaisfeasts/worldgen/placed_feature/red_grape.json
 808fe114250a38a0d022ca2705d6fcc1d61cfa96 data/youkaisfeasts/worldgen/placed_feature/redbean.json

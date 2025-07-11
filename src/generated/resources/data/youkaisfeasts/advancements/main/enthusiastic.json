@@ -1,26 +1,6 @@
 {
   "parent": "youkaisfeasts:main/welcome_to_gensokyo",
   "criteria": {
-    "youkaisfeasts:affogato": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:affogato"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:americano": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:americano"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:apaki": {
       "conditions": {
         "item": {
@@ -171,16 +151,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaisfeasts:cappuccino": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:cappuccino"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:champagne": {
       "conditions": {
         "item": {
@@ -191,31 +161,11 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaisfeasts:coffee_mochi": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:coffee_mochi"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:cold_tofu": {
       "conditions": {
         "item": {
           "items": [
             "youkaisfeasts:cold_tofu"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:con_panna": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:con_panna"
           ]
         }
       },
@@ -336,16 +286,6 @@
         "item": {
           "items": [
             "youkaisfeasts:egg_nigiri"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:espresso": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:espresso"
           ]
         }
       },
@@ -571,16 +511,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaisfeasts:latte": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:latte"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:lions_head": {
       "conditions": {
         "item": {
@@ -606,16 +536,6 @@
         "item": {
           "items": [
             "youkaisfeasts:lorelei_nigiri"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:macchiato": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:macchiato"
           ]
         }
       },
@@ -696,16 +616,6 @@
         "item": {
           "items": [
             "youkaisfeasts:mitarashi_dango"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:mocha": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:mocha"
           ]
         }
       },
@@ -976,16 +886,6 @@
         "item": {
           "items": [
             "youkaisfeasts:rice_powder_pork"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:ristretto": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:ristretto"
           ]
         }
       },
@@ -1622,33 +1522,6 @@
       "youkaisfeasts:van_allen"
     ],
     [
-      "youkaisfeasts:espresso"
-    ],
-    [
-      "youkaisfeasts:americano"
-    ],
-    [
-      "youkaisfeasts:ristretto"
-    ],
-    [
-      "youkaisfeasts:latte"
-    ],
-    [
-      "youkaisfeasts:affogato"
-    ],
-    [
-      "youkaisfeasts:con_panna"
-    ],
-    [
-      "youkaisfeasts:cappuccino"
-    ],
-    [
-      "youkaisfeasts:macchiato"
-    ],
-    [
-      "youkaisfeasts:mocha"
-    ],
-    [
       "youkaisfeasts:miso_soup"
     ],
     [
@@ -1773,9 +1646,6 @@
     ],
     [
       "youkaisfeasts:tsukimi_dango"
-    ],
-    [
-      "youkaisfeasts:coffee_mochi"
     ],
     [
       "youkaisfeasts:matcha_mochi"
