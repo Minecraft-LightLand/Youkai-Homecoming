@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-11T16:45:35.04407	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-11T16:56:09.337728	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 d543d0b385baf07809b3b33e20db22575103bd37 assets/youkaisfeasts/blockstates/bamboo_bowl.json
@@ -1244,12 +1244,12 @@ a54e97e5706da307e7c2ec90b1d3a293a073847f data/minecraft/tags/blocks/mineable/axe
 c737c9c7ff4038150c19bc9cc3a08ca640605c60 data/minecraft/tags/blocks/mineable/pickaxe.json
 7831ecac2a77e92427ac4b4cbf810a4f341f5fa7 data/minecraft/tags/items/fishes.json
 08624f066e5b6d48e10ceab4651689d33338b43b data/sereneseasons/tags/blocks/autumn_crops.json
-60bde58379fb6d8b665136630697a5e2efb1a83b data/sereneseasons/tags/blocks/spring_crops.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/sereneseasons/tags/blocks/summer_crops.json
+d4defa7412efe3e5b342c4ab398745dca905e532 data/sereneseasons/tags/blocks/spring_crops.json
+1c507c9206477eb8bd7f1ea18f2bbd773332dec8 data/sereneseasons/tags/blocks/summer_crops.json
 d5e8371391cfefce5242aef31b52ee5d3f717d19 data/sereneseasons/tags/blocks/winter_crops.json
 08624f066e5b6d48e10ceab4651689d33338b43b data/sereneseasons/tags/items/autumn_crops.json
-5f94cf2f3176011d85556e6513184dacf4c6120b data/sereneseasons/tags/items/spring_crops.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/sereneseasons/tags/items/summer_crops.json
+b5538488c03758fb80f33e7784ac39e997569161 data/sereneseasons/tags/items/spring_crops.json
+399446d030566a9ddaf7e35473979e884958e5f5 data/sereneseasons/tags/items/summer_crops.json
 d5e8371391cfefce5242aef31b52ee5d3f717d19 data/sereneseasons/tags/items/winter_crops.json
 306dc8c493ccf2a999435f2516be6121ffec4150 data/youkaisfeasts/advancements/main/alcoholic.json
 afc2257600943ba7b09c4bdcf9ff033963364d7d data/youkaisfeasts/advancements/main/cucumber.json
