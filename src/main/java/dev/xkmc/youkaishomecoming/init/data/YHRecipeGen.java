@@ -14,6 +14,7 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
@@ -23,6 +24,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.FixedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.MixedRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.OrderedRecipeBuilder;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -739,6 +741,18 @@ public class YHRecipeGen {
 
 		// iron bowl
 		{
+
+			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("miso"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.save(pvd);
+
+			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.get())
+					.add(YHItems.CREAM.get())
+					.save(pvd);
+
+			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soul"))::unlockedBy, Items.SOUL_SAND)
+					.add(Items.SOUL_SAND)
+					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HIGAN_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
 					.add(Items.SOUL_SAND)
