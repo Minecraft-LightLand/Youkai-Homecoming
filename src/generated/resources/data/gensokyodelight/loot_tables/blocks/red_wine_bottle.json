@@ -5,7 +5,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "youkaishomecoming:red_wine_bottle",
+          "block": "gensokyodelight:red_wine_bottle",
           "condition": "minecraft:block_state_property",
           "properties": {
             "count": "1"
@@ -24,7 +24,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "youkaishomecoming:red_wine_bottle",
+          "block": "gensokyodelight:red_wine_bottle",
           "condition": "minecraft:block_state_property",
           "properties": {
             "count": "2"
@@ -34,7 +34,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:red_wine_bottle"
+          "name": "gensokyodelight:red_wine_bottle"
         }
       ],
       "functions": [
@@ -50,7 +50,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "youkaishomecoming:red_wine_bottle",
+          "block": "gensokyodelight:red_wine_bottle",
           "condition": "minecraft:block_state_property",
           "properties": {
             "count": "3"
@@ -60,7 +60,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:red_wine_bottle"
+          "name": "gensokyodelight:red_wine_bottle"
         }
       ],
       "functions": [
@@ -76,7 +76,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "youkaishomecoming:red_wine_bottle",
+          "block": "gensokyodelight:red_wine_bottle",
           "condition": "minecraft:block_state_property",
           "properties": {
             "count": "4"
@@ -86,7 +86,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:red_wine_bottle"
+          "name": "gensokyodelight:red_wine_bottle"
         }
       ],
       "functions": [

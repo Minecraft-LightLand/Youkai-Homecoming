@@ -1,17 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "gensokyodelight:soybean"
-    },
-    {
-      "tag": "forge:grain/rice"
-    },
-    {
-      "tag": "forge:raw_pork"
-    }
-  ],
+  "type": "gensokyodelight:cuisine_fixed",
+  "base": "gensokyodelight:rice_powder_pork",
   "result": {
     "item": "gensokyodelight:raw_rice_powder_pork"
   }

@@ -4,7 +4,7 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
-import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
