@@ -29,6 +29,7 @@ import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
+import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
@@ -92,6 +93,7 @@ public class YoukaisHomecoming {
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaisHomecoming() {
+		InitializationMarker.expectAndAdvance(0);
 		YHBlocks.register();
 		YHEffects.register();
 		YHDanmaku.register();

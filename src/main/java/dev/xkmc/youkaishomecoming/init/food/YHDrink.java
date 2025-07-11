@@ -186,6 +186,11 @@ public enum YHDrink implements IYHFluidHolder {
 		return fluid;
 	}
 
+	@Override
+	public @Nullable String bottleTextureFolder() {
+		return folder;
+	}
+
 	@SuppressWarnings("deprecation")
 	public Item getContainer() {
 		Item ans = item.get().getCraftingRemainingItem();

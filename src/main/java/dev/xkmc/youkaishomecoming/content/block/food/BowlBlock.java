@@ -51,8 +51,8 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 		builder.add(FACING);
 	}
 
-	public BlockState getStateForPlacement(BlockState def, BlockPlaceContext context) {
-		return def.setValue(FACING, context.getHorizontalDirection().getOpposite());
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
 	}
 
 	@Override
