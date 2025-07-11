@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.Block;
 public class SeasonCompat {
 
 	private static final Multimap<Seasons, YHCrops> CROP = new ImmutableMultimap.Builder<Seasons, YHCrops>()
-			.putAll(Seasons.SPRING, YHCrops.TEA)
-			//.putAll(Seasons.SUMMER, YHCrops.COFFEA)
+			.putAll(Seasons.SPRING, YHCrops.TEA, YHCrops.CUCUMBER)
+			//.putAll(Seasons.SUMMER, YHCrops.COFFEA, YHCrops.BLACK_GRAPE, YHCrops.WHITE_GRAPE, YHCrops.RED_GRAPE)
 			.putAll(Seasons.AUTUMN, YHCrops.SOYBEAN)
 			.putAll(Seasons.WINTER, YHCrops.REDBEAN)
 			.build();
