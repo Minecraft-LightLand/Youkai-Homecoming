@@ -7,7 +7,6 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.food.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
@@ -95,6 +94,7 @@ public class YHItems {
 	public static final ItemEntry<Item> EMPTY_HAND_ICON;
 
 	static {
+		InitializationMarker.expectAndAdvance(3);
 
 		// plants
 		{
@@ -167,6 +167,8 @@ public class YHItems {
 					.register();
 		}
 
+
+		InitializationMarker.expectAndAdvance(4);
 		YHFood.register();
 		YHBowl.register();
 		YHSushi.register();
@@ -283,6 +285,8 @@ public class YHItems {
 
 		EMPTY_HAND_ICON = YoukaisHomecoming.REGISTRATE.item("empty_hand_icon", Item::new)
 				.removeTab(YoukaisHomecoming.TAB.getKey()).register();
+
+		InitializationMarker.expectAndAdvance(6);
 
 	}
 

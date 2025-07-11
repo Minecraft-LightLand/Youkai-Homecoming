@@ -47,6 +47,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.recipe.*;
 import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHRecipeGen;
+import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -181,6 +182,7 @@ public class YHBlocks {
 	public static final WoodSet HAY, STRAW;
 
 	static {
+		InitializationMarker.expectAndAdvance(1);
 
 		// moka kettle, rack
 		{
@@ -360,6 +362,7 @@ public class YHBlocks {
 			CUISINE_FIXED = reg("cuisine_fixed", () -> new BaseRecipe.RecType<>(FixedCuisineRecipe.class, CUISINE_RT));
 		}
 
+		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
 		{
@@ -485,7 +488,6 @@ public class YHBlocks {
 	}
 
 	public static void register() {
-
 	}
 
 	public static class WoodSet {

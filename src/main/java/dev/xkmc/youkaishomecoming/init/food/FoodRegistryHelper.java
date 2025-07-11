@@ -6,6 +6,10 @@ import net.minecraft.world.item.Item;
 
 public class FoodRegistryHelper {
 
+	static {
+		InitializationMarker.expectAndAdvance(5);
+	}
+
 	private static boolean mochi = false;
 
 	public static String getId(FoodType type, TagKey<Item>[] tags) {

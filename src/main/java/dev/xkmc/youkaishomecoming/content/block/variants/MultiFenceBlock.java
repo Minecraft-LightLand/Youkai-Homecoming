@@ -174,6 +174,9 @@ public class MultiFenceBlock extends Block implements SimpleWaterloggedBlock, Le
 
 	@Override
 	public boolean leftClick(BlockState state, Level level, BlockPos pos, Player player) {
+		if (player.getCooldowns().isOnCooldown(asItem()))
+			return false;
+		player.getCooldowns().addCooldown(asItem(), 4);
 		var result = RayTraceUtil.rayTraceBlock(level, player, player.getBlockReach());
 		var hit = result.getLocation();
 		if (!new AABB(pos).inflate(0.1).contains(hit)) {
