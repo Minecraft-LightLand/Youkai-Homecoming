@@ -1,0 +1,30 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:phantom_membrane"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:tengu_tango"
+  },
+  "results": [],
+  "time": 2400
+}

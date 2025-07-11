@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaisfeasts:spawns/cucumber",
+  "features": "youkaisfeasts:cucumber",
+  "step": "vegetal_decoration"
+}

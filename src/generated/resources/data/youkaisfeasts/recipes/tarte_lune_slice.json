@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:tarte_lune"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "youkaisfeasts:tarte_lune_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

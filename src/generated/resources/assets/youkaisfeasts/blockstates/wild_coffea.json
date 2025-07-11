@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "youkaisfeasts:block/coffea_bottom"
+    },
+    "half=upper": {
+      "model": "youkaisfeasts:block/coffea"
+    }
+  }
+}

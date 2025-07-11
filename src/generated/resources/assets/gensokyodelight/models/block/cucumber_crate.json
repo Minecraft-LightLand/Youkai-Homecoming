@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "gensokyodelight:block/bags/crate_bottom",
-    "particle": "gensokyodelight:block/bags/cucumber_crate_top",
-    "side": "gensokyodelight:block/bags/cucumber_crate_side",
-    "top": "gensokyodelight:block/bags/cucumber_crate_top"
-  }
-}

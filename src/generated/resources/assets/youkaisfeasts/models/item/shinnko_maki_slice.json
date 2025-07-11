@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaisfeasts:item/food/maki/shinnko_maki_slice"
+  }
+}

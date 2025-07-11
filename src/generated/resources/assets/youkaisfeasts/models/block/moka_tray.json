@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/moka_pot_tray",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "maker": "youkaisfeasts:block/utensil/moka_pot",
+    "tray_side": "youkaisfeasts:block/utensil/cooking_pot_tray_side",
+    "tray_top": "youkaisfeasts:block/utensil/cooking_pot_tray_top"
+  }
+}

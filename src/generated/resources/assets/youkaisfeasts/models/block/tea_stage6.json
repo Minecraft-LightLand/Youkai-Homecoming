@@ -1,0 +1,11 @@
+{
+  "parent": "youkaisfeasts:custom/plant/tea_stage6",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaves": "youkaisfeasts:block/plants/tea/tea_bush_leaves",
+    "side": "youkaisfeasts:block/plants/tea/tea_bush_side",
+    "top": "youkaisfeasts:block/plants/tea/tea_bush_top",
+    "trunk": "youkaisfeasts:block/plants/tea/tea_bush_trunk"
+  }
+}

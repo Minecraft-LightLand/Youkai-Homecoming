@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:custom/bowl/iron/hokkaido_salmon_hotpot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/bowl/iron/hokkaido_salmon_hotpot",
+    "bowl": "youkaisfeasts:block/bowl/iron/iron_bowl"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_venison_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaisfeasts:raw_venison_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:grilled_venison_slice_from_raw_venison_slice_campfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_venison_slice",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:grilled_venison_slice_from_raw_venison_slice_campfire"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "tag": "youkaisfeasts:dango"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.sweet.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaisfeasts:mochi"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.sweet.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

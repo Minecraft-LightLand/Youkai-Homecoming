@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:table/bamboo/base",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "in": "youkaisfeasts:block/table/bamboo/in",
+    "out": "youkaisfeasts:block/table/bamboo/out"
+  }
+}

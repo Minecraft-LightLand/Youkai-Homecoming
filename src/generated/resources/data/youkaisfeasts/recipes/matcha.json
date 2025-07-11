@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:green_tea_leaves"
+    }
+  ],
+  "result": [
+    {
+      "item": "youkaisfeasts:matcha"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/shovels"
+  }
+}

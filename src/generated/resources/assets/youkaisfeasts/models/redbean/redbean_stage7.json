@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/cross_crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "youkaisfeasts:block/plants/redbean/redbean_stage7"
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gensokyodelight:item/food/wine/white_grape_juice"
-  }
-}

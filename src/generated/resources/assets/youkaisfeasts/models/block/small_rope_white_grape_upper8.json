@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/rope_crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "youkaisfeasts:block/plants/grape/small/upper8",
+    "rope_side": "youkaisfeasts:block/plants/rope",
+    "rope_top": "youkaisfeasts:block/plants/rope_top"
+  }
+}

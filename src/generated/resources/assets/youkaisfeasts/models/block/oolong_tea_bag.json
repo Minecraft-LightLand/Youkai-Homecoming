@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "youkaisfeasts:block/bags/oolong_tea_bag_bottom",
+    "east": "youkaisfeasts:block/bags/oolong_tea_bag_side_tied",
+    "north": "youkaisfeasts:block/bags/oolong_tea_bag_side",
+    "particle": "youkaisfeasts:block/bags/oolong_tea_bag_top",
+    "south": "youkaisfeasts:block/bags/oolong_tea_bag_side",
+    "up": "youkaisfeasts:block/bags/oolong_tea_bag_top",
+    "west": "youkaisfeasts:block/bags/oolong_tea_bag_side_tied"
+  }
+}

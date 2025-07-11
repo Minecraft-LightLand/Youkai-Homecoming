@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/dish/dried_fish",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/dried_fish_base",
+    "ceramic": "youkaisfeasts:block/dish/ceramic",
+    "detail": "youkaisfeasts:block/dish/dried_fish_detail",
+    "particle": "youkaisfeasts:block/dish/ceramic"
+  }
+}

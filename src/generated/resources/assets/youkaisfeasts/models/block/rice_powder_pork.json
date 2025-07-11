@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/bowl/bamboo/rice_powder_pork",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/bowl/bamboo/rice_powder_pork",
+    "in": "youkaisfeasts:block/bowl/bamboo/bamboo_inside",
+    "leaf": "youkaisfeasts:block/bowl/bamboo/bamboo_leaf",
+    "out": "youkaisfeasts:block/bowl/bamboo/bamboo_bowl"
+  }
+}

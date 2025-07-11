@@ -1,0 +1,21 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:raw_pork"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:potato_soup"
+  },
+  "time": 200
+}

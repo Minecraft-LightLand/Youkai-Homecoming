@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:mochi"
+    },
+    {
+      "item": "youkaisfeasts:matcha_mochi"
+    },
+    {
+      "item": "youkaisfeasts:sakura_mochi"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:assorted_dango"
+  }
+}

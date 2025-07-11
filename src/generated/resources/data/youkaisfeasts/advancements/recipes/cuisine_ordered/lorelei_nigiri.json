@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_roasted_lamprey_fillet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaisfeasts:roasted_lamprey_fillet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:lorelei_nigiri"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_roasted_lamprey_fillet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:lorelei_nigiri"
+    ]
+  },
+  "sends_telemetry_event": true
+}

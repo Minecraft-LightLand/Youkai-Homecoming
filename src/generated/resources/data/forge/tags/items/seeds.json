@@ -1,14 +1,14 @@
 {
   "values": [
-    "gensokyodelight:soybean",
-    "gensokyodelight:redbean",
-    "gensokyodelight:green_coffee_bean",
-    "gensokyodelight:tea_seeds",
-    "gensokyodelight:udumbara_seeds",
-    "gensokyodelight:cucumber_seeds",
-    "gensokyodelight:red_grape_seeds",
-    "gensokyodelight:black_grape_seeds",
-    "gensokyodelight:white_grape_seeds",
+    "youkaisfeasts:soybean",
+    "youkaisfeasts:redbean",
+    "youkaisfeasts:green_coffee_bean",
+    "youkaisfeasts:tea_seeds",
+    "youkaisfeasts:udumbara_seeds",
+    "youkaisfeasts:cucumber_seeds",
+    "youkaisfeasts:red_grape_seeds",
+    "youkaisfeasts:black_grape_seeds",
+    "youkaisfeasts:white_grape_seeds",
     "#forge:seeds/cucumber"
   ]
 }

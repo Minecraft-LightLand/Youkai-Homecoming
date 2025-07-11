@@ -1,0 +1,10 @@
+{
+  "type": "youkaisfeasts:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "farmersdelight:cod_slice"
+  },
+  "result": "farmersdelight:cooked_cod_slice"
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "merged=false": {
+      "model": "youkaisfeasts:block/tree_red_grape_trunk_rope"
+    },
+    "merged=true": {
+      "model": "youkaisfeasts:block/tree_red_grape_trunk"
+    }
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/sushi/kelp_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "kelp": "gensokyodelight:block/table/sushi/kelp/kelp"
-  }
-}

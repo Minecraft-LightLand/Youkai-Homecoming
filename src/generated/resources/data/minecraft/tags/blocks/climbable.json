@@ -1,17 +1,17 @@
 {
   "values": [
-    "gensokyodelight:cucumber",
-    "gensokyodelight:red_grape",
-    "gensokyodelight:red_grape_trunk",
-    "gensokyodelight:red_grape_vines",
-    "gensokyodelight:red_grape_branches",
-    "gensokyodelight:black_grape",
-    "gensokyodelight:black_grape_trunk",
-    "gensokyodelight:black_grape_vines",
-    "gensokyodelight:black_grape_branches",
-    "gensokyodelight:white_grape",
-    "gensokyodelight:white_grape_trunk",
-    "gensokyodelight:white_grape_vines",
-    "gensokyodelight:white_grape_branches"
+    "youkaisfeasts:cucumber",
+    "youkaisfeasts:red_grape",
+    "youkaisfeasts:red_grape_trunk",
+    "youkaisfeasts:red_grape_vines",
+    "youkaisfeasts:red_grape_branches",
+    "youkaisfeasts:black_grape",
+    "youkaisfeasts:black_grape_trunk",
+    "youkaisfeasts:black_grape_vines",
+    "youkaisfeasts:black_grape_branches",
+    "youkaisfeasts:white_grape",
+    "youkaisfeasts:white_grape_trunk",
+    "youkaisfeasts:white_grape_vines",
+    "youkaisfeasts:white_grape_branches"
   ]
 }

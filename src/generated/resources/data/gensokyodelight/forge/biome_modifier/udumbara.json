@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gensokyodelight:spawns/udumbara",
-  "features": "gensokyodelight:udumbara",
-  "step": "vegetal_decoration"
-}

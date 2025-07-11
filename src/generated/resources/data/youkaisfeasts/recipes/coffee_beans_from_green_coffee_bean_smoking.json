@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaisfeasts:green_coffee_bean"
+  },
+  "result": "youkaisfeasts:coffee_beans"
+}

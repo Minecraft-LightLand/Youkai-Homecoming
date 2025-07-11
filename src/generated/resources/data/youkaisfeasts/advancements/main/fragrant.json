@@ -1,0 +1,36 @@
+{
+  "parent": "youkaisfeasts:main/coffee_era",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:espresso"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.fragrant.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaisfeasts:espresso"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.fragrant.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

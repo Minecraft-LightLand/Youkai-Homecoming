@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/kettle_tray",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kettle": "youkaisfeasts:block/utensil/kettle",
+    "tray_side": "youkaisfeasts:block/utensil/cooking_pot_tray_side",
+    "tray_top": "youkaisfeasts:block/utensil/cooking_pot_tray_top"
+  }
+}

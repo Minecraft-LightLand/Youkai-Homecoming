@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/miso_soup",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/miso_soup"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/miso_soup",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/miso_soup",
+      "y": 270
+    }
+  }
+}

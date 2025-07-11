@@ -1,0 +1,10 @@
+{
+  "type": "youkaisfeasts:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaisfeasts:raw_rice_powder_pork"
+  },
+  "result": "youkaisfeasts:rice_powder_pork"
+}

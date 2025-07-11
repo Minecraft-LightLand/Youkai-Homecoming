@@ -1,0 +1,67 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaisfeasts:coffea",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "lower"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "youkaisfeasts:green_coffee_bean"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaisfeasts:coffea",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "11"
+          }
+        },
+        {
+          "block": "youkaisfeasts:coffea",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "lower"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "function": "minecraft:apply_bonus",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "youkaisfeasts:coffee_berries"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaisfeasts:blocks/coffea"
+}

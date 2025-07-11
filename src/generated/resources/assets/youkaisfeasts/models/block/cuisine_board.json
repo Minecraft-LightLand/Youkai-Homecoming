@@ -1,0 +1,6 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/cuisine_board",
+  "textures": {
+    "all": "youkaisfeasts:block/utensil/cuisine_board"
+  }
+}

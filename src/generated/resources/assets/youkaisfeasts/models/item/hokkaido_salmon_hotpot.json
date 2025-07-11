@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaisfeasts:item/bowl/iron/hokkaido_salmon_hotpot"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:table/open_futomaki/base",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kelp": "youkaisfeasts:block/table/kelp",
+    "rice": "youkaisfeasts:block/table/rice"
+  }
+}

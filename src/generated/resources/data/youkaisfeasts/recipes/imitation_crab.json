@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 4,
+    "item": "youkaisfeasts:imitation_crab"
+  }
+}

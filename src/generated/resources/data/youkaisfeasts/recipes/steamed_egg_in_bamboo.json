@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "minecraft:bamboo"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:steamed_egg_in_bamboo"
+  }
+}

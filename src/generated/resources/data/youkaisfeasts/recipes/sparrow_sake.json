@@ -1,0 +1,30 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:sparrow_sake"
+  },
+  "results": [],
+  "time": 2400
+}

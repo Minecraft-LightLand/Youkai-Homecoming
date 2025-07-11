@@ -1,0 +1,11 @@
+{
+  "parent": "youkaisfeasts:custom/plant/coffea_stage8",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "youkaisfeasts:block/plants/coffea/coffea_trunk8",
+    "side": "youkaisfeasts:block/plants/coffea/coffea_bush_side",
+    "top": "youkaisfeasts:block/plants/coffea/coffea_bush_top",
+    "trunk": "youkaisfeasts:block/plants/coffea/coffea_trunk8"
+  }
+}

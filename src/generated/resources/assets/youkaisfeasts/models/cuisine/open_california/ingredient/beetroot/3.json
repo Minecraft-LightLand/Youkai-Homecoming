@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:table/open_california/ingredient_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "ingredient": "youkaisfeasts:block/table/ingredient/beetroot"
+  }
+}

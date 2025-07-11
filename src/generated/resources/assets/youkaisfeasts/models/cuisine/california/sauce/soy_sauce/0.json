@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:table/california/sauce_0",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "sauce": "youkaisfeasts:block/table/sauce/soy_sauce"
+  }
+}

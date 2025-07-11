@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:cuisine_ordered",
+  "base": "youkaisfeasts:sushi",
+  "input": [
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "farmersdelight:salmon_roll"
+  }
+}

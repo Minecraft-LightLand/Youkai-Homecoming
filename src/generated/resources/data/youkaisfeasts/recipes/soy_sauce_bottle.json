@@ -1,0 +1,27 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:soy_sauce"
+  },
+  "results": [],
+  "time": 1800
+}

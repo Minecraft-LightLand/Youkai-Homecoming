@@ -1,0 +1,75 @@
+{
+  "parent": "youkaisfeasts:main/tea",
+  "criteria": {
+    "youkaisfeasts:black_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:black_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:green_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:green_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:oolong_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:oolong_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:white_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:white_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.tea_master.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "youkaisfeasts:oolong_tea"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.tea_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "youkaisfeasts:white_tea"
+    ],
+    [
+      "youkaisfeasts:oolong_tea"
+    ],
+    [
+      "youkaisfeasts:green_tea"
+    ],
+    [
+      "youkaisfeasts:black_tea"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

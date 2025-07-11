@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gensokyodelight:spawns/cucumber",
-  "features": "gensokyodelight:cucumber",
-  "step": "vegetal_decoration"
-}

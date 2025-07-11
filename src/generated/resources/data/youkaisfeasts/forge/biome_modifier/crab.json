@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#youkaisfeasts:spawns/crab",
+  "spawners": {
+    "type": "youkaisfeasts:crab",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 10
+  }
+}

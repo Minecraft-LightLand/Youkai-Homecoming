@@ -1,8 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/bowl/iron/hokkaido_salmon_hotpot",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "gensokyodelight:block/bowl/iron/hokkaido_salmon_hotpot",
-    "bowl": "gensokyodelight:block/bowl/iron/iron_bowl"
-  }
-}

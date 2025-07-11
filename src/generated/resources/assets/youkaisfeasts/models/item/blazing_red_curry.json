@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaisfeasts:item/food/bowl/blazing_red_curry"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:mushrooms"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:signature_mushroom_stew"
+  },
+  "time": 200
+}

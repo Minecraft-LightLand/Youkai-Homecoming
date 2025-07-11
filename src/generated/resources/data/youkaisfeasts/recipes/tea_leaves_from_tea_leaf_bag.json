@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:tea_leaf_bag"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "youkaisfeasts:tea_leaves"
+  }
+}

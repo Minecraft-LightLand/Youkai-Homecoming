@@ -1,8 +1,0 @@
-{
-  "parent": "gensokyodelight:table/gunkan/base",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "kelp": "gensokyodelight:block/table/kelp",
-    "rice": "gensokyodelight:block/table/rice"
-  }
-}

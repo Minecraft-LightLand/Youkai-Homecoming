@@ -1,6 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/utensil/cuisine_board",
-  "textures": {
-    "all": "gensokyodelight:block/utensil/cuisine_board"
-  }
-}

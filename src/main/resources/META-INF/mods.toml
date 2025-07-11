@@ -15,7 +15,7 @@ license="All rights reserved"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="gensokyodelight" #mandatory
+modId="youkaisfeasts" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
@@ -46,7 +46,7 @@ description='''
 
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.gensokyodelight]] #optional
+[[dependencies.youkaisfeasts]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -58,28 +58,28 @@ description='''
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.gensokyodelight]]
+[[dependencies.youkaisfeasts]]
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.20,1.21)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.gensokyodelight]]
+[[dependencies.youkaisfeasts]]
     modId="farmersdelight"
     mandatory=true
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.20.1-1.2.4,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.gensokyodelight]]
+[[dependencies.youkaisfeasts]]
     modId="touhou_little_maid"
     mandatory=false
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.1.9,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.gensokyodelight]]
+[[dependencies.youkaisfeasts]]
     modId="create"
     mandatory=false
     # This version range declares a minimum of the current minecraft version up to but not including the next major version

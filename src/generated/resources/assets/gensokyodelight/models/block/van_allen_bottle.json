@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/bottle/wine",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "bottle": "gensokyodelight:block/bottle/wine/van_allen_bottle"
-  }
-}

@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/dish/seven_colored_yokan",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/seven_colored_yokan_base",
+    "ceramic": "youkaisfeasts:block/dish/ceramic",
+    "detail": "youkaisfeasts:block/dish/seven_colored_yokan_detail",
+    "particle": "youkaisfeasts:block/dish/ceramic"
+  }
+}

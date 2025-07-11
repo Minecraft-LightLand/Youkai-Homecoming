@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:table/sushi/kelp_0",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kelp": "youkaisfeasts:block/table/sushi/kelp/kelp"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/drying_rack",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "rack": "youkaisfeasts:block/utensil/drying_rack"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "youkaisfeasts:udumbara_flower"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:full_moons_eve"
+  },
+  "results": [],
+  "time": 2400
+}

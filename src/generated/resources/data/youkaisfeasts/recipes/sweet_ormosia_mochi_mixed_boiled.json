@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "youkaisfeasts:dango"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "tag": "forge:vegetables"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:sweet_ormosia_mochi_mixed_boiled"
+  }
+}

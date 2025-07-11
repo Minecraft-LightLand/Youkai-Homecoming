@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:red_grape_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "youkaisfeasts:red_grape"
+  }
+}

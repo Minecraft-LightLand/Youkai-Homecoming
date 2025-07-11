@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:steamed_crab"
+    }
+  ],
+  "result": [
+    {
+      "item": "youkaisfeasts:crab_meat"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

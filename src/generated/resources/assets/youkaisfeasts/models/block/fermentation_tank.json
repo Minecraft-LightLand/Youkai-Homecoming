@@ -1,0 +1,11 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/fermentation_tank",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaisfeasts:block/utensil/fermentation_tank_bottom",
+    "inside": "youkaisfeasts:block/utensil/fermentation_tank_inside",
+    "lid": "youkaisfeasts:block/utensil/fermentation_tank_lid",
+    "side": "youkaisfeasts:block/utensil/fermentation_tank_side",
+    "top": "youkaisfeasts:block/utensil/fermentation_tank_top"
+  }
+}

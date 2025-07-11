@@ -1,0 +1,33 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:hokkaido_salmon_hotpot"
+  },
+  "time": 200
+}

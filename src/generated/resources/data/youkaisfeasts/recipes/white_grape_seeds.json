@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:white_grape"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:white_grape_seeds"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:red_grape_juice"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:red_wine"
+  },
+  "results": [],
+  "time": 1800
+}

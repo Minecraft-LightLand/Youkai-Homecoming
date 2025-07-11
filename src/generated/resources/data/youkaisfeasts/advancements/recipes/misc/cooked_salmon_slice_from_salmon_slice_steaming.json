@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_salmon_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersdelight:salmon_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:cooked_salmon_slice_from_salmon_slice_steaming"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_salmon_slice",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:cooked_salmon_slice_from_salmon_slice_steaming"
+    ]
+  },
+  "sends_telemetry_event": false
+}

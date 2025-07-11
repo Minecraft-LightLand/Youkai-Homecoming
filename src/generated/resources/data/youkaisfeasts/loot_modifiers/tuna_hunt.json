@@ -1,0 +1,12 @@
+{
+  "type": "youkaisfeasts:remove_item",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "killer",
+      "predicate": {
+        "type": "youkaisfeasts:tuna"
+      }
+    }
+  ]
+}

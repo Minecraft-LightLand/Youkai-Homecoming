@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:white_grape_seeds"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_grape": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaisfeasts:white_grape"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_white_grape",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:white_grape_seeds"
+    ]
+  },
+  "sends_telemetry_event": false
+}

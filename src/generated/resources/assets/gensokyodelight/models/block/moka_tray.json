@@ -1,9 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/utensil/moka_pot_tray",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "maker": "gensokyodelight:block/utensil/moka_pot",
-    "tray_side": "gensokyodelight:block/utensil/cooking_pot_tray_side",
-    "tray_top": "gensokyodelight:block/utensil/cooking_pot_tray_top"
-  }
-}

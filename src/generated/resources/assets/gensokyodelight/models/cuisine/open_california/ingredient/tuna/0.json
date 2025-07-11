@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/open_california/ingredient_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "ingredient": "gensokyodelight:block/table/ingredient/tuna"
-  }
-}

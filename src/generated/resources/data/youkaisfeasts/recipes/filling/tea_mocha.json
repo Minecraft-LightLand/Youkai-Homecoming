@@ -1,0 +1,24 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 250,
+      "fluid": "youkaisfeasts:tea_mocha",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "youkaisfeasts:tea_mocha"
+    }
+  ]
+}

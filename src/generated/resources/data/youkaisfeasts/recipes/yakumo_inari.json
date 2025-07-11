@@ -1,0 +1,30 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "youkaisfeasts:oily_bean_curd"
+    },
+    {
+      "item": "youkaisfeasts:oily_bean_curd"
+    },
+    {
+      "item": "youkaisfeasts:oily_bean_curd"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 3,
+    "item": "youkaisfeasts:yakumo_inari"
+  }
+}

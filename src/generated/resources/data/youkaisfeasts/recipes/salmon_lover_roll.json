@@ -1,0 +1,23 @@
+{
+  "type": "youkaisfeasts:cuisine_mixed",
+  "base": "youkaisfeasts:california_roll",
+  "first": [
+    {
+      "item": "youkaisfeasts:crab_roe"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:salmon_lover_roll"
+  },
+  "second": [
+    {
+      "tag": "forge:raw_fishes/salmon"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ]
+}

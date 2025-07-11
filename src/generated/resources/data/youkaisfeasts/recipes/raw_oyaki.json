@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:dough"
+    },
+    {
+      "tag": "forge:dough"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "youkaisfeasts:raw_oyaki"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/dish/tofu_burger",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/tofu_burger_base",
+    "ceramic": "youkaisfeasts:block/dish/ceramic",
+    "detail": "youkaisfeasts:block/dish/tofu_burger_detail",
+    "particle": "youkaisfeasts:block/dish/ceramic"
+  }
+}

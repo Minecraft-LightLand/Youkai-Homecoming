@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/cuisine_board",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/cuisine_board"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/cuisine_board",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/cuisine_board",
+      "y": 270
+    }
+  }
+}

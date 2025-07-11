@@ -1,7 +1,0 @@
-{
-  "type": "gensokyodelight:cuisine_fixed",
-  "base": "gensokyodelight:rice_powder_pork",
-  "result": {
-    "item": "gensokyodelight:raw_rice_powder_pork"
-  }
-}

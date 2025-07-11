@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/raw_rice_powder_pork",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/raw_rice_powder_pork"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/raw_rice_powder_pork",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/raw_rice_powder_pork",
+      "y": 270
+    }
+  }
+}

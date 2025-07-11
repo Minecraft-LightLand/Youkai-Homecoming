@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaisfeasts:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:raw_fishes"
+    },
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:sauce_grilled_fish"
+  }
+}

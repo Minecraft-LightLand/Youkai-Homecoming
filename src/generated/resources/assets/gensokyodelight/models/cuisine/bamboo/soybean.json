@@ -1,9 +1,0 @@
-{
-  "parent": "gensokyodelight:table/bamboo/filled_1",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "gensokyodelight:block/table/bamboo/soybean",
-    "in": "gensokyodelight:block/table/bamboo/in",
-    "out": "gensokyodelight:block/table/bamboo/out"
-  }
-}

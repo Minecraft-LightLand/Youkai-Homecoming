@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:coffee_beans"
+    }
+  ],
+  "result": [
+    {
+      "item": "youkaisfeasts:coffee_powder"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/shovels"
+  }
+}

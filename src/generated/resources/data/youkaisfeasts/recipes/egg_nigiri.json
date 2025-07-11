@@ -1,0 +1,16 @@
+{
+  "type": "youkaisfeasts:cuisine_ordered",
+  "base": "youkaisfeasts:sushi",
+  "input": [
+    {
+      "item": "youkaisfeasts:tamagoyaki"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "youkaisfeasts:egg_nigiri"
+  }
+}

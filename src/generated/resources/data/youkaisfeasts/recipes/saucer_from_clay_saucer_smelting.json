@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaisfeasts:clay_saucer"
+  },
+  "result": "youkaisfeasts:saucer"
+}

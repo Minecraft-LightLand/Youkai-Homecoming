@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/open_futomaki/ingredient_3",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "ingredient": "gensokyodelight:block/table/ingredient/tamagoyaki"
-  }
-}

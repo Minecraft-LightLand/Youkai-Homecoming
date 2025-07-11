@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaisfeasts:item/food/bowl/bowl_of_heart_throbbing_surprise"
+  }
+}

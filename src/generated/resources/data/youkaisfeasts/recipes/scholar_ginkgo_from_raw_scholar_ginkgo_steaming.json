@@ -1,0 +1,10 @@
+{
+  "type": "youkaisfeasts:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaisfeasts:raw_scholar_ginkgo"
+  },
+  "result": "youkaisfeasts:scholar_ginkgo"
+}

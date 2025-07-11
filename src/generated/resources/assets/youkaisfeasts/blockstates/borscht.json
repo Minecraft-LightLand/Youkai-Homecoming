@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/borscht",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/borscht"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/borscht",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/borscht",
+      "y": 270
+    }
+  }
+}

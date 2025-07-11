@@ -1,0 +1,21 @@
+{
+  "type": "youkaisfeasts:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:coffee_powder"
+    },
+    {
+      "type": "l2library:potion",
+      "potion": "minecraft:water"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaisfeasts:espresso"
+  }
+}

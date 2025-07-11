@@ -1,0 +1,10 @@
+{
+  "type": "youkaisfeasts:simple_basin",
+  "input": {
+    "item": "youkaisfeasts:red_grape"
+  },
+  "output": {
+    "amount": 50,
+    "fluid": "youkaisfeasts:red_grape_juice"
+  }
+}

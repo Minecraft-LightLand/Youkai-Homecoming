@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaisfeasts:spawns/soybean",
+  "features": "youkaisfeasts:soybean",
+  "step": "vegetal_decoration"
+}

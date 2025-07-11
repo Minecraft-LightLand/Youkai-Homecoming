@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/dried_fish",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/dried_fish"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/dried_fish",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/dried_fish",
+      "y": 270
+    }
+  }
+}

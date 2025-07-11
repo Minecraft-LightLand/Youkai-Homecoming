@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/dish/pastitsio",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/pastitsio_base",
+    "ceramic": "youkaisfeasts:block/dish/ceramic",
+    "detail": "youkaisfeasts:block/dish/pastitsio_detail",
+    "particle": "youkaisfeasts:block/dish/ceramic"
+  }
+}

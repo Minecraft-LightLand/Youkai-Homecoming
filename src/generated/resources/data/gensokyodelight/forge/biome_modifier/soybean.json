@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gensokyodelight:spawns/soybean",
-  "features": "gensokyodelight:soybean",
-  "step": "vegetal_decoration"
-}

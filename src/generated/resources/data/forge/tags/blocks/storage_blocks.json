@@ -1,17 +1,17 @@
 {
   "values": [
-    "gensokyodelight:cucumber_crate",
-    "gensokyodelight:red_grape_crate",
-    "gensokyodelight:black_grape_crate",
-    "gensokyodelight:white_grape_crate",
-    "gensokyodelight:pod_crate",
-    "gensokyodelight:soybean_bag",
-    "gensokyodelight:redbean_bag",
-    "gensokyodelight:coffee_bean_bag",
-    "gensokyodelight:tea_leaf_bag",
-    "gensokyodelight:black_tea_bag",
-    "gensokyodelight:green_tea_bag",
-    "gensokyodelight:oolong_tea_bag",
-    "gensokyodelight:white_tea_bag"
+    "youkaisfeasts:cucumber_crate",
+    "youkaisfeasts:red_grape_crate",
+    "youkaisfeasts:black_grape_crate",
+    "youkaisfeasts:white_grape_crate",
+    "youkaisfeasts:pod_crate",
+    "youkaisfeasts:soybean_bag",
+    "youkaisfeasts:redbean_bag",
+    "youkaisfeasts:coffee_bean_bag",
+    "youkaisfeasts:tea_leaf_bag",
+    "youkaisfeasts:black_tea_bag",
+    "youkaisfeasts:green_tea_bag",
+    "youkaisfeasts:oolong_tea_bag",
+    "youkaisfeasts:white_tea_bag"
   ]
 }

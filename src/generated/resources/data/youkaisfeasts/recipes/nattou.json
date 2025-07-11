@@ -1,0 +1,55 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "farmersdelight:straw"
+    }
+  ],
+  "inputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "outputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "item": "youkaisfeasts:nattou"
+    },
+    {
+      "item": "youkaisfeasts:nattou"
+    },
+    {
+      "item": "youkaisfeasts:nattou"
+    },
+    {
+      "item": "youkaisfeasts:nattou"
+    },
+    {
+      "item": "youkaisfeasts:nattou"
+    },
+    {
+      "item": "youkaisfeasts:nattou"
+    }
+  ],
+  "time": 1800
+}

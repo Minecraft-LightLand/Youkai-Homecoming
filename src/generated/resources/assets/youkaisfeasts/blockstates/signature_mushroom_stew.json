@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/signature_mushroom_stew",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/signature_mushroom_stew"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/signature_mushroom_stew",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/signature_mushroom_stew",
+      "y": 270
+    }
+  }
+}

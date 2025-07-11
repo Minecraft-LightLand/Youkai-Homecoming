@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "youkaisfeasts:block/utensil/copper_tank_bottom",
+    "side": "youkaisfeasts:block/utensil/copper_tank_side_down",
+    "top": "youkaisfeasts:block/utensil/copper_tank_top_open"
+  }
+}

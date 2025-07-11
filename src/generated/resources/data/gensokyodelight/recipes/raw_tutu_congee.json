@@ -1,7 +1,0 @@
-{
-  "type": "gensokyodelight:cuisine_fixed",
-  "base": "gensokyodelight:tutu_congee",
-  "result": {
-    "item": "gensokyodelight:raw_tutu_congee"
-  }
-}

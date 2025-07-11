@@ -1,0 +1,23 @@
+{
+  "type": "youkaisfeasts:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 60,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:espresso"
+    },
+    {
+      "tag": "forge:milk/milk_bottle"
+    },
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaisfeasts:cappuccino"
+  }
+}

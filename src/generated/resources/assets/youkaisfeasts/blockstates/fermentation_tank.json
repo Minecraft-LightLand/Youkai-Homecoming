@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "youkaisfeasts:block/fermentation_tank_lid"
+    },
+    "open=true": {
+      "model": "youkaisfeasts:block/fermentation_tank"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaisfeasts:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "tag": "forge:raw_fishes/cod"
+    },
+    {
+      "item": "farmersdelight:tomato_sauce"
+    },
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:tomato_sauce_cod"
+  }
+}

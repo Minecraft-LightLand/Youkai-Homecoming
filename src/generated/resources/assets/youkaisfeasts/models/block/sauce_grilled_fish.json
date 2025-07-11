@@ -1,0 +1,11 @@
+{
+  "parent": "youkaisfeasts:custom/dish/sauce_grilled_fish",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/sauce_grilled_fish_base",
+    "detail": "youkaisfeasts:block/dish/sauce_grilled_fish_detail",
+    "particle": "youkaisfeasts:block/dish/porcelain_plate_top",
+    "porcelain_plate_bottom": "youkaisfeasts:block/dish/porcelain_plate_bottom",
+    "porcelain_plate_top": "youkaisfeasts:block/dish/porcelain_plate_top"
+  }
+}

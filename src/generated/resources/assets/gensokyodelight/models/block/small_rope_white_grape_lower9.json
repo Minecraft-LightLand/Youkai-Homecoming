@@ -1,9 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/rope_crop",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "gensokyodelight:block/plants/grape/small/lower9_white",
-    "rope_side": "gensokyodelight:block/plants/rope",
-    "rope_top": "gensokyodelight:block/plants/rope_top"
-  }
-}

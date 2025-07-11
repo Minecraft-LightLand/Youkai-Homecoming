@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:moon_lantern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_udumbara_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaisfeasts:udumbara_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_udumbara_flower",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:moon_lantern"
+    ]
+  },
+  "sends_telemetry_event": false
+}

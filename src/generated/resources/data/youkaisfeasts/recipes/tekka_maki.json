@@ -1,0 +1,15 @@
+{
+  "type": "youkaisfeasts:cuisine_ordered",
+  "base": "youkaisfeasts:hosomaki",
+  "input": [
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    },
+    {
+      "tag": "forge:raw_fishes/tuna"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:tekka_maki"
+  }
+}

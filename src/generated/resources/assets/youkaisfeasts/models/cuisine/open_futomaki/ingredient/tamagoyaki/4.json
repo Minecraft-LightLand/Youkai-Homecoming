@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:table/open_futomaki/ingredient_4",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "ingredient": "youkaisfeasts:block/table/ingredient/tamagoyaki"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/dish/scholar_ginkgo",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/scholar_ginkgo_base",
+    "ceramic": "youkaisfeasts:block/dish/ceramic",
+    "detail": "youkaisfeasts:block/dish/scholar_ginkgo_detail",
+    "particle": "youkaisfeasts:block/dish/ceramic"
+  }
+}

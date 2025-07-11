@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:california_roll"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "youkaisfeasts:california_roll_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

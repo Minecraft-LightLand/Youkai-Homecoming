@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_tuna": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaisfeasts:raw_tuna"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:seared_tuna_from_raw_tuna_campfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_tuna",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:seared_tuna_from_raw_tuna_campfire"
+    ]
+  },
+  "sends_telemetry_event": false
+}

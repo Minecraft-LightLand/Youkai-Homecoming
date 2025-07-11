@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:custom/bowl/iron/borscht",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/bowl/iron/borscht",
+    "bowl": "youkaisfeasts:block/bowl/iron/iron_bowl"
+  }
+}

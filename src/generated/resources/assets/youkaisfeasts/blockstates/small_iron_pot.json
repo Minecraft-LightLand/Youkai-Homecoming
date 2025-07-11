@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/small_iron_pot",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/small_iron_pot"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/small_iron_pot",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/small_iron_pot",
+      "y": 270
+    }
+  }
+}

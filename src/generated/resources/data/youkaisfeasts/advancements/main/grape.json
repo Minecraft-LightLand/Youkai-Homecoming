@@ -1,0 +1,47 @@
+{
+  "parent": "youkaisfeasts:main/soybean",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "tag": "youkaisfeasts:farmland_soybean"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "tag": "youkaisfeasts:grape_seed"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.grape.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaisfeasts:red_grape_seeds"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.grape.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

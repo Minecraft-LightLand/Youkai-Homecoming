@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "B": {
+      "tag": "minecraft:wooden_stairs"
+    },
+    "C": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "C C",
+    "BAB"
+  ],
+  "result": {
+    "item": "youkaisfeasts:wood_basin"
+  },
+  "show_notification": true
+}

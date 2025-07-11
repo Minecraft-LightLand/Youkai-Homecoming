@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/faucet",
+  "textures": {
+    "base": "youkaisfeasts:block/utensil/copper_faucet",
+    "particle": "youkaisfeasts:block/utensil/copper_faucet",
+    "valve": "youkaisfeasts:block/utensil/copper_faucet_valve"
+  }
+}

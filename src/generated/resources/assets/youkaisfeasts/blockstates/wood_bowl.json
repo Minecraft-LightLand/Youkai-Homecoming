@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/wood_bowl",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/wood_bowl"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/wood_bowl",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/wood_bowl",
+      "y": 270
+    }
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/plant/grape_fruit",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "bottom": "gensokyodelight:block/plants/grape/branch/bottom9_black",
-    "fruit": "gensokyodelight:block/plants/grape/fruit/fruit9_black"
-  }
-}

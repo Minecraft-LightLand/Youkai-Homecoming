@@ -1,9 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/moka_kit",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cup": "gensokyodelight:block/deco/moka_cup",
-    "foamer": "gensokyodelight:block/deco/moka_foamer",
-    "maker": "gensokyodelight:block/deco/moka_pot"
-  }
-}

@@ -1,0 +1,18 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:mushroom_soup"
+  },
+  "time": 200
+}

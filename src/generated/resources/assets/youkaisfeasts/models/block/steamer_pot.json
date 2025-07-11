@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/steamer_pot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaisfeasts:block/utensil/steamer_pot_bottom",
+    "handle": "youkaisfeasts:block/utensil/steamer_pot_handle",
+    "side": "youkaisfeasts:block/utensil/steamer_pot_side",
+    "top": "youkaisfeasts:block/utensil/steamer_pot_top"
+  }
+}

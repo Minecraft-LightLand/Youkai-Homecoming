@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    },
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "youkaisfeasts:butter"
+  }
+}

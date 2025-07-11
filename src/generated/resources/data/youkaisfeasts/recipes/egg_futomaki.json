@@ -1,0 +1,23 @@
+{
+  "type": "youkaisfeasts:cuisine_mixed",
+  "base": "youkaisfeasts:futomaki",
+  "first": [
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:egg_futomaki"
+  },
+  "second": [
+    {
+      "item": "youkaisfeasts:tamagoyaki_slice"
+    },
+    {
+      "item": "youkaisfeasts:tamagoyaki_slice"
+    },
+    {
+      "item": "youkaisfeasts:tamagoyaki_slice"
+    }
+  ]
+}

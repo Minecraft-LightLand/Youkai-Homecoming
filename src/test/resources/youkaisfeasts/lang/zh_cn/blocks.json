@@ -1,0 +1,110 @@
+{
+	"block.youkaisfeasts": {
+		"redbean": "红豆",
+		"soybean": "黄豆",
+		"wild_redbean": "野生红豆",
+		"wild_soybean": "野生黄豆",
+		"saucer": "碟子",
+		"pastitsio": "地中海千层面",
+		"stinky_tofu": "臭豆腐",
+		"sauce_grilled_fish": "酱烧鱼",
+		"bamboo_mizuyokan": "竹筒水羊羹",
+		"dried_fish": "小鱼干",
+		"imitation_bear_paw": "赛熊掌",
+		"tofu_burger": "豆腐汉堡",
+		"redbean_bag": "袋装红豆",
+		"soybean_bag": "袋装黄豆",
+		"cucumber_crate": "箱装黄瓜",
+		"pod_crate": "豆荚",
+		"coffea": "咖啡树",
+		"coffee_bean_bag": "袋装咖啡豆",
+		"wild_coffea": "野生咖啡树",
+		"black_tea_bag": "袋装红茶",
+		"green_tea_bag": "袋装绿茶",
+		"oolong_tea_bag": "袋装乌龙茶",
+		"white_tea_bag": "袋装白茶",
+		"tea": "茶树",
+		"wild_tea": "野生茶树",
+		"tarte_lune": "月亮派",
+		"kettle": "茶壶",
+		"moka_pot": "摩卡壶",
+		"moka_kit": "摩卡壶套件",
+		"drying_rack": "晒干架",
+		"seven_colored_yokan": "七色羊羹",
+		"udumbara": "幻昙华",
+		"wild_udumbara": "野生幻昙华",
+		"chest_of_heart_throbbing_surprise": "惊吓盒子",
+		"heart_throbbing_surprise": "惊吓大冒险",
+		"tea_leaf_bag": "茶叶袋",
+		"fermentation_tank": "发酵桶",
+		"moon_lantern": "幻月灯",
+		"steamer_lid": "蒸笼盖",
+		"steamer_pot": "蒸锅",
+		"steamer_rack": "蒸笼",
+		"cold_tofu": "冷奴豆腐",
+		"cumberland_loin": "坎伯兰猪腰",
+		"raw_imitation_bear_paw": "生赛熊掌",
+		"raw_scholar_ginkgo": "生诗礼银杏",
+		"scholar_ginkgo": "诗礼银杏",
+		"tomato_sauce_cod": "茄汁鳕鱼",
+		"copper_faucet": "铜水龙头",
+		"copper_tank": "铜水塔",
+		"cuisine_board": "料理台",
+		"cucumber": "黄瓜",
+		"wild_cucumber": "野生黄瓜",
+		"wood_basin": "木盆",
+		"iron_bowl": "铁碗",
+		"miso_soup": "味噌汤",
+		"seafood_miso_soup": "海鲜味增汤",
+		"poor_god_soup": "穷神汤",
+		"higan_soup": "彼岸汤",
+		"power_soup": "力量汤",
+		"mushroom_soup": "奶油蘑菇浓汤",
+		"borscht": "罗宋汤",
+		"potato_soup": "奶油马铃薯浓汤",
+		"signature_mushroom_stew": "秘制鲜菌煲",
+		"hokkaido_salmon_hotpot": "石狩锅",
+		"bamboo_bowl": "竹碗",
+		"small_iron_pot": "小铁锅",
+		"wood_bowl": "木碗",
+		"spruce_wine_shelf": "酒柜"
+	},
+	"-cartesian": {
+		"raw": {
+			"path": "block.youkaisfeasts",
+			"list": [
+				{
+					"": "",
+					"raw": "生"
+				},
+				{
+					"kaguya_hime": "竹取物语",
+					"rice_powder_pork": "粉蒸肉",
+					"tutu_congee": "竹筒粥"
+				}
+			]
+		},
+		"wood_type": {
+			"path": "block.youkaisfeasts",
+			"list": [
+				{
+					"oak": "橡木",
+					"spruce": "云杉",
+					"birch": "白桦",
+					"jungle": "丛林",
+					"acacia": "金合欢",
+					"dark_oak": "深色橡木",
+					"cherry": "樱花",
+					"mangrove": "红树",
+					"bamboo": "竹",
+					"crimson": "绯红木",
+					"warped": "诡异手"
+				},
+				{
+					"dining_table": "餐桌",
+					"dining_chair": "板凳"
+				}
+			]
+		}
+	}
+}

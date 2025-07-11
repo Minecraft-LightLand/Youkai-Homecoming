@@ -1,13 +1,13 @@
 {
   "values": [
-    "gensokyodelight:wild_soybean",
-    "gensokyodelight:wild_redbean",
-    "gensokyodelight:wild_coffea",
-    "gensokyodelight:wild_tea",
-    "gensokyodelight:wild_udumbara",
-    "gensokyodelight:wild_cucumber",
-    "gensokyodelight:wild_red_grape",
-    "gensokyodelight:wild_black_grape",
-    "gensokyodelight:wild_white_grape"
+    "youkaisfeasts:wild_soybean",
+    "youkaisfeasts:wild_redbean",
+    "youkaisfeasts:wild_coffea",
+    "youkaisfeasts:wild_tea",
+    "youkaisfeasts:wild_udumbara",
+    "youkaisfeasts:wild_cucumber",
+    "youkaisfeasts:wild_red_grape",
+    "youkaisfeasts:wild_black_grape",
+    "youkaisfeasts:wild_white_grape"
   ]
 }

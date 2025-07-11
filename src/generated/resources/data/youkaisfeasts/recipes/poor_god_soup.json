@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:seeds"
+    },
+    {
+      "tag": "forge:crops"
+    },
+    {
+      "tag": "minecraft:flowers"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:poor_god_soup"
+  }
+}

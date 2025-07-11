@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/utensil/drying_rack",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "rack": "gensokyodelight:block/utensil/drying_rack"
-  }
-}

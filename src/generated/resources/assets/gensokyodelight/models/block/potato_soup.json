@@ -1,8 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/bowl/iron/potato_soup",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "gensokyodelight:block/bowl/iron/potato_soup",
-    "bowl": "gensokyodelight:block/bowl/iron/iron_bowl"
-  }
-}

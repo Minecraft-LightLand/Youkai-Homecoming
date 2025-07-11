@@ -1,0 +1,27 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "tag": "forge:raw_pork"
+    },
+    {
+      "tag": "forge:raw_beef"
+    },
+    {
+      "tag": "forge:raw_mutton"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:power_soup"
+  },
+  "time": 200
+}

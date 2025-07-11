@@ -1,9 +1,9 @@
 {
   "entries": [
-    "gensokyodelight:fishing_lamprey",
-    "gensokyodelight:tuna_hunt",
-    "gensokyodelight:udumbara_ancient_city_loot",
-    "gensokyodelight:udumbara_ancient_city_ice_box_loot"
+    "youkaisfeasts:fishing_lamprey",
+    "youkaisfeasts:tuna_hunt",
+    "youkaisfeasts:udumbara_ancient_city_loot",
+    "youkaisfeasts:udumbara_ancient_city_ice_box_loot"
   ],
   "replace": false
 }

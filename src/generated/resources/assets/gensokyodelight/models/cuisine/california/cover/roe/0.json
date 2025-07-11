@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/california/cover_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cover": "gensokyodelight:block/table/california/cover/roe"
-  }
-}

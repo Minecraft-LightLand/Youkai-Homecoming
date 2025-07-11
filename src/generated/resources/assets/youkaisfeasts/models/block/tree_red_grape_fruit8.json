@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:custom/plant/grape_fruit",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaisfeasts:block/plants/grape/branch/bottom8",
+    "fruit": "youkaisfeasts:block/plants/grape/fruit/fruit8"
+  }
+}

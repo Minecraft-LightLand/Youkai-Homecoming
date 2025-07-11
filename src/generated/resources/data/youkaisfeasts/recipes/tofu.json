@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "youkaisfeasts:tofu"
+  }
+}

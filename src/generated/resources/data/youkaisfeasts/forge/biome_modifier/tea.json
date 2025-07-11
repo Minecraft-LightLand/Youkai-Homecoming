@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaisfeasts:spawns/tea",
+  "features": "youkaisfeasts:tea",
+  "step": "vegetal_decoration"
+}

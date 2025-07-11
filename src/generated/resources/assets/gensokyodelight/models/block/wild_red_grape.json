@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/large_cross_bush",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "gensokyodelight:block/plants/grape/wild_red_grape_bush"
-  }
-}

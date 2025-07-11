@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:acacia_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:stripped_acacia_wood"
+    }
+  },
+  "pattern": [
+    "WWW",
+    " S ",
+    " P "
+  ],
+  "result": {
+    "count": 4,
+    "item": "youkaisfeasts:acacia_dining_table"
+  },
+  "show_notification": true
+}

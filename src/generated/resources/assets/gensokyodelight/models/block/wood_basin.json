@@ -1,9 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/utensil/wood_basin",
-  "textures": {
-    "bottom": "gensokyodelight:block/utensil/wood_basin_bottom",
-    "inside": "gensokyodelight:block/utensil/wood_basin_inside",
-    "side": "gensokyodelight:block/utensil/wood_basin_side",
-    "top": "gensokyodelight:block/utensil/wood_basin_top"
-  }
-}

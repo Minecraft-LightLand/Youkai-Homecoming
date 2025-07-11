@@ -1,0 +1,20 @@
+{
+  "type": "youkaisfeasts:moka_pot",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "cookingtime": 60,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:espresso"
+    },
+    {
+      "item": "youkaisfeasts:coffee_powder"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "youkaisfeasts:ristretto"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:table/fixed/rice_2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "rice": "youkaisfeasts:block/table/rice"
+  }
+}

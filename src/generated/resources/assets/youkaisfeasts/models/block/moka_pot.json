@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/moka_pot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "maker": "youkaisfeasts:block/utensil/moka_pot"
+  }
+}

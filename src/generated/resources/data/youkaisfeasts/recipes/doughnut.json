@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "forge:dough/wheat"
+    },
+    "B": {
+      "item": "youkaisfeasts:bowl_of_cream"
+    },
+    "C": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "ABA",
+    "CAC"
+  ],
+  "result": {
+    "count": 4,
+    "item": "youkaisfeasts:doughnut"
+  },
+  "show_notification": true
+}

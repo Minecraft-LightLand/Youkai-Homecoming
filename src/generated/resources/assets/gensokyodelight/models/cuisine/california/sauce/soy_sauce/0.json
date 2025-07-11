@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/california/sauce_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "sauce": "gensokyodelight:block/table/sauce/soy_sauce"
-  }
-}

@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "youkaisfeasts:item/sake_bottle_overlay",
+      "predicate": {
+        "youkaisfeasts:slip": 0.03125
+      }
+    },
+    {
+      "model": "youkaisfeasts:item/red_wine_bottle",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.1
+      }
+    },
+    {
+      "model": "youkaisfeasts:item/white_wine_bottle",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.3
+      }
+    },
+    {
+      "model": "youkaisfeasts:item/burgundy_bottle",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.5
+      }
+    },
+    {
+      "model": "youkaisfeasts:item/champagne_bottle",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.7
+      }
+    },
+    {
+      "model": "youkaisfeasts:item/van_allen_bottle",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.9
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "youkaisfeasts:item/sake_bottle"
+  }
+}

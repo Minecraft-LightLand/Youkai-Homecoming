@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/bottle/wine_2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottle": "youkaisfeasts:block/bottle/wine/van_allen_bottle"
+  }
+}

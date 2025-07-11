@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "youkaisfeasts:item/food/bowl/udumbara_cake"
+  }
+}

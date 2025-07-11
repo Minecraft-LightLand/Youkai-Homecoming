@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:table/bamboo/filled_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/table/bamboo/kaguya_hime_3",
+    "in": "youkaisfeasts:block/table/bamboo/in",
+    "out": "youkaisfeasts:block/table/bamboo/out"
+  }
+}

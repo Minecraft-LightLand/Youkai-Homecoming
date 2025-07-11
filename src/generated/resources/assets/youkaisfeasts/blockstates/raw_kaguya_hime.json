@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/raw_kaguya_hime",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/raw_kaguya_hime"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/raw_kaguya_hime",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/raw_kaguya_hime",
+      "y": 270
+    }
+  }
+}

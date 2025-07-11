@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/cold_tofu",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/cold_tofu"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/cold_tofu",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/cold_tofu",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "forge:add_features",
+  "biomes": {
+    "type": "youkaisfeasts:filter",
+    "values": [
+      {
+        "type": "forge:and",
+        "values": [
+          "#youkaisfeasts:spawns/grape",
+          "#youkaisfeasts:spawns/black_grape"
+        ]
+      },
+      {
+        "type": "forge:or",
+        "values": [
+          "#youkaisfeasts:spawns/no_grape"
+        ]
+      }
+    ]
+  },
+  "features": "youkaisfeasts:black_grape",
+  "step": "vegetal_decoration"
+}

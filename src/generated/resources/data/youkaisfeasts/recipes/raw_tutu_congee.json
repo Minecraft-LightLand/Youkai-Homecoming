@@ -1,0 +1,7 @@
+{
+  "type": "youkaisfeasts:cuisine_fixed",
+  "base": "youkaisfeasts:tutu_congee",
+  "result": {
+    "item": "youkaisfeasts:raw_tutu_congee"
+  }
+}

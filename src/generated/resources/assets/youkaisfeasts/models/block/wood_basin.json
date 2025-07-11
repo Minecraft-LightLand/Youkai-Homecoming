@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/wood_basin",
+  "textures": {
+    "bottom": "youkaisfeasts:block/utensil/wood_basin_bottom",
+    "inside": "youkaisfeasts:block/utensil/wood_basin_inside",
+    "side": "youkaisfeasts:block/utensil/wood_basin_side",
+    "top": "youkaisfeasts:block/utensil/wood_basin_top"
+  }
+}

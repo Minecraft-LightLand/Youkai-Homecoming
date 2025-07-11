@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:table/roll/hosomaki",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "content": "youkaisfeasts:block/table/roll/shinnko_maki",
+    "kelp": "youkaisfeasts:block/table/roll_kelp"
+  }
+}

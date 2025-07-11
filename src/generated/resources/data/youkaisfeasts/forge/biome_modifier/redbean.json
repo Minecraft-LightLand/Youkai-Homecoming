@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaisfeasts:spawns/redbean",
+  "features": "youkaisfeasts:redbean",
+  "step": "vegetal_decoration"
+}

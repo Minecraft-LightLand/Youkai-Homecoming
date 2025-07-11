@@ -1,0 +1,11 @@
+{
+  "parent": "youkaisfeasts:custom/plant/grape_branch_mature",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaisfeasts:block/plants/grape/branch/bottom9_white",
+    "coil": "youkaisfeasts:block/plants/grape/branch/coil9_white",
+    "leaves": "youkaisfeasts:block/plants/grape/leaves/leaves9_white",
+    "rope_top": "youkaisfeasts:block/plants/rope_top",
+    "vine": "youkaisfeasts:block/plants/grape/branch/coil9_white"
+  }
+}

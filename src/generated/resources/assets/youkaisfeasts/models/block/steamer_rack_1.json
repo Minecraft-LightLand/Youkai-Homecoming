@@ -1,0 +1,13 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/steamer_rack_1",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaisfeasts:block/utensil/steamer_rack_bottom",
+    "inside": "youkaisfeasts:block/utensil/steamer_rack_inside",
+    "outside": "youkaisfeasts:block/utensil/steamer_rack_outside",
+    "particle": "youkaisfeasts:block/utensil/steamer_rack_top",
+    "rim": "youkaisfeasts:block/utensil/steamer_rack_rim",
+    "side": "youkaisfeasts:block/utensil/steamer_rack_side",
+    "top": "youkaisfeasts:block/utensil/steamer_rack_top"
+  }
+}

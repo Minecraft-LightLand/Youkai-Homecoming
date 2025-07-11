@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/feast/heart_throbbing_surprise_stage3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/feast/surprise_chest",
+    "soup": "youkaisfeasts:block/feast/surprise_soup",
+    "umbrella": "youkaisfeasts:block/feast/surprise_umbrella"
+  }
+}

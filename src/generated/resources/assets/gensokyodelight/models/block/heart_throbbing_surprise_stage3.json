@@ -1,9 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/feast/heart_throbbing_surprise_stage3",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "gensokyodelight:block/feast/surprise_chest",
-    "soup": "gensokyodelight:block/feast/surprise_soup",
-    "umbrella": "gensokyodelight:block/feast/surprise_umbrella"
-  }
-}

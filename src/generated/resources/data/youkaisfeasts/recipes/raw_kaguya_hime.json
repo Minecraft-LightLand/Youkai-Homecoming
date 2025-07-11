@@ -1,0 +1,7 @@
+{
+  "type": "youkaisfeasts:cuisine_fixed",
+  "base": "youkaisfeasts:kaguya_hime",
+  "result": {
+    "item": "youkaisfeasts:raw_kaguya_hime"
+  }
+}

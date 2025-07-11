@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#youkaisfeasts:spawns/coffea",
+  "features": "youkaisfeasts:coffea",
+  "step": "vegetal_decoration"
+}

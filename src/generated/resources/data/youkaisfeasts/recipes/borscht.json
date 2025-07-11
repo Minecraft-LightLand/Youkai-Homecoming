@@ -1,0 +1,24 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:borscht"
+  },
+  "time": 200
+}

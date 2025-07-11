@@ -1,8 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/dish/saucer_4",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "large": "gensokyodelight:block/dish/saucer_large",
-    "particle": "gensokyodelight:block/dish/saucer_large"
-  }
-}

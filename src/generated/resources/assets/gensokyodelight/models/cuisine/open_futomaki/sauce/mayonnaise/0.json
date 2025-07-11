@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/open_futomaki/sauce_0",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "sauce": "gensokyodelight:block/table/sauce/mayonnaise"
-  }
-}

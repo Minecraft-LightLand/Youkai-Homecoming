@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:table/sushi/top_0",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "top": "youkaisfeasts:block/table/sushi/top/tuna"
+  }
+}

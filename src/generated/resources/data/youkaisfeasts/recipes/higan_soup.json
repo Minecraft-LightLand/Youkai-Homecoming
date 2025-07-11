@@ -1,0 +1,15 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "minecraft:soul_sand"
+    },
+    {
+      "tag": "forge:crops"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:higan_soup"
+  },
+  "time": 200
+}

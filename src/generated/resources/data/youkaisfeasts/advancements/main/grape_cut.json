@@ -1,0 +1,31 @@
+{
+  "parent": "youkaisfeasts:main/grape",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaisfeasts:grape_cut"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.grape_cut.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:shears",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.grape_cut.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

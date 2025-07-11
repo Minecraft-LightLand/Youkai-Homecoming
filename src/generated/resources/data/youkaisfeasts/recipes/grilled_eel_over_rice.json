@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:raw_fishes/eel"
+    },
+    {
+      "tag": "forge:raw_fishes/eel"
+    },
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:grilled_eel_over_rice"
+  }
+}

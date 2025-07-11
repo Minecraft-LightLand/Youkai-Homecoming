@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:table/bamboo/filled_2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/table/bamboo/carrot_mushroom",
+    "in": "youkaisfeasts:block/table/bamboo/in",
+    "out": "youkaisfeasts:block/table/bamboo/out"
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:table/fixed/rice",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "rice": "gensokyodelight:block/table/rice"
-  }
-}

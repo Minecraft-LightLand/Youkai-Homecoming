@@ -1,0 +1,10 @@
+{
+  "parent": "youkaisfeasts:custom/dish/imitation_bear_paw",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/dish/imitation_bear_paw_base",
+    "ceramic": "youkaisfeasts:block/dish/ceramic",
+    "detail": "youkaisfeasts:block/dish/imitation_bear_paw_detail",
+    "particle": "youkaisfeasts:block/dish/ceramic"
+  }
+}

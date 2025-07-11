@@ -1,0 +1,23 @@
+{
+  "type": "youkaisfeasts:cuisine_mixed",
+  "base": "youkaisfeasts:california",
+  "first": [
+    {
+      "item": "youkaisfeasts:mayonnaise_bottle"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:california_roll"
+  },
+  "second": [
+    {
+      "tag": "forge:slices/cucumber"
+    },
+    {
+      "item": "youkaisfeasts:tamagoyaki_slice"
+    },
+    {
+      "item": "youkaisfeasts:imitation_crab"
+    }
+  ]
+}

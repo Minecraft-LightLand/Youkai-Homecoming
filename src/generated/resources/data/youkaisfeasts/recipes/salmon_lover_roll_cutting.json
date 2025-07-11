@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:salmon_lover_roll"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "youkaisfeasts:salmon_lover_roll_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

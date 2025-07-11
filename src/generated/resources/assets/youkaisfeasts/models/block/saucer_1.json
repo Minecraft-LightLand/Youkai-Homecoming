@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/dish/saucer_1",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "youkaisfeasts:block/dish/saucer_plate",
+    "plate": "youkaisfeasts:block/dish/saucer_plate",
+    "sake": "youkaisfeasts:block/dish/saucer_sake"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 2,
+    "item": "youkaisfeasts:onigili"
+  }
+}

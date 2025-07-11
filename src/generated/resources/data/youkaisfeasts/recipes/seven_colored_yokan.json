@@ -1,0 +1,32 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "youkaisfeasts:saucer"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:redbean"
+    },
+    {
+      "item": "youkaisfeasts:soybean"
+    },
+    {
+      "item": "minecraft:cherry_leaves"
+    },
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "tag": "forge:matcha"
+    },
+    {
+      "item": "youkaisfeasts:udumbara_flower"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:seven_colored_yokan"
+  }
+}

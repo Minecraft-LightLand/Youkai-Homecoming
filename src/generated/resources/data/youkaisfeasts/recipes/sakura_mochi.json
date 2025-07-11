@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "forge:grain/rice"
+    },
+    {
+      "item": "youkaisfeasts:redbean"
+    },
+    {
+      "item": "minecraft:cherry_leaves"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 2,
+    "item": "youkaisfeasts:sakura_mochi"
+  }
+}

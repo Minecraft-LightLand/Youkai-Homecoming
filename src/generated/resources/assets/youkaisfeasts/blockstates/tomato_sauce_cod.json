@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/tomato_sauce_cod",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/tomato_sauce_cod"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/tomato_sauce_cod",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/tomato_sauce_cod",
+      "y": 270
+    }
+  }
+}

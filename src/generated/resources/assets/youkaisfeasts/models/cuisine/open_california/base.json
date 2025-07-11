@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:table/open_california/base",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "kelp": "youkaisfeasts:block/table/kelp",
+    "rice": "youkaisfeasts:block/table/rice"
+  }
+}

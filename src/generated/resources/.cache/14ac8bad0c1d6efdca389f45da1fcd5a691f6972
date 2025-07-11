@@ -1,0 +1,6 @@
+// 1.20.1	2025-07-11T11:41:29.178523	Global Loot Modifiers : youkaisfeasts
+80aa79e0712434051f732aba2540d37403697ddb data/forge/loot_modifiers/global_loot_modifiers.json
+43582f6fd0f727281064f113739d86e4525cdfcb data/youkaisfeasts/loot_modifiers/fishing_lamprey.json
+0b171fc5cd970c144ec3fc292834021c8aaf2c8a data/youkaisfeasts/loot_modifiers/tuna_hunt.json
+2c09487eca6ba0002e5032af49f713b3e303a5bc data/youkaisfeasts/loot_modifiers/udumbara_ancient_city_ice_box_loot.json
+3da8eb1274e5e9f758022b97ae93302475c567cf data/youkaisfeasts/loot_modifiers/udumbara_ancient_city_loot.json

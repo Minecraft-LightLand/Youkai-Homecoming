@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:crab_bucket"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "item": "youkaisfeasts:crab"
+    },
+    {
+      "chance": 0.5,
+      "item": "youkaisfeasts:crab_roe"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/cross_crop",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "gensokyodelight:block/plants/soybean/soybean_stage4"
-  }
-}

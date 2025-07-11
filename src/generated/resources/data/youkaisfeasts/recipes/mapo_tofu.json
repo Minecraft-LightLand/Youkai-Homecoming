@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "tag": "forge:raw_pork"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "youkaisfeasts:mapo_tofu"
+  }
+}

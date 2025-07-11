@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "minecraft:mangrove_planks"
+    },
+    "F": {
+      "item": "youkaisfeasts:udumbara_flower"
+    },
+    "G": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "R": {
+      "item": "minecraft:end_rod"
+    }
+  },
+  "pattern": [
+    "RAR",
+    "GFG",
+    "RAR"
+  ],
+  "result": {
+    "item": "youkaisfeasts:moon_lantern"
+  },
+  "show_notification": true
+}

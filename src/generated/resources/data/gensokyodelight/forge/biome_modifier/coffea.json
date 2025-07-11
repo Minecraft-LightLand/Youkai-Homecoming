@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gensokyodelight:spawns/coffea",
-  "features": "gensokyodelight:coffea",
-  "step": "vegetal_decoration"
-}

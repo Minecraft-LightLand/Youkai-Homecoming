@@ -1,20 +1,20 @@
 {
   "values": [
-    "gensokyodelight:moka_pot",
-    "gensokyodelight:kettle",
-    "gensokyodelight:fermentation_tank",
-    "gensokyodelight:steamer_pot",
-    "gensokyodelight:small_iron_pot",
-    "gensokyodelight:copper_tank",
-    "gensokyodelight:copper_faucet",
-    "gensokyodelight:iron_bowl",
-    "gensokyodelight:higan_soup",
-    "gensokyodelight:mushroom_soup",
-    "gensokyodelight:power_soup",
-    "gensokyodelight:potato_soup",
-    "gensokyodelight:borscht",
-    "gensokyodelight:signature_mushroom_stew",
-    "gensokyodelight:hokkaido_salmon_hotpot",
-    "gensokyodelight:moka_kit"
+    "youkaisfeasts:moka_pot",
+    "youkaisfeasts:kettle",
+    "youkaisfeasts:fermentation_tank",
+    "youkaisfeasts:steamer_pot",
+    "youkaisfeasts:small_iron_pot",
+    "youkaisfeasts:copper_tank",
+    "youkaisfeasts:copper_faucet",
+    "youkaisfeasts:iron_bowl",
+    "youkaisfeasts:higan_soup",
+    "youkaisfeasts:mushroom_soup",
+    "youkaisfeasts:power_soup",
+    "youkaisfeasts:potato_soup",
+    "youkaisfeasts:borscht",
+    "youkaisfeasts:signature_mushroom_stew",
+    "youkaisfeasts:hokkaido_salmon_hotpot",
+    "youkaisfeasts:moka_kit"
   ]
 }

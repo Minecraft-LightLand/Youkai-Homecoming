@@ -1,0 +1,18 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "inputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:black_grape_juice"
+  },
+  "outputFluid": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:burgundy"
+  },
+  "results": [],
+  "time": 2400
+}

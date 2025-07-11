@@ -1,8 +1,0 @@
-{
-  "parent": "gensokyodelight:custom/bowl/wood/wood_bowl",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "gensokyodelight:block/bowl/wood/wood_bowl",
-    "bowl": "gensokyodelight:block/bowl/wood/wood_bowl"
-  }
-}

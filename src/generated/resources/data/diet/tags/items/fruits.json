@@ -1,13 +1,13 @@
 {
   "values": [
-    "gensokyodelight:candy_apple",
-    "gensokyodelight:avgolemono",
+    "youkaisfeasts:candy_apple",
+    "youkaisfeasts:avgolemono",
     {
-      "id": "gensokyodelight:peach_tapioca",
+      "id": "youkaisfeasts:peach_tapioca",
       "required": false
     },
     {
-      "id": "gensokyodelight:peach_yatsuhashi",
+      "id": "youkaisfeasts:peach_yatsuhashi",
       "required": false
     }
   ]

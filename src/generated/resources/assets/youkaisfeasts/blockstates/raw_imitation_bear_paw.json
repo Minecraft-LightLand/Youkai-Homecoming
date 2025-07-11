@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/imitation_bear_paw",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/imitation_bear_paw"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/imitation_bear_paw",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/imitation_bear_paw",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "youkaisfeasts:custom/bowl/iron/potato_soup",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/bowl/iron/potato_soup",
+    "bowl": "youkaisfeasts:block/bowl/iron/iron_bowl"
+  }
+}
