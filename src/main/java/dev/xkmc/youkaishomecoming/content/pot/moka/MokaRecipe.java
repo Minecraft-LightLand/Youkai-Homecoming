@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.moka;
 
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotRecipe;
-import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.CoffeeBlocks;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -19,17 +19,17 @@ public class MokaRecipe extends BasePotRecipe {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return YHBlocks.MOKA_RS.get();
+		return CoffeeBlocks.MOKA_RS.get();
 	}
 
 	@Override
 	public RecipeType<?> getType() {
-		return YHBlocks.MOKA_RT.get();
+		return CoffeeBlocks.MOKA_RT.get();
 	}
 
 	@Override
 	public ItemStack getToastSymbol() {
-		return YHBlocks.MOKA.asStack();
+		return CoffeeBlocks.MOKA.asStack();
 	}
 
 }

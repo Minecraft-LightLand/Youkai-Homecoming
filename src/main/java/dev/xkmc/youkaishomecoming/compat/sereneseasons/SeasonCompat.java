@@ -4,16 +4,13 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
-import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.init.food.CoffeeCrops;
 import net.minecraft.world.level.block.Block;
 
 public class SeasonCompat {
 
-	private static final Multimap<Seasons, YHCrops> CROP = new ImmutableMultimap.Builder<Seasons, YHCrops>()
-			.putAll(Seasons.SPRING, YHCrops.TEA)
-			.putAll(Seasons.SUMMER, YHCrops.COFFEA)
-			.putAll(Seasons.AUTUMN, YHCrops.SOYBEAN)
-			.putAll(Seasons.WINTER, YHCrops.REDBEAN)
+	private static final Multimap<Seasons, CoffeeCrops> CROP = new ImmutableMultimap.Builder<Seasons, CoffeeCrops>()
+			.putAll(Seasons.SUMMER, CoffeeCrops.COFFEA)
 			.build();
 
 	public static void genItem(RegistrateItemTagsProvider pvd) {

@@ -4,7 +4,7 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
-import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.CoffeeBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -41,13 +41,13 @@ public class MokaMakerBlock extends BasePotBlock {
 
 	@Nullable
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return YHBlocks.MOKA_BE.get().create(pos, state);
+		return CoffeeBlocks.MOKA_BE.get().create(pos, state);
 	}
 
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
-		return level.isClientSide ? createTickerHelper(blockEntity, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::animationTick) :
-				createTickerHelper(blockEntity, YHBlocks.MOKA_BE.get(), BasePotBlockEntity::cookingTick);
+		return level.isClientSide ? createTickerHelper(blockEntity, CoffeeBlocks.MOKA_BE.get(), BasePotBlockEntity::animationTick) :
+				createTickerHelper(blockEntity, CoffeeBlocks.MOKA_BE.get(), BasePotBlockEntity::cookingTick);
 	}
 
 	public static void buildModel(DataGenContext<Block, MokaMakerBlock> ctx, RegistrateBlockstateProvider pvd) {

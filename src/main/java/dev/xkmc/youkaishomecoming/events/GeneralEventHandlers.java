@@ -1,20 +1,26 @@
 package dev.xkmc.youkaishomecoming.events;
 
-import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.block.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import dev.xkmc.youkaishomecoming.init.registrate.CoffeeEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeneralEventHandlers {
+
+	@SubscribeEvent
+	public static void onSleep(PlayerSleepInBedEvent event) {
+		if (event.getEntity().hasEffect(CoffeeEffects.CAFFEINATED.get())) {
+			event.setResult(Player.BedSleepingProblem.OTHER_PROBLEM);
+		}
+	}
 
 	@SubscribeEvent
 	public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
@@ -31,19 +37,7 @@ public class GeneralEventHandlers {
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {
-		return player.hasEffect(YHEffects.SOBER.get());
-	}
-
-	public static boolean supressVibration(Entity self) {
-		if (self instanceof TraceableEntity item) {
-			if (item.getOwner() instanceof LivingEntity le) {
-				self = le;
-			}
-		}
-		if (self instanceof LivingEntity le) {
-			return le.hasEffect(YHEffects.UDUMBARA.get());
-		}
-		return false;
+		return player.hasEffect(CoffeeEffects.CAFFEINATED.get());
 	}
 
 }

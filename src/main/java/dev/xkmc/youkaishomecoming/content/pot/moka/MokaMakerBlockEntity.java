@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.moka;
 
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotRecipe;
-import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.CoffeeBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -19,12 +19,12 @@ public class MokaMakerBlockEntity extends BasePotBlockEntity {
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
-		return new MokaMenu(YHBlocks.MOKA_MT.get(), id, player, this, this);
+		return new MokaMenu(CoffeeBlocks.MOKA_MT.get(), id, player, this, this);
 	}
 
 	@Override
 	public RecipeType<? extends BasePotRecipe> getRecipeType() {
-		return YHBlocks.MOKA_RT.get();
+		return CoffeeBlocks.MOKA_RT.get();
 	}
 
 }

@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.moka;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotMenu;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.CoffeeBlocks;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerData;
@@ -24,7 +24,7 @@ public class MokaMenu extends BasePotMenu {
 
 	@Override
 	public Block getBlock() {
-		return YHBlocks.MOKA.get();
+		return CoffeeBlocks.MOKA.get();
 	}
 
 	@Override

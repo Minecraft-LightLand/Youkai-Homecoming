@@ -1,14 +1,11 @@
 package dev.xkmc.youkaishomecoming.init.food;
 
-import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
-import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
-import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
+import dev.xkmc.youkaishomecoming.content.item.CoffeeFoodItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import dev.xkmc.youkaishomecoming.init.registrate.CoffeeItems;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -21,17 +18,12 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public enum FoodType {
-	SIMPLE(YHFoodItem::new, UnaryOperator.identity(), false, false),
-	FAST(YHFoodItem::new, UnaryOperator.identity(), true, false),
-	STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), true, false),
-	BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false),
-	SAKE(YHDrinkItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, true),
-	BOTTLE(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true),
-	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, true),
-	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), true, true),
-	IRON_BOWL(YHFoodItem::new, p -> p.craftRemainder(YHItems.IRON_BOWL.asItem()).stacksTo(16), false, false),
-	BAMBOO_BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false),
-	SAUCER(YHFoodItem::new, p -> p.craftRemainder(YHItems.SAUCER.asItem()).stacksTo(16), false, false),
+	SIMPLE(CoffeeFoodItem::new, UnaryOperator.identity(), false, false),
+	FAST(CoffeeFoodItem::new, UnaryOperator.identity(), true, false),
+	STICK(CoffeeFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), true, false),
+	BOWL(CoffeeFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false),
+	BOTTLE(CoffeeFoodItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true),
+	BOTTLE_FAST(CoffeeFoodItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), true, true),
 	;
 
 	private final Function<Item.Properties, Item> factory;
@@ -88,17 +80,9 @@ public enum FoodType {
 		return this.prop.apply(prop).food(food.build());
 	}
 
-	public BlockBuilder<BowlBlock, L2Registrate> bowl(String name, boolean raw) {
-		if (this == IRON_BOWL)
-			return YHItems.ironBowl(name);
-		if (this == BAMBOO_BOWL)
-			return raw ? YHItems.rawBambooBowl(name) : YHItems.bambooBowl(name);
-		return YHItems.woodBowl(name);
-	}
-
 	public String makeLang(String id) {
-		String name = YHItems.toEnglishName(id.toLowerCase(Locale.ROOT));
-		return YHItems.toEnglishName(name);
+		String name = CoffeeItems.toEnglishName(id.toLowerCase(Locale.ROOT));
+		return CoffeeItems.toEnglishName(name);
 	}
 
 	@SuppressWarnings({"unsafe", "unchecked"})
