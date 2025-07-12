@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
