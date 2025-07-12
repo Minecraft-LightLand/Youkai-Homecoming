@@ -1,9 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import dev.xkmc.youkaishomecoming.util.WaterConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -23,8 +23,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.List;
 
 public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerContentBlock {
 
@@ -76,29 +74,38 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 			}
 			return InteractionResult.SUCCESS;
 		}
+		var stack = player.getItemInHand(hand);
 		if (state.is(YHItems.IRON_BOWL.get())) {
-			if (!level.isClientSide()) {
-				var stack = player.getItemInHand(hand);
-				if (!stack.isEmpty() && CookingBlockEntity.isHeatedPos(level, pos)) {
-					var recipe = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(),
-							new CookingInv(List.of(), false), level);
-					if (recipe.isPresent()) {
-						var pot = YHBlocks.SMALL_POT.getDefaultState().setValue(FACING, state.getValue(FACING));
-						level.setBlockAndUpdate(pos, pot);
-						return pot.use(level, player, hand, hit);
+			if (CookingBlockEntity.isHeatedPos(level, pos) &&
+					WaterConsumer.isWaterContainer(stack, 250)) {
+				if (!level.isClientSide()) {
+					var pot = YHBlocks.SMALL_POT.getDefaultState().setValue(FACING, state.getValue(FACING));
+					level.setBlockAndUpdate(pos, pot);
+					if (!player.getAbilities().instabuild) {
+						if (stack.getCount() > 1) {
+							var copy = stack.copyWithCount(1);
+							var remain = WaterConsumer.drainWater(copy, 250);
+							player.getInventory().placeItemBackInInventory(remain);
+						} else {
+							player.setItemInHand(hand, WaterConsumer.drainWater(stack, 250));
+						}
 					}
 				}
+				return InteractionResult.SUCCESS;
+			}
+			if (!level.isClientSide()) {
 				level.removeBlock(pos, false);
 				player.getInventory().placeItemBackInInventory(YHItems.IRON_BOWL.asStack());
 			}
 			return InteractionResult.SUCCESS;
 		}
-		var stack = state.getBlock().asItem().getDefaultInstance();
-		var food = stack.getFoodProperties(player);
+		if (!stack.isEmpty()) return InteractionResult.PASS;
+		var item = state.getBlock().asItem().getDefaultInstance();
+		var food = item.getFoodProperties(player);
 		if (food != null && player.canEat(false)) {
 			if (!level.isClientSide()) {
-				player.eat(level, stack.copy());
-				var cont = stack.getCraftingRemainingItem();
+				player.eat(level, item.copy());
+				var cont = item.getCraftingRemainingItem();
 				if (cont.getItem() instanceof BlockItem block) {
 					level.setBlockAndUpdate(pos, block.getBlock().defaultBlockState()
 							.setValue(BlockStateProperties.HORIZONTAL_FACING,

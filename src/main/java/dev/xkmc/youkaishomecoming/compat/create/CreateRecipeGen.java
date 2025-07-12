@@ -14,6 +14,7 @@ import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluid;
 
 public class CreateRecipeGen {
 
@@ -27,7 +28,7 @@ public class CreateRecipeGen {
 
 	private static void bottles(RegistrateRecipeProvider pvd, IYHFluidHolder sake) {
 		filling(sake.item().getId())
-				.withFluidIngredients(FluidIngredient.fromFluid(sake.fluid().get(), sake.amount()))
+				.withFluidIngredients(FluidIngredient.fromFluid(sake.fluid().getSource(), sake.amount()))
 				.withItemIngredients(Ingredient.of(sake.getContainer()))
 				.output(sake.item())
 				.build(ConditionalRecipeWrapper.mod(pvd, Create.ID));
@@ -35,7 +36,7 @@ public class CreateRecipeGen {
 		emptying(sake.item().getId().withSuffix("_emptying"))
 				.withItemIngredients(Ingredient.of(sake.item()))
 				.output(sake.getContainer())
-				.output(sake.fluid().get(), sake.amount())
+				.output((Fluid) sake.fluid().getSource(), sake.amount())
 				.build(ConditionalRecipeWrapper.mod(pvd, Create.ID));
 	}
 
