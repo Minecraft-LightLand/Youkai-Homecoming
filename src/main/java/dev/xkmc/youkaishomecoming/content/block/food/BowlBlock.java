@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
+import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
@@ -10,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -24,7 +26,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerContentBlock {
+public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerContentBlock, LeftClickBlock {
 
 	public static final Vec3 IRON_SHAPE = new Vec3(4, 4, 4);
 	public static final Vec3 WOOD_SHAPE = new Vec3(5, 3, 5);
@@ -59,43 +61,41 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 	}
 
 	@Override
+	public boolean leftClick(BlockState state, Level level, BlockPos pos, Player player) {
+		return collectBowl(state, level, pos, player, YHItems.WOOD_BOWL.get(), Items.BOWL) ||
+				collectBowl(state, level, pos, player, YHItems.BAMBOO_BOWL.get(), Items.BAMBOO) ||
+				collectBowl(state, level, pos, player, YHItems.IRON_BOWL.get(), YHItems.IRON_BOWL.asItem());
+	}
+
+	private boolean collectBowl(BlockState state, Level level, BlockPos pos, Player player, Block block, Item item) {
+		if (state.is(block)) {
+			if (!level.isClientSide()) {
+				level.removeBlock(pos, false);
+				player.getInventory().placeItemBackInInventory(item.getDefaultInstance());
+			}
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		if (state.is(YHItems.WOOD_BOWL.get())) {
-			if (!level.isClientSide()) {
-				level.removeBlock(pos, false);
-				player.getInventory().placeItemBackInInventory(Items.BOWL.getDefaultInstance());
-			}
-			return InteractionResult.SUCCESS;
-		}
-		if (state.is(YHItems.BAMBOO_BOWL.get())) {
-			if (!level.isClientSide()) {
-				level.removeBlock(pos, false);
-				player.getInventory().placeItemBackInInventory(Items.BAMBOO.getDefaultInstance());
-			}
-			return InteractionResult.SUCCESS;
-		}
 		var stack = player.getItemInHand(hand);
-		if (state.is(YHItems.IRON_BOWL.get())) {
-			if (CookingBlockEntity.isHeatedPos(level, pos) &&
-					WaterConsumer.isWaterContainer(stack, 250)) {
-				if (!level.isClientSide()) {
-					var pot = YHBlocks.SMALL_POT.getDefaultState().setValue(FACING, state.getValue(FACING));
-					level.setBlockAndUpdate(pos, pot);
-					if (!player.getAbilities().instabuild) {
-						if (stack.getCount() > 1) {
-							var copy = stack.copyWithCount(1);
-							var remain = WaterConsumer.drainWater(copy, 250);
-							player.getInventory().placeItemBackInInventory(remain);
-						} else {
-							player.setItemInHand(hand, WaterConsumer.drainWater(stack, 250));
-						}
+		if (state.is(YHItems.IRON_BOWL.get()) &&
+				CookingBlockEntity.isHeatedPos(level, pos) &&
+				WaterConsumer.isWaterContainer(stack, 250)) {
+			if (!level.isClientSide()) {
+				var pot = YHBlocks.SMALL_POT.getDefaultState().setValue(FACING, state.getValue(FACING));
+				level.setBlockAndUpdate(pos, pot);
+				if (!player.getAbilities().instabuild) {
+					if (stack.getCount() > 1) {
+						var copy = stack.copyWithCount(1);
+						var remain = WaterConsumer.drainWater(copy, 250);
+						player.getInventory().placeItemBackInInventory(remain);
+					} else {
+						player.setItemInHand(hand, WaterConsumer.drainWater(stack, 250));
 					}
 				}
-				return InteractionResult.SUCCESS;
-			}
-			if (!level.isClientSide()) {
-				level.removeBlock(pos, false);
-				player.getInventory().placeItemBackInInventory(YHItems.IRON_BOWL.asStack());
 			}
 			return InteractionResult.SUCCESS;
 		}
