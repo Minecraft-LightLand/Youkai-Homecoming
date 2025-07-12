@@ -8,6 +8,8 @@ import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
@@ -40,8 +42,49 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 
 	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
 
+	private boolean recheckSoup = true;
+	private ResourceLocation soupCache = SoupBaseRecipe.DEF;
+	private List<ItemStack> floatingItems = new ArrayList<>();
+
 	public CookingBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
+	}
+
+	public ResourceLocation getSoupCache() {
+		return soupCache;
+	}
+
+	public List<ItemStack> getFloatingItems() {
+		return floatingItems;
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (level != null && level.isClientSide() && recheckSoup) {
+			recheckSoup = false;
+			var cont = createContainer();
+			var list = level.getRecipeManager().getRecipesFor(YHBlocks.SOUP_RT.get(), cont, level);
+			int max = 0;
+			soupCache = SoupBaseRecipe.DEF;
+			SoupBaseRecipe<?> recipe = null;
+			for (var e : list) {
+				if (e.getIngredientCount() > max) {
+					max = e.getIngredientCount();
+					soupCache = e.id;
+					recipe = e;
+				} else if (e.getIngredientCount() == max) {
+					if (e.id.compareTo(soupCache) < 0) {
+						soupCache = e.id;
+						recipe = e;
+					}
+				}
+			}
+			floatingItems = new ArrayList<>(cont.list());
+			if (recipe != null) {
+				recipe.removeConsumed(floatingItems);
+			}
+		}
 	}
 
 	public boolean tryAddItem(ItemStack stack) {
@@ -148,4 +191,9 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 		}
 	}
 
+	@Override
+	public void load(CompoundTag tag) {
+		super.load(tag);
+		recheckSoup = true;
+	}
 }

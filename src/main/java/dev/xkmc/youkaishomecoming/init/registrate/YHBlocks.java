@@ -15,9 +15,7 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedCookingRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotRenderer;
@@ -136,6 +134,8 @@ public class YHBlocks {
 	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
 	public static final RegistryEntry<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
+	public static final RegistryEntry<RecipeType<SoupBaseRecipe<?>>> SOUP_RT;
+	public static final RegistryEntry<BaseRecipe.RecType<ImmediateSoupBaseRecipe, SoupBaseRecipe<?>, CookingInv>> IMMEDIATE_SOUP;
 
 	public static final BlockEntry<DelegateBlock> SPRUCE_WINE_SHELF;
 	public static final BlockEntityEntry<WineShelfBlockEntity> WINE_SHELF_BE;
@@ -257,6 +257,8 @@ public class YHBlocks {
 
 			COOKING_RT = YoukaisHomecoming.REGISTRATE.recipe("pot_cooking");
 			COOKING_UNORDER = reg("unordered_cooking", () -> new BaseRecipe.RecType<>(UnorderedCookingRecipe.class, COOKING_RT));
+			SOUP_RT = YoukaisHomecoming.REGISTRATE.recipe("soup_base");
+			IMMEDIATE_SOUP = reg("immediate_soup", () -> new BaseRecipe.RecType<>(ImmediateSoupBaseRecipe.class, SOUP_RT));
 
 		}
 
