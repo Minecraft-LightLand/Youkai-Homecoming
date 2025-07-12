@@ -4,6 +4,7 @@ import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
+import dev.xkmc.youkaishomecoming.init.registrate.YHSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -161,15 +162,15 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	// animal properties
 
 	protected SoundEvent getAmbientSound() {
-		return SoundEvents.SHEEP_AMBIENT;//TODO
+		return YHSounds.DEER_AMBIENT.get();
 	}
 
 	protected SoundEvent getHurtSound(DamageSource source) {
-		return SoundEvents.SHEEP_HURT;//TODO
+		return YHSounds.DEER_HURT.get();
 	}
 
 	protected SoundEvent getDeathSound() {
-		return SoundEvents.SHEEP_DEATH;//TODO
+		return YHSounds.DEER_DEATH.get();
 	}
 
 	protected void playStepSound(BlockPos pos, BlockState state) {

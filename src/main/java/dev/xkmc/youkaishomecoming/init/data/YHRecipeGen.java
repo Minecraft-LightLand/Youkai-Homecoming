@@ -275,7 +275,7 @@ public class YHRecipeGen {
 					.build(pvd, YHFood.CRAB_MEAT.item.getId());
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(YHItems.CRAB_BUCKET),
-							Ingredient.of(TagRef.TOOLS_KNIVES),Items.BUCKET, 1)
+							Ingredient.of(TagRef.TOOLS_KNIVES), Items.BUCKET, 1)
 					.addResultWithChance(YHFood.CRAB.item.get(), 1, 1)
 					.addResultWithChance(YHFood.CRAB_ROE.item.get(), 0.5f, 1)
 					.build(pvd, YHFood.CRAB_ROE.item.getId());
@@ -776,6 +776,7 @@ public class YHRecipeGen {
 					.add(TagRef.RAW_PORK)
 					.add(TagRef.RAW_BEEF)
 					.add(TagRef.RAW_MUTTON)
+					.add(YHTagGen.RAW_VENISON)
 					.add(Items.KELP)
 					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
