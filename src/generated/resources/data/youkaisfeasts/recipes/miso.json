@@ -1,0 +1,9 @@
+{
+  "type": "youkaisfeasts:immediate_soup",
+  "id": "youkaisfeasts:miso",
+  "input": [
+    {
+      "item": "youkaisfeasts:soybean"
+    }
+  ]
+}

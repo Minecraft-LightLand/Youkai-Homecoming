@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_soul_sand": {
+    "has_bowl_of_cream": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:soul_sand"
+              "youkaisfeasts:bowl_of_cream"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:soul"
+        "recipe": "youkaisfeasts:cream"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_soul_sand",
+      "has_bowl_of_cream",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:soul"
+      "youkaisfeasts:cream"
     ]
   },
   "sends_telemetry_event": true

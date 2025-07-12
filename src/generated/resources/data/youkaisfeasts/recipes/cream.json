@@ -1,0 +1,9 @@
+{
+  "type": "youkaisfeasts:immediate_soup",
+  "id": "youkaisfeasts:cream",
+  "input": [
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    }
+  ]
+}

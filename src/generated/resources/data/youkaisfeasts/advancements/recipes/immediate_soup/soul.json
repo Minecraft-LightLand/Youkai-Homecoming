@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_soybean": {
+    "has_soul_sand": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:soybean"
+              "minecraft:soul_sand"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:miso"
+        "recipe": "youkaisfeasts:soul"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_soybean",
+      "has_soul_sand",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:miso"
+      "youkaisfeasts:soul"
     ]
   },
   "sends_telemetry_event": true

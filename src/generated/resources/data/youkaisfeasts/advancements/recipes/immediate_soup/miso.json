@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bowl_of_cream": {
+    "has_soybean": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:bowl_of_cream"
+              "youkaisfeasts:soybean"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:cream"
+        "recipe": "youkaisfeasts:miso"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_bowl_of_cream",
+      "has_soybean",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:cream"
+      "youkaisfeasts:miso"
     ]
   },
   "sends_telemetry_event": true

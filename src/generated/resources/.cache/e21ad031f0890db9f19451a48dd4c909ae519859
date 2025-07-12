@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-11T16:56:09.337728	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-13T00:21:26.73981	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 d543d0b385baf07809b3b33e20db22575103bd37 assets/youkaisfeasts/blockstates/bamboo_bowl.json
@@ -1358,6 +1358,9 @@ d2c768a713a0bbd6972cf1b6d7c0f3b05344c141 data/youkaisfeasts/advancements/recipes
 ecc8d8653d899c17a414b39022e27d7b74f428e2 data/youkaisfeasts/advancements/recipes/genmai_tea.json
 ae0439482df0e7fd57e9e62df6b367152c08c35d data/youkaisfeasts/advancements/recipes/green_tea.json
 f1944775389867c4f047a485c7a1181dfc3b21ae data/youkaisfeasts/advancements/recipes/green_water.json
+c0c916dca7065bcad0b8745ffb80a56085d18602 data/youkaisfeasts/advancements/recipes/immediate_soup/cream.json
+9524a3466ba079a1dde88480c61bec24f5192526 data/youkaisfeasts/advancements/recipes/immediate_soup/miso.json
+cf47e964dc6f79628487c124610709ebccb19e3f data/youkaisfeasts/advancements/recipes/immediate_soup/soul.json
 b7f0cfe3c772c764a4633fbeb246bf52ecee1c67 data/youkaisfeasts/advancements/recipes/lemon_black_tea.json
 37dc7db7594a284d26775c8aa5e2ecbf63f81097 data/youkaisfeasts/advancements/recipes/misc/baked_potato_from_potato_steaming.json
 07bb34da3c7464c1a23ce248b547bac7ee4f8ae2 data/youkaisfeasts/advancements/recipes/misc/black_grape_crate.json
@@ -1631,6 +1634,7 @@ ed6dd977e8c2a14fcaa8b5171e9ab3f6415b4f6a data/youkaisfeasts/recipes/cooked_cod_s
 eb50be9a6b2a5d750bb53104359b53fd939469d1 data/youkaisfeasts/recipes/cornflower_tea.json
 f9ef71611d5929d4717a4aee146163ae49d7f0a1 data/youkaisfeasts/recipes/crab_meat.json
 58bce4f5037ea8c3021e08f79a099866ad4b836e data/youkaisfeasts/recipes/crab_roe.json
+3f574817c8f8e7d3039e6228f04ad3caf9efbf9c data/youkaisfeasts/recipes/cream.json
 29c379e8a91016f230664f7b26a275002509ca98 data/youkaisfeasts/recipes/crimson_dining_chair.json
 17954dda700a3b5b2ba4504cff7097e8be1e2ef8 data/youkaisfeasts/recipes/crimson_dining_table.json
 37f26b28a895afcddf7c1e2bc04c7120656243a7 data/youkaisfeasts/recipes/cucumber_crate.json
@@ -1764,6 +1768,7 @@ dc426c562bb0c60c5c4443be1c9929cbf8ab3d9f data/youkaisfeasts/recipes/matcha.json
 33a2453e9f472aebd14e1561c776bab2a8022cda data/youkaisfeasts/recipes/mead.json
 aabb8e98d479c433636c62523fc9a2e397990080 data/youkaisfeasts/recipes/milk_popsicle.json
 a63a5c486937816f6edb7714394a13f3fc7de846 data/youkaisfeasts/recipes/mio.json
+7e06a1b556d4beeffdad428ba79eaccd1b111ca2 data/youkaisfeasts/recipes/miso.json
 5161f9e3f966010d5abb50d9ff56f419d807560f data/youkaisfeasts/recipes/miso_soup.json
 9c6e2364269da4153346531e342fd2a7d1ba346b data/youkaisfeasts/recipes/mitarashi_dango.json
 533f534ba4f81fcd45ce6056eaa0e08a495f402d data/youkaisfeasts/recipes/mochi.json
@@ -1854,6 +1859,7 @@ edd7f9a344b475b64927e02c43453c3f55423568 data/youkaisfeasts/recipes/shinnko_maki
 f04a98861505318a819f885957544c85b9c368a8 data/youkaisfeasts/recipes/shinnko_maki_cutting.json
 06e92003f9471f7e81c641eaaf9b0e24ea316900 data/youkaisfeasts/recipes/shirayuki.json
 414ef826c68411b053e006cc291f0bbf8e80dae2 data/youkaisfeasts/recipes/signature_mushroom_stew.json
+b88033f2f3db3092083cbab1d4ac73408b64d069 data/youkaisfeasts/recipes/soul.json
 996779e30bedead9387502fb731990b1fdf25647 data/youkaisfeasts/recipes/soy_sauce_bottle.json
 22a34c34800cc6831aca78119c4c816a93542745 data/youkaisfeasts/recipes/soybean.json
 7335dd1b5195314c7f57b9c87bd08a87dcc6a05d data/youkaisfeasts/recipes/soybean_bag.json
