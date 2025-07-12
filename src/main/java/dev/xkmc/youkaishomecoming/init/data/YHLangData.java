@@ -68,6 +68,9 @@ public enum YHLangData {
 	}
 
 	public static void genLang(RegistrateLangProvider pvd) {
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_ambient", "Deer baahs");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_hurt", "Deer hurts");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_death", "Deer dies");
 		for (YHLangData lang : YHLangData.values()) {
 			pvd.add(lang.key, lang.def);
 		}

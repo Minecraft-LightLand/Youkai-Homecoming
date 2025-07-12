@@ -582,6 +582,7 @@ public class YHRecipeGen {
 					.add(TagRef.RAW_PORK)
 					.add(TagRef.RAW_BEEF)
 					.add(TagRef.RAW_MUTTON)
+					.add(YHTagGen.RAW_VENISON)
 					.add(Items.KELP)
 					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
