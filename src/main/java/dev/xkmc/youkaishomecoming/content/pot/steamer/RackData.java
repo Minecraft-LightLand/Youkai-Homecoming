@@ -21,6 +21,7 @@ public class RackData {
 
 	public static final double UPWARD_EFF = 0.01, DOWNWARD_EFF = 0.05;
 
+	@Nullable
 	@SerialClass.SerialField
 	public final RackItemData[] list = new RackItemData[4];
 
@@ -107,7 +108,7 @@ public class RackData {
 	}
 
 	public boolean tryTakeItemAt(SteamerBlockEntity be, Level level, Vec3 hit, Player player, InteractionHand hand) {
-		if (list[0].stack.getItem() instanceof FoodBlockItem) {
+		if (list[0] != null && list[0].stack.getItem() instanceof FoodBlockItem) {
 			return tryTakeItem(be, level, player, hand);
 		}
 		return tryTakeItemAt(be, level, getIndex(hit), player, hand);
