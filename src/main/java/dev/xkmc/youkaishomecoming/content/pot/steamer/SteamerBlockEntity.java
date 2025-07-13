@@ -98,7 +98,8 @@ public class SteamerBlockEntity extends BaseBlockEntity
 			for (var r : e.racks) {
 				allRacks.add(Pair.of(e, r));
 				for (var item : r.list) {
-					item.height = allRacks.size();
+					if (item != null)
+						item.height = allRacks.size();
 				}
 			}
 		}
@@ -221,13 +222,15 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		if (shift) {
 			int h = racks.size();
 			List<ItemStack> list = new ArrayList<>();
+			boolean empty = true;
 			for (var r : racks) {
 				for (var e : r.list) {
 					if (e == null) list.add(ItemStack.EMPTY);
 					else list.add(e.stack);
+					empty &= e == null;
 				}
 			}
-			if (list.isEmpty()) return null;
+			if (empty) return null;
 			return new TileTooltip(list, List.of(), 4, h);
 		}
 		int h = RackInfo.ofY(hit);

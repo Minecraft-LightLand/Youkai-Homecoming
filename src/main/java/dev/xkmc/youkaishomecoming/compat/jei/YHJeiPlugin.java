@@ -82,9 +82,9 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_LID.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_RACK.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_POT.asStack(), STEAM);
-		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM, COOKING);
 		registration.addRecipeCatalyst(YHBlocks.CUISINE_BOARD.asStack(), CUISINE);
 		registration.addRecipeCatalyst(YHItems.IRON_BOWL.asStack(), COOKING);
+		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM, COOKING);
 	}
 
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {

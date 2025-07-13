@@ -1,9 +1,16 @@
 {
-	"format_version": "1.21.6",
+	"parent": "block/block",
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "#bowl",
 		"particle": "#bowl"
+	},
+	"display": {
+		"gui": {
+			"rotation": [ 30, 225, 0 ],
+			"translation": [ 0, 0.1, 0],
+			"scale":[ 0.8, 0.8, 0.8 ]
+		}
 	},
 	"elements": [
 		{
