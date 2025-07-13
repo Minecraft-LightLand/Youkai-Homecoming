@@ -19,6 +19,8 @@ public class YHCriteriaTriggers {
 	public static final PlayerTrigger GRAPE_CUT = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("grape_cut")));
 	public static final PlayerTrigger GRAPE_HARVEST = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("grape_harvest")));
 	public static final PlayerTrigger BASIN = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("basin")));
+	public static final PlayerTrigger COOKING = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("cooking")));
+	public static final PlayerTrigger TABLE = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("table")));
 
 
 	private static PlayerTrigger reg(String id) {

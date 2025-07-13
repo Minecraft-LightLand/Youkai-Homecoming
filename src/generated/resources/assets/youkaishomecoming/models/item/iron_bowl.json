@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "youkaishomecoming:item/iron_bowl"
-  }
+  "parent": "youkaishomecoming:block/iron_bowl"
 }

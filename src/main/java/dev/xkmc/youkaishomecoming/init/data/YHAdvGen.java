@@ -136,16 +136,37 @@ public class YHAdvGen {
 						"Fragile Flower", "Get an Udubara flower. It will only appear for 10 seconds during full moon.")
 				.type(FrameType.CHALLENGE);
 		root.create("alcoholic", YHBlocks.FERMENT.asStack(),
-				CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
-						MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
-				"Alcoholic", "Brew and drink an alcoholic drink and obtain Drunk effect");
-		root.create("passed_out", YHDrink.DAIGINJO.item.asStack(),
-				CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
-						MobEffectsPredicate.effects().and(YHEffects.DRUNK.get(),
-								new MobEffectsPredicate.MobEffectInstancePredicate(
-										MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
-										null, null)))),
-				"Passed Out", "Drink until you have maximum Drunk effect");
+						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
+								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
+						"Alcoholic", "Brew and drink an alcoholic drink and obtain Drunk effect")
+				.create("passed_out", YHDrink.DAIGINJO.item.asStack(),
+						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
+								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get(),
+										new MobEffectsPredicate.MobEffectInstancePredicate(
+												MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
+												null, null)))),
+						"Passed Out", "Drink until you have maximum Drunk effect");
+		root.create("small_pot", YHItems.IRON_BOWL.asStack(),
+				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
+				"Hotpot", "Cooking with iron bowl");//TODO more pots
+		var table = root.create("cuisine_board", YHBlocks.CUISINE_BOARD.asStack(),
+				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.TABLE.getId(), ContextAwarePredicate.ANY)),
+				"Sushi Apprentice", "Make something with cuisine board");
+		table.create("kaguya_hime", YHBowl.KAGUYA_HIME.item.asStack(),
+				CriterionBuilder.item(YHBowl.KAGUYA_HIME.item.asItem()),
+				"Tale of the Bamboo Princess", "Craft and Steam Kaguya Hime");
+		table.create("sushi_master", YHSushi.OTORO_NIGIRI.asItem(),
+						CriterionBuilder.and()
+								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHSushi.OTORO_NIGIRI.asItem()))
+								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHSushi.TOBIKO_GUNKAN.asItem()))
+								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHSushi.LORELEI_NIGIRI.asItem()))
+								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHRolls.RAINBOW_FUTOMAKI.slice.asItem())),
+						"Sushi Master", "Make Otoro Nigiri, Lorelei Nigiri, Tobiko Gunkan, and Rainbow Futomaki Slice")
+				.create("foreign_sushi_master", YHRolls.RAINBOW_ROLL.slice.asItem(),
+						CriterionBuilder.and()
+								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHRolls.RAINBOW_ROLL.slice.asItem()))
+								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHRolls.VOLCANO_ROLL.slice.asItem())),
+						"Sushi Aboard", "Make Rainbow Roll Slice and Volcano Roll Slice");
 		root.create("mousse", YHFood.KOISHI_MOUSSE.item.asStack(),
 						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
 								ItemPredicate.Builder.item().of(YHFood.KOISHI_MOUSSE.item.get()).build())),

@@ -50,6 +50,7 @@ public class SmallCookingPotBlock implements OnClickBlockMethod, ShapeBlockMetho
 				return InteractionResult.SUCCESS;
 			}
 			if (be.tryAddItem(stack)) {
+				if (!level.isClientSide) be.setLastPlayer(player);
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
 					if (stack.isDamageableItem()) {
 						stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));

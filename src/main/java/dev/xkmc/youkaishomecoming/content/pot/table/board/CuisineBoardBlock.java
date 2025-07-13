@@ -10,7 +10,9 @@ import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.SearHelper;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -81,6 +83,9 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 				return InteractionResult.SUCCESS;
 			}
 			if (stack.isEmpty() && be.addToPlayer(player)) {
+				if (player instanceof ServerPlayer sp) {
+					YHCriteriaTriggers.TABLE.trigger(sp);
+				}
 				return InteractionResult.SUCCESS;
 			}
 		}
