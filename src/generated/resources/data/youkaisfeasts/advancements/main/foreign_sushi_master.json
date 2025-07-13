@@ -1,5 +1,5 @@
 {
-  "parent": "youkaisfeasts:main/sushi_master",
+  "parent": "youkaisfeasts:main/cuisine_board",
   "criteria": {
     "0": {
       "conditions": {
@@ -31,7 +31,7 @@
     "description": {
       "translate": "advancements.youkaisfeasts.advancements.main.foreign_sushi_master.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "youkaisfeasts:rainbow_roll_slice"

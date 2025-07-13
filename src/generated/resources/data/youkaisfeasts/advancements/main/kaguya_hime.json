@@ -19,7 +19,7 @@
     "description": {
       "translate": "advancements.youkaisfeasts.advancements.main.kaguya_hime.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "youkaisfeasts:kaguya_hime"

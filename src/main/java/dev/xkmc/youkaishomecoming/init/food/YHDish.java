@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;

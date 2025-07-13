@@ -1,17 +1,9 @@
 {
 	"advancements.youkaisfeasts.advancements.main": {
-		"coffea.description": "在灰化土，泥巴或者灵魂土上种植咖啡树",
-		"coffea.title": "需营养咖啡树",
-		"coffee_era.description": "获得咖啡粉",
-		"coffee_era.title": "咖啡世代",
 		"enthusiastic.description": "食用所有幻想乡的飨宴的食物",
 		"enthusiastic.title": "幻想乡美食家",
-		"fragrant.description": "饮用意式浓缩",
-		"fragrant.title": "香喷喷的!",
 		"hmm.description": "得到甜豆沙麻薯杂煮",
 		"hmm.title": "嗯姆...是这样吗?",
-		"q_grader.description": "品尝所有咖啡",
-		"q_grader.title": "咖啡大师",
 		"redbean.description": "在砂土，泥巴或者粘土上种植红豆",
 		"redbean.title": "耐瘠薄赤小豆",
 		"soybean.description": "种植黄豆",

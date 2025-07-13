@@ -1,5 +1,5 @@
 {
-  "parent": "youkaisfeasts:main/soybean",
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
   "criteria": {
     "0": {
       "conditions": {

@@ -8,7 +8,6 @@
 	"youkaisfeasts": {
 		"jei": {
 			"kettle": "泡茶",
-			"moka": "泡咖啡",
 			"rack": "晒干",
 			"ferment": "发酵",
 			"steam": "蒸",
@@ -24,9 +23,9 @@
 			"moon_lantern_place": "下方3x3x3内的幻昙华在夜间会把幻月灯当做满月",
 			"moon_lantern_hold": "手持幻月灯且持有幻昙华效果时，在夜间激活全部幻昙华效果"
 		},
-		"fermenting_progress": "发酵进度：%s",
-		"cuisine_allow": "下一步:",
-		"cuisine_extra": "还有%s种选择",
-		"wip": "这个物品还处于试验阶段，后续版本可能会大改。版本更新后内容物可能会丢失，请谨慎使用"
+		"wip": "这个物品还处于试验阶段，后续版本可能会大改。版本更新后内容物可能会丢失，请谨慎使用",
+		"subtitle.deer_ambient": "鹿叫",
+		"subtitle.deer_hurt": "鹿受伤",
+		"subtitle.deer_death": "鹿死亡"
 	}
 }
