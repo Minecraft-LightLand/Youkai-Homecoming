@@ -35,7 +35,6 @@ public class RackData {
 		for (var e : list) {
 			double heat = upwardHeat * UPWARD_EFF + downwardHeat * DOWNWARD_EFF;
 			if (e != null && e.tick(be, level, heat)) {
-
 				if (e.stack.getItem() instanceof FoodBlockItem)
 					count += 10;
 				else count++;
