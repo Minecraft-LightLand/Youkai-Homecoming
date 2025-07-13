@@ -43,6 +43,18 @@
 		"grape_harvest.description": "收获葡萄枝条下挂着的葡萄果实",
 		"grape_harvest.title": "苦后甘来",
 		"squeeze.description": "在木盆中跳跃榨取葡萄汁",
-		"squeeze.title": "糯香葡萄汁"
+		"squeeze.title": "糯香葡萄汁",
+		"cuisine_board.description": "用料理台做点什么",
+		"cuisine_board.title": "寿司学徒",
+		"foreign_sushi_master.description": "制作彩虹加州卷切片和铁火加州卷切片",
+		"foreign_sushi_master.title": "出口转内销",
+		"kaguya_hime.description": "制作并蒸熟竹取物语",
+		"kaguya_hime.title": "竹中公主的故事",
+		"small_pot.description": "用铁碗煮点什么",
+		"small_pot.title": "归家暖意",
+		"sushi_master.description": "制作金枪鱼大腹握寿司,夜雀的手握,鱼籽军舰,缤纷太卷切片",
+		"sushi_master.title": "寿司仙人",
+		"crab_grab.description": "试图把螃蟹装桶时被螃蟹抢走水桶",
+		"crab_grab.title": "横行霸道"
 	}
 }

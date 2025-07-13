@@ -221,7 +221,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.SHAVED_ICE_OVER_RICE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
-					.requires(TagRef.GRAIN_RICE).requires(YHTagGen.ICE).requires(YHCrops.REDBEAN.getSeed())
+					.requires(ModItems.COOKED_RICE.get()).requires(YHTagGen.ICE).requires(YHCrops.REDBEAN.getSeed())
 					.requires(ModItems.COD_ROLL.get())
 					.save(pvd);
 
@@ -251,8 +251,6 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.MAYONNAISE.item.get(), 3, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MISC)
 					.addIngredient(YHFood.BUTTER.item)
-					.addIngredient(YHFood.BUTTER.item)
-					.addIngredient(TagRef.EGGS)
 					.addIngredient(TagRef.EGGS)
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHItems.MAYONNAISE.item.getId());
@@ -266,7 +264,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.SUGAR)
 					.build(pvd, YHFood.IMITATION_CRAB.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TAMAGOYAKI.item.get(), 1, 200, 0.1f)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.TAMAGOYAKI.item.get(), 2, 200, 0.1f)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MISC)
 					.addIngredient(TagRef.EGGS)
 					.addIngredient(TagRef.EGGS)
@@ -423,7 +421,6 @@ public class YHRecipeGen {
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.GRAIN_RICE)
 					.addIngredient(Items.CRIMSON_FUNGUS)
-					.addIngredient(Items.CRIMSON_FUNGUS)
 					.addIngredient(Items.BLAZE_POWDER)
 					.addIngredient(TagRef.VEGETABLES_POTATO)
 					.addIngredient(TagRef.RAW_CHICKEN)
@@ -510,6 +507,7 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_PORK)
 					.addIngredient(TagRef.VEGETABLES_CARROT)
 					.addIngredient(TagRef.FOOD_CABBAGE)
+					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item())
 					.build(pvd, YHFood.LIONS_HEAD.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.MAPO_TOFU.item.get(), 1, 200, 0.1f, Items.BOWL)

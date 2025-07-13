@@ -53,7 +53,7 @@ public enum YHDish {
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 
 	COLD_TOFU(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 4, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	CUMBERLAND_LOIN(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),

@@ -9,8 +9,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTextTooltip;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
@@ -21,6 +23,7 @@ import java.util.List;
 public class HintOverlay implements IGuiOverlay {
 
 	private int start = 0;
+	private BlockPos pos = null;
 
 	@Override
 	public void render(ForgeGui gui, GuiGraphics g, float pTick, int w, int h) {
@@ -32,11 +35,31 @@ public class HintOverlay implements IGuiOverlay {
 		if (!(hit instanceof BlockHitResult bhit)) return;
 		var level = player.level();
 		if (!(level.getBlockEntity(bhit.getBlockPos()) instanceof CuisineBoardBlockEntity be)) return;
-		if (prev == 0 || prev > player.tickCount) prev = player.tickCount;
+		if (prev == 0 || prev > player.tickCount || pos == null || !pos.equals(bhit.getBlockPos()))
+			prev = player.tickCount;
+		pos = bhit.getBlockPos();
 		start = prev;
 		int time = player.tickCount - start;
 		if (time < 15) return;
 		var list = be.getModel().getHints(level);
+		if (list.isEmpty()) return;
+		var stacks = compile(list);
+		int total = stacks.size();
+		int n = Math.min(total, 12);
+		ItemStack[] display = new ItemStack[n];
+		for (int i = 0; i < n; i++) {
+			var arr = stacks.get(i);
+			if (arr.length == 0) {
+				display[i] = YHItems.EMPTY_HAND_ICON.asStack(1);
+				continue;
+			}
+			display[i] = arr[time / 15 % arr.length];
+		}
+		new ImageBox(g, (int) (w * 0.7), (int) (h * 0.5), 0)
+				.render(display, Math.min(4, n), Math.min(3, (n - 1) / 4 + 1), total - n);
+	}
+
+	private List<ItemStack[]> compile(List<Ingredient> list) {
 		Int2ObjectLinkedOpenHashMap<ItemStack[]> set = new Int2ObjectLinkedOpenHashMap<>();
 		for (var e : list) {
 			if (e.isEmpty()) {
@@ -60,22 +83,7 @@ public class HintOverlay implements IGuiOverlay {
 			}
 			set.put(result, stacks);
 		}
-		int total = set.size();
-		if (total == 0) return;
-		List<ItemStack[]> stacks = new ArrayList<>(set.values());
-		int n = Math.min(total, 12);
-		ItemStack[] display = new ItemStack[n];
-		for (int i = 0; i < n; i++) {
-			var arr = stacks.get(i);
-			if (arr.length == 0) {
-				display[i] = YHItems.EMPTY_HAND_ICON.asStack(1);
-				continue;
-			}
-			display[i] = arr[time / 15 % arr.length];
-		}
-
-		new ImageBox(g, (int) (w * 0.7), (int) (h * 0.5), 0)
-				.render(display, Math.min(4, n), Math.min(3, (n - 1) / 4 + 1), total - n);
+		return new ArrayList<>(set.values());
 	}
 
 	public static class ImageBox extends OverlayUtil {
