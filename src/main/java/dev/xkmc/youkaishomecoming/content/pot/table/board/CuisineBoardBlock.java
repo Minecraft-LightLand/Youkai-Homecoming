@@ -78,14 +78,14 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 					if (!cont.isEmpty()) {
 						player.getInventory().placeItemBackInInventory(cont.copyWithCount(cost));
 					}
+					if (player instanceof ServerPlayer sp && be.getModel().complete(level).isPresent()) {
+						YHCriteriaTriggers.TABLE.trigger(sp);
+					}
 				}
 				player.playSound(SoundEvents.WOOL_PLACE, 1, 1);
 				return InteractionResult.SUCCESS;
 			}
 			if (stack.isEmpty() && be.addToPlayer(player)) {
-				if (player instanceof ServerPlayer sp) {
-					YHCriteriaTriggers.TABLE.trigger(sp);
-				}
 				return InteractionResult.SUCCESS;
 			}
 		}

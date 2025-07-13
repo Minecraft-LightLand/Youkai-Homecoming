@@ -28,6 +28,11 @@ public enum YHLangData {
 	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
 	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
 	WIP("wip", "This item is experimental and will get drasitc changes in the future.", 0, ChatFormatting.RED),
+	STEAMER_TOO_MANY("steamer.too_many", "Too many racks!", 0, ChatFormatting.RED),
+	STEAMER_NO_WATER("steamer.no_water", "Next Step: Add water", 0, ChatFormatting.GRAY),
+	STEAMER_NO_HEAT("steamer.no_heat", "Next Step: Put heat source beneath", 0, ChatFormatting.GRAY),
+	STEAMER_NO_RACK("steamer.no_rack", "Next Step: Add steam racks", 0, ChatFormatting.GRAY),
+	STEAMER_NO_CAP("steamer.no_cap", "Cap top rack to steam faster", 0, ChatFormatting.GRAY),
 
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
 	JEI_RACK("jei.rack", "Drying", 0, null),

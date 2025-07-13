@@ -1,0 +1,14 @@
+{
+	"youkaishomecoming": {
+		"steamer": {
+			"no_cap": "用盖子盖住顶端能蒸得更快",
+			"no_heat": "下一步：在蒸锅下方放置热源",
+			"no_rack": "下一步：在蒸锅上方放置蒸笼",
+			"no_water": "下一步：在蒸锅中加水",
+			"too_many": "蒸笼太多了！"
+		},
+		"fermenting_progress": "发酵进度：%s",
+		"cuisine_allow": "下一步:",
+		"cuisine_extra": "还有%s种选择"
+	}
+}

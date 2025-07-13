@@ -35,10 +35,13 @@ public class TileInfoDisplay implements IGuiOverlay {
 
 		public void render(InfoTile tile, boolean shift, BlockHitResult hit) {
 			List<ClientTooltipComponent> tooltip = new ArrayList<>();
-			tooltip.add(new TileClientTooltip(tile.getImage(shift, hit)));
+			var img = tile.getImage(shift, hit);
+			if (img != null)
+				tooltip.add(new TileClientTooltip(img));
 			for (var e : tile.lines(shift, hit)) {
 				tooltip.add(new ClientTextTooltip(e.getVisualOrderText()));
 			}
+			if (tooltip.isEmpty()) return;
 			renderTooltipInternal(Minecraft.getInstance().font, tooltip);
 		}
 
