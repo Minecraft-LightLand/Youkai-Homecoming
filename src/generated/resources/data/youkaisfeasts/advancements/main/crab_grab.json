@@ -1,0 +1,30 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaisfeasts:crab_grab"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.crab_grab.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaisfeasts:crab_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.crab_grab.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaisfeasts:table"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.cuisine_board.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaisfeasts:cuisine_board"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.cuisine_board.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

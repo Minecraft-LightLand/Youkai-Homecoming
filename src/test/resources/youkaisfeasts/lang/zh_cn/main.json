@@ -26,6 +26,7 @@
 		},
 		"fermenting_progress": "发酵进度：%s",
 		"cuisine_allow": "下一步:",
-		"cuisine_extra": "还有%s种选择"
+		"cuisine_extra": "还有%s种选择",
+		"wip": "这个物品还处于试验阶段，后续版本可能会大改。版本更新后内容物可能会丢失，请谨慎使用"
 	}
 }
