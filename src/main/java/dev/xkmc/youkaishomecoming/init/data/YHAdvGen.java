@@ -146,6 +146,9 @@ public class YHAdvGen {
 												MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
 												null, null)))),
 						"Passed Out", "Drink until you have maximum Drunk effect");
+		root.create("crab_grab", YHItems.CRAB_BUCKET.asItem(),
+				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CRAB_GRAB.getId(), ContextAwarePredicate.ANY)),
+				"Crab Grab", "Have a crab grab your water bucket when attempting to bucket a crab");
 		root.create("small_pot", YHItems.IRON_BOWL.asStack(),
 				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
 				"Hotpot", "Cooking with iron bowl");//TODO more pots

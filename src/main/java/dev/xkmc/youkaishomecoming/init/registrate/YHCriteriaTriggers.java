@@ -21,6 +21,7 @@ public class YHCriteriaTriggers {
 	public static final PlayerTrigger BASIN = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("basin")));
 	public static final PlayerTrigger COOKING = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("cooking")));
 	public static final PlayerTrigger TABLE = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("table")));
+	public static final PlayerTrigger CRAB_GRAB = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("crab_grab")));
 
 
 	private static PlayerTrigger reg(String id) {

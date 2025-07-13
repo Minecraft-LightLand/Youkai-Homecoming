@@ -4,6 +4,7 @@ import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -13,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -208,6 +210,8 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 				states.transitionTo(CrabState.SWING);
 				sl.playSound(this, blockPosition, SoundEvents.ITEM_BREAK,
 						SoundSource.AMBIENT, 0.7f, 1);
+				if (stack.is(Items.WATER_BUCKET) && player instanceof ServerPlayer sp)
+					YHCriteriaTriggers.CRAB_GRAB.trigger(sp);
 			}
 			return InteractionResult.SUCCESS;
 		}
