@@ -148,7 +148,7 @@ public class YHItems {
 					.register();
 
 			IRON_BOWL = ironBowl("iron_bowl")
-					.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
+					.item().build()
 					.register();
 
 			WOOD_BOWL = woodBowl("wood_bowl")

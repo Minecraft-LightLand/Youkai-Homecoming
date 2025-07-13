@@ -6,13 +6,16 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -45,6 +48,8 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 	private boolean recheckSoup = true;
 	private ResourceLocation soupCache = SoupBaseRecipe.DEF;
 	private List<ItemStack> floatingItems = new ArrayList<>();
+
+	private @Nullable Player lastPlayer;
 
 	public CookingBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
@@ -85,6 +90,10 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 				recipe.removeConsumed(floatingItems);
 			}
 		}
+	}
+
+	public void setLastPlayer(Player player) {
+		lastPlayer = player;
 	}
 
 	public boolean tryAddItem(ItemStack stack) {
@@ -144,6 +153,10 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 			Block.popResource(level, getBlockPos().above(), ans);
 			notifyTile();
 		}
+		if (lastPlayer instanceof ServerPlayer sp && lastPlayer.isAlive()) {
+			YHCriteriaTriggers.COOKING.trigger(sp);
+		}
+		lastPlayer = null;
 	}
 
 	@Override
@@ -163,6 +176,7 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 			Containers.dropContents(level, this.getBlockPos().above(), e);
 		items.clear();
 		notifyTile();
+		lastPlayer = null;
 	}
 
 	@Override

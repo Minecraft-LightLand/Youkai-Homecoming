@@ -1,0 +1,30 @@
+{
+  "parent": "youkaishomecoming:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaishomecoming:table"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.cuisine_board.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:cuisine_board"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.cuisine_board.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
