@@ -49,7 +49,7 @@ public class UnorderedCookingRecipe extends PotCookingRecipe<UnorderedCookingRec
 	}
 
 	@Override
-	public List<Ingredient> getHints(Level level, CuisineInv inv) {
+	public List<Ingredient> getHints(Level level, CookingInv inv) {
 		List<Ingredient> remain = new ArrayList<>(input);
 		for (int i = 0; i < inv.getContainerSize(); i++) {
 			ItemStack stack = inv.getItem(i);

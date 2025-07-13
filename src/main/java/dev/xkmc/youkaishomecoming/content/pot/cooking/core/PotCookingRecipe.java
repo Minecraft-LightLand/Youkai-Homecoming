@@ -46,7 +46,7 @@ public abstract class PotCookingRecipe<T extends PotCookingRecipe<T>> extends Ba
 		return result;
 	}
 
-	public abstract List<Ingredient> getHints(Level level, CuisineInv cont);
+	public abstract List<Ingredient> getHints(Level level, CookingInv cont);
 
 	public int getProcessTime() {
 		return time;

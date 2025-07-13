@@ -1,7 +1,7 @@
-package dev.xkmc.youkaishomecoming.content.pot.table.board;
+package dev.xkmc.youkaishomecoming.content.pot.overlay;
 
 import dev.xkmc.l2library.base.overlay.OverlayUtil;
-import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
@@ -12,10 +12,13 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +37,15 @@ public class HintOverlay implements IGuiOverlay {
 		var hit = Minecraft.getInstance().hitResult;
 		if (!(hit instanceof BlockHitResult bhit)) return;
 		var level = player.level();
-		if (!(level.getBlockEntity(bhit.getBlockPos()) instanceof CuisineBoardBlockEntity be)) return;
+		IHintableBlockEntity be = getBlock(level, bhit.getBlockPos());
+		if (be == null) return;
 		if (prev == 0 || prev > player.tickCount || pos == null || !pos.equals(bhit.getBlockPos()))
 			prev = player.tickCount;
 		pos = bhit.getBlockPos();
 		start = prev;
 		int time = player.tickCount - start;
 		if (time < 15) return;
-		var list = be.getModel().getHints(level);
+		var list = be.getHints(level);
 		if (list.isEmpty()) return;
 		var stacks = compile(list);
 		int total = stacks.size();
@@ -57,6 +61,18 @@ public class HintOverlay implements IGuiOverlay {
 		}
 		new ImageBox(g, (int) (w * 0.7), (int) (h * 0.5), 0)
 				.render(display, Math.min(4, n), Math.min(3, (n - 1) / 4 + 1), total - n);
+	}
+
+	@Nullable
+	private IHintableBlockEntity getBlock(Level level, BlockPos pos) {
+		if (level.getBlockEntity(pos) instanceof IHintableBlockEntity be)
+			return be;
+		if (level.getBlockState(pos).is(YHItems.IRON_BOWL.get())) {
+			if (CookingBlockEntity.isHeatedPos(level, pos)) {
+				return IHintableBlockEntity.wrap(Items.WATER_BUCKET);
+			}
+		}
+		return null;
 	}
 
 	private List<ItemStack[]> compile(List<Ingredient> list) {
