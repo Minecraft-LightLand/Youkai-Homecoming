@@ -251,16 +251,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaisfeasts:doughnut": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:doughnut"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:dried_fish": {
       "conditions": {
         "item": {
@@ -376,26 +366,6 @@
         "item": {
           "items": [
             "youkaisfeasts:higan_soup"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:higi_chocolate": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:higi_chocolate"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:higi_doughnut": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:higi_doughnut"
           ]
         }
       },
@@ -1684,16 +1654,7 @@
       "youkaisfeasts:steamed_egg_in_bamboo"
     ],
     [
-      "youkaisfeasts:doughnut"
-    ],
-    [
       "youkaisfeasts:kabayaki"
-    ],
-    [
-      "youkaisfeasts:higi_chocolate"
-    ],
-    [
-      "youkaisfeasts:higi_doughnut"
     ],
     [
       "youkaisfeasts:candy_apple"

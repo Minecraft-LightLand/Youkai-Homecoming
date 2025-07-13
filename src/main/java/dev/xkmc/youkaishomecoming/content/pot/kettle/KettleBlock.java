@@ -118,6 +118,7 @@ public class KettleBlock extends BasePotBlock implements LeftClickBlock {
 	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 		super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
 		pTooltip.add(YHLangData.KETTLE_INFO.get());
+		pTooltip.add(YHLangData.WIP.get());
 	}
 
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {

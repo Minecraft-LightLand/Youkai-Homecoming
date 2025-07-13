@@ -27,6 +27,7 @@ public enum YHLangData {
 	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
 	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
 	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
+	WIP("wip", "This item is experimental and will get drasitc changes in the future.", 0, ChatFormatting.RED),
 
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
 	JEI_RACK("jei.rack", "Drying", 0, null),
@@ -36,7 +37,7 @@ public enum YHLangData {
 	JEI_CUISINE("jei.cuisine", "Cuisine", 0, null),
 	JEI_COOKING("jei.cooking", "Cooking", 0, null),
 
-;
+	;
 	private final String key, def;
 	private final int arg;
 	private final ChatFormatting format;

@@ -118,19 +118,11 @@ public enum YHFood implements ItemLike {
 	OYAKI(FoodType.SIMPLE, 8, 0.6f, "raw_oyaki", DietTagGen.GRAINS.tag),
 	PORK_RICE_BALL(FoodType.SIMPLE, 10, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.SIMPLE, 8, 0.6f, DietTagGen.PROTEINS.tag),
-	DOUGHNUT(FoodType.SIMPLE, 8, 0.6f, DietTagGen.GRAINS.tag),
 	KABAYAKI(FoodType.FAST, 8, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
 			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
-	HIGI_CHOCOLATE(FoodType.SIMPLE, 4, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI, 1200, 0, 1)
-	), DietTagGen.SUGARS.tag),
-	HIGI_DOUGHNUT(FoodType.SIMPLE, 10, 0.8f, List.of(
-			new EffectEntry(YHEffects.HIGI, 1200, 0, 1),
-			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
-	), DietTagGen.GRAINS.tag, DietTagGen.SUGARS.tag),
 
 	// stick
 

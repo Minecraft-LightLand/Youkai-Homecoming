@@ -1,0 +1,89 @@
+{
+	"deer_ambient": {
+		"sounds": [
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/0"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/1"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/2"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/3"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/4"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/5"
+			}
+		],
+		"subtitle": "youkaisfeasts.subtitle.deer_ambient"
+	},
+	"deer_hurt": {
+		"sounds": [
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/0"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/1"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/2"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/3"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/4"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/5"
+			}
+		],
+		"subtitle": "youkaisfeasts.subtitle.deer_hurt"
+	},
+	"deer_death": {
+		"sounds": [
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/0"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/1"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/2"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/3"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/4"
+			},
+			{
+				"type": "file",
+				"name": "youkaisfeasts:deer/5"
+			}
+		],
+		"subtitle": "youkaisfeasts.subtitle.deer_death"
+	}
+}

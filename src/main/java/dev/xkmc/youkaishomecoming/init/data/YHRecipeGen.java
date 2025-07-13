@@ -237,24 +237,6 @@ public class YHRecipeGen {
 					.define('E', ModItems.PIE_CRUST.get())
 					.save(pvd);
 
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHFood.DOUGHNUT.item, 4)::unlockedBy, ModItems.WHEAT_DOUGH.get())
-					.pattern("CAC").pattern("ABA").pattern("CAC")
-					.define('A', TagRef.DOUGH_WHEAT)
-					.define('B', YHItems.CREAM)
-					.define('C', Items.SUGAR)
-					.save(pvd);
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.HIGI_CHOCOLATE.item, 3)::unlockedBy, Items.COCOA_BEANS)
-					.requires(YHItems.MATCHA).requires(Items.TWISTING_VINES).requires(Items.PINK_PETALS)
-					.requires(Items.HONEY_BOTTLE).requires(Items.BLAZE_POWDER).requires(Items.BLUE_ORCHID)
-					.requires(Items.COCOA_BEANS, 3)
-					.save(pvd);
-
-			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.HIGI_DOUGHNUT.item, 1)::unlockedBy, YHFood.HIGI_CHOCOLATE.item.get())
-					.requires(YHFood.DOUGHNUT.item).requires(YHFood.HIGI_CHOCOLATE.item)
-					.save(pvd);
-
 		}
 
 		// food cooking

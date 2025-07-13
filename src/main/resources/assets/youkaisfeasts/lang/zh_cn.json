@@ -427,5 +427,9 @@
   "advancements.youkaisfeasts.advancements.main.grape_harvest.description": "收获葡萄枝条下挂着的葡萄果实",
   "advancements.youkaisfeasts.advancements.main.grape_harvest.title": "苦后甘来",
   "advancements.youkaisfeasts.advancements.main.squeeze.description": "在木盆中跳跃榨取葡萄汁",
-  "advancements.youkaisfeasts.advancements.main.squeeze.title": "糯香葡萄汁"
+  "advancements.youkaisfeasts.advancements.main.squeeze.title": "糯香葡萄汁",
+  "youkaisfeasts.subtitle.deer_ambient": "Deer baahs",
+  "youkaisfeasts.subtitle.deer_death": "Deer dies",
+  "youkaisfeasts.subtitle.deer_hurt": "Deer hurts",
+  "youkaisfeasts.wip": "这个物品还处于试验阶段，后续版本可能会大改。版本更新后内容物可能会丢失，请谨慎使用"
 }

@@ -248,7 +248,6 @@
   "item.youkaisfeasts.daiginjo": "Daiginjo",
   "item.youkaisfeasts.dassai": "Dassai",
   "item.youkaisfeasts.deer_spawn_egg": "Deer Spawn Egg",
-  "item.youkaisfeasts.doughnut": "Doughnut",
   "item.youkaisfeasts.egg_futomaki": "Egg Futomaki",
   "item.youkaisfeasts.egg_futomaki_slice": "Egg Futomaki Slice",
   "item.youkaisfeasts.egg_nigiri": "Egg Nigiri",
@@ -262,8 +261,6 @@
   "item.youkaisfeasts.grilled_venison": "Grilled Venison",
   "item.youkaisfeasts.grilled_venison_slice": "Grilled Venison Slice",
   "item.youkaisfeasts.hakutsuru": "Hakutsuru",
-  "item.youkaisfeasts.higi_chocolate": "Higi Chocolate",
-  "item.youkaisfeasts.higi_doughnut": "Higi Doughnut",
   "item.youkaisfeasts.honey_glazed_cucumber": "Honey Glazed Cucumber",
   "item.youkaisfeasts.ice_cube": "Ice Cube",
   "item.youkaisfeasts.imitation_crab": "Imitation Crab",
@@ -392,10 +389,14 @@
   "youkaisfeasts.jei.kettle": "Tea Brewing",
   "youkaisfeasts.jei.rack": "Drying",
   "youkaisfeasts.jei.steam": "Steaming",
+  "youkaisfeasts.subtitle.deer_ambient": "Deer baahs",
+  "youkaisfeasts.subtitle.deer_death": "Deer dies",
+  "youkaisfeasts.subtitle.deer_hurt": "Deer hurts",
   "youkaisfeasts.tooltip.chance": "%1$s with %2$s%% chance",
   "youkaisfeasts.tooltip.drying_rack": "Only works directly under the sun",
   "youkaisfeasts.tooltip.kettle": "Right click with water bucket or water bottle to fill water",
   "youkaisfeasts.tooltip.moon_lantern_hold": "When holding in hand, Udumbara effect will always trigger at night regardless if player can see full moons",
   "youkaisfeasts.tooltip.moon_lantern_place": "Udumbara within 3x3x3 blocks below this latern will grow as night as if they can see full moon.",
-  "youkaisfeasts.tooltip.place": "Can be placed on ground"
+  "youkaisfeasts.tooltip.place": "Can be placed on ground",
+  "youkaisfeasts.wip": "This item is experimental and will get drasitc changes in the future."
 }

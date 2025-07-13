@@ -248,7 +248,6 @@
   "item.youkaisfeasts.daiginjo": "oظuıbıɐᗡ",
   "item.youkaisfeasts.dassai": "ıɐssɐᗡ",
   "item.youkaisfeasts.deer_spawn_egg": "bbƎ uʍɐdS ɹǝǝᗡ",
-  "item.youkaisfeasts.doughnut": "ʇnuɥbnoᗡ",
   "item.youkaisfeasts.egg_futomaki": "ıʞɐɯoʇnℲ bbƎ",
   "item.youkaisfeasts.egg_futomaki_slice": "ǝɔıןS ıʞɐɯoʇnℲ bbƎ",
   "item.youkaisfeasts.egg_nigiri": "ıɹıbıN bbƎ",
@@ -262,8 +261,6 @@
   "item.youkaisfeasts.grilled_venison": "uosıuǝΛ pǝןןıɹ⅁",
   "item.youkaisfeasts.grilled_venison_slice": "ǝɔıןS uosıuǝΛ pǝןןıɹ⅁",
   "item.youkaisfeasts.hakutsuru": "nɹnsʇnʞɐH",
-  "item.youkaisfeasts.higi_chocolate": "ǝʇɐןoɔoɥƆ ıbıH",
-  "item.youkaisfeasts.higi_doughnut": "ʇnuɥbnoᗡ ıbıH",
   "item.youkaisfeasts.honey_glazed_cucumber": "ɹǝqɯnɔnƆ pǝzɐן⅁ ʎǝuoH",
   "item.youkaisfeasts.ice_cube": "ǝqnƆ ǝɔI",
   "item.youkaisfeasts.imitation_crab": "qɐɹƆ uoıʇɐʇıɯI",
@@ -392,10 +389,14 @@
   "youkaisfeasts.jei.kettle": "buıʍǝɹᗺ ɐǝ⟘",
   "youkaisfeasts.jei.rack": "buıʎɹᗡ",
   "youkaisfeasts.jei.steam": "buıɯɐǝʇS",
+  "youkaisfeasts.subtitle.deer_ambient": "sɥɐɐq ɹǝǝᗡ",
+  "youkaisfeasts.subtitle.deer_death": "sǝıp ɹǝǝᗡ",
+  "youkaisfeasts.subtitle.deer_hurt": "sʇɹnɥ ɹǝǝᗡ",
   "youkaisfeasts.tooltip.chance": "ǝɔuɐɥɔ %2$s%% ɥʇıʍ %1$s",
   "youkaisfeasts.tooltip.drying_rack": "uns ǝɥʇ ɹǝpun ʎןʇɔǝɹıp sʞɹoʍ ʎןuO",
   "youkaisfeasts.tooltip.kettle": "ɹǝʇɐʍ ןןıɟ oʇ ǝןʇʇoq ɹǝʇɐʍ ɹo ʇǝʞɔnq ɹǝʇɐʍ ɥʇıʍ ʞɔıןɔ ʇɥbıᴚ",
   "youkaisfeasts.tooltip.moon_lantern_hold": "suooɯ ןןnɟ ǝǝs uɐɔ ɹǝʎɐןd ɟı ssǝןpɹɐbǝɹ ʇɥbıu ʇɐ ɹǝbbıɹʇ sʎɐʍןɐ ןןıʍ ʇɔǝɟɟǝ ɐɹɐqɯnp∩ 'puɐɥ uı buıpןoɥ uǝɥM",
   "youkaisfeasts.tooltip.moon_lantern_place": "˙uooɯ ןןnɟ ǝǝs uɐɔ ʎǝɥʇ ɟı sɐ ʇɥbıu sɐ ʍoɹb ןןıʍ uɹǝʇɐן sıɥʇ ʍoןǝq sʞɔoןq ƐxƐxƐ uıɥʇıʍ ɐɹɐqɯnp∩",
-  "youkaisfeasts.tooltip.place": "punoɹb uo pǝɔɐןd ǝq uɐƆ"
+  "youkaisfeasts.tooltip.place": "punoɹb uo pǝɔɐןd ǝq uɐƆ",
+  "youkaisfeasts.wip": "˙ǝɹnʇnɟ ǝɥʇ uı sǝbuɐɥɔ ɔʇısɐɹp ʇǝb ןןıʍ puɐ ןɐʇuǝɯıɹǝdxǝ sı ɯǝʇı sıɥ⟘"
 }

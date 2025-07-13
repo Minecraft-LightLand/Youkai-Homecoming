@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-13T00:21:26.73981	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-13T09:10:05.283693	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 d543d0b385baf07809b3b33e20db22575103bd37 assets/youkaisfeasts/blockstates/bamboo_bowl.json
@@ -116,8 +116,8 @@ aaa9840c511a0900093376e961d2a82aee473e16 assets/youkaisfeasts/blockstates/wild_r
 eff28abca341e32a423cd7d97f29ef8bd88b681f assets/youkaisfeasts/blockstates/wild_white_grape.json
 af2669a5233994767f50cb4988d23304810b27b9 assets/youkaisfeasts/blockstates/wood_basin.json
 ce3ef441058bd86efef367a6ddbae619564bcbb3 assets/youkaisfeasts/blockstates/wood_bowl.json
-cccadd8216838398f6cdbd0c932649529c65c508 assets/youkaisfeasts/lang/en_ud.json
-688e4e5d68cb47db89d51f839b8036db1b149795 assets/youkaisfeasts/lang/en_us.json
+399d182dbeaed022acaeaa2eab0e4b40fde2f341 assets/youkaisfeasts/lang/en_ud.json
+050900f0b63b6da065ff2f6729ac434e81fb48af assets/youkaisfeasts/lang/en_us.json
 b1632c747dbd6175a1ffb57e1d2a5db108885718 assets/youkaisfeasts/models/block/acacia_dining_chair.json
 a9464c5f31da2873c0acb72217905d0fe4d91b43 assets/youkaisfeasts/models/block/acacia_dining_table.json
 73cec7413acb220277f9879cffdfaea207168c4b assets/youkaisfeasts/models/block/bamboo_bowl.json
@@ -980,7 +980,6 @@ cba29b689c0fa8c10d3e6426da9f77b8eddb8ade assets/youkaisfeasts/models/item/cumber
 d40df6d6842dee7b6bd113e1d759e75d5cfa7954 assets/youkaisfeasts/models/item/dark_oak_dining_table.json
 4cd3eedf4cb492b4d016d2564c61d9ea7d5826cd assets/youkaisfeasts/models/item/dassai.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaisfeasts/models/item/deer_spawn_egg.json
-e812aac0078503283395c9b363040dc579465176 assets/youkaisfeasts/models/item/doughnut.json
 16d3a505abb353ca47213fca6e53ce559df7eb3a assets/youkaisfeasts/models/item/dried_fish.json
 3f8c7c257179f46e4f9944616fa6f3cfc507690d assets/youkaisfeasts/models/item/drying_rack.json
 48730e4329c90dea928c6a6130ae45f616d14029 assets/youkaisfeasts/models/item/egg_futomaki.json
@@ -999,8 +998,6 @@ ffc046f81d24f69409e666fc72e7a11ca89234ec assets/youkaisfeasts/models/item/grille
 958ddf839fe551ea5b3ba327ebcd82e3956af1ac assets/youkaisfeasts/models/item/grilled_venison_slice.json
 1cafaf9b8aa072c557569cfe2bf6bb1452d917f9 assets/youkaisfeasts/models/item/hakutsuru.json
 402c7dc8ed112e785c42b6ea469266322ab96cf9 assets/youkaisfeasts/models/item/higan_soup.json
-631668504efeabaec99b07410e5bcdda9c2cabc3 assets/youkaisfeasts/models/item/higi_chocolate.json
-30d1fc1c6741695a0c89d678484349d8db6f5fa3 assets/youkaisfeasts/models/item/higi_doughnut.json
 d86e29cb34ad415c58fda55c66f9e7617deed6e5 assets/youkaisfeasts/models/item/hokkaido_salmon_hotpot.json
 515aa4c07ee1312e7f4fa18623993eb85514d2b3 assets/youkaisfeasts/models/item/honey_glazed_cucumber.json
 1310c52e49c280a1d8857b5b7133f856ca4e8917 assets/youkaisfeasts/models/item/ice_cube.json
@@ -1207,9 +1204,9 @@ dc2bd278337c6630032c157cd32b34aa2fe195f1 assets/youkaisfeasts/models/udumbara/ud
 ed81a8b12d4b2d35f7e49b81c456949898510a43 assets/youkaisfeasts/models/udumbara/udumbara_stage6.json
 510768ff0cdc1463f674747f4a7db42817d59139 assets/youkaisfeasts/models/udumbara/udumbara_stage7.json
 c8adc961e8d75290597702c63cea0acf2c77ba08 data/diet/tags/items/fruits.json
-f9cf7b92c8707c75288ea101d1b7b7f89162dd53 data/diet/tags/items/grains.json
+fda8ce4ee6a5a25153f7566027006a6f3873c2c9 data/diet/tags/items/grains.json
 763da46314e6d264e3c8d6f4c35e202f70c74305 data/diet/tags/items/proteins.json
-d1129c8605b25592572a7efd4f1511fc6210e2d9 data/diet/tags/items/sugars.json
+b3e8ee7fa0b7b9d60b0194141e6cc6be9ae07d28 data/diet/tags/items/sugars.json
 70dadaafc5807f102b4c71be3d0df82ea9130a96 data/diet/tags/items/vegetables.json
 3a038c40159f44e8dd269547ede0c094058a324c data/farmersdelight/tags/blocks/wild_crops.json
 cc737bd30a7a4a0b6c4f43dab0d9d9fc2a62bf25 data/farmersdelight/tags/items/cabbage_roll_ingredients.json
@@ -1254,7 +1251,7 @@ d5e8371391cfefce5242aef31b52ee5d3f717d19 data/sereneseasons/tags/items/winter_cr
 306dc8c493ccf2a999435f2516be6121ffec4150 data/youkaisfeasts/advancements/main/alcoholic.json
 afc2257600943ba7b09c4bdcf9ff033963364d7d data/youkaisfeasts/advancements/main/cucumber.json
 37be06bebd33a78d977fb5623de460ae24353e6e data/youkaisfeasts/advancements/main/cucumber_top.json
-99b2f47d0b42530b12c70ad41f35d15a1e6ca715 data/youkaisfeasts/advancements/main/enthusiastic.json
+ec2e0dec60900df7624707eb059b60655a82b8a2 data/youkaisfeasts/advancements/main/enthusiastic.json
 5a8265240bbad237add1fd401c375d7bc67e4159 data/youkaisfeasts/advancements/main/grape.json
 d05b10446c6e66f72e25a8f857584b04951f3aad data/youkaisfeasts/advancements/main/grape_cut.json
 4712cdebfc30c2fadeda501cd73aefe202766708 data/youkaisfeasts/advancements/main/grape_harvest.json
@@ -1321,15 +1318,12 @@ f4141850db8fd54185d102bb2410a0b2e895647e data/youkaisfeasts/advancements/recipes
 79411f052edac67486e15ff73f96d7b853d6da04 data/youkaisfeasts/advancements/recipes/food/assorted_dango.json
 90510299e4329668cee34b2139573124ef92d122 data/youkaisfeasts/advancements/recipes/food/big_popsicle.json
 5910e07367f76791222dc6b278bfb6c06695d80c data/youkaisfeasts/advancements/recipes/food/cold_tofu.json
-d16a7fdb3b25db28ad5a042c13f0026d77b83af0 data/youkaisfeasts/advancements/recipes/food/doughnut.json
 1cc84699211024b10e065448c0c294e6645aed0a data/youkaisfeasts/advancements/recipes/food/grilled_venison_from_raw_venison_campfire.json
 f25fa4fb88a9ba12d7cda1602a6a1e5f9257b32c data/youkaisfeasts/advancements/recipes/food/grilled_venison_from_raw_venison_smelting.json
 be85ee0ca18c22059530ab757de2637394ca0f12 data/youkaisfeasts/advancements/recipes/food/grilled_venison_from_raw_venison_smoking.json
 0c83616c9b326990d211c77912c0f241414e2fc4 data/youkaisfeasts/advancements/recipes/food/grilled_venison_slice_from_raw_venison_slice_campfire.json
 d7874a63199378000ac483c18389a8407145068d data/youkaisfeasts/advancements/recipes/food/grilled_venison_slice_from_raw_venison_slice_smelting.json
 9036594bd9c5a4000c4d76cadc0c8cc1a2da57f1 data/youkaisfeasts/advancements/recipes/food/grilled_venison_slice_from_raw_venison_slice_smoking.json
-6f02a61bbc7b4215891a92ccfb2b4004abc2ed19 data/youkaisfeasts/advancements/recipes/food/higi_chocolate.json
-d0f17cc9b21840ecf508420719e1cfb6ca02f95f data/youkaisfeasts/advancements/recipes/food/higi_doughnut.json
 4f6cd3e182541cac100d2ca089b906a4c2a0a5d1 data/youkaisfeasts/advancements/recipes/food/kinako_dango.json
 22b884a5f23a17e0359b652acad5ae175382cf72 data/youkaisfeasts/advancements/recipes/food/milk_popsicle.json
 c7c1f22de4d9cb01afb89c3fe106423bcd58c982 data/youkaisfeasts/advancements/recipes/food/oily_bean_curd_from_tofu_campfire.json
@@ -1648,7 +1642,6 @@ b03d662e06ba8dce2d7addb6c2a8bf168711e3e7 data/youkaisfeasts/recipes/daiginjo.jso
 03f9cc0b4647f8a4cbd54a9919cac33fb0b44447 data/youkaisfeasts/recipes/dark_oak_dining_table.json
 6cb591373d0771ddb483f8364beb7a7d3729b08e data/youkaisfeasts/recipes/dassai.json
 acc51d489c2db17250f2265bfe06bc14a03336d2 data/youkaisfeasts/recipes/dead_bush_from_saplings_drying.json
-c45b5cda0f9d5d9619600293e35d272a3bfcc7b5 data/youkaisfeasts/recipes/doughnut.json
 f12eaccd903c6c67266376548822b2359a82e2ae data/youkaisfeasts/recipes/dried_fish.json
 b5d3c9ddef916ebacd058888fca0d5e6cb36fdc7 data/youkaisfeasts/recipes/dried_kelp_from_kelp_drying.json
 edc63b7fd08e9ed3a2a1423d7a817c850c9c9daf data/youkaisfeasts/recipes/drying_rack_from_bamboo_block_stonecutting.json
@@ -1732,8 +1725,6 @@ ed06974d27510feb0e262961b8dca7e6748c6bd7 data/youkaisfeasts/recipes/grilled_veni
 e8bcbcf0b931371e43e61fe38bfa9149bb02b926 data/youkaisfeasts/recipes/grilled_venison_slice_from_raw_venison_slice_smoking.json
 43b8ffeb266c0db497cd863857ce31cb1a9b681b data/youkaisfeasts/recipes/hakutsuru.json
 d77f214288ce9b8abd44bdc7cf8f0474e0d63b41 data/youkaisfeasts/recipes/higan_soup.json
-3cefff46842768ef9e5d30b37bf5120f6e8a312c data/youkaisfeasts/recipes/higi_chocolate.json
-b60e2eb7b37dfcde6bc2faf529ff2da2ae3a6a72 data/youkaisfeasts/recipes/higi_doughnut.json
 ab4e301f46f83a960611822a861f25ca6dc7102b data/youkaisfeasts/recipes/hokkaido_salmon_hotpot.json
 c6c8ab54ec7058181b46db30aae383fa85986d53 data/youkaisfeasts/recipes/honey_glazed_cucumber.json
 45bde8d613d48e0a39565fc49ac4137cf9ffa54c data/youkaisfeasts/recipes/ice_cube.json
@@ -1798,7 +1789,7 @@ eb607393090ede3a144dfbceb5743a6bd8faea39 data/youkaisfeasts/recipes/pods_from_po
 3a8ec6c2162074b8dc58d961bb1be7e7c8712d7e data/youkaisfeasts/recipes/poor_god_soup.json
 5990a12e8cb6ad1bf2a528e2a932e806786b941d data/youkaisfeasts/recipes/pork_rice_ball.json
 80434d071033b5f83671f9e341336f9355082e87 data/youkaisfeasts/recipes/potato_soup.json
-81fcdf408d7bd2262671b1a0d2dd6038f030a749 data/youkaisfeasts/recipes/power_soup.json
+1a0747ba3c4e1e1829bf1db59f0eecd444d8b1ca data/youkaisfeasts/recipes/power_soup.json
 e5aa8ff2db04af3d522d7ac78d2348c15e51a8bb data/youkaisfeasts/recipes/rainbow_futomaki.json
 eaaf158285c8c35ee6076cd84963349f1f3dc6d5 data/youkaisfeasts/recipes/rainbow_futomaki_cutting.json
 6c500104082f555ec17e647dfc255d1570b6c53b data/youkaisfeasts/recipes/rainbow_roll.json
