@@ -5,6 +5,7 @@ import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlockEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -17,6 +18,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -38,7 +40,7 @@ import java.util.List;
 
 @SerialClass
 public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
-		implements BlockContainer, HeatableBlockEntity {
+		implements BlockContainer, HeatableBlockEntity, IHintableBlockEntity {
 
 	@SerialClass.SerialField
 	public final CookingItemContainer items = new CookingItemContainer(12).add(this);
@@ -132,11 +134,15 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 
 	@Override
 	protected CookingInv createContainer() {
+		return createContainer(true);
+	}
+
+	protected CookingInv createContainer(boolean isComplete) {
 		List<ItemStack> list = new ArrayList<>();
 		for (var e : items.getAsList()) {
 			if (!e.isEmpty()) list.add(e);
 		}
-		return new CookingInv(list, true);
+		return new CookingInv(list, isComplete);
 	}
 
 	protected void finishRecipe(Level level, PotCookingRecipe<?> recipe) {
@@ -210,4 +216,16 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 		super.load(tag);
 		recheckSoup = true;
 	}
+
+	@Override
+	public List<Ingredient> getHints(Level level) {
+		var cont = createContainer(false);
+		var recipes = level.getRecipeManager().getRecipesFor(getRecipeType(), cont, level);
+		List<Ingredient> ans = new ArrayList<>();
+		for (var e : recipes) {
+			ans.addAll(e.getHints(level, cont));
+		}
+		return ans;
+	}
+
 }

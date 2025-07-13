@@ -2,7 +2,9 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -26,6 +28,10 @@ public class RackItemData {
 	private boolean dirty = true;
 
 	@Nullable
+	ServerPlayer lastInteractPlayer;
+	public int height = 0;
+
+	@Nullable
 	private SteamingRecipe cache = null;
 
 	public boolean tick(SteamerBlockEntity be, Level level, double heat) {
@@ -39,6 +45,10 @@ public class RackItemData {
 				id = null;
 				cache = null;
 				progress = 0;
+				if (lastInteractPlayer != null) {
+					YHCriteriaTriggers.STEAM.trigger(lastInteractPlayer, stack, height);
+				}
+				lastInteractPlayer = null;
 			}
 			return true;
 		}
@@ -49,6 +59,8 @@ public class RackItemData {
 		this.stack = stack;
 		be.notifyTile();
 		setChanged();
+		if (stack.isEmpty())
+			lastInteractPlayer = null;
 	}
 
 	public void setChanged() {

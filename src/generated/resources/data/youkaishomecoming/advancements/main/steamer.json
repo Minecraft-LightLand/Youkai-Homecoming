@@ -1,0 +1,30 @@
+{
+  "parent": "youkaishomecoming:main/welcome_to_youkais_homecoming",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "youkaishomecoming:steam"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.steamer.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:steamer_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.steamer.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

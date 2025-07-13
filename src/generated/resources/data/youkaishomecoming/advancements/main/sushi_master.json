@@ -55,7 +55,7 @@
     "description": {
       "translate": "advancements.youkaishomecoming.advancements.main.sushi_master.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "youkaishomecoming:otoro_nigiri"

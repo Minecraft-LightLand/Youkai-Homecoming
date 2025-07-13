@@ -4,6 +4,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 @SerialClass
 public class RackData {
@@ -33,7 +35,10 @@ public class RackData {
 		for (var e : list) {
 			double heat = upwardHeat * UPWARD_EFF + downwardHeat * DOWNWARD_EFF;
 			if (e != null && e.tick(be, level, heat)) {
-				count++;
+
+				if (e.stack.getItem() instanceof FoodBlockItem)
+					count += 10;
+				else count++;
 			}
 		}
 		upwardHeat -= count * UPWARD_EFF;
@@ -50,19 +55,30 @@ public class RackData {
 		}
 	}
 
+	@Deprecated
 	public boolean tryAddItem(SteamerBlockEntity be, Level level, ItemStack stack) {
+		return tryAddItem(be, level, stack, null);
+	}
+
+	@Deprecated
+	public boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, Vec3 hit) {
+		return tryAddItemAt(be, level, stack, hit, null);
+	}
+
+	public boolean tryAddItem(SteamerBlockEntity be, Level level, ItemStack stack, @Nullable Player player) {
 		for (int i = 0; i < 4; i++) {
-			if (tryAddItemAt(be, level, stack, i))
+			if (tryAddItemAt(be, level, stack, i, player))
 				return true;
 		}
 		return false;
 	}
 
-	public boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, Vec3 hit) {
-		return tryAddItemAt(be, level, stack, getIndex(hit));
+	public boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, Vec3 hit, @Nullable Player player) {
+		return tryAddItemAt(be, level, stack, getIndex(hit), player);
 	}
 
-	protected boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, int index) {
+	protected boolean tryAddItemAt(SteamerBlockEntity be, Level level, ItemStack stack, int index, @Nullable Player player) {
+		if (stack.isEmpty()) return false;
 		if (stack.getItem() instanceof FoodBlockItem) {
 			if (index != 0) return false;
 			for (int i = 0; i < 4; i++) {
@@ -77,6 +93,8 @@ public class RackData {
 		if (!item.stack.isEmpty()) return false;
 		if (!level.isClientSide()) {
 			item.setStack(be, stack.split(1));
+			if (player instanceof ServerPlayer sp)
+				item.lastInteractPlayer = sp;
 		}
 		return true;
 	}

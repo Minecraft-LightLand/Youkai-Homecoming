@@ -23,7 +23,7 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileClientTooltip;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileInfoDisplay;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
-import dev.xkmc.youkaishomecoming.content.pot.table.board.HintOverlay;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.HintOverlay;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;

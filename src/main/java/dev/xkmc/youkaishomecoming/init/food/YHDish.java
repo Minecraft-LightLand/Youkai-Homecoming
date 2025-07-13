@@ -33,7 +33,7 @@ public enum YHDish {
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
-			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	PASTITSIO(Saucer.CERAMIC, DishType.COOKED, 12, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
@@ -68,7 +68,7 @@ public enum YHDish {
 			DietTagGen.PROTEINS.tag),
 	SCHOLAR_GINKGO(Saucer.CERAMIC, DishType.STEAMED, 6, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-			DietTagGen.VEGETABLES.tag),
+			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag),
 	TOMATO_SAUCE_COD(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),

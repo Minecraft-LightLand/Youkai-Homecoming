@@ -83,6 +83,12 @@
 		"sushi_master.description": "制作金枪鱼大腹握寿司,夜雀的手握,鱼籽军舰,缤纷太卷切片",
 		"sushi_master.title": "寿司仙人",
 		"crab_grab.description": "试图把螃蟹装桶时被螃蟹抢走水桶",
-		"crab_grab.title": "横行霸道"
+		"crab_grab.title": "横行霸道",
+		"max_steamer.description": "在第十八层蒸笼蒸一个物品",
+		"max_steamer.title": "十八层竹塔",
+		"steamer.description": "用蒸笼蒸一个物品",
+		"steamer.title": "蒸汽腾腾",
+		"dish.description": "蒸一份盘装或竹筒菜。注意他们会严重阻碍蒸汽流动，导致别的蒸笼蒸得更慢",
+		"dish.title": "蒸汽拦路虎"
 	}
 }
