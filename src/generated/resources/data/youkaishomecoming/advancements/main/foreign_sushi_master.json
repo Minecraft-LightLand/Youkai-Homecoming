@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:main/sushi_master",
+  "parent": "youkaishomecoming:main/cuisine_board",
   "criteria": {
     "0": {
       "conditions": {
@@ -31,7 +31,7 @@
     "description": {
       "translate": "advancements.youkaishomecoming.advancements.main.foreign_sushi_master.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "youkaishomecoming:rainbow_roll_slice"

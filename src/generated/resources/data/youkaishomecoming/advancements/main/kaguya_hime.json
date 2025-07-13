@@ -19,7 +19,7 @@
     "description": {
       "translate": "advancements.youkaishomecoming.advancements.main.kaguya_hime.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "youkaishomecoming:kaguya_hime"

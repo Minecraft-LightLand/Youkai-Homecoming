@@ -27,11 +27,11 @@ public class ClickAddItemMethod implements OnClickBlockMethod {
 		if (y < 0 || y >= be.racks.size()) return InteractionResult.PASS;
 		var rack = be.racks.get(y);
 		if (hit.getDirection() == Direction.UP && !RackInfo.isCapped(level, pos)) {
-			if (rack.tryAddItemAt(be, level, stack, hit.getLocation())) {
+			if (rack.tryAddItemAt(be, level, stack, hit.getLocation(), player)) {
 				return InteractionResult.SUCCESS;
 			}
 		}
-		if (rack.tryAddItem(be, level, stack)) {
+		if (rack.tryAddItem(be, level, stack, player)) {
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;
