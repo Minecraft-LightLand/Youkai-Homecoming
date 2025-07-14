@@ -200,7 +200,7 @@ public class YHBlocks {
 			KETTLE = YoukaisHomecoming.REGISTRATE.block("kettle", p -> DelegateBlock.newBaseBlock(
 							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL),
 							BlockProxy.HORIZONTAL, new KettleBlock(), KettleBlock.TE))
-					.blockstate(KettleBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
+					.blockstate(KettleBlock::buildModel).item().properties(e -> e.stacksTo(1)).build()
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 			KETTLE_BE = YoukaisHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
 			KETTLE_RT = YoukaisHomecoming.REGISTRATE.recipe("kettle");

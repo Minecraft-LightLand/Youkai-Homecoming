@@ -36,4 +36,6 @@ public interface IYHFluidHolder {
 		return null;
 	}
 
+	Item asItem();
+
 }
