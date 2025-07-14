@@ -24,6 +24,9 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotBlock;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotRenderer;
@@ -159,6 +162,8 @@ public class YHBlocks {
 
 	public static final BlockEntry<DelegateBlock> SMALL_POT;
 	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
+	public static final BlockEntry<DelegateBlock> MID_POT;
+	public static final BlockEntityEntry<MidCookingPotBlockEntity> MID_POT_BE;
 	public static final RegistryEntry<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
 	public static final RegistryEntry<RecipeType<SoupBaseRecipe<?>>> SOUP_RT;
@@ -300,6 +305,19 @@ public class YHBlocks {
 			SMALL_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("small_iron_pot", SmallCookingPotBlockEntity::new)
 					.validBlock(SMALL_POT)
 					.renderer(() -> SmallCookingPotRenderer::new)
+					.register();
+
+
+			MID_POT = YoukaisHomecoming.REGISTRATE.block("short_iron_pot", MidCookingPotBlock::create)
+					.initialProperties(() -> Blocks.CAULDRON)
+					.properties(p -> p.sound(SoundType.METAL))
+					.blockstate(MidCookingPotBlock::buildState)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.simpleItem()
+					.register();
+			MID_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("short_iron_pot", MidCookingPotBlockEntity::new)
+					.validBlock(MID_POT)
+					.renderer(() -> MidCookingPotRenderer::new)
 					.register();
 
 			COOKING_RT = YoukaisHomecoming.REGISTRATE.recipe("pot_cooking");

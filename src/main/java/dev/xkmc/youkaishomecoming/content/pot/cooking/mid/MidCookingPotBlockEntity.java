@@ -1,7 +1,8 @@
-package dev.xkmc.youkaishomecoming.content.pot.cooking.small;
+package dev.xkmc.youkaishomecoming.content.pot.cooking.mid;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,23 +14,23 @@ import net.minecraft.world.level.block.state.BlockState;
 import vectorwing.farmersdelight.common.registry.ModParticleTypes;
 
 @SerialClass
-public class SmallCookingPotBlockEntity extends CookingBlockEntity {
+public class MidCookingPotBlockEntity extends CookingBlockEntity {
 
-	public SmallCookingPotBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+	public MidCookingPotBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
 	}
 
 	@Override
 	public Item container() {
-		return YHItems.IRON_BOWL.asItem();
+		return YHBlocks.MID_POT.asItem();
 	}
 
 	protected void animationTick(Level level) {
 		BlockPos pos = getBlockPos();
 		double x, y, z;
 		RandomSource random = level.random;
-		double r = 0.1;
-		double h = 0.32;
+		double r = 0.2;
+		double h = 0.5;
 		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.3F) {
 			x = (double) pos.getX() + 0.5 + (random.nextDouble() * r * 2 - r);
 			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * r * 2 - r);

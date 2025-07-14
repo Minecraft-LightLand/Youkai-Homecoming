@@ -17,6 +17,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
+public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
 		implements BlockContainer, HeatableBlockEntity, IHintableBlockEntity {
 
 	@SerialClass.SerialField
@@ -64,6 +65,8 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 	public List<ItemStack> getFloatingItems() {
 		return floatingItems;
 	}
+
+	public abstract Item container();
 
 	@Override
 	public void tick() {
@@ -108,7 +111,7 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 		}
 		if (!empty) return false;
 		list.add(stack.copyWithCount(1));
-		var inv = new CookingInv(list, false);
+		var inv = new CookingInv(container(), list, false);
 		var opt = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(), inv, level);
 		if (opt.isEmpty()) return false;
 		if (!level.isClientSide()) {
@@ -142,7 +145,7 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 		for (var e : items.getAsList()) {
 			if (!e.isEmpty()) list.add(e);
 		}
-		return new CookingInv(list, isComplete);
+		return new CookingInv(container(), list, isComplete);
 	}
 
 	protected void finishRecipe(Level level, PotCookingRecipe<?> recipe) {
