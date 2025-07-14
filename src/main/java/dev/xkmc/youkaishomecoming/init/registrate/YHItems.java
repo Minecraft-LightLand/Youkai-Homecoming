@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.food.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
@@ -214,6 +215,7 @@ public class YHItems {
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
 			FruitsDelightCompatFood.register();
+			FruitsDelightCompatDrink.register();
 		}
 
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE

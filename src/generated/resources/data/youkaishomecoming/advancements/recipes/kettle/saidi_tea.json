@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_sugar": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:black_tea_leaves"
+              "minecraft:sugar"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_sugar",
       "has_the_recipe"
     ]
   ],

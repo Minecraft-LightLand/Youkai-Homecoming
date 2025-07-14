@@ -96,8 +96,6 @@
 		"canned_flesh": "%1$s罐头",
 		"rumia_hairband": "露米娅的发带",
 		"reimu_hairband": "灵梦的大蝴蝶结",
-		"lemon_black_tea": "柠檬红茶",
-		"moon_rocket": "月面火箭",
 		"peach_tapioca": "桃花羹",
 		"peach_yatsuhashi": "桃子八桥",
 		"dried_mandrake_flower": "干燥的曼德拉花",
@@ -215,6 +213,8 @@
 					"item.youkaishomecoming": ""
 				},
 				{
+					"lemon_black_tea": "柠檬红茶",
+					"moon_rocket": "月面火箭",
 					"black_tea": "红茶",
 					"green_tea": "绿茶",
 					"oolong_tea": "乌龙茶",

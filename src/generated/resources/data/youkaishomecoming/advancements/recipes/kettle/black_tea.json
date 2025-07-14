@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_black_tea_leaves": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:glass_bottle"
+              "youkaishomecoming:black_tea_leaves"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:green_water"
+        "recipe": "youkaishomecoming:black_tea"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_black_tea_leaves",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:green_water"
+      "youkaishomecoming:black_tea"
     ]
   },
   "sends_telemetry_event": true

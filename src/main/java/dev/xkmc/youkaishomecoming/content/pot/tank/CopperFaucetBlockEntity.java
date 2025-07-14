@@ -68,6 +68,7 @@ public class CopperFaucetBlockEntity extends BaseBlockEntity implements Tickable
 			return false;
 		if (src instanceof CopperTankBlockEntity tank && dst instanceof KettleBlockEntity kettle) {
 			if (!activateHeat(tank, kettle)) return false;
+			kettle.prepareforHotWater(50);
 		}
 		var fsrc = src.getCapability(ForgeCapabilities.FLUID_HANDLER, attached);
 		var fdst = dst.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP);
@@ -82,20 +83,12 @@ public class CopperFaucetBlockEntity extends BaseBlockEntity implements Tickable
 		var drain = hsrc.drain(fill, IFluidHandler.FluidAction.EXECUTE);
 		cache = drain.copy();
 		sync();
+		int amount = hdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
 		if (src instanceof CopperTankBlockEntity tank && dst instanceof KettleBlockEntity kettle) {
-			if (kettle.getBlockState().getValue(BlockStateProperties.WATERLOGGED)) return false;
-			kettle.setWater(0);
-			int amount = hdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
 			int consume = tank.consumeHeat(amount);
 			if (consume > 0) {
-				kettle.cookingTick(consume, true);
-				if (kettle.getWater() > 0) {
-					kettle.setWater(0);
-					return false;
-				}
+				kettle.heatUp(consume);
 			}
-		} else {
-			hdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
 		}
 		return true;
 	}

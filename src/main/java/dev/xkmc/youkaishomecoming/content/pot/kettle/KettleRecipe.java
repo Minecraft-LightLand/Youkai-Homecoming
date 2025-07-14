@@ -1,35 +1,83 @@
 package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
-import dev.xkmc.youkaishomecoming.content.pot.base.BasePotRecipe;
+import dev.xkmc.l2library.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipe;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.fluids.FluidStack;
 
-public class KettleRecipe extends BasePotRecipe {
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
-	public KettleRecipe(ResourceLocation id, String group, @Nullable CookingPotRecipeBookTab tab, NonNullList<Ingredient> inputItems, ItemStack output, ItemStack container, float experience, int cookTime) {
-		super(id, group, tab, inputItems, output, container, experience, cookTime);
-	}
+@SerialClass
+public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleContainer> implements TimedRecipe {
 
-	@Override
-	public RecipeSerializer<?> getSerializer() {
-		return YHBlocks.KETTLE_RS.get();
-	}
+	@SerialClass.SerialField
+	public final List<Ingredient> input = new ArrayList<>();
+	@SerialClass.SerialField
+	public int time;
+	@SerialClass.SerialField
+	public FluidStack result;
 
-	@Override
-	public RecipeType<?> getType() {
-		return YHBlocks.KETTLE_RT.get();
+	public KettleRecipe(ResourceLocation id) {
+		super(id, YHBlocks.KETTLE_RS.get());
 	}
 
 	@Override
 	public ItemStack getToastSymbol() {
 		return YHBlocks.KETTLE.asStack();
+	}
+
+	@Override
+	public boolean matches(SimpleContainer cont, Level level) {
+		Set<ItemStack> available = new LinkedHashSet<>();
+		for (int i = 0; i < cont.getContainerSize(); i++) {
+			var e = cont.getItem(i);
+			if (e.isEmpty()) continue;
+			available.add(e);
+		}
+		for (var ing : input) {
+			ItemStack match = null;
+			for (var e : available) {
+				if (ing.test(e)) {
+					match = e;
+					break;
+				}
+			}
+			if (match == null) {
+				return false;
+			}
+			available.remove(match);
+		}
+		return available.isEmpty();
+	}
+
+	@Override
+	public ItemStack assemble(SimpleContainer cont, RegistryAccess access) {
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public boolean canCraftInDimensions(int i, int i1) {
+		return false;
+	}
+
+	@Override
+	public ItemStack getResultItem(RegistryAccess registryAccess) {
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public int getProcessTime() {
+		return time;
 	}
 
 }

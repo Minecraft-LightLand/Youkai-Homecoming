@@ -1,12 +1,18 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fruitsdelight"
+    }
+  ],
   "criteria": {
-    "has_any_ingredient": {
+    "has_sugar": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:black_tea_leaves"
+              "minecraft:sugar"
             ]
           }
         ]
@@ -15,20 +21,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:black_tea"
+        "recipe": "youkaishomecoming:moon_rocket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_sugar",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:black_tea"
+      "youkaishomecoming:moon_rocket"
     ]
   },
   "sends_telemetry_event": true

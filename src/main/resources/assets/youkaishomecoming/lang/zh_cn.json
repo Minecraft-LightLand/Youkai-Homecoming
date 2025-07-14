@@ -118,8 +118,6 @@
   "item.youkaishomecoming.canned_flesh": "%1$s罐头",
   "item.youkaishomecoming.rumia_hairband": "露米娅的发带",
   "item.youkaishomecoming.reimu_hairband": "灵梦的大蝴蝶结",
-  "item.youkaishomecoming.lemon_black_tea": "柠檬红茶",
-  "item.youkaishomecoming.moon_rocket": "月面火箭",
   "item.youkaishomecoming.peach_tapioca": "桃花羹",
   "item.youkaishomecoming.peach_yatsuhashi": "桃子八桥",
   "item.youkaishomecoming.dried_mandrake_flower": "干燥的曼德拉花",
@@ -227,6 +225,8 @@
   "item.youkaishomecoming.blood_bottle": "瓶装血液",
   "fluid.youkaishomecoming.mayonnaise": "蛋黄酱",
   "item.youkaishomecoming.mayonnaise_bottle": "瓶装蛋黄酱",
+  "fluid.youkaishomecoming.lemon_black_tea": "柠檬红茶",
+  "fluid.youkaishomecoming.moon_rocket": "月面火箭",
   "fluid.youkaishomecoming.black_tea": "红茶",
   "fluid.youkaishomecoming.green_tea": "绿茶",
   "fluid.youkaishomecoming.oolong_tea": "乌龙茶",
@@ -256,6 +256,8 @@
   "fluid.youkaishomecoming.red_wine": "经典红葡萄酒",
   "fluid.youkaishomecoming.van_allen": "范艾伦干红葡萄酒",
   "fluid.youkaishomecoming.white_wine": "白桦森林半干白葡萄酒",
+  "item.youkaishomecoming.lemon_black_tea": "柠檬红茶",
+  "item.youkaishomecoming.moon_rocket": "月面火箭",
   "item.youkaishomecoming.black_tea": "红茶",
   "item.youkaishomecoming.green_tea": "绿茶",
   "item.youkaishomecoming.oolong_tea": "乌龙茶",
@@ -913,5 +915,7 @@
   "youkaishomecoming.steamer.too_many": "蒸笼太多了！",
   "youkaishomecoming.fermenting_progress": "发酵进度：%s",
   "youkaishomecoming.cuisine_allow": "下一步:",
-  "youkaishomecoming.cuisine_extra": "还有%s种选择"
+  "youkaishomecoming.cuisine_extra": "还有%s种选择",
+  "youkaishomecoming.brewing_progress": "煮茶进度: %s",
+  "youkaishomecoming.heat_progress": "加热进度: %s"
 }

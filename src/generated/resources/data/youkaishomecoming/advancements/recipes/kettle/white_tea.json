@@ -1,34 +1,34 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:white_tea"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_tea_leaves": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:black_tea_leaves"
+              "youkaishomecoming:white_tea_leaves"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "youkaishomecoming:tea_mocha"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_white_tea_leaves",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:tea_mocha"
+      "youkaishomecoming:white_tea"
     ]
   },
   "sends_telemetry_event": true
