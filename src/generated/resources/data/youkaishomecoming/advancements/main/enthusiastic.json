@@ -301,6 +301,36 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:crab_meat": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab_meat"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:crab_roe": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab_roe"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:cucumber_slice": {
       "conditions": {
         "item": {
@@ -506,6 +536,26 @@
         "item": {
           "items": [
             "youkaishomecoming:grilled_eel_over_rice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:grilled_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:grilled_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_venison_slice"
           ]
         }
       },
@@ -1031,6 +1081,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:raw_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_venison_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:red_grape_juice": {
       "conditions": {
         "item": {
@@ -1326,6 +1396,16 @@
         "item": {
           "items": [
             "youkaishomecoming:sparrow_sake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:steamed_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:steamed_crab"
           ]
         }
       },
@@ -1838,6 +1918,30 @@
     ],
     [
       "youkaishomecoming:otoro"
+    ],
+    [
+      "youkaishomecoming:crab"
+    ],
+    [
+      "youkaishomecoming:steamed_crab"
+    ],
+    [
+      "youkaishomecoming:crab_meat"
+    ],
+    [
+      "youkaishomecoming:crab_roe"
+    ],
+    [
+      "youkaishomecoming:raw_venison"
+    ],
+    [
+      "youkaishomecoming:grilled_venison"
+    ],
+    [
+      "youkaishomecoming:raw_venison_slice"
+    ],
+    [
+      "youkaishomecoming:grilled_venison_slice"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"

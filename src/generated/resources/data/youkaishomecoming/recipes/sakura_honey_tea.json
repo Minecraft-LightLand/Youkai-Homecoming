@@ -1,11 +1,9 @@
 {
   "type": "youkaishomecoming:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "item": "minecraft:cherry_leaves"
+    },
     {
       "item": "minecraft:cherry_leaves"
     },
@@ -13,8 +11,9 @@
       "item": "minecraft:honey_bottle"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaishomecoming:sakura_honey_tea"
-  }
+    "amount": 1000,
+    "fluid": "youkaishomecoming:sakura_honey_tea"
+  },
+  "time": 100
 }

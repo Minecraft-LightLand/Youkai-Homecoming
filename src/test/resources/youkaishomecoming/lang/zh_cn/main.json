@@ -124,5 +124,8 @@
 	},
 	"youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～",
 	"youkaishomecoming.subtitle.graze": "擦弹",
-	"youkaishomecoming.subtitle.miss": "玩家中弹"
+	"youkaishomecoming.subtitle.miss": "玩家中弹",
+	"youkaishomecoming.subtitle.deer_ambient": "鹿叫",
+	"youkaishomecoming.subtitle.deer_hurt": "鹿受伤",
+	"youkaishomecoming.subtitle.deer_death": "鹿死亡"
 }

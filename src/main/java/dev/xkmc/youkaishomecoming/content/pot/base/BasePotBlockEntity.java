@@ -211,7 +211,7 @@ public abstract class BasePotBlockEntity extends SyncedBlockEntity
 		}
 	}
 
-	public static void animationTick(Level level, BlockPos pos, BlockState state, BasePotBlockEntity pot) {
+	public static void animationTick(Level level, BlockPos pos, BlockState state, HeatableBlockEntity pot) {
 		if (pot.isHeated(level, pos)) {
 			RandomSource random = level.random;
 			double x;

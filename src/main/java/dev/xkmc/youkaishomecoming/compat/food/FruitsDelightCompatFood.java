@@ -17,13 +17,6 @@ import java.util.List;
 import java.util.Locale;
 
 public enum FruitsDelightCompatFood {
-	MOON_ROCKET(FoodType.BOTTLE_FAST, 0, 0,
-			new EffectEntry(() -> MobEffects.JUMP, 100, 1)),
-	LEMON_BLACK_TEA(FoodType.BOTTLE_FAST, 0, 0, List.of(
-			new EffectEntry(YHEffects.TEA::get, 600, 0, 1),
-			new EffectEntry(YHEffects.SOBER::get, 600, 0, 1),
-			new EffectEntry(YHEffects.THICK::get, 600, 0, 1)
-	)),
 	PEACH_TAPIOCA(FoodType.BOWL, 6, 0.6f, List.of(
 			new EffectEntry(FDEffects.HEAL_AURA::get, 100, 0),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0)

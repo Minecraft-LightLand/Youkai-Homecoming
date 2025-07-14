@@ -105,6 +105,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	);
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+			.add(Registries.BIOME, YHBiomes::registerBiomes)
 			.add(Registries.CONFIGURED_FEATURE, ctx -> {
 				for (var e : YHCrops.values()) {
 					e.registerConfigs(ctx);
@@ -114,6 +115,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				for (var e : YHCrops.values()) {
 					e.registerPlacements(ctx);
 				}
+				YHBiomes.registerPlacements(ctx);
 			})
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, YHDatapackRegistriesGen::registerBiomeModifiers)
 			.add(Registries.PROCESSOR_LIST, ctx -> {
@@ -158,7 +160,11 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		registerMobSpawn(ctx, YoukaisHomecoming.loc("lamprey"), YHBiomeTagsProvider.LAMPREY, biomes,
 				new MobSpawnSettings.SpawnerData(YHEntities.LAMPREY.get(), 5, 3, 5));
 		registerMobSpawn(ctx, YoukaisHomecoming.loc("tuna"), YHBiomeTagsProvider.TUNA, biomes,
-				new MobSpawnSettings.SpawnerData(YHEntities.TUNA.get(), 5, 1, 1));
+				new MobSpawnSettings.SpawnerData(YHEntities.TUNA.get(), 10, 1, 1));
+		registerMobSpawn(ctx, YoukaisHomecoming.loc("crab"), YHBiomeTagsProvider.CRAB, biomes,
+				new MobSpawnSettings.SpawnerData(YHEntities.CRAB.get(), 10, 1, 2));
+		registerMobSpawn(ctx, YoukaisHomecoming.loc("deer"), YHBiomeTagsProvider.DEER, biomes,
+				new MobSpawnSettings.SpawnerData(YHEntities.DEER.get(), 20, 3, 5));
 		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
 		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);

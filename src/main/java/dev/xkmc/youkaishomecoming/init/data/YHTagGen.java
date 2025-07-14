@@ -45,6 +45,10 @@ public class YHTagGen {
 	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
 	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
 	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
+	public static final TagKey<Item> RAW_VENISON = forgeItem("raw_venison");
+	public static final TagKey<Item> COOKED_VENISON = forgeItem("cooked_venison");
+	public static final TagKey<Item> RAW_CRAB = forgeItem("raw_crab");
+	public static final TagKey<Item> COOKED_CRAB = forgeItem("cooked_crab");
 	public static final TagKey<Item> BUTTER = forgeItem("butter");
 	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
 	public static final TagKey<Item> CUCUMBER_SLICE = forgeItem("slices/cucumber");
@@ -74,6 +78,7 @@ public class YHTagGen {
 	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
+	public static final TagKey<Block> CRAB_DIGABLE = block("crab_digable");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
 	public static final TagKey<EntityType<?>> SKULL_SOURCE = entity("drops_skeleton_skull");
@@ -122,7 +127,7 @@ public class YHTagGen {
 		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
-
+		pvd.addTag(CRAB_DIGABLE).add(Blocks.SAND, Blocks.GRAVEL);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genBlock(pvd);
 		}

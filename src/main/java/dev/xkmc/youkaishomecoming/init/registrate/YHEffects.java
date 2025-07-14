@@ -25,11 +25,11 @@ import java.util.function.Supplier;
 public class YHEffects {
 
 	public static final RegistryEntry<MobEffect> YOUKAIFIED = genEffect("youkaified",
-			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
+			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),
 			"You are a Youkai now");
 
 	public static final RegistryEntry<MobEffect> YOUKAIFYING = genEffect("youkaifying",
-			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
+			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),
 			"You are becoming a Youkai");
 
 	public static final RegistryEntry<MobEffect> CAFFEINATED = genEffect("caffeinated",
@@ -93,6 +93,10 @@ public class YHEffects {
 	public static final RegistryEntry<MobEffect> FAIRY = genEffect("fairy",
 			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
 			"Reduce max HP and melee attack damage. Gives speed and healing boost. Enables danmaku. Reduce player hitbox for Danmaku");
+
+	public static final RegistryEntry<MobEffect> CRABY = genEffect("craby",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"Makes your horizontal movement faster");//TODO
 
 	public static final RegistryEntry<MobEffect> CONFIDENT = genEffect("confident",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),

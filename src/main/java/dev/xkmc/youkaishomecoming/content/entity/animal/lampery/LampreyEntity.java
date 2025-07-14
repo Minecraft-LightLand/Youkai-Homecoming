@@ -74,7 +74,7 @@ public class LampreyEntity extends AbstractFish {
 
 	@Override
 	public boolean canAttack(LivingEntity e) {
-		if (e instanceof WaterAnimal fish) {
+		if (e instanceof AbstractFish fish) {
 			if (fish.getType() == getType()) {
 				return false;
 			}

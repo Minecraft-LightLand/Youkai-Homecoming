@@ -96,8 +96,6 @@
 		"canned_flesh": "%1$s罐头",
 		"rumia_hairband": "露米娅的发带",
 		"reimu_hairband": "灵梦的大蝴蝶结",
-		"lemon_black_tea": "柠檬红茶",
-		"moon_rocket": "月面火箭",
 		"peach_tapioca": "桃花羹",
 		"peach_yatsuhashi": "桃子八桥",
 		"dried_mandrake_flower": "干燥的曼德拉花",
@@ -147,7 +145,16 @@
 		"cucumber_seeds": "黄瓜种子",
 		"honey_glazed_cucumber": "蜜渍黄瓜",
 		"raisin": "葡萄干",
-		"empty_hand_icon": "空手图标"
+		"empty_hand_icon": "空手图标",
+		"crab": "螃蟹",
+		"crab_bucket": "螃蟹桶",
+		"crab_meat": "蟹粉",
+		"crab_roe": "蟹籽",
+		"raw_venison": "生鹿排",
+		"raw_venison_slice": "生鹿片",
+		"grilled_venison": "烤鹿排",
+		"grilled_venison_slice": "烤鹿片",
+		"steamed_crab": "清蒸螃蟹"
 	},
 	"-cartesian": {
 		"entity": {
@@ -156,6 +163,8 @@
 				{
 					"lamprey": "八目鳗",
 					"tuna": "金枪鱼",
+					"deer": "梅花鹿",
+					"crab": "螃蟹",
 					"rumia": "露米娅",
 					"youkai": "妖怪",
 					"shrine_maiden": "博丽灵梦",
@@ -204,6 +213,8 @@
 					"item.youkaishomecoming": ""
 				},
 				{
+					"lemon_black_tea": "柠檬红茶",
+					"moon_rocket": "月面火箭",
 					"black_tea": "红茶",
 					"green_tea": "绿茶",
 					"oolong_tea": "乌龙茶",

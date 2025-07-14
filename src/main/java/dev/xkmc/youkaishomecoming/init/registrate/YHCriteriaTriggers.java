@@ -23,6 +23,7 @@ public class YHCriteriaTriggers {
 	public static final PlayerTrigger COOKING = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("cooking")));
 	public static final SteamTrigger STEAM = CriteriaTriggers.register(new SteamTrigger());
 	public static final PlayerTrigger TABLE = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("table")));
+	public static final PlayerTrigger CRAB_GRAB = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("crab_grab")));
 
 
 	private static PlayerTrigger reg(String id) {

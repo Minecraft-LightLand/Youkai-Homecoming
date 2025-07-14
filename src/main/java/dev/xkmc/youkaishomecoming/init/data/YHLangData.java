@@ -39,6 +39,8 @@ public enum YHLangData {
 	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
 	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
 	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
+	HEAT_PROGRESS("heat_progress", "Heating: %s", 1, ChatFormatting.GRAY),
+	BREWING_PROGRESS("brewing_progress", "Brewing: %s", 1, ChatFormatting.GRAY),
 	STEAMER_TOO_MANY("steamer.too_many", "Too many racks!", 0, ChatFormatting.RED),
 	STEAMER_NO_WATER("steamer.no_water", "Next Step: Add water", 0, ChatFormatting.GRAY),
 	STEAMER_NO_HEAT("steamer.no_heat", "Next Step: Put heat source beneath", 0, ChatFormatting.GRAY),
@@ -119,6 +121,9 @@ public enum YHLangData {
 	}
 
 	public static void genLang(RegistrateLangProvider pvd) {
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_ambient", "Deer baahs");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_hurt", "Deer hurts");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_death", "Deer dies");
 		for (YHLangData lang : YHLangData.values()) {
 			pvd.add(lang.key, lang.def);
 		}

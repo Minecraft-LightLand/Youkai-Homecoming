@@ -18,6 +18,7 @@ public class TileInfoDisplay implements IGuiOverlay {
 
 	@Override
 	public void render(ForgeGui gui, GuiGraphics g, float pTick, int sw, int sh) {
+		if (Minecraft.getInstance().screen != null) return;
 		ClientLevel level = Minecraft.getInstance().level;
 		if (level == null) return;
 		var hit = Minecraft.getInstance().hitResult;

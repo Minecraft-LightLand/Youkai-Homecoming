@@ -31,7 +31,9 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlock
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
-import dev.xkmc.youkaishomecoming.content.pot.kettle.*;
+import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlock;
+import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.moka.*;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
@@ -56,6 +58,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -119,11 +122,10 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeSerializer<MokaRecipe>> MOKA_RS;
 	public static final MenuEntry<MokaMenu> MOKA_MT;
 
-	public static final BlockEntry<KettleBlock> KETTLE;
+	public static final BlockEntry<DelegateBlock> KETTLE;
 	public static final BlockEntityEntry<KettleBlockEntity> KETTLE_BE;
 	public static final RegistryEntry<RecipeType<KettleRecipe>> KETTLE_RT;
-	public static final RegistryEntry<RecipeSerializer<KettleRecipe>> KETTLE_RS;
-	public static final MenuEntry<KettleMenu> KETTLE_MT;
+	public static final RegistryEntry<BaseRecipe.RecType<KettleRecipe, KettleRecipe, SimpleContainer>> KETTLE_RS;
 
 	public static final BlockEntry<DryingRackBlock> RACK;
 	public static final BlockEntityEntry<DryingRackBlockEntity> RACK_BE;
@@ -200,14 +202,14 @@ public class YHBlocks {
 			MOKA_RS = reg("moka_pot", () -> new BasePotSerializer<>(MokaRecipe::new));
 			MOKA_MT = YoukaisHomecoming.REGISTRATE.menu("moka_pot", MokaMenu::new, () -> MokaScreen::new).register();
 
-			KETTLE = YoukaisHomecoming.REGISTRATE.block("kettle", p -> new KettleBlock(
-							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL)))
-					.blockstate(KettleBlock::buildModel).item(BasePotItem::new).properties(e -> e.stacksTo(1)).build()
-					.loot(BasePotBlock::buildLoot).tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
+			KETTLE = YoukaisHomecoming.REGISTRATE.block("kettle", p -> DelegateBlock.newBaseBlock(
+							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL),
+							BlockProxy.HORIZONTAL, new KettleBlock(), KettleBlock.TE))
+					.blockstate(KettleBlock::buildModel).item().properties(e -> e.stacksTo(1)).build()
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 			KETTLE_BE = YoukaisHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
 			KETTLE_RT = YoukaisHomecoming.REGISTRATE.recipe("kettle");
-			KETTLE_RS = reg("kettle", () -> new BasePotSerializer<>(KettleRecipe::new));
-			KETTLE_MT = YoukaisHomecoming.REGISTRATE.menu("kettle", KettleMenu::new, () -> KettleScreen::new).register();
+			KETTLE_RS = reg("kettle", () -> new BaseRecipe.RecType<>(KettleRecipe.class, KETTLE_RT));
 
 			RACK = YoukaisHomecoming.REGISTRATE.block("drying_rack", p -> new DryingRackBlock(
 							BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).noOcclusion()))
