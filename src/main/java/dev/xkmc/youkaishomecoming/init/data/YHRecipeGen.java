@@ -12,7 +12,6 @@ import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
-import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
@@ -30,7 +29,10 @@ import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -50,9 +52,7 @@ import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
 
 public class YHRecipeGen {
 
@@ -1182,10 +1182,6 @@ public class YHRecipeGen {
 		new SimpleCookingRecipeBuilder(category, CookingBookCategory.MISC, result.get(), source, experience, cookingTime, serializer)
 				.unlockedBy("has_" + pvd.safeName(source), source.getCritereon(pvd))
 				.save(pvd, pvd.safeId(result.get()) + "_from_" + pvd.safeName(source) + "_" + typeName);
-	}
-
-	private static Consumer<FinishedRecipe> tea(RegistrateRecipeProvider pvd) {
-		return e -> pvd.accept(new BasePotFinishedRecipe(YHBlocks.KETTLE_RS.get(), e));
 	}
 
 	private static void foodCut(RegistrateRecipeProvider pvd,

@@ -2,10 +2,6 @@ package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
-import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
-import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
-import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlockEntity;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.*;

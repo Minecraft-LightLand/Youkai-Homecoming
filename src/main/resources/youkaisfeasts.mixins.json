@@ -8,7 +8,6 @@
 		"AddItemModifierAccessor",
 		"AddLootTableModifierAccessor",
 		"CookingPotRecipeAccessor",
-		"CopyMealFunctionMixin",
 		"ItemAccessor",
 		"effect.EntityMixin",
 		"effect.LivingEntityMixin",
