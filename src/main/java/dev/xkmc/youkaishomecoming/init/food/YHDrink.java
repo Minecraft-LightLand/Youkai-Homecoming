@@ -169,6 +169,11 @@ public enum YHDrink implements IYHFluidHolder {
 	}
 
 	@Override
+	public Item asItem() {
+		return item.asItem();
+	}
+
+	@Override
 	public FluidEntry<? extends YHFluid> fluid() {
 		return fluid;
 	}

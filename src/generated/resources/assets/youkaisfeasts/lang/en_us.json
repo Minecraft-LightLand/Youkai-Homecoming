@@ -217,9 +217,11 @@
   "fluid.youkaisfeasts.hakutsuru": "Hakutsuru",
   "fluid.youkaisfeasts.kappa_village": "Kappa Village",
   "fluid.youkaisfeasts.kiku": "Kiku",
+  "fluid.youkaisfeasts.lemon_black_tea": "Lemon Black Tea",
   "fluid.youkaisfeasts.mayonnaise": "Mayonnaise",
   "fluid.youkaisfeasts.mead": "Mead",
   "fluid.youkaisfeasts.mio": "Mio",
+  "fluid.youkaisfeasts.moon_rocket": "Moon Rocket",
   "fluid.youkaisfeasts.oolong_tea": "Oolong Tea",
   "fluid.youkaisfeasts.red_grape_juice": "Red Grape Juice",
   "fluid.youkaisfeasts.red_wine": "Red Wine",
@@ -397,9 +399,11 @@
   "item.youkaisfeasts.yakumo_inari": "Yakumo Inari",
   "item.youkaisfeasts.yashouma_dango": "Yashouma Dango",
   "itemGroup.youkaisfeasts.youkais_feasts": "Youkais' Feasts",
+  "youkaisfeasts.brewing_progress": "Brewing: %s",
   "youkaisfeasts.cuisine_allow": "Next Step:",
   "youkaisfeasts.cuisine_extra": "And %s more...",
   "youkaisfeasts.fermenting_progress": "Fermenting: %s",
+  "youkaisfeasts.heat_progress": "Heating: %s",
   "youkaisfeasts.jei.basin": "Basin",
   "youkaisfeasts.jei.cooking": "Cooking",
   "youkaisfeasts.jei.cuisine": "Cuisine",
@@ -420,6 +424,5 @@
   "youkaisfeasts.tooltip.kettle": "Right click with water bucket or water bottle to fill water",
   "youkaisfeasts.tooltip.moon_lantern_hold": "When holding in hand, Udumbara effect will always trigger at night regardless if player can see full moons",
   "youkaisfeasts.tooltip.moon_lantern_place": "Udumbara within 3x3x3 blocks below this latern will grow as night as if they can see full moon.",
-  "youkaisfeasts.tooltip.place": "Can be placed on ground",
-  "youkaisfeasts.wip": "This item is experimental and will get drasitc changes in the future."
+  "youkaisfeasts.tooltip.place": "Can be placed on ground"
 }

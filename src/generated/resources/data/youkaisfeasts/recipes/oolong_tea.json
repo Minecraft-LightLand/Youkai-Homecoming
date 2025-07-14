@@ -1,11 +1,12 @@
 {
   "type": "youkaisfeasts:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "tag": "forge:tea_leaves/oolong"
+    },
+    {
+      "tag": "forge:tea_leaves/oolong"
+    },
     {
       "tag": "forge:tea_leaves/oolong"
     },
@@ -13,8 +14,9 @@
       "tag": "forge:tea_leaves/oolong"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaisfeasts:oolong_tea"
-  }
+    "amount": 1000,
+    "fluid": "youkaisfeasts:oolong_tea"
+  },
+  "time": 100
 }

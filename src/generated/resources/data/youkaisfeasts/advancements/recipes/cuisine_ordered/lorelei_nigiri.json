@@ -1,7 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/cuisine_ordered/lorelei_nigiri.json
     "has_roasted_lamprey_fillet": {
+========
+    "has_green_tea_leaves": {
+>>>>>>>> 1.20/dev:src/generated/resources/data/youkaishomecoming/advancements/recipes/kettle/genmai_tea.json
       "conditions": {
         "items": [
           {
@@ -22,7 +26,11 @@
   },
   "requirements": [
     [
+<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/cuisine_ordered/lorelei_nigiri.json
       "has_roasted_lamprey_fillet",
+========
+      "has_green_tea_leaves",
+>>>>>>>> 1.20/dev:src/generated/resources/data/youkaishomecoming/advancements/recipes/kettle/genmai_tea.json
       "has_the_recipe"
     ]
   ],

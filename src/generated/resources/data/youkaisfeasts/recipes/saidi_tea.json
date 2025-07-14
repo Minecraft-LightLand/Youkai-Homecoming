@@ -1,23 +1,19 @@
 {
   "type": "youkaisfeasts:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "tag": "forge:tea_leaves/black"
+    },
     {
       "tag": "forge:tea_leaves/black"
     },
     {
       "item": "minecraft:sugar"
-    },
-    {
-      "item": "minecraft:sugar"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaisfeasts:saidi_tea"
-  }
+    "amount": 1000,
+    "fluid": "youkaisfeasts:saidi_tea"
+  },
+  "time": 100
 }

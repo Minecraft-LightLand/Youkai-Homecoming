@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_cornflower": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:black_tea_leaves"
+              "minecraft:cornflower"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:saidi_tea"
+        "recipe": "youkaisfeasts:cornflower_tea"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_cornflower",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:saidi_tea"
+      "youkaisfeasts:cornflower_tea"
     ]
   },
   "sends_telemetry_event": true

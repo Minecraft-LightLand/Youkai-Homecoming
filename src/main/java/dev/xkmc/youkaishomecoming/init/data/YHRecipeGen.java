@@ -10,12 +10,14 @@ import dev.xkmc.fruitsdelight.init.food.FruitType;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
+import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
@@ -40,7 +42,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fml.ModList;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -699,83 +700,57 @@ public class YHRecipeGen {
 
 		}
 
-		var tea = tea(pvd);
 
 		// drinks
 		{
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.BLACK_TEA, 100)::unlockedBy, YHTea.BLACK.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_BLACK, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.GREEN_TEA, 100)::unlockedBy, YHTea.GREEN.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_GREEN, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.OOLONG_TEA, 100)::unlockedBy, YHTea.OOLONG.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_OOLONG, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.WHITE_TEA, 100)::unlockedBy, YHTea.WHITE.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_WHITE, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.CORNFLOWER_TEA, 100)::unlockedBy, Items.CORNFLOWER)
+					.addIngredient(Items.CORNFLOWER, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.TEA_MOCHA, 100)::unlockedBy, Items.COCOA_BEANS)
 					.addIngredient(YHTagGen.TEA_BLACK)
-					.addIngredient(YHTagGen.TEA_BLACK)
-					.build(tea, YHDrink.BLACK_TEA.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GREEN_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
-					.addIngredient(YHTagGen.TEA_GREEN)
-					.addIngredient(YHTagGen.TEA_GREEN)
-					.build(tea, YHDrink.GREEN_TEA.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.OOLONG_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.OOLONG.leaves)
-					.addIngredient(YHTagGen.TEA_OOLONG)
-					.addIngredient(YHTagGen.TEA_OOLONG)
-					.build(tea, YHDrink.OOLONG_TEA.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.WHITE_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.WHITE.leaves)
-					.addIngredient(YHTagGen.TEA_WHITE)
-					.addIngredient(YHTagGen.TEA_WHITE)
-					.build(tea, YHDrink.WHITE_TEA.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.CORNFLOWER_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(Items.CORNFLOWER)
-					.addIngredient(Items.CORNFLOWER)
-					.addIngredient(Items.CORNFLOWER)
-					.build(tea, YHDrink.CORNFLOWER_TEA.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.TEA_MOCHA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(Items.COCOA_BEANS)
 					.addIngredient(TagRef.MILK_BOTTLE)
-					.build(tea, YHDrink.TEA_MOCHA.item.getId());
+					.save(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SAIDI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.BLACK.leaves)
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.SAIDI_TEA, 100)::unlockedBy, Items.SUGAR)
+					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(YHTagGen.TEA_BLACK)
 					.addIngredient(Items.SUGAR)
-					.addIngredient(Items.SUGAR)
-					.build(tea, YHDrink.SAIDI_TEA.item.getId());
+					.save(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.SAKURA_HONEY_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(Items.CHERRY_LEAVES)
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.SAKURA_HONEY_TEA, 100)::unlockedBy, Items.CHERRY_LEAVES)
+					.addIngredient(Items.CHERRY_LEAVES)
 					.addIngredient(Items.CHERRY_LEAVES)
 					.addIngredient(Items.HONEY_BOTTLE)
-					.build(tea, YHDrink.SAKURA_HONEY_TEA.item.getId());
+					.save(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GENMAI_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(YHTea.GREEN.leaves)
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.GENMAI_TEA, 100)::unlockedBy, YHTea.GREEN.leaves.asItem())
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(YHTagGen.TEA_GREEN)
 					.addIngredient(TagRef.GRAIN_RICE)
-					.build(tea, YHDrink.GENMAI_TEA.item.getId());
+					.addIngredient(TagRef.GRAIN_RICE)
+					.save(pvd);
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHDrink.GREEN_WATER.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(Items.GLASS_BOTTLE)
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.GREEN_WATER, 100)::unlockedBy, ModItems.CABBAGE_LEAF.get())
 					.addIngredient(TagRef.FOOD_CABBAGE)
 					.addIngredient(TagRef.FOOD_CABBAGE)
-					.build(tea, YHDrink.GREEN_WATER.item.getId());
+					.addIngredient(TagRef.FOOD_CABBAGE)
+					.addIngredient(TagRef.FOOD_CABBAGE)
+					.save(pvd);
 
 		}
 
@@ -1132,25 +1107,19 @@ public class YHRecipeGen {
 		}
 
 		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
-			Consumer<FinishedRecipe> modtea =
-					e -> pvd.accept(new ConditionalRecipeWrapper(
-							new BasePotFinishedRecipe(YHBlocks.KETTLE_RS.get(), e),
-							new ModLoadedCondition(FruitsDelight.MODID)));
 
-			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.MOON_ROCKET.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(FDFood.LEMON_SLICE.get())
+			unlock(pvd, new KettleRecipeBuilder(FruitsDelightCompatDrink.MOON_ROCKET, 100)::unlockedBy, Items.SUGAR)
+					.addIngredient(FDFood.LEMON_SLICE.get())
 					.addIngredient(FDFood.LEMON_SLICE.get())
 					.addIngredient(Items.SUGAR)
-					.build(modtea, FruitsDelightCompatFood.MOON_ROCKET.item.getId());
+					.save(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
 
-			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.LEMON_BLACK_TEA.item.get(), 1, 200, 0.1f, Items.GLASS_BOTTLE)
-					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
-					.unlockedByAnyIngredient(FDFood.LEMON_SLICE.get())
-					.addIngredient(FDFood.LEMON_SLICE.get())
+			unlock(pvd, new KettleRecipeBuilder(FruitsDelightCompatDrink.LEMON_BLACK_TEA, 100)::unlockedBy, Items.SUGAR)
 					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(YHTagGen.TEA_BLACK)
+					.addIngredient(FDFood.LEMON_SLICE.get())
 					.addIngredient(Items.SUGAR)
-					.build(modtea, FruitsDelightCompatFood.LEMON_BLACK_TEA.item.getId());
+					.save(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
 
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.PEACH_TAPIOCA.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(FruitType.PEACH.getFruitTag())

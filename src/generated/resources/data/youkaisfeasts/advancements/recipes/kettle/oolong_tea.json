@@ -1,18 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "fruitsdelight"
-    }
-  ],
   "criteria": {
-    "has_any_ingredient": {
+    "has_oolong_tea_leaves": {
       "conditions": {
         "items": [
           {
             "items": [
-              "fruitsdelight:lemon_slice"
+              "youkaisfeasts:oolong_tea_leaves"
             ]
           }
         ]
@@ -21,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:lemon_black_tea"
+        "recipe": "youkaisfeasts:oolong_tea"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_oolong_tea_leaves",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:lemon_black_tea"
+      "youkaisfeasts:oolong_tea"
     ]
   },
   "sends_telemetry_event": true

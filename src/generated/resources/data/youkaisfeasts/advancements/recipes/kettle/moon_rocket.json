@@ -1,12 +1,18 @@
 {
   "parent": "minecraft:recipes/root",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fruitsdelight"
+    }
+  ],
   "criteria": {
-    "has_any_ingredient": {
+    "has_sugar": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:green_tea_leaves"
+              "minecraft:sugar"
             ]
           }
         ]
@@ -15,20 +21,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:genmai_tea"
+        "recipe": "youkaisfeasts:moon_rocket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_sugar",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:genmai_tea"
+      "youkaisfeasts:moon_rocket"
     ]
   },
   "sends_telemetry_event": true

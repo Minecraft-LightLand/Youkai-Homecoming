@@ -1,11 +1,12 @@
 {
   "type": "youkaisfeasts:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "tag": "forge:tea_leaves/white"
+    },
+    {
+      "tag": "forge:tea_leaves/white"
+    },
     {
       "tag": "forge:tea_leaves/white"
     },
@@ -13,8 +14,9 @@
       "tag": "forge:tea_leaves/white"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaisfeasts:white_tea"
-  }
+    "amount": 1000,
+    "fluid": "youkaisfeasts:white_tea"
+  },
+  "time": 100
 }

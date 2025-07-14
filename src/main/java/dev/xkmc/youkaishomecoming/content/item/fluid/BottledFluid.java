@@ -81,6 +81,11 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder {
 	}
 
 	@Override
+	public Item asItem() {
+		return item.asItem();
+	}
+
+	@Override
 	public FluidEntry<? extends YHFluid> fluid() {
 		return fluid;
 	}

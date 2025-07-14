@@ -1,11 +1,12 @@
 {
   "type": "youkaisfeasts:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
     {
       "tag": "forge:salad_ingredients/cabbage"
     },
@@ -13,8 +14,9 @@
       "tag": "forge:salad_ingredients/cabbage"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaisfeasts:green_water"
-  }
+    "amount": 1000,
+    "fluid": "youkaisfeasts:green_water"
+  },
+  "time": 100
 }

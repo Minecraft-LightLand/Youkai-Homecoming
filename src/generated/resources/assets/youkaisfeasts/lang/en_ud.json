@@ -217,9 +217,11 @@
   "fluid.youkaisfeasts.hakutsuru": "nɹnsʇnʞɐH",
   "fluid.youkaisfeasts.kappa_village": "ǝbɐןןıΛ ɐddɐʞ",
   "fluid.youkaisfeasts.kiku": "nʞıʞ",
+  "fluid.youkaisfeasts.lemon_black_tea": "ɐǝ⟘ ʞɔɐןᗺ uoɯǝꞀ",
   "fluid.youkaisfeasts.mayonnaise": "ǝsıɐuuoʎɐW",
   "fluid.youkaisfeasts.mead": "pɐǝW",
   "fluid.youkaisfeasts.mio": "oıW",
+  "fluid.youkaisfeasts.moon_rocket": "ʇǝʞɔoᴚ uooW",
   "fluid.youkaisfeasts.oolong_tea": "ɐǝ⟘ buoןoO",
   "fluid.youkaisfeasts.red_grape_juice": "ǝɔınſ ǝdɐɹ⅁ pǝᴚ",
   "fluid.youkaisfeasts.red_wine": "ǝuıM pǝᴚ",
@@ -397,9 +399,11 @@
   "item.youkaisfeasts.yakumo_inari": "ıɹɐuI oɯnʞɐʎ",
   "item.youkaisfeasts.yashouma_dango": "obuɐᗡ ɐɯnoɥsɐʎ",
   "itemGroup.youkaisfeasts.youkais_feasts": "sʇsɐǝℲ ,sıɐʞnoʎ",
+  "youkaisfeasts.brewing_progress": "%s :buıʍǝɹᗺ",
   "youkaisfeasts.cuisine_allow": ":dǝʇS ʇxǝN",
   "youkaisfeasts.cuisine_extra": "˙˙˙ǝɹoɯ %s puⱯ",
   "youkaisfeasts.fermenting_progress": "%s :buıʇuǝɯɹǝℲ",
+  "youkaisfeasts.heat_progress": "%s :buıʇɐǝH",
   "youkaisfeasts.jei.basin": "uısɐᗺ",
   "youkaisfeasts.jei.cooking": "buıʞooƆ",
   "youkaisfeasts.jei.cuisine": "ǝuısınƆ",
@@ -420,6 +424,5 @@
   "youkaisfeasts.tooltip.kettle": "ɹǝʇɐʍ ןןıɟ oʇ ǝןʇʇoq ɹǝʇɐʍ ɹo ʇǝʞɔnq ɹǝʇɐʍ ɥʇıʍ ʞɔıןɔ ʇɥbıᴚ",
   "youkaisfeasts.tooltip.moon_lantern_hold": "suooɯ ןןnɟ ǝǝs uɐɔ ɹǝʎɐןd ɟı ssǝןpɹɐbǝɹ ʇɥbıu ʇɐ ɹǝbbıɹʇ sʎɐʍןɐ ןןıʍ ʇɔǝɟɟǝ ɐɹɐqɯnp∩ 'puɐɥ uı buıpןoɥ uǝɥM",
   "youkaisfeasts.tooltip.moon_lantern_place": "˙uooɯ ןןnɟ ǝǝs uɐɔ ʎǝɥʇ ɟı sɐ ʇɥbıu sɐ ʍoɹb ןןıʍ uɹǝʇɐן sıɥʇ ʍoןǝq sʞɔoןq ƐxƐxƐ uıɥʇıʍ ɐɹɐqɯnp∩",
-  "youkaisfeasts.tooltip.place": "punoɹb uo pǝɔɐןd ǝq uɐƆ",
-  "youkaisfeasts.wip": "˙ǝɹnʇnɟ ǝɥʇ uı sǝbuɐɥɔ ɔʇısɐɹp ʇǝb ןןıʍ puɐ ןɐʇuǝɯıɹǝdxǝ sı ɯǝʇı sıɥ⟘"
+  "youkaisfeasts.tooltip.place": "punoɹb uo pǝɔɐןd ǝq uɐƆ"
 }

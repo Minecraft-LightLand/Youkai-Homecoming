@@ -6,12 +6,10 @@
       "modid": "fruitsdelight"
     }
   ],
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "item": "fruitsdelight:lemon_slice"
+    },
     {
       "item": "fruitsdelight:lemon_slice"
     },
@@ -19,8 +17,9 @@
       "item": "minecraft:sugar"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaisfeasts:moon_rocket"
-  }
+    "amount": 1000,
+    "fluid": "youkaisfeasts:moon_rocket"
+  },
+  "time": 100
 }

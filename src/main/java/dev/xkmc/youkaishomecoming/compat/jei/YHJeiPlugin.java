@@ -4,9 +4,7 @@ import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleMenu;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleScreen;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
@@ -43,7 +41,7 @@ public class YHJeiPlugin implements IModPlugin {
 
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		var helper = registry.getJeiHelpers().getGuiHelper();
-		registry.addRecipeCategories(new KettleRecipeCategory(helper));
+		registry.addRecipeCategories(new KettleRecipeCategory().init(helper));
 		registry.addRecipeCategories(new DryingRackCategory(helper));
 		registry.addRecipeCategories(new SteamingCategory(helper));
 		registry.addRecipeCategories(new FermentRecipeCategory().init(helper));
@@ -79,14 +77,5 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHItems.IRON_BOWL.asStack(), COOKING);
 		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), KETTLE, STEAM, COOKING);
 	}
-
-	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-		registration.addRecipeClickArea(KettleScreen.class, 89, 25, 24, 17, KETTLE);
-	}
-
-	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-		registration.addRecipeTransferHandler(KettleMenu.class, YHBlocks.KETTLE_MT.get(), KETTLE, 0, 4, 7, 36);
-	}
-
 
 }

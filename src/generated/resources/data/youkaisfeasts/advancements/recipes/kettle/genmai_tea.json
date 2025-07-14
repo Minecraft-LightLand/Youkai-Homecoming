@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_green_tea_leaves": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:white_tea_leaves"
+              "youkaisfeasts:green_tea_leaves"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:white_tea"
+        "recipe": "youkaisfeasts:genmai_tea"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_green_tea_leaves",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:white_tea"
+      "youkaisfeasts:genmai_tea"
     ]
   },
   "sends_telemetry_event": true

@@ -6,24 +6,23 @@
       "modid": "fruitsdelight"
     }
   ],
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
     {
-      "item": "fruitsdelight:lemon_slice"
+      "tag": "forge:tea_leaves/black"
     },
     {
       "tag": "forge:tea_leaves/black"
     },
     {
+      "item": "fruitsdelight:lemon_slice"
+    },
+    {
       "item": "minecraft:sugar"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaisfeasts:lemon_black_tea"
-  }
+    "amount": 1000,
+    "fluid": "youkaisfeasts:lemon_black_tea"
+  },
+  "time": 100
 }

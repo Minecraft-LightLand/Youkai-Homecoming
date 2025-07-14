@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_cocoa_beans": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:black_tea_leaves"
+              "minecraft:cocoa_beans"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:black_tea"
+        "recipe": "youkaisfeasts:tea_mocha"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_cocoa_beans",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:black_tea"
+      "youkaisfeasts:tea_mocha"
     ]
   },
   "sends_telemetry_event": true

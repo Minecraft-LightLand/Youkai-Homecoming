@@ -1,18 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "fruitsdelight"
-    }
-  ],
   "criteria": {
-    "has_any_ingredient": {
+    "has_cabbage_leaf": {
       "conditions": {
         "items": [
           {
             "items": [
-              "fruitsdelight:lemon_slice"
+              "farmersdelight:cabbage_leaf"
             ]
           }
         ]
@@ -21,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:moon_rocket"
+        "recipe": "youkaisfeasts:green_water"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_any_ingredient",
+      "has_cabbage_leaf",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:moon_rocket"
+      "youkaisfeasts:green_water"
     ]
   },
   "sends_telemetry_event": true

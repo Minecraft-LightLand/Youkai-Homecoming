@@ -9,6 +9,8 @@
 		},
 		"fermenting_progress": "发酵进度：%s",
 		"cuisine_allow": "下一步:",
-		"cuisine_extra": "还有%s种选择"
+		"cuisine_extra": "还有%s种选择",
+		"brewing_progress": "煮茶进度: %s",
+		"heat_progress": "加热进度: %s"
 	}
 }
