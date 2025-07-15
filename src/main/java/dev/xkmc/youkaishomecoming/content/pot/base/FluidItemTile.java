@@ -14,7 +14,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -28,6 +32,7 @@ public interface FluidItemTile {
 	static InteractionResult addItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.getFluidHandler().getFluidInTank(0);
 		boolean hasFluid = false;
+		// take YH fluids
 		if (fluid.getFluid() instanceof YHFluid sake) {
 			if (fluid.getAmount() >= sake.type.amount() && stack.is(sake.type.getContainer())) {
 				if (level instanceof ServerLevel sl) {
@@ -42,6 +47,7 @@ public interface FluidItemTile {
 			}
 			hasFluid = true;
 		}
+		// take fluid in create sense
 		var fillOpt = CreateFillingTest.test(level, fluid, stack);
 		if (fillOpt.isPresent()) {
 			if (level instanceof ServerLevel sl) {
@@ -52,6 +58,7 @@ public interface FluidItemTile {
 			}
 			return InteractionResult.SUCCESS;
 		}
+		// fill or take fluid via YH items
 		if (!hasFluid || stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof SakeBottleItem) {
 			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
 			if (opt.resolve().isPresent()) {
@@ -61,6 +68,20 @@ public interface FluidItemTile {
 					return InteractionResult.SUCCESS;
 				} else {
 					return InteractionResult.CONSUME;
+				}
+			}
+		}
+		// fill water from bottle
+		if (stack.is(Items.POTION) && PotionUtils.getPotion(stack) == Potions.WATER) {
+			var attempt = be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.SIMULATE);
+			if (attempt == 250) {
+				if (level instanceof ServerLevel sl) {
+					be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.EXECUTE);
+					if (!player.isCreative()) {
+						stack.shrink(1);
+						player.getInventory().placeItemBackInInventory(Items.GLASS_BOTTLE.getDefaultInstance());
+					}
+					sl.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.7f, 1);
 				}
 			}
 		}

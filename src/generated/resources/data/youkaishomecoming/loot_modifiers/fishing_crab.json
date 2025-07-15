@@ -8,11 +8,11 @@
     },
     {
       "condition": "youkaishomecoming:biome_check",
-      "tag": "youkaishomecoming:spawns/lamprey"
+      "tag": "youkaishomecoming:crab_fishing"
     }
   ],
   "result": {
     "Count": 1,
-    "id": "youkaishomecoming:raw_lamprey"
+    "id": "youkaishomecoming:crab"
   }
 }

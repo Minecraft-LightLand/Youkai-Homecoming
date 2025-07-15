@@ -15,6 +15,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -95,13 +97,14 @@ public class KettleBlock implements
 	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (level.getBlockEntity(pos) instanceof KettleBlockEntity be) {
-
 			if (stack.isEmpty()) {
 				if (!level.isClientSide()) {
 					if (player.isShiftKeyDown()) {
 						be.dumpInventory();
 					} else {
-
+						level.setBlockAndUpdate(pos, state.setValue(SUPPORT, state.getValue(SUPPORT).equals(CookingPotSupport.HANDLE) ?
+								this.getTrayState(level, pos) : CookingPotSupport.HANDLE));
+						level.playSound(null, pos, SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
 					}
 				}
 				return InteractionResult.SUCCESS;
