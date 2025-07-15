@@ -27,7 +27,7 @@ public class SmallCookingPotBlock implements ShapeBlockMethod {
 	public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 4, 12);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
-		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHItems.IRON_BOWL), BE, BlockProxy.HORIZONTAL);
+		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.IRON_BOWL), BE, BlockProxy.HORIZONTAL);
 	}
 
 	@Override

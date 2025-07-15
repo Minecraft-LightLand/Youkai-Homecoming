@@ -29,7 +29,7 @@ public enum YHShortPot implements ItemLike {
 		block = YoukaisHomecoming.REGISTRATE.block("pot_of_" + name, p -> new PotFoodBlock(p, BowlBlock.POT_SHAPE, bowl))
 				.properties(p -> p.mapColor(MapColor.METAL).strength(0.5F, 6.0F).sound(SoundType.LANTERN))
 				.blockstate(MidCookingPotBlock::buildPotFood)
-				.item().properties(p -> p.craftRemainder(YHBlocks.MID_POT.get().asItem())).build()
+				.item().properties(p -> p.craftRemainder(YHBlocks.IRON_POT.get().asItem())).build()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.lang(YHItems.toEnglishName("pot_of_" + name))
 				.register();

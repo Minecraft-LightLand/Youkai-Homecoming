@@ -3,9 +3,8 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -42,7 +41,7 @@ import java.util.List;
 
 @SerialClass
 public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
-		implements BlockContainer, HeatableBlockEntity, IHintableBlockEntity {
+		implements BlockContainer, HeatableBlockEntity, IHintableBlock {
 
 	@SerialClass.SerialField
 	public final CookingItemContainer items = new CookingItemContainer(12).add(this);
@@ -222,7 +221,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 	}
 
 	@Override
-	public List<Ingredient> getHints(Level level) {
+	public List<Ingredient> getHints(Level level, BlockPos pos) {
 		var cont = createContainer(false);
 		var recipes = level.getRecipeManager().getRecipesFor(getRecipeType(), cont, level);
 		List<Ingredient> ans = new ArrayList<>();

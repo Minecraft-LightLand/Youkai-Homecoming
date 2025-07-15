@@ -3,13 +3,11 @@ package dev.xkmc.youkaishomecoming.content.pot.table.board;
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2library.base.tile.BaseBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
-import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintableBlockEntity {
+public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintableBlock {
 
 	@SerialClass.SerialField
 	private final List<ItemStack> contents = new ArrayList<>();
@@ -136,7 +134,7 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 	}
 
 	@Override
-	public List<Ingredient> getHints(Level level) {
+	public List<Ingredient> getHints(Level level, BlockPos pos) {
 		return model.getHints(level);
 	}
 

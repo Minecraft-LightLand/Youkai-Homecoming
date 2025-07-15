@@ -13,7 +13,6 @@ import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
@@ -53,8 +52,8 @@ public class YHJeiPlugin implements IModPlugin {
 		registry.addRecipeCategories(new FermentRecipeCategory().init(helper));
 		registry.addRecipeCategories(new BasinRecipeCategory().init(helper));
 		registry.addRecipeCategories(new CuisineRecipeCategory().init(helper));
-		registry.addRecipeCategories(new PotCookingRecipeCategory("bowl_cooking", YHItems.IRON_BOWL.asStack()).init(helper));
-		registry.addRecipeCategories(new PotCookingRecipeCategory("pot_cooking", YHBlocks.MID_POT.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("bowl_cooking", YHBlocks.IRON_BOWL.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("pot_cooking", YHBlocks.IRON_POT.asStack()).init(helper));
 	}
 
 	public void registerRecipes(IRecipeRegistration registration) {
@@ -71,9 +70,9 @@ public class YHJeiPlugin implements IModPlugin {
 				.stream().map(e -> e instanceof SimpleBasinRecipe x ? x : null).filter(Objects::nonNull).toList());
 		registration.addRecipes(CUISINE, m.getAllRecipesFor(YHBlocks.CUISINE_RT.get()));
 		registration.addRecipes(BOWL_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
-				.stream().filter(e -> e.matchContainer(YHItems.IRON_BOWL.asItem())).toList());
+				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_BOWL.asItem())).toList());
 		registration.addRecipes(POT_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
-				.stream().filter(e -> e.matchContainer(YHBlocks.MID_POT.asItem())).toList());
+				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_POT.asItem())).toList());
 	}
 
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
@@ -86,8 +85,8 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_RACK.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_POT.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.CUISINE_BOARD.asStack(), CUISINE);
-		registration.addRecipeCatalyst(YHItems.IRON_BOWL.asStack(), BOWL_COOKING);
-		registration.addRecipeCatalyst(YHBlocks.MID_POT.asStack(), POT_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.IRON_BOWL.asStack(), BOWL_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.IRON_POT.asStack(), POT_COOKING);
 		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM, BOWL_COOKING, POT_COOKING);
 	}
 

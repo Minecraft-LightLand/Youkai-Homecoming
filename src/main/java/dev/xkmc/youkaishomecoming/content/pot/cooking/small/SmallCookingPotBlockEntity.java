@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.small;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,7 +22,7 @@ public class SmallCookingPotBlockEntity extends CookingBlockEntity {
 
 	@Override
 	public Item container() {
-		return YHItems.IRON_BOWL.asItem();
+		return YHBlocks.IRON_BOWL.asItem();
 	}
 
 	protected void animationTick(Level level) {

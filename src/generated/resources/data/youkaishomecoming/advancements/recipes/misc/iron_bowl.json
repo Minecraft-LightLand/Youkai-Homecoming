@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_pot": {
+    "has_iron_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_pot"
+              "minecraft:iron_ingot"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:pot_of_tofu_crab_stew"
+        "recipe": "youkaishomecoming:iron_bowl"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_pot",
+      "has_iron_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:pot_of_tofu_crab_stew"
+      "youkaishomecoming:iron_bowl"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

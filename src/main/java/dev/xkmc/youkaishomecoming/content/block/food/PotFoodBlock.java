@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -57,4 +58,9 @@ public class PotFoodBlock extends BowlBlock {
 		}
 		super.consume(state, level, pos);
 	}
+
+	public ItemStack asBowls() {
+		return food.asItem().getDefaultInstance().copyWithCount(2);
+	}
+
 }

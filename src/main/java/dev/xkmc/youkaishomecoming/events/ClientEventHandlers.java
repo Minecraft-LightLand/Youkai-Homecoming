@@ -32,11 +32,6 @@ public class ClientEventHandlers {
 
 	@SubscribeEvent
 	public static void onInput(MovementInputUpdateEvent event) {
-		{
-			var ins = event.getEntity().getEffect(YHEffects.CRABY.get());
-			if (ins != null)
-				event.getInput().leftImpulse *= 1 + (1 + ins.getAmplifier()) * 0.5f;
-		}
 		if (oTilt > 0.01) {
 			float t = oTilt;
 			float time = event.getEntity().tickCount;
