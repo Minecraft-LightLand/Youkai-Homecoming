@@ -40,6 +40,9 @@ public class CrabModel extends HierarchicalModel<CrabEntity> implements ArmedMod
 		}
 		this.animate(e.states.dig, CrabModelData.DIG, tick);
 		this.animate(e.states.swing, CrabModelData.SWING, tick);
+		this.animate(e.states.hideStart, CrabModelData.HIDE_START, tick);
+		this.animate(e.states.hide, CrabModelData.HIDE, tick);
+		this.animate(e.states.hideEnd, CrabModelData.HIDE_END, tick);
 	}
 
 	@Override
