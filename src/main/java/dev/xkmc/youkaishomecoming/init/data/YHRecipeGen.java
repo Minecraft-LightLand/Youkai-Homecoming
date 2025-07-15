@@ -70,9 +70,8 @@ public class YHRecipeGen {
 			pvd.stonecutting(DataIngredient.items(Items.COPPER_INGOT), RecipeCategory.MISC, YHBlocks.COPPER_FAUCET);
 			pvd.stonecutting(DataIngredient.tag(ItemTags.PLANKS), RecipeCategory.MISC, YHBlocks.STEAMER_LID);
 			pvd.smelting(DataIngredient.items(YHItems.CLAY_SAUCER.get()), RecipeCategory.MISC, YHItems.SAUCER, 0.1f, 200);
-			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHItems.IRON_BOWL);
+			pvd.stonecutting(DataIngredient.items(Items.IRON_INGOT), RecipeCategory.MISC, YHBlocks.IRON_BOWL);
 			pvd.stonecutting(DataIngredient.items(Items.GLASS), RecipeCategory.MISC, YHItems.SAKE_BOTTLE);
-			pvd.smelting(DataIngredient.items(YHItems.IRON_BOWL.get()), RecipeCategory.MISC, Items.IRON_INGOT::asItem, 0.1f, 200);
 			for (var e : YHBlocks.WoodType.values()) {
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, e.seat, 4)::unlockedBy, ModItems.CANVAS.get())
@@ -115,6 +114,18 @@ public class YHRecipeGen {
 					.define('A', Items.MUD_BRICKS)
 					.define('B', ItemTags.WOODEN_TRAPDOORS)
 					.define('C', Items.BUCKET)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.IRON_BOWL)::unlockedBy, Items.IRON_INGOT)
+					.pattern("IBI").pattern(" I ")
+					.define('I', Items.IRON_INGOT)
+					.define('B', Items.BOWL)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.IRON_POT)::unlockedBy, Items.IRON_INGOT)
+					.pattern("IBI").pattern("III")
+					.define('I', Items.IRON_INGOT)
+					.define('B', Items.BOWL)
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.BASIN)::unlockedBy, Items.IRON_NUGGET)
@@ -469,15 +480,6 @@ public class YHRecipeGen {
 					.addIngredient(Items.BONE_MEAL)
 					.build(pvd, YHBowl.POOR_GOD_SOUP.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SHIRAYUKI.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.PUFFERFISH)
-					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(Items.KELP)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(TagRef.VEGETABLES)
-					.build(pvd, YHFood.SHIRAYUKI.item.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(YHTagGen.DANGO)
@@ -553,12 +555,12 @@ public class YHRecipeGen {
 					.add(Items.SOUL_SAND)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HIGAN_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HIGAN_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(Items.SOUL_SAND)
 					.add(TagRef.CROPS)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POWER_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POWER_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(YHCrops.SOYBEAN.getSeed())
 					.add(TagRef.RAW_PORK)
 					.add(TagRef.RAW_BEEF)
@@ -568,26 +570,26 @@ public class YHRecipeGen {
 					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.MUSHROOM_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.MUSHROOM_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(YHItems.CREAM.get())
 					.add(Items.BROWN_MUSHROOM)
 					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POTATO_SOUP, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POTATO_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(YHItems.CREAM.get())
 					.add(Items.POTATO)
 					.add(TagRef.RAW_PORK)
 					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(Items.RED_MUSHROOM)
 					.add(Items.BROWN_MUSHROOM)
 					.add(Tags.Items.MUSHROOMS)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.BORSCHT, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.BORSCHT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(YHItems.CREAM.get())
 					.add(Items.BEETROOT)
 					.add(Items.POTATO)
@@ -595,9 +597,10 @@ public class YHRecipeGen {
 					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(YHCrops.SOYBEAN.getSeed())
 					.add(YHFood.TOFU)
+					.add(Items.KELP)
 					.add(Items.CARROT)
 					.add(Items.POTATO)
 					.add(Items.BROWN_MUSHROOM)
@@ -606,6 +609,32 @@ public class YHRecipeGen {
 					.add(TagRef.RAW_FISHES_SALMON)
 					.save(pvd);
 
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+					.add(YHFood.TOFU)
+					.add(Items.KELP)
+					.add(TagRef.VEGETABLES)
+					.add(Items.PUFFERFISH)
+					.add(YHTagGen.RAW_EEL)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+					.add(TagRef.RAW_FISHES_COD)
+					.add(TagRef.EGGS)
+					.add(TagRef.VEGETABLES_TOMATO)
+					.add(Items.POTATO)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+					.add(YHFood.TOFU)
+					.add(YHFood.TOFU)
+					.add(YHFood.RAW_LAMPREY)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+					.add(YHFood.TOFU)
+					.add(YHFood.CRAB_MEAT)
+					.add(YHFood.CRAB)
+					.save(pvd);
 		}
 
 		// food cooking saucer

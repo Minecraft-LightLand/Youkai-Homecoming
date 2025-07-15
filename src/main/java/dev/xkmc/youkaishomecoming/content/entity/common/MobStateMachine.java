@@ -57,7 +57,7 @@ public abstract class MobStateMachine<
 		transitionTo(data, data.tick());
 	}
 
-	private void transitionTo(S data, int tickRemain) {
+	protected void transitionTo(S data, int tickRemain) {
 		if (!mob.level().isClientSide()) {
 			mob.level().broadcastEntityEvent(mob, data.id());
 		} else {

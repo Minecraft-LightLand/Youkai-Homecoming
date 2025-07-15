@@ -1,0 +1,18 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:raw_lamprey"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:pot_of_han_palace"
+  },
+  "time": 200
+}

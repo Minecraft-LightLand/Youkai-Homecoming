@@ -9,8 +9,11 @@ import java.util.function.Function;
 public enum CrabState implements MobState<CrabEntity, CrabState, CrabStateMachine> {
 	IDLE(0, null),
 	FLIP(0, null, e -> e.flip),
+	HIDE(0, null, e -> e.hide),
 	SWING(20, IDLE, e -> e.swing),
 	DIG(64, IDLE, e -> e.dig),
+	HIDE_START(41, HIDE, e -> e.hideStart),
+	HIDE_END(24, IDLE, e -> e.hideEnd),
 	;
 
 	final int tick;
@@ -36,6 +39,10 @@ public enum CrabState implements MobState<CrabEntity, CrabState, CrabStateMachin
 	@Override
 	public Function<CrabStateMachine, AnimationState>[] anims() {
 		return anims;
+	}
+
+	public boolean isHiding() {
+		return this == HIDE || this == HIDE_START || this == HIDE_END;
 	}
 
 }

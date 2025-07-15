@@ -361,6 +361,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaisfeasts:han_palace": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:han_palace"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaisfeasts:higan_soup": {
       "conditions": {
         "item": {
@@ -1221,6 +1231,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaisfeasts:tofu_crab_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:tofu_crab_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaisfeasts:tomato_sauce_cod": {
       "conditions": {
         "item": {
@@ -1697,6 +1717,12 @@
     ],
     [
       "youkaisfeasts:shirayuki"
+    ],
+    [
+      "youkaisfeasts:han_palace"
+    ],
+    [
+      "youkaisfeasts:tofu_crab_stew"
     ],
     [
       "youkaisfeasts:sweet_ormosia_mochi_mixed_boiled"

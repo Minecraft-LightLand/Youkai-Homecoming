@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/bowl/short/short_iron_pot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaisfeasts:block/bowl/short/short_iron_pot_bottom",
+    "side": "youkaisfeasts:block/bowl/short/short_iron_pot_side",
+    "top": "youkaisfeasts:block/bowl/short/short_iron_pot_top"
+  }
+}

@@ -2,9 +2,12 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.small;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
+import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,6 +18,11 @@ public class SmallCookingPotBlockEntity extends CookingBlockEntity {
 
 	public SmallCookingPotBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
+	}
+
+	@Override
+	public Item container() {
+		return YHBlocks.IRON_BOWL.asItem();
 	}
 
 	protected void animationTick(Level level) {

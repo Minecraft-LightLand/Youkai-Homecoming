@@ -68,6 +68,8 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 	public final CrabStateMachine states = new CrabStateMachine(this);
 	public final CrabProperties prop = new CrabProperties(this);
 
+	CrabDigGoal dig;
+
 	public CrabEntity(EntityType<? extends WaterAnimal> type, Level level) {
 		super(type, level);
 		moveControl = new CrabMoveControl(this);
@@ -81,11 +83,13 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 	// core
 
 	protected void registerGoals() {
+		dig = new CrabDigGoal(this);
 		super.registerGoals();
 		this.goalSelector.addGoal(1, new CrabFlipGoal(this));
-		this.goalSelector.addGoal(2, new CrabPanicGoal(this, 1.25D));
-		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
-		this.goalSelector.addGoal(4, new CrabDigGoal(this));
+		this.goalSelector.addGoal(2, new CrabHideGoal(this));
+		this.goalSelector.addGoal(3, new CrabPanicGoal(this, 1.25D));
+		this.goalSelector.addGoal(4, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6D, 1.4D, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(5, dig);
 		this.goalSelector.addGoal(10, new CrabRandomWalkGoal(this, 1, 40));
 	}
 
@@ -218,6 +222,19 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		var ans = Bucketable.bucketMobPickup(player, hand, this);
 		if (ans.isPresent()) return ans.get();
 		return super.mobInteract(player, hand);
+	}
+
+	@Override
+	public boolean isPushable() {
+		return !states().isHiding();
+	}
+
+	@Override
+	public EntityDimensions getDimensions(Pose pose) {
+		var ans = super.getDimensions(pose);
+		if (states().isHiding())
+			ans = ans.scale(1, 0.1f);
+		return ans;
 	}
 
 	@Override

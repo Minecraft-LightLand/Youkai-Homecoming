@@ -21,7 +21,7 @@ import net.minecraft.world.level.ItemLike;
 public abstract class CookingRecipeBuilder<T extends PotCookingRecipe<T>, B extends CookingRecipeBuilder<T, B>>
 		extends BaseRecipeBuilder<B, T, PotCookingRecipe<?>, CookingInv> {
 
-	public CookingRecipeBuilder(BaseRecipe.RecType<T, PotCookingRecipe<?>, CookingInv> type, YHBowl result, int time) {
+	public CookingRecipeBuilder(BaseRecipe.RecType<T, PotCookingRecipe<?>, CookingInv> type, ItemLike result, int time) {
 		super(type);
 		recipe.time = time;
 		recipe.result = result.asItem().getDefaultInstance();

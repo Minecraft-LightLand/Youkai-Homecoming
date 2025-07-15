@@ -1,0 +1,18 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:crab_meat"
+    },
+    {
+      "item": "youkaisfeasts:crab"
+    }
+  ],
+  "result": {
+    "item": "youkaisfeasts:pot_of_tofu_crab_stew"
+  },
+  "time": 200
+}

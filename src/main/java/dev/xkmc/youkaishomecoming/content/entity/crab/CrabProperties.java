@@ -55,4 +55,12 @@ public class CrabProperties {
 		return 0.2f;
 	}
 
+	public int hideWillingness() {
+		return 500;
+	}
+
+	public int hideTime() {
+		return 1000;
+	}
+
 }

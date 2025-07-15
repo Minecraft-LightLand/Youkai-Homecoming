@@ -1,8 +1,12 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
 import com.mojang.serialization.Codec;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
@@ -11,7 +15,9 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import dev.xkmc.youkaishomecoming.mixin.AddItemModifierAccessor;
 import dev.xkmc.youkaishomecoming.mixin.AddLootTableModifierAccessor;
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -20,7 +26,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.Serializer;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootModifier;
@@ -34,6 +42,7 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 
 	public static final RegistryEntry<Codec<ReplaceItemModifier>> REPLACE_ITEM;
 	public static final RegistryEntry<Codec<RemoveItemModifier>> REMOVE_ITEM;
+	public static final RegistryEntry<LootItemConditionType> BIOME_CHECK;
 
 
 	static {
@@ -41,6 +50,21 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 				ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, () -> ReplaceItemModifier.CODEC);
 		REMOVE_ITEM = YoukaisHomecoming.REGISTRATE.simple("remove_item",
 				ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, () -> RemoveItemModifier.CODEC);
+		BIOME_CHECK = YoukaisHomecoming.REGISTRATE.simple("biome_check",
+				Registries.LOOT_CONDITION_TYPE, () -> new LootItemConditionType(new Serializer<BiomeTagCondition>() {
+
+					@Override
+					public void serialize(JsonObject json, BiomeTagCondition cond, JsonSerializationContext ctx) {
+						json.addProperty("tag", cond.tag.location().toString());
+					}
+
+					@Override
+					public BiomeTagCondition deserialize(JsonObject json, JsonDeserializationContext ctx) {
+						return new BiomeTagCondition(TagKey.create(Registries.BIOME, ResourceLocation.tryParse(json.get("tag").getAsString())));
+					}
+
+				}));
+
 	}
 
 	public static void register() {
@@ -62,7 +86,12 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 		));
 
 		add("fishing_lamprey", new ReplaceItemModifier(0.1f, YHFood.RAW_LAMPREY.item.asStack(),
-				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build()
+				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build(),
+				new BiomeTagCondition(YHBiomeTagsProvider.LAMPREY)
+		));
+		add("fishing_crab", new ReplaceItemModifier(0.1f, YHFood.CRAB.item.asStack(),
+				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build(),
+				new BiomeTagCondition(YHBiomeTagsProvider.CRAB_FISHING)
 		));
 
 		add("udumbara_ancient_city_loot", loot(YHLootGen.UDUMBARA_LOOT,

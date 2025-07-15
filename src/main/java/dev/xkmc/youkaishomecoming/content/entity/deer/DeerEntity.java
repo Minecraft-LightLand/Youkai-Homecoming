@@ -135,6 +135,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	}
 
 	public void ate() {
+		heal(1);
 		super.ate();
 		if (isBaby()) {
 			ageUp(60);
@@ -148,6 +149,15 @@ public class DeerEntity extends Animal implements StateMachineMob {
 			}
 		}
 	}
+
+	@Override
+	public EntityDimensions getDimensions(Pose pose) {
+		var ans = super.getDimensions(pose);
+		if (states().isRelaxed())
+			ans = ans.scale(1, 0.7f);
+		return ans;
+	}
+
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group, @Nullable CompoundTag data) {

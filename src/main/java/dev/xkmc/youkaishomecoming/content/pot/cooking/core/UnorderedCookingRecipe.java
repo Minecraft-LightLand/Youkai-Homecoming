@@ -29,6 +29,7 @@ public class UnorderedCookingRecipe extends PotCookingRecipe<UnorderedCookingRec
 
 	@Override
 	public boolean matches(CookingInv inv, Level level) {
+		if (!super.matches(inv,level))return false;
 		if (inv.getContainerSize() > input.size()) return false;
 		List<Ingredient> remain = new ArrayList<>(input);
 		for (int i = 0; i < inv.getContainerSize(); i++) {

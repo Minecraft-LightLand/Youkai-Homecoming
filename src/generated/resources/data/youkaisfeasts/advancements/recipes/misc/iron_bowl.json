@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_bowl": {
+    "has_iron_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:iron_bowl"
+              "minecraft:iron_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:iron_ingot_from_iron_bowl_smelting"
+        "recipe": "youkaisfeasts:iron_bowl"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_bowl",
+      "has_iron_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:iron_ingot_from_iron_bowl_smelting"
+      "youkaisfeasts:iron_bowl"
     ]
   },
   "sends_telemetry_event": false

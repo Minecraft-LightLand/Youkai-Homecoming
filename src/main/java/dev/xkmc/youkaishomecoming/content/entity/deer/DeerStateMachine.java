@@ -18,6 +18,12 @@ public class DeerStateMachine extends MobStateMachine<DeerEntity, DeerState, Dee
 		super(e, DeerState.class, DeerState.values());
 	}
 
+	@Override
+	protected void transitionTo(DeerState data, int tickRemain) {
+		super.transitionTo(data, tickRemain);
+		mob.refreshDimensions();
+	}
+
 	public boolean isMobile() {
 		return state().mobile();
 	}

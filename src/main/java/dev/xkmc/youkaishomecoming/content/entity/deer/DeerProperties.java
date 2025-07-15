@@ -76,4 +76,10 @@ public class DeerProperties {
 		return 1000;
 	}
 
+	public boolean eatConsume() {
+		if (e.isBaby() || isMale() && !isHorned()) return true;
+		if (e.getHealth() < e.getMaxHealth())return true;
+		return e.getRandom().nextFloat() < 0.2f;
+	}
+
 }
