@@ -15,7 +15,11 @@
     },
     "has_the_recipe": {
       "conditions": {
+<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/misc/steamer_pot.json
         "recipe": "youkaisfeasts:steamer_pot"
+========
+        "recipe": "youkaishomecoming:short_iron_pot"
+>>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/advancements/recipes/misc/short_iron_pot.json
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +32,11 @@
   ],
   "rewards": {
     "recipes": [
+<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/misc/steamer_pot.json
       "youkaisfeasts:steamer_pot"
+========
+      "youkaishomecoming:short_iron_pot"
+>>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/advancements/recipes/misc/short_iron_pot.json
     ]
   },
   "sends_telemetry_event": false

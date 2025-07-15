@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/stockpot",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/stockpot"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/stockpot",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/stockpot",
+      "y": 270
+    }
+  }
+}

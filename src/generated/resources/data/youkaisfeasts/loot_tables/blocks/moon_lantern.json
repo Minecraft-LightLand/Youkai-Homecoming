@@ -11,11 +11,19 @@
       "entries": [
         {
           "type": "minecraft:item",
+<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/loot_tables/blocks/moon_lantern.json
           "name": "youkaisfeasts:moon_lantern"
+========
+          "name": "youkaishomecoming:stockpot"
+>>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/loot_tables/blocks/stockpot.json
         }
       ],
       "rolls": 1.0
     }
   ],
+<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/loot_tables/blocks/moon_lantern.json
   "random_sequence": "youkaisfeasts:blocks/moon_lantern"
+========
+  "random_sequence": "youkaishomecoming:blocks/stockpot"
+>>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/loot_tables/blocks/stockpot.json
 }

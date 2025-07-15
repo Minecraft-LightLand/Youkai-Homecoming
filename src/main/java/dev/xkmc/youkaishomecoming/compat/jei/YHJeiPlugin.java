@@ -33,6 +33,7 @@ public class YHJeiPlugin implements IModPlugin {
 	public static final RecipeType<SimpleBasinRecipe> BASIN = RecipeType.create(YoukaisHomecoming.MODID, "basin", SimpleBasinRecipe.class);
 	public static final RecipeType<PotCookingRecipe<?>> BOWL_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "bowl_cooking", Wrappers.cast(PotCookingRecipe.class));
 	public static final RecipeType<PotCookingRecipe<?>> POT_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "pot_cooking", Wrappers.cast(PotCookingRecipe.class));
+	public static final RecipeType<PotCookingRecipe<?>> STOCK_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "stock_cooking", Wrappers.cast(PotCookingRecipe.class));
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -49,6 +50,7 @@ public class YHJeiPlugin implements IModPlugin {
 		registry.addRecipeCategories(new CuisineRecipeCategory().init(helper));
 		registry.addRecipeCategories(new PotCookingRecipeCategory("bowl_cooking", YHBlocks.IRON_BOWL.asStack()).init(helper));
 		registry.addRecipeCategories(new PotCookingRecipeCategory("pot_cooking", YHBlocks.IRON_POT.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("stock_cooking", YHBlocks.STOCKPOT.asStack()).init(helper));
 	}
 
 	public void registerRecipes(IRecipeRegistration registration) {
@@ -67,6 +69,8 @@ public class YHJeiPlugin implements IModPlugin {
 				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_BOWL.asItem())).toList());
 		registration.addRecipes(POT_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
 				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_POT.asItem())).toList());
+		registration.addRecipes(STOCK_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.STOCKPOT.asItem())).toList());
 	}
 
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
@@ -80,7 +84,8 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHBlocks.CUISINE_BOARD.asStack(), CUISINE);
 		registration.addRecipeCatalyst(YHBlocks.IRON_BOWL.asStack(), BOWL_COOKING);
 		registration.addRecipeCatalyst(YHBlocks.IRON_POT.asStack(), POT_COOKING);
-		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), KETTLE, STEAM, BOWL_COOKING, POT_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.STOCKPOT.asStack(), STOCK_COOKING);
+		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), KETTLE, STEAM, BOWL_COOKING, POT_COOKING, STOCK_COOKING);
 	}
 
 }

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:iron_bowl_from_iron_ingot_stonecutting"
+        "recipe": "youkaisfeasts:stockpot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:iron_bowl_from_iron_ingot_stonecutting"
+      "youkaisfeasts:stockpot"
     ]
   },
   "sends_telemetry_event": false

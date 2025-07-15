@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaisfeasts:iron_bowl"
+          "name": "youkaisfeasts:small_iron_pot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaisfeasts:blocks/iron_bowl"
+  "random_sequence": "youkaisfeasts:blocks/cooking_small_iron_pot"
 }

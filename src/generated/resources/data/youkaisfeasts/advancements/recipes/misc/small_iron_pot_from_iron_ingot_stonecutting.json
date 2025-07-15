@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:iron_pot"
+        "recipe": "youkaisfeasts:small_iron_pot_from_iron_ingot_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:iron_pot"
+      "youkaisfeasts:small_iron_pot_from_iron_ingot_stonecutting"
     ]
   },
   "sends_telemetry_event": false

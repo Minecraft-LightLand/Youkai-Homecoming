@@ -61,6 +61,8 @@ public class IronBowlBlock extends BowlBlock implements IHintableBlock {
 			return InteractionResult.SUCCESS;
 		if (startCooking(state, level, pos, player, hand, YHBlocks.IRON_POT.get(), YHBlocks.SHORT_POT.get(), 250))
 			return InteractionResult.SUCCESS;
+		if (startCooking(state, level, pos, player, hand, YHBlocks.STOCKPOT.get(), YHBlocks.LARGE_POT.get(), 1000))
+			return InteractionResult.SUCCESS;
 		return InteractionResult.PASS;
 	}
 

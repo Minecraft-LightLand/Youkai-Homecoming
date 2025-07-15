@@ -128,6 +128,11 @@ public class YHRecipeGen {
 					.define('B', Items.BOWL)
 					.save(pvd);
 
+			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBlocks.STOCKPOT)::unlockedBy, Items.IRON_INGOT)
+					.requires(Items.CAULDRON)
+					.requires(Items.STICK)
+					.save(pvd);
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.BASIN)::unlockedBy, Items.IRON_NUGGET)
 					.pattern("C C").pattern("BAB")
 					.define('A', ItemTags.WOODEN_SLABS)

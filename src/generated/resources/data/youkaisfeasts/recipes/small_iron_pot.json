@@ -11,10 +11,10 @@
   },
   "pattern": [
     "IBI",
-    "III"
+    " I "
   ],
   "result": {
-    "item": "youkaisfeasts:iron_pot"
+    "item": "youkaisfeasts:small_iron_pot"
   },
   "show_notification": true
 }

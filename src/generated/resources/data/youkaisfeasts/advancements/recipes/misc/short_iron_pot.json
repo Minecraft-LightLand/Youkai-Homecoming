@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_short_iron_pot": {
+    "has_iron_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:short_iron_pot"
+              "minecraft:iron_ingot"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:pot_of_cod_stew"
+        "recipe": "youkaisfeasts:short_iron_pot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_short_iron_pot",
+      "has_iron_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:pot_of_cod_stew"
+      "youkaisfeasts:short_iron_pot"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }
