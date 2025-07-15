@@ -45,4 +45,7 @@ public enum CrabState implements MobState<CrabEntity, CrabState, CrabStateMachin
 		return this == HIDE || this == HIDE_START || this == HIDE_END;
 	}
 
+	public boolean isInHidingAnim() {
+		return this == HIDE_START || this == HIDE_END;
+	}
 }
