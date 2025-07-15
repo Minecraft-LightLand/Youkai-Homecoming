@@ -13,7 +13,6 @@ import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
@@ -36,7 +35,9 @@ public class YHJeiPlugin implements IModPlugin {
 	public static final RecipeType<SimpleFermentationRecipe> FERMENT = RecipeType.create(YoukaisHomecoming.MODID, "ferment", SimpleFermentationRecipe.class);
 	public static final RecipeType<CuisineRecipe<?>> CUISINE = RecipeType.create(YoukaisHomecoming.MODID, "cuisine", Wrappers.cast(CuisineRecipe.class));
 	public static final RecipeType<SimpleBasinRecipe> BASIN = RecipeType.create(YoukaisHomecoming.MODID, "basin", SimpleBasinRecipe.class);
-	public static final RecipeType<PotCookingRecipe<?>> COOKING = RecipeType.create(YoukaisHomecoming.MODID, "cooking", Wrappers.cast(PotCookingRecipe.class));
+	public static final RecipeType<PotCookingRecipe<?>> BOWL_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "bowl_cooking", Wrappers.cast(PotCookingRecipe.class));
+	public static final RecipeType<PotCookingRecipe<?>> POT_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "pot_cooking", Wrappers.cast(PotCookingRecipe.class));
+	public static final RecipeType<PotCookingRecipe<?>> STOCK_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "stock_cooking", Wrappers.cast(PotCookingRecipe.class));
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -52,7 +53,9 @@ public class YHJeiPlugin implements IModPlugin {
 		registry.addRecipeCategories(new FermentRecipeCategory().init(helper));
 		registry.addRecipeCategories(new BasinRecipeCategory().init(helper));
 		registry.addRecipeCategories(new CuisineRecipeCategory().init(helper));
-		registry.addRecipeCategories(new PotCookingRecipeCategory().init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("bowl_cooking", YHBlocks.IRON_BOWL.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("pot_cooking", YHBlocks.IRON_POT.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("stock_cooking", YHBlocks.STOCKPOT.asStack()).init(helper));
 	}
 
 	public void registerRecipes(IRecipeRegistration registration) {
@@ -68,7 +71,12 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipes(BASIN, m.getAllRecipesFor(YHBlocks.BASIN_RT.get())
 				.stream().map(e -> e instanceof SimpleBasinRecipe x ? x : null).filter(Objects::nonNull).toList());
 		registration.addRecipes(CUISINE, m.getAllRecipesFor(YHBlocks.CUISINE_RT.get()));
-		registration.addRecipes(COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get()));
+		registration.addRecipes(BOWL_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_BOWL.asItem())).toList());
+		registration.addRecipes(POT_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_POT.asItem())).toList());
+		registration.addRecipes(STOCK_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.STOCKPOT.asItem())).toList());
 	}
 
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
@@ -81,8 +89,10 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_RACK.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_POT.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.CUISINE_BOARD.asStack(), CUISINE);
-		registration.addRecipeCatalyst(YHItems.IRON_BOWL.asStack(), COOKING);
-		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM, COOKING);
+		registration.addRecipeCatalyst(YHBlocks.IRON_BOWL.asStack(), BOWL_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.IRON_POT.asStack(), POT_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.STOCKPOT.asStack(), STOCK_COOKING);
+		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM, BOWL_COOKING, POT_COOKING, STOCK_COOKING);
 	}
 
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {

@@ -2,11 +2,12 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public record CookingInv(List<ItemStack> list, boolean isComplete)
+public record CookingInv(Item container, List<ItemStack> list, boolean isComplete)
 		implements BaseRecipe.RecInv<PotCookingRecipe<?>> {
 
 	@Override

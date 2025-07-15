@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:iron_bowl"
+          "name": "youkaishomecoming:pot_of_han_palace"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaishomecoming:blocks/iron_bowl"
+  "random_sequence": "youkaishomecoming:blocks/pot_of_han_palace"
 }

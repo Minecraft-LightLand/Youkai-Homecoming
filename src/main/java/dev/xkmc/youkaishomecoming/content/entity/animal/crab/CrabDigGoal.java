@@ -29,10 +29,10 @@ public class CrabDigGoal extends Goal {
 		if (!mob.states.canDig()) return false;
 		if (mob.getRandom().nextInt(mob.prop.digWillingness()) != 0)
 			return false;
-		else return canEat();
+		else return canDig();
 	}
 
-	protected boolean canEat() {
+	protected boolean canDig() {
 		BlockPos blockpos = BlockPos.containing(mob.position());
 		return level.getBlockState(blockpos.below()).is(YHTagGen.CRAB_DIGABLE);
 	}

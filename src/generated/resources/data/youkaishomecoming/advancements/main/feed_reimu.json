@@ -321,6 +321,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:han_palace": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:han_palace"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:higi_chocolate": {
       "conditions": {
         "item": {
@@ -981,6 +991,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:tofu_crab_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tofu_crab_stew"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:tomato_sauce_cod": {
       "conditions": {
         "item": {
@@ -1366,6 +1386,12 @@
     ],
     [
       "youkaishomecoming:shirayuki"
+    ],
+    [
+      "youkaishomecoming:han_palace"
+    ],
+    [
+      "youkaishomecoming:tofu_crab_stew"
     ],
     [
       "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"

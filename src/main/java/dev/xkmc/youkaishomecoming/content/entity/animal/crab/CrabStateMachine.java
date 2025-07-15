@@ -12,15 +12,28 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 	public final AnimationState dig = new AnimationState();
 	public final AnimationState swing = new AnimationState();
 	public final AnimationState flip = new AnimationState();
+	public final AnimationState hide = new AnimationState();
+	public final AnimationState hideStart = new AnimationState();
+	public final AnimationState hideEnd = new AnimationState();
 
 	public CrabStateMachine(CrabEntity e) {
 		super(e, CrabState.class, CrabState.values());
 	}
 
+	@Override
+	public void tick() {
+		if (state().isHiding() && !mob.onGround()) {
+			transitionTo(IDLE);
+		}
+		super.tick();
+	}
+
 	public void onHurt() {
 		if (state() != FLIP) {
 			if (mob.getHealth() < mob.getMaxHealth() * 0.5f || mob.getRandom().nextFloat() < 0.3f)
-				transitionTo(CrabState.FLIP);
+				transitionTo(FLIP);
+			else if (state() == HIDE)
+				transitionTo(IDLE);
 			var stack = mob.getMainHandItem();
 			if (!stack.isEmpty()) {
 				mob.spawnAtLocation(stack);
@@ -29,6 +42,12 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 		} else {
 			transitionTo(IDLE);
 		}
+	}
+
+	@Override
+	protected void transitionTo(CrabState data, int tickRemain) {
+		super.transitionTo(data, tickRemain);
+		mob.refreshDimensions();
 	}
 
 	public boolean isFlipped() {
@@ -49,6 +68,30 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 
 	public void flipBack() {
 		transitionTo(IDLE);
+	}
+
+
+	public boolean isHiding() {
+		return state().isHiding();
+	}
+
+	public boolean canHide() {
+		if (!mob.onGround()) return false;
+		return state() == IDLE || state().isHiding();
+	}
+
+	public void startHiding() {
+		if (state() == IDLE) {
+			transitionTo(HIDE_START);
+		}
+	}
+
+	public boolean mayStopHiding() {
+		return state() == HIDE;
+	}
+
+	public void stopHiding() {
+		transitionTo(HIDE_END);
 	}
 
 }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_bowl": {
+    "has_small_iron_pot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:iron_bowl"
+              "youkaishomecoming:small_iron_pot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_iron_bowl",
+      "has_small_iron_pot",
       "has_the_recipe"
     ]
   ],

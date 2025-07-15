@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.MobStateMachine;
+import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabState;
 import net.minecraft.world.entity.AnimationState;
 
 import static dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerState.*;
@@ -16,6 +17,12 @@ public class DeerStateMachine extends MobStateMachine<DeerEntity, DeerState, Dee
 
 	public DeerStateMachine(DeerEntity e) {
 		super(e, DeerState.class, DeerState.values());
+	}
+
+	@Override
+	protected void transitionTo(DeerState data, int tickRemain) {
+		super.transitionTo(data, tickRemain);
+		mob.refreshDimensions();
 	}
 
 	public boolean isMobile() {

@@ -17,6 +17,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
+	public static final TagKey<Biome> CRAB_FISHING = asTag("crab_fishing");
 	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
 	public static final TagKey<Biome> TUNA = asTag("spawns/tuna");
 	public static final TagKey<Biome> DEER = asTag("spawns/deer");
@@ -49,6 +50,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(DEER).add(YHBiomes.SAKURA_FOREST);
 		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
+		tag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);
 		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);

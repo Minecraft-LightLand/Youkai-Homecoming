@@ -2,10 +2,10 @@ package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.block.food.PotFoodBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
@@ -13,21 +13,23 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 
 public class PotCookingRecipeCategory extends BaseRecipeCategory<PotCookingRecipe<?>, PotCookingRecipeCategory> {
 
-	private IGuiHelper guiHelper;
+	private final ItemStack iconStack;
 
-	public PotCookingRecipeCategory() {
-		super(YoukaisHomecoming.loc("cooking"), Wrappers.cast(PotCookingRecipe.class));
+	public PotCookingRecipeCategory(String id, ItemStack icon) {
+		super(YoukaisHomecoming.loc(id), Wrappers.cast(PotCookingRecipe.class));
+		this.iconStack = icon;
 	}
 
 	public PotCookingRecipeCategory init(IGuiHelper guiHelper) {
-		this.guiHelper = guiHelper;
 		this.background = guiHelper.createBlankDrawable(18 * 5 + 62, 36);
-		this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, YHItems.IRON_BOWL.asStack());
+		this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, iconStack);
 		return this;
 	}
 
@@ -40,7 +42,7 @@ public class PotCookingRecipeCategory extends BaseRecipeCategory<PotCookingRecip
 		if (cookTime <= 0) {
 			cookTime = 200;
 		}
-		int n = recipe.getInput().size() ;
+		int n = recipe.getInput().size();
 		int width = n <= 5 ? n : (n + 1) / 2;
 		builder.addAnimatedRecipeArrow(cookTime).setPosition(98 - (5 - width) * 9, 6);
 		builder.addAnimatedRecipeFlame(300).setPosition(102 - (5 - width) * 9, 22);
@@ -66,9 +68,14 @@ public class PotCookingRecipeCategory extends BaseRecipeCategory<PotCookingRecip
 			}
 		}
 
+		var results = new ArrayList<ItemStack>();
+		results.add(recipe.getResult());
+		if (recipe.getResult().getItem() instanceof BlockItem item && item.getBlock() instanceof PotFoodBlock block){
+			results.add(block.asBowls());
+		}
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 131 - (5 - width) * 9, 10)
 				.setOutputSlotBackground()
-				.addItemStack(recipe.getResult());
+				.addItemStacks(results);
 	}
 
 }

@@ -3,9 +3,8 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -17,6 +16,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -39,8 +40,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
-		implements BlockContainer, HeatableBlockEntity, IHintableBlockEntity {
+public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
+		implements BlockContainer, HeatableBlockEntity, IHintableBlock {
 
 	@SerialClass.SerialField
 	public final CookingItemContainer items = new CookingItemContainer(12).add(this);
@@ -64,6 +65,8 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 	public List<ItemStack> getFloatingItems() {
 		return floatingItems;
 	}
+
+	public abstract Item container();
 
 	@Override
 	public void tick() {
@@ -108,7 +111,7 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 		}
 		if (!empty) return false;
 		list.add(stack.copyWithCount(1));
-		var inv = new CookingInv(list, false);
+		var inv = new CookingInv(container(), list, false);
 		var opt = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(), inv, level);
 		if (opt.isEmpty()) return false;
 		if (!level.isClientSide()) {
@@ -142,12 +145,12 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 		for (var e : items.getAsList()) {
 			if (!e.isEmpty()) list.add(e);
 		}
-		return new CookingInv(list, isComplete);
+		return new CookingInv(container(), list, isComplete);
 	}
 
 	protected void finishRecipe(Level level, PotCookingRecipe<?> recipe) {
 		var ans = recipe.assemble(createContainer(), level.registryAccess());
-		if (ans.getItem() instanceof FoodBlockItem block) {
+		if (ans.getItem() instanceof BlockItem block) {
 			var state = block.getBlock().defaultBlockState();
 			if (state.hasProperty(BlockProxy.HORIZONTAL_FACING)) {
 				state = state.setValue(BlockProxy.HORIZONTAL_FACING, getBlockState().getValue(BlockProxy.HORIZONTAL_FACING));
@@ -218,7 +221,7 @@ public class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<
 	}
 
 	@Override
-	public List<Ingredient> getHints(Level level) {
+	public List<Ingredient> getHints(Level level, BlockPos pos) {
 		var cont = createContainer(false);
 		var recipes = level.getRecipeManager().getRecipesFor(getRecipeType(), cont, level);
 		List<Ingredient> ans = new ArrayList<>();

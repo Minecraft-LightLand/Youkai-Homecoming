@@ -182,8 +182,18 @@ public enum YHFood implements ItemLike {
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SHIRAYUKI(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(() -> MobEffects.WATER_BREATHING, 6000, 0, 1)
+	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	HAN_PALACE(FoodType.BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(() -> MobEffects.NIGHT_VISION, 6000, 0, 1)
+	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
+	TOFU_CRAB_STEW(FoodType.BOWL, 12, 0.8f, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
+			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(YHEffects.CRABY, 6000, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			DietTagGen.GRAINS.tag),

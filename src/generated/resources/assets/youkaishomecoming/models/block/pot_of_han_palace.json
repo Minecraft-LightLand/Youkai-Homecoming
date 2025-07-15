@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/short/pot_of_han_palace",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/bowl/short/pot_of_han_palace",
+    "bottom": "youkaishomecoming:block/bowl/short/short_iron_pot_bottom",
+    "side": "youkaishomecoming:block/bowl/short/short_iron_pot_side",
+    "top": "youkaishomecoming:block/bowl/short/short_iron_pot_top"
+  }
+}
