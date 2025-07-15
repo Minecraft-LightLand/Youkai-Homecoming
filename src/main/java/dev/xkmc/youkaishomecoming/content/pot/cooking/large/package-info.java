@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid;
+package dev.xkmc.youkaishomecoming.content.pot.cooking.large;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

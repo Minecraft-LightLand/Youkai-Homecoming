@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid;
+package dev.xkmc.youkaishomecoming.content.pot.cooking.large;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
@@ -28,7 +28,7 @@ public class LargeCookingPotBlockEntity extends CookingBlockEntity {
 		BlockPos pos = getBlockPos();
 		double x, y, z;
 		RandomSource random = level.random;
-		double r = 0.2;
+		double r = 0.25;
 		double h = 14f / 16f;
 		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.3F) {
 			x = (double) pos.getX() + 0.5 + (random.nextDouble() * r * 2 - r);

@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-15T18:55:49.207243	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-15T19:58:06.989231	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -348,7 +348,7 @@ fcc67f6a7c9ecccb995a2f5fe6fdba9dc509b62e assets/youkaishomecoming/models/block/c
 fbd262bb5c156e2e000e3d895f23ca0ab2876d53 assets/youkaishomecoming/models/block/cold_tofu.json
 bc2c62a46c6f989bafb0b7e719846a57e2be7a6a assets/youkaishomecoming/models/block/cooking_short_iron_pot.json
 0270c1552a3cff3d116e43782506ce5dea4b276a assets/youkaishomecoming/models/block/cooking_small_iron_pot.json
-bc2c62a46c6f989bafb0b7e719846a57e2be7a6a assets/youkaishomecoming/models/block/cooking_stockpot.json
+b0704fdf7e660b44150430158565e0f1edd1375d assets/youkaishomecoming/models/block/cooking_stockpot.json
 1547b8b4f5f085fb669a1818a8a7aceafaa69397 assets/youkaishomecoming/models/block/copper_faucet.json
 e1f5637818a566b595cc42a60d0330899323d845 assets/youkaishomecoming/models/block/copper_tank.json
 1fc67a7142e1829884ec380cc1c18baf844439bf assets/youkaishomecoming/models/block/copper_tank_lower.json
@@ -757,7 +757,7 @@ b0a341d14cd6d2f06c86542cfc0ad5f77eb8557b assets/youkaishomecoming/models/block/s
 bac983cf839b34a2c5917f5cd952bf8b0bd9f718 assets/youkaishomecoming/models/block/steamer_rack_2.json
 37773d5cdb0e059d40192ccf1906ac98f7fb960d assets/youkaishomecoming/models/block/steamer_rack_3.json
 51853dd39189b24d6559f1cdde4b1137254f1bd7 assets/youkaishomecoming/models/block/stinky_tofu.json
-bc2c62a46c6f989bafb0b7e719846a57e2be7a6a assets/youkaishomecoming/models/block/stockpot.json
+b0704fdf7e660b44150430158565e0f1edd1375d assets/youkaishomecoming/models/block/stockpot.json
 fc590912718afd4f26236243c1879cfa23c84d32 assets/youkaishomecoming/models/block/straw_slab.json
 957dbbd8b3b16e61ec4289424245e4d23abc1aaa assets/youkaishomecoming/models/block/straw_slab_top.json
 44a47af6b42de1d1300e93c3ac2b9fc2dd092557 assets/youkaishomecoming/models/block/straw_stairs.json
@@ -2410,6 +2410,7 @@ b7e9adb875bbcb72fc2389edcad9c22d1962120e data/youkaishomecoming/advancements/rec
 64f7c5724917e3d6f4ca9de0a1301610addc56a4 data/youkaishomecoming/advancements/recipes/food/seared_tuna_slice_from_raw_tuna_slice_smelting.json
 80198e39aedb46360e3c9e85bd39c51333f691a3 data/youkaishomecoming/advancements/recipes/food/seared_tuna_slice_from_raw_tuna_slice_smoking.json
 215d1175c8cfb3334586b21cb237fa821e88152d data/youkaishomecoming/advancements/recipes/food/shaved_ice_over_rice.json
+cc185e518522172b3770ca9eb80ba6801e8f4797 data/youkaishomecoming/advancements/recipes/food/stockpot.json
 41d9040aa8674a79140d881f7c0e838904e1c302 data/youkaishomecoming/advancements/recipes/food/tarte_lune.json
 eb3adccdf9b8401567aa558a704d6ddef4ecc91e data/youkaishomecoming/advancements/recipes/food/tarte_lune_assemble.json
 48fbbac6977607a939af20fda88ef2a7fcbbef0c data/youkaishomecoming/advancements/recipes/immediate_soup/cream.json
@@ -3358,6 +3359,7 @@ c4c55c6f22f66d568192c6392846f06e30de2d7b data/youkaishomecoming/recipes/steamer_
 a0e8cf4a79472b99fdff7d625ded3036800aa83d data/youkaishomecoming/recipes/steamer_pot.json
 b1a370bd451168ca923ba03be2b8c555e4fa1c73 data/youkaishomecoming/recipes/steamer_rack_from_bamboo_block_stonecutting.json
 3ba206170612561a151624475130660e3cfafd6b data/youkaishomecoming/recipes/stinky_tofu.json
+8a1dcbc41e520454e050fb9ff249546944dcfc20 data/youkaishomecoming/recipes/stockpot.json
 e8916544dc6ab3eeab7081017b318aa290d2c975 data/youkaishomecoming/recipes/straw_from_wheat_drying.json
 c10e1885070518a13346f9d738f32e54e21c7987 data/youkaishomecoming/recipes/straw_hat.json
 72798d9f0c1fc48ece1b17a4e9743f81e528a784 data/youkaishomecoming/recipes/straw_slab.json

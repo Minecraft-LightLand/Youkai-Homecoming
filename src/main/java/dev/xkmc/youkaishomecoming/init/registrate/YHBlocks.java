@@ -26,9 +26,9 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid.LargeCookingPotBlock;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid.LargeCookingPotBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid.LargeCookingPotRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlock;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotRenderer;
@@ -316,7 +316,7 @@ public class YHBlocks {
 					.item().build()
 					.register();
 
-			STOCKPOT = YoukaisHomecoming.REGISTRATE.block("stockpot", p -> new IronBowlBlock(p, BowlBlock.POT_SHAPE))//TODO
+			STOCKPOT = YoukaisHomecoming.REGISTRATE.block("stockpot", p -> new IronBowlBlock(p, BowlBlock.STOCKPOT_SHAPE))
 					.initialProperties(() -> Blocks.CAULDRON)
 					.properties(p -> p.sound(SoundType.METAL))
 					.blockstate(LargeCookingPotBlock::buildState)

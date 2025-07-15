@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid;
+package dev.xkmc.youkaishomecoming.content.pot.cooking.large;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -26,7 +26,7 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 	public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
-		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.IRON_POT), BE, BlockProxy.HORIZONTAL);
+		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.STOCKPOT), BE, BlockProxy.HORIZONTAL);
 	}
 
 	@Override
@@ -36,21 +36,25 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 
 	public static void buildState(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/short/short_iron_pot")))
-				.texture("top", pvd.modLoc("block/bowl/short/short_iron_pot_top"))
-				.texture("side", pvd.modLoc("block/bowl/short/short_iron_pot_side"))
-				.texture("bottom", pvd.modLoc("block/bowl/short/short_iron_pot_bottom"))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/stock/stockpot")))
+				.texture("top", pvd.modLoc("block/bowl/stock/stockpot_top"))
+				.texture("side", pvd.modLoc("block/bowl/stock/stockpot_side"))
+				.texture("inside", pvd.modLoc("block/bowl/stock/stockpot_inside"))
+				.texture("bottom", pvd.modLoc("block/bowl/stock/stockpot_bottom"))
+				.texture("parts", pvd.modLoc("block/bowl/stock/stockpot_parts"))
 				.renderType("cutout")
 		);
 	}
 
 	public static void buildPotFood(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/short/" + ctx.getName())))
-				.texture("top", pvd.modLoc("block/bowl/short/short_iron_pot_top"))
-				.texture("side", pvd.modLoc("block/bowl/short/short_iron_pot_side"))
-				.texture("bottom", pvd.modLoc("block/bowl/short/short_iron_pot_bottom"))
-				.texture("base", pvd.modLoc("block/bowl/short/" + ctx.getName()))
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/stock/" + ctx.getName())))
+				.texture("top", pvd.modLoc("block/bowl/stock/stockpot_top"))
+				.texture("side", pvd.modLoc("block/bowl/stock/stockpot_side"))
+				.texture("inside", pvd.modLoc("block/bowl/stock/stockpot_inside"))
+				.texture("bottom", pvd.modLoc("block/bowl/stock/stockpot_bottom"))
+				.texture("parts", pvd.modLoc("block/bowl/stock/stockpot_parts"))
+				.texture("base", pvd.modLoc("block/bowl/stock/" + ctx.getName()))
 				.renderType("cutout")
 		);
 	}
