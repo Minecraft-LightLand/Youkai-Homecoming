@@ -31,13 +31,13 @@ public class MidCookingPotRenderer implements BlockEntityRenderer<MidCookingPotB
 
 		var tex = be.getSoupCache().withPrefix("block/bowl/soup/");
 		FluidRenderer.renderFluidBox(tex, 5f / 16, 2f / 16, 5f / 16,
-				11f / 16, 3f / 16, 11f / 16,
+				11f / 16, 5f / 16, 11f / 16,
 				buffer, pose, light, false, -1);
 
 		float time = (pTick + (int) (level.getGameTime() % 80L)) / 80;
 		float p = (float) Math.sin(time / 80 * 2 * Math.PI);
 
-		h = 4 / 16f + 1 / 32f * p;
+		h = 6 / 16f + 1 / 32f * p;
 
 		List<ItemStack> toRender = be.getFloatingItems();
 		if (toRender.isEmpty()) return;
@@ -51,7 +51,7 @@ public class MidCookingPotRenderer implements BlockEntityRenderer<MidCookingPotB
 				pose.translate(0.5F, h, 0.5F);
 				pose.mulPose(Axis.YP.rotationDegrees(i * fan + rand.nextFloat() * 10 * (h >= 0.25f ? pr1 : 1)));
 				pose.mulPose(Axis.XP.rotationDegrees(70));
-				float dist = 1f / 32f * (1f + rand.nextFloat() * 0.25f + 0.25f * pr2);
+				float dist = 1f / 16f * (1f + rand.nextFloat() * 0.25f + 0.25f * pr2);
 				pose.translate(-dist, -dist, 0.0F);
 				pose.scale(0.375F, 0.375F, 0.375F);
 				this.itemRenderer.renderStatic(item, ItemDisplayContext.FIXED, light, overlay, pose, buffer, be.getLevel(), seed + i);

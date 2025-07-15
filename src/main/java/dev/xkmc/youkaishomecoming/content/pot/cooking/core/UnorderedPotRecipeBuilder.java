@@ -9,7 +9,7 @@ import net.minecraft.world.level.ItemLike;
 
 public class UnorderedPotRecipeBuilder extends CookingRecipeBuilder<UnorderedCookingRecipe, UnorderedPotRecipeBuilder> {
 
-	public UnorderedPotRecipeBuilder(YHBowl base, int time) {
+	public UnorderedPotRecipeBuilder(ItemLike base, int time) {
 		super(YHBlocks.COOKING_UNORDER.get(), base, time);
 	}
 

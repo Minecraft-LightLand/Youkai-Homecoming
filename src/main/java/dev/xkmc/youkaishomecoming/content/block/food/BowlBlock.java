@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -32,11 +33,22 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 	public static final Vec3 WOOD_SHAPE = new Vec3(5, 3, 5);
 	public static final Vec3 BAMBOO_SHAPE = new Vec3(2, 3, 5.5);
 	public static final Vec3 RAW_BAMBOO_SHAPE = new Vec3(2, 5, 5.5);
+	public static final Vec3 POT_SHAPE = new Vec3(2, 6, 2);
 
 	private final VoxelShape shape_x, shape_z;
+	protected final ItemLike food;
+
+	public BowlBlock(Properties prop, Vec3 saucer, ItemLike food) {
+		super(prop);
+		this.food = food;
+		shape_x = Block.box(saucer.x, 0, saucer.z, 16 - saucer.x, saucer.y, 16 - saucer.z);
+		shape_z = Block.box(saucer.z, 0, saucer.x, 16 - saucer.z, saucer.y, 16 - saucer.x);
+
+	}
 
 	public BowlBlock(Properties prop, Vec3 saucer) {
 		super(prop);
+		food = this;
 		shape_x = Block.box(saucer.x, 0, saucer.z, 16 - saucer.x, saucer.y, 16 - saucer.z);
 		shape_z = Block.box(saucer.z, 0, saucer.x, 16 - saucer.z, saucer.y, 16 - saucer.x);
 	}
@@ -78,8 +90,7 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 		return false;
 	}
 
-	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public boolean startCooking(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
 		if (state.is(YHItems.IRON_BOWL.get()) &&
 				CookingBlockEntity.isHeatedPos(level, pos) &&
@@ -97,28 +108,40 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 					}
 				}
 			}
-			return InteractionResult.SUCCESS;
+			return true;
 		}
-		if (!stack.isEmpty()) return InteractionResult.PASS;
-		var item = state.getBlock().asItem().getDefaultInstance();
+		return false;
+	}
+
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (startCooking(state, level, pos, player, hand))
+			return InteractionResult.SUCCESS;
+		var stack = player.getItemInHand(hand);
+		var item = food.asItem().getDefaultInstance();
+		if (!stack.isEmpty()) return InteractionResult.PASS;//TODO spoon
 		var food = item.getFoodProperties(player);
 		if (food != null && player.canEat(false)) {
 			if (!level.isClientSide()) {
 				player.eat(level, item.copy());
-				var cont = item.getCraftingRemainingItem();
-				if (cont.getItem() instanceof BlockItem block) {
-					level.setBlockAndUpdate(pos, block.getBlock().defaultBlockState()
-							.setValue(BlockStateProperties.HORIZONTAL_FACING,
-									state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
-				} else {
-					level.setBlockAndUpdate(pos, YHItems.WOOD_BOWL.getDefaultState()
-							.setValue(BlockStateProperties.HORIZONTAL_FACING,
-									state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
-				}
+				consume(state, level, pos);
 			}
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;
+	}
+
+	protected void consume(BlockState state, Level level, BlockPos pos) {
+		var cont = asItem().getDefaultInstance().getCraftingRemainingItem();
+		if (cont.getItem() instanceof BlockItem block) {
+			level.setBlockAndUpdate(pos, block.getBlock().defaultBlockState()
+					.setValue(BlockStateProperties.HORIZONTAL_FACING,
+							state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
+		} else {
+			level.setBlockAndUpdate(pos, YHItems.WOOD_BOWL.getDefaultState()
+					.setValue(BlockStateProperties.HORIZONTAL_FACING,
+							state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
+		}
 	}
 
 }

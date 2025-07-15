@@ -662,15 +662,6 @@ public class YHRecipeGen {
 					.addIngredient(Items.BONE_MEAL)
 					.build(pvd, YHBowl.POOR_GOD_SOUP.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SHIRAYUKI.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(Items.PUFFERFISH)
-					.addIngredient(YHTagGen.RAW_EEL)
-					.addIngredient(Items.KELP)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(TagRef.VEGETABLES)
-					.build(pvd, YHFood.SHIRAYUKI.item.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(YHTagGen.DANGO)
@@ -810,6 +801,7 @@ public class YHRecipeGen {
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHItems.IRON_BOWL.asItem())
 					.add(YHCrops.SOYBEAN.getSeed())
 					.add(YHFood.TOFU)
+					.add(Items.KELP)
 					.add(Items.CARROT)
 					.add(Items.POTATO)
 					.add(Items.BROWN_MUSHROOM)
@@ -818,6 +810,32 @@ public class YHRecipeGen {
 					.add(TagRef.RAW_FISHES_SALMON)
 					.save(pvd);
 
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.SHIRAYUKI, 200)::unlockedBy, YHBlocks.MID_POT.asItem())
+					.add(YHFood.TOFU)
+					.add(Items.KELP)
+					.add(TagRef.VEGETABLES)
+					.add(Items.PUFFERFISH)
+					.add(YHTagGen.RAW_EEL)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.COD_STEW, 200)::unlockedBy, YHBlocks.MID_POT.asItem())
+					.add(TagRef.RAW_FISHES_COD)
+					.add(TagRef.EGGS)
+					.add(TagRef.VEGETABLES_TOMATO)
+					.add(Items.POTATO)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.HAN_PALACE, 200)::unlockedBy, YHBlocks.MID_POT.asItem())
+					.add(YHFood.TOFU)
+					.add(YHFood.TOFU)
+					.add(YHTagGen.RAW_EEL)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.MID_POT.asItem())
+					.add(YHFood.TOFU)
+					.add(YHFood.CRAB_MEAT)
+					.add(YHFood.CRAB)
+					.save(pvd);
 		}
 
 		// food cooking saucer

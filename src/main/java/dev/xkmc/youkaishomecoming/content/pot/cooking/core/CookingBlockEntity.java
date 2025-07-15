@@ -17,6 +17,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -150,7 +151,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 
 	protected void finishRecipe(Level level, PotCookingRecipe<?> recipe) {
 		var ans = recipe.assemble(createContainer(), level.registryAccess());
-		if (ans.getItem() instanceof FoodBlockItem block) {
+		if (ans.getItem() instanceof BlockItem block) {
 			var state = block.getBlock().defaultBlockState();
 			if (state.hasProperty(BlockProxy.HORIZONTAL_FACING)) {
 				state = state.setValue(BlockProxy.HORIZONTAL_FACING, getBlockState().getValue(BlockProxy.HORIZONTAL_FACING));

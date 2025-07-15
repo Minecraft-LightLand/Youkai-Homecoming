@@ -171,6 +171,7 @@ public class YHItems {
 		InitializationMarker.expectAndAdvance(4);
 		YHFood.register();
 		YHBowl.register();
+		YHShortPot.register();
 		YHSushi.register();
 		YHRolls.init();
 

@@ -5,14 +5,22 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
+import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
+import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotClick;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -25,7 +33,7 @@ public class MidCookingPotBlock implements ShapeBlockMethod {
 	public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 6, 14);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
-		return DelegateBlock.newBaseBlock(p, INS, BE, BlockProxy.HORIZONTAL);
+		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.MID_POT), BE, BlockProxy.HORIZONTAL);
 	}
 
 	@Override
@@ -39,6 +47,17 @@ public class MidCookingPotBlock implements ShapeBlockMethod {
 				.texture("top", pvd.modLoc("block/bowl/short/" + ctx.getName() + "_top"))
 				.texture("side", pvd.modLoc("block/bowl/short/" + ctx.getName() + "_side"))
 				.texture("bottom", pvd.modLoc("block/bowl/short/" + ctx.getName() + "_bottom"))
+				.renderType("cutout")
+		);
+	}
+
+	public static void buildPotFood(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd) {
+		pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/short/" + ctx.getName())))
+				.texture("top", pvd.modLoc("block/bowl/short/short_iron_pot_top"))
+				.texture("side", pvd.modLoc("block/bowl/short/short_iron_pot_side"))
+				.texture("bottom", pvd.modLoc("block/bowl/short/short_iron_pot_bottom"))
+				.texture("base", pvd.modLoc("block/bowl/short/" + ctx.getName()))
 				.renderType("cutout")
 		);
 	}
