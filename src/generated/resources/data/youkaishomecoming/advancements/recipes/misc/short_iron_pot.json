@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:iron_pot"
+        "recipe": "youkaishomecoming:short_iron_pot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:iron_pot"
+      "youkaishomecoming:short_iron_pot"
     ]
   },
   "sends_telemetry_event": false

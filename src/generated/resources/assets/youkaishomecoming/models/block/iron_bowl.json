@@ -1,8 +1,0 @@
-{
-  "parent": "youkaishomecoming:custom/bowl/iron/iron_bowl",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "base": "youkaishomecoming:block/bowl/iron/iron_bowl",
-    "bowl": "youkaishomecoming:block/bowl/iron/iron_bowl"
-  }
-}

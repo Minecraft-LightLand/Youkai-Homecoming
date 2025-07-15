@@ -17,17 +17,46 @@ import net.minecraft.world.phys.Vec3;
 public class PotFoodBlock extends BowlBlock {
 
 	public static final IntegerProperty SERVE_2 = IntegerProperty.create("serve", 1, 2);
+	public static final IntegerProperty SERVE_4 = IntegerProperty.create("serve", 1, 4);
 
-	public PotFoodBlock(Properties prop, Vec3 saucer, ItemLike food) {
-		super(prop, saucer, food);
-		registerDefaultState(defaultBlockState().setValue(SERVE_2, 2));
+	public static class Pot4 extends PotFoodBlock {
+
+		public Pot4(Properties p, Vec3 saucer, ItemLike food) {
+			super(p, saucer, food, SERVE_4, 4);
+		}
+
+		@Override
+		protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+			super.createBlockStateDefinition(builder);
+			builder.add(SERVE_4);
+		}
+
 	}
 
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		super.createBlockStateDefinition(builder);
-		builder.add(SERVE_2);
+	public static class Pot2 extends PotFoodBlock {
+
+		public Pot2(Properties p, Vec3 saucer, ItemLike food) {
+			super(p, saucer, food, SERVE_2, 2);
+		}
+
+		@Override
+		protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+			super.createBlockStateDefinition(builder);
+			builder.add(SERVE_2);
+		}
+
 	}
+
+	private final IntegerProperty prop;
+	private final int serve;
+
+	public PotFoodBlock(Properties p, Vec3 saucer, ItemLike food, IntegerProperty prop, int serve) {
+		super(p, saucer, food);
+		this.prop = prop;
+		this.serve = serve;
+		registerDefaultState(defaultBlockState().setValue(prop, serve));
+	}
+
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -51,16 +80,16 @@ public class PotFoodBlock extends BowlBlock {
 
 	@Override
 	protected void consume(BlockState state, Level level, BlockPos pos) {
-		int serve = state.getValue(SERVE_2);
+		int serve = state.getValue(prop);
 		if (serve > 1) {
-			level.setBlockAndUpdate(pos, state.setValue(SERVE_2, serve - 1));
+			level.setBlockAndUpdate(pos, state.setValue(prop, serve - 1));
 			return;
 		}
 		super.consume(state, level, pos);
 	}
 
 	public ItemStack asBowls() {
-		return food.asItem().getDefaultInstance().copyWithCount(2);
+		return food.asItem().getDefaultInstance().copyWithCount(serve);
 	}
 
 }

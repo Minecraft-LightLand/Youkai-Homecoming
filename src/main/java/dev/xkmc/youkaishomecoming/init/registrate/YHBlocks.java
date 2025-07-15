@@ -26,6 +26,9 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid.LargeCookingPotBlock;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid.LargeCookingPotBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.mid.LargeCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotRenderer;
@@ -164,12 +167,12 @@ public class YHBlocks {
 	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
 	public static final RegistryEntry<BaseRecipe.RecType<FixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_FIXED;
 
-	public static final BlockEntry<IronBowlBlock> IRON_BOWL, IRON_POT;
+	public static final BlockEntry<IronBowlBlock> IRON_BOWL, IRON_POT, STOCKPOT;
 	public static final BlockEntry<BowlBlock> WOOD_BOWL, BAMBOO_BOWL;
-	public static final BlockEntry<DelegateBlock> SMALL_POT;
+	public static final BlockEntry<DelegateBlock> SMALL_POT, SHORT_POT, LARGE_POT;
 	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
-	public static final BlockEntry<DelegateBlock> SHORT_POT;
 	public static final BlockEntityEntry<MidCookingPotBlockEntity> MID_POT_BE;
+	public static final BlockEntityEntry<LargeCookingPotBlockEntity> LARGE_POT_BE;
 	public static final RegistryEntry<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
 	public static final RegistryEntry<RecipeType<SoupBaseRecipe<?>>> SOUP_RT;
@@ -301,14 +304,22 @@ public class YHBlocks {
 
 		// pot
 		{
-			IRON_BOWL = BowlBlock.ironBowl("iron_bowl")
+			IRON_BOWL = BowlBlock.ironBowl("small_iron_pot")
 					.item().build()
 					.register();
 
-			IRON_POT = YoukaisHomecoming.REGISTRATE.block("iron_pot", p -> new IronBowlBlock(p, BowlBlock.POT_SHAPE))
+			IRON_POT = YoukaisHomecoming.REGISTRATE.block("short_iron_pot", p -> new IronBowlBlock(p, BowlBlock.POT_SHAPE))
 					.initialProperties(() -> Blocks.CAULDRON)
 					.properties(p -> p.sound(SoundType.METAL))
 					.blockstate(MidCookingPotBlock::buildState)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.item().build()
+					.register();
+
+			STOCKPOT = YoukaisHomecoming.REGISTRATE.block("stockpot", p -> new IronBowlBlock(p, BowlBlock.POT_SHAPE))//TODO
+					.initialProperties(() -> Blocks.CAULDRON)
+					.properties(p -> p.sound(SoundType.METAL))
+					.blockstate(LargeCookingPotBlock::buildState)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 					.item().build()
 					.register();
@@ -320,28 +331,44 @@ public class YHBlocks {
 			BAMBOO_BOWL = BowlBlock.bambooBowl("bamboo_bowl")
 					.loot((pvd, block) -> pvd.dropOther(block, Items.BAMBOO))
 					.register();
-			SMALL_POT = YoukaisHomecoming.REGISTRATE.block("small_iron_pot", SmallCookingPotBlock::create)
+
+			SMALL_POT = YoukaisHomecoming.REGISTRATE.block("cooking_small_iron_pot", SmallCookingPotBlock::create)
 					.initialProperties(() -> Blocks.CAULDRON)
 					.properties(p -> p.sound(SoundType.METAL))
 					.blockstate(SmallCookingPotBlock::buildState)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 					.loot((pvd, b) -> pvd.dropOther(b, IRON_BOWL.get()))
 					.register();
-			SMALL_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("small_iron_pot", SmallCookingPotBlockEntity::new)
+
+			SMALL_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("cooking_small_iron_pot", SmallCookingPotBlockEntity::new)
 					.validBlock(SMALL_POT)
 					.renderer(() -> SmallCookingPotRenderer::new)
 					.register();
 
-			SHORT_POT = YoukaisHomecoming.REGISTRATE.block("short_iron_pot", MidCookingPotBlock::create)
+			SHORT_POT = YoukaisHomecoming.REGISTRATE.block("cooking_short_iron_pot", MidCookingPotBlock::create)
 					.initialProperties(() -> Blocks.CAULDRON)
 					.properties(p -> p.sound(SoundType.METAL))
 					.blockstate(MidCookingPotBlock::buildState)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 					.loot((pvd, b) -> pvd.dropOther(b, IRON_POT.get()))
 					.register();
-			MID_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("short_iron_pot", MidCookingPotBlockEntity::new)
+
+			MID_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("cooking_short_iron_pot", MidCookingPotBlockEntity::new)
 					.validBlock(SHORT_POT)
 					.renderer(() -> MidCookingPotRenderer::new)
+					.register();
+
+			LARGE_POT = YoukaisHomecoming.REGISTRATE.block("cooking_stockpot", LargeCookingPotBlock::create)
+					.initialProperties(() -> Blocks.CAULDRON)
+					.properties(p -> p.sound(SoundType.METAL))
+					.blockstate(LargeCookingPotBlock::buildState)
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+					.loot((pvd, b) -> pvd.dropOther(b, STOCKPOT.get()))
+					.register();
+
+			LARGE_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("cooking_stockpot", LargeCookingPotBlockEntity::new)
+					.validBlock(LARGE_POT)
+					.renderer(() -> LargeCookingPotRenderer::new)
 					.register();
 
 			COOKING_RT = YoukaisHomecoming.REGISTRATE.recipe("pot_cooking");

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:iron_bowl_from_iron_ingot_stonecutting"
+        "recipe": "youkaishomecoming:small_iron_pot_from_iron_ingot_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:iron_bowl_from_iron_ingot_stonecutting"
+      "youkaishomecoming:small_iron_pot_from_iron_ingot_stonecutting"
     ]
   },
   "sends_telemetry_event": false

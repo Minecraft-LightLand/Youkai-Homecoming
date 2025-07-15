@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:iron_pot"
+          "name": "youkaishomecoming:stockpot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaishomecoming:blocks/iron_pot"
+  "random_sequence": "youkaishomecoming:blocks/stockpot"
 }

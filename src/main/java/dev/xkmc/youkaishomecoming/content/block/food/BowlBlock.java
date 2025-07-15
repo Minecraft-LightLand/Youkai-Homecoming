@@ -40,6 +40,7 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 	public static final Vec3 BAMBOO_SHAPE = new Vec3(2, 3, 5.5);
 	public static final Vec3 RAW_BAMBOO_SHAPE = new Vec3(2, 5, 5.5);
 	public static final Vec3 POT_SHAPE = new Vec3(2, 6, 2);
+	public static final Vec3 STOCKPOT_SHAPE = new Vec3(1, 15, 1);
 
 	private final VoxelShape shape_x, shape_z;
 	protected final ItemLike food;
