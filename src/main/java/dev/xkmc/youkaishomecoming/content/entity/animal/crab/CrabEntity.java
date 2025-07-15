@@ -225,6 +225,11 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 	}
 
 	@Override
+	public boolean isPushable() {
+		return !states().isHiding();
+	}
+
+	@Override
 	public EntityDimensions getDimensions(Pose pose) {
 		var ans = super.getDimensions(pose);
 		if (states().isHiding())

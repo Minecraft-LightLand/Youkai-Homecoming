@@ -20,6 +20,14 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 		super(e, CrabState.class, CrabState.values());
 	}
 
+	@Override
+	public void tick() {
+		if (state().isHiding() && !mob.onGround()) {
+			transitionTo(IDLE);
+		}
+		super.tick();
+	}
+
 	public void onHurt() {
 		if (state() != FLIP) {
 			if (mob.getHealth() < mob.getMaxHealth() * 0.5f || mob.getRandom().nextFloat() < 0.3f)
@@ -68,6 +76,7 @@ public class CrabStateMachine extends MobStateMachine<CrabEntity, CrabState, Cra
 	}
 
 	public boolean canHide() {
+		if (!mob.onGround()) return false;
 		return state() == IDLE || state().isHiding();
 	}
 
