@@ -45,7 +45,8 @@ public class IngredientRackBlockEntity extends BaseBlockEntity implements BaseCo
 			if (ans.isEmpty()) return false;
 			if (hand == InteractionHand.OFF_HAND) return false;
 			if (!level.isClientSide()) {
-				player.setItemInHand(hand, ans.split(1));
+				int amount = player.isShiftKeyDown() ? Math.min(ans.getCount(), ans.getMaxStackSize()) : 1;
+				player.setItemInHand(hand, ans.split(amount));
 				level.playSound(null, getBlockPos(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1, 1);
 				notifyTile();
 			}
