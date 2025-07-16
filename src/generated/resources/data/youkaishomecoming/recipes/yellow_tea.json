@@ -1,0 +1,22 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "input": [
+    {
+      "tag": "forge:tea_leaves/yellow"
+    },
+    {
+      "tag": "forge:tea_leaves/yellow"
+    },
+    {
+      "tag": "forge:tea_leaves/yellow"
+    },
+    {
+      "tag": "forge:tea_leaves/yellow"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:yellow_tea"
+  },
+  "time": 100
+}

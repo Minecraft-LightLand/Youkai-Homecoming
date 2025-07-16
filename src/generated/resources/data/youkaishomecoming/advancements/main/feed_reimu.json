@@ -201,6 +201,16 @@
       },
       "trigger": "youkaishomecoming:feed_reimu"
     },
+    "youkaishomecoming:dark_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:dark_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
+    },
     "youkaishomecoming:dassai": {
       "conditions": {
         "item": {
@@ -1140,6 +1150,16 @@
         }
       },
       "trigger": "youkaishomecoming:feed_reimu"
+    },
+    "youkaishomecoming:yellow_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:yellow_tea"
+          ]
+        }
+      },
+      "trigger": "youkaishomecoming:feed_reimu"
     }
   },
   "display": {
@@ -1206,6 +1226,12 @@
     ],
     [
       "youkaishomecoming:oolong_tea"
+    ],
+    [
+      "youkaishomecoming:dark_tea"
+    ],
+    [
+      "youkaishomecoming:yellow_tea"
     ],
     [
       "youkaishomecoming:cornflower_tea"

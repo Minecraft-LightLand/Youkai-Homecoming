@@ -984,6 +984,12 @@ public class YHRecipeGen {
 			unlock(pvd, new KettleRecipeBuilder(YHDrink.WHITE_TEA, 100)::unlockedBy, YHTea.WHITE.leaves.asItem())
 					.addIngredient(YHTagGen.TEA_WHITE, 4).save(pvd);
 
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.DARK_TEA, 100)::unlockedBy, YHTea.DARK.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_DARK, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.YELLOW_TEA, 100)::unlockedBy, YHTea.YELLOW.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_YELLOW, 4).save(pvd);
+
 			unlock(pvd, new KettleRecipeBuilder(YHDrink.CORNFLOWER_TEA, 100)::unlockedBy, Items.CORNFLOWER)
 					.addIngredient(Items.CORNFLOWER, 4).save(pvd);
 
