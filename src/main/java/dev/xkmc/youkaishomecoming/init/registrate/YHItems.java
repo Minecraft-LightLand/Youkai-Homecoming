@@ -1,12 +1,10 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
-import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
-import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.food.*;
@@ -28,7 +26,6 @@ import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.item.Item;
@@ -37,11 +34,9 @@ import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
@@ -158,7 +153,7 @@ public class YHItems {
 		InitializationMarker.expectAndAdvance(4);
 		YHFood.register();
 		YHBowl.register();
-		YHShortPot.register();
+		YHPotFood.register();
 		YHSushi.register();
 		YHRolls.init();
 

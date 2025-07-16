@@ -16,7 +16,7 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.Locale;
 
-public enum YHShortPot implements ItemLike {
+public enum YHPotFood implements ItemLike {
 	COD_STEW(ModItems.BAKED_COD_STEW::get, 2),
 	SHIRAYUKI(YHFood.SHIRAYUKI, 2),
 	HAN_PALACE(YHFood.HAN_PALACE, 2),
@@ -24,19 +24,18 @@ public enum YHShortPot implements ItemLike {
 
 	public final BlockEntry<PotFoodBlock> block;
 
-	YHShortPot(ItemLike bowl, int serve) {
+	YHPotFood(ItemLike bowl, int serve) {
 		String name = name().toLowerCase(Locale.ROOT);
+		var cont = serve == 2 ? YHBlocks.IRON_POT : YHBlocks.STOCKPOT;
 		block = YoukaisHomecoming.REGISTRATE.block("pot_of_" + name, p -> serve == 2 ?
 						new PotFoodBlock.Pot2(p, BowlBlock.POT_SHAPE, bowl) :
 						new PotFoodBlock.Pot4(p, BowlBlock.STOCKPOT_SHAPE, bowl)
 				).properties(p -> p.mapColor(MapColor.METAL).strength(0.5F, 6.0F).sound(SoundType.LANTERN))
 				.blockstate(MidCookingPotBlock::buildPotFood)
-				.item().properties(p -> p.craftRemainder(serve == 2 ?
-						YHBlocks.IRON_POT.get().asItem() :
-						YHBlocks.STOCKPOT.get().asItem()
-				)).build()
+				.item().properties(p -> p.craftRemainder(cont.asItem())).build()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.lang(YHItems.toEnglishName("pot_of_" + name))
+				.loot((pvd,b)->PotFoodBlock.buildLoot(pvd,b,cont.asItem()))
 				.register();
 	}
 

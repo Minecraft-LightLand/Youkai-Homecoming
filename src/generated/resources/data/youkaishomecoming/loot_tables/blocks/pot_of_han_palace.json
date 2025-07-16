@@ -3,15 +3,28 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "youkaishomecoming:pot_of_han_palace"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "youkaishomecoming:pot_of_han_palace",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "serve": "2"
+                  }
+                }
+              ],
+              "name": "youkaishomecoming:pot_of_han_palace"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:short_iron_pot"
+            }
+          ]
         }
       ],
       "rolls": 1.0

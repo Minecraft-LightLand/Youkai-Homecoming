@@ -810,6 +810,7 @@
   "itemGroup.youkaishomecoming.youkais_homecoming": "Youkai's Homecoming",
   "youkaishomecoming.brewing_progress": "Brewing: %s",
   "youkaishomecoming.constant_effect": "Grants constant %s when applicable.",
+  "youkaishomecoming.cooking_progress": "Cooking: %s",
   "youkaishomecoming.cuisine_allow": "Next Step:",
   "youkaishomecoming.cuisine_extra": "And %s more...",
   "youkaishomecoming.custom_spell.branchAngle": "Branch Angle Offset",

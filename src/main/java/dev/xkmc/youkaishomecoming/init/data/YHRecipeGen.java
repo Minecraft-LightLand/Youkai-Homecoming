@@ -826,7 +826,7 @@ public class YHRecipeGen {
 					.add(TagRef.RAW_FISHES_SALMON)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(YHFood.TOFU)
 					.add(Items.KELP)
 					.add(TagRef.VEGETABLES)
@@ -834,20 +834,20 @@ public class YHRecipeGen {
 					.add(YHTagGen.RAW_EEL)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(TagRef.RAW_FISHES_COD)
 					.add(TagRef.EGGS)
 					.add(TagRef.VEGETABLES_TOMATO)
 					.add(Items.POTATO)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(YHFood.TOFU)
 					.add(YHFood.TOFU)
 					.add(YHFood.RAW_LAMPREY)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(YHFood.TOFU)
 					.add(YHFood.CRAB_MEAT)
 					.add(YHFood.CRAB)
