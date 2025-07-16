@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:white_tea_leaves_from_green_tea_leaves_drying"
+        "recipe": "youkaishomecoming:dark_tea_leaves"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:white_tea_leaves_from_green_tea_leaves_drying"
+      "youkaishomecoming:dark_tea_leaves"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

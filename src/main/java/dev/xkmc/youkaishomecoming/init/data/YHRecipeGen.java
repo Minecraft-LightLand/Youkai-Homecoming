@@ -270,14 +270,21 @@ public class YHRecipeGen {
 			pvd.storage(YHTea.GREEN.leaves, RecipeCategory.MISC, YHItems.GREEN_TEA_BAG);
 			pvd.storage(YHTea.OOLONG.leaves, RecipeCategory.MISC, YHItems.OOLONG_TEA_BAG);
 			pvd.storage(YHTea.WHITE.leaves, RecipeCategory.MISC, YHItems.WHITE_TEA_BAG);
+			pvd.storage(YHTea.DARK.leaves, RecipeCategory.MISC, YHItems.DARK_TEA_BAG);
+			pvd.storage(YHTea.YELLOW.leaves, RecipeCategory.MISC, YHItems.YELLOW_TEA_BAG);
 
 			drying(pvd, DataIngredient.items(Items.WHEAT), ModItems.STRAW);
 			drying(pvd, DataIngredient.items(Items.KELP), () -> Items.DRIED_KELP);
 			drying(pvd, DataIngredient.tag(ItemTags.SAPLINGS), () -> Items.DEAD_BUSH);
 			drying(pvd, DataIngredient.items(Items.ROTTEN_FLESH), () -> Items.LEATHER, 18000);
-			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
-			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
-			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
+			steaming(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
+			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.WHITE.leaves);
+			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.YELLOW.leaves);
+			pvd.campfire(DataIngredient.items(YHTea.WHITE.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHTea.WHITE.leaves.get())
+					.addInput(YHTea.WHITE.leaves.get()).addInput(YHTea.BLACK.leaves).save(pvd, YHTea.BLACK.leaves.getId());
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHTea.GREEN.leaves.get())
+					.addInput(YHTea.GREEN.leaves.get()).addInput(YHTea.DARK.leaves).save(pvd, YHTea.DARK.leaves.getId());
 			steaming(pvd, DataIngredient.items(YHFood.CRAB.item.get()), YHFood.STEAMED_CRAB.item);
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
@@ -309,7 +316,6 @@ public class YHRecipeGen {
 							Ingredient.of(TagRef.TOOLS_PICKAXES), YHItems.ICE_CUBE, 8)
 					.build(pvd, YHItems.ICE_CUBE.getId());
 
-			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.WHITE.leaves);
 		}
 
 		// food craft

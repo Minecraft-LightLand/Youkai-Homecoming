@@ -7,7 +7,10 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
-import dev.xkmc.youkaishomecoming.content.block.food.*;
+import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
+import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
@@ -65,7 +68,7 @@ public class YHItems {
 	public static final ItemEntry<CirnoWingsItem> CIRNO_WINGS;
 	public static final BlockEntry<Block> SOYBEAN_BAG, PODS_CRATE,
 			REDBEAN_BAG, COFFEE_BEAN_BAG, CUCUMBER_BAG,
-			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG,
+			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG, DARK_TEA_BAG, YELLOW_TEA_BAG,
 			RED_GRAPE_CRATE, BLACK_GRAPE_CRATE, WHITE_GRAPE_CRATE;
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
@@ -112,6 +115,8 @@ public class YHItems {
 			GREEN_TEA_BAG = YHTea.GREEN.createBags();
 			OOLONG_TEA_BAG = YHTea.OOLONG.createBags();
 			WHITE_TEA_BAG = YHTea.WHITE.createBags();
+			DARK_TEA_BAG = YHTea.DARK.createBags();
+			YELLOW_TEA_BAG = YHTea.YELLOW.createBags();
 		}
 
 		// ingredients

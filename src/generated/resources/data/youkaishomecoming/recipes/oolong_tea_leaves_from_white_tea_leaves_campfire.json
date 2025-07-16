@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 0.1,
   "ingredient": {
-    "item": "youkaishomecoming:green_tea_leaves"
+    "item": "youkaishomecoming:white_tea_leaves"
   },
   "result": "youkaishomecoming:oolong_tea_leaves"
 }
