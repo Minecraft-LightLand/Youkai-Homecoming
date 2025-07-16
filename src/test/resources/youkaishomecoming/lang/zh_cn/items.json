@@ -154,7 +154,9 @@
 		"raw_venison_slice": "生鹿片",
 		"grilled_venison": "烤鹿排",
 		"grilled_venison_slice": "烤鹿片",
-		"steamed_crab": "清蒸螃蟹"
+		"steamed_crab": "清蒸螃蟹",
+		"han_palace": "汉宫藏娇",
+		"tofu_crab_stew": "豆腐蟹煲"
 	},
 	"-cartesian": {
 		"entity": {

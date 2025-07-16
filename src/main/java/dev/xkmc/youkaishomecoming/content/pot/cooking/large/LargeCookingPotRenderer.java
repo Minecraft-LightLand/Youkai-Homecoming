@@ -30,14 +30,14 @@ public class LargeCookingPotRenderer implements BlockEntityRenderer<LargeCooking
 		float h = 0;
 
 		var tex = be.getSoupCache().withPrefix("block/bowl/soup/");
-		FluidRenderer.renderFluidBox(tex, 5f / 16, 2f / 16, 5f / 16,
-				11f / 16, 13f / 16, 11f / 16,
+		FluidRenderer.renderFluidBox(tex, 3f / 16, 2f / 16, 3f / 16,
+				13f / 16, 14f / 16, 13f / 16,
 				buffer, pose, light, false, -1);
 
 		float time = (pTick + (int) (level.getGameTime() % 80L)) / 80;
 		float p = (float) Math.sin(time / 80 * 2 * Math.PI);
 
-		h = 14f / 16f + 1 / 32f * p;
+		h = 15f / 16f + 1 / 32f * p;
 
 		List<ItemStack> toRender = be.getFloatingItems();
 		if (toRender.isEmpty()) return;
