@@ -17,7 +17,6 @@ import dev.xkmc.youkaishomecoming.mixin.AddLootTableModifierAccessor;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -30,6 +29,7 @@ import net.minecraft.world.level.storage.loot.Serializer;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.common.loot.LootTableIdCondition;
@@ -85,6 +85,9 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 								EntityTypePredicate.of(YHEntities.TUNA.get()))).build()
 		));
 
+		add("scavenging_roe", create(YHFood.ROE.item.get(), 1,
+				killedByKnife(), fire(false), entity(EntityType.SALMON),
+				LootItemRandomChanceCondition.randomChance(0.5f).build()));
 		add("fishing_lamprey", new ReplaceItemModifier(0.1f, YHFood.RAW_LAMPREY.item.asStack(),
 				LootTableIdCondition.builder(BuiltInLootTables.FISHING).build(),
 				new BiomeTagCondition(YHBiomeTagsProvider.LAMPREY)
