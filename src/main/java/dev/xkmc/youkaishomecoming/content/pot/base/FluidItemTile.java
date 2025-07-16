@@ -85,8 +85,7 @@ public interface FluidItemTile {
 				}
 			}
 		}
-		ItemStack copy = stack.copy();
-		copy.setCount(1);
+		ItemStack copy = stack.copyWithCount(1);
 		if (be.getItemHandler().canAddItem(copy)) {
 			if (level instanceof ServerLevel sl) {
 				ItemStack remain = be.getItemHandler().addItem(copy);

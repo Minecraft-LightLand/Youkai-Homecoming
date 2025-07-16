@@ -29,7 +29,7 @@ public record PotClick(
 				level.setBlockAndUpdate(pos, bowl);
 				return InteractionResult.SUCCESS;
 			}
-			if (be.tryAddItem(stack)) {
+			if (be.tryAddItem(stack, level.isClientSide())) {
 				if (!level.isClientSide) be.setLastPlayer(player);
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
 					if (stack.isDamageableItem()) {

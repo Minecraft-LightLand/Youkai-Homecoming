@@ -49,7 +49,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		implements BlockContainer, HeatableBlockEntity, IHintableBlock, InfoTile {
 
 	@SerialClass.SerialField
-	public final CookingItemContainer items = new CookingItemContainer(12).add(this);
+	public final CookingItemContainer items = new CookingItemContainer(this, 12).setMax(1);
 
 	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
 
@@ -106,7 +106,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		lastPlayer = player;
 	}
 
-	public boolean tryAddItem(ItemStack stack) {
+	public boolean tryAddItem(ItemStack stack, boolean simulate) {
 		if (level == null) return false;
 		List<ItemStack> list = new ArrayList<>();
 		boolean empty = false;
@@ -119,7 +119,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		var inv = new CookingInv(container(), list, false);
 		var opt = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(), inv, level);
 		if (opt.isEmpty()) return false;
-		if (!level.isClientSide()) {
+		if (!simulate) {
 			items.addItem(stack.copyWithCount(1));
 		}
 		return true;

@@ -113,7 +113,7 @@ public enum FoodType {
 	}
 
 	public boolean isFlesh() {
-		return this == FLESH || this == BOWL_FLESH || this == FLESH_FAST || this == CAN_FLESH;
+		return this == FLESH || this == BOWL_FLESH || this == FLESH_FAST || this == CAN_FLESH || this == SAUCER_FLESH;
 	}
 
 	@SuppressWarnings({"unsafe", "unchecked"})

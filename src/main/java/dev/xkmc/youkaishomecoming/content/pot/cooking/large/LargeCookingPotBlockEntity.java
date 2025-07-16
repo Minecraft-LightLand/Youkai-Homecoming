@@ -21,7 +21,7 @@ public class LargeCookingPotBlockEntity extends CookingBlockEntity {
 
 	@Override
 	public Item container() {
-		return YHBlocks.IRON_POT.asItem();
+		return YHBlocks.STOCKPOT.asItem();
 	}
 
 	protected void animationTick(Level level) {

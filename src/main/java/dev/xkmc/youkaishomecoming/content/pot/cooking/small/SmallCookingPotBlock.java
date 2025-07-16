@@ -37,7 +37,7 @@ public class SmallCookingPotBlock implements ShapeBlockMethod {
 
 	public static void buildState(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/iron_bowl"))));
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/small_iron_pot"))));
 	}
 
 }
