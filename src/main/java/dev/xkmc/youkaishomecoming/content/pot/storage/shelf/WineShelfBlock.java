@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.shelf;
+package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.shelf;
+package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
 import dev.xkmc.l2library.base.tile.BaseContainer;
 

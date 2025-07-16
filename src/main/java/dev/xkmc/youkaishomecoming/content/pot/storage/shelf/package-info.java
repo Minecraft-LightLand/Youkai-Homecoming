@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.pot.shelf;
+package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

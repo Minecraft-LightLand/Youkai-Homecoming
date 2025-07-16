@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.shelf;
+package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
