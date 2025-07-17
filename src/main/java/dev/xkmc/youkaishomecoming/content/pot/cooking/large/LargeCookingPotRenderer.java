@@ -51,7 +51,7 @@ public class LargeCookingPotRenderer implements BlockEntityRenderer<LargeCooking
 				pose.translate(0.5F, h, 0.5F);
 				pose.mulPose(Axis.YP.rotationDegrees(i * fan + rand.nextFloat() * 10 * (h >= 0.25f ? pr1 : 1)));
 				pose.mulPose(Axis.XP.rotationDegrees(70));
-				float dist = 1f / 16f * (1f + rand.nextFloat() * 0.25f + 0.25f * pr2);
+				float dist = 2f / 16f * (1f + rand.nextFloat() * 0.25f + 0.25f * pr2);
 				pose.translate(-dist, -dist, 0.0F);
 				pose.scale(0.375F, 0.375F, 0.375F);
 				this.itemRenderer.renderStatic(item, ItemDisplayContext.FIXED, light, overlay, pose, buffer, be.getLevel(), seed + i);

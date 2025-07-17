@@ -658,24 +658,6 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_PORK)
 					.build(pvd, YHFood.LONGEVITY_NOODLES.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.addIngredient(Items.DRIED_KELP)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.build(pvd, YHBowl.MISO_SOUP.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.SEAFOOD_MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.addIngredient(Items.DRIED_KELP)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.build(pvd, YHBowl.SEAFOOD_MISO_SOUP.item.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.SEEDS)
@@ -858,6 +840,28 @@ public class YHRecipeGen {
 					.add(YHFood.CRAB_MEAT)
 					.add(YHFood.CRAB)
 					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 200)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(YHFood.TOFU.item.get())
+					.add(YHFood.TOFU.item.get())
+					.add(Items.DRIED_KELP)
+					.add(Items.DRIED_KELP)
+					.add(Items.BROWN_MUSHROOM)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 200)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(YHFood.TOFU.item.get())
+					.add(YHFood.TOFU.item.get())
+					.add(Items.DRIED_KELP)
+					.add(Items.DRIED_KELP)
+					.add(Items.BROWN_MUSHROOM)
+					.add(TagRef.VEGETABLES_ONION)
+					.add(TagRef.RAW_FISHES_SALMON)
+					.add(TagRef.RAW_FISHES_SALMON)
+					.save(pvd);
+
 		}
 
 		// food cooking saucer
