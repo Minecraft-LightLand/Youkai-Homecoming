@@ -8,8 +8,8 @@ import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotClick;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotFall;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -27,7 +27,7 @@ public class SmallCookingPotBlock implements ShapeBlockMethod {
 	public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 4, 12);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
-		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.IRON_BOWL), BE, BlockProxy.HORIZONTAL);
+		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.IRON_BOWL), new PotFall(), BE, BlockProxy.HORIZONTAL);
 	}
 
 	@Override

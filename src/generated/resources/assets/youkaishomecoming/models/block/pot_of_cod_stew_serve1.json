@@ -1,8 +1,8 @@
 {
-  "parent": "youkaishomecoming:custom/bowl/short/han_palace",
+  "parent": "youkaishomecoming:custom/bowl/short/cod_stew_serve1",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaishomecoming:block/bowl/short/han_palace",
+    "base": "youkaishomecoming:block/bowl/short/cod_stew",
     "bottom": "youkaishomecoming:block/bowl/short/short_iron_pot_bottom",
     "side": "youkaishomecoming:block/bowl/short/short_iron_pot_side",
     "top": "youkaishomecoming:block/bowl/short/short_iron_pot_top"

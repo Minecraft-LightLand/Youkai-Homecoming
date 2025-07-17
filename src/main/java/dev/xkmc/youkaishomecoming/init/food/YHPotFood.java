@@ -47,7 +47,7 @@ public enum YHPotFood implements ItemLike {
 	private static BlockBuilder<? extends PotFoodBlock, L2Registrate> serve2(String name, ItemLike bowl) {
 		return YoukaisHomecoming.REGISTRATE.block("pot_of_" + name, p ->
 						new PotFoodBlock.Pot2(p, BowlBlock.POT_SHAPE, bowl))
-				.blockstate(MidCookingPotBlock::buildPotFood)
+				.blockstate((ctx, pvd) -> MidCookingPotBlock.buildPotFood(ctx, pvd, name))
 				.item().properties(p -> p.craftRemainder(YHBlocks.IRON_POT.asItem())).build()
 				.loot((pvd, b) -> PotFoodBlock.buildLoot(pvd, b, YHBlocks.IRON_POT.asItem()));
 	}

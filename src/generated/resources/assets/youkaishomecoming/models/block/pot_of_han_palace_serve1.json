@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:custom/bowl/short/han_palace",
+  "parent": "youkaishomecoming:custom/bowl/short/han_palace_serve1",
   "render_type": "minecraft:cutout",
   "textures": {
     "base": "youkaishomecoming:block/bowl/short/han_palace",
