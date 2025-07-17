@@ -21,7 +21,7 @@ public class LargeCookingPotBlockEntity extends CookingBlockEntity {
 
 	@Override
 	public Item container() {
-		return YHBlocks.IRON_POT.asItem();
+		return YHBlocks.STOCKPOT.asItem();
 	}
 
 	protected void animationTick(Level level) {
@@ -29,7 +29,7 @@ public class LargeCookingPotBlockEntity extends CookingBlockEntity {
 		double x, y, z;
 		RandomSource random = level.random;
 		double r = 0.25;
-		double h = 14f / 16f;
+		double h = 15f / 16f;
 		if (level.getGameTime() % 2 == 0 && random.nextFloat() < 0.3F) {
 			x = (double) pos.getX() + 0.5 + (random.nextDouble() * r * 2 - r);
 			z = (double) pos.getZ() + 0.5 + (random.nextDouble() * r * 2 - r);

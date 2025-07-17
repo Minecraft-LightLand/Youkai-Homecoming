@@ -30,8 +30,8 @@ public class MidCookingPotRenderer implements BlockEntityRenderer<MidCookingPotB
 		float h = 0;
 
 		var tex = be.getSoupCache().withPrefix("block/bowl/soup/");
-		FluidRenderer.renderFluidBox(tex, 5f / 16, 2f / 16, 5f / 16,
-				11f / 16, 5f / 16, 11f / 16,
+		FluidRenderer.renderFluidBox(tex, 4f / 16, 2f / 16, 4f / 16,
+				12f / 16, 5f / 16, 12f / 16,
 				buffer, pose, light, false, -1);
 
 		float time = (pTick + (int) (level.getGameTime() % 80L)) / 80;

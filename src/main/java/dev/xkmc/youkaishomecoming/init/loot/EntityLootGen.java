@@ -78,7 +78,17 @@ public class EntityLootGen {
 	public static void crab(RegistrateEntityLootTables pvd, EntityType<CrabEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-						.add(LootItem.lootTableItem(YHFood.CRAB.item.get()))));
+						.add(LootItem.lootTableItem(YHFood.CRAB.item.get())))
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.CRAB_ROE.item.get()))
+						.when(LootItemRandomChanceCondition.randomChance(0.5f))
+						.when(LootItemEntityPropertyCondition.hasProperties(
+								LootContext.EntityTarget.KILLER,
+								EntityPredicate.Builder.entity().equipment(
+										EntityEquipmentPredicate.Builder.equipment().mainhand(
+														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+												.build()).build()))
+				));
 	}
 
 	private static LootItemFunction.Builder onFire() {

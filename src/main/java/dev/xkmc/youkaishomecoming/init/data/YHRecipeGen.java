@@ -173,14 +173,21 @@ public class YHRecipeGen {
 			pvd.storage(YHTea.GREEN.leaves, RecipeCategory.MISC, YHItems.GREEN_TEA_BAG);
 			pvd.storage(YHTea.OOLONG.leaves, RecipeCategory.MISC, YHItems.OOLONG_TEA_BAG);
 			pvd.storage(YHTea.WHITE.leaves, RecipeCategory.MISC, YHItems.WHITE_TEA_BAG);
+			pvd.storage(YHTea.DARK.leaves, RecipeCategory.MISC, YHItems.DARK_TEA_BAG);
+			pvd.storage(YHTea.YELLOW.leaves, RecipeCategory.MISC, YHItems.YELLOW_TEA_BAG);
 
 			drying(pvd, DataIngredient.items(Items.WHEAT), ModItems.STRAW);
 			drying(pvd, DataIngredient.items(Items.KELP), () -> Items.DRIED_KELP);
 			drying(pvd, DataIngredient.tag(ItemTags.SAPLINGS), () -> Items.DEAD_BUSH);
 			drying(pvd, DataIngredient.items(Items.ROTTEN_FLESH), () -> Items.LEATHER, 18000);
-			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
-			pvd.smoking(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.BLACK.leaves, 0.1f, 200);
-			pvd.campfire(DataIngredient.items(YHTea.GREEN.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
+			steaming(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.GREEN.leaves);
+			drying(pvd, DataIngredient.items(YHCrops.TEA.getFruits()), YHTea.WHITE.leaves);
+			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.YELLOW.leaves);
+			pvd.campfire(DataIngredient.items(YHTea.WHITE.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHTea.WHITE.leaves.get())
+					.addInput(YHTea.WHITE.leaves.get()).addInput(YHTea.BLACK.leaves).save(pvd, YHTea.BLACK.leaves.getId());
+			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHTea.GREEN.leaves.get())
+					.addInput(YHTea.GREEN.leaves.get()).addInput(YHTea.DARK.leaves).save(pvd, YHTea.DARK.leaves.getId());
 			steaming(pvd, DataIngredient.items(YHFood.CRAB.item.get()), YHFood.STEAMED_CRAB.item);
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),
@@ -208,7 +215,6 @@ public class YHRecipeGen {
 							Ingredient.of(TagRef.TOOLS_PICKAXES), YHItems.ICE_CUBE, 8)
 					.build(pvd, YHItems.ICE_CUBE.getId());
 
-			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.WHITE.leaves);
 		}
 
 		// food craft
@@ -459,24 +465,6 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_PORK)
 					.build(pvd, YHFood.LONGEVITY_NOODLES.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.addIngredient(Items.DRIED_KELP)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.build(pvd, YHBowl.MISO_SOUP.item.getId());
-
-			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.SEAFOOD_MISO_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(YHFood.TOFU.item.get())
-					.addIngredient(YHCrops.SOYBEAN.getSeed())
-					.addIngredient(Items.DRIED_KELP)
-					.addIngredient(Items.BROWN_MUSHROOM)
-					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.addIngredient(TagRef.RAW_FISHES_SALMON)
-					.build(pvd, YHBowl.SEAFOOD_MISO_SOUP.item.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHBowl.POOR_GOD_SOUP.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.SEEDS)
@@ -614,7 +602,7 @@ public class YHRecipeGen {
 					.add(TagRef.RAW_FISHES_SALMON)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(YHFood.TOFU)
 					.add(Items.KELP)
 					.add(TagRef.VEGETABLES)
@@ -622,24 +610,46 @@ public class YHRecipeGen {
 					.add(YHTagGen.RAW_EEL)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(TagRef.RAW_FISHES_COD)
 					.add(TagRef.EGGS)
 					.add(TagRef.VEGETABLES_TOMATO)
 					.add(Items.POTATO)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(YHFood.TOFU)
 					.add(YHFood.TOFU)
 					.add(YHFood.RAW_LAMPREY)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHShortPot.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
 					.add(YHFood.TOFU)
 					.add(YHFood.CRAB_MEAT)
 					.add(YHFood.CRAB)
 					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 200)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(YHFood.TOFU.item.get())
+					.add(YHFood.TOFU.item.get())
+					.add(Items.DRIED_KELP)
+					.add(Items.DRIED_KELP)
+					.add(Items.BROWN_MUSHROOM)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 200)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(YHFood.TOFU.item.get())
+					.add(YHFood.TOFU.item.get())
+					.add(Items.DRIED_KELP)
+					.add(Items.DRIED_KELP)
+					.add(Items.BROWN_MUSHROOM)
+					.add(TagRef.VEGETABLES_ONION)
+					.add(TagRef.RAW_FISHES_SALMON)
+					.add(TagRef.RAW_FISHES_SALMON)
+					.save(pvd);
+
 		}
 
 		// food cooking saucer
@@ -749,6 +759,12 @@ public class YHRecipeGen {
 
 			unlock(pvd, new KettleRecipeBuilder(YHDrink.WHITE_TEA, 100)::unlockedBy, YHTea.WHITE.leaves.asItem())
 					.addIngredient(YHTagGen.TEA_WHITE, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.DARK_TEA, 100)::unlockedBy, YHTea.DARK.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_DARK, 4).save(pvd);
+
+			unlock(pvd, new KettleRecipeBuilder(YHDrink.YELLOW_TEA, 100)::unlockedBy, YHTea.YELLOW.leaves.asItem())
+					.addIngredient(YHTagGen.TEA_YELLOW, 4).save(pvd);
 
 			unlock(pvd, new KettleRecipeBuilder(YHDrink.CORNFLOWER_TEA, 100)::unlockedBy, Items.CORNFLOWER)
 					.addIngredient(Items.CORNFLOWER, 4).save(pvd);

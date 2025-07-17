@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.util.WaterConsumer;
@@ -26,9 +25,7 @@ public class IronBowlBlock extends BowlBlock implements IHintableBlock {
 
 	public boolean startCooking(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, Block block, Block target, int water) {
 		var stack = player.getItemInHand(hand);
-		if (state.is(block) &&
-				CookingBlockEntity.isHeatedPos(level, pos) &&
-				WaterConsumer.isWaterContainer(stack, water)) {
+		if (state.is(block) && WaterConsumer.isWaterContainer(stack, water)) {
 			if (!level.isClientSide()) {
 				var pot = target.defaultBlockState().setValue(FACING, state.getValue(FACING));
 				level.setBlockAndUpdate(pos, pot);
@@ -49,10 +46,7 @@ public class IronBowlBlock extends BowlBlock implements IHintableBlock {
 
 	@Override
 	public List<Ingredient> getHints(Level level, BlockPos pos) {
-		if (CookingBlockEntity.isHeatedPos(level, pos)) {
-			return List.of(Ingredient.of(Items.WATER_BUCKET));
-		}
-		return List.of();
+		return List.of(Ingredient.of(Items.WATER_BUCKET));
 	}
 
 	@Override

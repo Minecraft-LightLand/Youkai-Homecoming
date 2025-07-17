@@ -42,6 +42,8 @@
 		"green_tea_leaves": "绿茶叶",
 		"oolong_tea_leaves": "乌龙茶叶",
 		"white_tea_leaves": "白茶叶",
+		"dark_tea_leaves": "黑茶叶",
+		"yellow_tea_leaves": "黄茶叶",
 		"tea_leaves": "生茶叶",
 		"tea_seeds": "茶籽",
 		"matcha": "抹茶",
@@ -94,7 +96,9 @@
 		"raw_venison_slice": "生鹿片",
 		"grilled_venison": "烤鹿排",
 		"grilled_venison_slice": "烤鹿片",
-		"steamed_crab": "清蒸螃蟹"
+		"steamed_crab": "清蒸螃蟹",
+		"han_palace": "汉宫藏娇",
+		"tofu_crab_stew": "豆腐蟹煲"
 	},
 	"-cartesian": {
 		"entity": {
@@ -138,6 +142,8 @@
 					"lemon_black_tea": "柠檬红茶",
 					"moon_rocket": "月面火箭",
 					"black_tea": "红茶",
+					"dark_tea": "黑茶",
+					"yellow_tea": "黄茶",
 					"green_tea": "绿茶",
 					"oolong_tea": "乌龙茶",
 					"white_tea": "白茶",

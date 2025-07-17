@@ -5,11 +5,15 @@ import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
+import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
@@ -26,6 +30,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -41,10 +46,10 @@ import java.util.List;
 
 @SerialClass
 public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
-		implements BlockContainer, HeatableBlockEntity, IHintableBlock {
+		implements BlockContainer, HeatableBlockEntity, IHintableBlock, InfoTile {
 
 	@SerialClass.SerialField
-	public final CookingItemContainer items = new CookingItemContainer(12).add(this);
+	public final CookingItemContainer items = new CookingItemContainer(this, 12).setMax(1);
 
 	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
 
@@ -101,7 +106,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		lastPlayer = player;
 	}
 
-	public boolean tryAddItem(ItemStack stack) {
+	public boolean tryAddItem(ItemStack stack, boolean simulate) {
 		if (level == null) return false;
 		List<ItemStack> list = new ArrayList<>();
 		boolean empty = false;
@@ -114,7 +119,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		var inv = new CookingInv(container(), list, false);
 		var opt = level.getRecipeManager().getRecipeFor(YHBlocks.COOKING_RT.get(), inv, level);
 		if (opt.isEmpty()) return false;
-		if (!level.isClientSide()) {
+		if (!simulate) {
 			items.addItem(stack.copyWithCount(1));
 		}
 		return true;
@@ -221,7 +226,21 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 	}
 
 	@Override
+	public @Nullable TileTooltip getImage(boolean shift, BlockHitResult hit) {
+		return null;
+	}
+
+	@Override
+	public List<Component> lines(boolean shift, BlockHitResult hit) {
+		if (inProgress() > 0) {
+			return List.of(YHLangData.COOKING_PROGRESS.get(Math.round(inProgress() * 100) + "%"));
+		}
+		return List.of();
+	}
+
+	@Override
 	public List<Ingredient> getHints(Level level, BlockPos pos) {
+		if (inProgress() > 0) return List.of();
 		var cont = createContainer(false);
 		var recipes = level.getRecipeManager().getRecipesFor(getRecipeType(), cont, level);
 		List<Ingredient> ans = new ArrayList<>();

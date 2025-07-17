@@ -1,0 +1,21 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:white_tea_leaves"
+    },
+    {
+      "item": "youkaisfeasts:black_tea_leaves"
+    }
+  ],
+  "inputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "outputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [],
+  "time": 1800
+}

@@ -1,15 +1,12 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
-import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
-import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
-import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
@@ -22,17 +19,14 @@ import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
 
@@ -52,7 +46,7 @@ public class YHItems {
 
 	public static final BlockEntry<Block> SOYBEAN_BAG, PODS_CRATE,
 			REDBEAN_BAG, CUCUMBER_BAG,
-			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG,
+			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG, DARK_TEA_BAG, YELLOW_TEA_BAG,
 			RED_GRAPE_CRATE, BLACK_GRAPE_CRATE, WHITE_GRAPE_CRATE;
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
@@ -86,6 +80,8 @@ public class YHItems {
 			GREEN_TEA_BAG = YHTea.GREEN.createBags();
 			OOLONG_TEA_BAG = YHTea.OOLONG.createBags();
 			WHITE_TEA_BAG = YHTea.WHITE.createBags();
+			DARK_TEA_BAG = YHTea.DARK.createBags();
+			YELLOW_TEA_BAG = YHTea.YELLOW.createBags();
 		}
 
 		// ingredients
@@ -125,7 +121,7 @@ public class YHItems {
 		InitializationMarker.expectAndAdvance(4);
 		YHFood.register();
 		YHBowl.register();
-		YHShortPot.register();
+		YHPotFood.register();
 		YHSushi.register();
 		YHRolls.init();
 

@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "forge:tea_leaves/yellow"
+    },
+    {
+      "tag": "forge:tea_leaves/yellow"
+    },
+    {
+      "tag": "forge:tea_leaves/yellow"
+    },
+    {
+      "tag": "forge:tea_leaves/yellow"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "fluid": "youkaisfeasts:yellow_tea"
+  },
+  "time": 100
+}

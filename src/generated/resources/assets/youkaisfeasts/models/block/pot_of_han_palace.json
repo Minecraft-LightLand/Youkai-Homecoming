@@ -1,8 +1,8 @@
 {
-  "parent": "youkaisfeasts:custom/bowl/short/pot_of_han_palace",
+  "parent": "youkaisfeasts:custom/bowl/short/han_palace",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaisfeasts:block/bowl/short/pot_of_han_palace",
+    "base": "youkaisfeasts:block/bowl/short/han_palace",
     "bottom": "youkaisfeasts:block/bowl/short/short_iron_pot_bottom",
     "side": "youkaisfeasts:block/bowl/short/short_iron_pot_side",
     "top": "youkaisfeasts:block/bowl/short/short_iron_pot_top"

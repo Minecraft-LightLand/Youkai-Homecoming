@@ -1,7 +1,7 @@
 {
   "variants": {
     "facing=east,serve=1": {
-      "model": "youkaisfeasts:block/pot_of_shirayuki",
+      "model": "youkaisfeasts:block/pot_of_shirayuki_serve1",
       "y": 90
     },
     "facing=east,serve=2": {
@@ -9,13 +9,13 @@
       "y": 90
     },
     "facing=north,serve=1": {
-      "model": "youkaisfeasts:block/pot_of_shirayuki"
+      "model": "youkaisfeasts:block/pot_of_shirayuki_serve1"
     },
     "facing=north,serve=2": {
       "model": "youkaisfeasts:block/pot_of_shirayuki"
     },
     "facing=south,serve=1": {
-      "model": "youkaisfeasts:block/pot_of_shirayuki",
+      "model": "youkaisfeasts:block/pot_of_shirayuki_serve1",
       "y": 180
     },
     "facing=south,serve=2": {
@@ -23,7 +23,7 @@
       "y": 180
     },
     "facing=west,serve=1": {
-      "model": "youkaisfeasts:block/pot_of_shirayuki",
+      "model": "youkaisfeasts:block/pot_of_shirayuki_serve1",
       "y": 270
     },
     "facing=west,serve=2": {

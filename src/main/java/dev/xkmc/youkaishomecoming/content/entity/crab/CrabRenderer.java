@@ -12,7 +12,7 @@ public class CrabRenderer extends MobRenderer<CrabEntity, CrabModel> {
 	public static final ResourceLocation MUD = YoukaisHomecoming.loc("textures/entities/crab/mud_crab.png");
 
 	public CrabRenderer(EntityRendererProvider.Context ctx) {
-		super(ctx, new CrabModel(ctx.bakeLayer(CrabModel.LAYER_LOCATION)), 0.5f);
+		super(ctx, new CrabModel(ctx.bakeLayer(CrabModel.LAYER_LOCATION)), 0f);
 		addLayer(new ItemInHandLayer<>(this, ctx.getItemInHandRenderer()));
 	}
 

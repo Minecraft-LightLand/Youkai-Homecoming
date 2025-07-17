@@ -11,6 +11,7 @@
 		"cuisine_allow": "下一步:",
 		"cuisine_extra": "还有%s种选择",
 		"brewing_progress": "煮茶进度: %s",
+		"cooking_progress": "烹饪进度: %s",
 		"heat_progress": "加热进度: %s"
 	}
 }

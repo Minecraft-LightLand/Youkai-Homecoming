@@ -241,6 +241,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaisfeasts:dark_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:dark_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaisfeasts:dassai": {
       "conditions": {
         "item": {
@@ -1370,6 +1380,16 @@
         }
       },
       "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:yellow_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:yellow_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
@@ -1435,6 +1455,12 @@
     ],
     [
       "youkaisfeasts:oolong_tea"
+    ],
+    [
+      "youkaisfeasts:dark_tea"
+    ],
+    [
+      "youkaisfeasts:yellow_tea"
     ],
     [
       "youkaisfeasts:cornflower_tea"

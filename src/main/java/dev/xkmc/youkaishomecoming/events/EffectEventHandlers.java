@@ -30,8 +30,8 @@ public class EffectEventHandlers {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onHeal(LivingHealEvent event) {
 		float amount = event.getAmount();
-		if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
-			amount *= YHModConfig.COMMON.smoothingHealingFactor.get();
+		if (event.getEntity().hasEffect(YHEffects.BREATHING.get())) {
+			amount *= YHModConfig.COMMON.breathingHealingFactor.get();
 		}
 		event.setAmount(amount);
 	}
@@ -53,7 +53,7 @@ public class EffectEventHandlers {
 	@SubscribeEvent
 	public static void onEffectTest(MobEffectEvent.Applicable event) {
 		if (event.getEffectInstance().getEffect() == MobEffects.WITHER) {
-			if (event.getEntity().hasEffect(YHEffects.THICK.get())) {
+			if (event.getEntity().hasEffect(YHEffects.SMOOTHING.get())) {
 				event.setResult(Event.Result.DENY);
 			}
 		}

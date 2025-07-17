@@ -67,6 +67,8 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA_BLACK = forgeItem("tea_leaves/black");
 	public static final TagKey<Item> TEA_WHITE = forgeItem("tea_leaves/white");
 	public static final TagKey<Item> TEA_OOLONG = forgeItem("tea_leaves/oolong");
+	public static final TagKey<Item> TEA_DARK = forgeItem("tea_leaves/dark");
+	public static final TagKey<Item> TEA_YELLOW = forgeItem("tea_leaves/yellow");
 	public static final TagKey<Item> TEA = forgeItem("tea_leaves");
 
 	public static final List<Consumer<RegistrateItemTagsProvider>> OPTIONAL_TAGS = new ArrayList<>();
@@ -100,8 +102,10 @@ public class YHTagGen {
 		pvd.addTag(TEA_BLACK).add(YHTea.BLACK.leaves.get());
 		pvd.addTag(TEA_WHITE).add(YHTea.WHITE.leaves.get());
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
+		pvd.addTag(TEA_DARK).add(YHTea.DARK.leaves.get());
+		pvd.addTag(TEA_YELLOW).add(YHTea.YELLOW.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
-				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
+				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG, TEA_DARK, TEA_YELLOW);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
 		}

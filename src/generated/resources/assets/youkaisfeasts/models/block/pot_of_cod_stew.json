@@ -1,8 +1,8 @@
 {
-  "parent": "youkaisfeasts:custom/bowl/short/pot_of_cod_stew",
+  "parent": "youkaisfeasts:custom/bowl/short/cod_stew",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaisfeasts:block/bowl/short/pot_of_cod_stew",
+    "base": "youkaisfeasts:block/bowl/short/cod_stew",
     "bottom": "youkaisfeasts:block/bowl/short/short_iron_pot_bottom",
     "side": "youkaisfeasts:block/bowl/short/short_iron_pot_side",
     "top": "youkaisfeasts:block/bowl/short/short_iron_pot_top"

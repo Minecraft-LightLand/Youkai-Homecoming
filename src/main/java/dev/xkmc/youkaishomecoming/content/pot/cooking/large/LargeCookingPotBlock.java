@@ -7,7 +7,9 @@ import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
+import dev.xkmc.youkaishomecoming.content.block.food.PotFoodBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotClick;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotFall;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -26,7 +28,7 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 	public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
-		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.STOCKPOT), BE, BlockProxy.HORIZONTAL);
+		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.STOCKPOT), new PotFall(), BE, BlockProxy.HORIZONTAL);
 	}
 
 	@Override
@@ -46,16 +48,20 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 		);
 	}
 
-	public static void buildPotFood(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd) {
-		pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder(ctx.getName())
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/stock/" + ctx.getName())))
-				.texture("top", pvd.modLoc("block/bowl/stock/stockpot_top"))
-				.texture("side", pvd.modLoc("block/bowl/stock/stockpot_side"))
-				.texture("inside", pvd.modLoc("block/bowl/stock/stockpot_inside"))
-				.texture("bottom", pvd.modLoc("block/bowl/stock/stockpot_bottom"))
-				.texture("parts", pvd.modLoc("block/bowl/stock/stockpot_parts"))
-				.texture("base", pvd.modLoc("block/bowl/stock/" + ctx.getName()))
-				.renderType("cutout")
+	public static void buildPotFood(DataGenContext<Block, ? extends Block> ctx, RegistrateBlockstateProvider pvd, String tex) {
+		pvd.horizontalBlock(ctx.get(), state -> {
+					int stage = state.getValue(PotFoodBlock.SERVE_4);
+					String suffix = stage == 4 ? "" : ("_serve" + stage);
+					return pvd.models().getBuilder(ctx.getName() + suffix)
+							.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/bowl/stock/stock_serve" + stage)))
+							.texture("top", pvd.modLoc("block/bowl/stock/stockpot_top"))
+							.texture("side", pvd.modLoc("block/bowl/stock/stockpot_side"))
+							.texture("inside", pvd.modLoc("block/bowl/stock/stockpot_inside"))
+							.texture("bottom", pvd.modLoc("block/bowl/stock/stockpot_bottom"))
+							.texture("parts", pvd.modLoc("block/bowl/stock/stockpot_parts"))
+							.texture("base", pvd.modLoc("block/bowl/stock/" + tex))
+							.renderType("cutout");
+				}
 		);
 	}
 

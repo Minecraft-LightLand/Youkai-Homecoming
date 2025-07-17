@@ -220,7 +220,14 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 			return InteractionResult.SUCCESS;
 		}
 		var ans = Bucketable.bucketMobPickup(player, hand, this);
-		if (ans.isPresent()) return ans.get();
+		if (ans.isPresent()) {
+			var drop = getMainHandItem();
+			if (!drop.isEmpty()) {
+				spawnAtLocation(drop);
+				setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+			}
+			return ans.get();
+		}
 		return super.mobInteract(player, hand);
 	}
 

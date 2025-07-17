@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=east,support=ground": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack",
+      "y": 90
+    },
+    "facing=east,support=stacked": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_stacked",
+      "y": 90
+    },
+    "facing=east,support=supported": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_supported",
+      "y": 90
+    },
+    "facing=north,support=ground": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack"
+    },
+    "facing=north,support=stacked": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_stacked"
+    },
+    "facing=north,support=supported": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_supported"
+    },
+    "facing=south,support=ground": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack",
+      "y": 180
+    },
+    "facing=south,support=stacked": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_stacked",
+      "y": 180
+    },
+    "facing=south,support=supported": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_supported",
+      "y": 180
+    },
+    "facing=west,support=ground": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack",
+      "y": 270
+    },
+    "facing=west,support=stacked": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_stacked",
+      "y": 270
+    },
+    "facing=west,support=supported": {
+      "model": "youkaisfeasts:block/oak_ingredient_rack_supported",
+      "y": 270
+    }
+  }
+}
