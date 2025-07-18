@@ -61,7 +61,7 @@ public class IngredientRackBlock implements
 
 		for (int i = 0; i < 4; i++) {
 			var dir = Direction.from2DDataValue(i);
-			var flat = new VoxelBuilder(0, 8, 8, 16, 9, 19).rotateFromNorth(dir);
+			var flat = new VoxelBuilder(0, 8, 8, 16, 9, 16).rotateFromNorth(dir);
 			var low = new VoxelBuilder(0, 1, 15, 16, 5, 16).rotateFromNorth(dir);
 			var high = new VoxelBuilder(0, 9, 15, 16, 13, 16).rotateFromNorth(dir);
 			var stacked = new VoxelBuilder(0, 0, 8, 16, 1, 16).rotateFromNorth(dir);

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
@@ -299,7 +300,7 @@ public class YHBlocks {
 					.register();
 
 			BIG_SPOON = YoukaisHomecoming.REGISTRATE.item("big_spoon", BigSpoonItem::new)
-					.properties(p->p.stacksTo(1))
+					.properties(p -> p.stacksTo(1))
 					.model(BigSpoonItem::buildModel)
 					.register();
 
