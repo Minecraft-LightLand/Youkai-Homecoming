@@ -8,7 +8,7 @@
             "condition": "minecraft:location_check",
             "predicate": {
               "block": {
-                "tag": "youkaishomecoming:farmland_tea"
+                "tag": "youkaisfeasts:farmland_tea"
               }
             }
           },

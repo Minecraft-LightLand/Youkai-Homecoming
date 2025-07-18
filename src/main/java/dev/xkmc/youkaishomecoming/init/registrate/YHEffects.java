@@ -24,7 +24,7 @@ import java.util.function.Supplier;
 
 public class YHEffects {
 
-	public static final RegistryEntry<MobEffect> TEA = genEffect("tea_polyphenols",
+	public static final RegistryEntry<MobEffect> TEA = genEffect("mellow",
 			() -> new TeaEffect(MobEffectCategory.BENEFICIAL, -5727850),
 			"Boost attack speed, heal every 3 seconds when under sunlight");
 
