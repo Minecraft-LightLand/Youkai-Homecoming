@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "youkaishomecoming:pot_of_power_soup",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "serve": "4"
+                  }
+                }
+              ],
+              "name": "youkaishomecoming:pot_of_power_soup"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "youkaishomecoming:stockpot"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaishomecoming:blocks/pot_of_power_soup"
+}

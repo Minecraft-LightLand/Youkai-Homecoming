@@ -26,7 +26,12 @@ public enum YHPotFood implements ItemLike {
 	TOFU_CRAB_STEW(YHFood.TOFU_CRAB_STEW, 2),
 
 	MISO_SOUP(YHBowl.MISO_SOUP, 4),
-	SEAFOOD_MISO_SOUP(YHBowl.SEAFOOD_MISO_SOUP, 4);
+	SEAFOOD_MISO_SOUP(YHBowl.SEAFOOD_MISO_SOUP, 4),
+	MUSHROOM_SOUP(YHBowl.MUSHROOM_SOUP, 4),
+	POTATO_SOUP(YHBowl.POTATO_SOUP, 4),
+	POWER_SOUP(YHBowl.POWER_SOUP, 4),
+	BORSCHT(YHBowl.BORSCHT, 4),
+	;
 
 	public final BlockEntry<? extends PotFoodBlock> block;
 

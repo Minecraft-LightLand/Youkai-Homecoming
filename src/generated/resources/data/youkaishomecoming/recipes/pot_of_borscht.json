@@ -8,17 +8,29 @@
       "item": "minecraft:beetroot"
     },
     {
-      "item": "minecraft:potato"
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
     },
     {
       "tag": "forge:vegetables/tomato"
     },
     {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
       "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:raw_beef"
     }
   ],
   "result": {
-    "item": "youkaishomecoming:borscht"
+    "item": "youkaishomecoming:pot_of_borscht"
   },
-  "time": 200
+  "time": 400
 }

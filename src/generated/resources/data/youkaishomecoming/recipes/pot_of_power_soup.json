@@ -20,11 +20,20 @@
       "item": "minecraft:kelp"
     },
     {
+      "item": "minecraft:carrot"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "tag": "forge:salad_ingredients/cabbage"
+    },
+    {
       "tag": "forge:vegetables/onion"
     }
   ],
   "result": {
-    "item": "youkaishomecoming:power_soup"
+    "item": "youkaishomecoming:pot_of_power_soup"
   },
-  "time": 200
+  "time": 400
 }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_small_iron_pot": {
+    "has_stockpot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:small_iron_pot"
+              "youkaishomecoming:stockpot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:potato_soup"
+        "recipe": "youkaishomecoming:pot_of_power_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_small_iron_pot",
+      "has_stockpot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:potato_soup"
+      "youkaishomecoming:pot_of_power_soup"
     ]
   },
   "sends_telemetry_event": true
