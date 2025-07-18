@@ -89,7 +89,7 @@ public class YoukaisHomecoming {
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Blocks",
-					e -> e.icon(YHBlocks.STEAMER_RACK::asStack));
+					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
 
 	public static final RegistryEntry<CreativeModeTab> FOOD =
 			REGISTRATE.buildModCreativeTab("food", "Youkai's Homecoming - Food and Ingredients",
