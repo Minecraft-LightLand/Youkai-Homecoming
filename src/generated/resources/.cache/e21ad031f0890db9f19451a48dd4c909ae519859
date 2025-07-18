@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-18T18:05:35.138717	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-18T18:38:49.695526	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 d543d0b385baf07809b3b33e20db22575103bd37 assets/youkaisfeasts/blockstates/bamboo_bowl.json
@@ -133,8 +133,8 @@ eff28abca341e32a423cd7d97f29ef8bd88b681f assets/youkaisfeasts/blockstates/wild_w
 af2669a5233994767f50cb4988d23304810b27b9 assets/youkaisfeasts/blockstates/wood_basin.json
 ce3ef441058bd86efef367a6ddbae619564bcbb3 assets/youkaisfeasts/blockstates/wood_bowl.json
 c5d57741eb846d2cea540de44c625ed61598218c assets/youkaisfeasts/blockstates/yellow_tea_bag.json
-d6a29aa1540c4a0e17f50253509c5f4f435ba3b6 assets/youkaisfeasts/lang/en_ud.json
-30d1f3988baf3abbf283cadcb210b0da0bf18bc1 assets/youkaisfeasts/lang/en_us.json
+243998a1a4206082b5ce8c9ca6bf184f3746297c assets/youkaisfeasts/lang/en_ud.json
+0c1b7c89a90b2c0349ca16ab3b2c4c6be31c0849 assets/youkaisfeasts/lang/en_us.json
 b1632c747dbd6175a1ffb57e1d2a5db108885718 assets/youkaisfeasts/models/block/acacia_dining_chair.json
 a9464c5f31da2873c0acb72217905d0fe4d91b43 assets/youkaisfeasts/models/block/acacia_dining_table.json
 73cec7413acb220277f9879cffdfaea207168c4b assets/youkaisfeasts/models/block/bamboo_bowl.json
@@ -1283,10 +1283,10 @@ dc2bd278337c6630032c157cd32b34aa2fe195f1 assets/youkaisfeasts/models/udumbara/ud
 ed81a8b12d4b2d35f7e49b81c456949898510a43 assets/youkaisfeasts/models/udumbara/udumbara_stage6.json
 510768ff0cdc1463f674747f4a7db42817d59139 assets/youkaisfeasts/models/udumbara/udumbara_stage7.json
 c8adc961e8d75290597702c63cea0acf2c77ba08 data/diet/tags/items/fruits.json
-fda8ce4ee6a5a25153f7566027006a6f3873c2c9 data/diet/tags/items/grains.json
-1ca0e28c750dfb80e58690d44bd548db1220136f data/diet/tags/items/proteins.json
+047a4f28d1d46254ad894941d4cf6523b8565c99 data/diet/tags/items/grains.json
+f5f67d82c92ff6e9516dafca7ae389080a72b875 data/diet/tags/items/proteins.json
 b3e8ee7fa0b7b9d60b0194141e6cc6be9ae07d28 data/diet/tags/items/sugars.json
-cb0bef39d5557e4ff1fa43a85521c8f128d7231b data/diet/tags/items/vegetables.json
+04f0d61c231fae80a7abf4d12a90dc1b28b8ec92 data/diet/tags/items/vegetables.json
 3a038c40159f44e8dd269547ede0c094058a324c data/farmersdelight/tags/blocks/wild_crops.json
 cc737bd30a7a4a0b6c4f43dab0d9d9fc2a62bf25 data/farmersdelight/tags/items/cabbage_roll_ingredients.json
 3a038c40159f44e8dd269547ede0c094058a324c data/farmersdelight/tags/items/wild_crops.json

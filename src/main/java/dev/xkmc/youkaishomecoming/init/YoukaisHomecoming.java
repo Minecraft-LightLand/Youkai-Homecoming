@@ -9,6 +9,7 @@ import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
