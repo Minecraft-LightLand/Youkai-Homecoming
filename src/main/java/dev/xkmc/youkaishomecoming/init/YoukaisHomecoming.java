@@ -88,7 +88,7 @@ public class YoukaisHomecoming {
 	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Blocks",
+			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Blocks and Tools",
 					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
 
 	public static final RegistryEntry<CreativeModeTab> FOOD =
