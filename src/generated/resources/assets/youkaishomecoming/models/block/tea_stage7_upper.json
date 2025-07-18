@@ -1,8 +1,9 @@
 {
-  "parent": "youkaishomecoming:custom/plant/medium_bush",
+  "parent": "youkaishomecoming:custom/plant/large_bush_top_blossom",
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
+    "base": "youkaishomecoming:block/plants/tea/camellia_flower_base",
     "inside": "youkaishomecoming:block/plants/tea/medium_tea_bush_inside",
     "side": "youkaishomecoming:block/plants/tea/tea_bush_side",
     "top": "youkaishomecoming:block/plants/tea/tea_bush_top"

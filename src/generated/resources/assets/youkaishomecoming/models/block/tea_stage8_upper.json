@@ -4,7 +4,7 @@
   "render_type": "minecraft:cutout",
   "textures": {
     "inside": "youkaishomecoming:block/plants/tea/medium_tea_bush_inside",
-    "side": "youkaishomecoming:block/plants/tea/tea_bush_side",
-    "top": "youkaishomecoming:block/plants/tea/tea_bush_top"
+    "side": "youkaishomecoming:block/plants/tea/tea_seed_bush_side",
+    "top": "youkaishomecoming:block/plants/tea/tea_seed_bush_top"
   }
 }

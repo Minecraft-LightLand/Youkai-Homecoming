@@ -74,7 +74,7 @@ public class YHItems {
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
 	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
+			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA, CAMELLIA,
 			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 	public static final ItemEntry<FairyIceItem> FAIRY_ICE_CRYSTAL;
@@ -99,6 +99,7 @@ public class YHItems {
 			COFFEE_BEAN = crop("coffee_beans", Item::new);
 			COFFEE_POWDER = crop("coffee_powder", Item::new);
 			YHTea.register();
+			CAMELLIA = crop("camellia", Item::new);
 			MATCHA = crop("matcha", Item::new);
 			STRIPPED_MANDRAKE_ROOT = crop("stripped_mandrake_root", Item::new);
 			DRIED_MANDRAKE_FLOWER = crop("dried_mandrake_flower", Item::new);

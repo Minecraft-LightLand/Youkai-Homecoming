@@ -1,7 +1,10 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "youkaishomecoming:custom/plant/small_bush",
+  "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaishomecoming:block/plants/tea/tea_stage4"
+    "inside": "youkaishomecoming:block/plants/tea/small_tea_bush_inside",
+    "side": "youkaishomecoming:block/plants/tea/small_tea_bush_side",
+    "top": "youkaishomecoming:block/plants/tea/small_tea_bush_top"
   }
 }
