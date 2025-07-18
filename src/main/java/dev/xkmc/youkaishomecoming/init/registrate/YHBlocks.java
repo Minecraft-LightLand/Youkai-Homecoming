@@ -162,6 +162,7 @@ public class YHBlocks {
 
 	static {
 		InitializationMarker.expectAndAdvance(1);
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
 
 		// moka kettle, rack
 		{

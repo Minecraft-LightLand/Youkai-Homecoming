@@ -46,8 +46,12 @@ public class YoukaisHomecoming {
 			loc("main"), 2);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("youkais_feasts", "Youkais' Feasts",
+			REGISTRATE.buildModCreativeTab("block", "Youkais' Feasts - Blocks",
 					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> FOOD =
+			REGISTRATE.buildModCreativeTab("food", "Youkais' Feasts - Food and Ingredients",
+					e -> e.icon(YHSushi.LORELEI_NIGIRI.item::asStack));
 
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
