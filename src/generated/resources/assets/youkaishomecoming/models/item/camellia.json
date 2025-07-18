@@ -1,6 +1,19 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "youkaishomecoming:item/crops/camellia"
+  "base": {
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "youkaishomecoming:item/crops/camellia"
+    }
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "head": {
+      "parent": "youkaishomecoming:custom/camellia",
+      "render_type": "minecraft:cutout",
+      "textures": {
+        "parts": "youkaishomecoming:block/plants/tea/camellia_flower_base"
+      }
+    }
   }
 }

@@ -11,7 +11,6 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -175,11 +174,8 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 	@Override
 	public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
 		int age = getAge(state);
-		if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
-			if (age == 5) return SMALL;
-			if (age == 6) return Shapes.block();
-		}
-		return Shapes.empty();
+		if (age <= 3) return Shapes.empty();
+		return getShape(state, level, pos, ctx);
 	}
 
 	public static void buildPlantModel(DataGenContext<Block, TeaCropBlock> ctx, RegistrateBlockstateProvider pvd, String name) {

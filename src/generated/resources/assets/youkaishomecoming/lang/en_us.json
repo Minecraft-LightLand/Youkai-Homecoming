@@ -928,6 +928,7 @@
   "youkaishomecoming.subtitle.graze": "Danmaku Graze",
   "youkaishomecoming.subtitle.koishi_ring": "Koishi Phone Call",
   "youkaishomecoming.subtitle.miss": "Danmaku Hit Player",
+  "youkaishomecoming.tooltip.camellia": "Prevent Phantom spawn when equipped",
   "youkaishomecoming.tooltip.chance": "%1$s with %2$s%% chance",
   "youkaishomecoming.tooltip.danmaku_bypass": "Bypasses entities",
   "youkaishomecoming.tooltip.danmaku_damage": "Deals %s damage on hit",

@@ -182,12 +182,13 @@
   "item.youkaishomecoming.han_palace": "汉宫藏娇",
   "item.youkaishomecoming.tofu_crab_stew": "豆腐蟹煲",
   "item.youkaishomecoming.big_spoon": "大汤勺",
+  "item.youkaishomecoming.camellia": "山茶花",
   "entity.youkaishomecoming.lamprey": "八目鳗",
   "item.youkaishomecoming.lamprey_spawn_egg": "八目鳗生成蛋",
   "entity.youkaishomecoming.tuna": "金枪鱼",
   "item.youkaishomecoming.tuna_spawn_egg": "金枪鱼生成蛋",
-  "entity.youkaishomecoming.deer": "梅花鹿",
-  "item.youkaishomecoming.deer_spawn_egg": "梅花鹿生成蛋",
+  "entity.youkaishomecoming.deer": "鹿",
+  "item.youkaishomecoming.deer_spawn_egg": "鹿生成蛋",
   "entity.youkaishomecoming.crab": "螃蟹",
   "item.youkaishomecoming.crab_spawn_egg": "螃蟹生成蛋",
   "entity.youkaishomecoming.rumia": "露米娅",
@@ -949,5 +950,6 @@
   "youkaishomecoming.cuisine_extra": "还有%s种选择",
   "youkaishomecoming.brewing_progress": "煮茶进度: %s",
   "youkaishomecoming.cooking_progress": "烹饪进度: %s",
-  "youkaishomecoming.heat_progress": "加热进度: %s"
+  "youkaishomecoming.heat_progress": "加热进度: %s",
+  "youkaishomecoming.tooltip.camellia": "装备时防止幻翼生成"
 }

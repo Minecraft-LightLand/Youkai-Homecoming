@@ -50,6 +50,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
@@ -141,6 +142,8 @@ public class YoukaisHomecoming {
 			Terrablender.registerBiomes();
 			for (var e : YHCrops.values())
 				e.registerComposter();
+			ComposterBlock.COMPOSTABLES.put(YHItems.MATCHA, 0.8f);
+			ComposterBlock.COMPOSTABLES.put(YHItems.CAMELLIA, 0.8f);
 
 			if (ModList.get().isLoaded(Thirst.ID)) {
 				ThirstCompat.init();

@@ -96,7 +96,7 @@ public class YHEntities {
 					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules)
 					.attributes(DeerEntity::createAttributes)
 					.renderer(() -> DeerRenderer::new)
-					.spawnEgg(0x424F75, 0xE08E46).build()//TODO
+					.spawnEgg(0xc77e55, 0xe8ddd0).build()
 					.loot(EntityLootGen::deer).register();
 
 			CRAB = YoukaisHomecoming.REGISTRATE
@@ -105,7 +105,7 @@ public class YHEntities {
 					.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
 					.attributes(CrabEntity::createAttributes)
 					.renderer(() -> CrabRenderer::new)
-					.spawnEgg(0x424F75, 0xE08E46).build()//TODO
+					.spawnEgg(0x727e8b, 0xdbc297).build()
 					.loot(EntityLootGen::crab).register();
 
 			YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YHDanmaku.TAB.getKey());
