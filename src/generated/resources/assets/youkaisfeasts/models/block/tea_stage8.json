@@ -4,6 +4,6 @@
   "render_type": "minecraft:cutout",
   "textures": {
     "inside": "youkaisfeasts:block/plants/tea/large_tea_bush_inside",
-    "side": "youkaisfeasts:block/plants/tea/tea_bush_side"
+    "side": "youkaisfeasts:block/plants/tea/tea_seed_bush_side"
   }
 }

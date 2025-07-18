@@ -11,8 +11,6 @@ import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.CamelliaItem;
-import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
-import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;

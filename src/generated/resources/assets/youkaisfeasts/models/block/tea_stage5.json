@@ -1,9 +1,9 @@
 {
-  "parent": "youkaisfeasts:custom/plant/tea_stage5",
+  "parent": "youkaisfeasts:custom/plant/medium_bush",
   "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaisfeasts:block/plants/tea/tea_stage5",
+    "inside": "youkaisfeasts:block/plants/tea/medium_tea_bush_inside",
     "side": "youkaisfeasts:block/plants/tea/tea_bush_side",
     "top": "youkaisfeasts:block/plants/tea/tea_bush_top"
   }

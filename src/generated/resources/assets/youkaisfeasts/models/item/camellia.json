@@ -1,0 +1,19 @@
+{
+  "base": {
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "youkaisfeasts:item/crops/camellia"
+    }
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "head": {
+      "parent": "youkaisfeasts:custom/camellia",
+      "render_type": "minecraft:cutout",
+      "textures": {
+        "parts": "youkaisfeasts:block/plants/tea/camellia_flower_base"
+      }
+    }
+  }
+}

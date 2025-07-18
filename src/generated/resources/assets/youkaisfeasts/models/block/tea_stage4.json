@@ -1,7 +1,10 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "youkaisfeasts:custom/plant/small_bush",
+  "ambientocclusion": false,
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "youkaisfeasts:block/plants/tea/tea_stage4"
+    "inside": "youkaisfeasts:block/plants/tea/small_tea_bush_inside",
+    "side": "youkaisfeasts:block/plants/tea/small_tea_bush_side",
+    "top": "youkaisfeasts:block/plants/tea/small_tea_bush_top"
   }
 }

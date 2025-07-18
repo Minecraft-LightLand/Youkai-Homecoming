@@ -41,6 +41,18 @@
     },
     "age=6,half=upper": {
       "model": "youkaisfeasts:block/tea_stage6_upper"
+    },
+    "age=7,half=lower": {
+      "model": "youkaisfeasts:block/tea_stage7"
+    },
+    "age=7,half=upper": {
+      "model": "youkaisfeasts:block/tea_stage7_upper"
+    },
+    "age=8,half=lower": {
+      "model": "youkaisfeasts:block/tea_stage8"
+    },
+    "age=8,half=upper": {
+      "model": "youkaisfeasts:block/tea_stage8_upper"
     }
   }
 }
