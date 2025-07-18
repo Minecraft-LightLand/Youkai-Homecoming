@@ -10,6 +10,9 @@ import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
+import dev.xkmc.youkaishomecoming.content.item.curio.CamelliaItem;
+import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
+import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
@@ -51,6 +54,7 @@ public class YHItems {
 
 	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
 	public static final ItemEntry<Item> CLAY_SAUCER, CREAM, MATCHA, ICE_CUBE;
+	public static final ItemEntry<CamelliaItem> CAMELLIA;
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
 	public static final BlockEntry<SurpriseChestBlock> SURP_CHEST;
 	public static final BlockEntry<SurpriseFeastBlock> SURP_FEAST;
@@ -67,6 +71,7 @@ public class YHItems {
 		{
 			YHCrops.register();
 			YHTea.register();
+			CAMELLIA = YoukaisHomecoming.REGISTRATE.item("camellia", CamelliaItem::new).model(CamelliaItem::buildModel).register();
 			MATCHA = crop("matcha", Item::new);
 			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
 			RED_GRAPE_CRATE = YHCrops.RED_GRAPE.createCrate();
