@@ -553,41 +553,10 @@ public class YHRecipeGen {
 					.add(TagRef.CROPS)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POWER_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(YHCrops.SOYBEAN.getSeed())
-					.add(TagRef.RAW_PORK)
-					.add(TagRef.RAW_BEEF)
-					.add(TagRef.RAW_MUTTON)
-					.add(YHTagGen.RAW_VENISON)
-					.add(Items.KELP)
-					.add(TagRef.VEGETABLES_ONION)
-					.save(pvd);
-
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.MUSHROOM_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(YHItems.CREAM.get())
-					.add(Items.BROWN_MUSHROOM)
-					.add(TagRef.VEGETABLES_ONION)
-					.save(pvd);
-
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.POTATO_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(YHItems.CREAM.get())
-					.add(Items.POTATO)
-					.add(TagRef.RAW_PORK)
-					.add(TagRef.VEGETABLES_ONION)
-					.save(pvd);
-
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
 					.add(Items.RED_MUSHROOM)
 					.add(Items.BROWN_MUSHROOM)
 					.add(Tags.Items.MUSHROOMS)
-					.save(pvd);
-
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.BORSCHT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(YHItems.CREAM.get())
-					.add(Items.BEETROOT)
-					.add(Items.POTATO)
-					.add(TagRef.VEGETABLES_TOMATO)
-					.add(TagRef.VEGETABLES_ONION)
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
@@ -629,7 +598,7 @@ public class YHRecipeGen {
 					.add(YHFood.CRAB)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 200)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
 					.add(YHCrops.SOYBEAN.getSeed())
 					.add(YHFood.TOFU.item.get())
 					.add(YHFood.TOFU.item.get())
@@ -638,7 +607,7 @@ public class YHRecipeGen {
 					.add(Items.BROWN_MUSHROOM)
 					.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 200)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
 					.add(YHCrops.SOYBEAN.getSeed())
 					.add(YHFood.TOFU.item.get())
 					.add(YHFood.TOFU.item.get())
@@ -648,6 +617,48 @@ public class YHRecipeGen {
 					.add(TagRef.VEGETABLES_ONION)
 					.add(TagRef.RAW_FISHES_SALMON)
 					.add(TagRef.RAW_FISHES_SALMON)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POWER_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHCrops.SOYBEAN.getSeed())
+					.add(TagRef.RAW_PORK)
+					.add(TagRef.RAW_BEEF)
+					.add(TagRef.RAW_MUTTON)
+					.add(YHTagGen.RAW_VENISON)
+					.add(Items.KELP)
+					.add(Items.CARROT)
+					.add(TagRef.VEGETABLES_TOMATO)
+					.add(TagRef.FOOD_CABBAGE)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MUSHROOM_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHItems.CREAM.get())
+					.add(Items.BROWN_MUSHROOM)
+					.add(Items.BROWN_MUSHROOM)
+					.add(Items.BROWN_MUSHROOM)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POTATO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHItems.CREAM.get())
+					.add(Items.POTATO)
+					.add(Items.POTATO)
+					.add(Items.POTATO)
+					.add(TagRef.RAW_PORK)
+					.add(TagRef.VEGETABLES_ONION)
+					.save(pvd);
+
+			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.BORSCHT, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+					.add(YHItems.CREAM.get())
+					.add(Items.BEETROOT)
+					.add(Items.BEETROOT)
+					.add(Items.BEETROOT)
+					.add(TagRef.VEGETABLES_TOMATO)
+					.add(TagRef.VEGETABLES_TOMATO)
+					.add(Items.POTATO)
+					.add(TagRef.VEGETABLES_ONION)
+					.add(TagRef.RAW_BEEF)
 					.save(pvd);
 
 		}

@@ -8,11 +8,17 @@
       "item": "minecraft:brown_mushroom"
     },
     {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
       "tag": "forge:vegetables/onion"
     }
   ],
   "result": {
-    "item": "youkaisfeasts:mushroom_soup"
+    "item": "youkaisfeasts:pot_of_mushroom_soup"
   },
-  "time": 200
+  "time": 400
 }

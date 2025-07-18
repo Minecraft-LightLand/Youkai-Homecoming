@@ -1,0 +1,12 @@
+{
+  "parent": "youkaisfeasts:custom/bowl/stock/stock_serve4",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaisfeasts:block/bowl/stock/potato_soup",
+    "bottom": "youkaisfeasts:block/bowl/stock/stockpot_bottom",
+    "inside": "youkaisfeasts:block/bowl/stock/stockpot_inside",
+    "parts": "youkaisfeasts:block/bowl/stock/stockpot_parts",
+    "side": "youkaisfeasts:block/bowl/stock/stockpot_side",
+    "top": "youkaisfeasts:block/bowl/stock/stockpot_top"
+  }
+}

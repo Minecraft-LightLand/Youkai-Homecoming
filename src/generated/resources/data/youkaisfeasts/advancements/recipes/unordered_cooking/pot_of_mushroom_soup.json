@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_small_iron_pot": {
+    "has_stockpot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:small_iron_pot"
+              "youkaisfeasts:stockpot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:mushroom_soup"
+        "recipe": "youkaisfeasts:pot_of_mushroom_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_small_iron_pot",
+      "has_stockpot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:mushroom_soup"
+      "youkaisfeasts:pot_of_mushroom_soup"
     ]
   },
   "sends_telemetry_event": true

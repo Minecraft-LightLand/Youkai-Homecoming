@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_small_iron_pot": {
+    "has_stockpot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:small_iron_pot"
+              "youkaisfeasts:stockpot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:borscht"
+        "recipe": "youkaisfeasts:pot_of_borscht"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_small_iron_pot",
+      "has_stockpot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:borscht"
+      "youkaisfeasts:pot_of_borscht"
     ]
   },
   "sends_telemetry_event": true

@@ -67,7 +67,7 @@ public class LampreyEntity extends AbstractFish {
 		super.registerGoals();
 		goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, false));
 		targetSelector.addGoal(0, new HurtByTargetGoal(this));
-		targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, WaterAnimal.class, true,
+		targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, AbstractFish.class, true,
 				this::canAttack));
 	}
 
