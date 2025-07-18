@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.large;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
+import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
@@ -14,8 +16,12 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -62,6 +68,17 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 							.texture("base", pvd.modLoc("block/bowl/stock/" + tex))
 							.renderType("cutout");
 				}
+		);
+	}
+
+	public static void createLoot(RegistrateBlockLootTables pvd, Block block) {
+		pvd.add(block, LootTable.lootTable()
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(YHBlocks.STOCKPOT.asItem()))
+						.when(LootTableTemplate.silk(false)))
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Blocks.CAULDRON))
+						.when(LootTableTemplate.silk(true)))
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(YHBlocks.BIG_SPOON))
+						.when(LootTableTemplate.silk(true)))
 		);
 	}
 

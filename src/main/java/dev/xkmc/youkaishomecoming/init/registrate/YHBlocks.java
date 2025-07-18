@@ -14,6 +14,7 @@ import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodTableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.large.BigSpoonItem;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotRenderer;
@@ -31,13 +32,13 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
 import dev.xkmc.youkaishomecoming.content.pot.storage.rack.IngredientRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.storage.rack.IngredientRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.storage.rack.RackRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.storage.shelf.ShelfRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.storage.shelf.WineShelfBlock;
 import dev.xkmc.youkaishomecoming.content.pot.storage.shelf.WineShelfBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlock;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.table.board.CuisineBoardRenderer;
@@ -142,6 +143,7 @@ public class YHBlocks {
 	public static final BlockEntry<IronBowlBlock> IRON_BOWL, IRON_POT, STOCKPOT;
 	public static final BlockEntry<BowlBlock> WOOD_BOWL, BAMBOO_BOWL;
 	public static final BlockEntry<DelegateBlock> SMALL_POT, SHORT_POT, LARGE_POT;
+	public static final ItemEntry<BigSpoonItem> BIG_SPOON;
 	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
 	public static final BlockEntityEntry<MidCookingPotBlockEntity> MID_POT_BE;
 	public static final BlockEntityEntry<LargeCookingPotBlockEntity> LARGE_POT_BE;
@@ -293,6 +295,12 @@ public class YHBlocks {
 					.blockstate(LargeCookingPotBlock::buildState)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 					.item().build()
+					.loot(LargeCookingPotBlock::createLoot)
+					.register();
+
+			BIG_SPOON = YoukaisHomecoming.REGISTRATE.item("big_spoon", BigSpoonItem::new)
+					.properties(p->p.stacksTo(1))
+					.model(BigSpoonItem::buildModel)
 					.register();
 
 			WOOD_BOWL = BowlBlock.woodBowlFood("wood_bowl")
@@ -334,7 +342,7 @@ public class YHBlocks {
 					.properties(p -> p.sound(SoundType.METAL))
 					.blockstate(LargeCookingPotBlock::buildState)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-					.loot((pvd, b) -> pvd.dropOther(b, STOCKPOT.get()))
+					.loot(LargeCookingPotBlock::createLoot)
 					.register();
 
 			LARGE_POT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("cooking_stockpot", LargeCookingPotBlockEntity::new)

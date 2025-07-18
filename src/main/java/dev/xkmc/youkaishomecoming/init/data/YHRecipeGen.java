@@ -128,9 +128,15 @@ public class YHRecipeGen {
 					.define('B', Items.BOWL)
 					.save(pvd);
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.BIG_SPOON)::unlockedBy, Items.BOWL)
+					.pattern("  I").pattern(" I ").pattern("B  ")
+					.define('I', Items.STICK)
+					.define('B', Items.BOWL)
+					.save(pvd);
+
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHBlocks.STOCKPOT)::unlockedBy, Items.IRON_INGOT)
 					.requires(Items.CAULDRON)
-					.requires(Items.STICK)
+					.requires(YHBlocks.BIG_SPOON)
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.BASIN)::unlockedBy, Items.IRON_NUGGET)

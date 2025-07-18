@@ -55,7 +55,10 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 			}
 		}
 		if (fluidStack.isEmpty()) {
-			if (container.getTag() == null) return;
+			if (container.getTag() == null) {
+				container = YHItems.SAKE_BOTTLE.asStack();
+				return;
+			}
 			container.getOrCreateTag().remove("SakeFluid");
 			if (container.getOrCreateTag().isEmpty()) {
 				container.setTag(null);
