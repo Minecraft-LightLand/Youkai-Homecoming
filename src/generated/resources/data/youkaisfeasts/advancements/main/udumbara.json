@@ -18,7 +18,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "youkaisfeasts:udumbara_seeds"
+                "youkaisfeasts:udumbara_leaves"
               ]
             }
           }
@@ -35,7 +35,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaisfeasts:udumbara_seeds"
+      "item": "youkaisfeasts:udumbara_leaves"
     },
     "show_toast": true,
     "title": {

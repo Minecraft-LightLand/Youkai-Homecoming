@@ -49,7 +49,7 @@ public enum YHCrops {
 	SOYBEAN(PlantType.CROSS, 8, 12, null, "pods"),
 	REDBEAN(PlantType.CROSS, 8, 12, null, null),
 	TEA(PlantType.TEA, 6, 12, "tea_seeds", "tea_leaves"),
-	UDUMBARA(PlantType.UDUMBARA, 6, 12, "udumbara_seeds", "udumbara_flower"),
+	UDUMBARA(PlantType.UDUMBARA, 6, 12, "udumbara_leaves", "udumbara_flower"),
 	CUCUMBER(PlantType.CUCUMBER, 8, 24, "cucumber_seeds", "cucumber"),
 	RED_GRAPE(PlantType.GRAPE, 8, 12, "red_grape_seeds", "red_grape"),
 	BLACK_GRAPE(PlantType.GRAPE, 4, 48, "black_grape_seeds", "black_grape"),
