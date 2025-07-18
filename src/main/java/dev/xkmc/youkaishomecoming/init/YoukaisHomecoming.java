@@ -24,6 +24,8 @@ import dev.xkmc.youkaishomecoming.content.capability.*;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
@@ -86,8 +88,12 @@ public class YoukaisHomecoming {
 	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
-					e -> e.icon(YHItems.SUWAKO_HAT::asStack));
+			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Blocks",
+					e -> e.icon(YHBlocks.STEAMER_RACK::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> FOOD =
+			REGISTRATE.buildModCreativeTab("food", "Youkai's Homecoming - Food and Ingredients",
+					e -> e.icon(YHSushi.LORELEI_NIGIRI.item::asStack));
 
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
@@ -96,7 +102,6 @@ public class YoukaisHomecoming {
 		InitializationMarker.expectAndAdvance(0);
 		YHBlocks.register();
 		YHEffects.register();
-		YHDanmaku.register();
 		YHEntities.register();
 		YHAttributes.register();
 		YHSounds.register();

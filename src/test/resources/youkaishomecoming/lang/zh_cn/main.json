@@ -1,6 +1,7 @@
 {
 	"itemGroup.youkaishomecoming": {
-		"youkais_homecoming": "妖怪们的归家",
+		"block": "妖怪们的归家 - 方块",
+		"food": "妖怪们的归家 - 食物和原料",
 		"danmaku": "妖怪们的弹幕"
 	},
 	"entity.youkaishomecoming": {

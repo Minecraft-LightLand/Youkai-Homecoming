@@ -119,6 +119,8 @@ public class YHItems {
 			YELLOW_TEA_BAG = YHTea.YELLOW.createBags();
 		}
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.FOOD.getKey());
+
 		// ingredients
 		{
 			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
@@ -157,10 +159,19 @@ public class YHItems {
 
 		InitializationMarker.expectAndAdvance(4);
 		YHFood.register();
-		YHBowl.register();
-		YHPotFood.register();
 		YHSushi.register();
 		YHRolls.init();
+		YHBowl.register();
+		YHDish.register();
+		YHPotFood.register();
+
+		YHCoffee.register();
+		YHDrink.register();
+
+		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
+			FruitsDelightCompatFood.register();
+			FruitsDelightCompatDrink.register();
+		}
 
 		// feasts
 		{
@@ -197,14 +208,7 @@ public class YHItems {
 			TARTE_LUNE = new CakeEntry("tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 4, 0.6f, false);
 		}
 
-		YHDish.register();
-		YHCoffee.register();
-		YHDrink.register();
-
-		if (ModList.get().isLoaded(FruitsDelight.MODID)) {
-			FruitsDelightCompatFood.register();
-			FruitsDelightCompatDrink.register();
-		}
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
 
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(
@@ -226,6 +230,9 @@ public class YHItems {
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();
+
+		YHDanmaku.register();
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YHDanmaku.TAB.getKey());
 
 		// gears
 		{
