@@ -432,13 +432,6 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.MILK_BOTTLE)
 					.build(pvd, YHItems.CREAM.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.APAKI.item.get(), 1, 200, 0.1f, Items.BOWL)
-					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(TagRef.RAW_PORK)
-					.addIngredient(TagRef.RAW_PORK)
-					.addIngredient(Items.PINK_PETALS)
-					.build(pvd, YHFood.APAKI.item.getId());
-
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.AVGOLEMONO.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
 					.addIngredient(TagRef.EGGS)
@@ -726,7 +719,7 @@ public class YHRecipeGen {
 					.addIngredient(YHCrops.REDBEAN.getSeed())
 					.addIngredient(YHCrops.SOYBEAN.getSeed())
 					.addIngredient(Items.CHERRY_LEAVES)
-					.addIngredient(Items.CHORUS_FRUIT)
+					.addIngredient(YHTagGen.GRAPE)
 					.addIngredient(YHTagGen.MATCHA)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.build(pvd, YHDish.SEVEN_COLORED_YOKAN.block.getId());
@@ -917,11 +910,6 @@ public class YHRecipeGen {
 					.addInput(Items.SEA_PICKLE).addInput(Items.KELP).addInput(Items.PUFFERFISH)
 					.save(pvd, YHDrink.SUIGEI.item.getId());
 
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DAIGINJO.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(TagRef.GRAIN_RICE, 3)
-					.addInput(Items.NETHER_WART).addInput(Items.BLAZE_POWDER)
-					.save(pvd, YHDrink.DAIGINJO.item.getId());
-
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.DASSAI.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.NAUTILUS_SHELL)
@@ -931,11 +919,6 @@ public class YHRecipeGen {
 					.addInput(TagRef.GRAIN_RICE, 3)
 					.addInput(Items.NETHER_WART).addInput(Items.PHANTOM_MEMBRANE)
 					.save(pvd, YHDrink.TENGU_TANGO.item.getId());
-
-			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.SPARROW_SAKE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
-					.addInput(TagRef.GRAIN_RICE, 3)
-					.addInput(Items.FEATHER).addInput(Items.RABBIT_FOOT)
-					.save(pvd, YHDrink.SPARROW_SAKE.item.getId());
 
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.WATER, YHDrink.FULL_MOONS_EVE.fluid.getSource(), 2400)::unlockedBy, ModItems.RICE.get())
 					.addInput(TagRef.GRAIN_RICE, 3)

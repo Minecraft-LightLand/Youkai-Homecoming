@@ -103,7 +103,7 @@ public class YHAdvGen {
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
 						"Alcoholic", "Brew and drink an alcoholic drink and obtain Drunk effect")
-				.create("passed_out", YHDrink.DAIGINJO.item.asStack(),
+				.create("passed_out", YHDrink.DASSAI.item.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get(),
 										new MobEffectsPredicate.MobEffectInstancePredicate(

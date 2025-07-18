@@ -1,16 +1,6 @@
 {
   "parent": "youkaisfeasts:main/welcome_to_gensokyo",
   "criteria": {
-    "youkaisfeasts:apaki": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:apaki"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:assorted_dango": {
       "conditions": {
         "item": {
@@ -226,16 +216,6 @@
         "item": {
           "items": [
             "youkaisfeasts:cumberland_loin"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "youkaisfeasts:daiginjo": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:daiginjo"
           ]
         }
       },
@@ -1101,16 +1081,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "youkaisfeasts:sparrow_sake": {
-      "conditions": {
-        "item": {
-          "items": [
-            "youkaisfeasts:sparrow_sake"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "youkaisfeasts:steamed_crab": {
       "conditions": {
         "item": {
@@ -1487,9 +1457,6 @@
       "youkaisfeasts:mead"
     ],
     [
-      "youkaisfeasts:sparrow_sake"
-    ],
-    [
       "youkaisfeasts:kiku"
     ],
     [
@@ -1500,9 +1467,6 @@
     ],
     [
       "youkaisfeasts:suigei"
-    ],
-    [
-      "youkaisfeasts:daiginjo"
     ],
     [
       "youkaisfeasts:dassai"
@@ -1725,9 +1689,6 @@
     ],
     [
       "youkaisfeasts:shaved_ice_over_rice"
-    ],
-    [
-      "youkaisfeasts:apaki"
     ],
     [
       "youkaisfeasts:avgolemono"

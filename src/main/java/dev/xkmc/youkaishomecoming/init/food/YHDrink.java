@@ -72,10 +72,6 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
 	), YHTagGen.SAKE),
-	SPARROW_SAKE(FoodType.BAMBOO, 0xfffffacd, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.LUCK, 1200, 0, 1)
-	), YHTagGen.SAKE),
 	KIKU(FoodType.SAKE, 0xffd5d6b8, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1)
 	), YHTagGen.SAKE),
@@ -89,10 +85,6 @@ public enum YHDrink implements IYHFluidHolder {
 	SUIGEI(FoodType.SAKE, 0xffe3f9fb, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
 			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 1)
-	), YHTagGen.SAKE),
-	DAIGINJO(FoodType.SAKE, 0xffebc78b, List.of(
-			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 1200, 2, 1)
 	), YHTagGen.SAKE),
 	DASSAI(FoodType.SAKE, 0xffa86f64, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
