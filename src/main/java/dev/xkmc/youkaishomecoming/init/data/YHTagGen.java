@@ -77,6 +77,7 @@ public class YHTagGen {
 	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
 	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
+	public static final TagKey<Block> FARMLAND_TEA = block("farmland_tea");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
 	public static final TagKey<Block> CRAB_DIGABLE = block("crab_digable");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
@@ -128,6 +129,7 @@ public class YHTagGen {
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
+		pvd.addTag(FARMLAND_TEA).add(Blocks.GRASS, ModBlocks.RICH_SOIL.get());
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 		pvd.addTag(CRAB_DIGABLE).add(Blocks.SAND, Blocks.GRAVEL);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {

@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2harvester.api.HarvestResult;
 import dev.xkmc.l2harvester.api.HarvestableBlock;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -39,6 +40,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -142,7 +144,12 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 
 	@Override
 	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-		return super.mayPlaceOn(pState, pLevel, pPos);
+		return pState.is(YHTagGen.FARMLAND_TEA);
+	}
+
+	@Override
+	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
+		return  PlantType.get("tea");
 	}
 
 	protected ItemLike getBaseSeedId() {
@@ -258,14 +265,7 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 								.add(LootItem.lootTableItem(crop.getSeed()))
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HALF, DoubleBlockHalf.LOWER))))
-						.withPool(LootPool.lootPool()
-								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 6)))
-								.add(LootItem.lootTableItem(crop.getFruits())
-										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
-								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HALF, DoubleBlockHalf.LOWER)))
-						)));
+		));
 	}
 
 }

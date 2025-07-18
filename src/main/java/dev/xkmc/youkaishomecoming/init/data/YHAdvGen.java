@@ -116,9 +116,9 @@ public class YHAdvGen {
 		root.create("tea", YHCrops.TEA.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
+										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_TEA).build()),
 								ItemPredicate.Builder.item().of(YHCrops.TEA.getSeed()))),
-						"Refreshing Hobby", "Plant Tea")
+						"Refreshing Hobby", "Plant Tea on grass block. You can only collect leaves before it starts flowering")
 				.create("tea_master", YHDrink.OOLONG_TEA.item.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
 										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.BLACK_TEA
