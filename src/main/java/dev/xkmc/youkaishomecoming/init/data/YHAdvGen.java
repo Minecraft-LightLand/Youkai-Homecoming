@@ -121,7 +121,7 @@ public class YHAdvGen {
 						"Refreshing Hobby", "Plant Tea on grass block. You can only collect leaves before it starts flowering")
 				.create("tea_master", YHDrink.OOLONG_TEA.item.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
-										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.BLACK_TEA
+										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.DARK_TEA, YHDrink.YELLOW_TEA
 								).map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
 								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Tea Master", "Drink all kinds of tea in original flavor")

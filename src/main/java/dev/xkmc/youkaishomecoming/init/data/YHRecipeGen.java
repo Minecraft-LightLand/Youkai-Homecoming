@@ -288,9 +288,9 @@ public class YHRecipeGen {
 			drying(pvd, DataIngredient.items(YHTea.GREEN.leaves.get()), YHTea.YELLOW.leaves);
 			pvd.campfire(DataIngredient.items(YHTea.WHITE.leaves.get()), RecipeCategory.MISC, YHTea.OOLONG.leaves, 0.1f, 200);
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHTea.WHITE.leaves.get())
-					.addInput(YHTea.WHITE.leaves.get()).addInput(YHTea.BLACK.leaves).save(pvd, YHTea.BLACK.leaves.getId());
+					.addInput(YHTea.WHITE.leaves.get()).addOutput(YHTea.BLACK.leaves).save(pvd, YHTea.BLACK.leaves.getId());
 			unlock(pvd, new SimpleFermentationBuilder(Fluids.EMPTY, 1800)::unlockedBy, YHTea.GREEN.leaves.get())
-					.addInput(YHTea.GREEN.leaves.get()).addInput(YHTea.DARK.leaves).save(pvd, YHTea.DARK.leaves.getId());
+					.addInput(YHTea.GREEN.leaves.get()).addOutput(YHTea.DARK.leaves).save(pvd, YHTea.DARK.leaves.getId());
 			steaming(pvd, DataIngredient.items(YHFood.CRAB.item.get()), YHFood.STEAMED_CRAB.item);
 
 			CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.SALMON_BUCKET),

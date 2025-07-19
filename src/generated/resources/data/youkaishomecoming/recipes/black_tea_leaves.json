@@ -3,9 +3,6 @@
   "ingredients": [
     {
       "item": "youkaishomecoming:white_tea_leaves"
-    },
-    {
-      "item": "youkaishomecoming:black_tea_leaves"
     }
   ],
   "inputFluid": {
@@ -16,6 +13,10 @@
     "amount": 0,
     "fluid": "minecraft:empty"
   },
-  "results": [],
+  "results": [
+    {
+      "item": "youkaishomecoming:black_tea_leaves"
+    }
+  ],
   "time": 1800
 }

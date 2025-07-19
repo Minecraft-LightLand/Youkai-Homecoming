@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-19T12:49:05.389112	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-19T13:00:24.582704	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -2124,7 +2124,7 @@ fad6d68a15f18cfcbdd54fa9affd69baffe89e3f data/youkaishomecoming/advancements/mai
 a1355bab0b763972cee912db48236330e0d7b380 data/youkaishomecoming/advancements/main/suwako_wear.json
 b8c6921bc94784ffa99d958372f5c333da94bd64 data/youkaishomecoming/advancements/main/sweet.json
 f8e1f4b78acff8589d94de2b699b7cbdbf7d30ea data/youkaishomecoming/advancements/main/tea.json
-837629b691db3eb4805ac3ae35e20b9321586a91 data/youkaishomecoming/advancements/main/tea_master.json
+d0899c0afdc82efe8facf7951b633f72625fb968 data/youkaishomecoming/advancements/main/tea_master.json
 c56d0f4cf1aa9288601203846ab8e5d68bbdf93c data/youkaishomecoming/advancements/main/trade_danmaku.json
 cb32f951de8d4a0a5a594b0df067029406b2e0ec data/youkaishomecoming/advancements/main/udumbara.json
 084b0071c30aa40f8b5df1bd4d4ae15ada9e7c6f data/youkaishomecoming/advancements/main/udumbara_flower.json
@@ -2909,7 +2909,7 @@ add9afede6284adf5061cfcf26d5aa83f7e6cfeb data/youkaishomecoming/recipes/black_st
 e96c047895be465f78718b64edc80011683c2626 data/youkaishomecoming/recipes/black_star_danmaku_upgrade.json
 efb5a420048d0206b3ad705a439d33046ea55e5c data/youkaishomecoming/recipes/black_tea.json
 5b8750652e5790aaee09f62c235e6dac35a0215c data/youkaishomecoming/recipes/black_tea_bag.json
-68d8079e7cebc36afeae9a097b88d388df7f624f data/youkaishomecoming/recipes/black_tea_leaves.json
+9911838f8d4052eab885b41bdfa9b3675cde8e17 data/youkaishomecoming/recipes/black_tea_leaves.json
 fd9e29ca077243b595e6278ac015be354f51d4f7 data/youkaishomecoming/recipes/black_tea_leaves_from_black_tea_bag.json
 ad14841a67fc495d7e0c6e4485d3051fe70befeb data/youkaishomecoming/recipes/blazing_red_curry.json
 4d52b666829baf4a10d8cf41d379057811e97037 data/youkaishomecoming/recipes/blood_curd.json
@@ -3022,7 +3022,7 @@ fed35abf6f31ab3beabcca1a1f48f70172c98d67 data/youkaishomecoming/recipes/dark_oak
 ea19976bef66e0fbad586d9f87a2edc73a8e4beb data/youkaishomecoming/recipes/dark_oak_handrail_from_dark_oak_planks_stonecutting.json
 69e1c46b52b2694ae555a704174fc25694d6afce data/youkaishomecoming/recipes/dark_tea.json
 4ac33f65d61e0132632fc01df83725f66c4cb254 data/youkaishomecoming/recipes/dark_tea_bag.json
-173ec7516be226582b3e8c37a05804724e373dfc data/youkaishomecoming/recipes/dark_tea_leaves.json
+b59f94d358b8ff96e316b4a5c67787d9e9ab8de9 data/youkaishomecoming/recipes/dark_tea_leaves.json
 ad5f3d93da8e3d72971f9c2cafafbf504e83e720 data/youkaishomecoming/recipes/dark_tea_leaves_from_dark_tea_bag.json
 4d747f50591a362baebc334c5777ed1ad35698a7 data/youkaishomecoming/recipes/dassai.json
 e4836384b8e6286bb185650ce8ecbfbf1d535a49 data/youkaishomecoming/recipes/dead_bush_from_saplings_drying.json
@@ -3536,7 +3536,7 @@ f0b0e246b9546b0fab51083062ee694428efdb50 data/youkaishomecoming/tags/blocks/crab
 af93eccd2e52c10c576062e6c8f5b4194221436b data/youkaishomecoming/tags/blocks/farmland_coffea.json
 2f4f8108be72ce57019dc5b5cd0e54ad643da258 data/youkaishomecoming/tags/blocks/farmland_redbean.json
 f648df024104552d1abe9766e973665c92a73ef7 data/youkaishomecoming/tags/blocks/farmland_soybean.json
-45f0c9f37b3d833d3fbc8d53cfd493548407d1a8 data/youkaishomecoming/tags/blocks/farmland_tea.json
+7910a4c19f50fc9284b8ea91787b1487fa117caf data/youkaishomecoming/tags/blocks/farmland_tea.json
 1067e2c946230a60105e9d04673b64c685f86e3c data/youkaishomecoming/tags/entity_types/cannot_capture.json
 da9ec5f7ed64a0d225e00ee60b8e6d6408b431fb data/youkaishomecoming/tags/entity_types/drops_creeper_head.json
 9bbac7c10fca34d9d642425caaf4d832d44f0fd1 data/youkaishomecoming/tags/entity_types/drops_piglin_head.json

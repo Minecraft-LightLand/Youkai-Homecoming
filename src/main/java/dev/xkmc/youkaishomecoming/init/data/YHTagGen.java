@@ -129,7 +129,7 @@ public class YHTagGen {
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
-		pvd.addTag(FARMLAND_TEA).add(Blocks.GRASS, ModBlocks.RICH_SOIL.get());
+		pvd.addTag(FARMLAND_TEA).add(Blocks.GRASS_BLOCK, ModBlocks.RICH_SOIL.get());
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
 		pvd.addTag(CRAB_DIGABLE).add(Blocks.SAND, Blocks.GRAVEL);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {

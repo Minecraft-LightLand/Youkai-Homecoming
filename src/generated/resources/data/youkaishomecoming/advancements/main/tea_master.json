@@ -1,11 +1,11 @@
 {
   "parent": "youkaishomecoming:main/tea",
   "criteria": {
-    "youkaishomecoming:black_tea": {
+    "youkaishomecoming:dark_tea": {
       "conditions": {
         "item": {
           "items": [
-            "youkaishomecoming:black_tea"
+            "youkaishomecoming:dark_tea"
           ]
         }
       },
@@ -40,6 +40,16 @@
         }
       },
       "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:yellow_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:yellow_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
@@ -68,7 +78,10 @@
       "youkaishomecoming:green_tea"
     ],
     [
-      "youkaishomecoming:black_tea"
+      "youkaishomecoming:dark_tea"
+    ],
+    [
+      "youkaishomecoming:yellow_tea"
     ]
   ],
   "sends_telemetry_event": true

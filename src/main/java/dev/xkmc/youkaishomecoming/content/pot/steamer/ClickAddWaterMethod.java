@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -23,8 +25,9 @@ public class ClickAddWaterMethod implements OnClickBlockMethod {
 					if (!player.getAbilities().instabuild) {
 						player.setItemInHand(hand, Items.BUCKET.getDefaultInstance());
 					}
+					level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1, 1);
 				}
-				return InteractionResult.CONSUME;
+				return InteractionResult.SUCCESS;
 			}
 		}
 		return InteractionResult.PASS;
