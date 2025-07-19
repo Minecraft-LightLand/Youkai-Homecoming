@@ -40,7 +40,7 @@ public enum FruitsDelightCompatDrink implements IYHFluidHolder {
 						p -> new YHFluid(p, this))
 				.defaultLang().register();
 		folder = "fruitsdelight";
-		item = type.build(p -> new SakeBottleItem(fluid, p), folder + "/",
+		item = type.build(p -> new SakeBottleItem(fluid::getSource, p), folder + "/",
 				name, 0, 0, tags, effs);
 
 	}

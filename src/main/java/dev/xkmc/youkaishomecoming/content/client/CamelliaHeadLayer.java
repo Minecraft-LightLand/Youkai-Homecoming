@@ -36,10 +36,8 @@ public class CamelliaHeadLayer<T extends LivingEntity, M extends HumanoidModel<T
 	@Override
 	public void render(PoseStack pose, MultiBufferSource buffer, int light, T e, float swing, float swingAmp, float pTick, float age, float yaw, float pitch) {
 		if (!CuriosManager.hasHead(e, YHItems.CAMELLIA.get(), true)) return;
-
+		getParentModel().copyPropertiesTo(model);
 		pose.pushPose();
-		pose.scale(2, 2, 2);
-		pose.translate(0, -0.75, 0);
 
 		Minecraft minecraft = Minecraft.getInstance();
 		boolean flag = minecraft.shouldEntityAppearGlowing(e) && e.isInvisible();
@@ -50,8 +48,6 @@ public class CamelliaHeadLayer<T extends LivingEntity, M extends HumanoidModel<T
 			} else {
 				vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(e)));
 			}
-			this.model.prepareMobModel(e, swing, swingAmp, pTick);
-			this.model.setupAnim(e, swing, swingAmp, age, yaw, pitch);
 			this.model.renderToBuffer(pose, vertexconsumer, light,
 					LivingEntityRenderer.getOverlayCoords(e, 0.0F),
 					1.0F, 1.0F, 1.0F, 1.0F);
