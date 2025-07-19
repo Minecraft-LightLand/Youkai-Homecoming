@@ -73,13 +73,6 @@ description='''
     ordering="NONE"
     side="BOTH"
 [[dependencies.youkaisfeasts]]
-    modId="touhou_little_maid"
-    mandatory=false
-    # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.1.9,)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.youkaisfeasts]]
     modId="create"
     mandatory=false
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
