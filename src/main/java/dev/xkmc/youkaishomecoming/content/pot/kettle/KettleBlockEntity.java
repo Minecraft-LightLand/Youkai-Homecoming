@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
 import dev.xkmc.l2library.base.tile.BaseTank;
+import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
@@ -17,6 +18,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
@@ -44,7 +46,7 @@ import static net.minecraft.world.level.block.Block.popResource;
 
 @SerialClass
 public class KettleBlockEntity extends TimedRecipeBlockEntity<KettleRecipe, SimpleContainer>
-		implements InfoTile, HeatableBlockEntity, LeftClickBlock, FluidItemTile {
+		implements InfoTile, HeatableBlockEntity, LeftClickBlock, FluidItemTile, BlockContainer {
 
 	@SerialClass.SerialField
 	private final KettleContainer items = new KettleContainer(4).setMax(1).add(this);
@@ -93,6 +95,11 @@ public class KettleBlockEntity extends TimedRecipeBlockEntity<KettleRecipe, Simp
 	@Override
 	protected SimpleContainer createContainer() {
 		return items;
+	}
+
+	@Override
+	public List<Container> getContainers() {
+		return List.of(items);
 	}
 
 	@Override
@@ -151,6 +158,7 @@ public class KettleBlockEntity extends TimedRecipeBlockEntity<KettleRecipe, Simp
 		for (var e : items.getAsList()) {
 			list.add(e.save(new CompoundTag()));
 		}
+		items.clear();
 		stack.addTagElement("KettleContents", list);
 		stack.addTagElement("KettleFluid", fluids.getFluidInTank(0).writeToNBT(new CompoundTag()));
 		stack.addTagElement("KettleHeat", IntTag.valueOf(heat));
