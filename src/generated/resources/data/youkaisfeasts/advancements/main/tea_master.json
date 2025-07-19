@@ -1,11 +1,21 @@
 {
-  "parent": "youkaisfeasts:main/tea",
+  "parent": "youkaisfeasts:main/tea_leaves",
   "criteria": {
     "youkaisfeasts:black_tea": {
       "conditions": {
         "item": {
           "items": [
             "youkaisfeasts:black_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:dark_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:dark_tea"
           ]
         }
       },
@@ -40,6 +50,16 @@
         }
       },
       "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:yellow_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:yellow_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
@@ -68,7 +88,13 @@
       "youkaisfeasts:green_tea"
     ],
     [
+      "youkaisfeasts:dark_tea"
+    ],
+    [
       "youkaisfeasts:black_tea"
+    ],
+    [
+      "youkaisfeasts:yellow_tea"
     ]
   ],
   "sends_telemetry_event": true

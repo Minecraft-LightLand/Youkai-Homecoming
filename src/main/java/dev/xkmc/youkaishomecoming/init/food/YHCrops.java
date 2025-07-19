@@ -82,7 +82,6 @@ public enum YHCrops {
 
 		var seedBuilder = YHItems.seed(sname, p -> type.item(getPlant(), p));
 		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(ForgeTags.SEEDS);
-		if (type == PlantType.UDUMBARA) seedBuilder.lang("Udumbara Leaves");
 		seed = seedBuilder.register();
 
 		fruits = fruit == null ? seed :

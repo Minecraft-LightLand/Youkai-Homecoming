@@ -3,8 +3,6 @@ package dev.xkmc.youkaishomecoming.content.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.xkmc.youkaishomecoming.compat.curios.CuriosManager;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoModel;
-import dev.xkmc.youkaishomecoming.content.entity.fairy.CirnoRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.client.Minecraft;

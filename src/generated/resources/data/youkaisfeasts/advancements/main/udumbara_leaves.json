@@ -1,24 +1,24 @@
 {
-  "parent": "youkaisfeasts:main/grape_cut",
+  "parent": "youkaisfeasts:main/udumbara",
   "criteria": {
     "0": {
       "conditions": {},
-      "trigger": "youkaisfeasts:grape_harvest"
+      "trigger": "youkaisfeasts:udumbara_leaves"
     }
   },
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.youkaisfeasts.advancements.main.grape_harvest.description"
+      "translate": "advancements.youkaisfeasts.advancements.main.udumbara_leaves.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaisfeasts:red_grape"
+      "item": "youkaisfeasts:udumbara_leaves"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.youkaisfeasts.advancements.main.grape_harvest.title"
+      "translate": "advancements.youkaisfeasts.advancements.main.udumbara_leaves.title"
     }
   },
   "requirements": [

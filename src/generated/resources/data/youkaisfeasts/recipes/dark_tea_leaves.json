@@ -3,9 +3,6 @@
   "ingredients": [
     {
       "item": "youkaisfeasts:green_tea_leaves"
-    },
-    {
-      "item": "youkaisfeasts:dark_tea_leaves"
     }
   ],
   "inputFluid": {
@@ -16,6 +13,10 @@
     "amount": 0,
     "fluid": "minecraft:empty"
   },
-  "results": [],
+  "results": [
+    {
+      "item": "youkaisfeasts:dark_tea_leaves"
+    }
+  ],
   "time": 1800
 }

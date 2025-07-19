@@ -1,12 +1,12 @@
 {
-  "parent": "youkaisfeasts:main/udumbara_leaves",
+  "parent": "youkaisfeasts:main/tea",
   "criteria": {
     "0": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:udumbara_flower"
+              "youkaisfeasts:camellia"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.youkaisfeasts.advancements.main.udumbara_flower.description"
+      "translate": "advancements.youkaisfeasts.advancements.main.camellia.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaisfeasts:udumbara_flower"
+      "item": "youkaisfeasts:camellia"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.youkaisfeasts.advancements.main.udumbara_flower.title"
+      "translate": "advancements.youkaisfeasts.advancements.main.camellia.title"
     }
   },
   "requirements": [

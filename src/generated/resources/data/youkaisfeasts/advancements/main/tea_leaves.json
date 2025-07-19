@@ -1,12 +1,12 @@
 {
-  "parent": "youkaisfeasts:main/udumbara_leaves",
+  "parent": "youkaisfeasts:main/tea",
   "criteria": {
     "0": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaisfeasts:udumbara_flower"
+              "youkaisfeasts:tea_leaves"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.youkaisfeasts.advancements.main.udumbara_flower.description"
+      "translate": "advancements.youkaisfeasts.advancements.main.tea_leaves.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaisfeasts:udumbara_flower"
+      "item": "youkaisfeasts:tea_leaves"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.youkaisfeasts.advancements.main.udumbara_flower.title"
+      "translate": "advancements.youkaisfeasts.advancements.main.tea_leaves.title"
     }
   },
   "requirements": [
