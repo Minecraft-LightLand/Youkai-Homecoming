@@ -48,8 +48,8 @@ public class YoukaisHomecoming {
 			loc("main"), 2);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("block", "Youkais' Feasts - Blocks and Tools",
-					e -> e.icon(YHItems.BLACK_TEA_BAG::asStack));
+			REGISTRATE.buildModCreativeTab("block", "Youkais' Feasts - Crops and Tools",
+					e -> e.icon(YHItems.CAMELLIA::asStack));
 
 	public static final RegistryEntry<CreativeModeTab> FOOD =
 			REGISTRATE.buildModCreativeTab("food", "Youkais' Feasts - Food and Ingredients",

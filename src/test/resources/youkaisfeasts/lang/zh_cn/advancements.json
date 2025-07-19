@@ -16,7 +16,7 @@
 		"welcome_to_gensokyo.title": "幻想乡的飨宴",
 		"tea_master.description": "品尝所有原味茶",
 		"tea_master.title": "小罐茶，大师作",
-		"udumbara.description": "种植幻昙华。这种植物在月光下成长，在阳光下枯萎",
+		"udumbara.description": "种植幻昙华叶片。这种植物在月光下成长，在阳光下枯萎",
 		"udumbara.title": "月光作物",
 		"udumbara_flower.description": "获得幻昙花。幻昙华只在满月夜的月光下开花，开花10秒之后花将会凋谢",
 		"udumbara_flower.title": "昙花一现",
@@ -42,7 +42,7 @@
 		"foreign_sushi_master.title": "出口转内销",
 		"kaguya_hime.description": "制作并蒸熟竹取物语",
 		"kaguya_hime.title": "竹中公主的故事",
-		"small_pot.description": "用铁碗煮点什么",
+		"small_pot.description": "用小铁锅/矮锅/大汤锅煮点什么",
 		"small_pot.title": "归家暖意",
 		"sushi_master.description": "制作金枪鱼大腹握寿司,夜雀的手握,鱼籽军舰,缤纷太卷切片",
 		"sushi_master.title": "寿司仙人",
@@ -53,6 +53,12 @@
 		"steamer.description": "用蒸笼蒸一个物品",
 		"steamer.title": "蒸汽腾腾",
 		"dish.description": "蒸一份盘装或竹筒菜。注意他们会严重阻碍蒸汽流动，导致别的蒸笼蒸得更慢",
-		"dish.title": "蒸汽拦路虎"
+		"dish.title": "蒸汽拦路虎",
+		"camellia.description": "从茶植株上采摘山茶花",
+		"camellia.title": "山茶花香",
+		"tea_leaves.description": "在茶植株开花前采摘茶叶",
+		"tea_leaves.title": "淡雅芬芳",
+		"udumbara_leaves.description": "在幻昙花临近成熟时摘下叶子",
+		"udumbara_leaves.title": "扦插"
 	}
 }

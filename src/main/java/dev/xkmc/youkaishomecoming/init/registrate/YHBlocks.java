@@ -416,6 +416,9 @@ public class YHBlocks {
 		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
+
+
 		{
 			MOON_LANTERN = YoukaisHomecoming.REGISTRATE.block("moon_lantern", p -> new MoonLanternBlock(
 							BlockBehaviour.Properties.copy(Blocks.LANTERN)))

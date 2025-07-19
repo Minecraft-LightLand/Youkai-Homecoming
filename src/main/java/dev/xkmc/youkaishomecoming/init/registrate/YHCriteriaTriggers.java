@@ -7,14 +7,15 @@ import net.minecraft.advancements.critereon.PlayerTrigger;
 
 public class YHCriteriaTriggers {
 
-	public static final PlayerTrigger CUCUMBER = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("cucumber")));
-	public static final PlayerTrigger GRAPE_CUT = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("grape_cut")));
-	public static final PlayerTrigger GRAPE_HARVEST = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("grape_harvest")));
-	public static final PlayerTrigger BASIN = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("basin")));
-	public static final PlayerTrigger COOKING = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("cooking")));
+	public static final PlayerTrigger CUCUMBER = reg("cucumber");
+	public static final PlayerTrigger GRAPE_CUT = reg("grape_cut");
+	public static final PlayerTrigger GRAPE_HARVEST = reg("grape_harvest");
+	public static final PlayerTrigger BASIN = reg("basin");
+	public static final PlayerTrigger COOKING = reg("cooking");
 	public static final SteamTrigger STEAM = CriteriaTriggers.register(new SteamTrigger());
-	public static final PlayerTrigger TABLE = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("table")));
-	public static final PlayerTrigger CRAB_GRAB = CriteriaTriggers.register(new PlayerTrigger(YoukaisHomecoming.loc("crab_grab")));
+	public static final PlayerTrigger TABLE = reg("table");
+	public static final PlayerTrigger CRAB_GRAB = reg("crab_grab");
+	public static final PlayerTrigger UDUMBARA_LEAVES = reg("udumbara_leaves");
 
 
 	private static PlayerTrigger reg(String id) {

@@ -37,7 +37,7 @@ public class GeneralEventHandlers {
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {
-		return player.hasEffect(YHEffects.SOBER.get()) || player.getItemBySlot(EquipmentSlot.HEAD).is(YHItems.CAMELLIA.get());
+		return player.hasEffect(YHEffects.SOBER.get()) || CuriosManager.hasHead(player, YHItems.CAMELLIA.get(), false);
 	}
 
 	public static boolean supressVibration(Entity self) {

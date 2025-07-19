@@ -63,7 +63,7 @@ public class YHAdvGen {
 		grape.create("grape_cut", Items.SHEARS,
 						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.GRAPE_CUT.getId(), ContextAwarePredicate.ANY)),
 						"Niwaki", "Cut the leaves off a mature grape crop so that it can grow larger. Make sure it has 3 ropes in a row to climb onto.")
-				.create("grape_harvest", Items.SHEARS,
+				.create("grape_harvest", YHCrops.RED_GRAPE.getFruits(),
 						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.GRAPE_HARVEST.getId(), ContextAwarePredicate.ANY)),
 						"The Best Bunch", "Harvest grape hanging under a grape branch");
 		grape.create("squeeze", YHBlocks.BASIN.asItem(),
@@ -76,25 +76,32 @@ public class YHAdvGen {
 								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN).build()),
 						ItemPredicate.Builder.item().of(YHCrops.REDBEAN.getSeed()))),
 				"Leanness Resistant Red Bean", "Plant Red Bean on Coarse Dirt, Mud, or Clay");
-		root.create("tea", YHCrops.TEA.getSeed(),
-						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
-								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_TEA).build()),
-								ItemPredicate.Builder.item().of(YHCrops.TEA.getSeed()))),
-						"Refreshing Hobby", "Plant Tea on grass block. You can only collect leaves before it starts flowering")
+		var tea = root.create("tea", YHCrops.TEA.getSeed(),
+				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+						LocationPredicate.Builder.location().setBlock(
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_TEA).build()),
+						ItemPredicate.Builder.item().of(YHCrops.TEA.getSeed()))),
+				"Refreshing Hobby", "Plant Tea on grass block.");
+		tea.create("camellia", YHItems.CAMELLIA.asItem(), CriterionBuilder.item(YHItems.CAMELLIA.asItem()),
+				"Scent of Camellia", "Collect Camellia from tea crop");
+		tea.create("tea_leaves", YHCrops.TEA.getFruits(), CriterionBuilder.item(YHCrops.TEA.getFruits()),
+						"Mellow Fragrance", "Collect tea leaves before tea crop starts flowering")
 				.create("tea_master", YHDrink.OOLONG_TEA.item.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
-										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.BLACK_TEA
+										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.DARK_TEA, YHDrink.BLACK_TEA, YHDrink.YELLOW_TEA
 								).map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
 								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Tea Master", "Drink all kinds of tea in original flavor")
 				.type(FrameType.GOAL, true, true, false);
-		root.create("udumbara", YHCrops.UDUMBARA.getSeed(),
+		root.create("udumbara", YHCrops.UDUMBARA.getWildPlant().asItem(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
 										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
 								ItemPredicate.Builder.item().of(YHCrops.UDUMBARA.getSeed()))),
-						"Moon Crop", "Plants an Udumbara. It grows under moonlight and shrinks under sunlight.")
+						"Moon Crop", "Plants an Udumbara with its leaves. It grows under moonlight and shrinks under sunlight.")
+				.create("udumbara_leaves", YHCrops.UDUMBARA.getSeed(),
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.UDUMBARA_LEAVES.getId(), ContextAwarePredicate.ANY)),
+						"Transplant", "Harvest Udumbara Leaves from Udumbaar crop near maturity")
 				.create("udumbara_flower", YHCrops.UDUMBARA.getFruits(),
 						CriterionBuilder.item(YHCrops.UDUMBARA.getFruits()),
 						"Fragile Flower", "Get an Udubara flower. It will only appear for 10 seconds during full moon.")
@@ -113,9 +120,9 @@ public class YHAdvGen {
 		root.create("crab_grab", YHItems.CRAB_BUCKET.asItem(),
 				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CRAB_GRAB.getId(), ContextAwarePredicate.ANY)),
 				"Crab Grab", "Have a crab grab your water bucket when attempting to bucket a crab");
-		root.create("small_pot", YHBlocks.IRON_BOWL.asStack(),
+		root.create("small_pot", YHBlocks.SHORT_POT.asStack(),
 				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
-				"Hotpot", "Cooking with iron bowl");//TODO more pots
+				"Hotpot", "Cooking with small iron pot / short pot / stockpot");
 		var steam = root.create("steamer", YHBlocks.STEAMER_POT.asStack(),
 				CriterionBuilder.one(SteamTrigger.steam(MinMaxBounds.Ints.ANY)),
 				"Steam and Racks", "Steam some food");
