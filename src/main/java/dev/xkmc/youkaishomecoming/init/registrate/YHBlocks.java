@@ -463,6 +463,9 @@ public class YHBlocks {
 		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
+
+
 		{
 			DONATION_BOX = YoukaisHomecoming.REGISTRATE.block("donation_box", p -> DelegateBlock.newBaseBlock(
 							BlockBehaviour.Properties.of().noLootTable().strength(2.0F).sound(SoundType.WOOD)

@@ -13,10 +13,16 @@ public class LampreyModel<T extends Entity> extends HierarchicalModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(YoukaisHomecoming.loc("lamprey"), "main");
 
 	public static LayerDefinition createBodyLayer() {
+
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
-		partdefinition.addOrReplaceChild("front", CubeListBuilder.create().texOffs(1, 19).addBox(-1.0F, -1.75F, -9.025F, 2.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)).texOffs(15, 0).addBox(-1.0F, -0.75F, -11.525F, 2.0F, 2.0F, 2.5F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.75F, 1.025F));
-		partdefinition.addOrReplaceChild("back", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -1.375F, 0.0F, 2.0F, 3.0F, 10.0F, new CubeDeformation(0.0F)).texOffs(0, -1).addBox(0.0F, -2.125F, 0.0F, 0.0F, 4.0F, 15.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.375F, 1.0F));
+
+		PartDefinition front = partdefinition.addOrReplaceChild("front", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.81F, -8.95F, 2.0F, 1.0F, 3.0F, new CubeDeformation(-0.3F))
+				.texOffs(0, 14).addBox(-1.0F, -1.5F, -9.0F, 2.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.5F, 1.0F));
+
+		PartDefinition back = partdefinition.addOrReplaceChild("back", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -1.5F, 0.0F, 2.0F, 3.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 11).addBox(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 16.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.5F, 1.0F));
+
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
 

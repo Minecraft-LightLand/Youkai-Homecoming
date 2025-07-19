@@ -39,13 +39,12 @@ public class CamelliaItem extends Item {
 				.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("item/generated")))
 				.texture("layer0", pvd.modLoc("item/crops/" + ctx.getName()));
 		var blockModel = new ItemModelBuilder(null, pvd.existingFileHelper)
-				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/camellia")))
-				.texture("parts", pvd.modLoc("block/plants/tea/camellia_flower_base"))
-				.renderType("cutout");
+				.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("block/air")));
 		pvd.getBuilder("item/" + ctx.getName())
 				.guiLight(BlockModel.GuiLight.FRONT)
 				.customLoader(SeparateTransformsModelBuilder::begin)
 				.base(itemModel)
 				.perspective(ItemDisplayContext.HEAD, blockModel);
 	}
+
 }

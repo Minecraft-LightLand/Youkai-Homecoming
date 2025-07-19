@@ -9,6 +9,18 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 public class CuriosManager {
 
+	public static boolean hasHead(LivingEntity le, Item item, boolean checkRender) {
+		if (le.getItemBySlot(EquipmentSlot.HEAD).is(item))
+			return true;
+		if (ModList.get().isLoaded("curios")) {
+			return CuriosApi.getCuriosInventory(le)
+					.resolve().flatMap(e -> e.findFirstCurio(item))
+					.map(e -> !checkRender || e.slotContext().visible())
+					.orElse(false);
+		}
+		return false;
+	}
+
 	public static boolean hasWings(LivingEntity le, Item item, boolean checkRender) {
 		if (le.getItemBySlot(EquipmentSlot.CHEST).is(item))
 			return true;
