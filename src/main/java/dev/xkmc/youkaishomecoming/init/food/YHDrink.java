@@ -163,7 +163,7 @@ public enum YHDrink implements IYHFluidHolder {
 				.defaultLang().register();
 		folder = name.contains("tea") || name.contains("water") ? "drink" :
 				name.contains("juice") || tags.length > 0 && tags[0] == YHTagGen.WINE ? "wine" : "sake";
-		item = type.build(p -> new SakeBottleItem(fluid, p), "food/" + folder + "/",
+		item = type.build(p -> new SakeBottleItem(fluid::getSource, p), "food/" + folder + "/",
 				name, 0, 0, tags, effs);
 
 		if (tags.length > 0 && tags[0] == YHTagGen.WINE) {
