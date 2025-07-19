@@ -1,12 +1,12 @@
 {
-  "parent": "youkaishomecoming:main/udumbara_leaves",
+  "parent": "youkaishomecoming:main/tea",
   "criteria": {
     "0": {
       "conditions": {
         "items": [
           {
             "items": [
-              "youkaishomecoming:udumbara_flower"
+              "youkaishomecoming:camellia"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.youkaishomecoming.advancements.main.udumbara_flower.description"
+      "translate": "advancements.youkaishomecoming.advancements.main.camellia.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaishomecoming:udumbara_flower"
+      "item": "youkaishomecoming:camellia"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.youkaishomecoming.advancements.main.udumbara_flower.title"
+      "translate": "advancements.youkaishomecoming.advancements.main.camellia.title"
     }
   },
   "requirements": [

@@ -820,6 +820,7 @@ public class YHRecipeGen {
 					.add(YHCrops.SOYBEAN.getSeed())
 					.add(YHFood.TOFU.item.get())
 					.add(YHFood.TOFU.item.get())
+					.add(YHFood.TOFU.item.get())
 					.add(Items.DRIED_KELP)
 					.add(Items.DRIED_KELP)
 					.add(Items.BROWN_MUSHROOM)
