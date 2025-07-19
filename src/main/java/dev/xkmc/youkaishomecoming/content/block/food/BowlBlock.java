@@ -76,7 +76,7 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		return state.getValue(FACING).getAxis() == Direction.Axis.X ? shape_x : shape_z;
+		return state.getValue(FACING).getAxis() == Direction.Axis.Z ? shape_x : shape_z;
 	}
 
 	@Override
