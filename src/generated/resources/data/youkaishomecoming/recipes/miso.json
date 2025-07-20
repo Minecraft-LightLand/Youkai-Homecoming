@@ -3,7 +3,7 @@
   "id": "youkaishomecoming:miso",
   "input": [
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     }
   ]
 }

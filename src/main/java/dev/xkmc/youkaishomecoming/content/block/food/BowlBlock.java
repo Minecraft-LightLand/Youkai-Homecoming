@@ -103,7 +103,7 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 		var item = food.asItem().getDefaultInstance();
 		var food = item.getFoodProperties(player);
 		if (food == null || !player.canEat(false)) return InteractionResult.PASS;
-		if (!stack.isEmpty()) return InteractionResult.PASS;//TODO spoon
+		if (!stack.isEmpty() && !stack.is(YHBlocks.BIG_SPOON.get())) return InteractionResult.PASS;
 		if (!level.isClientSide()) {
 			player.eat(level, item.copy());
 			consume(state, level, pos);
@@ -113,6 +113,11 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 
 	protected void consume(BlockState state, Level level, BlockPos pos) {
 		var cont = asItem().getDefaultInstance().getCraftingRemainingItem();
+		if (cont.is(Items.BAMBOO)) {
+			level.setBlockAndUpdate(pos, YHBlocks.BAMBOO_BOWL.getDefaultState()
+					.setValue(BlockStateProperties.HORIZONTAL_FACING,
+							state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
+		}
 		if (cont.getItem() instanceof BlockItem block) {
 			level.setBlockAndUpdate(pos, block.getBlock().defaultBlockState()
 					.setValue(BlockStateProperties.HORIZONTAL_FACING,
