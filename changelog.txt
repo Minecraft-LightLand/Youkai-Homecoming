@@ -1,8 +1,9 @@
-2.4.18
+2.5.1
+- Fix kettle drop and bamboo bowl shape
 - Reduce creative flight sliding with Hairbands
 - Improves Remilia fight
 
-2.4.17
+2.5.0
 - make cake and feast non-stackable
 - Add placeable wine bottle and shelf
 - Add placeable iron / wood / bamboo bowl food
