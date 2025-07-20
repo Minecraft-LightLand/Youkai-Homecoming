@@ -1,0 +1,53 @@
+{
+  "parent": "youkaishomecoming:main/cuisine_board",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:rainbow_roll_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "1": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:volcano_roll_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.foreign_sushi_master.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:rainbow_roll_slice"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.foreign_sushi_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

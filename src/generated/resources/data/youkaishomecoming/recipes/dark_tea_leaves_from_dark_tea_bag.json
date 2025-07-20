@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:dark_tea_bag"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "youkaishomecoming:dark_tea_leaves"
+  }
+}

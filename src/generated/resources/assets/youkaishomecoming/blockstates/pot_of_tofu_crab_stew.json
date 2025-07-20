@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,serve=1": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew_serve1",
+      "y": 90
+    },
+    "facing=east,serve=2": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew",
+      "y": 90
+    },
+    "facing=north,serve=1": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew_serve1"
+    },
+    "facing=north,serve=2": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew"
+    },
+    "facing=south,serve=1": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew_serve1",
+      "y": 180
+    },
+    "facing=south,serve=2": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew",
+      "y": 180
+    },
+    "facing=west,serve=1": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew_serve1",
+      "y": 270
+    },
+    "facing=west,serve=2": {
+      "model": "youkaishomecoming:block/pot_of_tofu_crab_stew",
+      "y": 270
+    }
+  }
+}

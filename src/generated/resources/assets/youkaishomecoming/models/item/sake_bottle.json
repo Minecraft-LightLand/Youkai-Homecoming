@@ -6,6 +6,36 @@
       "predicate": {
         "youkaishomecoming:slip": 0.03125
       }
+    },
+    {
+      "model": "youkaishomecoming:item/red_wine_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.1
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/white_wine_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.3
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/burgundy_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.5
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/champagne_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.7
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/van_allen_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.9
+      }
     }
   ],
   "textures": {

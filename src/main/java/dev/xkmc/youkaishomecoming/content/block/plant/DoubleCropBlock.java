@@ -42,15 +42,20 @@ public abstract class DoubleCropBlock extends CropBlock {
 			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
 		if (pLevel.getRawBrightness(pPos, 0) >= 9) {
 			int i = this.getAge(pState);
+
 			if (i < this.getMaxAge()) {
-				float f = getGrowthSpeed(this, pLevel, pPos);
-				if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+				float f = modifySpeed(pState, getGrowthSpeed(this, pLevel, pPos) * 0.04f);
+				if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextFloat() < f)) {
 					setGrowth(pLevel, pPos, i + 1, 2);
 					ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
 				}
 			}
 		}
 
+	}
+
+	protected float modifySpeed(BlockState state, float val) {
+		return val;
 	}
 
 	public void growCrops(Level pLevel, BlockPos pPos, BlockState pState) {

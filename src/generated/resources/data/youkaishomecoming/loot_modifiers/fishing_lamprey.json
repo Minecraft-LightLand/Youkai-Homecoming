@@ -5,6 +5,10 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:gameplay/fishing"
+    },
+    {
+      "condition": "youkaishomecoming:biome_check",
+      "tag": "youkaishomecoming:spawns/lamprey"
     }
   ],
   "result": {

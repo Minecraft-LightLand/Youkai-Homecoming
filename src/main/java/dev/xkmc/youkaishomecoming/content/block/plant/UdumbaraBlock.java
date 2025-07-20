@@ -6,13 +6,12 @@ import dev.xkmc.l2harvester.api.HarvestableBlock;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.advancements.critereon.EnchantmentPredicate;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.MinMaxBounds;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -23,7 +22,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,10 +31,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -99,18 +95,28 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 			level.setBlock(pos, state.setValue(AGE, getMaxAge() - 1), 2);
 	}
 
-	public InteractionResult use(BlockState state, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-		if (state.getValue(AGE) < getMaxAge()) {
-			return InteractionResult.PASS;
-		} else {
+	public InteractionResult use(BlockState state, Level pLevel, BlockPos pPos, Player player, InteractionHand pHand, BlockHitResult pHit) {
+		if (state.getValue(AGE) == getMaxAge() - 1) {
+			popResource(pLevel, pPos, getBaseSeedId().asItem().getDefaultInstance());
+			pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
+					1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
+			BlockState next = state.setValue(AGE, 2);
+			pLevel.setBlock(pPos, next, 2);
+			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(player, next));
+			if (player instanceof ServerPlayer sp)
+				YHCriteriaTriggers.UDUMBARA_LEAVES.trigger(sp);
+			return InteractionResult.sidedSuccess(pLevel.isClientSide);
+		}
+		if (state.getValue(AGE) == getMaxAge()) {
 			popResource(pLevel, pPos, fruit.get().getDefaultInstance());
 			pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS,
 					1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
 			BlockState next = state.setValue(AGE, state.getValue(AGE) - 1);
 			pLevel.setBlock(pPos, next, 2);
-			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, next));
+			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(player, next));
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
+		return InteractionResult.PASS;
 	}
 
 	@Override

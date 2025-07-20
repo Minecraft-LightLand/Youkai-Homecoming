@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.IngredientTableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -71,8 +72,13 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 		if (base != null) {
 			base.collectIngredients(listBase, listRecipe);
 		} else {
-			var item = ForgeRegistries.ITEMS.getValue(recipe.base());
-			listBase.add(Ingredient.of(item));
+			var fixed = IngredientTableItem.FIXED.get(recipe.base());
+			if (fixed != null) {
+				fixed.collectIngredients(listBase);
+			} else {
+				var item = ForgeRegistries.ITEMS.getValue(recipe.base());
+				listBase.add(Ingredient.of(item));
+			}
 		}
 		balance(listBase, listRecipe);
 
@@ -102,9 +108,11 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 			b.addAll(a);
 			a.clear();
 		}
+		while (a.size() > 5 && b.size() < 5 || b.get(0).isEmpty()) {
+			b.add(0, a.remove(a.size() - 1));
+		}
 		while (b.size() > 5 && a.size() < 5) {
-			a.add(b.get(0));
-			b.remove(0);
+			a.add(b.remove(0));
 		}
 	}
 

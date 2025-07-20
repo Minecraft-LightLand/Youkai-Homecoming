@@ -25,11 +25,11 @@ import java.util.function.Supplier;
 public class YHEffects {
 
 	public static final RegistryEntry<MobEffect> YOUKAIFIED = genEffect("youkaified",
-			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
+			() -> new YoukaifiedEffect(MobEffectCategory.NEUTRAL, 0xffffff),
 			"You are a Youkai now");
 
 	public static final RegistryEntry<MobEffect> YOUKAIFYING = genEffect("youkaifying",
-			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),//TODO color
+			() -> new YoukaifyingEffect(MobEffectCategory.NEUTRAL, 0xffffff),
 			"You are becoming a Youkai");
 
 	public static final RegistryEntry<MobEffect> CAFFEINATED = genEffect("caffeinated",
@@ -57,11 +57,19 @@ public class YHEffects {
 
 	public static final RegistryEntry<MobEffect> THICK = genEffect("thick",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x534b40),
-			"Immune to wither, reduces damage by 1");
+			"Reduce damage by 1");
+
+	public static final RegistryEntry<MobEffect> MEDITATION = genEffect("meditation",
+			() -> new MeditationEffect(MobEffectCategory.BENEFICIAL, 0x949537),
+			"Gain experience gradually when not moving");
+
+	public static final RegistryEntry<MobEffect> BREATHING = genEffect("breathing",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x949537),
+			"improves health regeneration");
 
 	public static final RegistryEntry<MobEffect> SMOOTHING = genEffect("smoothing",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x949537),
-			"Immune to poison, improves health regeneration");
+			"Immune to poison and wither");
 
 	public static final RegistryEntry<MobEffect> NATIVE = genEffect("native_god_bless",
 			() -> new NativeGodBlessEffect(MobEffectCategory.BENEFICIAL, -5727850),
@@ -93,6 +101,10 @@ public class YHEffects {
 	public static final RegistryEntry<MobEffect> FAIRY = genEffect("fairy",
 			() -> new FairyEffect(MobEffectCategory.NEUTRAL, 0xd0c3a5),
 			"Reduce max HP and melee attack damage. Gives speed and healing boost. Enables danmaku. Reduce player hitbox for Danmaku");
+
+	public static final RegistryEntry<MobEffect> CRABY = genEffect("craby",
+			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
+			"Makes your horizontal movement faster");//TODO
 
 	public static final RegistryEntry<MobEffect> CONFIDENT = genEffect("confident",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),

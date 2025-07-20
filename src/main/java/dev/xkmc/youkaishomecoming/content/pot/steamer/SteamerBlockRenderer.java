@@ -2,8 +2,8 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
-import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
+import dev.xkmc.youkaishomecoming.content.block.food.ISteamerContentBlock;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.util.FluidRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -36,21 +36,21 @@ public class SteamerBlockRenderer implements BlockEntityRenderer<SteamerBlockEnt
 	public void render(SteamerBlockEntity be, float pTick, PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
 		RackInfo info = RackInfo.getRackInfo(be.getBlockState());
 		if (info.pot() && be.getBlockState().getValue(SteamerStates.WATER)) {
-			FluidRenderer.renderWaterBox(4 / 16f, 1 / 16f, 4 / 16f, 12 / 16f, 8.01f / 16f, 12 / 16f, buffer, pose, light, 0);
+			FluidRenderer.renderWaterBox(4 / 16f, 1 / 16f, 4 / 16f, 12 / 16f, 7f / 16f, 12 / 16f, buffer, pose, light, 0);
 		}
 		if (info.racks() == 0 || be.racks.isEmpty() || info.racks() > be.racks.size()) return;
 		RackData rack = be.racks.get(info.racks() - 1);
-		if (rack.list[0] != null && rack.list[0].stack.getItem() instanceof FoodSaucerItem item) {
+		if (rack.list[0] != null && rack.list[0].stack.getItem() instanceof FoodBlockItem item) {
 			pose.pushPose();
 			BlockState state = item.getBlock().defaultBlockState();
 			state = state.setValue(BlockStateProperties.HORIZONTAL_FACING, state.getValue(BlockStateProperties.HORIZONTAL_FACING));
 			BakedModel model = Minecraft.getInstance().getModelManager().getBlockModelShaper().getBlockModel(state);
 			pose.translate(.5f, (info.height() * 4 - 3) / 16f, .5f);
-			FoodSaucerBlock block = (FoodSaucerBlock) item.getBlock();
-			var saucer = block.dish.saucer;
-			int width = 16 - Math.min(saucer.x, saucer.z) * 2;
-			float s = 8f / width;
-			pose.scale(s, s, s);
+			if (item.getBlock() instanceof ISteamerContentBlock block) {
+				float width = 16 - block.clearance() * 2;
+				float s = 8f / width;
+				pose.scale(s, s, s);
+			}
 			pose.translate(-.5f, 0, -.5f);
 			ModelBlockRenderer renderer = Minecraft.getInstance().getBlockRenderer().getModelRenderer();
 			PoseStack.Pose mat = pose.last();

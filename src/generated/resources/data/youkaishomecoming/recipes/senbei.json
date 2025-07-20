@@ -13,6 +13,7 @@
       "item": "minecraft:dried_kelp"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "count": 3,
     "item": "youkaishomecoming:senbei"

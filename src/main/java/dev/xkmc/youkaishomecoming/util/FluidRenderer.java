@@ -16,6 +16,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
 import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.material.Fluid;
@@ -40,25 +41,29 @@ public class FluidRenderer {
 		renderFluidBox(fluidStack, xMin, yMin, zMin, xMax, yMax, zMax, getFluidBuilder(buffer), ms, light, renderBottom, colorOverride);
 	}
 
+	public static void renderFluidBox(ResourceLocation tex, float xMin, float yMin, float zMin, float xMax, float yMax, float zMax, MultiBufferSource buffer, PoseStack ms, int light, boolean renderBottom, int colorOverride) {
+		renderFluidBox(tex, xMin, yMin, zMin, xMax, yMax, zMax, getFluidBuilder(buffer), ms, light, renderBottom, colorOverride);
+	}
+
 	public static void renderFluidBox(FluidStack fluidStack, float xMin, float yMin, float zMin, float xMax, float yMax, float zMax, VertexConsumer builder, PoseStack ms, int light, boolean renderBottom, int colorOverride) {
 		Fluid fluid = fluidStack.getFluid();
 		IClientFluidTypeExtensions clientFluid = IClientFluidTypeExtensions.of(fluid);
 		FluidType fluidAttributes = fluid.getFluidType();
-		TextureAtlasSprite fluidTexture = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(clientFluid.getStillTexture(fluidStack));
+		var tex = clientFluid.getStillTexture(fluidStack);
 		int color = clientFluid.getTintColor(fluidStack);
 		if (colorOverride != 0) {
 			color = colorOverride;
 		}
-
 		int blockLightIn = light >> 4 & 15;
 		int luminosity = Math.max(blockLightIn, fluidAttributes.getLightLevel(fluidStack));
 		light = light & 15728640 | luminosity << 4;
-		ms.pushPose();
-		Direction[] var19 = Direction.values();
-		int var20 = var19.length;
+		renderFluidBox(tex, xMin, yMin, zMin, xMax, yMax, zMax, builder, ms, light, renderBottom, color);
+	}
 
-		for (int var21 = 0; var21 < var20; ++var21) {
-			Direction side = var19[var21];
+	public static void renderFluidBox(ResourceLocation tex, float xMin, float yMin, float zMin, float xMax, float yMax, float zMax, VertexConsumer builder, PoseStack ms, int light, boolean renderBottom, int color) {
+		TextureAtlasSprite fluidTexture = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(tex);
+		ms.pushPose();
+		for (Direction side : Direction.values()) {
 			if (side != Direction.DOWN || renderBottom) {
 				boolean positive = side.getAxisDirection() == AxisDirection.POSITIVE;
 				if (side.getAxis().isHorizontal()) {

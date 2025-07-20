@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.FluidEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 public interface IYHFluidHolder {
 
@@ -24,5 +25,17 @@ public interface IYHFluidHolder {
 	default int amount() {
 		return 250;
 	}
+
+	@Nullable
+	default String bottleTextureFolder() {
+		return null;
+	}
+
+	@Nullable
+	default BottledDrinkSet bottleSet() {
+		return null;
+	}
+
+	Item asItem();
 
 }

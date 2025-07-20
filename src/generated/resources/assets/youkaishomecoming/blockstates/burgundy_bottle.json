@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "count=1,facing=east": {
+      "model": "youkaishomecoming:block/burgundy_bottle",
+      "y": 90
+    },
+    "count=1,facing=north": {
+      "model": "youkaishomecoming:block/burgundy_bottle"
+    },
+    "count=1,facing=south": {
+      "model": "youkaishomecoming:block/burgundy_bottle",
+      "y": 180
+    },
+    "count=1,facing=west": {
+      "model": "youkaishomecoming:block/burgundy_bottle",
+      "y": 270
+    },
+    "count=2,facing=east": {
+      "model": "youkaishomecoming:block/burgundy_bottle_2",
+      "y": 90
+    },
+    "count=2,facing=north": {
+      "model": "youkaishomecoming:block/burgundy_bottle_2"
+    },
+    "count=2,facing=south": {
+      "model": "youkaishomecoming:block/burgundy_bottle_2",
+      "y": 180
+    },
+    "count=2,facing=west": {
+      "model": "youkaishomecoming:block/burgundy_bottle_2",
+      "y": 270
+    },
+    "count=3,facing=east": {
+      "model": "youkaishomecoming:block/burgundy_bottle_3",
+      "y": 90
+    },
+    "count=3,facing=north": {
+      "model": "youkaishomecoming:block/burgundy_bottle_3"
+    },
+    "count=3,facing=south": {
+      "model": "youkaishomecoming:block/burgundy_bottle_3",
+      "y": 180
+    },
+    "count=3,facing=west": {
+      "model": "youkaishomecoming:block/burgundy_bottle_3",
+      "y": 270
+    },
+    "count=4,facing=east": {
+      "model": "youkaishomecoming:block/burgundy_bottle_4",
+      "y": 90
+    },
+    "count=4,facing=north": {
+      "model": "youkaishomecoming:block/burgundy_bottle_4"
+    },
+    "count=4,facing=south": {
+      "model": "youkaishomecoming:block/burgundy_bottle_4",
+      "y": 180
+    },
+    "count=4,facing=west": {
+      "model": "youkaishomecoming:block/burgundy_bottle_4",
+      "y": 270
+    }
+  }
+}

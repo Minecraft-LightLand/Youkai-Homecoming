@@ -121,6 +121,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:borscht": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:borscht"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:bowl_of_flesh_feast": {
       "conditions": {
         "item": {
@@ -291,6 +301,36 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:crab_meat": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab_meat"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:crab_roe": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:crab_roe"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:cucumber_slice": {
       "conditions": {
         "item": {
@@ -316,6 +356,16 @@
         "item": {
           "items": [
             "youkaishomecoming:daiginjo"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:dark_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:dark_tea"
           ]
         }
       },
@@ -501,11 +551,41 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:grilled_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:grilled_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_venison_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:hakutsuru": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:hakutsuru"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:han_palace": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:han_palace"
           ]
         }
       },
@@ -536,6 +616,16 @@
         "item": {
           "items": [
             "youkaishomecoming:higi_doughnut"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:hokkaido_salmon_hotpot": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:hokkaido_salmon_hotpot"
           ]
         }
       },
@@ -576,6 +666,16 @@
         "item": {
           "items": [
             "youkaishomecoming:kabayaki"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:kaguya_hime": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:kaguya_hime"
           ]
         }
       },
@@ -911,6 +1011,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:potato_soup": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:potato_soup"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:power_soup": {
       "conditions": {
         "item": {
@@ -991,6 +1101,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:raw_venison": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_venison"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_venison_slice": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_venison_slice"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:red_grape_juice": {
       "conditions": {
         "item": {
@@ -1006,6 +1136,16 @@
         "item": {
           "items": [
             "youkaishomecoming:red_wine"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:rice_powder_pork": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:rice_powder_pork"
           ]
         }
       },
@@ -1261,11 +1401,31 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:signature_mushroom_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:signature_mushroom_stew"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:sparrow_sake": {
       "conditions": {
         "item": {
           "items": [
             "youkaishomecoming:sparrow_sake"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:steamed_crab": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:steamed_crab"
           ]
         }
       },
@@ -1386,6 +1546,16 @@
         "item": {
           "items": [
             "youkaishomecoming:tofu_burger"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:tofu_crab_stew": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:tofu_crab_stew"
           ]
         }
       },
@@ -1530,6 +1700,16 @@
         }
       },
       "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:yellow_tea": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:yellow_tea"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
@@ -1601,6 +1781,12 @@
     ],
     [
       "youkaishomecoming:oolong_tea"
+    ],
+    [
+      "youkaishomecoming:dark_tea"
+    ],
+    [
+      "youkaishomecoming:yellow_tea"
     ],
     [
       "youkaishomecoming:cornflower_tea"
@@ -1714,6 +1900,45 @@
       "youkaishomecoming:mocha"
     ],
     [
+      "youkaishomecoming:miso_soup"
+    ],
+    [
+      "youkaishomecoming:seafood_miso_soup"
+    ],
+    [
+      "youkaishomecoming:poor_god_soup"
+    ],
+    [
+      "youkaishomecoming:higan_soup"
+    ],
+    [
+      "youkaishomecoming:mushroom_soup"
+    ],
+    [
+      "youkaishomecoming:power_soup"
+    ],
+    [
+      "youkaishomecoming:potato_soup"
+    ],
+    [
+      "youkaishomecoming:borscht"
+    ],
+    [
+      "youkaishomecoming:signature_mushroom_stew"
+    ],
+    [
+      "youkaishomecoming:hokkaido_salmon_hotpot"
+    ],
+    [
+      "youkaishomecoming:tutu_congee"
+    ],
+    [
+      "youkaishomecoming:rice_powder_pork"
+    ],
+    [
+      "youkaishomecoming:kaguya_hime"
+    ],
+    [
       "youkaishomecoming:raw_lamprey"
     ],
     [
@@ -1739,6 +1964,30 @@
     ],
     [
       "youkaishomecoming:otoro"
+    ],
+    [
+      "youkaishomecoming:crab"
+    ],
+    [
+      "youkaishomecoming:steamed_crab"
+    ],
+    [
+      "youkaishomecoming:crab_meat"
+    ],
+    [
+      "youkaishomecoming:crab_roe"
+    ],
+    [
+      "youkaishomecoming:raw_venison"
+    ],
+    [
+      "youkaishomecoming:grilled_venison"
+    ],
+    [
+      "youkaishomecoming:raw_venison_slice"
+    ],
+    [
+      "youkaishomecoming:grilled_venison_slice"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"
@@ -1819,9 +2068,6 @@
       "youkaishomecoming:pork_rice_ball"
     ],
     [
-      "youkaishomecoming:tutu_congee"
-    ],
-    [
       "youkaishomecoming:steamed_egg_in_bamboo"
     ],
     [
@@ -1876,34 +2122,22 @@
       "youkaishomecoming:grilled_eel_over_rice"
     ],
     [
-      "youkaishomecoming:higan_soup"
-    ],
-    [
       "youkaishomecoming:longevity_noodles"
     ],
     [
-      "youkaishomecoming:miso_soup"
-    ],
-    [
-      "youkaishomecoming:seafood_miso_soup"
-    ],
-    [
-      "youkaishomecoming:poor_god_soup"
-    ],
-    [
-      "youkaishomecoming:power_soup"
-    ],
-    [
       "youkaishomecoming:shirayuki"
+    ],
+    [
+      "youkaishomecoming:han_palace"
+    ],
+    [
+      "youkaishomecoming:tofu_crab_stew"
     ],
     [
       "youkaishomecoming:sweet_ormosia_mochi_mixed_boiled"
     ],
     [
       "youkaishomecoming:tuscan_salmon"
-    ],
-    [
-      "youkaishomecoming:mushroom_soup"
     ],
     [
       "youkaishomecoming:honey_glazed_cucumber"

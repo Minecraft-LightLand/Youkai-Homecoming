@@ -1,0 +1,34 @@
+{
+  "parent": "youkaishomecoming:main/steamer",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "rack": {
+          "min": 18
+        }
+      },
+      "trigger": "youkaishomecoming:steam"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.max_steamer.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:steamer_rack"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.max_steamer.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

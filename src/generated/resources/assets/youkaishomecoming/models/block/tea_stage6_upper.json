@@ -1,6 +1,10 @@
 {
-  "parent": "minecraft:block/air",
+  "parent": "youkaishomecoming:custom/plant/large_bush_top",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
   "textures": {
-    "particle": "youkaishomecoming:block/plants/tea/tea_bush_leaves"
+    "inside": "youkaishomecoming:block/plants/tea/medium_tea_bush_inside",
+    "side": "youkaishomecoming:block/plants/tea/tea_bush_side",
+    "top": "youkaishomecoming:block/plants/tea/tea_bush_top"
   }
 }

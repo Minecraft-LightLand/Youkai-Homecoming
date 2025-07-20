@@ -1,0 +1,9 @@
+{
+  "type": "youkaishomecoming:immediate_soup",
+  "id": "youkaishomecoming:miso",
+  "input": [
+    {
+      "item": "youkaishomecoming:soybean"
+    }
+  ]
+}

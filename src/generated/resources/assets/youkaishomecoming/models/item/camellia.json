@@ -1,0 +1,15 @@
+{
+  "base": {
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "youkaishomecoming:item/crops/camellia"
+    }
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "head": {
+      "parent": "minecraft:block/air"
+    }
+  }
+}

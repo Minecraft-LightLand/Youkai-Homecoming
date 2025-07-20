@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/iron/small_iron_pot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/bowl/iron/small_iron_pot",
+    "bowl": "youkaishomecoming:block/bowl/iron/iron_bowl"
+  }
+}

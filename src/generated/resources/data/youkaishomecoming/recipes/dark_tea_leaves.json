@@ -1,0 +1,22 @@
+{
+  "type": "youkaishomecoming:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:green_tea_leaves"
+    }
+  ],
+  "inputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "outputFluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "item": "youkaishomecoming:dark_tea_leaves"
+    }
+  ],
+  "time": 1800
+}

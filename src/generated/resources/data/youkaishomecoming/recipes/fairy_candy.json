@@ -13,6 +13,7 @@
       "item": "minecraft:honey_bottle"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
     "count": 3,
     "item": "youkaishomecoming:fairy_candy"

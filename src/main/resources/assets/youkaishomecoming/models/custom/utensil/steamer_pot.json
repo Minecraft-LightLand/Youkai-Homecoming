@@ -11,15 +11,11 @@
 	"elements": [
 		{
 			"name": "steamer",
-			"from": [2, 0, 2],
-			"to": [14, 8, 14],
+			"from": [4, 0, 4],
+			"to": [12, 2, 12],
 			"faces": {
-				"north": {"uv": [2, 8, 14, 16], "texture": "#0"},
-				"east": {"uv": [2, 8, 14, 16], "texture": "#0"},
-				"south": {"uv": [2, 8, 14, 16], "texture": "#0"},
-				"west": {"uv": [2, 8, 14, 16], "texture": "#0"},
-				"up": {"uv": [2, 2, 14, 14], "texture": "#5"},
-				"down": {"uv": [2, 2, 14, 14], "texture": "#1"}
+				"up": {"uv": [4, 4, 12, 12], "texture": "#5"},
+				"down": {"uv": [4, 4, 12, 12], "texture": "#1"}
 			}
 		},
 		{
@@ -46,6 +42,58 @@
 				"up": {"uv": [5, 2, 11, 4], "rotation": 270, "texture": "#2"},
 				"down": {"uv": [5, 4, 11, 6], "rotation": 270, "texture": "#2"}
 			}
+		},
+		{
+			"name": "steamer",
+			"from": [2, 0, 2],
+			"to": [12, 8, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
+			"faces": {
+				"north": {"uv": [4, 8, 14, 16], "texture": "#0"},
+				"south": {"uv": [2, 8, 12, 16], "texture": "#0"},
+				"west": {"uv": [2, 8, 4, 16], "texture": "#0"},
+				"up": {"uv": [2, 2, 12, 4], "texture": "#5"},
+				"down": {"uv": [14, 4, 4, 2], "texture": "#1"}
+			}
+		},
+		{
+			"name": "steamer",
+			"from": [2, 0, 4],
+			"to": [4, 8, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 4]},
+			"faces": {
+				"east": {"uv": [2, 8, 12, 16], "texture": "#0"},
+				"south": {"uv": [2, 8, 4, 16], "texture": "#0"},
+				"west": {"uv": [4, 8, 14, 16], "texture": "#0"},
+				"up": {"uv": [2, 4, 4, 14], "texture": "#5"},
+				"down": {"uv": [12, 4, 14, 14], "rotation": 180, "texture": "#1"}
+			}
+		},
+		{
+			"name": "steamer",
+			"from": [12, 0, 2],
+			"to": [14, 8, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 0, 12]},
+			"faces": {
+				"north": {"uv": [2, 8, 4, 16], "texture": "#0"},
+				"east": {"uv": [4, 8, 14, 16], "texture": "#0"},
+				"west": {"uv": [2, 8, 12, 16], "texture": "#0"},
+				"up": {"uv": [12, 2, 14, 12], "texture": "#5"},
+				"down": {"uv": [4, 12, 2, 2], "texture": "#1"}
+			}
+		},
+		{
+			"name": "steamer",
+			"from": [4, 0, 12],
+			"to": [14, 8, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 12]},
+			"faces": {
+				"north": {"uv": [2, 8, 12, 16], "texture": "#0"},
+				"east": {"uv": [2, 8, 4, 16], "texture": "#0"},
+				"south": {"uv": [4, 8, 14, 16], "texture": "#0"},
+				"up": {"uv": [4, 12, 14, 14], "texture": "#5"},
+				"down": {"uv": [2, 12, 12, 14], "rotation": 180, "texture": "#1"}
+			}
 		}
 	],
 	"display": {
@@ -64,7 +112,7 @@
 			"scale": [0.4, 0.4, 0.4]
 		},
 		"firstperson_lefthand": {
-			"rotation": [0, 225, 0],
+			"rotation": [0, -135, 0],
 			"scale": [0.4, 0.4, 0.4]
 		},
 		"ground": {
@@ -72,7 +120,7 @@
 			"scale": [0.25, 0.25, 0.25]
 		},
 		"gui": {
-			"rotation": [30, 225, 0],
+			"rotation": [30, -135, 0],
 			"scale": [0.625, 0.625, 0.625]
 		},
 		"fixed": {
@@ -84,7 +132,7 @@
 			"name": "steamer_pot",
 			"origin": [0, 0, 0],
 			"color": 0,
-			"children": [0, 1, 2]
+			"children": [0, 1, 2, 3, 4, 5, 6]
 		}
 	]
 }

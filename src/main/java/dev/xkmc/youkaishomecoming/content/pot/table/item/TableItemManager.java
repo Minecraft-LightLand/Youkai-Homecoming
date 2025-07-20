@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.item;
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -89,6 +90,7 @@ public class TableItemManager extends BaseTableItem {
 		SUSHI_SAUCE.addMapping("mayonnaise", YHItems.MAYONNAISE.item);
 
 		GUNKAN_TOP.addMapping("roe", YHFood.ROE.item);
+		GUNKAN_TOP.addMapping("crab_roe", YHFood.CRAB_ROE.item);
 		GUNKAN_TOP.addMapping("seagrass", Items.SEAGRASS);
 		GUNKAN_TOP.addMapping("nattou", YHFood.NATTOU.item);
 		//shirako
@@ -97,6 +99,7 @@ public class TableItemManager extends BaseTableItem {
 		CAL_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
 		CAL_TOP.addMapping("otoro", YHFood.OTORO.item);
 		CAL_COVER.addMapping("roe", YHFood.ROE.item);
+		CAL_COVER.addMapping("crab_roe", YHFood.CRAB_ROE.item);
 
 		VariantModelPart[] rolls = {HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT};
 		VariantModelPart[] sauces = {HOSOMAKI_SAUCE, FUTOMAKI_SAUCE, CAL_SAUCE, CAL_TOP_SAUCE};
@@ -154,7 +157,7 @@ public class TableItemManager extends BaseTableItem {
 	}
 
 	public static void init() {
-
+		TableBambooBowls.init();
 	}
 
 }

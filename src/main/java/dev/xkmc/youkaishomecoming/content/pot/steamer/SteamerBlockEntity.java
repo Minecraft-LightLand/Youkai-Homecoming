@@ -8,6 +8,7 @@ import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
+import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -96,6 +97,10 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		for (var e : steamers) {
 			for (var r : e.racks) {
 				allRacks.add(Pair.of(e, r));
+				for (var item : r.list) {
+					if (item != null)
+						item.height = allRacks.size();
+				}
 			}
 		}
 		if (allRacks.isEmpty()) return false;
@@ -211,17 +216,21 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		return List.of(new SimpleContainer(stacks.toArray(ItemStack[]::new)));
 	}
 
+	@Nullable
 	@Override
 	public TileTooltip getImage(boolean shift, BlockHitResult hit) {
 		if (shift) {
 			int h = racks.size();
 			List<ItemStack> list = new ArrayList<>();
+			boolean empty = true;
 			for (var r : racks) {
 				for (var e : r.list) {
 					if (e == null) list.add(ItemStack.EMPTY);
 					else list.add(e.stack);
+					empty &= e == null;
 				}
 			}
+			if (empty) return null;
 			return new TileTooltip(list, List.of(), 4, h);
 		}
 		int h = RackInfo.ofY(hit);
@@ -235,11 +244,51 @@ public class SteamerBlockEntity extends BaseBlockEntity
 				}
 			}
 		}
+		if (list.isEmpty()) return null;
 		return new TileTooltip(list, List.of(), 2, 2);
 	}
 
 	@Override
 	public List<Component> lines(boolean shift, BlockHitResult hit) {
+		if (level == null) return List.of();
+		if (!getBlockState().is(YHBlocks.STEAMER_POT.get())) {
+			int count = 1;
+			BlockPos pos = getBlockPos().below();
+			while (level.getBlockEntity(pos) instanceof SteamerBlockEntity be) {
+				if (be.getBlockState().is(YHBlocks.STEAMER_POT.get())) {
+					return be.lines(shift, hit);
+				}
+				count++;
+				pos = pos.below();
+				if (level.isOutsideBuildHeight(pos)) break;
+				if (count >= MAX_STACK) {
+					return List.of();
+				}
+			}
+			return List.of();
+		}
+		if (!isHeated(level, getBlockPos()))
+			return List.of(YHLangData.STEAMER_NO_HEAT.get());
+		if (!getBlockState().getValue(SteamerStates.WATER))
+			return List.of(YHLangData.STEAMER_NO_WATER.get());
+		var top = this;
+		int count = 1;
+		BlockPos pos = getBlockPos().above();
+		while (level.getBlockEntity(pos) instanceof SteamerBlockEntity be && be.getBlockState().is(YHBlocks.STEAMER_RACK.get())) {
+			top = be;
+			count++;
+			pos = pos.above();
+			if (level.isOutsideBuildHeight(pos)) break;
+			if (count > MAX_STACK) {
+				return List.of(YHLangData.STEAMER_TOO_MANY.get());
+			}
+		}
+		if (top == this && this.racks.isEmpty()) {
+			return List.of(YHLangData.STEAMER_NO_RACK.get());
+		}
+		if (!RackInfo.isCapped(level, top.getBlockPos())) {
+			return List.of(YHLangData.STEAMER_NO_CAP.get());
+		}
 		return List.of();
 	}
 

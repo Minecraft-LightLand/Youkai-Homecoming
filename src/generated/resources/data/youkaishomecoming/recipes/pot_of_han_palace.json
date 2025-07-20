@@ -1,0 +1,18 @@
+{
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:raw_lamprey"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pot_of_han_palace"
+  },
+  "time": 200
+}

@@ -54,7 +54,7 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder {
 				.defaultLang().register();
 
 		item = YoukaisHomecoming.REGISTRATE
-				.item(id + "_bottle", p -> factory.apply(fluid, p.craftRemainder(container.get())))
+				.item(id + "_bottle", p -> factory.apply(fluid::getSource, p.craftRemainder(container.get())))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName())))
 				.register();
 
@@ -78,6 +78,11 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder {
 	@Override
 	public ItemEntry<?> item() {
 		return item;
+	}
+
+	@Override
+	public Item asItem() {
+		return item.asItem();
 	}
 
 	@Override

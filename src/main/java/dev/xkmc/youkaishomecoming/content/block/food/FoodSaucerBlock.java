@@ -16,7 +16,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class FoodSaucerBlock extends BaseSaucerBlock {
+public class FoodSaucerBlock extends BaseSaucerBlock implements ISteamerContentBlock {
 
 	public final YHDish dish;
 	private final VoxelShape shape_x, shape_z;
@@ -30,6 +30,12 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 	}
 
 	@Override
+	public float clearance() {
+		var saucer = dish.saucer;
+		return Math.min(saucer.x, saucer.z);
+	}
+
+	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (asItem().getDefaultInstance().getFoodProperties(player) != null && player.canEat(false)) {
 			if (!level.isClientSide()) {
@@ -39,7 +45,7 @@ public class FoodSaucerBlock extends BaseSaucerBlock {
 						.setValue(BlockStateProperties.HORIZONTAL_FACING,
 								state.getValue(BlockStateProperties.HORIZONTAL_FACING)));
 			}
-			return InteractionResult.CONSUME;
+			return InteractionResult.SUCCESS;
 		}
 		return super.use(state, level, pos, player, hand, hit);
 	}

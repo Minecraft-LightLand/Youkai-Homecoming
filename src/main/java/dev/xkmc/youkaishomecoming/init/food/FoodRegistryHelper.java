@@ -6,13 +6,26 @@ import net.minecraft.world.item.Item;
 
 public class FoodRegistryHelper {
 
+	static {
+		InitializationMarker.expectAndAdvance(5);
+	}
+
 	private static boolean mochi = false;
 
 	public static String getId(FoodType type, TagKey<Item>[] tags) {
 		if (type.isFlesh()) return "food/flesh/";
-		if (type == FoodType.BOTTLE) return "food/bottle/";
-		if (type == FoodType.STICK || type == FoodType.MEAT_STICK) return "food/stick/";
-		if (type == FoodType.BOWL || type == FoodType.BOWL_MEAT) return "food/bowl/";
+		switch (type) {
+			case BOTTLE:
+				return "food/bottle/";
+			case STICK:
+				return "food/stick/";
+			case BOWL:
+				return "food/bowl/";
+			case IRON_BOWL:
+				return "bowl/iron/";
+			case BAMBOO_BOWL:
+				return "bowl/bamboo/";
+		}
 		if (tags.length > 0 && tags[0] == YHTagGen.DANGO) {
 			mochi = true;
 			return "food/mochi/";

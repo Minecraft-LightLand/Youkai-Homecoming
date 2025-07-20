@@ -59,11 +59,15 @@ public class GeneralEventHandlers {
 		var level = event.getLevel();
 		var pos = event.getPos();
 		var state = level.getBlockState(pos);
-		if (state.getBlock() instanceof LeftClickBlock block) {
-			if (block.leftClick(state, level, pos, event.getEntity())) {
-				event.setCanceled(true);
-				event.setCancellationResult(InteractionResult.CONSUME);
-			}
+		LeftClickBlock block;
+		if (state.getBlock() instanceof LeftClickBlock b)
+			block = b;
+		else if (level.getBlockEntity(pos) instanceof LeftClickBlock b)
+			block = b;
+		else return;
+		if (block.leftClick(state, level, pos, event.getEntity())) {
+			event.setCanceled(true);
+			event.setCancellationResult(InteractionResult.CONSUME);
 		}
 	}
 
@@ -145,7 +149,7 @@ public class GeneralEventHandlers {
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {
-		return player.hasEffect(YHEffects.SOBER.get());
+		return player.hasEffect(YHEffects.SOBER.get()) || CuriosManager.hasHead(player, YHItems.CAMELLIA.get(), false);
 	}
 
 	public static boolean supressVibration(Entity self) {

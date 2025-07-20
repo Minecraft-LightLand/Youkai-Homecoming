@@ -1,0 +1,11 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/stock/stockpot",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "youkaishomecoming:block/bowl/stock/stockpot_bottom",
+    "inside": "youkaishomecoming:block/bowl/stock/stockpot_inside",
+    "parts": "youkaishomecoming:block/bowl/stock/stockpot_parts",
+    "side": "youkaishomecoming:block/bowl/stock/stockpot_side",
+    "top": "youkaishomecoming:block/bowl/stock/stockpot_top"
+  }
+}

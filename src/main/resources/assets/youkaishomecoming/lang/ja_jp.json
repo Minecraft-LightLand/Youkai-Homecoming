@@ -848,5 +848,13 @@
   "youkaishomecoming.usage_frozen_frog": "相手に向かって投げるとカエルが出てくる。",
   "youkaishomecoming.usage_reimu_hairband": "クリエイティブ飛行が可能になる。弾幕のダメージが魔法防御を貫通する。",
   "youkaishomecoming.usage_rumia_hairband": "敵を倒すと頭がドロップする。ナイフを使わなくても血と肉が手に入る。(ナイフを使うと追加でドロップ)",
-  "youkaishomecoming.usage_straw_hat": "%sか%sの効果中、これをカエルに被せて襲撃者を食べさせることができる。"
+  "youkaishomecoming.usage_straw_hat": "%sか%sの効果中、これをカエルに被せて襲撃者を食べさせることができる。",
+  "entity.youkaishomecoming.crab": "カニ",
+  "entity.youkaishomecoming.deer": "シカ",
+  "item.youkaishomecoming.crab_spawn_egg": "カニのスポーンエッグ",
+  "item.youkaishomecoming.deer_spawn_egg": "シカのスポーンエッグ",
+  "item.youkaishomecoming.grilled_venison": "焼き鹿肉",
+  "item.youkaishomecoming.grilled_venison_slice": "焼き鹿肉の切り身",
+  "item.youkaishomecoming.raw_venison": "生の鹿肉",
+  "item.youkaishomecoming.raw_venison_slice": "生の鹿肉の切り身"
 }

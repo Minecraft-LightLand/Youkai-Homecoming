@@ -45,6 +45,10 @@ public class YHTagGen {
 	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
 	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
 	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
+	public static final TagKey<Item> RAW_VENISON = forgeItem("raw_venison");
+	public static final TagKey<Item> COOKED_VENISON = forgeItem("cooked_venison");
+	public static final TagKey<Item> RAW_CRAB = forgeItem("raw_crab");
+	public static final TagKey<Item> COOKED_CRAB = forgeItem("cooked_crab");
 	public static final TagKey<Item> BUTTER = forgeItem("butter");
 	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
 	public static final TagKey<Item> CUCUMBER_SLICE = forgeItem("slices/cucumber");
@@ -60,6 +64,9 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA_DRINK = item("tea");
 	public static final TagKey<Item> SAKE = item("sake");
 	public static final TagKey<Item> WINE = item("wine");
+	public static final TagKey<Item> BOTTLED = item("bottled");
+	public static final TagKey<Item> STEAM_BLOCKER = item("steam_blocker");
+	public static final TagKey<Item> IRON_BOWL_FOOD = item("iron_bowl_food");
 	public static final TagKey<Item> FLESH_FOOD = item("flesh_food");
 	public static final TagKey<Item> APPARENT_FLESH_FOOD = item("apparent_flesh_food");
 	public static final TagKey<Item> CUSTOM_SPELL = item("custom_spell");
@@ -70,7 +77,9 @@ public class YHTagGen {
 	public static final TagKey<Item> FROZEN_FROG = item("frozen_frog");
 	public static final TagKey<Block> FARMLAND_SOYBEAN = block("farmland_soybean");
 	public static final TagKey<Block> FARMLAND_REDBEAN = block("farmland_redbean");
+	public static final TagKey<Block> FARMLAND_TEA = block("farmland_tea");
 	public static final TagKey<Block> FARMLAND_COFFEA = block("farmland_coffea");
+	public static final TagKey<Block> CRAB_DIGABLE = block("crab_digable");
 	public static final TagKey<EntityType<?>> FLESH_SOURCE = entity("flesh_source");
 
 	public static final TagKey<EntityType<?>> SKULL_SOURCE = entity("drops_skeleton_skull");
@@ -89,6 +98,8 @@ public class YHTagGen {
 	public static final TagKey<Item> TEA_BLACK = forgeItem("tea_leaves/black");
 	public static final TagKey<Item> TEA_WHITE = forgeItem("tea_leaves/white");
 	public static final TagKey<Item> TEA_OOLONG = forgeItem("tea_leaves/oolong");
+	public static final TagKey<Item> TEA_DARK = forgeItem("tea_leaves/dark");
+	public static final TagKey<Item> TEA_YELLOW = forgeItem("tea_leaves/yellow");
 	public static final TagKey<Item> TEA = forgeItem("tea_leaves");
 
 	public static final TagKey<Item> TOUHOU_HAT = item("touhou_hat");
@@ -118,8 +129,9 @@ public class YHTagGen {
 	public static void onBlockTagGen(RegistrateTagsProvider.IntrinsicImpl<Block> pvd) {
 		pvd.addTag(FARMLAND_SOYBEAN).add(Blocks.FARMLAND, ModBlocks.RICH_SOIL_FARMLAND.get());
 		pvd.addTag(FARMLAND_REDBEAN).add(Blocks.CLAY, Blocks.MUD, Blocks.COARSE_DIRT, ModBlocks.RICH_SOIL_FARMLAND.get());
+		pvd.addTag(FARMLAND_TEA).add(Blocks.GRASS_BLOCK, ModBlocks.RICH_SOIL.get());
 		pvd.addTag(FARMLAND_COFFEA).add(Blocks.PODZOL, Blocks.MUD, Blocks.SOUL_SOIL);
-
+		pvd.addTag(CRAB_DIGABLE).add(Blocks.SAND, Blocks.GRAVEL);
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genBlock(pvd);
 		}
@@ -141,8 +153,10 @@ public class YHTagGen {
 		pvd.addTag(TEA_BLACK).add(YHTea.BLACK.leaves.get());
 		pvd.addTag(TEA_WHITE).add(YHTea.WHITE.leaves.get());
 		pvd.addTag(TEA_OOLONG).add(YHTea.OOLONG.leaves.get());
+		pvd.addTag(TEA_DARK).add(YHTea.DARK.leaves.get());
+		pvd.addTag(TEA_YELLOW).add(YHTea.YELLOW.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
-				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG);
+				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG, TEA_DARK, TEA_YELLOW);
 		var danmaku = pvd.addTag(DANMAKU);
 		for (var e : YHDanmaku.Bullet.values()) {
 			danmaku.addTag(e.tag);

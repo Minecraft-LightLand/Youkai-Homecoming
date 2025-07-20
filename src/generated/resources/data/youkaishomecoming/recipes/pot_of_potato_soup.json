@@ -1,0 +1,27 @@
+{
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:raw_pork"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pot_of_potato_soup"
+  },
+  "time": 400
+}

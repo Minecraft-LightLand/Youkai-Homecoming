@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/short/tofu_crab_stew_serve1",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/bowl/short/tofu_crab_stew",
+    "bottom": "youkaishomecoming:block/bowl/short/short_iron_pot_bottom",
+    "side": "youkaishomecoming:block/bowl/short/short_iron_pot_side",
+    "top": "youkaishomecoming:block/bowl/short/short_iron_pot_top"
+  }
+}

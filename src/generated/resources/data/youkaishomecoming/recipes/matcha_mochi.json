@@ -10,6 +10,7 @@
       "tag": "forge:matcha"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "count": 2,
     "item": "youkaishomecoming:matcha_mochi"

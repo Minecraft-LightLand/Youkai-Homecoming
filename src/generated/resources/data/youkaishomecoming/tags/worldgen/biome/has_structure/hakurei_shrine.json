@@ -1,17 +1,6 @@
 {
   "values": [
-    "minecraft:cherry_grove",
-    {
-      "id": "wythers:sakura_forest",
-      "required": false
-    },
-    {
-      "id": "#c:is_cherry_forest",
-      "required": false
-    },
-    {
-      "id": "#c:is_sakura_forest",
-      "required": false
-    }
+    "#c:is_cherry_forest",
+    "#c:is_sakura_forest"
   ]
 }

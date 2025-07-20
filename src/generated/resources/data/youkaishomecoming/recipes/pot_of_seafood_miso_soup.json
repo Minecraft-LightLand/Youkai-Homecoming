@@ -1,0 +1,36 @@
+{
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaishomecoming:soybean"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    },
+    {
+      "tag": "forge:raw_fishes/salmon"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pot_of_seafood_miso_soup"
+  },
+  "time": 400
+}

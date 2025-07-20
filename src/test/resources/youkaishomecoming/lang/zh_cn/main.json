@@ -1,6 +1,7 @@
 {
 	"itemGroup.youkaishomecoming": {
-		"youkais_homecoming": "妖怪们的归家",
+		"block": "妖怪们的归家 - 作物和工具",
+		"food": "妖怪们的归家 - 食物和原料",
 		"danmaku": "妖怪们的弹幕"
 	},
 	"entity.youkaishomecoming": {
@@ -27,7 +28,8 @@
 			"ferment": "发酵",
 			"steam": "蒸",
 			"cuisine": "料理",
-			"basin": "踩踏"
+			"basin": "踩踏",
+			"cooking": "煮饭"
 		},
 		"tooltip": {
 			"chance": " %2$s%%概率获得%1$s",
@@ -107,9 +109,6 @@
 		},
 		"flesh_human": "怪肉",
 		"flesh_youkai": "人肉",
-		"fermenting_progress": "发酵进度：%s",
-		"cuisine_allow": "下一步:",
-		"cuisine_extra": "还有%s种选择",
 		"koishi_reimu": "灵梦：谁在那？",
 		"reimu_flesh": "灵梦：别吃这个。最后警告",
 		"reimu_warn": "灵梦：喝点茶清醒一下。最后警告"
@@ -126,5 +125,8 @@
 	},
 	"youkaishomecoming.subtitle.koishi_ring": "这里是玛丽小姐～",
 	"youkaishomecoming.subtitle.graze": "擦弹",
-	"youkaishomecoming.subtitle.miss": "玩家中弹"
+	"youkaishomecoming.subtitle.miss": "玩家中弹",
+	"youkaishomecoming.subtitle.deer_ambient": "鹿叫",
+	"youkaishomecoming.subtitle.deer_hurt": "鹿受伤",
+	"youkaishomecoming.subtitle.deer_death": "鹿死亡"
 }
