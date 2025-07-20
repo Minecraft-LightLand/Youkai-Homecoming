@@ -29,9 +29,12 @@ public class RemiliaSpell extends ActualSpellCard {
 
 				var nor = DanmakuHelper.getOrientation(dir).asNormal()
 						.rotateDegrees((rand.nextDouble() * 2 - 1) * 60);
+				double ver = 5;
+				var tv = holder.targetVelocity();
+				if (tv != null) ver += Math.min(10, tv.length() * 5f);
 				addTicker(new Sweep().init(dir, nor,
-						(rand.nextDouble() * 2 - 1) * 90,
-						15, 15, v * 0.8, v * 1.2,
+						180,
+						15, ver, v * 0.8, v * 1.2,
 						20, (int) (15 * v), (int) Math.max(60, dist * 2)
 				));
 			}
