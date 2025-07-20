@@ -2,22 +2,22 @@
   "type": "youkaishomecoming:simple_fermentation",
   "ingredients": [
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
       "item": "farmersdelight:straw"

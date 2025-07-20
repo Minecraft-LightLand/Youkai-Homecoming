@@ -9,7 +9,7 @@
       "item": "minecraft:honey_bottle"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
       "item": "youkaishomecoming:saucer"

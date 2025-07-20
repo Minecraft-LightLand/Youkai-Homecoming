@@ -57,6 +57,16 @@ public class YHTagGen {
 	public static final TagKey<Item> GRAPE = forgeItem("fruits/grape");
 	public static final TagKey<Item> FRUIT = forgeItem("fruits");
 	public static final TagKey<Item> SEED = forgeItem("seeds");
+	public static final TagKey<Item> SOY_SAUCE_BOTTLE = forgeItem("bottles/soy_sauce");
+	public static final TagKey<Item> MAYONNAISE_BOTTLE = forgeItem("bottles/mayonnaise");
+	public static final TagKey<Item> SALMON_ROE = forgeItem("roes/salmon");
+	public static final TagKey<Item> CRAB_ROE = forgeItem("roes/crab");
+	public static final TagKey<Item> NATTOU = forgeItem("nattou");
+	public static final TagKey<Item> OTORO = forgeItem("otoro");
+	public static final TagKey<Item> SOYBEAN = forgeItem("soybean");
+	public static final TagKey<Item> REDBEAN = forgeItem("redbean");
+	public static final TagKey<Item> IMITATION_CRAB = forgeItem("imitation_crab");
+	public static final TagKey<Item> TAMAGOYAKI_SLICE = forgeItem("slices/tamagoyaki");
 	public static final TagKey<Item> GRAPE_SEED = item("grape_seed");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
@@ -146,6 +156,10 @@ public class YHTagGen {
 		pvd.addTag(GRAPE).add(YHCrops.RED_GRAPE.getFruits(), YHCrops.BLACK_GRAPE.getFruits(), YHCrops.WHITE_GRAPE.getFruits());
 		pvd.addTag(FRUIT).addTag(GRAPE);
 		pvd.addTag(GRAPE_SEED).add(YHCrops.RED_GRAPE.getSeed(), YHCrops.BLACK_GRAPE.getSeed(), YHCrops.WHITE_GRAPE.getSeed());
+		pvd.addTag(SOY_SAUCE_BOTTLE).add(YHItems.SOY_SAUCE_BOTTLE.asItem());
+		pvd.addTag(MAYONNAISE_BOTTLE).add(YHItems.MAYONNAISE.asItem());
+		pvd.addTag(SOYBEAN).add(YHCrops.SOYBEAN.getSeed());
+		pvd.addTag(REDBEAN).add(YHCrops.REDBEAN.getSeed());
 
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());
