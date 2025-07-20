@@ -4,10 +4,10 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     }
   ],
   "recipe_book_tab": "misc",

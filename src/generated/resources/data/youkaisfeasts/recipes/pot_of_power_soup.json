@@ -2,7 +2,7 @@
   "type": "youkaisfeasts:unordered_cooking",
   "input": [
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     },
     {
       "tag": "forge:raw_pork"

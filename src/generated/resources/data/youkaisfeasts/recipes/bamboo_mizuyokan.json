@@ -7,7 +7,7 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaisfeasts:redbean"
+      "tag": "forge:redbean"
     },
     {
       "type": "l2library:potion",

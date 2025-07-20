@@ -2,16 +2,16 @@
   "type": "youkaisfeasts:simple_fermentation",
   "ingredients": [
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     }
   ],
   "inputFluid": {

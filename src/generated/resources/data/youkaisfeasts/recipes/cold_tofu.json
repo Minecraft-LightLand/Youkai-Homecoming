@@ -12,7 +12,7 @@
       "item": "youkaisfeasts:soy_sauce_bottle"
     },
     {
-      "item": "youkaisfeasts:soybean"
+      "tag": "forge:soybean"
     },
     {
       "tag": "forge:salad_ingredients/cabbage"
