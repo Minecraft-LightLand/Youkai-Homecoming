@@ -83,35 +83,35 @@ public class TableItemManager extends BaseTableItem {
 		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
 		SUSHI_TOP.addMapping("lamprey", YHTagGen.COOKED_EEL);
 		SUSHI_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
-		SUSHI_TOP.addMapping("otoro", YHFood.OTORO.item);
+		SUSHI_TOP.addMapping("otoro", YHTagGen.OTORO);
 		SUSHI_KELP.addMapping("kelp", Items.DRIED_KELP);
 		SUSHI_SAUCE.addMapping("sugar", Items.SUGAR).seareable();
 		SUSHI_SAUCE.addMapping("mayonnaise", YHItems.MAYONNAISE.item);
 
-		GUNKAN_TOP.addMapping("roe", YHFood.ROE.item);
-		GUNKAN_TOP.addMapping("crab_roe", YHFood.CRAB_ROE.item);
+		GUNKAN_TOP.addMapping("roe", YHTagGen.SALMON_ROE);
+		GUNKAN_TOP.addMapping("crab_roe", YHTagGen.CRAB_ROE);
 		GUNKAN_TOP.addMapping("seagrass", Items.SEAGRASS);
-		GUNKAN_TOP.addMapping("nattou", YHFood.NATTOU.item);
+		GUNKAN_TOP.addMapping("nattou", YHTagGen.NATTOU);
 		//shirako
 		CAL_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
 		CAL_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
 		CAL_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
-		CAL_TOP.addMapping("otoro", YHFood.OTORO.item);
-		CAL_COVER.addMapping("roe", YHFood.ROE.item);
-		CAL_COVER.addMapping("crab_roe", YHFood.CRAB_ROE.item);
+		CAL_TOP.addMapping("otoro", YHTagGen.OTORO);
+		CAL_COVER.addMapping("roe", YHTagGen.SALMON_ROE);
+		CAL_COVER.addMapping("crab_roe", YHTagGen.CRAB_ROE);
 
 		VariantModelPart[] rolls = {HOSOMAKI_INGREDIENT, FUTOMAKI_INGREDIENT, CAL_INGREDIENT};
 		VariantModelPart[] sauces = {HOSOMAKI_SAUCE, FUTOMAKI_SAUCE, CAL_SAUCE, CAL_TOP_SAUCE};
 
-		addBulk("soy_sauce", "sauce/soy_sauce", YHItems.SOY_SAUCE_BOTTLE.item, sauces);
-		addBulk("mayonnaise", "sauce/mayonnaise", YHItems.MAYONNAISE.item, sauces);
+		addBulk("soy_sauce", "sauce/soy_sauce", YHTagGen.SOY_SAUCE_BOTTLE, sauces);
+		addBulk("mayonnaise", "sauce/mayonnaise", YHTagGen.MAYONNAISE_BOTTLE, sauces);
 
 		addBulk("salmon", "ingredient/salmon", ForgeTags.RAW_FISHES_SALMON, rolls);
 		addBulk("tuna", "ingredient/tuna", YHTagGen.RAW_TUNA, rolls);
 		addBulk("carrot", "ingredient/carrot", Items.CARROT, rolls);
 		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);
-		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHFood.TAMAGOYAKI_SLICE.item, rolls);
-		addBulk("imitation_crab", "ingredient/imitation_crab", YHFood.IMITATION_CRAB.item, rolls);
+		addBulk("tamagoyaki", "ingredient/tamagoyaki", YHTagGen.TAMAGOYAKI_SLICE, rolls);
+		addBulk("imitation_crab", "ingredient/imitation_crab", YHTagGen.IMITATION_CRAB, rolls);
 		addBulk("cucumber", "ingredient/cucumber", YHTagGen.CUCUMBER_SLICE, rolls);
 		// kappa
 	}

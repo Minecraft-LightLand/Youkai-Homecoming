@@ -5,7 +5,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.FixedModelHolder;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.TagRef;
-import dev.xkmc.youkaishomecoming.init.food.YHCrops;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 
@@ -38,7 +38,7 @@ public class TableBambooBowls {
 
 	public static final IngredientTableItem BAMBOO = TableItemManager.TABLE.with(bamboo("base"), Items.BAMBOO);
 	public static final IngredientTableItem RICE = BAMBOO.with(fill("rice", 1), TagRef.GRAIN_RICE);
-	public static final IngredientTableItem SOYBEAN = BAMBOO.with(fill("soybean", 1), YHCrops.SOYBEAN::getSeed);
+	public static final IngredientTableItem SOYBEAN = BAMBOO.with(fill("soybean", 1), YHTagGen.SOYBEAN);
 	public static final IngredientTableItem CARROT = BAMBOO.with(fill("carrot", 1), Items.CARROT);
 
 	public static final ResourceLocation TUTU_CONGEE = RICE.addNext(complete("tutu_congee")).register();

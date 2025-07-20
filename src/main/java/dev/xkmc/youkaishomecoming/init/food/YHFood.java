@@ -55,7 +55,7 @@ public enum YHFood implements ItemLike {
 	),
 	OTORO(FoodType.SIMPLE, 9, 0.3f,
 			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.5f),
-			DietTagGen.PROTEINS.tag
+			YHTagGen.OTORO, DietTagGen.PROTEINS.tag
 	),
 	CRAB(FoodType.SIMPLE, 2, 0.3f,
 			new EffectEntry(YHEffects.CRABY, 600, 0, 0.2f),
@@ -71,7 +71,7 @@ public enum YHFood implements ItemLike {
 	),
 	CRAB_ROE(FoodType.SIMPLE, 6, 0.8f,
 			new EffectEntry(YHEffects.CRABY, 600, 1, 0.5f),
-			DietTagGen.PROTEINS.tag
+			YHTagGen.CRAB_ROE, DietTagGen.PROTEINS.tag
 	),
 	RAW_VENISON(FoodType.SIMPLE, 4, 0.3f,
 			YHTagGen.RAW_VENISON, DietTagGen.PROTEINS.tag
@@ -88,14 +88,14 @@ public enum YHFood implements ItemLike {
 
 	ROE(FoodType.SIMPLE, 1, 0.6f,
 			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
-			DietTagGen.PROTEINS.tag),
+			YHTagGen.SALMON_ROE, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f, YHTagGen.BUTTER),
 	TOFU(FoodType.SIMPLE, 4, 0.5f, DietTagGen.PROTEINS.tag),
 	OILY_BEAN_CURD(FoodType.SIMPLE, 4, 0.8f, DietTagGen.PROTEINS.tag),
-	IMITATION_CRAB(FoodType.SIMPLE, 6, 1f, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
+	IMITATION_CRAB(FoodType.SIMPLE, 6, 1f, YHTagGen.IMITATION_CRAB, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	TAMAGOYAKI(FoodType.SIMPLE, 6, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
-	TAMAGOYAKI_SLICE(FoodType.SIMPLE, 3, 0.6f, YHTagGen.TAMAGOYAKI, DietTagGen.PROTEINS.tag),
-	NATTOU(FoodType.SIMPLE, 4, 0.6f, DietTagGen.PROTEINS.tag),
+	TAMAGOYAKI_SLICE(FoodType.SIMPLE, 3, 0.6f, YHTagGen.TAMAGOYAKI, YHTagGen.TAMAGOYAKI_SLICE, DietTagGen.PROTEINS.tag),
+	NATTOU(FoodType.SIMPLE, 4, 0.6f, YHTagGen.NATTOU, DietTagGen.PROTEINS.tag),
 	CUCUMBER_SLICE(FoodType.FAST, 1, 0.3f, YHTagGen.CUCUMBER_SLICE, DietTagGen.VEGETABLES.tag),
 	RAISIN(FoodType.FAST, 3, 0.6f, DietTagGen.VEGETABLES.tag),
 
