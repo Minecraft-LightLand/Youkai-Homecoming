@@ -218,7 +218,7 @@ public abstract class YoukaiEntity extends PathfinderMob
 	}
 
 	public double getStopRange() {
-		return 16;
+		return 64;
 	}
 
 	@Nullable
