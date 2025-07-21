@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "amount": 500,
+      "fluid": "youkaishomecoming:cream",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "youkaishomecoming:butter"
+    }
+  ]
+}

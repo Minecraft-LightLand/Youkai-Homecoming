@@ -22,7 +22,7 @@ public class KettleRecipeBuilder extends BaseRecipeBuilder<
 		> {
 
 	public KettleRecipeBuilder(IYHFluidHolder output, int time) {
-		this(new FluidStack(output.fluid().getSource(), 1000), time);
+		this(new FluidStack(output.source(), 1000), time);
 	}
 
 	public KettleRecipeBuilder(Fluid output, int time) {

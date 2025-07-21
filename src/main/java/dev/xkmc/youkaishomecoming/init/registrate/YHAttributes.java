@@ -22,7 +22,7 @@ public class YHAttributes {
 		INITIAL_RESOURCE = reg(reg, "initial_resource", 0, -10, 10, "Additional Initial Resource");
 		INITIAL_POWER = reg(reg, "initial_power", 0, -10, 10, "Additional Initial Power");
 		GRAZE_EFFECTIVENESS = reg(reg, "graze_effectiveness", 1, 0, 10, "Graze Multiplier", L2DamageTracker.PERCENTAGE);
-		HITBOX = reg(reg, "hit_box", 0, -0.3, 1, "Hit Box Modification", L2DamageTracker.NEGATIVE);
+		HITBOX = reg(reg, "hit_box", 0, -0.2, 1, "Hit Box Modification", L2DamageTracker.NEGATIVE);
 	}
 
 	@SafeVarargs
