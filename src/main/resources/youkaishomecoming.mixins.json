@@ -11,7 +11,7 @@
 		"CopyMealFunctionMixin",
 		"FrogAttackablesSensorMixin",
 		"ItemAccessor",
-		"PlayerMixin",
+
 		"ShootTongueMixin",
 		"api.PersistentEntitySectionManagerAccessor",
 		"api.ServerLevelAccessor",
