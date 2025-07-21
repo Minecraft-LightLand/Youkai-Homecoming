@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -34,6 +36,8 @@ public record PotClick(
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
 					if (stack.isDamageableItem()) {
 						stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+					} else if (SlipBottleItem.isSlipContainer(stack)) {
+						player.setItemInHand(hand, SlipBottleItem.drain(stack));
 					} else {
 						ItemStack cont = stack.getCraftingRemainingItem();
 						stack.shrink(1);

@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-21T13:27:01.657029	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-21T17:17:13.029764	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -1708,6 +1708,7 @@ a099b6e63fb2f67a7844e60d9d889354e906a570 assets/youkaishomecoming/models/item/ma
 d221402fbb88c844cc837465b46b2dd9b8c9a57e assets/youkaishomecoming/models/item/matcha.json
 1f4d75e096718732e8ddb0c560ca29019a70be20 assets/youkaishomecoming/models/item/matcha_mochi.json
 820a54098743bbcb28474e70213225112c750592 assets/youkaishomecoming/models/item/mayonnaise_bottle.json
+af313e40bd3942c6ccc7bec5dbd4398cb1a2ed45 assets/youkaishomecoming/models/item/mayonnaise_flask.json
 76ee44f4273cc5ab3e078f3189ccea83f714b529 assets/youkaishomecoming/models/item/mead.json
 b66b9b93584f0af1150875668113fca4840efa72 assets/youkaishomecoming/models/item/milk_popsicle.json
 a93f492676b374735c94c280c942b433b483192f assets/youkaishomecoming/models/item/mio.json
@@ -1831,7 +1832,7 @@ cb5e6d79d9969a90898ed10935b833601080e072 assets/youkaishomecoming/models/item/ro
 a7e2f6fb15b9bbd0b5d40d9a17c8c98ee3a0d961 assets/youkaishomecoming/models/item/rumia_hairband.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/rumia_spawn_egg.json
 90dfa43e14582ce451fb3d531411de31e2121453 assets/youkaishomecoming/models/item/saidi_tea.json
-2483dcf7cb3ff0725f54e085fdb532d8c67953fa assets/youkaishomecoming/models/item/sake_bottle.json
+d4ba5f493c998dbb5a9d2910cff2342ca166232a assets/youkaishomecoming/models/item/sake_bottle.json
 ee3e53e64918fd18d8a40e93fa3deee0c96ed423 assets/youkaishomecoming/models/item/sake_bottle_overlay.json
 af6e4ba971c898f965d8d610d7d8e721b47b3406 assets/youkaishomecoming/models/item/sakura_honey_tea.json
 f49f6bebebaa8a8fb50f419dc50d5a70cd050cf2 assets/youkaishomecoming/models/item/sakura_mochi.json
@@ -1867,6 +1868,7 @@ af5b596fa6ba0966d65324dc49b8b9bfd06aa28b assets/youkaishomecoming/models/item/si
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/youkaishomecoming/models/item/small_fairy_spawn_egg.json
 2eb90a114d91a1ef61d1aba1016548b4cf436df8 assets/youkaishomecoming/models/item/small_iron_pot.json
 5e9432c3f0fb0e42e03f46cb365e23c97a330d0f assets/youkaishomecoming/models/item/soy_sauce_bottle.json
+2c3693de6cedd059a887079c5d605ba266fd4cbc assets/youkaishomecoming/models/item/soy_sauce_flask.json
 3dad0eb03c7ff475680ae2ed369d9ac78011a47f assets/youkaishomecoming/models/item/soybean.json
 35d638812b5961b0d2ab8b6d5aaa1e361fe2e97e assets/youkaishomecoming/models/item/soybean_bag.json
 6f695243a1cb874b7374a55b9bd1ce91ebd349b6 assets/youkaishomecoming/models/item/sparrow_sake.json

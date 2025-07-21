@@ -29,7 +29,7 @@ public interface IYHFluidHolder {
 	}
 
 	@Nullable
-	default BottledDrinkSet bottleSet() {
+	default BottleTexture bottleSet() {
 		return null;
 	}
 

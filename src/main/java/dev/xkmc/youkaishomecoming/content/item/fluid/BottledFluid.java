@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -37,6 +38,7 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 		return virtualFluid(id, WATER_FLOW, WATER_STILL, typeFactory, factory);
 	}
 
+	private final String id;
 	private final int color;
 	private final Supplier<Item> container;
 
@@ -59,6 +61,7 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 	public BottledFluid(String id, String itemId, ResourceLocation flow, ResourceLocation still, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
 		this.color = color;
 		this.container = container;
+		this.id = id;
 
 		fluid = virtualFluid(id, flow, still, (p, s, f) -> new YHFluidType(p, s, f, this), p -> new YHFluid(p, this))
 				.defaultLang().register();
@@ -67,12 +70,17 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 				.item(itemId, p -> factory.apply(fluid::getSource, p.craftRemainder(container.get())))
 				.model((ctx, pvd) -> {
 					pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName()));
-					if (hasBottle) pvd.getBuilder(ctx + "_bottle")
+					if (hasBottle) pvd.getBuilder(id + "_flask")
 							.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("item/generated")))
-							.texture("layer0", pvd.modLoc("item/bottle/" + path + "/" + ctx.getName() + "_bottle"));
+							.texture("layer0", pvd.modLoc("item/bottle/" + path + "/" + id + "_flask"));
 				})
 				.register();
 
+	}
+
+	@Override
+	public IYHFluidHolder holder() {
+		return this;
 	}
 
 	public BottledFluid<T> bottle() {
@@ -116,11 +124,16 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 
 	@Override
 	public String bottleModel() {
-		return item.getId().getPath() + "_bottle";
+		return id + "_flask";
 	}
 
 	public boolean hasBottle() {
 		return hasBottle;
+	}
+
+	@Override
+	public @Nullable BottleTexture bottleSet() {
+		return hasBottle ? this : null;
 	}
 
 }

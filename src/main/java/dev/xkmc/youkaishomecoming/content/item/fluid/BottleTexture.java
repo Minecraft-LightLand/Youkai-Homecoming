@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.client.model.generators.ModelFile;
 
 import java.util.ArrayList;
@@ -20,6 +21,17 @@ public abstract class BottleTexture {
 		index = LIST.size();
 		LIST.add(this);
 	}
+
+	public static Ingredient replace(Ingredient ing) {
+		for (var e : LIST) {
+			if (ing.test(e.holder().asStack(1))) {
+				return new SlipBottleIngredient(e.holder().source()).validate();
+			}
+		}
+		return ing;
+	}
+
+	public abstract IYHFluidHolder holder();
 
 	public abstract String bottleModel();
 

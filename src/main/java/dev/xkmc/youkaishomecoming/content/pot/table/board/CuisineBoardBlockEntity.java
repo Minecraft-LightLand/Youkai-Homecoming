@@ -71,7 +71,7 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 
 	public int addItem(ItemStack stack) {
 		if (level == null) return 0;
-		if (stack.is(YHItems.SAKE_BOTTLE.get())) {
+		if (SlipBottleItem.isSlipContainer(stack)) {
 			stack = SlipBottleItem.getContentStack(stack);
 			if (stack.isEmpty()) return 0;
 		}

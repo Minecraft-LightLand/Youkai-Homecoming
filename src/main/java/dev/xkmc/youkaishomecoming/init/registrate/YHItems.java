@@ -14,10 +14,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.CamelliaItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
-import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.*;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
@@ -149,7 +146,7 @@ public class YHItems {
 
 			SAKE_BOTTLE = YoukaisHomecoming.REGISTRATE.item("sake_bottle", SlipBottleItem::new)
 					.properties(p -> p.stacksTo(1))
-					.model(BottledDrinkSet::buildBottleModel)
+					.model(BottleTexture::buildBottleModel)
 					.color(() -> () -> SlipBottleItem::color)
 					.lang("Flask")
 					.register();

@@ -24,10 +24,17 @@ import java.util.List;
 
 public class SlipBottleItem extends YHDrinkItem {
 
-	public static void drain(ItemStack stack) {
+	public static boolean isSlipContainer(ItemStack stack) {
 		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return;
+		return handler.isPresent() && handler.get() instanceof SlipFluidWrapper;
+
+	}
+
+	public static ItemStack drain(ItemStack stack) {
+		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
+		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return stack;
 		slip.drain(50, IFluidHandler.FluidAction.EXECUTE);
+		return slip.getContainer();
 	}
 
 	public static ItemStack getContentStack(ItemStack stack) {

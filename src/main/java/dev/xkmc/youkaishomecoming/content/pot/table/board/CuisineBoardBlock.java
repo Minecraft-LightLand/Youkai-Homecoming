@@ -75,8 +75,8 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 							return InteractionResult.SUCCESS;
 						}
 					}
-					if (stack.is(YHItems.SAKE_BOTTLE.get())) {
-						SlipBottleItem.drain(stack);
+					if (SlipBottleItem.isSlipContainer(stack)) {
+						player.setItemInHand(hand, SlipBottleItem.drain(stack));
 						return InteractionResult.SUCCESS;
 					}
 					ItemStack cont = stack.getCraftingRemainingItem();

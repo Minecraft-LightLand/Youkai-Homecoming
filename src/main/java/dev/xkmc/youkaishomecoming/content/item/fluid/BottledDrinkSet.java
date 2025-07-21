@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.content.block.food.BottleBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -28,6 +29,11 @@ public class BottledDrinkSet extends BottleTexture {
 				.tag(YHTagGen.BOTTLED)
 				.build()
 				.register();
+	}
+
+	@Override
+	public IYHFluidHolder holder() {
+		return drink;
 	}
 
 	@Override

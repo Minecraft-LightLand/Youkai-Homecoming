@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottleTexture;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.IngredientTableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
@@ -114,6 +115,8 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 		while (b.size() > 5 && a.size() < 5) {
 			a.add(b.remove(0));
 		}
+		a.replaceAll(BottleTexture::replace);
+		b.replaceAll(BottleTexture::replace);
 	}
 
 	private interface IngredientHandler {

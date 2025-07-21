@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
@@ -178,7 +179,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		SimpleContainer copy = new SimpleContainer(items.getContainerSize());
 		for (int i = 0; i < items.getContainerSize(); i++) {
 			var stack = items.getItem(i);
-			if (stack.isEmpty() || stack.hasCraftingRemainingItem()) continue;
+			if (stack.isEmpty() || stack.hasCraftingRemainingItem() || SlipBottleItem.isSlipContainer(stack)) continue;
 			copy.addItem(stack.copy());
 		}
 		return List.of(copy);
