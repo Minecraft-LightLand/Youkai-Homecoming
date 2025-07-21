@@ -72,10 +72,10 @@ public class YHItems {
 			TEA_BAG, BLACK_TEA_BAG, GREEN_TEA_BAG, OOLONG_TEA_BAG, WHITE_TEA_BAG, DARK_TEA_BAG, YELLOW_TEA_BAG,
 			RED_GRAPE_CRATE, BLACK_GRAPE_CRATE, WHITE_GRAPE_CRATE;
 
-	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE;
+	public static final BottledFluid<SakeBottleItem> SOY_SAUCE_BOTTLE, MAYONNAISE, CREAM;
 	public static final BottledFluid<BloodBottleItem> BLOOD_BOTTLE;
 	public static final ItemEntry<Item> CLAY_SAUCER,
-			COFFEE_BEAN, COFFEE_POWDER, CREAM, MATCHA,
+			COFFEE_BEAN, COFFEE_POWDER, MATCHA,
 			STRIPPED_MANDRAKE_ROOT, DRIED_MANDRAKE_FLOWER, CAN, ICE_CUBE;
 	public static final ItemEntry<CamelliaItem> CAMELLIA;
 	public static final ItemEntry<SlipBottleItem> SAKE_BOTTLE;
@@ -128,13 +128,8 @@ public class YHItems {
 		{
 			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
 			MAYONNAISE = new BottledFluid<>("mayonnaise", 0xffffffff, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
+			CREAM = new BottledFluid<>("cream", "bowl_of_cream","cream", () -> Items.BOWL, "ingredient", SakeBottleItem::new);
 			BLOOD_BOTTLE = new BottledFluid<>("blood", 0xff772221, () -> Items.GLASS_BOTTLE, "ingredient", BloodBottleItem::new);
-
-			CREAM = YoukaisHomecoming.REGISTRATE
-					.item("bowl_of_cream", p -> new Item(p.craftRemainder(Items.BOWL)))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/ingredient/" + ctx.getName())))
-					.lang("Bowl of Cream")
-					.register();
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);
 		}

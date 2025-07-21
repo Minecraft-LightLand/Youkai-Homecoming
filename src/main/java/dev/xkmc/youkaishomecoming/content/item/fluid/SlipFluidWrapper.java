@@ -38,7 +38,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	@NotNull
 	public FluidStack getFluid() {
 		if (container.getItem() instanceof BucketBottleItem bucket) {
-			return new FluidStack(bucket.fluid.fluid().getSource(), getTankCapacity(0));
+			return new FluidStack(bucket.fluid.source(), getTankCapacity(0));
 		}
 		var root = container.getTag();
 		if (root == null || !root.contains("SakeFluid", Tag.TAG_COMPOUND)) return FluidStack.EMPTY;
