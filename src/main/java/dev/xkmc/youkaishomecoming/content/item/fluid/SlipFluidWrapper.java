@@ -91,7 +91,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 		if (stack.isEmpty()) return true;
 		if (!(stack.getFluid() instanceof YHFluid fluid)) return false;
 		if (fluid.type instanceof BottledFluid<?> bottle) {
-			return bottle.hasBottle();
+			return bottle.bottleSet() != null;
 		}
 		return fluid.type.asStack(1).isEdible();
 	}

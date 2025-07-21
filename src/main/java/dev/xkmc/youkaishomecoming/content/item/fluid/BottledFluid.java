@@ -11,13 +11,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implements IYHFluidHolder, ItemLike {
+public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, ItemLike {
 
 	public static final ResourceLocation WATER_FLOW = new ResourceLocation("block/water_flow");
 	public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
@@ -38,14 +37,14 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 		return virtualFluid(id, WATER_FLOW, WATER_STILL, typeFactory, factory);
 	}
 
-	private final String id;
+	private final String id, path;
 	private final int color;
 	private final Supplier<Item> container;
 
 	public final ItemEntry<T> item;
 	public final FluidEntry<YHFluid> fluid;
 
-	private boolean hasBottle;
+	protected @Nullable BottledDrinkSet set;
 
 	public BottledFluid(String id, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
 		this(id, id + "_bottle", SOLID_FLOW, SOLID_STILL, color, container, path, factory);
@@ -62,29 +61,21 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 		this.color = color;
 		this.container = container;
 		this.id = id;
+		this.path = path;
 
 		fluid = virtualFluid(id, flow, still, (p, s, f) -> new YHFluidType(p, s, f, this), p -> new YHFluid(p, this))
 				.defaultLang().register();
 
 		item = YoukaisHomecoming.REGISTRATE
 				.item(itemId, p -> factory.apply(fluid::getSource, p.craftRemainder(container.get())))
-				.model((ctx, pvd) -> {
-					pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName()));
-					if (hasBottle) pvd.getBuilder(id + "_flask")
-							.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("item/generated")))
-							.texture("layer0", pvd.modLoc("item/bottle/" + path + "/" + id + "_flask"));
-				})
+				.model((ctx, pvd) ->
+						pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName())))
 				.register();
 
 	}
 
-	@Override
-	public IYHFluidHolder holder() {
-		return this;
-	}
-
 	public BottledFluid<T> bottle() {
-		hasBottle = true;
+		set = new BottledDrinkSet(this, id + "_flask", path);
 		return this;
 	}
 
@@ -122,18 +113,14 @@ public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implem
 		return item.getId();
 	}
 
-	@Override
-	public String bottleModel() {
-		return id + "_flask";
-	}
-
-	public boolean hasBottle() {
-		return hasBottle;
+	@Nullable
+	public String bottleTextureFolder() {
+		return path;
 	}
 
 	@Override
 	public @Nullable BottleTexture bottleSet() {
-		return hasBottle ? this : null;
+		return set;
 	}
 
 }

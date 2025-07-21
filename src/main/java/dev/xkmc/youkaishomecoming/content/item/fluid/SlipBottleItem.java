@@ -24,6 +24,8 @@ import java.util.List;
 
 public class SlipBottleItem extends YHDrinkItem {
 
+	public static final FoodProperties NONE = new FoodProperties.Builder().build();
+
 	public static boolean isSlipContainer(ItemStack stack) {
 		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
 		return handler.isPresent() && handler.get() instanceof SlipFluidWrapper;
@@ -45,8 +47,6 @@ public class SlipBottleItem extends YHDrinkItem {
 		}
 		return ItemStack.EMPTY;
 	}
-
-	private final FoodProperties NONE = new FoodProperties.Builder().build();
 
 	public SlipBottleItem(Properties builder) {
 		super(builder);

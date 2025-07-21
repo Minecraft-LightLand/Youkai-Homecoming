@@ -14,8 +14,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
-import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
-import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.l2serial.serialization.custom_handler.Handlers;
 import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
 import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
@@ -55,6 +54,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -105,6 +105,7 @@ public class YoukaisHomecoming {
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaisHomecoming() {
+		Handlers.enableVanilla(Fluid.class, () -> ForgeRegistries.FLUIDS);
 		InitializationMarker.expectAndAdvance(0);
 		YHBlocks.register();
 		YHEffects.register();

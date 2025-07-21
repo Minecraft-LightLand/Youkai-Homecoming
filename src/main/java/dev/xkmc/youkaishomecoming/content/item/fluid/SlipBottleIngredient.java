@@ -23,7 +23,7 @@ public class SlipBottleIngredient extends BaseIngredient<SlipBottleIngredient> {
 				filled.setFluid(new FluidStack(fluid, 1000));
 				var flask = filled.getContainer();
 				if (type.type.bottleSet() instanceof BottledDrinkSet set) {
-					return Stream.of(new ItemValue(set.bottle.asStack()), new ItemValue(flask), new ItemValue(item));
+					return Stream.of(new ItemValue(set.bottle.asStack()), new ItemValue(item));
 				} else return Stream.of(new ItemValue(flask), new ItemValue(item));
 			} else return Stream.of(new ItemValue(item));
 		}

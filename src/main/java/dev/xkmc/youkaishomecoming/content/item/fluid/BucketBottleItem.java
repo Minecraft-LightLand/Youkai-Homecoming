@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.content.item.fluid;
 import dev.xkmc.l2library.base.effects.EffectBuilder;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
-import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -27,9 +26,9 @@ import java.util.List;
 
 public class BucketBottleItem extends BlockItem {
 
-	protected final YHDrink fluid;
+	protected final IYHFluidHolder fluid;
 
-	public BucketBottleItem(Block block, Properties properties, YHDrink fluid) {
+	public BucketBottleItem(Block block, Properties properties, IYHFluidHolder fluid) {
 		super(block, properties);
 		this.fluid = fluid;
 	}
@@ -79,8 +78,8 @@ public class BucketBottleItem extends BlockItem {
 
 	@Override
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
-		var food = fluid.item.asStack().getFoodProperties(entity);
-		assert food != null;
+		var food = fluid.asStack(1).getFoodProperties(entity);
+		if (food == null || food == SlipBottleItem.NONE) return SlipBottleItem.NONE;
 		var builder = new FoodProperties.Builder();
 		if (food.canAlwaysEat()) builder.alwaysEat();
 		for (var e : food.getEffects()) {

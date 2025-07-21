@@ -13,6 +13,7 @@ import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.SoupBaseBuilder;
@@ -759,8 +760,14 @@ public class YHRecipeGen {
 		// iron bowl
 		{
 
+			var soy = new SlipBottleIngredient(YHItems.SOY_SAUCE_BOTTLE.source());
+
+			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soy_sauce"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
+					.add(soy)
+					.save(pvd);
+
 			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("miso"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
-					.add(YHTagGen.SOYBEAN)
+					.add(soy).add(YHTagGen.SOYBEAN)
 					.save(pvd);
 
 			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.asItem())
@@ -777,13 +784,14 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
+					.add(soy)
 					.add(Items.RED_MUSHROOM)
 					.add(Items.BROWN_MUSHROOM)
 					.add(Tags.Items.MUSHROOMS)
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(YHTagGen.SOYBEAN)
+					.add(soy).add(YHTagGen.SOYBEAN)
 					.add(YHFood.TOFU)
 					.add(Items.KELP)
 					.add(Items.CARROT)
@@ -822,7 +830,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHTagGen.SOYBEAN)
+					.add(soy).add(YHTagGen.SOYBEAN)
 					.add(YHFood.TOFU.item.get())
 					.add(YHFood.TOFU.item.get())
 					.add(YHFood.TOFU.item.get())
@@ -832,7 +840,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHTagGen.SOYBEAN)
+					.add(soy).add(YHTagGen.SOYBEAN)
 					.add(YHFood.TOFU.item.get())
 					.add(YHFood.TOFU.item.get())
 					.add(Items.DRIED_KELP)
@@ -844,7 +852,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POWER_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHTagGen.SOYBEAN)
+					.add(soy).add(YHTagGen.SOYBEAN)
 					.add(TagRef.RAW_PORK)
 					.add(TagRef.RAW_BEEF)
 					.add(TagRef.RAW_MUTTON)
