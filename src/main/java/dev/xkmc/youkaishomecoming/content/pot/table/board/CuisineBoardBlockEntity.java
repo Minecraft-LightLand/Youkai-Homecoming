@@ -3,9 +3,11 @@ package dev.xkmc.youkaishomecoming.content.pot.table.board;
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2library.base.tile.BaseBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.SimpleContainer;
@@ -69,6 +71,10 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 
 	public int addItem(ItemStack stack) {
 		if (level == null) return 0;
+		if (stack.is(YHItems.SAKE_BOTTLE.get())) {
+			stack = SlipBottleItem.getContentStack(stack);
+			if (stack.isEmpty()) return 0;
+		}
 		var prev = getModel();
 		var ans = prev.find(level, stack);
 		if (ans.isPresent()) {

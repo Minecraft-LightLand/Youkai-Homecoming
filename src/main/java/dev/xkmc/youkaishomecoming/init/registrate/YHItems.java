@@ -126,9 +126,9 @@ public class YHItems {
 
 		// ingredients
 		{
-			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
-			MAYONNAISE = new BottledFluid<>("mayonnaise", 0xffffffff, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new);
-			CREAM = new BottledFluid<>("cream", "bowl_of_cream","cream", () -> Items.BOWL, "ingredient", SakeBottleItem::new);
+			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new).bottle();
+			MAYONNAISE = new BottledFluid<>("mayonnaise", 0xffffffff, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new).bottle();
+			CREAM = new BottledFluid<>("cream", "bowl_of_cream", "cream", () -> Items.BOWL, "ingredient", SakeBottleItem::new);
 			BLOOD_BOTTLE = new BottledFluid<>("blood", 0xff772221, () -> Items.GLASS_BOTTLE, "ingredient", BloodBottleItem::new);
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);
@@ -151,6 +151,7 @@ public class YHItems {
 					.properties(p -> p.stacksTo(1))
 					.model(BottledDrinkSet::buildBottleModel)
 					.color(() -> () -> SlipBottleItem::color)
+					.lang("Flask")
 					.register();
 		}
 

@@ -11,11 +11,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import java.util.function.Supplier;
 
-public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, ItemLike {
+public class BottledFluid<T extends SakeBottleItem> extends BottleTexture implements IYHFluidHolder, ItemLike {
 
 	public static final ResourceLocation WATER_FLOW = new ResourceLocation("block/water_flow");
 	public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
@@ -42,6 +43,8 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 	public final ItemEntry<T> item;
 	public final FluidEntry<YHFluid> fluid;
 
+	private boolean hasBottle;
+
 	public BottledFluid(String id, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
 		this(id, id + "_bottle", SOLID_FLOW, SOLID_STILL, color, container, path, factory);
 	}
@@ -62,9 +65,19 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 
 		item = YoukaisHomecoming.REGISTRATE
 				.item(itemId, p -> factory.apply(fluid::getSource, p.craftRemainder(container.get())))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName())))
+				.model((ctx, pvd) -> {
+					pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName()));
+					if (hasBottle) pvd.getBuilder(ctx + "_bottle")
+							.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("item/generated")))
+							.texture("layer0", pvd.modLoc("item/bottle/" + path + "/" + ctx.getName() + "_bottle"));
+				})
 				.register();
 
+	}
+
+	public BottledFluid<T> bottle() {
+		hasBottle = true;
+		return this;
 	}
 
 	@Override
@@ -99,6 +112,15 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 
 	public ResourceLocation getId() {
 		return item.getId();
+	}
+
+	@Override
+	public String bottleModel() {
+		return item.getId().getPath() + "_bottle";
+	}
+
+	public boolean hasBottle() {
+		return hasBottle;
 	}
 
 }
