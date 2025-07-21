@@ -56,8 +56,8 @@ public enum FruitsDelightCompatDrink implements IYHFluidHolder {
 	}
 
 	@Override
-	public FluidEntry<? extends YHFluid> fluid() {
-		return fluid;
+	public YHFluid source() {
+		return fluid.getSource();
 	}
 
 	@Override

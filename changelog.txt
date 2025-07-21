@@ -1,6 +1,12 @@
+2.5.3
+- Add Ingredient Rack and Wine Shelf recipe
+- Add Create compat recipes
+- Fix Deer sound attenuation
+
 0.3.1
 - Fix bamboo bowl food
 - Tagify cuisine board ingredients
+- Update JP translation
 
 0.3.0
 - Initial release

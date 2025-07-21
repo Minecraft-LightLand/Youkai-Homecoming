@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:stripped_oak_wood"
+  },
+  "result": "youkaisfeasts:oak_ingredient_rack"
+}

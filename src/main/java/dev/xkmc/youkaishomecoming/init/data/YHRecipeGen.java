@@ -88,6 +88,11 @@ public class YHRecipeGen {
 						.define('P', e.slab)
 						.save(pvd);
 
+				if (e == YHBlocks.WoodType.SPRUCE)
+					pvd.stonecutting(DataIngredient.items(e.strippedWood), RecipeCategory.MISC, YHBlocks.SPRUCE_WINE_SHELF);
+				if (e == YHBlocks.WoodType.OAK)
+					pvd.stonecutting(DataIngredient.items(e.strippedWood), RecipeCategory.MISC, YHBlocks.OAK_INGREDIENT_RACK);
+
 			}
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.STEAMER_POT)::unlockedBy, Items.IRON_INGOT)
@@ -277,7 +282,7 @@ public class YHRecipeGen {
 					.addIngredient(YHItems.CREAM)
 					.build(pvd, YHFood.BUTTER.item.getId());
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.MAYONNAISE.item.get(), 3, 200, 0.1f, Items.GLASS_BOTTLE)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.MAYONNAISE.item.get(), 2, 200, 0.1f, Items.GLASS_BOTTLE)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MISC)
 					.addIngredient(YHFood.BUTTER.item)
 					.addIngredient(TagRef.EGGS)
@@ -425,7 +430,7 @@ public class YHRecipeGen {
 		// food cooking bowl
 		{
 
-			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM.get(), 1, 200, 0.1f, Items.BOWL)
+			CookingPotRecipeBuilder.cookingPotRecipe(YHItems.CREAM, 1, 200, 0.1f, Items.BOWL)
 					.setRecipeBookTab(CookingPotRecipeBookTab.MISC)
 					.addIngredient(TagRef.MILK_BOTTLE)
 					.addIngredient(TagRef.MILK_BOTTLE)
@@ -484,7 +489,7 @@ public class YHRecipeGen {
 					.addIngredient(TagRef.RAW_FISHES_SALMON)
 					.addIngredient(TagRef.VEGETABLES_TOMATO)
 					.addIngredient(TagRef.FOOD_CABBAGE)
-					.addIngredient(YHItems.CREAM.get())
+					.addIngredient(YHItems.CREAM)
 					.build(pvd, YHFood.TUSCAN_SALMON.item.getId());
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHFood.HONEY_GLAZED_CUCUMBER.item.get(), 1, 200, 0.1f, Items.BOWL)
@@ -525,7 +530,7 @@ public class YHRecipeGen {
 					.addIngredient(Items.RED_MUSHROOM)
 					.addIngredient(Items.RED_MUSHROOM)
 					.addIngredient(Items.HONEY_BOTTLE)
-					.addIngredient(YHItems.CREAM.get())
+					.addIngredient(YHItems.CREAM)
 					.addIngredient(YHCrops.UDUMBARA.getFruits())
 					.addIngredient(Items.PURPLE_BANNER)
 					.build(pvd, YHItems.SURP_CHEST.getId());
@@ -539,8 +544,8 @@ public class YHRecipeGen {
 					.add(YHTagGen.SOYBEAN)
 					.save(pvd);
 
-			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.get())
-					.add(YHItems.CREAM.get())
+			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.asItem())
+					.add(YHItems.CREAM)
 					.save(pvd);
 
 			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soul"))::unlockedBy, Items.SOUL_SAND)
@@ -633,7 +638,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MUSHROOM_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHItems.CREAM.get())
+					.add(YHItems.CREAM)
 					.add(Items.BROWN_MUSHROOM)
 					.add(Items.BROWN_MUSHROOM)
 					.add(Items.BROWN_MUSHROOM)
@@ -641,7 +646,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POTATO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHItems.CREAM.get())
+					.add(YHItems.CREAM)
 					.add(Items.POTATO)
 					.add(Items.POTATO)
 					.add(Items.POTATO)
@@ -650,7 +655,7 @@ public class YHRecipeGen {
 					.save(pvd);
 
 			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.BORSCHT, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHItems.CREAM.get())
+					.add(YHItems.CREAM)
 					.add(Items.BEETROOT)
 					.add(Items.BEETROOT)
 					.add(Items.BEETROOT)
