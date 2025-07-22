@@ -5,6 +5,7 @@ import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupHolder;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
@@ -15,7 +16,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
@@ -54,22 +54,17 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 
 	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
 
-	private boolean recheckSoup = true;
-	private ResourceLocation soupCache = SoupBaseRecipe.DEF;
-	private List<ItemStack> floatingItems = new ArrayList<>();
+	private final SoupHolder soup = new SoupHolder();
 
+	private boolean recheckSoup = true;
 	private @Nullable Player lastPlayer;
 
 	public CookingBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
 	}
 
-	public ResourceLocation getSoupCache() {
-		return soupCache;
-	}
-
-	public List<ItemStack> getFloatingItems() {
-		return floatingItems;
+	public SoupHolder getSoup() {
+		return soup;
 	}
 
 	public abstract Item container();
@@ -77,31 +72,16 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 	@Override
 	public void tick() {
 		super.tick();
-		if (level != null && level.isClientSide() && recheckSoup) {
-			recheckSoup = false;
-			var cont = createContainer();
-			var list = level.getRecipeManager().getRecipesFor(YHBlocks.SOUP_RT.get(), cont, level);
-			int max = 0;
-			soupCache = SoupBaseRecipe.DEF;
-			SoupBaseRecipe<?> recipe = null;
-			for (var e : list) {
-				if (e.getIngredientCount() > max) {
-					max = e.getIngredientCount();
-					soupCache = e.id;
-					recipe = e;
-				} else if (e.getIngredientCount() == max) {
-					if (e.id.compareTo(soupCache) < 0) {
-						soupCache = e.id;
-						recipe = e;
-					}
-				}
+		if (level != null && level.isClientSide()) {
+			if (recheckSoup) {
+				recheckSoup = false;
+				soup.recheckSoup(this, level);
 			}
-			floatingItems = new ArrayList<>(cont.list());
-			if (recipe != null) {
-				recipe.removeConsumed(floatingItems);
-			}
+			soup.tickSoup(this, totalTime == 0 ? 0 : recipeProgress);
+
 		}
 	}
+
 
 	public void setLastPlayer(Player player) {
 		lastPlayer = player;
@@ -142,7 +122,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 	}
 
 	@Override
-	protected CookingInv createContainer() {
+	public CookingInv createContainer() {
 		return createContainer(true);
 	}
 

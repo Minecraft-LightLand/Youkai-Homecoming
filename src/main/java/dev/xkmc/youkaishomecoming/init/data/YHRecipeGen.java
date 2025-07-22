@@ -16,8 +16,8 @@ import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
@@ -763,11 +763,11 @@ public class YHRecipeGen {
 			var soy = new SlipBottleIngredient(YHItems.SOY_SAUCE_BOTTLE.source());
 			{
 				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soy_sauce"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
-						.add(soy)
+						.col(0x7fffffff).add(soy)
 						.save(pvd);
 
 				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("miso"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
-						.add(soy).add(YHTagGen.SOYBEAN)
+						.time(100).add(soy).add(YHTagGen.SOYBEAN)
 						.save(pvd);
 
 				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.asItem())

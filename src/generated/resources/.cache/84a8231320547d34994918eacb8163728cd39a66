@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-21T17:36:51.743981	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-22T16:01:01.723605	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -3013,7 +3013,7 @@ c2dfcc68f46854f3e4c319c4953d34b46bf0580e data/youkaishomecoming/recipes/copper_t
 51f07205bffdb3b88037fe990b9eae331ab83c4d data/youkaishomecoming/recipes/cornflower_tea.json
 55a305670518a367383cf81982be710b5cca6b35 data/youkaishomecoming/recipes/crab_meat.json
 06592d91336c83c2387507a9d312bfe82e244fc3 data/youkaishomecoming/recipes/crab_roe.json
-d4993284d0682d8d440b12fe48c9f85371d7553a data/youkaishomecoming/recipes/cream.json
+7482715afe1328a2876ed673f71f02652aa48e5b data/youkaishomecoming/recipes/cream.json
 c0a7e9d422e5bacfdc75e1fdff919bb88a2fa982 data/youkaishomecoming/recipes/crimson_dining_chair.json
 6e6042928503617907f955f41fdcce1cab199a9d data/youkaishomecoming/recipes/crimson_dining_table.json
 c05bc3ed72bbaea3c5fc9ce1bdbd92d5ae12a663 data/youkaishomecoming/recipes/crimson_handrail_from_crimson_planks_stonecutting.json
@@ -3299,7 +3299,7 @@ de2ef4336a5479c990e4c175ceb630891615a0de data/youkaishomecoming/recipes/mayonnai
 9dbccf186447429712c6828522b91d2942faa221 data/youkaishomecoming/recipes/mead.json
 68b34fcdf5f54849425dea9a9a598b81a1cceb9e data/youkaishomecoming/recipes/milk_popsicle.json
 87d4e9fc47d1a245944099cfadf8049457714841 data/youkaishomecoming/recipes/mio.json
-f2b01b159e2a759758d13412b3df0e5ef08f4e55 data/youkaishomecoming/recipes/miso.json
+098918786fd451ff2454b2321b9493762cce4985 data/youkaishomecoming/recipes/miso.json
 5bf5982f574cc18c63bef368f990a03c4547e077 data/youkaishomecoming/recipes/mitarashi_dango.json
 579a8eb55ed61273bb6aae4ba346ee0a40437614 data/youkaishomecoming/recipes/mixing/bowl_of_cream.json
 30da924637770b8cb35da35d140172015d77c12e data/youkaishomecoming/recipes/mixing/butter.json
@@ -3474,8 +3474,8 @@ fee9f8f5bc9c19f8c9cda52601c65b9d8e6d25cd data/youkaishomecoming/recipes/sikkui_s
 907f9c1ae81e64aabc7ffdd76588b15b082950cb data/youkaishomecoming/recipes/sikkui_vertical_slab_from_sikkui_stonecutting.json
 a31827677e9d0ca2a14bebd0d3da176cc70f42aa data/youkaishomecoming/recipes/small_iron_pot.json
 bad82602e97354c22e80c4e868c230f22a65ff41 data/youkaishomecoming/recipes/small_iron_pot_from_iron_ingot_stonecutting.json
-57a707a7117b86fb0fb92e64b005043f22fc8458 data/youkaishomecoming/recipes/soul.json
-353e1bc08af8a219adc1bcce0e07a24503fd003e data/youkaishomecoming/recipes/soy_sauce.json
+983a596ed67c4d632b880c737c0b349aeb68ad37 data/youkaishomecoming/recipes/soul.json
+eac6ca07d1c53e99784ec4efd4ba4d0f21839eec data/youkaishomecoming/recipes/soy_sauce.json
 2d05ce07ee15b8e6a8351c3cc4f16e7ef2275c02 data/youkaishomecoming/recipes/soy_sauce_bottle.json
 3bac5b8fbb0fa78097f72ed7ff00ad0994637fb9 data/youkaishomecoming/recipes/soybean.json
 125916f451f8f8fac7e1fb86aea7d669ac00ec58 data/youkaishomecoming/recipes/soybean_bag.json

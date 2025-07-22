@@ -1,14 +1,12 @@
-package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
+package dev.xkmc.youkaishomecoming.content.pot.cooking.soup;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 
@@ -18,7 +16,11 @@ public abstract class SoupBaseRecipe<T extends SoupBaseRecipe<T>> extends BaseRe
 	public static final ResourceLocation DEF = YoukaisHomecoming.loc("water");
 
 	@SerialClass.SerialField
-	protected ResourceLocation id = DEF;
+	public ResourceLocation id = DEF;
+	@SerialClass.SerialField
+	public int color = -1;
+	@SerialClass.SerialField
+	public int time = 0;
 
 	public SoupBaseRecipe(ResourceLocation id, RecType<T, SoupBaseRecipe<?>, CookingInv> fac) {
 		super(id, fac);

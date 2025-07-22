@@ -1,5 +1,6 @@
 {
   "type": "youkaishomecoming:immediate_soup",
+  "color": -1,
   "id": "youkaishomecoming:miso",
   "input": [
     {
@@ -9,5 +10,6 @@
     {
       "tag": "forge:soybean"
     }
-  ]
+  ],
+  "time": 100
 }
