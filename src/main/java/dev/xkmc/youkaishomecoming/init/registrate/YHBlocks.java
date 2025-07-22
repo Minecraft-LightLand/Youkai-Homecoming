@@ -347,7 +347,7 @@ public class YHBlocks {
 					.register();
 
 			BIG_SPOON = YoukaisHomecoming.REGISTRATE.item("big_spoon", BigSpoonItem::new)
-					.properties(p->p.stacksTo(1))
+					.properties(p -> p.stacksTo(1))
 					.model(BigSpoonItem::buildModel)
 					.register();
 

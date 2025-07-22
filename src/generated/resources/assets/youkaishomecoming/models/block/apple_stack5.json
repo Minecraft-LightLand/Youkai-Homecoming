@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:custom/basket/apple_stack5",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "placement": "youkaishomecoming:block/basket/apple_placement"
+  }
+}
