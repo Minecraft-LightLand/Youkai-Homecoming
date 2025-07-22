@@ -14,7 +14,10 @@ import dev.xkmc.youkaishomecoming.content.block.food.SurpriseFeastBlock;
 import dev.xkmc.youkaishomecoming.content.item.curio.CamelliaItem;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.*;
 import dev.xkmc.youkaishomecoming.content.item.curio.wings.CirnoWingsItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.*;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottleTexture;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshBlockItem;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSimpleItem;
 import dev.xkmc.youkaishomecoming.content.item.misc.BloodBottleItem;
@@ -123,9 +126,9 @@ public class YHItems {
 
 		// ingredients
 		{
-			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", 0xff3B302C, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new).bottle();
-			MAYONNAISE = new BottledFluid<>("mayonnaise", 0xffffffff, () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new).bottle();
-			CREAM = new BottledFluid<>("cream", "bowl_of_cream", "cream", () -> Items.BOWL, "ingredient", SakeBottleItem::new);
+			SOY_SAUCE_BOTTLE = new BottledFluid<>("soy_sauce", "soy_sauce_bottle", () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new).bottle();
+			MAYONNAISE = new BottledFluid<>("mayonnaise", "mayonnaise_bottle", () -> Items.GLASS_BOTTLE, "ingredient", SakeBottleItem::new).bottle();
+			CREAM = new BottledFluid<>("cream", "bowl_of_cream", () -> Items.BOWL, "ingredient", SakeBottleItem::new);
 			BLOOD_BOTTLE = new BottledFluid<>("blood", 0xff772221, () -> Items.GLASS_BOTTLE, "ingredient", BloodBottleItem::new);
 
 			ICE_CUBE = ingredient("ice_cube", Item::new);

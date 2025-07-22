@@ -50,6 +50,10 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 		this(id, id + "_bottle", SOLID_FLOW, SOLID_STILL, color, container, path, factory);
 	}
 
+	public BottledFluid(String id, String itemId, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
+		this(id, itemId, id, container, path, factory);
+	}
+
 	public BottledFluid(String id, String itemId, String fluidTex, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
 		this(id, itemId,
 				YoukaisHomecoming.loc("block/fluid/" + fluidTex + "_flow"),
