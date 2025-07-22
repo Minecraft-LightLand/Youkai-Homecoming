@@ -1,5 +1,5 @@
 {
-	"format_version": "1.21.6",
+	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "#placement",
@@ -25,7 +25,7 @@
 			"name": "cabbage",
 			"from": [5, 1, 5],
 			"to": [11, 5, 5],
-			"rotation": {"angle": -20, "axis": "x", "origin": [8, 1, 5]},
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 1, 5]},
 			"faces": {
 				"north": {"uv": [12, 4, 6, 8], "texture": "#1"},
 				"south": {"uv": [6, 4, 12, 8], "texture": "#1"}
@@ -35,7 +35,7 @@
 			"name": "cabbage",
 			"from": [5, 1, 11],
 			"to": [11, 5, 11],
-			"rotation": {"angle": 20, "axis": "x", "origin": [8, 1, 11]},
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 1, 11]},
 			"faces": {
 				"north": {"uv": [0, 4, 6, 8], "texture": "#1"},
 				"south": {"uv": [6, 4, 0, 8], "texture": "#1"}
@@ -45,7 +45,7 @@
 			"name": "cabbage",
 			"from": [5, 1, 5],
 			"to": [5, 5, 11],
-			"rotation": {"angle": 20, "axis": "z", "origin": [5, 1, 8]},
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [5, 1, 8]},
 			"faces": {
 				"east": {"uv": [6, 0, 12, 4], "texture": "#1"},
 				"west": {"uv": [12, 0, 6, 4], "texture": "#1"}
@@ -55,7 +55,7 @@
 			"name": "cabbage",
 			"from": [11, 1, 5],
 			"to": [11, 5, 11],
-			"rotation": {"angle": -20, "axis": "z", "origin": [11, 1, 8]},
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [11, 1, 8]},
 			"faces": {
 				"east": {"uv": [6, 0, 0, 4], "texture": "#1"},
 				"west": {"uv": [0, 0, 6, 4], "texture": "#1"}

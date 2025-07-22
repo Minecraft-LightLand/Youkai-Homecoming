@@ -1,5 +1,5 @@
 {
-	"format_version": "1.21.6",
+	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "#placement",
@@ -23,9 +23,9 @@
 		},
 		{
 			"name": "cabbage",
-			"from": [7.25, 1, 7.5],
-			"to": [13.25, 5, 7.5],
-			"rotation": {"angle": -5, "axis": "x", "origin": [10.25, 1, 7.5]},
+			"from": [7.26, 1, 7.5],
+			"to": [13.26, 5, 7.5],
+			"rotation": {"angle": 0, "axis": "x", "origin": [10.25, 1, 7.5]},
 			"faces": {
 				"north": {"uv": [12, 4, 6, 8], "texture": "#1"},
 				"south": {"uv": [6, 4, 12, 8], "texture": "#1"}
@@ -35,7 +35,7 @@
 			"name": "cabbage",
 			"from": [7.25, 1, 13.5],
 			"to": [13.25, 5, 13.5],
-			"rotation": {"angle": 20, "axis": "x", "origin": [10.25, 1, 13.5]},
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [10.25, 1, 13.5]},
 			"faces": {
 				"north": {"uv": [0, 4, 6, 8], "texture": "#1"},
 				"south": {"uv": [6, 4, 0, 8], "texture": "#1"}
@@ -43,9 +43,9 @@
 		},
 		{
 			"name": "cabbage",
-			"from": [7.25, 1, 7.5],
-			"to": [7.25, 5, 13.5],
-			"rotation": {"angle": 5, "axis": "z", "origin": [7.25, 1, 10.5]},
+			"from": [7.24, 1, 7.5],
+			"to": [7.24, 5, 13.5],
+			"rotation": {"angle": 0, "axis": "z", "origin": [7.25, 1, 10.5]},
 			"faces": {
 				"east": {"uv": [6, 0, 12, 4], "texture": "#1"},
 				"west": {"uv": [12, 0, 6, 4], "texture": "#1"}
@@ -55,7 +55,7 @@
 			"name": "cabbage",
 			"from": [13.25, 1, 7.5],
 			"to": [13.25, 5, 13.5],
-			"rotation": {"angle": -20, "axis": "z", "origin": [13.25, 1, 10.5]},
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [13.25, 1, 10.5]},
 			"faces": {
 				"east": {"uv": [6, 0, 0, 4], "texture": "#1"},
 				"west": {"uv": [0, 0, 6, 4], "texture": "#1"}
@@ -77,9 +77,9 @@
 		},
 		{
 			"name": "cabbage",
-			"from": [7.5, 0.93969, 2.93969],
-			"to": [13.5, 0.93969, 6.93969],
-			"rotation": {"angle": -2.5, "axis": "x", "origin": [10.5, 0.93969, 6.93969]},
+			"from": [7.5, 0.9297, 2.93969],
+			"to": [13.5, 0.9297, 6.93969],
+			"rotation": {"angle": 0, "axis": "x", "origin": [10.5, 0.93969, 6.93969]},
 			"faces": {
 				"up": {"uv": [6, 4, 12, 8], "texture": "#1"},
 				"down": {"uv": [12, 4, 6, 8], "rotation": 180, "texture": "#1"}
@@ -89,7 +89,7 @@
 			"name": "cabbage",
 			"from": [7.5, 7.42218, 1.79665],
 			"to": [13.5, 7.42218, 5.79665],
-			"rotation": {"angle": 20, "axis": "x", "origin": [10.75486, 3.93969, 5]},
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [10.75486, 3.93969, 5]},
 			"faces": {
 				"up": {"uv": [6, 4, 0, 8], "texture": "#1"},
 				"down": {"uv": [0, 4, 6, 8], "rotation": 180, "texture": "#1"}
@@ -97,8 +97,8 @@
 		},
 		{
 			"name": "cabbage",
-			"from": [7.34333, 0.93969, 2.64863],
-			"to": [7.34333, 6.93969, 6.64863],
+			"from": [7.4433, 0.93969, 2.64863],
+			"to": [7.4433, 6.93969, 6.64863],
 			"rotation": {"angle": 0, "axis": "y", "origin": [10.75486, 3.93969, 5]},
 			"faces": {
 				"east": {"uv": [6, 0, 12, 4], "rotation": 90, "texture": "#1"},
@@ -109,7 +109,7 @@
 			"name": "cabbage",
 			"from": [13.99786, 0.93969, 1.88382],
 			"to": [13.99786, 6.93969, 5.88382],
-			"rotation": {"angle": -20, "axis": "y", "origin": [10.75486, 3.93969, 5]},
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [10.75486, 3.93969, 5]},
 			"faces": {
 				"east": {"uv": [6, 0, 0, 4], "rotation": 90, "texture": "#1"},
 				"west": {"uv": [0, 0, 6, 4], "rotation": 270, "texture": "#1"}
@@ -133,7 +133,7 @@
 			"name": "cabbage",
 			"from": [2.04665, 0.93969, 2.01751],
 			"to": [6.04665, 6.93969, 2.01751],
-			"rotation": {"angle": -20, "axis": "y", "origin": [5.25, 3.93969, 5.5]},
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [5.25, 3.93969, 5.5]},
 			"faces": {
 				"north": {"uv": [12, 4, 6, 8], "rotation": 90, "texture": "#1"},
 				"south": {"uv": [6, 4, 12, 8], "rotation": 270, "texture": "#1"}
@@ -143,7 +143,7 @@
 			"name": "cabbage",
 			"from": [2.04665, 0.93969, 8.98249],
 			"to": [6.04665, 6.93969, 8.98249],
-			"rotation": {"angle": 20, "axis": "y", "origin": [5.25, 3.93969, 5.5]},
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [5.25, 3.93969, 5.5]},
 			"faces": {
 				"north": {"uv": [0, 4, 6, 8], "rotation": 90, "texture": "#1"},
 				"south": {"uv": [6, 4, 0, 8], "rotation": 270, "texture": "#1"}
@@ -151,9 +151,9 @@
 		},
 		{
 			"name": "cabbage",
-			"from": [3.18969, 0.93969, 2.5],
-			"to": [7.18969, 0.93969, 8.5],
-			"rotation": {"angle": 2.5, "axis": "z", "origin": [7.18969, 0.93969, 5.5]},
+			"from": [3.18969, 0.9297, 2.5],
+			"to": [7.18969, 0.9297, 8.5],
+			"rotation": {"angle": 0, "axis": "z", "origin": [7.18969, 0.93969, 5.5]},
 			"faces": {
 				"up": {"uv": [6, 0, 12, 4], "rotation": 270, "texture": "#1"},
 				"down": {"uv": [12, 0, 6, 4], "rotation": 270, "texture": "#1"}
@@ -163,7 +163,7 @@
 			"name": "cabbage",
 			"from": [2.04665, 7.42218, 2.5],
 			"to": [6.04665, 7.42218, 8.5],
-			"rotation": {"angle": -20, "axis": "z", "origin": [5.25, 3.93969, 5.5]},
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [5.25, 3.93969, 5.5]},
 			"faces": {
 				"up": {"uv": [6, 0, 0, 4], "rotation": 270, "texture": "#1"},
 				"down": {"uv": [0, 0, 6, 4], "rotation": 270, "texture": "#1"}
