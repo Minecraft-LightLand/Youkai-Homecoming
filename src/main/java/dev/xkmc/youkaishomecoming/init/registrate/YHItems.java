@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
+import dev.xkmc.youkaishomecoming.content.block.deco.BasketBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.EmptySaucerBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.FleshFeastBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.SurpriseChestBlock;
@@ -120,6 +121,8 @@ public class YHItems {
 			WHITE_TEA_BAG = YHTea.WHITE.createBags();
 			DARK_TEA_BAG = YHTea.DARK.createBags();
 			YELLOW_TEA_BAG = YHTea.YELLOW.createBags();
+
+			BasketBlock.register();
 		}
 
 		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.FOOD.getKey());

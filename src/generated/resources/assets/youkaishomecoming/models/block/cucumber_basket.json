@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:block/block",
+  "children": {
+    "basket": {
+      "parent": "youkaishomecoming:block/basket"
+    },
+    "top": {
+      "parent": "youkaishomecoming:block/cucumber_stack5_upper"
+    }
+  },
+  "gui_light": "side",
+  "item_render_order": [
+    "basket",
+    "top"
+  ],
+  "loader": "forge:composite",
+  "textures": {
+    "particle": "youkaishomecoming:block/basket/basket_top"
+  }
+}
