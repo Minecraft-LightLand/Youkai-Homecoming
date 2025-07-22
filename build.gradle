@@ -192,7 +192,7 @@ dependencies {
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
 
-    implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
+    implementation fg.deobf("curse.maven:ferritecore-429235:4810975")
 
     //implementation fg.deobf("curse.maven:composite-material-982540:6310307")
     //implementation fg.deobf("curse.maven:framework-549225:6531428")

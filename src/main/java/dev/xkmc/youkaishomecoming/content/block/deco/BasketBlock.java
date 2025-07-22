@@ -157,7 +157,7 @@ public class BasketBlock {
 
 			var top = new BlockModelBuilder(null, null)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id + "_stack" + i)));
-			top.rootTransforms().translation(0, 6f / 16, 0).end();
+			top.rootTransforms().translation(0, 5f / 16, 0).end();
 			high[i - 1] = pvd.models().getBuilder("block/" + id + "_stack" + i + "_upper")
 					.customLoader(CompositeModelBuilder::begin)
 					.child("layer", new BlockModelBuilder(null, null)
