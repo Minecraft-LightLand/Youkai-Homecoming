@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "youkaishomecoming:block/basket",
+        "model": "youkaishomecoming:block/short_basket",
         "y": 180
       },
       "when": {
@@ -121,7 +121,7 @@
     },
     {
       "apply": {
-        "model": "youkaishomecoming:block/basket",
+        "model": "youkaishomecoming:block/short_basket",
         "y": 270
       },
       "when": {
@@ -240,7 +240,7 @@
     },
     {
       "apply": {
-        "model": "youkaishomecoming:block/basket"
+        "model": "youkaishomecoming:block/short_basket"
       },
       "when": {
         "facing": "north"
@@ -347,7 +347,7 @@
     },
     {
       "apply": {
-        "model": "youkaishomecoming:block/basket",
+        "model": "youkaishomecoming:block/short_basket",
         "y": 90
       },
       "when": {

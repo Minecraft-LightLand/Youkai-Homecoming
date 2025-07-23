@@ -53,6 +53,7 @@ public enum Baskets {
 				.initialProperties(() -> Blocks.BAMBOO_SLAB)
 				.simpleItem()
 				.tag(BlockTags.MINEABLE_WITH_AXE)
+				.loot((pvd, b) -> BasketBlock.loot(pvd, b, item))
 				.register();
 
 	}

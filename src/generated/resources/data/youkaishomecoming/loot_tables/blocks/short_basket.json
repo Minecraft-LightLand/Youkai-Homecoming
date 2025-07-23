@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "youkaishomecoming:basket"
+          "name": "youkaishomecoming:short_basket"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "youkaishomecoming:blocks/basket"
+  "random_sequence": "youkaishomecoming:blocks/short_basket"
 }

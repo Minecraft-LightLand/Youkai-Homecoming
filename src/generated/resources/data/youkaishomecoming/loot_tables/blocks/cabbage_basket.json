@@ -5,13 +5,229 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "11"
+          }
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "youkaishomecoming:cabbage_basket"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "block": "youkaishomecoming:cabbage_basket",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "count": "11"
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "youkaishomecoming:short_basket"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "1"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "2"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "3"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "4"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "5"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "6"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "7"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "8"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "9"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "youkaishomecoming:cabbage_basket",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "count": "10"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:cabbage"
         }
       ],
       "rolls": 1.0

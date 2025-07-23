@@ -2,7 +2,9 @@ package dev.xkmc.youkaishomecoming.content.block.deco;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.l2modularblock.BlockProxy;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
@@ -18,12 +20,16 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -41,7 +47,7 @@ public class BasketBlock {
 	public static final BlockEntry<DelegateBlock> BASKET;
 
 	static {
-		BASKET = YoukaisHomecoming.REGISTRATE.block("basket", p -> DelegateBlock.newBaseBlock(p,
+		BASKET = YoukaisHomecoming.REGISTRATE.block("short_basket", p -> DelegateBlock.newBaseBlock(p,
 						BlockProxy.HORIZONTAL, new Empty()))
 				.blockstate(BasketBlock::buildBasketModel)
 				.initialProperties(() -> Blocks.BAMBOO_SLAB)
@@ -138,7 +144,7 @@ public class BasketBlock {
 
 	public static void buildStackModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd, String id, String model, boolean extra) {
 		var builder = pvd.getMultipartBuilder(ctx.get());
-		var basket = new ModelFile.UncheckedModelFile(pvd.modLoc("block/basket"));
+		var basket = new ModelFile.UncheckedModelFile(pvd.modLoc("block/short_basket"));
 		var layer = pvd.models().getBuilder("block/" + id + "_stack6")
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/basket/basket_stack")))
 				.texture("top", pvd.modLoc("block/basket/" + id + "_stack_layer"))
@@ -190,6 +196,18 @@ public class BasketBlock {
 				.texture("particle", pvd.modLoc("block/basket/basket_top"))
 				.guiLight(BlockModel.GuiLight.SIDE);
 
+	}
+
+	public static void loot(RegistrateBlockLootTables pvd, DelegateBlock b, ItemLike item) {
+		var loot = LootTable.lootTable();
+		loot.withPool(LootPool.lootPool().add(LootItem.lootTableItem(b))
+				.when(LootTableTemplate.withBlockState(b, COUNT, MAX)));
+		loot.withPool(LootPool.lootPool().add(LootItem.lootTableItem(BASKET))
+				.when(LootTableTemplate.withBlockState(b, COUNT, MAX).invert()));
+		for (int i = 1; i < MAX; i++)
+			loot.withPool(LootPool.lootPool().add(LootItem.lootTableItem(item))
+					.when(LootTableTemplate.withBlockState(b, COUNT, i)));
+		pvd.add(b, loot);
 	}
 
 	public static void register() {
