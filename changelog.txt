@@ -1,3 +1,7 @@
+2.5.4
+- Add short basket for decoration
+TODO basket recipe
+
 2.5.3
 - Add Ingredient Rack and Wine Shelf recipe
 - Add Create compat recipes
