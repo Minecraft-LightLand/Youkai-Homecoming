@@ -1,35 +1,26 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
-import com.tterrag.registrate.providers.DataGenContext;
-import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.content.block.food.BottleBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.client.model.generators.ModelFile;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class BottledDrinkSet {
-
-	private static List<BottledDrinkSet> LIST = new ArrayList<>();
+public class BottledDrinkSet extends BottleTexture {
 
 	public final BlockEntry<BottleBlock> bottle;
 	public final IYHFluidHolder drink;
-	public final int index;
 
 	public BottledDrinkSet(YHDrink drink) {
-		index = LIST.size();
+		this(drink, drink.getName() + "_bottle", drink.folder);
+
+	}
+
+	public BottledDrinkSet(IYHFluidHolder drink, String name, String folder) {
 		this.drink = drink;
-		LIST.add(this);
-		String folder = drink.folder;
-		bottle = YoukaisHomecoming.REGISTRATE.block(drink.getName() + "_bottle", BottleBlock::new)
+		bottle = YoukaisHomecoming.REGISTRATE.block(name, BottleBlock::new)
 				.initialProperties(() -> Blocks.GLASS_PANE)
 				.properties(p -> p.pushReaction(PushReaction.DESTROY))
 				.blockstate((ctx, pvd) ->
@@ -43,33 +34,14 @@ public class BottledDrinkSet {
 				.register();
 	}
 
-	public static void buildBottleModel(DataGenContext<Item, SlipBottleItem> ctx, RegistrateItemModelProvider pvd) {
-		var model = pvd.generated(ctx, pvd.modLoc("item/sake_bottle"));
-
-		model.override()
-				.predicate(YoukaisHomecoming.loc("slip"), 1 / 32f)
-				.model(pvd.getBuilder(ctx.getName() + "_overlay")
-						.parent(new ModelFile.UncheckedModelFile("item/generated"))
-						.texture("layer0", pvd.modLoc("item/sake_bottle"))
-						.texture("layer1", pvd.modLoc("item/sake_bottle_overlay")))
-				.end();
-
-		int n = LIST.size();
-		for (var e : LIST) {
-			model.override()
-					.predicate(YoukaisHomecoming.loc("bottle"), (e.index + 0.5f) / n)
-					.model(new ModelFile.UncheckedModelFile(pvd.modLoc("item/" + e.bottle.getId().getPath())))
-					.end();
-		}
+	@Override
+	public IYHFluidHolder holder() {
+		return drink;
 	}
 
-	public static float texture(ItemStack stack) {
-		var fluid = SlipBottleItem.getFluid(stack);
-		if (fluid.isEmpty()) return 0;
-		if (!(fluid.getFluid() instanceof YHFluid liquid)) return 0;
-		var set = liquid.type.bottleSet();
-		if (set == null) return 0;
-		return (set.index + 1) * 1f / LIST.size();
+	@Override
+	public String bottleModel() {
+		return bottle.getId().getPath();
 	}
 
 }

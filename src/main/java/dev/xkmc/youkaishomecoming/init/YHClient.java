@@ -17,6 +17,7 @@ import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.BlackBallModel;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
 import dev.xkmc.youkaishomecoming.content.item.danmaku.SpellItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottleTexture;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.HintOverlay;
@@ -62,7 +63,7 @@ public class YHClient {
 			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("slip"),
 					(stack, level, user, index) -> SlipBottleItem.texture(stack));
 			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("bottle"),
-					(stack, level, user, index) -> BottledDrinkSet.texture(stack));
+					(stack, level, user, index) -> BottleTexture.texture(stack));
 			for (var e : YHDanmaku.Bullet.values())
 				for (var d : DyeColor.values())
 					e.get(d).get().getTypeForRender();

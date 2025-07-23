@@ -196,6 +196,11 @@ public enum YHDrink implements IYHFluidHolder {
 		return folder;
 	}
 
+	@Override
+	public @Nullable BottleTexture bottleSet() {
+		return set;
+	}
+
 	@SuppressWarnings("deprecation")
 	public Item getContainer() {
 		Item ans = item.get().getCraftingRemainingItem();
@@ -218,6 +223,8 @@ public enum YHDrink implements IYHFluidHolder {
 	public boolean isFlesh() {
 		return this == SCARLET_MIST || this == SCARLET_TEA;
 	}
+
+
 
 	public static void register() {
 

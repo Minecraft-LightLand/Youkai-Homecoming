@@ -30,6 +30,11 @@ public enum YHLangData {
 	KETTLE_INFO("tooltip.kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
 	DRYING_RACK("tooltip.drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
 	CAMELLIA("tooltip.camellia", "Prevent Phantom spawn when equipped", 0, ChatFormatting.GRAY),
+	FLASK_OF("flask.of", "Flask Of %s", 1, null),
+	FLASK_INFO_DRINK("flask.info_drink", "Stores 4 bottles of drink. Consume 0.2 bottles per slip", 0, ChatFormatting.GRAY),
+	FLASK_INFO_SAUCE("flask.info_sauce", "Stores 4 bottles of sauce. Consume 0.2 bottles per use on Pots and Cuisine Table", 0, ChatFormatting.GRAY),
+	FLASK_CONTENT("flask.content", "Content: %s", 1, ChatFormatting.GRAY),
+	FLASK_USE("flask.use", "Remaining Use: %s/%s", 2, ChatFormatting.GRAY),
 
 	MOON_LANTERN_PLACE("tooltip.moon_lantern_place", "Udumbara within 3x3x3 blocks below this latern will grow as night as if they can see full moon.", 0, ChatFormatting.GRAY),
 	MOON_LANTERN_HOLD("tooltip.moon_lantern_hold", "When holding in hand, Udumbara effect will always trigger at night regardless if player can see full moons", 0, ChatFormatting.GRAY),

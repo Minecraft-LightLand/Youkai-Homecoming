@@ -145,7 +145,7 @@
   "item.youkaishomecoming.mantou": "馒头",
   "item.youkaishomecoming.raw_bun": "生包子",
   "item.youkaishomecoming.raw_oyaki": "生御烧",
-  "item.youkaishomecoming.sake_bottle": "酒瓶",
+  "item.youkaishomecoming.sake_bottle": "大瓶子",
   "item.youkaishomecoming.spell_remilia": "红符「绯红之主」",
   "item.youkaishomecoming.spell_clownpiece": "狱符「星星与条纹」",
   "item.youkaishomecoming.imitation_crab": "蟹肉棒",
@@ -958,11 +958,17 @@
   "youkaishomecoming.steamer.no_rack": "下一步：在蒸锅上方放置蒸笼",
   "youkaishomecoming.steamer.no_water": "下一步：在蒸锅中加水",
   "youkaishomecoming.steamer.too_many": "蒸笼太多了！",
+  "youkaishomecoming.flask.content": "内容物: %s",
+  "youkaishomecoming.flask.info_drink": "能装4玻璃瓶的饮品。一口喝0.2玻璃瓶的量",
+  "youkaishomecoming.flask.info_sauce": "能装4玻璃瓶的酱料。右键锅和料理台使用时一次消耗0.2玻璃瓶的量",
+  "youkaishomecoming.flask.of": "大瓶装%s",
+  "youkaishomecoming.flask.use": "余量: %s/%s",
   "youkaishomecoming.fermenting_progress": "发酵进度：%s",
   "youkaishomecoming.cuisine_allow": "下一步:",
   "youkaishomecoming.cuisine_extra": "还有%s种选择",
   "youkaishomecoming.brewing_progress": "煮茶进度: %s",
   "youkaishomecoming.cooking_progress": "烹饪进度: %s",
   "youkaishomecoming.heat_progress": "加热进度: %s",
-  "youkaishomecoming.tooltip.camellia": "装备时防止幻翼生成"
+  "youkaishomecoming.tooltip.camellia": "装备时防止幻翼生成",
+  "fluid.youkaishomecoming.cream": "Cream"
 }
