@@ -23,6 +23,7 @@ public enum Baskets {
 	GOLDEN_APPLE("golden_apple", Items.GOLDEN_APPLE, "apple"),
 	CABBAGE("cabbage", ModItems.CABBAGE::get, "cabbage"),
 	CARROT("carrot", Items.CARROT, "carrot"),
+	GOLDEN_CARROT("golden_carrot", Items.GOLDEN_CARROT, "carrot"),
 	CUCUMBER("cucumber", YHCrops.CUCUMBER::getFruits, YHTagGen.CUCUMBER, "cucumber"),
 	;
 

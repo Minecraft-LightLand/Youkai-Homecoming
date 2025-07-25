@@ -2,7 +2,7 @@
   "parent": "minecraft:block/block",
   "children": {
     "basket": {
-      "parent": "youkaishomecoming:block/basket"
+      "parent": "youkaishomecoming:block/short_basket"
     },
     "top": {
       "parent": "youkaishomecoming:block/carrot_stack5_upper"

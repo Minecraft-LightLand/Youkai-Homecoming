@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stripped_oak_wood": {
+    "has_stick": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:stripped_oak_wood"
+              "minecraft:stick"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaishomecoming:oak_ingredient_rack_from_stripped_oak_wood_stonecutting"
+        "recipe": "youkaishomecoming:oak_ingredient_rack"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_stripped_oak_wood",
+      "has_stick",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaishomecoming:oak_ingredient_rack_from_stripped_oak_wood_stonecutting"
+      "youkaishomecoming:oak_ingredient_rack"
     ]
   },
   "sends_telemetry_event": false

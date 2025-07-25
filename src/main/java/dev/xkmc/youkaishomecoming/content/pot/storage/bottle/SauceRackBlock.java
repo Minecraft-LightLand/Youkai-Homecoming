@@ -46,7 +46,7 @@ public class SauceRackBlock implements ShapeBlockMethod, OnClickBlockMethod {
 		for (int i = 0; i < 4; i++) {
 			var dir = Direction.from2DDataValue(i);
 			var bottom = new VoxelBuilder(0, 0, 10, 16, 1, 15).rotateFromNorth(dir);
-			var flat = new VoxelBuilder(0, 11, 12, 16, 12, 15).rotateFromNorth(dir);
+			var flat = new VoxelBuilder(1, 11, 12, 15, 12, 15).rotateFromNorth(dir);
 			var low = new VoxelBuilder(0, 0, 15, 16, 16, 16).rotateFromNorth(dir);
 			SHAPES[i] = Shapes.or(bottom, flat, low);
 

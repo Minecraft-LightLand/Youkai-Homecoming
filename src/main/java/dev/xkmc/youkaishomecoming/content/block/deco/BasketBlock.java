@@ -192,7 +192,7 @@ public class BasketBlock {
 				.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("block/block")))
 				.customLoader(CompositeModelBuilder::begin)
 				.child("basket", new BlockModelBuilder(null, null)
-						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/basket"))))
+						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/short_basket"))))
 				.child("top", new BlockModelBuilder(null, null)
 						.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + id + "_stack5_upper"))))
 				.end()

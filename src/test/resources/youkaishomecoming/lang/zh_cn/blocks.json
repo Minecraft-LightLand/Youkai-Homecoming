@@ -96,9 +96,13 @@
 		"apple_basket": "篮装苹果",
 		"cabbage_basket": "篮装卷心菜",
 		"carrot_basket": "篮装胡萝卜",
+		"golden_carrot_basket": "篮装金胡萝卜",
 		"cucumber_basket": "篮装黄瓜",
 		"golden_apple_basket": "篮装金苹果",
-		"short_basket": "矮篮"
+		"short_basket": "矮篮",
+		"mayonnaise_flask": "大瓶装蛋黄酱",
+		"oak_sauce_rack": "橡木调料架",
+		"soy_sauce_flask": "大瓶装酱油"
 	},
 	"-cartesian": {
 		"raw": {

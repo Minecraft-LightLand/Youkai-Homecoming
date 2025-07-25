@@ -21,6 +21,10 @@ import java.util.List;
 @SerialClass
 public class SauceRackBlockEntity extends BaseBlockEntity implements BaseContainerListener, BlockContainer {
 
+	public static boolean isFlask(ItemStack stack){
+		return stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof BucketBottleItem;
+	}
+
 	@SerialClass.SerialField
 	public final SauceRackContainer items = new SauceRackContainer(3).setMax(1).add(this);
 
@@ -53,7 +57,7 @@ public class SauceRackBlockEntity extends BaseBlockEntity implements BaseContain
 			}
 			return true;
 		}
-		if (ans.isEmpty() && (stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof BucketBottleItem)) {
+		if (ans.isEmpty() && isFlask(stack)) {
 			if (!level.isClientSide()) {
 				items.setItem(index, stack.split(1));
 				level.playSound(null, getBlockPos(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1, 1);

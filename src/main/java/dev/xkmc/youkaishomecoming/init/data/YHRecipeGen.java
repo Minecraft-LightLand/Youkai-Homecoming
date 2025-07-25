@@ -13,6 +13,7 @@ import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
+import dev.xkmc.youkaishomecoming.content.block.deco.BasketBlock;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotFinishedRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
@@ -98,12 +99,34 @@ public class YHRecipeGen {
 						.define('P', e.slab)
 						.save(pvd);
 
-				if (e == YHBlocks.WoodType.SPRUCE)
-					pvd.stonecutting(DataIngredient.items(e.strippedWood), RecipeCategory.MISC, YHBlocks.SPRUCE_WINE_SHELF);
-				if (e == YHBlocks.WoodType.OAK)
-					pvd.stonecutting(DataIngredient.items(e.strippedWood), RecipeCategory.MISC, YHBlocks.OAK_INGREDIENT_RACK);
+				if (e == YHBlocks.WoodType.SPRUCE) {
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SPRUCE_WINE_SHELF, 1)::unlockedBy, Items.STICK)
+							.pattern("PSP").pattern("SSS").pattern("PSP")
+							.define('P', e.plank)
+							.define('S', e.slab)
+							.save(pvd);
+				}
+				if (e == YHBlocks.WoodType.OAK) {
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.OAK_INGREDIENT_RACK, 1)::unlockedBy, Items.STICK)
+							.pattern(" PP").pattern("  S").pattern("PPP")
+							.define('S', Items.STICK)
+							.define('P', e.slab)
+							.save(pvd);
+
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.OAK_SAUCE_RACK, 1)::unlockedBy, Items.STICK)
+							.pattern("SP").pattern(" P").pattern("PP")
+							.define('S', Items.STICK)
+							.define('P', e.slab)
+							.save(pvd);
+				}
 
 			}
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BasketBlock.BASKET, 1)::unlockedBy, ModItems.CANVAS.get())
+					.pattern("S S").pattern("PPP")
+					.define('S', Items.BAMBOO)
+					.define('P',  ModItems.CANVAS.get())
+					.save(pvd);
+
 			YHBlocks.HAY.genRecipe(pvd);
 			YHBlocks.STRAW.genRecipe(pvd);
 

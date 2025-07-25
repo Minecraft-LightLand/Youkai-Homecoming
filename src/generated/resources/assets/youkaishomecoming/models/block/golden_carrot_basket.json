@@ -5,7 +5,7 @@
       "parent": "youkaishomecoming:block/short_basket"
     },
     "top": {
-      "parent": "youkaishomecoming:block/cabbage_stack5_upper"
+      "parent": "youkaishomecoming:block/golden_carrot_stack5_upper"
     }
   },
   "gui_light": "side",

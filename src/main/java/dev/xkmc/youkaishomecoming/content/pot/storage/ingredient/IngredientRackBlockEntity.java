@@ -4,6 +4,7 @@ import dev.xkmc.l2library.base.tile.BaseBlockEntity;
 import dev.xkmc.l2library.base.tile.BaseContainerListener;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.youkaishomecoming.content.pot.storage.bottle.SauceRackBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,6 +19,10 @@ import java.util.List;
 
 @SerialClass
 public class IngredientRackBlockEntity extends BaseBlockEntity implements BaseContainerListener, BlockContainer {
+
+	public static boolean isSauce(ItemStack stack) {
+		return SauceRackBlockEntity.isFlask(stack);
+	}
 
 	@SerialClass.SerialField
 	public final IngredientRackContainer items = new IngredientRackContainer(6).setMax(64).add(this);
@@ -52,6 +57,7 @@ public class IngredientRackBlockEntity extends BaseBlockEntity implements BaseCo
 			}
 			return true;
 		}
+		if (isSauce(stack)) return false;
 		boolean up = index < 3;
 		int max = getBlockState().getValue(IngredientRackBlock.SUPPORT) == IngredientRackBlock.State.STACKED || up ? 32 : 64;
 		if (ans.isEmpty()) {

@@ -1,0 +1,7 @@
+{
+  "parent": "youkaishomecoming:custom/basket/carrot_stack5",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "placement": "youkaishomecoming:block/basket/golden_carrot_placement"
+  }
+}
