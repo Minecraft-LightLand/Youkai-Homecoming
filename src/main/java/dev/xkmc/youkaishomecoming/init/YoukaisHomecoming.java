@@ -95,7 +95,7 @@ public class YoukaisHomecoming {
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Utensil and Tools",
-					e -> e.icon(YHBlocks.FERMENT::asStack));
+					e -> e.icon(YHBlocks.STEAMER_POT::asStack));
 
 	public static final RegistryEntry<CreativeModeTab> CROP =
 			REGISTRATE.buildModCreativeTab("crop", "Youkai's Homecoming - Crops",
@@ -107,7 +107,7 @@ public class YoukaisHomecoming {
 
 	public static final RegistryEntry<CreativeModeTab> DECO =
 			REGISTRATE.buildModCreativeTab("deco", "Youkai's Homecoming - Furniture",
-					e -> e.icon(YHBlocks.FERMENT::asStack));
+					e -> e.icon(YHBlocks.WoodType.OAK.seat::asStack));
 
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
