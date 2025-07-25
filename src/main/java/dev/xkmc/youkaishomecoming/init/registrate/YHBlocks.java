@@ -22,7 +22,9 @@ import dev.xkmc.youkaishomecoming.content.pot.base.BasePotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.BasePotSerializer;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedCookingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.BigSpoonItem;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlockEntity;
@@ -269,46 +271,6 @@ public class YHBlocks {
 			BASIN_RT = YoukaisHomecoming.REGISTRATE.recipe("basin");
 			BASIN_RS = reg("simple_basin", () -> new BaseRecipe.RecType<>(SimpleBasinRecipe.class, BASIN_RT));
 
-
-			OAK_INGREDIENT_RACK = YoukaisHomecoming.REGISTRATE.block("oak_ingredient_rack", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new IngredientRackBlock(), IngredientRackBlock.BE))
-					.blockstate(IngredientRackBlock::buildModels)
-					.properties(p -> p.noOcclusion())
-					.simpleItem()
-					.tag(BlockTags.MINEABLE_WITH_AXE)
-					.register();
-
-			INGREDIENT_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("ingredient_rack", IngredientRackBlockEntity::new)
-					.renderer(() -> IngredientRackRenderer::new)
-					.validBlock(OAK_INGREDIENT_RACK)
-					.register();
-
-			OAK_SAUCE_RACK = YoukaisHomecoming.REGISTRATE.block("oak_sauce_rack", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new SauceRackBlock(), SauceRackBlock.BE))
-					.blockstate(SauceRackBlock::buildModels)
-					.properties(p -> p.noOcclusion())
-					.simpleItem()
-					.tag(BlockTags.MINEABLE_WITH_AXE)
-					.register();
-
-			SAUCE_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("sauce_rack", SauceRackBlockEntity::new)
-					.renderer(() -> SauceRackRenderer::new)
-					.validBlock(OAK_SAUCE_RACK)
-					.register();
-
-			SPRUCE_WINE_SHELF = YoukaisHomecoming.REGISTRATE.block("spruce_wine_shelf", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
-					.blockstate(WineShelfBlock::buildModels)
-					.properties(p -> p.noOcclusion())
-					.simpleItem()
-					.tag(BlockTags.MINEABLE_WITH_AXE)
-					.register();
-
-			WINE_SHELF_BE = YoukaisHomecoming.REGISTRATE.blockEntity("wine_shelf", WineShelfBlockEntity::new)
-					.renderer(() -> ShelfRenderer::new)
-					.validBlock(SPRUCE_WINE_SHELF)
-					.register();
-
 		}
 
 		// steamer
@@ -479,6 +441,50 @@ public class YHBlocks {
 			CUISINE_UNORDER = reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_FIXED = reg("cuisine_fixed", () -> new BaseRecipe.RecType<>(FixedCuisineRecipe.class, CUISINE_RT));
+		}
+
+		//storage blocks
+		{
+
+			OAK_INGREDIENT_RACK = YoukaisHomecoming.REGISTRATE.block("oak_ingredient_rack", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new IngredientRackBlock(), IngredientRackBlock.BE))
+					.blockstate(IngredientRackBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			INGREDIENT_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("ingredient_rack", IngredientRackBlockEntity::new)
+					.renderer(() -> IngredientRackRenderer::new)
+					.validBlock(OAK_INGREDIENT_RACK)
+					.register();
+
+			OAK_SAUCE_RACK = YoukaisHomecoming.REGISTRATE.block("oak_sauce_rack", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new SauceRackBlock(), SauceRackBlock.BE))
+					.blockstate(SauceRackBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			SAUCE_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("sauce_rack", SauceRackBlockEntity::new)
+					.renderer(() -> SauceRackRenderer::new)
+					.validBlock(OAK_SAUCE_RACK)
+					.register();
+
+			SPRUCE_WINE_SHELF = YoukaisHomecoming.REGISTRATE.block("spruce_wine_shelf", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
+					.blockstate(WineShelfBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			WINE_SHELF_BE = YoukaisHomecoming.REGISTRATE.blockEntity("wine_shelf", WineShelfBlockEntity::new)
+					.renderer(() -> ShelfRenderer::new)
+					.validBlock(SPRUCE_WINE_SHELF)
+					.register();
+
 		}
 
 		InitializationMarker.expectAndAdvance(2);
