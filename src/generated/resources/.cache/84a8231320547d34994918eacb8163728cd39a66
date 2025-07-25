@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-25T10:59:51.853071	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-25T13:21:40.652842	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -207,8 +207,8 @@ d299ba95e8954dc83a8b166de9e4ddb2fa245d48 assets/youkaishomecoming/blockstates/wo
 117d8c64282f7eabd89559d9692ab4d49462eb4c assets/youkaishomecoming/blockstates/wood_bowl.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
 88cd696c87a5dace0c6ce4077821d7b740ea82f4 assets/youkaishomecoming/blockstates/yellow_tea_bag.json
-87f6083ece85ca98735f424e536e669065d7b026 assets/youkaishomecoming/lang/en_ud.json
-43e87e7fb97bd60799de006524aa95f9584973c3 assets/youkaishomecoming/lang/en_us.json
+c7bd6370d6ff647851ef54e1a9bc087a4e7e57bc assets/youkaishomecoming/lang/en_ud.json
+0af9da25becbbf1e712f5f73af53457f15b81c18 assets/youkaishomecoming/lang/en_us.json
 3213baa081e1667be3758e7904aec22b653f2f83 assets/youkaishomecoming/models/block/acacia_dining_chair.json
 c16a4c2f61452b7a4f76eba72358fcfb35c0583c assets/youkaishomecoming/models/block/acacia_dining_table.json
 e5f7ae49090a91d6eda3214f19a9482b0e01e617 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json

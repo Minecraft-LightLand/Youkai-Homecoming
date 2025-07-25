@@ -484,7 +484,7 @@ public class YHBlocks {
 		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.DECO.getKey());
 
 
 		{

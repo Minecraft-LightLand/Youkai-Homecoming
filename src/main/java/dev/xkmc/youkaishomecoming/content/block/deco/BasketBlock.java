@@ -47,6 +47,8 @@ public class BasketBlock {
 	public static final BlockEntry<DelegateBlock> BASKET;
 
 	static {
+
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
 		BASKET = YoukaisHomecoming.REGISTRATE.block("short_basket", p -> DelegateBlock.newBaseBlock(p,
 						BlockProxy.HORIZONTAL, new Empty()))
 				.blockstate(BasketBlock::buildBasketModel)
@@ -55,6 +57,7 @@ public class BasketBlock {
 				.tag(BlockTags.MINEABLE_WITH_AXE)
 				.register();
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.CROP.getKey());
 		Baskets.register();
 	}
 

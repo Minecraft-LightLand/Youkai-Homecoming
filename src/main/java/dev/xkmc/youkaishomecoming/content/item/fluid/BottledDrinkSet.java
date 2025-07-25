@@ -30,6 +30,7 @@ public class BottledDrinkSet extends BottleTexture {
 				.model((ctx, pvd) ->
 						pvd.generated(ctx, pvd.modLoc("item/bottle/" + folder + "/" + ctx.getName())))
 				.tag(YHTagGen.BOTTLED)
+				.tab(YoukaisHomecoming.TAB.getKey())
 				.build()
 				.register();
 	}

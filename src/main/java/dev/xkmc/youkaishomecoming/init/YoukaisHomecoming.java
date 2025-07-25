@@ -94,12 +94,20 @@ public class YoukaisHomecoming {
 	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Crops and Tools",
+			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Utensil and Tools",
+					e -> e.icon(YHBlocks.FERMENT::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> CROP =
+			REGISTRATE.buildModCreativeTab("crop", "Youkai's Homecoming - Crops",
 					e -> e.icon(YHItems.CAMELLIA::asStack));
 
 	public static final RegistryEntry<CreativeModeTab> FOOD =
 			REGISTRATE.buildModCreativeTab("food", "Youkai's Homecoming - Food and Ingredients",
 					e -> e.icon(YHSushi.LORELEI_NIGIRI.item::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> DECO =
+			REGISTRATE.buildModCreativeTab("deco", "Youkai's Homecoming - Furniture",
+					e -> e.icon(YHBlocks.FERMENT::asStack));
 
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");

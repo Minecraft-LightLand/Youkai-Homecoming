@@ -96,6 +96,8 @@ public class YHItems {
 	static {
 		InitializationMarker.expectAndAdvance(3);
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.CROP.getKey());
+
 		// plants
 		{
 			YHCrops.register();
