@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.storage.rack;
+package dev.xkmc.youkaishomecoming.content.pot.storage.ingredient;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -127,11 +127,11 @@ public class IngredientRackBlock implements
 			String suffix = support == State.SUPPORTED ? "_supported" : support == State.STACKED ? "_stacked" : "";
 			return pvd.models().getBuilder("block/" + ctx.getName() + suffix)
 					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/ingredient_rack" + suffix)))
-					.texture("base", pvd.modLoc("block/ingredient_rack/" + ctx.getName() + "_base"))
-					.texture("top", pvd.modLoc("block/ingredient_rack/" + ctx.getName() + "_top"))
-					.texture("bottom", pvd.modLoc("block/ingredient_rack/" + ctx.getName() + "_bottom"))
-					.texture("side", pvd.modLoc("block/ingredient_rack/" + ctx.getName() + "_side"))
-					.texture("support", pvd.modLoc("block/ingredient_rack/" + ctx.getName() + "_support"))
+					.texture("base", pvd.modLoc("block/storage/ingredient_rack/" + ctx.getName() + "_base"))
+					.texture("top", pvd.modLoc("block/storage/ingredient_rack/" + ctx.getName() + "_top"))
+					.texture("bottom", pvd.modLoc("block/storage/ingredient_rack/" + ctx.getName() + "_bottom"))
+					.texture("side", pvd.modLoc("block/storage/ingredient_rack/" + ctx.getName() + "_side"))
+					.texture("support", pvd.modLoc("block/storage/ingredient_rack/" + ctx.getName() + "_support"))
 					.renderType("cutout");
 		});
 	}

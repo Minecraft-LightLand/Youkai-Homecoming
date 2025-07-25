@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.pot.storage.rack;
+package dev.xkmc.youkaishomecoming.content.pot.storage.ingredient;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -11,7 +11,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class RackRenderer implements BlockEntityRenderer<IngredientRackBlockEntity> {
+public class IngredientRackRenderer implements BlockEntityRenderer<IngredientRackBlockEntity> {
 
 	private static final int[] COUNT_HI = {0, 1, 2, 4, 6, 9, 13, 18, 24, 32};
 	private static final int[] REV_HI = new int[32];
@@ -33,7 +33,7 @@ public class RackRenderer implements BlockEntityRenderer<IngredientRackBlockEnti
 
 	private static final RandomSource RANDOM = RandomSource.create(42);
 
-	public RackRenderer(BlockEntityRendererProvider.Context context) {
+	public IngredientRackRenderer(BlockEntityRendererProvider.Context context) {
 	}
 
 	@Override
