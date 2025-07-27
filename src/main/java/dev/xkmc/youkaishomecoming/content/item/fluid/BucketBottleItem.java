@@ -6,7 +6,9 @@ import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -39,6 +41,15 @@ public class BucketBottleItem extends BlockItem {
 			return InteractionResult.PASS;
 		}
 		return super.place(ctx);
+	}
+
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		var stack = player.getItemInHand(hand);
+		var food = getFoodProperties(stack, player);
+		if (food == null || food == SlipBottleItem.NONE || food.getEffects().isEmpty())
+			return InteractionResultHolder.pass(stack);
+		return super.use(level, player, hand);
 	}
 
 	@Override

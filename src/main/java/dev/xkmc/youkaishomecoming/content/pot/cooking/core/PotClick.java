@@ -37,7 +37,9 @@ public record PotClick(
 					if (stack.isDamageableItem()) {
 						stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
 					} else if (SlipBottleItem.isSlipContainer(stack)) {
-						player.setItemInHand(hand, SlipBottleItem.drain(stack));
+						var toConsume = stack.split(1);
+						player.setItemInHand(hand, SlipBottleItem.drain(toConsume));
+						player.getInventory().placeItemBackInInventory(stack);
 					} else {
 						ItemStack cont = stack.getCraftingRemainingItem();
 						stack.shrink(1);
