@@ -1,6 +1,7 @@
 2.5.4
 - Add short basket for decoration
-TODO basket recipe
+- Add sauce rack and sauce flask
+- Fix sound attenuation again
 
 2.5.3
 - Add Ingredient Rack and Wine Shelf recipe
