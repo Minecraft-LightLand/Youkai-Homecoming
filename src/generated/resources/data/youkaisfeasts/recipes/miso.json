@@ -1,9 +1,15 @@
 {
   "type": "youkaisfeasts:immediate_soup",
+  "color": -1,
   "id": "youkaisfeasts:miso",
   "input": [
     {
+      "type": "youkaisfeasts:fluid",
+      "fluid": "youkaisfeasts:soy_sauce"
+    },
+    {
       "tag": "forge:soybean"
     }
-  ]
+  ],
+  "time": 100
 }

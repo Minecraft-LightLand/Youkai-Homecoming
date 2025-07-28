@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.entity.deer.DeerModel;
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerModelData;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyModel;
 import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaModel;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottleTexture;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.HintOverlay;
@@ -45,7 +46,7 @@ public class YHClient {
 			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("slip"),
 					(stack, level, user, index) -> SlipBottleItem.texture(stack));
 			ItemProperties.register(YHItems.SAKE_BOTTLE.get(), YoukaisHomecoming.loc("bottle"),
-					(stack, level, user, index) -> BottledDrinkSet.texture(stack));
+					(stack, level, user, index) -> BottleTexture.texture(stack));
 		});
 
 	}

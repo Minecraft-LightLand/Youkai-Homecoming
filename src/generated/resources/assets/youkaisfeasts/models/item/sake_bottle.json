@@ -8,33 +8,45 @@
       }
     },
     {
+      "model": "youkaisfeasts:item/soy_sauce_flask",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.071428575
+      }
+    },
+    {
+      "model": "youkaisfeasts:item/mayonnaise_flask",
+      "predicate": {
+        "youkaisfeasts:bottle": 0.21428572
+      }
+    },
+    {
       "model": "youkaisfeasts:item/red_wine_bottle",
       "predicate": {
-        "youkaisfeasts:bottle": 0.1
+        "youkaisfeasts:bottle": 0.35714287
       }
     },
     {
       "model": "youkaisfeasts:item/white_wine_bottle",
       "predicate": {
-        "youkaisfeasts:bottle": 0.3
+        "youkaisfeasts:bottle": 0.5
       }
     },
     {
       "model": "youkaisfeasts:item/burgundy_bottle",
       "predicate": {
-        "youkaisfeasts:bottle": 0.5
+        "youkaisfeasts:bottle": 0.64285713
       }
     },
     {
       "model": "youkaisfeasts:item/champagne_bottle",
       "predicate": {
-        "youkaisfeasts:bottle": 0.7
+        "youkaisfeasts:bottle": 0.78571427
       }
     },
     {
       "model": "youkaisfeasts:item/van_allen_bottle",
       "predicate": {
-        "youkaisfeasts:bottle": 0.9
+        "youkaisfeasts:bottle": 0.9285714
       }
     }
   ],

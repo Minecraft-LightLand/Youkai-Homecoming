@@ -3,9 +3,10 @@ package dev.xkmc.youkaishomecoming.content.item.fluid;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
-public interface IYHFluidHolder {
+public interface IYHFluidHolder extends ItemLike {
 
 	int getColor();
 
@@ -29,7 +30,7 @@ public interface IYHFluidHolder {
 	}
 
 	@Nullable
-	default BottledDrinkSet bottleSet() {
+	default BottleTexture bottleSet() {
 		return null;
 	}
 

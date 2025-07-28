@@ -2,22 +2,34 @@ package dev.xkmc.youkaishomecoming.events;
 
 import dev.xkmc.youkaishomecoming.compat.curios.CuriosManager;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeneralEventHandlers {
+
+	@SubscribeEvent
+	public static void registerCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
+		if (event.getObject().is(Items.GLASS_BOTTLE)) {
+			event.addCapability(YoukaisHomecoming.loc("bottle"), new SakeFluidWrapper(event.getObject()));
+		}
+		if (event.getObject().is(Items.BOWL)) {
+			event.addCapability(YoukaisHomecoming.loc("bowl"), new SakeFluidWrapper(event.getObject()));
+		}
+	}
 
 	@SubscribeEvent
 	public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {

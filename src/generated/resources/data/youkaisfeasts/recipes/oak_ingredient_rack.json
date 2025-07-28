@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:oak_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " PP",
+    "  S",
+    "PPP"
+  ],
+  "result": {
+    "item": "youkaisfeasts:oak_ingredient_rack"
+  },
+  "show_notification": true
+}

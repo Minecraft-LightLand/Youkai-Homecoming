@@ -14,7 +14,9 @@ import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodChairBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.WoodTableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.basin.*;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.*;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedCookingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.BigSpoonItem;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlockEntity;
@@ -25,6 +27,8 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.mid.MidCookingPotRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.small.SmallCookingPotRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SimpleSoupBaseRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupBaseRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlock;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlockEntity;
@@ -34,9 +38,12 @@ import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.*;
-import dev.xkmc.youkaishomecoming.content.pot.storage.rack.IngredientRackBlock;
-import dev.xkmc.youkaishomecoming.content.pot.storage.rack.IngredientRackBlockEntity;
-import dev.xkmc.youkaishomecoming.content.pot.storage.rack.RackRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.storage.bottle.SauceRackBlock;
+import dev.xkmc.youkaishomecoming.content.pot.storage.bottle.SauceRackBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.storage.bottle.SauceRackRenderer;
+import dev.xkmc.youkaishomecoming.content.pot.storage.ingredient.IngredientRackBlock;
+import dev.xkmc.youkaishomecoming.content.pot.storage.ingredient.IngredientRackBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.storage.ingredient.IngredientRackRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.storage.shelf.ShelfRenderer;
 import dev.xkmc.youkaishomecoming.content.pot.storage.shelf.WineShelfBlock;
 import dev.xkmc.youkaishomecoming.content.pot.storage.shelf.WineShelfBlockEntity;
@@ -151,11 +158,14 @@ public class YHBlocks {
 	public static final RegistryEntry<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
 	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
 	public static final RegistryEntry<RecipeType<SoupBaseRecipe<?>>> SOUP_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<ImmediateSoupBaseRecipe, SoupBaseRecipe<?>, CookingInv>> IMMEDIATE_SOUP;
+	public static final RegistryEntry<BaseRecipe.RecType<SimpleSoupBaseRecipe, SoupBaseRecipe<?>, CookingInv>> IMMEDIATE_SOUP;
 
 
 	public static final BlockEntry<DelegateBlock> OAK_INGREDIENT_RACK;
 	public static final BlockEntityEntry<IngredientRackBlockEntity> INGREDIENT_RACK_BE;
+
+	public static final BlockEntry<DelegateBlock> OAK_SAUCE_RACK;
+	public static final BlockEntityEntry<SauceRackBlockEntity> SAUCE_RACK_BE;
 
 	public static final BlockEntry<DelegateBlock> SPRUCE_WINE_SHELF;
 	public static final BlockEntityEntry<WineShelfBlockEntity> WINE_SHELF_BE;
@@ -213,33 +223,6 @@ public class YHBlocks {
 
 			BASIN_RT = YoukaisHomecoming.REGISTRATE.recipe("basin");
 			BASIN_RS = reg("simple_basin", () -> new BaseRecipe.RecType<>(SimpleBasinRecipe.class, BASIN_RT));
-
-
-			OAK_INGREDIENT_RACK = YoukaisHomecoming.REGISTRATE.block("oak_ingredient_rack", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new IngredientRackBlock(), IngredientRackBlock.BE))
-					.blockstate(IngredientRackBlock::buildModels)
-					.properties(p -> p.noOcclusion())
-					.simpleItem()
-					.tag(BlockTags.MINEABLE_WITH_AXE)
-					.register();
-
-			INGREDIENT_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("ingredient_rack", IngredientRackBlockEntity::new)
-					.renderer(() -> RackRenderer::new)
-					.validBlock(OAK_INGREDIENT_RACK)
-					.register();
-
-			SPRUCE_WINE_SHELF = YoukaisHomecoming.REGISTRATE.block("spruce_wine_shelf", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
-					.blockstate(WineShelfBlock::buildModels)
-					.properties(p -> p.noOcclusion())
-					.simpleItem()
-					.tag(BlockTags.MINEABLE_WITH_AXE)
-					.register();
-
-			WINE_SHELF_BE = YoukaisHomecoming.REGISTRATE.blockEntity("wine_shelf", WineShelfBlockEntity::new)
-					.renderer(() -> ShelfRenderer::new)
-					.validBlock(SPRUCE_WINE_SHELF)
-					.register();
 
 		}
 
@@ -354,7 +337,7 @@ public class YHBlocks {
 			COOKING_RT = YoukaisHomecoming.REGISTRATE.recipe("pot_cooking");
 			COOKING_UNORDER = reg("unordered_cooking", () -> new BaseRecipe.RecType<>(UnorderedCookingRecipe.class, COOKING_RT));
 			SOUP_RT = YoukaisHomecoming.REGISTRATE.recipe("soup_base");
-			IMMEDIATE_SOUP = reg("immediate_soup", () -> new BaseRecipe.RecType<>(ImmediateSoupBaseRecipe.class, SOUP_RT));
+			IMMEDIATE_SOUP = reg("immediate_soup", () -> new BaseRecipe.RecType<>(SimpleSoupBaseRecipe.class, SOUP_RT));
 
 		}
 
@@ -413,10 +396,54 @@ public class YHBlocks {
 			CUISINE_FIXED = reg("cuisine_fixed", () -> new BaseRecipe.RecType<>(FixedCuisineRecipe.class, CUISINE_RT));
 		}
 
+		//storage blocks
+		{
+
+			OAK_INGREDIENT_RACK = YoukaisHomecoming.REGISTRATE.block("oak_ingredient_rack", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new IngredientRackBlock(), IngredientRackBlock.BE))
+					.blockstate(IngredientRackBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			INGREDIENT_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("ingredient_rack", IngredientRackBlockEntity::new)
+					.renderer(() -> IngredientRackRenderer::new)
+					.validBlock(OAK_INGREDIENT_RACK)
+					.register();
+
+			OAK_SAUCE_RACK = YoukaisHomecoming.REGISTRATE.block("oak_sauce_rack", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new SauceRackBlock(), SauceRackBlock.BE))
+					.blockstate(SauceRackBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			SAUCE_RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("sauce_rack", SauceRackBlockEntity::new)
+					.renderer(() -> SauceRackRenderer::new)
+					.validBlock(OAK_SAUCE_RACK)
+					.register();
+
+			SPRUCE_WINE_SHELF = YoukaisHomecoming.REGISTRATE.block("spruce_wine_shelf", p ->
+							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
+					.blockstate(WineShelfBlock::buildModels)
+					.properties(p -> p.noOcclusion())
+					.simpleItem()
+					.tag(BlockTags.MINEABLE_WITH_AXE)
+					.register();
+
+			WINE_SHELF_BE = YoukaisHomecoming.REGISTRATE.blockEntity("wine_shelf", WineShelfBlockEntity::new)
+					.renderer(() -> ShelfRenderer::new)
+					.validBlock(SPRUCE_WINE_SHELF)
+					.register();
+
+		}
+
 		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.DECO.getKey());
 
 
 		{

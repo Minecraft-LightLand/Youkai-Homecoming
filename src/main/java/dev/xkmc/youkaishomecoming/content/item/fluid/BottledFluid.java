@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -36,14 +37,21 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 		return virtualFluid(id, WATER_FLOW, WATER_STILL, typeFactory, factory);
 	}
 
+	private final String id, path;
 	private final int color;
 	private final Supplier<Item> container;
 
 	public final ItemEntry<T> item;
 	public final FluidEntry<YHFluid> fluid;
 
+	protected @Nullable BottledDrinkSet set;
+
 	public BottledFluid(String id, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
 		this(id, id + "_bottle", SOLID_FLOW, SOLID_STILL, color, container, path, factory);
+	}
+
+	public BottledFluid(String id, String itemId, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
+		this(id, itemId, id, container, path, factory);
 	}
 
 	public BottledFluid(String id, String itemId, String fluidTex, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
@@ -56,15 +64,23 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 	public BottledFluid(String id, String itemId, ResourceLocation flow, ResourceLocation still, int color, Supplier<Item> container, String path, NonNullBiFunction<Supplier<YHFluid>, Item.Properties, T> factory) {
 		this.color = color;
 		this.container = container;
+		this.id = id;
+		this.path = path;
 
 		fluid = virtualFluid(id, flow, still, (p, s, f) -> new YHFluidType(p, s, f, this), p -> new YHFluid(p, this))
 				.defaultLang().register();
 
 		item = YoukaisHomecoming.REGISTRATE
 				.item(itemId, p -> factory.apply(fluid::getSource, p.craftRemainder(container.get())))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName())))
+				.model((ctx, pvd) ->
+						pvd.generated(ctx, pvd.modLoc("item/" + path + "/" + ctx.getName())))
 				.register();
 
+	}
+
+	public BottledFluid<T> bottle() {
+		set = new BottledDrinkSet(this, id + "_flask", path);
+		return this;
 	}
 
 	@Override
@@ -99,6 +115,16 @@ public class BottledFluid<T extends SakeBottleItem> implements IYHFluidHolder, I
 
 	public ResourceLocation getId() {
 		return item.getId();
+	}
+
+	@Nullable
+	public String bottleTextureFolder() {
+		return path;
+	}
+
+	@Override
+	public @Nullable BottleTexture bottleSet() {
+		return set;
 	}
 
 }

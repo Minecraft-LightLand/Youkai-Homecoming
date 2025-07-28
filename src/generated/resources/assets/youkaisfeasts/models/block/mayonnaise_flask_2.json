@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/bottle/ingredient_2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottle": "youkaisfeasts:block/bottle/ingredient/mayonnaise_flask"
+  }
+}

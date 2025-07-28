@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/bottle/ingredient_3",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottle": "youkaisfeasts:block/bottle/ingredient/soy_sauce_flask"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "create:emptying",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:soy_sauce_flask"
+    }
+  ],
+  "results": [
+    {
+      "item": "youkaisfeasts:sake_bottle"
+    },
+    {
+      "amount": 1000,
+      "fluid": "youkaisfeasts:soy_sauce"
+    }
+  ]
+}

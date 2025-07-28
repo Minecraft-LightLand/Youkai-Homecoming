@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.overlay;
 
 import dev.xkmc.l2library.base.overlay.OverlayUtil;
+import dev.xkmc.l2modularblock.DelegateBlockImpl;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
@@ -65,8 +66,13 @@ public class HintOverlay implements IGuiOverlay {
 	private IHintableBlock getBlock(Level level, BlockPos pos) {
 		if (level.getBlockEntity(pos) instanceof IHintableBlock be)
 			return be;
-		if (level.getBlockState(pos).getBlock() instanceof IHintableBlock b) {
+		var state = level.getBlockState(pos);
+		if (state.getBlock() instanceof IHintableBlock b) {
 			return b;
+		}
+		if (state.getBlock() instanceof DelegateBlockImpl del) {
+			var opt = del.getImpl().one(IHintableBlock.class);
+			if (opt.isPresent()) return opt.get();
 		}
 		return null;
 	}

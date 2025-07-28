@@ -1,0 +1,24 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:sake_bottle"
+    },
+    {
+      "amount": 1000,
+      "fluid": "youkaisfeasts:white_wine",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "youkaisfeasts:white_wine_bottle"
+    }
+  ]
+}

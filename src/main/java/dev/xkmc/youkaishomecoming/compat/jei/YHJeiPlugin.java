@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
@@ -10,12 +11,15 @@ import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.ingredients.subtypes.UidContext;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.Objects;
@@ -38,6 +42,15 @@ public class YHJeiPlugin implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
 		return ID;
+	}
+
+	@Override
+	public void registerItemSubtypes(ISubtypeRegistration registration) {
+		registration.registerSubtypeInterpreter(YHItems.SAKE_BOTTLE.get(), this::slipSubType);
+	}
+
+	private String slipSubType(ItemStack stack, UidContext uid) {
+		return SlipBottleItem.getFluid(stack).getFluid().builtInRegistryHolder().unwrapKey().orElseThrow().location().toString();
 	}
 
 	public void registerCategories(IRecipeCategoryRegistration registry) {

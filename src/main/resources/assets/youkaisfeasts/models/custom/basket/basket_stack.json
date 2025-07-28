@@ -1,0 +1,24 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"3": "#top",
+		"5": "#side",
+		"particle": "#top"
+	},
+	"elements": [
+		{
+			"name": "apple",
+			"from": [1, 2, 1],
+			"to": [15, 6, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 14, 4], "texture": "#5"},
+				"east": {"uv": [0, 0, 14, 4], "texture": "#5"},
+				"south": {"uv": [0, 0, 14, 4], "texture": "#5"},
+				"west": {"uv": [0, 0, 14, 4], "texture": "#5"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#3"}
+			}
+		}
+	]
+}

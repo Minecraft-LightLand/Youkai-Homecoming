@@ -1,7 +1,9 @@
 {
 	"itemGroup.youkaisfeasts": {
-		"block": "妖怪们的飨宴 - 作物和工具",
-		"food": "妖怪们的飨宴 - 食物和原料"
+		"block": "妖怪们的飨宴 - 厨具和工具",
+		"food": "妖怪们的飨宴 - 食物和原料",
+		"crop": "妖怪们的飨宴 - 作物",
+		"deco": "妖怪们的飨宴 - 家具"
 	},
 	"entity.youkaisfeasts": {
 		"dining_chair": "板凳"

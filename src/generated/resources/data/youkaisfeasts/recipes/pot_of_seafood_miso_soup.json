@@ -2,6 +2,10 @@
   "type": "youkaisfeasts:unordered_cooking",
   "input": [
     {
+      "type": "youkaisfeasts:fluid",
+      "fluid": "youkaisfeasts:soy_sauce"
+    },
+    {
       "tag": "forge:soybean"
     },
     {

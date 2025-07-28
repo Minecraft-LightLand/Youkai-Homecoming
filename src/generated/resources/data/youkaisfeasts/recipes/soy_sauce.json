@@ -1,0 +1,12 @@
+{
+  "type": "youkaisfeasts:immediate_soup",
+  "color": 2147483647,
+  "id": "youkaisfeasts:soy_sauce",
+  "input": [
+    {
+      "type": "youkaisfeasts:fluid",
+      "fluid": "youkaisfeasts:soy_sauce"
+    }
+  ],
+  "time": 0
+}

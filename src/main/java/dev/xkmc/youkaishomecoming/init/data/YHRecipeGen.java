@@ -12,9 +12,11 @@ import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
+import dev.xkmc.youkaishomecoming.content.block.deco.BasketBlock;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinBuilder;
-import dev.xkmc.youkaishomecoming.content.pot.cooking.core.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
@@ -88,12 +90,33 @@ public class YHRecipeGen {
 						.define('P', e.slab)
 						.save(pvd);
 
-				if (e == YHBlocks.WoodType.SPRUCE)
-					pvd.stonecutting(DataIngredient.items(e.strippedWood), RecipeCategory.MISC, YHBlocks.SPRUCE_WINE_SHELF);
-				if (e == YHBlocks.WoodType.OAK)
-					pvd.stonecutting(DataIngredient.items(e.strippedWood), RecipeCategory.MISC, YHBlocks.OAK_INGREDIENT_RACK);
+				if (e == YHBlocks.WoodType.SPRUCE) {
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.SPRUCE_WINE_SHELF, 1)::unlockedBy, Items.STICK)
+							.pattern("PSP").pattern("SSS").pattern("PSP")
+							.define('P', e.plank)
+							.define('S', e.slab)
+							.save(pvd);
+				}
+				if (e == YHBlocks.WoodType.OAK) {
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.OAK_INGREDIENT_RACK, 1)::unlockedBy, Items.STICK)
+							.pattern(" PP").pattern("  S").pattern("PPP")
+							.define('S', Items.STICK)
+							.define('P', e.slab)
+							.save(pvd);
+
+					unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, YHBlocks.OAK_SAUCE_RACK, 1)::unlockedBy, Items.STICK)
+							.pattern("SP").pattern(" P").pattern("PP")
+							.define('S', Items.STICK)
+							.define('P', e.slab)
+							.save(pvd);
+				}
 
 			}
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BasketBlock.BASKET, 1)::unlockedBy, ModItems.CANVAS.get())
+					.pattern("S S").pattern("PPP")
+					.define('S', Items.BAMBOO)
+					.define('P',  ModItems.CANVAS.get())
+					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.STEAMER_POT)::unlockedBy, Items.IRON_INGOT)
 					.pattern("B B").pattern("I I").pattern("CIC")
@@ -540,131 +563,142 @@ public class YHRecipeGen {
 		// iron bowl
 		{
 
-			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("miso"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
-					.add(YHTagGen.SOYBEAN)
-					.save(pvd);
+			var soy = new SlipBottleIngredient(YHItems.SOY_SAUCE_BOTTLE.source());
+			{
+				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soy_sauce"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
+						.col(0x7fffffff).add(soy)
+						.save(pvd);
 
-			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.asItem())
-					.add(YHItems.CREAM)
-					.save(pvd);
+				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("miso"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
+						.time(100).add(soy).add(YHTagGen.SOYBEAN)
+						.save(pvd);
 
-			unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soul"))::unlockedBy, Items.SOUL_SAND)
-					.add(Items.SOUL_SAND)
-					.save(pvd);
+				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("cream"))::unlockedBy, YHItems.CREAM.asItem())
+						.add(YHItems.CREAM)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HIGAN_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(Items.SOUL_SAND)
-					.add(TagRef.CROPS)
-					.save(pvd);
+				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soul"))::unlockedBy, Items.SOUL_SAND)
+						.add(Items.SOUL_SAND)
+						.save(pvd);
+			}
+			{
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HIGAN_SOUP, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
+						.add(Items.SOUL_SAND)
+						.add(TagRef.CROPS)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(Items.RED_MUSHROOM)
-					.add(Items.BROWN_MUSHROOM)
-					.add(Tags.Items.MUSHROOMS)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.SIGNATURE_MUSHROOM_STEW, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
+						.add(soy)
+						.add(Items.RED_MUSHROOM)
+						.add(Items.BROWN_MUSHROOM)
+						.add(Tags.Items.MUSHROOMS)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
-					.add(YHTagGen.SOYBEAN)
-					.add(YHFood.TOFU)
-					.add(Items.KELP)
-					.add(Items.CARROT)
-					.add(Items.POTATO)
-					.add(Items.BROWN_MUSHROOM)
-					.add(TagRef.FOOD_CABBAGE)
-					.add(TagRef.VEGETABLES_ONION)
-					.add(TagRef.RAW_FISHES_SALMON)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHBowl.HOKKAIDO_SALMON_HOTPOT, 200)::unlockedBy, YHBlocks.IRON_BOWL.asItem())
+						.add(soy).add(YHTagGen.SOYBEAN)
+						.add(YHFood.TOFU)
+						.add(Items.KELP)
+						.add(Items.CARROT)
+						.add(Items.POTATO)
+						.add(Items.BROWN_MUSHROOM)
+						.add(TagRef.FOOD_CABBAGE)
+						.add(TagRef.VEGETABLES_ONION)
+						.add(TagRef.RAW_FISHES_SALMON)
+						.save(pvd);
+			}
+			{
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+						.add(YHFood.TOFU)
+						.add(Items.KELP)
+						.add(TagRef.VEGETABLES)
+						.add(Items.PUFFERFISH)
+						.add(YHTagGen.RAW_EEL)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SHIRAYUKI, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
-					.add(YHFood.TOFU)
-					.add(Items.KELP)
-					.add(TagRef.VEGETABLES)
-					.add(Items.PUFFERFISH)
-					.add(YHTagGen.RAW_EEL)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+						.add(TagRef.RAW_FISHES_COD)
+						.add(TagRef.EGGS)
+						.add(TagRef.VEGETABLES_TOMATO)
+						.add(Items.POTATO)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.COD_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
-					.add(TagRef.RAW_FISHES_COD)
-					.add(TagRef.EGGS)
-					.add(TagRef.VEGETABLES_TOMATO)
-					.add(Items.POTATO)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+						.add(YHFood.TOFU)
+						.add(YHFood.TOFU)
+						.add(YHFood.RAW_LAMPREY)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.HAN_PALACE, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
-					.add(YHFood.TOFU)
-					.add(YHFood.TOFU)
-					.add(YHFood.RAW_LAMPREY)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
+						.add(YHFood.TOFU)
+						.add(YHFood.CRAB_MEAT)
+						.add(YHFood.CRAB)
+						.save(pvd);
+			}
+			{
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+						.add(soy).add(YHTagGen.SOYBEAN)
+						.add(YHFood.TOFU.item.get())
+						.add(YHFood.TOFU.item.get())
+						.add(YHFood.TOFU.item.get())
+						.add(Items.DRIED_KELP)
+						.add(Items.DRIED_KELP)
+						.add(Items.BROWN_MUSHROOM)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.TOFU_CRAB_STEW, 200)::unlockedBy, YHBlocks.IRON_POT.asItem())
-					.add(YHFood.TOFU)
-					.add(YHFood.CRAB_MEAT)
-					.add(YHFood.CRAB)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+						.add(soy).add(YHTagGen.SOYBEAN)
+						.add(YHFood.TOFU.item.get())
+						.add(YHFood.TOFU.item.get())
+						.add(Items.DRIED_KELP)
+						.add(Items.DRIED_KELP)
+						.add(Items.BROWN_MUSHROOM)
+						.add(TagRef.VEGETABLES_ONION)
+						.add(TagRef.RAW_FISHES_SALMON)
+						.add(TagRef.RAW_FISHES_SALMON)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHTagGen.SOYBEAN)
-					.add(YHFood.TOFU.item.get())
-					.add(YHFood.TOFU.item.get())
-					.add(YHFood.TOFU.item.get())
-					.add(Items.DRIED_KELP)
-					.add(Items.DRIED_KELP)
-					.add(Items.BROWN_MUSHROOM)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POWER_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+						.add(soy).add(YHTagGen.SOYBEAN)
+						.add(TagRef.RAW_PORK)
+						.add(TagRef.RAW_BEEF)
+						.add(TagRef.RAW_MUTTON)
+						.add(YHTagGen.RAW_VENISON)
+						.add(Items.KELP)
+						.add(Items.CARROT)
+						.add(TagRef.VEGETABLES_TOMATO)
+						.add(TagRef.FOOD_CABBAGE)
+						.add(TagRef.VEGETABLES_ONION)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.SEAFOOD_MISO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHTagGen.SOYBEAN)
-					.add(YHFood.TOFU.item.get())
-					.add(YHFood.TOFU.item.get())
-					.add(Items.DRIED_KELP)
-					.add(Items.DRIED_KELP)
-					.add(Items.BROWN_MUSHROOM)
-					.add(TagRef.VEGETABLES_ONION)
-					.add(TagRef.RAW_FISHES_SALMON)
-					.add(TagRef.RAW_FISHES_SALMON)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MUSHROOM_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+						.add(YHItems.CREAM)
+						.add(Items.BROWN_MUSHROOM)
+						.add(Items.BROWN_MUSHROOM)
+						.add(Items.BROWN_MUSHROOM)
+						.add(TagRef.VEGETABLES_ONION)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POWER_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHTagGen.SOYBEAN)
-					.add(TagRef.RAW_PORK)
-					.add(TagRef.RAW_BEEF)
-					.add(TagRef.RAW_MUTTON)
-					.add(YHTagGen.RAW_VENISON)
-					.add(Items.KELP)
-					.add(Items.CARROT)
-					.add(TagRef.VEGETABLES_TOMATO)
-					.add(TagRef.FOOD_CABBAGE)
-					.add(TagRef.VEGETABLES_ONION)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POTATO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+						.add(YHItems.CREAM)
+						.add(Items.POTATO)
+						.add(Items.POTATO)
+						.add(Items.POTATO)
+						.add(TagRef.RAW_PORK)
+						.add(TagRef.VEGETABLES_ONION)
+						.save(pvd);
 
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.MUSHROOM_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHItems.CREAM)
-					.add(Items.BROWN_MUSHROOM)
-					.add(Items.BROWN_MUSHROOM)
-					.add(Items.BROWN_MUSHROOM)
-					.add(TagRef.VEGETABLES_ONION)
-					.save(pvd);
-
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POTATO_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHItems.CREAM)
-					.add(Items.POTATO)
-					.add(Items.POTATO)
-					.add(Items.POTATO)
-					.add(TagRef.RAW_PORK)
-					.add(TagRef.VEGETABLES_ONION)
-					.save(pvd);
-
-			unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.BORSCHT, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
-					.add(YHItems.CREAM)
-					.add(Items.BEETROOT)
-					.add(Items.BEETROOT)
-					.add(Items.BEETROOT)
-					.add(TagRef.VEGETABLES_TOMATO)
-					.add(TagRef.VEGETABLES_TOMATO)
-					.add(Items.POTATO)
-					.add(TagRef.VEGETABLES_ONION)
-					.add(TagRef.RAW_BEEF)
-					.save(pvd);
+				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.BORSCHT, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
+						.add(YHItems.CREAM)
+						.add(Items.BEETROOT)
+						.add(Items.BEETROOT)
+						.add(Items.BEETROOT)
+						.add(TagRef.VEGETABLES_TOMATO)
+						.add(TagRef.VEGETABLES_TOMATO)
+						.add(Items.POTATO)
+						.add(TagRef.VEGETABLES_ONION)
+						.add(TagRef.RAW_BEEF)
+						.save(pvd);
+			}
 
 		}
 

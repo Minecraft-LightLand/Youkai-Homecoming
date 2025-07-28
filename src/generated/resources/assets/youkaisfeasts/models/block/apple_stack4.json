@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/basket/apple_stack4",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "placement": "youkaisfeasts:block/basket/apple_placement"
+  }
+}

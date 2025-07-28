@@ -1,9 +1,11 @@
 {
   "type": "youkaisfeasts:immediate_soup",
+  "color": -1,
   "id": "youkaisfeasts:soul",
   "input": [
     {
       "item": "minecraft:soul_sand"
     }
-  ]
+  ],
+  "time": 0
 }

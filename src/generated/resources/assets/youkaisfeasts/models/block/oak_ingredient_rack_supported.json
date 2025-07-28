@@ -2,10 +2,10 @@
   "parent": "youkaisfeasts:custom/utensil/ingredient_rack_supported",
   "render_type": "minecraft:cutout",
   "textures": {
-    "base": "youkaisfeasts:block/ingredient_rack/oak_ingredient_rack_base",
-    "bottom": "youkaisfeasts:block/ingredient_rack/oak_ingredient_rack_bottom",
-    "side": "youkaisfeasts:block/ingredient_rack/oak_ingredient_rack_side",
-    "support": "youkaisfeasts:block/ingredient_rack/oak_ingredient_rack_support",
-    "top": "youkaisfeasts:block/ingredient_rack/oak_ingredient_rack_top"
+    "base": "youkaisfeasts:block/storage/ingredient_rack/oak_ingredient_rack_base",
+    "bottom": "youkaisfeasts:block/storage/ingredient_rack/oak_ingredient_rack_bottom",
+    "side": "youkaisfeasts:block/storage/ingredient_rack/oak_ingredient_rack_side",
+    "support": "youkaisfeasts:block/storage/ingredient_rack/oak_ingredient_rack_support",
+    "top": "youkaisfeasts:block/storage/ingredient_rack/oak_ingredient_rack_top"
   }
 }

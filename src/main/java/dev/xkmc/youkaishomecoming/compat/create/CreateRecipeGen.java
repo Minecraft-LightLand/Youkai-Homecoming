@@ -10,6 +10,7 @@ import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.fluid.FluidIngredient;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
 import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -64,6 +65,20 @@ public class CreateRecipeGen {
 				.output(sake.getContainer())
 				.output(sake.source(), sake.amount())
 				.build(ConditionalRecipeWrapper.mod(pvd, Create.ID));
+
+		if (sake.bottleSet() instanceof BottledDrinkSet set) {
+			filling(set.bottle.getId())
+					.withFluidIngredients(FluidIngredient.fromFluid(sake.source(), 1000))
+					.withItemIngredients(Ingredient.of(YHItems.SAKE_BOTTLE))
+					.output(set.bottle)
+					.build(ConditionalRecipeWrapper.mod(pvd, Create.ID));
+
+			emptying(set.bottle.getId().withSuffix("_emptying"))
+					.withItemIngredients(Ingredient.of(set.bottle))
+					.output(YHItems.SAKE_BOTTLE)
+					.output(sake.source(), 1000)
+					.build(ConditionalRecipeWrapper.mod(pvd, Create.ID));
+		}
 	}
 
 	private static ProcessingRecipeBuilder<FillingRecipe> filling(ResourceLocation id) {

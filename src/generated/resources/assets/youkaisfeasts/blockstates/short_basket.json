@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaisfeasts:block/short_basket",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaisfeasts:block/short_basket"
+    },
+    "facing=south": {
+      "model": "youkaisfeasts:block/short_basket",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaisfeasts:block/short_basket",
+      "y": 270
+    }
+  }
+}

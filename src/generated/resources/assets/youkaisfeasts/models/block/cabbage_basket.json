@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:block/block",
+  "children": {
+    "basket": {
+      "parent": "youkaisfeasts:block/short_basket"
+    },
+    "top": {
+      "parent": "youkaisfeasts:block/cabbage_stack5_upper"
+    }
+  },
+  "gui_light": "side",
+  "item_render_order": [
+    "basket",
+    "top"
+  ],
+  "loader": "forge:composite",
+  "textures": {
+    "particle": "youkaisfeasts:block/basket/basket_top"
+  }
+}

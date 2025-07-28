@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/basket/cucumber_stack2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "placement": "youkaisfeasts:block/basket/cucumber_placement"
+  }
+}

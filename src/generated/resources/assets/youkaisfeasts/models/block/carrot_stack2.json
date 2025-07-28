@@ -1,0 +1,7 @@
+{
+  "parent": "youkaisfeasts:custom/basket/carrot_stack2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "placement": "youkaisfeasts:block/basket/carrot_placement"
+  }
+}

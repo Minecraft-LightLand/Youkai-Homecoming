@@ -1,0 +1,9 @@
+{
+  "parent": "youkaisfeasts:custom/utensil/sauce_rack",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "back": "youkaisfeasts:block/storage/sauce_rack/oak_sauce_rack_back",
+    "parts": "youkaisfeasts:block/storage/sauce_rack/oak_sauce_rack_parts",
+    "top": "youkaisfeasts:block/storage/sauce_rack/oak_sauce_rack_top"
+  }
+}
