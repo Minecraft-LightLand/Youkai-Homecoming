@@ -1,0 +1,8 @@
+{
+  "parent": "youkaishomecoming:custom/basket/cabbage_stack2",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "placement": "youkaishomecoming:block/basket/cabbage_placement",
+    "placement_2": "youkaishomecoming:block/basket/cabbage_placement_2"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "children": {
+    "layer": {
+      "parent": "youkaishomecoming:block/carrot_stack6"
+    },
+    "top": {
+      "parent": "youkaishomecoming:block/carrot_stack5",
+      "transform": {
+        "translation": [
+          0.0,
+          0.3125,
+          0.0
+        ]
+      }
+    }
+  },
+  "gui_light": "side",
+  "item_render_order": [
+    "layer",
+    "top"
+  ],
+  "loader": "forge:composite",
+  "textures": {
+    "particle": "youkaishomecoming:block/basket/basket_top"
+  }
+}

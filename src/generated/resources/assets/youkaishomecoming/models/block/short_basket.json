@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/basket/basket",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "parts": "youkaishomecoming:block/basket/basket_parts",
+    "side": "youkaishomecoming:block/basket/basket_side",
+    "top": "youkaishomecoming:block/basket/basket_top"
+  }
+}

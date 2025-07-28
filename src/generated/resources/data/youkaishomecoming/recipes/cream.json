@@ -1,9 +1,11 @@
 {
   "type": "youkaishomecoming:immediate_soup",
+  "color": -1,
   "id": "youkaishomecoming:cream",
   "input": [
     {
       "item": "youkaishomecoming:bowl_of_cream"
     }
-  ]
+  ],
+  "time": 0
 }

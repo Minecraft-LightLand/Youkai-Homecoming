@@ -123,7 +123,7 @@
 		"mantou": "馒头",
 		"raw_bun": "生包子",
 		"raw_oyaki": "生御烧",
-		"sake_bottle": "酒瓶",
+		"sake_bottle": "大瓶子",
 		"spell_remilia": "红符「绯红之主」",
 		"spell_clownpiece": "狱符「星星与条纹」",
 		"imitation_crab": "蟹肉棒",
@@ -161,6 +161,9 @@
 		"tofu_crab_stew": "豆腐蟹煲",
 		"big_spoon": "大汤勺",
 		"camellia": "山茶花"
+	},
+	"fluid.youkaishomecoming":{
+		"cream": "奶油"
 	},
 	"-cartesian": {
 		"entity": {

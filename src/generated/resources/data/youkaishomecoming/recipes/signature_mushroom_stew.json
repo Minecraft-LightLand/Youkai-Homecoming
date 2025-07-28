@@ -2,6 +2,10 @@
   "type": "youkaishomecoming:unordered_cooking",
   "input": [
     {
+      "type": "youkaishomecoming:fluid",
+      "fluid": "youkaishomecoming:soy_sauce"
+    },
+    {
       "item": "minecraft:red_mushroom"
     },
     {

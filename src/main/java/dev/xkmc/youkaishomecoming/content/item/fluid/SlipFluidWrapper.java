@@ -48,8 +48,8 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	protected void setFluid(@NotNull FluidStack fluidStack) {
 		if (fluidStack.getAmount() == getTankCapacity(0)) {
 			if (fluidStack.getFluid() instanceof YHFluid fluid) {
-				if (fluid.type instanceof YHDrink drink && drink.set != null) {
-					container = drink.set.bottle.asStack();
+				if (fluid.type.bottleSet() instanceof BottledDrinkSet set) {
+					container = set.bottle.asStack();
 					return;
 				}
 			}
@@ -88,7 +88,12 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
-		return stack.isEmpty() || stack.getFluid() instanceof YHFluid;
+		if (stack.isEmpty()) return true;
+		if (!(stack.getFluid() instanceof YHFluid fluid)) return false;
+		if (fluid.type instanceof BottledFluid<?> bottle) {
+			return bottle.bottleSet() != null;
+		}
+		return fluid.type.asStack(1).isEdible();
 	}
 
 	@Override
