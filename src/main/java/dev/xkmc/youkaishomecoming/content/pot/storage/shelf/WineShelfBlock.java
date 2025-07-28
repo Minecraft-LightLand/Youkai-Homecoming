@@ -43,9 +43,9 @@ public class WineShelfBlock implements OnClickBlockMethod {
 	public static void buildModels(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {
 		pvd.horizontalBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/utensil/wine_shelf")))
-				.texture("top", pvd.modLoc("block/shelf/" + ctx.getName() + "_top"))
-				.texture("side", pvd.modLoc("block/shelf/" + ctx.getName() + "_side"))
-				.texture("inside", pvd.modLoc("block/shelf/" + ctx.getName() + "_inside"))
+				.texture("top", pvd.modLoc("block/storage/shelf/" + ctx.getName() + "_top"))
+				.texture("side", pvd.modLoc("block/storage/shelf/" + ctx.getName() + "_side"))
+				.texture("inside", pvd.modLoc("block/storage/shelf/" + ctx.getName() + "_inside"))
 				.renderType("cutout"));
 	}
 

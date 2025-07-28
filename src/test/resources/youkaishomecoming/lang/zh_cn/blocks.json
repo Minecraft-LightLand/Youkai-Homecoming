@@ -92,7 +92,17 @@
 		"pot_of_tofu_crab_stew": "锅装豆腐蟹煲",
 		"oak_ingredient_rack": "橡木原料架",
 		"pot_of_miso_soup": "锅装味增汤",
-		"pot_of_seafood_miso_soup": "锅装海鲜味增汤"
+		"pot_of_seafood_miso_soup": "锅装海鲜味增汤",
+		"apple_basket": "篮装苹果",
+		"cabbage_basket": "篮装卷心菜",
+		"carrot_basket": "篮装胡萝卜",
+		"golden_carrot_basket": "篮装金胡萝卜",
+		"cucumber_basket": "篮装黄瓜",
+		"golden_apple_basket": "篮装金苹果",
+		"short_basket": "矮篮",
+		"mayonnaise_flask": "大瓶装蛋黄酱",
+		"oak_sauce_rack": "橡木调料架",
+		"soy_sauce_flask": "大瓶装酱油"
 	},
 	"-cartesian": {
 		"raw": {

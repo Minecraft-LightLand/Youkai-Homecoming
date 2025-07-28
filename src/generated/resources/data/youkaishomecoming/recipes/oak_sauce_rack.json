@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:oak_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "SP",
+    " P",
+    "PP"
+  ],
+  "result": {
+    "item": "youkaishomecoming:oak_sauce_rack"
+  },
+  "show_notification": true
+}

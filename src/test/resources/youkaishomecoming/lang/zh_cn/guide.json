@@ -7,6 +7,13 @@
 			"no_water": "下一步：在蒸锅中加水",
 			"too_many": "蒸笼太多了！"
 		},
+		"flask": {
+			"content": "内容物: %s",
+			"info_drink": "能装4玻璃瓶的饮品。一口喝0.2玻璃瓶的量",
+			"info_sauce": "能装4玻璃瓶的酱料。右键锅和料理台使用时一次消耗0.2玻璃瓶的量",
+			"of": "大瓶装%s",
+			"use": "余量: %s/%s"
+		},
 		"fermenting_progress": "发酵进度：%s",
 		"cuisine_allow": "下一步:",
 		"cuisine_extra": "还有%s种选择",

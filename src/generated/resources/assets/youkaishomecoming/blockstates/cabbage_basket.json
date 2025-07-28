@@ -1,0 +1,468 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/short_basket",
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1",
+        "y": 180
+      },
+      "when": {
+        "count": "1",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2",
+        "y": 180
+      },
+      "when": {
+        "count": "2",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3",
+        "y": 180
+      },
+      "when": {
+        "count": "3",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4",
+        "y": 180
+      },
+      "when": {
+        "count": "4",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5",
+        "y": 180
+      },
+      "when": {
+        "count": "5",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack6",
+        "y": 180
+      },
+      "when": {
+        "count": "6",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1_upper",
+        "y": 180
+      },
+      "when": {
+        "count": "7",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2_upper",
+        "y": 180
+      },
+      "when": {
+        "count": "8",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3_upper",
+        "y": 180
+      },
+      "when": {
+        "count": "9",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4_upper",
+        "y": 180
+      },
+      "when": {
+        "count": "10",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5_upper",
+        "y": 180
+      },
+      "when": {
+        "count": "11",
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/short_basket",
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1",
+        "y": 270
+      },
+      "when": {
+        "count": "1",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2",
+        "y": 270
+      },
+      "when": {
+        "count": "2",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3",
+        "y": 270
+      },
+      "when": {
+        "count": "3",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4",
+        "y": 270
+      },
+      "when": {
+        "count": "4",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5",
+        "y": 270
+      },
+      "when": {
+        "count": "5",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack6",
+        "y": 270
+      },
+      "when": {
+        "count": "6",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1_upper",
+        "y": 270
+      },
+      "when": {
+        "count": "7",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2_upper",
+        "y": 270
+      },
+      "when": {
+        "count": "8",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3_upper",
+        "y": 270
+      },
+      "when": {
+        "count": "9",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4_upper",
+        "y": 270
+      },
+      "when": {
+        "count": "10",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5_upper",
+        "y": 270
+      },
+      "when": {
+        "count": "11",
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/short_basket"
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1"
+      },
+      "when": {
+        "count": "1",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2"
+      },
+      "when": {
+        "count": "2",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3"
+      },
+      "when": {
+        "count": "3",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4"
+      },
+      "when": {
+        "count": "4",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5"
+      },
+      "when": {
+        "count": "5",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack6"
+      },
+      "when": {
+        "count": "6",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1_upper"
+      },
+      "when": {
+        "count": "7",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2_upper"
+      },
+      "when": {
+        "count": "8",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3_upper"
+      },
+      "when": {
+        "count": "9",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4_upper"
+      },
+      "when": {
+        "count": "10",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5_upper"
+      },
+      "when": {
+        "count": "11",
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/short_basket",
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1",
+        "y": 90
+      },
+      "when": {
+        "count": "1",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2",
+        "y": 90
+      },
+      "when": {
+        "count": "2",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3",
+        "y": 90
+      },
+      "when": {
+        "count": "3",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4",
+        "y": 90
+      },
+      "when": {
+        "count": "4",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5",
+        "y": 90
+      },
+      "when": {
+        "count": "5",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack6",
+        "y": 90
+      },
+      "when": {
+        "count": "6",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack1_upper",
+        "y": 90
+      },
+      "when": {
+        "count": "7",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack2_upper",
+        "y": 90
+      },
+      "when": {
+        "count": "8",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack3_upper",
+        "y": 90
+      },
+      "when": {
+        "count": "9",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack4_upper",
+        "y": 90
+      },
+      "when": {
+        "count": "10",
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "youkaishomecoming:block/cabbage_stack5_upper",
+        "y": 90
+      },
+      "when": {
+        "count": "11",
+        "facing": "east"
+      }
+    }
+  ]
+}
