@@ -4,7 +4,8 @@ import dev.xkmc.l2library.base.tile.BaseBlockEntity;
 import dev.xkmc.l2library.base.tile.BaseContainerListener;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BucketBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
@@ -17,6 +18,10 @@ import java.util.List;
 
 @SerialClass
 public class WineShelfBlockEntity extends BaseBlockEntity implements BaseContainerListener, BlockContainer {
+
+	public static boolean isFlask(ItemStack stack) {
+		return stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof BucketBottleItem;
+	}
 
 	@SerialClass.SerialField
 	public final ShelfContainer items = new ShelfContainer(9).setMax(1).add(this);
@@ -39,7 +44,7 @@ public class WineShelfBlockEntity extends BaseBlockEntity implements BaseContain
 	public boolean click(Player player, InteractionHand hand, int index) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (items.getItem(index).isEmpty()) {
-			if (stack.is(YHTagGen.BOTTLED)) {
+			if (isFlask(stack)) {
 				if (!player.level().isClientSide())
 					items.setItem(index, stack.split(1));
 				return true;

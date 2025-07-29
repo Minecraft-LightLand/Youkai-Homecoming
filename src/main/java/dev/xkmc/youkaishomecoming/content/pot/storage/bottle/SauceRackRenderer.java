@@ -36,8 +36,7 @@ public class SauceRackRenderer implements BlockEntityRenderer<SauceRackBlockEnti
 			if (bottle instanceof SlipBottleItem) {
 				var fluid = SlipBottleItem.getFluid(stack);
 				if (fluid.getFluid() instanceof YHFluid type) {
-					var tex = type.type.bottleSet();
-					if (tex instanceof BottledDrinkSet set) {
+					if (type.type.bottleSet() instanceof BottledDrinkSet set) {
 						bottle = set.bottle.asItem();
 					}
 				}
