@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
-import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
