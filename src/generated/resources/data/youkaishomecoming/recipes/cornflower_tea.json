@@ -1,11 +1,12 @@
 {
   "type": "youkaishomecoming:kettle",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
+  "input": [
+    {
+      "item": "minecraft:cornflower"
+    },
+    {
+      "item": "minecraft:cornflower"
+    },
     {
       "item": "minecraft:cornflower"
     },
@@ -13,8 +14,9 @@
       "item": "minecraft:cornflower"
     }
   ],
-  "recipe_book_tab": "drinks",
   "result": {
-    "item": "youkaishomecoming:cornflower_tea"
-  }
+    "amount": 1000,
+    "fluid": "youkaishomecoming:cornflower_tea"
+  },
+  "time": 100
 }

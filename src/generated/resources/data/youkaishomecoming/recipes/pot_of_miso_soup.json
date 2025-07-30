@@ -1,0 +1,34 @@
+{
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "type": "youkaishomecoming:fluid",
+      "fluid": "youkaishomecoming:soy_sauce"
+    },
+    {
+      "tag": "forge:soybean"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pot_of_miso_soup"
+  },
+  "time": 400
+}

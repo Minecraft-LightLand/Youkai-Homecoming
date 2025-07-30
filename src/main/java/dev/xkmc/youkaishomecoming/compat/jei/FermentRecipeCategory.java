@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -16,6 +17,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentationRecipe, FermentRecipeCategory> {
@@ -61,7 +63,12 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 91;
 			if (recipe.outputFluid.getFluid() instanceof YHFluid sake) {
-				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.type.asStack(sake.type.count()));
+				var list = new ArrayList<ItemStack>();
+				list.add(sake.type.asStack(sake.type.count()));
+				if (sake.type.bottleSet() instanceof BottledDrinkSet set) {
+					list.add(set.bottle.asStack(1));
+				}
+				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStacks(list);
 				builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(new ItemStack(sake.type.getContainer(), sake.type.count()));
 			} else {
 				if (!recipe.defaultContainer.isEmpty() && !recipe.defaultBottle.isEmpty()) {

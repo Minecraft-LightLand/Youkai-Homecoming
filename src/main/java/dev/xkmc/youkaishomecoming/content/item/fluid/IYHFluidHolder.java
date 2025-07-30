@@ -1,11 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
-import com.tterrag.registrate.util.entry.FluidEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.Nullable;
 
-public interface IYHFluidHolder {
+public interface IYHFluidHolder extends ItemLike {
 
 	int getColor();
 
@@ -15,8 +16,6 @@ public interface IYHFluidHolder {
 
 	ItemEntry<?> item();
 
-	FluidEntry<? extends YHFluid> fluid();
-
 	default int count() {
 		return 4;
 	}
@@ -25,4 +24,17 @@ public interface IYHFluidHolder {
 		return 250;
 	}
 
+	@Nullable
+	default String bottleTextureFolder() {
+		return null;
+	}
+
+	@Nullable
+	default BottleTexture bottleSet() {
+		return null;
+	}
+
+	Item asItem();
+
+	YHFluid source();
 }

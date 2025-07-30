@@ -13,9 +13,6 @@
       "item": "minecraft:crimson_fungus"
     },
     {
-      "item": "minecraft:crimson_fungus"
-    },
-    {
       "item": "minecraft:blaze_powder"
     },
     {
@@ -25,6 +22,7 @@
       "tag": "forge:raw_chicken"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:blazing_red_curry"
   }

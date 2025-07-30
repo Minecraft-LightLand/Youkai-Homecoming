@@ -1,0 +1,22 @@
+{
+  "type": "youkaishomecoming:kettle",
+  "input": [
+    {
+      "tag": "forge:tea_leaves/dark"
+    },
+    {
+      "tag": "forge:tea_leaves/dark"
+    },
+    {
+      "tag": "forge:tea_leaves/dark"
+    },
+    {
+      "tag": "forge:tea_leaves/dark"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "fluid": "youkaishomecoming:dark_tea"
+  },
+  "time": 100
+}

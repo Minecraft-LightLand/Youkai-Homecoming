@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:cauldron"
+    },
+    {
+      "item": "youkaishomecoming:big_spoon"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:stockpot"
+  }
+}

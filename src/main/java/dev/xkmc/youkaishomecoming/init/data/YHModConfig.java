@@ -46,7 +46,7 @@ public class YHModConfig {
 		public final ForgeConfigSpec.IntValue youkaifiedDuration;
 		public final ForgeConfigSpec.IntValue youkaifiedProlongation;
 
-		public final ForgeConfigSpec.DoubleValue smoothingHealingFactor;
+		public final ForgeConfigSpec.DoubleValue breathingHealingFactor;
 		public final ForgeConfigSpec.IntValue teaHealingPeriod;
 		public final ForgeConfigSpec.IntValue udumbaraDuration;
 		public final ForgeConfigSpec.IntValue udumbaraHealingPeriod;
@@ -131,8 +131,8 @@ public class YHModConfig {
 
 			builder.push("food_effect");
 			{
-				smoothingHealingFactor = builder.comment("Smoothing Healing Factor")
-						.defineInRange("smoothingHealingFactor", 1.5, 1, 100);
+				breathingHealingFactor = builder.comment("Breathing Healing Factor")
+						.defineInRange("breathingHealingFactor", 1.5, 1, 100);
 				teaHealingPeriod = builder.comment("Tea Healing Interval")
 						.defineInRange("teaHealingPeriod", 60, 0, 10000);
 				udumbaraHealingPeriod = builder.comment("Udumbara effect Healing Interval")

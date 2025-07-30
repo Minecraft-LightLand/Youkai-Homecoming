@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/short/cod_stew",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/bowl/short/cod_stew",
+    "bottom": "youkaishomecoming:block/bowl/short/short_iron_pot_bottom",
+    "side": "youkaishomecoming:block/bowl/short/short_iron_pot_side",
+    "top": "youkaishomecoming:block/bowl/short/short_iron_pot_top"
+  }
+}

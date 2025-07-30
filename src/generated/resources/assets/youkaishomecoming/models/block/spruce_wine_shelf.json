@@ -1,0 +1,9 @@
+{
+  "parent": "youkaishomecoming:custom/utensil/wine_shelf",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "inside": "youkaishomecoming:block/storage/shelf/spruce_wine_shelf_inside",
+    "side": "youkaishomecoming:block/storage/shelf/spruce_wine_shelf_side",
+    "top": "youkaishomecoming:block/storage/shelf/spruce_wine_shelf_top"
+  }
+}

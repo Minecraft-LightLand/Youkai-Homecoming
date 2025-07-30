@@ -1,16 +1,21 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
+import com.google.common.collect.ImmutableMultimap;
+import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.content.client.ReimuHairbandModel;
 import dev.xkmc.youkaishomecoming.content.entity.danmaku.IYHDanmaku;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.registrate.YHAttributes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +39,15 @@ public class ReimuHairbandItem extends TouhouHatItem {
 
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
 		return YoukaisHomecoming.MODID + ":textures/entities/reimu.png";
+	}
+
+	@Override
+	protected void addModifiers(ImmutableMultimap.Builder<Attribute, AttributeModifier> builder) {
+		super.addModifiers(builder);
+		builder.put(YHAttributes.HITBOX.get(), new AttributeModifier(
+				MathHelper.getUUIDFromString("reimu_hairband"), "Reimu Hairband",
+				-0.1, AttributeModifier.Operation.ADDITION
+		));
 	}
 
 	@Override

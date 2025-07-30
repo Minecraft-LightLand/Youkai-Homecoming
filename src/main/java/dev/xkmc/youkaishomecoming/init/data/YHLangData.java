@@ -29,6 +29,12 @@ public enum YHLangData {
 	SPELL_COST("tooltip.spell_cost", "Costs %s %s", 2, ChatFormatting.GRAY),
 	KETTLE_INFO("tooltip.kettle", "Right click with water bucket or water bottle to fill water", 0, ChatFormatting.GRAY),
 	DRYING_RACK("tooltip.drying_rack", "Only works directly under the sun", 0, ChatFormatting.GRAY),
+	CAMELLIA("tooltip.camellia", "Prevent Phantom spawn when equipped", 0, ChatFormatting.GRAY),
+	FLASK_OF("flask.of", "Flask Of %s", 1, null),
+	FLASK_INFO_DRINK("flask.info_drink", "Stores 4 bottles of drink. Consume 0.2 bottles per slip", 0, ChatFormatting.GRAY),
+	FLASK_INFO_SAUCE("flask.info_sauce", "Stores 4 bottles of sauce. Consume 0.2 bottles per use on Pots and Cuisine Table", 0, ChatFormatting.GRAY),
+	FLASK_CONTENT("flask.content", "Content: %s", 1, ChatFormatting.GRAY),
+	FLASK_USE("flask.use", "Remaining Use: %s/%s", 2, ChatFormatting.GRAY),
 
 	MOON_LANTERN_PLACE("tooltip.moon_lantern_place", "Udumbara within 3x3x3 blocks below this latern will grow as night as if they can see full moon.", 0, ChatFormatting.GRAY),
 	MOON_LANTERN_HOLD("tooltip.moon_lantern_hold", "When holding in hand, Udumbara effect will always trigger at night regardless if player can see full moons", 0, ChatFormatting.GRAY),
@@ -37,6 +43,16 @@ public enum YHLangData {
 	FLESH_NAME_YOUKAI("flesh_youkai", "Flesh", 0, null),
 
 	FERMENT_PROGRESS("fermenting_progress", "Fermenting: %s", 1, ChatFormatting.GRAY),
+	CUISINE_ALLOW("cuisine_allow", "Next Step:", 0, ChatFormatting.GRAY),
+	CUISINE_EXTRA("cuisine_extra", "And %s more...", 1, ChatFormatting.GRAY),
+	HEAT_PROGRESS("heat_progress", "Heating: %s", 1, ChatFormatting.GRAY),
+	BREWING_PROGRESS("brewing_progress", "Brewing: %s", 1, ChatFormatting.GRAY),
+	COOKING_PROGRESS("cooking_progress", "Cooking: %s", 1, ChatFormatting.GRAY),
+	STEAMER_TOO_MANY("steamer.too_many", "Too many racks!", 0, ChatFormatting.RED),
+	STEAMER_NO_WATER("steamer.no_water", "Next Step: Add water", 0, ChatFormatting.GRAY),
+	STEAMER_NO_HEAT("steamer.no_heat", "Next Step: Put heat source beneath", 0, ChatFormatting.GRAY),
+	STEAMER_NO_RACK("steamer.no_rack", "Next Step: Add steam racks", 0, ChatFormatting.GRAY),
+	STEAMER_NO_CAP("steamer.no_cap", "Cap top rack to steam faster", 0, ChatFormatting.GRAY),
 
 	JEI_MOKA("jei.moka", "Coffee Brewing", 0, null),
 	JEI_KETTLE("jei.kettle", "Tea Brewing", 0, null),
@@ -45,6 +61,7 @@ public enum YHLangData {
 	JEI_BASIN("jei.basin", "Basin", 0, null),
 	JEI_STEAM("jei.steam", "Steaming", 0, null),
 	JEI_CUISINE("jei.cuisine", "Cuisine", 0, null),
+	JEI_COOKING("jei.cooking", "Cooking", 0, null),
 
 	OBTAIN("obtain", "Source: ", 0, ChatFormatting.GRAY),
 	UNKNOWN("unknown", "???", 0, ChatFormatting.GRAY),
@@ -111,6 +128,10 @@ public enum YHLangData {
 	}
 
 	public static void genLang(RegistrateLangProvider pvd) {
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_ambient", "Deer baahs");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_hurt", "Deer hurts");
+		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_death", "Deer dies");
+		pvd.add("biome." + YoukaisHomecoming.MODID + ".sakura_forest", "Sakura Forest");
 		for (YHLangData lang : YHLangData.values()) {
 			pvd.add(lang.key, lang.def);
 		}

@@ -1,0 +1,7 @@
+{
+  "type": "youkaishomecoming:cuisine_fixed",
+  "base": "youkaishomecoming:rice_powder_pork",
+  "result": {
+    "item": "youkaishomecoming:raw_rice_powder_pork"
+  }
+}

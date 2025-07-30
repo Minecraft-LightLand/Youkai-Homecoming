@@ -1,0 +1,42 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "#placement",
+		"particle": "#placement"
+	},
+	"elements": [
+		{
+			"name": "cucumber",
+			"from": [7, 1, 1],
+			"to": [9, 3, 13],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 2, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 2], "texture": "#0"},
+				"east": {"uv": [2, 0, 14, 2], "texture": "#0"},
+				"south": {"uv": [0, 2, 2, 4], "texture": "#0"},
+				"west": {"uv": [2, 2, 14, 4], "texture": "#0"},
+				"up": {"uv": [2, 4, 4, 16], "texture": "#0"},
+				"down": {"uv": [0, 4, 2, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cucumber",
+			"from": [6.5, 2, 13],
+			"to": [9.5, 2, 15],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 3, 8]},
+			"faces": {
+				"up": {"uv": [4, 4, 7, 6], "texture": "#0"},
+				"down": {"uv": [4, 6, 7, 4], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "cucumber",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

@@ -7,10 +7,10 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaishomecoming:redbean"
+      "tag": "forge:redbean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
       "item": "minecraft:cherry_leaves"
@@ -25,6 +25,7 @@
       "item": "youkaishomecoming:udumbara_flower"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:seven_colored_yokan"
   }

@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:grain/rice"
+      "item": "farmersdelight:cooked_rice"
     },
     {
       "tag": "forge:ice_cubes"
     },
     {
-      "item": "youkaishomecoming:redbean"
+      "tag": "forge:redbean"
     },
     {
       "item": "farmersdelight:cod_roll"

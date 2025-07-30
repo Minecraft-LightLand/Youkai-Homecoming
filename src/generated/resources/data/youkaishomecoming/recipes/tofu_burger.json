@@ -19,6 +19,7 @@
       "tag": "forge:salad_ingredients/cabbage"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:tofu_burger"
   }

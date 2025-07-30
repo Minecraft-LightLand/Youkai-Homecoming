@@ -68,13 +68,13 @@ public class LampreyEntity extends AbstractFish {
 		super.registerGoals();
 		goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, false));
 		targetSelector.addGoal(0, new HurtByTargetGoal(this));
-		targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, WaterAnimal.class, true,
+		targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, AbstractFish.class, true,
 				this::canAttack));
 	}
 
 	@Override
 	public boolean canAttack(LivingEntity e) {
-		if (e instanceof WaterAnimal fish) {
+		if (e instanceof AbstractFish fish) {
 			if (fish.getType() == getType()) {
 				return false;
 			}

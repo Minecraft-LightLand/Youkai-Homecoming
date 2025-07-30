@@ -3,14 +3,12 @@ package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
-import dev.xkmc.youkaishomecoming.content.pot.table.item.FoodTableItem;
-import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
-import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItem;
-import dev.xkmc.youkaishomecoming.content.pot.table.item.VariantTableItemBase;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -43,14 +41,20 @@ public abstract class CuisineRecipe<T extends CuisineRecipe<T>> extends BaseReci
 		var base = VariantTableItemBase.MAP.get(base());
 		if (base != null) {
 			return Optional.of(new VariantTableItem(base, list, getResult().getCount()));
-		} else {
-			var item = ForgeRegistries.ITEMS.getValue(base());
-			if (item == null || item == Items.AIR) return Optional.empty();
-			var init = item.getDefaultInstance();
-			var holder = FoodModelHelper.find(init);
-			if (holder == null) return Optional.empty();
-			return Optional.of(new FoodTableItem(holder.base(), item.getDefaultInstance(), holder, list));
 		}
+		var fix = IngredientTableItem.FIXED.get(base());
+		if (fix != null) {
+			return Optional.of(fix);
+		}
+		var item = ForgeRegistries.ITEMS.getValue(base());
+		if (item == null || item == Items.AIR) return Optional.empty();
+		var init = item.getDefaultInstance();
+		var holder = FoodModelHelper.find(init);
+		if (holder == null) return Optional.empty();
+		return Optional.of(new FoodTableItem(holder.base(), item.getDefaultInstance(), holder, list));
+
 	}
+
+	public abstract List<Ingredient> getHints(Level level, CuisineInv cont);
 
 }

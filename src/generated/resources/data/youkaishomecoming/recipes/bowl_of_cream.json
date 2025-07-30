@@ -16,6 +16,7 @@
       "tag": "forge:milk/milk_bottle"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
     "item": "youkaishomecoming:bowl_of_cream"
   }

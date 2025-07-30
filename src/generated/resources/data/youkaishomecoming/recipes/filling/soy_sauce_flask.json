@@ -1,0 +1,24 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:sake_bottle"
+    },
+    {
+      "amount": 1000,
+      "fluid": "youkaishomecoming:soy_sauce",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "youkaishomecoming:soy_sauce_flask"
+    }
+  ]
+}

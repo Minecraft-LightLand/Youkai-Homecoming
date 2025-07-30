@@ -1,11 +1,11 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2serial.util.Wrappers;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleMenu;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleScreen;
 import dev.xkmc.youkaishomecoming.content.pot.moka.MokaMenu;
 import dev.xkmc.youkaishomecoming.content.pot.moka.MokaRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.moka.MokaScreen;
@@ -14,12 +14,15 @@ import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.ingredients.subtypes.UidContext;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.Objects;
@@ -36,21 +39,36 @@ public class YHJeiPlugin implements IModPlugin {
 	public static final RecipeType<SimpleFermentationRecipe> FERMENT = RecipeType.create(YoukaisHomecoming.MODID, "ferment", SimpleFermentationRecipe.class);
 	public static final RecipeType<CuisineRecipe<?>> CUISINE = RecipeType.create(YoukaisHomecoming.MODID, "cuisine", Wrappers.cast(CuisineRecipe.class));
 	public static final RecipeType<SimpleBasinRecipe> BASIN = RecipeType.create(YoukaisHomecoming.MODID, "basin", SimpleBasinRecipe.class);
+	public static final RecipeType<PotCookingRecipe<?>> BOWL_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "bowl_cooking", Wrappers.cast(PotCookingRecipe.class));
+	public static final RecipeType<PotCookingRecipe<?>> POT_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "pot_cooking", Wrappers.cast(PotCookingRecipe.class));
+	public static final RecipeType<PotCookingRecipe<?>> STOCK_COOKING = RecipeType.create(YoukaisHomecoming.MODID, "stock_cooking", Wrappers.cast(PotCookingRecipe.class));
 
 	@Override
 	public ResourceLocation getPluginUid() {
 		return ID;
 	}
 
+	@Override
+	public void registerItemSubtypes(ISubtypeRegistration registration) {
+		registration.registerSubtypeInterpreter(YHItems.SAKE_BOTTLE.get(), this::slipSubType);
+	}
+
+	private String slipSubType(ItemStack stack, UidContext uid) {
+		return SlipBottleItem.getFluid(stack).getFluid().builtInRegistryHolder().unwrapKey().orElseThrow().location().toString();
+	}
+
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		var helper = registry.getJeiHelpers().getGuiHelper();
 		registry.addRecipeCategories(new MokaRecipeCategory(helper));
-		registry.addRecipeCategories(new KettleRecipeCategory(helper));
+		registry.addRecipeCategories(new KettleRecipeCategory().init(helper));
 		registry.addRecipeCategories(new DryingRackCategory(helper));
 		registry.addRecipeCategories(new SteamingCategory(helper));
 		registry.addRecipeCategories(new FermentRecipeCategory().init(helper));
 		registry.addRecipeCategories(new BasinRecipeCategory().init(helper));
 		registry.addRecipeCategories(new CuisineRecipeCategory().init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("bowl_cooking", YHBlocks.IRON_BOWL.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("pot_cooking", YHBlocks.IRON_POT.asStack()).init(helper));
+		registry.addRecipeCategories(new PotCookingRecipeCategory("stock_cooking", YHBlocks.STOCKPOT.asStack()).init(helper));
 	}
 
 	public void registerRecipes(IRecipeRegistration registration) {
@@ -66,6 +84,12 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipes(BASIN, m.getAllRecipesFor(YHBlocks.BASIN_RT.get())
 				.stream().map(e -> e instanceof SimpleBasinRecipe x ? x : null).filter(Objects::nonNull).toList());
 		registration.addRecipes(CUISINE, m.getAllRecipesFor(YHBlocks.CUISINE_RT.get()));
+		registration.addRecipes(BOWL_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_BOWL.asItem())).toList());
+		registration.addRecipes(POT_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_POT.asItem())).toList());
+		registration.addRecipes(STOCK_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().filter(e -> e.matchContainer(YHBlocks.STOCKPOT.asItem())).toList());
 	}
 
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
@@ -77,18 +101,19 @@ public class YHJeiPlugin implements IModPlugin {
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_LID.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_RACK.asStack(), STEAM);
 		registration.addRecipeCatalyst(YHBlocks.STEAMER_POT.asStack(), STEAM);
-		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM);
 		registration.addRecipeCatalyst(YHBlocks.CUISINE_BOARD.asStack(), CUISINE);
+		registration.addRecipeCatalyst(YHBlocks.IRON_BOWL.asStack(), BOWL_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.IRON_POT.asStack(), POT_COOKING);
+		registration.addRecipeCatalyst(YHBlocks.STOCKPOT.asStack(), STOCK_COOKING);
+		registration.addRecipeCatalyst(ModBlocks.STOVE.get().asItem().getDefaultInstance(), MOKA, KETTLE, STEAM, BOWL_COOKING, POT_COOKING, STOCK_COOKING);
 	}
 
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 		registration.addRecipeClickArea(MokaScreen.class, 89, 25, 24, 17, MOKA);
-		registration.addRecipeClickArea(KettleScreen.class, 89, 25, 24, 17, KETTLE);
 	}
 
 	public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
 		registration.addRecipeTransferHandler(MokaMenu.class, YHBlocks.MOKA_MT.get(), MOKA, 0, 4, 7, 36);
-		registration.addRecipeTransferHandler(KettleMenu.class, YHBlocks.KETTLE_MT.get(), KETTLE, 0, 4, 7, 36);
 	}
 
 

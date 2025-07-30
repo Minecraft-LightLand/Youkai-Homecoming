@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
+import dev.xkmc.youkaishomecoming.init.food.YHDrink;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -35,18 +37,35 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@NotNull
 	public FluidStack getFluid() {
+		if (container.getItem() instanceof BucketBottleItem bucket) {
+			return new FluidStack(bucket.fluid.source(), getTankCapacity(0));
+		}
 		var root = container.getTag();
 		if (root == null || !root.contains("SakeFluid", Tag.TAG_COMPOUND)) return FluidStack.EMPTY;
 		return FluidStack.loadFluidStackFromNBT(root.getCompound("SakeFluid"));
 	}
 
 	protected void setFluid(@NotNull FluidStack fluidStack) {
+		if (fluidStack.getAmount() == getTankCapacity(0)) {
+			if (fluidStack.getFluid() instanceof YHFluid fluid) {
+				if (fluid.type.bottleSet() instanceof BottledDrinkSet set) {
+					container = set.bottle.asStack();
+					return;
+				}
+			}
+		}
 		if (fluidStack.isEmpty()) {
-			if (container.getTag() == null) return;
+			if (container.getTag() == null) {
+				container = YHItems.SAKE_BOTTLE.asStack();
+				return;
+			}
 			container.getOrCreateTag().remove("SakeFluid");
 			if (container.getOrCreateTag().isEmpty()) {
 				container.setTag(null);
 			}
+		}
+		if (!container.is(YHItems.SAKE_BOTTLE.get())) {
+			container = YHItems.SAKE_BOTTLE.asStack();
 		}
 		container.getOrCreateTag().put("SakeFluid", fluidStack.writeToNBT(new CompoundTag()));
 	}
@@ -69,7 +88,12 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
-		return stack.isEmpty() || stack.getFluid() instanceof YHFluid;
+		if (stack.isEmpty()) return true;
+		if (!(stack.getFluid() instanceof YHFluid fluid)) return false;
+		if (fluid.type instanceof BottledFluid<?> bottle) {
+			return bottle.bottleSet() != null;
+		}
+		return fluid.type.asStack(1).isEdible();
 	}
 
 	@Override

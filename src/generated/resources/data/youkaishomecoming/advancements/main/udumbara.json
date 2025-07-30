@@ -1,5 +1,5 @@
 {
-  "parent": "youkaishomecoming:main/redbean",
+  "parent": "youkaishomecoming:main/welcome_to_youkais_homecoming",
   "criteria": {
     "0": {
       "conditions": {
@@ -35,7 +35,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaishomecoming:udumbara_seeds"
+      "item": "youkaishomecoming:wild_udumbara"
     },
     "show_toast": true,
     "title": {

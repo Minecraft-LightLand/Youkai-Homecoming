@@ -17,8 +17,8 @@ import java.util.Locale;
 
 public enum YHSushi implements ItemLike {
 
-	TOBIKO_GUNKAN(FoodType.MEAT_SLICE, 8, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 200, 0, 0.3f),
+	TOBIKO_GUNKAN(FoodType.FAST, 8, 0.8f, List.of(
+			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	SEAGRASS_GUNKAN(FoodType.FAST, 6, 0.6f, List.of(),
@@ -28,20 +28,20 @@ public enum YHSushi implements ItemLike {
 	//shirako
 	EGG_NIGIRI(FoodType.FAST, 7, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	LORELEI_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
+	LORELEI_NIGIRI(FoodType.FAST, 7, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 1800, 0, 1)),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	TUNA_NIGIRI(FoodType.MEAT_SLICE, 7, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 200, 0, 0.3f),
+	TUNA_NIGIRI(FoodType.FAST, 7, 0.8f, List.of(
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	OTORO_NIGIRI(FoodType.MEAT_SLICE, 10, 1f, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 300, 0, 0.5f),
+	OTORO_NIGIRI(FoodType.FAST, 10, 1f, List.of(
+			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 600, 0, 0.5f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 
-	FLESH_ROLL(FoodType.FLESH, 3, 0.8f, List.of(
+	FLESH_ROLL(FoodType.FLESH_FAST, 3, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 	;

@@ -17,8 +17,12 @@ import java.util.concurrent.CompletableFuture;
 
 public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
+	public static final TagKey<Biome> CRAB_FISHING = asTag("crab_fishing");
 	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
 	public static final TagKey<Biome> TUNA = asTag("spawns/tuna");
+	public static final TagKey<Biome> DEER = asTag("spawns/deer");
+	public static final TagKey<Biome> CRAB = asTag("spawns/crab");
+	public static final TagKey<Biome> CRAB_MUD = asTag("spawns/crab_mud");
 	public static final TagKey<Biome> SOYBEAN = asTag("spawns/soybean");
 	public static final TagKey<Biome> REDBEAN = asTag("spawns/redbean");
 	public static final TagKey<Biome> COFFEA = asTag("spawns/coffea");
@@ -43,6 +47,10 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(Tags.Biomes.IS_MAGICAL);
 		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
 		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
+		tag(DEER).add(YHBiomes.SAKURA_FOREST);
+		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
+		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
+		tag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);
 		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP);
 		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
@@ -57,13 +65,29 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST);
 		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
 				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
-		tag(HAS_SHRINE).add(Biomes.CHERRY_GROVE).addOptional(new ResourceLocation("wythers:sakura_forest"))
-				.addOptionalTag(new ResourceLocation("c:is_cherry_forest"))
-				.addOptionalTag(new ResourceLocation("c:is_sakura_forest"));
+
+		var cherry = cTag("is_cherry_forest");
+		var sakura = cTag("is_sakura_forest");
+
+		tag(BiomeTags.IS_FOREST).add(YHBiomes.SAKURA_FOREST);
+		tag(cherry).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST)
+				.addOptional(new ResourceLocation("wythers:sakura_forest"));
+		tag(sakura).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST)
+				.addOptional(new ResourceLocation("wythers:sakura_forest"));
+
+		tag(HAS_SHRINE).addTags(cherry, sakura);
 	}
 
 	public static TagKey<Biome> asTag(String name) {
 		return TagKey.create(Registries.BIOME, YoukaisHomecoming.loc(name));
+	}
+
+	public static TagKey<Biome> forgeTag(String name) {
+		return TagKey.create(Registries.BIOME, new ResourceLocation("forge", name));
+	}
+
+	public static TagKey<Biome> cTag(String name) {
+		return TagKey.create(Registries.BIOME, new ResourceLocation("c", name));
 	}
 
 }

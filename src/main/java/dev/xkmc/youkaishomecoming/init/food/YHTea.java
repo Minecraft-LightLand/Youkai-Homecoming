@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import java.util.Locale;
 
 public enum YHTea {
-	BLACK, GREEN, OOLONG, WHITE;
+	BLACK, GREEN, OOLONG, WHITE, DARK, YELLOW;
 
 	public final ItemEntry<Item> leaves;
 

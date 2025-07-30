@@ -7,6 +7,7 @@ import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
+import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -89,7 +90,7 @@ public class CopperTankBlockEntity extends BaseBlockEntity implements TickableBl
 		int water = root.water.getFluidInTank(0).getAmount();
 		if (water == 0) return List.of();
 		int perc = Mth.clamp(heat * 100 / water, 0, 100);
-		return List.of(Component.literal(perc + "%"));
+		return List.of(YHLangData.HEAT_PROGRESS.get(perc + "%"));
 	}
 
 	private CopperTankBlockEntity getRoot() {

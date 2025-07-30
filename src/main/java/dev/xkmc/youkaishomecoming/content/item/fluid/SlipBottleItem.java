@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import dev.xkmc.l2library.base.effects.EffectBuilder;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
-import dev.xkmc.youkaishomecoming.init.food.YHDrink;
+import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -24,7 +24,29 @@ import java.util.List;
 
 public class SlipBottleItem extends YHDrinkItem {
 
-	private final FoodProperties NONE = new FoodProperties.Builder().build();
+	public static final FoodProperties NONE = new FoodProperties.Builder().build();
+
+	public static boolean isSlipContainer(ItemStack stack) {
+		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
+		return handler.isPresent() && handler.get() instanceof SlipFluidWrapper;
+
+	}
+
+	public static ItemStack drain(ItemStack stack) {
+		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
+		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return stack;
+		slip.drain(50, IFluidHandler.FluidAction.EXECUTE);
+		return slip.getContainer();
+	}
+
+	public static ItemStack getContentStack(ItemStack stack) {
+		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
+		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return ItemStack.EMPTY;
+		if (slip.getFluid().getFluid() instanceof YHFluid fluid) {
+			return fluid.type.asStack(slip.getFluid().getAmount() / 50);
+		}
+		return ItemStack.EMPTY;
+	}
 
 	public SlipBottleItem(Properties builder) {
 		super(builder);
@@ -33,6 +55,13 @@ public class SlipBottleItem extends YHDrinkItem {
 	@Override
 	public boolean isEdible() {
 		return true;
+	}
+
+	@Override
+	public Component getName(ItemStack stack) {
+		var fluid = getFluid(stack);
+		if (fluid.isEmpty()) return super.getName(stack);
+		return YHLangData.FLASK_OF.get(fluid.getDisplayName());
 	}
 
 	@Override
@@ -50,8 +79,8 @@ public class SlipBottleItem extends YHDrinkItem {
 		if (handler.isEmpty()) return NONE;
 		var fluid = handler.get().getFluidInTank(0);
 		if (fluid.isEmpty()) return NONE;
-		if (fluid.getFluid() instanceof YHFluid sake && sake.type instanceof YHDrink type) {
-			var food = type.item.asStack().getFoodProperties(entity);
+		if (fluid.getFluid() instanceof YHFluid sake) {
+			var food = sake.type.asItem().getDefaultInstance().getFoodProperties(entity);
 			if (food == null) return NONE;
 			var builder = new FoodProperties.Builder();
 			if (food.canAlwaysEat()) builder.alwaysEat();
@@ -104,8 +133,19 @@ public class SlipBottleItem extends YHDrinkItem {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		var fluid = getFluid(stack);
-		if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake && sake.type instanceof YHDrink type) {
-			list.add(type.item.get().getDescription());
+		if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake) {
+			list.add(YHLangData.FLASK_CONTENT.get(sake.getFluidType().getDescription()));
+			int amount = fluid.getAmount();
+			if (amount % 50 == 0 && amount > 0 && amount < 1000)
+				list.add(YHLangData.FLASK_USE.get(amount / 50, 20));
+			if (sake.type.asStack(1).isEdible()) {
+				list.add(YHLangData.FLASK_INFO_DRINK.get());
+			} else {
+				list.add(YHLangData.FLASK_INFO_SAUCE.get());
+			}
+		} else {
+			list.add(YHLangData.FLASK_INFO_DRINK.get());
+			list.add(YHLangData.FLASK_INFO_SAUCE.get());
 		}
 		super.appendHoverText(stack, level, list, flag);
 	}

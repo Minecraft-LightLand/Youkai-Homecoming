@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  I",
+    " I ",
+    "B  "
+  ],
+  "result": {
+    "item": "youkaishomecoming:big_spoon"
+  },
+  "show_notification": true
+}

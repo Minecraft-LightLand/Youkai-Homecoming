@@ -16,7 +16,7 @@
       "tag": "youkaishomecoming:dango"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
       "item": "youkaishomecoming:soy_sauce_bottle"
@@ -25,6 +25,7 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:mitarashi_dango"
   }

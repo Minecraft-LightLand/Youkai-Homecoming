@@ -1,3 +1,39 @@
+2.5.4
+- Add short basket for decoration
+- Add sauce rack and sauce flask
+- Fix sound attenuation again
+
+2.5.3
+- Add Ingredient Rack and Wine Shelf recipe
+- Add Create compat recipes
+- Fix Deer sound attenuation
+
+2.5.2
+- Fix bamboo bowl food
+- Tagify cuisine board ingredients
+- Update JP translation
+
+2.5.1
+- Fix kettle drop and bamboo bowl shape
+- Reduce creative flight sliding with Hairbands
+- Improves Remilia fight
+
+2.5.0
+- make cake and feast non-stackable
+- Add placeable wine bottle and shelf
+- Add placeable iron / wood / bamboo bowl food
+- Add new cooking method
+
+2.4.16
+- Add cuisine hint
+- Fix cucumber and grape seed not consuming when planting on rope
+- Add composter support for cucumber and grapes
+- Fix custom spell tooltip
+- Fix volcano roll texture
+- Change Nattou recipe
+- Remove edible ingredients from Reimu's menu
+- Update JP translation
+
 2.4.15
 - Texture overhaul
 - Fix Earthy Effect
@@ -5,6 +41,7 @@
 2.4.14
 - Add grapes, basin, wine
 - Add cucumber crate and cucumber slices, make cucumber edible
+
 
 2.4.13
 - Fix Tea model

@@ -37,7 +37,7 @@ public class BasinBlock implements FallOnBlockMethod, ShapeBlockMethod, OnClickB
 	private static final VoxelShape SHAPE;
 
 	static {
-		var out = Block.box(0, 0, 0, 16, 9, 16);
+		var out = Block.box(0, 0, 0, 16, 8, 16);
 		var in = Block.box(1, 4, 1, 15, 10, 15);
 		SHAPE = Shapes.join(out, in, BooleanOp.ONLY_FIRST);
 	}

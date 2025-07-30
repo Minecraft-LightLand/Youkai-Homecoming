@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "farmersdelight:canvas"
+    },
+    "S": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "pattern": [
+    "S S",
+    "PPP"
+  ],
+  "result": {
+    "item": "youkaishomecoming:short_basket"
+  },
+  "show_notification": true
+}

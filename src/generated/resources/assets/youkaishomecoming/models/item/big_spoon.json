@@ -1,0 +1,20 @@
+{
+  "base": {
+    "parent": "youkaishomecoming:custom/big_spoon",
+    "render_type": "minecraft:cutout",
+    "textures": {
+      "particle": "youkaishomecoming:block/bowl/stock/stockpot_parts",
+      "parts": "youkaishomecoming:block/bowl/stock/stockpot_parts"
+    }
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "youkaishomecoming:item/big_spoon"
+      }
+    }
+  }
+}

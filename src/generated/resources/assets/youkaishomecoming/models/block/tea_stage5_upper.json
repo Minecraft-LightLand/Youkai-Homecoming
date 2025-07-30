@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/air",
   "textures": {
-    "particle": "youkaishomecoming:block/plants/tea/tea_bush_leaves"
+    "particle": "youkaishomecoming:block/plants/tea/tea_bush_side"
   }
 }

@@ -1,0 +1,36 @@
+{
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:raw_beef"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pot_of_borscht"
+  },
+  "time": 400
+}

@@ -1,0 +1,23 @@
+{
+  "type": "create:emptying",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:mayonnaise_flask"
+    }
+  ],
+  "results": [
+    {
+      "item": "youkaishomecoming:sake_bottle"
+    },
+    {
+      "amount": 1000,
+      "fluid": "youkaishomecoming:mayonnaise"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "youkaishomecoming:main/steamer",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "tag": "youkaishomecoming:steam_blocker"
+        }
+      },
+      "trigger": "youkaishomecoming:steam"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.dish.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:imitation_bear_paw"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.dish.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

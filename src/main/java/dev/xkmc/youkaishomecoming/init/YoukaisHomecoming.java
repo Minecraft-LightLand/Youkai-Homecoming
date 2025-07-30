@@ -5,7 +5,6 @@ import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
-import dev.shadowsoffire.attributeslib.impl.AttributeEvents;
 import dev.shadowsoffire.gateways.Gateways;
 import dev.xkmc.fastprojectileapi.collision.FastMapInit;
 import dev.xkmc.fastprojectileapi.render.virtual.DanmakuToClientPacket;
@@ -15,7 +14,9 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2serial.serialization.custom_handler.Handlers;
 import dev.xkmc.youkaishomecoming.compat.gateway.GatewayEventHandlers;
+import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMCompat;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRegistries;
@@ -24,11 +25,14 @@ import dev.xkmc.youkaishomecoming.content.capability.*;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
+import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
+import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
@@ -47,9 +51,12 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -59,6 +66,8 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 
 @Mod(YoukaisHomecoming.MODID)
@@ -85,16 +94,29 @@ public class YoukaisHomecoming {
 	public static final ConfigTypeEntry<SpellCircleConfig> SPELL = new ConfigTypeEntry<>(HANDLER, "spell_circle", SpellCircleConfig.class);
 
 	public static final RegistryEntry<CreativeModeTab> TAB =
-			REGISTRATE.buildModCreativeTab("youkais_homecoming", "Youkai's Homecoming",
-					e -> e.icon(YHItems.SUWAKO_HAT::asStack));
+			REGISTRATE.buildModCreativeTab("block", "Youkai's Homecoming - Utensil and Tools",
+					e -> e.icon(YHBlocks.STEAMER_POT::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> CROP =
+			REGISTRATE.buildModCreativeTab("crop", "Youkai's Homecoming - Crops",
+					e -> e.icon(YHItems.CAMELLIA::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> FOOD =
+			REGISTRATE.buildModCreativeTab("food", "Youkai's Homecoming - Food and Ingredients",
+					e -> e.icon(YHSushi.LORELEI_NIGIRI.item::asStack));
+
+	public static final RegistryEntry<CreativeModeTab> DECO =
+			REGISTRATE.buildModCreativeTab("deco", "Youkai's Homecoming - Furniture",
+					e -> e.icon(YHBlocks.WoodType.OAK.seat::asStack));
 
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public YoukaisHomecoming() {
+		Handlers.enableVanilla(Fluid.class, () -> ForgeRegistries.FLUIDS);
+		InitializationMarker.expectAndAdvance(0);
 		YHBlocks.register();
 		YHEffects.register();
-		YHDanmaku.register();
 		YHEntities.register();
 		YHAttributes.register();
 		YHSounds.register();
@@ -119,6 +141,13 @@ public class YoukaisHomecoming {
 	}
 
 	@SubscribeEvent
+	public static void registerRecipeSerializers(RegisterEvent event) {
+		if (event.getRegistryKey().equals(ForgeRegistries.Keys.RECIPE_SERIALIZERS)) {
+			CraftingHelper.register(SlipBottleIngredient.INSTANCE.id(), SlipBottleIngredient.INSTANCE);
+		}
+	}
+
+	@SubscribeEvent
 	public static void modifyAttributes(EntityAttributeModificationEvent event) {
 		event.add(EntityType.PLAYER, YHAttributes.INITIAL_POWER.get());
 		event.add(EntityType.PLAYER, YHAttributes.INITIAL_RESOURCE.get());
@@ -131,10 +160,11 @@ public class YoukaisHomecoming {
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			YHCrops.SOYBEAN.registerComposter();
-			YHCrops.REDBEAN.registerComposter();
-			YHCrops.COFFEA.registerComposter();
-			YHCrops.TEA.registerComposter();
+			Terrablender.registerBiomes();
+			for (var e : YHCrops.values())
+				e.registerComposter();
+			ComposterBlock.COMPOSTABLES.put(YHItems.MATCHA, 0.8f);
+			ComposterBlock.COMPOSTABLES.put(YHItems.CAMELLIA, 0.8f);
 
 			if (ModList.get().isLoaded(Thirst.ID)) {
 				ThirstCompat.init();
@@ -189,7 +219,7 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, new YHConfigGen(gen));
 		var reg = new YHDatapackRegistriesGen(output, pvd);
 		gen.addProvider(server, reg);
-		gen.addProvider(server, new YHBiomeTagsProvider(output, pvd, helper));
+		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));
 		gen.addProvider(server, new YHGLMProvider(gen));
 		gen.addProvider(server, new SlotGen(gen));
 		new YHDamageTypes(output, pvd, helper).generate(server, gen);

@@ -1,0 +1,10 @@
+{
+  "parent": "youkaishomecoming:custom/bowl/bamboo/tutu_congee",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/bowl/bamboo/tutu_congee",
+    "in": "youkaishomecoming:block/bowl/bamboo/bamboo_inside",
+    "leaf": "youkaishomecoming:block/bowl/bamboo/bamboo_leaf",
+    "out": "youkaishomecoming:block/bowl/bamboo/bamboo_bowl"
+  }
+}

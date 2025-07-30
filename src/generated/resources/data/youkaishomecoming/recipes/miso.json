@@ -1,0 +1,15 @@
+{
+  "type": "youkaishomecoming:immediate_soup",
+  "color": -1,
+  "id": "youkaishomecoming:miso",
+  "input": [
+    {
+      "type": "youkaishomecoming:fluid",
+      "fluid": "youkaishomecoming:soy_sauce"
+    },
+    {
+      "tag": "forge:soybean"
+    }
+  ],
+  "time": 100
+}

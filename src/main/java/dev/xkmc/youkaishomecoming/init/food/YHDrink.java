@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.List;
@@ -23,31 +24,32 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	WHITE_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(YHEffects.REFRESHING, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	BLACK_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK, 600, 0, 1)
+			new EffectEntry(YHEffects.THICK, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	OOLONG_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(YHEffects.SMOOTHING, 600, 0, 1)
+			new EffectEntry(YHEffects.MEDITATION, 1200, 0, 1)
+	), YHTagGen.TEA_DRINK),
+	DARK_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
+			new EffectEntry(YHEffects.SMOOTHING, 1200, 0, 1)
+	), YHTagGen.TEA_DRINK),
+	YELLOW_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
+			new EffectEntry(YHEffects.BREATHING, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	CORNFLOWER_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	TEA_MOCHA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SAIDI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
@@ -55,13 +57,12 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	GENMAI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 1, 1),
+			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
 			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SCARLET_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.THICK, 600, 0, 1),
+			new EffectEntry(YHEffects.THICK, 1200, 0, 1),
 			new EffectEntry(YHEffects.YOUKAIFYING, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK, YHTagGen.FLESH_FOOD),
 	GREEN_WATER(FoodType.BOTTLE, 0xffffffff, List.of(
@@ -144,9 +145,13 @@ public enum YHDrink implements IYHFluidHolder {
 	;
 
 	public final int color;
+	public final String folder;
 
 	public final FluidEntry<YHFluid> fluid;
 	public final ItemEntry<Item> item;
+
+	@Nullable
+	public final BottledDrinkSet set;
 
 	@SafeVarargs
 	YHDrink(FoodType type, int color, List<EffectEntry> effs, TagKey<Item>... tags) {
@@ -156,10 +161,14 @@ public enum YHDrink implements IYHFluidHolder {
 						(p, s, f) -> new YHFluidType(p, s, f, this),
 						p -> new YHFluid(p, this))
 				.defaultLang().register();
-		String folder = name.contains("tea") || name.contains("water") ? "drink" :
+		folder = name.contains("tea") || name.contains("water") ? "drink" :
 				name.contains("juice") || tags.length > 0 && tags[0] == YHTagGen.WINE ? "wine" : "sake";
-		item = type.build(p -> new SakeBottleItem(fluid, p), "food/" + folder + "/",
+		item = type.build(p -> new SakeBottleItem(fluid::getSource, p), "food/" + folder + "/",
 				name, 0, 0, tags, effs);
+
+		if (tags.length > 0 && tags[0] == YHTagGen.WINE) {
+			set = new BottledDrinkSet(this);
+		} else set = null;//TODO
 	}
 
 	@Override
@@ -173,8 +182,23 @@ public enum YHDrink implements IYHFluidHolder {
 	}
 
 	@Override
-	public FluidEntry<? extends YHFluid> fluid() {
-		return fluid;
+	public Item asItem() {
+		return item.asItem();
+	}
+
+	@Override
+	public YHFluid source() {
+		return fluid.getSource();
+	}
+
+	@Override
+	public @Nullable String bottleTextureFolder() {
+		return folder;
+	}
+
+	@Override
+	public @Nullable BottleTexture bottleSet() {
+		return set;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -187,6 +211,10 @@ public enum YHDrink implements IYHFluidHolder {
 		return ans;
 	}
 
+	public String getName() {
+		return name().toLowerCase(Locale.ROOT);
+	}
+
 	@Override
 	public ItemStack asStack(int count) {
 		return item.asStack(count);
@@ -196,8 +224,11 @@ public enum YHDrink implements IYHFluidHolder {
 		return this == SCARLET_MIST || this == SCARLET_TEA;
 	}
 
+
+
 	public static void register() {
 
 	}
+
 
 }

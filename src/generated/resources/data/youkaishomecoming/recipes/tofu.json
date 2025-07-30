@@ -4,12 +4,13 @@
   "experience": 0.1,
   "ingredients": [
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
     "item": "youkaishomecoming:tofu"
   }

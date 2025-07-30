@@ -25,6 +25,7 @@
       "item": "youkaishomecoming:soy_sauce_bottle"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:flesh_stew"
   }

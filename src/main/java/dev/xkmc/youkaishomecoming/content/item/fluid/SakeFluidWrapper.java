@@ -62,7 +62,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public int getTankCapacity(int tank) {
-		return 250;//TODO
+		return 250;
 	}
 
 	@Override
@@ -73,8 +73,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 	@Override
 	public int fill(FluidStack resource, FluidAction action) {
 		int cap = getTankCapacity(0);
-		if (container.getCount() != 1 ||
-				resource.getAmount() < cap ||
+		if (resource.getAmount() < cap ||
 				!getFluid().isEmpty() ||
 				!canFillFluidType(resource)) {
 			return 0;

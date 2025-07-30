@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "youkaishomecoming:block/bamboo_bowl",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "youkaishomecoming:block/bamboo_bowl"
+    },
+    "facing=south": {
+      "model": "youkaishomecoming:block/bamboo_bowl",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "youkaishomecoming:block/bamboo_bowl",
+      "y": 270
+    }
+  }
+}

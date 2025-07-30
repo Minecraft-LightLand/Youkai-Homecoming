@@ -134,6 +134,8 @@ public class YHDanmaku {
 
 	static {
 
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YHDanmaku.TAB.getKey());
+
 		// spell
 		{
 

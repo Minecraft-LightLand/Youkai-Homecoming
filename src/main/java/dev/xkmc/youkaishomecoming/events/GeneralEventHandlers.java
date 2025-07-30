@@ -10,6 +10,7 @@ import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.FlyingToken;
 import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
@@ -30,6 +31,7 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -43,6 +45,16 @@ import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeneralEventHandlers {
+
+	@SubscribeEvent
+	public static void registerCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
+		if (event.getObject().is(Items.GLASS_BOTTLE)) {
+			event.addCapability(YoukaisHomecoming.loc("bottle"), new SakeFluidWrapper(event.getObject()));
+		}
+		if (event.getObject().is(Items.BOWL)) {
+			event.addCapability(YoukaisHomecoming.loc("bowl"), new SakeFluidWrapper(event.getObject()));
+		}
+	}
 
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -59,11 +71,15 @@ public class GeneralEventHandlers {
 		var level = event.getLevel();
 		var pos = event.getPos();
 		var state = level.getBlockState(pos);
-		if (state.getBlock() instanceof LeftClickBlock block) {
-			if (block.leftClick(state, level, pos, event.getEntity())) {
-				event.setCanceled(true);
-				event.setCancellationResult(InteractionResult.CONSUME);
-			}
+		LeftClickBlock block;
+		if (state.getBlock() instanceof LeftClickBlock b)
+			block = b;
+		else if (level.getBlockEntity(pos) instanceof LeftClickBlock b)
+			block = b;
+		else return;
+		if (block.leftClick(state, level, pos, event.getEntity())) {
+			event.setCanceled(true);
+			event.setCancellationResult(InteractionResult.CONSUME);
 		}
 	}
 
@@ -145,7 +161,7 @@ public class GeneralEventHandlers {
 	}
 
 	public static boolean preventPhantomSpawn(ServerPlayer player) {
-		return player.hasEffect(YHEffects.SOBER.get());
+		return player.hasEffect(YHEffects.SOBER.get()) || CuriosManager.hasHead(player, YHItems.CAMELLIA.get(), false);
 	}
 
 	public static boolean supressVibration(Entity self) {

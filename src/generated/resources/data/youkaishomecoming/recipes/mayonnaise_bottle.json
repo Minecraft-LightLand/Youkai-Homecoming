@@ -10,20 +10,15 @@
       "item": "youkaishomecoming:butter"
     },
     {
-      "item": "youkaishomecoming:butter"
-    },
-    {
-      "tag": "forge:eggs"
-    },
-    {
       "tag": "forge:eggs"
     },
     {
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
-    "count": 3,
+    "count": 2,
     "item": "youkaishomecoming:mayonnaise_bottle"
   }
 }

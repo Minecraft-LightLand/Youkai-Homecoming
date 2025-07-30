@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:raw_venison"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "youkaishomecoming:raw_venison_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

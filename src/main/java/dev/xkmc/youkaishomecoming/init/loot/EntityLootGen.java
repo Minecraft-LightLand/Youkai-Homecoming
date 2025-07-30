@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
 import dev.xkmc.youkaishomecoming.content.entity.animal.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.animal.tuna.TunaEntity;
 import dev.xkmc.youkaishomecoming.content.entity.boss.*;
@@ -42,7 +44,6 @@ public class EntityLootGen {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(YHFood.RAW_LAMPREY.item.get()))
-						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire()))
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(Items.BONE_MEAL))
@@ -63,6 +64,30 @@ public class EntityLootGen {
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(YHFood.OTORO.item.get()))
 						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
+						.when(LootItemEntityPropertyCondition.hasProperties(
+								LootContext.EntityTarget.KILLER,
+								EntityPredicate.Builder.entity().equipment(
+										EntityEquipmentPredicate.Builder.equipment().mainhand(
+														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+												.build()).build()))
+				));
+	}
+
+	public static void deer(RegistrateEntityLootTables pvd, EntityType<DeerEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.RAW_VENISON.item.get()))
+						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
+						.apply(onFire())));
+	}
+
+	public static void crab(RegistrateEntityLootTables pvd, EntityType<CrabEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.CRAB.item.get())))
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.CRAB_ROE.item.get()))
+						.when(LootItemRandomChanceCondition.randomChance(0.5f))
 						.when(LootItemEntityPropertyCondition.hasProperties(
 								LootContext.EntityTarget.KILLER,
 								EntityPredicate.Builder.entity().equipment(

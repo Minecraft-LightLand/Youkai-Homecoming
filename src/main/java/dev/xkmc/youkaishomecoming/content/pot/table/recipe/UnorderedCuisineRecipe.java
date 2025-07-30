@@ -47,4 +47,21 @@ public class UnorderedCuisineRecipe extends BaseCuisineRecipe<UnorderedCuisineRe
 		return !inv.isComplete() || remain.isEmpty();
 	}
 
+	@Override
+	public List<Ingredient> getHints(Level level, CuisineInv inv) {
+		List<Ingredient> remain = new ArrayList<>(input);
+		for (int i = 0; i < inv.getContainerSize(); i++) {
+			ItemStack stack = inv.getItem(i);
+			var itr = remain.iterator();
+			while (itr.hasNext()) {
+				var ing = itr.next();
+				if (ing.test(stack)) {
+					itr.remove();
+					break;
+				}
+			}
+		}
+		return remain;
+	}
+
 }

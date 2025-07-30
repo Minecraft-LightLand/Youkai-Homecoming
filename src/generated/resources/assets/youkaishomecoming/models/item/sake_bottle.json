@@ -6,6 +6,48 @@
       "predicate": {
         "youkaishomecoming:slip": 0.03125
       }
+    },
+    {
+      "model": "youkaishomecoming:item/soy_sauce_flask",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.071428575
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/mayonnaise_flask",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.21428572
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/red_wine_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.35714287
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/white_wine_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.5
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/burgundy_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.64285713
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/champagne_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.78571427
+      }
+    },
+    {
+      "model": "youkaishomecoming:item/van_allen_bottle",
+      "predicate": {
+        "youkaishomecoming:bottle": 0.9285714
+      }
     }
   ],
   "textures": {

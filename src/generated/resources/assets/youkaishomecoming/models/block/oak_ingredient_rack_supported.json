@@ -1,0 +1,11 @@
+{
+  "parent": "youkaishomecoming:custom/utensil/ingredient_rack_supported",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "base": "youkaishomecoming:block/storage/ingredient_rack/oak_ingredient_rack_base",
+    "bottom": "youkaishomecoming:block/storage/ingredient_rack/oak_ingredient_rack_bottom",
+    "side": "youkaishomecoming:block/storage/ingredient_rack/oak_ingredient_rack_side",
+    "support": "youkaishomecoming:block/storage/ingredient_rack/oak_ingredient_rack_support",
+    "top": "youkaishomecoming:block/storage/ingredient_rack/oak_ingredient_rack_top"
+  }
+}

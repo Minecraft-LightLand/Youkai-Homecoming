@@ -4,6 +4,8 @@
     "#forge:tea_leaves/green",
     "#forge:tea_leaves/black",
     "#forge:tea_leaves/white",
-    "#forge:tea_leaves/oolong"
+    "#forge:tea_leaves/oolong",
+    "#forge:tea_leaves/dark",
+    "#forge:tea_leaves/yellow"
   ]
 }

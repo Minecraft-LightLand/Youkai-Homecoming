@@ -22,6 +22,7 @@
       "tag": "forge:vegetables/onion"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:sauce_grilled_fish"
   }

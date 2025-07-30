@@ -1,0 +1,18 @@
+{
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "youkaishomecoming:crab_meat"
+    },
+    {
+      "item": "youkaishomecoming:crab"
+    }
+  ],
+  "result": {
+    "item": "youkaishomecoming:pot_of_tofu_crab_stew"
+  },
+  "time": 200
+}

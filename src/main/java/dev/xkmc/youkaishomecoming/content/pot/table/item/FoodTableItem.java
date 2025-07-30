@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -53,6 +54,11 @@ public class FoodTableItem implements TableItem {
 		ans.add(stack.copyWithCount(1));
 		if (!base.isValid(level, baseId, ans)) return Optional.empty();
 		return Optional.of(new FoodTableItem(base, current, holder, ans));
+	}
+
+	@Override
+	public List<Ingredient> getHints(Level level) {
+		return base.getHints(level, baseId, contents);
 	}
 
 	public Optional<ItemStack> doTransform() {

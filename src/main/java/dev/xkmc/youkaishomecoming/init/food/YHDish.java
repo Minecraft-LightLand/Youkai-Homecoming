@@ -5,14 +5,12 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
 import dev.xkmc.youkaishomecoming.content.block.food.FoodSaucerBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.FleshSaucerItem;
-import dev.xkmc.youkaishomecoming.content.item.food.FoodSaucerItem;
+import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,105 +22,90 @@ import java.util.List;
 import java.util.Locale;
 
 public enum YHDish {
-	BAMBOO_MIZUYOKAN(Saucer.CERAMIC, Type.COOKED, 6, 0.6f, false, 4, List.of(
+	BAMBOO_MIZUYOKAN(Saucer.CERAMIC, DishType.COOKED, 6, 0.6f, 4, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.SUGARS.tag),
-	DRIED_FISH(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, true, 4, List.of(
+	DRIED_FISH(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	IMITATION_BEAR_PAW(Saucer.CERAMIC, Type.STEAMED, 12, 0.8f, true, 3, List.of(
+	IMITATION_BEAR_PAW(Saucer.CERAMIC, DishType.STEAMED, 12, 0.8f, 3, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
-			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
-	PASTITSIO(Saucer.CERAMIC, Type.COOKED, 12, 0.8f, true, 4, List.of(
+			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+	PASTITSIO(Saucer.CERAMIC, DishType.COOKED, 12, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
-	SAUCE_GRILLED_FISH(Saucer.PORCELAIN, Type.COOKED, 12, 0.8f, true, 4, List.of(
+	SAUCE_GRILLED_FISH(Saucer.PORCELAIN, DishType.COOKED, 12, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
-	STINKY_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, false, 5, List.of(
+	STINKY_TOFU(Saucer.CERAMIC, DishType.COOKED, 8, 0.6f, 5, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	TOFU_BURGER(Saucer.CERAMIC, Type.COOKED, 8, 0.6f, false, 3, List.of(
+	TOFU_BURGER(Saucer.CERAMIC, DishType.COOKED, 8, 0.6f, 3, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	BLOOD_CURD(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, true, 2, List.of(
+	BLOOD_CURD(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, false, 4, List.of(
+	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(YHEffects.UDUMBARA::get, 3600, 1, 1)),
+			new EffectEntry(YHEffects.UDUMBARA, 3600, 1, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 
-	BLOODY_FLESH(Saucer.CERAMIC, Type.FLESH, 6, 0.8f, true, 3, List.of(),
+	BLOODY_FLESH(Saucer.CERAMIC, DishType.FLESH, 6, 0.8f, 3, List.of(),
 			YHTagGen.FLESH_FOOD, YHTagGen.APPARENT_FLESH_FOOD, DietTagGen.PROTEINS.tag),
-	COLD_TOFU(Saucer.CERAMIC, Type.COOKED, 8, 0.8f, false, 4, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-			DietTagGen.PROTEINS.tag),
-	CUMBERLAND_LOIN(Saucer.CERAMIC, Type.COOKED, 10, 0.8f, true, 2, List.of(
+	COLD_TOFU(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
-	SCHOLAR_GINKGO(Saucer.CERAMIC, Type.STEAMED, 6, 0.8f, false, 2, List.of(
+	CUMBERLAND_LOIN(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
+			DietTagGen.PROTEINS.tag),
+	SCHOLAR_GINKGO(Saucer.CERAMIC, DishType.STEAMED, 6, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
-			DietTagGen.VEGETABLES.tag),
-	TOMATO_SAUCE_COD(Saucer.CERAMIC, Type.COOKED, 10, 0.8f, true, 2, List.of(
+			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag),
+	TOMATO_SAUCE_COD(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 
 	;
 
 	public final Saucer saucer;
-	public final Type base;
+	public final DishType base;
 	public final int height;
 
 	public final BlockEntry<FoodSaucerBlock> raw, block;
 
-	YHDish(Saucer saucer, Type type, int nutrition, float sat, boolean meat, int height, List<EffectEntry> effs, TagKey<Item>... tags) {
+	YHDish(Saucer saucer, DishType type, int nutrition, float sat, int height, List<EffectEntry> effs, TagKey<Item>... tags) {
 		this.saucer = saucer;
 		this.base = type;
 		this.height = height;
-		if (type == Type.STEAMED) {
-			raw = YoukaisHomecoming.REGISTRATE
-					.block("raw_" + getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
-					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, false)))
-					.item((block, p) -> new FoodSaucerItem(block, p.food(food(nutrition / 2, sat / 2, meat, List.of()))
-							.craftRemainder(YHItems.SAUCER.asItem())))
-					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
-					.tag(tags).build()
-					.register();
+		if (type == DishType.STEAMED) {
+			raw = buildBlock("raw_" + getName(), true, nutrition, sat, effs, tags);
 		} else raw = null;
-		block = YoukaisHomecoming.REGISTRATE
-				.block(getName(), p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
-				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), build(pvd, true)))
-				.item((block, p) -> type.create(block, p.food(food(nutrition, sat, meat, effs))
-						.craftRemainder(YHItems.SAUCER.asItem())))
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
-				.tag(tags).build()
-				.register();
-	}
-
-	private static FoodProperties food(int nutrition, float sat, boolean meat, List<EffectEntry> effs) {
-		var builder = new FoodProperties.Builder()
-				.nutrition(nutrition).saturationMod(sat);
-		for (var e : effs) {
-			builder.effect(e::getEffect, e.chance());
-		}
-		if (meat)
-			builder.meat();
-		return builder.build();
+		block = buildBlock(getName(), false, nutrition, sat, effs, tags);
 	}
 
 	private String getName() {
 		return name().toLowerCase(Locale.ROOT);
 	}
 
-	private BlockModelBuilder build(RegistrateBlockstateProvider pvd, boolean extra) {
+	private BlockEntry<FoodSaucerBlock> buildBlock(String name, boolean raw, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
+		return YoukaisHomecoming.REGISTRATE
+				.block(name, p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
+				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), buildModel(pvd, !raw)))
+				.item((block, p) -> base.create(block, p, raw, nutrition, sat, effs))
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))
+				.tag(tags).build()
+				.register();
+	}
+
+	private BlockModelBuilder buildModel(RegistrateBlockstateProvider pvd, boolean extra) {
 		String name = getName();
 		var builder = pvd.models().getBuilder("block/" + name)
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/dish/" + name)));
@@ -145,13 +128,23 @@ public enum YHDish {
 	public static void register() {
 	}
 
-	public enum Type {
-		COOKED, STEAMED, FLESH;
+	public enum DishType {
+		COOKED(FoodType.SAUCER),
+		STEAMED(FoodType.SAUCER),
+		FLESH(FoodType.SAUCER_FLESH);
 
-		public Item create(FoodSaucerBlock block, Item.Properties properties) {
-			if (this == FLESH) return new FleshSaucerItem(block, properties);
-			else return new FoodSaucerItem(block, properties);
+		private final FoodType type;
+
+		DishType(FoodType type) {
+			this.type = type;
 		}
+
+		public Item create(FoodSaucerBlock block, Item.Properties p, boolean raw, int nutrition, float sat, List<EffectEntry> effs) {
+			type.food(p, raw ? 0.5f : 1, nutrition, sat, effs);
+			if (type.isFlesh()) return new FleshSaucerItem(block, p);
+			else return new FoodBlockItem(block, p);
+		}
+
 	}
 
 }

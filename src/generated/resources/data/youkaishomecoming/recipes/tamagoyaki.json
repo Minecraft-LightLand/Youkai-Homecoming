@@ -19,7 +19,9 @@
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "misc",
   "result": {
+    "count": 2,
     "item": "youkaishomecoming:tamagoyaki"
   }
 }

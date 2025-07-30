@@ -16,12 +16,13 @@
       "tag": "forge:vegetables/cucumber"
     },
     {
-      "tag": "forge:raw_pork"
+      "tag": "forge:raw_venison"
     },
     {
       "item": "minecraft:honey_bottle"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "item": "youkaishomecoming:honey_glazed_cucumber"
   }

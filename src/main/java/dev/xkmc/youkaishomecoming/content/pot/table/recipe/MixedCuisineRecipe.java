@@ -61,4 +61,28 @@ public class MixedCuisineRecipe extends BaseCuisineRecipe<MixedCuisineRecipe> {
 		return !inv.isComplete() || remain.isEmpty();
 	}
 
+	@Override
+	public List<Ingredient> getHints(Level level, CuisineInv inv) {
+		int n = Math.min(inv.getContainerSize(), first.size());
+		for (int i = 0; i < n; i++) {
+			if (!first.get(i).test(inv.getItem(i))) {
+				return List.of(first.get(i));
+			}
+		}
+		if (n < first.size()) return List.of(first.get(n));
+		List<Ingredient> remain = new ArrayList<>(second);
+		for (int i = n; i < inv.getContainerSize(); i++) {
+			ItemStack stack = inv.getItem(i);
+			var itr = remain.iterator();
+			while (itr.hasNext()) {
+				var ing = itr.next();
+				if (ing.test(stack)) {
+					itr.remove();
+					break;
+				}
+			}
+		}
+		return remain;
+	}
+
 }

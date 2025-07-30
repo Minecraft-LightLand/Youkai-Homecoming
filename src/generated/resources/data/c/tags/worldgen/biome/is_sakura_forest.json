@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:cherry_grove",
+    "youkaishomecoming:sakura_forest",
+    {
+      "id": "wythers:sakura_forest",
+      "required": false
+    }
+  ]
+}

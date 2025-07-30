@@ -1,14 +1,6 @@
 {
-  "type": "farmersdelight:cooking",
-  "container": {
-    "item": "minecraft:bowl"
-  },
-  "cookingtime": 200,
-  "experience": 0.1,
-  "ingredients": [
-    {
-      "item": "minecraft:soul_sand"
-    },
+  "type": "youkaishomecoming:unordered_cooking",
+  "input": [
     {
       "item": "minecraft:soul_sand"
     },
@@ -18,5 +10,6 @@
   ],
   "result": {
     "item": "youkaishomecoming:higan_soup"
-  }
+  },
+  "time": 200
 }

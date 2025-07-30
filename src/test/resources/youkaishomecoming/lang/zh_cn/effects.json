@@ -21,9 +21,13 @@
 		"refreshing": "清爽",
 		"refreshing.description": "免疫火焰伤害，熄灭身上火焰",
 		"smoothing": "抚慰",
-		"smoothing.description": "免疫中毒，提升回血效率",
+		"smoothing.description": "免疫中毒和凋零",
+		"breathing": "生息",
+		"breathing.description": "提升回血效率",
+		"meditation": "禅静",
+		"meditation.description": "静止不动时缓慢获得经验",
 		"thick": "醇厚",
-		"thick.description": "免疫凋零，减少1点收到的伤害",
+		"thick.description": "减少1点收到的伤害",
 		"phantom": "幻昙华",
 		"phantom.description": "你和你发射的投掷物不发出震动。落入虚空时传送到世界顶端。月光下每3秒回血。满月时月光下受到的伤害大幅减少",
 		"aphrodisiac": "催情",
@@ -41,7 +45,9 @@
 		"flaming": "浓烈",
 		"flaming.description": "提升玩家造成的火焰伤害",
 		"mature": "熟成",
-		"mature.description": "消耗滋养效果时长来抵御一部分伤害"
+		"mature.description": "消耗滋养效果时长来抵御一部分伤害",
+		"craby": "横行霸道",
+		"craby.description": "M让你的横向移动速度更快"
 	},
 	"item.minecraft.tipped_arrow.effect": {
 		"aphrodisiac": "催情之箭",

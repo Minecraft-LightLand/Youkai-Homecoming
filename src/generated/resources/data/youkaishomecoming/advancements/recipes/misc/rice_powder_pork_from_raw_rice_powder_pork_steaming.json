@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_rice_powder_pork": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:raw_rice_powder_pork"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:rice_powder_pork_from_raw_rice_powder_pork_steaming"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_rice_powder_pork",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:rice_powder_pork_from_raw_rice_powder_pork_steaming"
+    ]
+  },
+  "sends_telemetry_event": false
+}

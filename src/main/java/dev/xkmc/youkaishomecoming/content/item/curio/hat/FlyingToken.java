@@ -1,10 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import dev.xkmc.l2library.capability.conditionals.*;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 
 @SerialClass
 public class FlyingToken extends ConditionalToken {
@@ -29,6 +32,18 @@ public class FlyingToken extends ConditionalToken {
 	public static void tickFlying(Player player) {
 		if (YHModConfig.COMMON.reimuHairbandFlightEnable.get())
 			ConditionalData.HOLDER.get(player).getOrCreateData(HOLDER, HOLDER).update(player);
+	}
+
+	public static boolean flyTravel(Player player, Vec3 vec3, Operation<Void> original) {
+		if (!player.getAbilities().flying || player.isPassenger() ||
+				ConditionalData.HOLDER.get(player).getData(KEY) == null)
+			return false;
+		var pos = player.position;
+		player.moveRelative(1, vec3);
+		var vel = player.getDeltaMovement();
+		player.move(MoverType.SELF, vel.multiply(0.3, 1.33, 0.3));
+		player.setDeltaMovement(vel.multiply(0.4, 0.6, 0.4));
+		return true;
 	}
 
 	@SerialClass.SerialField

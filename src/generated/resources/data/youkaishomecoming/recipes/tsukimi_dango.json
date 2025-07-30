@@ -7,9 +7,10 @@
       "tag": "forge:grain/rice"
     },
     {
-      "item": "youkaishomecoming:soybean"
+      "tag": "forge:soybean"
     }
   ],
+  "recipe_book_tab": "meals",
   "result": {
     "count": 2,
     "item": "youkaishomecoming:tsukimi_dango"

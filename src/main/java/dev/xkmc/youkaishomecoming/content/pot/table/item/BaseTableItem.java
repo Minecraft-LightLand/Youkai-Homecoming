@@ -50,6 +50,19 @@ public class BaseTableItem implements TableItem {
 		return Optional.empty();
 	}
 
+	@Override
+	public List<Ingredient> getHints(Level level) {
+		List<Ingredient> ans = new ArrayList<>();
+		for (var e : children) {
+			if (e.ingredient().isEmpty()) {
+				ans.add(Ingredient.EMPTY);
+			} else {
+				ans.add(e.ingredient());
+			}
+		}
+		return ans;
+	}
+
 	public int step() {
 		return 0;
 	}

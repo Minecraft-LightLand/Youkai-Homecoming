@@ -157,6 +157,12 @@ dependencies {
         jarJar.ranged(it, "[2.4.25,)")
     }
 
+    implementation fg.deobf(jarJar('com.github.glitchfiend:TerraBlender-forge:1.20.1-3.0.1.10')){
+        transitive = false
+        jarJar.ranged(it, "[1.20.1-3,)")
+    }
+
+    runtimeOnly fg.deobf("dev.xkmc:better_creative_tabs:0.0.2")
 
     implementation fg.deobf("dev.xkmc.cuisinedelight:cuisinedelight:1.1.16-slim")
     implementation fg.deobf("dev.xkmc.fruitsdelight:fruitsdelight:1.0.10-slim")
@@ -188,7 +194,7 @@ dependencies {
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5209162")
     implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
 
-    implementation fg.deobf("curse.maven:gateways-to-eternity-417802:5188310")
+    implementation fg.deobf("curse.maven:ferritecore-429235:4810975")
 
     //implementation fg.deobf("curse.maven:composite-material-982540:6310307")
     //implementation fg.deobf("curse.maven:framework-549225:6531428")

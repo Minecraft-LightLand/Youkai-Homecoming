@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FleshSaucerItem extends FoodSaucerItem implements IFleshFoodItem {
+public class FleshSaucerItem extends FoodBlockItem implements IFleshFoodItem {
 
 	public FleshSaucerItem(Block pBlock, Properties pProperties) {
 		super(pBlock, pProperties);
