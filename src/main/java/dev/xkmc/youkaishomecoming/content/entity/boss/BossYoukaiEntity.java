@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.entity.youkai.GeneralYoukaiEntity;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.YoukaiEntity;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +28,8 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 @SerialClass
 public class BossYoukaiEntity extends GeneralYoukaiEntity {
@@ -57,7 +60,11 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 
 	@Override
 	public boolean canBeAffected(MobEffectInstance ins) {
-		return false;
+		// 允许 beaten 效果影响boss，其他效果依然免疫
+		if (ins.getEffect() == YHEffects.BEATEN.get()) {
+			return true;
+		}else{
+		return false;}
 	}
 
 	@Override
@@ -82,8 +89,18 @@ public class BossYoukaiEntity extends GeneralYoukaiEntity {
 	public void aiStep() {
 		if (hurtCD < 1000) hurtCD++;
 		super.aiStep();
+
+		// 移除所有效果，但保留 beaten 效果
 		if (!getActiveEffectsMap().isEmpty()) {
-			removeAllEffects();
+			// 创建一个要移除的效果列表
+			var effectsToRemove = getActiveEffectsMap().keySet().stream()
+					.filter(effect -> effect != YHEffects.BEATEN.get())
+					.toList();
+
+			// 移除除 beaten 之外的所有效果
+			for (var effect : effectsToRemove) {
+				removeEffect(effect);
+			}
 		}
 	}
 

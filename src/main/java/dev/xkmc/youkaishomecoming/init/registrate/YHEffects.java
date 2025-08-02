@@ -129,6 +129,9 @@ public class YHEffects {
 							0.25, AttributeModifier.Operation.ADDITION),
 			"Increase fire damage you dealt");
 
+	public static final RegistryEntry<MobEffect> BEATEN = genEffect("beaten",
+			() -> new BeatenEffect(MobEffectCategory.NEUTRAL, 0x8B0000),
+			"Severely wounded, forces crawling and reduces max health by half. Duration reduces when healing.");
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register();
 	}
