@@ -23,4 +23,8 @@ public abstract class FermentationRecipe<T extends FermentationRecipe<T>> extend
 		return ItemStack.EMPTY;
 	}
 
+	public boolean isSimple() {
+		return false;
+	}
+
 }
