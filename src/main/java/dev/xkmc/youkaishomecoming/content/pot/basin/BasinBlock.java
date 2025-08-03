@@ -68,7 +68,7 @@ public class BasinBlock implements FallOnBlockMethod, ShapeBlockMethod, OnClickB
 				}
 				return InteractionResult.SUCCESS;
 			} else {
-				return FluidItemTile.addItem(be, stack, level, pos, player, hand, hit);
+				return FluidItemTile.addFluidOrItem(be, stack, level, pos, player, hand, hit);
 			}
 		}
 		return InteractionResult.PASS;

@@ -3,6 +3,9 @@ package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
+import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -30,7 +33,16 @@ public class ShelfRenderer implements BlockEntityRenderer<WineShelfBlockEntity> 
 		pose.mulPose(Axis.YP.rotationDegrees(-be.getBlockState().getValue(BlockProxy.HORIZONTAL_FACING).toYRot()));
 		for (int i = 0; i < 9; i++) {
 			ItemStack stack = be.items.getItem(i);
-			if (stack.getItem() instanceof BlockItem item) {
+			var bottle = stack.getItem();
+			if (bottle instanceof SlipBottleItem) {
+				var fluid = SlipBottleItem.getFluid(stack);
+				if (fluid.getFluid() instanceof YHFluid type) {
+					if (type.type.bottleSet() instanceof BottledDrinkSet set) {
+						bottle = set.bottle.asItem();
+					}
+				}
+			}
+			if (bottle instanceof BlockItem item) {
 				pose.pushPose();
 				int x = i % 3 - 1;
 				int y = i / 3 - 1;

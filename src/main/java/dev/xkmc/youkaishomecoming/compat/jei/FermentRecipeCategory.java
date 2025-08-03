@@ -38,6 +38,31 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 	}
 
 	public void setRecipe(IRecipeLayoutBuilder builder, SimpleFermentationRecipe recipe, IFocusGroup focuses) {
+		if (recipe.isSimple()) {
+			var in = recipe.ingredients.get(0).getItems();
+			var out = recipe.results.isEmpty() ? ItemStack.EMPTY : recipe.results.get(0);
+			int n = in.length;
+			for (int i = 0; i < 8; i++) {
+				int y = i / 3 * 18 + 1;
+				int x = i % 3 * 18 + 1;
+				var inList = new ItemStack[n * 8];
+				var outList = new ItemStack[n * 8];
+				for (int j = 0; j < 8; j++) {
+					for (int k = 0; k < n; k++) {
+						if (j >= i) {
+							inList[j * n + k] = in[k];
+							outList[j * n + k] = out;
+						} else {
+							inList[j * n + k] = ItemStack.EMPTY;
+							outList[j * n + k] = ItemStack.EMPTY;
+						}
+					}
+				}
+				builder.addSlot(RecipeIngredientRole.INPUT, x, y).addItemStacks(List.of(inList));
+				builder.addSlot(RecipeIngredientRole.OUTPUT, x + 90, y).addItemStacks(List.of(outList));
+			}
+			return;
+		}
 		int n = 0;
 		for (var stack : recipe.ingredients) {
 			if (stack.isEmpty()) continue;
