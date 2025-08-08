@@ -1,3 +1,7 @@
+2.5.5
+- Allow adding blood bottle to kettle
+- Allow fermenting multiple tea leaves of the same kind together
+
 2.5.4
 - Add short basket for decoration
 - Add sauce rack and sauce flask
