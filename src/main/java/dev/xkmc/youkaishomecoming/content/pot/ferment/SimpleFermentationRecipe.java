@@ -58,6 +58,14 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 			if (!fluid.isEmpty())
 				return false;
 		}
+		if (isSimple()) {
+			for (var e : cont.items().getAsList()) {
+				if (!e.isEmpty() && !ingredients.get(0).test(e)) {
+					return false;
+				}
+			}
+			return true;
+		}
 		Set<ItemStack> available = new LinkedHashSet<>();
 		for (var e : cont.items().getAsList()) {
 			if (e.isEmpty()) continue;
@@ -88,9 +96,19 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 				remain.add(rem);
 			}
 		}
-		cont.items().clearContent();
-		for (var e : results) {
-			cont.items().addItem(e.copy());
+		if (isSimple()) {
+			if (!results.isEmpty()) {
+				for (var e : cont.items().getAsList()) {
+					if (!e.isEmpty())
+						remain.add(results.get(0).copy());
+				}
+			}
+			cont.items().clearContent();
+		} else {
+			cont.items().clearContent();
+			for (var e : results) {
+				cont.items().addItem(e.copy());
+			}
 		}
 		for (var e : remain) {
 			cont.items().addItem(e);
@@ -108,5 +126,11 @@ public class SimpleFermentationRecipe extends FermentationRecipe<SimpleFermentat
 	@Override
 	public int getProcessTime() {
 		return time;
+	}
+
+	public boolean isSimple() {
+		return ingredients.size() == 1 &&
+				inputFluid.isEmpty() && outputFluid.isEmpty() &&
+				defaultBottle.isEmpty() && defaultBottle.isEmpty();
 	}
 }
