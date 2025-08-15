@@ -10,9 +10,9 @@ import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.SearHelper;
+import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -81,9 +81,10 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 						player.getInventory().placeItemBackInInventory(stack);
 						return InteractionResult.SUCCESS;
 					}
+					boolean withCont = stack.is(YHTagGen.PLACE_WITH_CONTAINER);
 					ItemStack cont = stack.getCraftingRemainingItem();
 					stack.shrink(cost);
-					if (!cont.isEmpty()) {
+					if (!withCont && !cont.isEmpty()) {
 						player.getInventory().placeItemBackInInventory(cont.copyWithCount(cost));
 					}
 					if (player instanceof ServerPlayer sp && be.getModel().complete(level).isPresent()) {
