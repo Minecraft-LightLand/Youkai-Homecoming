@@ -88,6 +88,11 @@ public class BucketBottleItem extends BlockItem {
 	}
 
 	@Override
+	public @Nullable FoodProperties getFoodProperties() {
+		return SlipBottleItem.NONE;
+	}
+
+	@Override
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
 		var food = fluid.asStack(1).getFoodProperties(entity);
 		if (food == null || food == SlipBottleItem.NONE) return SlipBottleItem.NONE;

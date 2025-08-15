@@ -74,6 +74,11 @@ public class SlipBottleItem extends YHDrinkItem {
 	}
 
 	@Override
+	public @Nullable FoodProperties getFoodProperties() {
+		return NONE;
+	}
+
+	@Override
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
 		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
 		if (handler.isEmpty()) return NONE;
