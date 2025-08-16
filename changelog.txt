@@ -1,3 +1,6 @@
+2.5.7
+- Fix bamboo dupe in cuisine table
+
 2.5.6
 - Add glass bottle to shaved ice
 - Add safeguards and fallbacks to slip bottle so that fabric mods accessing food properties won't crash
