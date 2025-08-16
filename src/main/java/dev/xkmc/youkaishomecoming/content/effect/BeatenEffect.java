@@ -103,7 +103,7 @@ public class BeatenEffect extends MobEffect {
             }
         }
         if (entity instanceof Player player ){
-            if(player.getHealth()>=5&&player.getEffect(YHEffects.BEATEN.get())!=null){
+            if(player.getHealth()>=0.5*player.getMaxHealth()&&player.getEffect(YHEffects.BEATEN.get())!=null){
 
                 event.setAmount(0);}
             }
