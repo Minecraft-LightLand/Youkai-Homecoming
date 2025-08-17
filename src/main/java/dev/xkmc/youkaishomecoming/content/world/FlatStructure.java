@@ -7,7 +7,6 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHWorldGen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.QuartPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -77,6 +76,9 @@ public class FlatStructure extends Structure {
 				int y = ctx.chunkGenerator().getFirstOccupiedHeight(x, z, Heightmap.Types.WORLD_SURFACE_WG, ctx.heightAccessor(), ctx.randomState());
 				if (y < min) min = y;
 				if (y > max) max = y;
+				if (y <= ctx.chunkGenerator().getSeaLevel()) {
+					return Optional.empty();
+				}
 				var biome = ctx.chunkGenerator().getBiomeSource().getNoiseBiome(QuartPos.fromBlock(x), QuartPos.fromBlock(y), QuartPos.fromBlock(z), ctx.randomState().sampler());
 				if (!biomes().contains(biome)) {
 					return Optional.empty();

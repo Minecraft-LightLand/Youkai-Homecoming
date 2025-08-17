@@ -137,19 +137,15 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 			})
 			.add(Registries.STRUCTURE, ctx -> {
 				for (var e : STRUCTURES) {
+					var key = ResourceKey.create(Registries.STRUCTURE, e.id());
 					var biome = ctx.lookup(Registries.BIOME).getOrThrow(e.biomes());
 					var pool = ctx.lookup(Registries.TEMPLATE_POOL)
 							.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()));
+					var settings = new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN);
 					if (e.id.getPath().equals("hakurei_shrine")) {
-						ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new FlatStructure(
-								new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN),
-								pool, 1, false, 80, 30, 6)
-						);
+						ctx.register(key, new FlatStructure(settings, pool, 1, false, 80, 30, 6));
 					} else {
-						ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new JigsawStructure(
-								new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN),
-								pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG)
-						);
+						ctx.register(key, new JigsawStructure(settings, pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
 					}
 				}
 			})
