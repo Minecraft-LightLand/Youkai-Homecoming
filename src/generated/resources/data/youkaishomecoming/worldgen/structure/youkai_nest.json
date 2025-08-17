@@ -22,6 +22,6 @@
   },
   "start_pool": "youkaishomecoming:youkai_nest",
   "step": "surface_structures",
-  "terrain_adaptation": "beard_box",
+  "terrain_adaptation": "beard_thin",
   "use_expansion_hack": false
 }

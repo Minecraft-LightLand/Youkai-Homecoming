@@ -2,7 +2,7 @@
   "elements": [
     {
       "element": {
-        "element_type": "minecraft:single_pool_element",
+        "element_type": "youkaishomecoming:no_liquid",
         "location": "youkaishomecoming:cirno_nest",
         "processors": "youkaishomecoming:cirno_nest",
         "projection": "rigid"

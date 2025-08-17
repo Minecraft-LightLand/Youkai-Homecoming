@@ -79,7 +79,7 @@ public class GrazeHelper {
 				(int) player.getAttributeValue(YHAttributes.MAX_RESOURCE.get());
 	}
 
-	public static float getHitBoxShrink(Player player) {
+	public static float getHitBoxDelta(Player player) {
 		return (float) player.getAttributeValue(YHAttributes.HITBOX.get());
 	}
 
