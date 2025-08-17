@@ -34,7 +34,7 @@ public class YHDanmaku {
 		CIRCLE(1, 4, DisplayType.SOLID),
 		BALL(1, 4, DisplayType.SOLID),
 		MENTOS(2, 6, DisplayType.SOLID),
-		BUBBLE(4, 8, DisplayType.TRANSPARENT),
+		BUBBLE(4, 8, DisplayType.ADDITIVE),
 		BUTTERFLY(1, 4, DisplayType.TRANSPARENT),
 		SPARK(1, 4, DisplayType.SOLID),
 		STAR(2, 6, DisplayType.TRANSPARENT),
