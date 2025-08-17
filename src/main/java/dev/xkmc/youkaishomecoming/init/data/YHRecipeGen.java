@@ -381,7 +381,7 @@ public class YHRecipeGen {
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, YHFood.SHAVED_ICE_OVER_RICE.item, 1)::unlockedBy, YHItems.ICE_CUBE.get())
 					.requires(ModItems.COOKED_RICE.get()).requires(YHTagGen.ICE).requires(YHTagGen.REDBEAN)
-					.requires(ModItems.COD_ROLL.get())
+					.requires(ModItems.COD_ROLL.get()).requires(Items.GLASS_BOTTLE)
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, YHItems.RAW_FLESH_FEAST, 1)::unlockedBy, YHFood.FLESH.item.get())

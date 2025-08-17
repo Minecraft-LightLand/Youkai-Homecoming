@@ -95,7 +95,7 @@ public interface IYHDanmaku extends GrazingEntity {
 	static AABB alterEntityHitBox(Entity x, float radius, float graze) {
 		var box = x.getBoundingBox();
 		if (graze > 0) return box.inflate(radius + graze);
-		float shrink = x instanceof Player player ? GrazeHelper.getHitBoxShrink(player) : 0;
+		float shrink = x instanceof Player player ? -GrazeHelper.getHitBoxDelta(player) : 0;
 		return new AABB(
 				box.minX + shrink - radius, box.minY + shrink * 2 - radius, box.minZ + shrink - radius,
 				box.maxX - shrink + radius, box.maxY + radius, box.maxZ - shrink + radius

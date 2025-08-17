@@ -8,6 +8,7 @@ import dev.xkmc.l2modularblock.mult.*;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -108,8 +109,10 @@ public class KettleBlock implements
 					}
 				}
 				return InteractionResult.SUCCESS;
+			} else if (stack.getItem() instanceof YHDrinkItem && !stack.isEdible()) {
+				return FluidItemTile.addItem(be, stack, level, pos);
 			} else {
-				return FluidItemTile.addItem(be, stack, level, pos, player, hand, hit);
+				return FluidItemTile.addFluidOrItem(be, stack, level, pos, player, hand, hit);
 			}
 		}
 		return InteractionResult.PASS;

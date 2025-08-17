@@ -44,10 +44,9 @@ public class ReimuHairbandItem extends TouhouHatItem {
 	@Override
 	protected void addModifiers(ImmutableMultimap.Builder<Attribute, AttributeModifier> builder) {
 		super.addModifiers(builder);
-		builder.put(YHAttributes.HITBOX.get(), new AttributeModifier(
-				MathHelper.getUUIDFromString("reimu_hairband"), "Reimu Hairband",
-				-0.1, AttributeModifier.Operation.ADDITION
-		));
+		var ID = MathHelper.getUUIDFromString("reimu_hairband");
+		builder.put(YHAttributes.HITBOX.get(), new AttributeModifier(ID, "Reimu Hairband", -0.1, AttributeModifier.Operation.ADDITION));
+		builder.put(YHAttributes.INITIAL_RESOURCE.get(), new AttributeModifier(ID, "Reimu Hairband", 1, AttributeModifier.Operation.ADDITION));
 	}
 
 	@Override

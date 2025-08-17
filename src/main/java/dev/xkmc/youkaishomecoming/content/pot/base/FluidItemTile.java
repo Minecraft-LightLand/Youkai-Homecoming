@@ -29,7 +29,7 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 public interface FluidItemTile {
 
-	static InteractionResult addItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	static InteractionResult addFluidOrItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.getFluidHandler().getFluidInTank(0);
 		boolean hasFluid = false;
 		// take YH fluids
@@ -85,6 +85,10 @@ public interface FluidItemTile {
 				}
 			}
 		}
+		return addItem(be, stack, level, pos);
+	}
+
+	static InteractionResult addItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos) {
 		ItemStack copy = stack.copyWithCount(1);
 		if (be.getItemHandler().canAddItem(copy)) {
 			if (level instanceof ServerLevel sl) {

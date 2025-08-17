@@ -62,15 +62,15 @@ public enum YHBowl implements ItemLike {
 
 	TUTU_CONGEE(FoodType.BAMBOO_BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
-	), YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
+	), YHTagGen.STEAM_BLOCKER, YHTagGen.PLACE_WITH_CONTAINER, DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 	RICE_POWDER_PORK(FoodType.BAMBOO_BOWL, 14, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1)
-	), YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
+	), YHTagGen.STEAM_BLOCKER, YHTagGen.PLACE_WITH_CONTAINER, DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	KAGUYA_HIME(FoodType.BAMBOO_BOWL, 14, 0.8f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3000, 0, 1),
 			new EffectEntry(YHEffects.SMOOTHING, 3000, 0, 1)
-	), YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
+	), YHTagGen.STEAM_BLOCKER, YHTagGen.PLACE_WITH_CONTAINER, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 
 
 	;
