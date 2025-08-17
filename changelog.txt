@@ -1,3 +1,8 @@
+2.5.8
+- Fix Danmaku Hitbox Shrink not taking effect
+- Add danmaku related buffs to several items
+- Buff Reimu's Spellcard
+
 2.5.7
 - Fix bamboo dupe in cuisine table
 

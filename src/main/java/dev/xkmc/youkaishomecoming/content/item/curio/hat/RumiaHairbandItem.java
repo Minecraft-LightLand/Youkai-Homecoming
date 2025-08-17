@@ -8,6 +8,7 @@ import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaModel;
 import dev.xkmc.youkaishomecoming.events.EffectEventHandlers;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
+import dev.xkmc.youkaishomecoming.init.registrate.YHAttributes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -39,6 +40,7 @@ public class RumiaHairbandItem extends TouhouHatItem {
 	@Override
 	protected void addModifiers(ImmutableMultimap.Builder<Attribute, AttributeModifier> builder) {
 		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ID, "rumia_hairband", 0.25, AttributeModifier.Operation.MULTIPLY_BASE));
+		builder.put(YHAttributes.INITIAL_POWER.get(), new AttributeModifier(ID, "rumia_hairband", 2, AttributeModifier.Operation.ADDITION));
 	}
 
 	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
@@ -48,6 +50,7 @@ public class RumiaHairbandItem extends TouhouHatItem {
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
 		return YoukaisHomecoming.MODID + ":textures/entities/rumia.png";
 	}
+
 
 	@Override
 	protected void tick(ItemStack stack, Level level, Player player) {

@@ -19,8 +19,9 @@ public class ReimuItemSpell extends ItemSpell {
 	@Override
 	public void start(Player player, @Nullable LivingEntity target) {
 		super.start(player, target);
-		var ans = new StateChange();
-		addTicker(ans);
+		addTicker(new StateChange());
+		addTicker(new StateChange().setTime(-20));
+		addTicker(new StateChange().setTime(-40));
 	}
 
 	@SerialClass
@@ -44,6 +45,11 @@ public class ReimuItemSpell extends ItemSpell {
 			step(holder);
 			super.tick(holder, card);
 			return tick > t0 + t1;
+		}
+
+		public StateChange setTime(int time) {
+			this.tick = time;
+			return this;
 		}
 
 		private void step(CardHolder holder) {

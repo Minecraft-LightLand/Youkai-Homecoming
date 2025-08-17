@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.client.SuwakoHatModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHAttributes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -40,6 +41,8 @@ public class SuwakoHatItem extends TouhouHatItem {
 	@Override
 	protected void addModifiers(ImmutableMultimap.Builder<Attribute, AttributeModifier> builder) {
 		builder.put(L2DamageTracker.MAGIC_FACTOR.get(), new AttributeModifier(ID, "suwako_hat", 0.25, AttributeModifier.Operation.ADDITION));
+		builder.put(YHAttributes.INITIAL_RESOURCE.get(), new AttributeModifier(ID, "suwako_hat", 1, AttributeModifier.Operation.ADDITION));
+		builder.put(YHAttributes.INITIAL_POWER.get(), new AttributeModifier(ID, "suwako_hat", 2, AttributeModifier.Operation.ADDITION));
 	}
 
 	public void initializeClient(Consumer<IClientItemExtensions> consumer) {

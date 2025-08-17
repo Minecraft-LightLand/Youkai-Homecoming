@@ -1,16 +1,22 @@
 package dev.xkmc.youkaishomecoming.content.item.curio.hat;
 
+import com.google.common.collect.ImmutableMultimap;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.content.client.HatModel;
 import dev.xkmc.youkaishomecoming.content.client.KoishiHatModel;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
+import dev.xkmc.youkaishomecoming.init.registrate.YHAttributes;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -20,6 +26,7 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public class KoishiHatItem extends TouhouHatItem {
@@ -34,6 +41,12 @@ public class KoishiHatItem extends TouhouHatItem {
 
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
 		return YoukaisHomecoming.MODID + ":textures/models/koishi_hat.png";
+	}
+
+	@Override
+	protected void addModifiers(ImmutableMultimap.Builder<Attribute, AttributeModifier> builder) {
+		UUID ID = MathHelper.getUUIDFromString("koishi_hat");
+		builder.put(YHAttributes.INITIAL_RESOURCE.get(), new AttributeModifier(ID, "koishi_hat", 1, AttributeModifier.Operation.ADDITION));
 	}
 
 	@Override
