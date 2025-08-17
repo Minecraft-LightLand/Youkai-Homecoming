@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-08T22:42:57.785555	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-08-17T14:56:24.689176	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -208,8 +208,8 @@ d299ba95e8954dc83a8b166de9e4ddb2fa245d48 assets/youkaishomecoming/blockstates/wo
 117d8c64282f7eabd89559d9692ab4d49462eb4c assets/youkaishomecoming/blockstates/wood_bowl.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
 88cd696c87a5dace0c6ce4077821d7b740ea82f4 assets/youkaishomecoming/blockstates/yellow_tea_bag.json
-2ad3359453c77c11b2bef0ccf7dbec59e27e8d5a assets/youkaishomecoming/lang/en_ud.json
-26d5d280e032430d8303bc918ae8cb838c8dc8df assets/youkaishomecoming/lang/en_us.json
+d8b3744e4f7cab06ca11b6b6d66b4e1070cd05af assets/youkaishomecoming/lang/en_ud.json
+452795b772ce0840d1e1a7685635db9c46b9570d assets/youkaishomecoming/lang/en_us.json
 3213baa081e1667be3758e7904aec22b653f2f83 assets/youkaishomecoming/models/block/acacia_dining_chair.json
 c16a4c2f61452b7a4f76eba72358fcfb35c0583c assets/youkaishomecoming/models/block/acacia_dining_table.json
 e5f7ae49090a91d6eda3214f19a9482b0e01e617 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
@@ -3721,6 +3721,7 @@ efb03073e88aa50cf33961d7c1afcf91e164e83b data/youkaishomecoming/tags/items/iron_
 880ce57fdd7f42ed25d0e37b9238e4b836e94ceb data/youkaishomecoming/tags/items/laser.json
 8b21bcb43701c60a0c301d5d7a97ff3c996c0c40 data/youkaishomecoming/tags/items/laser/laser.json
 450b22465c6ce1d3974c406ed20257cea7986200 data/youkaishomecoming/tags/items/laser/pencil.json
+54dc1d11e80eb3654e856e675d02b849b4305c4d data/youkaishomecoming/tags/items/place_with_container.json
 d5be29c37bb6d735f5ca4be69f644ce058d1fd7b data/youkaishomecoming/tags/items/preset_spell.json
 a74abf7f4c9598e1a4958f776a35b0de48b4539d data/youkaishomecoming/tags/items/raw_flesh.json
 c04beb7d7ecb0c91a8db263fc1744f4f87216f46 data/youkaishomecoming/tags/items/sake.json

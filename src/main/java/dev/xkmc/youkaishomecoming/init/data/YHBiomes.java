@@ -25,9 +25,13 @@ import javax.annotation.Nullable;
 public class YHBiomes {
 
 	public static final ResourceKey<Biome> SAKURA_FOREST = biome("sakura_forest");
+	public static final ResourceKey<Biome> SAKURA_TAIGA = biome("sakura_taiga");
+	public static final ResourceKey<Biome> SAKURA_BIRCH_FOREST = biome("sakura_birch_forest");
 
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_CHERRY = place("sakura_forest_cherry");
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_OAK = place("sakura_forest_oak");
+	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_BIRCH = place("sakura_forest_birch");
+	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_SPRUCE = place("sakura_forest_spruce");
 
 	private static ResourceKey<Biome> biome(String id) {
 		return ResourceKey.create(Registries.BIOME, YoukaisHomecoming.loc(id));
@@ -42,23 +46,29 @@ public class YHBiomes {
 		PlacementUtils.register(ctx, SAKURA_FOREST_CHERRY, freg.getOrThrow(TreeFeatures.CHERRY_BEES_005),
 				VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.5F, 1), Blocks.CHERRY_SAPLING));
 		PlacementUtils.register(ctx, SAKURA_FOREST_OAK, freg.getOrThrow(VegetationFeatures.TREES_FLOWER_FOREST),
-				VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.5F, 1)));
+				VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.5F, 1)));
+		PlacementUtils.register(ctx, SAKURA_FOREST_BIRCH, freg.getOrThrow(VegetationFeatures.BIRCH_TALL),
+				VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.5F, 1)));
+		PlacementUtils.register(ctx, SAKURA_FOREST_SPRUCE, freg.getOrThrow(VegetationFeatures.TREES_OLD_GROWTH_SPRUCE_TAIGA),
+				VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.5F, 1)));
 	}
 
 	public static void registerBiomes(BootstapContext<Biome> ctx) {
 		var pfreg = ctx.lookup(Registries.PLACED_FEATURE);
 		var cwreg = ctx.lookup(Registries.CONFIGURED_CARVER);
-		ctx.register(SAKURA_FOREST, forest(pfreg, cwreg));
+		ctx.register(SAKURA_FOREST, forest(pfreg, cwreg, SAKURA_FOREST_OAK));
+		ctx.register(SAKURA_BIRCH_FOREST, forest(pfreg, cwreg, SAKURA_FOREST_BIRCH));
+		ctx.register(SAKURA_TAIGA, forest(pfreg, cwreg, SAKURA_FOREST_SPRUCE));
 	}
 
-	public static Biome forest(HolderGetter<PlacedFeature> pfreg, HolderGetter<ConfiguredWorldCarver<?>> cwreg) {
+	public static Biome forest(HolderGetter<PlacedFeature> pfreg, HolderGetter<ConfiguredWorldCarver<?>> cwreg, ResourceKey<PlacedFeature> tree) {
 		BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(pfreg, cwreg);
 		globalOverworldGeneration(gen);
 		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST);
 		BiomeDefaultFeatures.addDefaultOres(gen);
 		BiomeDefaultFeatures.addDefaultSoftDisks(gen);
 		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, SAKURA_FOREST_CHERRY);
-		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, SAKURA_FOREST_OAK);
+		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, tree);
 		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_FOREST_FLOWERS);
 		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_FLOWER_FOREST);
 		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
@@ -67,7 +77,6 @@ public class YHBiomes {
 		BiomeDefaultFeatures.addDefaultMushrooms(gen);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(gen);
 		MobSpawnSettings.Builder mob = new MobSpawnSettings.Builder();
-		BiomeDefaultFeatures.farmAnimals(mob);
 		BiomeDefaultFeatures.commonSpawns(mob);
 		return biome(0.7f, 0.8F, mob, gen, music);
 	}

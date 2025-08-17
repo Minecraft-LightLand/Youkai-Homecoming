@@ -47,7 +47,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(Tags.Biomes.IS_MAGICAL);
 		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
 		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
-		tag(DEER).add(YHBiomes.SAKURA_FOREST);
+		tag(DEER).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST);
 		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);
@@ -57,11 +57,11 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
 		tag(MANDRAKE).add(Biomes.DARK_FOREST).addTag(Tags.Biomes.IS_MAGICAL);
 		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
-		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS);
-		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);
+		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS).add(YHBiomes.SAKURA_TAIGA);
+		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA).add(YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_FOREST);
 		tag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
-		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA);
-		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST);
+		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA).add(YHBiomes.SAKURA_TAIGA);
+		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
 		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST);
 		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
 				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
@@ -70,9 +70,9 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		var sakura = cTag("is_sakura_forest");
 
 		tag(BiomeTags.IS_FOREST).add(YHBiomes.SAKURA_FOREST);
-		tag(cherry).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST)
+		tag(cherry).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST)
 				.addOptional(new ResourceLocation("wythers:sakura_forest"));
-		tag(sakura).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST)
+		tag(sakura).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST)
 				.addOptional(new ResourceLocation("wythers:sakura_forest"));
 
 		tag(HAS_SHRINE).addTags(cherry, sakura);
