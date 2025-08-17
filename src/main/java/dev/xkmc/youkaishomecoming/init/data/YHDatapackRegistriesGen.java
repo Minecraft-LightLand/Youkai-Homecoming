@@ -1,7 +1,8 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.youkaishomecoming.content.world.FlatStructure;
+import dev.xkmc.youkaishomecoming.content.world.YHSimplePiece;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
@@ -32,7 +33,6 @@ import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
-import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
@@ -131,7 +131,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					var list = ctx.lookup(Registries.PROCESSOR_LIST)
 							.getOrThrow(ResourceKey.create(Registries.PROCESSOR_LIST, e.id()));
 					ctx.register(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()), new StructureTemplatePool(empty, List.of(
-							Pair.of(new SinglePiece(e.id(), list, StructureTemplatePool.Projection.RIGID), 1)
+							Pair.of(new YHSimplePiece(e.id(), list, StructureTemplatePool.Projection.RIGID), 1)
 					)));
 				}
 			})
@@ -140,10 +140,17 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					var biome = ctx.lookup(Registries.BIOME).getOrThrow(e.biomes());
 					var pool = ctx.lookup(Registries.TEMPLATE_POOL)
 							.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()));
-					ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new JigsawStructure(
-							new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX),
-							pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG)
-					);
+					if (e.id.getPath().equals("hakurei_shrine")) {
+						ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new FlatStructure(
+								new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN),
+								pool, 1, false, 80, 30, 6)
+						);
+					} else {
+						ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new JigsawStructure(
+								new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN),
+								pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG)
+						);
+					}
 				}
 			})
 			.add(Registries.STRUCTURE_SET, ctx -> {
@@ -221,14 +228,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 		var state = block.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, dir);
 		return new ProcessorRule(new BlockStateMatchTest(state), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
 				state, new AppendLoot(table));
-	}
-
-	private static class SinglePiece extends SinglePoolElement {
-
-		protected SinglePiece(ResourceLocation template, Holder<StructureProcessorList> list, StructureTemplatePool.Projection proj) {
-			super(Either.left(template), list, proj);
-		}
-
 	}
 
 }
