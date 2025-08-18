@@ -209,13 +209,13 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		}
 		if (!stack.isEmpty() && getItemInHand(InteractionHand.MAIN_HAND).isEmpty() && states.canGrab() && isValidItemToGrab(stack)) {
 			if (level() instanceof ServerLevel sl) {
+				if (stack.is(Items.WATER_BUCKET) && player instanceof ServerPlayer sp)
+					YHCriteriaTriggers.CRAB_GRAB.trigger(sp);
 				setItemInHand(InteractionHand.MAIN_HAND, stack.split(1));
 				setDropChance(EquipmentSlot.MAINHAND, 1);
 				states.transitionTo(CrabState.SWING);
 				sl.playSound(this, blockPosition, SoundEvents.ITEM_BREAK,
 						SoundSource.AMBIENT, 0.7f, 1);
-				if (stack.is(Items.WATER_BUCKET) && player instanceof ServerPlayer sp)
-					YHCriteriaTriggers.CRAB_GRAB.trigger(sp);
 			}
 			return InteractionResult.SUCCESS;
 		}
