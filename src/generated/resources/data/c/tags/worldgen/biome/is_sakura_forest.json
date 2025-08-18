@@ -2,6 +2,8 @@
   "values": [
     "minecraft:cherry_grove",
     "youkaishomecoming:sakura_forest",
+    "youkaishomecoming:sakura_taiga",
+    "youkaishomecoming:sakura_birch_forest",
     {
       "id": "wythers:sakura_forest",
       "required": false
