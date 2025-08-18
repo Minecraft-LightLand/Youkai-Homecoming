@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.init.data;
 
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.youkaishomecoming.content.world.FlatStructure;
+import dev.xkmc.youkaishomecoming.content.world.YHRuleProcessor;
 import dev.xkmc.youkaishomecoming.content.world.YHSimplePiece;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
@@ -63,7 +64,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_RUMIA_NEST, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
+							new YHRuleProcessor(List.of(
 									injectData(Blocks.CHEST, YHLootGen.NEST_CHEST),
 									injectData(Blocks.BARREL, YHLootGen.NEST_BARREL)
 							))
@@ -78,11 +79,8 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_CIRNO_NEST, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.NORTH, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.SOUTH, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.EAST, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.WEST, YHLootGen.CIRNO_CABINET)
+							new YHRuleProcessor(List.of(
+									injectData(ModBlocks.SPRUCE_CABINET.get(), YHLootGen.CIRNO_CABINET)
 							))
 					),
 					Map.of(
@@ -95,7 +93,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_SHRINE, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
+							new YHRuleProcessor(List.of(
 									injectData(Blocks.CHEST, YHLootGen.SHRINE_CHEST),
 									injectData(Blocks.BARREL, YHLootGen.SHRINE_BARREL),
 									injectData(ModBlocks.SPRUCE_CABINET.get(), YHLootGen.SHRINE_CABINET)
@@ -218,12 +216,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	private static ProcessorRule injectData(Block block, ResourceLocation table) {
 		return new ProcessorRule(new BlockMatchTest(block), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
 				block.defaultBlockState(), new AppendLoot(table));
-	}
-
-	private static ProcessorRule injectData(Block block, Direction dir, ResourceLocation table) {
-		var state = block.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, dir);
-		return new ProcessorRule(new BlockStateMatchTest(state), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
-				state, new AppendLoot(table));
 	}
 
 }
