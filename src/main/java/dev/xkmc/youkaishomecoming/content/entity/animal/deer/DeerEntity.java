@@ -195,12 +195,16 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	}
 
 	protected void playStepSound(BlockPos pos, BlockState state) {
-		playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);//TODO
+		playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);
 	}
 
 	@Nullable
 	public DeerEntity getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return YHEntities.DEER.create(level);
+		var ans = YHEntities.DEER.create(level);
+		if (ans == null) return null;
+		ans.prop.setVariant(prop.getVariant());
+		ans.prop.setMale(random.nextBoolean());
+		return ans;
 	}
 
 	public boolean isFood(ItemStack stack) {
