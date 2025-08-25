@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.compat.terrablender;
 
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.YHBiomes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
@@ -12,11 +13,13 @@ public class GensokyoSurfaceRules {
 	public static final ResourceKey<NormalNoise.NoiseParameters> PATH_NOISE = createKey("path");
 
 	public static SurfaceRules.RuleSource buildRules() {
-		var lo = SurfaceRules.noiseCondition(PATH_NOISE, -0.05, 0.05);
+		var lo = SurfaceRules.noiseCondition(PATH_NOISE, -0.02, 0.02);
 		var state = SurfaceRules.state(Blocks.DIRT_PATH.defaultBlockState());
-		return //SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.PLAINS),
+		return SurfaceRules.ifTrue(SurfaceRules.isBiome(YHBiomes.ANIMAL_PATH),
 				SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-						SurfaceRules.ifTrue(lo, state));
+						SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(0, 0),
+						SurfaceRules.ifTrue(lo, state)))
+				);
 	}
 
 	private static ResourceKey<NormalNoise.NoiseParameters> createKey(String id) {

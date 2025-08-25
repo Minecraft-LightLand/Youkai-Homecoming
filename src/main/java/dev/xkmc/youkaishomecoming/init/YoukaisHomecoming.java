@@ -121,6 +121,7 @@ public class YoukaisHomecoming {
 		YHAttributes.register();
 		YHSounds.register();
 		YHGLMProvider.register();
+		YHWorldGen.register();
 		YHCriteriaTriggers.register();
 		KoishiAttackCapability.register();
 		FrogGodCapability.register();

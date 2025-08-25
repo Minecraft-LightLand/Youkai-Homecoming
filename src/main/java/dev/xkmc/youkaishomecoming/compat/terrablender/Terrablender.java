@@ -8,7 +8,7 @@ public class Terrablender {
 
 	public static void registerBiomes() {
 		Regions.register(new GensokyoRegion(YoukaisHomecoming.loc("overworld"), 2));
-		SurfaceRuleManager.addToDefaultSurfaceRulesAtStage(SurfaceRuleManager.RuleCategory.OVERWORLD, SurfaceRuleManager.RuleStage.AFTER_BEDROCK,1,
+		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, YoukaisHomecoming.MODID,
 				GensokyoSurfaceRules.buildRules());
 	}
 }

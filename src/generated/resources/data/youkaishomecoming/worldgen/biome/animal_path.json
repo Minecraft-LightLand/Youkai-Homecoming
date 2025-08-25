@@ -77,12 +77,10 @@
     ],
     [
       "minecraft:glow_lichen",
-      "youkaishomecoming:sakura_forest_pine",
-      "youkaishomecoming:sakura_forest_spruce",
+      "youkaishomecoming:animal_path_oak",
       "minecraft:flower_forest_flowers",
       "minecraft:flower_flower_forest",
       "minecraft:patch_grass_plain",
-      "minecraft:flower_cherry",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
