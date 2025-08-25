@@ -1,19 +1,19 @@
-// 1.20.1	2025-07-15T08:32:50.021151	Tags for minecraft:worldgen/biome mod id youkaishomecoming
-621269e926a40d17764baf8f704b98fa9d149bb4 data/c/tags/worldgen/biome/is_cherry_forest.json
-621269e926a40d17764baf8f704b98fa9d149bb4 data/c/tags/worldgen/biome/is_sakura_forest.json
+// 1.20.1	2025-08-17T15:03:01.446656	Tags for minecraft:worldgen/biome mod id youkaishomecoming
+6862f6c3662124f189dbcf7f3f12affbdb3493d7 data/c/tags/worldgen/biome/is_cherry_forest.json
+6862f6c3662124f189dbcf7f3f12affbdb3493d7 data/c/tags/worldgen/biome/is_sakura_forest.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/worldgen/biome/is_magical.json
 90ec98d7e0c1229ae5b987cc8de9f8d46d4e9ec7 data/minecraft/tags/worldgen/biome/is_forest.json
 654b702417f1a4880b699e418b448a12369eb77e data/youkaishomecoming/tags/worldgen/biome/crab_fishing.json
 bffd02152ab92ebbb46e2caaaddcced6c8f55740 data/youkaishomecoming/tags/worldgen/biome/has_structure/cirno_nest.json
 f28963bf94c391be2ef218ae294f1d96fc3843d0 data/youkaishomecoming/tags/worldgen/biome/has_structure/hakurei_shrine.json
 5c0d6417dc8d9501750754f0547746a8f45239a0 data/youkaishomecoming/tags/worldgen/biome/has_structure/youkai_nest.json
-20754fe41b3ff66a968225b79e15572159b074dd data/youkaishomecoming/tags/worldgen/biome/spawns/black_grape.json
+71ce73c3018ca1763737b1096157e440d137291a data/youkaishomecoming/tags/worldgen/biome/spawns/black_grape.json
 c3d4e55bd4ed5d178abb10df76626eccdab7c209 data/youkaishomecoming/tags/worldgen/biome/spawns/coffea.json
 32d2ab677020b4cf4c5ed0c27d287ba1d668583e data/youkaishomecoming/tags/worldgen/biome/spawns/crab.json
 fc3b068281d5f853517c67fc547c6008b78b4d51 data/youkaishomecoming/tags/worldgen/biome/spawns/crab_mud.json
-841f627f93601e3b436168727e7a9480102f6439 data/youkaishomecoming/tags/worldgen/biome/spawns/cucumber.json
-90ec98d7e0c1229ae5b987cc8de9f8d46d4e9ec7 data/youkaishomecoming/tags/worldgen/biome/spawns/deer.json
-d2004e1816decf4dd7540a34a60e430f94103be1 data/youkaishomecoming/tags/worldgen/biome/spawns/grape.json
+621f10181669da839271b35470bf23384fed4ee9 data/youkaishomecoming/tags/worldgen/biome/spawns/cucumber.json
+957f648b8a2d66851168e9fc94c10c313ff96a08 data/youkaishomecoming/tags/worldgen/biome/spawns/deer.json
+2b811c02d9bbef2e1449c6096271036a6a73b4d4 data/youkaishomecoming/tags/worldgen/biome/spawns/grape.json
 18af7656d96433e406a1aebdcb462fecebcf251e data/youkaishomecoming/tags/worldgen/biome/spawns/lamprey.json
 55bdbf5a031f9542dd5dcd034d674105dc7740be data/youkaishomecoming/tags/worldgen/biome/spawns/mandrake.json
 3c404a782d6ccbceaf153a04d5ce101db7d85ded data/youkaishomecoming/tags/worldgen/biome/spawns/no_grape.json
@@ -22,4 +22,4 @@ d2004e1816decf4dd7540a34a60e430f94103be1 data/youkaishomecoming/tags/worldgen/bi
 8a5e7b85849e84f2f20240eb0df4b58fd42f4d28 data/youkaishomecoming/tags/worldgen/biome/spawns/tea.json
 ec7bbb0c9b5fc5378f8716f54862806404f04360 data/youkaishomecoming/tags/worldgen/biome/spawns/tuna.json
 2baf25447b6e6be292fa28c96583cdcde3854de8 data/youkaishomecoming/tags/worldgen/biome/spawns/udumbara.json
-4056b352d9ba8390ea8c597cfe2a608642950e41 data/youkaishomecoming/tags/worldgen/biome/spawns/white_grape.json
+ae14fc06ca184471d869cf9f78e66355a7d2e433 data/youkaishomecoming/tags/worldgen/biome/spawns/white_grape.json

@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
+import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHSounds;
@@ -165,6 +166,16 @@ public class DeerEntity extends Animal implements StateMachineMob {
 		prop.setMale(level.getRandom().nextBoolean());
 		if (!isBaby()) {
 			prop.setHorned(prop.isMale());
+		}
+		var biome = level.getBiome(blockPosition());
+		if (biome.is(YHBiomeTagsProvider.WHITE_GRAPE)) {
+			prop.setVariant(DeerVariant.FALLOW);
+		} else if (biome.is(YHBiomeTagsProvider.BLACK_GRAPE)) {
+			prop.setVariant(DeerVariant.WHITELIPPED);
+		} else if (getRandom().nextDouble() < 0.3) {
+			prop.setVariant(DeerVariant.SAKURA);
+		} else {
+			prop.setVariant(DeerVariant.NORMAL);
 		}
 		return ans;
 	}

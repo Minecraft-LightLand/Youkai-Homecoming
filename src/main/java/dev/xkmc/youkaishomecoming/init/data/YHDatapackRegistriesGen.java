@@ -1,7 +1,9 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.youkaishomecoming.content.world.FlatStructure;
+import dev.xkmc.youkaishomecoming.content.world.YHRuleProcessor;
+import dev.xkmc.youkaishomecoming.content.world.YHSimplePiece;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
@@ -32,7 +34,6 @@ import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
-import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
@@ -63,7 +64,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_RUMIA_NEST, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
+							new YHRuleProcessor(List.of(
 									injectData(Blocks.CHEST, YHLootGen.NEST_CHEST),
 									injectData(Blocks.BARREL, YHLootGen.NEST_BARREL)
 							))
@@ -78,11 +79,8 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_CIRNO_NEST, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.NORTH, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.SOUTH, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.EAST, YHLootGen.CIRNO_CABINET),
-									injectData(ModBlocks.SPRUCE_CABINET.get(), Direction.WEST, YHLootGen.CIRNO_CABINET)
+							new YHRuleProcessor(List.of(
+									injectData(ModBlocks.SPRUCE_CABINET.get(), YHLootGen.CIRNO_CABINET)
 							))
 					),
 					Map.of(
@@ -95,7 +93,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					YHBiomeTagsProvider.HAS_SHRINE, 24, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
-							new RuleProcessor(List.of(
+							new YHRuleProcessor(List.of(
 									injectData(Blocks.CHEST, YHLootGen.SHRINE_CHEST),
 									injectData(Blocks.BARREL, YHLootGen.SHRINE_BARREL),
 									injectData(ModBlocks.SPRUCE_CABINET.get(), YHLootGen.SHRINE_CABINET)
@@ -131,19 +129,22 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 					var list = ctx.lookup(Registries.PROCESSOR_LIST)
 							.getOrThrow(ResourceKey.create(Registries.PROCESSOR_LIST, e.id()));
 					ctx.register(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()), new StructureTemplatePool(empty, List.of(
-							Pair.of(new SinglePiece(e.id(), list, StructureTemplatePool.Projection.RIGID), 1)
+							Pair.of(new YHSimplePiece(e.id(), list, StructureTemplatePool.Projection.RIGID), 1)
 					)));
 				}
 			})
 			.add(Registries.STRUCTURE, ctx -> {
 				for (var e : STRUCTURES) {
+					var key = ResourceKey.create(Registries.STRUCTURE, e.id());
 					var biome = ctx.lookup(Registries.BIOME).getOrThrow(e.biomes());
 					var pool = ctx.lookup(Registries.TEMPLATE_POOL)
 							.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, e.id()));
-					ctx.register(ResourceKey.create(Registries.STRUCTURE, e.id()), new JigsawStructure(
-							new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX),
-							pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG)
-					);
+					var settings = new Structure.StructureSettings(biome, e.spawns(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN);
+					if (e.id.getPath().equals("hakurei_shrine")) {
+						ctx.register(key, new FlatStructure(settings, pool, 1, false, 80, 30, 6));
+					} else {
+						ctx.register(key, new JigsawStructure(settings, pool, 1, ConstantHeight.of(VerticalAnchor.absolute(0)), false, Heightmap.Types.WORLD_SURFACE_WG));
+					}
 				}
 			})
 			.add(Registries.STRUCTURE_SET, ctx -> {
@@ -215,20 +216,6 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 	private static ProcessorRule injectData(Block block, ResourceLocation table) {
 		return new ProcessorRule(new BlockMatchTest(block), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
 				block.defaultBlockState(), new AppendLoot(table));
-	}
-
-	private static ProcessorRule injectData(Block block, Direction dir, ResourceLocation table) {
-		var state = block.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, dir);
-		return new ProcessorRule(new BlockStateMatchTest(state), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE,
-				state, new AppendLoot(table));
-	}
-
-	private static class SinglePiece extends SinglePoolElement {
-
-		protected SinglePiece(ResourceLocation template, Holder<StructureProcessorList> list, StructureTemplatePool.Projection proj) {
-			super(Either.left(template), list, proj);
-		}
-
 	}
 
 }

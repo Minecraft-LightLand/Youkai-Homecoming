@@ -1,3 +1,7 @@
+2.5.9
+- Shrines now only spawn in flat land
+- Fix Cirno name in structure
+
 2.5.8
 - Fix Danmaku Hitbox Shrink not taking effect
 - Add danmaku related buffs to several items
@@ -5,6 +9,7 @@
 
 2.5.7
 - Fix bamboo dupe in cuisine table
+
 
 2.5.6
 - Add glass bottle to shaved ice
