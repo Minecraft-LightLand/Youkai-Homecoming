@@ -58,4 +58,8 @@ public class BoarProperties {
 		return e.getRandom().nextFloat() < 0.2f;
 	}
 
+	public int wobbliness() {
+		return 100;
+	}
+
 }

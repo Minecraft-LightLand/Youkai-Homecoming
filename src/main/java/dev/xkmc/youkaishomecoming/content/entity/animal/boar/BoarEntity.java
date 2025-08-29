@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -21,6 +20,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -41,7 +41,7 @@ public class BoarEntity extends Animal implements StateMachineMob {
 	}
 
 	private static final SyncedData DATA = new SyncedData(BoarEntity::defineId);
-	private static final Lazy<Ingredient> FOOD_ITEMS = Lazy.of(() -> Ingredient.of(YHFood.SAKURA_MOCHI.item));//TODO
+	private static final Lazy<Ingredient> FOOD_ITEMS = Lazy.of(() -> Ingredient.of(Items.CARROT, Items.POTATO, Items.BEETROOT));
 
 	static final EntityDataAccessor<Integer> TRANSIENT_DATA = DATA.define(SyncedData.INT, 0, null);
 	static final EntityDataAccessor<Integer> FLAGS = DATA.define(SyncedData.INT, 0, "flags");
@@ -71,6 +71,8 @@ public class BoarEntity extends Animal implements StateMachineMob {
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		goalSelector.addGoal(13, new RandomLookAroundGoal(this));
+		goalSelector.addGoal(14, new BoarWobbleGoal(this));
+
 	}
 
 	// core
@@ -104,6 +106,10 @@ public class BoarEntity extends Animal implements StateMachineMob {
 
 	@Override
 	public void handleEntityEvent(byte data) {
+		if (data == EntityEvent.ARMORSTAND_WOBBLE) {
+			states.wobble.stop();
+			states.wobble.startIfStopped(tickCount);
+		}
 		if (states.transitionTo(data)) {
 			return;
 		}

@@ -16,12 +16,20 @@ import net.minecraft.client.model.geom.builders.*;
 public class BoarModelData {
 
 
-	public static final AnimationDefinition IDLE, SMELL, DIG, ATTACK, EAT, WALK;
+	public static final AnimationDefinition RESET, WOBBLE, SMELL, DIG, ATTACK, EAT, WALK;
 	public static final AnimationDefinition SLEEP_START, SLEEP, SLEEP_END;
 	public static final AnimationDefinition RUN_START, RUN, RUN_END;
 
 	static {
-		IDLE = AnimationDefinition.Builder.withLength(2.0F).looping()
+		RESET = AnimationDefinition.Builder.withLength(2.0F).looping()
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
+				.build();
+	}
+
+	static {
+		WOBBLE = AnimationDefinition.Builder.withLength(2.0F).looping()
 				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))

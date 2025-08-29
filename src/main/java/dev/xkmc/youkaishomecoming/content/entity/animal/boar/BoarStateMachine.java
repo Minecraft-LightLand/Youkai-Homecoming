@@ -7,6 +7,7 @@ import static dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarState.*;
 
 public class BoarStateMachine extends MobStateMachine<BoarEntity, BoarState, BoarStateMachine> {
 
+	public final AnimationState wobble = new AnimationState();
 	public final AnimationState smell = new AnimationState();
 	public final AnimationState attack = new AnimationState();
 	public final AnimationState dig = new AnimationState();
