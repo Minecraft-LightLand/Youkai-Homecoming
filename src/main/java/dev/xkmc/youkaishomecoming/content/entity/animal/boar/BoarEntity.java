@@ -67,7 +67,7 @@ public class BoarEntity extends Animal implements StateMachineMob {
 		goalSelector.addGoal(4, new TemptGoal(this, 1.2D, FOOD_ITEMS.get(), false));
 		goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
 		goalSelector.addGoal(6, eat);
-		goalSelector.addGoal(7, new BoarRelaxGoal(this));
+		goalSelector.addGoal(7, new BoarSleepGoal(this));
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		goalSelector.addGoal(13, new RandomLookAroundGoal(this));

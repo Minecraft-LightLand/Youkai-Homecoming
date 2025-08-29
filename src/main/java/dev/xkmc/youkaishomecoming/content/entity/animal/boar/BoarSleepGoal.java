@@ -4,13 +4,13 @@ import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
 
-public class BoarRelaxGoal extends Goal {
+public class BoarSleepGoal extends Goal {
 
 	private final BoarEntity mob;
 
 	private int relaxTick = 0;
 
-	public BoarRelaxGoal(BoarEntity mob) {
+	public BoarSleepGoal(BoarEntity mob) {
 		this.mob = mob;
 		setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP));
 	}
@@ -18,7 +18,7 @@ public class BoarRelaxGoal extends Goal {
 	public boolean canUse() {
 		if (!mob.states.canSleep()) return false;
 		if (mob.states.isSleeping()) return true;
-		if (mob.getRandom().nextInt(mob.prop.relaxWillingness()) != 0)
+		if (mob.getRandom().nextInt(mob.prop.sleepiness()) != 0)
 			return false;
 		else return mob.eat.canEat();
 	}
@@ -39,7 +39,7 @@ public class BoarRelaxGoal extends Goal {
 		relaxTick++;
 		if (!mob.states.mayWakeUp()) return;
 		if (relaxTick < adjustedTickDelay(100)) return;
-		int chance = adjustedTickDelay(mob.prop.relaxTime()) - relaxTick;
+		int chance = adjustedTickDelay(mob.prop.sleepTime()) - relaxTick;
 		if (chance <= 1 || mob.getRandom().nextInt(chance) == 0) {
 			mob.states.wakeUp();
 		}

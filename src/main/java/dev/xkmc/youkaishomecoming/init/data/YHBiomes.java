@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
+import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.youkaishomecoming.content.world.NoisePlacement;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.HolderGetter;
@@ -40,7 +41,12 @@ public class YHBiomes {
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_PINE = place("sakura_forest_pine");
 	private static final ResourceKey<PlacedFeature> PATH_OAK = place("animal_path_oak");
 
+	public static void register() {
+
+	}
+
 	private static ResourceKey<Biome> biome(String id) {
+		YoukaisHomecoming.REGISTRATE.addRawLang("biome." + YoukaisHomecoming.MODID + "." + id, RegistrateLangProvider.toEnglishName(id));
 		return ResourceKey.create(Registries.BIOME, YoukaisHomecoming.loc(id));
 	}
 

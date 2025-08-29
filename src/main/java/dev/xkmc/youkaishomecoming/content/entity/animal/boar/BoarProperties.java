@@ -44,17 +44,17 @@ public class BoarProperties {
 		return e.isBaby() ? 50 : 1000;
 	}
 
-	public int relaxWillingness() {
+	public int sleepiness() {
 		return 500;
 	}
 
-	public int relaxTime() {
+	public int sleepTime() {
 		return 1000;
 	}
 
 	public boolean eatConsume() {
-		if (e.isBaby() ) return true;
-		if (e.getHealth() < e.getMaxHealth())return true;
+		if (e.isBaby()) return true;
+		if (e.getHealth() < e.getMaxHealth()) return true;
 		return e.getRandom().nextFloat() < 0.2f;
 	}
 

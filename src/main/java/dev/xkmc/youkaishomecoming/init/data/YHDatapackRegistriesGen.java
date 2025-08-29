@@ -165,6 +165,8 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 				new MobSpawnSettings.SpawnerData(YHEntities.CRAB.get(), 10, 1, 2));
 		registerMobSpawn(ctx, YoukaisHomecoming.loc("deer"), YHBiomeTagsProvider.DEER, biomes,
 				new MobSpawnSettings.SpawnerData(YHEntities.DEER.get(), 20, 3, 5));
+		registerMobSpawn(ctx, YoukaisHomecoming.loc("boar"), YHBiomeTagsProvider.BOAR, biomes,
+				new MobSpawnSettings.SpawnerData(YHEntities.BOAR.get(), 20, 2, 3));
 		registerCropBiome(ctx, YHCrops.SOYBEAN, biomes.getOrThrow(YHBiomeTagsProvider.SOYBEAN), features);
 		registerCropBiome(ctx, YHCrops.REDBEAN, biomes.getOrThrow(YHBiomeTagsProvider.REDBEAN), features);
 		registerCropBiome(ctx, YHCrops.COFFEA, biomes.getOrThrow(YHBiomeTagsProvider.COFFEA), features);
