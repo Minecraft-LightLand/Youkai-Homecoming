@@ -48,6 +48,7 @@ public class BoarStateMachine extends MobStateMachine<BoarEntity, BoarState, Boa
 	}
 
 	public void wakeUp() {
+		mob.heal(1);
 		transitionTo(SLEEP_END);
 	}
 

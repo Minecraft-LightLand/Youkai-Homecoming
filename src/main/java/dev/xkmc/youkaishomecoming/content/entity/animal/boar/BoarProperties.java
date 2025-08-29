@@ -45,7 +45,7 @@ public class BoarProperties {
 	}
 
 	public int sleepiness() {
-		return 500;
+		return e.level().isNight() ? 100 : 500;
 	}
 
 	public int sleepTime() {

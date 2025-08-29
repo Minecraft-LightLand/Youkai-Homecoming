@@ -16,17 +16,27 @@ import net.minecraft.client.model.geom.builders.*;
 public class BoarModelData {
 
 
-	public static final AnimationDefinition IDLE, SMELL, DIG, LOOK, ATTACK, EAT, WALK;
+	public static final AnimationDefinition IDLE, SMELL, DIG, ATTACK, EAT, WALK;
 	public static final AnimationDefinition SLEEP_START, SLEEP, SLEEP_END;
 	public static final AnimationDefinition RUN_START, RUN, RUN_END;
 
 	static {
-		IDLE = AnimationDefinition.Builder.withLength(0.0F)
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
+		IDLE = AnimationDefinition.Builder.withLength(2.0F).looping()
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				.addAnimation("rightear", new AnimationChannel(AnimationChannel.Targets.ROTATION,
+						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(0.0833F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(0.1667F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -8.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(0.25F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 3.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(0.375F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
+				))
+				.addAnimation("tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
+						new Keyframe(1.5F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(1.5833F, KeyframeAnimations.degreeVec(-5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(1.7083F, KeyframeAnimations.degreeVec(10.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(1.8333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
 				.build();
 	}
@@ -72,6 +82,9 @@ public class BoarModelData {
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
@@ -180,57 +193,7 @@ public class BoarModelData {
 				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
-				.build();
-	}
-
-	static {
-		LOOK = AnimationDefinition.Builder.withLength(2.0F)
-				.addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.2083F, KeyframeAnimations.degreeVec(-10.0F, 30.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.4167F, KeyframeAnimations.degreeVec(-10.0F, 30.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.625F, KeyframeAnimations.degreeVec(-10.0F, 25.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.875F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.0833F, KeyframeAnimations.degreeVec(-10.0F, -30.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.2917F, KeyframeAnimations.degreeVec(-10.0F, -30.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.5F, KeyframeAnimations.degreeVec(-10.0F, -25.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.9583F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("rightear", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.125F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.25F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 10.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.3333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.4583F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.0833F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.2083F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 10.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.2917F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.4167F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("leftear", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.125F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.25F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -10.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.3333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.4583F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.0833F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.2083F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -10.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.2917F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.4167F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.125F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.25F, KeyframeAnimations.degreeVec(10.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.5F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.0833F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.2083F, KeyframeAnimations.degreeVec(10.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.4583F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
@@ -307,6 +270,9 @@ public class BoarModelData {
 				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
 				.build();
 	}
 
@@ -324,6 +290,9 @@ public class BoarModelData {
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
@@ -521,22 +490,22 @@ public class BoarModelData {
 	}
 
 	static {
-		SLEEP = AnimationDefinition.Builder.withLength(2.0F).looping()
+		SLEEP = AnimationDefinition.Builder.withLength(3.0F).looping()
 				.addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -70.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -68.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(2.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -70.0F), AnimationChannel.Interpolations.CATMULLROM)
+						new Keyframe(1.5F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -68.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(3.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -70.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
 				.addAnimation("root", new AnimationChannel(AnimationChannel.Targets.POSITION,
 						new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, 2.7F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.1667F, KeyframeAnimations.degreeVec(5.0F, 3.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.3333F, KeyframeAnimations.degreeVec(5.0F, -5.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.5F, KeyframeAnimations.degreeVec(5.0F, 3.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(2.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM)
+						new Keyframe(1.9167F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(2.1667F, KeyframeAnimations.degreeVec(5.0F, 3.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(2.2917F, KeyframeAnimations.degreeVec(5.0F, -5.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(2.5833F, KeyframeAnimations.degreeVec(5.0F, 3.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(3.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
 				.addAnimation("rightear", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
@@ -550,9 +519,9 @@ public class BoarModelData {
 				))
 				.addAnimation("leg_front_left", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.4583F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.6667F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(1.1667F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM)
+						new Keyframe(0.8333F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(1.0833F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(2.0F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
 				.addAnimation("leg_back_right", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(30.0F, 0.0F, -10.0F), AnimationChannel.Interpolations.CATMULLROM)
@@ -563,8 +532,11 @@ public class BoarModelData {
 				.addAnimation("tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(30.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.ROTATION,
+						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 70.0F), AnimationChannel.Interpolations.CATMULLROM)
+				))
 				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.POSITION,
-						new Keyframe(0.0F, KeyframeAnimations.posVec(-13.0F, -2.0F, 3.0F), AnimationChannel.Interpolations.LINEAR)
+						new Keyframe(0.0F, KeyframeAnimations.posVec(-8.0F, 10.0F, 3.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
@@ -615,7 +587,7 @@ public class BoarModelData {
 				.addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 30.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.5F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 50.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.75F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 40.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(0.75F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 35.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.9583F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 40.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.3333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 50.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.875F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
@@ -630,7 +602,7 @@ public class BoarModelData {
 				))
 				.addAnimation("leg_front_left", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
-						new Keyframe(0.4167F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+						new Keyframe(0.4167F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -10.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.8333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.25F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -5.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.9167F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
@@ -916,6 +888,9 @@ public class BoarModelData {
 						new Keyframe(0.4455F, KeyframeAnimations.degreeVec(60.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.5241F, KeyframeAnimations.degreeVec(80.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
 				.build();
 	}
 
@@ -981,6 +956,9 @@ public class BoarModelData {
 						new Keyframe(0.7372F, KeyframeAnimations.degreeVec(-10.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.9936F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
+				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
 				.build();
 	}
 
@@ -988,8 +966,9 @@ public class BoarModelData {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
+		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-		PartDefinition Effect = partdefinition.addOrReplaceChild("Effect", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition Effect = root.addOrReplaceChild("Effect", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		PartDefinition Angry = Effect.addOrReplaceChild("Angry", CubeListBuilder.create().texOffs(0, 92).addBox(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(5.5F, -16.5F, -14.0F));
 
@@ -998,8 +977,6 @@ public class BoarModelData {
 		PartDefinition Sleep_01 = Sleep.addOrReplaceChild("Sleep_01", CubeListBuilder.create().texOffs(0, 97).addBox(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		PartDefinition Sleep_02 = Sleep.addOrReplaceChild("Sleep_02", CubeListBuilder.create().texOffs(0, 97).addBox(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
-
-		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		PartDefinition head = root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(84, 46).addBox(2.6F, 2.45F, -9.8F, 2.0F, 4.0F, 2.0F, new CubeDeformation(-0.3F))
 				.texOffs(84, 53).addBox(-4.6F, 2.45F, -9.8F, 2.0F, 4.0F, 2.0F, new CubeDeformation(-0.3F))

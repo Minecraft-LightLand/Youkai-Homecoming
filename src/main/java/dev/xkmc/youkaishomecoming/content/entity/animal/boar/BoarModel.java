@@ -13,8 +13,8 @@ public class BoarModel extends AgeableHierarchicalModel<BoarEntity> {
 
 	public BoarModel(ModelPart root) {
 		super(0.5f, 24f);
-		this.root = root;
-		this.head =root.getChild("root").getChild("head");
+		this.root = root.getChild("root");
+		this.head = this.root.getChild("head");
 	}
 
 	@Override
@@ -24,8 +24,10 @@ public class BoarModel extends AgeableHierarchicalModel<BoarEntity> {
 
 	public void setupAnim(BoarEntity e, float limbSw, float limbSA, float tick, float yrot, float xrot) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
+		applyStatic(BoarModelData.IDLE);
 		this.head.yRot = yrot * (float) (Math.PI / 180.0);
 		this.head.xRot = xrot * (float) (Math.PI / 180.0);
+
 		if (e.prop.isPanic()) {
 			this.animateWalk(BoarModelData.RUN, limbSw, limbSA, 2f, 2.5f);
 		} else if (e.states.isMobile()) {

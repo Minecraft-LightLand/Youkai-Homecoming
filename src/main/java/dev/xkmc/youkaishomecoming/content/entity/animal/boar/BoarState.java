@@ -9,9 +9,9 @@ import java.util.function.Function;
 public enum BoarState implements MobState<BoarEntity, BoarState, BoarStateMachine> {
 	IDLE(0, null),
 	SLEEP(0, null, e -> e.sleepDur),
-	EAT(34, IDLE, e -> e.eat),
-	SLEEP_START(22, SLEEP, e -> e.sleepStart),
-	SLEEP_END(24, IDLE, e -> e.sleepEnd),
+	EAT(18, IDLE, e -> e.eat),
+	SLEEP_START(25, SLEEP, e -> e.sleepStart),
+	SLEEP_END(40, IDLE, e -> e.sleepEnd),
 	ATTACK(0, IDLE, e -> e.attack),
 	SMELL(0, IDLE, e -> e.smell);
 
