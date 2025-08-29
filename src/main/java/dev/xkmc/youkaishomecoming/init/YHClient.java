@@ -5,6 +5,8 @@ import dev.xkmc.fastprojectileapi.render.core.ProjectileRenderHelper;
 import dev.xkmc.youkaishomecoming.compat.touhoulittlemaid.TLMRenderHandler;
 import dev.xkmc.youkaishomecoming.content.capability.PowerInfoOverlay;
 import dev.xkmc.youkaishomecoming.content.client.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarModel;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarModelData;
 import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabModel;
 import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabModelData;
 import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerModel;
@@ -116,6 +118,7 @@ public class YHClient {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
 		event.registerLayerDefinition(TunaModel.LAYER_LOCATION, TunaModel::createBodyLayer);
 		event.registerLayerDefinition(DeerModel.LAYER_LOCATION, DeerModelData::createBodyLayer);
+		event.registerLayerDefinition(BoarModel.LAYER_LOCATION, BoarModelData::createBodyLayer);
 		event.registerLayerDefinition(CrabModel.LAYER_LOCATION, CrabModelData::createBodyLayer);
 		event.registerLayerDefinition(SuwakoHatModel.SUWAKO, SuwakoHatModel::createSuwakoHat);
 		event.registerLayerDefinition(SuwakoHatModel.STRAW, SuwakoHatModel::createStrawHat);
