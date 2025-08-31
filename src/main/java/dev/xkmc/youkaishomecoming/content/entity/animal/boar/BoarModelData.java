@@ -22,6 +22,12 @@ public class BoarModelData {
 
 	static {
 		RESET = AnimationDefinition.Builder.withLength(2.0F).looping()
+				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
+				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
+						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+				))
 				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
 						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
@@ -30,9 +36,6 @@ public class BoarModelData {
 
 	static {
 		WOBBLE = AnimationDefinition.Builder.withLength(2.0F).looping()
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
 				.addAnimation("rightear", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.0833F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 5.0F), AnimationChannel.Interpolations.CATMULLROM),
@@ -85,15 +88,6 @@ public class BoarModelData {
 						new Keyframe(0.875F, KeyframeAnimations.scaleVec(1.0F, 1.0F, 1.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.0F, KeyframeAnimations.scaleVec(1.0F, 1.3F, 1.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.125F, KeyframeAnimations.scaleVec(1.0F, 1.0F, 1.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
 	}
@@ -195,15 +189,6 @@ public class BoarModelData {
 						new Keyframe(1.2083F, KeyframeAnimations.degreeVec(20.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(1.5F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
 				.build();
 	}
 
@@ -272,15 +257,6 @@ public class BoarModelData {
 						new Keyframe(0.5F, KeyframeAnimations.degreeVec(30.0F, 0.0F, -15.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.7083F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
 				.build();
 	}
 
@@ -293,15 +269,6 @@ public class BoarModelData {
 						new Keyframe(0.5F, KeyframeAnimations.degreeVec(15.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.6667F, KeyframeAnimations.degreeVec(20.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.8333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
 	}
@@ -422,12 +389,6 @@ public class BoarModelData {
 						new Keyframe(0.5417F, KeyframeAnimations.posVec(0.0F, -0.1F, -0.3F), AnimationChannel.Interpolations.LINEAR),
 						new Keyframe(0.875F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 						new Keyframe(1.0F, KeyframeAnimations.posVec(0.0F, 0.1F, 0.3F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
 	}
@@ -731,12 +692,6 @@ public class BoarModelData {
 
 	static {
 		RUN = AnimationDefinition.Builder.withLength(0.5242F).looping()
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
 				.addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(10.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.0524F, KeyframeAnimations.degreeVec(8.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
@@ -896,20 +851,11 @@ public class BoarModelData {
 						new Keyframe(0.4455F, KeyframeAnimations.degreeVec(60.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.5241F, KeyframeAnimations.degreeVec(80.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 				))
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
 				.build();
 	}
 
 	static {
 		RUN_END = AnimationDefinition.Builder.withLength(0.9936F).looping()
-				.addAnimation("Angry", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
-				.addAnimation("Sleep", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-				))
 				.addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(-5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.1923F, KeyframeAnimations.degreeVec(-8.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
@@ -963,9 +909,6 @@ public class BoarModelData {
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(-10.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.7372F, KeyframeAnimations.degreeVec(-10.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.9936F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
-				))
-				.addAnimation("Effect", new AnimationChannel(AnimationChannel.Targets.SCALE,
-						new Keyframe(0.0F, KeyframeAnimations.scaleVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 				))
 				.build();
 	}

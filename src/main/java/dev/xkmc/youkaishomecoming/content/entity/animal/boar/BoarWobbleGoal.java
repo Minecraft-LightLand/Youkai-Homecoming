@@ -18,7 +18,10 @@ public class BoarWobbleGoal extends Goal {
 
 	@Override
 	public boolean canUse() {
-		return lastTime + TIME <= boar.tickCount && boar.getRandom().nextInt(boar.prop.wobbliness()) == 0 && boar.getNavigation().isDone();
+		return lastTime + TIME <= boar.tickCount &&
+				boar.states().isMobile() &&
+				boar.getRandom().nextInt(boar.prop.wobbliness()) == 0 &&
+				boar.getNavigation().isDone();
 	}
 
 	@Override
