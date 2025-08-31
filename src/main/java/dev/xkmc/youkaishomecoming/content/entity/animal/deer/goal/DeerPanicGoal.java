@@ -1,5 +1,6 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
+package dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal;
 
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 
 public class DeerPanicGoal extends PanicGoal {
