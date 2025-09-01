@@ -1,3 +1,7 @@
+2.6.0
+- Be compatible with both Crate 0.5.x and 6.0.x
+- Fix various Deer AI bugs
+
 2.5.9
 - Shrines now only spawn in flat land
 - Fix Cirno name in structure

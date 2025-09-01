@@ -1,8 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.MobStateMachine;
-import dev.xkmc.youkaishomecoming.content.entity.animal.crab.CrabState;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerStateNotifierGoal;
 import net.minecraft.world.entity.AnimationState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerState.*;
 
@@ -14,6 +17,8 @@ public class DeerStateMachine extends MobStateMachine<DeerEntity, DeerState, Dee
 	public final AnimationState relaxStart = new AnimationState();
 	public final AnimationState relaxDur = new AnimationState();
 	public final AnimationState relaxEnd = new AnimationState();
+
+	private final List<DeerStateNotifierGoal> goals = new ArrayList<>();
 
 	public DeerStateMachine(DeerEntity e) {
 		super(e, DeerState.class, DeerState.values());
@@ -70,4 +75,16 @@ public class DeerStateMachine extends MobStateMachine<DeerEntity, DeerState, Dee
 		}
 	}
 
+	public void register(DeerStateNotifierGoal goal) {
+		goals.add(goal);
+	}
+
+	public boolean mustStopRelax() {
+		for (var e : goals) {
+			if (e.shouldStopRelax()) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
