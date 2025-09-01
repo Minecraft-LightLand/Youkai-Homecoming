@@ -1,5 +1,6 @@
-package dev.xkmc.youkaishomecoming.content.entity.deer;
+package dev.xkmc.youkaishomecoming.content.entity.deer.goal;
 
+import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
@@ -40,7 +41,7 @@ public class DeerRelaxGoal extends Goal {
 		if (!mob.states.mayStopRelax()) return;
 		if (relaxTick < adjustedTickDelay(100)) return;
 		int chance = adjustedTickDelay(mob.prop.relaxTime()) - relaxTick;
-		if (chance <= 1 || mob.getRandom().nextInt(chance) == 0) {
+		if (chance <= 1 || mob.getRandom().nextInt(chance) == 0 || mob.states().mustStopRelax()) {
 			mob.states.stopRelax();
 		}
 	}

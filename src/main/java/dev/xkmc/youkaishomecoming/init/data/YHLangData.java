@@ -86,6 +86,8 @@ public enum YHLangData {
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_hurt", "Deer hurts");
 		pvd.add(YoukaisHomecoming.MODID + ".subtitle.deer_death", "Deer dies");
 		pvd.add("biome." + YoukaisHomecoming.MODID + ".sakura_forest", "Sakura Forest");
+		pvd.add("biome." + YoukaisHomecoming.MODID + ".sakura_birch_forest", "Sakura Birch Forest");
+		pvd.add("biome." + YoukaisHomecoming.MODID + ".sakura_taiga", "Sakura Taiga");
 		for (YHLangData lang : YHLangData.values()) {
 			pvd.add(lang.key, lang.def);
 		}

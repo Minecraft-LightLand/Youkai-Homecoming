@@ -1,8 +1,13 @@
+0.4.0
+- Be compatible with both Crate 0.5.x and 6.0.x
+- Fix various Deer AI bugs
+
 0.3.4
 - Fix bamboo dupe in cuisine table
 - Add glass bottle to shaved ice
 - Add safeguards and fallbacks to slip bottle so that fabric mods accessing food properties won't crash
 - Allow fermenting multiple tea leaves of the same kind together
+
 
 0.3.3
 - Add short basket for decoration

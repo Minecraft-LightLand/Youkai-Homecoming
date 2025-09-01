@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-15T17:02:38.697111	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-09-01T10:17:23.285994	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 4a13d28320dfac1d342986f42606eadc7f7139f3 assets/youkaisfeasts/blockstates/apple_basket.json
@@ -143,8 +143,8 @@ eff28abca341e32a423cd7d97f29ef8bd88b681f assets/youkaisfeasts/blockstates/wild_w
 af2669a5233994767f50cb4988d23304810b27b9 assets/youkaisfeasts/blockstates/wood_basin.json
 ce3ef441058bd86efef367a6ddbae619564bcbb3 assets/youkaisfeasts/blockstates/wood_bowl.json
 c5d57741eb846d2cea540de44c625ed61598218c assets/youkaisfeasts/blockstates/yellow_tea_bag.json
-5a8232df4da06ac0f5b957c1068933aab618e136 assets/youkaisfeasts/lang/en_ud.json
-2aca3fbed6c13fd4112276cc6d04cc38d176bebe assets/youkaisfeasts/lang/en_us.json
+bf2f9b288d9a90e33c0f88043f6709fc579e9174 assets/youkaisfeasts/lang/en_ud.json
+29ceaec4c9d203faf445f83d1aee2e087c39e175 assets/youkaisfeasts/lang/en_us.json
 b1632c747dbd6175a1ffb57e1d2a5db108885718 assets/youkaisfeasts/models/block/acacia_dining_chair.json
 a9464c5f31da2873c0acb72217905d0fe4d91b43 assets/youkaisfeasts/models/block/acacia_dining_table.json
 fea512cce7c0bb60f9d3c0f216a049ccc0d744be assets/youkaisfeasts/models/block/apple_basket.json

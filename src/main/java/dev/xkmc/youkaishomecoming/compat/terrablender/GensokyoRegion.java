@@ -22,7 +22,10 @@ public class GensokyoRegion extends Region {
 		this.addModifiedVanillaOverworldBiomes(mapper, (builder) -> {
 					builder.replaceBiome(Biomes.FOREST, YHBiomes.SAKURA_FOREST);
 					builder.replaceBiome(Biomes.FLOWER_FOREST, YHBiomes.SAKURA_FOREST);
-					builder.replaceBiome(Biomes.BIRCH_FOREST, YHBiomes.SAKURA_FOREST);
+					builder.replaceBiome(Biomes.BIRCH_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
+					builder.replaceBiome(Biomes.OLD_GROWTH_BIRCH_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
+					builder.replaceBiome(Biomes.TAIGA, YHBiomes.SAKURA_TAIGA);
+					builder.replaceBiome(Biomes.OLD_GROWTH_SPRUCE_TAIGA, YHBiomes.SAKURA_TAIGA);
 				}
 		);
 	}

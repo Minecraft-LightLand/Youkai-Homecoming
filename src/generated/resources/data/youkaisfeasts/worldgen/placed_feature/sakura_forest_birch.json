@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:trees_flower_forest",
+  "feature": "minecraft:birch_tall",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 2,
+            "data": 3,
             "weight": 1
           },
           {
-            "data": 3,
+            "data": 4,
             "weight": 1
           }
         ]

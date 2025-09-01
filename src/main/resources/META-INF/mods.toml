@@ -73,10 +73,10 @@ description='''
     ordering="NONE"
     side="BOTH"
 [[dependencies.youkaisfeasts]]
-    modId="create"
-    mandatory=false
+    modId="l2harvester"
+    mandatory=true
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[6,)"
+    versionRange="[0.1.1,)"
     ordering="NONE"
     side="BOTH"
 

@@ -2,6 +2,8 @@
   "values": [
     "#minecraft:is_forest",
     "#forge:is_coniferous",
-    "#minecraft:is_taiga"
+    "#minecraft:is_taiga",
+    "youkaisfeasts:sakura_taiga",
+    "youkaisfeasts:sakura_forest"
   ]
 }

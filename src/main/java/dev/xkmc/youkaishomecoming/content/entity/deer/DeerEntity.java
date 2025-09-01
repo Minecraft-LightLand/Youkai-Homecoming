@@ -2,6 +2,8 @@ package dev.xkmc.youkaishomecoming.content.entity.deer;
 
 import dev.xkmc.youkaishomecoming.content.entity.common.StateMachineMob;
 import dev.xkmc.youkaishomecoming.content.entity.common.SyncedData;
+import dev.xkmc.youkaishomecoming.content.entity.deer.goal.*;
+import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import dev.xkmc.youkaishomecoming.init.registrate.YHSounds;
@@ -53,7 +55,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	public final DeerProperties prop = new DeerProperties(this);
 
 	protected DeerPanicGoal panic;
-	protected DeerEatBlockGoal eat;
+	public DeerEatBlockGoal eat;
 
 	public DeerEntity(EntityType<? extends DeerEntity> type, Level level) {
 		super(type, level);
@@ -65,9 +67,9 @@ public class DeerEntity extends Animal implements StateMachineMob {
 
 		goalSelector.addGoal(0, new FloatGoal(this));
 		goalSelector.addGoal(1, panic);
-		goalSelector.addGoal(3, new BreedGoal(this, 1.0D));
-		goalSelector.addGoal(4, new TemptGoal(this, 1.2D, FOOD_ITEMS.get(), false));
-		goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
+		goalSelector.addGoal(3, new DeerBreedGoal(this, 1.0D).register(states));
+		goalSelector.addGoal(4, new DeerTemptGoal(this, 1.2D, FOOD_ITEMS.get(), false).register(states));
+		goalSelector.addGoal(5, new DeerFollowParentGoal(this, 1.1D).register(states));
 		goalSelector.addGoal(6, eat);
 		goalSelector.addGoal(7, new DeerRelaxGoal(this));
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -165,6 +167,16 @@ public class DeerEntity extends Animal implements StateMachineMob {
 		prop.setMale(level.getRandom().nextBoolean());
 		if (!isBaby()) {
 			prop.setHorned(prop.isMale());
+		}
+		var biome = level.getBiome(blockPosition());
+		if (biome.is(YHBiomeTagsProvider.WHITE_GRAPE)) {
+			prop.setVariant(DeerVariant.FALLOW);
+		} else if (biome.is(YHBiomeTagsProvider.BLACK_GRAPE)) {
+			prop.setVariant(DeerVariant.WHITELIPPED);
+		} else if (getRandom().nextDouble() < 0.3) {
+			prop.setVariant(DeerVariant.SAKURA);
+		} else {
+			prop.setVariant(DeerVariant.NORMAL);
 		}
 		return ans;
 	}
