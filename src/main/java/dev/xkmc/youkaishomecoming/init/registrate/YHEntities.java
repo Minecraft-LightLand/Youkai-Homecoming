@@ -95,7 +95,7 @@ public class YHEntities {
 
 			DEER = YoukaisHomecoming.REGISTRATE
 					.entity("deer", DeerEntity::new, MobCategory.CREATURE)
-					.properties(e -> e.sized(1f, 2f).clientTrackingRange(10))
+					.properties(e -> e.sized(0.9f, 2f).clientTrackingRange(10))
 					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules)
 					.attributes(DeerEntity::createAttributes)
 					.renderer(() -> DeerRenderer::new)
