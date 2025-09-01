@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.common;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 
 public interface StateMachineMob extends IEntityAdditionalSpawnData {

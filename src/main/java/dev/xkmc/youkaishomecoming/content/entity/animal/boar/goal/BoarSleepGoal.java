@@ -1,5 +1,6 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
+package dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal;
 
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
@@ -18,9 +19,7 @@ public class BoarSleepGoal extends Goal {
 	public boolean canUse() {
 		if (!mob.states.canSleep()) return false;
 		if (mob.states.isSleeping()) return true;
-		if (mob.getRandom().nextInt(mob.prop.sleepiness()) != 0)
-			return false;
-		else return mob.eat.canEat();
+		return mob.getRandom().nextInt(mob.prop.sleepiness()) == 0;
 	}
 
 	@Override
@@ -38,9 +37,12 @@ public class BoarSleepGoal extends Goal {
 	public void tick() {
 		relaxTick++;
 		if (!mob.states.mayWakeUp()) return;
-		if (relaxTick < adjustedTickDelay(100)) return;
-		int chance = adjustedTickDelay(mob.prop.sleepTime()) - relaxTick;
-		if (chance <= 1 || mob.getRandom().nextInt(chance) == 0) {
+		boolean wakeUp = mob.states().wantsToMove();
+		if (relaxTick >= adjustedTickDelay(100)) {
+			int chance = adjustedTickDelay(mob.prop.sleepTime()) - relaxTick;
+			wakeUp |= chance <= 1 || mob.getRandom().nextInt(chance) == 0;
+		}
+		if (wakeUp) {
 			mob.states.wakeUp();
 		}
 	}

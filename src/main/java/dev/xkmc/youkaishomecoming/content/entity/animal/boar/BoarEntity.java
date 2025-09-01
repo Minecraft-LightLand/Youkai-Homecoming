@@ -1,6 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
 
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarPanicGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarSleepGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarWobbleGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.BreedNotifyGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.FollowParentNotifyGoal;
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.TemptNotifyGoal;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
@@ -16,7 +22,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -63,9 +72,9 @@ public class BoarEntity extends Animal implements StateMachineMob {
 
 		goalSelector.addGoal(0, new FloatGoal(this));
 		goalSelector.addGoal(1, panic);
-		goalSelector.addGoal(3, new BreedGoal(this, 1.0D));
-		goalSelector.addGoal(4, new TemptGoal(this, 1.2D, FOOD_ITEMS.get(), false));
-		goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
+		goalSelector.addGoal(3, new BreedNotifyGoal<>(this, 1.0D));
+		goalSelector.addGoal(4, new TemptNotifyGoal<>(this, 1.2D, FOOD_ITEMS.get(), false));
+		goalSelector.addGoal(5, new FollowParentNotifyGoal<>(this, 1.1D).register(states));
 		goalSelector.addGoal(6, eat);
 		goalSelector.addGoal(7, new BoarSleepGoal(this));
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
