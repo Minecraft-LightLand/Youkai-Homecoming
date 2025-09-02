@@ -32,6 +32,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.Lazy;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeerEntity extends Animal implements StateMachineMob {
 
@@ -54,6 +56,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	public final DeerStateMachine states = new DeerStateMachine(this);
 	public final DeerProperties prop = new DeerProperties(this);
 
+	protected List<DeerStateNotifierGoal> notifiers;
 	protected DeerPanicGoal panic;
 	public DeerEatBlockGoal eat;
 
@@ -64,12 +67,13 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	protected void registerGoals() {
 		panic = new DeerPanicGoal(this, 1.25D);
 		eat = new DeerEatBlockGoal(this);
+		notifiers = new ArrayList<>();
 
 		goalSelector.addGoal(0, new FloatGoal(this));
 		goalSelector.addGoal(1, panic);
-		goalSelector.addGoal(3, new DeerBreedGoal(this, 1.0D).register(states));
-		goalSelector.addGoal(4, new DeerTemptGoal(this, 1.2D, FOOD_ITEMS.get(), false).register(states));
-		goalSelector.addGoal(5, new DeerFollowParentGoal(this, 1.1D).register(states));
+		goalSelector.addGoal(3, new DeerBreedGoal(this, 1.0D).register(notifiers));
+		goalSelector.addGoal(4, new DeerTemptGoal(this, 1.2D, FOOD_ITEMS.get(), false).register(notifiers));
+		goalSelector.addGoal(5, new DeerFollowParentGoal(this, 1.1D).register(notifiers));
 		goalSelector.addGoal(6, eat);
 		goalSelector.addGoal(7, new DeerRelaxGoal(this));
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
