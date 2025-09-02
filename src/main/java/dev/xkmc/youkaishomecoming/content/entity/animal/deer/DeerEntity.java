@@ -1,10 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.BreedNotifyGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.FollowParentNotifyGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.TemptNotifyGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerEatBlockGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerPanicGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerRelaxGoal;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -23,7 +22,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -59,7 +61,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	public final DeerStateMachine states = new DeerStateMachine(this);
 	public final DeerProperties prop = new DeerProperties(this);
 
-	protected List<DeerStateNotifierGoal> notifiers;
+	protected List<INotifyMoveGoal> notifiers;
 	protected DeerPanicGoal panic;
 	public DeerEatBlockGoal eat;
 
@@ -82,6 +84,11 @@ public class DeerEntity extends Animal implements StateMachineMob {
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		goalSelector.addGoal(13, new RandomLookAroundGoal(this));
+	}
+
+	@Override
+	public List<INotifyMoveGoal> notifiers() {
+		return notifiers == null ? List.of() : notifiers;
 	}
 
 	// core

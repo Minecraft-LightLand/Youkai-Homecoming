@@ -3,10 +3,7 @@ package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
 import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarPanicGoal;
 import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarSleepGoal;
 import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarWobbleGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.BreedNotifyGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.FollowParentNotifyGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.TemptNotifyGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.*;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
@@ -38,6 +35,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.Lazy;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoarEntity extends Animal implements StateMachineMob {
 
@@ -59,6 +58,7 @@ public class BoarEntity extends Animal implements StateMachineMob {
 	public final BoarStateMachine states = new BoarStateMachine(this);
 	public final BoarProperties prop = new BoarProperties(this);
 
+	protected List<INotifyMoveGoal> notifiers;
 	protected BoarPanicGoal panic;
 	protected BoarEatBlockGoal eat;
 
@@ -69,12 +69,13 @@ public class BoarEntity extends Animal implements StateMachineMob {
 	protected void registerGoals() {
 		panic = new BoarPanicGoal(this, 1.25D);
 		eat = new BoarEatBlockGoal(this);
+		notifiers = new ArrayList<>();
 
 		goalSelector.addGoal(0, new FloatGoal(this));
 		goalSelector.addGoal(1, panic);
 		goalSelector.addGoal(3, new BreedNotifyGoal<>(this, 1.0D));
 		goalSelector.addGoal(4, new TemptNotifyGoal<>(this, 1.2D, FOOD_ITEMS.get(), false));
-		goalSelector.addGoal(5, new FollowParentNotifyGoal<>(this, 1.1D).register(states));
+		goalSelector.addGoal(5, new FollowParentNotifyGoal<>(this, 1.1D).register(notifiers));
 		goalSelector.addGoal(6, eat);
 		goalSelector.addGoal(7, new BoarSleepGoal(this));
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -83,6 +84,12 @@ public class BoarEntity extends Animal implements StateMachineMob {
 		goalSelector.addGoal(14, new BoarWobbleGoal(this));
 
 	}
+
+	@Override
+	public List<INotifyMoveGoal> notifiers() {
+		return notifiers == null ? List.of() : notifiers;
+	}
+
 
 	// core
 

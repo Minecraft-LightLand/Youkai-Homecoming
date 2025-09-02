@@ -23,8 +23,6 @@ public abstract class MobStateMachine<
 	private S state;
 	private int tick;
 
-	protected final List<INotifyMoveGoal> notifiers = new ArrayList<>();
-
 	public MobStateMachine(E entity, Class<S> cls, S[] values) {
 		this.cls = cls;
 		mob = entity;
@@ -105,12 +103,8 @@ public abstract class MobStateMachine<
 		return true;
 	}
 
-	public void register(INotifyMoveGoal goal) {
-		notifiers.add(goal);
-	}
-
 	public boolean wantsToMove() {
-		for (var e : notifiers) {
+		for (var e : mob.notifiers()) {
 			if (e.wantsToMove()) {
 				return true;
 			}
