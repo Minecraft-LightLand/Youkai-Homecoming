@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.deer.goal;
 
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerVariant;
+import dev.xkmc.youkaishomecoming.content.entity.deer.DeerVariant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
