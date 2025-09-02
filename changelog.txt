@@ -1,5 +1,6 @@
 2.6.1
-- Fix deer crash
+- Fix Deer crash
+- Deer eat petals to transform
 
 2.6.0
 - Be compatible with both Crate 0.5.x and 6.0.x
@@ -43,8 +44,6 @@
 
 2.5.1
 - Fix kettle drop and bamboo bowl shape
-- Reduce creative flight sliding with Hairbands
-- Improves Remilia fight
 
 2.5.0
 - make cake and feast non-stackable

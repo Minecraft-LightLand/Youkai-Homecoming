@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerVariant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
@@ -14,7 +15,7 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 
 public class DeerEatBlockGoal extends Goal {
-	private static final Predicate<BlockState> IS_TALL_GRASS = BlockStatePredicate.forBlock(Blocks.GRASS);
+	private static final Predicate<BlockState> IS_PINK_PETAL = BlockStatePredicate.forBlock(Blocks.PINK_PETALS);
 	private final DeerEntity mob;
 	private final Level level;
 	protected int eatAnimationTick, finishTick;
@@ -34,7 +35,7 @@ public class DeerEatBlockGoal extends Goal {
 
 	protected boolean canEat() {
 		BlockPos blockpos = BlockPos.containing(mob.position().add(mob.getForward()));
-		if (IS_TALL_GRASS.test(level.getBlockState(blockpos))) {
+		if (IS_PINK_PETAL.test(level.getBlockState(blockpos))) {
 			return true;
 		} else {
 			return level.getBlockState(blockpos.below()).is(Blocks.GRASS_BLOCK);
@@ -62,9 +63,12 @@ public class DeerEatBlockGoal extends Goal {
 		eatAnimationTick = Math.max(0, eatAnimationTick - 1);
 		if (eatAnimationTick == finishTick) {
 			BlockPos pos = BlockPos.containing(mob.position().add(mob.getForward()));
-			if (IS_TALL_GRASS.test(level.getBlockState(pos))) {
-				if (mob.prop.eatConsume() && ForgeEventFactory.getMobGriefingEvent(level, mob)) {
+			if (IS_PINK_PETAL.test(level.getBlockState(pos))) {
+				if (ForgeEventFactory.getMobGriefingEvent(level, mob)) {
 					level.destroyBlock(pos, false);
+					if (mob.prop.getVariant() == DeerVariant.NORMAL) {
+						mob.prop.setVariant(DeerVariant.SAKURA);
+					}
 				}
 				mob.ate();
 			} else {
