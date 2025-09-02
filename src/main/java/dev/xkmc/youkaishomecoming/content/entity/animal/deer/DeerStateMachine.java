@@ -1,11 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.common.MobStateMachine;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerStateNotifierGoal;
 import net.minecraft.world.entity.AnimationState;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerState.*;
 
@@ -74,6 +70,7 @@ public class DeerStateMachine extends MobStateMachine<DeerEntity, DeerState, Dee
 	}
 
 	public boolean mustStopRelax() {
+		if (mob.notifiers == null) return false;
 		for (var e : mob.notifiers) {
 			if (e.shouldStopRelax()) {
 				return true;
