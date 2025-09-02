@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.deer;
 
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.MobStateMachine;
+import dev.xkmc.youkaishomecoming.content.entity.common.MobStateMachine;
 import net.minecraft.world.entity.AnimationState;
 
 import static dev.xkmc.youkaishomecoming.content.entity.deer.DeerState.*;
