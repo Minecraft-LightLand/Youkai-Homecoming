@@ -2,12 +2,16 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
+import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -21,7 +25,9 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class PotFoodBlock extends BowlBlock {
+import java.util.List;
+
+public class PotFoodBlock extends BowlBlock implements IHintableBlock {
 
 	public static final IntegerProperty SERVE_2 = IntegerProperty.create("serve", 1, 2);
 	public static final IntegerProperty SERVE_4 = IntegerProperty.create("serve", 1, 4);
@@ -64,6 +70,14 @@ public class PotFoodBlock extends BowlBlock {
 		registerDefaultState(defaultBlockState().setValue(prop, serve));
 	}
 
+	@Override
+	public List<Ingredient> getHints(Level level, BlockPos pos) {
+		var item = food.asItem().getDefaultInstance();
+		if (item.hasCraftingRemainingItem()) {
+			return List.of(Ingredient.of(item.getCraftingRemainingItem().getItem()));
+		}
+		return List.of();
+	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -77,6 +91,8 @@ public class PotFoodBlock extends BowlBlock {
 							stack.shrink(1);
 						player.getInventory().placeItemBackInInventory(item);
 						consume(state, level, pos);
+						if (player instanceof ServerPlayer sp)
+							YHCriteriaTriggers.POT_GRAB.trigger(sp);
 					}
 					return InteractionResult.SUCCESS;
 				}

@@ -21,6 +21,7 @@ public class YHCriteriaTriggers {
 	public static final PlayerTrigger GRAPE_HARVEST = reg("grape_harvest");
 	public static final PlayerTrigger BASIN = reg("basin");
 	public static final PlayerTrigger COOKING = reg("cooking");
+	public static final PlayerTrigger POT_GRAB = reg("pot_grab");
 	public static final SteamTrigger STEAM = CriteriaTriggers.register(new SteamTrigger());
 	public static final PlayerTrigger TABLE = reg("table");
 	public static final PlayerTrigger CRAB_GRAB = reg("crab_grab");
