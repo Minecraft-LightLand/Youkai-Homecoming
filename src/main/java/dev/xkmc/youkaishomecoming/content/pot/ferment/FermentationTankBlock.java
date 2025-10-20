@@ -4,9 +4,7 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.l2modularblock.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
-import dev.xkmc.l2modularblock.mult.AnimateTickBlockMethod;
-import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
+import dev.xkmc.l2modularblock.mult.*;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
@@ -33,7 +31,9 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 
-public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnClickBlockMethod, ShapeBlockMethod, AnimateTickBlockMethod {
+public class FermentationTankBlock implements
+		DefaultStateBlockMethod, CreateBlockStateBlockMethod, NeighborUpdateBlockMethod,
+		OnClickBlockMethod, ShapeBlockMethod, AnimateTickBlockMethod {
 
 	public static final BlockMethod TE = new BlockEntityBlockMethodImpl<>(YHBlocks.FERMENT_BE, FermentationTankBlockEntity.class);
 
@@ -42,9 +42,26 @@ public class FermentationTankBlock implements CreateBlockStateBlockMethod, OnCli
 	private static final VoxelShape NO_LID = Block.box(1, 0, 1, 15, 14, 15);
 	private static final VoxelShape LID = Block.box(1, 0, 1, 15, 15, 15);
 
+	public void neighborChanged(Block self, BlockState state, Level world, BlockPos pos, Block nei_block, BlockPos nei_pos, boolean moving) {
+		boolean flag = world.hasNeighborSignal(pos) || world.hasNeighborSignal(pos.above());
+		boolean flag1 = state.getValue(BlockStateProperties.TRIGGERED);
+		boolean open = state.getValue(OPEN);
+		if (flag && !flag1) {
+			world.scheduleTick(pos, self, 4);
+			world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.TRIGGERED, Boolean.TRUE).setValue(OPEN, !open));
+		} else if (!flag && flag1) {
+			world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.TRIGGERED, Boolean.FALSE));
+		}
+
+	}
+
+	public BlockState getDefaultState(BlockState state) {
+		return state.setValue(BlockStateProperties.TRIGGERED, false).setValue(BlockStateProperties.OPEN, false);
+	}
+
 	@Override
 	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(OPEN);
+		builder.add(OPEN, BlockStateProperties.TRIGGERED);
 	}
 
 	@Nullable

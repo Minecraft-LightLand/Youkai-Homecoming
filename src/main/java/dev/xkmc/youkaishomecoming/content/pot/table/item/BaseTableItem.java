@@ -24,6 +24,7 @@ public class BaseTableItem implements TableItem {
 		return ans;
 	}
 
+	@Deprecated
 	public IngredientTableItem with(FixedModelHolder id, ItemLike item) {
 		return with(id, () -> Ingredient.of(item.asItem()));
 	}

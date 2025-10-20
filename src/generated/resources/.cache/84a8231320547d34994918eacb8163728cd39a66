@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-15T17:10:16.0478	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-10-20T13:30:47.97621	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -61,7 +61,7 @@ a4ca5de1ef3947cada542c2fb2cf6384b92e99e6 assets/youkaishomecoming/blockstates/da
 6175b0708c52c277df511f0e79a8011aef85e697 assets/youkaishomecoming/blockstates/donation_box.json
 809cf02aa11a310e5d73215dbf9c912ad6499213 assets/youkaishomecoming/blockstates/dried_fish.json
 727e8be307f318d87ad8c4c7e2661ec39844e618 assets/youkaishomecoming/blockstates/drying_rack.json
-789d211056dae7caee0928ba5c2a5a015f1134b7 assets/youkaishomecoming/blockstates/fermentation_tank.json
+052937a44d37db078ef469ff1afb2e28cd680c35 assets/youkaishomecoming/blockstates/fermentation_tank.json
 7eaab4643d104eb509edcc15473442506b8142ee assets/youkaishomecoming/blockstates/fine_grid_framed_shoji.json
 8f57eb5fbd9d5032143f2d05dc7dd78f9dbc28d8 assets/youkaishomecoming/blockstates/fine_grid_framed_sikkui.json
 e990a4f7079b38690b6b42a91124658f7c571bb0 assets/youkaishomecoming/blockstates/fine_grid_framed_sikkui_trap_door.json
@@ -208,8 +208,8 @@ d299ba95e8954dc83a8b166de9e4ddb2fa245d48 assets/youkaishomecoming/blockstates/wo
 117d8c64282f7eabd89559d9692ab4d49462eb4c assets/youkaishomecoming/blockstates/wood_bowl.json
 218ca5bdfa46833c8f920c355de4669c7f6e7cb3 assets/youkaishomecoming/blockstates/yellow_red_velvet_candle_cake.json
 88cd696c87a5dace0c6ce4077821d7b740ea82f4 assets/youkaishomecoming/blockstates/yellow_tea_bag.json
-2ad3359453c77c11b2bef0ccf7dbec59e27e8d5a assets/youkaishomecoming/lang/en_ud.json
-26d5d280e032430d8303bc918ae8cb838c8dc8df assets/youkaishomecoming/lang/en_us.json
+69ca5269c6761419d4cbb1d6e11b22baa7cf71b8 assets/youkaishomecoming/lang/en_ud.json
+c0fdddbd26ec40a65c2e788d89cd4cb45736b7db assets/youkaishomecoming/lang/en_us.json
 3213baa081e1667be3758e7904aec22b653f2f83 assets/youkaishomecoming/models/block/acacia_dining_chair.json
 c16a4c2f61452b7a4f76eba72358fcfb35c0583c assets/youkaishomecoming/models/block/acacia_dining_table.json
 e5f7ae49090a91d6eda3214f19a9482b0e01e617 assets/youkaishomecoming/models/block/acacia_handrail_inner_left_ccw.json
@@ -2198,6 +2198,7 @@ a1cdfde9fd5daa51c4b8c6dfc836bde660eb41cd data/sereneseasons/tags/blocks/summer_c
 461647343a7526cb6bd7471b800e17e7e86e20c5 data/youkaishomecoming/advancements/koishi_first.json
 23587dba6fc4ed01ad17368ee4f5bfdc13389541 data/youkaishomecoming/advancements/main/alcoholic.json
 791cf569cf4f6eaa65e2a722646dd16d2070f97c data/youkaishomecoming/advancements/main/bloody.json
+80d1dfcfa073065c0b17463a40bd2a37022fdd0f data/youkaishomecoming/advancements/main/breed_deer.json
 16b45d1bed763673720ad662d5053556d66ca2c1 data/youkaishomecoming/advancements/main/camellia.json
 586b2e43ec2f5959bdbaced6c5183751238e153b data/youkaishomecoming/advancements/main/coffea.json
 94657bd4dad5b6c62d8f35309eb1482241ad43b0 data/youkaishomecoming/advancements/main/coffee_era.json
@@ -2224,6 +2225,7 @@ b2b2fb7c6601d49e4b3e43418775ab888ef36d19 data/youkaishomecoming/advancements/mai
 f4322f2e3ae4fbb4910c381edc7e8c988eb371a4 data/youkaishomecoming/advancements/main/monstrosity.json
 a2d715c7db7d8fdd35183d65901ea3d65283b513 data/youkaishomecoming/advancements/main/mousse.json
 4d47830a62a2988c23b53435328504c2f42cf38c data/youkaishomecoming/advancements/main/passed_out.json
+da529fcc70da9c962130c8b3c47a62dff48e3505 data/youkaishomecoming/advancements/main/pot_grab.json
 052b62012c36185e85f3180b16bc87181116e530 data/youkaishomecoming/advancements/main/powerful_being.json
 5df9721121b1a717e515d1a2bba7aaedbcf69275 data/youkaishomecoming/advancements/main/q_grader.json
 1fb5272c01bcd56bd9a7795a815a827bedc1a318 data/youkaishomecoming/advancements/main/redbean.json
@@ -3703,6 +3705,11 @@ da9ec5f7ed64a0d225e00ee60b8e6d6408b431fb data/youkaishomecoming/tags/entity_type
 e00f2931577049b9a4400a87ed9c249373be376c data/youkaishomecoming/tags/entity_types/youkai_ignore.json
 3142917d80554e31fdd142a77c8162bb4e3aad25 data/youkaishomecoming/tags/items/apparent_flesh_food.json
 f5f068a1588ff4a3bc108103534728b90a972fca data/youkaishomecoming/tags/items/bottled.json
+578dd629e6c69bf5641983afdf5f54ca2d3b5882 data/youkaishomecoming/tags/items/cuisine/bamboo.json
+cb38fda423196e95871dfdc12d7cd2182f3619cf data/youkaishomecoming/tags/items/cuisine/brown_mushroom.json
+3a6049fdf6a247720cef5ea417a0c9519f707e01 data/youkaishomecoming/tags/items/cuisine/carrot.json
+5b4bdea6534e742e59a0c3e42e470f5424342eb2 data/youkaishomecoming/tags/items/cuisine/cooked_rice.json
+a3b172140b26116cb88b9881f6dc7003b74902ba data/youkaishomecoming/tags/items/cuisine/dried_kelp.json
 29985b6afb7ef50a2e11021b685d8315a6bf2cce data/youkaishomecoming/tags/items/custom_spell.json
 aa2571069bda91945b5212ddc4f2945299452f3d data/youkaishomecoming/tags/items/dango.json
 4ed12a5789f6dfdf5a957b2d82d7e321b7adeb3e data/youkaishomecoming/tags/items/danmaku.json
