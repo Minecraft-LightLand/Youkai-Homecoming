@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-17T14:56:24.689176	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-10-20T11:33:59.363945	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -3703,6 +3703,11 @@ da9ec5f7ed64a0d225e00ee60b8e6d6408b431fb data/youkaishomecoming/tags/entity_type
 e00f2931577049b9a4400a87ed9c249373be376c data/youkaishomecoming/tags/entity_types/youkai_ignore.json
 3142917d80554e31fdd142a77c8162bb4e3aad25 data/youkaishomecoming/tags/items/apparent_flesh_food.json
 f5f068a1588ff4a3bc108103534728b90a972fca data/youkaishomecoming/tags/items/bottled.json
+578dd629e6c69bf5641983afdf5f54ca2d3b5882 data/youkaishomecoming/tags/items/cuisine/bamboo.json
+cb38fda423196e95871dfdc12d7cd2182f3619cf data/youkaishomecoming/tags/items/cuisine/brown_mushroom.json
+3a6049fdf6a247720cef5ea417a0c9519f707e01 data/youkaishomecoming/tags/items/cuisine/carrot.json
+5b4bdea6534e742e59a0c3e42e470f5424342eb2 data/youkaishomecoming/tags/items/cuisine/cooked_rice.json
+a3b172140b26116cb88b9881f6dc7003b74902ba data/youkaishomecoming/tags/items/cuisine/dried_kelp.json
 29985b6afb7ef50a2e11021b685d8315a6bf2cce data/youkaishomecoming/tags/items/custom_spell.json
 aa2571069bda91945b5212ddc4f2945299452f3d data/youkaishomecoming/tags/items/dango.json
 4ed12a5789f6dfdf5a957b2d82d7e321b7adeb3e data/youkaishomecoming/tags/items/danmaku.json

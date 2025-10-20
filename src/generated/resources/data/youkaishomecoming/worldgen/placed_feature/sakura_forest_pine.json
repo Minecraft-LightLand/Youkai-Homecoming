@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:trees_flower_forest",
+  "feature": "minecraft:trees_old_growth_pine_taiga",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 3,
+            "data": 2,
             "weight": 1
           },
           {
-            "data": 4,
+            "data": 3,
             "weight": 1
           }
         ]
