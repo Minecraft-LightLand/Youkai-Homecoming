@@ -1,3 +1,14 @@
+2.6.2
+- Fully tagify table recipes
+- redstone can toggle fermentation tank cap
+- Add container hint for soups and pots
+- Add advancement for deer and pot
+- Deer offspring will inherit one of parent's variant (sakura vairant has 30% chance to become normal variant)
+
+2.6.1
+- Fix Dear crash
+- Dear eat petals to transform
+
 2.6.0
 - Be compatible with both Crate 0.5.x and 6.0.x
 - Fix various Deer AI bugs

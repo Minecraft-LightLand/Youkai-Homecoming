@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.food.YHTea;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import mezz.jei.api.constants.ModIds;
 import mezz.jei.api.constants.Tags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -19,12 +20,14 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import sereneseasons.core.SereneSeasons;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +73,11 @@ public class YHTagGen {
 	public static final TagKey<Item> GRAPE_SEED = item("grape_seed");
 	public static final TagKey<Item> RAW_FLESH = item("raw_flesh");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
+	public static final TagKey<Item> COOKED_RICE = item("cuisine/cooked_rice");
+	public static final TagKey<Item> DRIED_KELP = item("cuisine/dried_kelp");
+	public static final TagKey<Item> BAMBOO = item("cuisine/bamboo");
+	public static final TagKey<Item> CARROT = item("cuisine/carrot");
+	public static final TagKey<Item> BROWN_MUSHROOM = item("cuisine/brown_mushroom");
 	public static final TagKey<Item> DANGO = item("dango");
 	public static final TagKey<Item> TEA_DRINK = item("tea");
 	public static final TagKey<Item> SAKE = item("sake");
@@ -161,6 +169,12 @@ public class YHTagGen {
 		pvd.addTag(MAYONNAISE_BOTTLE).add(YHItems.MAYONNAISE.asItem());
 		pvd.addTag(SOYBEAN).add(YHCrops.SOYBEAN.getSeed());
 		pvd.addTag(REDBEAN).add(YHCrops.REDBEAN.getSeed());
+
+		pvd.addTag(COOKED_RICE).add(ModItems.COOKED_RICE.get());
+		pvd.addTag(DRIED_KELP).add(Items.DRIED_KELP);
+		pvd.addTag(BAMBOO).add(Items.BAMBOO);
+		pvd.addTag(CARROT).add(Items.CARROT);
+		pvd.addTag(BROWN_MUSHROOM).add(Items.BROWN_MUSHROOM);
 
 		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());

@@ -187,8 +187,6 @@ public class DeerEntity extends Animal implements StateMachineMob {
 			prop.setVariant(DeerVariant.FALLOW);
 		} else if (biome.is(YHBiomeTagsProvider.BLACK_GRAPE)) {
 			prop.setVariant(DeerVariant.WHITELIPPED);
-		} else if (getRandom().nextDouble() < 0.3) {
-			prop.setVariant(DeerVariant.SAKURA);
 		} else {
 			prop.setVariant(DeerVariant.NORMAL);
 		}
@@ -217,8 +215,14 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	public DeerEntity getBreedOffspring(ServerLevel level, AgeableMob mob) {
 		var ans = YHEntities.DEER.create(level);
 		if (ans == null) return null;
-		ans.prop.setVariant(prop.getVariant());
+		if (mob instanceof DeerEntity deer && random.nextBoolean()) {
+			ans.prop.setVariant(deer.prop.getVariant());
+		} else ans.prop.setVariant(prop.getVariant());
 		ans.prop.setMale(random.nextBoolean());
+		if (ans.prop.getVariant() == DeerVariant.SAKURA) {
+			if (random.nextFloat() < 0.3f)
+				ans.prop.setVariant(DeerVariant.NORMAL);
+		}
 		return ans;
 	}
 

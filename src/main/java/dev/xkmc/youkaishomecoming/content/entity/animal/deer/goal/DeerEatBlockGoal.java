@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal;
 
 import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.DeerVariant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
@@ -63,8 +64,11 @@ public class DeerEatBlockGoal extends Goal {
 		if (eatAnimationTick == finishTick) {
 			BlockPos pos = BlockPos.containing(mob.position().add(mob.getForward()));
 			if (IS_PINK_PETAL.test(level.getBlockState(pos))) {
-				if (mob.prop.eatConsume() && ForgeEventFactory.getMobGriefingEvent(level, mob)) {
+				if (ForgeEventFactory.getMobGriefingEvent(level, mob)) {
 					level.destroyBlock(pos, false);
+					if (mob.prop.getVariant() == DeerVariant.NORMAL) {
+						mob.prop.setVariant(DeerVariant.SAKURA);
+					}
 				}
 				mob.ate();
 			} else {

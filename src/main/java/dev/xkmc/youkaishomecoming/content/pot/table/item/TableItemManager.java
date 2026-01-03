@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -41,15 +42,15 @@ public class TableItemManager extends BaseTableItem {
 
 	public static final TableItemManager TABLE = new TableItemManager();
 
-	public static final IngredientTableItem RICE = TABLE.with(fixed("rice").putDefault("rice"), ModItems.COOKED_RICE::get);
+	public static final IngredientTableItem RICE = TABLE.with(fixed("rice").putDefault("rice"), YHTagGen.COOKED_RICE);
 	public static final IngredientTableItem SUSHI = RICE.addNext(variant("sushi").putDefault("rice"));
-	public static final IngredientTableItem GUNKAN = SUSHI.with(variant("gunkan").putDefault("rice", "kelp"), Items.DRIED_KELP);
-	public static final IngredientTableItem RICE_2 = RICE.with(fixed("rice_2").putDefault("rice"), ModItems.COOKED_RICE::get);
-	public static final IngredientTableItem CAL = RICE_2.with(variant("open_california").putDefault("rice", "kelp"), Items.DRIED_KELP);
+	public static final IngredientTableItem GUNKAN = SUSHI.with(variant("gunkan").putDefault("rice", "kelp"), YHTagGen.DRIED_KELP);
+	public static final IngredientTableItem RICE_2 = RICE.with(fixed("rice_2").putDefault("rice"), YHTagGen.COOKED_RICE);
+	public static final IngredientTableItem CAL = RICE_2.with(variant("open_california").putDefault("rice", "kelp"), YHTagGen.DRIED_KELP);
 
-	public static final IngredientTableItem KELP = TABLE.with(fixed("kelp").putDefault("kelp"), Items.DRIED_KELP);
-	public static final IngredientTableItem HOSOMAKI = KELP.with(variant("open_hosomaki").putDefault("kelp", "rice"), ModItems.COOKED_RICE::get);
-	public static final IngredientTableItem FUTOMAKI = HOSOMAKI.with(variant("open_futomaki").putDefault("kelp", "rice"), ModItems.COOKED_RICE::get);
+	public static final IngredientTableItem KELP = TABLE.with(fixed("kelp").putDefault("kelp"), YHTagGen.DRIED_KELP);
+	public static final IngredientTableItem HOSOMAKI = KELP.with(variant("open_hosomaki").putDefault("kelp", "rice"), YHTagGen.COOKED_RICE);
+	public static final IngredientTableItem FUTOMAKI = HOSOMAKI.with(variant("open_futomaki").putDefault("kelp", "rice"), YHTagGen.COOKED_RICE);
 
 	public static final VariantTableItemBase BASE_SUSHI = SUSHI.asBase(YoukaisHomecoming.loc("sushi"));
 	public static final VariantTableItemBase BASE_GUNKAN = GUNKAN.asBase(YoukaisHomecoming.loc("gunkan"));
