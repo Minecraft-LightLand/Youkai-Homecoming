@@ -196,6 +196,8 @@ dependencies {
 
     implementation fg.deobf("curse.maven:ferritecore-429235:4810975")
 
+    implementation fg.deobf("curse.maven:silverbirch-641488:5363935")
+
     //implementation fg.deobf("curse.maven:composite-material-982540:6310307")
     //implementation fg.deobf("curse.maven:framework-549225:6531428")
 

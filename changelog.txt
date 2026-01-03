@@ -1,3 +1,6 @@
+0.4.3
+- Restore level data overwritten by MCR mods to prevent save corruption. Addressing https://github.com/MCreator/MCreator/issues/5499
+
 0.4.2
 - Animal Path and Boar
 
