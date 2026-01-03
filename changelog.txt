@@ -3,6 +3,7 @@
 - redstone can toggle fermentation tank cap
 - Add container hint for soups and pots
 - Add advancement for deer and pot
+- Deer offspring will inherit one of parent's variant (sakura vairant has 30% chance to become normal variant)
 
 2.6.1
 - Fix Dear crash
