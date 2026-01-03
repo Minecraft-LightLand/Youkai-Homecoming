@@ -5,7 +5,7 @@
       "value": "#minecraft:features_cannot_replace"
     },
     {
-      "processor_type": "minecraft:rule",
+      "processor_type": "youkaishomecoming:set_nbt_rules",
       "rules": [
         {
           "block_entity_modifier": {

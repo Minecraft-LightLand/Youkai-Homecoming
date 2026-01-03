@@ -5,7 +5,7 @@
       "value": "#minecraft:features_cannot_replace"
     },
     {
-      "processor_type": "minecraft:rule",
+      "processor_type": "youkaishomecoming:set_nbt_rules",
       "rules": [
         {
           "block_entity_modifier": {
@@ -13,14 +13,8 @@
             "loot_table": "youkaishomecoming:chests/cirno_nest/cabinet"
           },
           "input_predicate": {
-            "block_state": {
-              "Name": "farmersdelight:spruce_cabinet",
-              "Properties": {
-                "facing": "north",
-                "open": "false"
-              }
-            },
-            "predicate_type": "minecraft:blockstate_match"
+            "block": "farmersdelight:spruce_cabinet",
+            "predicate_type": "minecraft:block_match"
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
@@ -29,84 +23,6 @@
             "Name": "farmersdelight:spruce_cabinet",
             "Properties": {
               "facing": "north",
-              "open": "false"
-            }
-          }
-        },
-        {
-          "block_entity_modifier": {
-            "type": "minecraft:append_loot",
-            "loot_table": "youkaishomecoming:chests/cirno_nest/cabinet"
-          },
-          "input_predicate": {
-            "block_state": {
-              "Name": "farmersdelight:spruce_cabinet",
-              "Properties": {
-                "facing": "south",
-                "open": "false"
-              }
-            },
-            "predicate_type": "minecraft:blockstate_match"
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "farmersdelight:spruce_cabinet",
-            "Properties": {
-              "facing": "south",
-              "open": "false"
-            }
-          }
-        },
-        {
-          "block_entity_modifier": {
-            "type": "minecraft:append_loot",
-            "loot_table": "youkaishomecoming:chests/cirno_nest/cabinet"
-          },
-          "input_predicate": {
-            "block_state": {
-              "Name": "farmersdelight:spruce_cabinet",
-              "Properties": {
-                "facing": "east",
-                "open": "false"
-              }
-            },
-            "predicate_type": "minecraft:blockstate_match"
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "farmersdelight:spruce_cabinet",
-            "Properties": {
-              "facing": "east",
-              "open": "false"
-            }
-          }
-        },
-        {
-          "block_entity_modifier": {
-            "type": "minecraft:append_loot",
-            "loot_table": "youkaishomecoming:chests/cirno_nest/cabinet"
-          },
-          "input_predicate": {
-            "block_state": {
-              "Name": "farmersdelight:spruce_cabinet",
-              "Properties": {
-                "facing": "west",
-                "open": "false"
-              }
-            },
-            "predicate_type": "minecraft:blockstate_match"
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "farmersdelight:spruce_cabinet",
-            "Properties": {
-              "facing": "west",
               "open": "false"
             }
           }
