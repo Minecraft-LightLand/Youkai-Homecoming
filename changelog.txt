@@ -9,6 +9,7 @@
 - Fix Deer crash
 - Deer eat petals to transform
 
+
 2.6.0
 - Be compatible with both Crate 0.5.x and 6.0.x
 - Fix various Deer AI bugs
