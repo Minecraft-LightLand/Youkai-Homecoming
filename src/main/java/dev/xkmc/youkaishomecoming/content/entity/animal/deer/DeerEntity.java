@@ -206,7 +206,17 @@ public class DeerEntity extends Animal implements StateMachineMob {
 
 	@Nullable
 	public DeerEntity getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return YHEntities.DEER.create(level);
+		var ans = YHEntities.DEER.create(level);
+		if (ans == null) return null;
+		if (mob instanceof DeerEntity deer && random.nextBoolean()) {
+			ans.prop.setVariant(deer.prop.getVariant());
+		} else ans.prop.setVariant(prop.getVariant());
+		ans.prop.setMale(random.nextBoolean());
+		if (ans.prop.getVariant() == DeerVariant.SAKURA) {
+			if (random.nextFloat() < 0.3f)
+				ans.prop.setVariant(DeerVariant.NORMAL);
+		}
+		return ans;
 	}
 
 	public boolean isFood(ItemStack stack) {
