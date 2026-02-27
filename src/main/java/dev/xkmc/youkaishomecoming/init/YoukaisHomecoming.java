@@ -27,6 +27,7 @@ import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.ModelIngredientData;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.content.spell.custom.screen.SpellSetToServer;
 import dev.xkmc.youkaishomecoming.content.spell.game.TouhouSpellCards;
@@ -112,6 +113,8 @@ public class YoukaisHomecoming {
 	public static final RecipeBookType MOKA = RecipeBookType.create("MOKA");
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
+	public static final ConfigTypeEntry<ModelIngredientData> INGREDIENT = new ConfigTypeEntry<>(HANDLER, "ingredient", ModelIngredientData.class);
+
 	public YoukaisHomecoming() {
 		Handlers.enableVanilla(Fluid.class, () -> ForgeRegistries.FLUIDS);
 		InitializationMarker.expectAndAdvance(0);
@@ -140,6 +143,8 @@ public class YoukaisHomecoming {
 		if (ModList.get().isLoaded(Gateways.MODID)) {
 			MinecraftForge.EVENT_BUS.register(GatewayEventHandlers.class);
 		}
+
+		HANDLER.addAfterReloadListener(() -> INGREDIENT.getMerged().onSync());
 	}
 
 	@SubscribeEvent
@@ -204,6 +209,7 @@ public class YoukaisHomecoming {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		TableItemManager.prepareData();
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
@@ -219,6 +225,7 @@ public class YoukaisHomecoming {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(server, new YHConfigGen(gen));
+		gen.addProvider(event.includeClient(), new AdditionalModelProvider(output, MODID));
 		var reg = new YHDatapackRegistriesGen(output, pvd);
 		gen.addProvider(server, reg);
 		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));

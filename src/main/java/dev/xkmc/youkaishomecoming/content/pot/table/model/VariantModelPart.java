@@ -16,16 +16,27 @@ import java.util.function.Supplier;
 
 public class VariantModelPart {
 
+	private static final LinkedHashMap<ResourceLocation, VariantModelPart> MAP = new LinkedHashMap<>();
+
+	public static synchronized void register(ResourceLocation id, VariantModelPart part) {
+		MAP.put(id, part);
+	}
+
+	public static synchronized Map<ResourceLocation, VariantModelPart> getAll() {
+		return MAP;
+	}
+
 	private final String name;
 	private final ResourceLocation path;
 	protected final int max;
 
-	private final Map<String, Entry> ingredients = new LinkedHashMap<>();
+	public final Map<String, Entry> ingredients = new LinkedHashMap<>();
 
 	public VariantModelPart(String name, ResourceLocation path, int max) {
 		this.name = name;
 		this.path = path;
 		this.max = max;
+		register(path, this);
 	}
 
 	public ResourceLocation modelAt(String id, int index) {
@@ -98,6 +109,10 @@ public class VariantModelPart {
 
 		public void seareable() {
 			this.seared = tex.withSuffix("_seared");
+		}
+
+		public Ingredient getIngredient() {
+			return ingredient.get();
 		}
 
 	}

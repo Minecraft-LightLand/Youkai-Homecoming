@@ -1,0 +1,178 @@
+{
+  "ingredients": {
+    "youkaishomecoming:california/cover": {
+      "crab_roe": {
+        "tag": "forge:roes/crab"
+      },
+      "roe": {
+        "tag": "forge:roes/salmon"
+      }
+    },
+    "youkaishomecoming:california/sauce": {
+      "mayonnaise": {
+        "tag": "forge:bottles/mayonnaise"
+      },
+      "soy_sauce": {
+        "tag": "forge:bottles/soy_sauce"
+      }
+    },
+    "youkaishomecoming:california/top": {
+      "cod": {
+        "tag": "forge:raw_fishes/cod"
+      },
+      "otoro": {
+        "tag": "forge:otoro"
+      },
+      "salmon": {
+        "tag": "forge:raw_fishes/salmon"
+      },
+      "tuna": {
+        "tag": "forge:raw_fishes/tuna"
+      }
+    },
+    "youkaishomecoming:gunkan/top": {
+      "crab_roe": {
+        "tag": "forge:roes/crab"
+      },
+      "nattou": {
+        "tag": "forge:nattou"
+      },
+      "roe": {
+        "tag": "forge:roes/salmon"
+      },
+      "seagrass": {
+        "item": "minecraft:seagrass"
+      }
+    },
+    "youkaishomecoming:open_california/ingredient": {
+      "beetroot": {
+        "item": "minecraft:beetroot"
+      },
+      "carrot": {
+        "item": "minecraft:carrot"
+      },
+      "cucumber": {
+        "tag": "forge:slices/cucumber"
+      },
+      "imitation_crab": {
+        "tag": "forge:imitation_crab"
+      },
+      "salmon": {
+        "tag": "forge:raw_fishes/salmon"
+      },
+      "tamagoyaki": {
+        "tag": "forge:slices/tamagoyaki"
+      },
+      "tuna": {
+        "tag": "forge:raw_fishes/tuna"
+      }
+    },
+    "youkaishomecoming:open_california/sauce": {
+      "mayonnaise": {
+        "tag": "forge:bottles/mayonnaise"
+      },
+      "soy_sauce": {
+        "tag": "forge:bottles/soy_sauce"
+      }
+    },
+    "youkaishomecoming:open_futomaki/ingredient": {
+      "beetroot": {
+        "item": "minecraft:beetroot"
+      },
+      "carrot": {
+        "item": "minecraft:carrot"
+      },
+      "cucumber": {
+        "tag": "forge:slices/cucumber"
+      },
+      "imitation_crab": {
+        "tag": "forge:imitation_crab"
+      },
+      "salmon": {
+        "tag": "forge:raw_fishes/salmon"
+      },
+      "tamagoyaki": {
+        "tag": "forge:slices/tamagoyaki"
+      },
+      "tuna": {
+        "tag": "forge:raw_fishes/tuna"
+      }
+    },
+    "youkaishomecoming:open_futomaki/sauce": {
+      "mayonnaise": {
+        "tag": "forge:bottles/mayonnaise"
+      },
+      "soy_sauce": {
+        "tag": "forge:bottles/soy_sauce"
+      }
+    },
+    "youkaishomecoming:open_hosomaki/ingredient": {
+      "beetroot": {
+        "item": "minecraft:beetroot"
+      },
+      "carrot": {
+        "item": "minecraft:carrot"
+      },
+      "cucumber": {
+        "tag": "forge:slices/cucumber"
+      },
+      "imitation_crab": {
+        "tag": "forge:imitation_crab"
+      },
+      "salmon": {
+        "tag": "forge:raw_fishes/salmon"
+      },
+      "tamagoyaki": {
+        "tag": "forge:slices/tamagoyaki"
+      },
+      "tuna": {
+        "tag": "forge:raw_fishes/tuna"
+      }
+    },
+    "youkaishomecoming:open_hosomaki/sauce": {
+      "mayonnaise": {
+        "tag": "forge:bottles/mayonnaise"
+      },
+      "soy_sauce": {
+        "tag": "forge:bottles/soy_sauce"
+      }
+    },
+    "youkaishomecoming:sushi/curd": {},
+    "youkaishomecoming:sushi/kelp": {
+      "kelp": {
+        "item": "minecraft:dried_kelp"
+      }
+    },
+    "youkaishomecoming:sushi/sauce": {
+      "mayonnaise": {
+        "item": "youkaishomecoming:mayonnaise_bottle"
+      },
+      "sugar": {
+        "item": "minecraft:sugar"
+      }
+    },
+    "youkaishomecoming:sushi/top": {
+      "cod": {
+        "tag": "forge:raw_fishes/cod"
+      },
+      "flesh": {
+        "tag": "youkaishomecoming:raw_flesh"
+      },
+      "lamprey": {
+        "tag": "forge:cooked_fishes/eel"
+      },
+      "otoro": {
+        "tag": "forge:otoro"
+      },
+      "salmon": {
+        "tag": "forge:raw_fishes/salmon"
+      },
+      "tamagoyaki": {
+        "tag": "youkaishomecoming:tamagoyaki"
+      },
+      "tuna": {
+        "tag": "forge:raw_fishes/tuna"
+      }
+    }
+  }
+}
