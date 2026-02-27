@@ -64,6 +64,7 @@ public enum YHDish {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	CUMBERLAND_LOIN(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
+			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	SCHOLAR_GINKGO(Saucer.CERAMIC, DishType.STEAMED, 6, 0.8f, 2, List.of(

@@ -85,6 +85,18 @@ public enum YHFood implements ItemLike {
 	GRILLED_VENISON_SLICE(FoodType.FAST, 6, 0.8f,
 			YHTagGen.COOKED_VENISON, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
+	RAW_BOARCHOP(FoodType.SIMPLE, 4, 0.3f,
+			YHTagGen.RAW_BOAR, DietTagGen.PROTEINS.tag
+	),
+	GRILLED_BOARCHOP(FoodType.SIMPLE, 10, 0.8f,
+			YHTagGen.COOKED_BOAR, DietTagGen.PROTEINS.tag
+	),
+	RAW_BOARCHOP_BITS(FoodType.FAST, 2, 0.3f,
+			YHTagGen.RAW_BOAR, DietTagGen.PROTEINS.tag
+	),
+	GRILLED_BOARCHOP_BITS(FoodType.FAST, 6, 0.8f,
+			YHTagGen.COOKED_BOAR, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
+	),
 	COOKED_MANDRAKE_ROOT(FoodType.SIMPLE, 4, 0.6f, DietTagGen.VEGETABLES.tag),
 
 	ROE(FoodType.SIMPLE, 1, 0.6f,

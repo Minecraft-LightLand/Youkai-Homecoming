@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_boarchop_bits": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:raw_boarchop_bits"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:grilled_boarchop_bits_from_raw_boarchop_bits_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_boarchop_bits",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:grilled_boarchop_bits_from_raw_boarchop_bits_smelting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

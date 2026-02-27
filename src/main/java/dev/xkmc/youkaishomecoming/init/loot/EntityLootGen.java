@@ -85,7 +85,7 @@ public class EntityLootGen {
 	public static void boar(RegistrateEntityLootTables pvd, EntityType<BoarEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-						.add(LootItem.lootTableItem(YHFood.RAW_VENISON.item.get()))//TODO
+						.add(LootItem.lootTableItem(YHFood.RAW_BOARCHOP.item.get()))
 						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire())));
 	}
