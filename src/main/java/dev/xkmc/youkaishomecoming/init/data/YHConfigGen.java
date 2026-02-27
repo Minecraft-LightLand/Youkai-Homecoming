@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
 import dev.xkmc.l2library.serial.config.ConfigDataProvider;
-import dev.xkmc.youkaishomecoming.content.pot.table.model.ModelIngredientData;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.ModelIngredientData;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.data.DataGenerator;

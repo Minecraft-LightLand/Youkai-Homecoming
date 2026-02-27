@@ -75,6 +75,37 @@ public class TableItemManager extends BaseTableItem {
 	public static final VariantModelPart CAL_COVER = COMPLETE_CALI.addPart("cover", 1);
 	public static final VariantModelPart CAL_TOP_SAUCE = COMPLETE_CALI.addPart("sauce", 1);
 
+	@Override
+	public Optional<TableItem> find(Level level, ItemStack stack) {
+		var ans = super.find(level, stack);
+		if (ans.isPresent()) return ans;
+		var preset = FoodModelHelper.find(stack);
+		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
+		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
+		for (var e : rec) {
+			if (ItemStack.isSameItemSameTags(e.getResult(), stack)) {
+				return e.recreate();
+			}
+		}
+		return Optional.empty();
+	}
+
+	public Either<TableItem, Pair<TableItem, List<ItemStack>>> find(Level level, List<ItemStack> list) {
+		TableItem ans = TABLE;
+		List<ItemStack> success = new ArrayList<>();
+		for (var e : list) {
+			var opt = ans.find(level, e);
+			if (opt.isEmpty()) return Either.right(Pair.of(ans, success));
+			success.add(e);
+			ans = opt.get();
+		}
+		return Either.left(ans);
+	}
+
+	public static void init() {
+		TableBambooBowls.init();
+	}
+
 	public static void prepareData() {
 		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
 		SUSHI_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
@@ -125,37 +156,6 @@ public class TableItemManager extends BaseTableItem {
 		for (var part : parts) {
 			part.addMapping(id, item).tex(YoukaisHomecoming.loc("block/table/" + path));
 		}
-	}
-
-	@Override
-	public Optional<TableItem> find(Level level, ItemStack stack) {
-		var ans = super.find(level, stack);
-		if (ans.isPresent()) return ans;
-		var preset = FoodModelHelper.find(stack);
-		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
-		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
-		for (var e : rec) {
-			if (ItemStack.isSameItemSameTags(e.getResult(), stack)) {
-				return e.recreate();
-			}
-		}
-		return Optional.empty();
-	}
-
-	public Either<TableItem, Pair<TableItem, List<ItemStack>>> find(Level level, List<ItemStack> list) {
-		TableItem ans = TABLE;
-		List<ItemStack> success = new ArrayList<>();
-		for (var e : list) {
-			var opt = ans.find(level, e);
-			if (opt.isEmpty()) return Either.right(Pair.of(ans, success));
-			success.add(e);
-			ans = opt.get();
-		}
-		return Either.left(ans);
-	}
-
-	public static void init() {
-		TableBambooBowls.init();
 	}
 
 }
