@@ -18,6 +18,8 @@ import java.util.concurrent.CompletableFuture;
 public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 
 	public static final TagKey<Biome> CRAB_FISHING = asTag("crab_fishing");
+	public static final TagKey<Biome> CHERRY_BIOMES = asTag("cherry_biomes");
+	public static final TagKey<Biome> YH_BIOMES = asTag("youkai_biomes");
 	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
 	public static final TagKey<Biome> TUNA = asTag("spawns/tuna");
 	public static final TagKey<Biome> DEER = asTag("spawns/deer");
@@ -43,38 +45,42 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		super(output, pvd, YoukaisHomecoming.MODID, helper);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags(HolderLookup.Provider pvd) {
+		tag(CHERRY_BIOMES).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST);
+		tag(YH_BIOMES).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST, YHBiomes.ANIMAL_PATH);
 		tag(Tags.Biomes.IS_MAGICAL);
 		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
 		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
-		tag(DEER).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST);
-		tag(BOAR).add(YHBiomes.ANIMAL_PATH);
+		tag(DEER).addTag(YH_BIOMES);
+		tag(BOAR).addTag(YH_BIOMES);
 		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);
-		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP);
-		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST);
+		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, YH_BIOMES);
+		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST,
+				YHBiomes.SAKURA_BIRCH_FOREST, YHBiomes.ANIMAL_PATH);
 		tag(COFFEA).addTag(BiomeTags.IS_JUNGLE);
 		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
 		tag(MANDRAKE).add(Biomes.DARK_FOREST).addTag(Tags.Biomes.IS_MAGICAL);
 		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
 		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS).add(YHBiomes.SAKURA_TAIGA);
-		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA).add(YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_FOREST);
+		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA, YH_BIOMES);
 		tag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
 		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA).add(YHBiomes.SAKURA_TAIGA);
 		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
-		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTag(BiomeTags.IS_FOREST);
+		tag(HAS_RUMIA_NEST).addTag(Tags.Biomes.IS_PLAINS).addTags(BiomeTags.IS_FOREST, YH_BIOMES);
 		tag(HAS_CIRNO_NEST).addTag(Tags.Biomes.IS_SNOWY)
 				.addOptionalTag(new ResourceLocation("c:is_snowy_plains"));
 
 		var cherry = cTag("is_cherry_forest");
 		var sakura = cTag("is_sakura_forest");
 
-		tag(BiomeTags.IS_FOREST).add(YHBiomes.SAKURA_FOREST);
-		tag(cherry).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST)
+		tag(BiomeTags.IS_FOREST).addTag(CHERRY_BIOMES);
+		tag(cherry).add(Biomes.CHERRY_GROVE).addTag(CHERRY_BIOMES)
 				.addOptional(new ResourceLocation("wythers:sakura_forest"));
-		tag(sakura).add(Biomes.CHERRY_GROVE, YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST)
+		tag(sakura).add(Biomes.CHERRY_GROVE).addTag(CHERRY_BIOMES)
 				.addOptional(new ResourceLocation("wythers:sakura_forest"));
 
 		tag(HAS_SHRINE).addTags(cherry, sakura);
