@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_raw_boarchop": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "youkaisfeasts:raw_boarchop"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "youkaisfeasts:steamer_pot"
+        "recipe": "youkaisfeasts:grilled_boarchop_from_raw_boarchop_campfire"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_ingot",
+      "has_raw_boarchop",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "youkaisfeasts:steamer_pot"
+      "youkaisfeasts:grilled_boarchop_from_raw_boarchop_campfire"
     ]
   },
   "sends_telemetry_event": false

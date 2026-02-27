@@ -1,9 +1,15 @@
 {
   "variants": {
-    "open=false": {
+    "open=false,triggered=false": {
       "model": "youkaisfeasts:block/fermentation_tank_lid"
     },
-    "open=true": {
+    "open=false,triggered=true": {
+      "model": "youkaisfeasts:block/fermentation_tank_lid"
+    },
+    "open=true,triggered=false": {
+      "model": "youkaisfeasts:block/fermentation_tank"
+    },
+    "open=true,triggered=true": {
       "model": "youkaisfeasts:block/fermentation_tank"
     }
   }

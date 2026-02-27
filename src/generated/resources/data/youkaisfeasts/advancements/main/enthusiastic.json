@@ -311,6 +311,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaisfeasts:grilled_boarchop": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:grilled_boarchop"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:grilled_boarchop_bits": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:grilled_boarchop_bits"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaisfeasts:grilled_eel_over_rice": {
       "conditions": {
         "item": {
@@ -766,6 +786,26 @@
         "item": {
           "items": [
             "youkaisfeasts:raisin"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:raw_boarchop": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:raw_boarchop"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaisfeasts:raw_boarchop_bits": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaisfeasts:raw_boarchop_bits"
           ]
         }
       },
@@ -1590,6 +1630,18 @@
     ],
     [
       "youkaisfeasts:grilled_venison_slice"
+    ],
+    [
+      "youkaisfeasts:raw_boarchop"
+    ],
+    [
+      "youkaisfeasts:grilled_boarchop"
+    ],
+    [
+      "youkaisfeasts:raw_boarchop_bits"
+    ],
+    [
+      "youkaisfeasts:grilled_boarchop_bits"
     ],
     [
       "youkaisfeasts:roe"

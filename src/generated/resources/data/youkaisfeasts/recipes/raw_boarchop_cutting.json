@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:raw_boarchop"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "youkaisfeasts:raw_boarchop_bits"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

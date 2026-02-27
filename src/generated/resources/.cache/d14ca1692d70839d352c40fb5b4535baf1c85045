@@ -1,18 +1,21 @@
-// 1.20.1	2025-09-01T10:17:23.285295	Tags for minecraft:worldgen/biome mod id youkaisfeasts
+// 1.20.1	2026-02-27T14:06:14.597104	Tags for minecraft:worldgen/biome mod id youkaisfeasts
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/worldgen/biome/is_magical.json
-9c130c85c853001654918c86723dcc6c5dc8cc9b data/minecraft/tags/worldgen/biome/is_forest.json
+10ca24ae11d08b0fc6e5e0ed198fa9669bb72003 data/minecraft/tags/worldgen/biome/is_forest.json
+4f6f0fb267ddf6e5fe068c0009199aea49b7615c data/youkaisfeasts/tags/worldgen/biome/cherry_biomes.json
 89da9126ad573be6114208eedfb9c83c0f74daec data/youkaisfeasts/tags/worldgen/biome/crab_fishing.json
 89db56d359251ee93afac38c2a549d7fb5fc849b data/youkaisfeasts/tags/worldgen/biome/spawns/black_grape.json
+3e26151ba72148ee51d48d75e5dc8241e138d739 data/youkaisfeasts/tags/worldgen/biome/spawns/boar.json
 32d2ab677020b4cf4c5ed0c27d287ba1d668583e data/youkaisfeasts/tags/worldgen/biome/spawns/crab.json
 fc3b068281d5f853517c67fc547c6008b78b4d51 data/youkaisfeasts/tags/worldgen/biome/spawns/crab_mud.json
 e15b055ce59c3b4464866619e9ee96b79984ca4f data/youkaisfeasts/tags/worldgen/biome/spawns/cucumber.json
-4f6f0fb267ddf6e5fe068c0009199aea49b7615c data/youkaisfeasts/tags/worldgen/biome/spawns/deer.json
-1bb061e8345572f3d17824a2bdcdfbc171a80754 data/youkaisfeasts/tags/worldgen/biome/spawns/grape.json
+3e26151ba72148ee51d48d75e5dc8241e138d739 data/youkaisfeasts/tags/worldgen/biome/spawns/deer.json
+9dc06db5f2bbd042d465370117da3ef948fab632 data/youkaisfeasts/tags/worldgen/biome/spawns/grape.json
 18af7656d96433e406a1aebdcb462fecebcf251e data/youkaisfeasts/tags/worldgen/biome/spawns/lamprey.json
 3c404a782d6ccbceaf153a04d5ce101db7d85ded data/youkaisfeasts/tags/worldgen/biome/spawns/no_grape.json
-835c35de6c87a4e2d9653dceb5578a32f082873f data/youkaisfeasts/tags/worldgen/biome/spawns/redbean.json
-854d0d5f0d5c5f2d74fe91a6b19e5a939e73794b data/youkaisfeasts/tags/worldgen/biome/spawns/soybean.json
+06cca06d5811e262eefb73efb7ff5f8f7cb6e277 data/youkaisfeasts/tags/worldgen/biome/spawns/redbean.json
+4540c682cead795cb52f9eedba153ff0944eedf7 data/youkaisfeasts/tags/worldgen/biome/spawns/soybean.json
 8a5e7b85849e84f2f20240eb0df4b58fd42f4d28 data/youkaisfeasts/tags/worldgen/biome/spawns/tea.json
 ec7bbb0c9b5fc5378f8716f54862806404f04360 data/youkaisfeasts/tags/worldgen/biome/spawns/tuna.json
 2baf25447b6e6be292fa28c96583cdcde3854de8 data/youkaisfeasts/tags/worldgen/biome/spawns/udumbara.json
 eb24f6dad1547c2b80dc9cc5c0b1c4a90bec20ab data/youkaisfeasts/tags/worldgen/biome/spawns/white_grape.json
+19fc1dad47d0ae28ddf409409de5d4f03d4e4f02 data/youkaisfeasts/tags/worldgen/biome/youkai_biomes.json

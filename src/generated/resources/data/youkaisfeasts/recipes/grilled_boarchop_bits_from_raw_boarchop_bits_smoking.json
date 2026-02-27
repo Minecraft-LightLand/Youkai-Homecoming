@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaisfeasts:raw_boarchop_bits"
+  },
+  "result": "youkaisfeasts:grilled_boarchop_bits"
+}

@@ -1,0 +1,25 @@
+{
+  "feature": "minecraft:trees_flower_forest",
+  "placement": [
+    {
+      "type": "youkaisfeasts:noise",
+      "high": 0.5,
+      "low": 0.1,
+      "max": 10.0,
+      "min": 3.0,
+      "noise": "youkaisfeasts:path",
+      "reference": 0.0
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

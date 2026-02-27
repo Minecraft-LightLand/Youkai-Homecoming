@@ -1,10 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.entity.deer;
 
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.*;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerEatBlockGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerPanicGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerRelaxGoal;
-import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
+import dev.xkmc.youkaishomecoming.content.entity.common.*;
+import dev.xkmc.youkaishomecoming.content.entity.deer.goal.DeerEatBlockGoal;
+import dev.xkmc.youkaishomecoming.content.entity.deer.goal.DeerPanicGoal;
+import dev.xkmc.youkaishomecoming.content.entity.deer.goal.DeerRelaxGoal;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;

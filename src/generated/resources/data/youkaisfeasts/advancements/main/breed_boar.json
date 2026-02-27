@@ -1,0 +1,40 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "youkaisfeasts:boar"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:bred_animals"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaisfeasts.advancements.main.breed_boar.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:carrot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaisfeasts.advancements.main.breed_boar.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

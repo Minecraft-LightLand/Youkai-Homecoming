@@ -1,5 +1,6 @@
-// 1.20.1	2025-09-01T10:17:23.283021	Youkai's Homecoming Data
+// 1.20.1	2026-02-27T14:06:14.59465	Youkai's Homecoming Data
 3b0ab16b91134b4c3c1af5c700a25e7a19620c7f data/youkaisfeasts/forge/biome_modifier/black_grape.json
+8e6f05186cd3e40f8585c66f0379f78dc518de39 data/youkaisfeasts/forge/biome_modifier/boar.json
 916358c00baf709be57f515a29e904c1d1e9cc19 data/youkaisfeasts/forge/biome_modifier/crab.json
 a8b879ff9d54c425fbcf6b502ea2fe9a34bb8c00 data/youkaisfeasts/forge/biome_modifier/cucumber.json
 5956a4e58902f7351c6c4bf03359fa640b5e9f29 data/youkaisfeasts/forge/biome_modifier/deer.json
@@ -11,6 +12,7 @@ e8a990a55b8aca9710909d8c4c543fbbe3e5754f data/youkaisfeasts/forge/biome_modifier
 e8cf7389df3f580c40ccec7fb6b95245cd7b80ff data/youkaisfeasts/forge/biome_modifier/tuna.json
 6dd46e949e3396a17b657eb523131d8da1e1b19c data/youkaisfeasts/forge/biome_modifier/udumbara.json
 cffc3f5329e130844f8fc399a5a9cb6ccc2dbb49 data/youkaisfeasts/forge/biome_modifier/white_grape.json
+0d03cbaf3a375bb6edc1cfcafddd4eff59e8f516 data/youkaisfeasts/worldgen/biome/animal_path.json
 81d97918aa462056bc92a6efef5b9746b0fd6c6e data/youkaisfeasts/worldgen/biome/sakura_birch_forest.json
 840001cfeb6299045363fd3d8fe054d77e07e625 data/youkaisfeasts/worldgen/biome/sakura_forest.json
 dc6b5dba28e9a94eac2432136ae4e4424ece15b1 data/youkaisfeasts/worldgen/biome/sakura_taiga.json
@@ -22,6 +24,7 @@ f690a5d4652f861d9d5c5a28b2142bfcd1b389dc data/youkaisfeasts/worldgen/configured_
 92453e8b55554c4227425fd46897dce50472473f data/youkaisfeasts/worldgen/configured_feature/tea.json
 22d7c955245a2b66964ae8f6387fc88ce21d2b6e data/youkaisfeasts/worldgen/configured_feature/udumbara.json
 e6e7aa58f461efc3ff3e5f73d0852d27c3d9ddca data/youkaisfeasts/worldgen/configured_feature/white_grape.json
+6b42745e559da8d19711182bcdb4d5c73b9c7b3e data/youkaisfeasts/worldgen/placed_feature/animal_path_oak.json
 60c6b8b38e92239c98fd64fcd29e465a3802a28e data/youkaisfeasts/worldgen/placed_feature/black_grape.json
 c565d45b3f12b0673ee0e9b1bf77edf927be7df1 data/youkaisfeasts/worldgen/placed_feature/cucumber.json
 d478f659e015e582076e9c047de2a9b127e4f893 data/youkaisfeasts/worldgen/placed_feature/red_grape.json

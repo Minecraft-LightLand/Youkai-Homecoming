@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.common;
+package dev.xkmc.youkaishomecoming.content.entity.common;
 
 import net.minecraft.world.entity.ai.goal.Goal;
 

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "youkaisfeasts:raw_boarchop"
+        }
+      ],
+      "functions": [
+        {
+          "count": 0.5,
+          "function": "minecraft:looting_enchant"
+        },
+        {
+          "conditions": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "flags": {
+                  "is_on_fire": true
+                }
+              }
+            }
+          ],
+          "function": "minecraft:furnace_smelt"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "youkaisfeasts:entities/boar"
+}

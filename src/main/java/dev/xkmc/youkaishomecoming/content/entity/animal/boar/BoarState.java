@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
 
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.MobState;
+import dev.xkmc.youkaishomecoming.content.entity.common.MobState;
 import net.minecraft.world.entity.AnimationState;
 import org.jetbrains.annotations.Nullable;
 

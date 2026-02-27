@@ -1,16 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stockpot": {
+    "has_small_iron_pot": {
       "conditions": {
         "items": [
           {
             "items": [
-<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/unordered_cooking/hokkaido_salmon_hotpot.json
               "youkaisfeasts:small_iron_pot"
-========
-              "youkaishomecoming:stockpot"
->>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/advancements/recipes/unordered_cooking/pot_of_power_soup.json
             ]
           }
         ]
@@ -19,28 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/unordered_cooking/hokkaido_salmon_hotpot.json
         "recipe": "youkaisfeasts:hokkaido_salmon_hotpot"
-========
-        "recipe": "youkaishomecoming:pot_of_power_soup"
->>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/advancements/recipes/unordered_cooking/pot_of_power_soup.json
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_stockpot",
+      "has_small_iron_pot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-<<<<<<<< HEAD:src/generated/resources/data/youkaisfeasts/advancements/recipes/unordered_cooking/hokkaido_salmon_hotpot.json
       "youkaisfeasts:hokkaido_salmon_hotpot"
-========
-      "youkaishomecoming:pot_of_power_soup"
->>>>>>>> 1.20/dev:src/generated/resources/data/youkaisfeasts/advancements/recipes/unordered_cooking/pot_of_power_soup.json
     ]
   },
   "sends_telemetry_event": true

@@ -1,24 +1,24 @@
 {
-  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "parent": "youkaisfeasts:main/small_pot",
   "criteria": {
     "0": {
       "conditions": {},
-      "trigger": "youkaisfeasts:cooking"
+      "trigger": "youkaisfeasts:pot_grab"
     }
   },
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.youkaisfeasts.advancements.main.small_pot.description"
+      "translate": "advancements.youkaisfeasts.advancements.main.pot_grab.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "youkaisfeasts:short_iron_pot"
+      "item": "youkaisfeasts:power_soup"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.youkaisfeasts.advancements.main.small_pot.title"
+      "translate": "advancements.youkaisfeasts.advancements.main.pot_grab.title"
     }
   },
   "requirements": [
