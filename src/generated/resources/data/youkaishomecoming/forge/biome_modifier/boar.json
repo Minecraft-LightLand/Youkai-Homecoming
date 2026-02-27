@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#youkaishomecoming:spawns/boar",
+  "spawners": {
+    "type": "youkaishomecoming:boar",
+    "maxCount": 3,
+    "minCount": 2,
+    "weight": 20
+  }
+}

@@ -1,7 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.entity.animal.deer;
 
-import dev.xkmc.youkaishomecoming.content.entity.animal.common.StateMachineMob;
-import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.common.*;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerEatBlockGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerPanicGoal;
+import dev.xkmc.youkaishomecoming.content.entity.animal.deer.goal.DeerRelaxGoal;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.SyncedData;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -59,7 +61,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	public final DeerStateMachine states = new DeerStateMachine(this);
 	public final DeerProperties prop = new DeerProperties(this);
 
-	protected List<DeerStateNotifierGoal> notifiers;
+	protected List<INotifyMoveGoal> notifiers;
 	protected DeerPanicGoal panic;
 	public DeerEatBlockGoal eat;
 
@@ -74,14 +76,19 @@ public class DeerEntity extends Animal implements StateMachineMob {
 
 		goalSelector.addGoal(0, new FloatGoal(this));
 		goalSelector.addGoal(1, panic);
-		goalSelector.addGoal(3, new DeerBreedGoal(this, 1.0D).register(notifiers));
-		goalSelector.addGoal(4, new DeerTemptGoal(this, 1.2D, FOOD_ITEMS.get(), false).register(notifiers));
-		goalSelector.addGoal(5, new DeerFollowParentGoal(this, 1.1D).register(notifiers));
+		goalSelector.addGoal(3, new BreedNotifyGoal<>(this, 1.0D).register(notifiers));
+		goalSelector.addGoal(4, new TemptNotifyGoal<>(this, 1.2D, FOOD_ITEMS.get(), false).register(notifiers));
+		goalSelector.addGoal(5, new FollowParentNotifyGoal<>(this, 1.1D).register(notifiers));
 		goalSelector.addGoal(6, eat);
 		goalSelector.addGoal(7, new DeerRelaxGoal(this));
 		goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		goalSelector.addGoal(13, new RandomLookAroundGoal(this));
+	}
+
+	@Override
+	public List<INotifyMoveGoal> notifiers() {
+		return notifiers == null ? List.of() : notifiers;
 	}
 
 	// core
@@ -201,7 +208,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	}
 
 	protected void playStepSound(BlockPos pos, BlockState state) {
-		playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);//TODO
+		playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);
 	}
 
 	@Nullable

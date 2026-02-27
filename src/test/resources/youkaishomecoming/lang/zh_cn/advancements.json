@@ -99,6 +99,8 @@
 		"breed_deer.description": "用樱饼繁育鹿",
 		"breed_deer.title": "小鹿乱撞",
 		"pot_grab.description": "用小铁锅从矮锅/汤锅中盛出一份食物",
-		"pot_grab.title": "分享喜悦"
+		"pot_grab.title": "分享喜悦",
+		"breed_boar.description": "用胡萝卜，马铃薯，或者甜菜根繁殖野猪",
+		"breed_boar.title": "短鼻子象"
 	}
 }

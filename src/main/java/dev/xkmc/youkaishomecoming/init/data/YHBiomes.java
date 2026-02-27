@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
+import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.youkaishomecoming.content.world.NoisePlacement;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -18,23 +20,33 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.SurfaceWaterDepthFilter;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class YHBiomes {
 
 	public static final ResourceKey<Biome> SAKURA_FOREST = biome("sakura_forest");
 	public static final ResourceKey<Biome> SAKURA_TAIGA = biome("sakura_taiga");
 	public static final ResourceKey<Biome> SAKURA_BIRCH_FOREST = biome("sakura_birch_forest");
+	public static final ResourceKey<Biome> ANIMAL_PATH = biome("animal_path");
 
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_CHERRY = place("sakura_forest_cherry");
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_OAK = place("sakura_forest_oak");
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_BIRCH = place("sakura_forest_birch");
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_SPRUCE = place("sakura_forest_spruce");
 	private static final ResourceKey<PlacedFeature> SAKURA_FOREST_PINE = place("sakura_forest_pine");
+	private static final ResourceKey<PlacedFeature> PATH_OAK = place("animal_path_oak");
+
+	public static void register() {
+
+	}
 
 	private static ResourceKey<Biome> biome(String id) {
+		YoukaisHomecoming.REGISTRATE.addRawLang("biome." + YoukaisHomecoming.MODID + "." + id, RegistrateLangProvider.toEnglishName(id));
 		return ResourceKey.create(Registries.BIOME, YoukaisHomecoming.loc(id));
 	}
 
@@ -54,6 +66,9 @@ public class YHBiomes {
 				VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.5F, 1)));
 		PlacementUtils.register(ctx, SAKURA_FOREST_PINE, freg.getOrThrow(VegetationFeatures.TREES_OLD_GROWTH_PINE_TAIGA),
 				VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.5F, 1)));
+		PlacementUtils.register(ctx, PATH_OAK, freg.getOrThrow(VegetationFeatures.TREES_FLOWER_FOREST),
+				List.of(NoisePlacement.of(YoukaisHomecoming.loc("path"), 0, 0.1, 0.5, 3, 10),
+						SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()));
 	}
 
 	public static void registerBiomes(BootstapContext<Biome> ctx) {
@@ -62,6 +77,28 @@ public class YHBiomes {
 		ctx.register(SAKURA_FOREST, forest(pfreg, cwreg, SAKURA_FOREST_CHERRY, SAKURA_FOREST_OAK));
 		ctx.register(SAKURA_BIRCH_FOREST, forest(pfreg, cwreg, SAKURA_FOREST_CHERRY, SAKURA_FOREST_BIRCH));
 		ctx.register(SAKURA_TAIGA, forest(pfreg, cwreg, SAKURA_FOREST_PINE, SAKURA_FOREST_SPRUCE));
+		ctx.register(ANIMAL_PATH, path(pfreg, cwreg, PATH_OAK));
+	}
+
+
+	@SafeVarargs
+	public static Biome path(HolderGetter<PlacedFeature> pfreg, HolderGetter<ConfiguredWorldCarver<?>> cwreg, ResourceKey<PlacedFeature>... trees) {
+		BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(pfreg, cwreg);
+		globalOverworldGeneration(gen);
+		Music music = Musics.createGameMusic(SoundEvents.MUSIC_BIOME_FLOWER_FOREST);
+		BiomeDefaultFeatures.addDefaultOres(gen);
+		BiomeDefaultFeatures.addDefaultSoftDisks(gen);
+		for (var tree : trees)
+			gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, tree);
+		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_FOREST_FLOWERS);
+		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_FLOWER_FOREST);
+		gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
+
+		BiomeDefaultFeatures.addDefaultMushrooms(gen);
+		BiomeDefaultFeatures.addDefaultExtraVegetation(gen);
+		MobSpawnSettings.Builder mob = new MobSpawnSettings.Builder();
+		BiomeDefaultFeatures.commonSpawns(mob);
+		return biome(0.7f, 0.8F, mob, gen, music);
 	}
 
 	@SafeVarargs

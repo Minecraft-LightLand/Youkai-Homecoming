@@ -6,6 +6,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Mob;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class MobStateMachine<
 		E extends Mob & StateMachineMob,
@@ -96,6 +97,19 @@ public abstract class MobStateMachine<
 	public void read(FriendlyByteBuf data) {
 		state = allStates[data.readInt()];
 		transitionTo(state, data.readInt());
+	}
+
+	public boolean isMobile() {
+		return true;
+	}
+
+	public boolean wantsToMove() {
+		for (var e : mob.notifiers()) {
+			if (e.wantsToMove()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

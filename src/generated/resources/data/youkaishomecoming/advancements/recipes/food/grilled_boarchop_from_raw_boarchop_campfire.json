@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_boarchop": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "youkaishomecoming:raw_boarchop"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaishomecoming:grilled_boarchop_from_raw_boarchop_campfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_boarchop",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaishomecoming:grilled_boarchop_from_raw_boarchop_campfire"
+    ]
+  },
+  "sends_telemetry_event": false
+}

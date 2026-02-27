@@ -40,7 +40,7 @@ public enum YHBowl implements ItemLike {
 	POWER_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 6000, 0, 1)
+			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 6000, 1, 1)
 	), YHTagGen.IRON_BOWL_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	POTATO_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),

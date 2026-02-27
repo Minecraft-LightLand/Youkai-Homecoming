@@ -161,7 +161,12 @@ public class YHAdvGen {
 		root.create("crab_grab", YHItems.CRAB_BUCKET.asItem(),
 				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CRAB_GRAB.getId(), ContextAwarePredicate.ANY)),
 				"Crab Grab", "Have a crab grab your water bucket when attempting to bucket a crab");
-		root.create("small_pot", YHBlocks.SHORT_POT.asStack(),
+		root.create("breed_boar", Items.CARROT,
+				CriterionBuilder.one(BredAnimalsTrigger.TriggerInstance.bredAnimals(
+						EntityPredicate.Builder.entity().of(YHEntities.BOAR.get()))),
+				"Pig with Tusks", "Breed boar with carrot, potato, or beetroot");
+
+		root.create("small_pot", YHBlocks.IRON_POT.asStack(),
 						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
 						"Hotpot", "Cooking with small iron pot / short pot / stockpot")
 				.create("pot_grab", YHBowl.POWER_SOUP.asItem(),

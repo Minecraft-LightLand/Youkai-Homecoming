@@ -69,13 +69,4 @@ public class DeerStateMachine extends MobStateMachine<DeerEntity, DeerState, Dee
 		}
 	}
 
-	public boolean mustStopRelax() {
-		if (mob.notifiers == null) return false;
-		for (var e : mob.notifiers) {
-			if (e.shouldStopRelax()) {
-				return true;
-			}
-		}
-		return false;
-	}
 }

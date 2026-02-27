@@ -21,6 +21,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> LAMPREY = asTag("spawns/lamprey");
 	public static final TagKey<Biome> TUNA = asTag("spawns/tuna");
 	public static final TagKey<Biome> DEER = asTag("spawns/deer");
+	public static final TagKey<Biome> BOAR = asTag("spawns/boar");
 	public static final TagKey<Biome> CRAB = asTag("spawns/crab");
 	public static final TagKey<Biome> CRAB_MUD = asTag("spawns/crab_mud");
 	public static final TagKey<Biome> SOYBEAN = asTag("spawns/soybean");
@@ -48,6 +49,7 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
 		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
 		tag(DEER).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST);
+		tag(BOAR).add(YHBiomes.ANIMAL_PATH);
 		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
 		tag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);

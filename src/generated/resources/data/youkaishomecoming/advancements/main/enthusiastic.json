@@ -541,6 +541,26 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "youkaishomecoming:grilled_boarchop": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_boarchop"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:grilled_boarchop_bits": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:grilled_boarchop_bits"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "youkaishomecoming:grilled_eel_over_rice": {
       "conditions": {
         "item": {
@@ -1056,6 +1076,26 @@
         "item": {
           "items": [
             "youkaishomecoming:raisin"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_boarchop": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_boarchop"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "youkaishomecoming:raw_boarchop_bits": {
+      "conditions": {
+        "item": {
+          "items": [
+            "youkaishomecoming:raw_boarchop_bits"
           ]
         }
       },
@@ -1988,6 +2028,18 @@
     ],
     [
       "youkaishomecoming:grilled_venison_slice"
+    ],
+    [
+      "youkaishomecoming:raw_boarchop"
+    ],
+    [
+      "youkaishomecoming:grilled_boarchop"
+    ],
+    [
+      "youkaishomecoming:raw_boarchop_bits"
+    ],
+    [
+      "youkaishomecoming:grilled_boarchop_bits"
     ],
     [
       "youkaishomecoming:cooked_mandrake_root"
