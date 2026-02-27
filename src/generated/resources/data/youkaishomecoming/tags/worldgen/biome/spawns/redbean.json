@@ -3,6 +3,8 @@
     "minecraft:sunflower_plains",
     "minecraft:bamboo_jungle",
     "minecraft:old_growth_birch_forest",
-    "minecraft:birch_forest"
+    "minecraft:birch_forest",
+    "youkaishomecoming:sakura_birch_forest",
+    "youkaishomecoming:animal_path"
   ]
 }
