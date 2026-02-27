@@ -13,13 +13,17 @@ public class BoarSleepGoal extends Goal {
 
 	public BoarSleepGoal(BoarEntity mob) {
 		this.mob = mob;
-		setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP));
+		setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP, Flag.LOOK));
 	}
 
 	public boolean canUse() {
 		if (!mob.states.canSleep()) return false;
 		if (mob.states.isSleeping()) return true;
 		return mob.getRandom().nextInt(mob.prop.sleepiness()) == 0;
+	}
+
+	public boolean isInterruptable() {
+		return false;
 	}
 
 	@Override

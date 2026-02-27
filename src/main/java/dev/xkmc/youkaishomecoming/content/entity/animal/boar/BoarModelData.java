@@ -537,7 +537,7 @@ public class BoarModelData {
 	}
 
 	static {
-		SLEEP_END = AnimationDefinition.Builder.withLength(2.0F).looping()
+		SLEEP_END = AnimationDefinition.Builder.withLength(2.0F)
 				.addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 						new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -70.0F), AnimationChannel.Interpolations.CATMULLROM),
 						new Keyframe(0.4583F, KeyframeAnimations.degreeVec(0.0F, 0.0F, -50.0F), AnimationChannel.Interpolations.CATMULLROM),

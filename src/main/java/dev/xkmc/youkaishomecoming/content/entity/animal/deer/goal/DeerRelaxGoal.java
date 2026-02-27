@@ -13,7 +13,7 @@ public class DeerRelaxGoal extends Goal {
 
 	public DeerRelaxGoal(DeerEntity mob) {
 		this.mob = mob;
-		setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP));
+		setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP, Flag.LOOK));
 	}
 
 	public boolean canUse() {
@@ -22,6 +22,10 @@ public class DeerRelaxGoal extends Goal {
 		if (mob.getRandom().nextInt(mob.prop.relaxWillingness()) != 0)
 			return false;
 		else return mob.eat.canEat();
+	}
+
+	public boolean isInterruptable() {
+		return false;
 	}
 
 	@Override
