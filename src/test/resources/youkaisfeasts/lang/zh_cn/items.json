@@ -100,7 +100,11 @@
 		"han_palace": "汉宫藏娇",
 		"tofu_crab_stew": "豆腐蟹煲",
 		"big_spoon": "大汤勺",
-		"camellia": "山茶花"
+		"camellia": "山茶花",
+		"grilled_boarchop": "烤野猪肉",
+		"grilled_boarchop_bits": "烤野猪肉丁",
+		"raw_boarchop": "生野猪肉",
+		"raw_boarchop_bits": "生野猪肉丁"
 	},
 	"fluid.youkaisfeasts":{
 		"cream": "奶油"
@@ -113,6 +117,7 @@
 					"lamprey": "八目鳗",
 					"tuna": "金枪鱼",
 					"deer": "鹿",
+					"boar": "野猪",
 					"crab": "螃蟹"
 				},
 				{

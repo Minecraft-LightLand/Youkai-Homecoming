@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarEntity;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.crab.CrabEntity;
 import dev.xkmc.youkaishomecoming.content.entity.crab.CrabRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
@@ -24,6 +26,7 @@ public class YHEntities {
 	public static final EntityEntry<LampreyEntity> LAMPREY;
 	public static final EntityEntry<TunaEntity> TUNA;
 	public static final EntityEntry<DeerEntity> DEER;
+	public static final EntityEntry<BoarEntity> BOAR;
 	public static final EntityEntry<CrabEntity> CRAB;
 	public static final EntityEntry<ChairEntity> CHAIR;
 
@@ -57,7 +60,14 @@ public class YHEntities {
 				.spawnEgg(0xc77e55, 0xe8ddd0).build()
 				.loot(EntityLootGen::deer).register();
 
-		CRAB = YoukaisHomecoming.REGISTRATE
+		BOAR = YoukaisHomecoming.REGISTRATE
+					.entity("boar", BoarEntity::new, MobCategory.CREATURE)
+					.properties(e -> e.sized(1f, 1f).clientTrackingRange(10))
+					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules)
+					.attributes(BoarEntity::createAttributes)
+					.renderer(() -> BoarRenderer::new)
+					.spawnEgg(0x60554A, 0x3E342F).build()
+					.loot(EntityLootGen::boar).register();CRAB = YoukaisHomecoming.REGISTRATE
 				.entity("crab", CrabEntity::new, MobCategory.WATER_AMBIENT)
 				.properties(e -> e.sized(0.6f, 0.3f).clientTrackingRange(10))
 				.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)

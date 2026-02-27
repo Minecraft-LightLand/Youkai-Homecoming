@@ -79,6 +79,8 @@ public class YoukaisHomecoming {
 		YHEntities.register();
 		YHSounds.register();
 		YHGLMProvider.register();
+		YHWorldGen.register();
+		YHBiomes.register();
 		YHCriteriaTriggers.register();
 		YHModConfig.init();
 		TableItemManager.init();

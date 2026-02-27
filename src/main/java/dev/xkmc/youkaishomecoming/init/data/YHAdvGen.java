@@ -32,13 +32,17 @@ public class YHAdvGen {
 		var root = b.root("welcome_to_gensokyo", YHItems.BLACK_TEA_BAG.asStack(),
 				CriterionBuilder.one(PlayerTrigger.TriggerInstance.tick()),
 				"Gensokyo Delight", "Welcome To Gensokyo");
-		root.create("sweet", YHFood.MOCHI.item.asStack(),
-						CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
-								ItemPredicate.Builder.item().of(YHTagGen.DANGO).build())),
-						"Sweet?", "Eat a Mochi")
-				.create("hmm", YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.asStack(),
-						CriterionBuilder.item(YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.get()),
-						"Hmm... Is it right?", "Get a Sweet Ormosia Mochi Mixed Boiled");
+		var dango = root.create("sweet", YHFood.MOCHI.item.asStack(),
+				CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
+						ItemPredicate.Builder.item().of(YHTagGen.DANGO).build())),
+				"Sweet?", "Eat a Mochi");
+		dango.create("breed_deer", YHFood.SAKURA_MOCHI.asItem(),
+				CriterionBuilder.one(BredAnimalsTrigger.TriggerInstance.bredAnimals(
+						EntityPredicate.Builder.entity().of(YHEntities.DEER.get()))),
+				"Oh Deer", "Breed deer with sakura mochi");
+		dango.create("hmm", YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.asStack(),
+				CriterionBuilder.item(YHFood.SWEET_ORMOSIA_MOCHI_MIXED_BOILED.item.get()),
+				"Hmm... Is it right?", "Get a Sweet Ormosia Mochi Mixed Boiled");
 		root.create("soybean", YHCrops.SOYBEAN.getSeed(),
 				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 						LocationPredicate.Builder.location().setBlock(
@@ -120,9 +124,17 @@ public class YHAdvGen {
 		root.create("crab_grab", YHItems.CRAB_BUCKET.asItem(),
 				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CRAB_GRAB.getId(), ContextAwarePredicate.ANY)),
 				"Crab Grab", "Have a crab grab your water bucket when attempting to bucket a crab");
-		root.create("small_pot", YHBlocks.SHORT_POT.asStack(),
-				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
-				"Hotpot", "Cooking with small iron pot / short pot / stockpot");
+		root.create("breed_boar", Items.CARROT,
+				CriterionBuilder.one(BredAnimalsTrigger.TriggerInstance.bredAnimals(
+						EntityPredicate.Builder.entity().of(YHEntities.BOAR.get()))),
+				"Pig with Tusks", "Breed boar with carrot, potato, or beetroot");
+
+		root.create("small_pot", YHBlocks.IRON_POT.asStack(),
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
+						"Hotpot", "Cooking with small iron pot / short pot / stockpot")
+				.create("pot_grab", YHBowl.POWER_SOUP.asItem(),
+						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.POT_GRAB.getId(), ContextAwarePredicate.ANY)),
+						"Shared Enjoyment", "Use small iron pot to take a serve of food from short pot / stockpot");
 		var steam = root.create("steamer", YHBlocks.STEAMER_POT.asStack(),
 				CriterionBuilder.one(SteamTrigger.steam(MinMaxBounds.Ints.ANY)),
 				"Steam and Racks", "Steam some food");

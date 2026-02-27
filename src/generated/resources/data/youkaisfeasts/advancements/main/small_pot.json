@@ -6,6 +6,21 @@
       "trigger": "youkaisfeasts:cooking"
     }
   },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.youkaishomecoming.advancements.main.small_pot.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "youkaishomecoming:short_iron_pot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.youkaishomecoming.advancements.main.small_pot.title"
+    }
+  },
   "requirements": [
     [
       "0"

@@ -3,6 +3,8 @@ package dev.xkmc.youkaishomecoming.init;
 import dev.xkmc.youkaishomecoming.content.client.CamelliaHeadDeco;
 import dev.xkmc.youkaishomecoming.content.client.CamelliaHeadLayer;
 import dev.xkmc.youkaishomecoming.content.client.YHRecipeCategories;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarModel;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarModelData;
 import dev.xkmc.youkaishomecoming.content.entity.crab.CrabModel;
 import dev.xkmc.youkaishomecoming.content.entity.crab.CrabModelData;
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerModel;
@@ -68,6 +70,7 @@ public class YHClient {
 		event.registerLayerDefinition(LampreyModel.LAYER_LOCATION, LampreyModel::createBodyLayer);
 		event.registerLayerDefinition(TunaModel.LAYER_LOCATION, TunaModel::createBodyLayer);
 		event.registerLayerDefinition(DeerModel.LAYER_LOCATION, DeerModelData::createBodyLayer);
+		event.registerLayerDefinition(BoarModel.LAYER_LOCATION, BoarModelData::createBodyLayer);
 		event.registerLayerDefinition(CrabModel.LAYER_LOCATION, CrabModelData::createBodyLayer);
 	}
 

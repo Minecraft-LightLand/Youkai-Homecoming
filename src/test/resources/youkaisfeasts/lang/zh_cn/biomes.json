@@ -1,5 +1,8 @@
 {
 	"biome.youkaisfeasts": {
-		"sakura_forest": "樱花森林"
+		"sakura_forest": "樱花森林",
+		"sakura_birch_forest": "樱花白桦林",
+		"sakura_taiga": "樱花针叶林",
+		"animal_path": "兽道"
 	}
 }

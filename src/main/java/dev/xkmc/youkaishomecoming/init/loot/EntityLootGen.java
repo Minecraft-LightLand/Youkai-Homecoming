@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
+import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarEntity;
 import dev.xkmc.youkaishomecoming.content.entity.crab.CrabEntity;
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
@@ -71,6 +72,14 @@ public class EntityLootGen {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 						.add(LootItem.lootTableItem(YHFood.RAW_VENISON.item.get()))
+						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
+						.apply(onFire())));
+	}
+
+	public static void boar(RegistrateEntityLootTables pvd, EntityType<BoarEntity> type) {
+		pvd.add(type, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.add(LootItem.lootTableItem(YHFood.RAW_BOARCHOP.item.get()))
 						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire())));
 	}

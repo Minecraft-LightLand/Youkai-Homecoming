@@ -63,6 +63,7 @@ public class YHRecipeGen {
 			foodCut(pvd, YHFood.RAW_LAMPREY, YHFood.ROASTED_LAMPREY, YHFood.RAW_LAMPREY_FILLET, YHFood.ROASTED_LAMPREY_FILLET, 2);
 			foodCut(pvd, YHFood.RAW_TUNA, YHFood.SEARED_TUNA, YHFood.RAW_TUNA_SLICE, YHFood.SEARED_TUNA_SLICE, 3);
 			foodCut(pvd, YHFood.RAW_VENISON, YHFood.GRILLED_VENISON, YHFood.RAW_VENISON_SLICE, YHFood.GRILLED_VENISON_SLICE, 2);
+			foodCut(pvd, YHFood.RAW_BOARCHOP, YHFood.GRILLED_BOARCHOP, YHFood.RAW_BOARCHOP_BITS, YHFood.GRILLED_BOARCHOP_BITS, 2);
 			food(pvd, YHFood.TOFU, YHFood.OILY_BEAN_CURD);
 			pvd.stonecutting(DataIngredient.items(Items.CLAY_BALL), RecipeCategory.MISC, YHItems.CLAY_SAUCER);
 			pvd.stonecutting(DataIngredient.items(Items.BAMBOO_BLOCK), RecipeCategory.MISC, YHBlocks.RACK);
@@ -115,7 +116,7 @@ public class YHRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BasketBlock.BASKET, 1)::unlockedBy, ModItems.CANVAS.get())
 					.pattern("S S").pattern("PPP")
 					.define('S', Items.BAMBOO)
-					.define('P',  ModItems.CANVAS.get())
+					.define('P', ModItems.CANVAS.get())
 					.save(pvd);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, YHBlocks.STEAMER_POT)::unlockedBy, Items.IRON_INGOT)
@@ -659,9 +660,7 @@ public class YHRecipeGen {
 
 				unlock(pvd, new UnorderedPotRecipeBuilder(YHPotFood.POWER_SOUP, 400)::unlockedBy, YHBlocks.STOCKPOT.asItem())
 						.add(soy).add(YHTagGen.SOYBEAN)
-						.add(TagRef.RAW_PORK)
-						.add(TagRef.RAW_BEEF)
-						.add(TagRef.RAW_MUTTON)
+						.add(YHTagGen.RAW_BOAR)
 						.add(YHTagGen.RAW_VENISON)
 						.add(Items.KELP)
 						.add(Items.CARROT)
@@ -776,8 +775,8 @@ public class YHRecipeGen {
 
 			CookingPotRecipeBuilder.cookingPotRecipe(YHDish.CUMBERLAND_LOIN.block.get(), 1, 200, 0.1f, YHItems.SAUCER.get())
 					.setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-					.addIngredient(TagRef.RAW_PORK)
-					.addIngredient(TagRef.RAW_PORK)
+					.addIngredient(YHTagGen.RAW_BOAR)
+					.addIngredient(YHTagGen.RAW_BOAR)
 					.addIngredient(ModItems.TOMATO_SAUCE.get())
 					.addIngredient(YHItems.SOY_SAUCE_BOTTLE.item)
 					.addIngredient(TagRef.FOOD_CABBAGE)

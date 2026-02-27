@@ -26,6 +26,7 @@ public class GensokyoRegion extends Region {
 					builder.replaceBiome(Biomes.OLD_GROWTH_BIRCH_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
 					builder.replaceBiome(Biomes.TAIGA, YHBiomes.SAKURA_TAIGA);
 					builder.replaceBiome(Biomes.OLD_GROWTH_SPRUCE_TAIGA, YHBiomes.SAKURA_TAIGA);
+					builder.replaceBiome(Biomes.PLAINS, YHBiomes.ANIMAL_PATH);
 				}
 		);
 	}
