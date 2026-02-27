@@ -207,6 +207,7 @@ public class YoukaisHomecoming {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		TableItemManager.prepareData();
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
@@ -222,6 +223,7 @@ public class YoukaisHomecoming {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(server, new YHConfigGen(gen));
+		gen.addProvider(event.includeClient(), new AdditionalModelProvider(output, MODID));
 		var reg = new YHDatapackRegistriesGen(output, pvd);
 		gen.addProvider(server, reg);
 		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));
