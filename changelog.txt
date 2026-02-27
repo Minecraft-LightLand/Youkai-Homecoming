@@ -1,3 +1,6 @@
+0.4.2
+- Animal Path and Boar
+
 0.4.1
 - Fix Deer crash
 - Deer transform into sakura deer after eating pink petals
