@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-27T11:22:56.152082	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2026-02-27T23:16:55.312472	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -2994,11 +2994,11 @@ afb0c120696bb8ef79842b6001c1545dc96dd856 data/youkaishomecoming/loot_tables/crab
 141e06469998de8d780c780cf9eb22bf9e49c468 data/youkaishomecoming/loot_tables/crab_digging/sand_base.json
 224f7f6864b4f0d5395d86c885ac620464d95229 data/youkaishomecoming/loot_tables/crab_digging/sand_beach.json
 63a043dca8de940b56b70b746d377f90bdeba27c data/youkaishomecoming/loot_tables/crab_digging/sand_river.json
-85e839c88b224950d9b895cb7498cac03b00503f data/youkaishomecoming/loot_tables/entities/boar.json
+766cff11ad4c78c39c20c53c0b4dfc18552c805c data/youkaishomecoming/loot_tables/entities/boar.json
 2d60bcfd15ed968c17bd373e8a5407550c99511c data/youkaishomecoming/loot_tables/entities/cirno.json
 86e480df85b508d0a0b644837e28edabcc1e05ff data/youkaishomecoming/loot_tables/entities/clownpiece.json
 9a8700588fabd845e94221cfdf8dd7ea392e3c72 data/youkaishomecoming/loot_tables/entities/crab.json
-6987c45a0a5bcdb107c4e9925305092d8421fafc data/youkaishomecoming/loot_tables/entities/deer.json
+448117aca1c457c104cb6390c98fd0ed26a2104e data/youkaishomecoming/loot_tables/entities/deer.json
 685c0247a623c6c3d7cb15814154f3f937f95db4 data/youkaishomecoming/loot_tables/entities/eternity_larva.json
 2bd5478ee9bc964d9bd7104ea061afe433e71057 data/youkaishomecoming/loot_tables/entities/fairy.json
 6290f59963dc9129a1cb71a561dea49d60e01ff5 data/youkaishomecoming/loot_tables/entities/kirisame_marisa.json
