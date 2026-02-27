@@ -1,3 +1,6 @@
+2.6.3
+- Animal Path and Boar
+
 2.6.2
 - Fully tagify table recipes
 - redstone can toggle fermentation tank cap
