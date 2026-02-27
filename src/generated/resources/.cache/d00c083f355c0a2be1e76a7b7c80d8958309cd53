@@ -1,5 +1,6 @@
-// 1.20.1	2025-10-20T20:53:47.456097	Youkai's Homecoming Data
+// 1.20.1	2026-02-27T13:16:33.405738	Youkai's Homecoming Data
 9e4e489742440917ef2d97cacb52d18da6047499 data/youkaishomecoming/forge/biome_modifier/black_grape.json
+c9fb35aba0afa18be48ceb286e3f7cb4c23ecd7b data/youkaishomecoming/forge/biome_modifier/boar.json
 4c53f3215ef2e35056b33ec837c7b88840d98d6f data/youkaishomecoming/forge/biome_modifier/coffea.json
 b1c80642cfc70f6c1287b298fb1e13e2a5032747 data/youkaishomecoming/forge/biome_modifier/crab.json
 57ef6fa4123f3c39981b3d7d8dff4519a3a36f53 data/youkaishomecoming/forge/biome_modifier/cucumber.json
@@ -13,6 +14,7 @@ ca641df94c1e7c8c2a1afc23ebda50af7bcb67ad data/youkaishomecoming/forge/biome_modi
 4aebe0825ded9d30c9cc110983e220c536b1ee9b data/youkaishomecoming/forge/biome_modifier/tuna.json
 7fe0d3aed357bd96923529245e8f40deb14c4665 data/youkaishomecoming/forge/biome_modifier/udumbara.json
 1eb2476fd174d93827496bb1366574f72ccf9000 data/youkaishomecoming/forge/biome_modifier/white_grape.json
+a2ea9a2a70e0fe4a26481338607c35bacfe1bf9e data/youkaishomecoming/worldgen/biome/animal_path.json
 20c60394e72e5487c52b38be8892ee3aede52631 data/youkaishomecoming/worldgen/biome/sakura_birch_forest.json
 a9512a45f60c03413390697ae80273dd6c6cd079 data/youkaishomecoming/worldgen/biome/sakura_forest.json
 c27a63528e77d93a8e0524efb4f31ff0a54a9679 data/youkaishomecoming/worldgen/biome/sakura_taiga.json
@@ -26,6 +28,7 @@ ed51316bfd264e2ec664fa281777d35890eae568 data/youkaishomecoming/worldgen/configu
 1c0edc1b912c95471250a06dc9d7829cc64a8785 data/youkaishomecoming/worldgen/configured_feature/tea.json
 78b83b7237997064e61def2eeda76a2b41f8d139 data/youkaishomecoming/worldgen/configured_feature/udumbara.json
 7cc89b3cebcec2e953ece38ed5798527d68b5270 data/youkaishomecoming/worldgen/configured_feature/white_grape.json
+064e55adf434e73022cae7b94cab746f23e51636 data/youkaishomecoming/worldgen/placed_feature/animal_path_oak.json
 5ad900844b35adb928fec87be7e3a91d9aaf8438 data/youkaishomecoming/worldgen/placed_feature/black_grape.json
 dfb494e6ed40e20dafe9add764f047be7068bd75 data/youkaishomecoming/worldgen/placed_feature/coffea.json
 84eefd450fabcd986fa581d46237b37fca65a159 data/youkaishomecoming/worldgen/placed_feature/cucumber.json
