@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateEntityLootTables;
+import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarEntity;
 import dev.xkmc.youkaishomecoming.content.entity.crab.CrabEntity;
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
@@ -68,6 +69,7 @@ public class EntityLootGen {
 												.build()).build()))
 				));
 	}
+
 	public static void deer(RegistrateEntityLootTables pvd, EntityType<DeerEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()

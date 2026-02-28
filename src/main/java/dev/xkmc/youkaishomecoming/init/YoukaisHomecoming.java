@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2serial.serialization.custom_handler.Handlers;
 import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;

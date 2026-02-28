@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-27T14:06:14.598227	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2026-02-28T19:13:22.898295	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 4a13d28320dfac1d342986f42606eadc7f7139f3 assets/youkaisfeasts/blockstates/apple_basket.json
@@ -1850,9 +1850,9 @@ ecc34669398d68a98b8a031315d8de26bb89b21b data/youkaisfeasts/loot_tables/blocks/w
 7f3f075e807558df7de2818092986fd6d509a37e data/youkaisfeasts/loot_tables/crab_digging/sand_base.json
 48293587ef060fd811c9e80330b8ac21aacbabd4 data/youkaisfeasts/loot_tables/crab_digging/sand_beach.json
 6463b16020346b96b3a360afcc5e1c4bfa479599 data/youkaisfeasts/loot_tables/crab_digging/sand_river.json
-917ca7ef35ab573bae84791e1e2c931c6360d1af data/youkaisfeasts/loot_tables/entities/boar.json
+4c6bcd22bf696b5e524c413f2ae9e765dafbdd64 data/youkaisfeasts/loot_tables/entities/boar.json
 568195b0f87e6150fde431183423b363e3ff578b data/youkaisfeasts/loot_tables/entities/crab.json
-9adf823f28a5ea32dd8f70b727e09bafc44c2eac data/youkaisfeasts/loot_tables/entities/deer.json
+6dd6206ed753ce9a3438639e5a34b5a051bb52ad data/youkaisfeasts/loot_tables/entities/deer.json
 5f1e26e0ecf848a91eadc512dea677666edfc416 data/youkaisfeasts/loot_tables/entities/lamprey.json
 e87d2333015965f7e6d3c6bbad50d6e0b2d8ce9b data/youkaisfeasts/loot_tables/entities/tuna.json
 47e8822f73fd1050a7329a19fc3cde66d2e6ab97 data/youkaisfeasts/loot_tables/udumbara_chest_loot.json

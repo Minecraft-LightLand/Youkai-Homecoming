@@ -1,6 +1,6 @@
 {
   "ingredients": {
-    "youkaishomecoming:california/cover": {
+    "youkaisfeasts:california/cover": {
       "crab_roe": {
         "tag": "forge:roes/crab"
       },
@@ -8,7 +8,7 @@
         "tag": "forge:roes/salmon"
       }
     },
-    "youkaishomecoming:california/sauce": {
+    "youkaisfeasts:california/sauce": {
       "mayonnaise": {
         "tag": "forge:bottles/mayonnaise"
       },
@@ -16,7 +16,7 @@
         "tag": "forge:bottles/soy_sauce"
       }
     },
-    "youkaishomecoming:california/top": {
+    "youkaisfeasts:california/top": {
       "cod": {
         "tag": "forge:raw_fishes/cod"
       },
@@ -30,7 +30,7 @@
         "tag": "forge:raw_fishes/tuna"
       }
     },
-    "youkaishomecoming:gunkan/top": {
+    "youkaisfeasts:gunkan/top": {
       "crab_roe": {
         "tag": "forge:roes/crab"
       },
@@ -44,7 +44,7 @@
         "item": "minecraft:seagrass"
       }
     },
-    "youkaishomecoming:open_california/ingredient": {
+    "youkaisfeasts:open_california/ingredient": {
       "beetroot": {
         "item": "minecraft:beetroot"
       },
@@ -67,7 +67,7 @@
         "tag": "forge:raw_fishes/tuna"
       }
     },
-    "youkaishomecoming:open_california/sauce": {
+    "youkaisfeasts:open_california/sauce": {
       "mayonnaise": {
         "tag": "forge:bottles/mayonnaise"
       },
@@ -75,7 +75,7 @@
         "tag": "forge:bottles/soy_sauce"
       }
     },
-    "youkaishomecoming:open_futomaki/ingredient": {
+    "youkaisfeasts:open_futomaki/ingredient": {
       "beetroot": {
         "item": "minecraft:beetroot"
       },
@@ -98,7 +98,7 @@
         "tag": "forge:raw_fishes/tuna"
       }
     },
-    "youkaishomecoming:open_futomaki/sauce": {
+    "youkaisfeasts:open_futomaki/sauce": {
       "mayonnaise": {
         "tag": "forge:bottles/mayonnaise"
       },
@@ -106,7 +106,7 @@
         "tag": "forge:bottles/soy_sauce"
       }
     },
-    "youkaishomecoming:open_hosomaki/ingredient": {
+    "youkaisfeasts:open_hosomaki/ingredient": {
       "beetroot": {
         "item": "minecraft:beetroot"
       },
@@ -129,7 +129,7 @@
         "tag": "forge:raw_fishes/tuna"
       }
     },
-    "youkaishomecoming:open_hosomaki/sauce": {
+    "youkaisfeasts:open_hosomaki/sauce": {
       "mayonnaise": {
         "tag": "forge:bottles/mayonnaise"
       },
@@ -137,26 +137,23 @@
         "tag": "forge:bottles/soy_sauce"
       }
     },
-    "youkaishomecoming:sushi/curd": {},
-    "youkaishomecoming:sushi/kelp": {
+    "youkaisfeasts:sushi/curd": {},
+    "youkaisfeasts:sushi/kelp": {
       "kelp": {
         "item": "minecraft:dried_kelp"
       }
     },
-    "youkaishomecoming:sushi/sauce": {
+    "youkaisfeasts:sushi/sauce": {
       "mayonnaise": {
-        "item": "youkaishomecoming:mayonnaise_bottle"
+        "item": "youkaisfeasts:mayonnaise_bottle"
       },
       "sugar": {
         "item": "minecraft:sugar"
       }
     },
-    "youkaishomecoming:sushi/top": {
+    "youkaisfeasts:sushi/top": {
       "cod": {
         "tag": "forge:raw_fishes/cod"
-      },
-      "flesh": {
-        "tag": "youkaishomecoming:raw_flesh"
       },
       "lamprey": {
         "tag": "forge:cooked_fishes/eel"
@@ -168,7 +165,7 @@
         "tag": "forge:raw_fishes/salmon"
       },
       "tamagoyaki": {
-        "tag": "youkaishomecoming:tamagoyaki"
+        "tag": "youkaisfeasts:tamagoyaki"
       },
       "tuna": {
         "tag": "forge:raw_fishes/tuna"
