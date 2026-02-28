@@ -12,6 +12,7 @@ import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
+import dev.xkmc.youkaishomecoming.content.pot.table.item.ModelIngredientData;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
@@ -71,6 +72,8 @@ public class YoukaisHomecoming {
 
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
+	public static final ConfigTypeEntry<ModelIngredientData> INGREDIENT = new ConfigTypeEntry<>(HANDLER, "ingredient", ModelIngredientData.class);
+
 	public YoukaisHomecoming() {
 		Handlers.enableVanilla(Fluid.class, () -> ForgeRegistries.FLUIDS);
 		InitializationMarker.expectAndAdvance(0);
@@ -87,6 +90,7 @@ public class YoukaisHomecoming {
 		FilterHolderSet.register();
 
 		AttackEventHandler.register(3943, new YHAttackListener());
+		HANDLER.addAfterReloadListener(() -> INGREDIENT.getMerged().onSync());
 	}
 
 	@SubscribeEvent
@@ -118,6 +122,7 @@ public class YoukaisHomecoming {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		TableItemManager.prepareData();
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, YHTagGen::onBlockTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, YHTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, YHTagGen::onEntityTagGen);
@@ -132,6 +137,7 @@ public class YoukaisHomecoming {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(server, new YHConfigGen(gen));
+		gen.addProvider(event.includeClient(), new AdditionalModelProvider(output, MODID));
 		var reg = new YHDatapackRegistriesGen(output, pvd);
 		gen.addProvider(server, reg);
 		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));

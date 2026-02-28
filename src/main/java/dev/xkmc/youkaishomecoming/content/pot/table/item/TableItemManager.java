@@ -6,9 +6,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.food.FoodModelHelper;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
-import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.tags.TagKey;
@@ -17,7 +15,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.ArrayList;
@@ -78,7 +75,38 @@ public class TableItemManager extends BaseTableItem {
 	public static final VariantModelPart CAL_COVER = COMPLETE_CALI.addPart("cover", 1);
 	public static final VariantModelPart CAL_TOP_SAUCE = COMPLETE_CALI.addPart("sauce", 1);
 
-	static {
+	@Override
+	public Optional<TableItem> find(Level level, ItemStack stack) {
+		var ans = super.find(level, stack);
+		if (ans.isPresent()) return ans;
+		var preset = FoodModelHelper.find(stack);
+		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
+		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
+		for (var e : rec) {
+			if (ItemStack.isSameItemSameTags(e.getResult(), stack)) {
+				return e.recreate();
+			}
+		}
+		return Optional.empty();
+	}
+
+	public Either<TableItem, Pair<TableItem, List<ItemStack>>> find(Level level, List<ItemStack> list) {
+		TableItem ans = TABLE;
+		List<ItemStack> success = new ArrayList<>();
+		for (var e : list) {
+			var opt = ans.find(level, e);
+			if (opt.isEmpty()) return Either.right(Pair.of(ans, success));
+			success.add(e);
+			ans = opt.get();
+		}
+		return Either.left(ans);
+	}
+
+	public static void init() {
+		TableBambooBowls.init();
+	}
+
+	public static void prepareData() {
 		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
 		SUSHI_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
 		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
@@ -127,37 +155,6 @@ public class TableItemManager extends BaseTableItem {
 		for (var part : parts) {
 			part.addMapping(id, item).tex(YoukaisHomecoming.loc("block/table/" + path));
 		}
-	}
-
-	@Override
-	public Optional<TableItem> find(Level level, ItemStack stack) {
-		var ans = super.find(level, stack);
-		if (ans.isPresent()) return ans;
-		var preset = FoodModelHelper.find(stack);
-		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
-		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
-		for (var e : rec) {
-			if (ItemStack.isSameItemSameTags(e.getResult(), stack)) {
-				return e.recreate();
-			}
-		}
-		return Optional.empty();
-	}
-
-	public Either<TableItem, Pair<TableItem, List<ItemStack>>> find(Level level, List<ItemStack> list) {
-		TableItem ans = TABLE;
-		List<ItemStack> success = new ArrayList<>();
-		for (var e : list) {
-			var opt = ans.find(level, e);
-			if (opt.isEmpty()) return Either.right(Pair.of(ans, success));
-			success.add(e);
-			ans = opt.get();
-		}
-		return Either.left(ans);
-	}
-
-	public static void init() {
-		TableBambooBowls.init();
 	}
 
 }

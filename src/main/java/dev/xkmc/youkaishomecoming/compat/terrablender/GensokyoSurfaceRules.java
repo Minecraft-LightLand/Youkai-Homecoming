@@ -16,10 +16,11 @@ public class GensokyoSurfaceRules {
 	public static SurfaceRules.RuleSource buildRules() {
 		var lo = new NoiseQuadCondition(PATH_NOISE, 1.5, 0.1);
 		var state = SurfaceRules.state(Blocks.DIRT_PATH.defaultBlockState());
-		return SurfaceRules.ifTrue(SurfaceRules.isBiome(YHBiomes.ANIMAL_PATH),
+		return SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
 				SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-						SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(0, 0),
-								SurfaceRules.ifTrue(lo, state)))
+						SurfaceRules.ifTrue(SurfaceRules.isBiome(YHBiomes.ANIMAL_PATH),
+								SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(0, 0),
+										SurfaceRules.ifTrue(lo, state))))
 		);
 	}
 

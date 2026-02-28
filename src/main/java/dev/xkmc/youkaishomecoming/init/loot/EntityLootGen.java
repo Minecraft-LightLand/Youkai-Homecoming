@@ -71,7 +71,7 @@ public class EntityLootGen {
 	public static void deer(RegistrateEntityLootTables pvd, EntityType<DeerEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-						.add(LootItem.lootTableItem(YHFood.RAW_VENISON.item.get()))
+						.add(LootTableTemplate.getItem(YHFood.RAW_VENISON.item.get(), 1, 2))
 						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire())));
 	}
@@ -79,7 +79,7 @@ public class EntityLootGen {
 	public static void boar(RegistrateEntityLootTables pvd, EntityType<BoarEntity> type) {
 		pvd.add(type, LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-						.add(LootItem.lootTableItem(YHFood.RAW_BOARCHOP.item.get()))
+						.add(LootTableTemplate.getItem(YHFood.RAW_BOARCHOP.item.get(), 1, 2))
 						.apply(LootingEnchantFunction.lootingMultiplier(ConstantValue.exactly(0.5f)))
 						.apply(onFire())));
 	}
