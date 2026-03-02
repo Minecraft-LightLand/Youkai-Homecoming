@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
@@ -64,7 +64,7 @@ public class DeerEatBlockGoal extends Goal {
 		if (eatAnimationTick == finishTick) {
 			BlockPos pos = BlockPos.containing(mob.position().add(mob.getForward()));
 			if (IS_PINK_PETAL.test(level.getBlockState(pos))) {
-				if (ForgeEventFactory.getMobGriefingEvent(level, mob)) {
+				if (EventHooks.canEntityGrief(level, mob)) {
 					level.destroyBlock(pos, false);
 					if (mob.prop.getVariant() == DeerVariant.NORMAL) {
 						mob.prop.setVariant(DeerVariant.SAKURA);
@@ -74,7 +74,7 @@ public class DeerEatBlockGoal extends Goal {
 			} else {
 				BlockPos down = pos.below();
 				if (level.getBlockState(down).is(Blocks.GRASS_BLOCK)) {
-					if (mob.prop.eatConsume() && ForgeEventFactory.getMobGriefingEvent(level, mob)) {
+					if (mob.prop.eatConsume() && EventHooks.canEntityGrief(level, mob)) {
 						level.levelEvent(2001, down, Block.getId(Blocks.GRASS_BLOCK.defaultBlockState()));
 						level.setBlock(down, Blocks.DIRT.defaultBlockState(), 2);
 					}

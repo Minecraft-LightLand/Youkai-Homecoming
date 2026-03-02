@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.entity.common;
 
-import dev.xkmc.l2library.util.nbt.NBTObj;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.*;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -24,11 +23,7 @@ public class SyncedData {
 
 	static {
 		INT = new Serializer<>(EntityDataSerializers.INT, IntTag::valueOf, tag -> tag instanceof NumericTag n ? n.getAsInt() : 0);
-		BLOCK_POS = new Serializer<>(EntityDataSerializers.BLOCK_POS, pos -> {
-			var ans = new NBTObj();
-			ans.fromBlockPos(pos);
-			return ans.tag;
-		}, tag -> tag instanceof CompoundTag ct ? new NBTObj(ct).toBlockPos() : BlockPos.ZERO);
+		BLOCK_POS = new Serializer<>(EntityDataSerializers.BLOCK_POS, pos -> LongTag.valueOf(pos.asLong()), tag -> tag instanceof NumericTag t ? BlockPos.of(t.getAsLong()) : BlockPos.ZERO);
 		STRING = new Serializer<>(EntityDataSerializers.STRING, StringTag::valueOf, Tag::getAsString);
 		UUID = new Serializer<>(EntityDataSerializers.OPTIONAL_UUID, uuid -> uuid.map(NbtUtils::createUUID).orElse(null),
 				tag -> Optional.ofNullable(tag).map(NbtUtils::loadUUID));
@@ -51,7 +46,7 @@ public class SyncedData {
 		this.parent = parent;
 	}
 
-	public void register(SynchedEntityData data) {
+	public void register(SynchedEntityData.Builder data) {
 		for (Data<?> entry : list) {
 			entry.register(data);
 		}
@@ -95,7 +90,7 @@ public class SyncedData {
 			this.name = name;
 		}
 
-		private void register(SynchedEntityData data) {
+		private void register(SynchedEntityData.Builder data) {
 			data.define(this.data, this.init);
 		}
 

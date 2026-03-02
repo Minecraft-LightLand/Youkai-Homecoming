@@ -46,8 +46,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.fml.ModList;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ModTags;
@@ -565,7 +565,7 @@ public class YHRecipeGen {
 		// iron bowl
 		{
 
-			var soy = new SlipBottleIngredient(YHItems.SOY_SAUCE_BOTTLE.source());
+			var soy = new SlipBottleIngredient(YHItems.SOY_SAUCE_BOTTLE.source()).toVanilla();
 			{
 				unlock(pvd, new SoupBaseBuilder(YoukaisHomecoming.loc("soy_sauce"))::unlockedBy, YHCrops.SOYBEAN.getSeed())
 						.col(0x7fffffff).add(soy)

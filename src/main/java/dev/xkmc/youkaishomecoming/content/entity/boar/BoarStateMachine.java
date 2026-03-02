@@ -1,9 +1,9 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
+package dev.xkmc.youkaishomecoming.content.entity.boar;
 
 import dev.xkmc.youkaishomecoming.content.entity.common.MobStateMachine;
 import net.minecraft.world.entity.AnimationState;
 
-import static dev.xkmc.youkaishomecoming.content.entity.animal.boar.BoarState.*;
+import static dev.xkmc.youkaishomecoming.content.entity.boar.BoarState.*;
 
 public class BoarStateMachine extends MobStateMachine<BoarEntity, BoarState, BoarStateMachine> {
 

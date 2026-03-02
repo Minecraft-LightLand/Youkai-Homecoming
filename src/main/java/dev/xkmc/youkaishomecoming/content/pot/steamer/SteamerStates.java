@@ -59,7 +59,7 @@ public class SteamerStates {
 		return DelegateBlock.newBaseBlock(
 				BlockBehaviour.Properties.of().strength(2f).forceSolidOn()
 						.sound(SoundType.METAL).mapColor(MapColor.METAL),
-				POT, BlockProxy.HORIZONTAL,
+				POT, BlockTemplates.HORIZONTAL,
 				ADD_LID, TAKE_LID, ADD_WATER, ADD_RACK, ADD_ITEM, TAKE_ITEM, TAKE_RACK, TE
 		);
 	}
@@ -68,7 +68,7 @@ public class SteamerStates {
 		return DelegateBlock.newBaseBlock(
 				BlockBehaviour.Properties.of().strength(0.5f).forceSolidOn()
 						.sound(SoundType.BAMBOO).mapColor(MapColor.PLANT),
-				RACK, BlockProxy.HORIZONTAL,
+				RACK, BlockTemplates.HORIZONTAL,
 				ADD_LID, TAKE_LID, ADD_RACK, ADD_ITEM, TAKE_ITEM, TAKE_RACK, TE
 		);
 	}
@@ -77,7 +77,7 @@ public class SteamerStates {
 		return DelegateBlock.newBaseBlock(
 				BlockBehaviour.Properties.of().strength(0.5f).forceSolidOn()
 						.sound(SoundType.WOOD).mapColor(MapColor.WOOD),
-				LID, BlockProxy.HORIZONTAL, TAKE_LID
+				LID, BlockTemplates.HORIZONTAL, TAKE_LID
 		);
 	}
 

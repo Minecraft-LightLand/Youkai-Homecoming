@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.pot.tank;
 
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
-import dev.xkmc.l2library.base.tile.BaseTank;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.base.tile.BaseContainerListener;
+import dev.xkmc.l2core.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -19,11 +20,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
@@ -33,12 +31,12 @@ import java.util.List;
 @SerialClass
 public class CopperTankBlockEntity extends BaseBlockEntity implements TickableBlockEntity, InfoTile, BaseContainerListener, HeatableBlockEntity {
 
-	@SerialClass.SerialField
+	@SerialField
 	private final BaseTank water = new BaseTank(1, 8000)
 			.setPredicate(e -> e.getFluid().isSame(Fluids.WATER))
 			.add(this);
 
-	@SerialClass.SerialField
+	@SerialField
 	private int heatedWater = 0;
 
 	public CopperTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {

@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.base.tile.BaseContainerListener;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BucketBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import net.minecraft.core.BlockPos;
@@ -23,7 +24,7 @@ public class WineShelfBlockEntity extends BaseBlockEntity implements BaseContain
 		return stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof BucketBottleItem;
 	}
 
-	@SerialClass.SerialField
+	@SerialField
 	public final ShelfContainer items = new ShelfContainer(9).setMax(1).add(this);
 
 	public WineShelfBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {

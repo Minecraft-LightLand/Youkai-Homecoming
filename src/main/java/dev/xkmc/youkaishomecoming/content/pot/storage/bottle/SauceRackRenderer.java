@@ -15,8 +15,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.BlockItem;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.model.data.ModelData;
+import net.neoforged.neoforge.client.ForgeHooksClient;
+import net.neoforged.neoforge.client.model.data.ModelData;
 
 public class SauceRackRenderer implements BlockEntityRenderer<SauceRackBlockEntity> {
 
@@ -29,7 +29,7 @@ public class SauceRackRenderer implements BlockEntityRenderer<SauceRackBlockEnti
 	public void render(SauceRackBlockEntity be, float pTick, PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
 		pose.pushPose();
 		pose.translate(0.5, 0, 0.5);
-		pose.mulPose(Axis.YP.rotationDegrees(-be.getBlockState().getValue(BlockProxy.HORIZONTAL_FACING).toYRot()));
+		pose.mulPose(Axis.YP.rotationDegrees(-be.getBlockState().getValue(BlockTemplates.HORIZONTAL_FACING).toYRot()));
 		for (int i = 0; i < 3; i++) {
 			var stack = be.items.getItem(i);
 			var bottle = stack.getItem();

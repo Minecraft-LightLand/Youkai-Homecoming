@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
+package dev.xkmc.youkaishomecoming.content.entity.boar;
 
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.model.AgeableHierarchicalModel;

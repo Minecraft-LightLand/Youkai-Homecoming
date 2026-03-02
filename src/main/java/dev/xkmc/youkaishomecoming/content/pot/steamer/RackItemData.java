@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.resources.ResourceLocation;
@@ -15,14 +15,14 @@ import java.util.Optional;
 @SerialClass
 public class RackItemData {
 
-	@SerialClass.SerialField
+	@SerialField
 	public ItemStack stack = ItemStack.EMPTY;
 
 	@Nullable
-	@SerialClass.SerialField
+	@SerialField
 	public ResourceLocation id;
 
-	@SerialClass.SerialField
+	@SerialField
 	public double progress;
 
 	private boolean dirty = true;

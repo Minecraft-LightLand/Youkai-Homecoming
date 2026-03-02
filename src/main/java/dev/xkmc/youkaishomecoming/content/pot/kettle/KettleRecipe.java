@@ -6,7 +6,6 @@ import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipe;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @SerialClass
-public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleContainer> implements TimedRecipe {
+public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, KettleContainer> implements TimedRecipe {
 
 	@SerialField
 	public final List<Ingredient> input = new ArrayList<>();
@@ -37,7 +36,7 @@ public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleC
 	}
 
 	@Override
-	public boolean matches(SimpleContainer cont, Level level) {
+	public boolean matches(KettleContainer cont, Level level) {
 		Set<ItemStack> available = new LinkedHashSet<>();
 		for (int i = 0; i < cont.getContainerSize(); i++) {
 			var e = cont.getItem(i);
@@ -61,7 +60,7 @@ public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleC
 	}
 
 	@Override
-	public ItemStack assemble(SimpleContainer cont, HolderLookup.Provider access) {
+	public ItemStack assemble(KettleContainer cont, HolderLookup.Provider access) {
 		return ItemStack.EMPTY;
 	}
 

@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
-import dev.xkmc.l2library.base.tile.BaseTank;
+import dev.xkmc.l2core.base.tile.BaseContainerListener;
+import dev.xkmc.l2core.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
@@ -22,12 +23,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,14 +34,13 @@ import java.util.List;
 public class FermentationTankBlockEntity extends TimedRecipeBlockEntity<FermentationRecipe<?>, FermentationDummyContainer>
 		implements BlockContainer, BaseContainerListener, TickableBlockEntity, InfoTile, FluidItemTile {
 
-	@SerialClass.SerialField
+	@SerialField
 	public final FermentationItemContainer items = new FermentationItemContainer().setMax(1).add(this);
 
-	@SerialClass.SerialField
+	@SerialField
 	public final BaseTank fluids = new BaseTank(1, 1000).add(this);
 
-	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
-	private final LazyOptional<IFluidHandler> fluidHandler = LazyOptional.of(() -> fluids);
+	private final IItemHandler itemHandler = new InvWrapper(items);
 
 	public FermentationTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);

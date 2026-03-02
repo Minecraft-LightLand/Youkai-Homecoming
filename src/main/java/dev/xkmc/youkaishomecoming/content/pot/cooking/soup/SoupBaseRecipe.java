@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.soup;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -15,15 +16,15 @@ public abstract class SoupBaseRecipe<T extends SoupBaseRecipe<T>> extends BaseRe
 
 	public static final ResourceLocation DEF = YoukaisHomecoming.loc("water");
 
-	@SerialClass.SerialField
+	@SerialField
 	public ResourceLocation id = DEF;
-	@SerialClass.SerialField
+	@SerialField
 	public int color = -1;
-	@SerialClass.SerialField
+	@SerialField
 	public int time = 0;
 
-	public SoupBaseRecipe(ResourceLocation id, RecType<T, SoupBaseRecipe<?>, CookingInv> fac) {
-		super(id, fac);
+	public SoupBaseRecipe(RecType<T, SoupBaseRecipe<?>, CookingInv> fac) {
+		super(fac);
 	}
 
 	public abstract int getIngredientCount();
@@ -36,12 +37,12 @@ public abstract class SoupBaseRecipe<T extends SoupBaseRecipe<T>> extends BaseRe
 	}
 
 	@Override
-	public ItemStack assemble(CookingInv cookingInv, RegistryAccess registryAccess) {
+	public ItemStack assemble(CookingInv cookingInv, HolderLookup.Provider registryAccess) {
 		return ItemStack.EMPTY;
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess registryAccess) {
+	public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
 		return ItemStack.EMPTY;
 	}
 

@@ -11,7 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +28,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 
 public interface FluidItemTile {
 
-	static InteractionResult addFluidOrItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	static ItemInteractionResult addFluidOrItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		FluidStack fluid = be.getFluidHandler().getFluidInTank(0);
 		boolean hasFluid = false;
 		// take YH fluids
@@ -42,7 +42,7 @@ public interface FluidItemTile {
 					}
 					sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
 				}
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 			hasFluid = true;
 		}
@@ -55,7 +55,7 @@ public interface FluidItemTile {
 				sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
 				be.notifyTile();
 			}
-			return InteractionResult.SUCCESS;
+			return ItemInteractionResult.SUCCESS;
 		}
 		// fill or take fluid via YH items
 		if (!hasFluid || stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof SakeBottleItem) {
@@ -64,9 +64,9 @@ public interface FluidItemTile {
 				if ((level instanceof ServerLevel sl) && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
 					be.notifyTile();
 					sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				} else {
-					return InteractionResult.CONSUME;
+					return ItemInteractionResult.CONSUME;
 				}
 			}
 		}
@@ -90,7 +90,7 @@ public interface FluidItemTile {
 		return addItem(be, stack, level, pos);
 	}
 
-	static InteractionResult addItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos) {
+	static ItemInteractionResult addItem(FluidItemTile be, ItemStack stack, Level level, BlockPos pos) {
 		ItemStack copy = stack.copyWithCount(1);
 		if (be.getItemHandler().canAddItem(copy)) {
 			if (level instanceof ServerLevel sl) {
@@ -101,9 +101,9 @@ public interface FluidItemTile {
 					sl.playSound(null, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 0.7f, 1);
 				}
 			}
-			return InteractionResult.SUCCESS;
+			return ItemInteractionResult.SUCCESS;
 		}
-		return InteractionResult.CONSUME;
+		return ItemInteractionResult.CONSUME;
 	}
 
 	BaseTank getFluidHandler();

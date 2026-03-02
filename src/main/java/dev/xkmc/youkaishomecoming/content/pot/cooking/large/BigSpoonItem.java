@@ -1,35 +1,32 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.large;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
-import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 
 public class BigSpoonItem extends Item {
 
-	private final Multimap<Attribute, AttributeModifier> hand;
-
 	public BigSpoonItem(Properties prop) {
-		super(prop);
-		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-		var id = MathHelper.getUUIDFromString("big_spoon");
-		builder.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(id, "big_spoon", 2, AttributeModifier.Operation.ADDITION));
-		hand = builder.build();
+		super(prop.attributes(ItemAttributeModifiers.builder()
+				.add(Attributes.BLOCK_INTERACTION_RANGE,
+						new AttributeModifier(YoukaisHomecoming.loc("big_spoon"), 2,
+								AttributeModifier.Operation.ADD_VALUE),
+						EquipmentSlotGroup.HAND)
+				.build()));
 	}
 
 	@Override
@@ -52,11 +49,6 @@ public class BigSpoonItem extends Item {
 			return InteractionResult.SUCCESS;
 		}
 		return super.useOn(ctx);
-	}
-
-	@Override
-	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-		return slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND ? hand : super.getDefaultAttributeModifiers(slot);
 	}
 
 	public static void buildModel(DataGenContext<Item, BigSpoonItem> ctx, RegistrateItemModelProvider pvd) {

@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.l2core.serial.loot.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -13,13 +14,17 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 public class YHLootGen {
 
-	public static final ResourceLocation UDUMBARA_LOOT = YoukaisHomecoming.loc("udumbara_chest_loot");
-	public static final ResourceLocation CRAB_SAND_BASE = YoukaisHomecoming.loc("crab_digging/sand_base");
-	public static final ResourceLocation CRAB_SAND_RIVER = YoukaisHomecoming.loc("crab_digging/sand_river");
-	public static final ResourceLocation CRAB_SAND_BEACH = YoukaisHomecoming.loc("crab_digging/sand_beach");
-	public static final ResourceLocation CRAB_GRAVEL_BASE = YoukaisHomecoming.loc("crab_digging/gravel_base");
-	public static final ResourceLocation CRAB_GRAVEL_RIVER = YoukaisHomecoming.loc("crab_digging/gravel_river");
-	public static final ResourceLocation CRAB_GRAVEL_BEACH = YoukaisHomecoming.loc("crab_digging/gravel_beach");
+	public static final ResourceKey<LootTable> UDUMBARA_LOOT = key("udumbara_chest_loot");
+	public static final ResourceKey<LootTable> CRAB_SAND_BASE = key("crab_digging/sand_base");
+	public static final ResourceKey<LootTable> CRAB_SAND_RIVER = key("crab_digging/sand_river");
+	public static final ResourceKey<LootTable> CRAB_SAND_BEACH = key("crab_digging/sand_beach");
+	public static final ResourceKey<LootTable> CRAB_GRAVEL_BASE = key("crab_digging/gravel_base");
+	public static final ResourceKey<LootTable> CRAB_GRAVEL_RIVER = key("crab_digging/gravel_river");
+	public static final ResourceKey<LootTable> CRAB_GRAVEL_BEACH = key("crab_digging/gravel_beach");
+
+	private static ResourceKey<LootTable> key(String id) {
+		return ResourceKey.create(Registries.LOOT_TABLE, YoukaisHomecoming.loc(id));
+	}
 
 	public static void genLoot(RegistrateLootTableProvider pvd) {
 
@@ -51,7 +56,7 @@ public class YHLootGen {
 					.add(LootItem.lootTableItem(Items.FLINT).setWeight(100))
 					.add(LootItem.lootTableItem(Items.IRON_NUGGET).setWeight(100))
 					.add(LootItem.lootTableItem(Items.GOLD_NUGGET).setWeight(100))
-					.add(LootItem.lootTableItem(Items.SCUTE).setWeight(180))
+					.add(LootItem.lootTableItem(Items.TURTLE_SCUTE).setWeight(180))
 					.add(LootItem.lootTableItem(Items.STRIPPED_OAK_LOG).setWeight(100))
 					.add(LootItem.lootTableItem(Items.DIAMOND).setWeight(20));
 

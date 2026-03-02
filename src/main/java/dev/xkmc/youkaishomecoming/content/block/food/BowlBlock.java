@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -11,10 +12,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -31,7 +33,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerContentBlock, LeftClickBlock {
 
@@ -98,17 +100,17 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		var stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		var item = food.asItem().getDefaultInstance();
 		var food = item.getFoodProperties(player);
-		if (food == null || !player.canEat(false)) return InteractionResult.PASS;
-		if (!stack.isEmpty() && !stack.is(YHBlocks.BIG_SPOON.get())) return InteractionResult.PASS;
+		if (food == null || !player.canEat(false)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		if (!stack.isEmpty() && !stack.is(YHBlocks.BIG_SPOON.get()))
+			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		if (!level.isClientSide()) {
 			player.eat(level, item.copy());
 			consume(state, level, pos);
 		}
-		return InteractionResult.SUCCESS;
+		return ItemInteractionResult.SUCCESS;
 	}
 
 	protected void consume(BlockState state, Level level, BlockPos pos) {
@@ -183,4 +185,9 @@ public class BowlBlock extends HorizontalDirectionalBlock implements ISteamerCon
 				.tag(BlockTags.MINEABLE_WITH_AXE);
 	}
 
+	@Override
+	protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+		return null;
+	}
+	
 }

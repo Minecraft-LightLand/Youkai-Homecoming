@@ -5,6 +5,8 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.l2core.init.reg.simple.SR;
+import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
@@ -32,6 +34,7 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupBaseRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.*;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlock;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlockEntity;
+import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleContainer;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlock;
 import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackBlockEntity;
@@ -55,8 +58,8 @@ import dev.xkmc.youkaishomecoming.content.pot.tank.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -73,7 +76,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.ForgeRegistries;
 
 import java.util.Locale;
 
@@ -108,32 +111,35 @@ public class YHBlocks {
 
 	}
 
+	private static final SR<RecipeType<?>> RT = SR.of(YoukaisHomecoming.REG, Registries.RECIPE_TYPE);
+	private static final SR<RecipeSerializer<?>> RS = SR.of(YoukaisHomecoming.REG, Registries.RECIPE_SERIALIZER);
+
 	public static final BlockEntry<DelegateBlock> KETTLE;
 	public static final BlockEntityEntry<KettleBlockEntity> KETTLE_BE;
-	public static final RegistryEntry<RecipeType<KettleRecipe>> KETTLE_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<KettleRecipe, KettleRecipe, SimpleContainer>> KETTLE_RS;
+	public static final Val<RecipeType<KettleRecipe>> KETTLE_RT;
+	public static final Val<BaseRecipe.RecType<KettleRecipe, KettleRecipe, KettleContainer>> KETTLE_RS;
 
 	public static final BlockEntry<DryingRackBlock> RACK;
 	public static final BlockEntityEntry<DryingRackBlockEntity> RACK_BE;
-	public static final RegistryEntry<RecipeType<DryingRackRecipe>> RACK_RT;
-	public static final RegistryEntry<RecipeSerializer<DryingRackRecipe>> RACK_RS;
+	public static final Val<RecipeType<DryingRackRecipe>> RACK_RT;
+	public static final Val<RecipeSerializer<DryingRackRecipe>> RACK_RS;
 
 	public static final BlockEntry<DelegateBlock> FERMENT;
 	public static final BlockEntityEntry<FermentationTankBlockEntity> FERMENT_BE;
-	public static final RegistryEntry<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
+	public static final Val<RecipeType<FermentationRecipe<?>>> FERMENT_RT;
+	public static final Val<BaseRecipe.RecType<SimpleFermentationRecipe, FermentationRecipe<?>, FermentationDummyContainer>> FERMENT_RS;
 
 	public static final BlockEntry<DelegateBlock> BASIN;
 	public static final BlockEntityEntry<BasinBlockEntity> BASIN_BE;
-	public static final RegistryEntry<RecipeType<BasinRecipe<?>>> BASIN_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<SimpleBasinRecipe, BasinRecipe<?>, BasinInput>> BASIN_RS;
+	public static final Val<RecipeType<BasinRecipe<?>>> BASIN_RT;
+	public static final Val<BaseRecipe.RecType<SimpleBasinRecipe, BasinRecipe<?>, BasinInput>> BASIN_RS;
 
 	public static final BlockEntry<DelegateBlock> STEAMER_POT;
 	public static final BlockEntry<DelegateBlock> STEAMER_RACK;
 	public static final BlockEntry<DelegateBlock> STEAMER_LID;
 	public static final BlockEntityEntry<SteamerBlockEntity> STEAMER_BE;
-	public static final RegistryEntry<RecipeType<SteamingRecipe>> STEAM_RT;
-	public static final RegistryEntry<RecipeSerializer<SteamingRecipe>> STEAM_RS;
+	public static final Val<RecipeType<SteamingRecipe>> STEAM_RT;
+	public static final Val<RecipeSerializer<SteamingRecipe>> STEAM_RS;
 
 	public static final BlockEntry<CopperTankBlock> COPPER_TANK;
 	public static final BlockEntityEntry<CopperTankBlockEntity> TANK_BE;
@@ -142,11 +148,11 @@ public class YHBlocks {
 
 	public static final BlockEntry<DelegateBlock> CUISINE_BOARD;
 	public static final BlockEntityEntry<CuisineBoardBlockEntity> CUISINE_BOARD_BE;
-	public static final RegistryEntry<RecipeType<CuisineRecipe<?>>> CUISINE_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_ORDER;
-	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
-	public static final RegistryEntry<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
-	public static final RegistryEntry<BaseRecipe.RecType<FixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_FIXED;
+	public static final Val<RecipeType<CuisineRecipe<?>>> CUISINE_RT;
+	public static final Val<BaseRecipe.RecType<OrderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_ORDER;
+	public static final Val<BaseRecipe.RecType<UnorderedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_UNORDER;
+	public static final Val<BaseRecipe.RecType<MixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_MIXED;
+	public static final Val<BaseRecipe.RecType<FixedCuisineRecipe, CuisineRecipe<?>, CuisineInv>> CUISINE_FIXED;
 
 	public static final BlockEntry<IronBowlBlock> IRON_BOWL, IRON_POT, STOCKPOT;
 	public static final BlockEntry<BowlBlock> WOOD_BOWL, BAMBOO_BOWL;
@@ -155,10 +161,10 @@ public class YHBlocks {
 	public static final BlockEntityEntry<SmallCookingPotBlockEntity> SMALL_POT_BE;
 	public static final BlockEntityEntry<MidCookingPotBlockEntity> MID_POT_BE;
 	public static final BlockEntityEntry<LargeCookingPotBlockEntity> LARGE_POT_BE;
-	public static final RegistryEntry<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
-	public static final RegistryEntry<RecipeType<SoupBaseRecipe<?>>> SOUP_RT;
-	public static final RegistryEntry<BaseRecipe.RecType<SimpleSoupBaseRecipe, SoupBaseRecipe<?>, CookingInv>> IMMEDIATE_SOUP;
+	public static final Val<RecipeType<PotCookingRecipe<?>>> COOKING_RT;
+	public static final Val<BaseRecipe.RecType<UnorderedCookingRecipe, PotCookingRecipe<?>, CookingInv>> COOKING_UNORDER;
+	public static final Val<RecipeType<SoupBaseRecipe<?>>> SOUP_RT;
+	public static final Val<BaseRecipe.RecType<SimpleSoupBaseRecipe, SoupBaseRecipe<?>, CookingInv>> IMMEDIATE_SOUP;
 
 
 	public static final BlockEntry<DelegateBlock> OAK_INGREDIENT_RACK;
@@ -186,8 +192,8 @@ public class YHBlocks {
 					.blockstate(KettleBlock::buildModel).item().properties(e -> e.stacksTo(1)).build()
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 			KETTLE_BE = YoukaisHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
-			KETTLE_RT = YoukaisHomecoming.REGISTRATE.recipe("kettle");
-			KETTLE_RS = reg("kettle", () -> new BaseRecipe.RecType<>(KettleRecipe.class, KETTLE_RT));
+			KETTLE_RT = RT.reg("kettle", RecipeType::simple);
+			KETTLE_RS = RS.reg("kettle", () -> new BaseRecipe.RecType<>(KettleRecipe.class, KETTLE_RT));
 
 			RACK = YoukaisHomecoming.REGISTRATE.block("drying_rack", p -> new DryingRackBlock(
 							p.noOcclusion()))
@@ -196,8 +202,8 @@ public class YHBlocks {
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
 			RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("drying_rack", DryingRackBlockEntity::new)
 					.validBlock(RACK).renderer(() -> DryingRackRenderer::new).register();
-			RACK_RT = YoukaisHomecoming.REGISTRATE.recipe("drying_rack");
-			RACK_RS = reg("drying_rack", () -> new SimpleCookingSerializer<>(DryingRackRecipe::new, 100));
+			RACK_RT = RT.reg("drying_rack", RecipeType::simple);
+			RACK_RS = RS.reg("drying_rack", () -> new SimpleCookingSerializer<>(DryingRackRecipe::new, 100));
 		}
 
 		//ferment, basin
@@ -211,8 +217,8 @@ public class YHBlocks {
 					.register();
 			FERMENT_BE = YoukaisHomecoming.REGISTRATE.blockEntity("fermentation_tank", FermentationTankBlockEntity::new)
 					.validBlock(FERMENT).renderer(() -> FermentationTankRenderer::new).register();
-			FERMENT_RT = YoukaisHomecoming.REGISTRATE.recipe("fermentation");
-			FERMENT_RS = reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
+			FERMENT_RT = RT.reg("fermentation", RecipeType::simple);
+			FERMENT_RS = RS.reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
 
 			BASIN = YoukaisHomecoming.REGISTRATE.block("wood_basin", p ->
 							DelegateBlock.newBaseBlock(p,
@@ -225,8 +231,8 @@ public class YHBlocks {
 			BASIN_BE = YoukaisHomecoming.REGISTRATE.blockEntity("basin", BasinBlockEntity::new)
 					.validBlock(BASIN).renderer(() -> BasinRenderer::new).register();
 
-			BASIN_RT = YoukaisHomecoming.REGISTRATE.recipe("basin");
-			BASIN_RS = reg("simple_basin", () -> new BaseRecipe.RecType<>(SimpleBasinRecipe.class, BASIN_RT));
+			BASIN_RT = RT.reg("basin", RecipeType::simple);
+			BASIN_RS = RS.reg("simple_basin", () -> new BaseRecipe.RecType<>(SimpleBasinRecipe.class, BASIN_RT));
 
 		}
 
@@ -258,8 +264,8 @@ public class YHBlocks {
 					.validBlocks(STEAMER_POT, STEAMER_RACK)
 					.register();
 
-			STEAM_RT = YoukaisHomecoming.REGISTRATE.recipe("steaming");
-			STEAM_RS = reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
+			STEAM_RT = RT.reg("steaming", RecipeType::simple);
+			STEAM_RS = RS.reg("steaming", () -> new SimpleCookingSerializer<>(SteamingRecipe::new, 100));
 
 		}
 
@@ -338,9 +344,9 @@ public class YHBlocks {
 					.renderer(() -> LargeCookingPotRenderer::new)
 					.register();
 
-			COOKING_RT = YoukaisHomecoming.REGISTRATE.recipe("pot_cooking");
+			COOKING_RT = RT.reg("pot_cooking", RecipeType::simple);
 			COOKING_UNORDER = reg("unordered_cooking", () -> new BaseRecipe.RecType<>(UnorderedCookingRecipe.class, COOKING_RT));
-			SOUP_RT = YoukaisHomecoming.REGISTRATE.recipe("soup_base");
+			SOUP_RT = RT.reg("soup_base", RecipeType::simple);
 			IMMEDIATE_SOUP = reg("immediate_soup", () -> new BaseRecipe.RecType<>(SimpleSoupBaseRecipe.class, SOUP_RT));
 
 		}
@@ -368,7 +374,7 @@ public class YHBlocks {
 			COPPER_FAUCET = YoukaisHomecoming.REGISTRATE.block("copper_faucet", p -> DelegateBlock.newBaseBlock(
 							BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).sound(SoundType.COPPER)
 									.strength(2f).requiresCorrectToolForDrops().noOcclusion(),
-							BlockProxy.HORIZONTAL, CopperFaucetBlock.INS, CopperFaucetBlock.TE))
+							BlockTemplates.HORIZONTAL, CopperFaucetBlock.INS, CopperFaucetBlock.TE))
 					.blockstate(CopperFaucetBlock::buildStates)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 					.simpleItem()
@@ -393,7 +399,7 @@ public class YHBlocks {
 					.validBlock(CUISINE_BOARD)
 					.renderer(() -> CuisineBoardRenderer::new)
 					.register();
-			CUISINE_RT = YoukaisHomecoming.REGISTRATE.recipe("cuisine");
+			CUISINE_RT = RT.reg("cuisine", RecipeType::simple);
 			CUISINE_ORDER = reg("cuisine_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_UNORDER = reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
 			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
@@ -404,7 +410,7 @@ public class YHBlocks {
 		{
 
 			OAK_INGREDIENT_RACK = YoukaisHomecoming.REGISTRATE.block("oak_ingredient_rack", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new IngredientRackBlock(), IngredientRackBlock.BE))
+							DelegateBlock.newBaseBlock(p, BlockTemplates.HORIZONTAL, new IngredientRackBlock(), IngredientRackBlock.BE))
 					.blockstate(IngredientRackBlock::buildModels)
 					.properties(p -> p.noOcclusion())
 					.simpleItem()
@@ -417,7 +423,7 @@ public class YHBlocks {
 					.register();
 
 			OAK_SAUCE_RACK = YoukaisHomecoming.REGISTRATE.block("oak_sauce_rack", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new SauceRackBlock(), SauceRackBlock.BE))
+							DelegateBlock.newBaseBlock(p, BlockTemplates.HORIZONTAL, new SauceRackBlock(), SauceRackBlock.BE))
 					.blockstate(SauceRackBlock::buildModels)
 					.properties(p -> p.noOcclusion())
 					.simpleItem()
@@ -430,7 +436,7 @@ public class YHBlocks {
 					.register();
 
 			SPRUCE_WINE_SHELF = YoukaisHomecoming.REGISTRATE.block("spruce_wine_shelf", p ->
-							DelegateBlock.newBaseBlock(p, BlockProxy.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
+							DelegateBlock.newBaseBlock(p, BlockTemplates.HORIZONTAL, new WineShelfBlock(), WineShelfBlock.BE))
 					.blockstate(WineShelfBlock::buildModels)
 					.properties(p -> p.noOcclusion())
 					.simpleItem()

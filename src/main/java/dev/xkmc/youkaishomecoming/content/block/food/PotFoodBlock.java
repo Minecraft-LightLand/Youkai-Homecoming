@@ -1,13 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.l2core.serial.loot.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -80,8 +80,7 @@ public class PotFoodBlock extends BowlBlock implements IHintableBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		var stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		var item = food.asItem().getDefaultInstance();
 		if (food.asItem() != asItem()) {
 			if (item.hasCraftingRemainingItem()) {
@@ -94,11 +93,11 @@ public class PotFoodBlock extends BowlBlock implements IHintableBlock {
 						if (player instanceof ServerPlayer sp)
 							YHCriteriaTriggers.POT_GRAB.trigger(sp);
 					}
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				}
 			}
 		}
-		return super.use(state, level, pos, player, hand, hit);
+		return super.useItemOn(stack, state, level, pos, player, hand, hit);
 	}
 
 	@Override

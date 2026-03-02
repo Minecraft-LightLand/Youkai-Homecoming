@@ -3,8 +3,8 @@ package dev.xkmc.youkaishomecoming.init.data;
 import com.google.common.collect.Streams;
 import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateAdvancementProvider;
-import dev.xkmc.l2library.serial.advancements.AdvancementGenerator;
-import dev.xkmc.l2library.serial.advancements.CriterionBuilder;
+import dev.xkmc.l2core.serial.advancements.AdvancementGenerator;
+import dev.xkmc.l2core.serial.advancements.CriterionBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamTrigger;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
@@ -12,11 +12,11 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.init.registrate.*;
 import net.minecraft.Util;
-import net.minecraft.advancements.FrameType;
+import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -31,7 +31,7 @@ public class YHAdvGen {
 				"Gensokyo Delight", "Welcome To Gensokyo");
 		var dango = root.create("sweet", YHFood.MOCHI.item.asStack(),
 				CriterionBuilder.one(ConsumeItemTrigger.TriggerInstance.usedItem(
-						ItemPredicate.Builder.item().of(YHTagGen.DANGO).build())),
+						ItemPredicate.Builder.item().of(YHTagGen.DANGO))),
 				"Sweet?", "Eat a Mochi");
 		dango.create("breed_deer", YHFood.SAKURA_MOCHI.asItem(),
 				CriterionBuilder.one(BredAnimalsTrigger.TriggerInstance.bredAnimals(
@@ -49,7 +49,7 @@ public class YHAdvGen {
 		root.create("cucumber", YHCrops.CUCUMBER.getSeed(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
+										BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN)),
 								ItemPredicate.Builder.item().of(YHCrops.CUCUMBER.getSeed()))),
 						"Rope Climber", "Plant Cucumber")
 				.create("cucumber_top", YHCrops.CUCUMBER.getFruits(),
@@ -58,7 +58,7 @@ public class YHAdvGen {
 		var grape = root.create("grape", YHCrops.RED_GRAPE.getSeed(),
 				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 						LocationPredicate.Builder.location().setBlock(
-								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN)),
 						ItemPredicate.Builder.item().of(YHTagGen.GRAPE_SEED))),
 				"Sweet Vines", "Plant Grape");
 		grape.create("grape_cut", Items.SHEARS,
@@ -91,9 +91,9 @@ public class YHAdvGen {
 						Util.make(CriterionBuilder.and(), c -> Stream.of(
 										YHDrink.WHITE_TEA, YHDrink.OOLONG_TEA, YHDrink.GREEN_TEA, YHDrink.DARK_TEA, YHDrink.BLACK_TEA, YHDrink.YELLOW_TEA
 								).map(e -> e.item.get()).map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
-								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
+								.forEach(p -> c.add(BuiltInRegistries.ITEM.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Tea Master", "Drink all kinds of tea in original flavor")
-				.type(FrameType.GOAL, true, true, false);
+				.type(AdvancementType.GOAL, true, true, false);
 		root.create("udumbara", YHCrops.UDUMBARA.getWildPlant().asItem(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
@@ -106,7 +106,7 @@ public class YHAdvGen {
 				.create("udumbara_flower", YHCrops.UDUMBARA.getFruits(),
 						CriterionBuilder.item(YHCrops.UDUMBARA.getFruits()),
 						"Fragile Flower", "Get an Udubara flower. It will only appear for 10 seconds during full moon.")
-				.type(FrameType.CHALLENGE);
+				.type(AdvancementType.CHALLENGE);
 		root.create("alcoholic", YHBlocks.FERMENT.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
 								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
@@ -138,11 +138,11 @@ public class YHAdvGen {
 		steam.create("dish", YHDish.IMITATION_BEAR_PAW.block.asStack(),
 						CriterionBuilder.one(SteamTrigger.steam(YHTagGen.STEAM_BLOCKER)),
 						"Steam Interceptor", "Steam a plate meal or bamboo meal. Note that they heavily obstruct steam.")
-				.type(FrameType.GOAL);
+				.type(AdvancementType.GOAL);
 		steam.create("max_steamer", YHBlocks.STEAMER_RACK.asStack(),
 						CriterionBuilder.one(SteamTrigger.steam(MinMaxBounds.Ints.atLeast(18))),
 						"Bamboo Tower", "Steam an item on the 18th rack")
-				.type(FrameType.CHALLENGE);
+				.type(AdvancementType.CHALLENGE);
 
 		var table = root.create("cuisine_board", YHBlocks.CUISINE_BOARD.asStack(),
 				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.TABLE.getId(), ContextAwarePredicate.ANY)),
@@ -150,7 +150,7 @@ public class YHAdvGen {
 		table.create("kaguya_hime", YHBowl.KAGUYA_HIME.item.asStack(),
 						CriterionBuilder.item(YHBowl.KAGUYA_HIME.item.asItem()),
 						"Tale of the Bamboo Princess", "Craft and Steam Kaguya Hime")
-				.type(FrameType.GOAL);
+				.type(AdvancementType.GOAL);
 		table.create("sushi_master", YHSushi.OTORO_NIGIRI.asItem(),
 						CriterionBuilder.and()
 								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHSushi.OTORO_NIGIRI.asItem()))
@@ -158,13 +158,13 @@ public class YHAdvGen {
 								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHSushi.LORELEI_NIGIRI.asItem()))
 								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHRolls.RAINBOW_FUTOMAKI.slice.asItem())),
 						"Sushi Master", "Make Otoro Nigiri, Lorelei Nigiri, Tobiko Gunkan, and Rainbow Futomaki Slice")
-				.type(FrameType.GOAL);
+				.type(AdvancementType.GOAL);
 		table.create("foreign_sushi_master", YHRolls.RAINBOW_ROLL.slice.asItem(),
 						CriterionBuilder.and()
 								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHRolls.RAINBOW_ROLL.slice.asItem()))
 								.add(InventoryChangeTrigger.TriggerInstance.hasItems(YHRolls.VOLCANO_ROLL.slice.asItem())),
 						"Sushi Aboard", "Make Rainbow Roll Slice and Volcano Roll Slice")
-				.type(FrameType.GOAL);
+				.type(AdvancementType.GOAL);
 		root.create("enthusiastic", YHDish.IMITATION_BEAR_PAW.block.asStack(),
 						Util.make(CriterionBuilder.and(), c -> Streams.concat(
 										Arrays.stream(YHDish.values()).map(e -> e.block.get()),
@@ -174,9 +174,9 @@ public class YHAdvGen {
 										Arrays.stream(YHSushi.values()).map(e -> e.item.get()),
 										Arrays.stream(YHRolls.values()).map(e -> e.slice.get()))
 								.map(e -> Pair.of(e, ConsumeItemTrigger.TriggerInstance.usedItem(e)))
-								.forEach(p -> c.add(ForgeRegistries.ITEMS.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
+								.forEach(p -> c.add(BuiltInRegistries.ITEM.getKey(p.getFirst().asItem()).toString(), p.getSecond()))),
 						"Gensokyo Food Enthusiastic", "Eat all Youkai's Homecoming food")
-				.type(FrameType.CHALLENGE, true, true, false);
+				.type(AdvancementType.CHALLENGE, true, true, false);
 
 		root.finish();
 	}

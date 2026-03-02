@@ -1,12 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.soup;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
+import dev.xkmc.l2core.serial.recipe.BaseRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingInv;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
@@ -14,7 +15,7 @@ public class SoupBaseBuilder
 		extends BaseRecipeBuilder<SoupBaseBuilder, SimpleSoupBaseRecipe, SoupBaseRecipe<?>, CookingInv> {
 
 	public SoupBaseBuilder(ResourceLocation id) {
-		super(YHBlocks.IMMEDIATE_SOUP.get());
+		super(YHBlocks.IMMEDIATE_SOUP.get(), Items.AIR);
 		recipe.id = id;
 	}
 

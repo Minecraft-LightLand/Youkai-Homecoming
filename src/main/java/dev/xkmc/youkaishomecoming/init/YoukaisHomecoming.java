@@ -28,12 +28,10 @@ import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -134,20 +132,12 @@ public class YoukaisHomecoming {
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(server, new YHConfigGen(gen, pvd));
 		gen.addProvider(event.includeClient(), new AdditionalModelProvider(output, MODID));
-		var reg = new YHDatapackRegistriesGen(output, pvd);
-		gen.addProvider(server, reg);
+		YHDatapackRegistriesGen.register();
 		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));
-		gen.addProvider(server, new YHGLMProvider(gen));
-	}
-
-	@SubscribeEvent
-	public static void onSpawnPlacementRegister(SpawnPlacementRegisterEvent event) {
-		event.register(YHEntities.LAMPREY.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos, random) -> pos.getY() >= 50 && pos.getY() <= 64,
-				SpawnPlacementRegisterEvent.Operation.REPLACE);
+		gen.addProvider(server, new YHGLMProvider(gen, pvd));
 	}
 
 	public static ResourceLocation loc(String id) {
-		return new ResourceLocation(MODID, id);
+		return ResourceLocation.fromNamespaceAndPath(MODID, id);
 	}
 }

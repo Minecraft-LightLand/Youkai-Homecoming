@@ -3,16 +3,16 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2core.serial.loot.LootTableTemplate;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import static dev.xkmc.youkaishomecoming.content.pot.steamer.SteamerStates.*;
 
@@ -38,19 +38,19 @@ public class SteamerBlockJsons {
 		for (int d = 0; d < 4; d++) {
 			var dir = Direction.from2DDataValue(d);
 			builder.part().rotationY((int) dir.toYRot()).modelFile(pot).addModel()
-					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+					.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 			builder.part().rotationY((int) dir.toYRot()).modelFile(r2).addModel()
 					.condition(POT_RACKS, 1, 2)
-					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+					.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 			builder.part().rotationY(((int) dir.toYRot() + 180) % 360).modelFile(r3).addModel()
 					.condition(POT_RACKS, 2)
-					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+					.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 			builder.part().rotationY((int) dir.toYRot()).modelFile(c2).addModel()
 					.condition(POT_RACKS, 0).condition(CAPPED, true)
-					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+					.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 			builder.part().rotationY((int) dir.toYRot()).modelFile(c3).addModel()
 					.condition(POT_RACKS, 1).condition(CAPPED, true)
-					.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+					.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 		}
 	}
 
@@ -82,11 +82,11 @@ public class SteamerBlockJsons {
 				var dir = Direction.from2DDataValue(d);
 				builder.part().rotationY(((int) dir.toYRot() + 180 * h) % 360).modelFile(rack).addModel()
 						.condition(RACKS, VALS[h])
-						.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+						.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 				if (h < 3) {
 					builder.part().rotationY((int) dir.toYRot()).modelFile(caps[h + 1]).addModel()
 							.condition(RACKS, h + 1).condition(CAPPED, true)
-							.condition(BlockProxy.HORIZONTAL_FACING, dir).end();
+							.condition(BlockTemplates.HORIZONTAL_FACING, dir).end();
 				}
 			}
 		}

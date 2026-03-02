@@ -1,8 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.entity.tuna;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -22,18 +20,14 @@ import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.common.NeoForgeMod;
 
 public class TunaEntity extends AbstractFish {
 
 	public TunaEntity(EntityType<? extends TunaEntity> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
-	}
-
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	public ItemStack getBucketItemStack() {
@@ -63,12 +57,12 @@ public class TunaEntity extends AbstractFish {
 		builder = builder.add(Attributes.ARMOR, 4);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 1.5);
+		builder = builder.add(NeoForgeMod.SWIM_SPEED, 1.5);
 		return builder;
 	}
 
 	public float getSwimSpeed() {
-		return (float) getAttributeValue(ForgeMod.SWIM_SPEED.get()) * (isAggressive() ? 0.03f : 0.02f);
+		return (float) getAttributeValue(NeoForgeMod.SWIM_SPEED) * (isAggressive() ? 0.03f : 0.02f);
 	}
 
 	@Override
@@ -145,8 +139,8 @@ public class TunaEntity extends AbstractFish {
 	}
 
 	@Override
-	public double getMeleeAttackRangeSqr(LivingEntity e) {
-		return this.getBbWidth() * this.getBbWidth() / 2 + e.getBbWidth();
+	protected AABB getAttackBoundingBox() {
+		return getBoundingBox();
 	}
 
 }

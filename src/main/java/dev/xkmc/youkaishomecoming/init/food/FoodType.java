@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
@@ -80,9 +80,9 @@ public enum FoodType {
 
 	public Item.Properties food(Item.Properties prop, int nutrition, float sat, List<EffectEntry> effs) {
 		var food = new FoodProperties.Builder()
-				.nutrition(nutrition).saturationMod(sat);
+				.nutrition(nutrition).saturationModifier(sat);
 		if (fast) food.fast();
-		if (alwaysEat) food.alwaysEat();
+		if (alwaysEat) food.alwaysEdible();
 		for (var e : effs) {
 			food.effect(e::getEffect, e.chance());
 		}

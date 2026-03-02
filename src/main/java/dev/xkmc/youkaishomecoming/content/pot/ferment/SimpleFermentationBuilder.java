@@ -1,15 +1,16 @@
 package dev.xkmc.youkaishomecoming.content.pot.ferment;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
+import dev.xkmc.l2core.serial.recipe.BaseRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 		SimpleFermentationBuilder,
@@ -27,7 +28,7 @@ public class SimpleFermentationBuilder extends BaseRecipeBuilder<
 	}
 
 	public SimpleFermentationBuilder(FluidStack input, FluidStack output, int time) {
-		super(YHBlocks.FERMENT_RS.get());
+		super(YHBlocks.FERMENT_RS.get(), Items.AIR);
 		recipe.inputFluid = input;
 		recipe.outputFluid = output;
 		recipe.time = time;

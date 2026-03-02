@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.compat.curios;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.neoforge.fml.ModList;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class CuriosManager {

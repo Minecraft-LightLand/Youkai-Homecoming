@@ -1,21 +1,21 @@
 package dev.xkmc.youkaishomecoming.content.entity.common;
 
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 
 import java.util.List;
 
-public interface StateMachineMob extends IEntityAdditionalSpawnData {
+public interface StateMachineMob extends IEntityWithComplexSpawn {
 
 	MobStateMachine<?, ?, ?> states();
 
 	@Override
-	default void writeSpawnData(FriendlyByteBuf buffer) {
+	default void writeSpawnData(RegistryFriendlyByteBuf buffer) {
 		states().write(buffer);
 	}
 
 	@Override
-	default void readSpawnData(FriendlyByteBuf data) {
+	default void readSpawnData(RegistryFriendlyByteBuf data) {
 		states().read(data);
 	}
 

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;// Save this class in your mod and generate all required imports
+package dev.xkmc.youkaishomecoming.content.entity.boar;// Save this class in your mod and generate all required imports
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

@@ -32,7 +32,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
@@ -96,7 +96,7 @@ public class IngredientRackBlock implements
 
 	@Override
 	public @Nullable VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		int dir = state.getValue(BlockProxy.HORIZONTAL_FACING).get2DDataValue();
+		int dir = state.getValue(BlockTemplates.HORIZONTAL_FACING).get2DDataValue();
 		boolean stack = state.getValue(SUPPORT) == State.STACKED;
 		return SHAPES[stack ? dir + 4 : dir];
 	}
@@ -111,7 +111,7 @@ public class IngredientRackBlock implements
 
 	@Override
 	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		var dir = state.getValue(BlockProxy.HORIZONTAL_FACING);
+		var dir = state.getValue(BlockTemplates.HORIZONTAL_FACING);
 		if (level.getBlockEntity(pos) instanceof IngredientRackBlockEntity be) {
 			var vec = hit.getLocation().subtract(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5)
 					.yRot(-(float) ((180 - dir.toYRot()) / 180 * Math.PI));

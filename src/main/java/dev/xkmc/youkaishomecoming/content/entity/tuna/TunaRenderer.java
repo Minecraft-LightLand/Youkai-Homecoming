@@ -20,9 +20,9 @@ public class TunaRenderer extends MobRenderer<TunaEntity, TunaModel<TunaEntity>>
 		return TEX;
 	}
 
-	protected void setupRotations(TunaEntity e, PoseStack pos, float age, float yaw, float pTick) {
+	protected void setupRotations(TunaEntity e, PoseStack pos, float age, float yaw, float pTick, float scale) {
 		if (e.isAggressive()) age *= 1.5f;
-		super.setupRotations(e, pos, age, yaw, pTick);
+		super.setupRotations(e, pos, age, yaw, pTick, scale);
 		float f = 4.3F * Mth.sin(0.6F * age);
 		pos.mulPose(Axis.YP.rotationDegrees(f));
 		if (!e.isInWater()) {

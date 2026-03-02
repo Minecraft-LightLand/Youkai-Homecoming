@@ -45,7 +45,7 @@ public record RackInfo(boolean pot, int racks) {
 		if (state.getValue(CAPPED)) return false;
 		var info = getRackInfo(state);
 		if (info.height() == 4) {
-			return info.popLid(level, pos.above(), state.getValue(BlockProxy.HORIZONTAL_FACING));
+			return info.popLid(level, pos.above(), state.getValue(BlockTemplates.HORIZONTAL_FACING));
 		}
 		if (!level.isClientSide()) {
 			level.setBlockAndUpdate(pos, state.setValue(CAPPED, true));
@@ -57,7 +57,7 @@ public record RackInfo(boolean pot, int racks) {
 		if (!state.getValue(CAPPED)) return false;
 		var info = getRackInfo(state);
 		if (info.height() == 4) {
-			return info.popLid(level, pos.above(), state.getValue(BlockProxy.HORIZONTAL_FACING));
+			return info.popLid(level, pos.above(), state.getValue(BlockTemplates.HORIZONTAL_FACING));
 		}
 		if (!level.isClientSide()) {
 			level.setBlockAndUpdate(pos, state.setValue(CAPPED, false));
@@ -70,7 +70,7 @@ public record RackInfo(boolean pot, int racks) {
 	}
 
 	public boolean tryAddRack(Level level, BlockPos pos, BlockState state) {
-		var dir = state.getValue(BlockProxy.HORIZONTAL_FACING);
+		var dir = state.getValue(BlockTemplates.HORIZONTAL_FACING);
 		IntegerProperty rackProp = pot ? POT_RACKS : RACKS;
 		int max = pot ? 2 : 4;
 		if (racks == max) {
@@ -96,7 +96,7 @@ public record RackInfo(boolean pot, int racks) {
 		if (!state.canBeReplaced()) return false;
 		if (!level.isClientSide()) {
 			level.setBlockAndUpdate(pos, YHBlocks.STEAMER_LID.get().defaultBlockState()
-					.setValue(BlockProxy.HORIZONTAL_FACING, facing));
+					.setValue(BlockTemplates.HORIZONTAL_FACING, facing));
 		}
 		return true;
 	}
@@ -109,7 +109,7 @@ public record RackInfo(boolean pot, int racks) {
 		else if (state.is(YHBlocks.STEAMER_LID.get())) {
 			if (!level.isClientSide()) {
 				level.setBlockAndUpdate(pos, YHBlocks.STEAMER_RACK.get().defaultBlockState()
-						.setValue(BlockProxy.HORIZONTAL_FACING, facing)
+						.setValue(BlockTemplates.HORIZONTAL_FACING, facing)
 						.setValue(CAPPED, true));
 			}
 			return true;
@@ -117,7 +117,7 @@ public record RackInfo(boolean pot, int racks) {
 		if (!state.canBeReplaced()) return false;
 		if (!level.isClientSide()) {
 			level.setBlockAndUpdate(pos, YHBlocks.STEAMER_RACK.get().defaultBlockState()
-					.setValue(BlockProxy.HORIZONTAL_FACING, facing));
+					.setValue(BlockTemplates.HORIZONTAL_FACING, facing));
 		}
 		return true;
 	}
@@ -146,7 +146,7 @@ public record RackInfo(boolean pot, int racks) {
 		} else {
 			if (state.getValue(CAPPED)) {
 				level.setBlockAndUpdate(pos, YHBlocks.STEAMER_LID.get().defaultBlockState()
-						.setValue(BlockProxy.HORIZONTAL_FACING, state.getValue(BlockProxy.HORIZONTAL_FACING)));
+						.setValue(BlockTemplates.HORIZONTAL_FACING, state.getValue(BlockTemplates.HORIZONTAL_FACING)));
 			} else {
 				level.removeBlock(pos, false);
 			}

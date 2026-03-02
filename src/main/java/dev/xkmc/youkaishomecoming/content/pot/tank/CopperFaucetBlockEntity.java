@@ -1,22 +1,23 @@
 package dev.xkmc.youkaishomecoming.content.pot.tank;
 
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 @SerialClass
 public class CopperFaucetBlockEntity extends BaseBlockEntity implements TickableBlockEntity {
 
-	@SerialClass.SerialField
+	@SerialField
 	protected FluidStack cache = FluidStack.EMPTY;
 
 	public CopperFaucetBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {

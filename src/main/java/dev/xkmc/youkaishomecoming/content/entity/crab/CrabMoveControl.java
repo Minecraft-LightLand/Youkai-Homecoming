@@ -35,7 +35,7 @@ public class CrabMoveControl extends MoveControl {
 			BlockPos pos = mob.blockPosition();
 			BlockState state = mob.level().getBlockState(pos);
 			VoxelShape shape = state.getCollisionShape(mob.level(), pos);
-			if (dy > mob.getStepHeight() && hr2 < Math.max(1.0F, mob.getBbWidth()) ||
+			if (dy > mob.maxUpStep() && hr2 < Math.max(1.0F, mob.getBbWidth()) ||
 					!shape.isEmpty() && mob.getY() < shape.max(Direction.Axis.Y) + pos.getY() &&
 							!state.is(BlockTags.DOORS) && !state.is(BlockTags.FENCES)) {
 				mob.getJumpControl().jump();

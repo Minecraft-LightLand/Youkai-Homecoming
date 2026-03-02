@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal;
+package dev.xkmc.youkaishomecoming.content.entity.common;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

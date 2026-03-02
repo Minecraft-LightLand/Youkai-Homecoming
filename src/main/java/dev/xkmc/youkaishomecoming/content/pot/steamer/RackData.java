@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
@@ -22,13 +22,13 @@ public class RackData {
 	public static final double UPWARD_EFF = 0.01, DOWNWARD_EFF = 0.05;
 
 	@Nullable
-	@SerialClass.SerialField
+	@SerialField
 	public final RackItemData[] list = new RackItemData[4];
 
-	@SerialClass.SerialField
+	@SerialField
 	public double upwardHeat = 0;
 
-	@SerialClass.SerialField
+	@SerialField
 	public double downwardHeat = 0;
 
 	public void tick(SteamerBlockEntity be, Level level) {

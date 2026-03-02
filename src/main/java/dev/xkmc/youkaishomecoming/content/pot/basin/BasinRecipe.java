@@ -1,21 +1,21 @@
 package dev.xkmc.youkaishomecoming.content.pot.basin;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 @SerialClass
 public abstract class BasinRecipe<T extends BasinRecipe<T>> extends BaseRecipe<T, BasinRecipe<?>, BasinInput> {
 
-	public BasinRecipe(ResourceLocation id, RecType<T, BasinRecipe<?>, BasinInput> fac) {
-		super(id, fac);
+	public BasinRecipe(RecType<T, BasinRecipe<?>, BasinInput> fac) {
+		super(fac);
 	}
 
 	@Override
-	public ItemStack assemble(BasinInput basinInput, RegistryAccess registryAccess) {
+	public ItemStack assemble(BasinInput basinInput, HolderLookup.Provider registryAccess) {
 		return ItemStack.EMPTY;
 	}
 
@@ -29,7 +29,7 @@ public abstract class BasinRecipe<T extends BasinRecipe<T>> extends BaseRecipe<T
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
+	public ItemStack getResultItem(HolderLookup.Provider access) {
 		return ItemStack.EMPTY;
 	}
 

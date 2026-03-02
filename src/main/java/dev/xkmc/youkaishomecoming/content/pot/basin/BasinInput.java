@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.basin;
 
-import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class BasinInput extends RecipeWrapper {
 

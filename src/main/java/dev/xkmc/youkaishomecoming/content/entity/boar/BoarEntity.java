@@ -1,8 +1,9 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
+package dev.xkmc.youkaishomecoming.content.entity.boar;
 
-import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarPanicGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarSleepGoal;
-import dev.xkmc.youkaishomecoming.content.entity.animal.boar.goal.BoarWobbleGoal;
+import dev.xkmc.youkaishomecoming.content.entity.boar.goal.BoarEatBlockGoal;
+import dev.xkmc.youkaishomecoming.content.entity.boar.goal.BoarPanicGoal;
+import dev.xkmc.youkaishomecoming.content.entity.boar.goal.BoarSleepGoal;
+import dev.xkmc.youkaishomecoming.content.entity.boar.goal.BoarWobbleGoal;
 import dev.xkmc.youkaishomecoming.content.entity.common.*;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
 import net.minecraft.core.BlockPos;
@@ -13,7 +14,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -28,10 +28,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.util.Lazy;
+import net.neoforged.neoforge.common.util.Lazy;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -104,9 +103,9 @@ public class BoarEntity extends Animal implements StateMachineMob {
 		return states;
 	}
 
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		data().register(entityData);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		data().register(builder);
 	}
 
 	public void addAdditionalSaveData(CompoundTag tag) {
@@ -154,17 +153,10 @@ public class BoarEntity extends Animal implements StateMachineMob {
 	}
 
 	@Override
-	public EntityDimensions getDimensions(Pose pose) {
-		var ans = super.getDimensions(pose);
+	public EntityDimensions getDefaultDimensions(Pose pose) {
+		var ans = super.getDefaultDimensions(pose);
 		if (states().isSleeping())
 			ans = ans.scale(1, 0.7f);
-		return ans;
-	}
-
-
-	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group, @Nullable CompoundTag data) {
-		var ans = super.finalizeSpawn(level, ins, type, group, data);
 		return ans;
 	}
 
@@ -203,7 +195,7 @@ public class BoarEntity extends Animal implements StateMachineMob {
 	}
 
 	protected float getStandingEyeHeight(Pose pose, EntityDimensions dim) {
-		return dim.height * 0.85f;
+		return dim.height() * 0.85f;//FIXME
 	}
 
 }

@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.rack;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 
 public record DryingRackWrapper(DryingRackBlockEntity be) implements IItemHandlerModifiable {

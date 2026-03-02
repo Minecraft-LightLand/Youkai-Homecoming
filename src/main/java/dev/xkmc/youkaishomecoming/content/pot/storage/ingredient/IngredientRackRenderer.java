@@ -40,7 +40,7 @@ public class IngredientRackRenderer implements BlockEntityRenderer<IngredientRac
 	public void render(IngredientRackBlockEntity be, float pTick, PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
 		pose.pushPose();
 		pose.translate(0.5, 0, 0.5);
-		pose.mulPose(Axis.YP.rotationDegrees(-be.getBlockState().getValue(BlockProxy.HORIZONTAL_FACING).toYRot()));
+		pose.mulPose(Axis.YP.rotationDegrees(-be.getBlockState().getValue(BlockTemplates.HORIZONTAL_FACING).toYRot()));
 		for (int i = 0; i < 6; i++) {
 			ItemStack stack = be.items.getItem(i);
 			boolean half = be.getBlockState().getValue(IngredientRackBlock.SUPPORT) == IngredientRackBlock.State.STACKED || i < 3;

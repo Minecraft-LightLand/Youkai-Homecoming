@@ -1,5 +1,6 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
+package dev.xkmc.youkaishomecoming.content.entity.boar.goal;
 
+import dev.xkmc.youkaishomecoming.content.entity.boar.BoarEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
@@ -7,7 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
@@ -62,14 +63,14 @@ public class BoarEatBlockGoal extends Goal {
 		if (eatAnimationTick == finishTick) {
 			BlockPos pos = BlockPos.containing(mob.position().add(mob.getForward()));
 			if (IS_EDIBLE_SHROOM.test(level.getBlockState(pos))) {
-				if (mob.prop.eatConsume() && ForgeEventFactory.getMobGriefingEvent(level, mob)) {
+				if (mob.prop.eatConsume() && EventHooks.canEntityGrief(level, mob)) {
 					level.destroyBlock(pos, false);
 				}
 				mob.ate();
 			} else {
 				BlockPos down = pos.below();
 				if (level.getBlockState(down).is(Blocks.GRASS_BLOCK)) {
-					if (mob.prop.eatConsume() && ForgeEventFactory.getMobGriefingEvent(level, mob)) {
+					if (mob.prop.eatConsume() && EventHooks.canEntityGrief(level, mob)) {
 						level.levelEvent(2001, down, Block.getId(Blocks.GRASS_BLOCK.defaultBlockState()));
 						level.setBlock(down, Blocks.DIRT.defaultBlockState(), 2);
 					}

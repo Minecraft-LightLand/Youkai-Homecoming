@@ -1,11 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipe;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,13 +16,13 @@ import java.util.List;
 public abstract class PotCookingRecipe<T extends PotCookingRecipe<T>> extends BaseRecipe<T, PotCookingRecipe<?>, CookingInv>
 		implements TimedRecipe {
 
-	@SerialClass.SerialField
+	@SerialField
 	protected ItemStack result = ItemStack.EMPTY;
-	@SerialClass.SerialField
+	@SerialField
 	protected int time;
 
-	public PotCookingRecipe(ResourceLocation id, RecType<T, PotCookingRecipe<?>, CookingInv> fac) {
-		super(id, fac);
+	public PotCookingRecipe(RecType<T, PotCookingRecipe<?>, CookingInv> fac) {
+		super(fac);
 	}
 
 	public abstract List<Ingredient> getInput();
@@ -43,12 +42,12 @@ public abstract class PotCookingRecipe<T extends PotCookingRecipe<T>> extends Ba
 	}
 
 	@Override
-	public ItemStack assemble(CookingInv cookingInv, RegistryAccess registryAccess) {
+	public ItemStack assemble(CookingInv cookingInv, HolderLookup.Provider registryAccess) {
 		return result.copy();
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess registryAccess) {
+	public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
 		return result;
 	}
 

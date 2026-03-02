@@ -4,6 +4,7 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.core.CookingBlockEntity;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class SoupHolder {
 
-	private List<SoupBaseRecipe<?>> recipes = new ArrayList<>();
+	private List<RecipeHolder<SoupBaseRecipe<?>>> recipes = new ArrayList<>();
 
 	public SoupData current = SoupData.DEF;
 	public SoupData next = SoupData.DEF;
@@ -34,20 +35,20 @@ public class SoupHolder {
 		if (time < nextTime) return;
 		nextTime = Integer.MAX_VALUE;
 		for (var e : recipes) {
-			if (e.time > time) {
-				nextTime = Math.min(nextTime, e.time);
+			if (e.value().time > time) {
+				nextTime = Math.min(nextTime, e.value().time);
 			}
 		}
 		var r0 = findSoup(time);
 		var r1 = findSoup(nextTime);
-		current = r0 == null ? SoupData.DEF : new SoupData(r0.id, r0.color, r0.time);
-		next = r1 == null || r0 == r1 ? current : new SoupData(r1.id, r1.color, r1.time);
+		current = r0 == null ? SoupData.DEF : new SoupData(r0.value().id, r0.value().color, r0.value().time);
+		next = r1 == null || r0 == r1 ? current : new SoupData(r1.value().id, r1.value().color, r1.value().time);
 		var currentItems = new ArrayList<>(be.createContainer().list());
 		var nextItems = new ArrayList<>(currentItems);
 		if (r0 != null) {
-			r0.removeConsumed(currentItems);
+			r0.value().removeConsumed(currentItems);
 			if (r1 != null) {
-				r1.removeConsumed(nextItems);
+				r1.value().removeConsumed(nextItems);
 			} else nextItems = currentItems;
 		}
 		floatingItems = new ArrayList<>();
@@ -57,25 +58,25 @@ public class SoupHolder {
 				continue;
 			}
 			if (r1 != null && nextItems.get(i).isEmpty()) {
-				floatingItems.add(new ItemEntry(currentItems.get(i), r1.time));
+				floatingItems.add(new ItemEntry(currentItems.get(i), r1.value().time));
 			} else floatingItems.add(new ItemEntry(currentItems.get(i), -1));
 
 		}
 	}
 
-	private @Nullable SoupBaseRecipe<?> findSoup(int time) {
+	private @Nullable RecipeHolder<SoupBaseRecipe<?>> findSoup(int time) {
 		int max = 0;
 		var current = SoupBaseRecipe.DEF;
-		SoupBaseRecipe<?> recipe = null;
+		RecipeHolder<SoupBaseRecipe<?>> recipe = null;
 		for (var e : recipes) {
-			if (e.time > time) continue;
-			if (e.getIngredientCount() > max) {
-				max = e.getIngredientCount();
-				current = e.id;
+			if (e.value().time > time) continue;
+			if (e.value().getIngredientCount() > max) {
+				max = e.value().getIngredientCount();
+				current = e.id();
 				recipe = e;
-			} else if (e.getIngredientCount() == max) {
-				if (e.id.compareTo(current) < 0) {
-					current = e.id;
+			} else if (e.value().getIngredientCount() == max) {
+				if (e.id().compareTo(current) < 0) {
+					current = e.id();
 					recipe = e;
 				}
 			}

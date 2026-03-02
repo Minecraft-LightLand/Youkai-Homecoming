@@ -44,7 +44,7 @@ public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
 		return DelegateBlock.newBaseBlock(p.mapColor(MapColor.WOOD).sound(SoundType.WOOD)
 						.strength(1).noOcclusion().pushReaction(PushReaction.DESTROY),
-				INS, BE, BlockProxy.HORIZONTAL);
+				INS, BE, BlockTemplates.HORIZONTAL);
 
 	}
 

@@ -1,7 +1,11 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.TagKey;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -10,9 +14,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public class BiomeTagCondition implements LootItemCondition {
 
-	public final TagKey<Biome> tag;
+	public static final MapCodec<BiomeTagCondition> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+					RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("biomes").forGetter(e -> e.tag))
+			.apply(i, BiomeTagCondition::new));
 
-	public BiomeTagCondition(TagKey<Biome> tag) {
+	public final HolderSet<Biome> tag;
+
+	public BiomeTagCondition(HolderSet<Biome> tag) {
 		this.tag = tag;
 	}
 
@@ -25,6 +33,6 @@ public class BiomeTagCondition implements LootItemCondition {
 	public boolean test(LootContext ctx) {
 		if (!ctx.hasParam(LootContextParams.ORIGIN)) return false;
 		var pos = ctx.getParam(LootContextParams.ORIGIN);
-		return ctx.getLevel().getBiome(BlockPos.containing(pos)).is(tag);
+		return tag.contains(ctx.getLevel().getBiome(BlockPos.containing(pos)));
 	}
 }

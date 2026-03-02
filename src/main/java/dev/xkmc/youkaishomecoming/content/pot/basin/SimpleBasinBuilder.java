@@ -1,13 +1,14 @@
 package dev.xkmc.youkaishomecoming.content.pot.basin;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
+import dev.xkmc.l2core.serial.recipe.BaseRecipeBuilder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 public class SimpleBasinBuilder extends BaseRecipeBuilder<SimpleBasinBuilder, SimpleBasinRecipe, BasinRecipe<?>, BasinInput> {
 
@@ -16,7 +17,7 @@ public class SimpleBasinBuilder extends BaseRecipeBuilder<SimpleBasinBuilder, Si
 	}
 
 	public SimpleBasinBuilder(FluidStack output) {
-		super(YHBlocks.BASIN_RS.get());
+		super(YHBlocks.BASIN_RS.get(), Items.AIR);
 		recipe.output = output;
 	}
 

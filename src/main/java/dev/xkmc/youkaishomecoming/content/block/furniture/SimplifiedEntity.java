@@ -1,16 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.block.furniture;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.PushReaction;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public abstract class SimplifiedEntity extends Entity {
 
@@ -52,8 +48,8 @@ public abstract class SimplifiedEntity extends Entity {
 	}
 
 	@Override
-	public void setSecondsOnFire(int pSeconds) {
-
+	public boolean isOnFire() {
+		return false;
 	}
 
 	@Override
@@ -66,11 +62,6 @@ public abstract class SimplifiedEntity extends Entity {
 	}
 
 	@Override
-	public boolean ignoreExplosion() {
-		return true;
-	}
-
-	@Override
 	public void clearFire() {
 	}
 
@@ -78,20 +69,16 @@ public abstract class SimplifiedEntity extends Entity {
 		return PushReaction.IGNORE;
 	}
 
-	public final Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
-
 	public boolean mayInteract(Level pLevel, BlockPos pPos) {
 		return false;
 	}
 
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		return LazyOptional.empty();
-	}
-
 	private int typeId = -1;
+
+	@Override
+	public boolean ignoreExplosion(Explosion explosion) {
+		return true;
+	}
 
 	public int getTypeId() {
 		if (typeId < 0) {

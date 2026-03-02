@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -12,7 +12,7 @@ import java.util.List;
 @SerialClass
 public class OrderedCuisineRecipe extends BaseCuisineRecipe<OrderedCuisineRecipe> {
 
-	@SerialClass.SerialField
+	@SerialField
 	public final List<Ingredient> input = new ArrayList<>();
 
 	public OrderedCuisineRecipe(ResourceLocation id) {

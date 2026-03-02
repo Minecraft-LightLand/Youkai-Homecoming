@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 public class WineShelfBlock implements OnClickBlockMethod {
 
@@ -25,7 +25,7 @@ public class WineShelfBlock implements OnClickBlockMethod {
 
 	@Override
 	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		var dir = state.getValue(BlockProxy.HORIZONTAL_FACING);
+		var dir = state.getValue(BlockTemplates.HORIZONTAL_FACING);
 		if (hit.getDirection() == dir) {
 			if (level.getBlockEntity(pos) instanceof WineShelfBlockEntity be) {
 				var vec = hit.getLocation().subtract(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5)

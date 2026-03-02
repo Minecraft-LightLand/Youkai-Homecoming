@@ -6,13 +6,11 @@ import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -36,15 +34,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineMob {
@@ -53,7 +51,7 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		return Mob.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 6)
 				.add(Attributes.MOVEMENT_SPEED, 0.25)
-				.add(ForgeMod.SWIM_SPEED.get(), 4);
+				.add(NeoForgeMod.SWIM_SPEED, 4);
 	}
 
 	private static <T> EntityDataAccessor<T> defineId(EntityDataSerializer<T> ser) {
@@ -109,9 +107,9 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		return states;
 	}
 
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		data().register(entityData);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		data().register(builder);
 	}
 
 	public void addAdditionalSaveData(CompoundTag tag) {
@@ -124,11 +122,6 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		super.readAdditionalSaveData(tag);
 		data().read(tag, entityData);
 		states.read(tag);
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	@Override
@@ -160,17 +153,17 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 
 	public void dig(BlockState down) {
 		if (level() instanceof ServerLevel sl) {
-			var biome = sl.getBiome(blockPosition);
+			var biome = sl.getBiome(blockPosition());
 			boolean sand = false;
 			if (down.is(BlockTags.SAND)) sand = true;
-			else if (!down.is(Tags.Blocks.GRAVEL)) return;
-			ResourceLocation table = sand ? YHLootGen.CRAB_SAND_BASE : YHLootGen.CRAB_GRAVEL_BASE;
+			else if (!down.is(Tags.Blocks.GRAVELS)) return;
+			var table = sand ? YHLootGen.CRAB_SAND_BASE : YHLootGen.CRAB_GRAVEL_BASE;
 			if (biome.is(YHBiomeTagsProvider.CRAB_MUD)) {
 				table = sand ? YHLootGen.CRAB_SAND_RIVER : YHLootGen.CRAB_GRAVEL_RIVER;
 			} else if (biome.is(BiomeTags.IS_BEACH) || biome.is(BiomeTags.IS_OCEAN)) {
 				table = sand ? YHLootGen.CRAB_SAND_BEACH : YHLootGen.CRAB_GRAVEL_BEACH;
 			}
-			var list = sl.getServer().getLootData().getLootTable(table).getRandomItems(new LootParams.Builder(sl)
+			var list = sl.getServer().reloadableRegistries().getLootTable(table).getRandomItems(new LootParams.Builder(sl)
 					.withParameter(LootContextParams.ORIGIN, position())
 					.withParameter(LootContextParams.THIS_ENTITY, this)
 					.create(LootContextParamSets.GIFT));
@@ -178,7 +171,7 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 			var stack = list.get(random.nextInt(list.size())).copyWithCount(1);
 			setItemInHand(InteractionHand.MAIN_HAND, stack);
 			setDropChance(EquipmentSlot.MAINHAND, 1);
-			sl.playSound(null, blockPosition, SoundEvents.ITEM_PICKUP,
+			sl.playSound(null, blockPosition(), SoundEvents.ITEM_PICKUP,
 					SoundSource.AMBIENT, 0.7f, 1);
 		}
 	}
@@ -202,7 +195,7 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 		if (stack.isEmpty() && states().isFlipped()) {
 			if (level() instanceof ServerLevel sl) {
 				states().flipBack();
-				sl.playSound(null, blockPosition, SoundEvents.ITEM_PICKUP,
+				sl.playSound(null, blockPosition(), SoundEvents.ITEM_PICKUP,
 						SoundSource.AMBIENT, 0.7f, 1);
 			}
 			return InteractionResult.SUCCESS;
@@ -214,7 +207,7 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 				setItemInHand(InteractionHand.MAIN_HAND, stack.split(1));
 				setDropChance(EquipmentSlot.MAINHAND, 1);
 				states.transitionTo(CrabState.SWING);
-				sl.playSound(this, blockPosition, SoundEvents.ITEM_BREAK,
+				sl.playSound(this, blockPosition(), SoundEvents.ITEM_BREAK,
 						SoundSource.AMBIENT, 0.7f, 1);
 			}
 			return InteractionResult.SUCCESS;
@@ -237,31 +230,32 @@ public class CrabEntity extends WaterAnimal implements Bucketable, StateMachineM
 	}
 
 	@Override
-	public EntityDimensions getDimensions(Pose pose) {
-		var ans = super.getDimensions(pose);
+	public EntityDimensions getDefaultDimensions(Pose pose) {
+		var ans = super.getDefaultDimensions(pose);
 		if (states().isHiding())
 			ans = ans.scale(1, 0.1f);
 		return ans;
 	}
 
 	@Override
-	public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group, @Nullable CompoundTag data) {
+	public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group) {
 		var biome = level.getBiome(blockPosition());
 		if (biome.is(YHBiomeTagsProvider.CRAB_MUD)) {
 			prop.setVariant(CrabVariant.MUD);
 		}
-		return super.finalizeSpawn(level, ins, type, group, data);
+		return super.finalizeSpawn(level, ins, type, group);
 	}
 
 	// bucket
 
 	public void saveToBucketTag(ItemStack stack) {
 		Bucketable.saveDefaultDataToBucketTag(this, stack);
-		CompoundTag tag = stack.getOrCreateTag();
-		var b = fromBucket();
-		setFromBucket(false);
-		data().write(tag, entityData);
-		setFromBucket(b);
+		CustomData.update(DataComponents.BUCKET_ENTITY_DATA, stack, (tag) -> {
+			var b = fromBucket();
+			setFromBucket(false);
+			data().write(tag, entityData);
+			setFromBucket(b);
+		});
 	}
 
 	public void loadFromBucketTag(CompoundTag tag) {

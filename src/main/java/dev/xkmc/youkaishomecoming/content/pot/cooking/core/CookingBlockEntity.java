@@ -1,8 +1,9 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 
-import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupHolder;
@@ -14,6 +15,7 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,11 +34,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.common.capabilities.Capability;
+import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
@@ -49,10 +49,8 @@ import java.util.List;
 public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCookingRecipe<?>, CookingInv>
 		implements BlockContainer, HeatableBlockEntity, IHintableBlock, InfoTile {
 
-	@SerialClass.SerialField
+	@SerialField
 	public final CookingItemContainer items = new CookingItemContainer(this, 12).setMax(1);
-
-	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
 
 	private final SoupHolder soup = new SoupHolder();
 
@@ -138,8 +136,8 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		var ans = recipe.assemble(createContainer(), level.registryAccess());
 		if (ans.getItem() instanceof BlockItem block) {
 			var state = block.getBlock().defaultBlockState();
-			if (state.hasProperty(BlockProxy.HORIZONTAL_FACING)) {
-				state = state.setValue(BlockProxy.HORIZONTAL_FACING, getBlockState().getValue(BlockProxy.HORIZONTAL_FACING));
+			if (state.hasProperty(BlockTemplates.HORIZONTAL_FACING)) {
+				state = state.setValue(BlockTemplates.HORIZONTAL_FACING, getBlockState().getValue(BlockTemplates.HORIZONTAL_FACING));
 			}
 			items.clear();
 			level.setBlockAndUpdate(getBlockPos(), state);
@@ -201,8 +199,8 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 	}
 
 	@Override
-	public void load(CompoundTag tag) {
-		super.load(tag);
+	public void loadAdditional(CompoundTag tag, HolderLookup.Provider pvd) {
+		super.loadAdditional(tag, pvd);
 		recheckSoup = true;
 	}
 
@@ -226,7 +224,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		var recipes = level.getRecipeManager().getRecipesFor(getRecipeType(), cont, level);
 		List<Ingredient> ans = new ArrayList<>();
 		for (var e : recipes) {
-			ans.addAll(e.getHints(level, cont));
+			ans.addAll(e.value().getHints(level, cont));
 		}
 		return ans;
 	}

@@ -1,4 +1,4 @@
-package dev.xkmc.youkaishomecoming.content.entity.animal.boar;
+package dev.xkmc.youkaishomecoming.content.entity.boar;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
 

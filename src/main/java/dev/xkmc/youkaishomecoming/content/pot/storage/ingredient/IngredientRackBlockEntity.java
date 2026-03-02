@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.pot.storage.ingredient;
 
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.base.tile.BaseContainerListener;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.storage.bottle.SauceRackBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -24,7 +25,7 @@ public class IngredientRackBlockEntity extends BaseBlockEntity implements BaseCo
 		return SauceRackBlockEntity.isFlask(stack);
 	}
 
-	@SerialClass.SerialField
+	@SerialField
 	public final IngredientRackContainer items = new IngredientRackContainer(6).setMax(64).add(this);
 
 	public IngredientRackBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -68,7 +69,7 @@ public class IngredientRackBlockEntity extends BaseBlockEntity implements BaseCo
 				notifyTile();
 			}
 			return true;
-		} else if (ItemStack.isSameItemSameTags(ans, stack)) {
+		} else if (ItemStack.isSameItemSameComponents(ans, stack)) {
 			int amount = Math.min(max - ans.getCount(), stack.getCount());
 			if (amount <= 0) return false;
 			if (!level.isClientSide()) {

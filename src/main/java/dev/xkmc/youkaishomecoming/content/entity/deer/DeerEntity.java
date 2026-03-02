@@ -33,7 +33,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.util.Lazy;
+import net.neoforged.neoforge.common.util.Lazy;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -104,9 +104,9 @@ public class DeerEntity extends Animal implements StateMachineMob {
 		return states;
 	}
 
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		data().register(entityData);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		data().register(builder);
 	}
 
 	public void addAdditionalSaveData(CompoundTag tag) {
@@ -166,8 +166,8 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	}
 
 	@Override
-	public EntityDimensions getDimensions(Pose pose) {
-		var ans = super.getDimensions(pose);
+	public EntityDimensions getDefaultDimensions(Pose pose) {
+		var ans = super.getDefaultDimensions(pose);
 		if (states().isRelaxed())
 			ans = ans.scale(1, 0.7f);
 		return ans;
@@ -175,8 +175,8 @@ public class DeerEntity extends Animal implements StateMachineMob {
 
 
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group, @Nullable CompoundTag data) {
-		var ans = super.finalizeSpawn(level, ins, type, group, data);
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData group) {
+		var ans = super.finalizeSpawn(level, ins, type, group);
 		prop.setMale(level.getRandom().nextBoolean());
 		if (!isBaby()) {
 			prop.setHorned(prop.isMale());
@@ -234,7 +234,7 @@ public class DeerEntity extends Animal implements StateMachineMob {
 	}
 
 	protected float getStandingEyeHeight(Pose pose, EntityDimensions dim) {
-		return dim.height * 0.95f;
+		return dim.height() * 0.95f;//FIXME
 	}
 
 }

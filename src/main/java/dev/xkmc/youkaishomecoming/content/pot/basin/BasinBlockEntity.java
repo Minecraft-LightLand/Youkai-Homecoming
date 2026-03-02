@@ -21,6 +21,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
@@ -60,10 +61,10 @@ public class BasinBlockEntity extends BaseBlockEntity implements
 		var cont = new BasinInput(this);
 		var rec = level.getRecipeManager().getRecipeFor(YHBlocks.BASIN_RT.get(), cont, level);
 		if (rec.isEmpty()) return;
-		var ans = rec.get().assembleFluid(cont, level.registryAccess());
+		var ans = rec.get().value().assembleFluid(cont, level.registryAccess());
 		var old = fluids.getFluidInTank(0);
 		if (!old.isEmpty()) {
-			if (!ans.isFluidEqual(old)) return;
+			if (!FluidStack.isSameFluidSameComponents(ans, old)) return;
 			if (old.getAmount() + ans.getAmount() > fluids.getTankCapacity(0)) return;
 		}
 		ItemStack in = items.getItem(0);
