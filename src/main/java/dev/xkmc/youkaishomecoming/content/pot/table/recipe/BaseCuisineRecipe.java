@@ -1,20 +1,22 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
-import dev.xkmc.l2serial.serialization.SerialClass;
-import net.minecraft.core.RegistryAccess;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 @SerialClass
 public abstract class BaseCuisineRecipe<T extends BaseCuisineRecipe<T>> extends CuisineRecipe<T> {
 
-	@SerialClass.SerialField
+	@SerialField
 	public ResourceLocation base;
-	@SerialClass.SerialField
+	@SerialField
 	public ItemStack result = ItemStack.EMPTY;
 
-	public BaseCuisineRecipe(ResourceLocation id, RecType<T, CuisineRecipe<?>, CuisineInv> fac) {
-		super(id, fac);
+	public BaseCuisineRecipe(BaseRecipe.RecType<T, CuisineRecipe<?>, CuisineInv> fac) {
+		super(fac);
 	}
 
 	@Override
@@ -23,12 +25,12 @@ public abstract class BaseCuisineRecipe<T extends BaseCuisineRecipe<T>> extends 
 	}
 
 	@Override
-	public ItemStack assemble(CuisineInv inv, RegistryAccess access) {
+	public ItemStack assemble(CuisineInv inv, HolderLookup.Provider access) {
 		return result.copy();
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess access) {
+	public ItemStack getResultItem(HolderLookup.Provider access) {
 		return result;
 	}
 

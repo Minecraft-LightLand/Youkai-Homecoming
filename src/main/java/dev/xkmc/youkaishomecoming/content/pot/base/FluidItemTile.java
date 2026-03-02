@@ -1,11 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.pot.base;
 
-import dev.xkmc.l2library.base.tile.BaseTank;
+import dev.xkmc.l2core.base.tile.BaseTank;
 import dev.xkmc.youkaishomecoming.compat.create.CreateFillingTest;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -15,17 +16,15 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidUtil;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 
 public interface FluidItemTile {
 
@@ -60,8 +59,8 @@ public interface FluidItemTile {
 		}
 		// fill or take fluid via YH items
 		if (!hasFluid || stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof SakeBottleItem) {
-			LazyOptional<IFluidHandlerItem> opt = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
-			if (opt.resolve().isPresent()) {
+			IFluidHandlerItem opt = stack.getCapability(Capabilities.FluidHandler.ITEM);
+			if (opt != null) {
 				if ((level instanceof ServerLevel sl) && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
 					be.notifyTile();
 					sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
@@ -72,16 +71,19 @@ public interface FluidItemTile {
 			}
 		}
 		// fill water from bottle
-		if (stack.is(Items.POTION) && PotionUtils.getPotion(stack) == Potions.WATER) {
-			var attempt = be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.SIMULATE);
-			if (attempt == 250) {
-				if (level instanceof ServerLevel sl) {
-					be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.EXECUTE);
-					if (!player.isCreative()) {
-						stack.shrink(1);
-						player.getInventory().placeItemBackInInventory(Items.GLASS_BOTTLE.getDefaultInstance());
+		if (stack.is(Items.POTION)) {
+			var potion = stack.get(DataComponents.POTION_CONTENTS);
+			if (potion != null && potion.is(Potions.WATER)) {
+				var attempt = be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.SIMULATE);
+				if (attempt == 250) {
+					if (level instanceof ServerLevel sl) {
+						be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.EXECUTE);
+						if (!player.isCreative()) {
+							stack.shrink(1);
+							player.getInventory().placeItemBackInInventory(Items.GLASS_BOTTLE.getDefaultInstance());
+						}
+						sl.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.7f, 1);
 					}
-					sl.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.7f, 1);
 				}
 			}
 		}

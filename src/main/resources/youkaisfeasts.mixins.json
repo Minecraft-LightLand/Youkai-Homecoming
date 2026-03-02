@@ -3,7 +3,6 @@
 	"priority": 1000,
 	"package": "dev.xkmc.youkaishomecoming.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"refmap": "youkaisfeasts.refmap.json",
 	"mixins": [
 		"AddItemModifierAccessor",
 		"AddLootTableModifierAccessor",

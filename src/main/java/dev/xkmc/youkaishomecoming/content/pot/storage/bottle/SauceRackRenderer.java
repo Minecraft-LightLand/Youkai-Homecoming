@@ -44,9 +44,9 @@ public class SauceRackRenderer implements BlockEntityRenderer<SauceRackBlockEnti
 			if (bottle instanceof BlockItem item) {
 				pose.pushPose();
 				int x = i % 3 - 1;
-				pose.translate(x * 5f / 16 , 1f / 16, -5f / 16);
+				pose.translate(x * 5f / 16, 1f / 16, -5f / 16);
 				pose.mulPose(Axis.YP.rotationDegrees(180));
-				pose.translate(- 8f / 16, 0, -8f / 16);
+				pose.translate(-8f / 16, 0, -8f / 16);
 				var state = item.getBlock().defaultBlockState();
 				BakedModel model = Minecraft.getInstance().getModelManager().getBlockModelShaper().getBlockModel(state);
 				ModelBlockRenderer renderer = Minecraft.getInstance().getBlockRenderer().getModelRenderer();

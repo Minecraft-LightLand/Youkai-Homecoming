@@ -1,16 +1,16 @@
 package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipe;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -20,15 +20,15 @@ import java.util.Set;
 @SerialClass
 public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleContainer> implements TimedRecipe {
 
-	@SerialClass.SerialField
+	@SerialField
 	public final List<Ingredient> input = new ArrayList<>();
-	@SerialClass.SerialField
+	@SerialField
 	public int time;
-	@SerialClass.SerialField
+	@SerialField
 	public FluidStack result;
 
-	public KettleRecipe(ResourceLocation id) {
-		super(id, YHBlocks.KETTLE_RS.get());
+	public KettleRecipe() {
+		super(YHBlocks.KETTLE_RS.get());
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleC
 	}
 
 	@Override
-	public ItemStack assemble(SimpleContainer cont, RegistryAccess access) {
+	public ItemStack assemble(SimpleContainer cont, HolderLookup.Provider access) {
 		return ItemStack.EMPTY;
 	}
 
@@ -71,7 +71,7 @@ public class KettleRecipe extends BaseRecipe<KettleRecipe, KettleRecipe, SimpleC
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess registryAccess) {
+	public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
 		return ItemStack.EMPTY;
 	}
 

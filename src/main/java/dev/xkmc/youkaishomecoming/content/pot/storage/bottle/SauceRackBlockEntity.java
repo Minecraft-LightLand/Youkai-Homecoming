@@ -21,7 +21,7 @@ import java.util.List;
 @SerialClass
 public class SauceRackBlockEntity extends BaseBlockEntity implements BaseContainerListener, BlockContainer {
 
-	public static boolean isFlask(ItemStack stack){
+	public static boolean isFlask(ItemStack stack) {
 		return stack.getItem() instanceof SlipBottleItem || stack.getItem() instanceof BucketBottleItem;
 	}
 

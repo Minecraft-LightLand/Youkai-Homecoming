@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import com.mojang.serialization.MapCodec;
 import dev.xkmc.l2harvester.api.HarvestResult;
 import dev.xkmc.l2harvester.api.HarvestableBlock;
 import net.minecraft.core.BlockPos;
@@ -7,7 +8,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Ravager;
@@ -23,8 +23,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModSounds;
 
@@ -34,6 +34,11 @@ import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCrop
 
 @SuppressWarnings("deprecation")
 public abstract class BaseCropVineBlock extends BushBlock implements HarvestableBlock {
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return null;
+	}
 
 	public static final BooleanProperty TOP = BooleanProperty.create("top");
 
@@ -65,7 +70,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 	public abstract ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state);
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (state.getValue(getAgeProperty()) == getMaxAge()) {
 			if (!level.isClientSide()) {
 				pickup(state, level, pos, player);
@@ -107,9 +112,9 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 			if (!natural) {
 				doGrowth(state, setter, pos, random);
 				return true;
-			} else if (ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed)) {
+			} else if (CommonHooks.canCropGrow(setter, pos, state, random.nextFloat() < speed)) {
 				setter.setBlock(pos, state.setValue(getAgeProperty(), age + 1), 2);
-				ForgeHooks.onCropsGrowPost(setter, pos, state);
+				CommonHooks.fireCropGrowPost(setter, pos, state);
 				return true;
 			}
 		}
@@ -131,7 +136,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 	}
 
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity e) {
-		if (e instanceof Ravager && ForgeEventFactory.getMobGriefingEvent(level, e)) {
+		if (e instanceof Ravager && EventHooks.canEntityGrief(level, e)) {
 			level.destroyBlock(pos, true, e);
 		}
 		super.entityInside(state, level, pos, e);

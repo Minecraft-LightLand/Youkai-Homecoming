@@ -6,14 +6,14 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BottleTexture {
 
-	private static List<BottleTexture> LIST = new ArrayList<>();
+	private static final List<BottleTexture> LIST = new ArrayList<>();
 
 	public final int index;
 
@@ -25,7 +25,7 @@ public abstract class BottleTexture {
 	public static Ingredient replace(Ingredient ing) {
 		for (var e : LIST) {
 			if (ing.test(e.holder().asStack(1))) {
-				return new SlipBottleIngredient(e.holder().source()).validate();
+				return new SlipBottleIngredient(e.holder().source()).toVanilla();
 			}
 		}
 		return ing;

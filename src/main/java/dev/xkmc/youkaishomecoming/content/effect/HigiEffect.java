@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.effect;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;

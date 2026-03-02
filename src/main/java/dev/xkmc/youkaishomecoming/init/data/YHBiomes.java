@@ -6,7 +6,7 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -54,7 +54,7 @@ public class YHBiomes {
 		return ResourceKey.create(Registries.PLACED_FEATURE, YoukaisHomecoming.loc(id));
 	}
 
-	public static void registerPlacements(BootstapContext<PlacedFeature> ctx) {
+	public static void registerPlacements(BootstrapContext<PlacedFeature> ctx) {
 		var freg = ctx.lookup(Registries.CONFIGURED_FEATURE);
 		PlacementUtils.register(ctx, SAKURA_FOREST_CHERRY, freg.getOrThrow(TreeFeatures.CHERRY_BEES_005),
 				VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.5f, 1), Blocks.CHERRY_SAPLING));
@@ -71,7 +71,7 @@ public class YHBiomes {
 						SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome()));
 	}
 
-	public static void registerBiomes(BootstapContext<Biome> ctx) {
+	public static void registerBiomes(BootstrapContext<Biome> ctx) {
 		var pfreg = ctx.lookup(Registries.PLACED_FEATURE);
 		var cwreg = ctx.lookup(Registries.CONFIGURED_CARVER);
 		ctx.register(SAKURA_FOREST, forest(pfreg, cwreg, SAKURA_FOREST_CHERRY, SAKURA_FOREST_OAK));

@@ -4,8 +4,8 @@ import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.spout.FillingBySpout;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.Optional;
 import java.util.function.Supplier;

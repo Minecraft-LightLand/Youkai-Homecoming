@@ -1,21 +1,24 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
-import dev.xkmc.l2library.serial.ingredients.BaseIngredient;
-import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.common.crafting.ICustomIngredient;
+import net.neoforged.neoforge.common.crafting.IngredientType;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.stream.Stream;
 
-@SerialClass
-public class SlipBottleIngredient extends BaseIngredient<SlipBottleIngredient> {
+public record SlipBottleIngredient(Fluid fluid) implements ICustomIngredient {
 
-	public static final BaseIngredient.Serializer<SlipBottleIngredient> INSTANCE = new BaseIngredient.Serializer<>(SlipBottleIngredient.class, YoukaisHomecoming.loc("fluid"));
+	public static Ingredient of(Fluid fluid) {
+		return (new SlipBottleIngredient(fluid)).toVanilla();
+	}
 
-	private static Stream<? extends Value> mapStream(Fluid fluid) {
+	@Override
+	public Stream<ItemStack> getItems() {
 		if (fluid instanceof YHFluid type) {
 			var item = type.type.asStack(1);
 			if (type.type.bottleSet() != null) {
@@ -23,28 +26,21 @@ public class SlipBottleIngredient extends BaseIngredient<SlipBottleIngredient> {
 				filled.setFluid(new FluidStack(fluid, 1000));
 				var flask = filled.getContainer();
 				if (type.type.bottleSet() instanceof BottledDrinkSet set) {
-					return Stream.of(new ItemValue(set.bottle.asStack()), new ItemValue(flask), new ItemValue(item));
-				} else return Stream.of(new ItemValue(flask), new ItemValue(item));
-			} else return Stream.of(new ItemValue(item));
+					return Stream.of(set.bottle.asStack(), flask, item);
+				} else return Stream.of(flask, item);
+			} else return Stream.of(item);
 		}
 		return Stream.of();
 	}
 
-	@SerialClass.SerialField
-	public Fluid fluid;
-
-	public SlipBottleIngredient() {
-
-	}
-
-	public SlipBottleIngredient(Fluid fluid) {
-		super(mapStream(fluid));
-		this.fluid = fluid;
+	@Override
+	public boolean isSimple() {
+		return false;
 	}
 
 	@Override
-	protected SlipBottleIngredient validate() {
-		return new SlipBottleIngredient(fluid);
+	public IngredientType<?> getType() {
+		return YoukaisHomecoming.ING_BOTTLE.get();
 	}
 
 	@Override
@@ -54,11 +50,6 @@ public class SlipBottleIngredient extends BaseIngredient<SlipBottleIngredient> {
 		if (stack.is(type.type.asItem())) return true;
 		if (!SlipBottleItem.isSlipContainer(stack)) return false;
 		return SlipBottleItem.getFluid(stack).getFluid() == fluid;
-	}
-
-	@Override
-	public Serializer<SlipBottleIngredient> getSerializer() {
-		return INSTANCE;
 	}
 
 }

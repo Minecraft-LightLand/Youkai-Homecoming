@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.item;
 
-import dev.xkmc.l2library.serial.config.BaseConfig;
-import dev.xkmc.l2library.serial.config.CollectType;
-import dev.xkmc.l2library.serial.config.ConfigCollect;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.serial.config.BaseConfig;
+import dev.xkmc.l2core.serial.config.CollectType;
+import dev.xkmc.l2core.serial.config.ConfigCollect;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -13,7 +14,7 @@ import java.util.LinkedHashMap;
 @SerialClass
 public class ModelIngredientData extends BaseConfig {
 
-	@SerialClass.SerialField
+	@SerialField
 	@ConfigCollect(CollectType.MAP_COLLECT)
 	public LinkedHashMap<ResourceLocation, LinkedHashMap<String, Ingredient>> ingredients = new LinkedHashMap<>();
 

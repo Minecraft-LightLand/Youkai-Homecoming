@@ -23,6 +23,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -32,7 +33,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -50,8 +51,10 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 	@Override
 	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
 		BlockPos blockpos = pPos.below();
-		if (pState.getBlock() == this)
-			return pLevel.getBlockState(blockpos).canSustainPlant(pLevel, blockpos, Direction.UP, this);
+		if (pState.getBlock() == this) {
+			var soil = pLevel.getBlockState(blockpos).canSustainPlant(pLevel, blockpos, Direction.UP, pState);
+			return soil.isTrue() || soil.isDefault() && pLevel.getBlockState(blockpos).getBlock() instanceof FarmBlock;
+		}
 		return this.mayPlaceOn(pLevel.getBlockState(blockpos), pLevel, blockpos);
 	}
 
@@ -73,10 +76,10 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 				}
 			}
 			if (seeSky && (i < getMaxAge() - 1 || i == getMaxAge() - 1 && brightMoon)) {
-				float f = getGrowthSpeed(this, level, pos);
-				if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+				float f = getGrowthSpeed(state, level, pos);
+				if (CommonHooks.canCropGrow(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 					level.setBlock(pos, getStateForAge(i + 1), 2);
-					ForgeHooks.onCropsGrowPost(level, pos, state);
+					CommonHooks.fireCropGrowPost(level, pos, state);
 					if (i + 1 == getMaxAge())
 						level.scheduleTick(pos, this, YHModConfig.COMMON.udumbaraDuration.get());
 				}
@@ -127,7 +130,7 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+	public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
 		return false;
 	}
 
@@ -139,7 +142,8 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7)))
 								.add(LootItem.lootTableItem(crop.getFruits())
-										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3))))));
+										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(
+												pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE), 0.5714286F, 3))))));
 	}
 
 }

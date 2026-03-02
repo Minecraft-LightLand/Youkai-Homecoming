@@ -3,9 +3,9 @@ package dev.xkmc.youkaishomecoming.content.pot.cooking.large;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2core.serial.loot.LootHelper;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
@@ -24,7 +24,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 
 public class LargeCookingPotBlock implements ShapeBlockMethod {
@@ -34,7 +34,7 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 	public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 15, 15);
 
 	public static DelegateBlock create(BlockBehaviour.Properties p) {
-		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.STOCKPOT), new PotFall(), BE, BlockProxy.HORIZONTAL);
+		return DelegateBlock.newBaseBlock(p, INS, new PotClick(YHBlocks.STOCKPOT), new PotFall(), BE, BlockTemplates.HORIZONTAL);
 	}
 
 	@Override
@@ -72,13 +72,14 @@ public class LargeCookingPotBlock implements ShapeBlockMethod {
 	}
 
 	public static void createLoot(RegistrateBlockLootTables pvd, Block block) {
+		var helper = new LootHelper(pvd);
 		pvd.add(block, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(YHBlocks.STOCKPOT.asItem()))
-						.when(LootTableTemplate.silk(false)))
+						.when(helper.silk().invert()))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Blocks.CAULDRON))
-						.when(LootTableTemplate.silk(true)))
+						.when(helper.silk()))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(YHBlocks.BIG_SPOON))
-						.when(LootTableTemplate.silk(true)))
+						.when(helper.silk()))
 		);
 	}
 

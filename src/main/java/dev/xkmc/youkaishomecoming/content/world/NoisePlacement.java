@@ -1,7 +1,7 @@
-
 package dev.xkmc.youkaishomecoming.content.world;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHWorldGen;
 import net.minecraft.core.BlockPos;
@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 
 public class NoisePlacement extends PlacementModifier {
 
-	public static final Codec<NoisePlacement> CODEC = RecordCodecBuilder.create((i) -> i.group(
+	public static final MapCodec<NoisePlacement> CODEC = RecordCodecBuilder.mapCodec((i) -> i.group(
 			ResourceLocation.CODEC.fieldOf("noise").forGetter(e -> e.noise.location()),
 			Codec.DOUBLE.fieldOf("reference").forGetter((e) -> e.reference),
 			Codec.DOUBLE.fieldOf("low").forGetter((e) -> e.low),

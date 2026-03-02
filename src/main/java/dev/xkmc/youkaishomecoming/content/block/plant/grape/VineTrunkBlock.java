@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.block.plant.grape;
 
+import com.mojang.serialization.MapCodec;
 import dev.xkmc.l2harvester.api.HarvestResult;
 import dev.xkmc.l2harvester.api.HarvestableBlock;
 import net.minecraft.core.BlockPos;
@@ -12,14 +13,14 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.PlantType;
+import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
@@ -28,6 +29,11 @@ import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCrop
 
 @SuppressWarnings("deprecation")
 public abstract class VineTrunkBlock extends BushBlock implements BonemealableBlock, HarvestableBlock {
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return null;
+	}
 
 	public static final BooleanProperty MERGED = BooleanProperty.create("merged");
 
@@ -52,7 +58,7 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 		return seed.asItem().getDefaultInstance();
 	}
 
@@ -74,9 +80,9 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 			if (!natural) {
 				setter.setBlock(pos, state.setValue(MERGED, true), 2);
 				return true;
-			} else if (ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed)) {
+			} else if (CommonHooks.canCropGrow(setter, pos, state, random.nextFloat() < speed)) {
 				setter.setBlock(pos, state.setValue(MERGED, true), 2);
-				ForgeHooks.onCropsGrowPost(setter, pos, state);
+				CommonHooks.fireCropGrowPost(setter, pos, state);
 				return true;
 			}
 			return false;
@@ -100,7 +106,7 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		if (z && x) {
 			z = random.nextBoolean();
 		}
-		if (natural && !ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed))
+		if (natural && !CommonHooks.canCropGrow(setter, pos, state, random.nextFloat() < speed))
 			return false;
 		BlockState topState = getTop().defaultBlockState();
 		if (z) {
@@ -130,13 +136,13 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		}
 		setter.setBlock(up, topState, 2);
 		if (natural) {
-			ForgeHooks.onCropsGrowPost(setter, up, topState);
+			CommonHooks.fireCropGrowPost(setter, up, topState);
 		}
 		return true;
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean client) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return attemptGrowth(state, level, pos, null, true, false, 1);
 	}
 
@@ -150,20 +156,17 @@ public abstract class VineTrunkBlock extends BushBlock implements BonemealableBl
 		attemptGrowth(state, level, pos, random, false, false, 1);
 	}
 
-	@Override
-	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
-		return PlantType.PLAINS;
-	}
-
 	protected float getGrowthSpeed(BlockGetter level, BlockPos pos) {
 		float f = 1;
 		BlockPos blockpos = pos.below();
+		var self = level.getBlockState(pos);
 
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j <= 1; ++j) {
 				float f1 = 0;
 				BlockState blockstate = level.getBlockState(blockpos.offset(i, 0, j));
-				if (blockstate.canSustainPlant(level, blockpos.offset(i, 0, j), net.minecraft.core.Direction.UP, this)) {
+				var soil = blockstate.canSustainPlant(level, blockpos.offset(i, 0, j), net.minecraft.core.Direction.UP, self);
+				if (soil.isTrue() || soil.isDefault() && blockstate.getBlock() instanceof FarmBlock) {
 					f1 = 1;
 					if (blockstate.is(ModBlocks.RICH_SOIL.get()) || blockstate.is(ModBlocks.RICH_SOIL_FARMLAND.get())) {
 						f1 = 3;

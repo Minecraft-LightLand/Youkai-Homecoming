@@ -5,7 +5,8 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -19,7 +20,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 public class GrapeCropBlock extends DoubleRopeCropBlock {
@@ -119,9 +120,8 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(hand);
-		if (stack.canPerformAction(ToolActions.SHEARS_HARVEST)) {
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (stack.canPerformAction(ItemAbilities.SHEARS_HARVEST)) {
 			if (state.getValue(getAgeProperty()) >= getBaseAge()) {
 				if (!level.isClientSide()) {
 					if (!state.getValue(ROOT)) {
@@ -138,15 +138,15 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 						level.setBlock(pos.below(), ModBlocks.RICH_SOIL.get().defaultBlockState(), 2);
 					}
 					if (!player.getAbilities().instabuild) {
-						stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(hand));
+						stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
 					}
 					if (player instanceof ServerPlayer sp) {
 						YHCriteriaTriggers.GRAPE_CUT.trigger(sp);
 					}
 				}
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return super.use(state, level, pos, player, hand, hit);
+		return super.useItemOn(stack, state, level, pos, player, hand, hit);
 	}
 }

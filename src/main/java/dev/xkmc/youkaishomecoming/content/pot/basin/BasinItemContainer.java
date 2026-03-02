@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.basin;
 
-import dev.xkmc.l2library.base.tile.BaseContainer;
+import dev.xkmc.l2core.base.tile.BaseContainer;
 
 public class BasinItemContainer extends BaseContainer<BasinItemContainer> {
 

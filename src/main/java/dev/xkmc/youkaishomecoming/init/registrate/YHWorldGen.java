@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
-import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.l2core.init.reg.simple.SR;
+import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.youkaishomecoming.content.world.NoisePlacement;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.registries.Registries;
@@ -8,11 +9,11 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 
 public class YHWorldGen {
 
-	public static final RegistryEntry<PlacementModifierType<NoisePlacement>> NOISE;
+	public static final Val<PlacementModifierType<NoisePlacement>> NOISE;
 
 	static {
-		NOISE = YoukaisHomecoming.REGISTRATE.simple("noise", Registries.PLACEMENT_MODIFIER_TYPE,
-				() -> () -> NoisePlacement.CODEC);
+		NOISE = SR.of(YoukaisHomecoming.REG, Registries.PLACEMENT_MODIFIER_TYPE)
+				.reg("noise", () -> () -> NoisePlacement.CODEC);
 	}
 
 	public static void register() {

@@ -83,7 +83,7 @@ public class TableItemManager extends BaseTableItem {
 		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
 		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
 		for (var e : rec) {
-			if (ItemStack.isSameItemSameTags(e.getResult(), stack)) {
+			if (ItemStack.isSameItemSameComponents(e.getResult(), stack)) {
 				return e.recreate();
 			}
 		}

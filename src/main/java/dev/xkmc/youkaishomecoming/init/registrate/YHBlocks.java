@@ -5,9 +5,9 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.l2library.serial.recipe.BaseRecipe;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.IronBowlBlock;
 import dev.xkmc.youkaishomecoming.content.block.furniture.MoonLanternBlock;
@@ -180,8 +180,9 @@ public class YHBlocks {
 		// moka kettle, rack
 		{
 			KETTLE = YoukaisHomecoming.REGISTRATE.block("kettle", p -> DelegateBlock.newBaseBlock(
-							BlockBehaviour.Properties.copy(Blocks.TERRACOTTA).sound(SoundType.METAL),
-							BlockProxy.HORIZONTAL, new KettleBlock(), KettleBlock.TE))
+							p.sound(SoundType.METAL),
+							BlockTemplates.HORIZONTAL, new KettleBlock(), KettleBlock.TE))
+					.initialProperties(() -> Blocks.TERRACOTTA)
 					.blockstate(KettleBlock::buildModel).item().properties(e -> e.stacksTo(1)).build()
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE).register();
 			KETTLE_BE = YoukaisHomecoming.REGISTRATE.blockEntity("kettle", KettleBlockEntity::new).validBlock(KETTLE).register();
@@ -189,7 +190,8 @@ public class YHBlocks {
 			KETTLE_RS = reg("kettle", () -> new BaseRecipe.RecType<>(KettleRecipe.class, KETTLE_RT));
 
 			RACK = YoukaisHomecoming.REGISTRATE.block("drying_rack", p -> new DryingRackBlock(
-							BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).noOcclusion()))
+							p.noOcclusion()))
+					.initialProperties(() -> Blocks.BAMBOO_PLANKS)
 					.blockstate(DryingRackBlock::buildModel)
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
 			RACK_BE = YoukaisHomecoming.REGISTRATE.blockEntity("drying_rack", DryingRackBlockEntity::new)
@@ -201,8 +203,9 @@ public class YHBlocks {
 		//ferment, basin
 		{
 			FERMENT = YoukaisHomecoming.REGISTRATE.block("fermentation_tank", p ->
-							DelegateBlock.newBaseBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS),
+							DelegateBlock.newBaseBlock(p,
 									new FermentationTankBlock(), FermentationTankBlock.TE))
+					.initialProperties(() -> Blocks.OAK_PLANKS)
 					.blockstate(FermentationTankBlock::buildModel)
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_PICKAXE)
 					.register();
@@ -212,8 +215,9 @@ public class YHBlocks {
 			FERMENT_RS = reg("simple_fermentation", () -> new BaseRecipe.RecType<>(SimpleFermentationRecipe.class, FERMENT_RT));
 
 			BASIN = YoukaisHomecoming.REGISTRATE.block("wood_basin", p ->
-							DelegateBlock.newBaseBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS),
+							DelegateBlock.newBaseBlock(p,
 									new BasinBlock(), BasinBlock.TE))
+					.initialProperties(() -> Blocks.OAK_PLANKS)
 					.blockstate(BasinBlock::buildModel)
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE)
 					.register();

@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -50,12 +49,12 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 		return getFruit(state).asItem().getDefaultInstance();
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (state.getValue(getAgeProperty()) == getMaxAge()) {
 			if (!level.isClientSide()) {
 				var up = pos.above();
@@ -98,8 +97,9 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 		return state.getFluidState().isEmpty();
 	}
 
-	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
-		return type == PathComputationType.AIR && !this.hasCollision ? true : super.isPathfindable(state, level, pos, type);
+	@Override
+	protected boolean isPathfindable(BlockState state, PathComputationType type) {
+		return type == PathComputationType.AIR && !this.hasCollision || super.isPathfindable(state, type);
 	}
 
 	@Override

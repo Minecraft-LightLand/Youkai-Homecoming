@@ -1,14 +1,16 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.board;
 
 import com.mojang.datafixers.util.Pair;
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.init.reg.ench.EnchHelper;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItem;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
-import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
@@ -18,8 +20,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
 import vectorwing.farmersdelight.common.registry.ModRecipeTypes;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
@@ -30,7 +32,7 @@ import java.util.List;
 @SerialClass
 public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintableBlock {
 
-	@SerialClass.SerialField
+	@SerialField
 	private final List<ItemStack> contents = new ArrayList<>();
 
 	private TableItem model = null;
@@ -50,7 +52,7 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 			for (var recipe : list) {
 				if (recipe.getTool().test(stack)) {
 					if (!level.isClientSide()) {
-						int fortune = stack.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+						int fortune = EnchHelper.getLv(stack, Enchantments.FORTUNE);
 						for (ItemStack drop : recipe.rollResults(level.random, fortune)) {
 							ItemUtils.spawnItemEntity(level, drop.copy(),
 									worldPosition.getX() + 0.5F,
@@ -115,8 +117,8 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 	}
 
 	@Override
-	public void load(CompoundTag tag) {
-		super.load(tag);
+	public void loadAdditional(CompoundTag tag, HolderLookup.Provider pvd) {
+		super.loadAdditional(tag, pvd);
 		model = null;
 	}
 

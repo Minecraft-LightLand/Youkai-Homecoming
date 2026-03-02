@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 
@@ -44,10 +44,10 @@ public abstract class DoubleCropBlock extends CropBlock {
 			int i = this.getAge(pState);
 
 			if (i < this.getMaxAge()) {
-				float f = modifySpeed(pState, getGrowthSpeed(this, pLevel, pPos) * 0.04f);
-				if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextFloat() < f)) {
+				float f = modifySpeed(pState, getGrowthSpeed(pState, pLevel, pPos) * 0.04f);
+				if (CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextFloat() < f)) {
 					setGrowth(pLevel, pPos, i + 1, 2);
-					ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+					CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
 				}
 			}
 		}
@@ -125,7 +125,7 @@ public abstract class DoubleCropBlock extends CropBlock {
 		return super.updateShape(state, dir, sourceState, level, pos, sourcePos);
 	}
 
-	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+	public BlockState playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
 		if (!pLevel.isClientSide) {
 			if (pPlayer.isCreative()) {
 				preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
@@ -133,8 +133,7 @@ public abstract class DoubleCropBlock extends CropBlock {
 				dropResources(pState, pLevel, pPos, null, pPlayer, pPlayer.getMainHandItem());
 			}
 		}
-
-		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+		return super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
 	}
 
 	public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pPos, BlockState pState, @Nullable BlockEntity pTe, ItemStack pStack) {

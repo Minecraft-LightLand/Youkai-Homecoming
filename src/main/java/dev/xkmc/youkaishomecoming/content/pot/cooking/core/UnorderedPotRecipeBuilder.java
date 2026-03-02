@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 
-import dev.xkmc.youkaishomecoming.init.food.YHBowl;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;

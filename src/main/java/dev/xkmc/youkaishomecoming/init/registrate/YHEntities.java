@@ -16,10 +16,11 @@ import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaRenderer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.loot.EntityLootGen;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
 public class YHEntities {
 
@@ -36,7 +37,7 @@ public class YHEntities {
 		LAMPREY = YoukaisHomecoming.REGISTRATE
 				.entity("lamprey", LampreyEntity::new, MobCategory.WATER_AMBIENT)
 				.properties(e -> e.sized(0.5F, 0.4F).clientTrackingRange(4))
-				.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
+				.spawnPlacement(SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE)
 				.attributes(LampreyEntity::createAttributes)
 				.renderer(() -> LampreyRenderer::new)
 				.spawnEgg(-3814463, -6646165).build()
@@ -45,7 +46,7 @@ public class YHEntities {
 		TUNA = YoukaisHomecoming.REGISTRATE
 				.entity("tuna", TunaEntity::new, MobCategory.WATER_AMBIENT)
 				.properties(e -> e.sized(3F, 1.2F).clientTrackingRange(4))
-				.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
+				.spawnPlacement(SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE)
 				.attributes(TunaEntity::createAttributes)
 				.renderer(() -> TunaRenderer::new)
 				.spawnEgg(0x424F75, 0xE08E46).build()
@@ -54,23 +55,24 @@ public class YHEntities {
 		DEER = YoukaisHomecoming.REGISTRATE
 				.entity("deer", DeerEntity::new, MobCategory.CREATURE)
 				.properties(e -> e.sized(0.9f, 2f).clientTrackingRange(10))
-				.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules)
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE)
 				.attributes(DeerEntity::createAttributes)
 				.renderer(() -> DeerRenderer::new)
 				.spawnEgg(0xc77e55, 0xe8ddd0).build()
 				.loot(EntityLootGen::deer).register();
 
 		BOAR = YoukaisHomecoming.REGISTRATE
-					.entity("boar", BoarEntity::new, MobCategory.CREATURE)
-					.properties(e -> e.sized(1f, 1f).clientTrackingRange(10))
-					.spawnPlacement(SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules)
-					.attributes(BoarEntity::createAttributes)
-					.renderer(() -> BoarRenderer::new)
-					.spawnEgg(0x60554A, 0x3E342F).build()
-					.loot(EntityLootGen::boar).register();CRAB = YoukaisHomecoming.REGISTRATE
+				.entity("boar", BoarEntity::new, MobCategory.CREATURE)
+				.properties(e -> e.sized(1f, 1f).clientTrackingRange(10))
+				.spawnPlacement(SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE)
+				.attributes(BoarEntity::createAttributes)
+				.renderer(() -> BoarRenderer::new)
+				.spawnEgg(0x60554A, 0x3E342F).build()
+				.loot(EntityLootGen::boar).register();
+		CRAB = YoukaisHomecoming.REGISTRATE
 				.entity("crab", CrabEntity::new, MobCategory.WATER_AMBIENT)
 				.properties(e -> e.sized(0.6f, 0.3f).clientTrackingRange(10))
-				.spawnPlacement(SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules)
+				.spawnPlacement(SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE)
 				.attributes(CrabEntity::createAttributes)
 				.renderer(() -> CrabRenderer::new)
 				.spawnEgg(0x727e8b, 0xdbc297).build()

@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.board;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -25,7 +25,7 @@ public class CuisineBoardRenderer implements BlockEntityRenderer<CuisineBoardBlo
 		var vc = buffer.getBuffer(RenderType.cutout());
 		var renderer = Minecraft.getInstance().getItemRenderer();
 		var dummy = be.getBlockState().getBlock().asItem().getDefaultInstance();
-		var dir = be.getBlockState().getValue(BlockProxy.HORIZONTAL_FACING);
+		var dir = be.getBlockState().getValue(BlockTemplates.HORIZONTAL_FACING);
 		pose.pushPose();
 		pose.translate(0.5, 0, 0.5);
 		pose.mulPose(Axis.YP.rotation(dir.toYRot() * Mth.DEG_TO_RAD));

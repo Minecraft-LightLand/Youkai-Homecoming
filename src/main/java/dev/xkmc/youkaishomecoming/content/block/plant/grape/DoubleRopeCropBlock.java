@@ -63,10 +63,10 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean client) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		if (!mayGrowTo(state, level, pos, state.getValue(getAgeProperty()) + 1))
 			return false;
-		return super.isValidBonemealTarget(level, pos, state, client);
+		return super.isValidBonemealTarget(level, pos, state);
 	}
 
 	@Override
@@ -137,7 +137,7 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 		return super.updateShape(state, dir, sourceState, level, pos, sourcePos);
 	}
 
-	public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+	public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
 		if (!level.isClientSide) {
 			if (player.isCreative()) {
 				preventCreativeDropFromBottomPart(level, pos, state, player);
@@ -145,7 +145,7 @@ public abstract class DoubleRopeCropBlock extends RopeLoggedCropBlock implements
 				dropResources(state, level, pos, null, player, player.getMainHandItem());
 			}
 		}
-		super.playerWillDestroy(level, pos, state, player);
+		return super.playerWillDestroy(level, pos, state, player);
 	}
 
 	public void doPlayerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity be, ItemStack stack) {

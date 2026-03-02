@@ -2,10 +2,9 @@ package dev.xkmc.youkaishomecoming.content.pot.table.board;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
@@ -18,6 +17,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -31,11 +31,11 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModSounds;
 
-public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
+public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod {
 
 	public static final BlockMethod INS = new CuisineBoardBlock();
 	public static final BlockMethod BE = new BlockEntityBlockMethodImpl<>(YHBlocks.CUISINE_BOARD_BE, CuisineBoardBlockEntity.class);
@@ -60,7 +60,7 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 			if (be.performToolAction(stack)) {
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
 					if (stack.isDamageableItem()) {
-						stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+						stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
 					}
 				}
 				player.playSound(ModSounds.BLOCK_CUTTING_BOARD_KNIFE.get(), 0.8F, 1.0F);
@@ -71,7 +71,7 @@ public class CuisineBoardBlock implements OnClickBlockMethod, ShapeBlockMethod {
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
 					if (SearHelper.isFireSource(stack)) {
 						if (stack.isDamageableItem()) {
-							stack.hurtAndBreak(cost, player, p -> p.broadcastBreakEvent(hand));
+							stack.hurtAndBreak(cost, player, LivingEntity.getSlotForHand(hand));
 							return InteractionResult.SUCCESS;
 						}
 					}

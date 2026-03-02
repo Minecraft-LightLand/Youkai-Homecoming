@@ -4,13 +4,14 @@ import dev.xkmc.l2harvester.api.HarvestResult;
 import dev.xkmc.l2harvester.api.HarvestableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -27,8 +29,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.CommonHooks;
 import vectorwing.farmersdelight.common.Configuration;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModSounds;
@@ -44,8 +45,8 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 	}
 
 	public static BlockState getRopeBlock() {
-		Block rope = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Configuration.DEFAULT_TOMATO_VINE_ROPE.get()));
-		Block block = rope != null ? rope : ModBlocks.ROPE.get();
+		Block rope = BuiltInRegistries.BLOCK.get(ResourceLocation.tryParse(Configuration.DEFAULT_TOMATO_VINE_ROPE.get()));
+		Block block = rope != Blocks.AIR ? rope : ModBlocks.ROPE.get();
 		return block.defaultBlockState();
 	}
 
@@ -73,10 +74,10 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 		if (!mayGrow(state, level, pos, random)) return;
 		int age = getAge(state);
 		if (mayGrowTo(state, level, pos, age + 1)) {
-			float speed = getGrowthSpeed(this, level, pos);
-			if (ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / speed) + 1) == 0)) {
+			float speed = getGrowthSpeed(state, level, pos);
+			if (CommonHooks.canCropGrow(level, pos, state, random.nextInt((int) (25.0F / speed) + 1) == 0)) {
 				growTo(state, level, pos, age + 1);
-				ForgeHooks.onCropsGrowPost(level, pos, state);
+				CommonHooks.fireCropGrowPost(level, pos, state);
 			}
 		}
 		postGrowth(level, pos, random);
@@ -122,8 +123,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		boolean isRope = false;
 		if (stack.getItem() instanceof BlockItem item) {
 			isRope = isRope(item.getBlock().defaultBlockState());
@@ -132,12 +132,12 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 			int age = state.getValue(getAgeProperty());
 			boolean isMature = age == getMaxAge();
 			if (!isMature && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
-				return InteractionResult.PASS;
+				return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			} else if (isMature) {
 				pickup(state, level, pos, player);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			} else {
-				return super.use(state, level, pos, player, hand, hit);
+				return super.useItemOn(stack, state, level, pos, player, hand, hit);
 			}
 		}
 		if (!state.getValue(ROPELOGGED)) {
@@ -147,9 +147,9 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 					stack.shrink(1);
 				}
 			}
-			return InteractionResult.SUCCESS;
+			return ItemInteractionResult.SUCCESS;
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	public boolean isRandomlyTicking(BlockState state) {

@@ -30,7 +30,7 @@ public class CrabRandomWalkGoal extends RandomSwimmingGoal {
 			var pos = BlockPos.containing(vec3);
 			var state = mob.level().getBlockState(pos);
 			var low = mob.level().getBlockState(pos.below());
-			if (state.isPathfindable(mob.level(), pos, PathComputationType.WATER) &&
+			if (state.isPathfindable(PathComputationType.WATER) &&
 					low.isSolidRender(mob.level(), pos.below()))
 				return vec3;
 			vec3 = DefaultRandomPos.getPos(mob, hor, ver);

@@ -3,7 +3,6 @@ package dev.xkmc.youkaishomecoming.compat.jei;
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;

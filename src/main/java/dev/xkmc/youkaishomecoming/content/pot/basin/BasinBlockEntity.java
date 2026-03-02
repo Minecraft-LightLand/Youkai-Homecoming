@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.pot.basin;
 
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
-import dev.xkmc.l2library.base.tile.BaseTank;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.base.tile.BaseContainerListener;
+import dev.xkmc.l2core.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
@@ -20,12 +21,9 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,13 +33,12 @@ import java.util.List;
 public class BasinBlockEntity extends BaseBlockEntity implements
 		BlockContainer, BaseContainerListener, FluidItemTile {
 
-	@SerialClass.SerialField
+	@SerialField
 	public final BasinItemContainer items = new BasinItemContainer().add(this);
-	@SerialClass.SerialField
+	@SerialField
 	public final BaseTank fluids = new BaseTank(1, 500).add(this);
 
-	private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new InvWrapper(items));
-	private final LazyOptional<IFluidHandler> fluidHandler = LazyOptional.of(() -> fluids);
+	private final IItemHandler itemHandler = new InvWrapper(items);
 
 	public BasinBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);

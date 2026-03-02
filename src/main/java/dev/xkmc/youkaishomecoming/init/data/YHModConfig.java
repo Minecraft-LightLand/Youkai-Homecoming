@@ -1,43 +1,42 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
-import org.apache.commons.lang3.tuple.Pair;
+import dev.xkmc.l2core.util.ConfigInit;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class YHModConfig {
 
-	public static class Client {
+	public static class Client extends ConfigInit {
 
-		Client(ForgeConfigSpec.Builder builder) {
+		Client(Builder builder) {
 		}
 
 	}
 
-	public static class Common {
+	public static class Common extends ConfigInit {
 
-		public final ForgeConfigSpec.DoubleValue breathingHealingFactor;
-		public final ForgeConfigSpec.IntValue teaHealingPeriod;
-		public final ForgeConfigSpec.IntValue udumbaraDuration;
-		public final ForgeConfigSpec.IntValue udumbaraHealingPeriod;
-		public final ForgeConfigSpec.IntValue udumbaraFullMoonReduction;
-		public final ForgeConfigSpec.IntValue higiHealingPeriod;
+		public final ModConfigSpec.DoubleValue breathingHealingFactor;
+		public final ModConfigSpec.IntValue teaHealingPeriod;
+		public final ModConfigSpec.IntValue udumbaraDuration;
+		public final ModConfigSpec.IntValue udumbaraHealingPeriod;
+		public final ModConfigSpec.IntValue udumbaraFullMoonReduction;
+		public final ModConfigSpec.IntValue higiHealingPeriod;
 
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(Builder builder) {
 
-			builder.push("food_effect");
+			builder.push("food_effect", "Food Effects");
 			{
-				breathingHealingFactor = builder.comment("Breathing Healing Factor")
+				breathingHealingFactor = builder.text("Breathing Healing Factor")
 						.defineInRange("breathingHealingFactor", 1.5, 1, 100);
-				teaHealingPeriod = builder.comment("Tea Healing Interval")
+				teaHealingPeriod = builder.text("Tea Healing Interval")
 						.defineInRange("teaHealingPeriod", 60, 0, 10000);
-				udumbaraHealingPeriod = builder.comment("Udumbara effect Healing Interval")
+				udumbaraHealingPeriod = builder.text("Udumbara effect Healing Interval")
 						.defineInRange("udumbaraHealingPeriod", 60, 0, 10000);
-				udumbaraDuration = builder.comment("Udumbara flowering duration")
+				udumbaraDuration = builder.text("Udumbara flowering duration")
 						.defineInRange("udumbaraDuration", 200, 0, 100000);
-				udumbaraFullMoonReduction = builder.comment("Udumbara full moon damage reduction")
+				udumbaraFullMoonReduction = builder.text("Udumbara full moon damage reduction")
 						.defineInRange("udumbaraFullMoonReduction", 4, 0, 100);
-				higiHealingPeriod = builder.comment("Higi Healing Interval")
+				higiHealingPeriod = builder.text("Higi Healing Interval")
 						.defineInRange("higiHealingPeriod", 60, 0, 10000);
 			}
 			builder.pop();
@@ -45,28 +44,11 @@ public class YHModConfig {
 
 	}
 
-	public static final ForgeConfigSpec CLIENT_SPEC;
-	public static final Client CLIENT;
+	public static final Client CLIENT = YoukaisHomecoming.REGISTRATE.registerClient(Client::new);
 
-	public static final ForgeConfigSpec COMMON_SPEC;
-	public static final Common COMMON;
+	public static final Common COMMON = YoukaisHomecoming.REGISTRATE.registerSynced(Common::new);
 
-	static {
-		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
-		CLIENT_SPEC = client.getRight();
-		CLIENT = client.getLeft();
-
-		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
-		COMMON_SPEC = common.getRight();
-		COMMON = common.getLeft();
-	}
-
-	/**
-	 * Registers any relevant listeners for config
-	 */
 	public static void init() {
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_SPEC);
 	}
 
 

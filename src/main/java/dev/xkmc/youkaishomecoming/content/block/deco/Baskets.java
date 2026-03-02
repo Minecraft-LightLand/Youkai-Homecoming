@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.block.deco;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.util.Lazy;
+import net.neoforged.neoforge.common.util.Lazy;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.function.Supplier;
@@ -49,7 +49,7 @@ public enum Baskets {
 		this.extra = model.equals("cabbage");
 
 		this.block = YoukaisHomecoming.REGISTRATE.block(id + "_basket", p -> DelegateBlock.newBaseBlock(p,
-						BlockProxy.HORIZONTAL, new BasketBlock.Filled(this)))
+						BlockTemplates.HORIZONTAL, new BasketBlock.Filled(this)))
 				.blockstate((ctx, pvd) -> BasketBlock.buildStackModel(ctx, pvd, id, model, extra))
 				.initialProperties(() -> Blocks.BAMBOO_SLAB)
 				.simpleItem()

@@ -4,7 +4,7 @@ import dev.xkmc.l2library.base.tile.BaseContainerListener;
 import dev.xkmc.l2library.base.tile.BaseTank;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipeBlockEntity;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;

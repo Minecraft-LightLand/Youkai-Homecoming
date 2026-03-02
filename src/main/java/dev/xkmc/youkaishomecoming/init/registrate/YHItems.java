@@ -4,7 +4,6 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.deco.BasketBlock;
@@ -26,10 +25,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -107,8 +104,8 @@ public class YHItems {
 
 			CLAY_SAUCER = YoukaisHomecoming.REGISTRATE.item("clay_saucer", Item::new).register();
 
-			SAUCER = YoukaisHomecoming.REGISTRATE.block("saucer", p -> new EmptySaucerBlock(
-							BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL)))
+			SAUCER = YoukaisHomecoming.REGISTRATE.block("saucer", EmptySaucerBlock::new)
+					.initialProperties(() -> Blocks.LIGHT_GRAY_WOOL)
 					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
 							state -> state.getValue(EmptySaucerBlock.TYPE).build(pvd)))
 					.item().model((ctx, pvd) -> pvd.generated(ctx)).build()
@@ -141,15 +138,15 @@ public class YHItems {
 
 		// feasts
 		{
-			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", p ->
-							new SurpriseChestBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
+			SURP_CHEST = YoukaisHomecoming.REGISTRATE.block("chest_of_heart_throbbing_surprise", SurpriseChestBlock::new)
+					.initialProperties(() -> Blocks.BROWN_WOOL)
 					.item().properties(p -> p.stacksTo(1)).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/feast/" + ctx.getName()))).build()
 					.blockstate(SurpriseChestBlock::buildModel)
 					.register();
 
 			SURP_FEAST = YoukaisHomecoming.REGISTRATE.block("heart_throbbing_surprise", p ->
-							new SurpriseFeastBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL),
-									YHFood.BOWL_OF_HEART_THROBBING_SURPRISE.item))
+							new SurpriseFeastBlock(p, YHFood.BOWL_OF_HEART_THROBBING_SURPRISE.item))
+					.initialProperties(() -> Blocks.BROWN_WOOL)
 					.blockstate(SurpriseFeastBlock::buildModel)
 					.loot(SurpriseFeastBlock::builtLoot)
 					.register();
@@ -161,21 +158,21 @@ public class YHItems {
 
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(
-						YHEntities.LAMPREY, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
+						YHEntities.LAMPREY.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();
 
 		TUNA_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("tuna_bucket", p -> new MobBucketItem(
-						YHEntities.TUNA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
+						YHEntities.TUNA.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();
 
 		CRAB_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("crab_bucket", p -> new MobBucketItem(
-						YHEntities.CRAB, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,
+						YHEntities.CRAB.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH,
 						p.stacksTo(1).craftRemainder(Items.BUCKET)))
 				.defaultLang()
 				.register();

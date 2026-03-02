@@ -3,8 +3,11 @@ package dev.xkmc.youkaishomecoming.init.food;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.youkaishomecoming.content.block.plant.*;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.youkaishomecoming.content.block.plant.PlantJsonGen;
+import dev.xkmc.youkaishomecoming.content.block.plant.TeaCropBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.UdumbaraBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeVineSet;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.CucumberCropBlock;
@@ -14,7 +17,7 @@ import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -36,9 +39,8 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Locale;
@@ -81,12 +83,12 @@ public enum YHCrops {
 		WILD = type.wild(this);
 
 		var seedBuilder = YHItems.seed(sname, p -> type.item(getPlant(), p));
-		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(ForgeTags.SEEDS);
+		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(Tags.Items.SEEDS);
 		seed = seedBuilder.register();
 
 		fruits = fruit == null ? seed :
 				type.eatable() ? YHItems.crop(fruit, p -> new Item(p.food(
-						new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).build()
+						new FoodProperties.Builder().nutrition(2).saturationModifier(0.3f).build()
 				))) : YHItems.crop(fruit, Item::new);
 
 		if (type == PlantType.GRAPE) {
@@ -126,7 +128,7 @@ public enum YHCrops {
 		ComposterBlock.COMPOSTABLES.put(getWildPlant().asItem(), 0.65f);
 	}
 
-	public void registerConfigs(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
+	public void registerConfigs(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
 		if (this == BLACK_GRAPE) {
 			FeatureUtils.register(ctx, configKey, Feature.RANDOM_PATCH,
 					new RandomPatchConfiguration(density, 5, 5,
@@ -144,7 +146,7 @@ public enum YHCrops {
 										BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.GRASS_BLOCK)))));
 	}
 
-	public void registerPlacements(BootstapContext<PlacedFeature> ctx) {
+	public void registerPlacements(BootstrapContext<PlacedFeature> ctx) {
 		PlacementUtils.register(ctx, placementKey, ctx.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(configKey),
 				RarityFilter.onAverageOnceEvery(rarity), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	}
@@ -168,7 +170,8 @@ public enum YHCrops {
 
 	public static BlockEntry<Block> createCrate(String id) {
 		return YoukaisHomecoming.REGISTRATE
-				.block(id + "_crate", p -> new Block(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)))
+				.block(id + "_crate", Block::new)
+				.initialProperties(() -> Blocks.DARK_OAK_PLANKS)
 				.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cubeBottomTop(
 						ctx.getName(),
 						pvd.modLoc("block/bags/" + ctx.getName() + "_side"),
@@ -224,13 +227,15 @@ public enum YHCrops {
 
 	public enum PlantType {
 		CROP((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new YHCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
+						new YHCropBlock(p, crop::getSeed))
+				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate((ctx, pvd) -> PlantJsonGen.buildCropModel(ctx, pvd, name))
 				.loot((pvd, block) -> PlantJsonGen.buildPlantLoot(pvd, block, crop))
 				.register(),
 				YHCrops::wildCropDropFruit, ItemNameBlockItem::new),
 		CROSS((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new YHCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed))
+						new YHCropBlock(p, crop::getSeed))
+				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate((ctx, pvd) -> PlantJsonGen.buildCrossModel(ctx, pvd, name))
 				.loot((pvd, block) -> PlantJsonGen.buildPlantLoot(pvd, block, crop))
 				.register(),
@@ -244,20 +249,23 @@ public enum YHCrops {
 				.register(),
 				YHCrops::wildCropDropSeed, ItemNameBlockItem::new),
 		UDUMBARA((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new UdumbaraBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).lightLevel(s -> 2), crop::getSeed, crop::getFruits))
+						new UdumbaraBlock(p.lightLevel(s -> 2), crop::getSeed, crop::getFruits))
+				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate((ctx, pvd) -> PlantJsonGen.buildCrossModel(ctx, pvd, name))
 				.loot((pvd, block) -> UdumbaraBlock.buildPlantLoot(pvd, block, crop))
 				.register(),
 				YHCrops::wildCropDropSeed, ItemNameBlockItem::new),
 		CUCUMBER((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new CucumberCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop::getSeed, crop::getFruits))
+						new CucumberCropBlock(p, crop::getSeed, crop::getFruits))
+				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate((ctx, pvd) -> RopeCropJsonGen.buildRootedModel(ctx, pvd, name))
 				.loot((pvd, block) -> PlantJsonGen.buildPlantLoot(pvd, block, crop))
 				.tag(BlockTags.CLIMBABLE)
 				.register(),
 				YHCrops::wildCropDropFruit, RopeClimbingSeedItem::new),
 		GRAPE((crop, name) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
-						new GrapeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT), crop))
+						new GrapeCropBlock(p, crop))
+				.initialProperties(() -> Blocks.WHEAT)
 				.blockstate((ctx, pvd) -> GrapeVineSet.buildPlantModel(ctx, pvd, name))
 				.loot((pvd, block) -> GrapeVineSet.buildPlantLoot(pvd, block, crop))
 				.tag(BlockTags.CLIMBABLE)

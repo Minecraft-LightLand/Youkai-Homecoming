@@ -2,12 +2,14 @@ package dev.xkmc.youkaishomecoming.init;
 
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.ghen.thirst.Thirst;
-import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
-import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.serial.config.ConfigTypeEntry;
-import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
+import dev.xkmc.l2core.init.reg.simple.IngReg;
+import dev.xkmc.l2core.init.reg.simple.IngVal;
+import dev.xkmc.l2core.init.reg.simple.Reg;
+import dev.xkmc.l2core.serial.config.ConfigTypeEntry;
+import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2serial.serialization.custom_handler.Handlers;
 import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
@@ -23,6 +25,7 @@ import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.*;
 import dev.xkmc.youkaishomecoming.mixin.ItemAccessor;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -32,51 +35,50 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
 @Mod(YoukaisHomecoming.MODID)
-@Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = YoukaisHomecoming.MODID)
 public class YoukaisHomecoming {
 
 	public static final String MODID = "youkaisfeasts";
 	public static final Logger LOGGER = LogUtils.getLogger();
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
+	public static final Reg REG = new Reg(MODID);
 
-	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			loc("main"), 2);
+	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig("main", 2);
 
-	public static final RegistryEntry<CreativeModeTab> TAB =
+	public static final SimpleEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("block", "Youkais' Feasts - Utensil and Tools",
 					e -> e.icon(YHBlocks.STEAMER_POT::asStack));
 
-	public static final RegistryEntry<CreativeModeTab> CROP =
+	public static final SimpleEntry<CreativeModeTab> CROP =
 			REGISTRATE.buildModCreativeTab("crop", "Youkais' Feasts - Crops",
 					e -> e.icon(YHItems.CAMELLIA::asStack));
 
-	public static final RegistryEntry<CreativeModeTab> FOOD =
+	public static final SimpleEntry<CreativeModeTab> FOOD =
 			REGISTRATE.buildModCreativeTab("food", "Youkais' Feasts - Food and Ingredients",
 					e -> e.icon(YHSushi.LORELEI_NIGIRI.item::asStack));
 
-	public static final RegistryEntry<CreativeModeTab> DECO =
+	public static final SimpleEntry<CreativeModeTab> DECO =
 			REGISTRATE.buildModCreativeTab("deco", "Youkais' Feasts - Furniture",
 					e -> e.icon(YHBlocks.WoodType.OAK.seat::asStack));
 
-	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
+	public static final RecipeBookType KETTLE = Enum.valueOf(RecipeBookType.class, "YOUKAISHOMECOMING_KETTLE");
 
 	public static final ConfigTypeEntry<ModelIngredientData> INGREDIENT = new ConfigTypeEntry<>(HANDLER, "ingredient", ModelIngredientData.class);
 
+	public static final IngVal<SlipBottleIngredient> ING_BOTTLE = IngReg.of(REG).reg("slip_bottle", SlipBottleIngredient.class);
+
 	public YoukaisHomecoming() {
-		Handlers.enableVanilla(Fluid.class, () -> ForgeRegistries.FLUIDS);
+		Handlers.enableVanilla(Fluid.class, BuiltInRegistries.FLUID);
 		InitializationMarker.expectAndAdvance(0);
 		YHBlocks.register();
 		YHEffects.register();
@@ -92,13 +94,6 @@ public class YoukaisHomecoming {
 
 		AttackEventHandler.register(3943, new YHAttackListener());
 		HANDLER.addAfterReloadListener(() -> INGREDIENT.getMerged().onSync());
-	}
-
-	@SubscribeEvent
-	public static void registerRecipeSerializers(RegisterEvent event) {
-		if (event.getRegistryKey().equals(ForgeRegistries.Keys.RECIPE_SERIALIZERS)) {
-			CraftingHelper.register(SlipBottleIngredient.INSTANCE.id(), SlipBottleIngredient.INSTANCE);
-		}
 	}
 
 	@SubscribeEvent
@@ -137,7 +132,7 @@ public class YoukaisHomecoming {
 		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		gen.addProvider(server, new YHConfigGen(gen));
+		gen.addProvider(server, new YHConfigGen(gen, pvd));
 		gen.addProvider(event.includeClient(), new AdditionalModelProvider(output, MODID));
 		var reg = new YHDatapackRegistriesGen(output, pvd);
 		gen.addProvider(server, reg);

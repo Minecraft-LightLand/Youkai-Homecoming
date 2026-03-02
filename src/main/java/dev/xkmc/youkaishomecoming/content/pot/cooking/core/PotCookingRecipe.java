@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.cooking.core;
 
+import dev.xkmc.l2core.serial.recipe.BaseRecipe;
 import dev.xkmc.l2library.serial.recipe.BaseRecipe;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.content.pot.base.TimedRecipe;

@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.pot.table.food;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.compat.diet.DietTagGen;
-import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.EffectEntry;
 import dev.xkmc.youkaishomecoming.init.food.FoodType;
 import net.minecraft.tags.TagKey;

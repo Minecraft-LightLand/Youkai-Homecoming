@@ -9,12 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.PlantType;
 
 import java.util.function.Supplier;
 
@@ -39,11 +37,6 @@ public class YHCropBlock extends CropBlock {
 	@Override
 	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
 		return seed.get() == YHCrops.REDBEAN.getSeed() ? pState.is(YHTagGen.FARMLAND_REDBEAN) : super.mayPlaceOn(pState, pLevel, pPos);
-	}
-
-	@Override
-	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
-		return seed.get() == YHCrops.REDBEAN.getSeed() ? PlantType.get("redbeans") : PlantType.CROP;
 	}
 
 	protected ItemLike getBaseSeedId() {

@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
-import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

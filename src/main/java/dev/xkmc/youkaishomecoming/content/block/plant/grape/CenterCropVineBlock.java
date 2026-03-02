@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.Nullable;
 
 import static dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock.isRope;
@@ -98,11 +98,11 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		if (simulate) return true;
 		assert random != null;
 		Level setter = (Level) level;
-		if (natural && !ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed))
+		if (natural && !CommonHooks.canCropGrow(setter, pos, state, random.nextFloat() < speed))
 			return false;
 		setter.setBlock(pos, state, 2);
 		if (natural) {
-			ForgeHooks.onCropsGrowPost(setter, pos, state);
+			CommonHooks.fireCropGrowPost(setter, pos, state);
 		}
 		return true;
 	}
@@ -135,7 +135,7 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 		if (simulate) return true;
 		assert random != null;
 		Level setter = (Level) level;
-		if (natural && !ForgeHooks.onCropsGrowPre(setter, pos, state, random.nextFloat() < speed))
+		if (natural && !CommonHooks.canCropGrow(setter, pos, state, random.nextFloat() < speed))
 			return false;
 		if (updateSelf) {
 			setter.setBlock(pos, state, 2);
@@ -145,7 +145,7 @@ public abstract class CenterCropVineBlock extends BaseCropVineBlock {
 			getSide().doGrowth(state, setter, pos, random);
 		}
 		if (natural) {
-			ForgeHooks.onCropsGrowPost(setter, pos, state);
+			CommonHooks.fireCropGrowPost(setter, pos, state);
 		}
 		return true;
 	}

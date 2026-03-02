@@ -1,11 +1,12 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
 import com.mojang.datafixers.util.Pair;
-import dev.xkmc.l2library.base.tile.BaseBlockEntity;
-import dev.xkmc.l2library.base.tile.BaseContainerListener;
+import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.base.tile.BaseContainerListener;
 import dev.xkmc.l2modularblock.tile_api.BlockContainer;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -22,12 +23,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.wrapper.CombinedInvWrapper;
-import net.minecraftforge.items.wrapper.EmptyHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.wrapper.CombinedInvWrapper;
+import net.neoforged.neoforge.items.wrapper.EmptyItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
@@ -43,7 +41,7 @@ public class SteamerBlockEntity extends BaseBlockEntity
 	public static final int OUTPUT_RATE = 20;
 	public static final int MAX_STACK = 5;
 
-	@SerialClass.SerialField
+	@SerialField
 	public final List<RackData> racks = new ArrayList<>();
 
 	public SteamerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -167,7 +165,7 @@ public class SteamerBlockEntity extends BaseBlockEntity
 	private IItemHandlerModifiable selfHandler;
 
 	private IItemHandlerModifiable getSelfHandler() {
-		if (level == null) return new EmptyHandler();
+		if (level == null) return new EmptyItemHandler();
 		if (selfHandler != null) return selfHandler;
 		SteamerItemHandler[] handlers = new SteamerItemHandler[racks.size()];
 		for (int i = 0; i < racks.size(); i++)
@@ -177,7 +175,7 @@ public class SteamerBlockEntity extends BaseBlockEntity
 	}
 
 	private IItemHandlerModifiable getCombinedHandler() {
-		if (level == null) return new EmptyHandler();
+		if (level == null) return new EmptyItemHandler();
 		if (getBlockState().is(YHBlocks.STEAMER_POT.get())) {
 			List<IItemHandlerModifiable> steamers = new ArrayList<>();
 			steamers.add(getSelfHandler());

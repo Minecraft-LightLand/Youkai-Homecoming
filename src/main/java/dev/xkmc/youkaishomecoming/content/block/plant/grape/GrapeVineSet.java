@@ -5,7 +5,7 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.plant.PlantJsonGen;
 import dev.xkmc.youkaishomecoming.content.block.plant.WildVineBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;
@@ -24,7 +24,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -38,9 +37,9 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -313,7 +312,8 @@ public class GrapeVineSet {
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge())))
 								.add(LootItem.lootTableItem(crop.getFruits())
-										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+										.apply(ApplyBonusCount.addBonusBinomialDistributionCount(
+												pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE), 0.5714286F, 3)))
 								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoubleRopeCropBlock.ROOT, true)))
 						)));
@@ -332,7 +332,8 @@ public class GrapeVineSet {
 						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 								.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge())))
 						.add(LootItem.lootTableItem(crop.getFruits())
-								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(
+										pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE), 0.5714286F, 3)))
 				)));
 	}
 
@@ -342,7 +343,8 @@ public class GrapeVineSet {
 						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
 								.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge())))
 						.add(LootItem.lootTableItem(crop.getFruits())
-								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))
+								.apply(ApplyBonusCount.addBonusBinomialDistributionCount(
+										pvd.getRegistries().holderOrThrow(Enchantments.FORTUNE), 0.5714286F, 3)))
 				)));
 	}
 
@@ -463,7 +465,7 @@ public class GrapeVineSet {
 					.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop));
 
 		} else {
-			builder = YoukaisHomecoming.REGISTRATE.block("wild_" + crop.getName(), BushBlock::new)
+			builder = YoukaisHomecoming.REGISTRATE.block("wild_" + crop.getName(), BasicBushBlock::new)
 					.initialProperties(() -> Blocks.DANDELION)
 					.blockstate((ctx, pvd) ->
 							pvd.simpleBlock(ctx.get(), pvd.models().getBuilder("block/" + ctx.getName())

@@ -1,18 +1,20 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
-import dev.xkmc.l2library.serial.config.ConfigDataProvider;
+import dev.xkmc.l2core.serial.config.ConfigDataProvider;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.ModelIngredientData;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.LinkedHashMap;
+import java.util.concurrent.CompletableFuture;
 
 public class YHConfigGen extends ConfigDataProvider {
 
-	public YHConfigGen(DataGenerator generator) {
-		super(generator, "Youkai Homecoming Config");
+	public YHConfigGen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> pvd) {
+		super(generator, pvd, "Youkai Homecoming Config");
 	}
 
 	@Override

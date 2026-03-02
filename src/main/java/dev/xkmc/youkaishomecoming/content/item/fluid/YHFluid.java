@@ -6,12 +6,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
-public class YHFluid extends ForgeFlowingFluid {
+public class YHFluid extends BaseFlowingFluid {
 	public final IYHFluidHolder type;
 
-	public YHFluid(ForgeFlowingFluid.Properties properties, IYHFluidHolder type) {
+	public YHFluid(BaseFlowingFluid.Properties properties, IYHFluidHolder type) {
 		super(properties);
 		this.type = type;
 	}

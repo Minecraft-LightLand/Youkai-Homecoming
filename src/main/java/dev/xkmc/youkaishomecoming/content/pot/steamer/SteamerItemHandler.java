@@ -3,7 +3,7 @@ package dev.xkmc.youkaishomecoming.content.pot.steamer;
 import dev.xkmc.youkaishomecoming.content.item.food.FoodBlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 
 public record SteamerItemHandler(

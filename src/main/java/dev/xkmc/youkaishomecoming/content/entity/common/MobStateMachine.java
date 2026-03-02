@@ -6,7 +6,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Mob;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class MobStateMachine<
 		E extends Mob & StateMachineMob,

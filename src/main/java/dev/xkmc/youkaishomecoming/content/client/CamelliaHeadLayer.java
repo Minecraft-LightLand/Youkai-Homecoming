@@ -49,8 +49,7 @@ public class CamelliaHeadLayer<T extends LivingEntity, M extends HumanoidModel<T
 				vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(e)));
 			}
 			this.model.renderToBuffer(pose, vertexconsumer, light,
-					LivingEntityRenderer.getOverlayCoords(e, 0.0F),
-					1.0F, 1.0F, 1.0F, 1.0F);
+					LivingEntityRenderer.getOverlayCoords(e, 0.0F), -1);
 		}
 
 		pose.popPose();

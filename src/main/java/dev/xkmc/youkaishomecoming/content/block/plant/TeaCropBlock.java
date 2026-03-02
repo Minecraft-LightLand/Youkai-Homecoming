@@ -12,19 +12,14 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -33,15 +28,13 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.PlantType;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -96,8 +89,8 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 	}
 
 	@Deprecated
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		if (state.getValue(AGE) != getMaxAge() && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
+		if (state.getValue(AGE) != getMaxAge()) {
 			return InteractionResult.PASS;
 		}
 		if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
@@ -115,7 +108,7 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 			}
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		} else {
-			return super.use(state, level, pos, player, hand, result);
+			return super.useWithoutItem(state, level, pos, player, result);
 		}
 	}
 
@@ -146,11 +139,6 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 	@Override
 	protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
 		return pState.is(YHTagGen.FARMLAND_TEA);
-	}
-
-	@Override
-	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
-		return  PlantType.get("tea");
 	}
 
 	protected ItemLike getBaseSeedId() {
@@ -263,9 +251,9 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 	public static void buildPlantLoot(RegistrateBlockLootTables pvd, TeaCropBlock block, YHCrops crop) {
 		pvd.add(block, pvd.applyExplosionDecay(block,
 				LootTable.lootTable().withPool(LootPool.lootPool()
-								.add(LootItem.lootTableItem(crop.getSeed()))
-								.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-										.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HALF, DoubleBlockHalf.LOWER))))
+						.add(LootItem.lootTableItem(crop.getSeed()))
+						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+								.setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HALF, DoubleBlockHalf.LOWER))))
 		));
 	}
 

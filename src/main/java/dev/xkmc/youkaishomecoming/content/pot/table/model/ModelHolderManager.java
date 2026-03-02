@@ -1,6 +1,5 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.model;
 
-import com.google.gson.JsonObject;
 import dev.xkmc.l2library.base.L2Registrate;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.loading.FMLEnvironment;
