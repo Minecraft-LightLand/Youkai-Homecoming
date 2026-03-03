@@ -41,6 +41,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -476,7 +478,8 @@ public class GrapeVineSet {
 		}
 		return builder
 				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
-						pvd.generated(ctx, pvd.modLoc("block/plants/" + crop.getTypeName() + "/" + ctx.getName()))).build()
+						pvd.generated(ctx, pvd.modLoc("block/plants/" + crop.getTypeName() + "/" + ctx.getName())))
+				.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.65f)).build()
 				.tag(ModTags.WILD_CROPS)
 				.loot((ctx, pvd) -> PlantJsonGen.wildDropFruit(ctx, pvd, crop)).register();
 	}

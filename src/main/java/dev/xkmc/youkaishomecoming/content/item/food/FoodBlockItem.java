@@ -30,22 +30,6 @@ public class FoodBlockItem extends BlockItem {
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity consumer) {
-		ItemStack remain = stack.getCraftingRemainingItem();
-		super.finishUsingItem(stack, worldIn, consumer);
-		if (remain.isEmpty()) {
-			return stack;
-		}
-		if (stack.isEmpty()) {
-			return remain;
-		}
-		if (!remain.isEmpty() && consumer instanceof Player player && !player.isCreative()) {
-			player.getInventory().placeItemBackInInventory(remain);
-		}
-		return stack;
-	}
-
-	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		list.add(YHLangData.PLACE.get());
 		if (Configuration.FOOD_EFFECT_TOOLTIP.get())

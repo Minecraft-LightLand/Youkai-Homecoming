@@ -9,7 +9,7 @@ import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.fluid.FluidIngredient;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
+import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
 import dev.xkmc.youkaishomecoming.init.data.TagRef;

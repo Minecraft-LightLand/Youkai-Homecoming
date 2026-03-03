@@ -16,11 +16,11 @@ import java.util.Locale;
 
 public enum FruitsDelightCompatFood {
 	PEACH_TAPIOCA(FoodType.BOWL, 6, 0.6f, List.of(
-			new EffectEntry(FDEffects.HEAL_AURA::get, 100, 0),
+			new EffectEntry(FDEffects.HEAL_AURA, 100, 0),
 			new EffectEntry(ModEffects.COMFORT, 1200, 0)
 	), DietTagGen.FRUITS.tag),
 	PEACH_YATSUHASHI(FoodType.SIMPLE, 6, 0.6f, List.of(
-			new EffectEntry(FDEffects.HEAL_AURA::get, 100, 0),
+			new EffectEntry(FDEffects.HEAL_AURA, 100, 0),
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0)
 	), DietTagGen.GRAINS.tag, DietTagGen.FRUITS.tag);
 

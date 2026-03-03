@@ -21,7 +21,7 @@ public enum YHRolls {
 	SHINNKO_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	KAPPA_MAKI(FoodType.SIMPLE, 6, 0.8f, FoodModelHelper::hosomaki, List.of(), DietTagGen.GRAINS.tag, DietTagGen.VEGETABLES.tag),
 	TEKKA_MAKI(FoodType.SIMPLE, 7, 1f, FoodModelHelper::hosomaki, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.2f)
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 400, 0, 0.2f)
 	), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 
 	EGG_FUTOMAKI(FoodType.SIMPLE, 4, 0.8f, FoodModelHelper::futomaki, List.of(), DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
@@ -35,16 +35,16 @@ public enum YHRolls {
 			new EffectEntry(ModEffects.NOURISHMENT, 600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SALMON_LOVER_ROLL(FoodType.SIMPLE, 7, 1.2f, null, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.6f),
+			new EffectEntry(MobEffects.CONDUIT_POWER, 400, 0, 0.6f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	VOLCANO_ROLL(FoodType.SIMPLE, 7, 1.2f, null, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.6f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 400, 0, 0.6f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	RAINBOW_ROLL(FoodType.SIMPLE, 8, 1.2f, null, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.35f),
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.35f),
+			new EffectEntry(MobEffects.CONDUIT_POWER, 400, 0, 0.35f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 400, 0, 0.35f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	;
@@ -92,7 +92,7 @@ public enum YHRolls {
 			}
 		}
 		if (sat > 40) {
-			ans.add(new EffectEntry(() -> MobEffects.SATURATION, sat - 20, 0));
+			ans.add(new EffectEntry(MobEffects.SATURATION, sat - 20, 0));
 		}
 		return ans;
 	}

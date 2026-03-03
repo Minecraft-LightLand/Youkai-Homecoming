@@ -1,5 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
+import com.tterrag.registrate.providers.ProviderType;
+import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -15,7 +17,9 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-public final class YHBiomeTagsProvider extends BiomeTagsProvider {
+public final class YHBiomeTagsProvider   {
+
+	public static final ProviderType<RegistrateTagsProvider.Impl<Biome>> TYPE = ProviderType.registerDynamicTag("tags/biome", "biomes", Registries.BIOME);
 
 	public static final TagKey<Biome> CRAB_FISHING = asTag("crab_fishing");
 	public static final TagKey<Biome> CHERRY_BIOMES = asTag("cherry_biomes");
@@ -36,47 +40,37 @@ public final class YHBiomeTagsProvider extends BiomeTagsProvider {
 	public static final TagKey<Biome> BLACK_GRAPE = asTag("spawns/black_grape");
 	public static final TagKey<Biome> WHITE_GRAPE = asTag("spawns/white_grape");
 
-	public YHBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
-		super(output, pvd, YoukaisHomecoming.MODID, helper);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	protected void addTags(HolderLookup.Provider pvd) {
-		tag(CHERRY_BIOMES).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST);
-		tag(YH_BIOMES).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST, YHBiomes.ANIMAL_PATH);
-		tag(Tags.Biomes.IS_MAGICAL);
-		tag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
-		tag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
-		tag(DEER).addTag(YH_BIOMES);
-		tag(BOAR).addTag(YH_BIOMES);
-		tag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
-		tag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
-		tag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);
-		tag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, YH_BIOMES);
-		tag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST,
+	public static void genTag(RegistrateTagsProvider<Biome> pvd) {
+		pvd.addTag(CHERRY_BIOMES).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST);
+		pvd.addTag(YH_BIOMES).add(YHBiomes.SAKURA_FOREST, YHBiomes.SAKURA_TAIGA, YHBiomes.SAKURA_BIRCH_FOREST, YHBiomes.ANIMAL_PATH);
+		pvd.addTag(Tags.Biomes.IS_MAGICAL);
+		pvd.addTag(LAMPREY).add(Biomes.RIVER, Biomes.FROZEN_RIVER).addTag(BiomeTags.IS_OCEAN);
+		pvd.addTag(TUNA).addTag(BiomeTags.IS_DEEP_OCEAN);
+		pvd.addTag(DEER).addTag(YH_BIOMES);
+		pvd.addTag(BOAR).addTag(YH_BIOMES);
+		pvd.addTag(CRAB).addTags(BiomeTags.IS_RIVER, BiomeTags.IS_BEACH, Tags.Biomes.IS_SWAMP);
+		pvd.addTag(CRAB_MUD).addTags(BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP);
+		pvd.addTag(CRAB_FISHING).addTags(BiomeTags.IS_OCEAN, CRAB);
+		pvd.addTag(SOYBEAN).add(Biomes.DARK_FOREST).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, YH_BIOMES);
+		pvd.addTag(REDBEAN).add(Biomes.SUNFLOWER_PLAINS, Biomes.BAMBOO_JUNGLE, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST,
 				YHBiomes.SAKURA_BIRCH_FOREST, YHBiomes.ANIMAL_PATH);
-		tag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
-		tag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
-		tag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS).add(YHBiomes.SAKURA_TAIGA);
-		tag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA, YH_BIOMES);
-		tag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
-		tag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_TAIGA).add(YHBiomes.SAKURA_TAIGA);
-		tag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
+		pvd.addTag(TEA).add(Biomes.FLOWER_FOREST, Biomes.MEADOW, Biomes.CHERRY_GROVE, Biomes.GROVE).addTag(BiomeTags.IS_MOUNTAIN);
+		pvd.addTag(UDUMBARA).addTag(Tags.Biomes.IS_SWAMP);
+		pvd.addTag(CUCUMBER).addTag(Tags.Biomes.IS_CONIFEROUS_TREE).add(YHBiomes.SAKURA_TAIGA);
+		pvd.addTag(GRAPE).addTags(BiomeTags.IS_FOREST, Tags.Biomes.IS_CONIFEROUS_TREE, BiomeTags.IS_TAIGA, YH_BIOMES);
+		pvd.addTag(NO_GRAPE).addTags(BiomeTags.IS_JUNGLE, Tags.Biomes.IS_SWAMP, Tags.Biomes.IS_MAGICAL);
+		pvd.addTag(BLACK_GRAPE).addTags(Tags.Biomes.IS_CONIFEROUS_TREE, BiomeTags.IS_TAIGA).add(YHBiomes.SAKURA_TAIGA);
+		pvd.addTag(WHITE_GRAPE).add(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST, Biomes.FLOWER_FOREST, YHBiomes.SAKURA_BIRCH_FOREST);
 
-		tag(BiomeTags.IS_FOREST).addTag(CHERRY_BIOMES);
+		pvd.addTag(BiomeTags.IS_FOREST).addTag(CHERRY_BIOMES);
 	}
 
 	public static TagKey<Biome> asTag(String name) {
 		return TagKey.create(Registries.BIOME, YoukaisHomecoming.loc(name));
 	}
 
-	public static TagKey<Biome> forgeTag(String name) {
-		return TagKey.create(Registries.BIOME, new ResourceLocation("forge", name));
-	}
-
 	public static TagKey<Biome> cTag(String name) {
-		return TagKey.create(Registries.BIOME, new ResourceLocation("c", name));
+		return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("c", name));
 	}
 
 }

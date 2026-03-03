@@ -7,14 +7,14 @@ import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.init.food.YHBowl;
 import dev.xkmc.youkaishomecoming.init.food.YHDrink;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
-import net.neoforged.neoforge.common.MinecraftForge;
-import net.neoforged.neoforge.eventbus.api.SubscribeEvent;
-import net.neoforged.neoforge.fml.ModList;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.NeoForge;
 
 public class ThirstCompat {
 
 	public static void init() {
-		neoforged.neoforge.EVENT_BUS.register(ThirstCompat.class);
+		NeoForge.EVENT_BUS.register(ThirstCompat.class);
 	}
 
 	@SubscribeEvent

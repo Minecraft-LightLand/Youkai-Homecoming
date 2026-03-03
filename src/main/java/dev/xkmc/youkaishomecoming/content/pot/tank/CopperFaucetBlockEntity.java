@@ -10,7 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
@@ -28,16 +28,18 @@ public class CopperFaucetBlockEntity extends BaseBlockEntity implements Tickable
 		var level = getLevel();
 		if (level == null) return false;
 		Direction attached = getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-		var src = level.getBlockEntity(getBlockPos().relative(attached.getOpposite()));
-		var dst = level.getBlockEntity(getBlockPos().below());
+		var srcPos = getBlockPos().relative(attached.getOpposite());
+		var dstPos = getBlockPos().below();
+		var src = level.getBlockEntity(srcPos);
+		var dst = level.getBlockEntity(dstPos);
 		if (src == null || dst == null)
 			return false;
 		if (src instanceof CopperTankBlockEntity tank && dst instanceof KettleBlockEntity kettle) {
 			if (!activateHeat(tank, kettle)) return false;
 		}
-		var fsrc = src.getCapability(ForgeCapabilities.FLUID_HANDLER, attached);
-		var fdst = dst.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP);
-		if (fsrc.resolve().isEmpty() || fdst.resolve().isEmpty())
+		var fsrc = level.getCapability(Capabilities.FluidHandler.BLOCK, srcPos, attached);
+		var fdst = level.getCapability(Capabilities.FluidHandler.BLOCK, dstPos, Direction.UP);
+		if (fsrc == null || fdst == null)
 			return false;
 		level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.OPEN, true));
 		return true;
@@ -63,28 +65,28 @@ public class CopperFaucetBlockEntity extends BaseBlockEntity implements Tickable
 		var level = getLevel();
 		if (level == null) return false;
 		Direction attached = getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-		var src = level.getBlockEntity(getBlockPos().relative(attached.getOpposite()));
-		var dst = level.getBlockEntity(getBlockPos().below());
+		var srcPos = getBlockPos().relative(attached.getOpposite());
+		var dstPos = getBlockPos().below();
+		var src = level.getBlockEntity(srcPos);
+		var dst = level.getBlockEntity(dstPos);
 		if (src == null || dst == null)
 			return false;
 		if (src instanceof CopperTankBlockEntity tank && dst instanceof KettleBlockEntity kettle) {
 			if (!activateHeat(tank, kettle)) return false;
 			kettle.prepareforHotWater(50);
 		}
-		var fsrc = src.getCapability(ForgeCapabilities.FLUID_HANDLER, attached);
-		var fdst = dst.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP);
-		if (fsrc.resolve().isEmpty() || fdst.resolve().isEmpty())
+		var fsrc = level.getCapability(Capabilities.FluidHandler.BLOCK, srcPos, attached);
+		var fdst = level.getCapability(Capabilities.FluidHandler.BLOCK, dstPos, Direction.UP);
+		if (fsrc == null || fdst == null)
 			return false;
-		var hsrc = fsrc.resolve().get();
-		var hdst = fdst.resolve().get();
-		var sdrain = hsrc.drain(50, IFluidHandler.FluidAction.SIMULATE);
-		var fill = hdst.fill(sdrain, IFluidHandler.FluidAction.SIMULATE);
+		var sdrain = fsrc.drain(50, IFluidHandler.FluidAction.SIMULATE);
+		var fill = fdst.fill(sdrain, IFluidHandler.FluidAction.SIMULATE);
 		if (fill <= 0)
 			return false;
-		var drain = hsrc.drain(fill, IFluidHandler.FluidAction.EXECUTE);
+		var drain = fsrc.drain(fill, IFluidHandler.FluidAction.EXECUTE);
 		cache = drain.copy();
 		sync();
-		int amount = hdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
+		int amount = fdst.fill(drain, IFluidHandler.FluidAction.EXECUTE);
 		if (src instanceof CopperTankBlockEntity tank && dst instanceof KettleBlockEntity kettle) {
 			int consume = tank.consumeHeat(amount);
 			if (consume > 0) {

@@ -75,8 +75,8 @@ public class YHClient {
 
 	@SubscribeEvent
 	public static void registerRecipeTab(RegisterRecipeBookCategoriesEvent event) {
-		event.registerBookCategories(YoukaisHomecoming.KETTLE, List.of(YHRecipeCategories.KETTLE.get()));
-		event.registerRecipeCategoryFinder(YHBlocks.KETTLE_RT.get(), e -> YHRecipeCategories.KETTLE.get());
+		event.registerBookCategories(YoukaisHomecoming.KETTLE, List.of(YHRecipeCategories.KETTLE));
+		event.registerRecipeCategoryFinder(YHBlocks.KETTLE_RT.get(), e -> YHRecipeCategories.KETTLE);
 	}
 
 	@SubscribeEvent
@@ -86,16 +86,16 @@ public class YHClient {
 
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static void registerWingsLayer() {
-		EntityRenderDispatcher renderManager = Minecraft.getInstance().getEntityRenderDispatcher();
-		Map<String, EntityRenderer<? extends Player>> skinMap = renderManager.getSkinMap();
+		EntityRenderDispatcher disp = Minecraft.getInstance().getEntityRenderDispatcher();
+		var skinMap = disp.getSkinMap();
 		for (EntityRenderer<? extends Player> renderer : skinMap.values()) {
 			if (renderer instanceof LivingEntityRenderer ler) {
-				addLayer(renderManager, ler);
+				addLayer(disp, ler);
 			}
 		}
-		renderManager.renderers.forEach((e, r) -> {
+		disp.renderers.forEach((e, r) -> {
 			if (r instanceof LivingEntityRenderer ler && ler.getModel() instanceof HumanoidModel<?>) {
-				addLayer(renderManager, ler);
+				addLayer(disp, ler);
 			}
 		});
 	}

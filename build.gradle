@@ -134,20 +134,25 @@ dependencies {
     implementation jarJar(group: 'dev.xkmc', name: 'l2modularblocks', version: "[${l2modularblocks_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2core', version: "[${l2core_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2harvester', version: "[${l2harvester_ver},)")
+    implementation jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${l2damagetracker_ver},)")
 
-    implementation jarJar(group: 'com.github.glitchfiend', name: 'TerraBlender-neoforge', version: "[${terrablender_ver},)")
+    implementation jarJar(group: 'com.github.glitchfiend', name: 'TerraBlender-neoforge', version: "[${terrablender_ver},1.21.2)")
 
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     implementation "dev.xkmc:cuisinedelight:1.2.1-slim"
+    implementation "dev.xkmc:fruitsdelight:1.2.12-slim"
     implementation "curse.maven:farmers-delight-398521:5566383"
     compileOnly "curse.maven:thirst-was-taken-679270:5568715"
     implementation "curse.maven:create-328085:6255497"
     implementation "curse.maven:appleskin-248787:6616291"
     implementation "curse.maven:prickle-1023259:6961457"
     implementation "curse.maven:bookshelf-228525:6951065"
+    implementation "curse.maven:serene-seasons-291874:6182596"
 
+    testImplementation "com.mojang:datafixerupper:8.0.16"
+    testImplementation "com.google.guava:guava:32.1.2-jre"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

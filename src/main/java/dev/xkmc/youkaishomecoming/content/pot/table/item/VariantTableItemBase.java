@@ -81,7 +81,7 @@ public class VariantTableItemBase {
 		var cont = new CuisineInv(id, List.of(), 0, false);
 		var list = level.getRecipeManager().getRecipesFor(YHBlocks.CUISINE_RT.get(), cont, level);
 		for (var r : list) {
-			ans.addAll(r.getHints(level, cont));
+			ans.addAll(r.value().getHints(level, cont));
 		}
 		return ans;
 	}

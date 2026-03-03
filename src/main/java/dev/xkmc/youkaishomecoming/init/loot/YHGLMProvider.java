@@ -1,5 +1,8 @@
 package dev.xkmc.youkaishomecoming.init.loot;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.providers.ProviderType;
+import com.tterrag.registrate.providers.RegistrateProvider;
 import dev.xkmc.l2core.init.reg.simple.CdcReg;
 import dev.xkmc.l2core.init.reg.simple.CdcVal;
 import dev.xkmc.l2core.init.reg.simple.SR;
@@ -12,7 +15,7 @@ import dev.xkmc.youkaishomecoming.mixin.AddItemModifierAccessor;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -25,6 +28,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.neoforged.fml.LogicalSide;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
@@ -35,12 +39,13 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class YHGLMProvider extends GlobalLootModifierProvider {
+public class YHGLMProvider extends GlobalLootModifierProvider implements RegistrateProvider {
+
+	public static final ProviderType<YHGLMProvider> TYPE = ProviderType.registerServerData("yh_glm", YHGLMProvider::new);
 
 	public static final CdcVal<ReplaceItemModifier> REPLACE_ITEM;
 	public static final CdcVal<RemoveItemModifier> REMOVE_ITEM;
 	public static final Val<LootItemConditionType> BIOME_CHECK;
-
 
 	static {
 		var CR = CdcReg.of(YoukaisHomecoming.REG, NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS);
@@ -55,8 +60,11 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 
 	}
 
-	public YHGLMProvider(DataGenerator gen, CompletableFuture<HolderLookup.Provider> pvd) {
-		super(gen.getPackOutput(), pvd, YoukaisHomecoming.MODID);
+	public YHGLMProvider(AbstractRegistrate<?> parent, PackOutput out, CompletableFuture<HolderLookup.Provider> pvd) {
+		super(out, pvd, parent.getModid());
+	}
+
+	public void gen() {
 	}
 
 	@Override
@@ -138,6 +146,11 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 
 	private static <T> EntryHolder<T> vanilla(T obj, String id) {
 		return new EntryHolder<>(obj, ResourceLocation.withDefaultNamespace(id));
+	}
+
+	@Override
+	public LogicalSide getSide() {
+		return LogicalSide.SERVER;
 	}
 
 	private record EntryHolder<T>(T type, ResourceLocation id) {

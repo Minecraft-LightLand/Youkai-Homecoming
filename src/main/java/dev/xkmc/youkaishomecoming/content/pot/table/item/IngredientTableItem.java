@@ -87,7 +87,7 @@ public class IngredientTableItem extends BaseTableItem {
 		if (id == null) return Optional.empty();
 		var cont = new CuisineInv(id, List.of(), 0, true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
-				.map(r -> r.assemble(cont, level.registryAccess()));
+				.map(r -> r.value().assemble(cont, level.registryAccess()));
 	}
 
 

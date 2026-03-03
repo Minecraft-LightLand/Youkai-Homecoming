@@ -5,6 +5,8 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 import java.util.Locale;
 
@@ -15,7 +17,8 @@ public enum YHTea {
 
 	YHTea() {
 		String name = name().toLowerCase(Locale.ROOT) + "_tea";
-		leaves = YHItems.crop(name + "_leaves", Item::new);
+		leaves = YHItems.crop(name + "_leaves", Item::new)
+				.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.3f)).register();
 	}
 
 	public BlockEntry<Block> createBags() {

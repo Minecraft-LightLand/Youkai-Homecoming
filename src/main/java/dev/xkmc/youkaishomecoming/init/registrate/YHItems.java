@@ -4,6 +4,10 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import dev.xkmc.fruitsdelight.init.FruitsDelight;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.simple.DCReg;
+import dev.xkmc.l2core.init.reg.simple.DCVal;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.deco.BasketBlock;
@@ -19,14 +23,19 @@ import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.food.*;
+import dev.xkmc.youkaishomecoming.util.DCFluid;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -60,17 +69,24 @@ public class YHItems {
 
 	public static final ItemEntry<Item> EMPTY_HAND_ICON;
 
+	private static final DCReg DC = DCReg.of(YoukaisHomecoming.REG);
+	public static final DCVal<ItemContainerContents> DC_ITEMS = DC.reg("items", ItemContainerContents.CODEC, ItemContainerContents.STREAM_CODEC, false);
+	public static final DCVal<DCFluid> DC_FLUID = DC.reg("fluid", DCFluid.class, true);
+	public static final DCVal<Integer> DC_HEAT = DC.intVal("heat");
+
 	static {
 		InitializationMarker.expectAndAdvance(3);
 
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.CROP.getKey());
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.CROP.key());
 
 		// plants
 		{
 			YHCrops.register();
 			YHTea.register();
-			CAMELLIA = YoukaisHomecoming.REGISTRATE.item("camellia", CamelliaItem::new).model(CamelliaItem::buildModel).register();
-			MATCHA = crop("matcha", Item::new);
+			CAMELLIA = YoukaisHomecoming.REGISTRATE.item("camellia", CamelliaItem::new).model(CamelliaItem::buildModel)
+					.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.8f)).register();
+			MATCHA = crop("matcha", Item::new)
+					.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.8f)).register();
 			CUCUMBER_BAG = YHCrops.CUCUMBER.createCrate();
 			RED_GRAPE_CRATE = YHCrops.RED_GRAPE.createCrate();
 			BLACK_GRAPE_CRATE = YHCrops.BLACK_GRAPE.createCrate();
@@ -89,7 +105,7 @@ public class YHItems {
 			BasketBlock.register();
 		}
 
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.FOOD.getKey());
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.FOOD.key());
 
 		// ingredients
 		{
@@ -154,7 +170,7 @@ public class YHItems {
 			TARTE_LUNE = new CakeEntry("tarte_lune", MapColor.COLOR_PURPLE, FoodType.SIMPLE, 4, 0.6f, false);
 		}
 
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.key());
 
 		LAMPREY_BUCKET = YoukaisHomecoming.REGISTRATE
 				.item("lamprey_bucket", p -> new MobBucketItem(
@@ -178,7 +194,7 @@ public class YHItems {
 				.register();
 
 		EMPTY_HAND_ICON = YoukaisHomecoming.REGISTRATE.item("empty_hand_icon", Item::new)
-				.removeTab(YoukaisHomecoming.TAB.getKey()).register();
+				.removeTab(YoukaisHomecoming.TAB.key()).register();
 
 		InitializationMarker.expectAndAdvance(6);
 
@@ -189,10 +205,9 @@ public class YHItems {
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())));
 	}
 
-	public static <T extends Item> ItemEntry<T> crop(String id, NonNullFunction<Item.Properties, T> factory) {
+	public static <T extends Item> ItemBuilder<T, L2Registrate> crop(String id, NonNullFunction<Item.Properties, T> factory) {
 		return YoukaisHomecoming.REGISTRATE.item(id, factory)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())))
-				.register();
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/crops/" + ctx.getName())));
 	}
 
 	public static <T extends Item> ItemEntry<T> ingredient(String id, NonNullFunction<Item.Properties, T> factory) {

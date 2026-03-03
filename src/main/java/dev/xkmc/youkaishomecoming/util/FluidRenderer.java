@@ -154,11 +154,8 @@ public class FluidRenderer {
 	private static void putVertex(VertexConsumer builder, PoseStack ms, float x, float y, float z, int color, float u, float v, Direction face, int light) {
 		Vec3i normal = face.getNormal();
 		PoseStack.Pose peek = ms.last();
-		int a = color >> 24 & 255;
-		int r = color >> 16 & 255;
-		int g = color >> 8 & 255;
-		int b = color & 255;
-		builder.vertex(peek.pose(), x, y, z).color(r, g, b, a).uv(u, v).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(peek.normal(), (float) normal.getX(), (float) normal.getY(), (float) normal.getZ()).endVertex();
+		builder.addVertex(peek, x, y, z).setColor(color).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light)
+				.setNormal(peek, (float) normal.getX(), (float) normal.getY(), (float) normal.getZ());
 	}
 
 	private static class RenderTypes extends RenderStateShard {

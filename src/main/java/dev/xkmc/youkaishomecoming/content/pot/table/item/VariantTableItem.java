@@ -46,7 +46,7 @@ public class VariantTableItem implements TableItem {
 			if (next == null) return Optional.empty();
 			var cont = new CuisineInv(base.id(), contents, 0, true);
 			return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
-					.map(r -> new FoodTableItem(next, r.assemble(cont, level.registryAccess())));
+					.map(r -> new FoodTableItem(next, r.value().assemble(cont, level.registryAccess())));
 		}
 		var ans = new ArrayList<>(contents);
 		ans.add(stack.copyWithCount(1));
@@ -66,7 +66,7 @@ public class VariantTableItem implements TableItem {
 		var cont = new CuisineInv(base.id(), contents, 0, false);
 		var list = level.getRecipeManager().getRecipesFor(YHBlocks.CUISINE_RT.get(), cont, level);
 		for (var r : list) {
-			ans.addAll(r.getHints(level, cont));
+			ans.addAll(r.value().getHints(level, cont));
 		}
 		return ans;
 	}
@@ -76,7 +76,7 @@ public class VariantTableItem implements TableItem {
 		if (base.next() != null) return Optional.empty();
 		var cont = new CuisineInv(base.id(), contents, 0, true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
-				.map(r -> r.assemble(cont, level.registryAccess()));
+				.map(r -> r.value().assemble(cont, level.registryAccess()));
 	}
 
 	@Override

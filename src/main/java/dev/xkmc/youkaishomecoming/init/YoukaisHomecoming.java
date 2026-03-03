@@ -10,6 +10,7 @@ import dev.xkmc.l2core.init.reg.simple.IngVal;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2serial.serialization.custom_handler.Handlers;
 import dev.xkmc.youkaishomecoming.compat.terrablender.Terrablender;
 import dev.xkmc.youkaishomecoming.compat.thirst.ThirstCompat;
@@ -20,7 +21,6 @@ import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import dev.xkmc.youkaishomecoming.events.YHAttackListener;
 import dev.xkmc.youkaishomecoming.init.data.*;
 import dev.xkmc.youkaishomecoming.init.food.InitializationMarker;
-import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.init.loot.YHGLMProvider;
 import dev.xkmc.youkaishomecoming.init.loot.YHLootGen;
 import dev.xkmc.youkaishomecoming.init.registrate.*;
@@ -31,7 +31,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -98,16 +97,10 @@ public class YoukaisHomecoming {
 	public static void commonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			Terrablender.registerBiomes();
-			for (var e : YHCrops.values())
-				e.registerComposter();
-			ComposterBlock.COMPOSTABLES.put(YHItems.MATCHA, 0.8f);
-			ComposterBlock.COMPOSTABLES.put(YHItems.CAMELLIA, 0.8f);
 
 			if (ModList.get().isLoaded(Thirst.ID)) {
 				ThirstCompat.init();
 			}
-
-			YHEffects.registerBrewingRecipe();
 
 			((ItemAccessor) Items.POTION).setCraftingRemainingItem(Items.GLASS_BOTTLE);
 
@@ -124,6 +117,8 @@ public class YoukaisHomecoming {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, YHLangData::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, YHLootGen::genLoot);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, YHAdvGen::genAdv);
+		REGISTRATE.addDataGenerator(YHBiomeTagsProvider.TYPE, YHBiomeTagsProvider::genTag);
+		REGISTRATE.addDataGenerator(YHGLMProvider.TYPE, YHGLMProvider::gen);
 
 		boolean server = event.includeServer();
 		var gen = event.getGenerator();
@@ -133,8 +128,9 @@ public class YoukaisHomecoming {
 		gen.addProvider(server, new YHConfigGen(gen, pvd));
 		gen.addProvider(event.includeClient(), new AdditionalModelProvider(output, MODID));
 		YHDatapackRegistriesGen.register();
-		gen.addProvider(server, new YHBiomeTagsProvider(output, reg.getRegistryProvider(), helper));
-		gen.addProvider(server, new YHGLMProvider(gen, pvd));
+		var init = REGISTRATE.getDataGenInitializer();
+		init.addDependency(YHBiomeTagsProvider.TYPE, ProviderType.DYNAMIC);
+		init.addDependency(YHBiomeTagsProvider.TYPE, YHBiomeTagsProvider.TYPE);
 	}
 
 	public static ResourceLocation loc(String id) {

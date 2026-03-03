@@ -77,7 +77,7 @@ public class FoodTableItem implements TableItem {
 		}
 		var cont = new CuisineInv(baseId, contents, 0, true);
 		return level.getRecipeManager().getRecipeFor(YHBlocks.CUISINE_RT.get(), cont, level)
-				.map(r -> r.assemble(cont, level.registryAccess()));
+				.map(r -> r.value().assemble(cont, level.registryAccess()));
 	}
 
 	@Override

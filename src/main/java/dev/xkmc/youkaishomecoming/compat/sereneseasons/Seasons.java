@@ -18,8 +18,8 @@ public enum Seasons {
 
 	Seasons() {
 		String name = name().toLowerCase(Locale.ROOT);
-		item = ItemTags.create(new ResourceLocation(SereneSeasons.MOD_ID, name + "_crops"));
-		block = BlockTags.create(new ResourceLocation(SereneSeasons.MOD_ID, name + "_crops"));
+		item = ItemTags.create(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name + "_crops"));
+		block = BlockTags.create(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name + "_crops"));
 	}
 
 }

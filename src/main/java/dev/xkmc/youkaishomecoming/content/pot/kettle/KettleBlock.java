@@ -12,9 +12,9 @@ import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -38,7 +38,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.fluids.FluidStack;
 import vectorwing.farmersdelight.common.block.CookingPotBlock;
 import vectorwing.farmersdelight.common.block.state.CookingPotSupport;
 import vectorwing.farmersdelight.common.tag.ModTags;
@@ -121,11 +120,9 @@ public class KettleBlock implements
 
 	@Override
 	public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> list, TooltipFlag pFlag) {
-		var root = pStack.getTag();
-		if (root != null && root.contains("KettleFluid", Tag.TAG_COMPOUND)) {
-			var fluid = FluidStack.loadFluidStackFromNBT(root.getCompound("KettleFluid"));
-			if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake)
-				list.add(sake.type.asItem().getDescription());
+		var fluid = pStack.get(YHItems.DC_FLUID);
+		if (fluid != null && !fluid.stack().isEmpty() && fluid.stack().getFluid() instanceof YHFluid sake) {
+			list.add(sake.type.asItem().getDescription());
 		}
 		list.add(YHLangData.KETTLE_INFO.get());
 	}

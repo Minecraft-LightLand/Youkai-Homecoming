@@ -18,7 +18,7 @@ import java.util.Locale;
 
 public enum FruitsDelightCompatDrink implements IYHFluidHolder {
 	MOON_ROCKET(FoodType.BOTTLE_FAST, 0xffffffff, List.of(
-			new EffectEntry(() -> MobEffects.JUMP, 100, 1))),
+			new EffectEntry(MobEffects.JUMP, 100, 1))),
 	LEMON_BLACK_TEA(FoodType.BOTTLE_FAST, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.SOBER, 600, 0, 1),
 			new EffectEntry(YHEffects.THICK, 600, 0, 1)

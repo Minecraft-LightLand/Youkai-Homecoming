@@ -17,7 +17,7 @@ import java.util.Locale;
 public enum YHSushi implements ItemLike {
 
 	TOBIKO_GUNKAN(FoodType.FAST, 8, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
+			new EffectEntry(MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	SEAGRASS_GUNKAN(FoodType.FAST, 6, 0.6f, List.of(),
@@ -28,15 +28,15 @@ public enum YHSushi implements ItemLike {
 	EGG_NIGIRI(FoodType.FAST, 7, 0.6f, List.of(),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	LORELEI_NIGIRI(FoodType.FAST, 7, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 1800, 0, 1)),
 			DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	TUNA_NIGIRI(FoodType.FAST, 7, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
 			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	OTORO_NIGIRI(FoodType.FAST, 10, 1f, List.of(
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 600, 0, 0.5f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 600, 0, 0.5f),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	;

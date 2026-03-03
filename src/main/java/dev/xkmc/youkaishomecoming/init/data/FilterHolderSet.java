@@ -2,13 +2,17 @@ package dev.xkmc.youkaishomecoming.init.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import dev.xkmc.l2core.init.reg.simple.SR;
+import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.HolderSetCodec;
 import net.minecraft.resources.ResourceKey;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.holdersets.CompositeHolderSet;
 import net.neoforged.neoforge.registries.holdersets.HolderSetType;
@@ -20,21 +24,27 @@ import java.util.stream.Collectors;
 
 public class FilterHolderSet<T> extends CompositeHolderSet<T> {
 
-	private static final DeferredRegister<HolderSetType> HOLDERSET =
-			DeferredRegister.create(NeoForgeRegistries.Keys.HOLDER_SET_TYPES, YoukaisHomecoming.MODID);
+	public record HolderCodec() implements HolderSetType {
 
-	public static final Holder<HolderSetType> FILTER =
-			HOLDERSET.register("filter", () -> FilterHolderSet::codec);
+		@Override
+		public <T> MapCodec<? extends ICustomHolderSet<T>> makeCodec(ResourceKey<? extends Registry<T>> registryKey, Codec<Holder<T>> holderCodec, boolean forceList) {
+			return HolderSetCodec.create(registryKey, holderCodec, forceList)
+					.listOf()
+					.xmap(FilterHolderSet::new, CompositeHolderSet::homogenize)
+					.fieldOf("values");
+		}
 
-	public static void register() {
-		HOLDERSET.register(YoukaisHomecoming.REGISTRATE.getModEventBus());
+		@Override
+		public <T> StreamCodec<RegistryFriendlyByteBuf, ? extends ICustomHolderSet<T>> makeStreamCodec(ResourceKey<? extends Registry<T>> registryKey) {
+			return ByteBufCodecs.<RegistryFriendlyByteBuf, HolderSet<T>>list().apply(ByteBufCodecs.holderSet(registryKey))
+					.map(FilterHolderSet::new, CompositeHolderSet::getComponents);
+		}
 	}
 
-	public static <T> MapCodec<? extends ICustomHolderSet<T>> codec(ResourceKey<? extends Registry<T>> registryKey, Codec<Holder<T>> holderCodec, boolean forceList) {
-		return HolderSetCodec.create(registryKey, holderCodec, forceList)
-				.listOf()
-				.xmap(FilterHolderSet::new, CompositeHolderSet::homogenize)
-				.fieldOf("values");
+	private static final SR<HolderSetType> HOLDERSET = SR.of(YoukaisHomecoming.REG, NeoForgeRegistries.Keys.HOLDER_SET_TYPES);
+	public static final Val<HolderSetType> FILTER = HOLDERSET.reg("filter", HolderCodec::new);
+
+	public static void register() {
 	}
 
 	public FilterHolderSet(List<HolderSet<T>> components) {
@@ -43,7 +53,7 @@ public class FilterHolderSet<T> extends CompositeHolderSet<T> {
 
 	@Override
 	public HolderSetType type() {
-		return FILTER.value();
+		return FILTER.get();
 	}
 
 	@Override

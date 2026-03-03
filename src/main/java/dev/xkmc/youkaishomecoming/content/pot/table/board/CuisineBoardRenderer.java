@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.Mth;
 
 public class CuisineBoardRenderer implements BlockEntityRenderer<CuisineBoardBlockEntity> {
@@ -31,7 +32,7 @@ public class CuisineBoardRenderer implements BlockEntityRenderer<CuisineBoardBlo
 		pose.mulPose(Axis.YP.rotation(dir.toYRot() * Mth.DEG_TO_RAD));
 		pose.translate(-0.5, 0, -0.5);
 		for (var id : list) {
-			var model = manager.getModel(id);
+			var model = manager.getModel(ModelResourceLocation.standalone(id));
 			renderer.renderModelLists(model, dummy, light, overlay, pose, vc);
 		}
 		pose.popPose();

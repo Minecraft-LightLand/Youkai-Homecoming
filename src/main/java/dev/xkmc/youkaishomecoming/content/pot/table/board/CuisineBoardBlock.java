@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.table.board;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
@@ -17,6 +18,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -49,13 +51,12 @@ public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod
 	}
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (level.getBlockEntity(pos) instanceof CuisineBoardBlockEntity be) {
 			if (player.isShiftKeyDown()) {
 				be.clear();
 				player.playSound(SoundEvents.COMPOSTER_FILL, 1, 1);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 			if (be.performToolAction(stack)) {
 				if (!level.isClientSide && !player.getAbilities().instabuild) {
@@ -64,7 +65,7 @@ public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod
 					}
 				}
 				player.playSound(ModSounds.BLOCK_CUTTING_BOARD_KNIFE.get(), 0.8F, 1.0F);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 			int cost = be.addItem(stack);
 			if (cost > 0) {
@@ -72,14 +73,14 @@ public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod
 					if (SearHelper.isFireSource(stack)) {
 						if (stack.isDamageableItem()) {
 							stack.hurtAndBreak(cost, player, LivingEntity.getSlotForHand(hand));
-							return InteractionResult.SUCCESS;
+							return ItemInteractionResult.SUCCESS;
 						}
 					}
 					if (SlipBottleItem.isSlipContainer(stack)) {
 						var toConsume = stack.split(1);
 						player.setItemInHand(hand, SlipBottleItem.drain(toConsume));
 						player.getInventory().placeItemBackInInventory(stack);
-						return InteractionResult.SUCCESS;
+						return ItemInteractionResult.SUCCESS;
 					}
 					boolean withCont = stack.is(YHTagGen.PLACE_WITH_CONTAINER);
 					ItemStack cont = stack.getCraftingRemainingItem();
@@ -92,13 +93,13 @@ public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod
 					}
 				}
 				player.playSound(SoundEvents.WOOL_PLACE, 1, 1);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 			if (stack.isEmpty() && be.addToPlayer(player)) {
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	@Override

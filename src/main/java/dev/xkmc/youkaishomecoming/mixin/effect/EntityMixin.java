@@ -27,7 +27,7 @@ public class EntityMixin {
 	@WrapOperation(method = "moveRelative", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;getInputVector(Lnet/minecraft/world/phys/Vec3;FF)Lnet/minecraft/world/phys/Vec3;"))
 	public Vec3 youkaishomecoming$craby(Vec3 vec3, float speed, float yrot, Operation<Vec3> original) {
 		if (((Object) this) instanceof LivingEntity le) {
-			var ins = le.getEffect(YHEffects.CRABY.get());
+			var ins = le.getEffect(YHEffects.CRABY);
 			if (ins != null) {
 				if (vec3.lengthSqr() > 1) vec3 = vec3.normalize();
 				vec3 = new Vec3(vec3.x * (1 + (1 + ins.getAmplifier()) * 0.5), vec3.y, vec3.z);

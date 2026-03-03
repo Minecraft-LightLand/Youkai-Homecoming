@@ -8,7 +8,7 @@ import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.fruitsdelight.init.food.FDFood;
 import dev.xkmc.fruitsdelight.init.food.FruitType;
 import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
-import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
+import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.youkaishomecoming.compat.create.CreateRecipeGen;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
@@ -19,6 +19,8 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.core.UnorderedPotRecipeBui
 import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupBaseBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationBuilder;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipeBuilder;
+import dev.xkmc.youkaishomecoming.content.pot.rack.DryingRackRecipe;
+import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamingRecipe;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.TableBambooBowls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
@@ -41,13 +43,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.fml.ModList;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ModTags;
@@ -1214,7 +1215,7 @@ public class YHRecipeGen {
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.PEACH_TAPIOCA.item.get(), 1, 200, 0.1f, Items.BOWL)
 					.addIngredient(FruitType.PEACH.getFruitTag())
 					.addIngredient(Items.LILY_PAD)
-					.build(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID), FruitsDelightCompatFood.PEACH_TAPIOCA.item.getId());
+					.build(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
 
 
 			unlock(pvd, ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FruitsDelightCompatFood.PEACH_YATSUHASHI.item, 2)::unlockedBy, FruitType.PEACH.getFruit())
@@ -1261,15 +1262,19 @@ public class YHRecipeGen {
 	}
 
 	private static void drying(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out, int time) {
-		cooking(pvd, in, RecipeCategory.MISC, out, 0, time, "drying", YHBlocks.RACK_RS.get());
+		cooking(pvd, in, RecipeCategory.MISC, out, 0, time, "drying", YHBlocks.RACK_RS.get(), DryingRackRecipe::new);
 	}
 
 	private static void steaming(RegistrateRecipeProvider pvd, DataIngredient in, Supplier<Item> out) {
-		cooking(pvd, in, RecipeCategory.MISC, out, 0, 200, "steaming", YHBlocks.STEAM_RS.get());
+		cooking(pvd, in, RecipeCategory.MISC, out, 0, 200, "steaming", YHBlocks.STEAM_RS.get(), SteamingRecipe::new);
 	}
 
-	public static <T extends ItemLike> void cooking(RegistrateRecipeProvider pvd, DataIngredient source, RecipeCategory category, Supplier<? extends T> result, float experience, int cookingTime, String typeName, RecipeSerializer<? extends AbstractCookingRecipe> serializer) {
-		new SimpleCookingRecipeBuilder(category, CookingBookCategory.MISC, result.get(), source, experience, cookingTime, serializer)
+	public static <T extends ItemLike, R extends AbstractCookingRecipe> void cooking(
+			RegistrateRecipeProvider pvd, DataIngredient source, RecipeCategory category,
+			Supplier<? extends T> result, float experience, int cookingTime, String typeName,
+			RecipeSerializer<R> serializer,
+			AbstractCookingRecipe.Factory<R> factory) {
+		SimpleCookingRecipeBuilder.generic(source.toVanilla(), category, result.get().asItem(), experience, cookingTime, serializer, factory)
 				.unlockedBy("has_" + pvd.safeName(source), source.getCriterion(pvd))
 				.save(pvd, pvd.safeId(result.get()) + "_from_" + pvd.safeName(source) + "_" + typeName);
 	}

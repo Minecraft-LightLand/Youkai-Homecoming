@@ -10,6 +10,6 @@ import java.util.Locale;
 public enum DietTagGen {
 	FRUITS, GRAINS, PROTEINS, SUGARS, VEGETABLES;
 
-	public final TagKey<Item> tag = ItemTags.create(new ResourceLocation("diet", name().toLowerCase(Locale.ROOT)));
+	public final TagKey<Item> tag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("diet", name().toLowerCase(Locale.ROOT)));
 
 }

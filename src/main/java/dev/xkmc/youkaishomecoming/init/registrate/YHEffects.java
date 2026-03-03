@@ -1,26 +1,11 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
-import com.tterrag.registrate.builders.NoConfigBuilder;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
-import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.youkaishomecoming.content.effect.*;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionBrewing;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
 
 public class YHEffects {
 
@@ -90,39 +75,8 @@ public class YHEffects {
 			() -> new EarthyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Digest and heal when player is full");
 
-	public static final SimpleEntry<MobEffect> FLAMING = genEffect("flaming",
-			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff)
-					.addAttributeModifier(L2DamageTracker.FIRE_FACTOR.get(),
-							MathHelper.getUUIDFromString(YoukaisHomecoming.MODID + ":flaming").toString(),
-							0.25, AttributeModifier.Operation.ADDITION),
-			"Increase fire damage you dealt");
-
 	private static <T extends MobEffect> SimpleEntry<MobEffect> genEffect(String name, NonNullSupplier<T> sup, String desc) {
 		return new SimpleEntry<>(YoukaisHomecoming.REGISTRATE.effect(name, sup, desc).lang(MobEffect::getDescriptionId).register());
-	}
-
-	public static final List<SimpleEntry<? extends Potion>> POTION_LIST = new ArrayList<>();
-
-	private static final List<Runnable> TEMP = new ArrayList<>();
-
-	public static void registerBrewingRecipe() {
-		TEMP.forEach(Runnable::run);
-	}
-
-	private static SimpleEntry<Potion> genPotion(String name, NonNullSupplier<Potion> sup) {
-		var ans = new SimpleEntry<>(YoukaisHomecoming.REGISTRATE.entry(name, (cb) ->
-				new NoConfigBuilder<>(YoukaisHomecoming.REGISTRATE, YoukaisHomecoming.REGISTRATE, name, cb, Registries.POTION, sup)).register());
-		POTION_LIST.add(ans);
-		return ans;
-	}
-
-	private static void regPotion2(String id, Holder<MobEffect> sup, Holder<Item> item, int dur, int durLong, Supplier<Potion> base) {
-		var potion = genPotion(id, () -> new Potion(new MobEffectInstance(sup, dur)));
-		var longPotion = genPotion("long_" + id, () -> new Potion(new MobEffectInstance(sup, durLong)));
-		TEMP.add(() -> {
-			PotionBrewing.addMix(base.get(), item, potion.get());
-			PotionBrewing.addMix(potion.get(), Items.REDSTONE, longPotion.get());
-		});
 	}
 
 	public static void register() {

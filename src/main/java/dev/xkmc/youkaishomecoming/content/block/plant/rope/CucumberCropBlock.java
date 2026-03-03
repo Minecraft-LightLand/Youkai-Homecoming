@@ -59,7 +59,7 @@ public class CucumberCropBlock extends RootedClimbingCropBlock {
 		if (player instanceof ServerPlayer sp &&
 				level.getBlockState(pos.below()).is(this) &&
 				level.getBlockState(pos.below().below()).is(this)) {
-			YHCriteriaTriggers.CUCUMBER.trigger(sp);
+			YHCriteriaTriggers.CUCUMBER.get().trigger(sp);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.overlay;
 
-import dev.xkmc.l2library.base.overlay.OverlayUtil;
+import dev.xkmc.youkaishomecoming.util.OverlayUtil;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

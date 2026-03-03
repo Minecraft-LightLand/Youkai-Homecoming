@@ -11,12 +11,10 @@ import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
+import dev.xkmc.youkaishomecoming.util.DCFluid;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.Container;
@@ -25,15 +23,14 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
 
@@ -127,37 +124,27 @@ public class KettleBlockEntity extends TimedRecipeBlockEntity<KettleRecipe, Kett
 	}
 
 	public void readFromStack(ItemStack stack) {
-		try {
-			var root = stack.getTag();
-			if (root == null) return;
-			if (root.contains("KettleContents", Tag.TAG_LIST)) {
-				var list = root.getList("KettleContents", Tag.TAG_COMPOUND);
-				for (var e : list) {
-					if (e instanceof CompoundTag c)
-						items.addItem(ItemStack.of(c));
-				}
+		var cont = stack.get(YHItems.DC_ITEMS);
+		if (cont != null) {
+			for (int i = 0; i < cont.getSlots(); i++) {
+				items.addItem(cont.getStackInSlot(i));
 			}
-			if (root.contains("KettleFluid", Tag.TAG_COMPOUND)) {
-				fluids.set(1, 0, FluidStack.loadFluidStackFromNBT(root.getCompound("KettleFluid")));
-			}
-			heat = root.getInt("KettleHeat");
-		} catch (Exception ignored) {
-
 		}
+		var fluid = stack.get(YHItems.DC_FLUID);
+		if (fluid != null)
+			fluids.set(1, 0, fluid.stack().copy());
+		heat = stack.getOrDefault(YHItems.DC_HEAT, 0);
 	}
 
 	@Override
 	public boolean leftClick(BlockState state, Level level, BlockPos pos, Player player) {
 		if (level.isClientSide) return true;
 		ItemStack stack = state.getBlock().asItem().getDefaultInstance();
-		ListTag list = new ListTag();
-		for (var e : items.getAsList()) {
-			list.add(e.save(new CompoundTag()));
-		}
+		var ans = ItemContainerContents.fromItems(items.getAsList());
 		items.clear();
-		stack.addTagElement("KettleContents", list);
-		stack.addTagElement("KettleFluid", fluids.getFluidInTank(0).writeToNBT(new CompoundTag()));
-		stack.addTagElement("KettleHeat", IntTag.valueOf(heat));
+		stack.set(YHItems.DC_ITEMS, ans);
+		stack.set(YHItems.DC_FLUID, new DCFluid(fluids.getFluidInTank(0).copy()));
+		stack.set(YHItems.DC_HEAT, heat);
 		level.removeBlock(pos, false);
 		if (player.getMainHandItem().isEmpty()) {
 			player.setItemInHand(InteractionHand.MAIN_HAND, stack);

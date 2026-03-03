@@ -14,37 +14,44 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 public enum FoodType {
-	SIMPLE(YHFoodItem::new, UnaryOperator.identity(), false, false),
-	FAST(YHFoodItem::new, UnaryOperator.identity(), true, false),
-	STICK(YHFoodItem::new, p -> p.craftRemainder(Items.STICK).stacksTo(16), true, false),
-	BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, false),
-	SAKE(YHDrinkItem::new, p -> p.craftRemainder(Items.BOWL).stacksTo(16), false, true),
-	BOTTLE(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), false, true),
-	BAMBOO(YHDrinkItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, true),
-	BOTTLE_FAST(YHDrinkItem::new, p -> p.craftRemainder(Items.GLASS_BOTTLE).stacksTo(16), true, true),
-	IRON_BOWL(YHFoodItem::new, p -> p.craftRemainder(YHBlocks.IRON_BOWL.asItem()).stacksTo(16), false, false),
-	BAMBOO_BOWL(YHFoodItem::new, p -> p.craftRemainder(Items.BAMBOO).stacksTo(16), false, false),
-	SAUCER(YHFoodItem::new, p -> p.craftRemainder(YHItems.SAUCER.asItem()).stacksTo(16), false, false),
+	SIMPLE(YHFoodItem::new, false, false),
+	FAST(YHFoodItem::new, true, false),
+	STICK(YHFoodItem::new, () -> Items.STICK, 16, true, false),
+	BOWL(YHFoodItem::new, () -> Items.BOWL, 16, false, false),
+	SAKE(YHDrinkItem::new, () -> Items.BOWL, 16, false, true),
+	BOTTLE(YHDrinkItem::new, Items.GLASS_BOTTLE, 16, false, true),
+	BAMBOO(YHDrinkItem::new, () -> Items.BAMBOO, 16, false, true),
+	BOTTLE_FAST(YHDrinkItem::new, Items.GLASS_BOTTLE, 16, true, true),
+	IRON_BOWL(YHFoodItem::new, YHBlocks.IRON_BOWL, 16, false, false),
+	BAMBOO_BOWL(YHFoodItem::new, () -> Items.BAMBOO, 16, false, false),
+	SAUCER(YHFoodItem::new, YHItems.SAUCER, 16, false, false),
 	;
 
 	private final Function<Item.Properties, Item> factory;
-	private final UnaryOperator<Item.Properties> prop;
+	private final ItemLike container;
+	private final int count;
 	private final boolean fast, alwaysEat;
 
 	private final TagKey<Item>[] tags;
 
 	@SafeVarargs
-	FoodType(Function<Item.Properties, Item> factory, UnaryOperator<Item.Properties> prop, boolean fast, boolean alwaysEat, TagKey<Item>... tags) {
+	FoodType(Function<Item.Properties, Item> factory, boolean fast, boolean alwaysEat, TagKey<Item>... tags) {
+		this(factory, Items.AIR, 64, fast, alwaysEat, tags);
+	}
+
+	@SafeVarargs
+	FoodType(Function<Item.Properties, Item> factory, ItemLike container, int stack, boolean fast, boolean alwaysEat, TagKey<Item>... tags) {
 		this.factory = factory;
-		this.prop = prop;
+		this.container = container;
+		this.count = stack;
 		this.fast = fast;
 		this.alwaysEat = alwaysEat;
 		this.tags = tags;
@@ -73,7 +80,9 @@ public enum FoodType {
 
 
 	public Item.Properties food(Item.Properties prop, float edibility, int nutrition, float sat, List<EffectEntry> effs) {
-		return edibility <= 0 ? this.prop.apply(prop) :
+		if (container.asItem() != Items.AIR) prop.craftRemainder(container.asItem());
+		if (count < 64) prop.stacksTo(count);
+		return edibility <= 0 ? prop :
 				edibility < 1 ? food(prop, (int) (nutrition * edibility), sat * edibility, List.of()) :
 						food(prop, nutrition, sat, effs);
 	}
@@ -86,7 +95,13 @@ public enum FoodType {
 		for (var e : effs) {
 			food.effect(e::getEffect, e.chance());
 		}
-		return this.prop.apply(prop).food(food.build());
+		if (container.asItem() != Items.AIR) {
+			prop.craftRemainder(container.asItem());
+			food.usingConvertsTo(container);
+		}
+		if (count < 64) prop.stacksTo(count);
+
+		return prop.food(food.build());
 	}
 
 	public BlockBuilder<BowlBlock, L2Registrate> bowl(String name, boolean raw) {

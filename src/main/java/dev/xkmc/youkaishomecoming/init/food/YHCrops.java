@@ -22,7 +22,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -37,6 +40,8 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
@@ -81,12 +86,12 @@ public enum YHCrops {
 
 		var seedBuilder = YHItems.seed(sname, p -> type.item(getPlant(), p));
 		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(Tags.Items.SEEDS);
-		seed = seedBuilder.register();
+		seed = seedBuilder.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(fruit == null ? 0.5f : 0.3f)).register();
 
 		fruits = fruit == null ? seed :
-				type.eatable() ? YHItems.crop(fruit, p -> new Item(p.food(
+				(type.eatable() ? YHItems.crop(fruit, p -> new Item(p.food(
 						new FoodProperties.Builder().nutrition(2).saturationModifier(0.3f).build()
-				))) : YHItems.crop(fruit, Item::new);
+				))) : YHItems.crop(fruit, Item::new)).dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.5f)).register();
 
 		if (type == PlantType.GRAPE) {
 			set = new GrapeVineSet(this);
@@ -115,14 +120,6 @@ public enum YHCrops {
 			return getName().split("_")[1];
 		}
 		return getName();
-	}
-
-
-	public void registerComposter() {
-		ComposterBlock.COMPOSTABLES.put(getSeed(), 0.3f);
-		if (getSeed() != getFruits())
-			ComposterBlock.COMPOSTABLES.put(getFruits(), 0.5f);
-		ComposterBlock.COMPOSTABLES.put(getWildPlant().asItem(), 0.65f);
 	}
 
 	public void registerConfigs(BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
@@ -206,7 +203,8 @@ public enum YHCrops {
 				.initialProperties(() -> Blocks.DANDELION)
 				.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, this))
 				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
-						pvd.generated(ctx, pvd.modLoc("block/plants/" + getTypeName() + "/wild_" + getName()))).build()
+						pvd.generated(ctx, pvd.modLoc("block/plants/" + getTypeName() + "/wild_" + getName())))
+				.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.8f)).build()
 				.tag(ModTags.WILD_CROPS);
 	}
 

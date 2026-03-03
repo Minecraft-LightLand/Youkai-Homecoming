@@ -14,6 +14,7 @@ import terrablender.api.RegionType;
 import java.util.function.Consumer;
 
 public class GensokyoRegion extends Region {
+
 	public GensokyoRegion(ResourceLocation name, int weight) {
 		super(name, RegionType.OVERWORLD, weight);
 	}
