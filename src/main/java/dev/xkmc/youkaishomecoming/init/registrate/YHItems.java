@@ -8,6 +8,7 @@ import dev.xkmc.fruitsdelight.init.FruitsDelight;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.DCReg;
 import dev.xkmc.l2core.init.reg.simple.DCVal;
+import dev.xkmc.l2core.util.DCStack;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatDrink;
 import dev.xkmc.youkaishomecoming.compat.food.FruitsDelightCompatFood;
 import dev.xkmc.youkaishomecoming.content.block.deco.BasketBlock;
@@ -26,6 +27,7 @@ import dev.xkmc.youkaishomecoming.init.food.*;
 import dev.xkmc.youkaishomecoming.util.DCFluid;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.component.ItemContainerContents;
@@ -34,6 +36,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import org.apache.commons.lang3.StringUtils;
@@ -71,7 +74,7 @@ public class YHItems {
 
 	private static final DCReg DC = DCReg.of(YoukaisHomecoming.REG);
 	public static final DCVal<ItemContainerContents> DC_ITEMS = DC.reg("items", ItemContainerContents.CODEC, ItemContainerContents.STREAM_CODEC, false);
-	public static final DCVal<DCFluid> DC_FLUID = DC.reg("fluid", DCFluid.class, true);
+	public static final DCVal<DCFluid> DC_FLUID = DC.reg("fluid", FluidStack.OPTIONAL_CODEC.xmap(DCFluid::new, DCFluid::stack), FluidStack.OPTIONAL_STREAM_CODEC.map(DCFluid::new, DCFluid::stack), true);
 	public static final DCVal<Integer> DC_HEAT = DC.intVal("heat");
 
 	static {

@@ -49,7 +49,6 @@ public class FluidRenderer {
 		Fluid fluid = fluidStack.getFluid();
 		IClientFluidTypeExtensions clientFluid = IClientFluidTypeExtensions.of(fluid);
 		FluidType fluidAttributes = fluid.getFluidType();
-		var tex = clientFluid.getStillTexture(fluidStack);
 		int color = clientFluid.getTintColor(fluidStack);
 		if (colorOverride != 0) {
 			color = colorOverride;
@@ -57,7 +56,7 @@ public class FluidRenderer {
 		int blockLightIn = light >> 4 & 15;
 		int luminosity = Math.max(blockLightIn, fluidAttributes.getLightLevel(fluidStack));
 		light = light & 15728640 | luminosity << 4;
-		renderFluidBox(tex, xMin, yMin, zMin, xMax, yMax, zMax, builder, ms, light, renderBottom, color);
+		renderFluidBox(clientFluid.getStillTexture(fluidStack), xMin, yMin, zMin, xMax, yMax, zMax, builder, ms, light, renderBottom, color);
 	}
 
 	public static void renderFluidBox(ResourceLocation tex, float xMin, float yMin, float zMin, float xMax, float yMax, float zMax, VertexConsumer builder, PoseStack ms, int light, boolean renderBottom, int color) {
@@ -101,12 +100,12 @@ public class FluidRenderer {
 			float u1;
 			float u2;
 			if (dir != Direction.NORTH && dir != Direction.EAST) {
-				u1 = texture.getU((x1 - f) * 16.0F * textureScale);
-				u2 = texture.getU((x2 - f) * 16.0F * textureScale);
+				u1 = texture.getU(((x1 - f) * textureScale));
+				u2 = texture.getU(((x2 - f) * textureScale));
 			} else {
 				f = (float) Mth.ceil(x2);
-				u1 = texture.getU((f - x2) * 16.0F * textureScale);
-				u2 = texture.getU((f - x1) * 16.0F * textureScale);
+				u1 = texture.getU(((f - x2) * textureScale));
+				u2 = texture.getU(((f - x1) * textureScale));
 			}
 
 			u1 = Mth.lerp(shrink, u1, centerU);
@@ -118,12 +117,12 @@ public class FluidRenderer {
 				float v1;
 				float v2;
 				if (dir == Direction.UP) {
-					v1 = texture.getV((y1 - f) * 16.0F * textureScale);
-					v2 = texture.getV((y2 - f) * 16.0F * textureScale);
+					v1 = texture.getV(((y1 - f) * textureScale));
+					v2 = texture.getV(((y2 - f) * textureScale));
 				} else {
 					f = (float) Mth.ceil(y2);
-					v1 = texture.getV((f - y2) * 16.0F * textureScale);
-					v2 = texture.getV((f - y1) * 16.0F * textureScale);
+					v1 = texture.getV(((f - y2) * textureScale));
+					v2 = texture.getV(((f - y1) * textureScale));
 				}
 
 				v1 = Mth.lerp(shrink, v1, centerV);
@@ -154,8 +153,16 @@ public class FluidRenderer {
 	private static void putVertex(VertexConsumer builder, PoseStack ms, float x, float y, float z, int color, float u, float v, Direction face, int light) {
 		Vec3i normal = face.getNormal();
 		PoseStack.Pose peek = ms.last();
-		builder.addVertex(peek, x, y, z).setColor(color).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light)
-				.setNormal(peek, (float) normal.getX(), (float) normal.getY(), (float) normal.getZ());
+		int a = color >> 24 & 255;
+		int r = color >> 16 & 255;
+		int g = color >> 8 & 255;
+		int b = color & 255;
+		builder.addVertex(peek.pose(), x, y, z)
+				.setColor(r, g, b, a)
+				.setUv(u, v)
+				.setOverlay(OverlayTexture.NO_OVERLAY)
+				.setLight(light)
+				.setNormal(peek, normal.getX(), normal.getY(), normal.getZ());
 	}
 
 	private static class RenderTypes extends RenderStateShard {

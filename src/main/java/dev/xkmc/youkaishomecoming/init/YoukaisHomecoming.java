@@ -90,7 +90,6 @@ public class YoukaisHomecoming {
 		FilterHolderSet.register();
 
 		AttackEventHandler.register(3943, new YHAttackListener());
-		HANDLER.addAfterReloadListener(() -> INGREDIENT.getMerged().onSync());
 	}
 
 	@SubscribeEvent
