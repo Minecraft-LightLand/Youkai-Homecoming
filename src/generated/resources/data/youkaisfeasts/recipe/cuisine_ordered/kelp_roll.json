@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:cuisine_ordered",
+  "base": "youkaisfeasts:hosomaki",
+  "input": [
+    {
+      "item": "minecraft:carrot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "farmersdelight:kelp_roll"
+  }
+}

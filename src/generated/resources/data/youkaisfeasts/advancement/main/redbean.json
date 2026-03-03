@@ -1,0 +1,44 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "#youkaisfeasts:farmland_redbean"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "youkaisfeasts:redbean"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.redbean.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:redbean"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.redbean.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

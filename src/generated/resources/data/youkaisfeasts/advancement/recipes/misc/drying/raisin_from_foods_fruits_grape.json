@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_foods_fruits_grape": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/fruits/grape"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:drying/raisin_from_foods_fruits_grape"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_foods_fruits_grape"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:drying/raisin_from_foods_fruits_grape"
+    ]
+  }
+}

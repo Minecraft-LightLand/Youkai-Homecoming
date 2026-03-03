@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "fruitsdelight"
+    }
+  ],
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/black"
+    },
+    {
+      "tag": "c:tea_leaves/black"
+    },
+    {
+      "item": "fruitsdelight:lemon_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:lemon_black_tea"
+  },
+  "time": 100
+}

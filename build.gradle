@@ -129,7 +129,7 @@ repositories {
 
 dependencies {
 
-    implementation jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[${registrate_version},)")
+    compileOnly jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[${registrate_version},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${l2serial_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2modularblocks', version: "[${l2modularblocks_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'l2core', version: "[${l2core_ver},)")
@@ -149,6 +149,7 @@ dependencies {
     implementation "curse.maven:appleskin-248787:6616291"
     implementation "curse.maven:prickle-1023259:6961457"
     implementation "curse.maven:bookshelf-228525:6951065"
+    implementation "curse.maven:glitchcore-955399:5660740"
     implementation "curse.maven:serene-seasons-291874:6182596"
 
     testImplementation "com.mojang:datafixerupper:8.0.16"

@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:foods/cabbage"
+    },
+    {
+      "tag": "c:foods/cabbage"
+    },
+    {
+      "tag": "c:foods/cabbage"
+    },
+    {
+      "tag": "c:foods/cabbage"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:green_water"
+  },
+  "time": 100
+}

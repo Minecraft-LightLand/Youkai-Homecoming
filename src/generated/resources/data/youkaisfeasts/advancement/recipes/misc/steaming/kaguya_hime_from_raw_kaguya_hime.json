@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_kaguya_hime": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:raw_kaguya_hime"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:steaming/kaguya_hime_from_raw_kaguya_hime"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_kaguya_hime"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:steaming/kaguya_hime_from_raw_kaguya_hime"
+    ]
+  }
+}

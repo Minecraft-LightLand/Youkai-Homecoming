@@ -9,6 +9,7 @@ public class YHModConfig {
 	public static class Client extends ConfigInit {
 
 		Client(Builder builder) {
+			markPlain();
 		}
 
 	}
@@ -20,10 +21,9 @@ public class YHModConfig {
 		public final ModConfigSpec.IntValue udumbaraDuration;
 		public final ModConfigSpec.IntValue udumbaraHealingPeriod;
 		public final ModConfigSpec.IntValue udumbaraFullMoonReduction;
-		public final ModConfigSpec.IntValue higiHealingPeriod;
 
 		Common(Builder builder) {
-
+			markPlain();
 			builder.push("food_effect", "Food Effects");
 			{
 				breathingHealingFactor = builder.text("Breathing Healing Factor")
@@ -36,9 +36,7 @@ public class YHModConfig {
 						.defineInRange("udumbaraDuration", 200, 0, 100000);
 				udumbaraFullMoonReduction = builder.text("Udumbara full moon damage reduction")
 						.defineInRange("udumbaraFullMoonReduction", 4, 0, 100);
-				higiHealingPeriod = builder.text("Higi Healing Interval")
-						.defineInRange("higiHealingPeriod", 60, 0, 10000);
-			}
+		}
 			builder.pop();
 		}
 

@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/oolong"
+    },
+    {
+      "tag": "c:tea_leaves/oolong"
+    },
+    {
+      "tag": "c:tea_leaves/oolong"
+    },
+    {
+      "tag": "c:tea_leaves/oolong"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:oolong_tea"
+  },
+  "time": 100
+}

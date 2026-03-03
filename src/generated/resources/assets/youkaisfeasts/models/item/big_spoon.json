@@ -8,7 +8,7 @@
     }
   },
   "gui_light": "front",
-  "loader": "forge:separate_transforms",
+  "loader": "neoforge:separate_transforms",
   "perspectives": {
     "gui": {
       "parent": "minecraft:item/generated",

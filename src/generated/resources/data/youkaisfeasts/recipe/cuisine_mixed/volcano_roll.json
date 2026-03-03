@@ -1,0 +1,24 @@
+{
+  "type": "youkaisfeasts:cuisine_mixed",
+  "base": "youkaisfeasts:california_roll",
+  "first": [
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:volcano_roll"
+  },
+  "second": [
+    {
+      "tag": "c:foods/raw_tuna"
+    },
+    {
+      "item": "youkaisfeasts:otoro"
+    },
+    {
+      "tag": "c:foods/raw_tuna"
+    }
+  ]
+}

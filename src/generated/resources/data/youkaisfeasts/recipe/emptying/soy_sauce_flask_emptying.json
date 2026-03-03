@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:soy_sauce_flask"
+    }
+  ],
+  "results": [
+    {
+      "item": {
+        "id": "youkaisfeasts:sake_bottle"
+      }
+    },
+    {
+      "amount": 1000,
+      "id": "youkaisfeasts:soy_sauce"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:raw_tuna"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 3,
+        "id": "youkaisfeasts:raw_tuna_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

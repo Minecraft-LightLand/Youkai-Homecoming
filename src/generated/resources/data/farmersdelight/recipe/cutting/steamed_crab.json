@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:steamed_crab"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "youkaisfeasts:crab_meat"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

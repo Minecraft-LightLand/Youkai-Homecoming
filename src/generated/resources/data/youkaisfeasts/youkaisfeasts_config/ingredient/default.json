@@ -2,43 +2,43 @@
   "ingredients": {
     "youkaisfeasts:california/cover": {
       "crab_roe": {
-        "tag": "forge:roes/crab"
+        "tag": "c:foods/roes/crab"
       },
       "roe": {
-        "tag": "forge:roes/salmon"
+        "tag": "c:foods/roes/salmon"
       }
     },
     "youkaisfeasts:california/sauce": {
       "mayonnaise": {
-        "tag": "forge:bottles/mayonnaise"
+        "tag": "c:bottles/mayonnaise"
       },
       "soy_sauce": {
-        "tag": "forge:bottles/soy_sauce"
+        "tag": "c:bottles/soy_sauce"
       }
     },
     "youkaisfeasts:california/top": {
       "cod": {
-        "tag": "forge:raw_fishes/cod"
+        "tag": "c:foods/raw_cod"
       },
       "otoro": {
-        "tag": "forge:otoro"
+        "tag": "c:foods/otoro"
       },
       "salmon": {
-        "tag": "forge:raw_fishes/salmon"
+        "tag": "c:foods/raw_salmon"
       },
       "tuna": {
-        "tag": "forge:raw_fishes/tuna"
+        "tag": "c:foods/raw_tuna"
       }
     },
     "youkaisfeasts:gunkan/top": {
       "crab_roe": {
-        "tag": "forge:roes/crab"
+        "tag": "c:foods/roes/crab"
       },
       "nattou": {
-        "tag": "forge:nattou"
+        "tag": "c:foods/nattou"
       },
       "roe": {
-        "tag": "forge:roes/salmon"
+        "tag": "c:foods/roes/salmon"
       },
       "seagrass": {
         "item": "minecraft:seagrass"
@@ -52,27 +52,27 @@
         "item": "minecraft:carrot"
       },
       "cucumber": {
-        "tag": "forge:slices/cucumber"
+        "tag": "c:foods/slices/cucumber"
       },
       "imitation_crab": {
-        "tag": "forge:imitation_crab"
+        "tag": "c:foods/imitation_crab"
       },
       "salmon": {
-        "tag": "forge:raw_fishes/salmon"
+        "tag": "c:foods/raw_salmon"
       },
       "tamagoyaki": {
-        "tag": "forge:slices/tamagoyaki"
+        "tag": "c:foods/slices/tamagoyaki"
       },
       "tuna": {
-        "tag": "forge:raw_fishes/tuna"
+        "tag": "c:foods/raw_tuna"
       }
     },
     "youkaisfeasts:open_california/sauce": {
       "mayonnaise": {
-        "tag": "forge:bottles/mayonnaise"
+        "tag": "c:bottles/mayonnaise"
       },
       "soy_sauce": {
-        "tag": "forge:bottles/soy_sauce"
+        "tag": "c:bottles/soy_sauce"
       }
     },
     "youkaisfeasts:open_futomaki/ingredient": {
@@ -83,27 +83,27 @@
         "item": "minecraft:carrot"
       },
       "cucumber": {
-        "tag": "forge:slices/cucumber"
+        "tag": "c:foods/slices/cucumber"
       },
       "imitation_crab": {
-        "tag": "forge:imitation_crab"
+        "tag": "c:foods/imitation_crab"
       },
       "salmon": {
-        "tag": "forge:raw_fishes/salmon"
+        "tag": "c:foods/raw_salmon"
       },
       "tamagoyaki": {
-        "tag": "forge:slices/tamagoyaki"
+        "tag": "c:foods/slices/tamagoyaki"
       },
       "tuna": {
-        "tag": "forge:raw_fishes/tuna"
+        "tag": "c:foods/raw_tuna"
       }
     },
     "youkaisfeasts:open_futomaki/sauce": {
       "mayonnaise": {
-        "tag": "forge:bottles/mayonnaise"
+        "tag": "c:bottles/mayonnaise"
       },
       "soy_sauce": {
-        "tag": "forge:bottles/soy_sauce"
+        "tag": "c:bottles/soy_sauce"
       }
     },
     "youkaisfeasts:open_hosomaki/ingredient": {
@@ -114,27 +114,27 @@
         "item": "minecraft:carrot"
       },
       "cucumber": {
-        "tag": "forge:slices/cucumber"
+        "tag": "c:foods/slices/cucumber"
       },
       "imitation_crab": {
-        "tag": "forge:imitation_crab"
+        "tag": "c:foods/imitation_crab"
       },
       "salmon": {
-        "tag": "forge:raw_fishes/salmon"
+        "tag": "c:foods/raw_salmon"
       },
       "tamagoyaki": {
-        "tag": "forge:slices/tamagoyaki"
+        "tag": "c:foods/slices/tamagoyaki"
       },
       "tuna": {
-        "tag": "forge:raw_fishes/tuna"
+        "tag": "c:foods/raw_tuna"
       }
     },
     "youkaisfeasts:open_hosomaki/sauce": {
       "mayonnaise": {
-        "tag": "forge:bottles/mayonnaise"
+        "tag": "c:bottles/mayonnaise"
       },
       "soy_sauce": {
-        "tag": "forge:bottles/soy_sauce"
+        "tag": "c:bottles/soy_sauce"
       }
     },
     "youkaisfeasts:sushi/curd": {},
@@ -153,22 +153,22 @@
     },
     "youkaisfeasts:sushi/top": {
       "cod": {
-        "tag": "forge:raw_fishes/cod"
+        "tag": "c:foods/raw_cod"
       },
       "lamprey": {
-        "tag": "forge:cooked_fishes/eel"
+        "tag": "c:foods/cooked_eel"
       },
       "otoro": {
-        "tag": "forge:otoro"
+        "tag": "c:foods/otoro"
       },
       "salmon": {
-        "tag": "forge:raw_fishes/salmon"
+        "tag": "c:foods/raw_salmon"
       },
       "tamagoyaki": {
         "tag": "youkaisfeasts:tamagoyaki"
       },
       "tuna": {
-        "tag": "forge:raw_fishes/tuna"
+        "tag": "c:foods/raw_tuna"
       }
     }
   }

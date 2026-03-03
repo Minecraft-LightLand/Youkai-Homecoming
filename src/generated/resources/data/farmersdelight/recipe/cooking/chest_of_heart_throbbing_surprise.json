@@ -1,0 +1,33 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "minecraft:chest"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "youkaisfeasts:bowl_of_cream"
+    },
+    {
+      "item": "youkaisfeasts:udumbara_flower"
+    },
+    {
+      "item": "minecraft:purple_banner"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:chest_of_heart_throbbing_surprise"
+  }
+}

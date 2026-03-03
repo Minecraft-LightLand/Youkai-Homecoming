@@ -1,7 +1,0 @@
-{
-  "type": "youkaisfeasts:cuisine_fixed",
-  "base": "youkaisfeasts:rice_powder_pork",
-  "result": {
-    "item": "youkaisfeasts:raw_rice_powder_pork"
-  }
-}

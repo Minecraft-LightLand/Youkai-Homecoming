@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_roe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:roe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:tobiko_gunkan"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_roe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:tobiko_gunkan"
+    ]
+  }
+}

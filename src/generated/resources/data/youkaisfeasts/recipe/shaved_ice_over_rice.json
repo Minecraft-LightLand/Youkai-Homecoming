@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "farmersdelight:cooked_rice"
+    },
+    {
+      "tag": "c:ice_cubes"
+    },
+    {
+      "tag": "c:crops/redbean"
+    },
+    {
+      "item": "farmersdelight:cod_roll"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:shaved_ice_over_rice"
+  }
+}

@@ -31,7 +31,7 @@ import java.util.Objects;
 @JeiPlugin
 public class YHJeiPlugin implements IModPlugin {
 
-	public static final ResourceLocation ID = YoukaisHomecoming.loc("main");
+	public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(YoukaisHomecoming.MODID, "main");
 
 	public static final RecipeType<KettleRecipe> KETTLE = RecipeType.create(YoukaisHomecoming.MODID, "kettle", KettleRecipe.class);
 	public static final RecipeType<RecipeHolder<DryingRackRecipe>> RACK = RecipeType.create(YoukaisHomecoming.MODID, "drying_rack", Wrappers.cast(RecipeHolder.class));

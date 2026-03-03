@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "youkaisfeasts:dango"
+    },
+    {
+      "tag": "youkaisfeasts:dango"
+    },
+    {
+      "tag": "youkaisfeasts:dango"
+    },
+    {
+      "tag": "c:crops/soybean"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:kinako_dango"
+  }
+}

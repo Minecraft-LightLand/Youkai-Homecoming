@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:tekka_maki"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 3,
+        "id": "youkaisfeasts:tekka_maki_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/green"
+    },
+    {
+      "tag": "c:tea_leaves/green"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:genmai_tea"
+  },
+  "time": 100
+}

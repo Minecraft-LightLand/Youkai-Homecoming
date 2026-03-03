@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ice_cubes"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " II",
+    "SII",
+    "TS "
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:big_popsicle"
+  }
+}

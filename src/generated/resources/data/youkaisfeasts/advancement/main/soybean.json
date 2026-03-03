@@ -1,0 +1,44 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "#youkaisfeasts:farmland_soybean"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "youkaisfeasts:soybean"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.soybean.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:soybean"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.soybean.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

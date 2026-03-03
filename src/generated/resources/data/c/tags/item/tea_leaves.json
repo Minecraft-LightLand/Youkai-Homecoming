@@ -1,0 +1,11 @@
+{
+  "values": [
+    "youkaisfeasts:tea_leaves",
+    "#c:tea_leaves/green",
+    "#c:tea_leaves/black",
+    "#c:tea_leaves/white",
+    "#c:tea_leaves/oolong",
+    "#c:tea_leaves/dark",
+    "#c:tea_leaves/yellow"
+  ]
+}

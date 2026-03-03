@@ -1,0 +1,30 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {},
+        "rack": {}
+      },
+      "trigger": "youkaisfeasts:steam"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.steamer.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:steamer_pot"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.steamer.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

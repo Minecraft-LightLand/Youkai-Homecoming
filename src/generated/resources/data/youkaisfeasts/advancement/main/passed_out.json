@@ -1,0 +1,35 @@
+{
+  "parent": "youkaisfeasts:main/alcoholic",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "effects": {
+          "youkaisfeasts:drunk": {
+            "amplifier": {
+              "min": 4
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.passed_out.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:dassai"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.passed_out.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

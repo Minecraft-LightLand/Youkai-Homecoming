@@ -51,10 +51,6 @@ public class YHEffects {
 					"Heals every 3 seconds under moonlight. " +
 					"Reduced damage taken when under full moon.");
 
-	public static final SimpleEntry<MobEffect> HIGI = genEffect("higi",
-			() -> new HigiEffect(MobEffectCategory.BENEFICIAL, 0x6CA16E),
-			"Boost attack damage and movement speed, heal slowly");
-
 	public static final SimpleEntry<MobEffect> CRABY = genEffect("craby",
 			() -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0xffffff),
 			"Makes your horizontal movement faster");//TODO

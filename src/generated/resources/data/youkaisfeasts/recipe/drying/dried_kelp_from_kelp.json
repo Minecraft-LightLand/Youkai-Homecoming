@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "minecraft:kelp"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:dried_kelp"
+  }
+}

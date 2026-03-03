@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cucumber_crate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:cucumber_crate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:cucumber_from_cucumber_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cucumber_crate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:cucumber_from_cucumber_crate"
+    ]
+  }
+}

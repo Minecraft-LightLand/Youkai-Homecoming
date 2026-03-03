@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#youkaisfeasts:spawns/udumbara",
+  "features": "youkaisfeasts:udumbara",
+  "step": "vegetal_decoration"
+}

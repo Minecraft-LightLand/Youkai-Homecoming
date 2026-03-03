@@ -2,19 +2,19 @@
   "entries": [
 	{
 	  "enum": "net/minecraft/world/inventory/RecipeBookType",
-	  "name": "YOUKAISHOMECOMING_MOKA",
+	  "name": "YOUKAISFEASTS_MOKA",
 	  "constructor": "()V",
 	  "parameters": []
 	},
 	{
 	  "enum": "net/minecraft/world/inventory/RecipeBookType",
-	  "name": "YOUKAISHOMECOMING_KETTLE",
+	  "name": "YOUKAISFEASTS_KETTLE",
 	  "constructor": "()V",
 	  "parameters": []
 	},
 	{
 	  "enum": "net/minecraft/client/RecipeBookCategories",
-	  "name": "YOUKAISHOMECOMING_MOKA",
+	  "name": "YOUKAISFEASTS_MOKA",
 	  "constructor": "(Ljava/util/function/Supplier;)V",
 	  "parameters": {
 		"class": "dev/xkmc/youkaishomecoming/content/client/YHRCParameters",
@@ -23,7 +23,7 @@
 	},
 	{
 	  "enum": "net/minecraft/client/RecipeBookCategories",
-	  "name": "YOUKAISHOMECOMING_KETTLE",
+	  "name": "YOUKAISFEASTS_KETTLE",
 	  "constructor": "(Ljava/util/function/Supplier;)V",
 	  "parameters": {
 		"class": "dev/xkmc/youkaishomecoming/content/client/YHRCParameters",

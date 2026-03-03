@@ -1,0 +1,31 @@
+{
+  "parent": "youkaisfeasts:main/welcome_to_gensokyo",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "effects": {
+          "youkaisfeasts:drunk": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.alcoholic.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:fermentation_tank"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.alcoholic.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

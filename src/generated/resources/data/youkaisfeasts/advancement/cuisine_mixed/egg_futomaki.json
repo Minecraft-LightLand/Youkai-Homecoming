@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tamagoyaki_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:tamagoyaki_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:egg_futomaki"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tamagoyaki_slice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:egg_futomaki"
+    ]
+  }
+}

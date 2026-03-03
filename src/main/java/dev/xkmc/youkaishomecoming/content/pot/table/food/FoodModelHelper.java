@@ -11,7 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.registry.ModItems;
+import vectorwing.farmersdelight.FarmersDelight;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,7 +63,7 @@ public class FoodModelHelper {
 	}
 
 	static {
-		map(ModItems.KELP_ROLL.get().builtInRegistryHolder().unwrapKey().orElseThrow().location(), hosomaki("carrot_maki"));
+		map(ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "kelp_roll"), hosomaki("carrot_maki"));
 	}
 
 }

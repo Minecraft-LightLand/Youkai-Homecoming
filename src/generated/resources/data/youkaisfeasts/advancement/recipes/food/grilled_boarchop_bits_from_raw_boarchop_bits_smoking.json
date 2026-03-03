@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_boarchop_bits": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:raw_boarchop_bits"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:grilled_boarchop_bits_from_raw_boarchop_bits_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_boarchop_bits"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:grilled_boarchop_bits_from_raw_boarchop_bits_smoking"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_redbean": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:redbean"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:redbean_bag"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_redbean"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:redbean_bag"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
   "values": [
     "#minecraft:is_forest",
-    "#forge:is_coniferous",
+    "#c:is_tree/coniferous",
     "#minecraft:is_taiga",
     "#youkaisfeasts:youkai_biomes"
   ]

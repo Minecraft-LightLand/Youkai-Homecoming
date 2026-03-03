@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:raw_venison"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 2,
+        "id": "youkaisfeasts:raw_venison_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

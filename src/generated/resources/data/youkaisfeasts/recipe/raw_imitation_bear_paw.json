@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "tag": "c:foods/raw_pork"
+    },
+    {
+      "tag": "c:foods/raw_beef"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:foods/raw_eel"
+    },
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    },
+    {
+      "item": "youkaisfeasts:saucer"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:raw_imitation_bear_paw"
+  }
+}

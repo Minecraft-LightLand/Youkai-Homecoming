@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/green"
+    },
+    {
+      "tag": "c:tea_leaves/green"
+    },
+    {
+      "tag": "c:tea_leaves/green"
+    },
+    {
+      "tag": "c:tea_leaves/green"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:green_tea"
+  },
+  "time": 100
+}

@@ -1,0 +1,47 @@
+{
+  "parent": "youkaisfeasts:main/cuisine_board",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:rainbow_roll_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:volcano_roll_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.foreign_sushi_master.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:rainbow_roll_slice"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.foreign_sushi_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "youkaisfeasts:main/udumbara_leaves",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:udumbara_flower"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.udumbara_flower.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:udumbara_flower"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.udumbara_flower.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

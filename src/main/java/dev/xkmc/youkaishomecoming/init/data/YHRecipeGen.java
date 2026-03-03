@@ -43,6 +43,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
@@ -1213,6 +1214,7 @@ public class YHRecipeGen {
 					.save(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
 
 			CookingPotRecipeBuilder.cookingPotRecipe(FruitsDelightCompatFood.PEACH_TAPIOCA.item.get(), 1, 200, 0.1f, Items.BOWL)
+					.setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
 					.addIngredient(FruitType.PEACH.getFruitTag())
 					.addIngredient(Items.LILY_PAD)
 					.build(ConditionalRecipeWrapper.mod(pvd, FruitsDelight.MODID));
@@ -1272,11 +1274,10 @@ public class YHRecipeGen {
 	public static <T extends ItemLike, R extends AbstractCookingRecipe> void cooking(
 			RegistrateRecipeProvider pvd, DataIngredient source, RecipeCategory category,
 			Supplier<? extends T> result, float experience, int cookingTime, String typeName,
-			RecipeSerializer<R> serializer,
-			AbstractCookingRecipe.Factory<R> factory) {
-		SimpleCookingRecipeBuilder.generic(source.toVanilla(), category, result.get().asItem(), experience, cookingTime, serializer, factory)
+			RecipeSerializer<R> ser, AbstractCookingRecipe.Factory<R> fac) {
+		new SimpleCookingRecipeBuilder(category, CookingBookCategory.MISC, result.get(), source.toVanilla(), experience, cookingTime, fac)
 				.unlockedBy("has_" + pvd.safeName(source), source.getCriterion(pvd))
-				.save(pvd, pvd.safeId(result.get()) + "_from_" + pvd.safeName(source) + "_" + typeName);
+				.save(pvd, pvd.safeId(result.get()).withPath(e -> typeName + "/" + e + "_from_" + pvd.safeName(source)));
 	}
 
 	private static void foodCut(RegistrateRecipeProvider pvd,

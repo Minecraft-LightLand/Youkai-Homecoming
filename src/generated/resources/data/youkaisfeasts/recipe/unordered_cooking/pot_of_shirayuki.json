@@ -1,0 +1,25 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "tag": "c:foods/vegetable"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "tag": "c:foods/raw_eel"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:pot_of_shirayuki"
+  },
+  "time": 200
+}

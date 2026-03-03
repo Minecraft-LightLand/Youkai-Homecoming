@@ -3,16 +3,16 @@
   "chance": 0.10000000149011612,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:gameplay/fishing"
     },
     {
-      "condition": "youkaisfeasts:biome_check",
-      "tag": "youkaisfeasts:crab_fishing"
+      "biomes": "#youkaisfeasts:crab_fishing",
+      "condition": "youkaisfeasts:biome_check"
     }
   ],
   "result": {
-    "Count": 1,
+    "count": 1,
     "id": "youkaisfeasts:crab"
   }
 }

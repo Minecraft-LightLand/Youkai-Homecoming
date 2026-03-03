@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:volcano_roll"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 6,
+        "id": "youkaisfeasts:volcano_roll_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

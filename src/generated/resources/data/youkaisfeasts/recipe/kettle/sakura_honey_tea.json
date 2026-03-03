@@ -1,0 +1,19 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "item": "minecraft:cherry_leaves"
+    },
+    {
+      "item": "minecraft:cherry_leaves"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:sakura_honey_tea"
+  },
+  "time": 100
+}

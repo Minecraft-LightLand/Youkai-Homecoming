@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/white"
+    },
+    {
+      "tag": "c:tea_leaves/white"
+    },
+    {
+      "tag": "c:tea_leaves/white"
+    },
+    {
+      "tag": "c:tea_leaves/white"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:white_tea"
+  },
+  "time": 100
+}

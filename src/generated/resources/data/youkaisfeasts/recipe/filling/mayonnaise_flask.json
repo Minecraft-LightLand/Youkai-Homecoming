@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:sake_bottle"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 1000,
+      "fluid": "youkaisfeasts:mayonnaise"
+    }
+  ],
+  "results": [
+    {
+      "item": {
+        "id": "youkaisfeasts:mayonnaise_flask"
+      }
+    }
+  ]
+}

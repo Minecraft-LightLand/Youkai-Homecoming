@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaisfeasts:raw_venison"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:grilled_venison"
+  }
+}

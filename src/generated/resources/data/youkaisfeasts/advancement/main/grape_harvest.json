@@ -1,0 +1,26 @@
+{
+  "parent": "youkaisfeasts:main/grape_cut",
+  "criteria": {
+    "0": {
+      "trigger": "youkaisfeasts:grape_harvest"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.grape_harvest.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:red_grape"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.grape_harvest.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

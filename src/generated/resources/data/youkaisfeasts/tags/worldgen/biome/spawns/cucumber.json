@@ -1,6 +1,6 @@
 {
   "values": [
-    "#forge:is_coniferous",
+    "#c:is_tree/coniferous",
     "youkaisfeasts:sakura_taiga"
   ]
 }

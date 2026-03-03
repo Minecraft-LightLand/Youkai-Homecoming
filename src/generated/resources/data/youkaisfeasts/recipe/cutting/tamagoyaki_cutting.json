@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:tamagoyaki"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 3,
+        "id": "youkaisfeasts:tamagoyaki_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

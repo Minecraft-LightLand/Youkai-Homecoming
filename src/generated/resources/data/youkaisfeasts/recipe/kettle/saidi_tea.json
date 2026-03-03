@@ -1,0 +1,19 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/black"
+    },
+    {
+      "tag": "c:tea_leaves/black"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:saidi_tea"
+  },
+  "time": 100
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "youkaisfeasts:main/small_pot",
+  "criteria": {
+    "0": {
+      "trigger": "youkaisfeasts:pot_grab"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.pot_grab.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:power_soup"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.pot_grab.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

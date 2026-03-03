@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:california_roll"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 6,
+        "id": "youkaisfeasts:california_roll_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaisfeasts:raw_kaguya_hime"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:kaguya_hime"
+  }
+}

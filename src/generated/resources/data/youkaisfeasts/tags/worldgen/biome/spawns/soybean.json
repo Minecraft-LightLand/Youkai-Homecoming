@@ -2,7 +2,7 @@
   "values": [
     "minecraft:dark_forest",
     "#minecraft:is_jungle",
-    "#forge:is_swamp",
+    "#c:is_swamp",
     "#youkaisfeasts:youkai_biomes"
   ]
 }

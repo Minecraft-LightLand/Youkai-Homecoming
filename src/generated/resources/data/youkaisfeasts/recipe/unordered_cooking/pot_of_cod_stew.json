@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "tag": "c:foods/raw_cod"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:foods/tomato"
+    },
+    {
+      "item": "minecraft:potato"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:pot_of_cod_stew"
+  },
+  "time": 200
+}

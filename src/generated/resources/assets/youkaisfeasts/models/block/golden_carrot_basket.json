@@ -13,7 +13,7 @@
     "basket",
     "top"
   ],
-  "loader": "forge:composite",
+  "loader": "neoforge:composite",
   "textures": {
     "particle": "youkaisfeasts:block/basket/basket_top"
   }

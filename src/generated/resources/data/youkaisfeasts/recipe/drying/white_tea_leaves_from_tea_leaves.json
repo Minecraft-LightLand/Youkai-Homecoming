@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:drying_rack",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "youkaisfeasts:tea_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:white_tea_leaves"
+  }
+}

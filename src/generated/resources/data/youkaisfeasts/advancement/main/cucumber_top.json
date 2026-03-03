@@ -1,0 +1,26 @@
+{
+  "parent": "youkaisfeasts:main/cucumber",
+  "criteria": {
+    "0": {
+      "trigger": "youkaisfeasts:cucumber"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.cucumber_top.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:cucumber"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.cucumber_top.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

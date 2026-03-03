@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:cuisine_ordered",
+  "base": "youkaisfeasts:california_roll",
+  "input": [
+    {
+      "item": "youkaisfeasts:crab_roe"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:roe_california_roll"
+  }
+}

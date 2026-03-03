@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  },
+  "experience": 0.1,
+  "ingredients": [
+    {
+      "tag": "c:foods/raw_eel"
+    },
+    {
+      "tag": "c:foods/raw_eel"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:grilled_eel_over_rice"
+  }
+}

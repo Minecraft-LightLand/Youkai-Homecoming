@@ -1,0 +1,97 @@
+{
+  "values": {
+    "youkaisfeasts:black_grape": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:black_grape_seeds": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:black_tea_leaves": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:camellia": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:cucumber": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:cucumber_seeds": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:dark_tea_leaves": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:green_tea_leaves": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:matcha": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:oolong_tea_leaves": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:pods": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:red_grape": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:red_grape_seeds": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:redbean": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:soybean": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:tea_leaves": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:tea_seeds": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:udumbara_flower": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:udumbara_leaves": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:white_grape": {
+      "chance": 0.5
+    },
+    "youkaisfeasts:white_grape_seeds": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:white_tea_leaves": {
+      "chance": 0.3
+    },
+    "youkaisfeasts:wild_black_grape": {
+      "chance": 0.65
+    },
+    "youkaisfeasts:wild_cucumber": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:wild_red_grape": {
+      "chance": 0.65
+    },
+    "youkaisfeasts:wild_redbean": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:wild_soybean": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:wild_tea": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:wild_udumbara": {
+      "chance": 0.8
+    },
+    "youkaisfeasts:wild_white_grape": {
+      "chance": 0.65
+    },
+    "youkaisfeasts:yellow_tea_leaves": {
+      "chance": 0.3
+    }
+  }
+}

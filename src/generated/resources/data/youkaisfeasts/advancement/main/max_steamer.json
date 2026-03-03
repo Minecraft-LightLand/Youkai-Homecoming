@@ -1,0 +1,33 @@
+{
+  "parent": "youkaisfeasts:main/steamer",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {},
+        "rack": {
+          "min": 18
+        }
+      },
+      "trigger": "youkaisfeasts:steam"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.max_steamer.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:steamer_rack"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.max_steamer.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

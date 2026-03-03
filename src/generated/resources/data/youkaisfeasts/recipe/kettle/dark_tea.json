@@ -1,0 +1,22 @@
+{
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "tag": "c:tea_leaves/dark"
+    },
+    {
+      "tag": "c:tea_leaves/dark"
+    },
+    {
+      "tag": "c:tea_leaves/dark"
+    },
+    {
+      "tag": "c:tea_leaves/dark"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:dark_tea"
+  },
+  "time": 100
+}

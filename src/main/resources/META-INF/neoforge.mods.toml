@@ -7,6 +7,7 @@ version = "${mod_version}" #mandatory
 displayName = "${mod_name}" #mandatory
 authors = "${mod_authors}" #optional
 description = '''${mod_description}'''
+enumExtensions="META-INF/enumextensions.json"
 [[mixins]]
 config="${mod_id}.mixins.json"
 [[dependencies.${ mod_id }]] #optional

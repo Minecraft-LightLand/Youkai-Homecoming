@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "minecraft:spruce_planks"
+    },
+    "S": {
+      "item": "minecraft:spruce_slab"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "SSS",
+    "PSP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:spruce_wine_shelf"
+  }
+}

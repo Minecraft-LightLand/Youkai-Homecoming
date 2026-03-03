@@ -1,0 +1,23 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "youkaisfeasts:filter",
+    "values": [
+      {
+        "type": "neoforge:and",
+        "values": [
+          "#youkaisfeasts:spawns/grape",
+          "#youkaisfeasts:spawns/white_grape"
+        ]
+      },
+      {
+        "type": "neoforge:or",
+        "values": [
+          "#youkaisfeasts:spawns/no_grape"
+        ]
+      }
+    ]
+  },
+  "features": "youkaisfeasts:white_grape",
+  "step": "vegetal_decoration"
+}

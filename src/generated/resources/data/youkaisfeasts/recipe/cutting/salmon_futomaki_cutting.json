@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:salmon_futomaki"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 6,
+        "id": "youkaisfeasts:salmon_futomaki_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

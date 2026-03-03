@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:kappa_maki"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 3,
+        "id": "youkaisfeasts:kappa_maki_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

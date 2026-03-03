@@ -1,0 +1,17 @@
+{
+  "type": "youkaisfeasts:simple_fermentation",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:green_tea_leaves"
+    }
+  ],
+  "inputFluid": {},
+  "outputFluid": {},
+  "results": [
+    {
+      "count": 1,
+      "id": "youkaisfeasts:dark_tea_leaves"
+    }
+  ],
+  "time": 1800
+}

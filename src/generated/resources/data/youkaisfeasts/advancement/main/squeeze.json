@@ -1,0 +1,26 @@
+{
+  "parent": "youkaisfeasts:main/grape",
+  "criteria": {
+    "0": {
+      "trigger": "youkaisfeasts:basin"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.squeeze.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:wood_basin"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.squeeze.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

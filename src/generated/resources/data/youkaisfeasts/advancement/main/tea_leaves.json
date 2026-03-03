@@ -1,0 +1,33 @@
+{
+  "parent": "youkaisfeasts:main/tea",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:tea_leaves"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.tea_leaves.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:tea_leaves"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.tea_leaves.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

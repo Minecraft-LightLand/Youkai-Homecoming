@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "youkaisfeasts:raw_tuna_slice"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:seared_tuna_slice"
+  }
+}

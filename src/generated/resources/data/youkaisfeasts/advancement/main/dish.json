@@ -1,0 +1,33 @@
+{
+  "parent": "youkaisfeasts:main/steamer",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "item": {
+          "items": "#youkaisfeasts:steam_blocker"
+        },
+        "rack": {}
+      },
+      "trigger": "youkaisfeasts:steam"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.dish.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:imitation_bear_paw"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.dish.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

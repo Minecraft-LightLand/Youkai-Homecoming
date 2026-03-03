@@ -50,7 +50,7 @@ public class YoukaisHomecoming {
 	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 	public static final Reg REG = new Reg(MODID);
 
-	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig("main", 2);
+	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(MODID, 2);
 
 	public static final SimpleEntry<CreativeModeTab> TAB =
 			REGISTRATE.buildModCreativeTab("block", "Youkais' Feasts - Utensil and Tools",
@@ -68,7 +68,7 @@ public class YoukaisHomecoming {
 			REGISTRATE.buildModCreativeTab("deco", "Youkais' Feasts - Furniture",
 					e -> e.icon(YHBlocks.WoodType.OAK.seat::asStack));
 
-	public static final RecipeBookType KETTLE = Enum.valueOf(RecipeBookType.class, "YOUKAISHOMECOMING_KETTLE");
+	public static final RecipeBookType KETTLE = Enum.valueOf(RecipeBookType.class, "YOUKAISFEASTS_KETTLE");
 
 	public static final ConfigTypeEntry<ModelIngredientData> INGREDIENT = new ConfigTypeEntry<>(HANDLER, "ingredient", ModelIngredientData.class);
 
@@ -130,7 +130,7 @@ public class YoukaisHomecoming {
 		YHDatapackRegistriesGen.register();
 		var init = REGISTRATE.getDataGenInitializer();
 		init.addDependency(YHBiomeTagsProvider.TYPE, ProviderType.DYNAMIC);
-		init.addDependency(YHBiomeTagsProvider.TYPE, YHBiomeTagsProvider.TYPE);
+		init.addDependency(YHGLMProvider.TYPE, YHBiomeTagsProvider.TYPE);
 	}
 
 	public static ResourceLocation loc(String id) {

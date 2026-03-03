@@ -1,0 +1,16 @@
+{
+  "type": "youkaisfeasts:cuisine_ordered",
+  "base": "youkaisfeasts:hosomaki",
+  "input": [
+    {
+      "item": "youkaisfeasts:soy_sauce_bottle"
+    },
+    {
+      "tag": "c:foods/slices/cucumber"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:kappa_maki"
+  }
+}

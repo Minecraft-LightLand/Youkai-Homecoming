@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "fruitsdelight"
+    }
+  ],
+  "type": "youkaisfeasts:kettle",
+  "input": [
+    {
+      "item": "fruitsdelight:lemon_slice"
+    },
+    {
+      "item": "fruitsdelight:lemon_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "amount": 1000,
+    "id": "youkaisfeasts:moon_rocket"
+  },
+  "time": 100
+}

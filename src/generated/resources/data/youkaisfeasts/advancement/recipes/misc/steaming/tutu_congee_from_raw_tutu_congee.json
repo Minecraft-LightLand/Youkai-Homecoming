@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_tutu_congee": {
+      "conditions": {
+        "items": [
+          {
+            "items": "youkaisfeasts:raw_tutu_congee"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "youkaisfeasts:steaming/tutu_congee_from_raw_tutu_congee"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_tutu_congee"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "youkaisfeasts:steaming/tutu_congee_from_raw_tutu_congee"
+    ]
+  }
+}

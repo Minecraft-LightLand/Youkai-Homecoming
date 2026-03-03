@@ -1,0 +1,37 @@
+{
+  "parent": "youkaisfeasts:main/sweet",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "youkaisfeasts:deer"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:bred_animals"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.youkaisfeasts.main.breed_deer.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "youkaisfeasts:sakura_mochi"
+    },
+    "title": {
+      "translate": "advancements.youkaisfeasts.main.breed_deer.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

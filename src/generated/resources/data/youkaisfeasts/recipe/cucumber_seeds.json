@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "youkaisfeasts:cucumber"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:cucumber_seeds"
+  }
+}

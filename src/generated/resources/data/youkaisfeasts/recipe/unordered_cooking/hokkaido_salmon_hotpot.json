@@ -1,0 +1,41 @@
+{
+  "type": "youkaisfeasts:unordered_cooking",
+  "input": [
+    {
+      "type": "youkaisfeasts:slip_bottle",
+      "fluid": "youkaisfeasts:soy_sauce"
+    },
+    {
+      "tag": "c:crops/soybean"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "c:foods/cabbage"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:foods/raw_salmon"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:hokkaido_salmon_hotpot"
+  },
+  "time": 200
+}
