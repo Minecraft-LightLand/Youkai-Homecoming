@@ -1,20 +1,19 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseWithoutItemBlockMethod;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class ClickTakeRackMethod implements OnClickBlockMethod {
+public class ClickTakeRackMethod implements UseWithoutItemBlockMethod {
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (!player.isShiftKeyDown()) return InteractionResult.PASS;
 		RackInfo info = RackInfo.getRackInfo(state);
 		if (info.racks() == 0) return InteractionResult.PASS;

@@ -1,5 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.rack;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -8,8 +9,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -42,20 +44,19 @@ public class DryingRackBlock extends BaseEntityBlock {
 		super(pProperties);
 	}
 
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
-								 InteractionHand hand, BlockHitResult hit) {
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+										   InteractionHand hand, BlockHitResult hit) {
 		if (level.getBlockEntity(pos) instanceof DryingRackBlockEntity be) {
-			ItemStack stack = player.getItemInHand(hand);
 			var opt = be.getCookableRecipe(stack);
 			if (opt.isPresent()) {
 				if (!level.isClientSide && be.placeFood(player.getAbilities().instabuild ?
-						stack.copy() : stack, opt.get().getCookingTime())) {
-					return InteractionResult.SUCCESS;
+						stack.copy() : stack, opt.get().value().getCookingTime())) {
+					return ItemInteractionResult.SUCCESS;
 				}
-				return InteractionResult.CONSUME;
+				return ItemInteractionResult.CONSUME;
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	public RenderShape getRenderShape(BlockState pState) {
@@ -71,7 +72,7 @@ public class DryingRackBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+	public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 		pTooltip.add(YHLangData.DRYING_RACK.get());
 	}
 
@@ -127,6 +128,11 @@ public class DryingRackBlock extends BaseEntityBlock {
 				.texture("rack", pvd.modLoc("block/utensil/drying_rack"))
 				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), state -> pot);
+	}
+
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return null;
 	}
 
 }

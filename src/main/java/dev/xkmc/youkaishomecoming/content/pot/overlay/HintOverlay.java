@@ -1,12 +1,13 @@
 package dev.xkmc.youkaishomecoming.content.pot.overlay;
 
-import dev.xkmc.l2library.base.overlay.OverlayUtil;
-import dev.xkmc.l2modularblock.DelegateBlockImpl;
+import dev.xkmc.l2modularblock.core.DelegateBlockImpl;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTextTooltip;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.core.BlockPos;
@@ -15,20 +16,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.neoforge.client.gui.overlay.ForgeGui;
-import net.neoforged.neoforge.client.gui.overlay.IGuiOverlay;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HintOverlay implements IGuiOverlay {
+public class HintOverlay implements LayeredDraw.Layer {
 
 	private int start = 0;
 	private BlockPos pos = null;
 
 	@Override
-	public void render(ForgeGui gui, GuiGraphics g, float pTick, int w, int h) {
+	public void render(GuiGraphics g, DeltaTracker pTick) {
 		int prev = start;
 		start = 0;
 		var player = Minecraft.getInstance().player;
@@ -58,6 +57,7 @@ public class HintOverlay implements IGuiOverlay {
 			}
 			display[i] = arr[time / 15 % arr.length];
 		}
+		int w = g.guiWidth(), h = g.guiHeight();
 		new ImageBox(g, (int) (w * 0.7), (int) (h * 0.5), 0)
 				.render(display, Math.min(4, n), Math.min(3, (n - 1) / 4 + 1), total - n);
 	}
@@ -92,8 +92,8 @@ public class HintOverlay implements IGuiOverlay {
 					hash = 0;
 				} else {
 					hash = BuiltInRegistries.ITEM.getId(stack.getItem());
-					var tag = stack.getTag();
-					if (tag != null) {
+					var tag = stack.getComponentsPatch();
+					if (!tag.isEmpty()) {
 						hash += tag.hashCode() * 15;
 					}
 				}

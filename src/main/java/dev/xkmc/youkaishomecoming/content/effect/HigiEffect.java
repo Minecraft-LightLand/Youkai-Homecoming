@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.effect;
 
-import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -12,13 +12,13 @@ public class HigiEffect extends MobEffect {
 
 	public HigiEffect(MobEffectCategory category, int color) {
 		super(category, color);
-		var uuid = MathHelper.getUUIDFromString("higi").toString();
-		addAttributeModifier(Attributes.ATTACK_DAMAGE, uuid, 0.1, AttributeModifier.Operation.MULTIPLY_BASE);
-		addAttributeModifier(Attributes.MOVEMENT_SPEED, uuid, 0.1, AttributeModifier.Operation.MULTIPLY_BASE);
+		var uuid = YoukaisHomecoming.loc("higi");
+		addAttributeModifier(Attributes.ATTACK_DAMAGE, uuid, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+		addAttributeModifier(Attributes.MOVEMENT_SPEED, uuid, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity e, int lv) {
+	public boolean applyEffectTick(LivingEntity e, int lv) {
 		if (!e.level().isClientSide) {
 			float amount = 1;
 			int period = YHModConfig.COMMON.higiHealingPeriod.get() >> lv;
@@ -26,12 +26,12 @@ public class HigiEffect extends MobEffect {
 			if (e.tickCount % period == 0)
 				e.heal(amount);
 		}
-	}
-
-	@Override
-	public boolean isDurationEffectTick(int tick, int lv) {
 		return true;
 	}
 
+	@Override
+	public boolean shouldApplyEffectTickThisTick(int tick, int lv) {
+		return true;
+	}
 
 }

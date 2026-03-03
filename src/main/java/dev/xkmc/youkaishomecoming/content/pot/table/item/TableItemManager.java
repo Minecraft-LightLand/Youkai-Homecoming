@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
+import vectorwing.farmersdelight.common.tag.CommonTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,8 +83,8 @@ public class TableItemManager extends BaseTableItem {
 		if (preset != null) return Optional.of(new FoodTableItem(preset.base(), stack));
 		var rec = level.getRecipeManager().getAllRecipesFor(YHBlocks.CUISINE_RT.get());
 		for (var e : rec) {
-			if (ItemStack.isSameItemSameComponents(e.getResult(), stack)) {
-				return e.recreate();
+			if (ItemStack.isSameItemSameComponents(e.value().getResult(), stack)) {
+				return e.value().recreate();
 			}
 		}
 		return Optional.empty();
@@ -107,8 +107,8 @@ public class TableItemManager extends BaseTableItem {
 	}
 
 	public static void prepareData() {
-		SUSHI_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
-		SUSHI_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
+		SUSHI_TOP.addMapping("salmon", CommonTags.FOODS_RAW_SALMON).seareable();
+		SUSHI_TOP.addMapping("cod", CommonTags.FOODS_RAW_COD);
 		SUSHI_TOP.addMapping("tamagoyaki", YHTagGen.TAMAGOYAKI);
 		SUSHI_TOP.addMapping("lamprey", YHTagGen.COOKED_EEL);
 		SUSHI_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
@@ -122,8 +122,8 @@ public class TableItemManager extends BaseTableItem {
 		GUNKAN_TOP.addMapping("seagrass", Items.SEAGRASS);
 		GUNKAN_TOP.addMapping("nattou", YHTagGen.NATTOU);
 		//shirako
-		CAL_TOP.addMapping("salmon", ForgeTags.RAW_FISHES_SALMON).seareable();
-		CAL_TOP.addMapping("cod", ForgeTags.RAW_FISHES_COD);
+		CAL_TOP.addMapping("salmon", CommonTags.FOODS_RAW_SALMON).seareable();
+		CAL_TOP.addMapping("cod", CommonTags.FOODS_RAW_COD);
 		CAL_TOP.addMapping("tuna", YHTagGen.RAW_TUNA);
 		CAL_TOP.addMapping("otoro", YHTagGen.OTORO);
 		CAL_COVER.addMapping("roe", YHTagGen.SALMON_ROE);
@@ -135,7 +135,7 @@ public class TableItemManager extends BaseTableItem {
 		addBulk("soy_sauce", "sauce/soy_sauce", YHTagGen.SOY_SAUCE_BOTTLE, sauces);
 		addBulk("mayonnaise", "sauce/mayonnaise", YHTagGen.MAYONNAISE_BOTTLE, sauces);
 
-		addBulk("salmon", "ingredient/salmon", ForgeTags.RAW_FISHES_SALMON, rolls);
+		addBulk("salmon", "ingredient/salmon", CommonTags.FOODS_RAW_SALMON, rolls);
 		addBulk("tuna", "ingredient/tuna", YHTagGen.RAW_TUNA, rolls);
 		addBulk("carrot", "ingredient/carrot", Items.CARROT, rolls);
 		addBulk("beetroot", "ingredient/beetroot", Items.BEETROOT, rolls);

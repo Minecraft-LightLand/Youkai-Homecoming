@@ -16,26 +16,26 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 
-public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> extends AbstractRecipeCategory<T> {
+public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> extends AbstractRecipeCategory<RecipeHolder<T>> {
 	protected final int regularCookTime;
 
-	public AbstractCookingCategory(IGuiHelper guiHelper, RecipeType<T> recipeType, Block icon, String translationKey, int regularCookTime) {
+	public AbstractCookingCategory(IGuiHelper guiHelper, RecipeType<RecipeHolder<T>> recipeType, Block icon, String translationKey, int regularCookTime) {
 		this(guiHelper, recipeType, icon, translationKey, regularCookTime, 82, 54);
 	}
 
-	public AbstractCookingCategory(IGuiHelper guiHelper, RecipeType<T> recipeType, Block icon, String translationKey, int regularCookTime, int width, int height) {
+	public AbstractCookingCategory(IGuiHelper guiHelper, RecipeType<RecipeHolder<T>> recipeType, Block icon, String translationKey, int regularCookTime, int width, int height) {
 		super(recipeType, Component.translatable(translationKey), guiHelper.createDrawableItemLike(icon), width, height);
 		this.regularCookTime = regularCookTime;
 	}
 
-	public void setRecipe(IRecipeLayoutBuilder builder, T recipe, IFocusGroup focuses) {
-		builder.addInputSlot(1, 1).setStandardSlotBackground().addIngredients(recipe.getIngredients().get(0));
+	public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<T> recipe, IFocusGroup focuses) {
+		builder.addInputSlot(1, 1).setStandardSlotBackground().addIngredients(recipe.value().getIngredients().get(0));
 		builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 1, 37).setStandardSlotBackground();
-		builder.addOutputSlot(61, 19).setOutputSlotBackground().addItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
+		builder.addOutputSlot(61, 19).setOutputSlotBackground().addItemStack(recipe.value().getResultItem(Minecraft.getInstance().level.registryAccess()));
 	}
 
 	public void createRecipeExtras(IRecipeExtrasBuilder builder, T recipe, IFocusGroup focuses) {
@@ -81,7 +81,4 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 		return !recipe.isSpecial();
 	}
 
-	public ResourceLocation getRegistryName(T recipe) {
-		return recipe.getId();
-	}
 }

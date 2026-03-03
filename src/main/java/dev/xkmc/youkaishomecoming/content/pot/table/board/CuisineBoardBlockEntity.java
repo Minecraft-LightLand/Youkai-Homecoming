@@ -16,6 +16,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -45,15 +46,13 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 		if (level == null) return false;
 		var current = getModel().complete(level);
 		if (current.isPresent()) {
-			var cont = new SimpleContainer(1);
-			cont.setItem(0, current.get());
-			var wrapper = new RecipeWrapper(new InvWrapper(cont));
-			List<CuttingBoardRecipe> list = level.getRecipeManager().getRecipesFor(ModRecipeTypes.CUTTING.get(), wrapper, level);
+			var cont = new SingleRecipeInput(current.get());
+			var list = level.getRecipeManager().getRecipesFor(ModRecipeTypes.CUTTING.get(), cont, level);
 			for (var recipe : list) {
-				if (recipe.getTool().test(stack)) {
+				if (recipe.value().getTool().test(stack)) {
 					if (!level.isClientSide()) {
 						int fortune = EnchHelper.getLv(stack, Enchantments.FORTUNE);
-						for (ItemStack drop : recipe.rollResults(level.random, fortune)) {
+						for (ItemStack drop : recipe.value().rollResults(level.random, fortune)) {
 							ItemUtils.spawnItemEntity(level, drop.copy(),
 									worldPosition.getX() + 0.5F,
 									worldPosition.getY() + 0.2,

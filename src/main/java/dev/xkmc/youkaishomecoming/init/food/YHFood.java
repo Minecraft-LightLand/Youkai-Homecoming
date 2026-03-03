@@ -21,40 +21,40 @@ public enum YHFood implements ItemLike {
 
 	// basic
 	RAW_LAMPREY(FoodType.SIMPLE, 2, 0.3f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
+			new EffectEntry(MobEffects.NIGHT_VISION, 2400, 0, 0.5f),
 			ItemTags.FISHES, YHTagGen.RAW_EEL, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY(FoodType.SIMPLE, 10, 0.8f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 2400, 0, 1),
 			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
 	RAW_LAMPREY_FILLET(FoodType.FAST, 1, 0.3f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
+			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 0.5f),
 			YHTagGen.RAW_EEL, DietTagGen.PROTEINS.tag
 	),
 	ROASTED_LAMPREY_FILLET(FoodType.FAST, 6, 0.8f,
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 1800, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 1800, 0, 1),
 			YHTagGen.COOKED_EEL, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 
 	RAW_TUNA(FoodType.SIMPLE, 9, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.3f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 800, 0, 0.3f),
 			YHTagGen.RAW_TUNA, DietTagGen.PROTEINS.tag
 	),
 	SEARED_TUNA(FoodType.SIMPLE, 12, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.4f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 800, 0, 0.4f),
 			YHTagGen.COOKED_TUNA, DietTagGen.PROTEINS.tag
 	),
 	RAW_TUNA_SLICE(FoodType.FAST, 4, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 400, 0, 0.3f),
 			YHTagGen.RAW_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	SEARED_TUNA_SLICE(FoodType.FAST, 5, 0.8f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 400, 0, 0.4f),
 			YHTagGen.COOKED_TUNA, ModTags.CABBAGE_ROLL_INGREDIENTS, DietTagGen.PROTEINS.tag
 	),
 	OTORO(FoodType.SIMPLE, 9, 0.3f,
-			new EffectEntry(() -> MobEffects.DOLPHINS_GRACE, 800, 0, 0.5f),
+			new EffectEntry(MobEffects.DOLPHINS_GRACE, 800, 0, 0.5f),
 			YHTagGen.OTORO, DietTagGen.PROTEINS.tag
 	),
 	CRAB(FoodType.SIMPLE, 2, 0.3f,
@@ -99,7 +99,7 @@ public enum YHFood implements ItemLike {
 	),
 
 	ROE(FoodType.SIMPLE, 1, 0.6f,
-			new EffectEntry(() -> MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
+			new EffectEntry(MobEffects.CONDUIT_POWER, 400, 0, 0.3f),
 			YHTagGen.SALMON_ROE, DietTagGen.PROTEINS.tag),
 	BUTTER(FoodType.SIMPLE, 3, 0.3f, YHTagGen.BUTTER),
 	TOFU(FoodType.SIMPLE, 4, 0.5f, DietTagGen.PROTEINS.tag),
@@ -131,7 +131,7 @@ public enum YHFood implements ItemLike {
 	PORK_RICE_BALL(FoodType.SIMPLE, 10, 0.6f, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	STEAMED_EGG_IN_BAMBOO(FoodType.SIMPLE, 8, 0.6f, DietTagGen.PROTEINS.tag),
 	KABAYAKI(FoodType.FAST, 8, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 2400, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 2400, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1)),
 			YHTagGen.COOKED_EEL, DietTagGen.PROTEINS.tag
 	),
@@ -146,7 +146,7 @@ public enum YHFood implements ItemLike {
 	ASSORTED_DANGO(FoodType.STICK, 12, 0.6f, new EffectEntry(ModEffects.NOURISHMENT, 2400, 0, 1), DietTagGen.GRAINS.tag),
 
 	LAMPREY_SKEWER(FoodType.STICK, 14, 0.8f, List.of(
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 4800, 0, 1),
+			new EffectEntry(MobEffects.NIGHT_VISION, 4800, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 4800, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 4800, 0, 1)),
 			DietTagGen.PROTEINS.tag
@@ -158,15 +158,15 @@ public enum YHFood implements ItemLike {
 	//APAKI(FoodType.BOWL, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
 	AVGOLEMONO(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.GLOWING, 3600, 0, 1)), DietTagGen.FRUITS.tag),
+			new EffectEntry(MobEffects.GLOWING, 3600, 0, 1)), DietTagGen.FRUITS.tag),
 	BLAZING_RED_CURRY(FoodType.BOWL, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.FIRE_RESISTANCE, 3600, 0, 1)
+			new EffectEntry(MobEffects.FIRE_RESISTANCE, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	GRILLED_EEL_OVER_RICE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
+			new EffectEntry(MobEffects.NIGHT_VISION, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	LONGEVITY_NOODLES(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
@@ -175,12 +175,12 @@ public enum YHFood implements ItemLike {
 	SHIRAYUKI(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(() -> MobEffects.WATER_BREATHING, 6000, 0, 1)
+			new EffectEntry(MobEffects.WATER_BREATHING, 6000, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	HAN_PALACE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(() -> MobEffects.NIGHT_VISION, 6000, 0, 1)
+			new EffectEntry(MobEffects.NIGHT_VISION, 6000, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	TOFU_CRAB_STEW(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
@@ -200,12 +200,12 @@ public enum YHFood implements ItemLike {
 	LIONS_HEAD(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
+			new EffectEntry(MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	MAPO_TOFU(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1)
+			new EffectEntry(MobEffects.DAMAGE_BOOST, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag),
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),

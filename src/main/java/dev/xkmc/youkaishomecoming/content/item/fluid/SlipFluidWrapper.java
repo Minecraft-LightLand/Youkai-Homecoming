@@ -1,24 +1,36 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SlipFluidWrapper implements IFluidHandlerItem {
 
-	private final LazyOptional<IFluidHandlerItem> holder = LazyOptional.of(() -> this);
+	public static final List<Item> LIST = new ArrayList<>();
+
+	public static synchronized void add(Item item) {
+		LIST.add(item);
+	}
 
 	protected ItemStack container;
 
 	public SlipFluidWrapper(ItemStack container) {
 		this.container = container;
 	}
+
+	public SlipFluidWrapper(ItemStack container, @Nullable Void v) {
+		this.container = container;
+	}
+
 
 	@NotNull
 	@Override
@@ -88,14 +100,14 @@ public class SlipFluidWrapper implements IFluidHandlerItem {
 		if (fluid.type instanceof BottledFluid<?> bottle) {
 			return bottle.bottleSet() != null;
 		}
-		return fluid.type.asStack(1).isEdible();
+		return fluid.type.asStack(1).getFoodProperties(null) != null;
 	}
 
 	@Override
 	public int fill(FluidStack resource, FluidAction action) {
 		if (resource.isEmpty()) return 0;
 		var current = getFluid();
-		if (current.isEmpty() || current.isFluidEqual(resource)) {
+		if (current.isEmpty() || FluidStack.isSameFluidSameComponents(current, resource)) {
 			int toFill = Math.min(getTankCapacity(0) - current.getAmount(), resource.getAmount());
 			if (action.execute()) {
 				var copy = resource.copy();
@@ -113,7 +125,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem {
 		if (resource.isEmpty()) return FluidStack.EMPTY;
 		var current = getFluid();
 		if (current.isEmpty()) return FluidStack.EMPTY;
-		if (current.isFluidEqual(resource)) {
+		if (FluidStack.isSameFluidSameComponents(current, resource)) {
 			return drain(resource.getAmount(), action);
 		}
 		return FluidStack.EMPTY;
@@ -133,12 +145,6 @@ public class SlipFluidWrapper implements IFluidHandlerItem {
 			setFluid(copy);
 		}
 		return ans;
-	}
-
-	@Override
-	@NotNull
-	public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction facing) {
-		return ForgeCapabilities.FLUID_HANDLER_ITEM.orEmpty(capability, holder);
 	}
 
 }

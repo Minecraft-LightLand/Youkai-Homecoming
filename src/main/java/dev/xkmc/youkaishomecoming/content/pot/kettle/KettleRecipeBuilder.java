@@ -1,25 +1,18 @@
 package dev.xkmc.youkaishomecoming.content.pot.kettle;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipeBuilder;
+import dev.xkmc.l2core.serial.recipe.BaseRecipeBuilder;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-import java.util.function.Consumer;
-
-public class KettleRecipeBuilder extends BaseRecipeBuilder<
-		KettleRecipeBuilder,
-		KettleRecipe,
-		KettleRecipe,
-		SimpleContainer
-		> {
+public class KettleRecipeBuilder extends BaseRecipeBuilder<KettleRecipeBuilder, KettleRecipe, KettleRecipe, KettleContainer> {
 
 	public KettleRecipeBuilder(IYHFluidHolder output, int time) {
 		this(new FluidStack(output.source(), 1000), time);
@@ -30,7 +23,7 @@ public class KettleRecipeBuilder extends BaseRecipeBuilder<
 	}
 
 	public KettleRecipeBuilder(FluidStack output, int time) {
-		super(YHBlocks.KETTLE_RS.get());
+		super(YHBlocks.KETTLE_RS.get(), Items.AIR);
 		recipe.result = output;
 		recipe.time = time;
 	}
@@ -60,7 +53,7 @@ public class KettleRecipeBuilder extends BaseRecipeBuilder<
 		return this;
 	}
 
-	public void save(Consumer<FinishedRecipe> pvd) {
+	public void save(RecipeOutput pvd) {
 		super.save(pvd, recipe.result.getFluid().builtInRegistryHolder().unwrapKey().orElseThrow().location());
 	}
 

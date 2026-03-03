@@ -17,7 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.fml.ModList;
+import net.neoforged.fml.ModList;
 import sereneseasons.core.SereneSeasons;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -28,34 +28,34 @@ import java.util.function.Consumer;
 
 public class YHTagGen {
 
-	public static final TagKey<Item> RAW_EEL = forgeItem("raw_fishes/eel");
-	public static final TagKey<Item> COOKED_EEL = forgeItem("cooked_fishes/eel");
-	public static final TagKey<Item> RAW_TUNA = forgeItem("raw_fishes/tuna");
-	public static final TagKey<Item> COOKED_TUNA = forgeItem("cooked_fishes/tuna");
-	public static final TagKey<Item> RAW_VENISON = forgeItem("raw_venison");
-	public static final TagKey<Item> COOKED_VENISON = forgeItem("cooked_venison");
-	public static final TagKey<Item> RAW_BOAR = forgeItem("raw_boar");
-	public static final TagKey<Item> COOKED_BOAR = forgeItem("cooked_boar");
-	public static final TagKey<Item> RAW_CRAB = forgeItem("raw_crab");
-	public static final TagKey<Item> COOKED_CRAB = forgeItem("cooked_crab");
-	public static final TagKey<Item> BUTTER = forgeItem("butter");
-	public static final TagKey<Item> CUCUMBER = forgeItem("vegetables/cucumber");
-	public static final TagKey<Item> CUCUMBER_SLICE = forgeItem("slices/cucumber");
-	public static final TagKey<Item> CUCUMBER_SEED = forgeItem("seeds/cucumber");
-	public static final TagKey<Item> VEGE = forgeItem("vegetables");
-	public static final TagKey<Item> GRAPE = forgeItem("fruits/grape");
-	public static final TagKey<Item> FRUIT = forgeItem("fruits");
-	public static final TagKey<Item> SEED = forgeItem("seeds");
-	public static final TagKey<Item> SOY_SAUCE_BOTTLE = forgeItem("bottles/soy_sauce");
-	public static final TagKey<Item> MAYONNAISE_BOTTLE = forgeItem("bottles/mayonnaise");
-	public static final TagKey<Item> SALMON_ROE = forgeItem("roes/salmon");
-	public static final TagKey<Item> CRAB_ROE = forgeItem("roes/crab");
-	public static final TagKey<Item> NATTOU = forgeItem("nattou");
-	public static final TagKey<Item> OTORO = forgeItem("otoro");
-	public static final TagKey<Item> SOYBEAN = forgeItem("soybean");
-	public static final TagKey<Item> REDBEAN = forgeItem("redbean");
-	public static final TagKey<Item> IMITATION_CRAB = forgeItem("imitation_crab");
-	public static final TagKey<Item> TAMAGOYAKI_SLICE = forgeItem("slices/tamagoyaki");
+	public static final TagKey<Item> RAW_EEL = c("foods/raw_eel");
+	public static final TagKey<Item> COOKED_EEL = c("foods/cooked_eel");
+	public static final TagKey<Item> RAW_TUNA = c("foods/raw_tuna");
+	public static final TagKey<Item> COOKED_TUNA = c("foods/cooked_tuna");
+	public static final TagKey<Item> RAW_VENISON = c("foods/raw_venison");
+	public static final TagKey<Item> COOKED_VENISON = c("foods/cooked_venison");
+	public static final TagKey<Item> RAW_BOAR = c("foods/raw_boar");
+	public static final TagKey<Item> COOKED_BOAR = c("foods/cooked_boar");
+	public static final TagKey<Item> RAW_CRAB = c("foods/raw_crab");
+	public static final TagKey<Item> COOKED_CRAB = c("foods/cooked_crab");
+	public static final TagKey<Item> BUTTER = c("foods/butter");
+	public static final TagKey<Item> CUCUMBER = c("crops/cucumber");
+	public static final TagKey<Item> CUCUMBER_SLICE = c("foods/slices/cucumber");
+	public static final TagKey<Item> CUCUMBER_SEED = c("seeds/cucumber");
+	public static final TagKey<Item> VEGE = c("foods/vegetable");
+	public static final TagKey<Item> GRAPE = c("foods/fruits/grape");
+	public static final TagKey<Item> FRUIT = c("foods/fruits");
+	public static final TagKey<Item> SEED = c("seeds");
+	public static final TagKey<Item> SOY_SAUCE_BOTTLE = c("bottles/soy_sauce");
+	public static final TagKey<Item> MAYONNAISE_BOTTLE = c("bottles/mayonnaise");
+	public static final TagKey<Item> SALMON_ROE = c("foods/roes/salmon");
+	public static final TagKey<Item> CRAB_ROE = c("foods/roes/crab");
+	public static final TagKey<Item> NATTOU = c("foods/nattou");
+	public static final TagKey<Item> OTORO = c("foods/otoro");
+	public static final TagKey<Item> SOYBEAN = c("crops/soybean");
+	public static final TagKey<Item> REDBEAN = c("crops/redbean");
+	public static final TagKey<Item> IMITATION_CRAB = c("foods/imitation_crab");
+	public static final TagKey<Item> TAMAGOYAKI_SLICE = c("foods/slices/tamagoyaki");
 	public static final TagKey<Item> GRAPE_SEED = item("grape_seed");
 	public static final TagKey<Item> TAMAGOYAKI = item("tamagoyaki");
 	public static final TagKey<Item> COOKED_RICE = item("cuisine/cooked_rice");
@@ -77,16 +77,16 @@ public class YHTagGen {
 	public static final TagKey<Block> CRAB_DIGABLE = block("crab_digable");
 
 
-	public static final TagKey<Item> MATCHA = forgeItem("matcha");
-	public static final TagKey<Item> ICE = forgeItem("ice_cubes");
+	public static final TagKey<Item> MATCHA = c("matcha");
+	public static final TagKey<Item> ICE = c("ice_cubes");
 
-	public static final TagKey<Item> TEA_GREEN = forgeItem("tea_leaves/green");
-	public static final TagKey<Item> TEA_BLACK = forgeItem("tea_leaves/black");
-	public static final TagKey<Item> TEA_WHITE = forgeItem("tea_leaves/white");
-	public static final TagKey<Item> TEA_OOLONG = forgeItem("tea_leaves/oolong");
-	public static final TagKey<Item> TEA_DARK = forgeItem("tea_leaves/dark");
-	public static final TagKey<Item> TEA_YELLOW = forgeItem("tea_leaves/yellow");
-	public static final TagKey<Item> TEA = forgeItem("tea_leaves");
+	public static final TagKey<Item> TEA_GREEN = c("tea_leaves/green");
+	public static final TagKey<Item> TEA_BLACK = c("tea_leaves/black");
+	public static final TagKey<Item> TEA_WHITE = c("tea_leaves/white");
+	public static final TagKey<Item> TEA_OOLONG = c("tea_leaves/oolong");
+	public static final TagKey<Item> TEA_DARK = c("tea_leaves/dark");
+	public static final TagKey<Item> TEA_YELLOW = c("tea_leaves/yellow");
+	public static final TagKey<Item> TEA = c("tea_leaves");
 
 	public static final List<Consumer<RegistrateItemTagsProvider>> OPTIONAL_TAGS = new ArrayList<>();
 
@@ -124,7 +124,8 @@ public class YHTagGen {
 		pvd.addTag(CARROT).add(Items.CARROT);
 		pvd.addTag(BROWN_MUSHROOM).add(Items.BROWN_MUSHROOM);
 
-		pvd.addTag(MATCHA).add(YHItems.MATCHA.get()).addOptional(new ResourceLocation("delightful", "matcha"));
+		pvd.addTag(MATCHA).add(YHItems.MATCHA.get())
+				.addOptional(ResourceLocation.fromNamespaceAndPath("delightful", "matcha"));
 		pvd.addTag(ICE).add(YHItems.ICE_CUBE.get());
 		pvd.addTag(TEA_GREEN).add(YHTea.GREEN.leaves.get());
 		pvd.addTag(TEA_BLACK).add(YHTea.BLACK.leaves.get());
@@ -147,8 +148,8 @@ public class YHTagGen {
 		return ItemTags.create(YoukaisHomecoming.loc(id));
 	}
 
-	public static TagKey<Item> forgeItem(String id) {
-		return ItemTags.create(new ResourceLocation("forge", id));
+	public static TagKey<Item> c(String id) {
+		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", id));
 	}
 
 	public static TagKey<Block> block(String id) {
@@ -160,7 +161,7 @@ public class YHTagGen {
 	}
 
 	public static TagKey<EntityType<?>> entity(String mod, String id) {
-		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(mod, id));
+		return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(mod, id));
 	}
 
 }

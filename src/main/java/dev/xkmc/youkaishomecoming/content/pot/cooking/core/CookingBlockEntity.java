@@ -34,10 +34,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
-import net.neoforged.neoforge.common.util.LazyOptional;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
 import vectorwing.farmersdelight.common.tag.ModTags;
@@ -56,6 +54,8 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 
 	private boolean recheckSoup = true;
 	private @Nullable Player lastPlayer;
+
+	private final IItemHandler handler = new InvWrapper(items);
 
 	public CookingBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
@@ -147,7 +147,7 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 			notifyTile();
 		}
 		if (lastPlayer instanceof ServerPlayer sp && lastPlayer.isAlive()) {
-			YHCriteriaTriggers.COOKING.trigger(sp);
+			YHCriteriaTriggers.COOKING.get().trigger(sp);
 		}
 		lastPlayer = null;
 	}
@@ -170,14 +170,6 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 		items.clear();
 		notifyTile();
 		lastPlayer = null;
-	}
-
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return itemHandler.cast();
-		}
-		return super.getCapability(cap, side);
 	}
 
 	public static boolean isHeatedPos(Level level, BlockPos pos) {
@@ -227,6 +219,10 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 			ans.addAll(e.value().getHints(level, cont));
 		}
 		return ans;
+	}
+
+	public @Nullable IItemHandler getItemCap(@Nullable Direction dir) {
+		return handler;
 	}
 
 }

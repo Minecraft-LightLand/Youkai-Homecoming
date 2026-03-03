@@ -1,24 +1,30 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
-import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
-import net.neoforged.neoforge.common.capabilities.ICapabilityProvider;
-import net.neoforged.neoforge.common.util.LazyOptional;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider {
+import java.util.ArrayList;
+import java.util.List;
 
-	private final LazyOptional<IFluidHandlerItem> holder = LazyOptional.of(() -> this);
+public class SakeFluidWrapper implements IFluidHandlerItem {
+
+	public static final List<Item> LIST = new ArrayList<>();
+
+	public static synchronized void add(Item item) {
+		LIST.add(item);
+	}
 
 	protected ItemStack container;
 
 	public SakeFluidWrapper(ItemStack container) {
+		this.container = container;
+	}
+
+	public SakeFluidWrapper(ItemStack container, @Nullable Void v) {
 		this.container = container;
 	}
 
@@ -94,7 +100,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 			return FluidStack.EMPTY;
 		}
 		FluidStack stack = getFluid();
-		if (!stack.isEmpty() && stack.isFluidEqual(resource)) {
+		if (!stack.isEmpty() && FluidStack.isSameFluidSameComponents(stack, resource)) {
 			if (action.execute()) {
 				setFluid(FluidStack.EMPTY);
 			}
@@ -120,12 +126,6 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 		}
 
 		return FluidStack.EMPTY;
-	}
-
-	@Override
-	@NotNull
-	public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction facing) {
-		return ForgeCapabilities.FLUID_HANDLER_ITEM.orEmpty(capability, holder);
 	}
 
 }

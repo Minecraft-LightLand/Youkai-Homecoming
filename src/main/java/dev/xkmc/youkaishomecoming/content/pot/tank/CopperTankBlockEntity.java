@@ -22,7 +22,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
 
@@ -101,13 +100,8 @@ public class CopperTankBlockEntity extends BaseBlockEntity implements TickableBl
 		return this;
 	}
 
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.FLUID_HANDLER) {
-			var ans = getRoot().water;
-			return LazyOptional.of(() -> ans).cast();
-		}
-		return super.getCapability(cap, side);
+	public @Nullable IFluidHandler getFluidCap(@Nullable Direction dir) {
+		return getRoot().water;
 	}
 
 	@Override

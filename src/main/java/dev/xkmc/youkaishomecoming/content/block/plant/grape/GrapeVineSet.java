@@ -6,6 +6,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.youkaishomecoming.content.block.plant.BasicBushBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.PlantJsonGen;
 import dev.xkmc.youkaishomecoming.content.block.plant.WildVineBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;

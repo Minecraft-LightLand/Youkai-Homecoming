@@ -90,7 +90,7 @@ public enum YHLangData {
 		}
 
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW);
-		for (RegistryEntry<? extends Potion> ent : YHEffects.POTION_LIST) {
+		for (var ent : YHEffects.POTION_LIST) {
 			for (Item item : list) {
 				String pref = item.getDescriptionId();
 				String[] prefs = pref.split("\\.");

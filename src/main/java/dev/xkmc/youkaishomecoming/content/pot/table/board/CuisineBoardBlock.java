@@ -88,7 +88,7 @@ public class CuisineBoardBlock implements UseItemOnBlockMethod, ShapeBlockMethod
 						player.getInventory().placeItemBackInInventory(cont.copyWithCount(cost));
 					}
 					if (player instanceof ServerPlayer sp && be.getModel().complete(level).isPresent()) {
-						YHCriteriaTriggers.TABLE.trigger(sp);
+						YHCriteriaTriggers.TABLE.get().trigger(sp);
 					}
 				}
 				player.playSound(SoundEvents.WOOL_PLACE, 1, 1);

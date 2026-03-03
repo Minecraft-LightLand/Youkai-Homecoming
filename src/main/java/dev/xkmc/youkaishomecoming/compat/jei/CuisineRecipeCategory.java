@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
+import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottleTexture;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.IngredientTableItem;
@@ -17,9 +17,9 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +77,7 @@ public class CuisineRecipeCategory extends BaseRecipeCategory<CuisineRecipe<?>, 
 			if (fixed != null) {
 				fixed.collectIngredients(listBase);
 			} else {
-				var item = ForgeRegistries.ITEMS.getValue(recipe.base());
+				var item = BuiltInRegistries.ITEM.get(recipe.base());
 				listBase.add(Ingredient.of(item));
 			}
 		}

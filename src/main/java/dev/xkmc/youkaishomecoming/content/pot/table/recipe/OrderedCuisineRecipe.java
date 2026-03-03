@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
@@ -15,8 +15,8 @@ public class OrderedCuisineRecipe extends BaseCuisineRecipe<OrderedCuisineRecipe
 	@SerialField
 	public final List<Ingredient> input = new ArrayList<>();
 
-	public OrderedCuisineRecipe(ResourceLocation id) {
-		super(id, YHBlocks.CUISINE_ORDER.get());
+	public OrderedCuisineRecipe() {
+		super(YHBlocks.CUISINE_ORDER.get());
 	}
 
 	@Override
@@ -27,19 +27,19 @@ public class OrderedCuisineRecipe extends BaseCuisineRecipe<OrderedCuisineRecipe
 	@Override
 	public boolean matches(CuisineInv inv, Level level) {
 		if (!inv.base().equals(base)) return false;
-		if (inv.getContainerSize() > input.size()) return false;
-		int n = Math.min(inv.getContainerSize(), input.size());
+		if (inv.size() > input.size()) return false;
+		int n = Math.min(inv.size(), input.size());
 		for (int i = 0; i < n; i++) {
 			if (!input.get(i).test(inv.getItem(i))) {
 				return false;
 			}
 		}
-		return input.size() == inv.getContainerSize() || !inv.isComplete();
+		return input.size() == inv.size() || !inv.isComplete();
 	}
 
 	@Override
 	public List<Ingredient> getHints(Level level, CuisineInv inv) {
-		int n = Math.min(inv.getContainerSize(), input.size());
+		int n = Math.min(inv.size(), input.size());
 		for (int i = 0; i < n; i++) {
 			if (!input.get(i).test(inv.getItem(i))) {
 				return List.of(input.get(i));

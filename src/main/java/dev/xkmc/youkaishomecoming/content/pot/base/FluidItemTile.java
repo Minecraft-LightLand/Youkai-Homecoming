@@ -6,6 +6,7 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -25,6 +26,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
+import net.neoforged.neoforge.items.IItemHandler;
+import org.jetbrains.annotations.Nullable;
 
 public interface FluidItemTile {
 
@@ -111,5 +114,10 @@ public interface FluidItemTile {
 	SimpleContainer getItemHandler();
 
 	void notifyTile();
+
+	default @Nullable IFluidHandler getFluidCap(@Nullable Direction dir) {
+		return getFluidHandler();
+	}
+
 
 }

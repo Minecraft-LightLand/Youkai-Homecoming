@@ -76,7 +76,7 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 		popResource(level, pos, new ItemStack(getFruit(state), quantity));
 		level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
 		if (player instanceof ServerPlayer sp) {
-			YHCriteriaTriggers.GRAPE_HARVEST.trigger(sp);
+			YHCriteriaTriggers.GRAPE_HARVEST.get().trigger(sp);
 		}
 	}
 

@@ -107,7 +107,7 @@ public class UdumbaraBlock extends YHCropBlock implements HarvestableBlock {
 			pLevel.setBlock(pPos, next, 2);
 			pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(player, next));
 			if (player instanceof ServerPlayer sp)
-				YHCriteriaTriggers.UDUMBARA_LEAVES.trigger(sp);
+				YHCriteriaTriggers.UDUMBARA_LEAVES.get().trigger(sp);
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 		if (state.getValue(AGE) == getMaxAge()) {

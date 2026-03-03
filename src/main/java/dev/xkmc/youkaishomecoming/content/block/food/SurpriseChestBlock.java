@@ -1,11 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -29,7 +29,7 @@ public class SurpriseChestBlock extends HorizontalDirectionalBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (!level.isClientSide()) {
 			level.setBlockAndUpdate(pos, YHItems.SURP_FEAST.getDefaultState()
 					.setValue(FACING, state.getValue(FACING)));
@@ -62,6 +62,11 @@ public class SurpriseChestBlock extends HorizontalDirectionalBlock {
 		pvd.horizontalBlock(ctx.get(), state -> pvd.models().getBuilder("block/" + ctx.getName())
 				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/heart_throbbing_surprise_chest")))
 				.texture("base", pvd.modLoc("block/feast/surprise_chest")).renderType("cutout"));
+	}
+
+	@Override
+	protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+		return null;
 	}
 
 }

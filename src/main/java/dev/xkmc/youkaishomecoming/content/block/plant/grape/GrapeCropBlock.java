@@ -141,7 +141,7 @@ public class GrapeCropBlock extends DoubleRopeCropBlock {
 						stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
 					}
 					if (player instanceof ServerPlayer sp) {
-						YHCriteriaTriggers.GRAPE_CUT.trigger(sp);
+						YHCriteriaTriggers.GRAPE_CUT.get().trigger(sp);
 					}
 				}
 				return ItemInteractionResult.SUCCESS;

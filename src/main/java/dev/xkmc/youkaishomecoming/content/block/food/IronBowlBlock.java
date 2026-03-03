@@ -5,8 +5,9 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.util.WaterConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -23,8 +24,7 @@ public class IronBowlBlock extends BowlBlock implements IHintableBlock {
 		super(prop, saucer);
 	}
 
-	public boolean startCooking(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, Block block, Block target, int water) {
-		var stack = player.getItemInHand(hand);
+	public boolean startCooking(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, Block block, Block target, int water) {
 		if (state.is(block) && WaterConsumer.isWaterContainer(stack, water)) {
 			if (!level.isClientSide()) {
 				var pot = target.defaultBlockState().setValue(FACING, state.getValue(FACING));
@@ -50,14 +50,14 @@ public class IronBowlBlock extends BowlBlock implements IHintableBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		if (startCooking(state, level, pos, player, hand, YHBlocks.IRON_BOWL.get(), YHBlocks.SMALL_POT.get(), 250))
-			return InteractionResult.SUCCESS;
-		if (startCooking(state, level, pos, player, hand, YHBlocks.IRON_POT.get(), YHBlocks.SHORT_POT.get(), 250))
-			return InteractionResult.SUCCESS;
-		if (startCooking(state, level, pos, player, hand, YHBlocks.STOCKPOT.get(), YHBlocks.LARGE_POT.get(), 1000))
-			return InteractionResult.SUCCESS;
-		return InteractionResult.PASS;
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (startCooking(stack, state, level, pos, player, hand, YHBlocks.IRON_BOWL.get(), YHBlocks.SMALL_POT.get(), 250))
+			return ItemInteractionResult.SUCCESS;
+		if (startCooking(stack, state, level, pos, player, hand, YHBlocks.IRON_POT.get(), YHBlocks.SHORT_POT.get(), 250))
+			return ItemInteractionResult.SUCCESS;
+		if (startCooking(stack, state, level, pos, player, hand, YHBlocks.STOCKPOT.get(), YHBlocks.LARGE_POT.get(), 1000))
+			return ItemInteractionResult.SUCCESS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 }

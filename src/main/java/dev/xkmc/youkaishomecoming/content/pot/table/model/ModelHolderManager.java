@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.model;
 
-import dev.xkmc.l2library.base.L2Registrate;
-import net.neoforged.neoforge.api.distmarker.Dist;
-import net.neoforged.neoforge.fml.loading.FMLEnvironment;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;

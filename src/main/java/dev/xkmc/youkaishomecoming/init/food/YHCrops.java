@@ -4,10 +4,7 @@ import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
-import dev.xkmc.youkaishomecoming.content.block.plant.PlantJsonGen;
-import dev.xkmc.youkaishomecoming.content.block.plant.TeaCropBlock;
-import dev.xkmc.youkaishomecoming.content.block.plant.UdumbaraBlock;
-import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;
+import dev.xkmc.youkaishomecoming.content.block.plant.*;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.grape.GrapeVineSet;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.CucumberCropBlock;
@@ -185,7 +182,7 @@ public enum YHCrops {
 
 	public static BlockEntry<Block> createBag(String id) {
 		return YoukaisHomecoming.REGISTRATE
-				.block(id + "_bag", p -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)))
+				.block(id + "_bag", Block::new).initialProperties(() -> Blocks.BROWN_WOOL)
 				.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(), pvd.models().cube(
 						ctx.getName(),
 						pvd.modLoc("block/bags/" + ctx.getName() + "_bottom"),
@@ -204,8 +201,8 @@ public enum YHCrops {
 
 	}
 
-	public BlockBuilder<BushBlock, L2Registrate> wildCrop() {
-		return YoukaisHomecoming.REGISTRATE.block("wild_" + getName(), BushBlock::new)
+	public BlockBuilder<BasicBushBlock, L2Registrate> wildCrop() {
+		return YoukaisHomecoming.REGISTRATE.block("wild_" + getName(), BasicBushBlock::new)
 				.initialProperties(() -> Blocks.DANDELION)
 				.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, this))
 				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
@@ -213,13 +210,13 @@ public enum YHCrops {
 				.tag(ModTags.WILD_CROPS);
 	}
 
-	public BlockEntry<BushBlock> wildCropDropFruit() {
+	public BlockEntry<BasicBushBlock> wildCropDropFruit() {
 		return wildCrop()
 				.loot((ctx, pvd) -> PlantJsonGen.wildDropFruit(ctx, pvd, this))
 				.register();
 	}
 
-	public BlockEntry<BushBlock> wildCropDropSeed() {
+	public BlockEntry<BasicBushBlock> wildCropDropSeed() {
 		return wildCrop()
 				.loot((ctx, pvd) -> PlantJsonGen.wildDropSeed(ctx, pvd, this))
 				.register();

@@ -5,7 +5,6 @@ import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateAdvancementProvider;
 import dev.xkmc.l2core.serial.advancements.AdvancementGenerator;
 import dev.xkmc.l2core.serial.advancements.CriterionBuilder;
-import dev.xkmc.youkaishomecoming.content.pot.steamer.SteamTrigger;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHRolls;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
@@ -19,6 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class YHAdvGen {
@@ -43,7 +43,7 @@ public class YHAdvGen {
 		root.create("soybean", YHCrops.SOYBEAN.getSeed(),
 				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 						LocationPredicate.Builder.location().setBlock(
-								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN).build()),
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_SOYBEAN)),
 						ItemPredicate.Builder.item().of(YHCrops.SOYBEAN.getSeed()))),
 				"The Essential Harvest", "Plant Soybean");
 		root.create("cucumber", YHCrops.CUCUMBER.getSeed(),
@@ -53,7 +53,7 @@ public class YHAdvGen {
 								ItemPredicate.Builder.item().of(YHCrops.CUCUMBER.getSeed()))),
 						"Rope Climber", "Plant Cucumber")
 				.create("cucumber_top", YHCrops.CUCUMBER.getFruits(),
-						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CUCUMBER.getId(), ContextAwarePredicate.ANY)),
+						CriterionBuilder.one(YHCriteriaTriggers.CUCUMBER.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 						"Pinnacle Kappa", "Let cucumber climb ropes and harvest the top cucumber of a 3-block tall cucumber crop");
 		var grape = root.create("grape", YHCrops.RED_GRAPE.getSeed(),
 				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
@@ -62,25 +62,25 @@ public class YHAdvGen {
 						ItemPredicate.Builder.item().of(YHTagGen.GRAPE_SEED))),
 				"Sweet Vines", "Plant Grape");
 		grape.create("grape_cut", Items.SHEARS,
-						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.GRAPE_CUT.getId(), ContextAwarePredicate.ANY)),
+						CriterionBuilder.one(YHCriteriaTriggers.GRAPE_CUT.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 						"Niwaki", "Cut the leaves off a mature grape crop so that it can grow larger. Make sure it has 3 ropes in a row to climb onto.")
 				.create("grape_harvest", YHCrops.RED_GRAPE.getFruits(),
-						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.GRAPE_HARVEST.getId(), ContextAwarePredicate.ANY)),
+						CriterionBuilder.one(YHCriteriaTriggers.GRAPE_HARVEST.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 						"The Best Bunch", "Harvest grape hanging under a grape branch");
 		grape.create("squeeze", YHBlocks.BASIN.asItem(),
-				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.BASIN.getId(), ContextAwarePredicate.ANY)),
+				CriterionBuilder.one(YHCriteriaTriggers.BASIN.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 				"Squeeze!", "Jump in the basin to squeeze juice out of grapes");
 
 		root.create("redbean", YHCrops.REDBEAN.getSeed(),
 				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 						LocationPredicate.Builder.location().setBlock(
-								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN).build()),
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_REDBEAN)),
 						ItemPredicate.Builder.item().of(YHCrops.REDBEAN.getSeed()))),
 				"Leanness Resistant Red Bean", "Plant Red Bean on Coarse Dirt, Mud, or Clay");
 		var tea = root.create("tea", YHCrops.TEA.getSeed(),
 				CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 						LocationPredicate.Builder.location().setBlock(
-								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_TEA).build()),
+								BlockPredicate.Builder.block().of(YHTagGen.FARMLAND_TEA)),
 						ItemPredicate.Builder.item().of(YHCrops.TEA.getSeed()))),
 				"Refreshing Hobby", "Plant Tea on grass block.");
 		tea.create("camellia", YHItems.CAMELLIA.asItem(), CriterionBuilder.item(YHItems.CAMELLIA.asItem()),
@@ -97,11 +97,11 @@ public class YHAdvGen {
 		root.create("udumbara", YHCrops.UDUMBARA.getWildPlant().asItem(),
 						CriterionBuilder.one(ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
 								LocationPredicate.Builder.location().setBlock(
-										BlockPredicate.Builder.block().of(Blocks.FARMLAND).build()),
+										BlockPredicate.Builder.block().of(Blocks.FARMLAND)),
 								ItemPredicate.Builder.item().of(YHCrops.UDUMBARA.getSeed()))),
 						"Moon Crop", "Plants an Udumbara with its leaves. It grows under moonlight and shrinks under sunlight.")
 				.create("udumbara_leaves", YHCrops.UDUMBARA.getSeed(),
-						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.UDUMBARA_LEAVES.getId(), ContextAwarePredicate.ANY)),
+						CriterionBuilder.one(YHCriteriaTriggers.UDUMBARA_LEAVES.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 						"Transplant", "Harvest Udumbara Leaves from Udumbaar crop near maturity")
 				.create("udumbara_flower", YHCrops.UDUMBARA.getFruits(),
 						CriterionBuilder.item(YHCrops.UDUMBARA.getFruits()),
@@ -109,17 +109,17 @@ public class YHAdvGen {
 				.type(AdvancementType.CHALLENGE);
 		root.create("alcoholic", YHBlocks.FERMENT.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
-								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get()))),
+								MobEffectsPredicate.Builder.effects().and(YHEffects.DRUNK))),
 						"Alcoholic", "Brew and drink an alcoholic drink and obtain Drunk effect")
 				.create("passed_out", YHDrink.DASSAI.item.asStack(),
 						CriterionBuilder.one(EffectsChangedTrigger.TriggerInstance.hasEffects(
-								MobEffectsPredicate.effects().and(YHEffects.DRUNK.get(),
+								MobEffectsPredicate.Builder.effects().and(YHEffects.DRUNK,
 										new MobEffectsPredicate.MobEffectInstancePredicate(
 												MinMaxBounds.Ints.atLeast(4), MinMaxBounds.Ints.ANY,
-												null, null)))),
+												Optional.empty(), Optional.empty())))),
 						"Passed Out", "Drink until you have maximum Drunk effect");
 		root.create("crab_grab", YHItems.CRAB_BUCKET.asItem(),
-				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.CRAB_GRAB.getId(), ContextAwarePredicate.ANY)),
+				CriterionBuilder.one(YHCriteriaTriggers.CRAB_GRAB.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 				"Crab Grab", "Have a crab grab your water bucket when attempting to bucket a crab");
 		root.create("breed_boar", Items.CARROT,
 				CriterionBuilder.one(BredAnimalsTrigger.TriggerInstance.bredAnimals(
@@ -127,25 +127,25 @@ public class YHAdvGen {
 				"Pig with Tusks", "Breed boar with carrot, potato, or beetroot");
 
 		root.create("small_pot", YHBlocks.IRON_POT.asStack(),
-						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.COOKING.getId(), ContextAwarePredicate.ANY)),
+						CriterionBuilder.one(YHCriteriaTriggers.COOKING.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 						"Hotpot", "Cooking with small iron pot / short pot / stockpot")
 				.create("pot_grab", YHBowl.POWER_SOUP.asItem(),
-						CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.POT_GRAB.getId(), ContextAwarePredicate.ANY)),
+						CriterionBuilder.one(YHCriteriaTriggers.POT_GRAB.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 						"Shared Enjoyment", "Use small iron pot to take a serve of food from short pot / stockpot");
 		var steam = root.create("steamer", YHBlocks.STEAMER_POT.asStack(),
-				CriterionBuilder.one(SteamTrigger.steam(MinMaxBounds.Ints.ANY)),
+				CriterionBuilder.one(YHCriteriaTriggers.STEAM.get().steam(MinMaxBounds.Ints.ANY)),
 				"Steam and Racks", "Steam some food");
 		steam.create("dish", YHDish.IMITATION_BEAR_PAW.block.asStack(),
-						CriterionBuilder.one(SteamTrigger.steam(YHTagGen.STEAM_BLOCKER)),
+						CriterionBuilder.one(YHCriteriaTriggers.STEAM.get().steam(YHTagGen.STEAM_BLOCKER)),
 						"Steam Interceptor", "Steam a plate meal or bamboo meal. Note that they heavily obstruct steam.")
 				.type(AdvancementType.GOAL);
 		steam.create("max_steamer", YHBlocks.STEAMER_RACK.asStack(),
-						CriterionBuilder.one(SteamTrigger.steam(MinMaxBounds.Ints.atLeast(18))),
+						CriterionBuilder.one(YHCriteriaTriggers.STEAM.get().steam(MinMaxBounds.Ints.atLeast(18))),
 						"Bamboo Tower", "Steam an item on the 18th rack")
 				.type(AdvancementType.CHALLENGE);
 
 		var table = root.create("cuisine_board", YHBlocks.CUISINE_BOARD.asStack(),
-				CriterionBuilder.one(new PlayerTrigger.TriggerInstance(YHCriteriaTriggers.TABLE.getId(), ContextAwarePredicate.ANY)),
+				CriterionBuilder.one(YHCriteriaTriggers.TABLE.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()))),
 				"Sushi Apprentice", "Make something with cuisine board");
 		table.create("kaguya_hime", YHBowl.KAGUYA_HIME.item.asStack(),
 						CriterionBuilder.item(YHBowl.KAGUYA_HIME.item.asItem()),

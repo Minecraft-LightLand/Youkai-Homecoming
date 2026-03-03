@@ -1,7 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
 import dev.xkmc.l2modularblock.mult.DefaultStateBlockMethod;

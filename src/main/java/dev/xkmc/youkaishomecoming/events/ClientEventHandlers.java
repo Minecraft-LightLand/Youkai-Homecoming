@@ -7,19 +7,19 @@ import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.api.distmarker.Dist;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
-import net.neoforged.neoforge.event.TickEvent;
-import net.neoforged.neoforge.eventbus.api.SubscribeEvent;
-import net.neoforged.neoforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(value = Dist.CLIENT, modid = YoukaisHomecoming.MODID)
 public class ClientEventHandlers {
 
 	private static float oTilt, tilt;
 
 	@SubscribeEvent
-	public static void onClientTick(TickEvent.ClientTickEvent event) {
+	public static void onClientTick(ClientTickEvent.Pre event) {
 		oTilt = tilt;
 		float lv = drunkLevel();
 		tilt = Mth.lerp(0.03f, tilt, lv);
@@ -41,7 +41,7 @@ public class ClientEventHandlers {
 	private static float drunkLevel() {
 		var cam = Minecraft.getInstance().getCameraEntity();
 		if (!(cam instanceof Player player)) return 0;
-		var ins = player.getEffect(YHEffects.DRUNK.get());
+		var ins = player.getEffect(YHEffects.DRUNK);
 		if (ins == null) return 0;
 		return Mth.clamp(ins.getAmplifier() * 0.25f, 0, 1);
 	}

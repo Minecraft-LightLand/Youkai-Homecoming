@@ -12,7 +12,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import vectorwing.farmersdelight.common.registry.ModEffects;
@@ -30,8 +29,8 @@ public enum YHDish {
 	IMITATION_BEAR_PAW(Saucer.CERAMIC, DishType.STEAMED, 12, 0.8f, 3, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
+			new EffectEntry(MobEffects.DAMAGE_BOOST, 3600, 1, 1),
+			new EffectEntry(MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
 			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	PASTITSIO(Saucer.CERAMIC, DishType.COOKED, 12, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
@@ -57,7 +56,7 @@ public enum YHDish {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	CUMBERLAND_LOIN(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1),
+			new EffectEntry(MobEffects.DAMAGE_BOOST, 3600, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	SCHOLAR_GINKGO(Saucer.CERAMIC, DishType.STEAMED, 6, 0.8f, 2, List.of(
@@ -91,7 +90,8 @@ public enum YHDish {
 
 	private BlockEntry<FoodSaucerBlock> buildBlock(String name, boolean raw, int nutrition, float sat, List<EffectEntry> effs, TagKey<Item>... tags) {
 		return YoukaisHomecoming.REGISTRATE
-				.block(name, p -> new FoodSaucerBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL), this))
+				.block(name, p -> new FoodSaucerBlock(p, this))
+				.initialProperties(() -> Blocks.LIGHT_GRAY_WOOL)
 				.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(), buildModel(pvd, !raw)))
 				.item((block, p) -> base.create(block, p, raw, nutrition, sat, effs))
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/saucer/" + ctx.getName())))

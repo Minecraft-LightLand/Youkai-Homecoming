@@ -36,7 +36,7 @@ public record DryingRackWrapper(DryingRackBlockEntity be) implements IItemHandle
 			if (simulate) {
 				ans.split(1);
 			} else {
-				be.placeFood(ans, r.get().getCookingTime());
+				be.placeFood(ans, r.get().value().getCookingTime());
 			}
 			return ans;
 		}

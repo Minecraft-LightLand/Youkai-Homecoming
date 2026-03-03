@@ -11,13 +11,14 @@ public class SoberEffect extends EmptyEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity e, int pAmplifier) {
+	public boolean applyEffectTick(LivingEntity e, int pAmplifier) {
 		if (e.hasEffect(MobEffects.CONFUSION))
 			e.removeEffect(MobEffects.CONFUSION);
+		return true;
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+	public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
 		return true;
 	}
 

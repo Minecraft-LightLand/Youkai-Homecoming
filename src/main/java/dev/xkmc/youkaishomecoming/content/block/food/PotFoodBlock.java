@@ -91,7 +91,7 @@ public class PotFoodBlock extends BowlBlock implements IHintableBlock {
 						player.getInventory().placeItemBackInInventory(item);
 						consume(state, level, pos);
 						if (player instanceof ServerPlayer sp)
-							YHCriteriaTriggers.POT_GRAB.trigger(sp);
+							YHCriteriaTriggers.POT_GRAB.get().trigger(sp);
 					}
 					return ItemInteractionResult.SUCCESS;
 				}

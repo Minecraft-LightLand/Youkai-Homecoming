@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -16,8 +16,8 @@ public class UnorderedCuisineRecipe extends BaseCuisineRecipe<UnorderedCuisineRe
 	@SerialField
 	public final List<Ingredient> input = new ArrayList<>();
 
-	public UnorderedCuisineRecipe(ResourceLocation id) {
-		super(id, YHBlocks.CUISINE_UNORDER.get());
+	public UnorderedCuisineRecipe() {
+		super(YHBlocks.CUISINE_UNORDER.get());
 	}
 
 	@Override
@@ -28,9 +28,9 @@ public class UnorderedCuisineRecipe extends BaseCuisineRecipe<UnorderedCuisineRe
 	@Override
 	public boolean matches(CuisineInv inv, Level level) {
 		if (!inv.base().equals(base)) return false;
-		if (inv.getContainerSize() > input.size()) return false;
+		if (inv.size() > input.size()) return false;
 		List<Ingredient> remain = new ArrayList<>(input);
-		for (int i = 0; i < inv.getContainerSize(); i++) {
+		for (int i = 0; i < inv.size(); i++) {
 			ItemStack stack = inv.getItem(i);
 			var itr = remain.iterator();
 			boolean match = false;
@@ -50,7 +50,7 @@ public class UnorderedCuisineRecipe extends BaseCuisineRecipe<UnorderedCuisineRe
 	@Override
 	public List<Ingredient> getHints(Level level, CuisineInv inv) {
 		List<Ingredient> remain = new ArrayList<>(input);
-		for (int i = 0; i < inv.getContainerSize(); i++) {
+		for (int i = 0; i < inv.size(); i++) {
 			ItemStack stack = inv.getItem(i);
 			var itr = remain.iterator();
 			while (itr.hasNext()) {

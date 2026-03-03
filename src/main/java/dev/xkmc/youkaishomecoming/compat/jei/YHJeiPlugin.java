@@ -23,6 +23,7 @@ import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.Objects;
@@ -33,8 +34,8 @@ public class YHJeiPlugin implements IModPlugin {
 	public static final ResourceLocation ID = YoukaisHomecoming.loc("main");
 
 	public static final RecipeType<KettleRecipe> KETTLE = RecipeType.create(YoukaisHomecoming.MODID, "kettle", KettleRecipe.class);
-	public static final RecipeType<DryingRackRecipe> RACK = RecipeType.create(YoukaisHomecoming.MODID, "drying_rack", DryingRackRecipe.class);
-	public static final RecipeType<SteamingRecipe> STEAM = RecipeType.create(YoukaisHomecoming.MODID, "steaming", SteamingRecipe.class);
+	public static final RecipeType<RecipeHolder<DryingRackRecipe>> RACK = RecipeType.create(YoukaisHomecoming.MODID, "drying_rack", Wrappers.cast(RecipeHolder.class));
+	public static final RecipeType<RecipeHolder<SteamingRecipe>> STEAM = RecipeType.create(YoukaisHomecoming.MODID, "steaming", Wrappers.cast(RecipeHolder.class));
 	public static final RecipeType<SimpleFermentationRecipe> FERMENT = RecipeType.create(YoukaisHomecoming.MODID, "ferment", SimpleFermentationRecipe.class);
 	public static final RecipeType<CuisineRecipe<?>> CUISINE = RecipeType.create(YoukaisHomecoming.MODID, "cuisine", Wrappers.cast(CuisineRecipe.class));
 	public static final RecipeType<SimpleBasinRecipe> BASIN = RecipeType.create(YoukaisHomecoming.MODID, "basin", SimpleBasinRecipe.class);
@@ -73,20 +74,20 @@ public class YHJeiPlugin implements IModPlugin {
 		var level = Minecraft.getInstance().level;
 		assert level != null;
 		var m = level.getRecipeManager();
-		registration.addRecipes(KETTLE, m.getAllRecipesFor(YHBlocks.KETTLE_RT.get()));
+		registration.addRecipes(KETTLE, m.getAllRecipesFor(YHBlocks.KETTLE_RT.get()).stream().map(RecipeHolder::value).toList());
 		registration.addRecipes(RACK, m.getAllRecipesFor(YHBlocks.RACK_RT.get()));
 		registration.addRecipes(STEAM, m.getAllRecipesFor(YHBlocks.STEAM_RT.get()));
 		registration.addRecipes(FERMENT, m.getAllRecipesFor(YHBlocks.FERMENT_RT.get())
-				.stream().map(e -> e instanceof SimpleFermentationRecipe x ? x : null).filter(Objects::nonNull).toList());
+				.stream().map(e -> e.value() instanceof SimpleFermentationRecipe x ? x : null).filter(Objects::nonNull).toList());
 		registration.addRecipes(BASIN, m.getAllRecipesFor(YHBlocks.BASIN_RT.get())
-				.stream().map(e -> e instanceof SimpleBasinRecipe x ? x : null).filter(Objects::nonNull).toList());
-		registration.addRecipes(CUISINE, m.getAllRecipesFor(YHBlocks.CUISINE_RT.get()));
-		registration.addRecipes(BOWL_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
-				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_BOWL.asItem())).toList());
-		registration.addRecipes(POT_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
-				.stream().filter(e -> e.matchContainer(YHBlocks.IRON_POT.asItem())).toList());
-		registration.addRecipes(STOCK_COOKING, m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
-				.stream().filter(e -> e.matchContainer(YHBlocks.STOCKPOT.asItem())).toList());
+				.stream().map(e -> e.value() instanceof SimpleBasinRecipe x ? x : null).filter(Objects::nonNull).toList());
+		registration.addRecipes(CUISINE, Wrappers.cast(m.getAllRecipesFor(YHBlocks.CUISINE_RT.get()).stream().map(RecipeHolder::value).toList()));
+		registration.addRecipes(BOWL_COOKING, Wrappers.cast(m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().map(RecipeHolder::value).filter(e -> e.matchContainer(YHBlocks.IRON_BOWL.asItem())).toList()));
+		registration.addRecipes(POT_COOKING, Wrappers.cast(m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().map(RecipeHolder::value).filter(e -> e.matchContainer(YHBlocks.IRON_POT.asItem())).toList()));
+		registration.addRecipes(STOCK_COOKING, Wrappers.cast(m.getAllRecipesFor(YHBlocks.COOKING_RT.get())
+				.stream().map(RecipeHolder::value).filter(e -> e.matchContainer(YHBlocks.STOCKPOT.asItem())).toList()));
 	}
 
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {

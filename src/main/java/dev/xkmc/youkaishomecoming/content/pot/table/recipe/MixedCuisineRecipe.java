@@ -1,8 +1,8 @@
 package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -18,8 +18,8 @@ public class MixedCuisineRecipe extends BaseCuisineRecipe<MixedCuisineRecipe> {
 	@SerialField
 	public final List<Ingredient> second = new ArrayList<>();
 
-	public MixedCuisineRecipe(ResourceLocation id) {
-		super(id, YHBlocks.CUISINE_MIXED.get());
+	public MixedCuisineRecipe() {
+		super(YHBlocks.CUISINE_MIXED.get());
 	}
 
 	@Override
@@ -33,9 +33,9 @@ public class MixedCuisineRecipe extends BaseCuisineRecipe<MixedCuisineRecipe> {
 	@Override
 	public boolean matches(CuisineInv inv, Level level) {
 		if (!inv.base().equals(base)) return false;
-		if (inv.getContainerSize() > first.size() + second.size()) return false;
+		if (inv.size() > first.size() + second.size()) return false;
 
-		int n = Math.min(inv.getContainerSize(), first.size());
+		int n = Math.min(inv.size(), first.size());
 		for (int i = 0; i < n; i++) {
 			if (!first.get(i).test(inv.getItem(i))) {
 				return false;
@@ -44,7 +44,7 @@ public class MixedCuisineRecipe extends BaseCuisineRecipe<MixedCuisineRecipe> {
 		if (n < first.size()) return !inv.isComplete();
 
 		List<Ingredient> remain = new ArrayList<>(second);
-		for (int i = n; i < inv.getContainerSize(); i++) {
+		for (int i = n; i < inv.size(); i++) {
 			ItemStack stack = inv.getItem(i);
 			var itr = remain.iterator();
 			boolean match = false;
@@ -63,7 +63,7 @@ public class MixedCuisineRecipe extends BaseCuisineRecipe<MixedCuisineRecipe> {
 
 	@Override
 	public List<Ingredient> getHints(Level level, CuisineInv inv) {
-		int n = Math.min(inv.getContainerSize(), first.size());
+		int n = Math.min(inv.size(), first.size());
 		for (int i = 0; i < n; i++) {
 			if (!first.get(i).test(inv.getItem(i))) {
 				return List.of(first.get(i));
@@ -71,7 +71,7 @@ public class MixedCuisineRecipe extends BaseCuisineRecipe<MixedCuisineRecipe> {
 		}
 		if (n < first.size()) return List.of(first.get(n));
 		List<Ingredient> remain = new ArrayList<>(second);
-		for (int i = n; i < inv.getContainerSize(); i++) {
+		for (int i = n; i < inv.size(); i++) {
 			ItemStack stack = inv.getItem(i);
 			var itr = remain.iterator();
 			while (itr.hasNext()) {

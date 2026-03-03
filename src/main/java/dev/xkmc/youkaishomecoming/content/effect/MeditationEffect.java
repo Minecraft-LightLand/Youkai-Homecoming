@@ -11,7 +11,7 @@ public class MeditationEffect extends EmptyEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity user, int amp) {
+	public boolean applyEffectTick(LivingEntity user, int amp) {
 		if (user instanceof Player player) {
 			var data = player.getPersistentData();
 			long current = player.position().hashCode();
@@ -21,10 +21,11 @@ public class MeditationEffect extends EmptyEffect {
 			}
 			data.putLong("MeditationHash", current);
 		}
+		return true;
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int tick, int amp) {
+	public boolean shouldApplyEffectTickThisTick(int tick, int amp) {
 		return tick % Math.max(10, 60 / (amp + 1)) == 0;
 	}
 }

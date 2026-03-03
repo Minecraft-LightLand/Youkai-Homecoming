@@ -167,18 +167,6 @@ public class KettleBlockEntity extends TimedRecipeBlockEntity<KettleRecipe, Kett
 		return true;
 	}
 
-	@NotNull
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return itemHandler.cast();
-		}
-		if (cap == ForgeCapabilities.FLUID_HANDLER) {
-			return fluidHandler.cast();
-		}
-		return super.getCapability(cap, side);
-	}
-
 	@Override
 	public TileTooltip getImage(boolean shift, BlockHitResult hit) {
 		return new TileTooltip(items.getAsList(), fluids.getAsList(), 3, 2);
@@ -208,6 +196,10 @@ public class KettleBlockEntity extends TimedRecipeBlockEntity<KettleRecipe, Kett
 		if (heat < fluid.getAmount() && fluid.getAmount() + space > 1000) {
 			fluid.setAmount(Math.max(heat, 1000 - space));
 		}
+	}
+
+	public @Nullable IItemHandler getItemCap(@Nullable Direction dir) {
+		return itemHandler;
 	}
 
 }

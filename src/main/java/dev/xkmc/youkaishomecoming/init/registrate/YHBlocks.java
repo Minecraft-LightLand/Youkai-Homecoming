@@ -3,8 +3,6 @@ package dev.xkmc.youkaishomecoming.init.registrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2core.init.reg.simple.SR;
 import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.l2core.serial.recipe.BaseRecipe;
@@ -76,7 +74,6 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 import java.util.Locale;
 
@@ -181,7 +178,7 @@ public class YHBlocks {
 
 	static {
 		InitializationMarker.expectAndAdvance(1);
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.getKey());
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.TAB.key());
 
 		// moka kettle, rack
 		{
@@ -345,9 +342,9 @@ public class YHBlocks {
 					.register();
 
 			COOKING_RT = RT.reg("pot_cooking", RecipeType::simple);
-			COOKING_UNORDER = reg("unordered_cooking", () -> new BaseRecipe.RecType<>(UnorderedCookingRecipe.class, COOKING_RT));
+			COOKING_UNORDER = RS.reg("unordered_cooking", () -> new BaseRecipe.RecType<>(UnorderedCookingRecipe.class, COOKING_RT));
 			SOUP_RT = RT.reg("soup_base", RecipeType::simple);
-			IMMEDIATE_SOUP = reg("immediate_soup", () -> new BaseRecipe.RecType<>(SimpleSoupBaseRecipe.class, SOUP_RT));
+			IMMEDIATE_SOUP = RS.reg("immediate_soup", () -> new BaseRecipe.RecType<>(SimpleSoupBaseRecipe.class, SOUP_RT));
 
 		}
 
@@ -400,10 +397,10 @@ public class YHBlocks {
 					.renderer(() -> CuisineBoardRenderer::new)
 					.register();
 			CUISINE_RT = RT.reg("cuisine", RecipeType::simple);
-			CUISINE_ORDER = reg("cuisine_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineRecipe.class, CUISINE_RT));
-			CUISINE_UNORDER = reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
-			CUISINE_MIXED = reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
-			CUISINE_FIXED = reg("cuisine_fixed", () -> new BaseRecipe.RecType<>(FixedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_ORDER = RS.reg("cuisine_ordered", () -> new BaseRecipe.RecType<>(OrderedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_UNORDER = RS.reg("cuisine_unordered", () -> new BaseRecipe.RecType<>(UnorderedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_MIXED = RS.reg("cuisine_mixed", () -> new BaseRecipe.RecType<>(MixedCuisineRecipe.class, CUISINE_RT));
+			CUISINE_FIXED = RS.reg("cuisine_fixed", () -> new BaseRecipe.RecType<>(FixedCuisineRecipe.class, CUISINE_RT));
 		}
 
 		//storage blocks
@@ -453,12 +450,11 @@ public class YHBlocks {
 		InitializationMarker.expectAndAdvance(2);
 		YHItems.register();
 
-		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.DECO.getKey());
-
+		YoukaisHomecoming.REGISTRATE.defaultCreativeTab(YoukaisHomecoming.DECO.key());
 
 		{
-			MOON_LANTERN = YoukaisHomecoming.REGISTRATE.block("moon_lantern", p -> new MoonLanternBlock(
-							BlockBehaviour.Properties.copy(Blocks.LANTERN)))
+			MOON_LANTERN = YoukaisHomecoming.REGISTRATE.block("moon_lantern", MoonLanternBlock::new)
+					.initialProperties(() -> Blocks.LANTERN)
 					.blockstate(MoonLanternBlock::buildStates)
 					.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
 
@@ -468,22 +464,18 @@ public class YHBlocks {
 
 			for (var e : WoodType.values()) {
 				String name = e.name().toLowerCase(Locale.ROOT);
-				e.table = YoukaisHomecoming.REGISTRATE.block(name + "_dining_table", p -> new WoodTableBlock(
-								BlockBehaviour.Properties.copy(e.plankProp)))
+				e.table = YoukaisHomecoming.REGISTRATE.block(name + "_dining_table", WoodTableBlock::new)
+						.initialProperties(() -> e.plankProp)
 						.blockstate(WoodTableBlock::buildStates)
 						.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
-				e.seat = YoukaisHomecoming.REGISTRATE.block(name + "_dining_chair", p -> new WoodChairBlock(
-								BlockBehaviour.Properties.copy(e.plankProp)))
+				e.seat = YoukaisHomecoming.REGISTRATE.block(name + "_dining_chair", WoodChairBlock::new)
+						.initialProperties(() -> e.plankProp)
 						.blockstate(WoodChairBlock::buildStates)
 						.simpleItem().tag(BlockTags.MINEABLE_WITH_AXE).register();
 			}
 
 		}
 
-	}
-
-	private static <A extends RecipeSerializer<?>> RegistryEntry<A> reg(String id, NonNullSupplier<A> sup) {
-		return YoukaisHomecoming.REGISTRATE.simple(id, ForgeRegistries.Keys.RECIPE_SERIALIZERS, sup);
 	}
 
 	public static void register() {

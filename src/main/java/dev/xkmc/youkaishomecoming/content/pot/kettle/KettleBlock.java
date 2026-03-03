@@ -19,9 +19,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -49,7 +50,7 @@ public class KettleBlock implements
 		CreateBlockStateBlockMethod, DefaultStateBlockMethod,
 		PlacementBlockMethod, SetPlacedByBlockMethod,
 		ShapeUpdateBlockMethod, ShapeBlockMethod,
-		ToolTipBlockMethod, OnClickBlockMethod {
+		ToolTipBlockMethod, UseItemOnBlockMethod {
 
 	public static final BlockMethod TE = new BlockEntityBlockMethodImpl<>(YHBlocks.KETTLE_BE, KettleBlockEntity.class);
 
@@ -95,8 +96,7 @@ public class KettleBlock implements
 		}
 	}
 
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (level.getBlockEntity(pos) instanceof KettleBlockEntity be) {
 			if (stack.isEmpty()) {
 				if (!level.isClientSide()) {
@@ -108,19 +108,19 @@ public class KettleBlock implements
 						level.playSound(null, pos, SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
 					}
 				}
-				return InteractionResult.SUCCESS;
-			} else if (stack.getItem() instanceof YHDrinkItem && !stack.isEdible()) {
+				return ItemInteractionResult.SUCCESS;
+			} else if (stack.getItem() instanceof YHDrinkItem && stack.getFoodProperties(player) != null) {
 				return FluidItemTile.addItem(be, stack, level, pos);
 			} else {
 				return FluidItemTile.addFluidOrItem(be, stack, level, pos, player, hand, hit);
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> list, TooltipFlag pFlag) {
+	public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> list, TooltipFlag pFlag) {
 		var root = pStack.getTag();
 		if (root != null && root.contains("KettleFluid", Tag.TAG_COMPOUND)) {
 			var fluid = FluidStack.loadFluidStackFromNBT(root.getCompound("KettleFluid"));

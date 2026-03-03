@@ -25,7 +25,6 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -100,15 +99,8 @@ public class BasinBlockEntity extends BaseBlockEntity implements
 		sync();
 	}
 
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return itemHandler.cast();
-		}
-		if (cap == ForgeCapabilities.FLUID_HANDLER) {
-			return fluidHandler.cast();
-		}
-		return super.getCapability(cap, side);
+	public @Nullable IItemHandler getItemCap(@Nullable Direction dir) {
+		return itemHandler;
 	}
 
 }

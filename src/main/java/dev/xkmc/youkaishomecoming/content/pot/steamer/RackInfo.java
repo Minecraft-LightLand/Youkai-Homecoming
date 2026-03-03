@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

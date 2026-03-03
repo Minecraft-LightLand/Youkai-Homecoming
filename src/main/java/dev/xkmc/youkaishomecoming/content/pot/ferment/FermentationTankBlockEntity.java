@@ -109,15 +109,8 @@ public class FermentationTankBlockEntity extends TimedRecipeBlockEntity<Fermenta
 		}
 	}
 
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return itemHandler.cast();
-		}
-		if (cap == ForgeCapabilities.FLUID_HANDLER) {
-			return fluidHandler.cast();
-		}
-		return super.getCapability(cap, side);
+	public @Nullable IItemHandler getItemCap(@Nullable Direction dir) {
+		return itemHandler;
 	}
 
 }

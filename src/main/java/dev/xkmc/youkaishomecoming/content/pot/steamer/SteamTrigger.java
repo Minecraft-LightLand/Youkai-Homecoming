@@ -1,69 +1,50 @@
 package dev.xkmc.youkaishomecoming.content.pot.steamer;
 
-import com.google.gson.JsonObject;
-import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
-import net.minecraft.advancements.critereon.ContextAwarePredicate;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.MinMaxBounds;
-import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
-import net.minecraft.resources.ResourceLocation;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Optional;
+
 public class SteamTrigger extends SimpleCriterionTrigger<SteamTrigger.TriggerInstance> {
 
-	static final ResourceLocation ID = YoukaisHomecoming.loc("steam");
+	public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(i -> i.group(
+			EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
+			ItemPredicate.CODEC.fieldOf("item").forGetter(TriggerInstance::item),
+			MinMaxBounds.Ints.CODEC.fieldOf("rack").forGetter(TriggerInstance::rack)
+	).apply(i, TriggerInstance::new));
 
-	public ResourceLocation getId() {
-		return ID;
-	}
-
-	public SteamTrigger.TriggerInstance createInstance(JsonObject json, ContextAwarePredicate ctx, DeserializationContext des) {
-		return new SteamTrigger.TriggerInstance(ctx,
-				ItemPredicate.fromJson(json.get("item")),
-				MinMaxBounds.Ints.fromJson(json.get("rack")));
+	@Override
+	public Codec<TriggerInstance> codec() {
+		return CODEC;
 	}
 
 	public void trigger(ServerPlayer player, ItemStack stack, int layer) {
 		this.trigger(player, (ins) -> ins.matches(stack, layer));
 	}
 
-	public static SteamTrigger.TriggerInstance steam(TagKey<Item> tag) {
-		return new SteamTrigger.TriggerInstance(ContextAwarePredicate.ANY,
+	public Criterion<SteamTrigger.TriggerInstance> steam(TagKey<Item> tag) {
+		return new Criterion<>(this, new SteamTrigger.TriggerInstance(Optional.empty(),
 				ItemPredicate.Builder.item().of(tag).build(),
-				MinMaxBounds.Ints.ANY);
+				MinMaxBounds.Ints.ANY));
 	}
 
-	public static SteamTrigger.TriggerInstance steam(MinMaxBounds.Ints layer) {
-		return new SteamTrigger.TriggerInstance(ContextAwarePredicate.ANY,
-				ItemPredicate.ANY, layer);
+	public Criterion<SteamTrigger.TriggerInstance> steam(MinMaxBounds.Ints layer) {
+		return new Criterion<>(this, new SteamTrigger.TriggerInstance(Optional.empty(), ItemPredicate.Builder.item().build(), layer));
 	}
 
-	public static class TriggerInstance extends AbstractCriterionTriggerInstance {
-
-		private final ItemPredicate item;
-		private final MinMaxBounds.Ints rack;
-
-		public TriggerInstance(ContextAwarePredicate pPlayer, ItemPredicate pItem, MinMaxBounds.Ints rack) {
-			super(SteamTrigger.ID, pPlayer);
-			this.item = pItem;
-			this.rack = rack;
-		}
-
+	public record TriggerInstance(
+			Optional<ContextAwarePredicate> player, ItemPredicate item, MinMaxBounds.Ints rack
+	) implements SimpleInstance {
 
 		public boolean matches(ItemStack pItem, int layer) {
-			return this.item.matches(pItem) && rack.matches(layer);
+			return this.item.test(pItem) && rack.matches(layer);
 		}
-
-		public JsonObject serializeToJson(SerializationContext pConditions) {
-			JsonObject jsonobject = super.serializeToJson(pConditions);
-			jsonobject.add("item", this.item.serializeToJson());
-			jsonobject.add("rack", this.rack.serializeToJson());
-			return jsonobject;
-		}
-
 	}
 
 }

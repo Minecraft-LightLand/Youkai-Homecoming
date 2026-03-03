@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.init.food;
 
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.youkaishomecoming.content.block.food.BowlBlock;
 import dev.xkmc.youkaishomecoming.content.block.food.PotFoodBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.large.LargeCookingPotBlock;

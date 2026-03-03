@@ -2,7 +2,6 @@ package dev.xkmc.youkaishomecoming.content.pot.table.recipe;
 
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
@@ -11,8 +10,8 @@ import java.util.List;
 @SerialClass
 public class FixedCuisineRecipe extends BaseCuisineRecipe<FixedCuisineRecipe> {
 
-	public FixedCuisineRecipe(ResourceLocation id) {
-		super(id, YHBlocks.CUISINE_FIXED.get());
+	public FixedCuisineRecipe() {
+		super(YHBlocks.CUISINE_FIXED.get());
 	}
 
 	@Override
@@ -22,7 +21,7 @@ public class FixedCuisineRecipe extends BaseCuisineRecipe<FixedCuisineRecipe> {
 
 	@Override
 	public boolean matches(CuisineInv inv, Level level) {
-		return inv.base().equals(base) && inv.getContainerSize() == 0;
+		return inv.base().equals(base) && inv.size() == 0;
 	}
 
 	@Override

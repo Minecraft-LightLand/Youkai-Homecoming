@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.block.food;
 
+import com.mojang.serialization.MapCodec;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
+import dev.xkmc.l2core.serial.loot.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.block.furniture.LeftClickBlock;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
 import net.minecraft.core.BlockPos;
@@ -11,7 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -68,8 +69,7 @@ public class BottleBlock extends HorizontalDirectionalBlock implements LeftClick
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		ItemStack stack = player.getItemInHand(hand);
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (stack.is(this.asItem())) {
 			int count = state.getValue(COUNT);
 			if (count < 4) {
@@ -80,10 +80,10 @@ public class BottleBlock extends HorizontalDirectionalBlock implements LeftClick
 					}
 					level.playSound(null, pos, SoundEvents.GLASS_PLACE, SoundSource.BLOCKS, 1, 1);
 				}
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return super.use(state, level, pos, player, hand, hit);
+		return super.useItemOn(stack, state, level, pos, player, hand, hit);
 	}
 
 	@Override
@@ -133,5 +133,9 @@ public class BottleBlock extends HorizontalDirectionalBlock implements LeftClick
 		});
 	}
 
+	@Override
+	protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+		return null;
+	}
 
 }

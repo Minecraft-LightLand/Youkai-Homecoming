@@ -23,10 +23,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.wrapper.CombinedInvWrapper;
 import net.neoforged.neoforge.items.wrapper.EmptyItemHandler;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModParticleTypes;
@@ -290,12 +290,8 @@ public class SteamerBlockEntity extends BaseBlockEntity
 		return List.of();
 	}
 
-	@Override
-	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-		if (cap == ForgeCapabilities.ITEM_HANDLER) {
-			return LazyOptional.of(this::getCombinedHandler).cast();
-		}
-		return super.getCapability(cap, side);
+	public @Nullable IItemHandler getItemCap(@Nullable Direction dir) {
+		return getCombinedHandler();
 	}
 
 }

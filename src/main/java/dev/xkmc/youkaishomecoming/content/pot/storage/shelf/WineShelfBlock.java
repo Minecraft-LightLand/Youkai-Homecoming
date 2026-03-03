@@ -2,29 +2,30 @@ package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
-public class WineShelfBlock implements OnClickBlockMethod {
+public class WineShelfBlock implements UseItemOnBlockMethod {
 
 	public static final BlockMethod BE = new BlockEntityBlockMethodImpl<>(YHBlocks.WINE_SHELF_BE, WineShelfBlockEntity.class);
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		var dir = state.getValue(BlockTemplates.HORIZONTAL_FACING);
 		if (hit.getDirection() == dir) {
 			if (level.getBlockEntity(pos) instanceof WineShelfBlockEntity be) {
@@ -33,11 +34,11 @@ public class WineShelfBlock implements OnClickBlockMethod {
 				int x = Mth.clamp((int) ((-vec.x + 0.5) * 3), 0, 2);
 				int y = Mth.clamp((int) ((-vec.y + 0.5) * 3), 0, 2);
 				if (be.click(player, hand, x + y * 3)) {
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				}
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	public static void buildModels(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {

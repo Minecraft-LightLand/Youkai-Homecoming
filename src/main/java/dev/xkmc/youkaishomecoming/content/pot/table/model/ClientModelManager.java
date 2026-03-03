@@ -3,9 +3,10 @@ package dev.xkmc.youkaishomecoming.content.pot.table.model;
 import com.google.gson.*;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
-import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.util.GsonHelper;
@@ -59,7 +60,11 @@ public class ClientModelManager extends ModelHolderManager {
 				JsonObject obj = GsonHelper.fromJson(GSON, reader, JsonObject.class);
 				JsonArray entryList = obj.get("entries").getAsJsonArray();
 				for (JsonElement entry : entryList) {
-					ResourceLocation loc = new ResourceLocation(entry.getAsString());
+					ResourceLocation loc = ResourceLocation.tryParse(entry.getAsString());
+					if (loc == null) {
+						YoukaisHomecoming.LOGGER.error("Couldn't parse model name " + entry.getAsString());
+						continue;
+					}
 					list.remove(loc);
 					list.add(loc);
 				}
@@ -68,7 +73,7 @@ public class ClientModelManager extends ModelHolderManager {
 			}
 		}
 		for (var e : list) {
-			event.register(e);
+			event.register(ModelResourceLocation.standalone(e));
 		}
 	}
 

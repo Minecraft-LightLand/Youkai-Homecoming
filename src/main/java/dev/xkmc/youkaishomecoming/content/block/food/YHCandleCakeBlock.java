@@ -3,6 +3,7 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -117,8 +118,13 @@ public class YHCandleCakeBlock extends AbstractCandleBlock {
 		return true;
 	}
 
-	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+	public boolean isPathfindable(BlockState state, PathComputationType type) {
 		return false;
+	}
+
+	@Override
+	protected MapCodec<? extends AbstractCandleBlock> codec() {
+		return null;
 	}
 
 }

@@ -1,9 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
+import dev.xkmc.l2core.base.effects.EffectBuilder;
+import dev.xkmc.youkaishomecoming.content.item.food.TooltipUtil;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -13,7 +14,9 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -23,21 +26,20 @@ public class SlipBottleItem extends YHDrinkItem {
 	public static final FoodProperties NONE = new FoodProperties.Builder().build();
 
 	public static boolean isSlipContainer(ItemStack stack) {
-		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		return handler.isPresent() && handler.get() instanceof SlipFluidWrapper;
-
+		var handler = stack.getCapability(Capabilities.FluidHandler.ITEM);
+		return handler instanceof SlipFluidWrapper;
 	}
 
 	public static ItemStack drain(ItemStack stack) {
-		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return stack;
+		var handler = stack.getCapability(Capabilities.FluidHandler.ITEM);
+		if (!(handler instanceof SlipFluidWrapper slip)) return stack;
 		slip.drain(50, IFluidHandler.FluidAction.EXECUTE);
 		return slip.getContainer();
 	}
 
 	public static ItemStack getContentStack(ItemStack stack) {
-		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return ItemStack.EMPTY;
+		var handler = stack.getCapability(Capabilities.FluidHandler.ITEM);
+		if (!(handler instanceof SlipFluidWrapper slip)) return ItemStack.EMPTY;
 		if (slip.getFluid().getFluid() instanceof YHFluid fluid) {
 			return fluid.type.asStack(slip.getFluid().getAmount() / 50);
 		}
@@ -46,47 +48,38 @@ public class SlipBottleItem extends YHDrinkItem {
 
 	public SlipBottleItem(Properties builder) {
 		super(builder);
-	}
-
-	@Override
-	public boolean isEdible() {
-		return true;
+		SlipFluidWrapper.add(this);
 	}
 
 	@Override
 	public Component getName(ItemStack stack) {
 		var fluid = getFluid(stack);
 		if (fluid.isEmpty()) return super.getName(stack);
-		return YHLangData.FLASK_OF.get(fluid.getDisplayName());
+		return YHLangData.FLASK_OF.get(fluid.getHoverName());
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
 		var food = getFoodProperties(stack, player);
-		if (food == null || food == NONE || food.getEffects().isEmpty())
+		if (food == null || food == NONE || food.effects().isEmpty())
 			return InteractionResultHolder.pass(stack);
 		return super.use(level, player, hand);
 	}
 
 	@Override
-	public @Nullable FoodProperties getFoodProperties() {
-		return NONE;
-	}
-
-	@Override
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
-		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		if (handler.isEmpty()) return NONE;
-		var fluid = handler.get().getFluidInTank(0);
+		var handler = stack.getCapability(Capabilities.FluidHandler.ITEM);
+		if (handler == null) return NONE;
+		var fluid = handler.getFluidInTank(0);
 		if (fluid.isEmpty()) return NONE;
 		if (fluid.getFluid() instanceof YHFluid sake) {
 			var food = sake.type.asItem().getDefaultInstance().getFoodProperties(entity);
 			if (food == null) return NONE;
 			var builder = new FoodProperties.Builder();
-			if (food.canAlwaysEat()) builder.alwaysEat();
-			for (var e : food.getEffects()) {
-				var ins = e.getFirst();
+			if (food.canAlwaysEat()) builder.alwaysEdible();
+			for (var e : food.effects()) {
+				var ins = e.effect();
 				var ans = new EffectBuilder(ins);
 				if (ins.getEffect() == YHEffects.DRUNK.get()) {
 					int amp = ins.getAmplifier() + 1;
@@ -95,7 +88,7 @@ public class SlipBottleItem extends YHDrinkItem {
 				} else {
 					ans.setDuration(ins.getDuration() / 5);
 				}
-				builder.effect(() -> ans.ins, e.getSecond());
+				builder.effect(() -> ans.ins, e.probability());
 			}
 			return builder.build();
 		}
@@ -104,8 +97,8 @@ public class SlipBottleItem extends YHDrinkItem {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
-		var handler = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();
-		if (handler.isEmpty() || !(handler.get() instanceof SlipFluidWrapper slip)) return stack;
+		var handler = stack.getCapability(Capabilities.FluidHandler.ITEM);
+		if (!(handler instanceof SlipFluidWrapper slip)) return stack;
 		var fluid = slip.getFluid();
 		super.finishUsingItem(stack, level, user);
 		slip.getContainer().setCount(1);
@@ -115,31 +108,24 @@ public class SlipBottleItem extends YHDrinkItem {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack, LivingEntity user) {
 		return 10;
 	}
 
-	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-		if (this instanceof SlipBottleItem)
-			return new SlipFluidWrapper(stack);
-		else return super.initCapabilities(stack, nbt);
-	}
-
 	public static FluidStack getFluid(ItemStack stack) {
-		return stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve()
-				.map(h -> h.getFluidInTank(0)).orElse(FluidStack.EMPTY);
+		var cap = stack.getCapability(Capabilities.FluidHandler.ITEM);
+		return cap == null ? FluidStack.EMPTY : cap.getFluidInTank(0);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		var fluid = getFluid(stack);
 		if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake) {
 			list.add(YHLangData.FLASK_CONTENT.get(sake.getFluidType().getDescription()));
 			int amount = fluid.getAmount();
 			if (amount % 50 == 0 && amount > 0 && amount < 1000)
 				list.add(YHLangData.FLASK_USE.get(amount / 50, 20));
-			if (sake.type.asStack(1).isEdible()) {
+			if (sake.type.asStack(1).getFoodProperties(TooltipUtil.getPlayer()) != null) {
 				list.add(YHLangData.FLASK_INFO_DRINK.get());
 			} else {
 				list.add(YHLangData.FLASK_INFO_SAUCE.get());

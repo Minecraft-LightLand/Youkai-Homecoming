@@ -53,7 +53,7 @@ public class BasinBlock implements FallOnBlockMethod, ShapeBlockMethod, UseItemO
 		if (level.getBlockEntity(pos) instanceof BasinBlockEntity be) {
 			be.process();
 			if (entity instanceof ServerPlayer sp) {
-				YHCriteriaTriggers.BASIN.trigger(sp);
+				YHCriteriaTriggers.BASIN.get().trigger(sp);
 			}
 		}
 		return false;

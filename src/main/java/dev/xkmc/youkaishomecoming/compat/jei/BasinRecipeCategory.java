@@ -1,17 +1,17 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
+import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.GuiGraphics;
@@ -45,7 +45,7 @@ public class BasinRecipeCategory extends BaseRecipeCategory<SimpleBasinRecipe, B
 		if (recipe.output.getFluid() instanceof YHFluid sake) {
 			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addItemStack(sake.type.asStack(sake.type.count()));
 		} else {
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.output));
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.output));
 		}
 	}
 

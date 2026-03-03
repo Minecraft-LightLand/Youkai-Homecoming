@@ -2,19 +2,18 @@ package dev.xkmc.youkaishomecoming.content.pot.tank;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.CreateBlockStateBlockMethod;
 import dev.xkmc.l2modularblock.mult.DefaultStateBlockMethod;
-import dev.xkmc.l2modularblock.mult.OnClickBlockMethod;
 import dev.xkmc.l2modularblock.mult.PlacementBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseWithoutItemBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.util.VoxelBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -33,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class CopperFaucetBlock implements
 		CreateBlockStateBlockMethod, DefaultStateBlockMethod, PlacementBlockMethod,
-		OnClickBlockMethod, ShapeBlockMethod {
+		UseWithoutItemBlockMethod, ShapeBlockMethod {
 
 	public static final BlockMethod INS = new CopperFaucetBlock();
 	public static final BlockMethod TE = new BlockEntityBlockMethodImpl<>(YHBlocks.FAUCET_BE, CopperFaucetBlockEntity.class);
@@ -77,7 +76,7 @@ public class CopperFaucetBlock implements
 	}
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (level.getBlockEntity(pos) instanceof CopperFaucetBlockEntity be) {
 			return be.activate() ? InteractionResult.SUCCESS : InteractionResult.PASS;
 		}

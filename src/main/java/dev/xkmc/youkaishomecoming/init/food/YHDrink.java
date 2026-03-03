@@ -5,13 +5,13 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.xkmc.youkaishomecoming.content.item.fluid.*;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
@@ -44,17 +44,17 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(YHEffects.BREATHING, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	CORNFLOWER_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
+			new EffectEntry(MobEffects.REGENERATION, 200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	TEA_MOCHA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SAIDI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
+			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SAKURA_HONEY_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 400, 0, 1),
-			new EffectEntry(() -> MobEffects.REGENERATION, 400, 0, 1)
+			new EffectEntry(MobEffects.MOVEMENT_SPEED, 400, 0, 1),
+			new EffectEntry(MobEffects.REGENERATION, 400, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	GENMAI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
@@ -70,7 +70,7 @@ public enum YHDrink implements IYHFluidHolder {
 	), YHTagGen.SAKE),
 	MEAD(FoodType.BOTTLE, 0xfffbe8a6, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
+			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
 	), YHTagGen.SAKE),
 	KIKU(FoodType.SAKE, 0xffd5d6b8, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1)
@@ -80,19 +80,19 @@ public enum YHDrink implements IYHFluidHolder {
 	), YHTagGen.SAKE),
 	KAPPA_VILLAGE(FoodType.SAKE, 0xffd5d6b8, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 0.5f)
+			new EffectEntry(MobEffects.WATER_BREATHING, 1200, 0, 0.5f)
 	), YHTagGen.SAKE),
 	SUIGEI(FoodType.SAKE, 0xffe3f9fb, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
-			new EffectEntry(() -> MobEffects.WATER_BREATHING, 1200, 0, 1)
+			new EffectEntry(MobEffects.WATER_BREATHING, 1200, 0, 1)
 	), YHTagGen.SAKE),
 	DASSAI(FoodType.SAKE, 0xffa86f64, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(() -> MobEffects.DIG_SPEED, 1200, 2, 1)
+			new EffectEntry(MobEffects.DIG_SPEED, 1200, 2, 1)
 	), YHTagGen.SAKE),
 	TENGU_TANGO(FoodType.SAKE, 0xffad6843, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 1, 1),
-			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 2, 1)
+			new EffectEntry(MobEffects.MOVEMENT_SPEED, 1200, 2, 1)
 	), YHTagGen.SAKE),
 	FULL_MOONS_EVE(FoodType.SAKE, 0xfff3fafb, List.of(
 			new EffectEntry(YHEffects.DRUNK, 1200, 0, 1),
@@ -185,7 +185,7 @@ public enum YHDrink implements IYHFluidHolder {
 	public Item getContainer() {
 		Item ans = item.get().getCraftingRemainingItem();
 		if (ans == Items.BAMBOO) {
-			ans = ForgeRegistries.ITEMS.getValue(new ResourceLocation("bamboo"));
+			ans = BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace("bamboo"));
 		}
 		if (ans == null) return Items.AIR;
 		return ans;

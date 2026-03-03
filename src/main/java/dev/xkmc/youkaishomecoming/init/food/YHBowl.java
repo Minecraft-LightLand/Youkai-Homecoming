@@ -27,7 +27,7 @@ public enum YHBowl implements ItemLike {
 			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	POOR_GOD_SOUP(FoodType.BOWL, 6, 0.5f, List.of(
 			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
-			new EffectEntry(() -> MobEffects.UNLUCK, 3600, 0, 0.3f)
+			new EffectEntry(MobEffects.UNLUCK, 3600, 0, 0.3f)
 	), DietTagGen.VEGETABLES.tag),
 
 	HIGAN_SOUP(FoodType.IRON_BOWL, 8, 0.5f,
@@ -40,7 +40,7 @@ public enum YHBowl implements ItemLike {
 	POWER_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 6000, 1, 1)
+			new EffectEntry(MobEffects.DAMAGE_BOOST, 6000, 1, 1)
 	), YHTagGen.IRON_BOWL_FOOD, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	POTATO_SOUP(FoodType.IRON_BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
@@ -57,7 +57,7 @@ public enum YHBowl implements ItemLike {
 	HOKKAIDO_SALMON_HOTPOT(FoodType.IRON_BOWL, 14, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
-			new EffectEntry(() -> MobEffects.DIG_SPEED, 6000, 0, 1)
+			new EffectEntry(MobEffects.DIG_SPEED, 6000, 0, 1)
 	), YHTagGen.IRON_BOWL_FOOD, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag, DietTagGen.GRAINS.tag),
 
 	TUTU_CONGEE(FoodType.BAMBOO_BOWL, 8, 0.6f, List.of(

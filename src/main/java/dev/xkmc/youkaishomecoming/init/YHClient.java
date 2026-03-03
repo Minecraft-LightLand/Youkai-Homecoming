@@ -32,10 +32,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
-import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
-import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
+import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 import java.util.List;
 import java.util.Map;
@@ -55,9 +53,9 @@ public class YHClient {
 	}
 
 	@SubscribeEvent
-	public static void registerOverlay(RegisterGuiOverlaysEvent event) {
-		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "info_tile", new TileInfoDisplay());
-		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "cuisine_hint", new HintOverlay());
+	public static void registerOverlay(RegisterGuiLayersEvent event) {
+		event.registerAbove(VanillaGuiLayers.CROSSHAIR, YoukaisHomecoming.loc("info_tile"), new TileInfoDisplay());
+		event.registerAbove(VanillaGuiLayers.CROSSHAIR, YoukaisHomecoming.loc("cuisine_hint"), new HintOverlay());
 	}
 
 	@SubscribeEvent

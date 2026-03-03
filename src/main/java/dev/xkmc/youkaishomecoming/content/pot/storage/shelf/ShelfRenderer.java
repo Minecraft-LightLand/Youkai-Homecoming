@@ -2,7 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.storage.shelf;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import dev.xkmc.l2modularblock.BlockProxy;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
@@ -16,7 +16,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.client.ForgeHooksClient;
+import net.neoforged.neoforge.client.ClientHooks;
 import net.neoforged.neoforge.client.model.data.ModelData;
 
 public class ShelfRenderer implements BlockEntityRenderer<WineShelfBlockEntity> {
@@ -55,7 +55,7 @@ public class ShelfRenderer implements BlockEntityRenderer<WineShelfBlockEntity> 
 				PoseStack.Pose mat = pose.last();
 				RANDOM.setSeed(42);
 				for (RenderType rt : model.getRenderTypes(state, RANDOM, ModelData.EMPTY)) {
-					renderer.renderModel(mat, buffer.getBuffer(ForgeHooksClient.getEntityRenderType(rt, false)),
+					renderer.renderModel(mat, buffer.getBuffer(ClientHooks.getEntityRenderType(rt, false)),
 							state, model, 1F, 1F, 1F, light, overlay, ModelData.EMPTY, rt);
 				}
 				pose.popPose();

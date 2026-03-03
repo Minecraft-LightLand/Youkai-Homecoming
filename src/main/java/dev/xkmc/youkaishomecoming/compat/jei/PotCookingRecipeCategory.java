@@ -1,6 +1,6 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
-import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
+import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.youkaishomecoming.content.block.food.PotFoodBlock;
 import dev.xkmc.youkaishomecoming.content.pot.cooking.core.PotCookingRecipe;
@@ -98,8 +98,8 @@ public class PotCookingRecipeCategory extends BaseRecipeCategory<PotCookingRecip
 					hash = 0;
 				} else {
 					hash = BuiltInRegistries.ITEM.getId(stack.getItem());
-					var tag = stack.getTag();
-					if (tag != null) {
+					var tag = stack.getComponentsPatch();
+					if (!tag.isEmpty()) {
 						hash += tag.hashCode() * 15;
 					}
 				}

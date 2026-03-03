@@ -2,9 +2,10 @@ package dev.xkmc.youkaishomecoming.content.pot.storage.bottle;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import dev.xkmc.l2modularblock.BlockProxy;
-import dev.xkmc.l2modularblock.DelegateBlock;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
+import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -13,8 +14,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -26,7 +28,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import org.jetbrains.annotations.Nullable;
 
-public class SauceRackBlock implements ShapeBlockMethod, OnClickBlockMethod {
+public class SauceRackBlock implements ShapeBlockMethod, UseItemOnBlockMethod {
 
 	public static final BlockMethod BE = new BlockEntityBlockMethodImpl<>(YHBlocks.SAUCE_RACK_BE, SauceRackBlockEntity.class);
 
@@ -54,17 +56,17 @@ public class SauceRackBlock implements ShapeBlockMethod, OnClickBlockMethod {
 	}
 
 	@Override
-	public InteractionResult onClick(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		var dir = state.getValue(BlockTemplates.HORIZONTAL_FACING);
 		if (level.getBlockEntity(pos) instanceof SauceRackBlockEntity be) {
 			var vec = hit.getLocation().subtract(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5)
 					.yRot(-(float) ((180 - dir.toYRot()) / 180 * Math.PI));
 			int x = Mth.clamp((int) ((-vec.x + 0.5) * 3), 0, 2);
 			if (be.click(player, hand, x)) {
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	public static void buildModels(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockstateProvider pvd) {

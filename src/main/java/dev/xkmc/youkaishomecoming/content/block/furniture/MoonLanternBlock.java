@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -47,7 +48,7 @@ public class MoonLanternBlock extends LanternBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, Item.TooltipContext level, List<Component> list, TooltipFlag flag) {
 		list.add(YHLangData.MOON_LANTERN_PLACE.get());
 		list.add(YHLangData.MOON_LANTERN_HOLD.get());
 	}
