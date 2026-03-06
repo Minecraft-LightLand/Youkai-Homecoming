@@ -16,6 +16,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -90,7 +91,7 @@ public class TeaCropBlock extends DoubleCropBlock implements HarvestableBlock {
 
 	@Deprecated
 	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
-		if (state.getValue(AGE) != getMaxAge()) {
+		if (state.getValue(AGE) != getMaxAge() && player.getMainHandItem().is(Items.BONE_MEAL)) {
 			return InteractionResult.PASS;
 		}
 		if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {

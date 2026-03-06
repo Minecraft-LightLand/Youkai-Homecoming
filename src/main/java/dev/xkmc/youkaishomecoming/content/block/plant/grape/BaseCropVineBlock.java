@@ -67,7 +67,7 @@ public abstract class BaseCropVineBlock extends BushBlock implements Harvestable
 	@Nullable
 	protected abstract BlockPos getTrunk(BlockState state, BlockGetter level, BlockPos pos);
 
-	public abstract ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state);
+	public abstract ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state);
 
 	@Override
 	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {

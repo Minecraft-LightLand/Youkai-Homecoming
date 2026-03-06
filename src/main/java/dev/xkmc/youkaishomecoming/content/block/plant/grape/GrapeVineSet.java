@@ -23,6 +23,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -136,7 +137,7 @@ public class GrapeVineSet {
 		}
 
 		@Override
-		public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+		public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 			return crop.getSeed().getDefaultInstance();
 		}
 
@@ -192,7 +193,7 @@ public class GrapeVineSet {
 		}
 
 		@Override
-		public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+		public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 			return crop.getSeed().getDefaultInstance();
 		}
 

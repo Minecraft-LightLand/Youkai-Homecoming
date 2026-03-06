@@ -47,7 +47,7 @@ public class YoukaisHomecoming {
 
 	public static final String MODID = "youkaisfeasts";
 	public static final Logger LOGGER = LogUtils.getLogger();
-	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
+	public static final L2Registrate REGISTRATE = new YHRegistrate(MODID);
 	public static final Reg REG = new Reg(MODID);
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(MODID, 2);

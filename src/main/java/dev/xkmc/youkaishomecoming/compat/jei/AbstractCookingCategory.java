@@ -38,8 +38,8 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 		builder.addOutputSlot(61, 19).setOutputSlotBackground().addItemStack(recipe.value().getResultItem(Minecraft.getInstance().level.registryAccess()));
 	}
 
-	public void createRecipeExtras(IRecipeExtrasBuilder builder, T recipe, IFocusGroup focuses) {
-		int cookTime = recipe.getCookingTime();
+	public void createRecipeExtras(IRecipeExtrasBuilder builder, RecipeHolder<T> recipe, IFocusGroup focuses) {
+		int cookTime = recipe.value().getCookingTime();
 		if (cookTime <= 0) {
 			cookTime = this.regularCookTime;
 		}
@@ -50,8 +50,8 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 		this.addCookTime(builder, recipe);
 	}
 
-	protected void addExperience(IRecipeExtrasBuilder builder, T recipe) {
-		float experience = recipe.getExperience();
+	protected void addExperience(IRecipeExtrasBuilder builder, RecipeHolder<T> recipe) {
+		float experience = recipe.value().getExperience();
 		if (experience > 0.0F) {
 			Component experienceString = Component.translatable("gui.jei.category.smelting.experience", experience);
 			builder.addText(experienceString, this.getWidth() - 20, 10)
@@ -61,8 +61,8 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 
 	}
 
-	protected void addCookTime(IRecipeExtrasBuilder builder, T recipe) {
-		int cookTime = recipe.getCookingTime();
+	protected void addCookTime(IRecipeExtrasBuilder builder, RecipeHolder<T> recipe) {
+		int cookTime = recipe.value().getCookingTime();
 		if (cookTime <= 0) {
 			cookTime = this.regularCookTime;
 		}
