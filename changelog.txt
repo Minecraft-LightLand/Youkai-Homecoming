@@ -1,3 +1,7 @@
+1.0.2
+- Fix fermentation recipes that takes no item
+- Improve fermentation JEI display
+
 1.0.1
 - Allow object migration from Youkai's Homecoming
 - Fix JEI for Steaming and Drying

@@ -32,4 +32,10 @@ public final class FermentationDummyContainer implements RecipeInput {
 	public int size() {
 		return items.getContainerSize();
 	}
+
+	@Override
+	public boolean isEmpty() {
+		return items.isEmpty() && fluids.isEmpty();
+	}
+
 }
