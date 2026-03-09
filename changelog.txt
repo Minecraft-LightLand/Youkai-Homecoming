@@ -1,3 +1,6 @@
+1.0.3
+- Fix cuisine board crashing on cutting
+
 1.0.2
 - Fix fermentation recipes that takes no item
 - Improve fermentation JEI display

@@ -143,7 +143,7 @@ dependencies {
 
     implementation "dev.xkmc:cuisinedelight:1.2.1-slim"
     implementation "dev.xkmc:fruitsdelight:1.2.12-slim"
-    implementation "curse.maven:farmers-delight-398521:5566383"
+    implementation "curse.maven:farmers-delight-398521:7596366"
     compileOnly "curse.maven:thirst-was-taken-679270:5568715"
     implementation "curse.maven:create-328085:6255497"
     implementation "curse.maven:appleskin-248787:6616291"

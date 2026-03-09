@@ -12,18 +12,14 @@ import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
-import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
+import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipeInput;
 import vectorwing.farmersdelight.common.registry.ModRecipeTypes;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
 
@@ -46,25 +42,24 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 		if (level == null) return false;
 		var current = getModel().complete(level);
 		if (current.isPresent()) {
-			var cont = new SingleRecipeInput(current.get());
-			var list = level.getRecipeManager().getRecipesFor(ModRecipeTypes.CUTTING.get(), cont, level);
-			for (var recipe : list) {
-				if (recipe.value().getTool().test(stack)) {
-					if (!level.isClientSide()) {
-						int fortune = EnchHelper.getLv(stack, Enchantments.FORTUNE);
-						for (ItemStack drop : recipe.value().rollResults(level.random, fortune)) {
-							ItemUtils.spawnItemEntity(level, drop.copy(),
-									worldPosition.getX() + 0.5F,
-									worldPosition.getY() + 0.2,
-									worldPosition.getZ() + 0.5F,
-									0, 0, 0);
-						}
-						model = null;
-						contents.clear();
-						notifyTile();
+			var cont = new CuttingBoardRecipeInput(current.get(), stack);
+			var opt = level.getRecipeManager().getRecipeFor(ModRecipeTypes.CUTTING.get(), cont, level);
+			if (opt.isPresent()) {
+				if (!level.isClientSide()) {
+					var recipe = opt.get().value();
+					int fortune = EnchHelper.getLv(stack, Enchantments.FORTUNE);
+					for (ItemStack drop : recipe.rollResults(level.random, fortune)) {
+						ItemUtils.spawnItemEntity(level, drop.copy(),
+								worldPosition.getX() + 0.5F,
+								worldPosition.getY() + 0.2,
+								worldPosition.getZ() + 0.5F,
+								0, 0, 0);
 					}
-					return true;
+					model = null;
+					contents.clear();
+					notifyTile();
 				}
+				return true;
 			}
 		}
 		return false;
