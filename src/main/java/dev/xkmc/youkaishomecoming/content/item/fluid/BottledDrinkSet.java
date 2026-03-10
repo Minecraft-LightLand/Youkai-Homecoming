@@ -11,14 +11,14 @@ import net.minecraft.world.level.material.PushReaction;
 public class BottledDrinkSet extends BottleTexture {
 
 	public final BlockEntry<BottleBlock> bottle;
-	public final IYHFluidHolder drink;
+	public final IYHFluidBottled drink;
 
 	public BottledDrinkSet(YHDrink drink) {
 		this(drink, drink.getName() + "_bottle", drink.folder);
 
 	}
 
-	public BottledDrinkSet(IYHFluidHolder drink, String name, String folder) {
+	public BottledDrinkSet(IYHFluidBottled drink, String name, String folder) {
 		this.drink = drink;
 		bottle = YoukaisHomecoming.REGISTRATE.block(name, BottleBlock::new)
 				.initialProperties(() -> Blocks.GLASS_PANE)
@@ -36,7 +36,7 @@ public class BottledDrinkSet extends BottleTexture {
 	}
 
 	@Override
-	public IYHFluidHolder holder() {
+	public IYHFluidBottled holder() {
 		return drink;
 	}
 

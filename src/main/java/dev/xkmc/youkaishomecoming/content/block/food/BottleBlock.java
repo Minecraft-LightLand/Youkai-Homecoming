@@ -5,7 +5,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.youkaishomecoming.content.block.variants.LeftClickBlock;
-import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidHolder;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidBottled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -121,7 +121,7 @@ public class BottleBlock extends HorizontalDirectionalBlock implements LeftClick
 		);
 	}
 
-	public static void buildModel(DataGenContext<Block, BottleBlock> ctx, RegistrateBlockstateProvider pvd, IYHFluidHolder drink) {
+	public static void buildModel(DataGenContext<Block, BottleBlock> ctx, RegistrateBlockstateProvider pvd, IYHFluidBottled drink) {
 		String folder = drink.bottleTextureFolder();
 		pvd.horizontalBlock(ctx.get(), state -> {
 			var count = state.getValue(COUNT);
