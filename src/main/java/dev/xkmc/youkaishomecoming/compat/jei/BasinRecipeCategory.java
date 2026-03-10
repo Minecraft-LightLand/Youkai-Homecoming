@@ -1,9 +1,9 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
-import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.pot.basin.SimpleBasinRecipe;
-import dev.xkmc.youkaishomecoming.content.pot.table.recipe.CuisineRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
@@ -43,8 +43,8 @@ public class BasinRecipeCategory extends BaseRecipeCategory<SimpleBasinRecipe, B
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
 				.setStandardSlotBackground()
 				.addIngredients(recipe.input);
-		if (recipe.output.getFluid() instanceof YHFluid sake) {
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addItemStack(sake.type.asStack(sake.type.count()));
+		if (YHFluidHandler.of(recipe.output) instanceof IYHFluidItem sake) {
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addItemStack(sake.toStack(recipe.output));
 		} else {
 			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.output));
 		}

@@ -2,7 +2,9 @@ package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2library.serial.recipe.BaseRecipeCategory;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
-import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidBottled;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -75,11 +77,12 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 		if (!recipe.inputFluid.isEmpty()) {
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 1;
-			if (recipe.inputFluid.getFluid() instanceof YHFluid f) {
-				builder.addSlot(RecipeIngredientRole.INPUT, x, y).addItemStack(f.type.asStack(recipe.inputFluid.getAmount() / f.type.amount()));
+			if (YHFluidHandler.of(recipe.inputFluid) instanceof IYHFluidItem f) {
+				builder.addSlot(RecipeIngredientRole.INPUT, x, y).addItemStack(f.toStack(recipe.inputFluid));
 			} else {
 				builder.addSlot(RecipeIngredientRole.INPUT, x, y).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.inputFluid));
-			}}
+			}
+		}
 		n = 0;
 		for (var stack : recipe.results) {
 			if (stack.isEmpty()) continue;
@@ -91,12 +94,12 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 		if (!recipe.outputFluid.isEmpty()) {
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 91;
-			if (recipe.outputFluid.getFluid() instanceof YHFluid sake) {
+			if (YHFluidHandler.of(recipe.outputFluid) instanceof IYHFluidBottled sake) {
 				var list = new ArrayList<ItemStack>();
 				var conts = new ArrayList<ItemStack>();
-				list.add(sake.type.asStack(sake.type.count()));
-				conts.add(new ItemStack(sake.type.getContainer(), sake.type.count()));
-				if (sake.type.bottleSet() instanceof BottledDrinkSet set) {
+				list.add(sake.toStack(recipe.outputFluid));
+				conts.add(new ItemStack(sake.getContainer(), sake.count()));
+				if (sake.bottleSet() instanceof BottledDrinkSet set) {
 					list.add(set.bottle.asStack(1));
 					conts.add(YHItems.SAKE_BOTTLE.asStack(1));
 				}

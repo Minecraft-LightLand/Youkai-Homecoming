@@ -45,7 +45,7 @@ public class SakeFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 		if (fluidStack.isEmpty()) {
 			container = container.getCraftingRemainingItem();
 		} else if (fluidStack.getFluid() instanceof YHFluid sake) {
-			container = sake.type.asStack(fluidStack.getAmount() / sake.type.amount());
+			container = sake.type.toStack(fluidStack);
 		}
 	}
 

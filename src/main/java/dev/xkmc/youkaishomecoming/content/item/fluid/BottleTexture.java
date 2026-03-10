@@ -31,7 +31,7 @@ public abstract class BottleTexture {
 		return ing;
 	}
 
-	public abstract IYHFluidHolder holder();
+	public abstract IYHFluidBottled holder();
 
 	public abstract String bottleModel();
 
@@ -58,8 +58,8 @@ public abstract class BottleTexture {
 	public static float texture(ItemStack stack) {
 		var fluid = SlipBottleItem.getFluid(stack);
 		if (fluid.isEmpty()) return 0;
-		if (!(fluid.getFluid() instanceof YHFluid liquid)) return 0;
-		var set = liquid.type.bottleSet();
+		if (!(YHFluidHandler.of(fluid) instanceof IYHFluidBottled liquid)) return 0;
+		var set = liquid.bottleSet();
 		if (set == null) return 0;
 		return (set.index + 1) * 1f / LIST.size();
 	}

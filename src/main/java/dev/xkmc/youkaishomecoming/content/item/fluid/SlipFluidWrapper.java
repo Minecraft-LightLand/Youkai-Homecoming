@@ -30,10 +30,6 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 		return container;
 	}
 
-	public boolean canFillFluidType(FluidStack fluid) {
-		return fluid.getFluid() instanceof YHFluid;
-	}
-
 	@NotNull
 	public FluidStack getFluid() {
 		if (container.getItem() instanceof BucketBottleItem bucket) {
@@ -46,8 +42,8 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	protected void setFluid(@NotNull FluidStack fluidStack) {
 		if (fluidStack.getAmount() == getTankCapacity(0)) {
-			if (fluidStack.getFluid() instanceof YHFluid fluid) {
-				if (fluid.type.bottleSet() instanceof BottledDrinkSet set) {
+			if (YHFluidHandler.of(fluidStack) instanceof IYHFluidBottled fluid) {
+				if (fluid.bottleSet() instanceof BottledDrinkSet set) {
 					container = set.bottle.asStack();
 					return;
 				}
@@ -87,12 +83,7 @@ public class SlipFluidWrapper implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
-		if (stack.isEmpty()) return true;
-		if (!(stack.getFluid() instanceof YHFluid fluid)) return false;
-		if (fluid.type instanceof BottledFluid<?> bottle) {
-			return bottle.bottleSet() != null;
-		}
-		return fluid.type.asStack(1).isEdible();
+		return true;
 	}
 
 	@Override
