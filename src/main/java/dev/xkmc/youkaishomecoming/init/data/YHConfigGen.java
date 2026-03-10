@@ -1,11 +1,19 @@
 package dev.xkmc.youkaishomecoming.init.data;
 
+import com.simibubi.create.AllFluids;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.Create;
 import dev.xkmc.l2library.serial.config.ConfigDataProvider;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.ModelIngredientData;
 import dev.xkmc.youkaishomecoming.content.pot.table.model.VariantModelPart;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fml.ModList;
 
 import java.util.LinkedHashMap;
 
@@ -26,6 +34,18 @@ public class YHConfigGen extends ConfigDataProvider {
 			ans.ingredients.put(ent.getKey(), map);
 		}
 		collector.add(YoukaisHomecoming.INGREDIENT, YoukaisHomecoming.loc("default"), ans);
+
+		YHFluidHandler.Config map = new YHFluidHandler.Config();
+		map.simpleFluidItems.put(Fluids.LAVA, new YHFluidHandler.Config.FluidItem(
+				Items.LAVA_BUCKET, 1000, 0xffff0000));
+		collector.add(YoukaisHomecoming.FLUID_MAP, YoukaisHomecoming.loc("vanilla"), map);
+
+		if (ModList.get().isLoaded(Create.ID)) {
+			map = new YHFluidHandler.Config();
+			map.simpleFluidItems.put(AllFluids.TEA.get(), new YHFluidHandler.Config.FluidItem(
+					AllItems.BUILDERS_TEA.get(), 250, 0xffCC7459));
+			collector.add(YoukaisHomecoming.FLUID_MAP, new ResourceLocation(Create.ID, "regular"), map);
+		}
 	}
 
 }

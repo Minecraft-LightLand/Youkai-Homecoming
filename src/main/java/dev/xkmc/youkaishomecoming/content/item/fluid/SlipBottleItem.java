@@ -151,12 +151,7 @@ public class SlipBottleItem extends YHDrinkItem {
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		var fluid = getFluid(stack);
 		if (!fluid.isEmpty()) {
-			if (YHFluidHandler.of(fluid) instanceof IYHFluidItem sake) {
-				var item = sake.toStack(fluid);
-				list.add(YHLangData.FLASK_CONTENT.get(item.getHoverName().copy().withStyle(item.getRarity().getStyleModifier())));
-			} else {
-				list.add(YHLangData.FLASK_CONTENT.get(fluid.getFluid().getFluidType().getDescription().copy().withStyle(ChatFormatting.WHITE)));
-			}
+			list.add(YHLangData.FLASK_CONTENT.get(fluid.getDisplayName().copy().withStyle(ChatFormatting.WHITE)));
 			int amount = fluid.getAmount();
 			if (amount % 50 == 0 && amount > 0 && amount < 1000)
 				list.add(YHLangData.FLASK_USE.get(amount / 50, 20));

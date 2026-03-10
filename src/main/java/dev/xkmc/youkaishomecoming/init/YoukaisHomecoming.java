@@ -26,6 +26,7 @@ import dev.xkmc.youkaishomecoming.content.entity.misc.FairyIce;
 import dev.xkmc.youkaishomecoming.content.entity.misc.FrozenFrog;
 import dev.xkmc.youkaishomecoming.content.entity.youkai.CombatToClient;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleIngredient;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.pot.table.food.YHSushi;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.ModelIngredientData;
 import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
@@ -114,6 +115,7 @@ public class YoukaisHomecoming {
 	public static final RecipeBookType KETTLE = RecipeBookType.create("KETTLE");
 
 	public static final ConfigTypeEntry<ModelIngredientData> INGREDIENT = new ConfigTypeEntry<>(HANDLER, "ingredient", ModelIngredientData.class);
+	public static final ConfigTypeEntry<YHFluidHandler.Config> FLUID_MAP = new ConfigTypeEntry<>(HANDLER, "fluid_mapping", YHFluidHandler.Config.class);
 
 	public YoukaisHomecoming() {
 		Handlers.enableVanilla(Fluid.class, () -> ForgeRegistries.FLUIDS);
