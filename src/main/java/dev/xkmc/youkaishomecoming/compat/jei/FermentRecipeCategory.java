@@ -7,6 +7,7 @@ import dev.xkmc.youkaishomecoming.content.pot.ferment.SimpleFermentationRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
+import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -74,8 +75,11 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 		if (!recipe.inputFluid.isEmpty()) {
 			int y = n / 3 * 18 + 1;
 			int x = n % 3 * 18 + 1;
-			builder.addSlot(RecipeIngredientRole.INPUT, x, y).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.inputFluid));
-		}
+			if (recipe.inputFluid.getFluid() instanceof YHFluid f) {
+				builder.addSlot(RecipeIngredientRole.INPUT, x, y).addItemStack(f.type.asStack(recipe.inputFluid.getAmount() / f.type.amount()));
+			} else {
+				builder.addSlot(RecipeIngredientRole.INPUT, x, y).addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.inputFluid));
+			}}
 		n = 0;
 		for (var stack : recipe.results) {
 			if (stack.isEmpty()) continue;
@@ -89,12 +93,15 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 			int x = n % 3 * 18 + 91;
 			if (recipe.outputFluid.getFluid() instanceof YHFluid sake) {
 				var list = new ArrayList<ItemStack>();
+				var conts = new ArrayList<ItemStack>();
 				list.add(sake.type.asStack(sake.type.count()));
+				conts.add(new ItemStack(sake.type.getContainer(), sake.type.count()));
 				if (sake.type.bottleSet() instanceof BottledDrinkSet set) {
 					list.add(set.bottle.asStack(1));
+					conts.add(YHItems.SAKE_BOTTLE.asStack(1));
 				}
 				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStacks(list);
-				builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStack(new ItemStack(sake.type.getContainer(), sake.type.count()));
+				builder.addSlot(RecipeIngredientRole.INPUT, 64, 1).addItemStacks(conts);
 			} else {
 				if (!recipe.defaultContainer.isEmpty() && !recipe.defaultBottle.isEmpty()) {
 					builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(recipe.defaultBottle);
