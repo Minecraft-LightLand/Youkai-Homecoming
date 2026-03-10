@@ -1,19 +1,26 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import com.simibubi.create.Create;
+import dev.xkmc.l2library.serial.config.BaseConfig;
+import dev.xkmc.l2library.serial.config.CollectType;
+import dev.xkmc.l2library.serial.config.ConfigCollect;
+import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.youkaishomecoming.compat.create.CreateFluidHandler;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.item.MilkBottleItem;
 import vectorwing.farmersdelight.common.registry.ModItems;
+
+import java.util.LinkedHashMap;
 
 public class YHFluidHandler {
 
@@ -23,9 +30,8 @@ public class YHFluidHandler {
 		if (fluid instanceof YHFluid f) {
 			return f.type;
 		}
-		if (fluid == Fluids.LAVA || fluid == Fluids.FLOWING_LAVA) {
-			return new BucketFluid(Items.LAVA_BUCKET.getDefaultInstance(), 0xffff0000);
-		}
+		var ans = YoukaisHomecoming.FLUID_MAP.getMerged().simpleFluidItems.get(stack.getFluid());
+		if (ans != null) return ans;
 		if (fluid.is(Tags.Fluids.MILK)) {
 			return new Milk(ModItems.MILK_BOTTLE.get().getDefaultInstance(), -1);
 		}
@@ -114,6 +120,51 @@ public class YHFluidHandler {
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
 			return new FoodProperties.Builder().alwaysEat().build();
+		}
+
+	}
+
+	@SerialClass
+	public static class Config extends BaseConfig {
+
+		@SerialClass.SerialField
+		@ConfigCollect(CollectType.MAP_OVERWRITE)
+		public final LinkedHashMap<Fluid, FluidItem> simpleFluidItems = new LinkedHashMap<>();
+
+		public record FluidItem(
+				Item item, int amount, int color
+		) implements IYHFluidItem, IFluidPostEffect {
+
+			@Override
+			public int getColor() {
+				return color;
+			}
+
+			@Override
+			public Item getContainer() {
+				return item.getCraftingRemainingItem(item.getDefaultInstance()).getItem();
+			}
+
+			@Override
+			public ItemStack asStack(int count) {
+				return new ItemStack(item, count);
+			}
+
+			@Override
+			public void onConsumeSlip(LivingEntity user) {
+
+			}
+
+			@Override
+			public @Nullable FoodProperties buildFoodProperties() {
+				return item.getFoodProperties(item.getDefaultInstance(), null);
+			}
+
+			@Override
+			public int count() {
+				return 1000 / amount;
+			}
+
 		}
 
 	}
