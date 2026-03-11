@@ -1,3 +1,7 @@
+2.6.6
+- Make small structures spawn further apart
+- Allow flasks to contain other fluids, such as milk. With Create, it can also hold potions.
+
 2.6.5
 - Restore level data overwritten by MCR mods to prevent save corruption. Addressing https://github.com/MCreator/MCreator/issues/5499
 

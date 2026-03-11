@@ -61,7 +61,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 
 	private static final List<YHStructure> STRUCTURES = List.of(
 			new YHStructure(YoukaisHomecoming.loc("youkai_nest"),
-					YHBiomeTagsProvider.HAS_RUMIA_NEST, 24, 8,
+					YHBiomeTagsProvider.HAS_RUMIA_NEST, 32, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
 							new YHRuleProcessor(List.of(
@@ -76,7 +76,7 @@ public class YHDatapackRegistriesGen extends DatapackBuiltinEntriesProvider {
 									)))
 					)),
 			new YHStructure(YoukaisHomecoming.loc("cirno_nest"),
-					YHBiomeTagsProvider.HAS_CIRNO_NEST, 24, 8,
+					YHBiomeTagsProvider.HAS_CIRNO_NEST, 32, 8,
 					List.of(
 							new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE),
 							new YHRuleProcessor(List.of(
