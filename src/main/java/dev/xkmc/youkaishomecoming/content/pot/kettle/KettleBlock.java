@@ -7,7 +7,8 @@ import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.*;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
-import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -124,8 +125,8 @@ public class KettleBlock implements
 		var root = pStack.getTag();
 		if (root != null && root.contains("KettleFluid", Tag.TAG_COMPOUND)) {
 			var fluid = FluidStack.loadFluidStackFromNBT(root.getCompound("KettleFluid"));
-			if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake)
-				list.add(sake.type.asItem().getDescription());
+			if (!fluid.isEmpty() && YHFluidHandler.of(fluid) instanceof IYHFluidItem sake)
+				list.add(sake.toStack(fluid).getHoverName());
 		}
 		list.add(YHLangData.KETTLE_INFO.get());
 	}
