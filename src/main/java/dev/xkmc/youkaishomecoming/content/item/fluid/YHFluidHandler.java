@@ -127,7 +127,7 @@ public class YHFluidHandler {
 
 		@Override
 		public void appendHoverText(List<Component> list) {
-			list.add(Component.translatable("farmersdelight.tooltip.milk_bottle"));
+			list.add(Component.translatable("farmersdelight.tooltip.milk_bottle").withStyle(ChatFormatting.BLUE));
 		}
 
 	}
