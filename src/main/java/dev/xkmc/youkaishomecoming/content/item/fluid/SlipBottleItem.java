@@ -1,12 +1,10 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import dev.xkmc.l2core.base.effects.EffectBuilder;
-import dev.xkmc.youkaishomecoming.content.item.food.TooltipUtil;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -84,21 +82,23 @@ public class SlipBottleItem extends YHDrinkItem {
 			if (food == null) return NONE;
 			var builder = new FoodProperties.Builder();
 			if (food.canAlwaysEat()) builder.alwaysEdible();
-			if (food.getNutrition() > 0) {
-				builder.nutrition(Math.max(1, food.getNutrition() / 5));
-				builder.saturationMod(food.getSaturationModifier());
+			if (food.nutrition() > 0) {
+				int nut = Math.max(1, food.nutrition() / 5);
+				builder.nutrition(nut);
+				builder.saturationModifier(food.saturation() / nut / 2f);
 			}
 			for (var e : food.effects()) {
 				var ins = e.effect();
 				var ans = new EffectBuilder(new MobEffectInstance(ins));
+				var inst = ins.getEffect().value().isInstantenous();
 				if (ins.getEffect() == YHEffects.DRUNK.get()) {
 					int amp = ins.getAmplifier() + 1;
 					ans.setDuration(amp * ins.getDuration() / 5);
 					ans.setAmplifier(0);
-				} else if (!ins.getEffect().isInstantenous()) {
+				} else if (!inst) {
 					ans.setDuration(ins.getDuration() / 5);
 				}
-				builder.effect(() -> ans.ins, (ins.getEffect().isInstantenous() ? 0.2f : 1) * e.probability());
+				builder.effect(() -> ans.ins, (inst ? 0.2f : 1) * e.probability());
 			}
 			return builder.build();
 		}
@@ -134,7 +134,7 @@ public class SlipBottleItem extends YHDrinkItem {
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		var fluid = getFluid(stack);
 		if (!fluid.isEmpty()) {
-			list.add(YHLangData.FLASK_CONTENT.get(fluid.getDisplayName().copy().withStyle(ChatFormatting.WHITE)));
+			list.add(YHLangData.FLASK_CONTENT.get(fluid.getHoverName().copy().withStyle(ChatFormatting.WHITE)));
 			int amount = fluid.getAmount();
 			if (amount % 50 == 0 && amount > 0 && amount < 1000)
 				list.add(YHLangData.FLASK_USE.get(amount / 50, 20));

@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 import java.util.LinkedHashMap;
 import java.util.concurrent.CompletableFuture;
@@ -46,7 +46,7 @@ public class YHConfigGen extends ConfigDataProvider {
 			map = new YHFluidHandler.Config();
 			map.simpleFluidItems.put(AllFluids.TEA.get(), new YHFluidHandler.Config.FluidItem(
 					AllItems.BUILDERS_TEA.get(), 250, 0xffCC7459));
-			collector.add(YoukaisHomecoming.FLUID_MAP, new ResourceLocation(Create.ID, "regular"), map);
+			collector.add(YoukaisHomecoming.FLUID_MAP, ResourceLocation.fromNamespaceAndPath(Create.ID, "regular"), map);
 		}
 	}
 

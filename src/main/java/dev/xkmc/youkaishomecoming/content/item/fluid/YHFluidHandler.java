@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.content.item.fluid;
 
 import com.simibubi.create.Create;
-import dev.xkmc.l2library.serial.config.BaseConfig;
-import dev.xkmc.l2library.serial.config.CollectType;
-import dev.xkmc.l2library.serial.config.ConfigCollect;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.serial.config.BaseConfig;
+import dev.xkmc.l2core.serial.config.CollectType;
+import dev.xkmc.l2core.serial.config.ConfigCollect;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.compat.create.CreateFluidHandler;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,9 +14,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.item.MilkBottleItem;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -119,7 +120,7 @@ public class YHFluidHandler {
 
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
-			return new FoodProperties.Builder().alwaysEat().build();
+			return new FoodProperties.Builder().alwaysEdible().build();
 		}
 
 	}
@@ -127,7 +128,7 @@ public class YHFluidHandler {
 	@SerialClass
 	public static class Config extends BaseConfig {
 
-		@SerialClass.SerialField
+		@SerialField
 		@ConfigCollect(CollectType.MAP_OVERWRITE)
 		public final LinkedHashMap<Fluid, FluidItem> simpleFluidItems = new LinkedHashMap<>();
 

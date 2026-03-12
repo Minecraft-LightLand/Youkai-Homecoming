@@ -5,13 +5,13 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.content.fluids.potion.PotionFluidHandler;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IFluidPostEffect;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 
 public class CreateFluidHandler {
@@ -25,7 +25,8 @@ public class CreateFluidHandler {
 		}
 		if (stack.getFluid() == AllFluids.POTION.getSource()) {
 			var ans = PotionFluidHandler.fillBottle(Items.GLASS_BOTTLE.getDefaultInstance(), stack);
-			return new Potion(ans, PotionUtils.getColor(ans));
+			var potion = ans.get(DataComponents.POTION_CONTENTS);
+			return new Potion(ans, potion == null ? -1 : potion.getColor());
 		}
 		return null;
 	}
@@ -43,7 +44,7 @@ public class CreateFluidHandler {
 
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
-			return new FoodProperties.Builder().alwaysEat().build();
+			return new FoodProperties.Builder().alwaysEdible().build();
 		}
 
 	}
@@ -60,7 +61,7 @@ public class CreateFluidHandler {
 
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
-			return AllItems.BAR_OF_CHOCOLATE.get().getFoodProperties();
+			return AllItems.BAR_OF_CHOCOLATE.asStack().getFoodProperties(null);
 		}
 
 	}
@@ -77,8 +78,10 @@ public class CreateFluidHandler {
 
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
-			var ans = new FoodProperties.Builder().alwaysEat();
-			for (var e : PotionUtils.getMobEffects(stack)) {
+			var potion = stack.get(DataComponents.POTION_CONTENTS);
+			if (potion == null) return null;
+			var ans = new FoodProperties.Builder().alwaysEdible();
+			for (var e : potion.getAllEffects()) {
 				ans.effect(() -> e, 1);
 			}
 			return ans.build();

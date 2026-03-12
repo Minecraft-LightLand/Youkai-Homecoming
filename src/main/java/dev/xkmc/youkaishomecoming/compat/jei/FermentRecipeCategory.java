@@ -99,7 +99,6 @@ public class FermentRecipeCategory extends BaseRecipeCategory<SimpleFermentation
 				var conts = new ArrayList<ItemStack>();
 				list.add(sake.toStack(recipe.outputFluid));
 				conts.add(new ItemStack(sake.getContainer(), sake.count()));
-				conts.add(new ItemStack(sake.type.getContainer(), sake.type.count()));
 				if (sake.bottleSet() instanceof BottledDrinkSet set) {
 					list.add(set.bottle.asStack(1));
 					conts.add(YHItems.SAKE_BOTTLE.asStack(1));
