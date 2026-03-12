@@ -63,7 +63,7 @@ public class SlipBottleItem extends YHDrinkItem {
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
 		var food = getFoodProperties(stack, player);
-		if (food == null || food == NONE || food.effects().isEmpty())
+		if (food == null || food == NONE)
 			return InteractionResultHolder.pass(stack);
 		return super.use(level, player, hand);
 	}
@@ -143,11 +143,15 @@ public class SlipBottleItem extends YHDrinkItem {
 			} else {
 				list.add(YHLangData.FLASK_INFO_SAUCE.get());
 			}
+			if (YHFluidHandler.of(fluid) instanceof IFluidPostEffect eff) {
+				eff.appendHoverText(list);
+			}
 		} else {
 			list.add(YHLangData.FLASK_INFO_DRINK.get());
 			list.add(YHLangData.FLASK_INFO_SAUCE.get());
 		}
 		super.appendHoverText(stack, level, list, flag);
+
 	}
 
 	public static int color(ItemStack stack, int layer) {

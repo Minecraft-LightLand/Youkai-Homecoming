@@ -11,6 +11,9 @@ import net.neoforged.neoforge.fluids.FluidType;
 public class FluidColorHelper {
 
 	public static int getColor(FluidStack fluidStack) {
+		if (YHFluidHandler.of(fluidStack) instanceof IYHFluidItem item) {
+			return item.getColor();
+		}
 		Fluid fluid = fluidStack.getFluid();
 		IClientFluidTypeExtensions clientFluid = IClientFluidTypeExtensions.of(fluid);
 		FluidType fluidAttributes = fluid.getFluidType();

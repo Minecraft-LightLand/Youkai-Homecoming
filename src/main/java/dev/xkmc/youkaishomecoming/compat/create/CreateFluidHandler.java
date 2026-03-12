@@ -1,10 +1,11 @@
 package dev.xkmc.youkaishomecoming.compat.create;
 
 import com.simibubi.create.AllFluids;
-import com.simibubi.create.AllItems;
 import com.simibubi.create.content.fluids.potion.PotionFluidHandler;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IFluidPostEffect;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,6 +14,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.item.HotCocoaItem;
+import vectorwing.farmersdelight.common.item.MilkBottleItem;
+import vectorwing.farmersdelight.common.registry.ModItems;
+
+import java.util.List;
 
 public class CreateFluidHandler {
 
@@ -57,11 +63,19 @@ public class CreateFluidHandler {
 
 		@Override
 		public void onConsumeSlip(LivingEntity user) {
+			((HotCocoaItem) ModItems.HOT_COCOA.get()).affectConsumer(
+					ModItems.HOT_COCOA.get().getDefaultInstance(),
+					user.level(), user);
 		}
 
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
-			return AllItems.BAR_OF_CHOCOLATE.asStack().getFoodProperties(null);
+			return new FoodProperties.Builder().alwaysEat().build();
+		}
+
+		@Override
+		public void appendHoverText(List<Component> list) {
+			list.add(Component.translatable("farmersdelight.tooltip.hot_cocoa").withStyle(ChatFormatting.BLUE));
 		}
 
 	}

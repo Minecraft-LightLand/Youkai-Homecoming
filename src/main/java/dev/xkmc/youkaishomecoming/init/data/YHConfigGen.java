@@ -39,12 +39,12 @@ public class YHConfigGen extends ConfigDataProvider {
 
 		YHFluidHandler.Config map = new YHFluidHandler.Config();
 		map.simpleFluidItems.put(Fluids.LAVA, new YHFluidHandler.Config.FluidItem(
-				Items.LAVA_BUCKET, 1000, 0xffff0000));
+				Items.LAVA_BUCKET, 1000, 0xffCC4628));
 		collector.add(YoukaisHomecoming.FLUID_MAP, YoukaisHomecoming.loc("vanilla"), map);
 
 		if (ModList.get().isLoaded(Create.ID)) {
 			map = new YHFluidHandler.Config();
-			map.simpleFluidItems.put(AllFluids.TEA.get(), new YHFluidHandler.Config.FluidItem(
+			map.simpleFluidItems.put(AllFluids.TEA.getSource(), new YHFluidHandler.Config.FluidItem(
 					AllItems.BUILDERS_TEA.get(), 250, 0xffCC7459));
 			collector.add(YoukaisHomecoming.FLUID_MAP, ResourceLocation.fromNamespaceAndPath(Create.ID, "regular"), map);
 		}

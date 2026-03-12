@@ -8,6 +8,8 @@ import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
 import dev.xkmc.youkaishomecoming.compat.create.CreateFluidHandler;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -22,6 +24,7 @@ import vectorwing.farmersdelight.common.item.MilkBottleItem;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class YHFluidHandler {
 
@@ -121,6 +124,11 @@ public class YHFluidHandler {
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
 			return new FoodProperties.Builder().alwaysEdible().build();
+		}
+
+		@Override
+		public void appendHoverText(List<Component> list) {
+			list.add(Component.translatable("farmersdelight.tooltip.milk_bottle").withStyle(ChatFormatting.BLUE));
 		}
 
 	}

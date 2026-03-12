@@ -1,6 +1,6 @@
 {
   "simpleFluidItems": {
-    "create:flowing_tea": {
+    "create:tea": {
       "amount": 250,
       "color": -3378087,
       "item": "create:builders_tea"
