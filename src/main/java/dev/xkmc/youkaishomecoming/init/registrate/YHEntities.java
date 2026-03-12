@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.init.registrate;
 
-import com.tterrag.registrate.util.entry.EntityEntry;
+import
+		com.tterrag.registrate.util.entry.EntityEntry;
 import dev.xkmc.youkaishomecoming.content.block.furniture.ChairEntity;
 import dev.xkmc.youkaishomecoming.content.block.furniture.NothingRenderer;
 import dev.xkmc.youkaishomecoming.content.entity.boar.BoarEntity;

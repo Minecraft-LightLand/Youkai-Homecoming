@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-03T12:13:20.132355	Registrate Provider for youkaisfeasts [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type), Tags (biomes), Global Loot Modifiers : youkaisfeasts]
+// 1.21.1	2026-03-12T22:24:57.407027	Registrate Provider for youkaisfeasts [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type), Tags (biomes), Global Loot Modifiers : youkaisfeasts]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 4a13d28320dfac1d342986f42606eadc7f7139f3 assets/youkaisfeasts/blockstates/apple_basket.json
@@ -1483,22 +1483,22 @@ b65038d63e29322785995b57a0d92f15dbecf13c data/farmersdelight/advancement/recipes
 23676d05dde7f9dd631f4b7b46c330deb764df7c data/farmersdelight/recipe/cooking/avgolemono.json
 79042e8f6e25ef6e8b888ef3eaf41a6f21f364b8 data/farmersdelight/recipe/cooking/bamboo_mizuyokan.json
 38a87b9c94ab1ae7c314deba54465251fc1da984 data/farmersdelight/recipe/cooking/blazing_red_curry.json
-85f702c026415a06e7da1b2b2c157ce2d1e4338d data/farmersdelight/recipe/cooking/bowl_of_cream.json
-c448ef08bb9fde21600fe91d71d350f7ec0781a7 data/farmersdelight/recipe/cooking/butter.json
+34f235de224ede2525f28a844968794dcbca5cec data/farmersdelight/recipe/cooking/bowl_of_cream.json
+172806f89f3ec6afee7892ea0ca37668ff8f97fb data/farmersdelight/recipe/cooking/butter.json
 9cf7ee261c4c8c30347fbb7019e29f591783556b data/farmersdelight/recipe/cooking/candy_apple.json
 45b1f1b4ef45070b3b56fc922c9f4700b1d498bd data/farmersdelight/recipe/cooking/chest_of_heart_throbbing_surprise.json
 18860f39d1421c8a20036933cad8b7a1c7e6db90 data/farmersdelight/recipe/cooking/cumberland_loin.json
 1ddf4f817003c2cce9a0636c9c829313b22f1623 data/farmersdelight/recipe/cooking/dried_fish.json
 aeeeb1038c23b53bf2049586059f37868b1d7c34 data/farmersdelight/recipe/cooking/grilled_eel_over_rice.json
 83ae062406902adaea832c3749687467a286ff75 data/farmersdelight/recipe/cooking/honey_glazed_cucumber.json
-36691a69318643f7b7ba91648f37b88818a7974a data/farmersdelight/recipe/cooking/imitation_crab.json
+81acc9de5202f3658622107a3b7753d7b7f21424 data/farmersdelight/recipe/cooking/imitation_crab.json
 ea6d5cc6fe1fdabce9939c88f9c8fac9fc694426 data/farmersdelight/recipe/cooking/kabayaki.json
 e2e68c638039f0be9e129510b208546e51d26302 data/farmersdelight/recipe/cooking/lamprey_skewer.json
 4643e87017b5be1eaf2782ed617fda8e7f574c24 data/farmersdelight/recipe/cooking/lions_head.json
 2b1e12e94e3b025cad92356941b21062834d6472 data/farmersdelight/recipe/cooking/longevity_noodles.json
 cfdad1870fae73ce74b4c88a12d9ffc749949bb5 data/farmersdelight/recipe/cooking/mapo_tofu.json
 8ce5a440421e51fe159fa49fc77411eee2f3f287 data/farmersdelight/recipe/cooking/matcha_mochi.json
-43dc2f90bb4438599fa770f6fe5e836bb2d88a77 data/farmersdelight/recipe/cooking/mayonnaise_bottle.json
+1aa39b248ca44d3f36ddd3ea3daceb0eba5355e0 data/farmersdelight/recipe/cooking/mayonnaise_bottle.json
 403f2b4943bfc44c204b82e27804c7bca5b0d6bf data/farmersdelight/recipe/cooking/mitarashi_dango.json
 2cf721cfee749bb62296c0a959a7245e8427e78d data/farmersdelight/recipe/cooking/mochi.json
 ad348cc9d5310f02b39c868ce2efaed4eb42ca39 data/farmersdelight/recipe/cooking/onigili.json
@@ -1514,8 +1514,8 @@ a266f4c59e8293cc2f2c22a24de00c7dc5e565e1 data/farmersdelight/recipe/cooking/seve
 edffce2f3465de3f66d7b9c0b6b2c0f455e10b56 data/farmersdelight/recipe/cooking/steamed_egg_in_bamboo.json
 e8724aa185a959fcf2560eda098dcc9996c92fad data/farmersdelight/recipe/cooking/stinky_tofu.json
 1c29beb06f827bd81ee09b196b4810ec13bb7874 data/farmersdelight/recipe/cooking/sweet_ormosia_mochi_mixed_boiled.json
-9b562e12652481128feff7546110bd07baba132d data/farmersdelight/recipe/cooking/tamagoyaki.json
-cf9048fb894b2a4c1dd2e35f4dc15db76e1479ec data/farmersdelight/recipe/cooking/tofu.json
+11ecda7a8679aec81e54f05f43d016a5faca2091 data/farmersdelight/recipe/cooking/tamagoyaki.json
+fa993357eb588feaeab277f392867897eaa508c4 data/farmersdelight/recipe/cooking/tofu.json
 c663178c13f887e75e5e5c3e00f72ea59cca558f data/farmersdelight/recipe/cooking/tofu_burger.json
 ef0f0e7a5adf539f8ee40f525cd4438eefb29ef7 data/farmersdelight/recipe/cooking/tomato_sauce_cod.json
 bc5b03037f59ee82c131f99f02ddf1d975dddb2c data/farmersdelight/recipe/cooking/tsukimi_dango.json

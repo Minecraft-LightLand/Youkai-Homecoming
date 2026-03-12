@@ -70,7 +70,7 @@ public class CreateFluidHandler {
 
 		@Override
 		public @Nullable FoodProperties buildFoodProperties() {
-			return new FoodProperties.Builder().alwaysEat().build();
+			return new FoodProperties.Builder().alwaysEdible().build();
 		}
 
 		@Override

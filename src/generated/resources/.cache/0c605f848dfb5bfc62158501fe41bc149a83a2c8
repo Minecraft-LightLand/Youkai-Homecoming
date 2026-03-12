@@ -1,2 +1,4 @@
-// 1.21.1	2026-03-03T12:13:20.156363	Youkai Homecoming Config
+// 1.21.1	2026-03-12T22:24:57.463137	Youkai Homecoming Config
+05aa0dd97213d71b6c5996b8bef60407efa2448c data/create/youkaisfeasts_config/fluid_mapping/regular.json
+c19e5a59868f91a5700ba77d8dab5fda059d90c0 data/youkaisfeasts/youkaisfeasts_config/fluid_mapping/vanilla.json
 da1fddcbc5d58f030f035b1a3449b631e09b6e14 data/youkaisfeasts/youkaisfeasts_config/ingredient/default.json

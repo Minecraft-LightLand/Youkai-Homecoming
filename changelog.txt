@@ -1,3 +1,6 @@
+1.0.4
+- Allow flasks to contain other fluids, such as milk. With Create, it can also hold potions.
+
 1.0.3
 - Fix cuisine board crashing on cutting
 
