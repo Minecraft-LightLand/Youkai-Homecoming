@@ -2,7 +2,7 @@
   "simpleFluidItems": {
     "minecraft:lava": {
       "amount": 1000,
-      "color": -65536,
+      "color": -3389912,
       "item": "minecraft:lava_bucket"
     }
   }
