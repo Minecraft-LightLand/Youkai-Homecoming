@@ -37,7 +37,7 @@ public class YHConfigGen extends ConfigDataProvider {
 
 		YHFluidHandler.Config map = new YHFluidHandler.Config();
 		map.simpleFluidItems.put(Fluids.LAVA, new YHFluidHandler.Config.FluidItem(
-				Items.LAVA_BUCKET, 1000, 0xffff0000));
+				Items.LAVA_BUCKET, 1000, 0xffCC4628));
 		collector.add(YoukaisHomecoming.FLUID_MAP, YoukaisHomecoming.loc("vanilla"), map);
 
 		if (ModList.get().isLoaded(Create.ID)) {
