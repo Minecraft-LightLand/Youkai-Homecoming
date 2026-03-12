@@ -1,3 +1,6 @@
+0.4.6
+- Comapt flask drink effects and tooltip: Flask of Milk, Flask of Cocoa, Flask of Builder's Tea
+
 0.4.5
 - Allow flasks to contain other fluids, such as milk. With Create, it can also hold potions.
 
