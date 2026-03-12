@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.item.HotCocoaItem;
 import vectorwing.farmersdelight.common.item.MilkBottleItem;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -61,7 +62,7 @@ public class CreateFluidHandler {
 
 		@Override
 		public void onConsumeSlip(LivingEntity user) {
-			((MilkBottleItem) ModItems.HOT_COCOA.get()).affectConsumer(
+			((HotCocoaItem) ModItems.HOT_COCOA.get()).affectConsumer(
 					ModItems.HOT_COCOA.get().getDefaultInstance(),
 					user.level(), user);
 		}
