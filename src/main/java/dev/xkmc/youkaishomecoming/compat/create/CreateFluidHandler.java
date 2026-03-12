@@ -1,7 +1,6 @@
 package dev.xkmc.youkaishomecoming.compat.create;
 
 import com.simibubi.create.AllFluids;
-import com.simibubi.create.AllItems;
 import com.simibubi.create.content.fluids.potion.PotionFluidHandler;
 import dev.xkmc.youkaishomecoming.content.item.fluid.IFluidPostEffect;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
@@ -74,7 +73,7 @@ public class CreateFluidHandler {
 
 		@Override
 		public void appendHoverText(List<Component> list) {
-			list.add(Component.translatable("farmersdelight.tooltip.hot_cocoa"));
+			list.add(Component.translatable("farmersdelight.tooltip.hot_cocoa").withStyle(ChatFormatting.BLUE));
 		}
 
 	}
