@@ -4,8 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.youkaishomecoming.content.item.fluid.BottledDrinkSet;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidBottled;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
-import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -35,8 +36,8 @@ public class SauceRackRenderer implements BlockEntityRenderer<SauceRackBlockEnti
 			var bottle = stack.getItem();
 			if (bottle instanceof SlipBottleItem) {
 				var fluid = SlipBottleItem.getFluid(stack);
-				if (fluid.getFluid() instanceof YHFluid type) {
-					if (type.type.bottleSet() instanceof BottledDrinkSet set) {
+				if (YHFluidHandler.of(fluid) instanceof IYHFluidBottled cont) {
+					if (cont.bottleSet() instanceof BottledDrinkSet set) {
 						bottle = set.bottle.asItem();
 					}
 				}

@@ -5,9 +5,12 @@ import dev.xkmc.youkaishomecoming.content.item.food.TooltipUtil;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEffects;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -40,8 +43,8 @@ public class SlipBottleItem extends YHDrinkItem {
 	public static ItemStack getContentStack(ItemStack stack) {
 		var handler = stack.getCapability(Capabilities.FluidHandler.ITEM);
 		if (!(handler instanceof SlipFluidWrapper slip)) return ItemStack.EMPTY;
-		if (slip.getFluid().getFluid() instanceof YHFluid fluid) {
-			return fluid.type.asStack(slip.getFluid().getAmount() / 50);
+		if (YHFluidHandler.of(slip.getFluid()) instanceof IYHFluidItem fluid) {
+			return fluid.asStack(slip.getFluid().getAmount() / 50);
 		}
 		return ItemStack.EMPTY;
 	}
@@ -73,22 +76,29 @@ public class SlipBottleItem extends YHDrinkItem {
 		if (handler == null) return NONE;
 		var fluid = handler.getFluidInTank(0);
 		if (fluid.isEmpty()) return NONE;
-		if (fluid.getFluid() instanceof YHFluid sake) {
-			var food = sake.type.asItem().getDefaultInstance().getFoodProperties(entity);
+		if (YHFluidHandler.of(fluid) instanceof IYHFluidItem sake) {
+			FoodProperties food;
+			if (sake instanceof IFluidPostEffect eff) {
+				food = eff.buildFoodProperties();
+			} else food = sake.toStack(fluid).getFoodProperties(entity);
 			if (food == null) return NONE;
 			var builder = new FoodProperties.Builder();
 			if (food.canAlwaysEat()) builder.alwaysEdible();
+			if (food.getNutrition() > 0) {
+				builder.nutrition(Math.max(1, food.getNutrition() / 5));
+				builder.saturationMod(food.getSaturationModifier());
+			}
 			for (var e : food.effects()) {
 				var ins = e.effect();
-				var ans = new EffectBuilder(ins);
+				var ans = new EffectBuilder(new MobEffectInstance(ins));
 				if (ins.getEffect() == YHEffects.DRUNK.get()) {
 					int amp = ins.getAmplifier() + 1;
 					ans.setDuration(amp * ins.getDuration() / 5);
 					ans.setAmplifier(0);
-				} else {
+				} else if (!ins.getEffect().isInstantenous()) {
 					ans.setDuration(ins.getDuration() / 5);
 				}
-				builder.effect(() -> ans.ins, e.probability());
+				builder.effect(() -> ans.ins, (ins.getEffect().isInstantenous() ? 0.2f : 1) * e.probability());
 			}
 			return builder.build();
 		}
@@ -104,6 +114,9 @@ public class SlipBottleItem extends YHDrinkItem {
 		slip.getContainer().setCount(1);
 		slip.setFluid(fluid);
 		slip.drain(50, IFluidHandler.FluidAction.EXECUTE);
+		if (YHFluidHandler.of(fluid) instanceof IFluidPostEffect eff) {
+			eff.onConsumeSlip(user);
+		}
 		return slip.getContainer();
 	}
 
@@ -120,12 +133,12 @@ public class SlipBottleItem extends YHDrinkItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
 		var fluid = getFluid(stack);
-		if (!fluid.isEmpty() && fluid.getFluid() instanceof YHFluid sake) {
-			list.add(YHLangData.FLASK_CONTENT.get(sake.getFluidType().getDescription()));
+		if (!fluid.isEmpty()) {
+			list.add(YHLangData.FLASK_CONTENT.get(fluid.getDisplayName().copy().withStyle(ChatFormatting.WHITE)));
 			int amount = fluid.getAmount();
 			if (amount % 50 == 0 && amount > 0 && amount < 1000)
 				list.add(YHLangData.FLASK_USE.get(amount / 50, 20));
-			if (sake.type.asStack(1).getFoodProperties(TooltipUtil.getPlayer()) != null) {
+			if (getFoodProperties(stack, null) != NONE) {
 				list.add(YHLangData.FLASK_INFO_DRINK.get());
 			} else {
 				list.add(YHLangData.FLASK_INFO_SAUCE.get());

@@ -1,7 +1,8 @@
 package dev.xkmc.youkaishomecoming.compat.jei;
 
 import dev.xkmc.l2core.compat.jei.BaseRecipeCategory;
-import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.pot.kettle.KettleRecipe;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -60,8 +61,8 @@ public class KettleRecipeCategory extends BaseRecipeCategory<KettleRecipe, Kettl
 		if (!recipe.result.isEmpty()) {
 			int y = 11;
 			int x = 92;
-			if (recipe.result.getFluid() instanceof YHFluid sake) {
-				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.type.asStack(sake.type.count()));
+			if (YHFluidHandler.of(recipe.result) instanceof IYHFluidItem sake) {
+				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addItemStack(sake.toStack(recipe.result));
 			} else {
 				builder.addSlot(RecipeIngredientRole.OUTPUT, x, y).addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.result));
 			}

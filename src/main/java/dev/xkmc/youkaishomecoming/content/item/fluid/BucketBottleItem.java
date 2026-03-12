@@ -27,9 +27,9 @@ import java.util.List;
 
 public class BucketBottleItem extends BlockItem {
 
-	protected final IYHFluidHolder fluid;
+	protected final IYHFluidBottled fluid;
 
-	public BucketBottleItem(Block block, Properties properties, IYHFluidHolder fluid) {
+	public BucketBottleItem(Block block, Properties properties, IYHFluidBottled fluid) {
 		super(block, properties);
 		this.fluid = fluid;
 		SlipFluidWrapper.add(this);

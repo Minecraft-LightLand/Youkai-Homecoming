@@ -7,7 +7,9 @@ import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.*;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import dev.xkmc.l2modularblock.type.BlockMethod;
+import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
@@ -121,8 +123,8 @@ public class KettleBlock implements
 	@Override
 	public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> list, TooltipFlag pFlag) {
 		var fluid = pStack.get(YHItems.DC_FLUID);
-		if (fluid != null && !fluid.stack().isEmpty() && fluid.stack().getFluid() instanceof YHFluid sake) {
-			list.add(sake.type.asItem().getDescription());
+		if (fluid != null && !fluid.stack().isEmpty() && YHFluidHandler.of( fluid.stack().getFluid() ) instanceof IYHFluidItem sake) {
+			list.add(sake.toStack(fluid.stack()).getHoverName());
 		}
 		list.add(YHLangData.KETTLE_INFO.get());
 	}
