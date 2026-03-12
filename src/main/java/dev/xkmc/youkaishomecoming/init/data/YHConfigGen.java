@@ -42,7 +42,7 @@ public class YHConfigGen extends ConfigDataProvider {
 
 		if (ModList.get().isLoaded(Create.ID)) {
 			map = new YHFluidHandler.Config();
-			map.simpleFluidItems.put(AllFluids.TEA.get(), new YHFluidHandler.Config.FluidItem(
+			map.simpleFluidItems.put(AllFluids.TEA.getSource(), new YHFluidHandler.Config.FluidItem(
 					AllItems.BUILDERS_TEA.get(), 250, 0xffCC7459));
 			collector.add(YoukaisHomecoming.FLUID_MAP, new ResourceLocation(Create.ID, "regular"), map);
 		}
