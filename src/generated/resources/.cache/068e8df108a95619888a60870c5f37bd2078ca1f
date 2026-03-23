@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-12T22:24:57.407027	Registrate Provider for youkaisfeasts [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type), Tags (biomes), Global Loot Modifiers : youkaisfeasts]
+// 1.21.1	2026-03-23T15:55:50.997553	Registrate Provider for youkaisfeasts [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (mob_effect), Tags (attribute), Tags (damage_type), Tags (biomes), Global Loot Modifiers : youkaisfeasts]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 4a13d28320dfac1d342986f42606eadc7f7139f3 assets/youkaisfeasts/blockstates/apple_basket.json
@@ -1395,6 +1395,7 @@ ed81a8b12d4b2d35f7e49b81c456949898510a43 assets/youkaisfeasts/models/udumbara/ud
 ed8d9589348e8abe40e2c70c79041bd8f60fe204 data/c/tags/block/storage_blocks.json
 faceedd3b5b6d47280fa64da4ea3b627c59efe40 data/c/tags/item/bottles/mayonnaise.json
 e7a78feeea936dce8e8ffd9159fade5128507f89 data/c/tags/item/bottles/soy_sauce.json
+f71c2ecaeff029de15ab767475a5aebe26046ad3 data/c/tags/item/butter.json
 ef183c2f49340be23c75a1ff3e80ad68511dadcb data/c/tags/item/crops/cucumber.json
 d5e8371391cfefce5242aef31b52ee5d3f717d19 data/c/tags/item/crops/redbean.json
 08624f066e5b6d48e10ceab4651689d33338b43b data/c/tags/item/crops/soybean.json

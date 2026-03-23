@@ -17,7 +17,9 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasinRecipeCategory extends BaseRecipeCategory<SimpleBasinRecipe, BasinRecipeCategory> {
@@ -40,13 +42,26 @@ public class BasinRecipeCategory extends BaseRecipeCategory<SimpleBasinRecipe, B
 	}
 
 	public void setRecipe(IRecipeLayoutBuilder builder, SimpleBasinRecipe recipe, IFocusGroup focuses) {
-		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-				.setStandardSlotBackground()
-				.addIngredients(recipe.input);
 		if (YHFluidHandler.of(recipe.output) instanceof IYHFluidItem sake) {
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addItemStack(sake.toStack(recipe.output));
+			int amount = recipe.output.getAmount();
+			int count = sake.amount() / amount;
+			var list = new ArrayList<ItemStack>();
+			for (var e : recipe.input.getItems()) {
+				list.add(e.copyWithCount(count));
+			}
+			builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
+					.setStandardSlotBackground()
+					.addItemStacks(list);
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1)
+					.setStandardSlotBackground()
+					.addItemStack(sake.asStack(1));
 		} else {
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1).addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.output));
+			builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
+					.setStandardSlotBackground()
+					.addIngredients(recipe.input);
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 56, 1)
+					.setStandardSlotBackground()
+					.addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.output));
 		}
 	}
 

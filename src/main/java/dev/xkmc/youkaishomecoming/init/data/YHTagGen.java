@@ -135,6 +135,9 @@ public class YHTagGen {
 		pvd.addTag(TEA_YELLOW).add(YHTea.YELLOW.leaves.get());
 		pvd.addTag(TEA).add(YHCrops.TEA.getFruits())
 				.addTags(TEA_GREEN, TEA_BLACK, TEA_WHITE, TEA_OOLONG, TEA_DARK, TEA_YELLOW);
+
+		pvd.addTag(c("butter")).addTag(BUTTER);
+
 		if (ModList.get().isLoaded(SereneSeasons.MOD_ID)) {
 			SeasonCompat.genItem(pvd);
 		}

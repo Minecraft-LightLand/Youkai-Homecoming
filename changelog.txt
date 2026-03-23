@@ -1,3 +1,8 @@
+1.0.5
+- Fix Basin JEI
+- Add c:foods/butter to c:butter tag
+- RU translation, ZH translation fix
+
 1.0.4
 - Allow flasks to contain other fluids, such as milk. With Create, it can also hold potions.
 
