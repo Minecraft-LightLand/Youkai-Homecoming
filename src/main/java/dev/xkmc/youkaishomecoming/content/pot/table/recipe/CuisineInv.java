@@ -17,12 +17,7 @@ public record CuisineInv(
 
 	@Override
 	public boolean isEmpty() {
-		for (int i = start; i < list.size(); i++) {
-			if (!list.get(i).isEmpty()) {
-				return false;
-			}
-		}
-		return true;
+		return false;
 	}
 
 	@Override

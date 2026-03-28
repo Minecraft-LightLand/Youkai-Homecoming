@@ -1,3 +1,6 @@
+1.0.6
+- Fix bamboo cuisine recipe
+
 1.0.5
 - Fix Basin JEI
 - Add c:foods/butter to c:butter tag
