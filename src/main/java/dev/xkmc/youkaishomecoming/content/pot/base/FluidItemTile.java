@@ -5,6 +5,7 @@ import dev.xkmc.youkaishomecoming.compat.create.CreateFillingTest;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SlipBottleItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluid;
+import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -46,6 +47,23 @@ public interface FluidItemTile {
 				return InteractionResult.SUCCESS;
 			}
 			hasFluid = true;
+		}
+		var mapped = YoukaisHomecoming.FLUID_MAP.getMerged().simpleFluidItems.get(fluid.getFluid());
+		if (mapped != null) {
+			var cont = mapped.item().getDefaultInstance().getCraftingRemainingItem();
+			if (!cont.isEmpty() && fluid.getAmount() >= mapped.amount()) {
+				if (ItemStack.isSameItemSameTags(stack, cont)) {
+					if (level instanceof ServerLevel sl) {
+						be.getFluidHandler().drain(mapped.amount(), IFluidHandler.FluidAction.EXECUTE);
+						player.getInventory().placeItemBackInInventory(mapped.item().getDefaultInstance());
+						if (!player.isCreative()) {
+							stack.shrink(1);
+						}
+						sl.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7f, 1);
+					}
+					return InteractionResult.SUCCESS;
+				}
+			}
 		}
 		// take fluid in create sense
 		var fillOpt = CreateFillingTest.test(level, fluid, stack);
