@@ -89,6 +89,24 @@ public interface FluidItemTile {
 				}
 			}
 		}
+		var rev = YoukaisHomecoming.FLUID_MAP.getMerged().reverseMap.get(stack.getItem());
+		if (rev != null) {
+			var data = YoukaisHomecoming.FLUID_MAP.getMerged().simpleFluidItems.get(rev);
+			var attempt = be.getFluidHandler().fill(new FluidStack(rev, data.amount()), IFluidHandler.FluidAction.SIMULATE);
+			if (attempt > 0) {
+				if (level instanceof ServerLevel sl) {
+					be.getFluidHandler().fill(new FluidStack(rev, data.amount()), IFluidHandler.FluidAction.EXECUTE);
+					if (!player.isCreative()) {
+						stack.shrink(1);
+						var cont = stack.getCraftingRemainingItem();
+						if (!cont.isEmpty())
+							player.getInventory().placeItemBackInInventory(cont);
+					}
+					sl.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.7f, 1);
+				}
+				return InteractionResult.SUCCESS;
+			}
+		}
 		// fill water from bottle
 		if (stack.is(Items.POTION) && PotionUtils.getPotion(stack) == Potions.WATER) {
 			var attempt = be.getFluidHandler().fill(new FluidStack(Fluids.WATER, 250), IFluidHandler.FluidAction.SIMULATE);
@@ -102,6 +120,7 @@ public interface FluidItemTile {
 					sl.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.7f, 1);
 				}
 			}
+			return InteractionResult.SUCCESS;
 		}
 		return addItem(be, stack, level, pos);
 	}
