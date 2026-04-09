@@ -1,3 +1,6 @@
+0.4.8
+- Supports adding custom fluid-item maps supporting fermentation tank, kettle, and basin
+
 0.4.7
 - fix basin JEI
 - add RU translation
