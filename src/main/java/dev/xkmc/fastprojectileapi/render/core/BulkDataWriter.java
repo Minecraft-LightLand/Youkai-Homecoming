@@ -4,10 +4,13 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.xkmc.youkaishomecoming.mixin.api.BufferBuilderAccessor;
 import net.minecraft.util.FastColor;
+import net.minecraftforge.fml.ModList;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
 public class BulkDataWriter {
+
+	private static final boolean IMMFAST = ModList.get().isLoaded("immediatelyfast");
 
 	private final VertexConsumer vc;
 	private final BufferBuilder direct;
@@ -23,7 +26,7 @@ public class BulkDataWriter {
 	}
 
 	public void addVertex(float x, float y, float z, float u, float v, int col) {
-		if (direct == null) {
+		if (direct == null || IMMFAST) {
 			vc.vertex(x, y, z).uv(u, v).color(col).endVertex();
 		} else {
 			direct.putFloat(0, x);
