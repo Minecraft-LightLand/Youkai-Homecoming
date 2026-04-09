@@ -1,3 +1,7 @@
+2.6.9
+- Supports adding custom fluid-item maps supporting fermentation tank, kettle, and basin
+- Fix crash with ImmediatelyFast on danmaku rendering
+
 2.6.8
 - Fix basin JEI
 - Add RU translation
