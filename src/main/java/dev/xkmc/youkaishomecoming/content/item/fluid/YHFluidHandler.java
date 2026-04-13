@@ -25,6 +25,7 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class YHFluidHandler {
 
@@ -139,6 +140,14 @@ public class YHFluidHandler {
 		@SerialField
 		@ConfigCollect(CollectType.MAP_OVERWRITE)
 		public final LinkedHashMap<Fluid, FluidItem> simpleFluidItems = new LinkedHashMap<>();
+
+		public Map<Item, Fluid> reverseMap = new LinkedHashMap<>();
+
+		public void postMerge() {
+			for (var e : simpleFluidItems.entrySet()) {
+				reverseMap.put(e.getValue().item(), e.getKey());
+			}
+		}
 
 		public record FluidItem(
 				Item item, int amount, int color
