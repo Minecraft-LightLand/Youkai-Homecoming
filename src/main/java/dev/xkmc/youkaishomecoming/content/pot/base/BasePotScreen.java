@@ -44,7 +44,7 @@ public abstract class BasePotScreen<T extends BasePotMenu> extends AbstractConta
 		titleLabelX = 28;
 		book.init(width, height, minecraft, widthTooNarrow, menu);
 		leftPos = book.updateScreenPosition(width, imageWidth);
-		if (Configuration.ENABLE_RECIPE_BOOK_COOKING_POT.get()) {
+		if (Configuration.ENABLE_COOKING_POT_RECIPE_BOOK.get()) {
 			addRenderableWidget(new ImageButton(leftPos + 5, height / 2 - 49,
 					20, 18, 0, 0, 19,
 					RECIPE_BUTTON_LOCATION, (button) -> {

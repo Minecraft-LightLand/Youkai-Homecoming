@@ -13,6 +13,7 @@ import dev.xkmc.youkaishomecoming.content.entity.fairy.ClownEntity;
 import dev.xkmc.youkaishomecoming.content.entity.fairy.FairyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.reimu.ReimuEntity;
 import dev.xkmc.youkaishomecoming.content.entity.rumia.RumiaEntity;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHDanmaku;
@@ -69,7 +70,7 @@ public class EntityLootGen {
 								LootContext.EntityTarget.KILLER,
 								EntityPredicate.Builder.entity().equipment(
 										EntityEquipmentPredicate.Builder.equipment().mainhand(
-														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+														ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIVES).build())
 												.build()).build()))
 				));
 	}
@@ -101,7 +102,7 @@ public class EntityLootGen {
 								LootContext.EntityTarget.KILLER,
 								EntityPredicate.Builder.entity().equipment(
 										EntityEquipmentPredicate.Builder.equipment().mainhand(
-														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+														ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIVES).build())
 												.build()).build()))
 				));
 	}

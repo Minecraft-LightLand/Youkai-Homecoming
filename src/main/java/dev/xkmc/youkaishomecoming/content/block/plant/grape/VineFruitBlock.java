@@ -66,7 +66,7 @@ public abstract class VineFruitBlock extends Block implements HarvestableBlock {
 					pickup(state, level, pos, player);
 				}
 			}
-			level.playSound(player, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+			level.playSound(player, pos, ModSounds.BLOCK_TOMATOES_PICK_TOMATOES.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;

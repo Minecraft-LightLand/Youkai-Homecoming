@@ -9,6 +9,7 @@ import dev.xkmc.youkaishomecoming.content.pot.cooking.soup.SoupHolder;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.IHintableBlock;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.InfoTile;
 import dev.xkmc.youkaishomecoming.content.pot.overlay.TileTooltip;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import dev.xkmc.youkaishomecoming.init.registrate.YHCriteriaTriggers;
@@ -184,12 +185,12 @@ public abstract class CookingBlockEntity extends TimedRecipeBlockEntity<PotCooki
 
 	public static boolean isHeatedPos(Level level, BlockPos pos) {
 		BlockState down = level.getBlockState(pos.below());
-		if (down.is(ModTags.HEAT_SOURCES)) {
+		if (down.is(TagRef.HEAT_SOURCES)) {
 			return down.hasProperty(BlockStateProperties.LIT) ? down.getValue(BlockStateProperties.LIT) : true;
 		} else {
-			if (down.is(ModTags.HEAT_CONDUCTORS)) {
+			if (down.is(TagRef.HEAT_CONDUCTORS)) {
 				BlockState low = level.getBlockState(pos.below(2));
-				if (low.is(ModTags.HEAT_SOURCES)) {
+				if (low.is(TagRef.HEAT_SOURCES)) {
 					if (low.hasProperty(BlockStateProperties.LIT)) {
 						return low.getValue(BlockStateProperties.LIT);
 					}

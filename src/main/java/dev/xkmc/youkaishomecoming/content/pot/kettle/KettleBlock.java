@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.YHFluidHandler;
 import dev.xkmc.youkaishomecoming.content.item.food.YHDrinkItem;
 import dev.xkmc.youkaishomecoming.content.pot.base.FluidItemTile;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHLangData;
 import dev.xkmc.youkaishomecoming.init.registrate.YHBlocks;
 import net.minecraft.core.BlockPos;
@@ -79,7 +80,7 @@ public class KettleBlock implements
 	}
 
 	private CookingPotSupport getTrayState(LevelAccessor level, BlockPos pos) {
-		return level.getBlockState(pos.below()).is(ModTags.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
+		return level.getBlockState(pos.below()).is(TagRef.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
 	}
 
 	@Override
