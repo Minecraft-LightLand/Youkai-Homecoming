@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.block.plant.rope.CucumberCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeClimbingSeedItem;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeCropJsonGen;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -38,8 +39,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Locale;
 import java.util.function.BiFunction;
@@ -81,7 +80,7 @@ public enum YHCrops {
 		WILD = type.wild(this);
 
 		var seedBuilder = YHItems.seed(sname, p -> type.item(getPlant(), p));
-		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(ForgeTags.SEEDS);
+		if (seedName != null || name.endsWith("bean")) seedBuilder.tag(TagRef.SEEDS);
 		seed = seedBuilder.register();
 
 		fruits = fruit == null ? seed :
@@ -205,9 +204,9 @@ public enum YHCrops {
 		return YoukaisHomecoming.REGISTRATE.block("wild_" + getName(), BushBlock::new)
 				.initialProperties(() -> Blocks.DANDELION)
 				.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, this))
-				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
+				.item().tag(TagRef.WILD_CROPS_ITEM).model((ctx, pvd) ->
 						pvd.generated(ctx, pvd.modLoc("block/plants/" + getTypeName() + "/wild_" + getName()))).build()
-				.tag(ModTags.WILD_CROPS);
+				.tag(TagRef.WILD_CROPS);
 	}
 
 	public BlockEntry<BushBlock> wildCropDropFruit() {

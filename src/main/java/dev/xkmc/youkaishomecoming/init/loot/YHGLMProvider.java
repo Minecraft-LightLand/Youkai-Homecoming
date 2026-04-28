@@ -6,6 +6,7 @@ import com.google.gson.JsonSerializationContext;
 import com.mojang.serialization.Codec;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
@@ -142,7 +143,7 @@ public class YHGLMProvider extends GlobalLootModifierProvider {
 				LootContext.EntityTarget.KILLER,
 				EntityPredicate.Builder.entity().equipment(
 						EntityEquipmentPredicate.Builder.equipment().mainhand(
-										ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+										ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIVES).build())
 								.build()).build()).build();
 	}
 

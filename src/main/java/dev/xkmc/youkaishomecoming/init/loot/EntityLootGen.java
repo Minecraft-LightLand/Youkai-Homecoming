@@ -65,7 +65,7 @@ public class EntityLootGen {
 								LootContext.EntityTarget.KILLER,
 								EntityPredicate.Builder.entity().equipment(
 										EntityEquipmentPredicate.Builder.equipment().mainhand(
-														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+														ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIVES).build())
 												.build()).build()))
 				));
 	}
@@ -97,7 +97,7 @@ public class EntityLootGen {
 								LootContext.EntityTarget.KILLER,
 								EntityPredicate.Builder.entity().equipment(
 										EntityEquipmentPredicate.Builder.equipment().mainhand(
-														ItemPredicate.Builder.item().of(ModTags.KNIVES).build())
+														ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIVES).build())
 												.build()).build()))
 				));
 	}

@@ -24,7 +24,7 @@
           "predicate": {
             "equipment": {
               "mainhand": {
-                "tag": "farmersdelight:tools/knives"
+                "tag": "forge:tools/knives"
               }
             }
           }
