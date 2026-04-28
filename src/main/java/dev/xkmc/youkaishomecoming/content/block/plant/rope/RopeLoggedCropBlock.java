@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.plant.rope;
 
 import dev.xkmc.l2harvester.api.HarvestResult;
 import dev.xkmc.l2harvester.api.HarvestableBlock;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -41,7 +42,7 @@ import java.util.List;
 public abstract class RopeLoggedCropBlock extends CropBlock implements HarvestableBlock {
 
 	public static boolean isRope(BlockState state) {
-		return Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? state.is(ModTags.ROPES) : state.is(ModBlocks.ROPE.get());
+		return Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? state.is(TagRef.ROPES) : state.is(ModBlocks.ROPE.get());
 	}
 
 	public static BlockState getRopeBlock() {
@@ -118,7 +119,7 @@ public abstract class RopeLoggedCropBlock extends CropBlock implements Harvestab
 	protected void pickup(BlockState state, Level level, BlockPos pos, Player player) {
 		int quantity = 1 + level.random.nextInt(2);
 		popResource(level, pos, new ItemStack(getFruit(), quantity));
-		level.playSound(null, pos, ModSounds.ITEM_TOMATO_PICK_FROM_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+		level.playSound(null, pos, ModSounds.BLOCK_TOMATOES_PICK_TOMATOES.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 		level.setBlock(pos, state.setValue(getAgeProperty(), getBaseAge()), 2);
 	}
 

@@ -8,6 +8,7 @@ import dev.xkmc.l2core.init.reg.simple.CdcVal;
 import dev.xkmc.l2core.init.reg.simple.SR;
 import dev.xkmc.l2core.init.reg.simple.Val;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHBiomeTagsProvider;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import dev.xkmc.youkaishomecoming.init.registrate.YHEntities;
@@ -127,7 +128,7 @@ public class YHGLMProvider extends GlobalLootModifierProvider implements Registr
 				LootContext.EntityTarget.ATTACKER,
 				EntityPredicate.Builder.entity().equipment(
 						EntityEquipmentPredicate.Builder.equipment().mainhand(
-										ItemPredicate.Builder.item().of(ModTags.KNIVES))
+										ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIFE))
 								.build()).build()).build();
 	}
 

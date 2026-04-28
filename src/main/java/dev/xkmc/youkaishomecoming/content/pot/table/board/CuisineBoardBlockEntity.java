@@ -12,6 +12,7 @@ import dev.xkmc.youkaishomecoming.content.pot.table.item.TableItemManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -19,6 +20,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipeInput;
 import vectorwing.farmersdelight.common.registry.ModRecipeTypes;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
@@ -48,7 +51,8 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 				if (!level.isClientSide()) {
 					var recipe = opt.get().value();
 					int fortune = EnchHelper.getLv(stack, Enchantments.FORTUNE);
-					for (ItemStack drop : recipe.rollResults(level.random, fortune)) {
+					var inv = new RecipeWrapper(new InvWrapper(new SimpleContainer(current.get())));
+					for (ItemStack drop : recipe.rollResults(level.random, fortune, inv)) {
 						ItemUtils.spawnItemEntity(level, drop.copy(),
 								worldPosition.getX() + 0.5F,
 								worldPosition.getY() + 0.2,

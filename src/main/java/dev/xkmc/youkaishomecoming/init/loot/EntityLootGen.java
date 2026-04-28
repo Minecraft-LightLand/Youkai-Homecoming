@@ -7,6 +7,7 @@ import dev.xkmc.youkaishomecoming.content.entity.crab.CrabEntity;
 import dev.xkmc.youkaishomecoming.content.entity.deer.DeerEntity;
 import dev.xkmc.youkaishomecoming.content.entity.lampery.LampreyEntity;
 import dev.xkmc.youkaishomecoming.content.entity.tuna.TunaEntity;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.food.YHFood;
 import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -62,7 +63,7 @@ public class EntityLootGen {
 								LootContext.EntityTarget.ATTACKER,
 								EntityPredicate.Builder.entity().equipment(
 										EntityEquipmentPredicate.Builder.equipment().mainhand(
-														ItemPredicate.Builder.item().of(ModTags.KNIVES))
+														ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIFE))
 												.build()).build()))
 				));
 	}
@@ -96,7 +97,7 @@ public class EntityLootGen {
 								LootContext.EntityTarget.ATTACKER,
 								EntityPredicate.Builder.entity().equipment(
 										EntityEquipmentPredicate.Builder.equipment().mainhand(
-														ItemPredicate.Builder.item().of(ModTags.KNIVES))
+														ItemPredicate.Builder.item().of(TagRef.TOOLS_KNIFE))
 												.build()).build()))
 				));
 	}

@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.block.plant.rope.CucumberCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeClimbingSeedItem;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeCropJsonGen;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.registrate.YHItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -202,10 +203,10 @@ public enum YHCrops {
 		return YoukaisHomecoming.REGISTRATE.block("wild_" + getName(), BasicBushBlock::new)
 				.initialProperties(() -> Blocks.DANDELION)
 				.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, this))
-				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
+				.item().tag(TagRef.WILD_CROPS_ITEM).model((ctx, pvd) ->
 						pvd.generated(ctx, pvd.modLoc("block/plants/" + getTypeName() + "/wild_" + getName())))
 				.dataMap(NeoForgeDataMaps.COMPOSTABLES, new Compostable(0.8f)).build()
-				.tag(ModTags.WILD_CROPS);
+				.tag(TagRef.WILD_CROPS);
 	}
 
 	public BlockEntry<BasicBushBlock> wildCropDropFruit() {

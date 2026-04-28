@@ -1,0 +1,13 @@
+{
+  "type": "youkaisfeasts:steaming",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "c:foods/dough/wheat"
+  },
+  "result": {
+    "count": 1,
+    "id": "youkaisfeasts:mantou"
+  }
+}

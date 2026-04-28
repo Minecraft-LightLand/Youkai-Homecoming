@@ -32,7 +32,7 @@ public class YHFoodItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
-		if (Configuration.FOOD_EFFECT_TOOLTIP.get())
+		if (Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get())
 			TooltipUtil.getFoodEffects(stack, list);
 	}
 

@@ -70,7 +70,7 @@
           "predicate": {
             "equipment": {
               "mainhand": {
-                "items": "#farmersdelight:tools/knives"
+                "items": "#c:tools/knife"
               }
             }
           }
