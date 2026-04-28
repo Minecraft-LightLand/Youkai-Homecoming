@@ -31,7 +31,7 @@ public enum YHCoffee {
 		int nutrition = coffee == 0 ? 0 : food;
 		float sat = 0.6f;
 		List<EffectEntry> list = new ArrayList<>();
-		if (cream > 0) list.add(new EffectEntry(ModEffects.COMFORT, 3600, 0, 1));
+		if (cream > 0) list.add(new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1));
 		if (coffee > 0) {
 			list.add(new EffectEntry(YHEffects.CAFFEINATED::get, 1200, coffee - 1, 1));
 			list.add(new EffectEntry(YHEffects.SOBER::get, 1200 * coffee, 0, 1));

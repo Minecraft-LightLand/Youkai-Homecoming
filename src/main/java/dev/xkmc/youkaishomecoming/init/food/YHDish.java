@@ -23,38 +23,33 @@ import java.util.Locale;
 
 public enum YHDish {
 	BAMBOO_MIZUYOKAN(Saucer.CERAMIC, DishType.COOKED, 6, 0.6f, 4, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.SUGARS.tag),
 	DRIED_FISH(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	IMITATION_BEAR_PAW(Saucer.CERAMIC, DishType.STEAMED, 12, 0.8f, 3, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 1, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)),
 			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	PASTITSIO(Saucer.CERAMIC, DishType.COOKED, 12, 0.8f, 4, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	SAUCE_GRILLED_FISH(Saucer.PORCELAIN, DishType.COOKED, 12, 0.8f, 4, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.PROTEINS.tag),
 	STINKY_TOFU(Saucer.CERAMIC, DishType.COOKED, 8, 0.6f, 5, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	TOFU_BURGER(Saucer.CERAMIC, DishType.COOKED, 8, 0.6f, 3, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	BLOOD_CURD(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 2, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	SEVEN_COLORED_YOKAN(Saucer.CERAMIC, DishType.COOKED, 8, 0.8f, 4, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA, 3600, 1, 1)),
 			DietTagGen.VEGETABLES.tag, DietTagGen.GRAINS.tag),
 
@@ -68,7 +63,7 @@ public enum YHDish {
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			DietTagGen.PROTEINS.tag),
 	SCHOLAR_GINKGO(Saucer.CERAMIC, DishType.STEAMED, 6, 0.8f, 2, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),
 			YHTagGen.STEAM_BLOCKER, DietTagGen.VEGETABLES.tag),
 	TOMATO_SAUCE_COD(Saucer.CERAMIC, DishType.COOKED, 10, 0.8f, 2, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)),

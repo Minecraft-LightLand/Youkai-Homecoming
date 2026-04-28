@@ -47,7 +47,7 @@ public enum YHDrink implements IYHFluidHolder {
 			new EffectEntry(() -> MobEffects.REGENERATION, 200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	TEA_MOCHA(FoodType.BOTTLE, 0xffffffff, List.of(
-			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+			new EffectEntry(ModEffects.NOURISHMENT, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SAIDI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(() -> MobEffects.MOVEMENT_SPEED, 1200, 0, 1)
@@ -58,8 +58,7 @@ public enum YHDrink implements IYHFluidHolder {
 	), YHTagGen.TEA_DRINK),
 	GENMAI_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.TEA, 1200, 0, 1),
-			new EffectEntry(YHEffects.SOBER, 1200, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 1200, 0, 1)
+			new EffectEntry(YHEffects.SOBER, 1200, 0, 1)
 	), YHTagGen.TEA_DRINK),
 	SCARLET_TEA(FoodType.BOTTLE, 0xffffffff, List.of(
 			new EffectEntry(YHEffects.THICK, 1200, 0, 1),
