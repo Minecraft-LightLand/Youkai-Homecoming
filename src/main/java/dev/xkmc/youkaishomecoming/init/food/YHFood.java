@@ -147,7 +147,7 @@ public enum YHFood implements ItemLike {
 	LAMPREY_SKEWER(FoodType.STICK, 14, 0.8f, List.of(
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 4800, 0, 1),
 			new EffectEntry(ModEffects.NOURISHMENT, 4800, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 4800, 0, 1)),
+			new EffectEntry(ModEffects.NOURISHMENT, 4800, 0, 1)),
 			DietTagGen.PROTEINS.tag
 	),
 	// bottle
@@ -156,7 +156,7 @@ public enum YHFood implements ItemLike {
 	// bowl
 	//APAKI(FoodType.BOWL, 12, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1), DietTagGen.PROTEINS.tag),
 	AVGOLEMONO(FoodType.BOWL, 8, 0.6f, List.of(
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.GLOWING, 3600, 0, 1)), DietTagGen.FRUITS.tag),
 	BLAZING_RED_CURRY(FoodType.BOWL, 10, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
@@ -164,46 +164,37 @@ public enum YHFood implements ItemLike {
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	GRILLED_EEL_OVER_RICE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag),
 	LONGEVITY_NOODLES(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)
 	), DietTagGen.GRAINS.tag, DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	SHIRAYUKI(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(() -> MobEffects.WATER_BREATHING, 6000, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	HAN_PALACE(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(() -> MobEffects.NIGHT_VISION, 6000, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	TOFU_CRAB_STEW(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
+			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
 			new EffectEntry(YHEffects.CRABY, 6000, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
-	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
+	SWEET_ORMOSIA_MOCHI_MIXED_BOILED(FoodType.BOWL, 8, 0.8f, new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
 			DietTagGen.GRAINS.tag),
 	TUSCAN_SALMON(FoodType.BOWL, 12, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	HONEY_GLAZED_CUCUMBER(FoodType.BOWL, 10, 0.8f, List.of(
-			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1)
+			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1)
 	), DietTagGen.VEGETABLES.tag),
 	LIONS_HEAD(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_RESISTANCE, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag, DietTagGen.VEGETABLES.tag),
 	MAPO_TOFU(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 3600, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 3600, 0, 1),
 			new EffectEntry(() -> MobEffects.DAMAGE_BOOST, 3600, 0, 1)
 	), DietTagGen.PROTEINS.tag),
 	UDUMBARA_CAKE(FoodType.BOWL, 8, 0.6f, List.of(
@@ -211,7 +202,6 @@ public enum YHFood implements ItemLike {
 			new EffectEntry(YHEffects.UDUMBARA, 3600, 0, 1)), DietTagGen.VEGETABLES.tag),
 	BOWL_OF_HEART_THROBBING_SURPRISE(FoodType.BOWL, 12, 0.8f, List.of(
 			new EffectEntry(ModEffects.NOURISHMENT, 6000, 0, 1),
-			new EffectEntry(ModEffects.COMFORT, 6000, 0, 1),
 			new EffectEntry(YHEffects.UDUMBARA, 2400, 1, 1)
 	), DietTagGen.VEGETABLES.tag),
 	;
