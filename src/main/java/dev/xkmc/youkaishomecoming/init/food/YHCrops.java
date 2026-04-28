@@ -163,8 +163,8 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new VanillaBush(BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
-						.tag(ModTags.WILD_CROPS)
+						.item().tag(ModTags.Items.WILD_CROPS).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.Blocks.WILD_CROPS)
 						.register()
 		),
 		CROSS((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
@@ -175,8 +175,8 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new VanillaBush(BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> YHCropBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
-						.tag(ModTags.WILD_CROPS)
+						.item().tag(ModTags.Items.WILD_CROPS).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.Blocks.WILD_CROPS)
 						.register()
 		),
 		COFFEA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
@@ -187,8 +187,8 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new WildCoffeaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> WildCoffeaBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> WildCoffeaBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name + "_top"))).build()
-						.tag(ModTags.WILD_CROPS)
+						.item().tag(ModTags.Items.WILD_CROPS).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name + "_top"))).build()
+						.tag(ModTags.Blocks.WILD_CROPS)
 						.register()
 		),
 		TEA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
@@ -201,8 +201,8 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new VanillaBush(BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> TeaCropBlock.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
-						.tag(ModTags.WILD_CROPS)
+						.item().tag(ModTags.Items.WILD_CROPS).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.Blocks.WILD_CROPS)
 						.register()
 		),
 		UDUMBARA((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
@@ -214,9 +214,9 @@ public enum YHCrops {
 								new YHBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION).lightLevel(s -> 2), crop::getFruits))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((pvd, b) -> pvd.dropOther(b, crop.getSeed()))
-						.item().tag(ModTags.WILD_CROPS_ITEM)
+						.item().tag(ModTags.Items.WILD_CROPS)
 						.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
-						.tag(ModTags.WILD_CROPS)
+						.tag(ModTags.Blocks.WILD_CROPS)
 						.register()),
 
 		MANDRAKE((name, crop) -> YoukaisHomecoming.REGISTRATE.block(name, p ->
@@ -227,8 +227,8 @@ public enum YHCrops {
 				(name, crop) -> YoukaisHomecoming.REGISTRATE.block("wild_" + name, p -> new VanillaBush(BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)))
 						.blockstate((ctx, pvd) -> YHCropBlock.buildWildModel(ctx, pvd, crop))
 						.loot((ctx, pvd) -> MandrakeGen.buildWildLoot(ctx, pvd, crop))
-						.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
-						.tag(ModTags.WILD_CROPS)
+						.item().tag(ModTags.Items.WILD_CROPS).model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/wild_" + name))).build()
+						.tag(ModTags.Blocks.WILD_CROPS)
 						.register()
 		),
 		;

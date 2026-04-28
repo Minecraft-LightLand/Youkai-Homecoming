@@ -25,7 +25,7 @@ public class SakeBottleItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> list, TooltipFlag flag) {
-		if (Configuration.FOOD_EFFECT_TOOLTIP.get())
+		if (Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get())
 			YHFoodItem.getFoodEffects(stack, list);
 	}
 
