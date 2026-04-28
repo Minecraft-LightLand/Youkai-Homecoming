@@ -77,7 +77,7 @@ public class BucketBottleItem extends BlockItem {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		list.add(YHLangData.PLACE.get());
-		if (Configuration.FOOD_EFFECT_TOOLTIP.get())
+		if (Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get())
 			YHFoodItem.getFoodEffects(stack, list);
 		super.appendHoverText(stack, level, list, flag);
 	}

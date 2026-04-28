@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-27T23:16:55.312472	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2026-04-28T14:02:11.333699	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -2128,7 +2128,6 @@ ced7cbc9b8e0be2a13b516575ddca6ca6bb207bb data/diet/tags/items/proteins.json
 e4f90b2142c4ec2308be970689815acdab450aab data/diet/tags/items/sugars.json
 263f8c8c895c64ddd7adf7368524293f782b2460 data/diet/tags/items/vegetables.json
 45dc5472273d2dd0adea6f4a23165c1eb2ab3918 data/farmersdelight/tags/blocks/wild_crops.json
-31b680cc3e58c2f7d1f25ed44d4b9d09c89e9713 data/farmersdelight/tags/items/cabbage_roll_ingredients.json
 45dc5472273d2dd0adea6f4a23165c1eb2ab3918 data/farmersdelight/tags/items/wild_crops.json
 9a944c57130829161035328df2c31ebac486ded4 data/forge/tags/blocks/storage_blocks.json
 214b9cb853f7f4216ae6d84adcc04e859a111b7c data/forge/tags/items/armors/helmets.json
@@ -2997,7 +2996,7 @@ afb0c120696bb8ef79842b6001c1545dc96dd856 data/youkaishomecoming/loot_tables/crab
 766cff11ad4c78c39c20c53c0b4dfc18552c805c data/youkaishomecoming/loot_tables/entities/boar.json
 2d60bcfd15ed968c17bd373e8a5407550c99511c data/youkaishomecoming/loot_tables/entities/cirno.json
 86e480df85b508d0a0b644837e28edabcc1e05ff data/youkaishomecoming/loot_tables/entities/clownpiece.json
-9a8700588fabd845e94221cfdf8dd7ea392e3c72 data/youkaishomecoming/loot_tables/entities/crab.json
+6230e9e77a263875ad52ff5fb203c670c489c3b4 data/youkaishomecoming/loot_tables/entities/crab.json
 448117aca1c457c104cb6390c98fd0ed26a2104e data/youkaishomecoming/loot_tables/entities/deer.json
 685c0247a623c6c3d7cb15814154f3f937f95db4 data/youkaishomecoming/loot_tables/entities/eternity_larva.json
 2bd5478ee9bc964d9bd7104ea061afe433e71057 data/youkaishomecoming/loot_tables/entities/fairy.json
@@ -3013,7 +3012,7 @@ ef2f4f528800044f354e954d4e5988dd331d8bbd data/youkaishomecoming/loot_tables/enti
 8f8fb4afe5fc41b9cb6209645c4f6ae3883b1c11 data/youkaishomecoming/loot_tables/entities/small_fairy.json
 6b82a66caacd72aa73b710d37006a15ab573c71b data/youkaishomecoming/loot_tables/entities/star_sapphire.json
 f2b07a7789b5f03ccf7de5615c9182c37a85d86f data/youkaishomecoming/loot_tables/entities/sunny_milk.json
-c98aaa051ebaa737930f8d6e8b97e9641f2777e4 data/youkaishomecoming/loot_tables/entities/tuna.json
+7d7443129a5ca81894c6c07baaec08e2286287ed data/youkaishomecoming/loot_tables/entities/tuna.json
 7a3a270dc277ab0b9bd13afde6a5d5a9d2e8a0d5 data/youkaishomecoming/loot_tables/entities/youkai.json
 cc8676507f223051013e2e18bb45ad604c16454a data/youkaishomecoming/loot_tables/entities/yukari.json
 579cce9859cd9e19626c29a0db99824296018ac6 data/youkaishomecoming/loot_tables/reimu_reward.json
@@ -3527,7 +3526,7 @@ a428aad2094947f7decc05917d55f795065c950e data/youkaishomecoming/recipes/purple_s
 e39baa0d6dd4a9e8a2db95d52e158bb46d6c8163 data/youkaishomecoming/recipes/rainbow_roll_cutting.json
 d31361d9f071b06113c3730210ca1c75f7c3610f data/youkaishomecoming/recipes/raisin_from_fruits_grape_drying.json
 9b7db82ef57b039bd16a794d4c3f26bae468e83f data/youkaishomecoming/recipes/raw_boarchop_cutting.json
-f5b9a6866719ec488553785420ee7be7c9f4db26 data/youkaishomecoming/recipes/raw_bun.json
+437ae015d2c76b3607c502f4eb531293c8676f94 data/youkaishomecoming/recipes/raw_bun.json
 7b2ba5c0a9131ce0890c9ec43e6293da0369e71b data/youkaishomecoming/recipes/raw_flesh_feast.json
 d737db97ad9076d61ef361bf6551751a08ddf832 data/youkaishomecoming/recipes/raw_imitation_bear_paw.json
 8af3f2eb5a088fb6fa32c0931fbf86d342d575ab data/youkaishomecoming/recipes/raw_kaguya_hime.json

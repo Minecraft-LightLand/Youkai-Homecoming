@@ -13,6 +13,7 @@ import dev.xkmc.youkaishomecoming.content.item.curio.hat.TouhouHatItem;
 import dev.xkmc.youkaishomecoming.content.item.fluid.SakeFluidWrapper;
 import dev.xkmc.youkaishomecoming.content.spell.item.SpellContainer;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.data.YHDamageTypes;
 import dev.xkmc.youkaishomecoming.init.data.YHModConfig;
 import dev.xkmc.youkaishomecoming.init.data.YHTagGen;
@@ -41,7 +42,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 @Mod.EventBusSubscriber(modid = YoukaisHomecoming.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GeneralEventHandlers {
@@ -102,7 +102,7 @@ public class GeneralEventHandlers {
 		}
 		if (!event.getEntity().getType().is(YHTagGen.FLESH_SOURCE)) return;
 		if (event.getSource().getEntity() instanceof LivingEntity le) {
-			if (le.getMainHandItem().is(ForgeTags.TOOLS_KNIVES) &&
+			if (le.getMainHandItem().is(TagRef.TOOLS_KNIVES) &&
 					EffectEventHandlers.isYoukai(le))
 				spawnBlood(le);
 			if (le.getItemBySlot(EquipmentSlot.HEAD).is(YHItems.RUMIA_HAIRBAND.get()))

@@ -51,7 +51,7 @@ public class CuisineBoardBlockEntity extends BaseBlockEntity implements IHintabl
 				if (recipe.getTool().test(stack)) {
 					if (!level.isClientSide()) {
 						int fortune = stack.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-						for (ItemStack drop : recipe.rollResults(level.random, fortune)) {
+						for (ItemStack drop : recipe.rollResults(level.random, fortune, wrapper)) {
 							ItemUtils.spawnItemEntity(level, drop.copy(),
 									worldPosition.getX() + 0.5F,
 									worldPosition.getY() + 0.2,

@@ -11,6 +11,7 @@ import dev.xkmc.youkaishomecoming.content.block.plant.WildVineBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.YHCropBlock;
 import dev.xkmc.youkaishomecoming.content.block.plant.rope.RopeLoggedCropBlock;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import dev.xkmc.youkaishomecoming.init.food.YHCrops;
 import dev.xkmc.youkaishomecoming.util.VoxelBuilder;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -472,9 +473,9 @@ public class GrapeVineSet {
 									.renderType("cutout")));
 		}
 		return builder
-				.item().tag(ModTags.WILD_CROPS_ITEM).model((ctx, pvd) ->
+				.item().tag(TagRef.WILD_CROPS_ITEM).model((ctx, pvd) ->
 						pvd.generated(ctx, pvd.modLoc("block/plants/" + crop.getTypeName() + "/" + ctx.getName()))).build()
-				.tag(ModTags.WILD_CROPS)
+				.tag(TagRef.WILD_CROPS)
 				.loot((ctx, pvd) -> PlantJsonGen.wildDropFruit(ctx, pvd, crop)).register();
 	}
 

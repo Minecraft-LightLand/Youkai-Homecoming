@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.pot.base;
 
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.youkaishomecoming.init.YoukaisHomecoming;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -116,7 +117,7 @@ public abstract class BasePotMenu extends RecipeBookMenu<RecipeWrapper> {
 					return ItemStack.EMPTY;
 				}
 			} else {
-				boolean isValidContainer = slotStack.is(ModTags.SERVING_CONTAINERS) || slotStack.is(blockEntity.getContainer().getItem());
+				boolean isValidContainer = slotStack.is(TagRef.SERVING_CONTAINERS) || slotStack.is(blockEntity.getContainer().getItem());
 				if (isValidContainer && !moveItemStackTo(slotStack, indexContainerInput, indexContainerInput + 1, false)) {
 					return ItemStack.EMPTY;
 				}

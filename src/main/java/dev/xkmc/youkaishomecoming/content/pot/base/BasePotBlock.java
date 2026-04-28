@@ -1,6 +1,7 @@
 package dev.xkmc.youkaishomecoming.content.pot.base;
 
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -107,7 +108,7 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 	}
 
 	private CookingPotSupport getTrayState(LevelAccessor level, BlockPos pos) {
-		return level.getBlockState(pos.below()).is(ModTags.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
+		return level.getBlockState(pos.below()).is(TagRef.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
 	}
 
 	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {

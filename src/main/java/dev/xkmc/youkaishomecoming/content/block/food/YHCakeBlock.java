@@ -2,6 +2,7 @@ package dev.xkmc.youkaishomecoming.content.block.food;
 
 import dev.xkmc.youkaishomecoming.content.item.food.FleshFoodItem;
 import dev.xkmc.youkaishomecoming.content.item.food.YHFoodItem;
+import dev.xkmc.youkaishomecoming.init.data.TagRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -24,7 +25,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
 
 import java.util.List;
@@ -54,7 +54,7 @@ public class YHCakeBlock extends CakeBlock {
 				return InteractionResult.SUCCESS;
 			}
 		}
-		if (stack.is(ForgeTags.TOOLS_KNIVES)) {
+		if (stack.is(TagRef.TOOLS_KNIVES)) {
 			if (!level.isClientSide()) {
 				int bite = state.getValue(BITES);
 				if (bite < MAX_BITES) level.setBlockAndUpdate(pos, state.setValue(BITES, bite + 1));
@@ -108,7 +108,7 @@ public class YHCakeBlock extends CakeBlock {
 	@Override
 	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 		super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
-		if (Configuration.FOOD_EFFECT_TOOLTIP.get())
+		if (Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get())
 			YHFoodItem.getFoodEffects(food.get().getFoodProperties(), pTooltip);
 	}
 
