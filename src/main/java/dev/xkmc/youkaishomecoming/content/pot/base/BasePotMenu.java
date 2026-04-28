@@ -118,7 +118,7 @@ public abstract class BasePotMenu<T extends BasePotRecipe> extends RecipeBookMen
 					return ItemStack.EMPTY;
 				}
 			} else {
-				boolean isValidContainer = slotStack.is(ModTags.SERVING_CONTAINERS) || slotStack.is(blockEntity.getContainer().getItem());
+				boolean isValidContainer = slotStack.is(ModTags.Items.SERVING_CONTAINERS) || slotStack.is(blockEntity.getContainer().getItem());
 				if (isValidContainer && !moveItemStackTo(slotStack, indexContainerInput, indexContainerInput + 1, false)) {
 					return ItemStack.EMPTY;
 				}

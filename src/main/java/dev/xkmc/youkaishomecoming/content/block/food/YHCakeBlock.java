@@ -90,7 +90,7 @@ public class YHCakeBlock extends CakeBlock {
 	@Override
 	public void appendHoverText(ItemStack stack, Item.TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, ctx, list, flag);
-		if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+		if (Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get()) {
 			var prop = food.get().getFoodProperties(stack, null);
 			if (prop != null) YHFoodItem.getFoodEffects(prop, list);
 		}

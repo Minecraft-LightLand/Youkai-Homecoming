@@ -110,7 +110,7 @@ public abstract class BasePotBlock extends BaseEntityBlock implements SimpleWate
 	}
 
 	private CookingPotSupport getTrayState(LevelAccessor level, BlockPos pos) {
-		return level.getBlockState(pos.below()).is(ModTags.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
+		return level.getBlockState(pos.below()).is(ModTags.Blocks.TRAY_HEAT_SOURCES) ? CookingPotSupport.TRAY : CookingPotSupport.NONE;
 	}
 
 	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
