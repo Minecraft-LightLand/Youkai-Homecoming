@@ -61,15 +61,14 @@ public class YHGLMProvider extends GlobalLootModifierProvider implements Registr
 
 	}
 
+	private final AbstractRegistrate<?> parent;
+
 	public YHGLMProvider(AbstractRegistrate<?> parent, PackOutput out, CompletableFuture<HolderLookup.Provider> pvd) {
 		super(out, pvd, parent.getModid());
+		this.parent = parent;
 	}
 
 	public void gen() {
-	}
-
-	@Override
-	protected void start() {
 		var reg = registries.lookupOrThrow(Registries.BIOME);
 
 		add("tuna_hunt", new RemoveItemModifier(
@@ -95,6 +94,11 @@ public class YHGLMProvider extends GlobalLootModifierProvider implements Registr
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY.location()).build()));
 		add("udumbara_ancient_city_ice_box_loot", loot(YHLootGen.UDUMBARA_LOOT,
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY_ICE_BOX.location()).build()));
+	}
+
+	@Override
+	protected void start() {
+		parent.genData(TYPE, this);
 	}
 
 	private static LootModifier loot(ResourceKey<LootTable> id, LootItemCondition... cond) {
