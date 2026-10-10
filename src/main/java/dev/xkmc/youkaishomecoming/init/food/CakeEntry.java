@@ -80,7 +80,7 @@ public class CakeEntry {
 			int stage = state.getValue(PieBlock.BITES);
 			String suffix = stage == 0 ? "" : "_slice" + stage;
 			return pvd.models().getBuilder(ctx.getName() + suffix)
-					.parent(new ModelFile.UncheckedModelFile("farmersdelight:block/pie" + suffix))
+					.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/feast/pie" + suffix)))
 					.texture("particle", pvd.modLoc("block/cake/" + ctx.getName() + "_top"))
 					.texture("top", pvd.modLoc("block/cake/" + ctx.getName() + "_top"))
 					.texture("inner", pvd.modLoc("block/cake/" + ctx.getName() + "_inner"))
