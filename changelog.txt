@@ -1,3 +1,6 @@
+0.5.1
+- Fix Tarte Lune model
+
 0.5.0
 - Port to Farmer's Delight 1.3
 

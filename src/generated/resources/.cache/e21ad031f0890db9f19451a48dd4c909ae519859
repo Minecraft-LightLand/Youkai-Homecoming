@@ -1,4 +1,4 @@
-// 1.20.1	2026-04-28T18:34:51.984305	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2026-10-10T20:23:16.531923	Registrate Provider for youkaisfeasts [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 7c1154f9336e767a2a8f29de141c1a290303588e assets/youkaisfeasts/blockstates/acacia_dining_chair.json
 6a37f87efa1d0cce75813073a53da82dd35b505c assets/youkaisfeasts/blockstates/acacia_dining_table.json
 4a13d28320dfac1d342986f42606eadc7f7139f3 assets/youkaisfeasts/blockstates/apple_basket.json
@@ -502,10 +502,10 @@ b8f70994f7a6c18f4224595ea0d826bf8e9f0608 assets/youkaisfeasts/models/block/steam
 c9f50a8fe7a217910877b3135c5c3f6f3e080e4f assets/youkaisfeasts/models/block/steamer_rack_3.json
 b517cabf6232bdd99093b9bb203e291b20b16f2e assets/youkaisfeasts/models/block/stinky_tofu.json
 72e609294bee6e139ccbc53bcf2e739a3799198d assets/youkaisfeasts/models/block/stockpot.json
-342be5edb2e88687e65cbae7537457e80532936f assets/youkaisfeasts/models/block/tarte_lune.json
-e195f2675dee2e6912fe62321299002336f4330c assets/youkaisfeasts/models/block/tarte_lune_slice1.json
-27feafe8624c085e82f35ab0e4ebdd780f188309 assets/youkaisfeasts/models/block/tarte_lune_slice2.json
-56474dc0507890c1c9eb255ca6501b0a3d3fe5b5 assets/youkaisfeasts/models/block/tarte_lune_slice3.json
+9ec5cc5507dd0deab0cb12af53648188feed4ac4 assets/youkaisfeasts/models/block/tarte_lune.json
+7abc4de2c026c8d4976cbcce5ffad1e015e3bf21 assets/youkaisfeasts/models/block/tarte_lune_slice1.json
+4b3daa55203ce186bfeeda0c525e6accc471e78e assets/youkaisfeasts/models/block/tarte_lune_slice2.json
+b54a74a427299d7b19769c3de1c3d73cbdc5bdf9 assets/youkaisfeasts/models/block/tarte_lune_slice3.json
 326ac7f1b8ecad56af227bbb2b731eeb080d4bdb assets/youkaisfeasts/models/block/tea_leaf_bag.json
 c5a366904204e176508c14ca0ede2b7fa174d524 assets/youkaisfeasts/models/block/tea_stage0.json
 fe712a1d35c50457b5652b631b138c53defd7e8f assets/youkaisfeasts/models/block/tea_stage0_upper.json
