@@ -1,4 +1,4 @@
-// 1.20.1	2026-04-28T14:02:11.333699	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2026-10-10T19:50:21.652635	Registrate Provider for youkaishomecoming [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 5276e4784c1f7fc870c0ac6ac290de0d2e0115a6 assets/youkaishomecoming/blockstates/acacia_dining_chair.json
 f9d21a07b342a50f0d5d41198d360969702ceae7 assets/youkaishomecoming/blockstates/acacia_dining_table.json
 e1ea36a0a955be7d64267733915af676c2319e14 assets/youkaishomecoming/blockstates/acacia_handrail.json
@@ -900,10 +900,10 @@ fcce4724b194cb29f3b918a3978c20f575221b42 assets/youkaishomecoming/models/block/s
 b27982e725ffd5ed06436726e68be4576901940f assets/youkaishomecoming/models/block/straw_trap_door_open.json
 8f70644a06f0376567c00bc7b466a9479c71848a assets/youkaishomecoming/models/block/straw_trap_door_top.json
 8c1c03f9438d2abdb0dc200253dc320592e26b8c assets/youkaishomecoming/models/block/straw_vertical_slab.json
-ed587d89611e54cd268c94791ee991bbb98821bd assets/youkaishomecoming/models/block/tarte_lune.json
-b5e1c84ebab5b7f65e012312564ef780e97abd44 assets/youkaishomecoming/models/block/tarte_lune_slice1.json
-4084ba1da2ab3726b99cb7d28f8f1cb95a665385 assets/youkaishomecoming/models/block/tarte_lune_slice2.json
-fdb2938373dd78080a68a7fd6351a3d7f5fef67a assets/youkaishomecoming/models/block/tarte_lune_slice3.json
+72ea1b3c5147e1ae9234a890d8e53704f60d2df7 assets/youkaishomecoming/models/block/tarte_lune.json
+56974d7debffad7ae9725a4c3d1ec01be0dc3738 assets/youkaishomecoming/models/block/tarte_lune_slice1.json
+a11e3aae6b9bf831de1eb3ee3e3c536af170d922 assets/youkaishomecoming/models/block/tarte_lune_slice2.json
+b2e8c29af04fde78587f64e5e5b38d33b379c2b3 assets/youkaishomecoming/models/block/tarte_lune_slice3.json
 b9b66e74dc1476361ed80e7541b791280709cb34 assets/youkaishomecoming/models/block/tea_leaf_bag.json
 a8557661df8c5ae76e7b9689d508696dfc9efa88 assets/youkaishomecoming/models/block/tea_stage0.json
 5d79b2d45449b00bae5e3e6e41faac64cb7b2569 assets/youkaishomecoming/models/block/tea_stage0_upper.json

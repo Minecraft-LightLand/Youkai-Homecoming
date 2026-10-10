@@ -1,5 +1,5 @@
 {
-  "parent": "farmersdelight:block/pie",
+  "parent": "youkaishomecoming:custom/feast/pie",
   "textures": {
     "bottom": "youkaishomecoming:block/cake/pie_bottom",
     "inner": "youkaishomecoming:block/cake/tarte_lune_inner",
