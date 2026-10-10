@@ -16,6 +16,7 @@ import dev.xkmc.youkaishomecoming.mixin.AddItemModifierAccessor;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -94,6 +95,10 @@ public class YHGLMProvider extends GlobalLootModifierProvider implements Registr
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY.location()).build()));
 		add("udumbara_ancient_city_ice_box_loot", loot(YHLootGen.UDUMBARA_LOOT,
 				LootTableIdCondition.builder(BuiltInLootTables.ANCIENT_CITY_ICE_BOX.location()).build()));
+	}
+
+	protected CompletableFuture<?> run(CachedOutput cache, HolderLookup.Provider registries) {
+		return parent.getModid().equals(YoukaisHomecoming.MODID) ? super.run(cache, registries) : CompletableFuture.completedFuture(null);
 	}
 
 	@Override
