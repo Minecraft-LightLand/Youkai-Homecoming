@@ -27,9 +27,8 @@ public class WanderingTraderTrades {
 	private static int emeraldCost(YHCrops crop) {
 		return switch (crop) {
 			case SOYBEAN, REDBEAN -> 1;
-			case CUCUMBER, COFFEA, TEA -> 2;
+			case CUCUMBER, TEA -> 2;
 			case RED_GRAPE, WHITE_GRAPE, BLACK_GRAPE -> 3;
-			case MANDRAKE -> 10;
 			case UDUMBARA -> 16;
 		};
 	}
