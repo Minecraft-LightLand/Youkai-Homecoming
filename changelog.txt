@@ -1,3 +1,7 @@
+2.7.2
+- Wandering traders now sell crop seeds from this mod
+- Optimize ingredient rack rendering
+
 2.7.1
 - Fix Tarte Lune model
 
